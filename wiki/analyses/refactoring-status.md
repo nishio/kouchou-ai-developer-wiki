@@ -75,9 +75,9 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - `packages/ui-shared/` — Phase 0 投資計画と naming convention に記載があるが未作成
 - `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
 - YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
-- 可視化 plugin の Python 系統 — `why-plugin-system.md` で 3 軸目として言及されるがバックエンド側に実装なし。`apps/public-viewer/` のフロント側で `ChartType extensible` 化が進んでいる気配（commit `05b6c11`）
+- 可視化 plugin の **Python 系統** — `why-plugin-system.md` で 3 軸目として言及されるがバックエンド側に実装なし。代わりに `apps/public-viewer/components/charts/plugins/` の **TypeScript 側 registry/types/validation と built-in plugin** は既に存在する
 
-## PR #825「Python 直接 静的 HTML 出力」(2026-05-11)
+## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
 [[meeting-minutes]] では着地したかのように語られているが、**main の tip は #821**（2026-05 中旬時点）。`82d870f test: 静的HTML出力（GitHub Pages等）のE2Eテスト` は別件（static-site-builder の E2E テスト）。PR #825 は未マージ／別ブランチの可能性。
 
@@ -103,3 +103,4 @@ warnings.warn("hierarchical_main.py is deprecated. "
 ## Updates
 
 - 2026-05-17: 初回作成（コードリーディング結果から）
+- 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化

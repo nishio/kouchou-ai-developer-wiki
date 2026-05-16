@@ -88,7 +88,7 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 
 ## "vive 広聴AI" 用途
 
-[[meeting-minutes]] 2025-07-09 で命名された「AI コーディングエージェントから叩く CLI 利用パターン」のメイン経路。2026-05-11 の [[nishio]] の社内 300 件分析でも、`Claude Code` がこの CLI を直接叩いている。
+[[meeting-minutes]] 2025-07-09 で命名された「AI コーディングエージェントから叩く CLI 利用パターン」のメイン経路。議事メモ 2026-05-18 見出しの [[nishio]] の社内 300 件分析でも、`Claude Code` がこの CLI を直接叩いている。
 
 ## Open Questions
 

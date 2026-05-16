@@ -81,11 +81,11 @@ sources:
 
 ### B1. `extraction.skip: true` オプション
 
-[[meeting-minutes]] 2026-05-11：「整形済みデータで extraction を skip したい」を [[nishio]] が AI からの示唆で発議、合意感あるが PR は未提出。複数回希望されているが手付かず（[[gotchas]]）。
+[[meeting-minutes]] 2026-05-18 見出し：「整形済みデータで extraction を skip したい」を [[nishio]] が AI からの示唆で発議、合意感あるが PR は未提出。複数回希望されているが手付かず（[[gotchas]]）。
 
 ### B2. クラスタ数のデフォルト自動算出
 
-[[meeting-minutes]] 2026-05-11：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。過去に silhouette-score ベースの自動選択 (PR #567) が試されたが embedding エラーで revert (#579)。**本格再着手なし**。
+[[meeting-minutes]] 2026-05-18 見出し：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。過去に silhouette-score ベースの自動選択 (PR #567) が試されたが embedding エラーで revert (#579)。**本格再着手なし**。
 
 ### B3. 自動 PyPI リリース GitHub Action
 
@@ -119,9 +119,10 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 `docs/development/pypi-release.md` などからの参照はあるが、**ファイル自体が存在しない**。バージョン履歴は git log のみ。
 
-### B11. CodeRabbit 導入
+### B11. CodeRabbit 運用の深掘り
 
-Issue #417 + [[meeting-minutes]] で導入合意。team-mirai/marumie の `.coderabbit.yml` を参考に kouchou-ai 用を作る方針だが **未配線**。
+`main@3809a7a` には既に **`.coderabbit.yaml`** があり、`reviews.auto_review.drafts: true` の最小設定は入っている。したがって「未配線」は古い。  
+一方で、レビュー対象の絞り込み、除外ルール、コメント運用方針はまだ薄く、**導入後の運用設計** は詰め切れていない。
 
 ### B12. YAML ベース workflow 定義
 
@@ -139,19 +140,16 @@ Issue #417 + [[meeting-minutes]] で導入合意。team-mirai/marumie の `.code
 
 ### C1. PR #825 — Python 直接静的 HTML 出力
 
-[[meeting-minutes]] 2026-05-11 で [[nishio]] が報告。main の tip は #821（PR #825 未マージ）。AI コーディングエージェントから "サーバ無しで HTML を吐く" 用途を支える基幹機能になる想定。
+[[meeting-minutes]] 2026-05-18 見出しで [[nishio]] が報告。main の tip は #821（PR #825 未マージ）。AI コーディングエージェントから "サーバ無しで HTML を吐く" 用途を支える基幹機能になる想定。
 
 ### C2. PR #824 — LOCAL LLM の HTTPS 対応
 
-[[meeting-minutes]] 2026-05-11。同じく未確認（一方は別ブランチで動いている可能性）。
+[[meeting-minutes]] 2026-05-18 見出し。同じく未確認。`main@3809a7a` の `analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` はなお `http://{host}:{port}/v1` を組み立てる実装なので、**少なくとも main のコードからは完了と言い切れない**。
 
-### C3. フロント側可視化 plugin（ChartType extensible）
+### C3. フロント側可視化 plugin 基盤
 
-commit `05b6c11` "Make ChartType extensible for custom plugins" — `apps/public-viewer/` で進行中の気配。完成度／公開 API 安定度は要追加調査。
-
-### C4. レポート再利用機能（Issue #19）
-
-[[meeting-minutes]] 2026-02-09 に「実装し終わった」報告あり。docs と UI の追従状況は **要確認**（実は C ではなく「完了」かもしれない）。
+`apps/public-viewer/components/charts/plugins/` に registry / types / validation と built-in plugin (`scatter`, `treemap`, `hierarchy-list`) がある。**基盤自体は既に main にある**。  
+未完なのは、外部 plugin ロードやバックエンドの「第 3 軸」としての統一設計まで含めた完成形。
 
 ---
 
@@ -161,7 +159,7 @@ commit `05b6c11` "Make ChartType extensible for custom plugins" — `apps/public
 |---|---|
 | A. 未定 | 11 |
 | B. 方針決定済み・未着手 | 13 |
-| C. 着手済み・未完了 | 4 |
+| C. 着手済み・未完了 | 3 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。
 
@@ -177,3 +175,6 @@ commit `05b6c11` "Make ChartType extensible for custom plugins" — `apps/public
 ## Updates
 
 - 2026-05-17: 初回作成 — 議事メモ＋コードリーディング結果を 3 分類で整理
+- 2026-05-17: `main@3809a7a` を再確認し、CodeRabbit は「未配線」ではなく最小導入済みへ修正
+- 2026-05-17: `apps/api/src/services/report_duplicate.py` / `docs/user-guide/reuse-report.md` / admin UI を確認し、レポート再利用機能は C から除外
+- 2026-05-17: 可視化 plugin 基盤は frontend 側で実装済み、LOCAL LLM HTTPS は main では未完了寄りに補正

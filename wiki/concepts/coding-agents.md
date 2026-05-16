@@ -35,7 +35,7 @@ sources:
 
 ## デフォルトパラメータの伝播問題
 
-[[meeting-minutes]] 2026-05-11：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が無批判に転用し、データ規模に合わないクラスタ数で実行される。ドキュメント例は「AI が真似する種」と認識すべし。
+[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が無批判に転用し、データ規模に合わないクラスタ数で実行される。ドキュメント例は「AI が真似する種」と認識すべし。
 
 ## CLA
 

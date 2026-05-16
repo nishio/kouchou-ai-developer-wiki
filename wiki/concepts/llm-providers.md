@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
 ---
 
 ## 対応プロバイダ
@@ -29,11 +30,12 @@ sources:
 
 ## LOCAL LLM の HTTPS 問題（2026-05）
 
-[[meeting-minutes]] 2026-05-11 / PR #824：
+[[meeting-minutes]] 2026-05-18 見出し / PR #824：
 
 > OpenAI や Azure AI Service ではないモデルを叩くとき「LOCAL LLM」という扱いになっているが、これが HTTP を暗黙に仮定してたので **HTTPS の別サービスを叩くことができない**。
 
-= "LOCAL" という命名が実装にバイアスを与えていた古典的なケース。修正済みだが今後も類似の hidden assumption を疑う材料。
+= `main@3809a7a` のコードでは、`packages/analysis-core/src/analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` が今も `http://{host}:{port}/v1` を組み立てている。したがって、**議事メモ上で修正報告はあるが、main で HTTPS URL を自然に扱えるとはまだ断定しない方が安全**。  
+= "LOCAL" という命名が実装にバイアスを与えていた古典的なケースであり、今後も類似の hidden assumption を疑う材料。
 
 ## 埋め込みモデル
 
@@ -53,3 +55,4 @@ Issue #660（2025-07-30 マージ）— OpenAI / OpenRouter のキーを管理�
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: `main@3809a7a` を確認し、LOCAL LLM の HTTPS 対応は「議事メモ上の報告あり・main 反映は要再確認」という書き方に修正

@@ -56,7 +56,7 @@ sources:
 
 ## クラスタ数のデフォルト問題
 
-[[meeting-minutes]] 2026-05-11 で再浮上：`docs/user-guide/cli-quickstart.md` の例が `[3, 6]`。これを Claude Code がそのまま使い、300 件規模のデータでも `3 → 6 → 12 → 24` のような粗いまとめになる。提案された方向は「クラスタ数を optional にし、データ件数からおすすめ値を自動算出」(cube-root rule の言及あり)。
+[[meeting-minutes]] 2026-05-18 見出しで再浮上：`docs/user-guide/cli-quickstart.md` の例が `[3, 6]`。これを Claude Code がそのまま使い、300 件規模のデータでも `3 → 6 → 12 → 24` のような粗いまとめになる。提案された方向は「クラスタ数を optional にし、データ件数からおすすめ値を自動算出」(cube-root rule の言及あり)。
 
 過去にも [[other-contributors|kitaro]] が silhouette-score ベースの自動選択を PR #567 で実装したが embedding エラーの誘発で #579 で revert。**未解決**。
 
@@ -66,7 +66,7 @@ sources:
 
 ## 軽量化と CLI 静的出力（2026-05）
 
-[[meeting-minutes]] 2026-05-11 / PR #825：
+[[meeting-minutes]] 2026-05-18 見出し / PR #825：
 
 - 従来は「サーバを立てて `npm run build`」する必要があったが、AI コーディングエージェントは「サーバ無しで HTML を出して静的ホスト」したい
 - Python から直接静的 HTML を吐く実装を追加。デフォルトをこちらにする方針
@@ -74,7 +74,7 @@ sources:
 
 ## Open Questions
 
-- `extraction.skip: true` オプションの実装（複数回希望されているが未着地、2026-05-11）
+- `extraction.skip: true` オプションの実装（複数回希望されているが未着地、議事メモ 2026-05-18 見出し時点）
 - レポート再利用（Issue #19）は 2026-02 に「実装し終わった」報告あり、現状確認が必要
 - 散布図の維持／削除：「散布図を見て満足する時代ではない」(ken-san, 2025-10-01) vs 「見た目のインパクトを求める顧客がいる」(nishio)。未決
 

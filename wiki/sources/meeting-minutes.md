@@ -9,7 +9,7 @@ sources:
 
 ## What it is
 
-[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新は 2026/05/11、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
+[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/05/18（次回分）**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
 
 ```
 YYYY/MM/DD（次回分）
@@ -17,6 +17,18 @@ YYYY/MM/DD（次回分）
 ```
 
 「共有・相談等」が分量的にも内容的にも本体で、ハンドル別（nishio / tokoroten / nasuka / Ohki ...）の自由形式の活動報告と相談がまとまっている。
+
+## Refresh protocol
+
+議事メモを根拠にページを更新する前に、まず Google Doc export から `raw/meeting_minutes.txt` を取り直す：
+
+```bash
+curl -L -sS \
+  'https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/export?format=txt' \
+  > raw/meeting_minutes.txt
+```
+
+Google Doc の見出しは「次回分」を先に立てていることがある。したがって、**見出し日付をそのまま実会議日と見なさず、前後の文脈も確認する**。
 
 ## Scope
 
@@ -37,3 +49,5 @@ YYYY/MM/DD（次回分）
 ## Updates
 
 - 2026-05-17: 初回 ingest（次回分 2026/05/11 まで）
+- 2026-05-17: Google Doc export から再取得し、先頭見出しが `2026/05/18（次回分）` に更新されていることを確認
+- 2026-05-17: source 更新前に `raw/meeting_minutes.txt` を再取得する refresh protocol を追記

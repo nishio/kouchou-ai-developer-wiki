@@ -1,5 +1,25 @@
 # Log
 
+## [2026-05-17 02:01] ingest | 議事メモの最新 export を再取得し、参照日付を `2026/05/18（次回分）` に更新
+
+- Google Doc export から `raw/meeting_minutes.txt` を再取得。差分は先頭見出し `2026/05/11（次回分）` → `2026/05/18（次回分）` と `2026/05/04` 見出しの整形
+- [[meeting-minutes]] に refresh protocol を追記し、source 更新前に `raw/meeting_minutes.txt` を取り直す運用を明記
+- `2026-05-11` を会議実日付のように読める記述を、`2026-05-18 見出し` 表記へ補正
+
+## [2026-05-17 02:00] ingest | Claude Code 生成 Wiki の主張を `main@3809a7a` に照合し、古くなった断定を補正
+
+- `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で最新確認。local `main` は引き続き `3809a7a`
+- [[gotchas]] / [[llm-providers]]: LOCAL LLM の HTTPS 対応は main コード上まだ `http://{host}:{port}/v1` 前提と分かるため、「修正済み」断定を撤回
+- [[open-decisions]]: CodeRabbit は `.coderabbit.yaml` により最小導入済み、レポート再利用機能は API / UI / docs まで main に存在するため「未完了」一覧から除外
+- [[plugin-system]] / [[refactoring-status]] / [[versioning-strategy]]: frontend 側 chart plugin 基盤が実装済みであることを反映
+
+## [2026-05-17 01:48] ingest | DeepWiki を補助ソースとして登録し、コード更新時は local clone 最新化を先に行う運用を明文化
+
+- `work/kouchou-ai/` で `git fetch origin` を実行し、local `main` tip `3809a7a` が origin と一致することを確認
+- 新規 source ページ [[deepwiki-kouchou-ai]] を追加。DeepWiki は 2026-02-14 / `f894ce` 時点の補助ソースとして扱う
+- [[source-code]] に refresh protocol を追記し、コード由来の更新前に local clone を pull するルールを追加
+- `CLAUDE.md` の Ingest / 運用方針にも、local clone 優先・DeepWiki は補助線という原則を追記
+
 ## [2026-05-17 01:50] filing-back | work/ の運用合意を CLAUDE.md スキーマに反映
 
 - ディレクトリ構造図に `work/` を追加し「実装確認用の local clone を置く場所、gitignored、`/tmp` は ephemeral なので永続参照はここへ」を明記

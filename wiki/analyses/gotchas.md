@@ -5,6 +5,7 @@ type: analysis
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
 ---
 
 コードを読むだけでは復元しづらく、議論や実地報告で繰り返し顔を出すハマりどころ。一次ソースは [[meeting-minutes]] と `docs/development/*`。
@@ -19,9 +20,10 @@ sources:
 
 `docker compose up --build` し直さないと反映されない env var がある。`Makefile` が `.env` / `.env.azure` のハッシュを `.env-hashes/` に保存し、変更検知で `docker compose build --no-cache` を強制する救済策がある。
 
-### LOCAL LLM が HTTPS を喋れなかった
+### LOCAL LLM は `main@3809a7a` でも `https://...` を素直には受け取れない
 
-[[meeting-minutes]] 2026-05-11 / PR #824：「LOCAL LLM」扱いされたエンドポイントは HTTP を暗黙仮定していて、外部 HTTPS サービスを叩けなかった。修正済み。**「LOCAL」という命名がそもそも実装にバイアスを与える** という教訓。詳細は [[llm-providers]]。
+[[meeting-minutes]] 2026-05-18 見出し / PR #824 では修正報告があるが、`main@3809a7a` の `packages/analysis-core/src/analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` は依然として `local_llm_address` を **`host:port` 形式として解釈し、`http://{host}:{port}/v1` を組み立てる**。`https://example.com` のような URL をそのまま渡すと崩れる可能性が高い。  
+**「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓自体は有効。詳細は [[llm-providers]]。
 
 ## パイプライン・データ
 
@@ -44,11 +46,11 @@ sources:
 
 ### デフォルトクラスタ数 `[3, 6]` が小さすぎる
 
-[[meeting-minutes]] 2026-05-11：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。本質的修正は「optional 化 + データ件数から自動算出」。一度 silhouette-score ベースの自動選択（PR #567）が試されたが embedding エラーで revert (#579)。**未解決**。詳細は [[pipeline]]。
+[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。本質的修正は「optional 化 + データ件数から自動算出」。一度 silhouette-score ベースの自動選択（PR #567）が試されたが embedding エラーで revert (#579)。**未解決**。詳細は [[pipeline]]。
 
 ### `extraction.skip: true` がない
 
-整形済みデータの再分析でも extraction が走り、コスト・時間の無駄。複数回希望されたが未実装（最新は 2026-05-11）。
+整形済みデータの再分析でも extraction が走り、コスト・時間の無駄。複数回希望されたが未実装（最新確認は議事メモ 2026-05-18 見出し）。
 
 ## OS・環境
 
@@ -144,3 +146,4 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: `main@3809a7a` を再確認し、LOCAL LLM の HTTPS 問題は「修正済み」と断定しない表現に修正

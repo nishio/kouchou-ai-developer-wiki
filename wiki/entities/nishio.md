@@ -17,7 +17,7 @@ sources:
 - **リファクタ計画**: Codex + GPT-5.2 で v5.0 リファクタプランをドラフト ([gist](https://gist.github.com/nishio/0a1812750627620ff6ede948f13c993b))
 - **静的 HTML 出力の CLI 化**（PR #825、2026-05）
 - **LOCAL LLM の HTTPS 対応**（PR #824、2026-05）
-- **チームみらいでの 300 件規模分析**（社内データを Claude Code に投げる "vive 広聴AI" の実践報告 — [[meeting-minutes]] 2026-05-11）
+- **チームみらいでの 300 件規模分析**（社内データを Claude Code に投げる "vive 広聴AI" の実践報告 — [[meeting-minutes]] 2026-05-18 見出し）
 - 議事メモの "thinking" セクションを書く役
 
 ## 周辺活動（[[dd2030]] 全般）

@@ -39,6 +39,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜 2026-05)
 - [github-dev-docs](sources/github-dev-docs.md) — kouchou-ai リポジトリと `docs/development/`
 - [source-code](sources/source-code.md) — コード本体（docs ギャップを埋める一次参照）
+- [deepwiki-kouchou-ai](sources/deepwiki-kouchou-ai.md) — DeepWiki 生成のコードベース要約（補助ソース）
 - [weekly-log-2026-05-06](sources/weekly-log-2026-05-06.md) — `oss_weekly_reporter` 週次ダンプ
 
 ## Analyses

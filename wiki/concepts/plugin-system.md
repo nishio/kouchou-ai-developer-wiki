@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
 ---
 
 ## 重要：実体は「同名の別システム」が 2 つある
@@ -22,7 +23,7 @@ sources:
 
 1. **入力 (input) plugin** — `apps/api/src/plugins/`。サンプルとして YouTube plugin (`youtube.py`) が同梱。`ENABLE_{ID}_INPUT_PLUGIN=true` env で有効化。`pkgutil.iter_modules` で auto-import → `@PluginRegistry.register` で class-level 登録
 2. **解析 (analysis) plugin** — `packages/analysis-core/src/analysis_core/plugins/builtin/` に **8 つの builtin** （extraction, embedding, hierarchical_*）。既存ステップ関数を `legacy_config` を再構築して呼び出す薄いラッパー
-3. **可視化 (visualization) plugin** — `why-plugin-system.md` で第 3 軸として語られるが、**バックエンド側に Python plugin システムは無い**。`apps/public-viewer/` のフロント側で `ChartType extensible` 化が進んでいる気配あり（commit `05b6c11`）
+3. **可視化 (visualization) plugin** — `why-plugin-system.md` で第 3 軸として語られるが、**バックエンド側に Python plugin システムは無い**。一方でフロント側には `apps/public-viewer/components/charts/plugins/` があり、`registry.ts`, `types.ts`, `validation.ts` と built-in の `scatter` / `treemap` / `hierarchy-list` plugin が実装済み
 
 ## 採用理由
 
@@ -93,3 +94,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正

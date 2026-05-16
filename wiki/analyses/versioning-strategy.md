@@ -4,6 +4,7 @@ summary: v4 凍結 / v5 plugin 化のリリース戦略 — 書籍出版との�
 type: analysis
 sources:
   - meeting-minutes.md
+  - source-code.md
 ---
 
 ## 決定事項（[[meeting-minutes]] 2025-12-13）
@@ -43,6 +44,8 @@ sources:
 
 **実際の運用は別リポジトリではなく main 上の Phase 段階移行** だった。旧コードに `DeprecationWarning` を貼って共存させ、`apps/` → `packages/analysis-core/` への canonical 移行を Phase 単位で進めている。詳細は [[refactoring-status]]。
 
+`main@3809a7a` を見る限り、`analysis-core` パッケージ、workflow engine、frontend 側の chart plugin 基盤、レポート再利用機能など、**「v5 で入るはずだったもの」のかなりの部分は既に in-tree**。したがって現在の論点は「v5 のコードが存在するか」よりも、**どこまでを stable / default / supported と見なすか** に寄っている。
+
 ## Open Questions
 
 - v4 → v5 のタグ／ブランチ運用は具体化されていない
@@ -52,3 +55,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: `main@3809a7a` を参照し、「v5 は未着手の未来機能」ではなく main にかなり流入済みだと補足
