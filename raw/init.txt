@@ -1,0 +1,13 @@
+下記の情報源を参考に、今後あなたが開発者として活動することに有益な知識を整理せよ。
+
+議事録
+https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit?tab=t.0
+(書籍執筆の話はこのWikiのスコープではない)
+
+リポジトリ
+https://github.com/digitaldemocracy2030/kouchou-ai
+特にここに開発者ドキュメントがある
+https://github.com/digitaldemocracy2030/kouchou-ai/tree/main/docs/development
+
+ここにGitHubやSlackのログがある
+https://github.com/nishio/oss_weekly_reporter/tree/data/data/2026-05-06_to_2026-05-13/raw
