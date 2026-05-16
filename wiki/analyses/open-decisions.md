@@ -1,0 +1,179 @@
+---
+name: open-decisions
+summary: 未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類
+type: analysis
+sources:
+  - meeting-minutes.md
+  - github-dev-docs.md
+  - source-code.md
+---
+
+[[kouchou-ai]] には進行中の作業が多数あり、`docs/` や [[meeting-minutes]] が断片的に語る状態を新規コントリビュータが追いづらい。本ページでは課題を **3 つの状態** に分類して並べる。
+
+- **A. 未定** — 方向性が定まっておらず議論中、または対立する意見が残っている
+- **B. 方針決定済み・未着手** — 何をすべきかは合意があるが、誰も手を付けていない／着手者待ち
+- **C. 着手済み・未完了** — コードや PR としては存在するが production パスに乗っていない or マージ未済
+
+「やります」「やりません」を Wiki 自身が判断するのではなく、**現在の合意状態を観測** して整理する。状態が変わったら本ページを更新する。
+
+---
+
+## A. 未定（合意なし／対立あり）
+
+### A1. 散布図の維持 vs 廃止
+
+[[meeting-minutes]] 2025-10-08, 2025-10-01：
+
+- ken-san：「散布図を見て満足する時代ではない、インサイト発見を中心にせよ」
+- [[nishio]]：「見た目のインパクトが強くて求める顧客がいる」（特にチームみらい等の宣伝用途）
+
+技術的にも UMAP→クラスタリングは精度トレードオフを抱えており（[[pipeline]]）、代替を [[plugin-system|解析 plugin]] で実装するのか／散布図そのものを縮退させるのか **未決**。
+
+### A2. 静的 HTML のホスト先戦略
+
+非エンジニアユーザが [[deployment|静的書き出し HTML]] をどこに置くかは 2025-04 〜 2026-05 で毎週議論され続けて未着地。候補：
+
+- SaaS ホスト `kouchou-ai.dd2030.org`（[[dd2030]] の体制不足で先送り、anno: 「少なくとも 7 月末まで実現困難」2025-04-09）
+- 埋め込み fetch 型 HTML
+- BASIC 認証付き Azure ホスティング
+
+「広く使ってもらう」上で最大の摩擦点だが、責任主体が定まらない。
+
+### A3. DB 導入のタイミング
+
+[[meeting-minutes]] 2025-05-21, 2025-06-25 で毎回「v4.0 のあたり」と言いつつ毎回先送り。**ファイルストレージ継続が暗黙の現状維持**。SQLite 候補が [[nasuka]] の cluster-title 編集 (PR #545) で検討されたが採用されず。
+
+### A4. private-by-default にすべきか
+
+[[meeting-minutes]] 2025-04-23 / Issue #341：YouTube 風 unlisted は PR #500 で実装済み。ただし **「unlisted default」と「private default + unlisted opt-in」のどちらが正しいか** は議論残存。
+
+### A5. 多言語 i18n の扱い
+
+[[meeting-minutes]] 2026-01-26：「v5.0 リリースは日本語ユーザにフォーカス」が方針だが、Polis / Jigsaw への plugin 経由ブリッジは "maybe"。**英語版書籍／英語ユーザベース** との関係はオープン。
+
+### A6. レビュー／マージ基準
+
+[[meeting-minutes]] 2025-05-07 〜：「壊れても OK」スタンスは採用されたが、[[ohki-shingo]] のレビュー困難度マトリクス（A: スキルセット / B: 工数 / C: 環境 / D: 基準なし）は分類どまり。**具体的なマージ基準** は PR テンプレ以上には固まっていない（[[contributing]]）。
+
+### A7. モバイルでの散布図表示
+
+[[meeting-minutes]] 2025-07-30（チームみらい 61 レポート運用フィードバック）：30,000 点散布図のスマホ表示は構造的に難しい。「共有時にズーム済みビューを送る」の部分解決のみで根本未定。
+
+### A8. パブコメ攻撃対策のステップ 3〜4
+
+[[meeting-minutes]] 2025-03-26, 2025-04-23：4 段階対策（効率化 → 検証可能性 → フィルタリング → 認証）のうち、**ステップ 1-2 のみ着手**（[[nishio]] の `pubcom-seiri` 等）。3-4 は未定。
+
+### A9. ipynb 研究の置き場所
+
+[[meeting-minutes]] 2025-10-08 で [[nishio]] の「A: ipynb / B: CLI / C: WebUI / D: ホスト型デモ」分類は議論されたが、リサーチ ipynb をリポジトリ内のどこに置くか／別リポジトリにするか **未決**（現在は外部 `nishio/broadlistening-research/` などに散在）。
+
+### A10. 可視化 plugin の Python 化
+
+[[plugin-system]]：`docs/development/why-plugin-system.md` は「3 軸目」として可視化を挙げるが、**バックエンド側に Python plugin システムは存在しない**。フロント側 `apps/public-viewer/` の ChartType extensible 化（commit `05b6c11`）が先行している。バックエンド／フロントどちらで提供するかの設計判断は未決。
+
+### A11. 「LOCAL LLM」というカテゴリ名
+
+[[gotchas|2026-05 の HTTPS バグ]]を受けて「`LOCAL` という命名が実装にバイアスを与えていた」教訓があるが、リネーム提案までは至っていない（[[llm-providers]]）。
+
+---
+
+## B. 方針決定済み・未着手
+
+### B1. `extraction.skip: true` オプション
+
+[[meeting-minutes]] 2026-05-11：「整形済みデータで extraction を skip したい」を [[nishio]] が AI からの示唆で発議、合意感あるが PR は未提出。複数回希望されているが手付かず（[[gotchas]]）。
+
+### B2. クラスタ数のデフォルト自動算出
+
+[[meeting-minutes]] 2026-05-11：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。過去に silhouette-score ベースの自動選択 (PR #567) が試されたが embedding エラーで revert (#579)。**本格再着手なし**。
+
+### B3. 自動 PyPI リリース GitHub Action
+
+`docs/development/pypi-release.md` に「(参考)」として workflow テンプレが書かれているが、`.github/workflows/` 配下に該当ファイルなし。**手動 `twine upload` 運用が続いている**（[[refactoring-status]]）。
+
+### B4. 依存分割（`[clustering]`, `[embeddings]` extras）
+
+`docs/refactoring/phase2_5_plan.md` Task 2.5.6 で「torch / sklearn を extras に分割」が計画されているが、`packages/analysis-core/pyproject.toml` の `dependencies` は monolithic のまま。`gemini` extra だけが存在。
+
+### B5. Phase 8 — 旧 `apps/api/broadlistening/pipeline/` 完全削除
+
+[[refactoring-status]]：`hierarchical_main.py` は `DeprecationWarning` を出す shim 化済み、`steps/` 配下 ~1600 LOC も残存。**削除タイミング未定**。誰かが古い手順書に従うと黙ってステイル版が動くリスクが続いている（[[gotchas]]）。
+
+### B6. Phase 3b — `run_workflow()` を default 経路に
+
+[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。**切替タイミング未定**。
+
+### B7. 外部 `plugins/analysis/` ディレクトリの実利用
+
+loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALYSIS_PLUGINS_PATH` 環境変数を探す実装になっているが、リポジトリにこのディレクトリは無く、外部 analysis plugin の同梱もゼロ。**枠だけ用意して利用例なし**。
+
+### B8. `--without-html` / `--skip-interaction` argparse バグ修正
+
+[[cli]]：`action="store_true"` + `default=True` で CLI から False に戻せない問題。**既知だが修正未着手**。修正方針自体は単純（`store_false` 化など）。
+
+### B9. `packages/ui-shared/` 共有 UI パッケージ
+
+`docs/refactoring/phase0_investigation.md` と `naming_convention.md` に計画記載があるが **ディレクトリ未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue #586）と紐づくはずだが進んでいない。
+
+### B10. ルート `CHANGELOG.md` 整備
+
+`docs/development/pypi-release.md` などからの参照はあるが、**ファイル自体が存在しない**。バージョン履歴は git log のみ。
+
+### B11. CodeRabbit 導入
+
+Issue #417 + [[meeting-minutes]] で導入合意。team-mirai/marumie の `.coderabbit.yml` を参考に kouchou-ai 用を作る方針だが **未配線**。
+
+### B12. YAML ベース workflow 定義
+
+`packages/analysis-core/src/analysis_core/plugin/loader.py` は YAML manifest を読む実装になっているが、実態の workflow は `workflows/hierarchical_default.py`（Python のみ）。`phase3_plan.md` の YAML 例も「(将来)」のまま。
+
+### B13. PR レビュー責任の AI 生成 PR への拡張
+
+[[coding-agents]]：Devin / Copilot Agent の PR をどこまで人間が引き取るかの線引きは PR テンプレ以上に明文化されていない。draft 扱い＋ CLA 範囲は決まっているが、**マージ判断者の責任範囲は曖昧**。
+
+---
+
+## C. 着手済み・未完了（実装あり／production 未到達）
+
+整理のため Phase 進行中／PR 出てる項目もここにまとめる。詳細は [[refactoring-status]]。
+
+### C1. PR #825 — Python 直接静的 HTML 出力
+
+[[meeting-minutes]] 2026-05-11 で [[nishio]] が報告。main の tip は #821（PR #825 未マージ）。AI コーディングエージェントから "サーバ無しで HTML を吐く" 用途を支える基幹機能になる想定。
+
+### C2. PR #824 — LOCAL LLM の HTTPS 対応
+
+[[meeting-minutes]] 2026-05-11。同じく未確認（一方は別ブランチで動いている可能性）。
+
+### C3. フロント側可視化 plugin（ChartType extensible）
+
+commit `05b6c11` "Make ChartType extensible for custom plugins" — `apps/public-viewer/` で進行中の気配。完成度／公開 API 安定度は要追加調査。
+
+### C4. レポート再利用機能（Issue #19）
+
+[[meeting-minutes]] 2026-02-09 に「実装し終わった」報告あり。docs と UI の追従状況は **要確認**（実は C ではなく「完了」かもしれない）。
+
+---
+
+## 進行のスナップショット（2026-05 時点）
+
+| カテゴリ | 件数 |
+|---|---|
+| A. 未定 | 11 |
+| B. 方針決定済み・未着手 | 13 |
+| C. 着手済み・未完了 | 4 |
+
+「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。
+
+## 観測手順
+
+このページのステータスは状況依存。月単位で見直すには：
+
+1. [[meeting-minutes]] の最新数回をスキャン（特に「Open Questions」や「次回に向けて」項目）
+2. main の tip と PR 一覧（`gh pr list -R digitaldemocracy2030/kouchou-ai`）を確認
+3. `docs/refactoring/` の Phase ドキュメントが更新されていないかチェック
+4. 該当する [[refactoring-status]] と本ページを同期して更新
+
+## Updates
+
+- 2026-05-17: 初回作成 — 議事メモ＋コードリーディング結果を 3 分類で整理
