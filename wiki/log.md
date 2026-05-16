@@ -1,5 +1,25 @@
 # Log
 
+## [2026-05-17 07:35] ingest | `#2_開発_広聴ai` の 2026-Q1 ログから設計意図を抽出して Wiki に反映
+
+- `work/oss_weekly_reporter` の `data` ブランチを参照し、2026-05 から遡って `#2_開発_広聴ai` を横断 grep
+- 設計意図が濃い 2026-01-14 〜 2026-03-04 の 6 週分を `raw/oss_weekly_reporter/2026-q1-dev-kouchou-ai/` にコピー保存
+- 新規 source [[slack-dev-kouchouai-2026-q1]] を追加し、`Jigsaw` 系 LLM 分類、再利用機能、plugin UX、可視化分離の意図を整理
+- 新規 analysis [[slack-design-intents-2026-q1]] を追加
+- [[pipeline]] / [[plugin-system]] / [[open-decisions]] / [[index]] を更新
+
+## [2026-05-17 07:36] lint | Slack 由来ページ追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備は 0
+- 新規 analysis の孤立を避けるため [[slack-dev-kouchouai-2026-q1]] からリンク追加
+
+## [2026-05-17 07:39] ingest | `#2_開発_広聴ai` の 2025 4Q ログも source 化して前史を整理
+
+- 2025-10〜12 の `#2_開発_広聴ai` を横断し、現行方式の限界認識、SenseMaker志向、JSON/YAML カスタマイズ、v4/v5 二段構えが濃い 7 週分を `raw/oss_weekly_reporter/2025-q4-dev-kouchou-ai/` に保存
+- 新規 source [[slack-dev-kouchouai-2025-q4]] を追加
+- 新規 analysis [[slack-design-intents-2025-q4]] を追加
+- [[index]] と [[slack-dev-kouchouai-2026-q1]] を更新して、2025 4Q → 2026 Q1 の流れを辿れるようにした
+
 ## [2026-05-17 02:05] ingest | Open PR 観測を Wiki の更新手順に追加
 
 - `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` で 2026-05-17 時点の open PR を確認

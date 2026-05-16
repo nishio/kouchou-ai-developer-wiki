@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - slack-dev-kouchouai-2026-q1.md
 ---
 
 ## 配置（重要：canonical な場所は移動済み）
@@ -33,6 +34,13 @@ sources:
 
 - `run()` — 既定。レガシーの `run_step` ループで 8 ステップを順番に呼ぶ。**CLI と API サーバはこれを呼ぶ**
 - `run_workflow()` — [[plugin-system]] dispatch 経由。実装済みだが production パスでは未使用（[[refactoring-status]]）
+
+## Jigsaw 系 LLM 分類をどう差し込む想定だったか
+
+[[slack-dev-kouchouai-2026-q1]] 2026-02-11 週では、近い将来の案として **`extraction, embedding` の後に LLM ベースのクラスタリングへ分岐する枝** が語られている。これは理論上の最適形ではなく、まずは **既存のパイプラインや可視化と両立する形で分析切り替え部分を検証する** ための互換性優先案。
+
+同 source 2026-02-25 週では、embedding 後に分岐するのは「実装の楽さ」「後での可視化」のためであり、論理的に embedding が必須なわけではないとも整理されている。  
+要するに、**近い枝は `embedding` を足場に使うが、長期的には分類基準そのものを距離空間から分類ツリーへ移す余地がある**。
 
 ## 出力物の場所とスキーマ
 
@@ -77,7 +85,9 @@ sources:
 - `extraction.skip: true` オプションの実装（複数回希望されているが未着地、議事メモ 2026-05-18 見出し時点）
 - レポート再利用（Issue #19）は 2026-02 に「実装し終わった」報告あり、現状確認が必要
 - 散布図の維持／削除：「散布図を見て満足する時代ではない」(ken-san, 2025-10-01) vs 「見た目のインパクトを求める顧客がいる」(nishio)。未決
+- Jigsaw 系 LLM 分類を `embedding` 後の互換枝として入れるのか、`embedding` 自体を省く独立 workflow にするのか
 
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: `#2_開発_広聴ai` ログ由来の Jigsaw 系 LLM 分類導入意図を追記

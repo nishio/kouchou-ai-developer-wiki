@@ -6,6 +6,7 @@ sources:
   - meeting-minutes.md
   - github-dev-docs.md
   - source-code.md
+  - slack-dev-kouchouai-2026-q1.md
 ---
 
 [[kouchou-ai]] には進行中の作業が多数あり、`docs/` や [[meeting-minutes]] が断片的に語る状態を新規コントリビュータが追いづらい。本ページでは課題を **3 つの状態** に分類して並べる。
@@ -134,6 +135,12 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 [[coding-agents]]：Devin / Copilot Agent の PR をどこまで人間が引き取るかの線引きは PR テンプレ以上に明文化されていない。draft 扱い＋ CLA 範囲は決まっているが、**マージ判断者の責任範囲は曖昧**。
 
+### B14. Jigsaw 系 LLM 分類の互換枝
+
+[[slack-dev-kouchouai-2026-q1]] 2026-02-11, 2026-02-25：**まずは `extraction, embedding` の後ろで LLM クラスタリングに分岐する** 方針が語られている。理由は、既存のパイプラインや可視化との両立を保ったまま分析プロセス切り替え部分を検証したいから。
+
+同 source ではさらに「既存のカテゴリーツリーをパラメータとして与える亜種」も明示されており、自治体の予算カテゴリに合わせたいという具体的ニーズがある。**意図はかなり明確だが、main / open PR にまだ対応実装は見えない**。
+
 ---
 
 ## C. 着手済み・未完了（実装あり／production 未到達）
@@ -160,7 +167,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 | カテゴリ | 件数 |
 |---|---|
 | A. 未定 | 11 |
-| B. 方針決定済み・未着手 | 13 |
+| B. 方針決定済み・未着手 | 14 |
 | C. 着手済み・未完了 | 3 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。
@@ -181,3 +188,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `apps/api/src/services/report_duplicate.py` / `docs/user-guide/reuse-report.md` / admin UI を確認し、レポート再利用機能は C から除外
 - 2026-05-17: 可視化 plugin 基盤は frontend 側で実装済み、LOCAL LLM HTTPS は main では未完了寄りに補正
 - 2026-05-17: `gh pr list` で open PR を確認し、C カテゴリが「main 未反映だが open PR に存在するもの」を含むことを明記
+- 2026-05-17: `#2_開発_広聴ai` ログから、Jigsaw 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加

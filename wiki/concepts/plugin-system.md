@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - source-code.md
+  - slack-dev-kouchouai-2026-q1.md
 ---
 
 ## 重要：実体は「同名の別システム」が 2 つある
@@ -47,6 +48,14 @@ sources:
 
 [[meeting-minutes]] 2025-12-03 で言及。TTTC Turbo がグラフィカルなノードパイプラインエディタを試みたが「既存インスタンスを使いたい人にはハードル高すぎ」で tttc-light-js では固定パイプラインに退却。kouchou-ai の結論：**JSON/YAML config による customization が現実的**。
 
+[[slack-dev-kouchouai-2026-q1]] 2026-01-14 週でも、**分析プロセスを WebUI で切り替えるか、管理者が設定ファイルを書けば十分かはユースケースがまだ明確でないので保留** とされている。analysis plugin は「何でも GUI で切り替える」前提で固めていたわけではない。
+
+## なぜ再利用機能が plugin 化とセットだったか
+
+[[slack-dev-kouchouai-2026-q1]] 2026-01-21 週では、分析 plugin を変えて試行錯誤するなら「同じデータに対して違う分析をして結果を比較したい」ので、**入力データや `extraction`, `embedding` の再利用** がセットで欲しくなると述べられている。
+
+つまりレポート再利用は単独の便利機能ではなく、**analysis plugin を比較可能にする基盤** として要請された。2026-02-04 週の「同一データ、同一抽出、同一埋め込み」で比較できる、という説明も同じ意図。
+
 ## drastic refactor は別リポジトリで
 
 [[meeting-minutes]] 2025-10-08 で [[nishio]]：「今のコードがあちこち動かなくなるので、リポジトリを複製して必要なコードだけ残して開発するといい」。[[talk-to-the-city|TTTC]] からの kouchou-ai フォーク自体が同じパターン。
@@ -79,6 +88,13 @@ sources:
 - **Polis input plugin** — 容易と判定
 - **Jigsaw analysis plugin** — 散布図データが出ない設計上の難点あり
 
+`[[slack-dev-kouchouai-2026-q1]]` で補足される設計意図：
+
+- Jigsaw 系分析はまず `extraction, embedding` の後ろに差し込む互換枝として考えられていた
+- その亜種として **既存のカテゴリーツリーをパラメータで与える分類** も想定されていた
+- 自治体の事業計画・予算カテゴリに合わせた分類ニーズがその具体例
+- Jigsaw 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
+
 ## 関連ドキュメント
 
 - `docs/development/plugin-guide.md` — plugin 作成手順
@@ -90,8 +106,10 @@ sources:
 
 - v5.0 のリリース時期。2026-06 目標だが進捗未確認（[[versioning-strategy]]）
 - `pnpm-workspace.yaml` の `plugins/*` glob と実体ディレクトリ不在のギャップ
+- taxonomy-guided な LLM 分類を analysis plugin の設定として持たせるのか、別 workflow として切るのか
 
 ## Updates
 
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正
+- 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と Jigsaw 系 analysis plugin の結びつきを追記

@@ -41,6 +41,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [source-code](sources/source-code.md) — コード本体（docs ギャップを埋める一次参照）
 - [deepwiki-kouchou-ai](sources/deepwiki-kouchou-ai.md) — DeepWiki 生成のコードベース要約（補助ソース）
 - [weekly-log-2026-05-06](sources/weekly-log-2026-05-06.md) — `oss_weekly_reporter` 週次ダンプ
+- [slack-dev-kouchouai-2025-q4](sources/slack-dev-kouchouai-2025-q4.md) — `#2_開発_広聴ai` の 2025 4Q 設計ログ抜粋
+- [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) — `#2_開発_広聴ai` の設計意図が濃い 2026-Q1 ログ抜粋
 
 ## Analyses
 
@@ -50,3 +52,5 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [versioning-strategy](analyses/versioning-strategy.md) — v4 凍結 / v5 plugin 化
 - [npm-vs-pnpm](analyses/npm-vs-pnpm.md) — なぜ pnpm 必須か
 - [glossary](analyses/glossary.md) — 用語集
+- [slack-design-intents-2025-q4](analyses/slack-design-intents-2025-q4.md) — 2025 4Q の設計意図整理
+- [slack-design-intents-2026-q1](analyses/slack-design-intents-2026-q1.md) — Slack から読める実装意図の整理
