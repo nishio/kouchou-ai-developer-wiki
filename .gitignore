@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .venv/
+work/
 
 # raw sources are gitignored per CLAUDE.md schema; init.txt is the bootstrap exception
 raw/*

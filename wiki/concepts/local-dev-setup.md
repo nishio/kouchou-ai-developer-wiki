@@ -28,6 +28,10 @@ docker compose up
 
 ローカル LLM を使うなら `WITH_GPU=true` を `.env` に書いてから `docker compose --profile ollama up -d`。
 
+## この Wiki と並走して読む場合
+
+この Wiki を一次文脈、`work/kouchou-ai/` の local clone を実装確認用として併用する運用が扱いやすい。Wiki 上の「過去の議論」と main ブランチの実装差分を同時に見られるため、AI コーディングエージェントや新規コントリビュータが迷いにくい。
+
 ## フロントエンドだけ動かす（dummy API 利用）
 
 ```bash
@@ -80,3 +84,4 @@ rye run uvicorn src.main:app --reload --port 8000
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: Wiki 配下で実装確認するための clone 位置として `work/kouchou-ai/` を追記

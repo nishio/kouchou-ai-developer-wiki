@@ -1,5 +1,22 @@
 # Log
 
+## [2026-05-17 01:50] filing-back | work/ の運用合意を CLAUDE.md スキーマに反映
+
+- ディレクトリ構造図に `work/` を追加し「実装確認用の local clone を置く場所、gitignored、`/tmp` は ephemeral なので永続参照はここへ」を明記
+- 既に [[source-code]] と [[local-dev-setup]] には個別に追記済みだったが、スキーマファイル側にも書かないと将来のエージェントが場所を勝手に決めてしまう
+
+## [2026-05-17 01:41] lint | setup 追記後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+
+## [2026-05-17 01:40] setup | Wiki 配下で実装確認するための local clone 置き場を `work/kouchou-ai/` に統一
+
+- `git clone --depth 1 https://github.com/digitaldemocracy2030/kouchou-ai.git work/kouchou-ai` を実行
+- clone 先は `main` / tip `3809a7a`
+
+- `.gitignore` に `work/` を追加して親 Wiki repo から除外
+- [[source-code]] と [[local-dev-setup]] に、AI コーディングエージェント向けの推奨 clone 位置を追記
+
 ## [2026-05-17 01:15] filing-back | 未着地の論点を 3 分類で整理 ([[open-decisions]])
 
 - A. 未定 11 件、B. 方針決定済み・未着手 13 件、C. 着手済み・未完了 4 件

@@ -8,7 +8,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ```
 kouchou-ai-developer-wiki/
 ├── CLAUDE.md          # このファイル（スキーマ）
-├── raw/               # 生のソース（不変、gitignored）
+├── raw/               # 生のソース（不変、gitignored、init.txt のみ例外でコミット済み）
+├── work/              # 実装確認用の local clone を置く場所（gitignored）
+│                      #   例: work/kouchou-ai/ に kouchou-ai 本体を clone
+│                      #   /tmp は ephemeral なので、永続的に参照したいものはここへ
 ├── wiki/              # LLMが生成・維持するwiki
 │   ├── index.md       # 全ページのカタログ
 │   ├── log.md         # 時系列の作業記録

@@ -11,7 +11,7 @@ sources:
 
 [[github-dev-docs]] が指すのと同じリポジトリだが、こちらは **コード本体** を一次ソースとして扱う宣言ページ。docs と meeting minutes が「こうなる予定」と語ることと、main の実装の間には継続的なギャップがあり、コードを読まないと判別できないことが多い。
 
-snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。`/tmp/kouchou-ai/` に shallow clone も置いてある。
+snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 clone の正位置は `work/kouchou-ai/`。一時的な検証 clone は `/tmp/kouchou-ai/` に置くこともある。
 
 ## このソースで判明した重要事実（2026-05 snapshot, tip `3809a7a`）
 
@@ -38,3 +38,4 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。`/tmp/koucho
 ## Updates
 
 - 2026-05-17: 初回 ingest（リファクタ／plugin／CLI／pip 化のコードリーディング）
+- 2026-05-17: AI コーディングエージェント向けの作業用 clone 置き場を `work/kouchou-ai/` に統一
