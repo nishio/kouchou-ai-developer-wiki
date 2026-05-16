@@ -1,5 +1,15 @@
 # Log
 
+## [2026-05-17 07:51] lint | `embeddings.pkl` 記述補正後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+
+## [2026-05-17 07:50] filing-back | `embeddings.pkl` が UMAP 後 2D という記述をコード照合で補正
+
+- `work/kouchou-ai/` の `main@3809a7a` を確認し、`packages/analysis-core/src/analysis_core/steps/embedding.py` が元の埋め込みベクトルを `embeddings.pkl` に保存することを確認
+- `packages/analysis-core/src/analysis_core/steps/hierarchical_clustering.py` が `embeddings.pkl` を読んだ後で UMAP 2D 化することを確認
+- [[pipeline]] / [[gotchas]] / [[slack-design-intents-2025-q4]] / [[slack-dev-kouchouai-2025-q4]] / [[source-code]] を更新し、Slack 上の認識とコード実装を分離
+
 ## [2026-05-17 07:35] ingest | `#2_開発_広聴ai` の 2026-Q1 ログから設計意図を抽出して Wiki に反映
 
 - `work/oss_weekly_reporter` の `data` ブランチを参照し、2026-05 から遡って `#2_開発_広聴ai` を横断 grep

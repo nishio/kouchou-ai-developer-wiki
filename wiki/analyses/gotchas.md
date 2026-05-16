@@ -27,9 +27,9 @@ sources:
 
 ## パイプライン・データ
 
-### `embeddings.pkl` は UMAP 後 2D
+### Slack で `embeddings.pkl` が UMAP 後 2D と誤認された
 
-`embeddings.pkl` という名前だが中身は **2 次元化された後のベクトル**。元の埋め込みを使いたい場合は再埋め込みが必要。[[nishio]] が 2025-10-08 に踏んで気づいた。
+2025-10-09 の Slack では `embeddings.pkl` が UMAP 後 2D だという発言があるが、`main@3809a7a` の `packages/analysis-core/src/analysis_core/steps/embedding.py` は元の埋め込みベクトルを `embeddings.pkl` に保存し、`hierarchical_clustering.py` 側で初めて UMAP による 2D 化をしている。したがって **少なくとも現行 main コードを根拠に「`embeddings.pkl` は 2D」とは言えない**。[[source-code]] / [[slack-dev-kouchouai-2025-q4]]より
 
 ### CSV 列名の case 不一致
 
@@ -144,6 +144,8 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 [[contributing]] 参照。AI 生成 PR も人間がレビューして引き取れば CLA 範囲。
 
 ## Updates
+
+- 2026-05-17: `embeddings.pkl` を UMAP 後 2D と断定していた記述を、Slack 上の誤認とコード実装の不一致として修正
 
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、LOCAL LLM の HTTPS 問題は「修正済み」と断定しない表現に修正

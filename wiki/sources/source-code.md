@@ -25,6 +25,7 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - **Plugin dispatch は実装済みだが production パスで未使用** — `orchestrator.run_workflow()` は dormant、`orchestrator.run()` がレガシーループを直接実行
 - **`--without-html`, `--skip-interaction` フラグに argparse バグ**（`store_true` + `default=True` で False に戻せない）
 - **PR #825 は main 未マージ**（tip は #821）
+- **`embeddings.pkl` は元の埋め込みベクトルを保存**。UMAP による 2D 化は `hierarchical_clustering` ステップ側で行う
 
 詳細は [[refactoring-status]]。
 
@@ -45,3 +46,4 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - 2026-05-17: AI コーディングエージェント向けの作業用 clone 置き場を `work/kouchou-ai/` に統一
 - 2026-05-17: `work/kouchou-ai/` を `git fetch origin` で確認。`main` / tip `3809a7a` は origin と一致
 - 2026-05-17: local clone を一次参照、DeepWiki を補助ソースとする refresh protocol を追記
+- 2026-05-17: `embeddings.pkl` は元 embedding 保存、UMAP 2D 化は後段というコード上の事実を追記

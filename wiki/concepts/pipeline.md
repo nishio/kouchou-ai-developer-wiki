@@ -47,7 +47,7 @@ sources:
 `{output_base_dir}/{report_id}/` 配下（CLI の `--output-dir` で指定。API サーバは `settings.REPORT_DIR`）：
 
 - `args.csv` — 抽出された意見一覧（kebab-case 列：`arg-id`, `comment-id` 等）
-- `embeddings.pkl` — **UMAP 後の 2D ベクトル**（元の埋め込みではない点に注意）
+- `embeddings.pkl` — **元の埋め込みベクトル**（UMAP 後 2D ではない）
 - `hierarchical_clusters.csv` — クラスタ階層
 - `hierarchical_result.json` — viewer が読む統合結果
 - `final_result_with_comments.csv` — `config.is_pubcom=true` のとき出力。**この CSV だけ snake_case** (`arg_id`, `category_id`) — 他は kebab-case ([[gotchas]])
@@ -56,7 +56,7 @@ sources:
 
 ## 主要な hidden assumption と落とし穴
 
-- **`embeddings.pkl` は UMAP 後 2D** ([[meeting-minutes]] 2025-10-08): 元の埋め込みを使いたい場合は再埋め込みが必要
+- **Slack では `embeddings.pkl` が UMAP 後 2D と誤認された形跡がある** ([[slack-dev-kouchouai-2025-q4]]) が、`main@3809a7a` のコードでは `embedding` ステップが元の埋め込みベクトルを `embeddings.pkl` に保存し、`hierarchical_clustering` ステップがそれを読んでから UMAP で 2D に落としている（[[source-code]]）
 - **`comment-id` の自動採番が経路依存**: Web CSV アップロードとスプレッドシート取り込みは自動生成するが、CLI／プラグイン／直接 CSV ではプラグイン側で `comment-id` を出す責任がある
 - **`propertyMap`** (`hierarchical_result.json`): `args.csv` に対応する列がないと `hierarchical_aggregation` が落ちる
 - **CSV 列名の case 不一致**: `is_pubcom=true` 経路だけ snake_case
@@ -91,3 +91,4 @@ sources:
 
 - 2026-05-17: 初回作成
 - 2026-05-17: `#2_開発_広聴ai` ログ由来の Jigsaw 系 LLM 分類導入意図を追記
+- 2026-05-17: `embeddings.pkl` を UMAP 後 2D とする記述を撤回し、Slack 発言と `main@3809a7a` のコード実装を分離
