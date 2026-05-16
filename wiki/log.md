@@ -1,5 +1,12 @@
 # Log
 
+## [2026-05-17 02:05] ingest | Open PR 観測を Wiki の更新手順に追加
+
+- `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` で 2026-05-17 時点の open PR を確認
+- `CLAUDE.md` に、current state を扱う時は open PR も観測するルールを追記
+- [[contributing]] に open PR の見方と当日時点の主要 PR (`#825`, `#824`, `#817`, `#823`, `#822`) を追記
+- [[open-decisions]] に、C カテゴリが open PR 観測を含むことを明記
+
 ## [2026-05-17 02:01] ingest | 議事メモの最新 export を再取得し、参照日付を `2026/05/18（次回分）` に更新
 
 - Google Doc export から `raw/meeting_minutes.txt` を再取得。差分は先頭見出し `2026/05/11（次回分）` → `2026/05/18（次回分）` と `2026/05/04` 見出しの整形

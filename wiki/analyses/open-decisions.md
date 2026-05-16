@@ -16,6 +16,8 @@ sources:
 
 「やります」「やりません」を Wiki 自身が判断するのではなく、**現在の合意状態を観測** して整理する。状態が変わったら本ページを更新する。
 
+2026-05-17 時点では `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` も参照し、main にまだ無いが open PR として存在する作業を C に含めている。
+
 ---
 
 ## A. 未定（合意なし／対立あり）
@@ -178,3 +180,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `main@3809a7a` を再確認し、CodeRabbit は「未配線」ではなく最小導入済みへ修正
 - 2026-05-17: `apps/api/src/services/report_duplicate.py` / `docs/user-guide/reuse-report.md` / admin UI を確認し、レポート再利用機能は C から除外
 - 2026-05-17: 可視化 plugin 基盤は frontend 側で実装済み、LOCAL LLM HTTPS は main では未完了寄りに補正
+- 2026-05-17: `gh pr list` で open PR を確認し、C カテゴリが「main 未反映だが open PR に存在するもの」を含むことを明記

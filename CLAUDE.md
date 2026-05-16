@@ -46,6 +46,7 @@ sources:
 ### Ingest（ソース取り込み）
 0. ソースコード由来の更新なら `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で最新化し、参照 commit をメモする
 0. 議事メモ由来の更新なら Google Doc の export (`https://docs.google.com/document/d/<id>/export?format=txt`) から `raw/meeting_minutes.txt` を最新化する
+0. GitHub の現在進行形の状態を扱うなら open PR も確認する（例: `gh pr list -R digitaldemocracy2030/kouchou-ai --state open`）
 1. raw/の新ファイルを読む（a.txtのような名前なら適切にリネーム）
 2. 既存wikiページと照合
 3. 関連ページを更新 or 新規作成
@@ -69,6 +70,7 @@ sources:
 - ソースは「参考」であり無批判に採用しない
 - コード本体については `work/kouchou-ai/` の local clone を一次参照とし、docs / DeepWiki / meeting minutes は補助線として使う
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す
+- 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - 実験を通じて得た自分自身の気づきを重視
 - スキーマ（このファイル）も実験を通じて改善していく

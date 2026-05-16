@@ -33,6 +33,23 @@ sources:
 
 ボード運用とその自動化（[[other-contributors|sasano さん]]）：assign / unassign / `/ready` / `/archive` などの bot 動作が定義されている。
 
+## Open PR の見方
+
+main だけでは「いま進んでいるが未マージ」の情報が落ちる。現在の作業状況を見るときは open PR を併用する：
+
+```bash
+gh pr list -R digitaldemocracy2030/kouchou-ai --state open
+```
+
+2026-05-17 時点で、少なくとも以下が open だった：
+
+- `#825` self-contained HTML report + `--without-html` 修正
+- `#824` LOCAL LLM の full URL / `LOCAL_LLM_API_KEY` 対応
+- `#817` CodeQL / CodeRabbit 設定調整
+- `#823`, `#822` Dependabot による Next.js 更新
+
+つまり、Wiki 上で「未完了」「未反映」と書くときは **main に無いこと** と **open PR に存在すること** を区別する必要がある。
+
 ## メンテナ・コミッタ
 
 時系列（[[meeting-minutes]]）：
@@ -58,3 +75,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-17: open PR を `gh pr list` で観測する前提と、2026-05-17 時点の主要 open PR を追記
