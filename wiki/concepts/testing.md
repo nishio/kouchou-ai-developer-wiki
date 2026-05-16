@@ -48,6 +48,10 @@ sources:
 - [[meeting-minutes]] 2025-09 / PR #553: テストデータ汚染インシデント
 - Devin がリント自動修正できないものを無限ループした事例も同時期（→ [[coding-agents]]）
 
+## 現在の運用判断
+
+- `analysis-core` の `hierarchical_clustering` が出す UMAP の `UserWarning`（`random_state` 固定により並列性が制限される旨）は、2026-05-17 時点では **既知で許容**。再現性優先の副作用とみなし、将来 seed / 並列性オプションを追加する時に再検討する。[[gotchas]] / [[source-code]]より
+
 ## Open Questions
 
 - E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認
@@ -55,4 +59,5 @@ sources:
 
 ## Updates
 
+- 2026-05-17: UMAP の `random_state` 由来 warning は既知で、現時点では許容する判断を追記
 - 2026-05-17: 初回作成

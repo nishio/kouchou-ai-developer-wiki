@@ -52,5 +52,6 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [versioning-strategy](analyses/versioning-strategy.md) — v4 凍結 / v5 plugin 化
 - [npm-vs-pnpm](analyses/npm-vs-pnpm.md) — なぜ pnpm 必須か
 - [glossary](analyses/glossary.md) — 用語集
+- [pypi-auto-release-requirements](analyses/pypi-auto-release-requirements.md) — PyPI 自動更新に必要な構成要素
 - [slack-design-intents-2025-q4](analyses/slack-design-intents-2025-q4.md) — 2025 4Q の設計意図整理
 - [slack-design-intents-2026-q1](analyses/slack-design-intents-2026-q1.md) — Slack から読める実装意図の整理

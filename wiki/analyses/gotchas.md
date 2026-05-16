@@ -52,6 +52,10 @@ sources:
 
 整形済みデータの再分析でも extraction が走り、コスト・時間の無駄。複数回希望されたが未実装（最新確認は議事メモ 2026-05-18 見出し）。
 
+### UMAP の `random_state` 固定は warning を出すが、現時点では既知で許容
+
+`packages/analysis-core/src/analysis_core/steps/hierarchical_clustering.py` は `UMAP(random_state=42, n_components=2, n_neighbors=...)` を使う。そのためテスト実行時に `umap-learn` から `n_jobs value 1 overridden ... Use no seed for parallelism.` という `UserWarning` が出ることがある。これは **再現性を優先した結果として並列性が制限される** という通知であり、2026-05-17 時点では **失敗扱いせず許容** する判断。将来、seed / 並列性のオプションを足す議論があるため、その時点で再整理する。[[source-code]]より
+
 ## OS・環境
 
 ### Windows インストール地獄
@@ -146,6 +150,6 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 ## Updates
 
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D と断定していた記述を、Slack 上の誤認とコード実装の不一致として修正
-
+- 2026-05-17: UMAP の `random_state` 由来 warning は既知で、現時点では許容する運用判断を追記
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、LOCAL LLM の HTTPS 問題は「修正済み」と断定しない表現に修正

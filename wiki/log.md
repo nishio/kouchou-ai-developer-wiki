@@ -59,6 +59,23 @@
 
 ## [2026-05-17 01:50] filing-back | work/ の運用合意を CLAUDE.md スキーマに反映
 
+## [2026-05-17 08:47] filing-back | UMAP warning の扱いを wiki に記録
+
+- `analysis-core` の `hierarchical_clustering` が出す `umap-learn` の `UserWarning` は、再現性優先の副作用であり現時点では failure 扱いしないと整理
+- [[gotchas]] に「既知で許容、将来 seed / 並列性オプション追加時に再整理」を追記
+- [[testing]] に現時点の運用判断として追記
+
+## [2026-05-17 07:53] lint | PyPI自動更新要件ページ追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+- 新規 `[[pypi-auto-release-requirements]]` は index 登録済み。孤立扱いは本文からの inbound link 未追加によるもの
+
+## [2026-05-17 07:53] filing-back | PyPI自動更新に必要な要件を整理 ([[pypi-auto-release-requirements]])
+
+- 現状は `docs/development/pypi-release.md` に参考 workflow があるだけで、実 `.github/workflows/` に publish job は未実装
+- 必須要件を「workflow / PyPI secrets / package 専用 test-lint / tag 規約」に整理
+- `v*` と `analysis-core-v*` の tag 規約差分、`apps/api` CI だけでは package 配布の gate にならない点を明記
+
 - ディレクトリ構造図に `work/` を追加し「実装確認用の local clone を置く場所、gitignored、`/tmp` は ephemeral なので永続参照はここへ」を明記
 - 既に [[source-code]] と [[local-dev-setup]] には個別に追記済みだったが、スキーマファイル側にも書かないと将来のエージェントが場所を勝手に決めてしまう
 
