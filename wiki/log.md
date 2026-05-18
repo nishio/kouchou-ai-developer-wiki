@@ -5,6 +5,11 @@
 - [[deployment]] に、`Azure Deployment` workflow の `azure/login@v2` が `No subscriptions found` で落ちた後、同じ run の rerun では `Azure CLI ログイン` が成功した観測を追記
 - 今回の deploy failure については、恒久的な `AZURE_CREDENTIALS` 破損と断定せず、一時的な Azure 側不調や secret / RBAC 状態の揺れも候補に残す整理へ修正
 
+## [2026-05-18 23:41] filing-back | draft PR は merge せず ready 化してから扱う運用を追記
+
+- [[contributing]] に、draft PR は merge 手順に入っていない状態とみなし、ready for review にしてから merge 判断へ進むメモを追記
+- [[coding-agents]] に、AI エージェント起点の draft PR も同様に ready 化を人間判断のゲートにする運用を追記
+
 ## [2026-05-18 23:05] filing-back | merge 理由コメントと通常 merge 優先の方針を追記
 
 - [[pr-824-admin-merge-observation-2026-05-18]] に、「admin merge が通る」観測をそのまま推奨せず、理由コメントと approve を先に残す運用方針を update として追記

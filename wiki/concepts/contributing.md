@@ -50,6 +50,8 @@ gh pr list -R digitaldemocracy2030/kouchou-ai --state open
 
 つまり、Wiki 上で「未完了」「未反映」と書くときは **main に無いこと** と **open PR に存在すること** を区別する必要がある。
 
+AI エージェントや人間が作った **draft PR は、そのまま merge 対象とみなさない** 方が安全。少なくとも 2026-05-18 の運用では、draft は「まだ merge 手順に入っていない作業中の状態」と解釈し、**ready for review に切り替えてから** review / merge 判断に進むルールを置くのがよい。特に AI エージェント起点の PR は「一度 draft で出し、人間が内容を見て ready にする」方が事故が少ない。[[coding-agents]]より
+
 review 対応を push する時は、**PR metadata 上の head branch 名** と **remote に branch 実体があるか** を両方確認した方がよい。2026-05-18 の観測では `#824` `#825` `#826` はそのまま update できた一方、`#794` は PR metadata 上の head branch 名が残っていても remote branch 実体が消えており、close + recreate が必要だった。[[open-pr-observation-2026-05-18]]より
 
 Dependabot など bot PR の head を更新した後は、CI が全部 green でも `reviewDecision: REVIEW_REQUIRED` に戻って merge が block されることがある。2026-05-18 の `#823` では、checks 通過後も通常 merge は通らず、approval を入れ直してから merge した。**「CI success = すぐ merge 可能」とは限らず、review requirement も見直す**。[[pr-823-review-observation-2026-05-18]]より
@@ -106,3 +108,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: `REVIEW_REQUIRED` のままでも admin merge が通る場合があることを追記
 - 2026-05-18: merge 理由コメント → approve → 通常 merge → admin merge fallback の順を追記
 - 2026-05-18: 書籍流入を見込んだ「新規流入者の受け皿」観点を追記
+- 2026-05-18: draft PR は merge せず、ready for review にしてから merge 判断へ進む運用メモを追記

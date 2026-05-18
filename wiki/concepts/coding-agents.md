@@ -23,6 +23,8 @@ sources:
 - Devin PR は **draft 扱い** — 人間がレビュー、必要なら書き直す
 - 指示は Slack `#devin部屋` で出す（opt-in メンテナのみ）
 
+この「draft 扱い」は単なるラベルではなく、**draft のまま merge しない** という運用まで含めて解釈した方がよい。2026-05-18 の実作業では、draft PR を merge してしまう事故が起きたため、AI エージェント起点の PR は **人間が ready for review に切り替えてから merge 判断する** ルールを明示しておく価値がある。[[contributing]]より
+
 ## 既知の Devin 失敗モード
 
 - **無限ループ** ([[meeting-minutes]] 2025-09-17, 2025-10-01): import-order のような自動修正不能な ruff lint エラーで `ruff format` を繰り返した。PR #708 で import-order lint 自体を無効化＋既存違反を一括修正して打開
@@ -54,3 +56,4 @@ AI エージェントの実務運用では、repo 編集・pytest・lint のた�
 
 - 2026-05-17: 初回作成
 - 2026-05-18: host full access を標準化しない権限分離方針への参照を追加
+- 2026-05-18: AI エージェント起点の draft PR は、ready for review にするまで merge しない運用メモを追記
