@@ -30,7 +30,7 @@ sources:
 [[plugin-system]] 参照：
 
 - 入力／解析／可視化が 3 軸 plugin 化
-- `pip install kouchou-ai` で CLI / Python import で使える形（[[kouchou-ai#4-つの配布形態meeting-minutes-2025-10-08]]）
+- `pip install kouchou-ai` で CLI / Python import で使える形（[[kouchou-ai#4-meeting-minutes-2025-10-08]]）
 - CLI quickstart / import quickstart / plugin guide ドキュメント整備
 - 旧アルゴリズムは「デフォルト」、新規は「オプションプラグイン」（[[meeting-minutes]] 2026-02-09）
 
