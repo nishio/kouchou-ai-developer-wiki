@@ -57,8 +57,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [issue-830-pr-832-auto-cluster-defaults-2026-05-18](sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md) — CLI / analysis-core のクラスタ数デフォルト見直し issue / PR 観測メモ
 - [pypi-release-observation-2026-05-19](sources/pypi-release-observation-2026-05-19.md) — `analysis-core-v0.1.1` / `v0.1.2` の PyPI publish 実観測
 - [pr-735-issue-685-observation-2026-05-19](sources/pr-735-issue-685-observation-2026-05-19.md) — `PR #735` は issue 妥当でも patch は stale という観測メモ
+- [pr-801-react-override-observation-2026-05-19](sources/pr-801-react-override-observation-2026-05-19.md) — `PR #801` は React version 統一の意図は妥当でも current `main` では `pnpm.overrides` 置換が回帰になるという観測メモ
 - [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ
 - [pr-814-static-export-error-observation-2026-05-19](sources/pr-814-static-export-error-observation-2026-05-19.md) — `PR #814` の draft 状態と static export error 差分の観測メモ
+- [report-slug-config-repro-2026-05-19](sources/report-slug-config-repro-2026-05-19.md) — `/reports/{slug}` は通常生成物では `config` 付きだが、壊れた成果物は `config` 欠損のまま返すという再現メモ
 
 ## Analyses
 
@@ -82,5 +84,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [codeql-introduction-context](analyses/codeql-introduction-context.md) — `PR #817` 文脈で CodeQL がどう入ったか
 - [auto-cluster-defaults](analyses/auto-cluster-defaults.md) — `[3, 6]` 固定値問題を docs / 実装 / AI 利用経路の不一致として整理
 - [pr-735-merge-assessment](analyses/pr-735-merge-assessment.md) — `PR #735` は merge でなく current tree への再実装として扱うべきという判断
+- [pr-801-merge-assessment](analyses/pr-801-merge-assessment.md) — `PR #801` は React fix の方向性は理解できても stale `package.json` patch なのでそのまま merge すべきでないという判断
 - [pr-802-merge-assessment](analyses/pr-802-merge-assessment.md) — `PR #802` は `Overview` 1 箇所だけでは不十分なので merge しない方がよいという判断
 - [pr-814-merge-assessment](analyses/pr-814-merge-assessment.md) — `PR #814` は方向性はよいが draft / review 未充足で、`BUILD_SLUGS` 誤診断も詰めてから merge したいという判断
+- [report-slug-config-behavior](analyses/report-slug-config-behavior.md) — `reports/:slug` の `config` 欠損は通常生成ではなく router 無検証が原因という整理

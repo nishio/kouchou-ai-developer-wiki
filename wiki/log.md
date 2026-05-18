@@ -1,5 +1,28 @@
 # Log
 
+## [2026-05-19 01:01] lint | `reports/:slug` `config` 欠損再現の filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- `[[report-slug-config-behavior]]` は index 経由のみの単発 analysis として孤立扱いだが、既存の merge-assessment 系と同様に許容
+
+## [2026-05-19 01:00] filing-back | `reports/:slug` の `config` 欠損再現と原因切り分けを記録
+
+- 新規 source [[report-slug-config-repro-2026-05-19]] を追加し、通常生成物では `config` がある一方、壊れた `hierarchical_result.json` は `/reports/{slug}` が 200 でそのまま返す再現を記録
+- 新規 analysis [[report-slug-config-behavior]] を追加し、根本は `Overview` ではなく API router の無検証返却だと整理
+
+## [2026-05-19 00:57] filing-back | `PR #832` merge と tiny dataset 補修を反映
+
+- [[issue-830-pr-832-auto-cluster-defaults-2026-05-18]] に、`PR #832` が merged されたことと、review 中に `2 -> [2, 4]` で落ちる tiny dataset の穴が見つかり `2 -> [2]`, `3 -> [2, 3]` へ補修されたことを追記
+- [[auto-cluster-defaults]] に、推奨値 rule の review では典型例だけでなく最小ケースまで見る必要があるという含意を追記
+- [[pipeline]] / [[gotchas]] / [[open-decisions]] を更新し、状態を「open PR」から「merge 済み。ただし docs 用語ズレは残る」へ修正
+
+## [2026-05-19 01:06] filing-back | `PR #801` は React fix の意図は妥当でも stale `package.json` patch と記録
+
+- 新規 source [[pr-801-react-override-observation-2026-05-19]] を追加し、`PR #801` が `mergeable: CONFLICTING` / `DIRTY` / `REVIEW_REQUIRED` で、しかも current `main` の `pnpm.overrides.minimatch` を消す patch になっている観測を整理
+- 新規 analysis [[pr-801-merge-assessment]] を追加し、「そのまま merge せず current `main` 上で override を併記する形へ作り直すべき」という判断を明文化
+- [[index]] を更新して source / analysis を登録
+
 ## [2026-05-19 00:55] lint | `PR #802` filing-back 後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行

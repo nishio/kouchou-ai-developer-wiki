@@ -90,7 +90,8 @@ sources:
 
 ### B2. クラスタ数のデフォルト自動算出
 
-[[meeting-minutes]] 2026-05-18 見出し：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。2026-05-18 時点では `Issue #830` と open `PR #832` が作られ、`analysis-core` で `cluster_nums` 未指定時に extraction 後の `argument` 数から cube-root rule を使う実装まで進んでいる。したがって **「本格再着手なし」ではなく open PR ありの着手済み**。詳細は [[auto-cluster-defaults]]。
+[[meeting-minutes]] 2026-05-18 見出し：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。`PR #832` は merge され、`analysis-core` で `cluster_nums` 未指定時に extraction 後の `argument` 数から cube-root rule を使う実装が入った。したがってこの項目は **「未着手」ではなく一旦着地済み**。  
+残る open question は、README / getting-started / how-to-use の「コメント数ベース」説明を `argument` 数ベースへ揃えるかどうか、と読む方が正確。詳細は [[auto-cluster-defaults]]。
 
 ### B3. 自動 PyPI リリース GitHub Action
 

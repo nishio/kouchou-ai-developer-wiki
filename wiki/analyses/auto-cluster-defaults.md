@@ -21,7 +21,7 @@ README / getting-started / Admin UI docs には「立方根ベースで `1000 ->
 
 ## 3. `PR #832` の価値は「最適化」より「既存の暗黙知を CLI に接続した」点にある
 
-`PR #832` は高度な自動探索を復活させたわけではない。やっていることは、Admin 側 docs / UI に既にあった cube-root rule を `analysis-core` の省略時動作として採用し、固定 fallback を外しただけである。  
+merge された `PR #832` は高度な自動探索を復活させたわけではない。やっていることは、Admin 側 docs / UI に既にあった cube-root rule を `analysis-core` の省略時動作として採用し、固定 fallback を外しただけである。  
 しかしこの「だけ」が重要で、**利用者が明示指定しない限り、CLI でも Web と同系統の常識が採用される** ようになった。これはアルゴリズム improvement というより、利用経路の一貫性回復である。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
 ## 4. 計算の狙いは「各段階の 1 クラスタあたり下位要素数を揃えつつ、件数増加を緩やかに反映する」こと
@@ -59,6 +59,11 @@ README / getting-started / Admin UI docs には「立方根ベースで `1000 ->
 2026-05-18 の議事メモで問題が見えたのは、人間が docs を参考にしたからではなく、AI コーディングエージェントが quickstart の `[3, 6]` を素直に転用したからだった。  
 この意味で、kouchou-ai の docs は単なる説明資料ではなく、**AI にとっての reusable prompt / template** でもある。具体例は「読者がコピペするか」だけでなく、「AI が default と見なすか」で評価すべきだ、という教訓が残る。[[meeting-minutes]]より
 
+## 7. 実装 review では「rule がきれいか」より「小さい入力で壊れないか」を最後まで見る必要がある
+
+今回の merge 前 review では、`2 -> [2, 4]` になって `n_clusters > n_samples` で落ちる穴が見つかった。cube-root rule 自体は見栄えがよくても、**KMeans に渡す実際の cluster 数がデータ件数を超えないか** という下限側の詰めが別途必要だった。  
+この点は、kouchou-ai のように「数百〜数万件」を主戦場にしつつも、小さい fixture やテストデータでも実行されるソフトでは重要である。一般論として、推奨値 rule の review では **大きい典型例 (`1000 -> [10, 100]`) だけでなく、最小ケース (`2`, `3`) を必ず見る** 方が安全。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
+
 ## Open Questions
 
 - Admin docs も `argument` 数ベースに寄せるのか、それとも Web UX 上はコメント数ベースの説明を残すのか
@@ -67,3 +72,4 @@ README / getting-started / Admin UI docs には「立方根ベースで `1000 ->
 ## Updates
 
 - 2026-05-18: 初版作成
+- 2026-05-19: `PR #832` merged と、tiny dataset review fix の含意を追記

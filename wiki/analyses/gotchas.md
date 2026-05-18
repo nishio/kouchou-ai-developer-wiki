@@ -55,8 +55,10 @@ sources:
 
 ### デフォルトクラスタ数 `[3, 6]` が小さすぎる
 
-[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。`Issue #830` / open `PR #832` では、`cluster_nums` を optional 化し、extraction 後の `argument` 数から cube-root rule で自動算出する修正が提案・実装されている。  
+[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。`Issue #830` / `PR #832` では、`cluster_nums` を optional 化し、extraction 後の `argument` 数から cube-root rule で自動算出する修正が merge された。  
 ただし 2026-05-18 時点では README / getting-started / how-to-use がなお「コメント数ベース」の説明を残しており、**Web docs の用語と `analysis-core` 実装意図がズレる**。この件の教訓は、docs の具体例や説明語彙自体が AI にとって de facto default になること。詳細は [[auto-cluster-defaults]]。
+
+また review 中に、tiny dataset では最初の実装が `2 -> [2, 4]` となって `n_clusters > n_samples` で落ちる穴が見つかった。最終 merge 版では `lv2 <= argument_count` に clamp して塞がれているが、**推奨値 rule は見栄えのよい典型例だけでなく最小ケースまで確認しないと壊れやすい**。
 
 ### `extraction.skip: true` がない
 

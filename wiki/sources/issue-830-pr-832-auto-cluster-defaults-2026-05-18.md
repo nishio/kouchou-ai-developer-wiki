@@ -35,15 +35,24 @@ sources:
 
 `Issue #830` の本文は、当初は「コメント数ベースでおすすめ値を自動計算」として立てられたが、同 issue 上の追記で「基準は extraction 後の `argument` 数とする」「1000 件なら `[10, 100]` にする」と具体化された。タイトルも最終的に「argument 数ベースで推奨値を自動計算する」へ更新されている。[[github-dev-docs]]より
 
-### `PR #832` は Admin 側の rule を `analysis-core` に寄せたが、docs 用語のズレはまだ残る
+### `PR #832` は merge され、Admin 側の rule を `analysis-core` に寄せたが、docs 用語のズレはまだ残る
 
-`PR #832` は `cluster_nums` 未指定時に `analysis_core.steps.hierarchical_clustering.calculate_recommended_cluster_nums(argument_count)` を用いて、
+`PR #832` は merge され、`cluster_nums` 未指定時に `analysis_core.steps.hierarchical_clustering.calculate_recommended_cluster_nums(argument_count)` を用いて、
 
 - `lv1 = round(cuberoot(argument_count))`
 - `lv2 = lv1^2`
 
 を計算し、`argument_count=1000` で `[10, 100]` になるテストを追加している。同時に CLI / import quickstart から `[3, 6]` の例を削除した。  
 ただし README / getting-started / how-to-use はなお「コメント数ベース」と説明しているため、**Admin docs の語り口と `analysis-core` 実装の基準値は完全には一致していない**。[[github-dev-docs]] / [[source-code]]より
+
+### merge 前 review で、tiny dataset では `n_clusters > n_samples` になる穴が見つかって補修された
+
+`PR #832` の review 中に、`argument_count=2` のような小さいケースでは最初の実装が `[2, 4]` を返し、`KMeans(n_clusters=4)` で落ちることが判明した。最終的に merge された版では、
+
+- `lv2` を `argument_count` 以下に clamp する
+- 重複する値は `sorted(set(...))` で潰す
+
+ように補修され、`2 -> [2]`, `3 -> [2, 3]` という期待値へテストも更新された。つまり今回の変更は **「cube-root rule を入れた」だけでなく、「小さいデータでも壊れないように 1 段追加で詰めた」** 実装になっている。[[source-code]]より
 
 ### 計算式は「各段階の 1 クラスタあたり下位要素数を揃えやすい」等比的ルール
 
@@ -78,3 +87,4 @@ sources:
 ## Updates
 
 - 2026-05-18: 初版作成
+- 2026-05-19: `PR #832` merged と、tiny dataset 補修 (`2 -> [2]`, `3 -> [2, 3]`) を追記
