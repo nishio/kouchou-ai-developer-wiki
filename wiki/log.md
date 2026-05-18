@@ -1,5 +1,17 @@
 # Log
 
+## [2026-05-19 00:15] filing-back | Wiki repo と本体 repo をまたぐ二層運用を概念ページ化
+
+- 新規 concept [[wiki-driven-workflow]] を追加し、「Wiki repo で文脈整理 → `work/kouchou-ai/` で実装確認 → 必要なら本体 repo に PR」という流れを整理
+- [[local-dev-setup]] / [[contributing]] / [[source-code]] に参照を追加し、`work/` 配置や提出先 repo の切り替わりが想定運用であることを明記
+- [[index]] を更新して concept を登録
+
+## [2026-05-19 00:05] filing-back | `kouchou-ai` 向け PR の CLA 必須性を Wiki に明記
+
+- [[contributing]] に、「どの repo で作業したかではなく `digitaldemocracy2030/kouchou-ai` に PR を出すかで CLA 必須が決まる」ことを追記
+- [[coding-agents]] に、AI エージェント起点 PR の人間チェック項目として `CLAへの同意` 節の有無を入れるメモを追記
+- [[gotchas]] に、PR 本文を独自生成すると CLA 節を落としやすい footgun を追記
+
 ## [2026-05-18 23:55] lint | クラスタ数デフォルト見直しの filing-back 後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -26,6 +38,14 @@
 
 - [[deployment]] に、`Azure Deployment` workflow の `azure/login@v2` が `No subscriptions found` で落ちた後、同じ run の rerun では `Azure CLI ログイン` が成功した観測を追記
 - 今回の deploy failure については、恒久的な `AZURE_CREDENTIALS` 破損と断定せず、一時的な Azure 側不調や secret / RBAC 状態の揺れも候補に残す整理へ修正
+
+## [2026-05-19 00:03] filing-back | PyPI publish 実験の経緯と trigger 条件を wiki に整理
+
+- 新規 source [[pypi-release-observation-2026-05-19]] を追加し、`analysis-core-v0.1.1` failure と `analysis-core-v0.1.2` success を時系列で記録
+- 新規 analysis [[pypi-release-trigger]] を追加し、「PyPI release は `analysis-core-v*` tag push で workflow が成功した時に発生する」と整理
+- [[deployment]] を手動 `twine upload` 前提から、tag 起点の自動 publish 実観測ベースへ更新
+- [[gotchas]] に version literal test が release gate を自分で塞ぐ footgun を追記
+- [[pypi-auto-release-requirements]] に、要件が満たされ `0.1.2` publish success を確認した update を追記
 
 ## [2026-05-18 23:41] filing-back | draft PR は merge せず ready 化してから扱う運用を追記
 

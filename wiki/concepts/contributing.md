@@ -16,9 +16,20 @@ sources:
 
 「先に PR」は強く非推奨。`CONTRIBUTING.md`：合意なしの新機能 PR は **マージされない傾向** がある。
 
+ただし、実際の作業は **この Wiki repo で調査・整理しつつ、`work/kouchou-ai/` で本体コードを触り、最終的に `digitaldemocracy2030/kouchou-ai` に PR を出す** 形になることがある。これは例外ではなく想定された運用。全体像は [[wiki-driven-workflow]] を参照。
+
 ## CLA
 
 `CLA.md`：すべての貢献に CLA 署名が必要。PR テンプレが合図。
+
+重要なのは、**「どの repo で作業したか」ではなく、「`digitaldemocracy2030/kouchou-ai` に PR を出すか」で決まる** こと。たとえば本 Wiki repo やローカル scratch で調査・下書きをしていても、最終的に `kouchou-ai` 本体へ PR を出すなら、`kouchou-ai` 側 PR テンプレートの
+
+```md
+## CLAへの同意
+- [x] CLAの内容を読み、同意しました
+```
+
+を本文に入れる必要がある。**PR 本文を独自に組み立てるとこの節を落としやすい** ので、AI エージェント経由でも人間経由でも submit 前に確認した方がよい。[[github-dev-docs]]より
 
 ## レビュー方針
 

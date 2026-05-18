@@ -43,6 +43,8 @@ sources:
 
 [[contributing]]：人間が出す PR には CLA 必要（`CLA.md`）。PR テンプレで合図。AI が出す PR の扱いはケースバイケース（draft 扱い → 人間が引き取る）。
 
+実務上は、**AI が PR 本文を独自生成すると `CLAへの同意` 節を落としやすい**。本体 repo `digitaldemocracy2030/kouchou-ai` に PR を出す限り、作業元が別 repo やローカル scratch でも CLA チェックは必要。AI エージェント運用では、ready for review にする前の人間チェック項目に **「CLA セクションが本文に入っているか」** を含めた方が安全。[[github-dev-docs]]より
+
 ## 権限分離
 
 AI エージェントの実務運用では、repo 編集・pytest・lint のための権限と、Azure / PyPI / host filesystem まで触れる権限を分けた方がよい。`kouchou-ai` では **devcontainer を標準の作業面、Docker Compose を実行面、高権限操作は CI / 人間のみ** に寄せるのが自然。[[agent-sandboxing-strategy]]より

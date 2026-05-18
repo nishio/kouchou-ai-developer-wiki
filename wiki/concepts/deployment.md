@@ -46,16 +46,16 @@ PR #825 で Python が直接静的 HTML を吐くようになり、**AI コー�
 
 ## PyPI リリース (`kouchou-ai-analysis-core`)
 
+2026-05-19 時点では、`analysis-core` の PyPI publish は **`analysis-core-v*` tag push で GitHub Actions が発火する自動運用** に移行した。発火条件の要約は [[pypi-release-trigger]]、実地確認の経緯は [[pypi-release-observation-2026-05-19]]。
+
 `docs/development/pypi-release.md` の playbook：
 
 1. `packages/analysis-core/pyproject.toml` の version をバンプ
-2. `vX.Y.Z` で git tag
+2. `analysis-core-vX.Y.Z` で git tag
 3. **package ディレクトリの外で build**（venv が package 内にあると `AbsoluteLinkError`）
-4. `twine upload`
+4. tag push により `Publish analysis-core to PyPI` workflow が実行される
 
-GitHub Action のテンプレートも文書内にあるが配線されているかは別途確認が必要。
-
-現状の手順は手動 `twine upload` 前提で、**自動 publish に足りない要件** は [[pypi-auto-release-requirements]] に整理してある。特に `analysis-core-v*` tag を trigger にする workflow、本番 publish 前の package 専用 test/lint、PyPI 認証の配線が未確認。
+2026-05-18 の実観測では `analysis-core-v0.1.1` が version hardcoded test で失敗し、`analysis-core-v0.1.2` で publish success になった。つまり **tag push だけでは不十分で、workflow 内の `ruff` / `pytest` / `build` が通って初めて release される**。[[pypi-release-observation-2026-05-19]]より
 
 ## 環境変数の build 時焼き込み問題
 
@@ -71,3 +71,4 @@ GitHub Action のテンプレートも文書内にあるが配線されている
 - 2026-05-17: 初回作成
 - 2026-05-18: PyPI 自動 publish の不足要件を整理した [[pypi-auto-release-requirements]] への導線を追加
 - 2026-05-18: `Azure Deployment` workflow で `No subscriptions found` による `azure/login@v2` failure を観測したが、同日 rerun では `Azure CLI ログイン` が成功した。少なくともこの事例は「恒久的な資格情報破損」と断定せず、一時的な Azure 側不調や secret / 権限状態の揺れも候補に残すべき
+- 2026-05-19: `analysis-core-v*` tag push 起点の自動 publish と、`0.1.1` failure / `0.1.2` success の実観測を反映

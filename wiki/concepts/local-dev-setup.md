@@ -32,6 +32,8 @@ docker compose up
 
 この Wiki を一次文脈、`work/kouchou-ai/` の local clone を実装確認用として併用する運用が扱いやすい。Wiki 上の「過去の議論」と main ブランチの実装差分を同時に見られるため、AI コーディングエージェントや新規コントリビュータが迷いにくい。
 
+この「Wiki repo で文脈整理し、`work/kouchou-ai/` で本体を確認し、必要なら最終的に本体 repo へ PR を出す」という二層運用そのものの説明は [[wiki-driven-workflow]] を参照。
+
 ## フロントエンドだけ動かす（dummy API 利用）
 
 ```bash

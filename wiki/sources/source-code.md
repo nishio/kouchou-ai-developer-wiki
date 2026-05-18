@@ -13,6 +13,8 @@ sources:
 
 snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 clone の正位置は `work/kouchou-ai/`。一時的な検証 clone は `/tmp/kouchou-ai/` に置くこともある。
 
+この配置は単なる便宜ではなく、**Wiki repo で文脈整理しながら本体 repo の local clone を一次参照する** 運用を前提にしている。全体像は [[wiki-driven-workflow]] を参照。
+
 ## Refresh protocol
 
 コード由来のページを更新する前に、まず `work/kouchou-ai/` で `git fetch origin && git pull --ff-only` を実行し、参照した commit を `log.md` または当該ページの `## Updates` に残す。[[deepwiki-kouchou-ai]] や `docs/` は読み筋の補助には使えるが、**実装断定の根拠は local clone** とする。

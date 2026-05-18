@@ -152,11 +152,19 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 `docs/development/pypi-release.md`：venv が `packages/analysis-core/` 内にあると `AbsoluteLinkError`。リリースは外側で実施。
 
+### release test に version literal を埋めると PyPI publish を自分で止める
+
+2026-05-18 の `analysis-core-v0.1.1` publish 実験では、workflow 自体は起動したが `tests/test_cli.py` と `tests/test_imports.py` が `0.1.0` を hardcode していたため `pytest` が failure になり、`Publish to PyPI` step が skip された。release 向け package では、**version bump のたびに壊れる assertion を test に埋めると自動 publish の gate で自滅する**。`0.1.2` ではこの test を修正して publish success。[[pypi-release-observation-2026-05-19]]より
+
 ## ドキュメント・運用
 
 ### `docs/` の例が AI に伝播する
 
 `docs/user-guide/cli-quickstart.md` の `[3, 6]` が示す通り、**ドキュメント中の具体例は AI の de facto デフォルト** になる。例を書くときは「真似されたら困らないか」を意識する必要がある。
+
+### `kouchou-ai` 向け PR は、作業元 repo に関係なく CLA 節が必要
+
+`digitaldemocracy2030/kouchou-ai` の PR テンプレートには `## CLAへの同意` があり、**最終的な提出先が `kouchou-ai` 本体なら CLA チェックが必要**。Wiki repo や scratch repo で下書きしていても免除されない。特に AI が PR 本文を独自生成すると、この節を落としても本文自体は自然に見えてしまうため見逃しやすい。[[contributing]]より
 
 ### Devin の自動 PR クローズ
 
@@ -197,3 +205,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-18: `REVIEW_REQUIRED` のままでも admin merge が通る場合があることを追記
 - 2026-05-18: merge 理由コメントと通常 merge を先に試し、admin merge は最後の手段にする運用メモを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` から、散布図の見た目とクラスタ妥当性を同一視しやすい問題を追記
+- 2026-05-19: `analysis-core-v0.1.1` failure から、release test に version literal を埋めると自動 publish を塞ぐことを追記

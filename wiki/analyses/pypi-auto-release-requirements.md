@@ -8,7 +8,7 @@ sources:
 
 # PyPI自動更新のために何が必要か
 
-現状、`kouchou-ai-analysis-core` の PyPI リリース手順は `docs/development/pypi-release.md` にある一方、実リポジトリの `.github/workflows/` には publish workflow が存在しない。したがって **不足している中心要素は GitHub Actions の本実装** である。[[github-dev-docs]]より [[source-code]]より
+2026-05-19 時点では、ここで列挙した中核要件（publish workflow、PyPI secret、package 専用 test/lint、`analysis-core-v*` tag 規約）は一通り満たされ、`analysis-core-v0.1.2` で実際に PyPI publish success を確認した。したがってこのページは「何が必要か」の記録として残しつつ、現在の実挙動は [[pypi-release-trigger]] と [[pypi-release-observation-2026-05-19]] を優先参照するとよい。[[pypi-release-observation-2026-05-19]]より
 
 ## 必須
 
@@ -58,5 +58,6 @@ sources:
 
 ## Updates
 
+- 2026-05-19: 必須要件が一通り満たされ、`analysis-core-v0.1.2` で publish success を観測したことを追記
 - 2026-05-17: tag 規約は `analysis-core-v*` を採用する前提に更新
 - 2026-05-17: Query への filing back として追加。`docs/development/pypi-release.md`、`docs/refactoring/phase2_5_plan.md`、`.github/workflows/`、`packages/analysis-core/pyproject.toml` を照合
