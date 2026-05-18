@@ -169,6 +169,12 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 2026-05-18 の `#823` では、checks が全部 success でも `mergeStateStatus: BLOCKED` / `reviewDecision: REVIEW_REQUIRED` のままで、通常 merge は拒否された。bot PR や review fix push 後は、**status checks だけでなく review requirement も再確認** した方がよい。[[pr-823-review-observation-2026-05-18]]より
 
+### `REVIEW_REQUIRED` でも admin merge は通ることがある
+
+2026-05-18 の `#824` では、`ruff`, `test`, `Analyze (python)`, `Analyze (javascript)`, `CodeQL`, `CodeRabbit` が全部 success でも、PR metadata は `mergeStateStatus: BLOCKED` / `reviewDecision: REVIEW_REQUIRED` のままだった。一方で `gh pr merge --admin` は成功し、`main` に入った。**「通常 merge できない」ことと「管理者 merge 不能」は同義ではない**。merge 可否を判断する時は、checks と review requirement と admin 権限の 3 つを分けて見る方がよい。[[pr-824-admin-merge-observation-2026-05-18]]より
+
+ただし運用としては、**先に merge 理由を短く comment し、approve / 通常 merge を試し、admin merge は最後の手段** にした方がよい。そうしないと「なぜこの PR を入れたか」がタイムラインに残りにくい。特に AI エージェントが関わる場合は、判断理由を review/comment に残しておかないと後から監査しづらい。[[pr-824-admin-merge-observation-2026-05-18]]より
+
 ### AI エージェントの review comment は署名がないと後から由来を追いにくい
 
 Codex が GitHub 上で review / approval を行うと、PR タイムライン上では「nishio が書いたコメント」に見える。後から人間判断とエージェント判断を見分けやすくするには、`by Codex` のような短い署名を付ける運用が有効。[[pr-823-review-observation-2026-05-18]]より
@@ -187,4 +193,6 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-18: `public-viewer` build timeout と `Reporter` の `API_BASEPATH` 依存を追記
 - 2026-05-18: `Issue #493` / `PR #597` から、体感依存 UI は shared preview 不足で stale 化しやすいことを追記
 - 2026-05-18: head 更新後に approval が剥がれる場合と、AI エージェント comment の署名運用を追記
+- 2026-05-18: `REVIEW_REQUIRED` のままでも admin merge が通る場合があることを追記
+- 2026-05-18: merge 理由コメントと通常 merge を先に試し、admin merge は最後の手段にする運用メモを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` から、散布図の見た目とクラスタ妥当性を同一視しやすい問題を追記

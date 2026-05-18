@@ -54,6 +54,10 @@ review 対応を push する時は、**PR metadata 上の head branch 名** と 
 
 Dependabot など bot PR の head を更新した後は、CI が全部 green でも `reviewDecision: REVIEW_REQUIRED` に戻って merge が block されることがある。2026-05-18 の `#823` では、checks 通過後も通常 merge は通らず、approval を入れ直してから merge した。**「CI success = すぐ merge 可能」とは限らず、review requirement も見直す**。[[pr-823-review-observation-2026-05-18]]より
 
+一方で 2026-05-18 の `#824` では、checks success と `reviewDecision: REVIEW_REQUIRED` が併存したままでも、`gh pr merge --admin` は成功した。つまり **通常 merge 可否** と **admin merge 可否** は分けて見る必要がある。owner が片付ける前提の PR triage では、この差を意識した方が実態に合う。[[pr-824-admin-merge-observation-2026-05-18]]より
+
+そのうえで、実際の merge 手順としては **1. merge してよい理由を短く comment / review に残す → 2. approve → 3. 通常 merge を試す → 4. それでも保護ルールだけが残る時だけ admin merge** が望ましい。技術的に admin merge 可能でも、理由を書かずに押し切ると後から判断根拠を追いにくい。[[pr-824-admin-merge-observation-2026-05-18]]より
+
 Codex など AI エージェントが review comment や approval comment を残す時は、後から人間が監査しやすいよう `by Codex` のような署名を付けた方がよい。PR 上で「誰がどう判断したか」を区別しやすくなる。[[pr-823-review-observation-2026-05-18]]より
 
 また、2026-05-18 の snapshot では **nishio 以外の人間 authored open PR は `#734` と `#597` の 2 本だけ** で、どちらも古い draft かつ `mergeable: false` だった。棚卸しの詳細は [[non-nishio-human-pr-status]]。[[open-pr-snapshot-2026-05-18]]より
@@ -99,4 +103,6 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: review fix を push する前に PR head branch の remote 実体を確認する運用メモを追記
 - 2026-05-18: nishio 以外の人間 authored open PR が stale 化している snapshot への参照を追記
 - 2026-05-18: head 更新後に approval が剥がれて merge block される場合があることと、Codex 署名の運用メモを追記
+- 2026-05-18: `REVIEW_REQUIRED` のままでも admin merge が通る場合があることを追記
+- 2026-05-18: merge 理由コメント → approve → 通常 merge → admin merge fallback の順を追記
 - 2026-05-18: 書籍流入を見込んだ「新規流入者の受け皿」観点を追記

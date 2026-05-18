@@ -1,5 +1,23 @@
 # Log
 
+## [2026-05-18 23:21] filing-back | Azure deploy login failure は rerun で再現しなかったことを記録
+
+- [[deployment]] に、`Azure Deployment` workflow の `azure/login@v2` が `No subscriptions found` で落ちた後、同じ run の rerun では `Azure CLI ログイン` が成功した観測を追記
+- 今回の deploy failure については、恒久的な `AZURE_CREDENTIALS` 破損と断定せず、一時的な Azure 側不調や secret / RBAC 状態の揺れも候補に残す整理へ修正
+
+## [2026-05-18 23:05] filing-back | merge 理由コメントと通常 merge 優先の方針を追記
+
+- [[pr-824-admin-merge-observation-2026-05-18]] に、「admin merge が通る」観測をそのまま推奨せず、理由コメントと approve を先に残す運用方針を update として追記
+- [[contributing]] に、merge 手順を「rationale comment → approve → 通常 merge → admin merge fallback」の順で扱うメモを追記
+- [[gotchas]] に、admin merge だけで押し切ると判断根拠がタイムラインに残りにくいという運用上の注意を追記
+
+## [2026-05-18 23:01] filing-back | `PR #824` merge で見えた admin merge と review requirement の差を記録
+
+- 新規 source [[pr-824-admin-merge-observation-2026-05-18]] を追加し、checks success / `REVIEW_REQUIRED` / `gh pr merge --admin` 成功が併存した観測を記録
+- [[gotchas]] に、通常 merge 可否と admin merge 可否を分けて見る必要があることを追記
+- [[contributing]] に、owner 観点の PR triage では review requirement と admin merge を別軸で扱うメモを追記
+- [[index]] を更新して source を登録
+
 ## [2026-05-18 20:12] filing-back | `PR #810` 背景の seed 固定経緯を source / analysis 化
 
 - 新規 source [[seed-reproducibility-history]] を追加し、`work/kouchou-ai/` のコード履歴、2025-05 の Slack / issue 群、2025-07 の並列化議論、2026-02 の `PR #810` を束ねた
@@ -149,6 +167,18 @@
 - 新規 analysis ページ [[agent-sandboxing-strategy]] を追加。host full access を標準にせず、devcontainer を編集面、Docker Compose を実行面、高権限操作を CI / 人間に分離する方針を整理
 - [[local-dev-setup]] に、AI エージェント向けには devcontainer と Compose の役割分離が望ましい旨を追記
 - [[coding-agents]] に、AI の作業権限と deploy / credential 権限を分ける運用方針への参照を追記
+
+## [2026-05-18 21:21] filing-back | `PR #817` 文脈の CodeQL 導入理由を整理
+
+- 新規 source ページ [[codeql-docs]] を追加し、CodeQL 公式 docs から「静的解析による security scanning」という役割を要約
+- 新規 source ページ [[pr-813-817-codeql-coderabbit-observation-2026-05-18]] を追加し、`PR #813` での accidental inclusion と `PR #817` での設定見直しを記録
+- 新規 analysis ページ [[codeql-introduction-context]] を追加し、「導入目的は security scan 自動化だが、発火点は accidental inclusion」という整理を残した
+
+## [2026-05-18 21:21] lint | CodeQL 導入文脈の filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- URL を wikilink 扱いしていた 2 件を修正し、`index.md` 未登録や frontmatter 不備がないことを確認
+- `codeql-introduction-context` は index 経由のみの参照で孤立扱いだが、意図した単発 analysis として許容
 
 ## [2026-05-17 01:48] ingest | DeepWiki を補助ソースとして登録し、コード更新時は local clone 最新化を先に行う運用を明文化
 
