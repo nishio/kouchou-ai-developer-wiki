@@ -1,5 +1,27 @@
 # Log
 
+## [2026-05-18 19:31] ingest | `#2_開発_広聴ai_アルゴリズム開発` を source / analysis 化
+
+- 新規 source [[slack-kouchouai-algorithm-dev]] を追加し、`work/oss_weekly_reporter/data/*/raw/slack/2_開発_広聴ai_アルゴリズム開発.json` を 2025-04 〜 2026-03 で横断読解した論点を整理
+- 新規 analysis [[slack-algorithm-themes]] を追加し、UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類の流れを整理
+- [[pipeline]] と [[gotchas]] に本チャンネルを一次ソースとして接続し、[[index]] を更新
+
+## [2026-05-18 19:31] lint | アルゴリズム開発チャンネル取り込み後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+
+## [2026-05-18 16:55] ingest | `PR #827` の LLM grouping 計画を source repo Markdown ではなく wiki 文脈へ取り込み
+
+- 新規 source [[pr-827-llm-grouping-capabilities-plan-2026-05-18]] を追加し、`PLAN_llm_grouping_capabilities.md` の要点を要約
+- [[pipeline]] に、PR `#827` が「`embedding` 後の LLM 分類互換枝」と `analysis_capabilities` / `requirements` 設計をどう具体化したかを追記
+- [[open-decisions]] B14 を更新し、Jigsaw 系 LLM 分類は「意図だけ」ではなく doc-only の plan PR までは進んだと整理
+
+## [2026-05-18 16:32] filing-back | `#823` merge 時の review requirement と Codex 署名ルールを記録
+
+- [[pr-823-review-observation-2026-05-18]] に、head 更新後は approval が剥がれて `REVIEW_REQUIRED` に戻ることがある観測を追記
+- [[contributing]] に、checks success 後も review requirement を見直す運用メモと、AI エージェント comment に `by Codex` 署名を付ける提案を追記
+- [[gotchas]] に、merge blocker が CI ではなく approval 再取得である場合があることと、AI comment の由来がタイムライン上で埋もれやすいことを追記
+
 ## [2026-05-18 14:05] filing-back | nishio 以外の人間 authored open PR の現状を snapshot 化
 
 - 新規 source [[open-pr-snapshot-2026-05-18]] を追加し、2026-05-18 時点の open PR を nishio authored / bot authored / nishio 以外の人間 authored に分類

@@ -143,6 +143,8 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 同 source ではさらに「既存のカテゴリーツリーをパラメータとして与える亜種」も明示されており、自治体の予算カテゴリに合わせたいという具体的ニーズがある。**意図はかなり明確だが、main / open PR にまだ対応実装は見えない**。
 
+2026-05-18 時点では open PR `#827` が source repo ルートに `PLAN_llm_grouping_capabilities.md` を追加し、`analysis_mode=llm_grouping`、`analysis_capabilities` 自動導出、viewer 側 `requirements` 判定まで含む段階計画を具体化している。したがって **「意図しかない」段階は脱したが、なお doc-only で実装未着手** と見るのが正確。[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より
+
 ---
 
 ## C. 着手済み・未完了（実装あり／production 未到達）
@@ -192,3 +194,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `gh pr list` で open PR を確認し、C カテゴリが「main 未反映だが open PR に存在するもの」を含むことを明記
 - 2026-05-17: `#2_開発_広聴ai` ログから、Jigsaw 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加
 - 2026-05-18: A7 に、モバイルでは「静的画像 → 全体インタラクティブビュー」案も候補であることを追記
+- 2026-05-18: PR `#827` により、Jigsaw 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新

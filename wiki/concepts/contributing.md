@@ -52,6 +52,10 @@ gh pr list -R digitaldemocracy2030/kouchou-ai --state open
 
 review 対応を push する時は、**PR metadata 上の head branch 名** と **remote に branch 実体があるか** を両方確認した方がよい。2026-05-18 の観測では `#824` `#825` `#826` はそのまま update できた一方、`#794` は PR metadata 上の head branch 名が残っていても remote branch 実体が消えており、close + recreate が必要だった。[[open-pr-observation-2026-05-18]]より
 
+Dependabot など bot PR の head を更新した後は、CI が全部 green でも `reviewDecision: REVIEW_REQUIRED` に戻って merge が block されることがある。2026-05-18 の `#823` では、checks 通過後も通常 merge は通らず、approval を入れ直してから merge した。**「CI success = すぐ merge 可能」とは限らず、review requirement も見直す**。[[pr-823-review-observation-2026-05-18]]より
+
+Codex など AI エージェントが review comment や approval comment を残す時は、後から人間が監査しやすいよう `by Codex` のような署名を付けた方がよい。PR 上で「誰がどう判断したか」を区別しやすくなる。[[pr-823-review-observation-2026-05-18]]より
+
 また、2026-05-18 の snapshot では **nishio 以外の人間 authored open PR は `#734` と `#597` の 2 本だけ** で、どちらも古い draft かつ `mergeable: false` だった。棚卸しの詳細は [[non-nishio-human-pr-status]]。[[open-pr-snapshot-2026-05-18]]より
 
 ## メンテナ・コミッタ
@@ -82,3 +86,4 @@ review 対応を push する時は、**PR metadata 上の head branch 名** と 
 - 2026-05-17: open PR を `gh pr list` で観測する前提と、2026-05-17 時点の主要 open PR を追記
 - 2026-05-18: review fix を push する前に PR head branch の remote 実体を確認する運用メモを追記
 - 2026-05-18: nishio 以外の人間 authored open PR が stale 化している snapshot への参照を追記
+- 2026-05-18: head 更新後に approval が剥がれて merge block される場合があることと、Codex 署名の運用メモを追記

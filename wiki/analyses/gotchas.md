@@ -5,6 +5,7 @@ type: analysis
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - slack-kouchouai-algorithm-dev.md
   - source-code.md
 ---
 
@@ -63,6 +64,11 @@ sources:
 ### UMAP の `random_state` 固定は warning を出すが、現時点では既知で許容
 
 `packages/analysis-core/src/analysis_core/steps/hierarchical_clustering.py` は `UMAP(random_state=42, n_components=2, n_neighbors=...)` を使う。そのためテスト実行時に `umap-learn` から `n_jobs value 1 overridden ... Use no seed for parallelism.` という `UserWarning` が出ることがある。これは **再現性を優先した結果として並列性が制限される** という通知であり、2026-05-17 時点では **失敗扱いせず許容** する判断。将来、seed / 並列性のオプションを足す議論があるため、その時点で再整理する。[[source-code]]より
+
+### 散布図の見た目とクラスタの妥当性を同一視しやすい
+
+[[slack-kouchouai-algorithm-dev]] 2025-05 〜 2026-03 では、利用者が UMAP 2D 散布図の軸や距離に強い意味を読み込みがちである一方、開発側は「軸自体には意味がない」「UMAP 後に `k-means` するとアーティファクトを拾う」と繰り返し警戒している。  
+**図が綺麗に見える = 分類が妥当** ではない。散布図まわりの議論では、見栄えの話と分析精度の話を混ぜるとすぐに認識がずれる。
 
 ## OS・環境
 
@@ -159,6 +165,14 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 2026-05-18 の open PR review triage では、`#824` `#825` `#826` は既存 head branch へ push して素直に更新できた一方、`#794` は PR metadata 上に head branch 名が残っていても remote branch 実体が無かった。結果として同名 branch を新規作成しても旧 PR は更新されず、close + recreate が必要だった。**「PR に branch 名が見えている = その branch に push すれば更新できる」とは限らない**。[[open-pr-observation-2026-05-18]]より
 
+### head 更新後は approval が剥がれて `REVIEW_REQUIRED` に戻ることがある
+
+2026-05-18 の `#823` では、checks が全部 success でも `mergeStateStatus: BLOCKED` / `reviewDecision: REVIEW_REQUIRED` のままで、通常 merge は拒否された。bot PR や review fix push 後は、**status checks だけでなく review requirement も再確認** した方がよい。[[pr-823-review-observation-2026-05-18]]より
+
+### AI エージェントの review comment は署名がないと後から由来を追いにくい
+
+Codex が GitHub 上で review / approval を行うと、PR タイムライン上では「nishio が書いたコメント」に見える。後から人間判断とエージェント判断を見分けやすくするには、`by Codex` のような短い署名を付ける運用が有効。[[pr-823-review-observation-2026-05-18]]より
+
 ### CLA 必須
 
 [[contributing]] 参照。AI 生成 PR も人間がレビューして引き取れば CLA 範囲。
@@ -172,3 +186,5 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 - 2026-05-18: stale PR では head branch 名と remote branch 実体がずれることがある、という review 運用上の gotcha を追記
 - 2026-05-18: `public-viewer` build timeout と `Reporter` の `API_BASEPATH` 依存を追記
 - 2026-05-18: `Issue #493` / `PR #597` から、体感依存 UI は shared preview 不足で stale 化しやすいことを追記
+- 2026-05-18: head 更新後に approval が剥がれる場合と、AI エージェント comment の署名運用を追記
+- 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` から、散布図の見た目とクラスタ妥当性を同一視しやすい問題を追記

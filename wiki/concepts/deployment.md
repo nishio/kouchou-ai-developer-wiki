@@ -55,6 +55,8 @@ PR #825 で Python が直接静的 HTML を吐くようになり、**AI コー�
 
 GitHub Action のテンプレートも文書内にあるが配線されているかは別途確認が必要。
 
+現状の手順は手動 `twine upload` 前提で、**自動 publish に足りない要件** は [[pypi-auto-release-requirements]] に整理してある。特に `analysis-core-v*` tag を trigger にする workflow、本番 publish 前の package 専用 test/lint、PyPI 認証の配線が未確認。
+
 ## 環境変数の build 時焼き込み問題
 
 `.env` を変えたら `docker compose down && docker compose up --build`。`Makefile` がハッシュ検出で `--no-cache` を強制（[[local-dev-setup]] 参照）。
@@ -67,3 +69,4 @@ GitHub Action のテンプレートも文書内にあるが配線されている
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-18: PyPI 自動 publish の不足要件を整理した [[pypi-auto-release-requirements]] への導線を追加

@@ -5,6 +5,8 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - pr-827-llm-grouping-capabilities-plan-2026-05-18.md
+  - slack-kouchouai-algorithm-dev.md
   - slack-dev-kouchouai-2026-q1.md
 ---
 
@@ -72,6 +74,14 @@ sources:
 
 [[meeting-minutes]] 2025-10-08: 研究的には HDBSCAN を高次元で直接掛けるほうが精度が高いと知られているが、人間が高次元を見られない以上、散布図の可読性とのトレードオフで現状の構成を維持。代替を試したい場合は [[plugin-system|解析 plugin]] として実装する方針。
 
+加えて [[slack-kouchouai-algorithm-dev]] では、2025-05 から 2026-03 にかけて
+
+- UMAP 軸に意味を読み込ませやすい
+- 2D に落としてから `k-means` すると精度が落ちる
+- 同一トピック内の賛否が近くに置かれやすい
+
+という批判が継続している。したがって現行構成は「理論的に妥当だと信じられている」のではなく、**可視化都合を優先した暫定形** と読むべき。
+
 ## 軽量化と CLI 静的出力（2026-05）
 
 [[meeting-minutes]] 2026-05-18 見出し / PR #825：
@@ -79,6 +89,15 @@ sources:
 - 従来は「サーバを立てて `npm run build`」する必要があったが、AI コーディングエージェントは「サーバ無しで HTML を出して静的ホスト」したい
 - Python から直接静的 HTML を吐く実装を追加。デフォルトをこちらにする方針
 - 旧サーバ経路との見た目は 100% 同一ではない — 「実験的ビューを試しやすい」副産物がある
+
+## PR #827 が何を具体化したか
+
+[[pr-827-llm-grouping-capabilities-plan-2026-05-18]] では、Slack 上で構想されていた **「`embedding` 後に LLM 分類を差し込む互換枝」** を、より具体的な移行計画として言語化している。
+
+- 短期は `analysis_mode=llm_grouping` を追加しつつ `embedding` を残し、`x/y` と `cluster-level-*` を従来フォーマットで出して viewer 互換を維持する
+- 長期は `analysis_capabilities` を実データから自動導出し、可視化 mode の可否を `requirements` で判定する
+
+これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で 2026-05-18 時点の `main` では default 実行経路がまだ `run()` なので、**計画は具体化したが production 実装は未着手** と見るのが妥当。
 
 ## Open Questions
 
@@ -92,3 +111,5 @@ sources:
 - 2026-05-17: 初回作成
 - 2026-05-17: `#2_開発_広聴ai` ログ由来の Jigsaw 系 LLM 分類導入意図を追記
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D とする記述を撤回し、Slack 発言と `main@3809a7a` のコード実装を分離
+- 2026-05-18: PR `#827` を参照し、Jigsaw 系 LLM 分類の互換枝が plan PR として具体化したことを追記
+- 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` を source に追加し、UMAP→クラスタリングへの継続的批判を補足
