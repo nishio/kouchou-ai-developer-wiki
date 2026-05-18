@@ -76,6 +76,18 @@ Codex など AI エージェントが review comment や approval comment を残
 3. 情報発信と事例の積み上げ
 4. 運用ポリシーの改善
 
+## 新規流入者の受け皿
+
+書籍などをきっかけに新規流入が増えても、**最初の 1 回で詰まらず、どこから貢献すればよいか分かる状態** を作る必要がある。  
+そのための開発計画整理は [[book-release-development-plan-2026-09]] を参照。
+
+コントリビュータ導線として特に重要なのは：
+
+- 最短の setup 手順が 1 本に絞られていること
+- current / deprecated / experimental の境界が docs 上で明示されていること
+- 初回貢献向けの小さい課題が見つけやすいこと
+- issue / PR / wiki の読み方が最低限共有されていること
+
 ## Open Questions
 
 - AI 生成 PR（Devin / Copilot Agent）のレビュー責任範囲
@@ -87,3 +99,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: review fix を push する前に PR head branch の remote 実体を確認する運用メモを追記
 - 2026-05-18: nishio 以外の人間 authored open PR が stale 化している snapshot への参照を追記
 - 2026-05-18: head 更新後に approval が剥がれて merge block される場合があることと、Codex 署名の運用メモを追記
+- 2026-05-18: 書籍流入を見込んだ「新規流入者の受け皿」観点を追記

@@ -118,6 +118,32 @@
 - [[contributing]] に「review fix を push する前に PR metadata と remote branch 実体の両方を確認する」運用メモを追記
 - [[gotchas]] に stale PR の head branch drift を追加
 
+## [2026-05-18 19:48] filing-back | 書籍リリース前提の開発計画を整理
+
+- 新規 analysis ページ [[book-release-development-plan-2026-09]] を追加
+- 2026-09 ごろの書籍リリースを前提に、stable v4.x の維持、CLI/static output/viewer の再現性向上、release 運用整備を 9 月前の優先課題として整理
+- plugin default 化や Jigsaw 系本格導入は出版後に回す案として位置づけた
+
+## [2026-05-18 19:50] filing-back | 書籍で使い方を紹介しない前提を反映
+
+- [[book-release-development-plan-2026-09]] を更新し、計画の軸を「書籍で説明する導線」から「新規流入者の受け皿整備」と「contribution しやすい地盤作り」へ修正
+- [[contributing]] に、新規流入者が最初の 1 回で詰まらないための観点を追記
+
+## [2026-05-18 19:54] filing-back | v5 は間に合う範囲なら入れる前提を反映
+
+- [[book-release-development-plan-2026-09]] を更新し、v5 を全面後ろ倒しするのではなく「受け皿整備を優先しつつ、安全に入れられる要素は 9 月前に限定投入する」方針へ修正
+- `default 化` と `限定投入` を分けて整理し、open PR triage の基準にも反映
+
+## [2026-05-18 19:55] filing-back | v5 を主戦場にして安定化する前提へ再修正
+
+- [[book-release-development-plan-2026-09]] を全面更新し、「stable v4 を守る」寄りの構図から、「v5 を main の正規経路として押し上げ、9 月までに安定化する」計画へ修正
+- `run_workflow()` / plugin system / capability 判定の default 化を検討対象の中心に据え、受け皿整備はその補助線として再配置
+
+## [2026-05-18 19:57] filing-back | v4 回帰をテストで保証しつつ v5 へ移行する方針を反映
+
+- [[book-release-development-plan-2026-09]] を更新し、「v5 を進める」と「v4 の既存機能が壊れていないことをテストで保証する」を両立させる計画へ修正
+- [[testing]] に、v5 移行期のテスト責務として v4 ユースケース固定と回帰検知帯の考え方を追記
+
 ## [2026-05-18 13:40] filing-back | AI エージェントの権限分離と devcontainer 方針を整理
 
 - 新規 analysis ページ [[agent-sandboxing-strategy]] を追加。host full access を標準にせず、devcontainer を編集面、Docker Compose を実行面、高権限操作を CI / 人間に分離する方針を整理
