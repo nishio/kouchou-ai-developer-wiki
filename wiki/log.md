@@ -1,5 +1,11 @@
 # Log
 
+## [2026-05-18 20:12] filing-back | `PR #810` 背景の seed 固定経緯を source / analysis 化
+
+- 新規 source [[seed-reproducibility-history]] を追加し、`work/kouchou-ai/` のコード履歴、2025-05 の Slack / issue 群、2025-07 の並列化議論、2026-02 の `PR #810` を束ねた
+- 新規 analysis [[umap-seed-history]] を追加し、seed 固定を「完全再現性の設計」ではなく「見た目の揺れを抑えたい要求から生まれ、後に並列性とのトレードオフとして見直された折衷」と整理
+- [[index]] を更新して source / analysis を登録
+
 ## [2026-05-18 19:31] ingest | `#2_開発_広聴ai_アルゴリズム開発` を source / analysis 化
 
 - 新規 source [[slack-kouchouai-algorithm-dev]] を追加し、`work/oss_weekly_reporter/data/*/raw/slack/2_開発_広聴ai_アルゴリズム開発.json` を 2025-04 〜 2026-03 で横断読解した論点を整理
