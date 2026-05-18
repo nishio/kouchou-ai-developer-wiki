@@ -1,5 +1,29 @@
 # Log
 
+## [2026-05-19 00:55] lint | `PR #802` filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- `[[pr-802-merge-assessment]]` は index 経由のみの単発 analysis として孤立扱いだが、既存の `pr-735` / `pr-814` 系と同様に許容
+
+## [2026-05-19 00:58] filing-back | `PR #735` は stale patch なので merge でなく再実装判断と記録
+
+- 新規 source [[pr-735-issue-685-observation-2026-05-19]] を追加し、`PR #735` が draft / conflicting / old `client*` path 前提である一方、`Issue #685` の論点自体は current `apps/*` tree にまだ残ることを整理
+- 新規 analysis [[pr-735-merge-assessment]] を追加し、「そのまま merge せず current `main` から作り直すべき」という判断を明文化
+- [[index]] を更新して source / analysis を登録
+
+## [2026-05-19 01:05] filing-back | `PR #735` close と後続 issue `#833` 作成を反映
+
+- GitHub 上で `Issue #685` の後続作業として `#833` を作成し、stale patch である `PR #735` からリンクした
+- `PR #735` には「issue は有効だが patch は old frontend tree 前提なので current `main` で再実装する」旨をコメントして close
+- [[pr-735-issue-685-observation-2026-05-19]] と [[pr-735-merge-assessment]] の Updates に実施結果を追記
+
+## [2026-05-19 00:54] filing-back | `PR #814` の merge 可否を source / analysis 化
+
+- 新規 source [[pr-814-static-export-error-observation-2026-05-19]] を追加し、2026-05-19 時点の `draft: true` / `REVIEW_REQUIRED` / no checks と `apps/public-viewer/app/[slug]/page.tsx` の差分を記録
+- 新規 analysis [[pr-814-merge-assessment]] を追加し、「issue の方向性には沿うが、`BUILD_SLUGS` 0 件時の誤診断を詰めてから merge したい」という判断を明文化
+- [[index]] を更新して source / analysis を登録
+
 ## [2026-05-19 00:37] filing-back | 最新ソース確認順と clone 後のデータ到達手順を明文化
 
 - [[wiki-driven-workflow]] に、「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追加
@@ -304,3 +328,7 @@
 - analyses/: gotchas, versioning-strategy, npm-vs-pnpm, glossary
 - 議事メモから書籍執筆スレッドは init.txt の指示に従い除外（broad-listening-book.md でスコープ宣言）
 - 議事メモ本体（meeting_minutes.txt）は raw/ にコピー保存
+## [2026-05-19 00:54] filing-back | `PR #802` の merge 可否判断を wiki に記録
+
+- 新規 source ページ [[pr-802-overview-config-observation-2026-05-19]] を追加し、draft 状態・1 行差分・current `public-viewer` とのズレを観測メモ化
+- 新規 analysis ページ [[pr-802-merge-assessment]] を追加し、「`Overview` だけ null-safe にしても `config` 欠損対策として不十分なので merge しない」という判断を残した

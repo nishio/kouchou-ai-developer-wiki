@@ -56,6 +56,9 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-813-817-codeql-coderabbit-observation-2026-05-18](sources/pr-813-817-codeql-coderabbit-observation-2026-05-18.md) — `PR #813/#817` における CodeQL / CodeRabbit 設定混入と調整の観測メモ
 - [issue-830-pr-832-auto-cluster-defaults-2026-05-18](sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md) — CLI / analysis-core のクラスタ数デフォルト見直し issue / PR 観測メモ
 - [pypi-release-observation-2026-05-19](sources/pypi-release-observation-2026-05-19.md) — `analysis-core-v0.1.1` / `v0.1.2` の PyPI publish 実観測
+- [pr-735-issue-685-observation-2026-05-19](sources/pr-735-issue-685-observation-2026-05-19.md) — `PR #735` は issue 妥当でも patch は stale という観測メモ
+- [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ
+- [pr-814-static-export-error-observation-2026-05-19](sources/pr-814-static-export-error-observation-2026-05-19.md) — `PR #814` の draft 状態と static export error 差分の観測メモ
 
 ## Analyses
 
@@ -78,3 +81,6 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [umap-seed-history](analyses/umap-seed-history.md) — seed 固定が再現性要求から生まれ、後に並列性とのトレードオフとして見直された経緯
 - [codeql-introduction-context](analyses/codeql-introduction-context.md) — `PR #817` 文脈で CodeQL がどう入ったか
 - [auto-cluster-defaults](analyses/auto-cluster-defaults.md) — `[3, 6]` 固定値問題を docs / 実装 / AI 利用経路の不一致として整理
+- [pr-735-merge-assessment](analyses/pr-735-merge-assessment.md) — `PR #735` は merge でなく current tree への再実装として扱うべきという判断
+- [pr-802-merge-assessment](analyses/pr-802-merge-assessment.md) — `PR #802` は `Overview` 1 箇所だけでは不十分なので merge しない方がよいという判断
+- [pr-814-merge-assessment](analyses/pr-814-merge-assessment.md) — `PR #814` は方向性はよいが draft / review 未充足で、`BUILD_SLUGS` 誤診断も詰めてから merge したいという判断
