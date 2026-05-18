@@ -66,9 +66,10 @@ sources:
 
 ## クラスタ数のデフォルト問題
 
-[[meeting-minutes]] 2026-05-18 見出しで再浮上：`docs/user-guide/cli-quickstart.md` の例が `[3, 6]`。これを Claude Code がそのまま使い、300 件規模のデータでも `3 → 6 → 12 → 24` のような粗いまとめになる。提案された方向は「クラスタ数を optional にし、データ件数からおすすめ値を自動算出」(cube-root rule の言及あり)。
+[[meeting-minutes]] 2026-05-18 見出しで再浮上：`docs/user-guide/cli-quickstart.md` の例が `[3, 6]`。これを Claude Code がそのまま使い、300 件規模のデータでも `3 → 6 → 12 → 24` のような粗いまとめになる。  
+2026-05-18 の `Issue #830` / `PR #832` では、`cluster_nums` を optional にし、未指定時は extraction 後の `argument` 数から cube-root rule で自動算出する方向が具体化した。`argument_count=1000` なら `[10, 100]` を返す想定。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
-過去にも [[other-contributors|kitaro]] が silhouette-score ベースの自動選択を PR #567 で実装したが embedding エラーの誘発で #579 で revert。**未解決**。
+過去にも [[other-contributors|kitaro]] が silhouette-score ベースの自動選択を PR #567 で実装したが embedding エラーの誘発で #579 で revert。今回の open PR はその再試行ではなく、**Admin 側に既にある単純な推奨値ルールを CLI / `analysis-core` に揃える修正** と理解する方が正確。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
 ## なぜ UMAP→クラスタリングなのか（既知の理論的弱点）
 

@@ -1,5 +1,27 @@
 # Log
 
+## [2026-05-18 23:55] lint | クラスタ数デフォルト見直しの filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / index 未登録 / frontmatter 不備はいずれも 0
+- 既知の孤立 `[[codeql-introduction-context]]` のみ継続、新規追加した source / analysis には問題なし
+
+## [2026-05-18 23:56] filing-back | おすすめクラスタ数の計算式そのものの説明を追記
+
+- [[issue-830-pr-832-auto-cluster-defaults-2026-05-18]] に、`lv1 = round(cuberoot(n))`, `lv2 = lv1^2` という式と `125 -> [5, 25]`, `1000 -> [10, 100]` の導出を追記
+- [[auto-cluster-defaults]] に、立方根 rule が「件数増加を緩やかに反映しつつ 2 段階の見通しを保つ」ための設計だと読む解説を追記
+
+## [2026-05-18 23:57] filing-back | 等比的に枝ぶりを揃える設計意図を追記
+
+- [[issue-830-pr-832-auto-cluster-defaults-2026-05-18]] に、`lv1 = n^(1/3)`, `lv2 = n^(2/3)` が各段階の 1 クラスタあたり下位要素数や分岐数を極端に暴れさせない等比的ルールだという説明を追記
+- [[auto-cluster-defaults]] に、これは「最適クラスタ数推定」より「2 段階 UI / report 構造で枝ぶりを揃える運用ルール」と読む方が自然だという解説を追記
+
+## [2026-05-18 23:52] filing-back | CLI / analysis-core のクラスタ数デフォルト見直しを source / analysis 化
+
+- 新規 source [[issue-830-pr-832-auto-cluster-defaults-2026-05-18]] を追加し、議事メモ、`Issue #830`、`PR #832`、既存 docs / code のズレを整理
+- 新規 analysis [[auto-cluster-defaults]] を追加し、この問題を「アルゴリズム論」ではなく「docs / 実装 / AI 利用経路の不一致」として整理
+- [[pipeline]] / [[cli]] / [[gotchas]] / [[open-decisions]] / [[index]] を更新し、`[3, 6]` 固定値問題が open PR 段階まで進んだことと、README 系 docs がなお comment count ベース説明を残すことを反映
+
 ## [2026-05-18 23:21] filing-back | Azure deploy login failure は rerun で再現しなかったことを記録
 
 - [[deployment]] に、`Azure Deployment` workflow の `azure/login@v2` が `No subscriptions found` で落ちた後、同じ run の rerun では `Azure CLI ログイン` が成功した観測を追記

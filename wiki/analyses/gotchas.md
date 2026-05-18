@@ -55,7 +55,8 @@ sources:
 
 ### デフォルトクラスタ数 `[3, 6]` が小さすぎる
 
-[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。本質的修正は「optional 化 + データ件数から自動算出」。一度 silhouette-score ベースの自動選択（PR #567）が試されたが embedding エラーで revert (#579)。**未解決**。詳細は [[pipeline]]。
+[[meeting-minutes]] 2026-05-18 見出し：`docs/user-guide/cli-quickstart.md` の例 `[3, 6]` を Claude Code が転用し、300 件規模でも粗いまとめになる。`Issue #830` / open `PR #832` では、`cluster_nums` を optional 化し、extraction 後の `argument` 数から cube-root rule で自動算出する修正が提案・実装されている。  
+ただし 2026-05-18 時点では README / getting-started / how-to-use がなお「コメント数ベース」の説明を残しており、**Web docs の用語と `analysis-core` 実装意図がズレる**。この件の教訓は、docs の具体例や説明語彙自体が AI にとって de facto default になること。詳細は [[auto-cluster-defaults]]。
 
 ### `extraction.skip: true` がない
 
