@@ -50,6 +50,31 @@ sources:
 実際にコードを直す時は `work/kouchou-ai/` 側で branch を切り、commit / push / PR を行う。  
 したがって、**作業場所は Wiki repo でも、提出先は `digitaldemocracy2030/kouchou-ai`** になることがある。これはこの運用では普通であり、むしろ想定された使い方。[[contributing]]より
 
+## 「調べて」と言われた時の最新ソース確認順
+
+この repo では、質問に答える前に **「どのソースが一次で、どう最新化するか」** を切り分ける必要がある。単に既存 Wiki ページを読むだけで済ませない。
+
+### コード本体について聞かれた時
+
+まず `work/kouchou-ai/` の local clone を `git fetch origin && git pull --ff-only` で最新化し、参照 commit を残す。`docs/` や DeepWiki は補助線であり、実装断定の根拠にはしない。[[source-code]]より
+
+### 議事録について聞かれた時
+
+まず Google Doc export から `raw/meeting_minutes.txt` を取り直す。既存の [[meeting-minutes]] 要約があっても、**更新前に raw を refresh する** のが前提。[[meeting-minutes]]より
+
+### Slack の発言について聞かれた時
+
+まず `oss_weekly_reporter` 由来の raw / source を確認する。既存の週次 source で足りなければ、**Slack を直接読みに行く前に `oss_weekly_reporter` 側の最新取得データへ到達する**。`weekly-log` 系 source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
+
+### GitHub の現在進行形について聞かれた時
+
+main だけでは不十分なことがあるので、open PR や issue も併せて確認する。未マージ作業は main に出ないため、現在の論点整理では `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` のような観測が要る。`CLAUDE.md` より
+
+### 答えた後
+
+有用な整理が生まれたら `wiki/analyses/` や既存 concept / source に filing-back し、`wiki/log.md` に記録する。  
+つまりこの repo の Query は「その場で答える」だけでなく、**再利用可能な知識へ還流するところまで** が 1 セット。`CLAUDE.md` より
+
 ## 誤解しやすい点
 
 ### 「Wiki repo で作業しているなら、この repo に PR を出すのでは？」ではない
@@ -93,3 +118,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記

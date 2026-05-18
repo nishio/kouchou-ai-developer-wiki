@@ -1,5 +1,11 @@
 # Log
 
+## [2026-05-19 00:37] filing-back | 最新ソース確認順と clone 後のデータ到達手順を明文化
+
+- [[wiki-driven-workflow]] に、「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追加
+- [[local-dev-setup]] に、clone 後に `work/kouchou-ai/`、`raw/meeting_minutes.txt`、`oss_weekly_reporter` 系データへ辿る最小オンボーディング手順を追加
+- 「答える前に最新ソースを取り直す」「clone しただけでは必要データは揃わない」という運用前提を明文化
+
 ## [2026-05-19 00:15] filing-back | Wiki repo と本体 repo をまたぐ二層運用を概念ページ化
 
 - 新規 concept [[wiki-driven-workflow]] を追加し、「Wiki repo で文脈整理 → `work/kouchou-ai/` で実装確認 → 必要なら本体 repo に PR」という流れを整理

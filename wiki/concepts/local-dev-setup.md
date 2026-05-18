@@ -34,6 +34,29 @@ docker compose up
 
 この「Wiki repo で文脈整理し、`work/kouchou-ai/` で本体を確認し、必要なら最終的に本体 repo へ PR を出す」という二層運用そのものの説明は [[wiki-driven-workflow]] を参照。
 
+### clone 後にまず揃えるとよいもの
+
+この repo を clone しただけでは、`raw/` と `work/` の中身は基本空である。スムーズに調査へ入るには、少なくとも次の 3 つへ到達できる状態を作るとよい。
+
+1. `work/kouchou-ai/` に本体 repo の local clone を置く
+2. `raw/meeting_minutes.txt` を Google Doc export から取得する
+3. Slack / GitHub の週次観測が必要なら `oss_weekly_reporter` 由来の raw データか、その要約 source を確認する
+
+つまり onboarding の初手は「アプリを起動する」だけではなく、**コード・議事録・週次ログの 3 系統の一次ソースへ辿り着ける状態を作ること**。[[source-code]] / [[meeting-minutes]] / [[weekly-log-2026-05-06]]より
+
+### 最小オンボーディング手順
+
+```bash
+git clone https://github.com/nishio/kouchou-ai-developer-wiki.git
+cd kouchou-ai-developer-wiki
+git clone https://github.com/digitaldemocracy2030/kouchou-ai.git work/kouchou-ai
+curl -L -sS \
+  'https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/export?format=txt' \
+  > raw/meeting_minutes.txt
+```
+
+その後、Slack の話を調べる必要があるなら `oss_weekly_reporter` の該当週データを見に行く。`raw/init.txt` に初期参照先が書かれている。完全にローカルへ持ちたいなら、その repo も `work/` 配下へ clone しておくと再利用しやすい。[[weekly-log-2026-05-06]]より
+
 ## フロントエンドだけ動かす（dummy API 利用）
 
 ```bash
@@ -90,3 +113,4 @@ AI コーディングエージェントの長期運用では、host machine full
 - 2026-05-17: 初回作成
 - 2026-05-17: Wiki 配下で実装確認するための clone 位置として `work/kouchou-ai/` を追記
 - 2026-05-18: AI エージェント向けには devcontainer と Compose を役割分離する方針への参照を追加
+- 2026-05-19: clone 後に揃えるべき local data と最小オンボーディング手順を追記
