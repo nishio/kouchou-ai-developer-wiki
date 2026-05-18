@@ -43,10 +43,15 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [weekly-log-2026-05-06](sources/weekly-log-2026-05-06.md) — `oss_weekly_reporter` 週次ダンプ
 - [slack-dev-kouchouai-2025-q4](sources/slack-dev-kouchouai-2025-q4.md) — `#2_開発_広聴ai` の 2025 4Q 設計ログ抜粋
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) — `#2_開発_広聴ai` の設計意図が濃い 2026-Q1 ログ抜粋
+- [open-pr-observation-2026-05-18](sources/open-pr-observation-2026-05-18.md) — open PR review triage 実験で観測した head branch 更新挙動
+- [open-pr-snapshot-2026-05-18](sources/open-pr-snapshot-2026-05-18.md) — 2026-05-18 時点の open PR 一覧を作者種別付きで切った snapshot
+- [issue-493-pr-597-discussion](sources/issue-493-pr-597-discussion.md) — ScatterChart スクロール誤操作対策の issue / PR 議論メモ
+- [pr-823-review-observation-2026-05-18](sources/pr-823-review-observation-2026-05-18.md) — `PR #823` 切り分けで観測した `public-viewer` build 挙動
 
 ## Analyses
 
 - [gotchas](analyses/gotchas.md) — 非自明な落とし穴の一覧
+- [public-viewer-build-behavior](analyses/public-viewer-build-behavior.md) — `public-viewer` build failure と API 入力条件の切り分け
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況（docs と main の乖離）
 - [open-decisions](analyses/open-decisions.md) — 未定／方針決定済・未着手／着手済・未完了 の三分類
 - [versioning-strategy](analyses/versioning-strategy.md) — v4 凍結 / v5 plugin 化
@@ -55,3 +60,6 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pypi-auto-release-requirements](analyses/pypi-auto-release-requirements.md) — PyPI 自動更新に必要な構成要素
 - [slack-design-intents-2025-q4](analyses/slack-design-intents-2025-q4.md) — 2025 4Q の設計意図整理
 - [slack-design-intents-2026-q1](analyses/slack-design-intents-2026-q1.md) — Slack から読める実装意図の整理
+- [agent-sandboxing-strategy](analyses/agent-sandboxing-strategy.md) — AI コーディングエージェント向けの権限分離と devcontainer 方針
+- [chart-scroll-ux-decision](analyses/chart-scroll-ux-decision.md) — ScatterChart スクロール誤操作対策で好まれた UX と preview 不足の影響
+- [non-nishio-human-pr-status](analyses/non-nishio-human-pr-status.md) — nishio 以外の人間 authored open PR が stale に見える理由の整理

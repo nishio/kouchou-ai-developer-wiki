@@ -77,6 +77,8 @@ rye run uvicorn src.main:app --reload --port 8000
 
 [[testing]] 参照。
 
+AI コーディングエージェントの長期運用では、host machine full access を標準にするより、**devcontainer を編集面、Docker Compose を実行面** と分ける方が安全。詳細は [[agent-sandboxing-strategy]]。
+
 ## Open Questions
 
 - `apps/static-site-builder/` (port 3200) の起動方法は README のクイックスタートに含まれていない — 利用者が見落とす
@@ -85,3 +87,4 @@ rye run uvicorn src.main:app --reload --port 8000
 
 - 2026-05-17: 初回作成
 - 2026-05-17: Wiki 配下で実装確認するための clone 位置として `work/kouchou-ai/` を追記
+- 2026-05-18: AI エージェント向けには devcontainer と Compose を役割分離する方針への参照を追加

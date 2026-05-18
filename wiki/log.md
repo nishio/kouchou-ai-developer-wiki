@@ -1,5 +1,39 @@
 # Log
 
+## [2026-05-18 14:05] filing-back | nishio 以外の人間 authored open PR の現状を snapshot 化
+
+- 新規 source [[open-pr-snapshot-2026-05-18]] を追加し、2026-05-18 時点の open PR を nishio authored / bot authored / nishio 以外の人間 authored に分類
+- 新規 analysis [[non-nishio-human-pr-status]] を追加し、`#734` と `#597` が古い draft かつ `mergeable: false` の stale 状態に見えることを整理
+- [[index]] を更新して source / analysis を登録
+
+## [2026-05-18 14:12] filing-back | stale PR cleanup と `tokoroten` / `ohki` recent PR の状況を反映
+
+- `#734` と `#597` に stale 理由をコメントして close
+- [[open-pr-snapshot-2026-05-18]] / [[non-nishio-human-pr-status]] を更新し、cleanup 後は non-nishio human open PR が `#817` (`shingo-ohki`) のみになったことを反映
+- `tokoroten` の recent PR は `#812` `#811` `#807` が merged 済み、`ohki-shingo` は merged `#808` に加えて open `#817` があることを追記
+
+## [2026-05-18 14:24] filing-back | `Issue #493` / `PR #597` の UX 議論を source 化
+
+- 新規 source [[issue-493-pr-597-discussion]] を追加し、ScatterChart スクロール誤操作対策の issue / PR コメントを整理
+- 新規 analysis [[chart-scroll-ux-decision]] を追加し、click-to-enable を避けて「短い遅延付きの自動ロック解除」が支持されたことと、shared preview 不足が stale 化要因だったことを整理
+- [[gotchas]] に、体感依存 UI は preview 導線がないと議論が止まりやすいという運用上の教訓を追記
+
+## [2026-05-18 14:31] filing-back | `Issue #493` / `PR #597` 議論が PC 前提だったことを明記
+
+- [[issue-493-pr-597-discussion]] に、mouse / hover / wheel 中心の議論で、スマホ操作は主題に入っていないことを追記
+- [[chart-scroll-ux-decision]] に、当時の結論をモバイルへそのまま一般化しない方がよいという注記を追加
+
+## [2026-05-18 14:38] filing-back | スマホ向け代替案として「静的画像 → 全体ビュー」を追記
+
+- [[chart-scroll-ux-decision]] に、モバイルでは散布図を最初は画像で見せ、必要時だけインタラクティブ全体ビューへ遷移する案を追記
+- [[open-decisions]] の A7 に、スマホ散布図表示の未決論点として同案を追加
+
+## [2026-05-18 13:42] filing-back | `PR #823` 切り分けで見えた `public-viewer` build gotcha を記録
+
+- 新規 source [[pr-823-review-observation-2026-05-18]] を追加し、`main@3809a7a` / `pr-823` 比較、API なし build の timeout、mock API 下での `Reporter` `ERR_INVALID_URL` を整理
+- 新規 analysis [[public-viewer-build-behavior]] を追加し、「security bump 回帰ではなく build-time API 条件の問題として読むべき」ことを明文化
+- [[gotchas]] に `public-viewer` の API reachable 前提と `API_BASEPATH` 依存を追記
+
 ## [2026-05-17 07:51] lint | `embeddings.pkl` 記述補正後の健全性確認
 
 - `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
@@ -50,6 +84,18 @@
 - [[open-decisions]]: CodeRabbit は `.coderabbit.yaml` により最小導入済み、レポート再利用機能は API / UI / docs まで main に存在するため「未完了」一覧から除外
 - [[plugin-system]] / [[refactoring-status]] / [[versioning-strategy]]: frontend 側 chart plugin 基盤が実装済みであることを反映
 
+## [2026-05-18 13:18] filing-back | open PR review triage で得た branch/head 更新の gotcha を記録
+
+- 新規 source ページ [[open-pr-observation-2026-05-18]] を追加。`#824` `#825` `#826` は既存 head branch push で更新でき、`#794` は close + recreate が必要だった観測を整理
+- [[contributing]] に「review fix を push する前に PR metadata と remote branch 実体の両方を確認する」運用メモを追記
+- [[gotchas]] に stale PR の head branch drift を追加
+
+## [2026-05-18 13:40] filing-back | AI エージェントの権限分離と devcontainer 方針を整理
+
+- 新規 analysis ページ [[agent-sandboxing-strategy]] を追加。host full access を標準にせず、devcontainer を編集面、Docker Compose を実行面、高権限操作を CI / 人間に分離する方針を整理
+- [[local-dev-setup]] に、AI エージェント向けには devcontainer と Compose の役割分離が望ましい旨を追記
+- [[coding-agents]] に、AI の作業権限と deploy / credential 権限を分ける運用方針への参照を追記
+
 ## [2026-05-17 01:48] ingest | DeepWiki を補助ソースとして登録し、コード更新時は local clone 最新化を先に行う運用を明文化
 
 - `work/kouchou-ai/` で `git fetch origin` を実行し、local `main` tip `3809a7a` が origin と一致することを確認
@@ -58,6 +104,11 @@
 - `CLAUDE.md` の Ingest / 運用方針にも、local clone 優先・DeepWiki は補助線という原則を追記
 
 ## [2026-05-17 01:50] filing-back | work/ の運用合意を CLAUDE.md スキーマに反映
+
+## [2026-05-17 08:47] filing-back | `analysis-core-v*` を release tag 規約として採用
+
+- [[pypi-auto-release-requirements]] から `v*` / `analysis-core-v*` の比較を外し、`analysis-core-v*` 採用済み前提へ更新
+- 次の publish workflow 実装が `push.tags: ['analysis-core-v*']` を trigger にすべきことを明記
 
 ## [2026-05-17 08:47] filing-back | UMAP warning の扱いを wiki に記録
 

@@ -20,6 +20,14 @@ sources:
 
 `docker compose up --build` し直さないと反映されない env var がある。`Makefile` が `.env` / `.env.azure` のハッシュを `.env-hashes/` に保存し、変更検知で `docker compose build --no-cache` を強制する救済策がある。
 
+### `public-viewer` は API reachable でない build だと `/` と `/faq` が timeout retry に見えることがある
+
+`apps/public-viewer` の root page と FAQ page は build 中に API を fetch する。2026-05-18 の local review では、API を立てずに `pnpm build` したとき `main@3809a7a` と `pr-823` の両方で `/` と `/faq` の static generation が 60 秒 timeout → retry になった。依存 bump 固有の回帰と即断せず、まず API 入力条件を疑うべき。[[public-viewer-build-behavior]]より
+
+### `public-viewer` の `Reporter` は `NEXT_PUBLIC_API_BASEPATH` だけでは足りず、`API_BASEPATH` 未設定だと root prerender が落ちうる
+
+`apps/public-viewer/components/reporter/Reporter.tsx` は `new URL("/meta/reporter.png", process.env.API_BASEPATH)` を直接使うため、`API_BASEPATH` が空だと `ERR_INVALID_URL` になる。`getApiBaseUrl()` は `NEXT_PUBLIC_API_BASEPATH` fallback を持つのに、`Reporter` だけ前提がずれている。`.github/workflows/client-build.yml` も `NEXT_PUBLIC_API_BASEPATH` のみを渡しているため、API が実際に応答する build 環境では別の failure source になりうる。[[public-viewer-build-behavior]]より
+
 ### LOCAL LLM は `main@3809a7a` でも `https://...` を素直には受け取れない
 
 [[meeting-minutes]] 2026-05-18 見出し / PR #824 では修正報告があるが、`main@3809a7a` の `packages/analysis-core/src/analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` は依然として `local_llm_address` を **`host:port` 形式として解釈し、`http://{host}:{port}/v1` を組み立てる**。`https://example.com` のような URL をそのまま渡すと崩れる可能性が高い。  
@@ -129,6 +137,10 @@ PR #709：ハードコードされた `/images/foo.png` 形式のパスがサブ
 
 Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
 
+### UI の細かい操作感は shared preview がないと議論が止まりやすい
+
+`Issue #493` / `PR #597` の ScatterChart スクロール誤操作対策では、動画付きで案が出ても「実際に触らないと判断しきれない」が繰り返し発生した。2025-06 時点では main の最新版を共有確認できる preview 環境がなく、代替として `ngrok` が話題に出る程度だった。**チャート UX のような体感依存の PR は、共有 preview 導線が無いと stale 化しやすい**。[[chart-scroll-ux-decision]]より
+
 ### PyPI build は package ディレクトリの外で
 
 `docs/development/pypi-release.md`：venv が `packages/analysis-core/` 内にあると `AbsoluteLinkError`。リリースは外側で実施。
@@ -143,6 +155,10 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 [[meeting-minutes]] 2025-11-12：Devin は 1 週間放置 PR を自分で閉じる仕様。kouchou-ai では workaround で無効化。
 
+### stale PR は branch 実体が消えていることがある
+
+2026-05-18 の open PR review triage では、`#824` `#825` `#826` は既存 head branch へ push して素直に更新できた一方、`#794` は PR metadata 上に head branch 名が残っていても remote branch 実体が無かった。結果として同名 branch を新規作成しても旧 PR は更新されず、close + recreate が必要だった。**「PR に branch 名が見えている = その branch に push すれば更新できる」とは限らない**。[[open-pr-observation-2026-05-18]]より
+
 ### CLA 必須
 
 [[contributing]] 参照。AI 生成 PR も人間がレビューして引き取れば CLA 範囲。
@@ -153,3 +169,6 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 - 2026-05-17: UMAP の `random_state` 由来 warning は既知で、現時点では許容する運用判断を追記
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、LOCAL LLM の HTTPS 問題は「修正済み」と断定しない表現に修正
+- 2026-05-18: stale PR では head branch 名と remote branch 実体がずれることがある、という review 運用上の gotcha を追記
+- 2026-05-18: `public-viewer` build timeout と `Reporter` の `API_BASEPATH` 依存を追記
+- 2026-05-18: `Issue #493` / `PR #597` から、体感依存 UI は shared preview 不足で stale 化しやすいことを追記

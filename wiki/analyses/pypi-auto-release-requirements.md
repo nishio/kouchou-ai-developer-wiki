@@ -13,7 +13,7 @@ sources:
 ## 必須
 
 1. **publish workflow の追加**
-   `docs/development/pypi-release.md` には `push.tags: v*` で起動するテンプレがあり、`docs/refactoring/phase2_5_plan.md` には `analysis-core-v*` 命名の別案もある。まず **どの tag 規約で出すかを 1 つに固定** し、その規約で `.github/workflows/publish-analysis-core.yml` を追加する必要がある。[[github-dev-docs]]より
+   `docs/refactoring/phase2_5_plan.md` には `analysis-core-v*` 命名の案があり、2026-05-17 時点では **`analysis-core-v*` を採用** する判断になった。したがって `.github/workflows/publish-analysis-core.yml` は `push.tags: ['analysis-core-v*']` で起動する前提で作る必要がある。[[github-dev-docs]]より
 
 2. **PyPI 認証の GitHub Secrets**
    文書上の自動化案は `pypa/gh-action-pypi-publish@release/v1` と `secrets.PYPI_API_TOKEN` を前提にしている。したがって repository secrets に PyPI 用認証情報を登録する必要がある。[[github-dev-docs]]より
@@ -40,7 +40,7 @@ sources:
 - publish 用 `.github/workflows/*.yml`
 - PyPI secret 登録済みという証拠
 - `packages/analysis-core/` 専用の test/lint workflow
-- tag 規約の一本化（`v*` か `analysis-core-v*` か）
+- `analysis-core-v*` tag 規約に沿った publish workflow 本体
 
 ## 最短構成
 
@@ -49,14 +49,14 @@ sources:
 1. `packages/analysis-core/` 用 pytest/ruff workflow を追加
 2. `.github/workflows/publish-analysis-core.yml` を追加
 3. `PYPI_API_TOKEN` を GitHub Secrets に登録
-4. `analysis-core-v0.1.1` のような release tag 規約を決めて運用開始
+4. `analysis-core-v0.1.1` のような release tag を打って運用開始
 
 ## Open Questions
 
-- tag は repo 全体共通の `v*` に乗せるか、package 専用の `analysis-core-v*` に分けるか
 - publish 前に `apps/api` 側の互換テストまで必須にするか
 - PyPI 認証を token secret で持つか、Trusted Publishing に寄せるか
 
 ## Updates
 
+- 2026-05-17: tag 規約は `analysis-core-v*` を採用する前提に更新
 - 2026-05-17: Query への filing back として追加。`docs/development/pypi-release.md`、`docs/refactoring/phase2_5_plan.md`、`.github/workflows/`、`packages/analysis-core/pyproject.toml` を照合

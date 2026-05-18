@@ -41,6 +41,10 @@ sources:
 
 [[contributing]]：人間が出す PR には CLA 必要（`CLA.md`）。PR テンプレで合図。AI が出す PR の扱いはケースバイケース（draft 扱い → 人間が引き取る）。
 
+## 権限分離
+
+AI エージェントの実務運用では、repo 編集・pytest・lint のための権限と、Azure / PyPI / host filesystem まで触れる権限を分けた方がよい。`kouchou-ai` では **devcontainer を標準の作業面、Docker Compose を実行面、高権限操作は CI / 人間のみ** に寄せるのが自然。[[agent-sandboxing-strategy]]より
+
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
@@ -49,3 +53,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-18: host full access を標準化しない権限分離方針への参照を追加
