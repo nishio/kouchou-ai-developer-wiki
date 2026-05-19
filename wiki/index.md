@@ -2,11 +2,12 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-新規コントリビュータは [[kouchou-ai]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]] の順に読むと早い。
+新規コントリビュータは [[kouchou-ai]] → [[usage-modes]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]] の順に読むと早い。
 
 ## Concepts
 
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
+- [usage-modes](concepts/usage-modes.md) — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core の使い分け
 - [broadlistening](concepts/broadlistening.md) — ブロードリスニング手法の定義と用語
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
 - [pipeline](concepts/pipeline.md) — 解析パイプライン（extraction → embedding → 階層クラスタリング → 可視化）
@@ -50,17 +51,25 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [issue-493-pr-597-discussion](sources/issue-493-pr-597-discussion.md) — ScatterChart スクロール誤操作対策の issue / PR 議論メモ
 - [pr-823-review-observation-2026-05-18](sources/pr-823-review-observation-2026-05-18.md) — `PR #823` 切り分けで観測した `public-viewer` build 挙動
 - [pr-824-admin-merge-observation-2026-05-18](sources/pr-824-admin-merge-observation-2026-05-18.md) — `PR #824` merge 時に checks success / `REVIEW_REQUIRED` / admin merge が併存した観測
+- [pr-824-local-llm-https-observation-2026-05-19](sources/pr-824-local-llm-https-observation-2026-05-19.md) — `PR #824` merge 後、analysis 実行経路は full URL LocalLLM に対応した一方で admin model list は旧前提のままという観測
 - [pr-827-llm-grouping-capabilities-plan-2026-05-18](sources/pr-827-llm-grouping-capabilities-plan-2026-05-18.md) — `PR #827` の LLM grouping / capability 自動判定計画の要約
 - [seed-reproducibility-history](sources/seed-reproducibility-history.md) — UMAP / k-means の seed 固定と `PR #810` までの経緯
 - [codeql-docs](sources/codeql-docs.md) — CodeQL 公式 docs の要約
 - [pr-813-817-codeql-coderabbit-observation-2026-05-18](sources/pr-813-817-codeql-coderabbit-observation-2026-05-18.md) — `PR #813/#817` における CodeQL / CodeRabbit 設定混入と調整の観測メモ
 - [issue-830-pr-832-auto-cluster-defaults-2026-05-18](sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md) — CLI / analysis-core のクラスタ数デフォルト見直し issue / PR 観測メモ
 - [pypi-release-observation-2026-05-19](sources/pypi-release-observation-2026-05-19.md) — `analysis-core-v0.1.1` / `v0.1.2` の PyPI publish 実観測
+- [pr-825-standalone-html-observation-2026-05-19](sources/pr-825-standalone-html-observation-2026-05-19.md) — `PR #825` merge 後、CLI は自己完結型 `report.html` を既定生成するが Web の主経路は依然 JSON + `public-viewer` という観測
 - [pr-735-issue-685-observation-2026-05-19](sources/pr-735-issue-685-observation-2026-05-19.md) — `PR #735` は issue 妥当でも patch は stale という観測メモ
 - [pr-801-react-override-observation-2026-05-19](sources/pr-801-react-override-observation-2026-05-19.md) — `PR #801` は React version 統一の意図は妥当でも current `main` では `pnpm.overrides` 置換が回帰になるという観測メモ
 - [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ
 - [pr-814-static-export-error-observation-2026-05-19](sources/pr-814-static-export-error-observation-2026-05-19.md) — `PR #814` の draft 状態と static export error 差分の観測メモ
+- [pr-835-static-build-fail-fast-observation-2026-05-19](sources/pr-835-static-build-fail-fast-observation-2026-05-19.md) — `PR #835` は static export 前提チェックを helper に寄せ、公開レポート 0 件と `BUILD_SLUGS` 不一致を分けて fail-fast する draft PR という観測メモ
+- [pr-727-static-build-validation-observation-2026-05-19](sources/pr-727-static-build-validation-observation-2026-05-19.md) — `PR #727` は事前 validation の狙い自体は妥当だが、patch のままでは validation が実行されず API URL 解決も drift しているという観測メモ
+- [pr-722-filesystem-validation-observation-2026-05-19](sources/pr-722-filesystem-validation-observation-2026-05-19.md) — `PR #722` は validation 強化の意図はあるが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築する stale draft PR という観測メモ
 - [report-slug-config-repro-2026-05-19](sources/report-slug-config-repro-2026-05-19.md) — `/reports/{slug}` は通常生成物では `config` 付きだが、壊れた成果物は `config` 欠損のまま返すという再現メモ
+- [role-model-papers-polis-birdwatch](sources/role-model-papers-polis-birdwatch.md) — 広聴AI紹介論文のロールモデルとなる vTaiwan / Polis と Birdwatch / Community Notes 論文の要点
+- [open-issues-snapshot-2026-05-19](sources/open-issues-snapshot-2026-05-19.md) — 2026-05-19 時点の open issue を新しい順に読み、CLI 整備と Web/static 公開の事故修正に論点が集中していることを記録した snapshot
+- [open-issue-backlog-2026-05-19](sources/open-issue-backlog-2026-05-19.md) — 2026-05-19 時点の open issue 145 件を本文付きで読み、未解決問題の全体像を取るための backlog source
 
 ## Analyses
 
@@ -80,6 +89,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [chart-scroll-ux-decision](analyses/chart-scroll-ux-decision.md) — ScatterChart スクロール誤操作対策で好まれた UX と preview 不足の影響
 - [non-nishio-human-pr-status](analyses/non-nishio-human-pr-status.md) — nishio 以外の人間 authored open PR が stale に見える理由の整理
 - [book-release-development-plan-2026-09](analyses/book-release-development-plan-2026-09.md) — 2026-09 ごろの書籍リリースを前提にした開発計画案
+- [issue-priority-through-2026-09](analyses/issue-priority-through-2026-09.md) — 2026-05-19 時点の open issue を 9 月までの計画に引き直した優先度整理
+- [problem-list-from-open-issues-2026-05-19](analyses/problem-list-from-open-issues-2026-05-19.md) — open issue 145 件から抽出した「解決すべき問題」一覧
 - [umap-seed-history](analyses/umap-seed-history.md) — seed 固定が再現性要求から生まれ、後に並列性とのトレードオフとして見直された経緯
 - [codeql-introduction-context](analyses/codeql-introduction-context.md) — `PR #817` 文脈で CodeQL がどう入ったか
 - [auto-cluster-defaults](analyses/auto-cluster-defaults.md) — `[3, 6]` 固定値問題を docs / 実装 / AI 利用経路の不一致として整理
@@ -87,4 +98,9 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-801-merge-assessment](analyses/pr-801-merge-assessment.md) — `PR #801` は React fix の方向性は理解できても stale `package.json` patch なのでそのまま merge すべきでないという判断
 - [pr-802-merge-assessment](analyses/pr-802-merge-assessment.md) — `PR #802` は `Overview` 1 箇所だけでは不十分なので merge しない方がよいという判断
 - [pr-814-merge-assessment](analyses/pr-814-merge-assessment.md) — `PR #814` は方向性はよいが draft / review 未充足で、`BUILD_SLUGS` 誤診断も詰めてから merge したいという判断
+- [pr-727-merge-assessment](analyses/pr-727-merge-assessment.md) — `PR #727` は validation が実際には動かず API URL 解決も本体とずれるため、そのまま merge すべきでないという判断
+- [pr-722-merge-assessment](analyses/pr-722-merge-assessment.md) — `PR #722` は deprecated shim を増築する stale patch なので、そのまま merge ではなく current `analysis-core` 向け再設計が妥当という判断
 - [report-slug-config-behavior](analyses/report-slug-config-behavior.md) — `reports/:slug` の `config` 欠損は通常生成ではなく router 無検証が原因という整理
+- [kouchou-ai-paper-draft-strategy](analyses/kouchou-ai-paper-draft-strategy.md) — 広聴AI紹介論文を wiki で育てる方針と、日本語先行か英語投稿かの比較
+- [kouchou-ai-paper-draft-ja](analyses/kouchou-ai-paper-draft-ja.md) — 広聴AI紹介論文の日本語本文下書き
+- [kouchou-ai-paper-evidence-map](analyses/kouchou-ai-paper-evidence-map.md) — 論文の主張と根拠、不足証拠、ギャップの対応表

@@ -37,6 +37,8 @@ sources:
 - `run()` — 既定。レガシーの `run_step` ループで 8 ステップを順番に呼ぶ。**CLI と API サーバはこれを呼ぶ**
 - `run_workflow()` — [[plugin-system]] dispatch 経由。実装済みだが production パスでは未使用（[[refactoring-status]]）
 
+利用者視点では、これは [[usage-modes]] にある **CLI モード** のコアにあたる。Web UI モードでも計算自体はこのパイプラインを共有するが、表示経路は `public-viewer` 側で分かれる。
+
 ## Jigsaw 系 LLM 分類をどう差し込む想定だったか
 
 [[slack-dev-kouchouai-2026-q1]] 2026-02-11 週では、近い将来の案として **`extraction, embedding` の後に LLM ベースのクラスタリングへ分岐する枝** が語られている。これは理論上の最適形ではなく、まずは **既存のパイプラインや可視化と両立する形で分析切り替え部分を検証する** ための互換性優先案。
@@ -90,6 +92,7 @@ sources:
 - 従来は「サーバを立てて `npm run build`」する必要があったが、AI コーディングエージェントは「サーバ無しで HTML を出して静的ホスト」したい
 - Python から直接静的 HTML を吐く実装を追加。デフォルトをこちらにする方針
 - 旧サーバ経路との見た目は 100% 同一ではない — 「実験的ビューを試しやすい」副産物がある
+- ただし current プロダクトの主経路はなお `hierarchical_result.json` を `public-viewer` で描画する形で、`report.html` は CLI 向け sidecar 成果物として理解する方が正確
 
 ## PR #827 が何を具体化したか
 

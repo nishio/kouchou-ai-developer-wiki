@@ -4,6 +4,7 @@ summary: `apps/public-viewer` の build failure は Next.js bump 由来とは限
 sources:
   - source-code.md
   - github-dev-docs.md
+  - pr-835-static-build-fail-fast-observation-2026-05-19.md
 ---
 
 `PR #823` (`next` `16.2.3` → `16.2.6`) の追加切り分けで、`apps/public-viewer` の build 失敗は dependency bump 単独では説明できないと分かった。`main@3809a7a` と `pr-823` の両方で同系統の症状を再現している。[[source-code]]より
@@ -40,3 +41,4 @@ sources:
 ## Updates
 
 - 2026-05-18: `PR #823` 切り分けから初版作成
+- 2026-05-19: `PR #835` で `generateStaticParams()` の static export 向け fail-fast が helper 化され、空 `/reports` では明示的な日本語エラー、ready レポートあり環境では successful static build になることを clean worktree で再確認

@@ -33,3 +33,5 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-19: `origin/main@7c43a24` の一時 worktree を作り、`pnpm install --frozen-lockfile` 後に root から `pnpm --filter @kouchou-ai/public-viewer dev` を起動して `http://127.0.0.1:3000` へアクセスしたが、PR 本文にある `ReactCurrentDispatcher.current` / `useReducer` crash は再現しなかった
+- 2026-05-19: 同確認では root と `apps/public-viewer` の React はどちらも `19.2.3` で、`require.resolve('react')` も同じ実体を指していた。観測されたのは `Failed to parse URL from /meta/metadata.json` だけで、React 二重読込の症状は current clean install では確認できなかった

@@ -220,6 +220,7 @@ main に未反映の open PR 群を、「9 月前に必要」「9 月後でよ�
 
 ## Updates
 
+- 2026-05-19: open issue を新しい順に読み直した優先度案として [[issue-priority-through-2026-09]] を追加。`analysis-core` CLI の canonical path 固定と Web/static 公開の事故回避を、9 月前の issue triage の最優先と読む補助線を置いた。[[issue-priority-through-2026-09]]より
 - 2026-05-18: 初回作成。ユーザから与えられた「2026-09 ごろ書籍リリース」前提で、既存 Wiki の観測を開発計画に再編
 - 2026-05-18: 「書籍で使い方を紹介しない」前提を反映し、計画の軸を操作導線固定から流入者の受け皿整備・contribution 地盤整備へ修正
 - 2026-05-18: 「v5 は間に合う範囲なら入れる」前提を反映し、default 化と限定投入を分けて整理

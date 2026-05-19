@@ -4,6 +4,7 @@ summary: kouchou-ai のランタイム構成 — api / public-viewer / admin / s
 type: concept
 sources:
   - github-dev-docs.md
+  - source-code.md
 ---
 
 ## サービス一覧
@@ -60,6 +61,17 @@ CSV アップロード (admin UI)        ┐
 ```
 
 旧 `apps/api/broadlistening/pipeline/` は deprecation shim として残るが新規開発で触らない（[[refactoring-status]]）。詳細は [[pipeline]]。
+
+## 利用モードごとの見方
+
+この構成は、利用者から見ると大きく 2 モードに分かれる。詳細は [[usage-modes]]。
+
+- **Web UI モード**:
+  `admin` → `api` → `public-viewer`
+- **CLI モード**:
+  `kouchou-analyze` / `python -m analysis_core` → ローカル成果物
+
+両者は `packages/analysis-core/` を共有するが、表示経路は別。`public-viewer` は `hierarchical_result.json` を描画し、CLI 側では必要に応じて standalone `report.html` も使える。
 
 ## 主要ライブラリ・依存
 

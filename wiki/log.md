@@ -1,5 +1,128 @@
 # Log
 
+## [2026-05-19 18:12] filing-back | この会話で出た triage heuristic を wiki に反映
+
+- [[problem-list-from-open-issues-2026-05-19]] に、「ユーザが感じた困りごとは本物でも issue 内の提案解は stale なことが多いので、両者を分けて読む」という heuristic を追記
+- [[usage-modes]] に、研究者・データサイエンティスト向けの `CLI` 最適化と、非エンジニア向けの `Zip + setup.bat + Web UI` 完結導線を別問題として扱う含意を追記
+
+## [2026-05-19 17:51] filing-back | 利用モードごとの正規入口方針を wiki に反映
+
+- [[usage-modes]] に、研究者・データサイエンティスト向けは `Mac/Linux + CLI` を正規入口とし、`Windows` は `WSL2/Docker` 寄せでよい一方、非専門家向けは `Zip + setup.bat + Web UI` に近い入口を目標形とする整理を追記
+- [[problem-list-from-open-issues-2026-05-19]] の 1 位を、「CLI の正規入口」一般論から「利用モードごとの正規入口未固定」へ言い換えた
+
+## [2026-05-19 17:36] filing-back | problem list を 9 月前の優先順に並べ替え
+
+- [[problem-list-from-open-issues-2026-05-19]] に `Priority Through 2026-09` を追加し、15 個の根本問題を current path 安定化と公開運用事故の回避を基準に並べ替えた
+- 入口の canonical path 固定、preflight、不安定な公開経路、provider 誤判定、失敗時の観測可能性を上位に置き、アルゴリズム探索や provider 拡張は後段へ回す整理にした
+
+## [2026-05-19 17:28] filing-back | open issue 145 件から「解決すべき問題」一覧を抽出
+
+- 新規 source [[open-issue-backlog-2026-05-19]] を追加し、open issue 145 件を本文付きで読み切った snapshot と recurring themes を記録
+- 新規 analysis [[problem-list-from-open-issues-2026-05-19]] を追加し、個別 issue をそのまま採用せず「実行入口」「preflight 不足」「provider 不整合」「公開経路の brittle さ」など 15 個の根本問題へ圧縮した
+- 各 problem の下には、解決策そのものではなく観測点・提案案として関連 issue へのリンクをぶら下げた
+- [[issue-priority-through-2026-09]] に、この problem list を土台として参照する追記を入れた
+- [[index]] を更新し、新規 source / analysis を登録
+
+## [2026-05-19 17:28] lint | problem list 追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 既知の孤立 page 群は継続だが、新規 `[[problem-list-from-open-issues-2026-05-19]]` と `[[open-issue-backlog-2026-05-19]]` は参照付きで追加できた
+
+## [2026-05-19 17:07] filing-back | open issue を新しい順に読み、9 月までの優先度案を wiki 化
+
+- 新規 source [[open-issues-snapshot-2026-05-19]] を追加し、`gh issue list` / `gh issue view` / `gh pr list` に基づく 2026-05-19 時点の open issue snapshot を記録
+- 新規 analysis [[issue-priority-through-2026-09]] を追加し、`analysis-core` CLI の canonical path 固定と Web/static 公開の事故回避を 9 月前の最優先とする整理を追記
+- [[book-release-development-plan-2026-09]] に update を追記し、issue ベースの優先度案を既存の 9 月計画ページから参照できるようにした
+- [[index]] を更新し、新規 source / analysis を登録
+
+## [2026-05-19 17:07] lint | open issue 優先度整理後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 新規 `[[issue-priority-through-2026-09]]` への incoming wikilink を [[book-release-development-plan-2026-09]] に追加し、index 経由だけの孤立を解消
+
+## [2026-05-19 14:54] filing-back | 広聴AI論文の evidence map を追加
+
+- 新規 analysis [[kouchou-ai-paper-evidence-map]] を追加し、想定 claim ごとの既存根拠、追加で必要な証拠、現状の強弱を対応付けた
+- [[kouchou-ai-paper-draft-strategy]] に、本文下書きと evidence map を往復しながら育てる方針を追記
+- [[index]] を更新して新規 analysis を登録
+
+## [2026-05-19 14:54] lint | 論文戦略ページと日本語下書き追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 新規 `[[kouchou-ai-paper-draft-ja]]` は strategy page からも参照するよう補足し、index 経由だけの孤立を避けた
+
+## [2026-05-19 14:54] filing-back | 広聴AI紹介論文のロールモデルと草稿戦略を wiki 化
+
+- 新規 source [[role-model-papers-polis-birdwatch]] を追加し、`vTaiwan: An Empirical Study of Open Consultation Process in Taiwan` と Birdwatch / Community Notes 論文群を、広聴AI紹介論文のロールモデルとして要約
+- 新規 analysis [[kouchou-ai-paper-draft-strategy]] を追加し、日本語で草稿を育てつつ英語投稿可能性を閉じない進め方と、日本語先行 vs 英語投稿の比較を整理
+- 新規 analysis [[kouchou-ai-paper-draft-ja]] を追加し、問題設定、関連研究、システム、事例、評価、限界の骨組みを先に配置
+- [[open-decisions]] に、論文の投稿言語と論文タイプを未決論点として追加
+- [[index]] を更新して新規 source / analysis を登録
+
+## [2026-05-19 13:05] filing-back | `PR #824` / `PR #825` merge 後の current `main` 状態を補正
+
+- 新規 source [[pr-824-local-llm-https-observation-2026-05-19]] を追加し、`PR #824` は analysis 実行経路では full URL / `LOCAL_LLM_API_KEY` 対応済みだが、`/admin/models` の model list probe はまだ `host:port` + `http://` 前提であることを整理
+- 新規 source [[pr-825-standalone-html-observation-2026-05-19]] を追加し、`PR #825` は current `analysis-core` CLI では `report.html` 既定生成まで main に入った一方、Web の主経路は依然 `hierarchical_result.json` + `public-viewer` であり HTML は sidecar 成果物に留まることを整理
+- [[open-decisions]] / [[gotchas]] / [[cli]] を更新し、「どの経路まで直っているか」だけでなく「それが Web 主経路なのか sidecar なのか」も分けて整理
+
+## [2026-05-19 13:20] filing-back | `PR #825` の整理を「admin/API 未反映」から「CLI sidecar と Web 主経路の別物」へ補正
+
+- `apps/public-viewer/app/[slug]/page.tsx`、`apps/api/src/routers/report.py`、`apps/api/src/services/report_sync.py` を確認し、Web 表示は `hierarchical_result.json` を public API 経由で描画しており、`report.html` は保持対象でも配信主経路でもないことを確認
+- [[pr-825-standalone-html-observation-2026-05-19]] / [[open-decisions]] / [[gotchas]] / [[cli]] / [[index]] の `PR #825` 記述を、この構造に合わせて補正
+
+## [2026-05-19 13:20] lint | `PR #825` 整理し直し後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、今回の補正では新規問題なし
+
+## [2026-05-19 13:23] filing-back | Web UI モードと CLI モードの二分法を概念ページ化
+
+- 新規 concept [[usage-modes]] を追加し、非専門家向け Web UI と研究者・データサイエンティスト向け CLI / `analysis-core` を分けて説明
+- [[kouchou-ai]] / [[architecture-overview]] / [[pipeline]] / [[deployment]] / [[index]] を更新し、機能や PR を「どちらの利用モードの改善か」で読む導線を追加
+
+## [2026-05-19 13:24] lint | `usage-modes` 追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、`usage-modes` 追加による新規問題なし
+
+## [2026-05-19 13:26] filing-back | `open-decisions` を Web UI / CLI / 共通コアの読み筋で棚卸し
+
+- [[open-decisions]] の各状態セクション内を、[[usage-modes]] に合わせて `Web UI` / `CLI` / `共通コア` の小見出しで再編
+- `PR #825` / `PR #824` のように「同じ main 変更でもどの利用モードに効くかが違う」論点を、状態分類と利用モード分類の両方で読める形に補正
+
+## [2026-05-19 13:26] lint | `open-decisions` 棚卸し後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、今回の再編では新規問題なし
+
+## [2026-05-19 13:28] filing-back | `gotchas` を Web UI / CLI / 共通運用で読み分けられる形に再編
+
+- [[gotchas]] 冒頭に [[usage-modes]] ベースの読み方を追加
+- 既存の gotcha を `Web UI` / `CLI / analysis-core` / `共通運用` の 3 章へ再配置し、どの利用モードの罠かを追いやすくした
+
+## [2026-05-19 13:28] lint | `gotchas` 再編後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、今回の再編では新規問題なし
+
+## [2026-05-19 13:08] lint | `PR #824` / `PR #825` 補正後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、新規追加 source には問題なし
+
+## [2026-05-19 16:10] filing-back | `PR #801` は current `main` clean install で非再現だったことを追記
+
+- [[pr-801-react-override-observation-2026-05-19]] に、`origin/main@7c43a24` の一時 worktreeで `pnpm install --frozen-lockfile` 後に root から `public-viewer` dev server を起動しても React dispatcher crash は再現しなかった観測を追記
+- [[pr-801-merge-assessment]] を更新し、判断を「patch を current `main` に作り直す」から「一度 close し、過去に観測された事象としてだけ残して将来の再発を待つ」へ修正
+
 ## [2026-05-19 01:01] lint | `reports/:slug` `config` 欠損再現の filing-back 後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -355,3 +478,25 @@
 
 - 新規 source ページ [[pr-802-overview-config-observation-2026-05-19]] を追加し、draft 状態・1 行差分・current `public-viewer` とのズレを観測メモ化
 - 新規 analysis ページ [[pr-802-merge-assessment]] を追加し、「`Overview` だけ null-safe にしても `config` 欠損対策として不十分なので merge しない」という判断を残した
+
+## [2026-05-19 13:25] filing-back | `PR #727` の draft review を wiki に記録
+
+- draft open PR 2 件のうち、差分が小さい `PR #727` を選んで review
+- 新規 source ページ [[pr-727-static-build-validation-observation-2026-05-19]] を追加し、validation が実行されない点と API URL 解決 drift を観測メモ化
+- 新規 analysis ページ [[pr-727-merge-assessment]] を追加し、「そのまま merge ではなく request changes」が妥当という判断を残した
+
+## [2026-05-19 14:20] filing-back | `PR #835` の static export fail-fast 実装と clean worktree 検証を wiki に記録
+
+- 新規 source ページ [[pr-835-static-build-fail-fast-observation-2026-05-19]] を追加し、`PR #835` の helper 化・`BUILD_SLUGS` 分岐・clean worktree での成功/失敗検証を観測メモ化
+- [[pr-814-merge-assessment]] に、懸念していた `BUILD_SLUGS` 誤診断を `PR #835` がどう解いたかを update として追記
+- [[public-viewer-build-behavior]] に、空 `/reports` では明示的エラー、ready レポートあり環境では successful static build になることを追記
+
+## [2026-05-19 16:51] filing-back | `PR #722` の stale draft 判断を wiki に記録
+
+- 新規 source ページ [[pr-722-filesystem-validation-observation-2026-05-19]] を追加し、draft/open/conflicting 状態と deprecated `server/...` 経路への増築である点を観測メモ化
+- 新規 analysis ページ [[pr-722-merge-assessment]] を追加し、「そのまま merge ではなく current `analysis-core` 向けに再設計」が妥当という判断を残した
+
+## [2026-05-19 16:51] lint | `PR #722` 追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+- 新規 `[[pr-722-merge-assessment]]` は index 登録済み。incoming wikilink はまだ無いので孤立ページ扱い

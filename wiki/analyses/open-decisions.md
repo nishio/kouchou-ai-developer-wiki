@@ -7,6 +7,8 @@ sources:
   - github-dev-docs.md
   - source-code.md
   - slack-dev-kouchouai-2026-q1.md
+  - pr-824-local-llm-https-observation-2026-05-19.md
+  - pr-825-standalone-html-observation-2026-05-19.md
 ---
 
 [[kouchou-ai]] には進行中の作業が多数あり、`docs/` や [[meeting-minutes]] が断片的に語る状態を新規コントリビュータが追いづらい。本ページでは課題を **3 つの状態** に分類して並べる。
@@ -17,11 +19,19 @@ sources:
 
 「やります」「やりません」を Wiki 自身が判断するのではなく、**現在の合意状態を観測** して整理する。状態が変わったら本ページを更新する。
 
+加えて 2026-05-19 以降は、[[usage-modes]] に合わせて各論点を次の 3 軸でも読む。
+
+- **Web UI** — 非専門家向け運用プロダクト (`admin` / `api` / `public-viewer` / 共有・公開)
+- **CLI** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / sidecar HTML)
+- **共通コア** — 両モードに跨る分析品質・provider・出力スキーマ・plugin 基盤
+
 2026-05-17 時点では `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` も参照し、main にまだ無いが open PR として存在する作業を C に含めている。
 
 ---
 
 ## A. 未定（合意なし／対立あり）
+
+### A-Web UI
 
 ### A1. 散布図の維持 vs 廃止
 
@@ -68,9 +78,13 @@ sources:
 
 [[meeting-minutes]] 2025-03-26, 2025-04-23：4 段階対策（効率化 → 検証可能性 → フィルタリング → 認証）のうち、**ステップ 1-2 のみ着手**（[[nishio]] の `pubcom-seiri` 等）。3-4 は未定。
 
+### A-CLI
+
 ### A9. ipynb 研究の置き場所
 
 [[meeting-minutes]] 2025-10-08 で [[nishio]] の「A: ipynb / B: CLI / C: WebUI / D: ホスト型デモ」分類は議論されたが、リサーチ ipynb をリポジトリ内のどこに置くか／別リポジトリにするか **未決**（現在は外部 `nishio/broadlistening-research/` などに散在）。
+
+### A-共通コア
 
 ### A10. 可視化 plugin の Python 化
 
@@ -80,9 +94,15 @@ sources:
 
 [[gotchas|2026-05 の HTTPS バグ]]を受けて「`LOCAL` という命名が実装にバイアスを与えていた」教訓があるが、リネーム提案までは至っていない（[[llm-providers]]）。
 
+### A12. 広聴AI紹介論文の投稿戦略
+
+[[kouchou-ai-paper-draft-strategy]]で整理した通り、広聴AIを紹介する論文を書く価値自体は高いが、**日本語論文を主成果物にするのか、英語投稿を主成果物にするのか** は未決である。Polis / vTaiwan 型の制度・プロセス記述に寄せるのか、Birdwatch / Community Notes 型の評価論文に寄せるのかでも必要データが変わる。[[kouchou-ai-paper-draft-strategy]]より
+
 ---
 
 ## B. 方針決定済み・未着手
+
+### B-CLI
 
 ### B1. `extraction.skip: true` オプション
 
@@ -117,9 +137,13 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 [[cli]]：`action="store_true"` + `default=True` で CLI から False に戻せない問題。**既知だが修正未着手**。修正方針自体は単純（`store_false` 化など）。
 
+### B-Web UI
+
 ### B9. `packages/ui-shared/` 共有 UI パッケージ
 
 `docs/refactoring/phase0_investigation.md` と `naming_convention.md` に計画記載があるが **ディレクトリ未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue #586）と紐づくはずだが進んでいない。
+
+### B-共通運用
 
 ### B10. ルート `CHANGELOG.md` 整備
 
@@ -152,13 +176,21 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 整理のため Phase 進行中／PR 出てる項目もここにまとめる。詳細は [[refactoring-status]]。
 
-### C1. PR #825 — Python 直接静的 HTML 出力
+### C-Web UI
 
-[[meeting-minutes]] 2026-05-18 見出しで [[nishio]] が報告。main の tip は #821（PR #825 未マージ）。AI コーディングエージェントから "サーバ無しで HTML を吐く" 用途を支える基幹機能になる想定。
+### C1. standalone `report.html` を保存・配信対象にするか
+
+`PR #825` 自体は 2026-05-18 に merge 済みで、current `main` の `analysis-core` CLI では自己完結型 `report.html` を既定生成する。ここまでは **完了済み**。[[pr-825-standalone-html-observation-2026-05-19]]より
+
+未完了なのは、これを **Web プロダクトのどこに位置づけるか** である。current `apps/api/src/routers/report.py` は `hierarchical_result.json` を返し、`apps/public-viewer` はその JSON を描画する。さらに `report_sync.py` も `report.html` を保持対象に含めない。したがって今の `report.html` は CLI / coding agent 向け sidecar に留まっており、**保存・配信対象へ昇格させる設計判断はまだ行われていない**。[[pr-825-standalone-html-observation-2026-05-19]]より
 
 ### C2. PR #824 — LOCAL LLM の HTTPS 対応
 
-[[meeting-minutes]] 2026-05-18 見出し。同じく未確認。`main@3809a7a` の `analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` はなお `http://{host}:{port}/v1` を組み立てる実装なので、**少なくとも main のコードからは完了と言い切れない**。
+`PR #824` は 2026-05-18 に merge 済みで、current `packages/analysis-core/src/analysis_core/services/llm.py` は `local_llm_address` に full URL を受け取れる helper と `LOCAL_LLM_API_KEY` 対応を持つ。`apps/api/src/services/report_launcher.py` も analysis 実行自体はこの `analysis-core` を subprocess 起動するため、**実際の分析経路は current `main` で HTTPS/full-URL 対応済み** と読める。[[pr-824-local-llm-https-observation-2026-05-19]]より
+
+ただし current `apps/api/src/services/llm_models.py` の `/admin/models` 用 LocalLLM model list probe はなお `host:port` + `http://.../v1` 前提で、admin 画面のモデル取得 UX は full URL gateway に追随していない。したがって「基幹処理は完了、admin 補助経路は未統一」という意味で C に残すのが近い。[[pr-824-local-llm-https-observation-2026-05-19]]より
+
+### C-共通コア
 
 ### C3. フロント側可視化 plugin 基盤
 
@@ -175,7 +207,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 | B. 方針決定済み・未着手 | 14 |
 | C. 着手済み・未完了 | 3 |
 
-「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。
+「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
 
 ## 観測手順
 
@@ -196,3 +228,5 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `#2_開発_広聴ai` ログから、Jigsaw 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加
 - 2026-05-18: A7 に、モバイルでは「静的画像 → 全体インタラクティブビュー」案も候補であることを追記
 - 2026-05-18: PR `#827` により、Jigsaw 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新
+- 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI sidecar HTML と Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
+- 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング

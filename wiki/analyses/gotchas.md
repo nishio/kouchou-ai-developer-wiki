@@ -7,11 +7,21 @@ sources:
   - meeting-minutes.md
   - slack-kouchouai-algorithm-dev.md
   - source-code.md
+  - pr-824-local-llm-https-observation-2026-05-19.md
+  - pr-825-standalone-html-observation-2026-05-19.md
 ---
 
 コードを読むだけでは復元しづらく、議論や実地報告で繰り返し顔を出すハマりどころ。一次ソースは [[meeting-minutes]] と `docs/development/*`。
 
-## 環境変数・設定
+2026-05-19 以降は、[[usage-modes]] に合わせて次の 3 軸で読む。
+
+- **Web UI** — 非専門家向け運用プロダクト (`admin` / `api` / `public-viewer` / 共有・公開)
+- **CLI / analysis-core** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / sidecar HTML)
+- **共通運用** — どちらの利用モードでも踏みうる環境・レビュー・ツールチェイン
+
+## Web UI の gotchas
+
+### 環境変数・設定
 
 ### `AZURE_OPENAI_*` ではなく `AZURE_CHATCOMPLETION_*`
 
@@ -29,12 +39,40 @@ sources:
 
 `apps/public-viewer/components/reporter/Reporter.tsx` は `new URL("/meta/reporter.png", process.env.API_BASEPATH)` を直接使うため、`API_BASEPATH` が空だと `ERR_INVALID_URL` になる。`getApiBaseUrl()` は `NEXT_PUBLIC_API_BASEPATH` fallback を持つのに、`Reporter` だけ前提がずれている。`.github/workflows/client-build.yml` も `NEXT_PUBLIC_API_BASEPATH` のみを渡しているため、API が実際に応答する build 環境では別の failure source になりうる。[[public-viewer-build-behavior]]より
 
-### LOCAL LLM は `main@3809a7a` でも `https://...` を素直には受け取れない
+### LOCAL LLM の analysis 実行経路と admin の model list probe は揃っていない
 
-[[meeting-minutes]] 2026-05-18 見出し / PR #824 では修正報告があるが、`main@3809a7a` の `packages/analysis-core/src/analysis_core/services/llm.py` と `apps/api/src/services/llm_models.py` は依然として `local_llm_address` を **`host:port` 形式として解釈し、`http://{host}:{port}/v1` を組み立てる**。`https://example.com` のような URL をそのまま渡すと崩れる可能性が高い。  
-**「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓自体は有効。詳細は [[llm-providers]]。
+`PR #824` merge 後の current `main` では、`packages/analysis-core/src/analysis_core/services/llm.py` と legacy `apps/api/broadlistening/pipeline/services/llm.py` は `_resolve_local_llm_base_url()` により `https://gateway.example.com` のような full URL を受け取れ、`LOCAL_LLM_API_KEY` も使える。したがって **分析実行そのもの** は HTTPS/full-URL LocalLLM gateway へ到達できる。[[pr-824-local-llm-https-observation-2026-05-19]]より
 
-## パイプライン・データ
+一方で current `apps/api/src/services/llm_models.py` の `get_local_llm_models()` はなお `host:port` を `http://.../v1` へ組み立てるため、`/admin/models` 経由の **モデル一覧取得 UI だけは旧前提のまま**。設定画面で model list fetch が失敗しても、実際の分析 subprocess 側は通るというズレが起こりうる。  
+**「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓自体はまだ有効。詳細は [[llm-providers]]。
+
+### `PR #825` の `report.html` を Web 主経路だと思い込むとずれる
+
+current `analysis-core` CLI は `--without-html` の default が `False` になり、`hierarchical_visualization` が pure-Python の自己完結型 `report.html` を生成する。つまり **CLI / 手動実行 / coding agent 直実行では、Node や API server なしで HTML を見られる**。[[pr-825-standalone-html-observation-2026-05-19]]より
+
+ただし current Web プロダクトは `apps/api/src/routers/report.py` が `hierarchical_result.json` を返し、`apps/public-viewer` がそれを fetch して描画する構成で、`report_sync.py` も `report.html` を保持対象に含めない。したがって `PR #825` が merge 済みだからといって、**Web 表示が standalone HTML に切り替わった**、あるいは **admin/API 経路で HTML を残すべきはずだ** と考えるとずれる。`report.html` は現状では sidecar 成果物。[[pr-825-standalone-html-observation-2026-05-19]]より
+
+### デプロイ・ホスティング
+
+### 静的書き出し HTML の置き場問題
+
+非エンジニアユーザが kouchou-ai の出力 HTML をどこに置くか — 2025-04 から 2026-05 まで毎回議論されながら未解決。候補：SaaS ホスト `kouchou-ai.dd2030.org`、埋め込み fetch 型、BASIC 認証付き Azure。
+
+### GitHub Pages サブパスで画像 404
+
+PR #709：ハードコードされた `/images/foo.png` 形式のパスがサブパス配信で 404 に。`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH` で配信パスを設定する運用。
+
+### Plotly 散布図 click 不発
+
+Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
+
+### UI の細かい操作感は shared preview がないと議論が止まりやすい
+
+`Issue #493` / `PR #597` の ScatterChart スクロール誤操作対策では、動画付きで案が出ても「実際に触らないと判断しきれない」が繰り返し発生した。2025-06 時点では main の最新版を共有確認できる preview 環境がなく、代替として `ngrok` が話題に出る程度だった。**チャート UX のような体感依存の PR は、共有 preview 導線が無いと stale 化しやすい**。[[chart-scroll-ux-decision]]より
+
+## CLI / analysis-core の gotchas
+
+### パイプライン・データ
 
 ### Slack で `embeddings.pkl` が UMAP 後 2D と誤認された
 
@@ -73,7 +111,42 @@ sources:
 [[slack-kouchouai-algorithm-dev]] 2025-05 〜 2026-03 では、利用者が UMAP 2D 散布図の軸や距離に強い意味を読み込みがちである一方、開発側は「軸自体には意味がない」「UMAP 後に `k-means` するとアーティファクトを拾う」と繰り返し警戒している。  
 **図が綺麗に見える = 分類が妥当** ではない。散布図まわりの議論では、見栄えの話と分析精度の話を混ぜるとすぐに認識がずれる。
 
-## OS・環境
+### リファクタ・パッケージ周り
+
+### 旧 `hierarchical_main.py` は黙って動く
+
+`apps/api/broadlistening/pipeline/hierarchical_main.py` は `DeprecationWarning` を出すだけで実行は通る。古い手順書を見て `python hierarchical_main.py` した人は **黙ってステイル版のステップが走る**。バグレポートのトレースに `broadlistening/pipeline/steps/...` が含まれていたら旧パスを疑う。canonical は `packages/analysis-core/`（[[refactoring-status]]）。
+
+### 同名 `PluginRegistry` が 2 つある
+
+- `src.plugins.registry.PluginRegistry` (input plugin、class-level state)
+- `analysis_core.plugin.registry.PluginRegistry` (analysis plugin、instance-based singleton)
+
+同じクラス名でも全く別物。import 先を間違えると一見動くがどこにも登録されない（[[plugin-system]]）。
+
+### CLI `--skip-interaction` は無効化できない
+
+current `main` では `--without-html` は `default=False` に直ったが、`--skip-interaction` はなお `action="store_true"` + `default=True` のため、**コマンドラインから False に戻せない**。対話確認をさせたい用途ではライブラリ API 側の扱いまで見る必要がある（[[cli]]）。
+
+### PyPI パッケージ名 `kouchou-ai-analysis-core` と import 名 `analysis_core`
+
+ハイフン／アンダースコアの食い違い。`pip install` と `import` で違う。
+
+### `analysis-core` pyproject.toml の Documentation URL が壊れている
+
+`Documentation = "...docs/CLI_QUICKSTART.md"` を指すが実体は `docs/user-guide/cli-quickstart.md`。
+
+### PyPI build は package ディレクトリの外で
+
+`docs/development/pypi-release.md`：venv が `packages/analysis-core/` 内にあると `AbsoluteLinkError`。リリースは外側で実施。
+
+### release test に version literal を埋めると PyPI publish を自分で止める
+
+2026-05-18 の `analysis-core-v0.1.1` publish 実験では、workflow 自体は起動したが `tests/test_cli.py` と `tests/test_imports.py` が `0.1.0` を hardcode していたため `pytest` が failure になり、`Publish to PyPI` step が skip された。release 向け package では、**version bump のたびに壊れる assertion を test に埋めると自動 publish の gate で自滅する**。`0.1.2` ではこの test を修正して publish success。[[pypi-release-observation-2026-05-19]]より
+
+## 共通運用の gotchas
+
+### OS・環境
 
 ### Windows インストール地獄
 
@@ -89,32 +162,7 @@ sources:
 
 [[meeting-minutes]] 2025-04：クラウドへ再デプロイすると過去レポートが消える事故が頻発。`/scripts/fetch_reports.py` でバックアップできるが discoverability が悪い。
 
-## リファクタ・パッケージ周り
-
-### 旧 `hierarchical_main.py` は黙って動く
-
-`apps/api/broadlistening/pipeline/hierarchical_main.py` は `DeprecationWarning` を出すだけで実行は通る。古い手順書を見て `python hierarchical_main.py` した人は **黙ってステイル版のステップが走る**。バグレポートのトレースに `broadlistening/pipeline/steps/...` が含まれていたら旧パスを疑う。canonical は `packages/analysis-core/`（[[refactoring-status]]）。
-
-### 同名 `PluginRegistry` が 2 つある
-
-- `src.plugins.registry.PluginRegistry` (input plugin、class-level state)
-- `analysis_core.plugin.registry.PluginRegistry` (analysis plugin、instance-based singleton)
-
-同じクラス名でも全く別物。import 先を間違えると一見動くがどこにも登録されない（[[plugin-system]]）。
-
-### CLI `--without-html` / `--skip-interaction` が無効化できない
-
-両者は `action="store_true"` + `default=True` で定義されていて、**コマンドラインから False に戻せない**。HTML を出したい時はライブラリ API を直接叩く（[[cli]]）。
-
-### PyPI パッケージ名 `kouchou-ai-analysis-core` と import 名 `analysis_core`
-
-ハイフン／アンダースコアの食い違い。`pip install` と `import` で違う。
-
-### `analysis-core` pyproject.toml の Documentation URL が壊れている
-
-`Documentation = "...docs/CLI_QUICKSTART.md"` を指すが実体は `docs/user-guide/cli-quickstart.md`。
-
-## ツールチェイン
+### ツールチェイン
 
 ### npm は非対応
 
@@ -132,33 +180,7 @@ sources:
 
 Issue #724：静的ファイル出力時のクロスデバイスリンクエラー。Devin が 30 分で緊急修正した（2025-10-29）。
 
-## デプロイ・ホスティング
-
-### 静的書き出し HTML の置き場問題
-
-非エンジニアユーザが kouchou-ai の出力 HTML をどこに置くか — 2025-04 から 2026-05 まで毎回議論されながら未解決。候補：SaaS ホスト `kouchou-ai.dd2030.org`、埋め込み fetch 型、BASIC 認証付き Azure。
-
-### GitHub Pages サブパスで画像 404
-
-PR #709：ハードコードされた `/images/foo.png` 形式のパスがサブパス配信で 404 に。`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH` で配信パスを設定する運用。
-
-### Plotly 散布図 click 不発
-
-Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
-
-### UI の細かい操作感は shared preview がないと議論が止まりやすい
-
-`Issue #493` / `PR #597` の ScatterChart スクロール誤操作対策では、動画付きで案が出ても「実際に触らないと判断しきれない」が繰り返し発生した。2025-06 時点では main の最新版を共有確認できる preview 環境がなく、代替として `ngrok` が話題に出る程度だった。**チャート UX のような体感依存の PR は、共有 preview 導線が無いと stale 化しやすい**。[[chart-scroll-ux-decision]]より
-
-### PyPI build は package ディレクトリの外で
-
-`docs/development/pypi-release.md`：venv が `packages/analysis-core/` 内にあると `AbsoluteLinkError`。リリースは外側で実施。
-
-### release test に version literal を埋めると PyPI publish を自分で止める
-
-2026-05-18 の `analysis-core-v0.1.1` publish 実験では、workflow 自体は起動したが `tests/test_cli.py` と `tests/test_imports.py` が `0.1.0` を hardcode していたため `pytest` が failure になり、`Publish to PyPI` step が skip された。release 向け package では、**version bump のたびに壊れる assertion を test に埋めると自動 publish の gate で自滅する**。`0.1.2` ではこの test を修正して publish success。[[pypi-release-observation-2026-05-19]]より
-
-## ドキュメント・運用
+### ドキュメント・運用
 
 ### `docs/` の例が AI に伝播する
 
@@ -208,3 +230,5 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-18: merge 理由コメントと通常 merge を先に試し、admin merge は最後の手段にする運用メモを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` から、散布図の見た目とクラスタ妥当性を同一視しやすい問題を追記
 - 2026-05-19: `analysis-core-v0.1.1` failure から、release test に version literal を埋めると自動 publish を塞ぐことを追記
+- 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI sidecar だと補正
+- 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編

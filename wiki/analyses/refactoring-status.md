@@ -79,7 +79,8 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
-[[meeting-minutes]] では着地したかのように語られているが、**main の tip は #821**（2026-05 中旬時点）。`82d870f test: 静的HTML出力（GitHub Pages等）のE2Eテスト` は別件（static-site-builder の E2E テスト）。PR #825 は未マージ／別ブランチの可能性。
+2026-05-19 時点では `PR #825` は merge 済みで、`analysis-core` CLI は自己完結型 `report.html` を既定生成できる。  
+ただしこれは **CLI / coding agent 向け sidecar 出力** であり、Web プロダクトの主経路を置き換えたわけではない。current `public-viewer` はなお `/reports/{slug}` から `hierarchical_result.json` を fetch して描画し、`report_sync.py` も `report.html` を保持対象に含めない。したがって「静的 HTML 出力の実装」は入ったが、「プロダクトの配信経路として採用された」とまでは言えない。
 
 ## 「別リポジトリでリファクタする」の方針との整合
 

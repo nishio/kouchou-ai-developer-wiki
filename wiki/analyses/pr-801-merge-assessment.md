@@ -18,24 +18,22 @@ current `main` の root `package.json` には `pnpm.overrides.minimatch = "^10.2
 
 PR metadata は `mergeable: CONFLICTING`, `mergeStateStatus: DIRTY`, `reviewDecision: REVIEW_REQUIRED`。さらに `gh pr checks 801` では branch に紐づく checks が reported されていない。よって内容以前に、merge queue へ載せる最低限の状態整理も未了。[[pr-801-react-override-observation-2026-05-19]]より
 
-### 3. 問題意識自体は残っている可能性があるので、close するなら「不要」ではなく「current main で作り直し」と整理すべき
+### 3. current `main` の clean install では症状を再現できず、恒久修正 PR としての根拠が弱い
 
-`apps/admin` / `apps/public-viewer` はともに React 19.2.x 系だが、root `package.json` に React override はまだ無い。PR 本文が主張する dev overlay 側と app 側の React instance mismatch は current lockfile 上でも理屈としては起こりうるため、論点の triage と patch の stale 判定を分けて扱う必要がある。[[source-code]]より
+`origin/main@7c43a24` の一時 worktree で `pnpm install --frozen-lockfile` を行い、root から `pnpm --filter @kouchou-ai/public-viewer dev` を起動して確認したが、PR 本文にある `ReactCurrentDispatcher.current` / `useReducer` crash は再現しなかった。root / app 側の React はどちらも `19.2.3` で同一実体に解決されており、少なくとも current clean install を直すための修正としては根拠が弱い。[[pr-801-react-override-observation-2026-05-19]]より
 
 ## Recommendation
 
 - `PR #801` はそのまま merge しない
-- 採用するなら、current `main` に対して `pnpm.overrides` を **マージ** する patch として作り直す
-- 最低でも `minimatch` を保持したまま
-  - `react: "19.2.3"`
-  - `react-dom: "19.2.3"`
-  を併記する形に直してから再評価する
+- 現時点では close し、「2026-02 時点では一度こういう観測があったが、2026-05-19 の current `main` clean install では再現しない」と整理する
+- 将来同種の React instance mismatch が再発したら、その時点の lockfile / install 状態つきで再切り分けする
 
 ## Open Questions
 
-- current `main` で `make client-dev` を実行した時、本当に root/app 間の React instance mismatch が再現するか
-- `react` / `react-dom` を `19.2.3` に固定すると、他 app / package 側の将来更新を不必要に縛らないか
+- 2026-02 の観測は、当時の lockfile そのものの問題だったのか、それとも一部ローカル環境の install 汚染だったのか
+- 将来 Next.js / React 更新で再び root/app 間の React 解決差が出る条件はあるか
 
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-19: current `main` clean install で非再現だったことを反映し、判断を「作り直して merge」から「一度 close して観測だけ残す」へ更新

@@ -40,3 +40,4 @@ repo 内に `process.exit()` は既に `apps/public-viewer/scripts/rename-file.m
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-19: `PR #835` で、ここで懸念していた `BUILD_SLUGS` 誤診断を分ける helper ベース実装が clean worktree で再実装され、draft PR 化された
