@@ -102,6 +102,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-727-merge-assessment](analyses/pr-727-merge-assessment.md) — `PR #727` は validation が実際には動かず API URL 解決も本体とずれるため、そのまま merge すべきでないという判断
 - [pr-722-merge-assessment](analyses/pr-722-merge-assessment.md) — `PR #722` は deprecated shim を増築する stale patch なので、そのまま merge ではなく current `analysis-core` 向け再設計が妥当という判断
 - [report-slug-config-behavior](analyses/report-slug-config-behavior.md) — `reports/:slug` の `config` 欠損は通常生成ではなく router 無検証が原因という整理
+- [workflow-defaultization-blockers](analyses/workflow-defaultization-blockers.md) — `run_workflow()` を default にできていない実装差分の整理
 - [kouchou-ai-paper-draft-strategy](analyses/kouchou-ai-paper-draft-strategy.md) — 広聴AI紹介論文を wiki で育てる方針と、日本語先行か英語投稿かの比較
 - [kouchou-ai-paper-draft-ja](analyses/kouchou-ai-paper-draft-ja.md) — 広聴AI紹介論文の日本語本文下書き
 - [kouchou-ai-paper-evidence-map](analyses/kouchou-ai-paper-evidence-map.md) — 論文の主張と根拠、不足証拠、ギャップの対応表

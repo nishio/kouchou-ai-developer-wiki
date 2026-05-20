@@ -76,6 +76,7 @@ sources:
 - `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` まで揃っている
 - ただし [[cli|CLI]] (`analysis_core.__main__`) と API サーバ (`report_launcher.py`) はどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
 - `packages/analysis-core/README.md` や integration/e2e tests も legacy mode を主経路として説明・検証している
+- current tree では、初期 `comments` artifact の注入、status 永続化、`without_html`/`without-html` 正規化、visualization artifact 契約に未吸収の差があり、default 化 blocker は [[workflow-defaultization-blockers]] に整理した
 - → **plugin システムは production パスに乗っていない**
 
 ### Phase 8 — 旧コード削除 ⚠️ 部分的
@@ -133,7 +134,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 ## Open Questions
 
-- Phase 3b (`run_workflow()`) を default にする計画／タイミング
+- Phase 3b (`run_workflow()`) を default にする計画／タイミング（具体的 blocker は [[workflow-defaultization-blockers]]）
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
 - Web/API でも `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
 - `--skip-interaction` の argparse バグ修正 ([[cli]])

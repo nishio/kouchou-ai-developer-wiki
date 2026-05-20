@@ -128,7 +128,7 @@ sources:
 
 ### B6. Phase 3b — `run_workflow()` を default 経路に
 
-[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。**切替タイミング未定**。
+[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。さらに current tree には、初期 `comments` artifact 注入、status 永続化、`without_html` / `without-html` の key drift、visualization artifact 契約などの未吸収差分がある。したがって「呼び先を置き換えるだけ」の段階ではなく、**実装差分を埋める計画未着手** と読むのが近い。詳細は [[workflow-defaultization-blockers]]。
 
 ### B7. 外部 `plugins/analysis/` ディレクトリの実利用
 

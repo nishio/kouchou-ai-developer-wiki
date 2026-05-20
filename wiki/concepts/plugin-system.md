@@ -69,6 +69,8 @@ sources:
 
 = plugin システムは [[refactoring-status|Phase 3a 完了 / Phase 3b dormant]] の状態。今ステップを書き換える時、plugin wrapper も同時に直すか／wrapper は最終的に削除予定かは要確認。
 
+「なぜ dormant のままか」を current `main` のコード差分で見ると、初期 input artifact、status 永続化、config key 正規化、visualization artifact 契約に未吸収のギャップがある。詳細は [[workflow-defaultization-blockers]]。
+
 ## 外部 plugin loader と現実
 
 `loader.discover_plugin_directories()` は以下を探す：

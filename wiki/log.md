@@ -1,5 +1,19 @@
 # Log
 
+## [2026-05-20 12:09] filing-back | `run_workflow()` default 化 blocker を切り出し
+
+- 新規 analysis [[workflow-defaultization-blockers]] を追加し、Phase 3b が dormant の理由を「未使用」ではなく、初期 `comments` artifact、status 永続化、`without_html`/`without-html` key drift、visualization artifact 契約の差分として整理
+- [[refactoring-status]] の Phase 3b に、default 化 blocker の参照を追記
+- [[open-decisions]] の B6 を更新し、「切替タイミング未定」だけでなく、未吸収の実装差分があることを明記
+- [[plugin-system]] にも current `main` で見える dormant 理由の参照を追加
+- [[index]] を更新して新規 analysis を登録
+
+## [2026-05-20 12:09] lint | `run_workflow()` blocker 追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系など 9 件のみで、今回の追加による新規問題はなし
+
 ## [2026-05-20 12:02] filing-back | `refactoring-status` を current `main@b4d4bcf` に同期
 
 - [[refactoring-status]] を更新し、Phase 2.5 の `kouchou-ai-analysis-core 0.1.2` と tag 起点の自動 PyPI publish workflow を反映
