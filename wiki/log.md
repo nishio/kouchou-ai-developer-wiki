@@ -112,6 +112,28 @@
 - 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
 - 孤立 page は既知の merge-assessment 系と `codeql-introduction-context` / `report-slug-config-behavior` のみで、今回の再編では新規問題なし
 
+## [2026-05-20 11:40] filing-back | `refactoring-status` に利用モード別の補助線を追加
+
+- [[refactoring-status]] に [[usage-modes]] ベースの `Web UI` / `CLI / analysis-core` / `共通基盤` の読み方を追加
+- 各 Phase、未実装項目、`PR #825` の位置づけを「どの利用モードに効く話か」で読めるよう補正
+
+## [2026-05-20 11:40] lint | `refactoring-status` 再編後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と source 数件のみで、今回の再編では新規問題なし
+
+## [2026-05-20 11:42] filing-back | `contributing` に利用モード起点の PR 読解ルールを追加
+
+- [[contributing]] に、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追加
+- review 方針と open PR の見方にも、主経路変更か sidecar 変更かを見分ける観点を追記
+
+## [2026-05-20 11:42] lint | `contributing` 更新後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系と source 数件のみで、今回の更新では新規問題なし
+
 ## [2026-05-19 13:08] lint | `PR #824` / `PR #825` 補正後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -500,3 +522,14 @@
 
 - `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
 - 新規 `[[pr-722-merge-assessment]]` は index 登録済み。incoming wikilink はまだ無いので孤立ページ扱い
+
+## [2026-05-20 12:05] filing-back | `work/kouchou-ai/` の dirty reason 棚卸しと `PR #839` による cleanup を wiki に記録
+
+- 新規 source ページ [[worktree-hygiene-observation-2026-05-20]] を追加し、`issue-830` 本筋ではなく `report validation` / static build fail-fast / `.venv-ci` / `apps/api/uv.lock` が混在していたことを観測メモ化
+- 新規 analysis ページ [[worktree-hygiene]] を追加し、`work/kouchou-ai/` を current tree の基準面として保つための dedicated worktree / ignore 運用を整理
+- `PR #839` (`[codex] ignore apps/api uv lockfile`) の作成、checks success、`REVIEW_REQUIRED` による block、`gh pr merge --admin` による merge を source に反映
+
+## [2026-05-20 12:06] lint | worktree hygiene 追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+- 新規 `[[worktree-hygiene]]` は index 登録済み。incoming wikilink はまだ無いので孤立ページ扱い
