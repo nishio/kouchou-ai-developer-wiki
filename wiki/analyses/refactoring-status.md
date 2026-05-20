@@ -5,9 +5,17 @@ type: analysis
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
+  - pr-825-standalone-html-observation-2026-05-19.md
 ---
 
 [[meeting-minutes]] では「v5.0 plugin 化は別リポジトリで開発」「2026-06 リリース目標」と語られていたが、実コードを読むと **既に大部分が main にマージされている**。docs と実装の乖離を整理する。
+
+2026-05-20 時点では、[[usage-modes]] に合わせて次の 3 軸でも読む。
+
+- **Web UI** — `admin` / `api` / `public-viewer` / 配信・共有の改善
+- **CLI / analysis-core** — `analysis-core` / PyPI / 中間成果物 / sidecar HTML の改善
+- **共通基盤** — 両モードで共有するパイプライン、plugin 基盤、provider、旧コード削除
 
 ## 出典
 
@@ -15,9 +23,15 @@ sources:
 - `docs/refactoring/phase2_5_plan.md`
 - `docs/refactoring/phase3_plan.md`
 - `docs/refactoring/naming_convention.md`
-- 実コード（main, tip `3809a7a`、2026-05 時点）— [[source-code]]
+- 実コード（main, tip `55e93e1`、2026-05-20 時点）— [[source-code]]
 
 ## Phase 別の状況
+
+### 読み方
+
+- **Phase 1 / 2 / 3a / 3b / 8** は主に **共通基盤** の話
+- **Phase 2.5** は主に **CLI / analysis-core** の話
+- `packages/ui-shared/` や frontend plugin のような周辺論点は **Web UI** に寄る
 
 ### Phase 1 — ディレクトリ再構成 ✅ 完了
 
@@ -28,6 +42,8 @@ sources:
 8 ステップすべてが `packages/analysis-core/src/analysis_core/steps/` に存在。`apps/api/broadlistening/pipeline/steps/` にも同名ファイルが残っているが、これらは **deprecated layer**。
 
 ### Phase 2.5 — PyPI パッケージ化 ✅ ほぼ完了
+
+利用モード: **CLI / analysis-core**
 
 - `kouchou-ai-analysis-core` (version `0.1.0`) として PyPI 公開
 - `[project.scripts] kouchou-analyze = "analysis_core.__main__:main"` で CLI 配信
@@ -40,6 +56,8 @@ sources:
 
 ### Phase 3a — plugin インフラ ✅ 完了
 
+利用モード: **共通基盤**
+
 `packages/analysis-core/src/analysis_core/plugin/` に：
 
 - `interface.py`（`AnalysisStepPlugin` ABC、`PluginMetadata`）
@@ -51,11 +69,15 @@ sources:
 
 ### Phase 3b — workflow engine ⚠️ 実装あるが dormant
 
+利用モード: **共通基盤**
+
 - `orchestrator.run_workflow()` は実装済み（plugin dispatch 経由）
 - ただし [[cli|CLI]] と API サーバはどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
 - → **plugin システムは production パスに乗っていない**
 
 ### Phase 8 — 旧コード削除 ⚠️ 部分的
+
+利用モード: **共通基盤**
 
 `apps/api/broadlistening/pipeline/hierarchical_main.py` 冒頭：
 
@@ -71,13 +93,20 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 ## docs / 議事メモにあるが実装に存在しないもの
 
-- 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
+### Web UI 寄り
+
 - `packages/ui-shared/` — Phase 0 投資計画と naming convention に記載があるが未作成
-- `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
-- YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
 - 可視化 plugin の **Python 系統** — `why-plugin-system.md` で 3 軸目として言及されるがバックエンド側に実装なし。代わりに `apps/public-viewer/components/charts/plugins/` の **TypeScript 側 registry/types/validation と built-in plugin** は既に存在する
 
+### CLI / analysis-core 寄り
+
+- 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
+- `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
+- YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
+
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
+
+利用モード: **CLI / analysis-core**（ただし Web UI との境界論点を持つ）
 
 2026-05-19 時点では `PR #825` は merge 済みで、`analysis-core` CLI は自己完結型 `report.html` を既定生成できる。  
 ただしこれは **CLI / coding agent 向け sidecar 出力** であり、Web プロダクトの主経路を置き換えたわけではない。current `public-viewer` はなお `/reports/{slug}` から `hierarchical_result.json` を fetch して描画し、`report_sync.py` も `report.html` を保持対象に含めない。したがって「静的 HTML 出力の実装」は入ったが、「プロダクトの配信経路として採用された」とまでは言えない。
@@ -92,6 +121,11 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 一方、**plugin 化は dormant** — 既存ステップを書き換える時、plugin wrapper も同時に直すべきか、wrapper は最終的に削除される予定なのか、要確認
 - 旧 `apps/api/broadlistening/pipeline/` には触らない（deprecated）。バグ報告で旧パスのトレースを見たら「`hierarchical_main.py` で実行している」を疑う
 
+利用モードの観点で言い換えると：
+
+- **Web UI の変更** か **CLI / analysis-core の変更** かを先に切り分けた方が、PR や docs の読み違いが減る
+- その上で、plugin 基盤・workflow engine・旧コード削除のような話を **共通基盤** として追うと、`open-decisions` や `gotchas` と対応が取りやすい
+
 ## Open Questions
 
 - Phase 3b (`run_workflow()`) を default にする計画／タイミング
@@ -105,3 +139,4 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化
+- 2026-05-20: [[usage-modes]] に合わせ、各 Phase / 周辺論点 / `PR #825` を Web UI / CLI / 共通基盤のどこに効く話か読めるよう補助線を追加

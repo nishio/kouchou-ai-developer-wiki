@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
 ---
 
 ## 基本フロー（CONTRIBUTING.md）
@@ -17,6 +18,19 @@ sources:
 「先に PR」は強く非推奨。`CONTRIBUTING.md`：合意なしの新機能 PR は **マージされない傾向** がある。
 
 ただし、実際の作業は **この Wiki repo で調査・整理しつつ、`work/kouchou-ai/` で本体コードを触り、最終的に `digitaldemocracy2030/kouchou-ai` に PR を出す** 形になることがある。これは例外ではなく想定された運用。全体像は [[wiki-driven-workflow]] を参照。
+
+## まず利用モードを判定する
+
+2026-05 時点では、PR や issue を読む前に **それがどの利用モードの改善か** を切るとレビューしやすい。詳細は [[usage-modes]]。
+
+- **Web UI**:
+  `admin` / `api` / `public-viewer` / 公開・共有・ホスティングに効く変更
+- **CLI / analysis-core**:
+  `packages/analysis-core/` / `kouchou-analyze` / PyPI / 中間成果物 / `report.html` に効く変更
+- **共通基盤**:
+  パイプライン品質、provider 対応、plugin 基盤、旧コード削除のように両方へ効く変更
+
+この切り分けを先にしておくと、`PR #825` のような「CLI では重要だが Web の主経路は変えない」変更を、Web 機能の未反映として誤読しにくい。
 
 ## CLA
 
@@ -40,6 +54,15 @@ sources:
 - OS × LLM プロバイダの組み合わせ爆発で全マトリクスのテストは不可能 — **「壊れても良い」許容範囲をどう設計するか** が継続課題
 - 2025-05-07 以降「壊れても OK」のスタンスが採用されたが、具体的なマージ基準は PR テンプレ以上には固まっていない
 
+実務上の入口としては、まず **利用モード** を見て、その次に **差分の大きさ** と **必要な確認環境** を見ると迷いにくい。
+
+- **Web UI PR**:
+  `admin` / `public-viewer` / build / preview / 共有 UX を重点確認
+- **CLI / analysis-core PR**:
+  `config`、生成物、再現性、PyPI / CLI 挙動、データ件数依存の挙動を重点確認
+- **共通基盤 PR**:
+  両モードへの波及、出力スキーマ互換、deprecated 経路への影響を重点確認
+
 ## PROJECTS.md
 
 ボード運用とその自動化（[[other-contributors|sasano さん]]）：assign / unassign / `/ready` / `/archive` などの bot 動作が定義されている。
@@ -60,6 +83,13 @@ gh pr list -R digitaldemocracy2030/kouchou-ai --state open
 - `#823`, `#822` Dependabot による Next.js 更新
 
 つまり、Wiki 上で「未完了」「未反映」と書くときは **main に無いこと** と **open PR に存在すること** を区別する必要がある。
+
+加えて、open PR を見たら最初に次の 2 つを切ると読み違いが減る。
+
+1. **どの利用モードの改善か**  
+   `Web UI` / `CLI` / `共通基盤`
+2. **その変更は主経路を変えるのか、sidecar / 補助経路の改善なのか**  
+   例: `PR #825` は CLI 側 sidecar HTML の改善であり、Web の主経路変更ではない
 
 AI エージェントや人間が作った **draft PR は、そのまま merge 対象とみなさない** 方が安全。少なくとも 2026-05-18 の運用では、draft は「まだ merge 手順に入っていない作業中の状態」と解釈し、**ready for review に切り替えてから** review / merge 判断に進むルールを置くのがよい。特に AI エージェント起点の PR は「一度 draft で出し、人間が内容を見て ready にする」方が事故が少ない。[[coding-agents]]より
 
@@ -120,3 +150,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: merge 理由コメント → approve → 通常 merge → admin merge fallback の順を追記
 - 2026-05-18: 書籍流入を見込んだ「新規流入者の受け皿」観点を追記
 - 2026-05-18: draft PR は merge せず、ready for review にしてから merge 判断へ進む運用メモを追記
+- 2026-05-20: [[usage-modes]] に合わせ、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追記
