@@ -1,6 +1,6 @@
 ---
 name: refactoring-status
-summary: v5 リファクタの実装状況 — Phase 0〜3a 着地、Phase 3b は dormant、Phase 8 (旧コード削除) は未完
+summary: v5 リファクタの実装状況 — Phase 0〜3a は概ね着地、Phase 3b は dormant、Phase 8 (旧コード削除) は未完
 type: analysis
 sources:
   - github-dev-docs.md
@@ -23,7 +23,7 @@ sources:
 - `docs/refactoring/phase2_5_plan.md`
 - `docs/refactoring/phase3_plan.md`
 - `docs/refactoring/naming_convention.md`
-- 実コード（main, tip `55e93e1`、2026-05-20 時点）— [[source-code]]
+- 実コード（main, tip `b4d4bcf`、2026-05-20 12:02 JST 時点）— [[source-code]]
 
 ## Phase 別の状況
 
@@ -45,14 +45,15 @@ sources:
 
 利用モード: **CLI / analysis-core**
 
-- `kouchou-ai-analysis-core` (version `0.1.0`) として PyPI 公開
+- `kouchou-ai-analysis-core` (version `0.1.2`) として PyPI 公開
 - `[project.scripts] kouchou-analyze = "analysis_core.__main__:main"` で CLI 配信
 - API サーバはこの CLI を **subprocess** で呼ぶ ([[cli]])
+- `analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` があり、`ruff` / `pytest` / `build` 通過後に PyPI publish する自動 release 経路も入った
 
 **未完**：
 
 - Task 2.5.6（torch / sklearn を `[clustering]`, `[embeddings]` extras に分割）→ 全部 `dependencies` のまま
-- 自動 PyPI リリース GitHub Action → workflow ファイル無し、手動リリース運用
+- Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定しており、CLI 既定の self-contained `report.html` を活かしていない
 
 ### Phase 3a — plugin インフラ ✅ 完了
 
@@ -72,7 +73,9 @@ sources:
 利用モード: **共通基盤**
 
 - `orchestrator.run_workflow()` は実装済み（plugin dispatch 経由）
-- ただし [[cli|CLI]] と API サーバはどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
+- `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` まで揃っている
+- ただし [[cli|CLI]] (`analysis_core.__main__`) と API サーバ (`report_launcher.py`) はどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
+- `packages/analysis-core/README.md` や integration/e2e tests も legacy mode を主経路として説明・検証している
 - → **plugin システムは production パスに乗っていない**
 
 ### Phase 8 — 旧コード削除 ⚠️ 部分的
@@ -89,7 +92,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 = **DeprecationWarning は出すが動く**。同様に `hierarchical_utils.py` も shim 化。
 
-ただし `steps/` 配下の旧コード約 1600 LOC は残存していて、`hierarchical_main.py` 経由で実行すれば旧パスが動く。誰かが古い手順書で `python hierarchical_main.py` すると **黙ってステイル版が動く**。
+ただし `steps/` 配下の旧コード約 1600 LOC は残存していて、`hierarchical_main.py` 経由で実行すれば旧パスが動く。誰かが古い手順書で `python hierarchical_main.py` すると **黙ってステイル版が動く**。さらに current `apps/api/broadlistening/README.md` もなお「FastAPI サーバーは `hierarchical_main.py` を起点に実行する」と説明しており、docs drift が残っている。
 
 ## docs / 議事メモにあるが実装に存在しないもの
 
@@ -103,6 +106,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
 - `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
 - YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
+- `apps/api` からの subprocess 起動は current でも `--without-html` を固定しており、CLI 既定の `report.html` 出力と挙動が分かれている
 
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
@@ -119,6 +123,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - **「v5 はまだ別世界」というメンタルモデルは正しくない**。`packages/analysis-core/` のコードは既に canonical。新規 PR は基本こちらに投げる
 - 一方、**plugin 化は dormant** — 既存ステップを書き換える時、plugin wrapper も同時に直すべきか、wrapper は最終的に削除される予定なのか、要確認
+- `analysis-core` 自体の配布はほぼ着地したが、**CLI の canonical 挙動** と **Web/API が固定している挙動** はまだ揃っていない
 - 旧 `apps/api/broadlistening/pipeline/` には触らない（deprecated）。バグ報告で旧パスのトレースを見たら「`hierarchical_main.py` で実行している」を疑う
 
 利用モードの観点で言い換えると：
@@ -130,8 +135,9 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - Phase 3b (`run_workflow()`) を default にする計画／タイミング
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
-- `--without-html` / `--skip-interaction` の argparse バグ修正 ([[cli]])
-- 依存分割（Task 2.5.6）と自動 PyPI リリース
+- Web/API でも `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
+- `--skip-interaction` の argparse バグ修正 ([[cli]])
+- 依存分割（Task 2.5.6）
 
 これらを含む全プロジェクトの未着地論点は [[open-decisions]] に分類整理。
 
@@ -140,3 +146,4 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化
 - 2026-05-20: [[usage-modes]] に合わせ、各 Phase / 周辺論点 / `PR #825` を Web UI / CLI / 共通基盤のどこに効く話か読めるよう補助線を追加
+- 2026-05-20: `main@b4d4bcf` を再確認し、Phase 2.5 の自動 PyPI release 導入済み、Phase 3b の dormant 継続、Phase 8 の docs drift、`apps/api` の `--without-html` 固定を反映

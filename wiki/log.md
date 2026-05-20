@@ -1,5 +1,18 @@
 # Log
 
+## [2026-05-20 12:02] filing-back | `refactoring-status` を current `main@b4d4bcf` に同期
+
+- [[refactoring-status]] を更新し、Phase 2.5 の `kouchou-ai-analysis-core 0.1.2` と tag 起点の自動 PyPI publish workflow を反映
+- 同ページに、Phase 3b は `WorkflowEngine` / tests まである一方で CLI / API / README / integration tests はなお legacy `.run()` 主経路で dormant 継続と追記
+- Phase 8 について、旧 `broadlistening/pipeline/` 残存に加え `apps/api/broadlistening/README.md` が `hierarchical_main.py` 起点だと説明し続けている docs drift を追記
+- [[open-decisions]] の B3 を「自動 PyPI リリース未配線」から「PyPI リリース運用の硬化」へ更新
+
+## [2026-05-20 12:02] lint | `refactoring-status` 同期後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系など 9 件のみで、今回の更新による新規問題はなし
+
 ## [2026-05-19 18:12] filing-back | この会話で出た triage heuristic を wiki に反映
 
 - [[problem-list-from-open-issues-2026-05-19]] に、「ユーザが感じた困りごとは本物でも issue 内の提案解は stale なことが多いので、両者を分けて読む」という heuristic を追記

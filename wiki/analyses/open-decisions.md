@@ -113,9 +113,10 @@ sources:
 [[meeting-minutes]] 2026-05-18 見出し：「クラスタ数を optional にし、データ件数から `∛n` で自動算出」方向で合意。`PR #832` は merge され、`analysis-core` で `cluster_nums` 未指定時に extraction 後の `argument` 数から cube-root rule を使う実装が入った。したがってこの項目は **「未着手」ではなく一旦着地済み**。  
 残る open question は、README / getting-started / how-to-use の「コメント数ベース」説明を `argument` 数ベースへ揃えるかどうか、と読む方が正確。詳細は [[auto-cluster-defaults]]。
 
-### B3. 自動 PyPI リリース GitHub Action
+### B3. PyPI リリース運用の硬化
 
-`docs/development/pypi-release.md` に「(参考)」として workflow テンプレが書かれているが、`.github/workflows/` 配下に該当ファイルなし。**手動 `twine upload` 運用が続いている**（[[refactoring-status]]）。
+`analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` は current `main` にあり、`analysis-core-v0.1.2` で publish success も観測済み。したがって「自動 publish が無い」は古い。  
+未完なのは、`apps/api` 互換テストまで release gate に入れるか、`PYPI_API_TOKEN` 維持のまま行くか Trusted Publishing へ寄せるか、extras 分割と合わせてどこまで package を slim にするか、という **運用の硬化** である。[[pypi-auto-release-requirements]]より [[pypi-release-trigger]]より
 
 ### B4. 依存分割（`[clustering]`, `[embeddings]` extras）
 
