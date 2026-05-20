@@ -9,6 +9,7 @@ sources:
   - slack-dev-kouchouai-2026-q1.md
   - pr-824-local-llm-https-observation-2026-05-19.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
 [[kouchou-ai]] には進行中の作業が多数あり、`docs/` や [[meeting-minutes]] が断片的に語る状態を新規コントリビュータが追いづらい。本ページでは課題を **3 つの状態** に分類して並べる。
@@ -128,7 +129,8 @@ sources:
 
 ### B6. Phase 3b — `run_workflow()` を default 経路に
 
-[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。さらに current tree には、初期 `comments` artifact 注入、status 永続化、`without_html` / `without-html` の key drift、visualization artifact 契約などの未吸収差分がある。したがって「呼び先を置き換えるだけ」の段階ではなく、**実装差分を埋める計画未着手** と読むのが近い。詳細は [[workflow-defaultization-blockers]]。
+[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。さらに current tree には、初期 `comments` artifact 注入、status 永続化、`without_html` / `without-html` の key drift、visualization artifact 契約などの未吸収差分がある。  
+ただし 2026-05-20 時点の open PR `#840` は、この差分のうち初期 artifact / status / rerun artifact 再利用 / key drift / visualization 契約に既に手を入れている。したがって B6 は「未着手」より **着手済み・review 中だが production default には未到達** と読む方が近い。詳細は [[workflow-defaultization-blockers]] と [[pr-840-workflow-defaultization-observation-2026-05-20]]。
 
 ### B7. 外部 `plugins/analysis/` ディレクトリの実利用
 

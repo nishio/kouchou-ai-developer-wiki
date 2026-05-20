@@ -71,6 +71,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [open-issues-snapshot-2026-05-19](sources/open-issues-snapshot-2026-05-19.md) — 2026-05-19 時点の open issue を新しい順に読み、CLI 整備と Web/static 公開の事故修正に論点が集中していることを記録した snapshot
 - [open-issue-backlog-2026-05-19](sources/open-issue-backlog-2026-05-19.md) — 2026-05-19 時点の open issue 145 件を本文付きで読み、未解決問題の全体像を取るための backlog source
 - [worktree-hygiene-observation-2026-05-20](sources/worktree-hygiene-observation-2026-05-20.md) — `work/kouchou-ai/` の dirty は別件試作と local 生成物の混在で、`PR #839` で `apps/api/uv.lock` ignore を main に反映した観測メモ
+- [pr-840-workflow-defaultization-observation-2026-05-20](sources/pr-840-workflow-defaultization-observation-2026-05-20.md) — draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用までを段階的に進めている
 
 ## Analyses
 

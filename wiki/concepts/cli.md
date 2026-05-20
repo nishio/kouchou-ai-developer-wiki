@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
 ## エントリポイント
@@ -72,6 +73,8 @@ result = orchestrator.run()
 - `orchestrator.run()` — 既定。レガシーの `run_step` ループ
 - `orchestrator.run_workflow()` — [[plugin-system]] 経由の workflow 実行。**実装はあるが CLI からは呼ばれない**
 
+ただし 2026-05-20 時点の open PR `#840` では、`run_workflow()` 側に初期 `comments` artifact、status 永続化、rerun artifact 再利用まで段階的に持ち込み中であり、CLI default 化に向けた地ならしは進んでいる。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
+
 ## API サーバとの境界
 
 `apps/api/src/services/report_launcher.py` は **subprocess** で CLI を起動する：
@@ -113,3 +116,4 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-18: `Issue #830` / `PR #832` により、`cluster_nums` 省略時は cube-root rule で推奨値を自動算出する方向が具体化したことを追記
 - 2026-05-19: `PR #825` merge 後の current `main` に合わせ、`--without-html` は既定 False へ直ったが、これは CLI 側 sidecar HTML の話であり Web の主経路は JSON + `public-viewer` のままだと補正
+- 2026-05-20: open PR `#840` により、`run_workflow()` default 化へ向けた下回り実装が branch 上で進んでいることを追記

@@ -7,6 +7,7 @@ sources:
   - meeting-minutes.md
   - source-code.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
 [[meeting-minutes]] では「v5.0 plugin 化は別リポジトリで開発」「2026-06 リリース目標」と語られていたが、実コードを読むと **既に大部分が main にマージされている**。docs と実装の乖離を整理する。
@@ -75,9 +76,20 @@ sources:
 - `orchestrator.run_workflow()` は実装済み（plugin dispatch 経由）
 - `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` まで揃っている
 - ただし [[cli|CLI]] (`analysis_core.__main__`) と API サーバ (`report_launcher.py`) はどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
-- `packages/analysis-core/README.md` や integration/e2e tests も legacy mode を主経路として説明・検証している
+- `packages/analysis-core/README.md` や integration tests は branch 上で workflow default path に追随し始めたが、e2e tests や一部 docs にはなお legacy mode 前提が残る
 - current tree では、初期 `comments` artifact の注入、status 永続化、`without_html`/`without-html` 正規化、visualization artifact 契約に未吸収の差があり、default 化 blocker は [[workflow-defaultization-blockers]] に整理した
 - → **plugin システムは production パスに乗っていない**
+
+ただし open PR `#840` はこの dormant 状態を崩しに行く実装として進んでおり、2026-05-20 時点で少なくとも次が branch 上にある。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
+
+- 初期 `comments` artifact 注入
+- workflow path での `hierarchical_status.json` 永続化
+- `from_dict()` からの `previous` / rerun plan 読み込み
+- 既存成果物 (`args.csv`, `embeddings.pkl`, `hierarchical_result.json`, `report.html`) の artifact 再利用
+- `analysis_core.__main__` からの default 実行経路を `run_workflow()` 側へ寄せる変更
+- `apps/api/src/services/report_launcher.py` の command 共通化
+
+= **main ではなお dormant / open PR では CLI default path まで workflow 側へ寄せつつある** と書くのが current state に近い。
 
 ### Phase 8 — 旧コード削除 ⚠️ 部分的
 
@@ -148,3 +160,5 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化
 - 2026-05-20: [[usage-modes]] に合わせ、各 Phase / 周辺論点 / `PR #825` を Web UI / CLI / 共通基盤のどこに効く話か読めるよう補助線を追加
 - 2026-05-20: `main@b4d4bcf` を再確認し、Phase 2.5 の自動 PyPI release 導入済み、Phase 3b の dormant 継続、Phase 8 の docs drift、`apps/api` の `--without-html` 固定を反映
+- 2026-05-20: open PR [[pr-840-workflow-defaultization-observation-2026-05-20]] を反映し、Phase 3b は main では dormant だが PR 上では初期 artifact / status / rerun 再利用まで前進していると追記
+- 2026-05-20: 同 PR の追加 commit を反映し、branch 上では CLI default path 切替と API launcher command 共通化まで進んだと追記

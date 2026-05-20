@@ -1,5 +1,19 @@
 # Log
 
+## [2026-05-20 12:46] filing-back | workflow default 化の実装進捗を wiki に反映
+
+- 新規 source [[pr-840-workflow-defaultization-observation-2026-05-20]] を追加し、draft PR `#840` の 3 commit（初期 artifact、status 永続化、rerun artifact 再利用）を観測メモ化
+- [[refactoring-status]] を更新し、Phase 3b は main では dormant だが open PR 上では blocker 解消が段階的に進んでいると追記
+- [[workflow-defaultization-blockers]] を更新し、4 blocker は「未着手」ではなく branch 上で一部補修済みであることを反映
+- [[source-code]] / [[cli]] / [[open-decisions]] を更新し、current state を main と open PR に分けて読む必要があることを追記
+- [[index]] を更新して新規 source を登録
+
+## [2026-05-20 12:46] lint | workflow default 化進捗の filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の merge-assessment 系など 9 件のみで、今回の source / analysis 更新による新規問題はなし
+
 ## [2026-05-20 12:09] filing-back | `run_workflow()` default 化 blocker を切り出し
 
 - 新規 analysis [[workflow-defaultization-blockers]] を追加し、Phase 3b が dormant の理由を「未使用」ではなく、初期 `comments` artifact、status 永続化、`without_html`/`without-html` key drift、visualization artifact 契約の差分として整理
@@ -560,3 +574,16 @@
 
 - `python3 scripts/lint_wiki.py` 実行。壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
 - 新規 `[[worktree-hygiene]]` は index 登録済み。incoming wikilink はまだ無いので孤立ページ扱い
+
+## [2026-05-20 13:01] filing-back | PR #840 の追加 commits を wiki に反映
+
+- `pr-840-workflow-defaultization-observation-2026-05-20.md` に `cc17509`, `24e02cc`, `ec694b7` を追記
+- `workflow-defaultization-blockers.md`, `refactoring-status.md` を、CLI default path 切替と API launcher 共通化まで進んだ状態に更新
+
+## [2026-05-20 13:01] lint | PR #840 追加観測反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
