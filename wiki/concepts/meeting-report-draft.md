@@ -43,6 +43,11 @@ sources:
 - reviewer request / approval 催促 / admin merge のような「人間 attention を使う操作」は、AI が独断で行わず、明示指示がある時だけ実行するルールを wiki と `CLAUDE.md` に追記した。[[coding-agents]]より [[contributing]]より
 - さらに、Issue 実装前に assignee の有無を確認し、着手するなら self-assign してから進めるルールも追加した。並行開発の衝突防止が目的。[[coding-agents]]より
 
+### 5. レポート失敗時のエラーログを admin UI で見えるようにした
+
+- `#716 -> PR #852` で、`apps/api` が `analysis.log` を各 report 配下へ保存し、失敗時は `hierarchical_status.json` に `error` / `error_log_excerpt` を補完、`apps/admin` 側は progress card でその内容を表示するようにした。[[pr-852-error-log-visibility-observation-2026-05-22]]より
+- review では「draft PR だと CodeRabbit 自動 review が skip される」「launch-time failure では excerpt が空になる」という運用・実装両面の穴が見つかり、どちらも対応して merge 済み。次に同種の作業をする時の手順知見として残せる。[[coding-agents]]より [[source-code]]より
+
 ## Open Questions
 
 - このページを「常に次回会議向け 1 枚」に保つか、会議ごとに snapshot を切るかはまだ未決

@@ -957,3 +957,22 @@
 - unregistered pages: 0
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 00:03] filing-back | PR #852 の CodeRabbit 手動トリガー後状態を記録
+
+- 新規 source [[pr-852-error-log-visibility-observation-2026-05-22]] を追加
+- draft PR では CodeRabbit 自動 review が skip され、`@coderabbitai review` 後に review in progress 状態へ移ったことを記録
+- 同時点で `client-admin build` failure、他の主要 checks は概ね success / pending だったことも併記
+
+## [2026-05-22 01:29] filing-back | PR #852 merge までの review / CI / 実装修正を source と会議下書きへ反映
+
+- [[pr-852-error-log-visibility-observation-2026-05-22]] に、`stepKeys` 分離による client-admin build 修正、launch-time error payload 補完、CodeRabbit rate limit と status context の読み方、merge commit `6ff368d` までの更新を追記
+- [[meeting-report-draft]] に `#716 -> PR #852` の成果と、draft PR + CodeRabbit 運用知見を定例会議向け項目として追加
+
+## [2026-05-22 01:29] lint | PR #852 merge 反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0

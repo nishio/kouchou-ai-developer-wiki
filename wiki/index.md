@@ -66,6 +66,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-814-static-export-error-observation-2026-05-19](sources/pr-814-static-export-error-observation-2026-05-19.md) — `PR #814` の draft 状態と static export error 差分の観測メモ
 - [pr-835-static-build-fail-fast-observation-2026-05-19](sources/pr-835-static-build-fail-fast-observation-2026-05-19.md) — `PR #835` は static export 前提チェックを helper に寄せ、公開レポート 0 件と `BUILD_SLUGS` 不一致を分けて fail-fast する draft PR という観測メモ
 - [pr-849-agent-review-request-observation-2026-05-21](sources/pr-849-agent-review-request-observation-2026-05-21.md) — `PR #849` で AI が reviewer request を送れてしまったため、人間 attention を使う GitHub 操作は明示指示制にすべきという観測メモ
+- [pr-852-error-log-visibility-observation-2026-05-22](sources/pr-852-error-log-visibility-observation-2026-05-22.md) — `PR #852` で CodeRabbit を手動トリガーした時の draft skip / review in progress / CI 状態の観測
 - [pr-727-static-build-validation-observation-2026-05-19](sources/pr-727-static-build-validation-observation-2026-05-19.md) — `PR #727` は事前 validation の狙い自体は妥当だが、patch のままでは validation が実行されず API URL 解決も drift しているという観測メモ
 - [pr-722-filesystem-validation-observation-2026-05-19](sources/pr-722-filesystem-validation-observation-2026-05-19.md) — `PR #722` は validation 強化の意図はあるが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築する stale draft PR という観測メモ
 - [report-slug-config-repro-2026-05-19](sources/report-slug-config-repro-2026-05-19.md) — `/reports/{slug}` は通常生成物では `config` 付きだが、壊れた成果物は `config` 欠損のまま返すという再現メモ
