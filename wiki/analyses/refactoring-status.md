@@ -53,7 +53,6 @@ sources:
 
 **未完**：
 
-- Task 2.5.6（torch / sklearn を `[clustering]`, `[embeddings]` extras に分割）→ 全部 `dependencies` のまま。独立 PR として切れるが、`pyproject.toml` だけでなく eager import / CI / docs を同時に直す必要がある（[[analysis-core-extras-pr-scope]]）
 - Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定している。ただしこれは「CLI 既定に未追随な半端状態」というより、**Web は JSON + `public-viewer`、CLI は self-contained `report.html` sidecar** という artifact 契約の意図的分岐と読んだ方が正確である（[[usage-modes]], [[cli]]）
 
 ### Phase 3a — plugin インフラ ✅ 完了
@@ -140,7 +139,6 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
 - Web/API でも将来 `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
 - `--skip-interaction` の argparse バグ修正 ([[cli]])
-- 依存分割（Task 2.5.6）
 
 workflow default 化を止めていた実装差分と、その後どこまで解消されたかの履歴は [[workflow-defaultization-blockers]] を参照。
 
@@ -162,3 +160,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: Phase 3b の完了条件を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
 - 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
 - 2026-05-21: CLI の `report.html` 既定出力と API の `--without-html` 固定は「未整合」より「利用モード別の意図的分岐」と読めるよう表現を補正し、[[usage-modes]] / [[cli]] への導線を強めた
+- 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外

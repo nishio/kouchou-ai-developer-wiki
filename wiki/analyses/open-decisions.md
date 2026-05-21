@@ -117,11 +117,7 @@ sources:
 ### B3. PyPI リリース運用の硬化
 
 `analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` は current `main` にあり、`analysis-core-v0.1.2` で publish success も観測済み。したがって「自動 publish が無い」は古い。  
-未完なのは、`apps/api` 互換テストまで release gate に入れるか、`PYPI_API_TOKEN` 維持のまま行くか Trusted Publishing へ寄せるか、extras 分割と合わせてどこまで package を slim にするか、という **運用の硬化** である。[[pypi-auto-release-requirements]]より [[pypi-release-trigger]]より
-
-### B4. 依存分割（`[clustering]`, `[embeddings]` extras）
-
-`docs/refactoring/phase2_5_plan.md` Task 2.5.6 で「torch / sklearn を extras に分割」が計画されているが、`packages/analysis-core/pyproject.toml` の `dependencies` は monolithic のまま。`gemini` extra だけが存在。
+未完なのは、`apps/api` 互換テストまで release gate に入れるか、`PYPI_API_TOKEN` 維持のまま行くか Trusted Publishing へ寄せるか、package slimming 後の release gate をどこまで厳しくするか、という **運用の硬化** である。[[pypi-auto-release-requirements]]より [[pypi-release-trigger]]より
 
 ### B5. Phase 8 — 旧 `apps/api/broadlistening/pipeline/` 完全削除
 
@@ -195,6 +191,17 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 `apps/public-viewer/components/charts/plugins/` に registry / types / validation と built-in plugin (`scatter`, `treemap`, `hierarchy-list`) がある。**基盤自体は既に main にある**。  
 未完なのは、外部 plugin ロードやバックエンドの「第 3 軸」としての統一設計まで含めた完成形。
 
+### C4. analysis-core CLI の preflight validation
+
+`Issue #836` / `#837` は current `analysis-core` CLI に対する filesystem-based usage の明文化と config / input preflight 追加を求めている。2026-05-21 時点では open PR `#844` が、
+
+- `--validate-config` / `--validate-input`
+- `--dry-run` を cheap preflight + plan 表示として整理
+- input CSV の存在 / 必須カラム / `extraction.properties` の fail-fast
+- output artifact validation は runtime block でなく developer/test concern とする docs 明記
+
+までをまとめて進めている。したがって **着手済みだが main 未反映** として C に置くのが近い。`#838` の「output artifact validation を runtime に入れるか」は、この PR では docs 上の判断整理に留めている。[[source-code]]より
+
 ---
 
 ## 進行のスナップショット（2026-05 時点）
@@ -202,8 +209,8 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 | カテゴリ | 件数 |
 |---|---|
 | A. 未定 | 11 |
-| B. 方針決定済み・未着手 | 13 |
-| C. 着手済み・未完了 | 3 |
+| B. 方針決定済み・未着手 | 12 |
+| C. 着手済み・未完了 | 4 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
 
@@ -230,3 +237,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
 - 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
 - 2026-05-21: `main@0e1552d` を確認し、PR #840 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
+- 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加

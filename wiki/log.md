@@ -1,5 +1,17 @@
 # Log
 
+## [2026-05-21 19:44] lint | PR #843 merge / PR #844 着手反映後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は 10 件で、既知の単発 analysis 群に加えて `[[analysis-core-extras-pr-scope]]` が index 経由のみ。今回の更新で新規の壊れはなし
+
+## [2026-05-21 19:44] filing-back | PR #843 merge と PR #844 着手を wiki に反映
+
+- [[refactoring-status]] を更新し、`main@42d2afb` で Task 2.5.6（extras 分割）が merge 済みになったことを反映
+- [[open-decisions]] から stale になった B4 extras 分割項目を外し、open PR `#844` の analysis-core CLI preflight / filesystem-based docs を C4 として追加
+- `#838` については、runtime block ではなく developer/test concern 寄りという current 判断を C4 の説明に含めた
+
 ## [2026-05-21 14:54] lint | artifact 契約の意図的分岐を明記した後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -770,6 +782,20 @@
 - [[open-decisions]] から Phase 3b default 化未完の項目を外した
 
 ## [2026-05-21 13:41] lint | Phase 3b 完了反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 15:05] filing-back | developer-wiki の GitHub Pages 配信は MkDocs より Quartz を第一候補とする方針を整理
+
+- 新規 source [[wiki-pages-tooling-observation-2026-05-21]] を追加し、この repo の現行 `mkdocs.yml` / `scripts/build_pages_docs.py` / Pages workflow と Quartz 公式 docs を突き合わせた
+- 新規 analysis [[wiki-pages-publishing-stack]] を追加し、`wiki/` が knowledge base / digital garden 寄りである以上、公開 renderer も wikilink-native な Quartz の方が fit しやすいと整理
+- [[wiki-driven-workflow]] にこの repo 自体の公開方針メモを追記し、[[index]] へ導線を追加
+
+## [2026-05-21 15:06] lint | wiki GitHub Pages 配信方針の整理後に lint
 
 - `python3 scripts/lint_wiki.py`
 - broken wikilinks: 0
