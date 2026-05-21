@@ -26,6 +26,16 @@ export default (() => {
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
     const iconPath = joinSegments(baseDir, "static/icon.png")
+    const rootPathRedirectScript =
+      fileData.slug === "index" && cfg.baseUrl
+        ? `(() => {
+  const expected = ${JSON.stringify(url.pathname || "/")};
+  const current = window.location.pathname;
+  if (current === expected && !current.endsWith("/")) {
+    window.location.replace(current + "/" + window.location.search + window.location.hash);
+  }
+})();`
+        : null
 
     // Url of current page
     const socialUrl =
@@ -40,6 +50,12 @@ export default (() => {
       <head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+        {rootPathRedirectScript && (
+          <script
+            type="application/javascript"
+            dangerouslySetInnerHTML={{ __html: rootPathRedirectScript }}
+          />
+        )}
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
