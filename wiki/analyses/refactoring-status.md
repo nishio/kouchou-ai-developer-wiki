@@ -1,6 +1,6 @@
 ---
 name: refactoring-status
-summary: v5 リファクタの実装状況 — Phase 0〜3a は概ね着地、Phase 3b は dormant、Phase 8 (旧コード削除) は未完
+summary: v5 リファクタの実装状況 — Phase 0〜3b は概ね着地し、次の本丸は Phase 8 (旧コード削除) と PyPI package slimming
 type: analysis
 sources:
   - github-dev-docs.md
@@ -24,7 +24,7 @@ sources:
 - `docs/refactoring/phase2_5_plan.md`
 - `docs/refactoring/phase3_plan.md`
 - `docs/refactoring/naming_convention.md`
-- 実コード（main, tip `b4d4bcf`、2026-05-20 12:02 JST 時点）— [[source-code]]
+- 実コード（main, tip `0e1552d`、2026-05-21 05:00 JST 前後）— [[source-code]]
 
 ## Phase 別の状況
 
@@ -69,27 +69,17 @@ sources:
 
 `packages/analysis-core/src/analysis_core/plugins/builtin/` に 8 つの builtin plugin が居り、既存ステップ関数を薄くラップしている。
 
-### Phase 3b — workflow engine ⚠️ 実装あるが dormant
+### Phase 3b — workflow engine ✅ 完了
 
 利用モード: **共通基盤**
 
-- `orchestrator.run_workflow()` は実装済み（plugin dispatch 経由）
-- `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` まで揃っている
-- ただし [[cli|CLI]] (`analysis_core.__main__`) と API サーバ (`report_launcher.py`) はどちらも `.run()`（レガシーの `run_step` ループ）を呼ぶ
-- `packages/analysis-core/README.md` や integration tests は branch 上で workflow default path に追随し始めたが、e2e tests や一部 docs にはなお legacy mode 前提が残る
-- current tree では、初期 `comments` artifact の注入、status 永続化、`without_html`/`without-html` 正規化、visualization artifact 契約に未吸収の差があり、default 化 blocker は [[workflow-defaultization-blockers]] に整理した
-- → **plugin システムは production パスに乗っていない**
+- `orchestrator.run_workflow()` は plugin dispatch 経由の canonical 実行経路として main に入った
+- `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` に加え、CLI `main()` の rerun plan / status carry-forward、API `report_launcher` の full generation / config rerun / aggregation rerun / duplicate reuse 経路まで service-level test が main に入った
+- duplicate/reuse 相当の実ファイル群を置いた状態から `from_config()` が missing downstream artifact だけ rerun する integration test、real workflow rerun e2e、workflow failure step status API も main に存在する
+- `packages/analysis-core/README.md`、`docs/refactoring/phase2_5_plan.md`、`docs/refactoring/phase3_plan.md`、deprecated README も canonical path を `run_default()` → `run_workflow()` 前提へ更新済み
+- したがって workflow engine は「実装があるだけ」の段階を抜け、**CLI / API の production 入口として実用互換に達した** と読んでよい
 
-ただし open PR `#840` はこの dormant 状態を崩しに行く実装として進んでおり、2026-05-20 時点で少なくとも次が branch 上にある。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
-
-- 初期 `comments` artifact 注入
-- workflow path での `hierarchical_status.json` 永続化
-- `from_dict()` からの `previous` / rerun plan 読み込み
-- 既存成果物 (`args.csv`, `embeddings.pkl`, `hierarchical_result.json`, `report.html`) の artifact 再利用
-- `analysis_core.__main__` からの default 実行経路を `run_workflow()` 側へ寄せる変更
-- `apps/api/src/services/report_launcher.py` の command 共通化
-
-= **main ではなお dormant / open PR では CLI default path まで workflow 側へ寄せつつある** と書くのが current state に近い。
+残る論点は、[[hierarchical-status-semantics]] で整理した `duration` / `estimated_cost` / progress semantics のような許容差分と、Phase 8 での legacy layer 削除である。完了条件の整理は [[phase3b-exit-criteria]] を参照。
 
 ### Phase 8 — 旧コード削除 ⚠️ 部分的
 
@@ -105,7 +95,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 = **DeprecationWarning は出すが動く**。同様に `hierarchical_utils.py` も shim 化。
 
-ただし `steps/` 配下の旧コード約 1600 LOC は残存していて、`hierarchical_main.py` 経由で実行すれば旧パスが動く。誰かが古い手順書で `python hierarchical_main.py` すると **黙ってステイル版が動く**。さらに current `apps/api/broadlistening/README.md` もなお「FastAPI サーバーは `hierarchical_main.py` を起点に実行する」と説明しており、docs drift が残っている。
+ただし `steps/` 配下の旧コード約 1600 LOC は残存していて、`hierarchical_main.py` 経由で実行すれば旧パスが動く。誰かが古い手順書で `python hierarchical_main.py` すると **黙ってステイル版が動く**。deprecated README の主要 drift は解消されたが、deprecated layer 自体は残っているため、古い手順書や直接実行で旧パスへ入れる状態は続いている。
 
 ## docs / 議事メモにあるが実装に存在しないもの
 
@@ -119,7 +109,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
 - `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
 - YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
-- `apps/api` からの subprocess 起動は current でも `--without-html` を固定しており、CLI 既定の `report.html` 出力と挙動が分かれている
+- `apps/api` からの subprocess 起動は current `main` でも `--without-html` を固定しており、CLI 既定の `report.html` 出力と挙動が分かれている
 
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
@@ -135,7 +125,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 ## 含意
 
 - **「v5 はまだ別世界」というメンタルモデルは正しくない**。`packages/analysis-core/` のコードは既に canonical。新規 PR は基本こちらに投げる
-- 一方、**plugin 化は dormant** — 既存ステップを書き換える時、plugin wrapper も同時に直すべきか、wrapper は最終的に削除される予定なのか、要確認
+- 一方、plugin wrapper の多くはなお legacy step の薄いラッパーであり、どこまで workflow-native 実装へ寄せるかは別論点として残る
 - `analysis-core` 自体の配布はほぼ着地したが、**CLI の canonical 挙動** と **Web/API が固定している挙動** はまだ揃っていない
 - 旧 `apps/api/broadlistening/pipeline/` には触らない（deprecated）。バグ報告で旧パスのトレースを見たら「`hierarchical_main.py` で実行している」を疑う
 
@@ -146,11 +136,13 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 ## Open Questions
 
-- Phase 3b (`run_workflow()`) を default にする計画／タイミング（具体的 blocker は [[workflow-defaultization-blockers]]）
+- `hierarchical_status.json` のどこまでを legacy 完全互換に寄せるべきか（現状整理は [[hierarchical-status-semantics]]）
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
 - Web/API でも `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
 - `--skip-interaction` の argparse バグ修正 ([[cli]])
 - 依存分割（Task 2.5.6）
+
+workflow default 化を止めていた実装差分と、その後どこまで解消されたかの履歴は [[workflow-defaultization-blockers]] を参照。
 
 これらを含む全プロジェクトの未着地論点は [[open-decisions]] に分類整理。
 
@@ -162,3 +154,10 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 2026-05-20: `main@b4d4bcf` を再確認し、Phase 2.5 の自動 PyPI release 導入済み、Phase 3b の dormant 継続、Phase 8 の docs drift、`apps/api` の `--without-html` 固定を反映
 - 2026-05-20: open PR [[pr-840-workflow-defaultization-observation-2026-05-20]] を反映し、Phase 3b は main では dormant だが PR 上では初期 artifact / status / rerun 再利用まで前進していると追記
 - 2026-05-20: 同 PR の追加 commit を反映し、branch 上では CLI default path 切替と API launcher command 共通化まで進んだと追記
+- 2026-05-20: さらに CLI rerun plan test、API `report_launcher` の full generation / aggregation rerun service-level test まで進んだことを反映し、Phase 3b の説明を current state に合わせて更新
+- 2026-05-20: さらに failure semantics、config rerun、duplicate/reuse 経路、`from_config()` rerun plan integration の確認まで進んだことを反映し、残課題を docs と実データ寄り e2e 中心に寄せて更新
+- 2026-05-21: real workflow rerun e2e と workflow failure step status API の確認まで反映し、Phase 3b の remaining work を「実データバリエーションの厚み」と docs 側にさらに絞って更新
+- 2026-05-21: 「branch 上では実装的にかなり切り替わっているが、main の canonical state と運用宣言はまだ別」という読み分けを追記
+- 2026-05-21: `hierarchical_status.json` の項目別 semantics 棚卸しページ [[hierarchical-status-semantics]] への導線を追加
+- 2026-05-21: Phase 3b の完了条件を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
+- 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した

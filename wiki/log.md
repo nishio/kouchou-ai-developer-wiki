@@ -1,5 +1,17 @@
 # Log
 
+## [2026-05-20 15:56] filing-back | workflow default化の残課題と優先順を追記
+
+- [[workflow-defaultization-blockers]] に、「まだ『そのまま切り替えて安全』と言い切れない理由」と「標準経路化の残課題（優先順）」を追記
+- [[refactoring-status]] の Open Questions 末尾に、この整理への参照を追加
+- draft PR `#840` の本文を、現在の実装段階に合わせた平易な日本語へ書き直すための整理として反映
+
+## [2026-05-20 15:56] lint | workflow default化の残課題追記後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 9 件のみで、今回の追記による新規問題はなし
+
 ## [2026-05-20 12:46] filing-back | workflow default 化の実装進捗を wiki に反映
 
 - 新規 source [[pr-840-workflow-defaultization-observation-2026-05-20]] を追加し、draft PR `#840` の 3 commit（初期 artifact、status 永続化、rerun artifact 再利用）を観測メモ化
@@ -581,6 +593,140 @@
 - `workflow-defaultization-blockers.md`, `refactoring-status.md` を、CLI default path 切替と API launcher 共通化まで進んだ状態に更新
 
 ## [2026-05-20 13:01] lint | PR #840 追加観測反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-20 18:07] filing-back | PR #840 の CLI/API 入口確認進展と PR #841 の hook blocker 切り出しを wiki に反映
+
+- [[pr-840-workflow-defaultization-observation-2026-05-20]] に `bfda3dd`, `7167cf4`, `b6310cd`, `fe5eda5`, `2c8632b`, `b869324`, `142a63f` を反映し、CLI/API の service-level 確認が増えたことを追記
+- [[workflow-defaultization-blockers]] を、CLI `main()` と API `report_launcher` の success path が branch 上で確認済みである current state に合わせて更新
+- [[refactoring-status]] の Phase 3b 説明を、main と open PR の差分が読めるよう更新
+- workflow defaultization branch の pre-push hook を止めていた legacy Ruff import 並びが open PR `#841` へ切り出されたことを記録
+
+## [2026-05-20 18:07] lint | workflow defaultization の最新状態反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-20 23:19] filing-back | PR #840 の rerun / duplicate / failure semantics 進展と残課題縮小を wiki に反映
+
+- [[pr-840-workflow-defaultization-observation-2026-05-20]] に `3737642`, `1e3ec9e`, `6f940fc`, `d43a07b`, `b163ba2` を反映し、failure semantics と duplicate/reuse rerun plan の確認が進んだことを追記
+- [[workflow-defaultization-blockers]] の「まだ足りないこと」を current state に合わせて更新し、入口確認より real LLM を含む実データ寄り e2e と docs 整理が中心になったと整理
+- [[refactoring-status]] の Phase 3b 説明を更新し、config rerun / duplicate reuse / `from_config()` rerun plan integration まで branch 上で確認が進んだと追記
+- PR #840 本文も、duplicate/reuse 経路と failure semantics まで反映した日本語説明へ更新
+
+## [2026-05-20 23:19] lint | PR #840 残課題表現更新後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 02:42] filing-back | PR #840 の real rerun e2e と failure step status API 確認を wiki に反映
+
+- [[pr-840-workflow-defaultization-observation-2026-05-20]] に `2565b07`, `8e54904` を反映し、real workflow rerun e2e と workflow failure step status API の確認まで進んだことを追記
+- [[workflow-defaultization-blockers]] を、実データ寄り e2e が未着手ではなく「厚み不足」の段階へ進んだ current state に合わせて更新
+- [[refactoring-status]] の Phase 3b 説明を更新し、remaining work を実データバリエーションと docs 側へさらに絞った
+- PR #840 本文も、real workflow rerun e2e と failure step status API の確認を反映した日本語説明へ更新
+
+## [2026-05-21 02:42] lint | PR #840 最新観測反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 04:21] filing-back | workflow default化の「実装上の切替」と「main / 運用宣言」の違いを wiki に追記
+
+- [[workflow-defaultization-blockers]] に、branch 上でかなり切り替わっていることと main / 運用宣言は別問題だという含意を追加
+- [[refactoring-status]] の Phase 3b に、branch 実装状態と canonical state の読み分けを追記
+
+## [2026-05-21 04:21] lint | workflow default化の読み分け追記後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 04:21] filing-back | workflow default化の「実装上はかなり切り替わっているが完了宣言は別」という整理を wiki に反映
+
+- [[workflow-defaultization-blockers]] の含意に、branch 実装状態と main / 運用宣言は別だという読み分けを追記
+- [[refactoring-status]] の Phase 3b に、branch 上でかなり切り替わっていることと canonical state はまだ別段階だという整理を追記
+
+## [2026-05-21 04:21] lint | workflow default化の切替度合い整理追記後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 04:35] filing-back | `hierarchical_status.json` の semantics 差分を棚卸し
+
+- 新規ページ [[hierarchical-status-semantics]] を追加し、legacy `.run()` と workflow path の `hierarchical_status.json` を項目別に比較
+- [[workflow-defaultization-blockers]] から status file blocker の中身を新ページへリンク
+- [[refactoring-status]] の Open Questions に status semantics の残論点を追加
+
+## [2026-05-21 04:36] lint | `hierarchical_status.json` semantics 棚卸し後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 04:41] filing-back | Phase 3b の完了条件を必須条件と許容差分に分けて整理
+
+- 新規ページ [[phase3b-exit-criteria]] を追加し、workflow default 化の「完了」を何で判定するかを整理
+- [[open-decisions]] と [[refactoring-status]] から完了条件ページへの導線を追加
+- `hierarchical_status.json` の差分を「完了 blocker」ではなく「許容差分」に落とし込む基準を明文化
+
+## [2026-05-21 04:42] lint | Phase 3b 完了条件整理後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 04:55] filing-back | PR #840 の docs 更新 commit を wiki に反映
+
+- [[pr-840-workflow-defaultization-observation-2026-05-20]] に `04a8e97` を反映し、refactoring docs / deprecated README が merge 後前提の canonical path へ更新されたと追記
+- [[workflow-defaultization-blockers]] の docs drift を「未着手」ではなく「主要 docs 更新済み、残差確認フェーズ」へ寄せ直した
+
+## [2026-05-21 04:56] lint | PR #840 docs 更新反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+
+## [2026-05-21 05:08] filing-back | PR #840 merge 後の current main を基準に Phase 3b を完了へ更新
+
+- `work/kouchou-ai/` を `main@0e1552d` まで fast-forward し、open PR が 0 件であることを確認
+- [[refactoring-status]] の Phase 3b を dormant から完了へ更新し、残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
+- [[workflow-defaultization-blockers]] を、未解決 blocker 一覧ではなく「解消された blocker と follow-up の整理」として読み替えた
+- [[open-decisions]] から Phase 3b default 化未完の項目を外した
+
+## [2026-05-21 13:40] filing-back | PR #840 merge 後の current main を基準に Phase 3b を完了へ更新
+
+- `work/kouchou-ai/` を `main@0e1552d` まで fast-forward し、open PR が 0 件であることを確認
+- [[refactoring-status]] の Phase 3b を dormant から完了へ更新し、残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
+- [[workflow-defaultization-blockers]] を、未解決 blocker 一覧ではなく「解消された blocker と follow-up の整理」として読み替えた
+- [[open-decisions]] から Phase 3b default 化未完の項目を外した
+
+## [2026-05-21 13:41] lint | Phase 3b 完了反映後の wiki を lint
 
 - `python3 scripts/lint_wiki.py`
 - broken wikilinks: 0

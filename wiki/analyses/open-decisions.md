@@ -127,11 +127,6 @@ sources:
 
 [[refactoring-status]]：`hierarchical_main.py` は `DeprecationWarning` を出す shim 化済み、`steps/` 配下 ~1600 LOC も残存。**削除タイミング未定**。誰かが古い手順書に従うと黙ってステイル版が動くリスクが続いている（[[gotchas]]）。
 
-### B6. Phase 3b — `run_workflow()` を default 経路に
-
-[[plugin-system]]：plugin dispatch 経由の `run_workflow()` は実装済み、テストもある。だが CLI と API サーバはどちらも `.run()`（レガシーループ）を呼ぶ。さらに current tree には、初期 `comments` artifact 注入、status 永続化、`without_html` / `without-html` の key drift、visualization artifact 契約などの未吸収差分がある。  
-ただし 2026-05-20 時点の open PR `#840` は、この差分のうち初期 artifact / status / rerun artifact 再利用 / key drift / visualization 契約に既に手を入れている。したがって B6 は「未着手」より **着手済み・review 中だが production default には未到達** と読む方が近い。詳細は [[workflow-defaultization-blockers]] と [[pr-840-workflow-defaultization-observation-2026-05-20]]。
-
 ### B7. 外部 `plugins/analysis/` ディレクトリの実利用
 
 loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALYSIS_PLUGINS_PATH` 環境変数を探す実装になっているが、リポジトリにこのディレクトリは無く、外部 analysis plugin の同梱もゼロ。**枠だけ用意して利用例なし**。
@@ -207,7 +202,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 | カテゴリ | 件数 |
 |---|---|
 | A. 未定 | 11 |
-| B. 方針決定済み・未着手 | 14 |
+| B. 方針決定済み・未着手 | 13 |
 | C. 着手済み・未完了 | 3 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
@@ -233,3 +228,5 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-18: PR `#827` により、Jigsaw 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新
 - 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI sidecar HTML と Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
+- 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
+- 2026-05-21: `main@0e1552d` を確認し、PR #840 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
