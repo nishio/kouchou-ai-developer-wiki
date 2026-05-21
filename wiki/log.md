@@ -1,5 +1,16 @@
 # Log
 
+## [2026-05-21 20:59] lint | 健全性確認 + 未 filing-back な in-flight 変更の棚卸し
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 10 件で、内訳は PR merge assessment 群 + `[[analysis-core-extras-pr-scope]]` / `[[codeql-introduction-context]]` / `[[report-slug-config-behavior]]` / `[[worktree-hygiene]]` で index 経由のみ。新規の壊れはなし
+- working tree に in-flight な未 commit 変更が大量にある。内訳は
+  - 約 95 ファイルの YAML frontmatter quoting (`summary: text` → `summary: "text"`) — Quartz 化を見据えた一括変換
+  - `[[refactoring-status]]` / `[[open-decisions]]` への PR #844 (`main@5d591ef`) merge 反映（filing-back log は未記録）
+  - publishing stack の Quartz 化作業：`mkdocs.yml` / `requirements-pages.txt` / `scripts/build_pages_docs.py` の削除、`quartz.config.ts` / `quartz.layout.ts` / `quartz/` / `package.json` / `pnpm-lock.yaml` の追加、新規 `[[wiki-pages-publishing-stack]]` / `[[wiki-pages-tooling-observation-2026-05-21]]`（filing-back log は未記録）
+- これらは commit 時に個別の `filing-back` エントリで残すのが望ましい。今回の lint では機械的健全性のみ確認
+
 ## [2026-05-21 20:32] filing-back | PyPI リリースタイミング自動化の判断を分離
 
 - 新規 [[pypi-release-timing-automation]] を作成し、「publish 自動化」と「tag 付け自動化」を段階分けして整理
@@ -833,6 +844,20 @@
 - [[refactoring-status]] の Phase 2.5 に、filesystem-based quickstart と CLI preflight が main に反映済みであることを追記
 
 ## [2026-05-21 20:42] lint | PR #844 merge 反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 10（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 21:16] filing-back | Issue #683 の current state を issue / wiki に反映
+
+- `work/kouchou-ai/` の current `main@5d591ef` で static export 周辺を再確認し、Issue `#683` の元症状だった `opengraph-image.png` の `generateStaticParams()` 欠落 build error が current main では非再現であることを確認
+- GitHub Issue `#683` に確認結果をコメントし、論点が「未修正 build bug」ではなく no-report 時の期待挙動へ移っているとして close
+- [[issue-priority-through-2026-09]] から `#683` を「未解決の直接バグ」優先枠として扱う記述を外し、[[public-viewer-build-behavior]] と [[pr-835-static-build-fail-fast-observation-2026-05-19]] に current state 補記を追加
+
+## [2026-05-21 21:16] lint | Issue #683 反映後の wiki を lint
 
 - `python3 scripts/lint_wiki.py`
 - broken wikilinks: 0

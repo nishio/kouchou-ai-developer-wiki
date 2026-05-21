@@ -42,3 +42,4 @@ sources:
 
 - 2026-05-18: `PR #823` 切り分けから初版作成
 - 2026-05-19: `PR #835` で `generateStaticParams()` の static export 向け fail-fast が helper 化され、空 `/reports` では明示的な日本語エラー、ready レポートあり環境では successful static build になることを clean worktree で再確認
+- 2026-05-21: current `main@5d591ef` と `app/utils/__tests__/static-build.test.ts` の再確認により、Issue `#683` の元症状だった `opengraph-image.png` の `generateStaticParams()` 欠落 build error は current main では非再現であることを追記

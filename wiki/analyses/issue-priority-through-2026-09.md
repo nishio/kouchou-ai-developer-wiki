@@ -27,17 +27,16 @@ sources:
 
 ### P1. Web / static 公開の「壊れ方」を減らす
 
-9 月前の次点は `#833` `#683` `#818` `#820` `#707` `#716` の束で、非専門家向け利用モードの事故を減らすこと。これらは別 issue に見えても、実際には **Web UI / static export の失敗時に、回避不能または原因不明になる** 問題群である。[[open-issues-snapshot-2026-05-19]]より
+9 月前の次点は `#833` `#818` `#820` `#707` `#716` の束で、非専門家向け利用モードの事故を減らすこと。これらは別 issue に見えても、実際には **Web UI / static export の失敗時に、回避不能または原因不明になる** 問題群である。[[open-issues-snapshot-2026-05-19]]より
 
 優先順は次の通り。
 
 - `#833`: remote HTTP / CSP / UUID の current-tree fix
-- `#683`: 公開レポート 0 件時の static export failure
 - `#707`: provider 判定を誤る API 接続チェック
 - `#716`: レポート生成失敗時のエラーログ可視化
 - `#818` `#820`: PNG download と CSP 設定ガイド
 
-理由は、`#833` `#683` `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。[[book-release-development-plan-2026-09]]より
+理由は、`#833` `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。[[book-release-development-plan-2026-09]]より
 
 ### P2. provider / validation 論点を束ね直す
 
@@ -82,7 +81,7 @@ sources:
 - `#836` を先に進め、canonical CLI path の usage doc を固定する
 - `#837` の scope を config / input preflight に絞って実装計画を切る
 - `#833` を CSP / UUID / LocalLLM UX に分けるか判断する
-- `#683` の static export fail-fast / no-report behavior を詰める
+- static export の残論点は `#683` の build bug ではなく、no-report 時の期待挙動や周辺 UX として切り分ける
 
 ### 2026-06 〜 2026-07
 
@@ -118,3 +117,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-21: current `main@5d591ef` では `#683` の元症状（`opengraph-image.png` の `generateStaticParams()` 欠落 build error）は再現せず、説明的 fail-fast に置き換わっていることを反映

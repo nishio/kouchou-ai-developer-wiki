@@ -27,3 +27,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-05-21: current `main@5d591ef` で helper / test / route 共有の再確認を行い、Issue `#683` の旧 build error は current main では非再現、論点は no-report 時の期待挙動へ移ったと補記
