@@ -80,5 +80,6 @@ sources:
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `work/kouchou-ai/` の clone、`raw/meeting_minutes.txt`、必要に応じて `oss_weekly_reporter` 系データへの到達を先に整える
+- AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
 - 実験を通じて得た自分自身の気づきを重視
 - スキーマ（このファイル）も実験を通じて改善していく

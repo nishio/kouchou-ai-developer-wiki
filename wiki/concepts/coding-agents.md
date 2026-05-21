@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - weekly-log-2026-05-06.md
+  - pr-849-agent-review-request-observation-2026-05-21.md
 ---
 
 ## エージェントの種類と使われ方
@@ -49,6 +50,19 @@ sources:
 
 AI エージェントの実務運用では、repo 編集・pytest・lint のための権限と、Azure / PyPI / host filesystem まで触れる権限を分けた方がよい。`kouchou-ai` では **devcontainer を標準の作業面、Docker Compose を実行面、高権限操作は CI / 人間のみ** に寄せるのが自然。[[agent-sandboxing-strategy]]より
 
+## 人間 attention を使う操作は AI の裁量外
+
+2026-05-21 の `PR #849` では、Codex が `REVIEW_REQUIRED` を見て人間 reviewer request を送れてしまったが、オーナー判断ではこれは「良くない」行動だった。**review 依頼は単なる GitHub メタデータ更新ではなく、人間の時間を消費する依頼行為** だからである。[[pr-849-agent-review-request-observation-2026-05-21]]より
+
+したがって、AI エージェント運用では少なくとも次を **人間の明示指示がある時だけ** 実行すべきと整理しておく。
+
+- 人間 reviewer の request
+- 人間への approval / merge 催促
+- Slack / issue comment での対人エスカレーション
+- branch protection を飛ばす `admin merge`
+
+AI が自律でやるべきなのは、`REVIEW_REQUIRED` や `BLOCKED` を観測して **「いま何が blocker か」を報告するところまで** であり、誰の attention を取るかの決定は人間オーナーに返す方が安全。[[pr-849-agent-review-request-observation-2026-05-21]]より
+
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
@@ -59,3 +73,4 @@ AI エージェントの実務運用では、repo 編集・pytest・lint のた�
 - 2026-05-17: 初回作成
 - 2026-05-18: host full access を標準化しない権限分離方針への参照を追加
 - 2026-05-18: AI エージェント起点の draft PR は、ready for review にするまで merge しない運用メモを追記
+- 2026-05-21: reviewer request や approval 催促のような「人間 attention を使う操作」は AI の裁量外とする運用メモを追記

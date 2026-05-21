@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - source-code.md
+  - pr-849-agent-review-request-observation-2026-05-21.md
 ---
 
 ## 基本フロー（CONTRIBUTING.md）
@@ -95,11 +96,13 @@ AI エージェントや人間が作った **draft PR は、そのまま merge �
 
 review 対応を push する時は、**PR metadata 上の head branch 名** と **remote に branch 実体があるか** を両方確認した方がよい。2026-05-18 の観測では `#824` `#825` `#826` はそのまま update できた一方、`#794` は PR metadata 上の head branch 名が残っていても remote branch 実体が消えており、close + recreate が必要だった。[[open-pr-observation-2026-05-18]]より
 
+AI エージェントが PR を扱う場合は、**人間 reviewer の request や approval 催促を独断で行わない** というルールも必要である。2026-05-21 の `PR #849` では、Codex が技術的には reviewer request を送れてしまったが、オーナー判断ではこれは不適切だった。`REVIEW_REQUIRED` を見た AI は reviewer を足すのではなく、**「review が blocker です。誰かに依頼しますか」まで報告して止まる** 方がよい。[[pr-849-agent-review-request-observation-2026-05-21]]より
+
 Dependabot など bot PR の head を更新した後は、CI が全部 green でも `reviewDecision: REVIEW_REQUIRED` に戻って merge が block されることがある。2026-05-18 の `#823` では、checks 通過後も通常 merge は通らず、approval を入れ直してから merge した。**「CI success = すぐ merge 可能」とは限らず、review requirement も見直す**。[[pr-823-review-observation-2026-05-18]]より
 
 一方で 2026-05-18 の `#824` では、checks success と `reviewDecision: REVIEW_REQUIRED` が併存したままでも、`gh pr merge --admin` は成功した。つまり **通常 merge 可否** と **admin merge 可否** は分けて見る必要がある。owner が片付ける前提の PR triage では、この差を意識した方が実態に合う。[[pr-824-admin-merge-observation-2026-05-18]]より
 
-そのうえで、実際の merge 手順としては **1. merge してよい理由を短く comment / review に残す → 2. approve → 3. 通常 merge を試す → 4. それでも保護ルールだけが残る時だけ admin merge** が望ましい。技術的に admin merge 可能でも、理由を書かずに押し切ると後から判断根拠を追いにくい。[[pr-824-admin-merge-observation-2026-05-18]]より
+そのうえで、実際の merge 手順としては **1. merge してよい理由を短く comment / review に残す → 2. approve → 3. 通常 merge を試す → 4. それでも保護ルールだけが残る時だけ admin merge** が望ましい。技術的に admin merge 可能でも、理由を書かずに押し切ると後から判断根拠を追いにくい。加えて、この 2〜4 の判断は AI ではなく **owner / maintainer の明示指示** で進める方が安全である。[[pr-824-admin-merge-observation-2026-05-18]]より [[pr-849-agent-review-request-observation-2026-05-21]]より
 
 Codex など AI エージェントが review comment や approval comment を残す時は、後から人間が監査しやすいよう `by Codex` のような署名を付けた方がよい。PR 上で「誰がどう判断したか」を区別しやすくなる。[[pr-823-review-observation-2026-05-18]]より
 
@@ -151,3 +154,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: 書籍流入を見込んだ「新規流入者の受け皿」観点を追記
 - 2026-05-18: draft PR は merge せず、ready for review にしてから merge 判断へ進む運用メモを追記
 - 2026-05-20: [[usage-modes]] に合わせ、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追記
+- 2026-05-21: reviewer request や approval 催促は AI が独断で行わず、人間の明示指示でのみ進める運用メモを追記

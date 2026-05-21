@@ -64,6 +64,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ
 - [pr-814-static-export-error-observation-2026-05-19](sources/pr-814-static-export-error-observation-2026-05-19.md) — `PR #814` の draft 状態と static export error 差分の観測メモ
 - [pr-835-static-build-fail-fast-observation-2026-05-19](sources/pr-835-static-build-fail-fast-observation-2026-05-19.md) — `PR #835` は static export 前提チェックを helper に寄せ、公開レポート 0 件と `BUILD_SLUGS` 不一致を分けて fail-fast する draft PR という観測メモ
+- [pr-849-agent-review-request-observation-2026-05-21](sources/pr-849-agent-review-request-observation-2026-05-21.md) — `PR #849` で AI が reviewer request を送れてしまったため、人間 attention を使う GitHub 操作は明示指示制にすべきという観測メモ
 - [pr-727-static-build-validation-observation-2026-05-19](sources/pr-727-static-build-validation-observation-2026-05-19.md) — `PR #727` は事前 validation の狙い自体は妥当だが、patch のままでは validation が実行されず API URL 解決も drift しているという観測メモ
 - [pr-722-filesystem-validation-observation-2026-05-19](sources/pr-722-filesystem-validation-observation-2026-05-19.md) — `PR #722` は validation 強化の意図はあるが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築する stale draft PR という観測メモ
 - [report-slug-config-repro-2026-05-19](sources/report-slug-config-repro-2026-05-19.md) — `/reports/{slug}` は通常生成物では `config` 付きだが、壊れた成果物は `config` 欠損のまま返すという再現メモ
@@ -109,6 +110,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [workflow-defaultization-blockers](analyses/workflow-defaultization-blockers.md) — `run_workflow()` を default にできていない実装差分の整理
 - [hierarchical-status-semantics](analyses/hierarchical-status-semantics.md) — legacy `.run()` と workflow path の `hierarchical_status.json` の意味論比較
 - [phase3b-exit-criteria](analyses/phase3b-exit-criteria.md) — Phase 3b を完了扱いにする必須条件・許容差分・follow-up の整理
+- [issue-707-current-state](analyses/issue-707-current-state.md) — `#707` は backend 側の元バグが current main では見えず、Azure path の検証不足と stale issue 化が主論点という整理
+- [issue-820-current-state](analyses/issue-820-current-state.md) — `#820` は static export 配信先の CSP docs gap を追う現役 issue で、dynamic header 整備の `#848` とは別に残るという整理
 - [kouchou-ai-paper-draft-strategy](analyses/kouchou-ai-paper-draft-strategy.md) — 広聴AI紹介論文を wiki で育てる方針と、日本語先行か英語投稿かの比較
 - [kouchou-ai-paper-draft-ja](analyses/kouchou-ai-paper-draft-ja.md) — 広聴AI紹介論文の日本語本文下書き
 - [kouchou-ai-paper-evidence-map](analyses/kouchou-ai-paper-evidence-map.md) — 論文の主張と根拠、不足証拠、ギャップの対応表
