@@ -864,3 +864,73 @@
 - unregistered pages: 0
 - isolated pages: 10（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-21 21:45] filing-back | Issue #833 を UUID / CSP / LocalLLM UX に分割
+
+- GitHub 上で `#833` を admin create/reuse flow の UUID fallback issue へ縮小し、CSP / remote asset policy を `#846`、LocalLLM model auto-fetch UX を `#845` として新規作成
+- [[issue-priority-through-2026-09]] の P1 優先度整理を current issue 構成に合わせて更新
+- [[open-issues-snapshot-2026-05-19]] に、2026-05-21 時点では実際に issue 分割が行われたことを Updates として追記
+
+## [2026-05-21 21:45] lint | Issue #833 分割反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 10（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 22:11] filing-back | Issue #707 の current state を current main と GitHub live state で再評価
+
+- `work/kouchou-ai/` を `origin/main@14e9772987b95af816d33e9fe09315715ac200b9` まで同期済みであることを確認し、`apps/api/src/routers/admin_report.py` の `/admin/environment/verify` が provider-aware であることを確認
+- 新規 analysis [[issue-707-current-state]] を追加し、`#707` の元報告は current main ではそのまま再現しない可能性が高く、論点は Azure path の UI/テスト整理と stale issue 化へ移っていると整理
+- `gh pr list` では 2026-05-21 時点の open PR が `#848` のみで、`#707` 直結 PR は観測されないことも併記
+
+## [2026-05-21 22:12] lint | Issue #707 の filing-back 反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（`issue-707-current-state` を含む既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 23:10] filing-back | PR #848 merge と Issue #846 close を wiki に反映
+
+- `gh pr view 848` で `PR #848 web apps に env-aware CSP header を追加` が 2026-05-21 に merge 済みであること、`gh issue view 846` で `#846` が close 済みであることを確認
+- [[issue-820-current-state]] に、dynamic hosting 向け CSP header は main に入った一方で static export 配信先の CSP docs gap は残る、という current state を追記
+- [[issue-707-current-state]] に `#707` close を反映し、[[issue-priority-through-2026-09]] と [[open-issues-snapshot-2026-05-19]] の active 論点も `#845` `#716` `#818` `#820` `#681` 側へ更新
+
+## [2026-05-21 23:10] lint | PR #848 merge 反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（`issue-707-current-state` と `issue-820-current-state` を含む既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 22:19] filing-back | Issue #820 の current state を GitHub live state と current main で整理
+
+- `work/kouchou-ai/` を `origin/main@14e9772987b95af816d33e9fe09315715ac200b9` まで同期済みであることを確認し、static export 向け CSP docs が current tree にまだ見当たらないことを再確認
+- 新規 analysis [[issue-820-current-state]] を追加し、`#820` は stale ではなく static hosting 配信先の CSP 設定ガイド不足を追う現役 issue で、`#848` の dynamic header 整備とは別に残ると整理
+- `gh issue view 820` と `gh pr view 848` を根拠に、`#818` が product symptom、`#820` が docs / operations gap、`#848` が dynamic hosting fix という役割分担を明記
+
+## [2026-05-21 22:20] lint | Issue #820 の filing-back 反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（`issue-820-current-state` を含む既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 23:02] filing-back | AI が人間 reviewer を勝手に request しない運用ルールを wiki と schema に反映
+
+- 新規 source [[pr-849-agent-review-request-observation-2026-05-21]] を追加し、`PR #849` で AI が reviewer request を送れてしまったが、これは望ましい運用ではないという観測を記録
+- [[coding-agents]] と [[contributing]] に、「人間 attention を使う GitHub 操作は AI の裁量外で、人間の明示指示が必要」というルールを追記
+- `CLAUDE.md` の運用方針にも reviewer request / approval 催促 / admin merge の明示指示制を追加
+
+## [2026-05-21 23:03] lint | reviewer request 運用ルール反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0

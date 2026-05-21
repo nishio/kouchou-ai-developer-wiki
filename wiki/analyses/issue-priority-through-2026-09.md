@@ -29,14 +29,17 @@ sources:
 
 9 月前の次点は `#833` `#818` `#820` `#707` `#716` の束で、非専門家向け利用モードの事故を減らすこと。これらは別 issue に見えても、実際には **Web UI / static export の失敗時に、回避不能または原因不明になる** 問題群である。[[open-issues-snapshot-2026-05-19]]より
 
+2026-05-21 夜時点の current state を踏まえると、この束のうち `#846` は `PR #848` merge で前進し、`#707` は current main 非再現として close 済みである。したがって active な残論点は、主に `#845` `#716` `#818` `#820` と、provider UX 側では `#681` へ寄る。[[github-dev-docs]]より [[source-code]]より
+
 優先順は次の通り。
 
-- `#833`: remote HTTP / CSP / UUID の current-tree fix
+- `#833`: admin create/reuse flow の UUID fallback
+- `#846`: CSP / remote asset policy の current-tree fix
 - `#707`: provider 判定を誤る API 接続チェック
 - `#716`: レポート生成失敗時のエラーログ可視化
 - `#818` `#820`: PNG download と CSP 設定ガイド
 
-理由は、`#833` `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。[[book-release-development-plan-2026-09]]より
+理由は、`#833` / `#846` / `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。[[book-release-development-plan-2026-09]]より
 
 ### P2. provider / validation 論点を束ね直す
 
@@ -48,7 +51,7 @@ sources:
 - `#681` は user input API key check を求めている
 - `#473` は Azure / OpenRouter / LocalLLM を環境確認ページに広げたい話
 
-したがって実装順は `#707` の誤判定修正を先に行い、その上で `#681` `#473` を同じ設計に寄せるのが妥当。[[open-issues-snapshot-2026-05-19]]より
+ただし 2026-05-21 の再確認では `#707` の元症状は current main で非再現として close されたため、active な実装順としては **`#681` など未解決の provider UX / validation issue を同じ設計へ寄せる** 読みに更新してよい。[[open-issues-snapshot-2026-05-19]]より [[github-dev-docs]]より
 
 ### P3. output validation は即実装より設計判定を先にする
 
@@ -80,13 +83,13 @@ sources:
 
 - `#836` を先に進め、canonical CLI path の usage doc を固定する
 - `#837` の scope を config / input preflight に絞って実装計画を切る
-- `#833` を CSP / UUID / LocalLLM UX に分けるか判断する
+- `#845` を先に進め、`#848` merge 後に残った LocalLLM UX の穴を埋める
 - static export の残論点は `#683` の build bug ではなく、no-report 時の期待挙動や周辺 UX として切り分ける
 
 ### 2026-06 〜 2026-07
 
 - `#837` 実装と最低限の integration test
-- `#707` 修正と provider check の設計整理
+- `#681` を含む provider check / user-provided key UX の設計整理
 - `#716` の最小版を入れて「失敗しても調べられる」状態にする
 - `#818` `#820` を product fix と doc fix に分けて着地させる
 
@@ -118,3 +121,5 @@ sources:
 
 - 2026-05-19: 初版作成
 - 2026-05-21: current `main@5d591ef` では `#683` の元症状（`opengraph-image.png` の `generateStaticParams()` 欠落 build error）は再現せず、説明的 fail-fast に置き換わっていることを反映
+- 2026-05-21: `#833` を UUID slice に絞り、CSP / remote asset policy を `#846`、LocalLLM auto-fetch UX を `#845` へ分割した current state を反映
+- 2026-05-21: `PR #848` merge による `#846` 前進と、`#707` close を反映し、P1 / P2 の active 論点を `#845` `#716` `#818` `#820` `#681` 側へ寄せた
