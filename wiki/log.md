@@ -719,6 +719,25 @@
 - [[workflow-defaultization-blockers]] を、未解決 blocker 一覧ではなく「解消された blocker と follow-up の整理」として読み替えた
 - [[open-decisions]] から Phase 3b default 化未完の項目を外した
 
+## [2026-05-21 13:30] ingest | DD2030 書籍を開発向け source として取り込み
+
+- `work/broad-listening-book/` に `digitaldemocracy2030/broad-listening-book` を clone（参照 commit `5826726`）
+- 新規 source [[broad-listening-book-source]] で章マップを priority 別に整理（12 章要素技術 / 13 章パイプライン詳解 / 10_00 DD2030 開発活動 / 05・04_05 現場知見 / column 群）
+- 新規 analysis [[broad-listening-book-extractions]] で「今後の開発に効く」項目を抽出。既存設計判断の出版可能形での裏付け（K-means 採用理由、UMAP→クラスタリング順、`∛n` の経験的根拠、KJ法プロンプト）、未対応の現場要望（off-topic 大クラスタ、SNS キーワード設計、ローカル UI）、書籍が示す将来枝（sentiment-dim / DivCon / Long Context アーキ）、`column/1万件の声を集めて気づいたこと` の「自己理解ボトルネック」meta-insight を整理
+- [[broad-listening-book|entity]] のスコープ note を「全面スコープ外」から「書籍本文は source 扱い・書籍運営はスコープ外」へ更新
+- [[pipeline]] に書籍 13 章を相互リンクし、UMAP→クラスタリングの妥協を出版可能形で外部説明する引用元として登録
+- [[broadlistening]] に「散布図タイプ vs Long Context タイプ」二アーキ整理を追加
+- [[glossary]] の「Wiki スコープ外」表記を更新
+
+## [2026-05-21 13:34] lint | 書籍 ingest 後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 9（既知）
+- frontmatter errors: 0
+- 重複 basename: 0（`sources/broad-listening-book-source.md` への rename で `entities/broad-listening-book.md` との衝突を回避済み）
+
 ## [2026-05-21 13:40] filing-back | PR #840 merge 後の current main を基準に Phase 3b を完了へ更新
 
 - `work/kouchou-ai/` を `main@0e1552d` まで fast-forward し、open PR が 0 件であることを確認

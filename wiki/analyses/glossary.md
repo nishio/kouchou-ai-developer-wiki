@@ -19,7 +19,7 @@ sources:
 | polimoney / ポリマネー | 政治資金可視化（[[polimoney]]） |
 | Cartographer | idobata 系の自動追問プロトタイプ |
 | コアループ | DD2030 横断イニシアチブ。Process / Tech / Policy / Reference Product / Communication の 5 領域 |
-| broad-listening-book / 広聴AI本 | [[tokoroten]] が主担当の書籍（Wiki スコープ外） |
+| broad-listening-book / 広聴AI本 | [[tokoroten]] 主担当の書籍。2026-05-21 から開発向け source 扱い（[[broad-listening-book-source]] / [[broad-listening-book-extractions]]） |
 | しゃべれるマニフェスト | team-mirai のチャット型マニフェスト UI |
 | マル見え / marumie | team-mirai の歳出可視化プロジェクト |
 
@@ -93,3 +93,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-21: 書籍を「Wiki スコープ外」から「開発向け source」表記へ更新

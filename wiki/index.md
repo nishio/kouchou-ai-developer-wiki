@@ -72,6 +72,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [open-issue-backlog-2026-05-19](sources/open-issue-backlog-2026-05-19.md) — 2026-05-19 時点の open issue 145 件を本文付きで読み、未解決問題の全体像を取るための backlog source
 - [worktree-hygiene-observation-2026-05-20](sources/worktree-hygiene-observation-2026-05-20.md) — `work/kouchou-ai/` の dirty は別件試作と local 生成物の混在で、`PR #839` で `apps/api/uv.lock` ignore を main に反映した観測メモ
 - [pr-840-workflow-defaultization-observation-2026-05-20](sources/pr-840-workflow-defaultization-observation-2026-05-20.md) — draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用までを段階的に進めている
+- [broad-listening-book-source](sources/broad-listening-book-source.md) — DD2030 書籍「選挙を変えたブロードリスニング」原稿の開発向け章マップ（12・13 章・10_00 DD2030・現場 column / case）
 
 ## Analyses
 
@@ -110,3 +111,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [kouchou-ai-paper-draft-ja](analyses/kouchou-ai-paper-draft-ja.md) — 広聴AI紹介論文の日本語本文下書き
 - [kouchou-ai-paper-evidence-map](analyses/kouchou-ai-paper-evidence-map.md) — 論文の主張と根拠、不足証拠、ギャップの対応表
 - [worktree-hygiene](analyses/worktree-hygiene.md) — `work/kouchou-ai/` を current tree の基準面として保つための worktree / ignore 運用メモ
+- [broad-listening-book-extractions](analyses/broad-listening-book-extractions.md) — 書籍から抽出した設計判断の出版可能形・現場運用知見・将来開発の素材（off-topic クラスタ、自己理解ボトルネック、DivCon ほか）

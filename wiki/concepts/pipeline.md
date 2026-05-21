@@ -8,6 +8,7 @@ sources:
   - pr-827-llm-grouping-capabilities-plan-2026-05-18.md
   - slack-kouchouai-algorithm-dev.md
   - slack-dev-kouchouai-2026-q1.md
+  - broad-listening-book-source.md
 ---
 
 ## 配置（重要：canonical な場所は移動済み）
@@ -85,6 +86,8 @@ sources:
 
 という批判が継続している。したがって現行構成は「理論的に妥当だと信じられている」のではなく、**可視化都合を優先した暫定形** と読むべき。
 
+書籍 13.2.4 ([[broad-listening-book-source]]) も同様に、UMAP→クラスタリング順を「機械学習の標準的な作法とは異なる選択であり、設計上の妥協を含んでいる」と明示している。出版可能形の確定版設計判断として外部に説明する際の引用元になる。同 13.5 では LLM コンテキストウィンドウ拡大を受けた **散布図タイプ vs Long Context タイプ** の二アーキ比較が整理されており、[[pr-827-llm-grouping-capabilities-plan-2026-05-18]] の `analysis_mode` 戦略と整合する。詳細は [[broad-listening-book-extractions]]。
+
 ## 軽量化と CLI 静的出力（2026-05）
 
 [[meeting-minutes]] 2026-05-18 見出し / PR #825：
@@ -117,3 +120,4 @@ sources:
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D とする記述を撤回し、Slack 発言と `main@3809a7a` のコード実装を分離
 - 2026-05-18: PR `#827` を参照し、Jigsaw 系 LLM 分類の互換枝が plan PR として具体化したことを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` を source に追加し、UMAP→クラスタリングへの継続的批判を補足
+- 2026-05-21: 書籍 13 章を [[broad-listening-book-source]] / [[broad-listening-book-extractions]] として ingest し、設計判断の出版可能形を相互リンク
