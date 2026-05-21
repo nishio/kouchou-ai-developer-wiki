@@ -1,5 +1,29 @@
 # Log
 
+## [2026-05-21 14:54] lint | artifact 契約の意図的分岐を明記した後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 9 件のみで、今回の `[[refactoring-status]]` / `[[usage-modes]]` / `[[cli]]` 更新による新規問題はなし
+
+## [2026-05-21 14:54] filing-back | CLI `report.html` と API `--without-html` の意図的分岐を docs に明記
+
+- [[refactoring-status]] の `report.html` 関連記述を補正し、API の `--without-html` 固定は「CLI 既定に未追随」より「利用モード別 artifact 契約の意図的分岐」と読めるよう更新
+- [[usage-modes]] に、Web は JSON + `public-viewer`、CLI は self-contained `report.html` sidecar を重視することを明示し、なぜ API が `--without-html` 固定なのかを新規読者向けに補足
+- [[cli]] にも同趣旨の説明を追記し、「未整合」ではなく「モード別 canonical path の違い」として読ませる導線を追加
+
+## [2026-05-21 14:38] lint | Task 2.5.6 独立PR判断の filing-back 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 9 件のみで、新規 `[[analysis-core-extras-pr-scope]]` 追加による問題はなし
+
+## [2026-05-21 14:38] filing-back | Task 2.5.6 の extras 分割を独立 PR として切る条件を整理
+
+- 新規 analysis [[analysis-core-extras-pr-scope]] を追加し、`analysis-core` の extras 分割は独立 PR で切れるが、`pyproject.toml` 編集だけでは壊れることを整理
+- `steps/__init__.py` の eager import、`test_imports.py` の full install 前提、README / quickstart の install 導線を同時に直す必要があると明記
+- [[refactoring-status]] の Phase 2.5 未完 bullet から新規 analysis を参照できるよう更新
+
 ## [2026-05-20 15:56] filing-back | workflow default化の残課題と優先順を追記
 
 - [[workflow-defaultization-blockers]] に、「まだ『そのまま切り替えて安全』と言い切れない理由」と「標準経路化の残課題（優先順）」を追記

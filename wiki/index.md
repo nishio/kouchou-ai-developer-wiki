@@ -112,3 +112,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [kouchou-ai-paper-evidence-map](analyses/kouchou-ai-paper-evidence-map.md) — 論文の主張と根拠、不足証拠、ギャップの対応表
 - [worktree-hygiene](analyses/worktree-hygiene.md) — `work/kouchou-ai/` を current tree の基準面として保つための worktree / ignore 運用メモ
 - [broad-listening-book-extractions](analyses/broad-listening-book-extractions.md) — 書籍から抽出した設計判断の出版可能形・現場運用知見・将来開発の素材（off-topic クラスタ、自己理解ボトルネック、DivCon ほか）
+- [analysis-core-extras-pr-scope](analyses/analysis-core-extras-pr-scope.md) — Task 2.5.6 の extras 分割は独立 PR で切れるが、import/CI/docs も含めて package 境界で整える必要がある

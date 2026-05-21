@@ -48,6 +48,7 @@ sources:
 注意点:
 
 - Web の主経路は **JSON + `public-viewer`** であり、CLI が出す `report.html` ではない
+- `apps/api/src/services/report_launcher.py` が `python -m analysis_core ... --without-html` を固定しているのは、CLI 変更への追随漏れではなく、この artifact 契約を守るための意図的な分岐として読むのが自然
 - `apps/api/src/services/report_sync.py` の保持対象もこの前提で決まっている
 - 理想の入口は「Git clone して手で環境を組む」ことではなく、最小限のローカル操作で Web UI を起動し、その後は UI 上で試行錯誤できること
 - このモードでは、CLI を前提にするより **`Zip` で配布物を落として `setup.bat` を起動すれば試せる** くらいの friction が目標に近い
@@ -85,6 +86,7 @@ sources:
 注意点:
 
 - `report.html` は **CLI 側の自己完結型 sidecar 成果物**。Web の主経路とは別
+- したがって `CLI 既定では HTML を生成するのに、なぜ API は `--without-html` 固定なのか` という疑問への答えは、「同じ解析コアでも利用モードごとに保持・配信したい artifact が違うから」である
 - CLI の改善が、そのまま Web プロダクトの改善とは限らない
 - このモードでは `Mac` / `Linux` で CLI を使えることをほぼ前提にしてよい
 - `Windows` 利用者でも研究者・開発者側のユースケースなら、ネイティブ対応を最優先せず `WSL2` か `Docker` を使ってください、という運用で割り切る余地が大きい

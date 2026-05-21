@@ -53,8 +53,8 @@ sources:
 
 **未完**：
 
-- Task 2.5.6（torch / sklearn を `[clustering]`, `[embeddings]` extras に分割）→ 全部 `dependencies` のまま
-- Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定しており、CLI 既定の self-contained `report.html` を活かしていない
+- Task 2.5.6（torch / sklearn を `[clustering]`, `[embeddings]` extras に分割）→ 全部 `dependencies` のまま。独立 PR として切れるが、`pyproject.toml` だけでなく eager import / CI / docs を同時に直す必要がある（[[analysis-core-extras-pr-scope]]）
+- Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定している。ただしこれは「CLI 既定に未追随な半端状態」というより、**Web は JSON + `public-viewer`、CLI は self-contained `report.html` sidecar** という artifact 契約の意図的分岐と読んだ方が正確である（[[usage-modes]], [[cli]]）
 
 ### Phase 3a — plugin インフラ ✅ 完了
 
@@ -109,7 +109,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
 - `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
 - YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
-- `apps/api` からの subprocess 起動は current `main` でも `--without-html` を固定しており、CLI 既定の `report.html` 出力と挙動が分かれている
+- `apps/api` からの subprocess 起動は current `main` でも `--without-html` を固定しており、CLI の `report.html` 既定出力とは役割分担が分かれている。この差分は現状では docs で明示して読ませるべきで、直ちに統一すべき未整合とは限らない
 
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
@@ -126,7 +126,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - **「v5 はまだ別世界」というメンタルモデルは正しくない**。`packages/analysis-core/` のコードは既に canonical。新規 PR は基本こちらに投げる
 - 一方、plugin wrapper の多くはなお legacy step の薄いラッパーであり、どこまで workflow-native 実装へ寄せるかは別論点として残る
-- `analysis-core` 自体の配布はほぼ着地したが、**CLI の canonical 挙動** と **Web/API が固定している挙動** はまだ揃っていない
+- `analysis-core` 自体の配布はほぼ着地したが、**CLI** と **Web/API** は同じコアを使いながら、生成・保持・配信する artifact 契約を意図的に分けている。新しい読者が「なぜ API は `--without-html` 固定なのか」で迷わないよう、docs 側で明示しておく価値が高い
 - 旧 `apps/api/broadlistening/pipeline/` には触らない（deprecated）。バグ報告で旧パスのトレースを見たら「`hierarchical_main.py` で実行している」を疑う
 
 利用モードの観点で言い換えると：
@@ -138,7 +138,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - `hierarchical_status.json` のどこまでを legacy 完全互換に寄せるべきか（現状整理は [[hierarchical-status-semantics]]）
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
-- Web/API でも `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
+- Web/API でも将来 `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
 - `--skip-interaction` の argparse バグ修正 ([[cli]])
 - 依存分割（Task 2.5.6）
 
@@ -161,3 +161,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: `hierarchical_status.json` の項目別 semantics 棚卸しページ [[hierarchical-status-semantics]] への導線を追加
 - 2026-05-21: Phase 3b の完了条件を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
 - 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
+- 2026-05-21: CLI の `report.html` 既定出力と API の `--without-html` 固定は「未整合」より「利用モード別の意図的分岐」と読めるよう表現を補正し、[[usage-modes]] / [[cli]] への導線を強めた

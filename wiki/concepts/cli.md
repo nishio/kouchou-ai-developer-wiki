@@ -89,6 +89,8 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 
 ただしこれは **CLI / 手動実行向けの sidecar 成果物** の話であり、Web の主経路を置き換えるものではない。current `apps/api/src/routers/report.py` は `hierarchical_result.json` を返し、`apps/public-viewer` はその JSON を fetch して描画する。`apps/api/src/services/report_launcher.py` が subprocess 起動時に `--without-html` を付けているのも、現行 Web 経路では HTML が配信対象ではないから、と読むのが自然。[[pr-825-standalone-html-observation-2026-05-19]]より
 
+新しい読者向けには、ここを **「CLI 既定と API 挙動が食い違っている未解決問題」ではなく、「利用モードごとに artifact 契約を分けている」** と明記しておく方が混乱が少ない。CLI は手元で完結して読める `report.html` を重視し、Web は `hierarchical_result.json` + `public-viewer` を canonical path としている。[[usage-modes]]より
+
 ## 関連ドキュメント
 
 - `docs/user-guide/cli-quickstart.md` — 公式 quickstart。`config.json` 例とトラブルシューティング（`Job already running` → `rm -rf outputs/config`）
