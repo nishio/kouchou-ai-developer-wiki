@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #824` merge 後の current `main` では analysis 実行経路は full URL な LOCAL LLM を受け取れるが、admin の model list probe はまだ `host:port` + `http://` 前提という観測メモ
+summary: "`PR #824` merge 後の current `main` では analysis 実行経路は full URL な LOCAL LLM を受け取れるが、admin の model list probe はまだ `host:port` + `http://` 前提という観測メモ"
 sources:
   - source-code.md
   - github-dev-docs.md

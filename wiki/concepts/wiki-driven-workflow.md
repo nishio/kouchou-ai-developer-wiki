@@ -1,6 +1,6 @@
 ---
 type: concept
-summary: developer-wiki repo で文脈整理し、`work/kouchou-ai/` で実装確認し、最終的に `digitaldemocracy2030/kouchou-ai` へ PR を出す二層運用
+summary: "developer-wiki repo で文脈整理し、`work/kouchou-ai/` で実装確認し、最終的に `digitaldemocracy2030/kouchou-ai` へ PR を出す二層運用"
 sources:
   - source-code.md
   - github-dev-docs.md
@@ -97,6 +97,10 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 仕様や背景を整理してから本体 repo に手を入れたい時
 - 議事メモや Slack の設計意図を Wiki に残しつつ実装変更したい時
 - AI エージェントに「まず文脈を掴ませ、その後に本体 repo を直させる」時
+
+## この repo 自体の公開方法
+
+この repo の `wiki/` は docs 置き場というより **knowledge base / digital garden** に近いので、GitHub Pages 配信も単なる Markdown renderer ではなく wikilink 中心の公開体験で選ぶ方が自然である。現状は MkDocs + rewrite script で配信できるが、方針判断としては [[wiki-pages-publishing-stack]] の通り Quartz を第一候補に寄せる方が筋がよい。[[wiki-pages-tooling-observation-2026-05-21]]より
 
 ## 向いていないケース
 

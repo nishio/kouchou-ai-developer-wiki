@@ -1,6 +1,6 @@
 ---
 name: idobata
-summary: AI による 1-on-1 ディープインタビュー OSS。kouchou-ai と提案／PR データを連携
+summary: "AI による 1-on-1 ディープインタビュー OSS。kouchou-ai と提案／PR データを連携"
 type: entity
 sources:
   - meeting-minutes.md

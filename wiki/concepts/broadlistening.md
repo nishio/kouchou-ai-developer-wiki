@@ -1,6 +1,6 @@
 ---
 name: broadlistening
-summary: ブロードリスニング — 大規模自由記述意見を LLM で集約・クラスタリングし「意見の地図」を作る手法
+summary: "ブロードリスニング — 大規模自由記述意見を LLM で集約・クラスタリングし「意見の地図」を作る手法"
 type: concept
 sources:
   - github-dev-docs.md

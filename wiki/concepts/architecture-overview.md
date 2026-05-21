@@ -1,6 +1,6 @@
 ---
 name: architecture-overview
-summary: kouchou-ai のランタイム構成 — api / public-viewer / admin / static-site-builder / ollama の 5 サービス
+summary: "kouchou-ai のランタイム構成 — api / public-viewer / admin / static-site-builder / ollama の 5 サービス"
 type: concept
 sources:
   - github-dev-docs.md

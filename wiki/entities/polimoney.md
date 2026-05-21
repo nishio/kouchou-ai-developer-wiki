@@ -1,6 +1,6 @@
 ---
 name: polimoney
-summary: 政治資金可視化 OSS。kouchou-ai と兄弟プロジェクト
+summary: "政治資金可視化 OSS。kouchou-ai と兄弟プロジェクト"
 type: entity
 sources:
   - weekly-log-2026-05-06.md

@@ -73,6 +73,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [worktree-hygiene-observation-2026-05-20](sources/worktree-hygiene-observation-2026-05-20.md) — `work/kouchou-ai/` の dirty は別件試作と local 生成物の混在で、`PR #839` で `apps/api/uv.lock` ignore を main に反映した観測メモ
 - [pr-840-workflow-defaultization-observation-2026-05-20](sources/pr-840-workflow-defaultization-observation-2026-05-20.md) — draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用までを段階的に進めている
 - [broad-listening-book-source](sources/broad-listening-book-source.md) — DD2030 書籍「選挙を変えたブロードリスニング」原稿の開発向け章マップ（12・13 章・10_00 DD2030・現場 column / case）
+- [wiki-pages-tooling-observation-2026-05-21](sources/wiki-pages-tooling-observation-2026-05-21.md) — developer-wiki repo の MkDocs 現状実装と Quartz 公式 docs の突き合わせ
 
 ## Analyses
 
@@ -85,6 +86,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [glossary](analyses/glossary.md) — 用語集
 - [pypi-auto-release-requirements](analyses/pypi-auto-release-requirements.md) — PyPI 自動更新に必要な構成要素
 - [pypi-release-trigger](analyses/pypi-release-trigger.md) — PyPI リリースが発生する条件
+- [pypi-release-timing-automation](analyses/pypi-release-timing-automation.md) — release タイミングを自動化するか否かの判断
 - [slack-design-intents-2025-q4](analyses/slack-design-intents-2025-q4.md) — 2025 4Q の設計意図整理
 - [slack-design-intents-2026-q1](analyses/slack-design-intents-2026-q1.md) — Slack から読める実装意図の整理
 - [slack-algorithm-themes](analyses/slack-algorithm-themes.md) — アルゴリズム開発チャンネルから読める設計判断
@@ -113,3 +115,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [worktree-hygiene](analyses/worktree-hygiene.md) — `work/kouchou-ai/` を current tree の基準面として保つための worktree / ignore 運用メモ
 - [broad-listening-book-extractions](analyses/broad-listening-book-extractions.md) — 書籍から抽出した設計判断の出版可能形・現場運用知見・将来開発の素材（off-topic クラスタ、自己理解ボトルネック、DivCon ほか）
 - [analysis-core-extras-pr-scope](analyses/analysis-core-extras-pr-scope.md) — Task 2.5.6 の extras 分割は独立 PR で切れるが、import/CI/docs も含めて package 境界で整える必要がある
+- [wiki-pages-publishing-stack](analyses/wiki-pages-publishing-stack.md) — developer-wiki の GitHub Pages 配信は MkDocs adapter より Quartz が合うという判断

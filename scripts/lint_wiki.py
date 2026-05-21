@@ -3,8 +3,10 @@
 Usage: python3 scripts/lint_wiki.py
 """
 import re
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
+
+import yaml
 
 WIKI = Path(__file__).parent.parent / "wiki"
 
@@ -36,7 +38,8 @@ FRONTMATTER = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 
 outgoing = defaultdict(set)   # page -> set of pages it links to
 incoming = defaultdict(set)   # page -> set of pages linking to it
-frontmatter = {}              # page -> dict of fm fields (raw text per key)
+frontmatter = {}              # page -> parsed frontmatter
+frontmatter_errors = []       # [(page, error)]
 
 for path in page_paths:
     name = page_ref(path)
@@ -45,30 +48,22 @@ for path in page_paths:
     fm_text = m.group(1) if m else ""
     body = text[m.end():] if m else text
 
-    # crude frontmatter parse: only keys we care about
     fm = {}
-    for line in fm_text.splitlines():
-        line = line.rstrip()
-        if line.startswith(("type:", "summary:", "sources:", "date:", "url:", "raw_sources:")):
-            key, _, val = line.partition(":")
-            fm[key.strip()] = val.strip()
-        # detect indented list items as part of last list-key (sources/raw_sources)
-    # check whether sources/raw_sources actually has any value (list item or inline)
+    if m:
+        try:
+            parsed = yaml.safe_load(fm_text) or {}
+            if not isinstance(parsed, dict):
+                raise TypeError(f"frontmatter must be a mapping, got {type(parsed).__name__}")
+            fm = parsed
+        except Exception as exc:
+            frontmatter_errors.append((name, str(exc).splitlines()[0]))
+
     has_sources = False
-    in_sources_block = False
-    for line in fm_text.splitlines():
-        stripped = line.rstrip()
-        if stripped.startswith(("sources:", "raw_sources:")):
-            tail = stripped.split(":", 1)[1].strip()
-            if tail:  # inline value like "sources: foo.md"
-                has_sources = True
-            in_sources_block = True
-            continue
-        if in_sources_block:
-            if line.startswith(("  -", "    -", "\t-")) and line.strip().startswith("-"):
-                has_sources = True
-            elif stripped and not stripped.startswith(" "):
-                in_sources_block = False
+    sources_value = fm.get("sources") or fm.get("raw_sources")
+    if isinstance(sources_value, list):
+        has_sources = len(sources_value) > 0
+    elif sources_value:
+        has_sources = True
     fm["__has_sources__"] = has_sources
     frontmatter[name] = fm
 
@@ -147,8 +142,11 @@ missing_type = [n for n, fm in frontmatter.items() if "type" not in fm]
 missing_summary = [n for n, fm in frontmatter.items() if "summary" not in fm]
 missing_sources_required = [
     n for n, fm in frontmatter.items()
-    if fm.get("type", "").strip() in ("source", "concept") and not fm["__has_sources__"]
+    if str(fm.get("type", "")).strip() in ("source", "concept") and not fm["__has_sources__"]
 ]
+print(f"  YAML parse errors: {len(frontmatter_errors)}")
+for n, err in frontmatter_errors:
+    print(f"    - {n}: {err}")
 print(f"  type欠落: {len(missing_type)}")
 for n in missing_type:
     print(f"    - {n}")
@@ -157,7 +155,7 @@ for n in missing_summary:
     print(f"    - {n}")
 print(f"  sources欠落 (source/concept type): {len(missing_sources_required)}")
 for n in missing_sources_required:
-    typ = frontmatter[n].get("type", "?").strip()
+    typ = str(frontmatter[n].get("type", "?")).strip()
     print(f"    - [{typ}] {n}")
 print()
 

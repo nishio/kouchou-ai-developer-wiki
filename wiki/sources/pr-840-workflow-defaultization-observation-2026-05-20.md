@@ -1,6 +1,6 @@
 ---
 type: source
-summary: draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用に加え、CLI/API 入口と duplicate/reuse rerun plan の integration 確認まで段階的に進めている
+summary: "draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用に加え、CLI/API 入口と duplicate/reuse rerun plan の integration 確認まで段階的に進めている"
 sources:
   - source-code.md
   - github-dev-docs.md

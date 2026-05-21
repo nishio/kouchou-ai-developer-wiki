@@ -1,6 +1,6 @@
 ---
 name: broad-listening-book
-summary: DD2030 書籍「選挙を変えたブロードリスニング」（インプレス、CC BY-NC 4.0）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う
+summary: "DD2030 書籍「選挙を変えたブロードリスニング」（インプレス、CC BY-NC 4.0）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う"
 type: entity
 sources:
   - meeting-minutes.md

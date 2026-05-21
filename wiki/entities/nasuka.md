@@ -1,6 +1,6 @@
 ---
 name: nasuka
-summary: Nasuka Sumino (角野) — 元会議ファシリ、抽出プロンプト・limited-publish 等を実装
+summary: "Nasuka Sumino (角野) — 元会議ファシリ、抽出プロンプト・limited-publish 等を実装"
 type: entity
 sources:
   - meeting-minutes.md

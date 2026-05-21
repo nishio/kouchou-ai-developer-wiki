@@ -1,6 +1,6 @@
 ---
 type: source
-summary: GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ
+summary: "GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ"
 sources:
   - https://codeql.github.com/docs/codeql-overview/about-codeql/
   - https://docs.github.com/en/code-security/concepts/code-scanning/codeql/about-code-scanning-with-codeql

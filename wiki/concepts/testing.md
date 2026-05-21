@@ -1,6 +1,6 @@
 ---
 name: testing
-summary: テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
+summary: "テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用"
 type: concept
 sources:
   - github-dev-docs.md

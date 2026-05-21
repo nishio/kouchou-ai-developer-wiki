@@ -1,6 +1,6 @@
 ---
 name: slack-design-intents-2026-q1
-summary: 2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、Jigsaw 系分類、可視化分離
+summary: "2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、Jigsaw 系分類、可視化分離"
 type: analysis
 sources:
   - slack-dev-kouchouai-2026-q1.md

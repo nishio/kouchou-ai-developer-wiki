@@ -1,6 +1,6 @@
 ---
 name: npm-vs-pnpm
-summary: なぜ pnpm 必須で npm 非対応か — plugin システムが要求する node_modules 分離
+summary: "なぜ pnpm 必須で npm 非対応か — plugin システムが要求する node_modules 分離"
 type: analysis
 sources:
   - github-dev-docs.md

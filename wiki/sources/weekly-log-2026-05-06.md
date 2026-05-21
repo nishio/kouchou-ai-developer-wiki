@@ -1,6 +1,6 @@
 ---
 name: weekly-log-2026-05-06
-summary: nishio/oss_weekly_reporter の週次ダンプ (2026-05-06 〜 2026-05-13) — Slack/GitHub の生ログ
+summary: "nishio/oss_weekly_reporter の週次ダンプ (2026-05-06 〜 2026-05-13) — Slack/GitHub の生ログ"
 type: source
 url: https://github.com/nishio/oss_weekly_reporter/tree/data/data/2026-05-06_to_2026-05-13/raw
 sources:

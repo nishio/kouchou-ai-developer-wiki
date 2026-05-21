@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
+summary: "open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である"
 sources:
   - open-issue-backlog-2026-05-19.md
   - issue-priority-through-2026-09.md

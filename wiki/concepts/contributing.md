@@ -1,6 +1,6 @@
 ---
 name: contributing
-summary: コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
+summary: "コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー"
 type: concept
 sources:
   - github-dev-docs.md

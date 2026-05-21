@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `work/kouchou-ai/` の dirty は `issue-830` 本筋ではなく、別件 2 系統と local 生成物が混ざった状態で、`apps/api/uv.lock` ignore を `PR #839` で main に反映して整理した観測メモ
+summary: "`work/kouchou-ai/` の dirty は `issue-830` 本筋ではなく、別件 2 系統と local 生成物が混ざった状態で、`apps/api/uv.lock` ignore を `PR #839` で main に反映して整理した観測メモ"
 sources:
   - source-code.md
   - github-dev-docs.md

@@ -1,6 +1,6 @@
 ---
 name: book-release-development-plan-2026-09
-summary: 2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する
+summary: "2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する"
 type: analysis
 sources:
   - versioning-strategy.md

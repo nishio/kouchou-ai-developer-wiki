@@ -1,6 +1,6 @@
 ---
 name: open-pr-observation-2026-05-18
-summary: 2026-05-18 の open PR / review triage 実験で観測した head branch 更新挙動
+summary: "2026-05-18 の open PR / review triage 実験で観測した head branch 更新挙動"
 type: source
 sources:
   - github-dev-docs.md

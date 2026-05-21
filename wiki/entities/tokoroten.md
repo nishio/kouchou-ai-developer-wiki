@@ -1,6 +1,6 @@
 ---
 name: tokoroten
-summary: 中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当
+summary: "中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当"
 type: entity
 sources:
   - meeting-minutes.md

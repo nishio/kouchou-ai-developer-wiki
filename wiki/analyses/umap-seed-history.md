@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: UMAP / k-means の seed 固定は「完全再現性を実現した仕組み」ではなく、「見た目の揺れを少しでも抑えたい要求」から生まれ、後に並列性とのトレードオフとして見直された
+summary: "UMAP / k-means の seed 固定は「完全再現性を実現した仕組み」ではなく、「見た目の揺れを少しでも抑えたい要求」から生まれ、後に並列性とのトレードオフとして見直された"
 sources:
   - seed-reproducibility-history.md
   - source-code.md

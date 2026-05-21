@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #813` と `PR #817` を観測し、CodeQL / CodeRabbit 設定がどう入って何が意図だったかを整理したメモ
+summary: "`PR #813` と `PR #817` を観測し、CodeQL / CodeRabbit 設定がどう入って何が意図だったかを整理したメモ"
 sources:
   - github-dev-docs.md
 ---

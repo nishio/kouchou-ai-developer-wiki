@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #814` の GitHub 状態と `apps/public-viewer` の差分を 2026-05-19 時点で観測したメモ
+summary: "`PR #814` の GitHub 状態と `apps/public-viewer` の差分を 2026-05-19 時点で観測したメモ"
 sources:
   - source-code.md
 ---

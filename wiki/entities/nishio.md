@@ -1,6 +1,6 @@
 ---
 name: nishio
-summary: 西尾泰和 — kouchou-ai のリファクタ／研究主導、本 Wiki のオーナー
+summary: "西尾泰和 — kouchou-ai のリファクタ／研究主導、本 Wiki のオーナー"
 type: entity
 sources:
   - meeting-minutes.md

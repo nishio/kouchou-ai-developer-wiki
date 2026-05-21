@@ -1,6 +1,6 @@
 ---
 name: source-code
-summary: kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照
+summary: "kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照"
 type: source
 url: https://github.com/digitaldemocracy2030/kouchou-ai
 sources:

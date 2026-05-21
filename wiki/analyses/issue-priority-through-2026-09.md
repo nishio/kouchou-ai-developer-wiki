@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: 2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当
+summary: "2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当"
 sources:
   - problem-list-from-open-issues-2026-05-19.md
   - open-issues-snapshot-2026-05-19.md

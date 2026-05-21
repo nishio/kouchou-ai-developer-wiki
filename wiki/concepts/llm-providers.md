@@ -1,6 +1,6 @@
 ---
 name: llm-providers
-summary: 対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama)
+summary: "対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama)"
 type: concept
 sources:
   - github-dev-docs.md

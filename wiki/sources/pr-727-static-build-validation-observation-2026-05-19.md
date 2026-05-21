@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #727` は「公開レポート 0 件時の静的 build エラー改善」を狙うが、2026-05-19 時点の patch には validation が実行されない不具合と API URL 解決のずれがある
+summary: "`PR #727` は「公開レポート 0 件時の静的 build エラー改善」を狙うが、2026-05-19 時点の patch には validation が実行されない不具合と API URL 解決のずれがある"
 sources:
   - source-code.md
 ---

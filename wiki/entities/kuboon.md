@@ -1,6 +1,6 @@
 ---
 name: kuboon
-summary: Ohkubo KOHEI — Outline self-host とドキュメント基盤運用
+summary: "Ohkubo KOHEI — Outline self-host とドキュメント基盤運用"
 type: entity
 sources:
   - weekly-log-2026-05-06.md

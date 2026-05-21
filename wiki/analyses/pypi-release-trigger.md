@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
+summary: "`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない"
 sources:
   - pypi-release-observation-2026-05-19.md
   - github-dev-docs.md
@@ -44,6 +44,7 @@ tag push で workflow は起動しても、前段の test/lint が失敗する�
 
 - 将来 TestPyPI 経路を入れるなら、`analysis-core-v*` 以外に prerelease 用 tag 規約を増やすか
 - Trusted Publishing へ移行した時も trigger を tag push のまま維持するか
+- 「tag 付け自体を自動化するか」は別ページで判断を分けた。[[pypi-release-timing-automation]] を参照
 
 ## Updates
 

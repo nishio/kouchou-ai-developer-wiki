@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `PR #722` は validation 強化の意図自体は理解できるが、2026-05-19 時点では deprecated shim を増築する stale patch なので、そのまま merge すべきではない
+summary: "`PR #722` は validation 強化の意図自体は理解できるが、2026-05-19 時点では deprecated shim を増築する stale patch なので、そのまま merge すべきではない"
 sources:
   - pr-722-filesystem-validation-observation-2026-05-19.md
   - source-code.md

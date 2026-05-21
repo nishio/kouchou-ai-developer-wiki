@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: Phase 3b を「完了」と書くには workflow path が production 入口として実用互換であることを示せば足り、status file の byte-level 完全互換までは必須ではない
+summary: "Phase 3b を「完了」と書くには workflow path が production 入口として実用互換であることを示せば足り、status file の byte-level 完全互換までは必須ではない"
 sources:
   - source-code.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md

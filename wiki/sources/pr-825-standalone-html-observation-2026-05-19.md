@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #825` merge 後の current `main` では `analysis-core` CLI が自己完結型 `report.html` を生成するが、Web の主経路はなお `hierarchical_result.json` + `public-viewer` であり HTML は sidecar 成果物に留まるという観測メモ
+summary: "`PR #825` merge 後の current `main` では `analysis-core` CLI が自己完結型 `report.html` を生成するが、Web の主経路はなお `hierarchical_result.json` + `public-viewer` であり HTML は sidecar 成果物に留まるという観測メモ"
 sources:
   - source-code.md
   - github-dev-docs.md

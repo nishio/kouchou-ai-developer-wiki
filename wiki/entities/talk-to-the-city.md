@@ -1,6 +1,6 @@
 ---
 name: talk-to-the-city
-summary: TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived
+summary: "TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived"
 type: entity
 sources:
   - meeting-minutes.md

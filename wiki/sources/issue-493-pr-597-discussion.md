@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `Issue #493` と `PR #597` で行われた ScatterChart スクロール誤操作対策の議論メモ
+summary: "`Issue #493` と `PR #597` で行われた ScatterChart スクロール誤操作対策の議論メモ"
 sources:
   - github-dev-docs.md
 ---

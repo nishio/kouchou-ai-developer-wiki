@@ -1,6 +1,6 @@
 ---
 name: refactoring-status
-summary: v5 リファクタの実装状況 — Phase 0〜3b は概ね着地し、次の本丸は Phase 8 (旧コード削除) と PyPI package slimming
+summary: "v5 リファクタの実装状況 — Phase 0〜3b は概ね着地し、次の本丸は Phase 8 (旧コード削除) と PyPI package slimming"
 type: analysis
 sources:
   - github-dev-docs.md
@@ -50,6 +50,7 @@ sources:
 - `[project.scripts] kouchou-analyze = "analysis_core.__main__:main"` で CLI 配信
 - API サーバはこの CLI を **subprocess** で呼ぶ ([[cli]])
 - `analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` があり、`ruff` / `pytest` / `build` 通過後に PyPI publish する自動 release 経路も入った
+- `main@5d591ef` では filesystem-based usage の quickstart 整備と `--validate-config` / `--validate-input` / `--dry-run` preflight が入り、CLI 初回利用時の fail-fast も main に反映済み
 
 **未完**：
 
@@ -161,3 +162,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
 - 2026-05-21: CLI の `report.html` 既定出力と API の `--without-html` 固定は「未整合」より「利用モード別の意図的分岐」と読めるよう表現を補正し、[[usage-modes]] / [[cli]] への導線を強めた
 - 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外
+- 2026-05-21: `main@5d591ef` で PR #844 merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記

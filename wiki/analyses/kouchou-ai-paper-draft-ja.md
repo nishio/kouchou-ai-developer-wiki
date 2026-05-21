@@ -1,6 +1,6 @@
 ---
 name: kouchou-ai-paper-draft-ja
-summary: 広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く
+summary: "広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く"
 type: analysis
 sources:
   - kouchou-ai-paper-draft-strategy.md

@@ -1,6 +1,6 @@
 ---
 name: other-contributors
-summary: その他の主要コントリビュータ — kitaro, tanenobu, shirouchi, sasano ほか
+summary: "その他の主要コントリビュータ — kitaro, tanenobu, shirouchi, sasano ほか"
 type: entity
 sources:
   - meeting-minutes.md

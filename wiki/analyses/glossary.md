@@ -1,6 +1,6 @@
 ---
 name: glossary
-summary: kouchou-ai 周辺の用語集 — 日本語特有・プロジェクト固有のショートハンド
+summary: "kouchou-ai 周辺の用語集 — 日本語特有・プロジェクト固有のショートハンド"
 type: analysis
 sources:
   - github-dev-docs.md

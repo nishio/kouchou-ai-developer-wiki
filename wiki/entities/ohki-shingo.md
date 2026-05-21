@@ -1,6 +1,6 @@
 ---
 name: ohki-shingo
-summary: 大木慎吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当
+summary: "大木慎吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当"
 type: entity
 sources:
   - meeting-minutes.md

@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `PR #814` は問題意識に沿った小さな修正だが、2026-05-19 時点では draft / review 未充足で即 merge ではなく、`BUILD_SLUGS` 経路の誤診断を先に詰めたい
+summary: "`PR #814` は問題意識に沿った小さな修正だが、2026-05-19 時点では draft / review 未充足で即 merge ではなく、`BUILD_SLUGS` 経路の誤診断を先に詰めたい"
 sources:
   - pr-814-static-export-error-observation-2026-05-19.md
   - source-code.md

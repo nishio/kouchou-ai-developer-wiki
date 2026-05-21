@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #835` は `public-viewer` の static export 前提チェックを helper に整理し、公開レポート 0 件と `BUILD_SLUGS` 不一致を分けて fail-fast する draft PR
+summary: "`PR #835` は `public-viewer` の static export 前提チェックを helper に整理し、公開レポート 0 件と `BUILD_SLUGS` 不一致を分けて fail-fast する draft PR"
 sources:
   - source-code.md
 ---

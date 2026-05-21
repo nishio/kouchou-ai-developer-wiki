@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: 2026-05-18 の stale cleanup 後、nishio 以外の人間 authored open PR は `shingo-ohki` の `#817` だけで、古い draft `#734` と `#597` は close 済み
+summary: "2026-05-18 の stale cleanup 後、nishio 以外の人間 authored open PR は `shingo-ohki` の `#817` だけで、古い draft `#734` と `#597` は close 済み"
 sources:
   - open-pr-snapshot-2026-05-18.md
   - open-pr-observation-2026-05-18.md

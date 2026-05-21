@@ -1,6 +1,6 @@
 ---
 type: source
-summary: 2026-05-19 時点の `/reports/{slug}` は通常生成物では `config` 付き JSON を返す一方、壊れた `hierarchical_result.json` を置くと `config` 欠損でも 200 で素通しするという再現メモ
+summary: "2026-05-19 時点の `/reports/{slug}` は通常生成物では `config` 付き JSON を返す一方、壊れた `hierarchical_result.json` を置くと `config` 欠損でも 200 で素通しするという再現メモ"
 sources:
   - source-code.md
   - github-dev-docs.md

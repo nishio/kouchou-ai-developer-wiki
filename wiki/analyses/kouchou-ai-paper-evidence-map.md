@@ -1,6 +1,6 @@
 ---
 name: kouchou-ai-paper-evidence-map
-summary: 広聴AI紹介論文で想定する主張ごとに、既存の根拠、追加で必要な証拠、未解決ギャップを対応付けた表
+summary: "広聴AI紹介論文で想定する主張ごとに、既存の根拠、追加で必要な証拠、未解決ギャップを対応付けた表"
 type: analysis
 sources:
   - kouchou-ai-paper-draft-ja.md

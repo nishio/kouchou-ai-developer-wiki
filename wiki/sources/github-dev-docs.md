@@ -1,6 +1,6 @@
 ---
 name: github-dev-docs
-summary: kouchou-ai リポジトリと docs/development/ の開発者ドキュメント
+summary: "kouchou-ai リポジトリと docs/development/ の開発者ドキュメント"
 type: source
 url: https://github.com/digitaldemocracy2030/kouchou-ai
 sources:

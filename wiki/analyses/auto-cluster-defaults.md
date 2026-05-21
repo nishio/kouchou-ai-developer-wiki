@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
+summary: "クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正"
 sources:
   - issue-830-pr-832-auto-cluster-defaults-2026-05-18.md
   - meeting-minutes.md

@@ -1,6 +1,6 @@
 ---
 name: role-model-papers-polis-birdwatch
-summary: 広聴AI紹介論文のロールモデルとして参照しやすい vTaiwan / Polis と Birdwatch / Community Notes 論文の要点
+summary: "広聴AI紹介論文のロールモデルとして参照しやすい vTaiwan / Polis と Birdwatch / Community Notes 論文の要点"
 type: source
 sources:
   - https://ideas.repec.org/p/osf/socarx/xyhft.html

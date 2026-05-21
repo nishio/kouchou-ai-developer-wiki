@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ
+summary: "`Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ"
 sources:
   - meeting-minutes.md
   - github-dev-docs.md

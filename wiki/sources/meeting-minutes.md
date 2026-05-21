@@ -1,6 +1,6 @@
 ---
 name: meeting-minutes
-summary: Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-05, ~7300 lines, JP)
+summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-05, ~7300 lines, JP)"
 type: source
 url: https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit
 sources:

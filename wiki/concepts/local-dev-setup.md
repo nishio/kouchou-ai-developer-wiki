@@ -1,6 +1,6 @@
 ---
 name: local-dev-setup
-summary: ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
+summary: "ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで"
 type: concept
 sources:
   - github-dev-docs.md

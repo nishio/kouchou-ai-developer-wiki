@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #722` は 2025-10-23 作成の draft open PR で、ファイルシステム実行の文書化と validation を追加するが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築している
+summary: "`PR #722` は 2025-10-23 作成の draft open PR で、ファイルシステム実行の文書化と validation を追加するが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築している"
 sources:
   - github-dev-docs.md
   - source-code.md

@@ -1,6 +1,6 @@
 ---
 name: slack-design-intents-2025-q4
-summary: 2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、SenseMaker志向、JSON/YAML カスタマイズ、v4/v5 分離
+summary: "2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、SenseMaker志向、JSON/YAML カスタマイズ、v4/v5 分離"
 type: analysis
 sources:
   - slack-dev-kouchouai-2025-q4.md

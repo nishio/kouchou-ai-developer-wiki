@@ -1,6 +1,6 @@
 ---
 name: pipeline
-summary: 解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
+summary: "解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化"
 type: concept
 sources:
   - github-dev-docs.md

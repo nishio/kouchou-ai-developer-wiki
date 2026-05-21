@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `run_workflow()` default 化を止めていた主 blocker は main で概ね解消され、今はその履歴整理と残 follow-up の切り分けとして読むページ
+summary: "`run_workflow()` default 化を止めていた主 blocker は main で概ね解消され、今はその履歴整理と残 follow-up の切り分けとして読むページ"
 sources:
   - github-dev-docs.md
   - source-code.md

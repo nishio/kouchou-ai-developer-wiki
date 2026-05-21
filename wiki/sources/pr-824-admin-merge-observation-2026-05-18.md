@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #824` merge 時に、checks success と `REVIEW_REQUIRED` が両立したまま admin merge できた観測メモ
+summary: "`PR #824` merge 時に、checks success と `REVIEW_REQUIRED` が両立したまま admin merge できた観測メモ"
 sources:
   - github-dev-docs.md
   - pr-823-review-observation-2026-05-18.md

@@ -1,6 +1,6 @@
 ---
 name: pypi-release-observation-2026-05-19
-summary: `analysis-core-v0.1.1` / `v0.1.2` tag push で観測した PyPI publish workflow の実挙動
+summary: "`analysis-core-v0.1.1` / `v0.1.2` tag push で観測した PyPI publish workflow の実挙動"
 type: source
 sources:
   - github-dev-docs.md

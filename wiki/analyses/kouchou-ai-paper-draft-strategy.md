@@ -1,6 +1,6 @@
 ---
 name: kouchou-ai-paper-draft-strategy
-summary: 広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較
+summary: "広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較"
 type: analysis
 sources:
   - role-model-papers-polis-birdwatch.md

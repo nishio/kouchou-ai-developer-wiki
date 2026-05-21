@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #802` は `Overview` の1箇所だけを optional chaining 化するが、2026-05-19 時点の current `public-viewer` では `result.config` 前提が他にも多く、そのままでは欠損入力対応として不十分という観測メモ
+summary: "`PR #802` は `Overview` の1箇所だけを optional chaining 化するが、2026-05-19 時点の current `public-viewer` では `result.config` 前提が他にも多く、そのままでは欠損入力対応として不十分という観測メモ"
 sources:
   - source-code.md
   - github-dev-docs.md

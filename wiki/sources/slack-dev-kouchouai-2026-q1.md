@@ -1,6 +1,6 @@
 ---
 name: slack-dev-kouchouai-2026-q1
-summary: `oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、Jigsaw 系分類の設計意図
+summary: "`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、Jigsaw 系分類の設計意図"
 type: source
 url: https://github.com/nishio/oss_weekly_reporter/tree/data/data
 sources:

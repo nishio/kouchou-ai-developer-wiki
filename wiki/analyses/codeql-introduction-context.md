@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `PR #817` 文脈では、CodeQL は accidental な混入をきっかけに常設の security scan として整理された
+summary: "`PR #817` 文脈では、CodeQL は accidental な混入をきっかけに常設の security scan として整理された"
 sources:
   - codeql-docs.md
   - pr-813-817-codeql-coderabbit-observation-2026-05-18.md

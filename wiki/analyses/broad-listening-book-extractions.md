@@ -1,6 +1,6 @@
 ---
 name: broad-listening-book-extractions
-summary: 書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理
+summary: "書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理"
 type: analysis
 sources:
   - broad-listening-book-source.md

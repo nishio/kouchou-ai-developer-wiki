@@ -1,6 +1,6 @@
 ---
 type: source
-summary: `PR #822` / `#823` の review 時に local worktree と mock API で観測した `public-viewer` build 挙動と PR 運用上の注意
+summary: "`PR #822` / `#823` の review 時に local worktree と mock API で観測した `public-viewer` build 挙動と PR 運用上の注意"
 sources:
   - source-code.md
 ---

@@ -1,6 +1,6 @@
 ---
 type: source
-summary: UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810
+summary: "UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810"
 sources:
   - source-code.md
   - slack-kouchouai-algorithm-dev.md

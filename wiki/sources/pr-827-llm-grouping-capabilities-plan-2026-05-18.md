@@ -1,6 +1,6 @@
 ---
 name: pr-827-llm-grouping-capabilities-plan-2026-05-18
-summary: `PR #827` の計画メモ要約 — LLM grouping を viewer 互換で導入し、長期的には capability 自動判定へ移行する
+summary: "`PR #827` の計画メモ要約 — LLM grouping を viewer 互換で導入し、長期的には capability 自動判定へ移行する"
 type: source
 sources:
   - github-dev-docs.md

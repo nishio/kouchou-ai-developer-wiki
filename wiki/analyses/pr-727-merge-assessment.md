@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `PR #727` は問題設定自体は妥当だが、2026-05-19 時点の patch は validation が実際には動かず、API URL 解決も現行実装とずれているため、そのまま merge すべきではない
+summary: "`PR #727` は問題設定自体は妥当だが、2026-05-19 時点の patch は validation が実際には動かず、API URL 解決も現行実装とずれているため、そのまま merge すべきではない"
 sources:
   - pr-727-static-build-validation-observation-2026-05-19.md
   - source-code.md

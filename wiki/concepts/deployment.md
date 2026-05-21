@@ -1,6 +1,6 @@
 ---
 name: deployment
-summary: デプロイ — Azure 本番、静的サイト書き出し、PyPI リリース
+summary: "デプロイ — Azure 本番、静的サイト書き出し、PyPI リリース"
 type: concept
 sources:
   - github-dev-docs.md

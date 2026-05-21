@@ -1,5 +1,12 @@
 # Log
 
+## [2026-05-21 20:32] filing-back | PyPI リリースタイミング自動化の判断を分離
+
+- 新規 [[pypi-release-timing-automation]] を作成し、「publish 自動化」と「tag 付け自動化」を段階分けして整理
+- 結論: tag 付けの自動化は 2026-05 時点では見送り、Trusted Publishing と TestPyPI 経路の方が先
+- [[pypi-release-trigger]] と [[pypi-auto-release-requirements]] の Open Questions に新ページへの導線を追加
+- [[open-decisions]] B3 にも判断サマリを併記
+
 ## [2026-05-21 19:44] lint | PR #843 merge / PR #844 着手反映後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -802,3 +809,33 @@
 - unregistered pages: 0
 - isolated pages: 9（既知）
 - frontmatter errors: 0
+
+## [2026-05-21 20:02] filing-back | developer-wiki の GitHub Pages 配信を Quartz へ実切替
+
+- Quartz 4 の必要ソースを repo root に vendor し、`package.json` / `quartz.config.ts` / `quartz.layout.ts` / `tsconfig.json` を追加
+- `pnpm build` が `wiki/` を直接読んで `public/` を出す構成へ変更し、`.github/workflows/deploy-pages.yml` も Node 22 + pnpm + Quartz build に差し替え
+- `mkdocs.yml` / `requirements-pages.txt` / `scripts/build_pages_docs.py` を撤去
+- Quartz の strict YAML parse で落ちた frontmatter summary を quoted string に正規化し、`scripts/lint_wiki.py` も strict YAML parse を行うよう補強
+- ローカル build と Safari での `127.0.0.1:8123/` 表示確認まで実施
+
+## [2026-05-21 20:04] lint | Quartz 実切替後の strict frontmatter 基準で lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 10（`analysis-core-extras-pr-scope` が既存の孤立集合に加わった）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-21 20:42] filing-back | PR #844 merge と Issue #836 / #837 close を wiki に反映
+
+- `work/kouchou-ai/` を `main@5d591ef` まで fast-forward し、PR `#844 analysis-core CLI に preflight validation を追加` の merge と Issue `#836` / `#837` の close を確認
+- [[open-decisions]] から stale になった C4 analysis-core CLI preflight 項目を除外し、進行スナップショットの C 件数を 3 に更新
+- [[refactoring-status]] の Phase 2.5 に、filesystem-based quickstart と CLI preflight が main に反映済みであることを追記
+
+## [2026-05-21 20:42] lint | PR #844 merge 反映後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 10（既知）
+- frontmatter YAML parse errors: 0

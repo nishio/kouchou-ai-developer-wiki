@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
+summary: "`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線"
 sources:
   - github-dev-docs.md
   - source-code.md
@@ -55,6 +55,7 @@ sources:
 
 - publish 前に `apps/api` 側の互換テストまで必須にするか
 - PyPI 認証を token secret で持つか、Trusted Publishing に寄せるか
+- 「release タイミング自体を自動化するか（tag 付けまで CI 側に持っていくか）」の判断は [[pypi-release-timing-automation]] に分離した
 
 ## Updates
 

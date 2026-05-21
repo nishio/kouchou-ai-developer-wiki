@@ -1,6 +1,6 @@
 ---
 name: anno
-summary: 安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者
+summary: "安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者"
 type: entity
 sources:
   - meeting-minutes.md

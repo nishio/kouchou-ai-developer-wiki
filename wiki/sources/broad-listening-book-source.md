@@ -1,6 +1,6 @@
 ---
 name: broad-listening-book-source
-summary: DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む
+summary: "DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む"
 type: source
 sources:
   - work/broad-listening-book (digitaldemocracy2030/broad-listening-book)

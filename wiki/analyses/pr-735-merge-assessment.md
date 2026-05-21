@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: `PR #735` は `Issue #685` に触れる実問題を含むが、draft / conflicts / stale path 前提なので merge ではなく current tree への作り直しとして扱うべき
+summary: "`PR #735` は `Issue #685` に触れる実問題を含むが、draft / conflicts / stale path 前提なので merge ではなく current tree への作り直しとして扱うべき"
 sources:
   - pr-735-issue-685-observation-2026-05-19.md
   - source-code.md

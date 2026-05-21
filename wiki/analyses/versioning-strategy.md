@@ -1,6 +1,6 @@
 ---
 name: versioning-strategy
-summary: v4 凍結 / v5 plugin 化のリリース戦略 — 書籍出版とのリスク調整
+summary: "v4 凍結 / v5 plugin 化のリリース戦略 — 書籍出版とのリスク調整"
 type: analysis
 sources:
   - meeting-minutes.md
