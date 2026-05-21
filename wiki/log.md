@@ -934,3 +934,26 @@
 - unregistered pages: 0
 - isolated pages: 12（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-21 23:48] filing-back | GitHub 上の対外文面は日本語をデフォルトとする運用を明文化
+
+- `CLAUDE.md` の運用方針に、Issue / PR のタイトル・本文・コメントは特段の指示がない限り日本語をデフォルトにするルールを追記
+
+## [2026-05-21 23:48] filing-back | Issue 着手前の assignee 確認と self-assign を運用ルール化
+
+- `CLAUDE.md` の運用方針に、Issue 実装前の assignee 確認と、着手時の self-assign を追加
+- 並行して開発してしまう事故を避けるためのルールとして記録
+
+## [2026-05-21 23:58] filing-back | 定例会議向けの Codex 報告下書きページを追加
+
+- 新規 concept [[meeting-report-draft]] を追加し、次の定例会議で読み上げるための進捗要約ページを作成
+- `CLAUDE.md` に、実装・調査・CI 対応を進めたらこの下書きも保守する運用を追記
+- [[coding-agents]] と `wiki/index.md` から辿れるように導線を追加
+
+## [2026-05-21 23:59] lint | 定例会議向け下書きページ追加後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0

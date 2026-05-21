@@ -63,6 +63,10 @@ AI エージェントの実務運用では、repo 編集・pytest・lint のた�
 
 AI が自律でやるべきなのは、`REVIEW_REQUIRED` や `BLOCKED` を観測して **「いま何が blocker か」を報告するところまで** であり、誰の attention を取るかの決定は人間オーナーに返す方が安全。[[pr-849-agent-review-request-observation-2026-05-21]]より
 
+## 定例会議向けの報告下書き
+
+Codex が実務を進めた時は、Issue / PR / CI / wiki の更新が会議前に散逸しやすい。そこで、この wiki では **次の定例会議で読むための下書き** を [[meeting-report-draft]] に保守する。会議で必要なのは完全な changelog ではなく、**何を直したか、何が main に入ったか、次に何を見るか** である。[[meeting-report-draft]]より
+
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
@@ -74,3 +78,4 @@ AI が自律でやるべきなのは、`REVIEW_REQUIRED` や `BLOCKED` を観測
 - 2026-05-18: host full access を標準化しない権限分離方針への参照を追加
 - 2026-05-18: AI エージェント起点の draft PR は、ready for review にするまで merge しない運用メモを追記
 - 2026-05-21: reviewer request や approval 催促のような「人間 attention を使う操作」は AI の裁量外とする運用メモを追記
+- 2026-05-21: 次の定例会議で読むための報告下書きページ [[meeting-report-draft]] への導線を追加

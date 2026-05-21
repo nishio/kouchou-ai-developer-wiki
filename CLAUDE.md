@@ -64,6 +64,12 @@ sources:
 2. 有用な回答はanalyses/にfiling back
 3. log.mdに `## [YYYY-MM-DD HH:MM] filing-back | <description>` を記録
 
+### 定例会議向け下書きのメンテ
+1. Codex が GitHub Issue / PR の実装・調査・CI 対応・wiki 更新のような実務を進めたら、`wiki/concepts/meeting-report-draft.md` に要点を追記する
+2. 1 項目は「何をしたか / 何が決まったか / 次に何を見るか」が 2〜4 行で読める粒度に保つ
+3. 未 merge の作業は branch / PR 番号つきで「進行中」と明示し、main 済みの項目と混同させない
+4. 定例会議後は古い項目を消すのではなく、必要なら「## Updates」に次回向けの残件を追記して継続利用する
+
 ### Lint（健全性チェック）
 1. 機械的: `python3 scripts/lint_wiki.py`（孤立・壊れたリンク・未登録など）
 2. 意味的: 矛盾・stale claim・概念ページ不足・新質問の提案
@@ -81,5 +87,9 @@ sources:
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `work/kouchou-ai/` の clone、`raw/meeting_minutes.txt`、必要に応じて `oss_weekly_reporter` 系データへの到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
+- GitHub 上で人に読まれる文面（Issue / PR のタイトル・本文・コメント）は、特段の指示がない限り **日本語をデフォルト** にする
+- AI エージェントが GitHub Issue の実装に着手する前には、まず assignee の有無を確認する。既に他の assignee がいる issue には原則として着手しない
+- AI エージェントが GitHub Issue の実装に着手する場合は、並行開発を避けるため、先に自分を assignee として assign してから実装・PR 作成へ進む
+- Codex が実装・調査・CI 対応を進めたら、次の定例で人間が読み上げやすいよう `wiki/concepts/meeting-report-draft.md` にも要点を保守する
 - 実験を通じて得た自分自身の気づきを重視
 - スキーマ（このファイル）も実験を通じて改善していく

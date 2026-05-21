@@ -20,6 +20,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [llm-providers](concepts/llm-providers.md) — OpenAI / Azure / Gemini / OpenRouter / LocalLLM
 - [coding-agents](concepts/coding-agents.md) — Devin / Claude Code / Codex の協働運用
 - [contributing](concepts/contributing.md) — Issue → 実装計画 → PR の流れ、CLA、レビュー
+- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例会議で Codex が報告する内容の下書き
 
 ## Entities
 
