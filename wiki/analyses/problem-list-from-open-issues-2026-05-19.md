@@ -192,6 +192,7 @@ password 認証、private/unlisted、パブコメ大量投稿対策、個人情�
 
 ## Updates
 
+- 2026-05-22: `PR #856` merge により `#740` は close された。legacy `report_status.json` に `slug` フィールドが無い場合でも、status key から補完して一覧取得時の `ValidationError` を避ける current fix が `main@fba8e81` に入っている。したがって本問題群は依然として「artifact / schema 契約が揺れやすい」論点を含むが、`slug` 欠落による直接バグは解消済みである。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-19: 初版作成
 - 2026-05-19: 9 月前に解く順として 15 問題を並べ替え、優先理由を追記
 - 2026-05-19: 会話中の整理を反映し、「ユーザの困りごと」と「issue 内の提案解」を分けて読む heuristic を明文化

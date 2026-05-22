@@ -48,6 +48,11 @@ sources:
 - `#716 -> PR #852` で、`apps/api` が `analysis.log` を各 report 配下へ保存し、失敗時は `hierarchical_status.json` に `error` / `error_log_excerpt` を補完、`apps/admin` 側は progress card でその内容を表示するようにした。[[pr-852-error-log-visibility-observation-2026-05-22]]より
 - review では「draft PR だと CodeRabbit 自動 review が skip される」「launch-time failure では excerpt が空になる」という運用・実装両面の穴が見つかり、どちらも対応して merge 済み。次に同種の作業をする時の手順知見として残せる。[[coding-agents]]より [[source-code]]より
 
+### 6. legacy status データ由来の一覧取得バグを current tree で潰した
+
+- `#740 -> PR #856` で、legacy `report_status.json` に `slug` フィールドが無い場合でも、status key から補完して `Report` へ変換する current fix を `apps/api` に入れた。これで admin/public のレポート一覧取得が、古い status データのせいで `ValidationError` になる直接バグは解消した。[[source-code]]より
+- 対応は migration script 追加ではなく、既存の `is_public -> visibility` 互換コードと同じ層で吸収する形にした。会議では「artifact/schema 契約の論点は残るが、再現していた list 取得バグは current main で閉じた」と伝えるのが要点。[[open-decisions]]より [[problem-list-from-open-issues-2026-05-19]]より
+
 ## Open Questions
 
 - このページを「常に次回会議向け 1 枚」に保つか、会議ごとに snapshot を切るかはまだ未決

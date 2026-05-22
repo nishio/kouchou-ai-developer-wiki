@@ -990,3 +990,18 @@
 - unregistered pages: 0
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 18:11] filing-back | PR #856 merge と Issue #740 close を wiki に反映
+
+- `work/kouchou-ai/` を `main@fba8e81` まで同期し、`PR #856` が current main に入っていることを確認
+- [[problem-list-from-open-issues-2026-05-19]] と [[issue-priority-through-2026-09]] に、legacy `report_status.json` の `slug` 欠落による一覧取得バグが解消済みであることを補記
+- [[open-issues-snapshot-2026-05-19]] に `#740` close を補記し、artifact/schema 論点のうち直接再現していた list 取得バグが 1 件減った current state を追記
+- [[meeting-report-draft]] に `#740 -> PR #856` の会議共有用メモを追加
+
+## [2026-05-22 18:11] lint | PR #856 merge / #740 close 反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0

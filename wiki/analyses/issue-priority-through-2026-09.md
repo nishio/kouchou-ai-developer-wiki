@@ -116,6 +116,7 @@ sources:
 
 ## Updates
 
+- 2026-05-22: `PR #856` merge と `#740` close を反映。artifact/schema 論点のうち、legacy `report_status.json` の `slug` 欠落で一覧取得が落ちる直接バグは `main@fba8e81` で解消済みとなった。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-19: 初版作成
 - 2026-05-21: current `main@5d591ef` では `#683` の元症状（`opengraph-image.png` の `generateStaticParams()` 欠落 build error）は再現せず、説明的 fail-fast に置き換わっていることを反映
 - 2026-05-21: `#833` を UUID slice に絞り、CSP / remote asset policy を `#846`、LocalLLM auto-fetch UX を `#845` へ分割した current state を反映
