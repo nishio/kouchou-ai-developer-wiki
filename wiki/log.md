@@ -1038,6 +1038,24 @@
 - isolated pages: 11（既知・index 登録済み）
 - frontmatter YAML parse errors: 0
 
+## [2026-05-22 21:12] filing-back | Issue #860 Windows 実機セットアップ検証 docs を作成
+
+- `work/kouchou-ai/` を `main@e6b2d72` まで同期し、assignee なしの `#860` を `nishio` に assign
+- `docs/development/windows-real-machine-setup-verification.md` を追加し、`setup_win.bat` + Docker Desktop (Linux containers) の実機検証手順を整理
+- `docs/getting-started/windows-setup.md` から検証手順へリンクし、`mkdocs.yml` の nav に登録
+- `python -m mkdocs build --strict` と `git diff --cached --check` を実行。新規ページの nav 未登録は解消済み
+- commit `b1fa148d` を `codex/windows-real-machine-setup-docs` に push 済み。PR 作成は GitHub コネクタ操作が拒否されたため未作成
+- [[meeting-report-draft]] に進行中項目として追記
+
+## [2026-05-22 22:12] filing-back | Issue #860 を runner 実装込みで PR 化
+
+- `#860 -> draft PR #862` として、Windows 実機検証 docs に加えて `setup_win.bat` の `--non-interactive` / `--skip-docker-start` / API key 引数を追加
+- `.github/workflows/windows-setup-script.yml` で hosted `windows-latest` 上の文字コード・Docker 未起動・`.env` 生成回帰を確認する軽量 CI を追加
+- `.github/workflows/windows-real-machine-e2e.yml` で self-hosted Windows runner label `kouchou-ai-e2e` を使う実機 E2E を追加し、`setup_win.bat` 実行後に `localhost:4000` / `3000` / `8000/docs` を待つ構成にした
+- CI 初回失敗は PowerShell 7 が期待 exit 1 を step failure として扱ったためで、commit `7287350e` で `$PSNativeCommandUseErrorActionPreference = $false` と `call .\setup_win.bat` に修正して push
+- hosted Windows では Docker が Windows containers として動いていたため、fake `docker.bat` を安定して使えるよう `setup_win.bat` の Docker 呼び出しを `call docker ...` に変更し、commit `1f6fa753` で再 push
+- [[meeting-report-draft]] に `#860 -> draft PR #862` の進行中項目を追記
+
 ## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加
 
 - 新規 [[codex-windows-environment-memo]] を作成
