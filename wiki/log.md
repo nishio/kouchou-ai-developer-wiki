@@ -1092,3 +1092,18 @@
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 22:33] filing-back | Issue #860 実機 E2E の readiness check を修正して成功確認
+
+- Windows 実機では `curl.exe -I` が各 service に即 200 を返す一方、PowerShell の `Invoke-WebRequest` は同じ URL でタイムアウトすることを確認
+- `.github/workflows/windows-real-machine-e2e.yml` の readiness check を `Invoke-WebRequest` から `curl.exe --fail --head --silent --show-error --max-time 5` に変更
+- commit `5981d9e1` を PR branch に push し、`Windows real-machine setup E2E` を含む PR checks が全て success になったことを確認
+- [[meeting-report-draft]] に実機 E2E 成功まで反映
+
+## [2026-05-22 22:33] lint | Issue #860 実機 E2E 成功反映後に lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み）
+- frontmatter YAML parse errors: 0
