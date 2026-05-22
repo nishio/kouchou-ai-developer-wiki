@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - windows-powershell-default-installation.md
 ---
 
 ## 必要なもの
@@ -97,6 +98,12 @@ rye run uvicorn src.main:app --reload --port 8000
 - 「使いたいだけで開発はしない」ユーザは Git も入っていない
 
 対策として、[[nishio]] の setup script、[[other-contributors|kitaro]] のバッチファイル、PR #314、#509、#524（ネイティブ環境）が積み重なってきた。それでもなお実地報告が続いており、Windows サポートは継続課題。
+
+非専門家向け Windows 配布をどこまでやるか（`setup_win.*` で打ち止めるか、ランチャー exe や単体 exe へ踏み込むか）は [[windows-distribution-options]] に段階整理。
+
+加えて、`setup_win.bat` から `powershell.exe` を呼ぶ前提は、`docs/getting-started/windows-setup.md` の対象である **Windows 10/11** と整合する。Microsoft Learn では Windows PowerShell 5.1 は Windows client 10 以降で既定インストールとされているため、「通常の Windows 10/11 なら PowerShell は入っている」という説明は根拠を持って書ける。これは **PowerShell 7 (`pwsh`) が標準**という意味ではない。[[windows-powershell-default-installation]]より
+
+また、`setup_win.bat` を ASCII の薄いランチャーにし、日本語案内を `setup_win.ps1` へ逃がす判断は、単なる文言好みではなく `cmd.exe` の日本語パース破綻を避けるためのものだった。判断理由の詳細は [[windows-setup-encoding-decision]] を参照。[[issue-731-windows-setup-mojibake]]より
 
 ## テスト・lint
 

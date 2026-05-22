@@ -77,6 +77,9 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-840-workflow-defaultization-observation-2026-05-20](sources/pr-840-workflow-defaultization-observation-2026-05-20.md) — draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用までを段階的に進めている
 - [broad-listening-book-source](sources/broad-listening-book-source.md) — DD2030 書籍「選挙を変えたブロードリスニング」原稿の開発向け章マップ（12・13 章・10_00 DD2030・現場 column / case）
 - [wiki-pages-tooling-observation-2026-05-21](sources/wiki-pages-tooling-observation-2026-05-21.md) — developer-wiki repo の MkDocs 現状実装と Quartz 公式 docs の突き合わせ
+- [windows-distribution-gpt-brainstorm-2026-05-22](sources/windows-distribution-gpt-brainstorm-2026-05-22.md) — nishio と外部 GPT の対話。Windows 用 exe 化の 3 段階と、Docker Desktop / WSL2 のどちらを正規入口にするかを整理したブレスト
+- [windows-powershell-default-installation](sources/windows-powershell-default-installation.md) — Microsoft Learn を根拠に、Windows PowerShell 5.1 が Windows 10/11 系で既定インストールであることと `pwsh` 非同一を整理
+- [issue-731-windows-setup-mojibake](sources/issue-731-windows-setup-mojibake.md) — issue #731 の再現ログから、Windows setup の問題が表示崩れだけでなく `cmd.exe` のパース破綻でもあることを整理
 
 ## Analyses
 
@@ -123,3 +126,5 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [wiki-pages-publishing-stack](analyses/wiki-pages-publishing-stack.md) — developer-wiki の GitHub Pages 配信は MkDocs adapter より Quartz が合うという判断
 - [codex-windows-environment-memo](analyses/codex-windows-environment-memo.md) — Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
 - [windows-real-machine-e2e-lessons](analyses/windows-real-machine-e2e-lessons.md) — Windows 実機 self-hosted runner と Docker Desktop E2E 構築で分かった落とし穴
+- [windows-distribution-options](analyses/windows-distribution-options.md) — 非専門家 Windows 配布を `setup_win.*` / ランチャー exe / デスクトップアプリ / 単体 exe の 4 段階で整理し、現状は最下段で進行中という判断
+- [windows-setup-encoding-decision](analyses/windows-setup-encoding-decision.md) — `.bat` 単体では設定非依存に日本語対話を安全に扱いにくく、ASCII ランチャー + PowerShell 本体へ分離する判断理由の整理

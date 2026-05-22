@@ -76,9 +76,9 @@ sources:
 
 - 2026-05-21: 初回作成。直近の `analysis-core` / Web UI / deploy / AI 運用ルールの進捗を次回定例向けに要約
 - 2026-05-22: 月曜の定例会向けに、もっとやさしい言い方へ調整し、`#740 -> PR #856` と `#710 -> PR #857` まで反映
-
 - 2026-05-22: 進行中: Windows 初回セットアップを塞ぐ `#731 -> draft PR #858` に着手し、`setup_win.bat` の文字コード依存メッセージを ASCII 化、API キー検証の重複を整理、Docker 未起動時の `cmd.exe` 実行確認まで実施。ブランチは `codex/fix-windows-setup-mojibake`。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: Windows 実機で `setup_win.bat` + Docker Desktop を検証するための手順を `#860` 向けに docs へ追加。`mkdocs build --strict` は通過し、ブランチ `codex/windows-real-machine-setup-docs` を push 済み。PR 作成は GitHub コネクタ操作が拒否されたため未作成。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: `#860 -> draft PR #862` として、docs だけでなく `setup_win.bat` の非対話モード、`windows-latest` の軽量回帰 CI、実機 self-hosted runner 用の E2E workflow まで追加。任意 PR から実機 runner が動く危険を避けるため、PR 起動時は author が `nishio` の場合だけ実行する条件にした。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: `#860 -> draft PR #862` の実機 E2E が `public-viewer` の `../shared/csp` 欠落を検出したため、`apps/public-viewer` と `apps/static-site-builder` の Dockerfile に `apps/shared` を含める修正を追加。さらに PowerShell の `Invoke-WebRequest` が Windows 実機でタイムアウトしたため、到達確認を `curl.exe --head --fail` に変更し、最新 PR checks は実機 E2E まで成功。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: 公開 repo の self-hosted runner が個人マシンであることを踏まえ、`#862` の Real Windows E2E は PR / 定期実行からは起動しないように変更。`workflow_dispatch` かつ許可された実行者だけに限定し、checkout の credential persistence も無効化した。[[source-code]]より [[github-dev-docs]]より
+- 2026-05-22: `#731` の Windows setup 文字化け対応は、`PR #858` の ASCII 化案を close し、`PR #863` で `setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体に分離する方針へ切り替え

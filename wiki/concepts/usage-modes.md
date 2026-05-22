@@ -135,7 +135,7 @@ sources:
 
 - Jupyter Notebook を「CLI モードの一部」とみなすか、独立した第 3 モードとして切り出すか
 - 将来 `report.html` を Web 配信対象に昇格させるなら、Web UI モードとの関係をどう説明し直すか
-- 非専門家向け配布形として、`Zip + setup.bat + browser open` をどこまで正式サポート対象にするか
+- 非専門家向け配布形として、`Zip + setup.bat + browser open` をどこまで正式サポート対象にするか — 段階整理は [[windows-distribution-options]]
 
 ## Updates
 

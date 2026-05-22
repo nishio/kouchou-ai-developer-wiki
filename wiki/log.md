@@ -1150,4 +1150,67 @@
 - broken wikilinks: 0
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み）
+
+## [2026-05-22 23:27] filing-back | Issue #731 の Windows setup 対応方針を PowerShell 分離へ切り替え
+
+- `PR #858` は close し、issue #731 に「`.bat` 単体の ASCII 化ではなく、`setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体に分離する」方針をコメント
+- `work/kouchou-ai/` で branch `codex/issue-731-windows-setup-powershell` を切り、`setup_win.bat` の薄化、`setup_win.ps1` 新設、Windows セットアップ手順の doc 更新を実施
+- 新しい提案として `PR #863` を作成し、console codepage 依存を避けつつ日本語案内を残す構成へ切り替えた
+
+## [2026-05-22 23:27] lint | Issue #731 の PowerShell 分離案を反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-22 23:43] filing-back | Windows PowerShell 標準搭載の根拠を公式 source として追加
+
+- 新規 source [[windows-powershell-default-installation]] を追加。Microsoft Learn を根拠に、Windows PowerShell 5.1 は Windows client 10 以降で既定インストール、ただし `pwsh` とは別物であることを整理
+- [[local-dev-setup]] に「通常の Windows 10/11 なら PowerShell は入っている」と書ける根拠を追記
+- [[windows-distribution-options]] に、`setup_win.bat -> powershell.exe` 方針が Windows 10/11 対象として置きやすい前提であることを補記
+
+## [2026-05-22 23:43] lint | Windows PowerShell 標準搭載 source 追加後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-22 23:55] filing-back | `.bat` から PowerShell へ逃がす判断理由を source / analysis 化
+
+- 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
+- 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
+- [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
+
+## [2026-05-22 23:45] ingest | Windows 配布形態に関する nishio ↔ GPT ブレストを取り込み
+
+- `raw/a.txt` を `raw/windows-distribution-gpt-brainstorm-2026-05-22.txt` にリネーム
+- 新規 source [[windows-distribution-gpt-brainstorm-2026-05-22]] を追加。GPT ブレストを critical lens で要約し、既存 [[usage-modes]] / [[local-dev-setup]] / 進行中の `setup_win.*` 作業と突き合わせた
+- 新規 analysis [[windows-distribution-options]] を追加。非専門家 Windows 配布を `setup_win.*` / ランチャー exe / デスクトップアプリ / 単体 exe の 4 段階で整理し、現状は段階 1 で進行中・段階 2 以降は open question として記録
+- [[usage-modes]] の Open Questions と [[local-dev-setup]] の Windows 落とし穴節から新 analysis へリンクし、`wiki/index.md` Sources / Analyses に追記
+
+## [2026-05-22 23:45] lint | Windows 配布 ingest 後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-22 23:55] filing-back | `.bat` から PowerShell へ逃がす判断理由を source / analysis 化
+
+- 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
+- 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
+- [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
+
+## [2026-05-22 23:55] lint | Windows setup 文字コード判断の source / analysis 追加後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
 - frontmatter YAML parse errors: 0
