@@ -162,6 +162,10 @@ current `main` では `--without-html` は `default=False` に直ったが、`--
 
 Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
 
+### CI の success は「どの層の success か」を確認する
+
+PR #862 では docs deploy や repo checkout 上の client build が success でも、Docker image の runner stage に `apps/shared` が入っていないため、container 起動後の `public-viewer` runtime build が失敗した。**docs build success、source tree 上の build success、Docker image build success、container 起動後の runtime build success は別物**。特に Dockerfile が builder stage / runner stage を分けている場合、repo には存在するファイルでも runtime image には無いことがある。[[windows-real-machine-e2e-lessons]]より [[source-code]]より
+
 ### `docker compose up` だけだとデータが消える
 
 [[meeting-minutes]] 2025-04：クラウドへ再デプロイすると過去レポートが消える事故が頻発。`/scripts/fetch_reports.py` でバックアップできるが discoverability が悪い。

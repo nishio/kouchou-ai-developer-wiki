@@ -31,9 +31,18 @@ runner を動かすと、まず workflow 環境の前提差分が順に出た。
 
 最後に、container は起動し `curl.exe -I` では各 URL が 200 を返すのに、workflow の `Invoke-WebRequest` は同じ URL で timeout した。E2E の readiness check は本文を読む必要がないため、PowerShell HTTP client ではなく `curl.exe --fail --head --silent --show-error --max-time 5` に寄せた。これで PR #862 の checks は、実機 E2E を含めて success になった。[[source-code]]より [[github-dev-docs]]より
 
+## Why Existing Success Did Not Catch It
+
+今回の重要な教訓は、GitHub Actions 上の `success` が「何を観測した success か」を分けて読む必要があること。`Deploy Documentation` の success は docs build / GitHub Pages deploy の成功であり、production app の Docker runtime build 成功を意味しない。`client build` は checkout された repo 全体で `pnpm --filter @kouchou-ai/public-viewer build` を実行するため、`apps/shared` は普通に見える。どちらも、Docker image の runner stage に `apps/shared` が copy されているかまでは保証しない。[[testing]]より [[source-code]]より
+
+Azure deployment workflow は `apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` を build / push し、Container Apps 更新後に HTTP status を見る構成を持つ。ただし今回 PR 上で見えていた success 群をそのまま「この PR head の production runtime が完全に検査された」と読むのは危険だった。少なくとも PR #862 の失敗時点で問題になったのは、`public-viewer` container の起動後に `entrypoint.sh` が実行する runtime `pnpm run build` であり、そこでは Dockerfile runner stage に明示 copy されたファイルだけが存在する。[[source-code]]より [[github-dev-docs]]より
+
+つまり、同じ `public-viewer build` でも観測面が違う。repo checkout 上の build は「source tree 全体がある状態で Next.js build が通るか」を見る。Docker build は「image を作れるか」を見る。container 起動後の runtime build は「runner stage に入れたファイルだけで build / start できるか」を見る。実機 E2E は最後の層まで踏んだため、`apps/shared/csp` 欠落を検出できた。[[source-code]]より
+
 ## Lessons
 
 - Windows 実機 E2E は「setup 手順が正しいか」だけでなく、Docker image の runtime stage に必要ファイルが本当に入っているかも検出する。今回の `apps/shared/csp` 欠落は、docs だけでは見つけにくい種類の問題だった。
+- CI / deploy の `success` は、それがどの層を検査した成功かまで読む。docs deploy success、repo checkout 上の client build success、Docker image build success、container 起動後 runtime build success は別物である。
 - self-hosted runner は、手元の対話 shell と同じ環境だと思わない。`pwsh`、execution policy、PATH、Docker Desktop への到達性は、runner service 上で別物として確認する。
 - Windows workflow では、Docker CLI の場所を明示した方が安定する。特に Docker Desktop を後から入れた環境では、service が見る PATH に反映されていないことがある。
 - self-hosted runner は任意 PR で動かさない。PR author 制限、手動 dispatch、nightly など、実行入口を意識的に絞る。
@@ -58,3 +67,4 @@ E2E が失敗した時は、すぐに workflow を直すより、まず「runner
 ## Updates
 
 - 2026-05-22: 初回作成。Issue #860 / PR #862 の Windows 実機 E2E 構築で得た runner、Docker Desktop、readiness check の学びを整理。
+- 2026-05-22: production / docs / client build の success と、実機 E2E が検出した runtime Docker image 欠落の観測面の違いを追記。

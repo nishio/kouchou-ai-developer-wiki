@@ -1122,3 +1122,17 @@
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 22:43] filing-back | CI success と実機 E2E failure の観測面の違いを追記
+
+- [[windows-real-machine-e2e-lessons]] に、docs deploy / repo checkout 上の client build / Docker image build / container 起動後 runtime build は別の観測面であることを追記
+- PR #862 の `public-viewer` failure は、repo には `apps/shared` が存在しても Docker image runner stage には入っていない、という runtime image 欠落だったと整理
+- [[gotchas]] に「CI の success はどの層の success かを確認する」という項目を追加
+
+## [2026-05-22 22:43] lint | CI success と実機 E2E failure の追記後に lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み）
+- frontmatter YAML parse errors: 0
