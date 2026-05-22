@@ -1005,3 +1005,17 @@
 - unregistered pages: 0
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 19:28] filing-back | 月曜定例会向けの meeting-report-draft をやさしい表現に整備
+
+- [[meeting-report-draft]] に「月曜にそのまま読む用」セクションを追加
+- technical term を減らし、`#740 -> PR #856` と `#710 -> PR #857` まで反映
+- 箇条書き全体も、会議で口頭共有しやすい短い文へ言い換え
+
+## [2026-05-22 19:28] lint | meeting-report-draft 整備後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
