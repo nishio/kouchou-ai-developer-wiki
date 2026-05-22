@@ -1054,6 +1054,7 @@
 - `.github/workflows/windows-real-machine-e2e.yml` で self-hosted Windows runner label `kouchou-ai-e2e` を使う実機 E2E を追加し、`setup_win.bat` 実行後に `localhost:4000` / `3000` / `8000/docs` を待つ構成にした
 - CI 初回失敗は PowerShell 7 が期待 exit 1 を step failure として扱ったためで、commit `7287350e` で `$PSNativeCommandUseErrorActionPreference = $false` と `call .\setup_win.bat` に修正して push
 - hosted Windows では Docker が Windows containers として動いていたため、fake `docker.bat` を安定して使えるよう `setup_win.bat` の Docker 呼び出しを `call docker ...` に変更し、commit `1f6fa753` で再 push
+- PowerShell step が検査後も `$LASTEXITCODE=1` を job 終了コードとして返したため、commit `80787ccb` で軽量 CI の検査成功時に `exit 0` するよう修正して再 push
 - [[meeting-report-draft]] に `#860 -> draft PR #862` の進行中項目を追記
 
 ## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加
