@@ -1019,3 +1019,35 @@
 - unregistered pages: 0
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 20:09] filing-back | Windows setup Issue #731 の進行中修正を記録
+
+- `work/kouchou-ai/` を `main@e6b2d72` まで同期し、open Issue から Windows 系の重要候補を確認
+- assignee なしの `#731` を `nishio` に assign してから、`codex/fix-windows-setup-mojibake` で `setup_win.bat` を修正
+- `setup_win.bat` の実行メッセージを ASCII 化し、API キー検証の重複を整理。Docker 未インストール環境で `cmd /c "echo. | setup_win.bat"` による停止パスを確認
+- commit `886c91a0` を push し、draft PR #858（`[codex] Windows setup の文字化け耐性を改善`）を作成
+- [[meeting-report-draft]] に進行中項目として追記
+
+## [2026-05-22 20:18] lint | Python 導入後に wiki lint を再実行
+
+- Python 3.14.5 を Python.org 公式 Windows installer から current user に導入
+- ユーザー PATH に `Python314` と `Python314\Scripts` を追加し、`python --version` が `Python 3.14.5` を返すことを確認
+- `PyYAML 6.0.3` を追加し、`PYTHONIOENCODING=utf-8` を指定して `scripts/lint_wiki.py` を実行
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知・index 登録済み）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加
+
+- 新規 [[codex-windows-environment-memo]] を作成
+- Issue #731 / draft PR #858 と Python 導入・wiki lint 復旧の体験を、個人情報を含めずに整理
+- `index.md` に analysis ページとして登録
+
+## [2026-05-22 20:25] lint | Codex Windows 環境構築メモ追加後の lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み。新規 [[codex-windows-environment-memo]] を含む）
+- frontmatter YAML parse errors: 0

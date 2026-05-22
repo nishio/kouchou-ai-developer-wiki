@@ -76,3 +76,5 @@ sources:
 
 - 2026-05-21: 初回作成。直近の `analysis-core` / Web UI / deploy / AI 運用ルールの進捗を次回定例向けに要約
 - 2026-05-22: 月曜の定例会向けに、もっとやさしい言い方へ調整し、`#740 -> PR #856` と `#710 -> PR #857` まで反映
+
+- 2026-05-22: 進行中: Windows 初回セットアップを塞ぐ `#731 -> draft PR #858` に着手し、`setup_win.bat` の文字コード依存メッセージを ASCII 化、API キー検証の重複を整理、Docker 未起動時の `cmd.exe` 実行確認まで実施。ブランチは `codex/fix-windows-setup-mojibake`。[[source-code]]より [[github-dev-docs]]より

@@ -121,3 +121,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [broad-listening-book-extractions](analyses/broad-listening-book-extractions.md) — 書籍から抽出した設計判断の出版可能形・現場運用知見・将来開発の素材（off-topic クラスタ、自己理解ボトルネック、DivCon ほか）
 - [analysis-core-extras-pr-scope](analyses/analysis-core-extras-pr-scope.md) — Task 2.5.6 の extras 分割は独立 PR で切れるが、import/CI/docs も含めて package 境界で整える必要がある
 - [wiki-pages-publishing-stack](analyses/wiki-pages-publishing-stack.md) — developer-wiki の GitHub Pages 配信は MkDocs adapter より Quartz が合うという判断
+- [codex-windows-environment-memo](analyses/codex-windows-environment-memo.md) — Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
