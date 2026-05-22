@@ -158,6 +158,10 @@ current `main` では `--without-html` は `default=False` に直ったが、`--
 
 対策が幾度も積まれている（PR #314、setup script、kitaro のバッチ、#524 ネイティブ環境）が継続課題。
 
+### Windows 実機 E2E は runner 設定と app 実装の問題が混ざる
+
+Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
+
 ### `docker compose up` だけだとデータが消える
 
 [[meeting-minutes]] 2025-04：クラウドへ再デプロイすると過去レポートが消える事故が頻発。`/scripts/fetch_reports.py` でバックアップできるが discoverability が悪い。

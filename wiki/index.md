@@ -122,3 +122,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [analysis-core-extras-pr-scope](analyses/analysis-core-extras-pr-scope.md) — Task 2.5.6 の extras 分割は独立 PR で切れるが、import/CI/docs も含めて package 境界で整える必要がある
 - [wiki-pages-publishing-stack](analyses/wiki-pages-publishing-stack.md) — developer-wiki の GitHub Pages 配信は MkDocs adapter より Quartz が合うという判断
 - [codex-windows-environment-memo](analyses/codex-windows-environment-memo.md) — Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
+- [windows-real-machine-e2e-lessons](analyses/windows-real-machine-e2e-lessons.md) — Windows 実機 self-hosted runner と Docker Desktop E2E 構築で分かった落とし穴

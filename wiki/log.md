@@ -1107,3 +1107,18 @@
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 22:37] filing-back | Windows 実機 E2E 構築の学びを wiki 化
+
+- 新規 analysis [[windows-real-machine-e2e-lessons]] を作成し、Issue #860 / PR #862 の runner、Docker Desktop、readiness check の学びを整理
+- [[gotchas]] の Windows インストール地獄に、runner 設定・app 実装・到達確認の問題を層で分ける注意点を追記
+- `index.md` に新規 analysis を登録
+- 個人情報を避け、公開 Issue / PR / commit / workflow と一般化できる症状だけを記録
+
+## [2026-05-22 22:37] lint | Windows 実機 E2E 学び wiki 化後に lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み）
+- frontmatter YAML parse errors: 0
