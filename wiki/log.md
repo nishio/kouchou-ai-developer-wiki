@@ -1077,3 +1077,18 @@
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み。新規 [[codex-windows-environment-memo]] を含む）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 22:26] filing-back | Issue #860 実機 E2E で見つかった Dockerfile 欠落を修正
+
+- `#860 -> draft PR #862` の Windows 実機 E2E が `public-viewer` の `Cannot find module '../shared/csp'` で失敗していることを確認
+- 原因は runtime build を行う Docker image に `apps/shared` が入っていないことだったため、`apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` に `apps/shared` の copy を追加
+- Windows 実機の Docker Desktop で `public-viewer` と `static-site-builder` の image build が成功することを確認し、commit `2928890b` を PR branch に push
+- [[meeting-report-draft]] に進行中項目として追記
+
+## [2026-05-22 22:26] lint | Issue #860 Dockerfile 欠落修正の filing-back 後に lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み）
+- frontmatter YAML parse errors: 0
