@@ -1061,6 +1061,7 @@
 - 実機 runner service の PATH に Docker CLI がなかったため、commit `5a7bc352` で `C:\Program Files\Docker\Docker\resources\bin\docker.exe` を明示し、`setup_win.bat` 実行時だけ PATH に Docker bin を追加して再 push
 - `docker compose down` の warning が PowerShell native error として step failure になったため、commit `66b96c0d` で Docker 操作ステップを `cmd` shell に寄せて再 push
 - 任意の PR で self-hosted runner を実行するのは危険という指摘を受け、commit `c2d220ed` で PR 起動時は PR author が `nishio` の場合だけ Real Windows E2E job を実行する条件を追加。nightly schedule と手動 `workflow_dispatch` は維持
+- 同じ PR への連続 push で古い E2E run が runner を占有し、最新 run が queued のままになる問題を確認。commit `146ec779` で `concurrency` / `cancel-in-progress` を追加し、古い in-progress run を手元で止めて最新 run が pickup されることを確認
 - [[meeting-report-draft]] に `#860 -> draft PR #862` の進行中項目を追記
 
 ## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加
