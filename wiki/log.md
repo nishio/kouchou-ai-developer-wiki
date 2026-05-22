@@ -958,6 +958,20 @@
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
 
+## [2026-05-22 00:43] filing-back | PR #852 merge と Issue #716 close を wiki に反映
+
+- `work/kouchou-ai/` を `main@6ff368d` まで同期し、`PR #852` が current main に入っていることを確認
+- [[issue-priority-through-2026-09]] から `#716` を active 実装候補から外し、`PR #852` により着地済みの改善として位置づけ直した
+- [[open-issues-snapshot-2026-05-19]] に `#716` close を補記し、P1 群の active 残論点を `#818` `#820` `#681` 側へ更新
+
+## [2026-05-22 00:44] lint | PR #852 merge / #716 close 反映後に lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 11（既知）
+- frontmatter YAML parse errors: 0
+
 ## [2026-05-22 00:03] filing-back | PR #852 の CodeRabbit 手動トリガー後状態を記録
 
 - 新規 source [[pr-852-error-log-visibility-observation-2026-05-22]] を追加

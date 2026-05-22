@@ -29,17 +29,16 @@ sources:
 
 9 月前の次点は `#833` `#818` `#820` `#707` `#716` の束で、非専門家向け利用モードの事故を減らすこと。これらは別 issue に見えても、実際には **Web UI / static export の失敗時に、回避不能または原因不明になる** 問題群である。[[open-issues-snapshot-2026-05-19]]より
 
-2026-05-21 夜時点の current state を踏まえると、この束のうち `#846` は `PR #848` merge で前進し、`#707` は current main 非再現として close 済みである。したがって active な残論点は、主に `#845` `#716` `#818` `#820` と、provider UX 側では `#681` へ寄る。[[github-dev-docs]]より [[source-code]]より
+2026-05-22 時点の current state を踏まえると、この束のうち `#846` は `PR #848` merge で前進し、`#707` は current main 非再現として close、`#716` も `PR #852` merge で close 済みである。したがって active な残論点は、主に `#818` `#820` と、provider UX 側では `#681` へ寄る。[[github-dev-docs]]より [[source-code]]より [[pr-852-error-log-visibility-observation-2026-05-22]]より
 
 優先順は次の通り。
 
 - `#833`: admin create/reuse flow の UUID fallback
 - `#846`: CSP / remote asset policy の current-tree fix
 - `#707`: provider 判定を誤る API 接続チェック
-- `#716`: レポート生成失敗時のエラーログ可視化
 - `#818` `#820`: PNG download と CSP 設定ガイド
 
-理由は、`#833` / `#846` / `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。[[book-release-development-plan-2026-09]]より
+理由は、`#833` / `#846` / `#707` は product が「壊れて見える」直接原因で、`#716` `#818` `#820` はその原因把握と運用回避を支えるからである。`#716` 自体は `PR #852` により current `main` へ入ったため、以後は active 実装候補ではなく **着地済みの改善** として扱う。[[book-release-development-plan-2026-09]]より [[pr-852-error-log-visibility-observation-2026-05-22]]より
 
 ### P2. provider / validation 論点を束ね直す
 
@@ -90,7 +89,6 @@ sources:
 
 - `#837` 実装と最低限の integration test
 - `#681` を含む provider check / user-provided key UX の設計整理
-- `#716` の最小版を入れて「失敗しても調べられる」状態にする
 - `#818` `#820` を product fix と doc fix に分けて着地させる
 
 ### 2026-08
@@ -113,7 +111,6 @@ sources:
 
 ## Open Questions
 
-- `#716` の high priority を P1 に置くか、`#707` と同列の P0.5 に上げるか
 - `#833` を 1 issue のまま扱うと review 単位が大きすぎないか
 - `#696` を docs issue と product issue に分割した方が実装しやすいか
 
@@ -123,3 +120,4 @@ sources:
 - 2026-05-21: current `main@5d591ef` では `#683` の元症状（`opengraph-image.png` の `generateStaticParams()` 欠落 build error）は再現せず、説明的 fail-fast に置き換わっていることを反映
 - 2026-05-21: `#833` を UUID slice に絞り、CSP / remote asset policy を `#846`、LocalLLM auto-fetch UX を `#845` へ分割した current state を反映
 - 2026-05-21: `PR #848` merge による `#846` 前進と、`#707` close を反映し、P1 / P2 の active 論点を `#845` `#716` `#818` `#820` `#681` 側へ寄せた
+- 2026-05-22: `PR #852` merge と `#716` close を反映し、P1 の active 実装候補から外した

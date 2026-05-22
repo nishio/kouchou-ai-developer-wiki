@@ -74,7 +74,7 @@ sources:
 
 - 2026-05-21: その後 GitHub 上では実際に分割が行われ、`#833` は admin create/reuse flow の UUID fallback へ縮小、CSP / remote asset policy は `#846`、LocalLLM auto-fetch UX は `#845` へ分離された
 - 2026-05-21: さらに `PR #848` が merge されて `#846` は close、`#707` も current main 非再現として close された。したがって 2026-05-19 snapshot における P1 群のうち、active な残論点は `#845` `#716` `#818` `#820` `#681` 側へ移っている
-- `#716` の「high priority」ラベルを 9 月前の計画にどう反映させるか
+- 2026-05-22: `PR #852` が merge され、`#716` も close された。したがってこの snapshot における P1 群の active 残論点は、主に `#818` `#820` `#681` 側へ寄っている。[[pr-852-error-log-visibility-observation-2026-05-22]]より
 - `#707` `#681` `#473` を、provider / API 接続チェック統合の 1 本の問題として束ね直すべきか
 
 ## Updates
