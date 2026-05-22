@@ -160,7 +160,7 @@ current `main` では `--without-html` は `default=False` に直ったが、`--
 
 ### Windows 実機 E2E は runner 設定と app 実装の問題が混ざる
 
-Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
+Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。さらに、公開 repo の workflow が個人マシン runner を使う場合は、PR trigger や schedule から動かさず、許可された手動実行だけに絞るべき。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
 
 ### CI の success は「どの層の success か」を確認する
 

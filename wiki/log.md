@@ -1136,3 +1136,18 @@
 - unregistered pages: 0
 - isolated pages: 12（既知・index 登録済み）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-22 23:00] filing-back | 個人マシン runner の実行条件を手動限定へ変更
+
+- PR #862 の review comment を受け、`actions/checkout` を SHA pinning し、`persist-credentials: false` を追加
+- 公開 repo の workflow が個人 Windows 実機 runner を使う危険を踏まえ、Real Windows E2E の `pull_request` trigger と `schedule` を削除
+- Real Windows E2E は `workflow_dispatch` かつ workflow に定義された実行者条件を満たす場合だけ動く形に変更
+- [[windows-real-machine-e2e-lessons]] / [[gotchas]] / [[meeting-report-draft]] に、個人マシン runner は PR や定期実行から動かさない判断を反映
+
+## [2026-05-22 23:00] lint | 個人マシン runner 手動限定の filing-back 後に lint
+
+- `python scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知・index 登録済み）
+- frontmatter YAML parse errors: 0

@@ -23,7 +23,7 @@ Issue #860 では、Windows 実機で `setup_win.bat` と Docker Desktop を検�
 
 runner を動かすと、まず workflow 環境の前提差分が順に出た。self-hosted Windows runner には `pwsh` が無く、PowerShell execution policy が `.ps1` 実行を拒み、runner service の PATH には Docker CLI が入っていなかった。そこで workflow は Windows PowerShell に寄せ、`-ExecutionPolicy Bypass` を明示し、Docker CLI は絶対パスと一時 PATH 追加で扱うようにした。[[source-code]]より
 
-任意の PR から self-hosted runner が動くのは危険なので、PR 起動時は PR author が `nishio` の場合だけ実行する条件を入れた。これは secrets を使わない E2E でも、実機 runner が任意コードを実行する以上、攻撃面を広げるためである。[[coding-agents]]より
+任意の PR から self-hosted runner が動くのは危険なので、最初は PR 起動時に PR author を限定する条件を入れた。しかし公開 repo の workflow が個人の Windows 実機を runner として使う場合、PR author 制限だけでは攻撃面がまだ大きい。最終的には PR trigger と schedule を外し、許可された実行者による `workflow_dispatch` 専用に寄せた。secrets を使わない E2E でも、実機 runner が任意コードを実行する以上、実行入口は強く絞る必要がある。[[coding-agents]]より [[github-dev-docs]]より
 
 同じ PR へ連続 push すると古い E2E run が単一 runner を占有し、新しい run が queued のままになった。`concurrency` と `cancel-in-progress` を入れることで、同じ PR の古い実機 E2E をキャンセルし、最新 head を優先できるようにした。[[github-dev-docs]]より
 
@@ -45,7 +45,7 @@ Azure deployment workflow は `apps/public-viewer/Dockerfile` と `apps/static-s
 - CI / deploy の `success` は、それがどの層を検査した成功かまで読む。docs deploy success、repo checkout 上の client build success、Docker image build success、container 起動後 runtime build success は別物である。
 - self-hosted runner は、手元の対話 shell と同じ環境だと思わない。`pwsh`、execution policy、PATH、Docker Desktop への到達性は、runner service 上で別物として確認する。
 - Windows workflow では、Docker CLI の場所を明示した方が安定する。特に Docker Desktop を後から入れた環境では、service が見る PATH に反映されていないことがある。
-- self-hosted runner は任意 PR で動かさない。PR author 制限、手動 dispatch、nightly など、実行入口を意識的に絞る。
+- self-hosted runner は任意 PR や定期実行で動かさない。個人マシンを公開 repo の runner にする場合は、少なくとも許可された実行者の `workflow_dispatch` に限定する。
 - 単一 runner では、同じ PR の古い run が残るだけで最新検証が止まる。PR 番号単位の `concurrency` は実機 E2E と相性がよい。
 - readiness check は「ページ本文を全部取る」より「HTTP status が返る」ことを検査する方が堅い。Windows PowerShell の `Invoke-WebRequest` が timeout する場面でも、`curl.exe --head --fail` は期待通り機能した。
 - E2E failure を runner 設定の問題と app の問題に切り分けるには、GitHub Actions の状態、runner process、Docker containers、container logs、host からの HTTP probe を順に見ると迷いにくい。
@@ -60,11 +60,12 @@ E2E が失敗した時は、すぐに workflow を直すより、まず「runner
 
 ## Open Questions
 
-- self-hosted runner の実行条件は PR author 固定で十分か、将来は label / environment approval / protected runner group に寄せるべきか。
-- Windows 実機 E2E は nightly と手動 dispatch を中心にし、PR ごとは opt-in にする方が runner 負荷と安全性のバランスがよいか。
+- self-hosted runner の実行条件は `workflow_dispatch` + actor 条件で十分か、将来は environment approval / protected runner group に寄せるべきか。
+- Windows 実機 E2E は個人マシンではなく、隔離された専用 runner へ移すべきか。
 - readiness check は `curl.exe` のままでよいか、将来は専用の health endpoint を用意して body / static generation に依存しない検査へ寄せるべきか。
 
 ## Updates
 
 - 2026-05-22: 初回作成。Issue #860 / PR #862 の Windows 実機 E2E 構築で得た runner、Docker Desktop、readiness check の学びを整理。
 - 2026-05-22: production / docs / client build の success と、実機 E2E が検出した runtime Docker image 欠落の観測面の違いを追記。
+- 2026-05-22: 個人マシン runner を公開 repo の PR / schedule から動かす危険を反映し、許可された手動実行だけに寄せる判断を追記。
