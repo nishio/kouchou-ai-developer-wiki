@@ -1055,6 +1055,12 @@
 - CI 初回失敗は PowerShell 7 が期待 exit 1 を step failure として扱ったためで、commit `7287350e` で `$PSNativeCommandUseErrorActionPreference = $false` と `call .\setup_win.bat` に修正して push
 - hosted Windows では Docker が Windows containers として動いていたため、fake `docker.bat` を安定して使えるよう `setup_win.bat` の Docker 呼び出しを `call docker ...` に変更し、commit `1f6fa753` で再 push
 - PowerShell step が検査後も `$LASTEXITCODE=1` を job 終了コードとして返したため、commit `80787ccb` で軽量 CI の検査成功時に `exit 0` するよう修正して再 push
+- 実機 E2E job が custom label `kouchou-ai-e2e` 待ちで queued だったため、commit `db2676b5` で `runs-on: [self-hosted, Windows, X64]` に変更して再 push。PR checks 上で実機 runner が job を pickup した
+- 実機 runner `GALLERIA` には `pwsh` がなかったため、commit `08f5e76c` で self-hosted E2E workflow の shell を Windows PowerShell (`powershell`) に変更して再 push
+- 実機 runner の PowerShell execution policy が `.ps1` 実行を拒否したため、commit `6d21549a` で E2E workflow の PowerShell shell template に `-ExecutionPolicy Bypass` を追加して再 push
+- 実機 runner service の PATH に Docker CLI がなかったため、commit `5a7bc352` で `C:\Program Files\Docker\Docker\resources\bin\docker.exe` を明示し、`setup_win.bat` 実行時だけ PATH に Docker bin を追加して再 push
+- `docker compose down` の warning が PowerShell native error として step failure になったため、commit `66b96c0d` で Docker 操作ステップを `cmd` shell に寄せて再 push
+- 任意の PR で self-hosted runner を実行するのは危険という指摘を受け、commit `c2d220ed` で PR 起動時は PR author が `nishio` の場合だけ Real Windows E2E job を実行する条件を追加。nightly schedule と手動 `workflow_dispatch` は維持
 - [[meeting-report-draft]] に `#860 -> draft PR #862` の進行中項目を追記
 
 ## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加

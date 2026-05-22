@@ -79,4 +79,4 @@ sources:
 
 - 2026-05-22: 進行中: Windows 初回セットアップを塞ぐ `#731 -> draft PR #858` に着手し、`setup_win.bat` の文字コード依存メッセージを ASCII 化、API キー検証の重複を整理、Docker 未起動時の `cmd.exe` 実行確認まで実施。ブランチは `codex/fix-windows-setup-mojibake`。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: Windows 実機で `setup_win.bat` + Docker Desktop を検証するための手順を `#860` 向けに docs へ追加。`mkdocs build --strict` は通過し、ブランチ `codex/windows-real-machine-setup-docs` を push 済み。PR 作成は GitHub コネクタ操作が拒否されたため未作成。[[source-code]]より [[github-dev-docs]]より
-- 2026-05-22: 進行中: `#860 -> draft PR #862` として、docs だけでなく `setup_win.bat` の非対話モード、`windows-latest` の軽量回帰 CI、実機 self-hosted runner 用の E2E workflow まで追加。Windows 実機 runner は起動済みで、PR checks 上では実機 E2E job の pickup 待ち。[[source-code]]より [[github-dev-docs]]より
+- 2026-05-22: 進行中: `#860 -> draft PR #862` として、docs だけでなく `setup_win.bat` の非対話モード、`windows-latest` の軽量回帰 CI、実機 self-hosted runner 用の E2E workflow まで追加。任意 PR から実機 runner が動く危険を避けるため、PR 起動時は author が `nishio` の場合だけ実行する条件にした。[[source-code]]より [[github-dev-docs]]より
