@@ -100,7 +100,7 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 ## この repo 自体の公開方法
 
-この repo の `wiki/` は docs 置き場というより **knowledge base / digital garden** に近いので、GitHub Pages 配信も単なる Markdown renderer ではなく wikilink 中心の公開体験で選ぶ方が自然である。現状は MkDocs + rewrite script で配信できるが、方針判断としては [[wiki-pages-publishing-stack]] の通り Quartz を第一候補に寄せる方が筋がよい。[[wiki-pages-tooling-observation-2026-05-21]]より
+この repo の `wiki/` は docs 置き場というより **knowledge base / digital garden** に近いので、GitHub Pages 配信も単なる Markdown renderer ではなく wikilink 中心の公開体験で選ぶ方が自然である。現在は [[wiki-pages-publishing-stack]] の判断どおり、`wiki/` を直接読む Quartz 構成で GitHub Pages 配信している。[[wiki-pages-tooling-observation-2026-05-21]]より
 
 ## 向いていないケース
 
@@ -123,3 +123,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 - 2026-05-19: 初版作成
 - 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記
+- 2026-05-23: GitHub Pages 配信の説明が MkDocs 時代の比較文のまま stale だったため、Quartz 配信中の current state に更新

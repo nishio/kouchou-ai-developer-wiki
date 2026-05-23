@@ -25,6 +25,7 @@ export default (() => {
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
+    const baseHref = fileData.slug === "index" && cfg.baseUrl ? `${url.toString()}/` : null
     const iconPath = joinSegments(baseDir, "static/icon.png")
     const rootPathRedirectScript =
       fileData.slug === "index" && cfg.baseUrl
@@ -50,6 +51,7 @@ export default (() => {
       <head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+        {baseHref && <base href={baseHref} />}
         {rootPathRedirectScript && (
           <script
             type="application/javascript"
