@@ -1306,3 +1306,17 @@
 - unregistered pages: 0
 - isolated pages: 12（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-23 12:28] filing-back | API -> subprocess -> analysis-core の手元 smoke test を testing / meeting report に追記
+
+- `work/kouchou-ai/apps/api/tests/manual/report_launcher_subprocess_smoke.py` を追加。`execute_aggregation()` から **本物の subprocess** を起動し、`hierarchical_result.json`・`hierarchical_status.json`・`report_status.json` 更新まで確認する手元 smoke test として整理
+- [[testing]] に明示実行コマンド `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` を追加し、既定収集の対象外であることと、analysis-core 単体 e2e と API mock test の間を埋める目的を明記
+- [[meeting-report-draft]] にも、「analysis-core 単体の e2e だけでなく API 境界を手元で 1 回は踏めるようにした」という要点を追記
+
+## [2026-05-23 12:28] lint | 手元 smoke test の filing-back 後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
