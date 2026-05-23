@@ -122,10 +122,6 @@ sources:
 
 なお「tag 付けまで自動化するか（merge to main で自動 release するか）」については、2026-05 時点では **しない方が良い** と整理した。0.1.x 段階で破壊的変更が頻繁なこと、release gate が package 内 test のみで `apps/api` 互換まで張れていないこと、書籍リリース等で release 時期を握りたいことが理由。先にやるべきは Trusted Publishing 移行と TestPyPI 経路の整備。[[pypi-release-timing-automation]]より
 
-### B5. Phase 8 — 旧 `apps/api/broadlistening/pipeline/` 完全削除
-
-[[refactoring-status]]：`hierarchical_main.py` は `DeprecationWarning` を出す shim 化済み、`steps/` 配下 ~1600 LOC も残存。**削除タイミング未定**。誰かが古い手順書に従うと黙ってステイル版が動くリスクが続いている（[[gotchas]]）。
-
 ### B7. 外部 `plugins/analysis/` ディレクトリの実利用
 
 loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALYSIS_PLUGINS_PATH` 環境変数を探す実装になっているが、リポジトリにこのディレクトリは無く、外部 analysis plugin の同梱もゼロ。**枠だけ用意して利用例なし**。
@@ -138,7 +134,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### B9. `packages/ui-shared/` 共有 UI パッケージ
 
-`docs/refactoring/phase0_investigation.md` と `naming_convention.md` に計画記載があるが **ディレクトリ未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue #586）と紐づくはずだが進んでいない。
+歴史的には refactoring phase docs と `naming_convention.md` に計画記載があったが、current source tree に残るのは `naming_convention.md` のみで、**ディレクトリ自体は未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue #586）と紐づくはずだが進んでいない。
 
 ### B-共通運用
 
@@ -153,7 +149,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### B12. YAML ベース workflow 定義
 
-`packages/analysis-core/src/analysis_core/plugin/loader.py` は YAML manifest を読む実装になっているが、実態の workflow は `workflows/hierarchical_default.py`（Python のみ）。`phase3_plan.md` の YAML 例も「(将来)」のまま。
+`packages/analysis-core/src/analysis_core/plugin/loader.py` は YAML manifest を読む実装になっているが、実態の workflow は `workflows/hierarchical_default.py`（Python のみ）。current source tree に YAML workflow 定義の実例はない。
 
 ### B13. PR レビュー責任の AI 生成 PR への拡張
 
@@ -195,7 +191,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 | カテゴリ | 件数 |
 |---|---|
 | A. 未定 | 11 |
-| B. 方針決定済み・未着手 | 12 |
+| B. 方針決定済み・未着手 | 11 |
 | C. 着手済み・未完了 | 2 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
@@ -206,7 +202,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 1. [[meeting-minutes]] の最新数回をスキャン（特に「Open Questions」や「次回に向けて」項目）
 2. main の tip と PR 一覧（`gh pr list -R digitaldemocracy2030/kouchou-ai`）を確認
-3. `docs/refactoring/` の Phase ドキュメントが更新されていないかチェック
+3. current source tree と [[refactoring-status]] を照合し、削除済みの phase docs を前提にした stale claim が残っていないかチェック
 4. 該当する [[refactoring-status]] と本ページを同期して更新
 
 ## Updates
@@ -226,3 +222,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加
 - 2026-05-21: `main@5d591ef` で PR #844 merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を open decision から外した
+- 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後は Phase 8 が open decision ではなくなったため B5 を除外。current tree から消えた phase docs への参照も補正

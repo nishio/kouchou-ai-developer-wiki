@@ -1,5 +1,33 @@
 # Log
 
+## [2026-05-24 00:06] filing-back | PR #865 merge を反映し、Refactoring Status を current `main` に同期
+
+- `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で更新し、`main@e5ed743` を一次参照として確認
+- [[refactoring-status]] を更新し、legacy cleanup merge 後の current state に合わせて Phase 8 を完了、refactoring 全体を done 判定へ補正
+- [[open-decisions]] から Phase 8 の open item を除外し、[[source-code]] / [[pipeline]] / [[gotchas]] / [[workflow-defaultization-blockers]] も current tree に合わせて補正
+- [[meeting-report-draft]] に `PR #865` と CI 修正を次回定例向け要点として追記
+
+## [2026-05-24 00:18] lint | refactoring 完了判定の反映後に wiki 整合性を再確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま。今回の `[[refactoring-status]]` / `[[open-decisions]]` / `[[source-code]]` 系更新による新規問題はなし
+
+## [2026-05-23 15:21] lint | 公開UI要件ページ追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 新規 source [[slack-public-ui-requirements-2026-05-23]] と新規 analysis [[public-ui-requirements-for-broadlistening]] を含め、今回の更新による新規問題はなし。孤立 page は既知の 12 件のまま
+
+## [2026-05-23 15:20] ingest | Slack thread (2026-05-23) で ohki-shingo が整理した公開UI要件を取り込み
+
+- 新規 source [[slack-public-ui-requirements-2026-05-23]] を追加し、`#2_開発_広聴ai` 想定の 2026-05-23 thread を記録。oss_weekly_reporter dump は 2026-05-20 までなので、当面 `raw/slack-public-ui-requirements-2026-05-23.txt` を一次根拠にする旨も明記
+- 新規 analysis [[public-ui-requirements-for-broadlistening]] を追加し、(a) 散布図が受け入れられている要因 5 要素、(b) 公開UIに求められる 7 要件、(c) embedding 距離精度の非本質性（クラスタ間分離は必要だがクラスタ内距離精度は不要）を整理。view plugin の上位契約として明示
+- [[jigsaw-sensemaker-history]] に Updates と Open Questions を追記し、ohki-shingo の整理を「散布図役割の別 view 代替」への回答として接続
+- [[ohki-shingo]] entity に 2026-05-23 の contribution を追記
+- [[meeting-report-draft]] にも次回定例向けの要点として追記
+- `index.md` に新規 source / analysis を登録
+
 ## [2026-05-23 14:49] lint | WebUI / core 分離ページ追加と用語統一後の健全性確認
 
 - `python3 scripts/lint_wiki.py` を実行

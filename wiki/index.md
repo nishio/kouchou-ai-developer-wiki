@@ -33,7 +33,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [nishio](entities/nishio.md) — 西尾泰和
 - [tokoroten](entities/tokoroten.md) — 中山心太
 - [nasuka](entities/nasuka.md) — 角野
-- [ohki-shingo](entities/ohki-shingo.md) — 大木慎吾
+- [ohki-shingo](entities/ohki-shingo.md) — 大木真吾
 - [kuboon](entities/kuboon.md) — 大久保
 - [anno](entities/anno.md) — 安野たかひろ
 - [other-contributors](entities/other-contributors.md) — kitaro / tanenobu / shirouchi / sasano ほか
@@ -84,6 +84,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [docker-engine-wsl2-alternative-2026-05-23](sources/docker-engine-wsl2-alternative-2026-05-23.md) — Docker Desktop を避ける選択肢として、WSL2 Ubuntu に Docker Engine + Compose plugin を直接入れる構成と 2 本立て docs 案を整理したブレスト
 - [windows-powershell-default-installation](sources/windows-powershell-default-installation.md) — Microsoft Learn を根拠に、Windows PowerShell 5.1 が Windows 10/11 系で既定インストールであることと `pwsh` 非同一を整理
 - [issue-731-windows-setup-mojibake](sources/issue-731-windows-setup-mojibake.md) — issue #731 の再現ログから、Windows setup の問題が表示崩れだけでなく `cmd.exe` のパース破綻でもあることを整理
+- [slack-public-ui-requirements-2026-05-23](sources/slack-public-ui-requirements-2026-05-23.md) — `#2_開発_広聴ai` 2026-05-23 thread。nishio の二段構え要約に対し、ohki-shingo が公開UI 7 要件と embedding 距離精度の非本質性を整理
 
 ## Analyses
 
@@ -135,4 +136,5 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [development-priority-roadmap-2026-05-23](analyses/development-priority-roadmap-2026-05-23.md) — 2026-05-23 時点の open issues / open PR を踏まえ、Windows 導入、既知バグ、運用基盤、説明責務・研究テーマの順で組み直した current roadmap
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — CLI / workflow / plugin / Web 配布を 3 層 platform として見た時の長期順序。issue 消化より先に共通実験基盤と plugin 実証を置く理由を整理
 - [jigsaw-sensemaker-history](analyses/jigsaw-sensemaker-history.md) — Jigsaw Sensemaker 的な第2分析モードと散布図中心プロダクトの緊張関係が、2025 4Q の Slack から 2026 Q1 の plugin 設計へどう繋がったかの時系列整理
+- [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 広聴結果の公開UIに求められる 7 要件と、embedding 距離精度の非本質性。view plugin の上位契約として整理
 - [tttc-to-analysis-core-history](analyses/tttc-to-analysis-core-history.md) — TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の `analysis-core` をサーバが呼ぶ現在形までの入口設計の変遷

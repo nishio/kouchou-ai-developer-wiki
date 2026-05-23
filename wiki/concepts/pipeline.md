@@ -15,10 +15,9 @@ sources:
 
 **2026 時点での canonical 実装は `packages/analysis-core/src/analysis_core/steps/`**。8 ステップすべてここ。
 
-旧 `apps/api/broadlistening/pipeline/` は **deprecation shim**。`hierarchical_main.py` は冒頭で `DeprecationWarning` を出して旧 `steps/` を import する旧パスを残しているが、新規開発は触らない。詳細は [[refactoring-status]]。
+2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` に旧 Python 実装は残っていない。current tree に残るのは sample `configs/` / `inputs/` だけで、実行コードとしての canonical path は `analysis-core` に一本化された。詳細は [[refactoring-status]]。
 
 - エントリポイント（推奨）: `python -m analysis_core` または `kouchou-analyze`（[[cli]]）
-- 旧エントリ: `apps/api/broadlistening/pipeline/hierarchical_main.py`（動くが deprecated）
 
 ## ステップ列
 
@@ -35,8 +34,8 @@ sources:
 
 `analysis_core.PipelineOrchestrator` に **2 系統** ある：
 
-- `run()` — 既定。レガシーの `run_step` ループで 8 ステップを順番に呼ぶ。**CLI と API サーバはこれを呼ぶ**
-- `run_workflow()` — [[plugin-system]] dispatch 経由。実装済みだが production パスでは未使用（[[refactoring-status]]）
+- `run_default()` / `run_workflow()` — current の canonical path。CLI と API サーバはここを使う
+- `run()` — direct-step fallback。互換性のため残るが deprecated で、canonical path ではない（[[refactoring-status]]）
 
 利用者視点では、これは [[usage-modes]] にある **CLI モード** のコアにあたる。Web UI モードでも計算自体はこのパイプラインを共有するが、表示経路は `public-viewer` 側で分かれる。
 
@@ -121,3 +120,4 @@ sources:
 - 2026-05-18: PR `#827` を参照し、Jigsaw 系 LLM 分類の互換枝が plan PR として具体化したことを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` を source に追加し、UMAP→クラスタリングへの継続的批判を補足
 - 2026-05-21: 書籍 13 章を [[broad-listening-book-source]] / [[broad-listening-book-extractions]] として ingest し、設計判断の出版可能形を相互リンク
+- 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、旧 `apps/api/broadlistening/pipeline/` 実装削除後の current path に合わせて配置と実行モードの説明を更新

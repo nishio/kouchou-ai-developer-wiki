@@ -158,7 +158,9 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 - Jigsaw Sensemaker 的な第2モードの default view は `hierarchyList` / `treemap` / 専用 view のどれが妥当か
 - `PR #827` の短期互換案である `x/y` 射影を、本当に product 実装へ入れるのか、それとも docs 上の移行案に留めるのか
 - taxonomy-guided な実務モードと、新規論点発見モードを同じ UI に載せるべきか分けるべきか
+- 散布図が担っていた「公開UIとしての役割」を別 view で担保するための要件は何か → [[public-ui-requirements-for-broadlistening]] に整理
 
 ## Updates
 
 - 2026-05-23: 初版作成。Jigsaw Sensemaker 的な第2分析モードと散布図の緊張関係を、meeting minutes / Slack / current docs の流れとして時系列に整理
+- 2026-05-23: 同日の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] が「散布図が受け入れられている要因」と「公開UIに求められる 7 要件」を明示分解し、`embedding 距離精度は公開UIの本質ではない / cluster grouping のみ保てれば十分` という view 側契約を整理。[[public-ui-requirements-for-broadlistening]] に独立ページとして filing-back し、短期互換案の技術バーが思っていたより低いことを記録

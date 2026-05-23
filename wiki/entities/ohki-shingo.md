@@ -1,6 +1,6 @@
 ---
 name: ohki-shingo
-summary: "大木慎吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当"
+summary: "大木真吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当"
 type: entity
 sources:
   - meeting-minutes.md
@@ -9,7 +9,7 @@ sources:
 
 ## Who
 
-**大木慎吾 (Shingo Ohki, `truego`, GitHub `shingo-ohki`)**。[[kouchou-ai]] メンテナ（2025-04-23 〜）。[[dd2030]] website への書き込み権限あり（[[weekly-log-2026-05-06]] で [[nishio]] の PR #212 をマージ）。
+**大木真吾 (Shingo Ohki, `truego`, GitHub `shingo-ohki`)**。[[kouchou-ai]] メンテナ（2025-04-23 〜）。[[dd2030]] website への書き込み権限あり（[[weekly-log-2026-05-06]] で [[nishio]] の PR #212 をマージ）。
 
 ## kouchou-ai での主な貢献
 
@@ -28,8 +28,9 @@ sources:
 
 ## エイリアス
 
-`Ohki`, `shingo-ohki`, `truego`, `大木慎吾`, `Shingo Ohki`
+`Ohki`, `shingo-ohki`, `truego`, `大木真吾`, `Shingo Ohki`
 
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-23: `#2_開発_広聴ai` の [[slack-public-ui-requirements-2026-05-23]] thread で「散布図が受け入れられている要因の分解」「広聴結果の公開UIに求められる 7 要件」「embedding 距離精度の非本質性」を整理。技術的な散布図論議を view 側要件の論議へ引き上げた contribution として [[public-ui-requirements-for-broadlistening]] にまとめた

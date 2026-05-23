@@ -8,6 +8,7 @@ sources:
   - meeting-minutes.md
   - analysis-core-web-ui-separation-decision-2026-05-23.md
   - report-html-non-web-canonical-decision-2026-05-23.md
+  - slack-public-ui-requirements-2026-05-23.md
 ---
 
 ## 目的
@@ -88,6 +89,11 @@ sources:
 - `report.html` は CLI / coding agent 向けの自己完結 **観察用HTML** で、Web の canonical path はこれまでどおり `hierarchical_result.json` + `public-viewer` とする。open question ではなく明示判断として整理し直した。[[usage-modes]]より [[report-html-non-web-canonical-decision-2026-05-23]]より
 - これで `API が --without-html 固定なのは未整合なのか` という混線を減らせる。今後の Web 側の議論は HTML 昇格の是非ではなく、JSON / viewer 契約前提で進めればよい。[[cli]]より [[refactoring-status]]より
 
+### 11. legacy pipeline cleanup を main へ入れ、refactoring を done 扱いにできる状態にした
+
+- `PR #865` で、`apps/api/broadlistening/pipeline/` に残っていた旧 Python 実装と source tree 上の refactoring phase docs を除去した。current tree では `analysis-core` / workflow 側だけが canonical になっている。[[source-code]]より [[refactoring-status]]より
+- 途中で `Server Tests` が `analysis_core` 未 install で落ちたので CI workflow も直し、checks success まで確認して admin merge した。これで、これまで refactoring 未完の根拠だった Phase 8 が main から消えた。[[source-code]]より [[github-dev-docs]]より
+
 ## Open Questions
 
 - このページを「常に次回会議向け 1 枚」に保つか、会議ごとに snapshot を切るかはまだ未決
@@ -110,3 +116,5 @@ sources:
 - 2026-05-23: TTTC の clone / CUI 前提から、実務のための Web UI 包装、さらに研究開発向けの `analysis-core` / PyPI 再切り出しへ至る入口設計の歴史を [[tttc-to-analysis-core-history]] に整理。Web UI と CLI が競合ではなく役割分担だと説明しやすくした
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] と [[analysis-core-web-ui-separation-decision-2026-05-23]] を反映し、`report.html` は Web canonical にせず、WebUI / core 分離の設計判断も会議向け下書きに追記
 - 2026-05-23: GitHub Pages の project site を `https://nishio.github.io/kouchou-ai-developer-wiki` の末尾スラッシュなしで開いた時、root の相対リンクが repo サブパスを落として `/concepts/...` へ飛ぶ問題を修正。Quartz `Head` に root 専用 `<base href="https://nishio.github.io/kouchou-ai-developer-wiki/">` を追加し、トップページからの内部リンクと静的 asset が常に正しいサブパス基準で解決されるようにした。[[source-code]]より
+- 2026-05-23: `#2_開発_広聴ai` の Slack で [[ohki-shingo]] が「散布図はそれ自体が本質なのではなく、量・整理・全体像・個別意見への辿り・透明性の 5 要素を一画面で出していたから受け入れられている」「公開UIに求められる要件は 7 項目で言語化できる」「embedding の距離精度は公開UIの本質ではなく、cluster grouping が保てれば十分」と整理。これは [[jigsaw-sensemaker-history]] が残していた『散布図の役割を別 view でどう代替するか』への回答で、短期の散布図互換案の技術バーが思ったより低いことも示している。詳細は [[public-ui-requirements-for-broadlistening]] と [[slack-public-ui-requirements-2026-05-23]]
+- 2026-05-24: `PR #865` merge を反映し、legacy pipeline cleanup と CI 修正まで含めて current `main` では refactoring を done 扱いにできる、と会議向け下書きへ追記

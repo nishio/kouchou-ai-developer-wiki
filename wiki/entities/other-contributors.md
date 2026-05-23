@@ -69,7 +69,7 @@ sources:
 会議メモには漢字／ローマ字／ハンドルが混在する。同一人物の判定は文脈依存：
 
 - `nasuka` ≈ `Nasuka Sumino` ≈ `sumino` ≈ `角野`（要確認）
-- `Ohki` ≈ `shingo-ohki` ≈ `大木慎吾`（[[ohki-shingo]]）
+- `Ohki` ≈ `shingo-ohki` ≈ `大木真吾`（[[ohki-shingo]]）
 
 ## Updates
 

@@ -41,7 +41,7 @@ sources:
 
 ### LOCAL LLM の analysis 実行経路と admin の model list probe は揃っていない
 
-`PR #824` merge 後の current `main` では、`packages/analysis-core/src/analysis_core/services/llm.py` と legacy `apps/api/broadlistening/pipeline/services/llm.py` は `_resolve_local_llm_base_url()` により `https://gateway.example.com` のような full URL を受け取れ、`LOCAL_LLM_API_KEY` も使える。したがって **分析実行そのもの** は HTTPS/full-URL LocalLLM gateway へ到達できる。[[pr-824-local-llm-https-observation-2026-05-19]]より
+`PR #824` merge 後の current `main` では、`packages/analysis-core/src/analysis_core/services/llm.py` が `_resolve_local_llm_base_url()` により `https://gateway.example.com` のような full URL を受け取れ、`LOCAL_LLM_API_KEY` も使える。API の分析実行経路は `analysis-core` を subprocess 起動するため、**分析実行そのもの** は HTTPS/full-URL LocalLLM gateway へ到達できる。[[pr-824-local-llm-https-observation-2026-05-19]]より
 
 一方で current `apps/api/src/services/llm_models.py` の `get_local_llm_models()` はなお `host:port` を `http://.../v1` へ組み立てるため、`/admin/models` 経由の **モデル一覧取得 UI だけは旧前提のまま**。設定画面で model list fetch が失敗しても、実際の分析 subprocess 側は通るというズレが起こりうる。  
 **「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓自体はまだ有効。詳細は [[llm-providers]]。
@@ -113,9 +113,9 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 ### リファクタ・パッケージ周り
 
-### 旧 `hierarchical_main.py` は黙って動く
+### 古い runbook が `hierarchical_main.py` を案内していたら stale
 
-`apps/api/broadlistening/pipeline/hierarchical_main.py` は `DeprecationWarning` を出すだけで実行は通る。古い手順書を見て `python hierarchical_main.py` した人は **黙ってステイル版のステップが走る**。バグレポートのトレースに `broadlistening/pipeline/steps/...` が含まれていたら旧パスを疑う。canonical は `packages/analysis-core/`（[[refactoring-status]]）。
+2026-05-23 の legacy cleanup merge で、旧 `apps/api/broadlistening/pipeline/hierarchical_main.py` と `steps/` は current tree から除去された。したがって、今の footgun は **旧パスが動くこと** ではなく、**古い手順書やメモがまだ旧パスを案内していること** である。`hierarchical_main.py` に言及する runbook を見つけたら、2026-05-23 以前の履歴として扱い、`python -m analysis_core` / `kouchou-analyze` へ読み替えるのが安全。[[refactoring-status]]より
 
 ### 同名 `PluginRegistry` が 2 つある
 
@@ -240,3 +240,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-19: `analysis-core-v0.1.1` failure から、release test に version literal を埋めると自動 publish を塞ぐことを追記
 - 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI 向け観察用HTMLだと補正
 - 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編
+- 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、削除済みの legacy LLM path / `hierarchical_main.py` を current gotcha として語らないよう補正

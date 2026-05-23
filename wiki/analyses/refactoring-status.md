@@ -1,6 +1,6 @@
 ---
 name: refactoring-status
-summary: "v5 リファクタの実装状況 — Phase 0〜3b は概ね着地し、次の本丸は Phase 8 (旧コード削除) と PyPI package slimming"
+summary: "v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up"
 type: analysis
 sources:
   - github-dev-docs.md
@@ -13,7 +13,7 @@ sources:
 
 [[meeting-minutes]] では「v5.0 plugin 化は別リポジトリで開発」「2026-06 リリース目標」と語られていたが、実コードを読むと **既に大部分が main にマージされている**。docs と実装の乖離を整理する。
 
-2026-05-20 時点では、[[usage-modes]] に合わせて次の 3 軸でも読む。
+2026-05-24 時点では、[[usage-modes]] に合わせて次の 3 軸でも読む。
 
 - **Web UI** — `admin` / `api` / `public-viewer` / 配信・共有の改善
 - **CLI / analysis-core** — `analysis-core` / PyPI / 中間成果物 / 観察用HTML の改善
@@ -21,11 +21,9 @@ sources:
 
 ## 出典
 
-- `docs/refactoring/phase0_investigation.md`
-- `docs/refactoring/phase2_5_plan.md`
-- `docs/refactoring/phase3_plan.md`
 - `docs/refactoring/naming_convention.md`
-- 実コード（main, tip `0e1552d`、2026-05-21 05:00 JST 前後）— [[source-code]]
+- 実コード（main, tip `e5ed743`、2026-05-24 確認）— [[source-code]]
+- workflow default 化直前の branch 観測 — [[pr-840-workflow-defaultization-observation-2026-05-20]]
 
 ## Phase 別の状況
 
@@ -41,7 +39,7 @@ sources:
 
 ### Phase 2 — パイプラインを `packages/analysis-core` に移動 ✅ 完了
 
-8 ステップすべてが `packages/analysis-core/src/analysis_core/steps/` に存在。`apps/api/broadlistening/pipeline/steps/` にも同名ファイルが残っているが、これらは **deprecated layer**。
+8 ステップすべてが `packages/analysis-core/src/analysis_core/steps/` に存在する。2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` には Python 実装は残っておらず、`configs/` と `inputs/` の runtime data だけが残る。つまり **コードとしての canonical path 移行は完了** と読んでよい。[[source-code]]より
 
 ### Phase 2.5 — PyPI パッケージ化 ✅ ほぼ完了
 
@@ -56,6 +54,7 @@ sources:
 **未完**：
 
 - Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定している。ただしこれは「CLI 既定に未追随な半端状態」というより、**Web は JSON + `public-viewer`、CLI は self-contained `report.html` を観察用に持つ** という artifact 契約の意図的分岐と読んだ方が正確である（[[usage-modes]], [[cli]], [[analysis-core-and-web-ui]]）
+- release hardening は別途残る。Trusted Publishing、`apps/api` 互換を含む release gate、package metadata の詰めは [[open-decisions]] の follow-up として読む方が近い
 
 ### Phase 3a — plugin インフラ ✅ 完了
 
@@ -74,29 +73,24 @@ sources:
 
 利用モード: **共通基盤**
 
-- `orchestrator.run_workflow()` は plugin dispatch 経由の canonical 実行経路として main に入った
+- `PipelineOrchestrator.run_default()` は current `main` で `run_workflow()` を呼ぶ。つまり CLI / API の canonical path は workflow 側に寄った
 - `WorkflowEngine` / `workflows/hierarchical_default.py` / `tests/test_workflow_engine.py` に加え、CLI `main()` の rerun plan / status carry-forward、API `report_launcher` の full generation / config rerun / aggregation rerun / duplicate reuse 経路まで service-level test が main に入った
 - duplicate/reuse 相当の実ファイル群を置いた状態から `from_config()` が missing downstream artifact だけ rerun する integration test、real workflow rerun e2e、workflow failure step status API も main に存在する
-- `packages/analysis-core/README.md`、`docs/refactoring/phase2_5_plan.md`、`docs/refactoring/phase3_plan.md`、deprecated README も canonical path を `run_default()` → `run_workflow()` 前提へ更新済み
+- `packages/analysis-core/README.md` と `apps/api/broadlistening/README.md` も canonical path を `run_default()` → `run_workflow()` 前提へ更新済み
 - したがって workflow engine は「実装があるだけ」の段階を抜け、**CLI / API の production 入口として実用互換に達した** と読んでよい
 
-残る論点は、[[hierarchical-status-semantics]] で整理した `duration` / `estimated_cost` / progress semantics のような許容差分と、Phase 8 での legacy layer 削除である。完了条件の整理は [[phase3b-exit-criteria]] を参照。
+残る論点は、[[hierarchical-status-semantics]] で整理した `duration` / `estimated_cost` / progress semantics のような許容差分と、plugin wrapper の整理、release hardening である。Phase 3b 完了条件の整理は [[phase3b-exit-criteria]] を参照。
 
-### Phase 8 — 旧コード削除 ⚠️ 部分的
+### Phase 8 — 旧コード削除 ✅ 完了
 
 利用モード: **共通基盤**
 
-`apps/api/broadlistening/pipeline/hierarchical_main.py` 冒頭：
+- `apps/api/broadlistening/pipeline/steps/`
+- `apps/api/broadlistening/pipeline/hierarchical_main.py`
+- `apps/api/broadlistening/pipeline/hierarchical_utils.py`
+- 旧 `services/` と、それに紐づく source tree 上の stale refactoring phase docs
 
-```python
-warnings.warn("hierarchical_main.py is deprecated. "
-              "Use 'python -m analysis_core' instead.",
-              DeprecationWarning, stacklevel=2)
-```
-
-= **DeprecationWarning は出すが動く**。同様に `hierarchical_utils.py` も shim 化。
-
-ただし `steps/` 配下の旧コード約 1600 LOC は残存していて、`hierarchical_main.py` 経由で実行すれば旧パスが動く。誰かが古い手順書で `python hierarchical_main.py` すると **黙ってステイル版が動く**。deprecated README の主要 drift は解消されたが、deprecated layer 自体は残っているため、古い手順書や直接実行で旧パスへ入れる状態は続いている。
+は current `main@e5ed743` で source tree から除去された。これにより、以前の未完根拠だった **「古い手順書どおり `python hierarchical_main.py` すると黙って旧パスが動く」** 状態は current tree から消えた。runtime data としての `configs/` / `inputs/`、後方互換としての `analysis_core.compat.*` は残るが、これは legacy 実行経路の存続とは別である。[[source-code]]より
 
 ## docs / 議事メモにあるが実装に存在しないもの
 
@@ -110,6 +104,7 @@ warnings.warn("hierarchical_main.py is deprecated. "
 - 外部 `plugins/analysis/` ディレクトリ — `loader.discover_plugin_directories()` は `Path.cwd()/plugins/analysis` を探すが、リポジトリにこのパスは無く、外部 analysis plugin の同梱もゼロ
 - `CHANGELOG.md` — リポジトリルートに無し（履歴は git log のみ）
 - YAML ベース workflow 定義 — loader は YAML manifest を読むが、実態は Python の `workflows/hierarchical_default.py` のみ
+- `docs/refactoring/phase0_investigation.md` / `phase2_5_plan.md` / `phase3_plan.md` — current source tree には存在しない。履歴として読むなら wiki 側の観測ページや本ページの `## Updates` を参照
 - `apps/api` からの subprocess 起動は current `main` でも `--without-html` を固定しており、CLI の `report.html` 既定出力とは役割分担が分かれている。この差分は現状では docs で明示して読ませるべきで、直ちに統一すべき未整合とは限らない
 
 ## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
@@ -120,16 +115,32 @@ warnings.warn("hierarchical_main.py is deprecated. "
 ただしこれは **CLI / coding agent 向け観察用HTML出力** であり、Web プロダクトの主経路を置き換えたわけではない。current `public-viewer` はなお `/reports/{slug}` から `hierarchical_result.json` を fetch して描画し、`report_sync.py` も `report.html` を保持対象に含めない。したがって「静的 HTML 出力の実装」は入ったが、「プロダクトの配信経路として採用された」とまでは言えない。
 2026-05-23 の maintainer 判断でも、この分離は維持される。`report.html` を Web canonical に昇格させる前提ではなく、CLI 向け観察用HTMLとして扱う方針で読む。[[report-html-non-web-canonical-decision-2026-05-23]]より
 
+## 完了判定
+
+2026-05-24 の current judgment では、**refactoring は done と言ってよい**。
+
+ここでいう done は、
+
+- canonical path が `analysis-core` / workflow 側へ移った
+- API がその core を subprocess で呼ぶ形に揃った
+- 旧 `apps/api/broadlistening/pipeline/` 実装が source tree から除去された
+
+までを含む。逆に、以下は残っていても refactoring 未完の根拠とはしない。
+
+- `hierarchical_status.json` の semantics 調整
+- package metadata / release hardening
+- 外部 plugin 利用例や YAML workflow のような拡張余地
+
 ## 「別リポジトリでリファクタする」の方針との整合
 
-[[meeting-minutes]] 2025-10-08 では「今のコードがあちこち動かなくなるので、リポジトリ自体を複製して開発する」と [[nishio]] が言っていた。実際には **main ブランチ上で Phase 単位の段階移行** を行い、旧コードに DeprecationWarning を貼って共存させる方式が採られている。別リポジトリ手法は採用されなかった。
+[[meeting-minutes]] 2025-10-08 では「今のコードがあちこち動かなくなるので、リポジトリ自体を複製して開発する」と [[nishio]] が言っていた。実際には **main ブランチ上で Phase 単位の段階移行** を行い、旧コードに DeprecationWarning を貼って共存させる方式が採られていたが、その legacy 共存期間も current `main` では終わった。別リポジトリ手法は採用されなかった。
 
 ## 含意
 
 - **「v5 はまだ別世界」というメンタルモデルは正しくない**。`packages/analysis-core/` のコードは既に canonical。新規 PR は基本こちらに投げる
 - 一方、plugin wrapper の多くはなお legacy step の薄いラッパーであり、どこまで workflow-native 実装へ寄せるかは別論点として残る
 - `analysis-core` 自体の配布はほぼ着地したが、**CLI** と **Web/API** は同じコアを使いながら、生成・保持・配信する artifact 契約を意図的に分けている。新しい読者が「なぜ API は `--without-html` 固定なのか」で迷わないよう、docs 側で明示しておく価値が高い
-- 旧 `apps/api/broadlistening/pipeline/` には触らない（deprecated）。バグ報告で旧パスのトレースを見たら「`hierarchical_main.py` で実行している」を疑う
+- current tree では旧 Python 実装自体が無い。古い runbook やブログ記事に `hierarchical_main.py` が出てきたら、**2026-05-23 以前の履歴** とみなして読む方が安全
 
 利用モードの観点で言い換えると：
 
@@ -139,7 +150,6 @@ warnings.warn("hierarchical_main.py is deprecated. "
 ## Open Questions
 
 - `hierarchical_status.json` のどこまでを legacy 完全互換に寄せるべきか（現状整理は [[hierarchical-status-semantics]]）
-- 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
 - `--skip-interaction` の argparse バグ修正 ([[cli]])
 
 workflow default 化を止めていた実装差分と、その後どこまで解消されたかの履歴は [[workflow-defaultization-blockers]] を参照。
@@ -148,6 +158,7 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 
 ## Updates
 
+- 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後の current state に合わせて Phase 8 を「完了」へ更新。source tree から旧 pipeline 実装と refactoring phase docs が除去されたため、refactoring 全体も done 判定へ補正
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を Open Questions から外した
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化

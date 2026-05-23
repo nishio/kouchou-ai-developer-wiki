@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "`run_workflow()` default 化を止めていた主 blocker は main で概ね解消され、今はその履歴整理と残 follow-up の切り分けとして読むページ"
+summary: "`run_workflow()` default 化を止めていた主 blocker は main で解消され、Phase 8 cleanup 後はいま何が follow-up だけ残っているかを切り分ける履歴ページ"
 sources:
   - github-dev-docs.md
   - source-code.md
@@ -10,7 +10,7 @@ sources:
 
 # `run_workflow()` default 化の blocker
 
-current `main@0e1552d` では、PR `#840` 相当が取り込まれ、CLI / API の canonical path は workflow 側へ寄った。したがって本ページは、もはや「いま default 化を止めている blocker 一覧」ではなく、**何が blocker だったか / main でどこまで解消されたか / 何が follow-up に落ちたか** を整理する履歴ページとして読むのが近い。[[source-code]]より [[pr-840-workflow-defaultization-observation-2026-05-20]]より
+current `main@e5ed743` では、PR `#840` 相当による workflow default 化だけでなく、後続の legacy cleanup まで main に入った。したがって本ページは、もはや「いま default 化を止めている blocker 一覧」ではなく、**何が blocker だったか / main でどこまで解消されたか / 何が follow-up にだけ残ったか** を整理する履歴ページとして読むのが近い。[[source-code]]より [[pr-840-workflow-defaultization-observation-2026-05-20]]より
 
 ## 結論
 
@@ -64,7 +64,7 @@ workflow 側の `HIERARCHICAL_DEFAULT_WORKFLOW` は visualization step の条件
 - `hierarchical_status.json` の `duration` / `estimated_cost` / progress semantics にはなお legacy との差分があるが、[[phase3b-exit-criteria]] では production blocker でなく follow-up と位置づけた
 - `apps/api` は current `main` でも `--without-html` を固定しており、CLI 既定の `report.html` 出力との役割分担はなお分かれている
 - plugin wrapper の多くは still legacy-step wrapper であり、workflow-native 実装へどこまで寄せるかは別論点として残る
-- 本丸は workflow default 化そのものではなく、Phase 8 の deprecated layer 削除へ移った
+- 2026-05-24 の current state では Phase 8 cleanup まで merge 済みで、本ページに残る価値は blocker 履歴と follow-up の切り分けにある
 
 ## いま follow-up に残った理由
 
@@ -87,27 +87,27 @@ workflow path は main で production 入口へ入ったが、なお follow-up �
 
 ## 標準経路化後の残課題（優先順）
 
-1. **Phase 8 の deprecated layer 削除**
-   `apps/api/broadlistening/pipeline/steps/`, `hierarchical_main.py`, `hierarchical_utils.py` をどういう順で消すかの計画が次の本丸である。
-
-2. **PyPI package slimming**
-   extras 分割 (`[clustering]`, `[embeddings]`) はなお未完で、Phase 2.5 の残タスクとして独立に残る。
-
-3. **status semantics の follow-up**
+1. **status semantics の follow-up**
    `hierarchical_status.json` の duration / progress / estimated_cost をどこまで寄せるかを決める。
 
-4. **実データ寄り e2e の拡充**
+2. **実データ寄り e2e の拡充**
    merge blocker ではないが、provider 差分や artifact 欠損パターン差分は今後も足せる。
 
-5. **`report.html` の位置づけ整理**
+3. **plugin wrapper / 拡張経路の整理**
+   builtin plugin の多くはなお legacy step wrapper なので、workflow-native 実装へどこまで寄せるか、外部 `plugins/analysis/` や YAML workflow をどう本当に使うかは別途残る。
+
+4. **`report.html` の位置づけ整理**
    current main でも CLI 向け観察用HTMLと Web canonical output は分かれたままであり、2026-05-23 の maintainer 判断でも `report.html` は Web canonical にしない。[[report-html-non-web-canonical-decision-2026-05-23]]より
+
+5. **release hardening**
+   current package / CI / PyPI publish は動くが、Trusted Publishing、`apps/api` 互換まで含む release gate、metadata の詰めは refactoring 完了後の別タスクとして残る。
 
 ## 含意
 
 - Phase 3b の課題は「CLI の呼び先を `.run()` から `.run_workflow()` に置換する」だけではない
 - 最低でも **初期入力注入**, **status 永続化**, **config key 正規化**, **visualization artifact 契約の更新** を揃えてからでないと default 化は危ない
 - PR `#840` 相当の merge により、この 4 点は current `main` で概ね解消された
-- workflow default 化の主戦場は終わり、次の論点は Phase 8 / extras 分割 / status semantics follow-up へ移った
+- workflow default 化の主戦場は終わり、Phase 8 cleanup も current `main` で完了した。次の論点は status semantics / plugin wrapper / release hardening へ移った
 - 逆に言うと、plugin system 自体を削除すべき根拠が見つかったわけではない。止まっているのは主に **運用経路との接続** である
 
 ## Open Questions
@@ -130,3 +130,4 @@ workflow path は main で production 入口へ入ったが、なお follow-up �
 - 2026-05-21: `hierarchical_status.json` の項目別 semantics 棚卸しを [[hierarchical-status-semantics]] に分離し、status file blocker の中身を参照可能にした
 - 2026-05-21: `04a8e97` により refactoring docs と deprecated README の主要 drift も branch 上で更新済みになったため、docs blocker を「大半更新済み、残差確認フェーズ」へ寄せた
 - 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当 merge 後の current state に合わせて、本ページを「未解決 blocker 一覧」から「解消された blocker と follow-up の整理」へ更新
+- 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、Phase 8 cleanup も main に入った前提へ更新。残課題の優先順から legacy 削除を外し、status semantics / plugin wrapper / release hardening 側へ寄せ直した
