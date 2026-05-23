@@ -14,7 +14,7 @@ sources:
 | API unit | `cd apps/api && rye run pytest tests/`（または `make test/api`） | 既定 |
 | analysis-core unit | `cd packages/analysis-core && rye run pytest tests/` | `tests/test_pipeline_paths_integration.py` でパイプライン統合 |
 | analysis-core E2E (実 LLM) | `OPENAI_API_KEY=… rye run pytest tests/e2e/ -v` | **約 $0.01/run（gpt-4o-mini）**。`pyproject.toml` の `norecursedirs` で既定除外、**CI 非実行** |
-| API -> subprocess -> analysis-core 手元 smoke | `cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` | `tests/manual/report_launcher_subprocess_smoke.py`。`execute_aggregation()` から **本物の subprocess** を起動し、`hierarchical_result.json` / `hierarchical_status.json` / `report_status.json` 更新まで確認する。既定収集の対象外で、明示実行専用。[[source-code]]より |
+| API -> subprocess -> analysis-core 手元 smoke | `cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` | `tests/manual/report_launcher_subprocess_smoke.py`。`execute_aggregation()` の再集約 smoke に加えて、`launch_report_generation()` から **通常フロー全体** を本物の subprocess で起動し、`hierarchical_result.json` / `hierarchical_status.json` / `report_status.json` 更新まで確認する。full flow 側は local provider と OpenAI 互換の偽 LLM で extraction / embedding / clustering / overview まで踏む。既定収集の対象外で、明示実行専用。[[source-code]]より |
 | Frontend unit (Jest) | `apps/public-viewer/` と `apps/admin/` で `pnpm test` | |
 | Browser E2E (Playwright) | `cd test/e2e && pnpm test`（UI: `pnpm run test:ui`） | 設定詳細は `test/e2e/CLAUDE.md` |
 
@@ -77,3 +77,4 @@ sources:
 - 2026-05-17: 初回作成
 - 2026-05-18: v5 移行期における「v4 回帰保証」のテスト責務を追記
 - 2026-05-23: API の `report_launcher` が `analysis_core` を subprocess で起動する継ぎ目を、mock ではなく実 subprocess で踏む手元 smoke test (`tests/manual/report_launcher_subprocess_smoke.py`) を追加
+- 2026-05-23: `launch_report_generation()` から通常フロー全体を踏む manual smoke を追加し、その実行で workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡していなかったバグを発見・修正

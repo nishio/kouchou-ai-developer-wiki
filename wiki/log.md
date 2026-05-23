@@ -1320,3 +1320,25 @@
 - unregistered pages: 0
 - isolated pages: 12（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-23 12:50] filing-back | API 通常フローの manual smoke と workflow path bug 修正を testing / meeting report に追記
+
+- [[testing]] の API subprocess smoke 行を更新し、`execute_aggregation()` だけでなく `launch_report_generation()` から通常フロー全体を local provider + 偽 OpenAI 互換 LLM で踏めることを追記
+- full flow smoke の初回実行で、workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡しておらず相対 `inputs/` / `outputs/` を見に行くバグを検出したため、[[meeting-report-draft]] に「手元 smoke を足しただけでなく、そこで見つかった path bug まで直した」要点を追記
+- `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` と `... rye run pytest tests/services/test_report_launcher.py -q` の通過を記録
+
+## [2026-05-23 12:50] lint | API 通常フロー smoke の filing-back 後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 12:51] lint | log 追記後の wiki を再 lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
