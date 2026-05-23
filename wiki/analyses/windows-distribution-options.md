@@ -8,6 +8,7 @@ sources:
   - source-code.md
   - windows-powershell-default-installation.md
   - windows-setup-encoding-decision.md
+  - docker-engine-wsl2-alternative-2026-05-23.md
 ---
 
 ## 問い
@@ -62,6 +63,36 @@ sources:
 - WSL2 を正規入口にするのは開発者向けに留め、非専門家には WSL2 という用語を主役化しない、というのが妥当
 - Docker Desktop のライセンス（大企業 / 政府機関では有料サブスク）はドキュメントに残しておくべき注意点。自治体・行政展開時にここが障害になる可能性がある
 
+## ランタイム基盤の選択軸: Docker Desktop / Docker Engine in WSL2
+
+「段階 1〜4」とは別の軸として、**Docker 実行基盤として何を入れるか** という選択がある。これは 4 段階のどこにいても直交する軸であり、[[docker-engine-wsl2-alternative-2026-05-23]] で GPT が示した「Docker Desktop を使わない経路」を整理すると次のようになる。
+
+### ルート A: Docker Desktop (WSL2 backend)
+
+- 現状の `docs/getting-started/windows-setup.md` と段階 1 の `setup_win.*` 系が前提にしているルート
+- 利点: GUI / daemon 起動 / port forwarding / メモリ管理 / WSL integration を Docker Desktop が肩代わりするので、非専門家でも比較的成功率が高い
+- 限界: 大企業・政府機関・特定規模以上の組織では有料サブスクリプションが必要になる場合がある。Docker Desktop のインストール自体が組織端末管理ポリシーで弾かれることもある
+
+### ルート B: WSL2 Ubuntu に Docker Engine + Compose plugin
+
+- Docker Desktop を経由せず、WSL2 Ubuntu の中に `docker-ce` / `docker-ce-cli` / `containerd.io` / `docker-compose-plugin` を apt で直接入れて `docker compose up` する構成。[[docker-engine-wsl2-alternative-2026-05-23]]より
+- 利点: Docker Desktop ライセンスの制約を避けられる。Docker Engine 側は OSS 配布条件のまま
+- 限界: WSL2 / Ubuntu 導入、systemd 有効化、Docker daemon 起動、`docker` group 設定、Windows / WSL のパス混乱、port forwarding、メモリ診断、組織 PC の VPN / セキュリティソフト制限まで、利用者が自力で扱う必要が出る。「支払いは避けられるが、サポートコストは上がる」。[[docker-engine-wsl2-alternative-2026-05-23]]より
+- 現状: kouchou-ai 側の正規 docs / setup script は未対応。`setup_win.bat` / `setup_win.ps1` でも対象外
+
+GPT は「迷ったら Docker Desktop、組織 PC・行政・大企業・ライセンス確認が必要なら WSL2 + Docker Engine」という入口分岐を提案している。これは現状 main の docs 構成（Windows ネイティブ + Docker Desktop 一本）からは一歩踏み込む変更で、kouchou-ai 側の意思決定はまだない。
+
+### 段階軸とランタイム軸の関係
+
+段階 1〜4 とランタイム A / B は組み合わせ可能だが、現実的に意味のある組み合わせは限られる。
+
+- 段階 1 (`setup_win.*`) × ルート A: 現状進行中の本線
+- 段階 1 × ルート B: 「WSL2 Ubuntu 上で `docker compose up` する手順」を docs として正規化する案。setup script というより docs / playbook で支援する形になる
+- 段階 2 (ランチャー exe) 以降 × ルート A: GPT が推した「ランチャー exe で Docker Desktop を操作する」案
+- 段階 2 以降 × ルート B: ランチャー exe が WSL2 内 Docker Engine を扱う案。Windows ネイティブ exe から WSL2 内のプロセスを起動する形になり、設計難度が一段上がる
+
+kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中で「Docker Desktop の制約に直撃する側」がどれだけ多いかで、ルート B を **補助ルート** に留めるか **主要ルート** へ昇格させるかが変わる。
+
 ## 現状の作業との対応関係
 
 - main で進んでいる作業は **段階 1**（`setup_win.bat` / `setup_win.ps1`）まで
@@ -84,8 +115,10 @@ sources:
 - 非専門家向け Windows 体験のゴールを `setup_win.*` 系で打ち止めるか、段階 2 (ランチャー exe) へ進むかを正式に意思決定するタイミング
 - 段階 2 に進む場合の言語スタック (Go / Tauri / Electron / .NET) の選定。kouchou-ai 本体の保守者層と乖離しすぎないこと
 - Docker Desktop ライセンス前提のままで自治体・行政展開を続けられる範囲。回避策が必要になる場面の見極め
+- ルート B（WSL2 Ubuntu + Docker Engine）を「上級者向け補助ルート」に留めるか、主要利用者層のライセンス事情を踏まえて「主要ルート」へ昇格させるか
 - Mac の非専門家向け配布をどう扱うか。Windows と同等の `setup_mac.*` 整備、または別物として扱うか
 
 ## Updates
 
 - 2026-05-22: 初回作成。`setup_win.*` 進行と GPT ブレストを突き合わせ、段階 1〜4 の整理と現状判断材料をまとめた
+- 2026-05-23: ランタイム基盤の選択軸（Docker Desktop / Docker Engine in WSL2）を段階軸とは直交する第 2 軸として追記し、ルート B を主要ルートに昇格させるかを Open Question に追加

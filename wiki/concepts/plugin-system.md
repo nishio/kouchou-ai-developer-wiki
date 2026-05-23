@@ -96,6 +96,7 @@ sources:
 - その亜種として **既存のカテゴリーツリーをパラメータで与える分類** も想定されていた
 - 自治体の事業計画・予算カテゴリに合わせた分類ニーズがその具体例
 - Jigsaw 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
+- したがって Jigsaw Sensemaker 的な第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
 
 ## 関連ドキュメント
 

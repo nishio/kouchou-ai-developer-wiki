@@ -29,6 +29,7 @@ sources:
 4. 失敗時の調査しやすさも少し改善しました。レポート生成に失敗したとき、admin 画面からエラーログの一部を見られるようにしています。[[pr-852-error-log-visibility-observation-2026-05-22]]より
 5. 最近の小さめのバグ修正として、古い `report_status.json` で一覧取得が落ちる件と、散布図の source link をクリックしても開かない件を main へ入れました。[[problem-list-from-open-issues-2026-05-19]]より
 6. 運用面では、AI エージェントが issue 着手前に assignee を確認し、自分を assign してから進めるルールを明文化しました。PR や issue の対外文面も、日本語をデフォルトにしています。[[coding-agents]]より
+7. 長期論点として、Jigsaw Sensemaker 的な第2分析モードは自然な散布図を出しにくい一方、散布図はまだユーザ価値が強い、という緊張関係を整理しました。短期は散布図互換の暫定案でつなぎ、長期は散布図必須の前提を外す、という二段構えで考えるのがよさそうです。[[strategic-development-order-2026-05-23]]より [[jigsaw-sensemaker-history]]より
 
 ## 次回定例向け下書き
 
@@ -67,6 +68,11 @@ sources:
 - `#710 -> PR #857` で、散布図の点をクリックしてもリンク先が開かない問題を修正した。原因は、Plotly の hover modebar が点クリックを邪魔していたことだった。[[source-code]]より
 - modebar 自体は残しつつ、クリックを邪魔しないように DOM 側を調整した。見た目はあまり変えずに、期待どおり新しいタブで開ける方向へ直している。[[source-code]]より
 
+### 8. 長期論点として、Jigsaw 系第2モードと散布図前提の衝突を整理した
+
+- issue の優先順だけではなく、`kouchou-ai` を「共通実験基盤 / 製品導線 / 探索枝」の 3 層 platform として見直した。そのうえで、次に考えるべき中心問題は bugfix の順番より、「散布図を前提にしない analysis mode でも product が成立する capability contract を作れるか」だと整理した。[[strategic-development-order-2026-05-23]]より
+- Jigsaw Sensemaker 的な第2モードは自然な散布図を出しにくい。一方で散布図はユーザ価値が強いので、短期は embedding 併用で散布図互換に載せ、長期は散布図必須ビューをやめる、という二段構えを作業仮説として明文化した。[[jigsaw-sensemaker-history]]より [[strategic-development-order-2026-05-23]]より
+
 ## Open Questions
 
 - このページを「常に次回会議向け 1 枚」に保つか、会議ごとに snapshot を切るかはまだ未決
@@ -82,3 +88,4 @@ sources:
 - 2026-05-22: 進行中: `#860 -> draft PR #862` の実機 E2E が `public-viewer` の `../shared/csp` 欠落を検出したため、`apps/public-viewer` と `apps/static-site-builder` の Dockerfile に `apps/shared` を含める修正を追加。さらに PowerShell の `Invoke-WebRequest` が Windows 実機でタイムアウトしたため、到達確認を `curl.exe --head --fail` に変更し、最新 PR checks は実機 E2E まで成功。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: 進行中: 公開 repo の self-hosted runner が個人マシンであることを踏まえ、`#862` の Real Windows E2E は PR / 定期実行からは起動しないように変更。`workflow_dispatch` かつ許可された実行者だけに限定し、checkout の credential persistence も無効化した。[[source-code]]より [[github-dev-docs]]より
 - 2026-05-22: `#731` の Windows setup 文字化け対応は、`PR #858` の ASCII 化案を close し、`PR #863` で `setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体に分離する方針へ切り替え
+- 2026-05-23: issue の優先順整理だけではなく、Jigsaw Sensemaker 的な第2分析モードと scatter-first な product 契約の衝突を長期論点として整理した。短期は散布図互換の暫定案、長期は散布図必須前提の解体、という二段構えを [[strategic-development-order-2026-05-23]] と [[jigsaw-sensemaker-history]] に追記

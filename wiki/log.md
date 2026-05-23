@@ -1214,3 +1214,95 @@
 - isolated pages: 11（既知）
 - frontmatter YAML parse errors: 0
 - frontmatter YAML parse errors: 0
+
+## [2026-05-23 00:10] ingest | Docker Desktop 回避策（WSL2 + Docker Engine）の GPT ブレストを反映
+
+- `raw/docker-engine-wsl2-alternative-2026-05-23.txt` を新規追加
+- 新規 source [[docker-engine-wsl2-alternative-2026-05-23]] を追加。Docker Desktop ライセンス問題の回避策として WSL2 Ubuntu に Docker Engine + Compose plugin を直接入れる構成、UX コスト、2 本立て docs 案を critical lens で要約
+- [[windows-distribution-options]] にランタイム基盤の選択軸（ルート A: Docker Desktop / ルート B: Docker Engine in WSL2）を段階軸と直交する第 2 軸として追加し、Open Question にルート B を主要ルートへ昇格させるかを追記
+- [[local-dev-setup]] の Windows 配布 note を 2 軸（段階 / ランタイム基盤）案内に拡張
+- `wiki/index.md` の Sources / Analyses entry を更新
+
+## [2026-05-23 00:10] lint | Docker Desktop 回避策 ingest 後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知、`codex-windows-environment-memo` を含む）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 10:02] filing-back | current roadmap を open issues / wiki から再整理
+
+- 新規 analysis [[development-priority-roadmap-2026-05-23]] を追加。2026-05-23 時点の GitHub current state を確認し、`#836` `#837` `#833` `#845` `#846` `#716` `#740` など 5/21-5/22 に close 済みの前提作りタスクを除外した current roadmap を作成
+- 優先順を「Windows 初回導入 (`#731`) → user-facing bug (`#584` `#493` `#629`) → 運用基盤 (`#741` `#518` `#558` `#546` `#838`) → 説明責務 / 研究テーマ (`#696` `#542` `#564` `#577` `#809`)」へ組み替え、実装工数と calendar の目安も追記
+- `wiki/index.md` Analyses に新ページへの導線を追加
+
+## [2026-05-23 10:02] lint | current roadmap 追加後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 13（既知 + `development-priority-roadmap-2026-05-23`）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 10:02] filing-back | issue-centric roadmap を補う長期戦略ページを追加
+
+- 新規 analysis [[strategic-development-order-2026-05-23]] を追加。`usage-modes`, `plugin-system`, `refactoring-status`, `book-release-development-plan-2026-09`, `broad-listening-book-extractions` を束ね、`kouchou-ai` を「共通実験基盤 / 製品導線 / 探索枝」の 3 層 platform として見る長期順序を整理
+- 優先順を「`analysis-core` の canonical contract 固定 → plugin 実証 1 本目 → Web / CLI / distribution の役割固定 → experiment portfolio 運用 → trust layer」の順で記述し、短期 bugfix 順と別レイヤだと明示
+- [[development-priority-roadmap-2026-05-23]] に、本ページが short / mid-term triage であり、長期順は新ページを参照すべき旨を追記
+- `wiki/index.md` Analyses に新ページへの導線を追加
+
+## [2026-05-23 10:02] lint | 長期戦略ページ追加後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 10:02] filing-back | 第2分析モードを散布図前提が縛る問題を長期戦略へ明記
+
+- [[strategic-development-order-2026-05-23]] に `Core Problem` 節を追加し、「分析モード数の少なさ」より「第1モードが散布図を自然に出せることが product の既定前提になっており、第2モードが scatter-compatible な形へ無理に射影されやすいこと」が本質的問題だと追記
+- current code 上でも `apps/api/src/schemas/visualization_config.py`、`apps/admin/.../VisualizationConfigDialog.tsx`、`apps/public-viewer/components/charts/SelectChartButton.tsx` が `scatterAll` を既定にしている一方、`docs/development/plugin-guide.md` には散布図なし設定例があり、設計意図とプロダクト既定のズレがあることを確認
+- 長期戦略の問いを「analysis mode を増やすこと」から「散布図を前提にしない analysis mode でも product が成立する capability contract へ移れるか」へ寄せ直した
+
+## [2026-05-23 10:02] lint | 散布図前提問題の追記後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 10:02] filing-back | Jigsaw Sensemaker と散布図の緊張関係を時系列で整理
+
+- Google Doc export から `raw/meeting_minutes.txt` を再取得したうえで、meeting minutes / `#2_開発_広聴ai` / `#2_開発_広聴ai_アルゴリズム開発` を再読
+- 新規 analysis [[jigsaw-sensemaker-history]] を追加し、2025 4Q の「現行散布図方式の限界認識」から、2026 Q1 の「Jigsaw 系を受け入れるには可視化を分析から切り離す必要がある」という設計意図までを時系列で整理
+- [[strategic-development-order-2026-05-23]] で現在の core problem として書いた「scatter-first な product 契約が第2モードを縛る」という見立てが、過去ログにも連続して現れていたことを明文化
+- `wiki/index.md` Analyses に新ページへの導線を追加
+
+## [2026-05-23 10:02] filing-back | Jigsaw系第2モードの移行戦略を一文で要約
+
+- [[strategic-development-order-2026-05-23]] に `Working Formulation` を追加し、「embedding を前提としない分析様式でも、短期は embedding 併用で散布図互換に載せ、長期は散布図必須ビューをやめる」という二段構えを作業仮説として明文化
+- [[jigsaw-sensemaker-history]] に `Distilled Take` を追加し、この要約が 2025 4Q 〜 2026 Q1 の議論の収束形として読めることを補記
+
+## [2026-05-23 10:02] lint | Jigsaw系移行戦略の要約追記後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 13（既知、`jigsaw-sensemaker-history` を含む）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 11:32] filing-back | 定例会議向け下書きに Jigsaw 系第2モードの長期論点を追記
+
+- [[meeting-report-draft]] の「月曜にそのまま読む用」と「次回定例向け下書き」に、Jigsaw Sensemaker 的な第2分析モードは自然な散布図を出しにくい一方、散布図は依然としてユーザ価値が高い、という緊張関係の整理を追加
+- 短期は散布図互換の暫定案、長期は散布図必須ビューの前提解体、という二段構えを会議で口頭共有しやすい形に圧縮し、[[strategic-development-order-2026-05-23]] と [[jigsaw-sensemaker-history]] への導線もつないだ
+
+## [2026-05-23 11:32] lint | 定例会議向け下書き追記後の wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0

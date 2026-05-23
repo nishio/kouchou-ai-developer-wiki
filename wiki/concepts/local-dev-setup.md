@@ -99,7 +99,7 @@ rye run uvicorn src.main:app --reload --port 8000
 
 対策として、[[nishio]] の setup script、[[other-contributors|kitaro]] のバッチファイル、PR #314、#509、#524（ネイティブ環境）が積み重なってきた。それでもなお実地報告が続いており、Windows サポートは継続課題。
 
-非専門家向け Windows 配布をどこまでやるか（`setup_win.*` で打ち止めるか、ランチャー exe や単体 exe へ踏み込むか）は [[windows-distribution-options]] に段階整理。
+非専門家向け Windows 配布をどこまでやるか（`setup_win.*` で打ち止めるか、ランチャー exe や単体 exe へ踏み込むか）と、ランタイム基盤を Docker Desktop に置くか WSL2 Ubuntu + Docker Engine に置くかは [[windows-distribution-options]] に段階整理。
 
 加えて、`setup_win.bat` から `powershell.exe` を呼ぶ前提は、`docs/getting-started/windows-setup.md` の対象である **Windows 10/11** と整合する。Microsoft Learn では Windows PowerShell 5.1 は Windows client 10 以降で既定インストールとされているため、「通常の Windows 10/11 なら PowerShell は入っている」という説明は根拠を持って書ける。これは **PowerShell 7 (`pwsh`) が標準**という意味ではない。[[windows-powershell-default-installation]]より
 

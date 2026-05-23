@@ -104,7 +104,7 @@ sources:
 - 短期は `analysis_mode=llm_grouping` を追加しつつ `embedding` を残し、`x/y` と `cluster-level-*` を従来フォーマットで出して viewer 互換を維持する
 - 長期は `analysis_capabilities` を実データから自動導出し、可視化 mode の可否を `requirements` で判定する
 
-これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で 2026-05-18 時点の `main` では default 実行経路がまだ `run()` なので、**計画は具体化したが production 実装は未着手** と見るのが妥当。
+これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **Jigsaw Sensemaker 的なもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。Jigsaw 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
 ## Open Questions
 

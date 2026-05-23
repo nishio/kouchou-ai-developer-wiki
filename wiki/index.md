@@ -78,6 +78,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [broad-listening-book-source](sources/broad-listening-book-source.md) — DD2030 書籍「選挙を変えたブロードリスニング」原稿の開発向け章マップ（12・13 章・10_00 DD2030・現場 column / case）
 - [wiki-pages-tooling-observation-2026-05-21](sources/wiki-pages-tooling-observation-2026-05-21.md) — developer-wiki repo の MkDocs 現状実装と Quartz 公式 docs の突き合わせ
 - [windows-distribution-gpt-brainstorm-2026-05-22](sources/windows-distribution-gpt-brainstorm-2026-05-22.md) — nishio と外部 GPT の対話。Windows 用 exe 化の 3 段階と、Docker Desktop / WSL2 のどちらを正規入口にするかを整理したブレスト
+- [docker-engine-wsl2-alternative-2026-05-23](sources/docker-engine-wsl2-alternative-2026-05-23.md) — Docker Desktop を避ける選択肢として、WSL2 Ubuntu に Docker Engine + Compose plugin を直接入れる構成と 2 本立て docs 案を整理したブレスト
 - [windows-powershell-default-installation](sources/windows-powershell-default-installation.md) — Microsoft Learn を根拠に、Windows PowerShell 5.1 が Windows 10/11 系で既定インストールであることと `pwsh` 非同一を整理
 - [issue-731-windows-setup-mojibake](sources/issue-731-windows-setup-mojibake.md) — issue #731 の再現ログから、Windows setup の問題が表示崩れだけでなく `cmd.exe` のパース破綻でもあることを整理
 
@@ -126,5 +127,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [wiki-pages-publishing-stack](analyses/wiki-pages-publishing-stack.md) — developer-wiki の GitHub Pages 配信は MkDocs adapter より Quartz が合うという判断
 - [codex-windows-environment-memo](analyses/codex-windows-environment-memo.md) — Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
 - [windows-real-machine-e2e-lessons](analyses/windows-real-machine-e2e-lessons.md) — Windows 実機 self-hosted runner と Docker Desktop E2E 構築で分かった落とし穴
-- [windows-distribution-options](analyses/windows-distribution-options.md) — 非専門家 Windows 配布を `setup_win.*` / ランチャー exe / デスクトップアプリ / 単体 exe の 4 段階で整理し、現状は最下段で進行中という判断
+- [windows-distribution-options](analyses/windows-distribution-options.md) — 非専門家 Windows 配布を `setup_win.*` / ランチャー exe / デスクトップアプリ / 単体 exe の 4 段階で整理し、ランタイム基盤を Docker Desktop / Docker Engine in WSL2 のどちらに置くかを直交軸として追加
 - [windows-setup-encoding-decision](analyses/windows-setup-encoding-decision.md) — `.bat` 単体では設定非依存に日本語対話を安全に扱いにくく、ASCII ランチャー + PowerShell 本体へ分離する判断理由の整理
+- [development-priority-roadmap-2026-05-23](analyses/development-priority-roadmap-2026-05-23.md) — 2026-05-23 時点の open issues / open PR を踏まえ、Windows 導入、既知バグ、運用基盤、説明責務・研究テーマの順で組み直した current roadmap
+- [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — CLI / workflow / plugin / Web 配布を 3 層 platform として見た時の長期順序。issue 消化より先に共通実験基盤と plugin 実証を置く理由を整理
+- [jigsaw-sensemaker-history](analyses/jigsaw-sensemaker-history.md) — Jigsaw Sensemaker 的な第2分析モードと散布図中心プロダクトの緊張関係が、2025 4Q の Slack から 2026 Q1 の plugin 設計へどう繋がったかの時系列整理
