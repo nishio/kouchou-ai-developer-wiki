@@ -1342,3 +1342,44 @@
 - unregistered pages: 0
 - isolated pages: 12（既知）
 - frontmatter YAML parse errors: 0
+
+## [2026-05-23 13:02] filing-back | workflow plugin の legacy config 重複削減と回帰テスト追加を記録
+
+- `analysis_core.plugins.builtin.*` に散らばっていた `_input_base_dir` / `_output_base_dir` / token usage 初期化の重複を `_legacy_config.py` に寄せて整理
+- `packages/analysis-core/tests/test_builtin_plugins.py` に、`analysis.extraction` が comment artifact から解決した input path と `ctx.output_dir.parent` を legacy step に渡す regression test を追加
+- 確認として `cd packages/analysis-core && rye run pytest tests/test_builtin_plugins.py tests/test_workflow_engine.py -q`、`rye run ruff check src/analysis_core/plugins/builtin tests/test_builtin_plugins.py`、`cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s`、`... rye run pytest tests/services/test_report_launcher.py -q` を実行し通過
+
+## [2026-05-23 13:03] lint | plugin cleanup の filing-back 後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 13:06] filing-back | TTTC clone 前提から Web UI 包装、analysis-core/PyPI 再切り出しまでの歴史を整理
+
+- 新規 analysis [[tttc-to-analysis-core-history]] を追加し、TTTC / 初期広聴AIの clone / CUI 前提、実務上の共有要請からの Web UI / server 化、研究開発向けに `packages/analysis-core` と CLI / PyPI を切り出して API が consumer に回った流れを 1 ページに整理
+- [[usage-modes]] と [[kouchou-ai]] から新ページへの導線を追加し、「Web UI と CLI は後付けの対立ではなく、歴史的に分化した役割分担」という読み方を補強
+- [[meeting-report-draft]] にも 1 行追記し、定例会議でこの歴史整理を口頭共有しやすくした
+
+## [2026-05-23 13:08] lint | 入口設計の歴史整理ページ追加後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0
+
+## [2026-05-23 13:21] filing-back | 入口設計の歴史整理に broad-listening-book の根拠を追加
+
+- [[tttc-to-analysis-core-history]] に、書籍 `10_00_DD2030による広聴AIの開発活動.md` の `TTTC Scatter vs 広聴AI` 比較表を反映し、Web 化の意味が「GUI追加」ではなく `環境構築責任と共有導線をサーバ側へ寄せること` だと明記
+- あわせて 13.3 の「Python 環境を持つ読者は手元でミニ広聴AIを動かす」導線を根拠として追記し、研究者・開発者向けに軽量な Python 実験入口が必要だった、という読みを補強
+
+## [2026-05-23 13:21] lint | 書籍由来の補強追記後に wiki を lint
+
+- `python3 scripts/lint_wiki.py`
+- broken wikilinks: 0
+- unregistered pages: 0
+- isolated pages: 12（既知）
+- frontmatter YAML parse errors: 0

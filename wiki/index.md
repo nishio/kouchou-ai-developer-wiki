@@ -132,3 +132,4 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [development-priority-roadmap-2026-05-23](analyses/development-priority-roadmap-2026-05-23.md) — 2026-05-23 時点の open issues / open PR を踏まえ、Windows 導入、既知バグ、運用基盤、説明責務・研究テーマの順で組み直した current roadmap
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — CLI / workflow / plugin / Web 配布を 3 層 platform として見た時の長期順序。issue 消化より先に共通実験基盤と plugin 実証を置く理由を整理
 - [jigsaw-sensemaker-history](analyses/jigsaw-sensemaker-history.md) — Jigsaw Sensemaker 的な第2分析モードと散布図中心プロダクトの緊張関係が、2025 4Q の Slack から 2026 Q1 の plugin 設計へどう繋がったかの時系列整理
+- [tttc-to-analysis-core-history](analyses/tttc-to-analysis-core-history.md) — TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の `analysis-core` をサーバが呼ぶ現在形までの入口設計の変遷

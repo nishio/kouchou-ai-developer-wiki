@@ -13,6 +13,8 @@ sources:
 
 `kouchou-ai` には「同じ解析コアを別の入口から使う」複数モードがある。これを混ぜると、**ある PR が Web プロダクト改善なのか、CLI / 研究用途の改善なのか** を誤読しやすい。特に `PR #825` のような「CLI では重要だが Web の主経路は変えない」変更は、利用モードを分けていないと整理を誤る。
 
+この分岐は後付けの分類ではなく、**TTTC の clone / CUI 前提 → Web UI 包装 → `analysis-core` / PyPI への再切り出し** という歴史の結果でもある。詳細は [[tttc-to-analysis-core-history]]。[[meeting-minutes]]より
+
 ## 主要 2 モード
 
 ### 1. 非専門家向け Web UI モード
@@ -142,3 +144,4 @@ sources:
 - 2026-05-19: 初版作成。Web UI と CLI / analysis-core を分ける軸を明文化
 - 2026-05-19: 研究者・データサイエンティスト向けは `Mac/Linux + CLI` を正規入口とし、`Windows` は `WSL2/Docker` 寄せでよい一方、非専門家向けは `Zip + setup.bat + Web UI` に近い入口を目標形として追う整理を追記
 - 2026-05-19: 会話中の整理を反映し、「研究者向けの CLI 改善」と「非エンジニア向け Web UI 完結導線」は別の最適化問題だと明記
+- 2026-05-23: この二分が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加

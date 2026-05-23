@@ -26,6 +26,8 @@ sources:
 
 この 4 形態のうち、現在の実務で特に重要なのは **非専門家向け Web UI モード** と **研究者・データサイエンティスト向け CLI モード** の 2 本柱。詳細は [[usage-modes]]。
 
+この A/B/C/D 整理が出てきた背景、すなわち **TTTC の clone 前提ツールを Web UI で包み、その後 `analysis-core` / PyPI へ再切り出した経緯** は [[tttc-to-analysis-core-history]] にまとめた。[[meeting-minutes]]より
+
 ## ランタイム構成
 
 詳細は [[architecture-overview]]。要約：
@@ -69,3 +71,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-23: 4 つの配布形態が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加

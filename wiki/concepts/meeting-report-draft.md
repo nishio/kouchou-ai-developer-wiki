@@ -78,6 +78,7 @@ sources:
 
 - これまで `analysis-core` 単体の e2e と、API `report_launcher` の mock ベース service test はあったが、FastAPI 側が本当に `python -m analysis_core` を起動して通常フローを最後まで通るかを踏む最小テストが無かった。そこで `apps/api/tests/manual/report_launcher_subprocess_smoke.py` を拡張し、`execute_aggregation()` だけでなく `launch_report_generation()` から full flow を本物の subprocess で起動し、`hierarchical_result.json`・`hierarchical_status.json`・`report_status.json` 更新まで手元で確認できるようにした。[[testing]]より [[source-code]]より
 - この手元実行で、workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡しておらず、通常フローが相対 `inputs/` / `outputs/` を見に行くバグも見つかった。`analysis_core.plugins.builtin.*` 側で path を受け渡すよう修正し、manual smoke と既存 `report_launcher` test まで通し直している。[[testing]]より [[source-code]]より
+- その後、plugin ごとに重複していた legacy config 組み立てを `_legacy_config.py` に寄せ、`analysis.extraction` が解決済みの input/output path を legacy step に渡す regression test も追加した。バグを直しただけでなく、同じ種類の path plumbing がまた散らばらないようにしている。[[testing]]より [[source-code]]より
 
 ## Open Questions
 
@@ -97,3 +98,5 @@ sources:
 - 2026-05-23: issue の優先順整理だけではなく、Jigsaw Sensemaker 的な第2分析モードと scatter-first な product 契約の衝突を長期論点として整理した。短期は散布図互換の暫定案、長期は散布図必須前提の解体、という二段構えを [[strategic-development-order-2026-05-23]] と [[jigsaw-sensemaker-history]] に追記
 - 2026-05-23: API `report_launcher` が `analysis_core` を subprocess で起動する継ぎ目を、mock ではなく実 subprocess で踏む手元 smoke test `apps/api/tests/manual/report_launcher_subprocess_smoke.py` を追加し、`ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` で通ることを確認
 - 2026-05-23: `launch_report_generation()` から通常フロー全体を踏む manual smoke を追加。最初の実行で workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡していないバグを検出し、`analysis_core.plugins.builtin.*` を修正したうえで、`tests/manual/report_launcher_subprocess_smoke.py -q -s` と `tests/services/test_report_launcher.py -q` の通過まで確認
+- 2026-05-23: path 修正後の plugin 側に残っていた legacy config 組み立ての重複を `_legacy_config.py` に集約し、`packages/analysis-core/tests/test_builtin_plugins.py` に extraction plugin の path 受け渡し regression test を追加。`packages/analysis-core` の関連 unit test と API manual smoke は再通過
+- 2026-05-23: TTTC の clone / CUI 前提から、実務のための Web UI 包装、さらに研究開発向けの `analysis-core` / PyPI 再切り出しへ至る入口設計の歴史を [[tttc-to-analysis-core-history]] に整理。Web UI と CLI が競合ではなく役割分担だと説明しやすくした
