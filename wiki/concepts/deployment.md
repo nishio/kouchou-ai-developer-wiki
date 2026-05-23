@@ -43,7 +43,7 @@ make client-build-static
 ## CLI からの静的 HTML 出力（2026-05 〜）
 
 PR #825 で Python が直接自己完結型 `report.html` を吐けるようになり、**AI コーディングエージェントから「サーバ無しで広聴 AI で分析」が可能に** なった。  
-ただしこれは CLI 向け sidecar 成果物であり、現行の Web 配信主経路はなお `hierarchical_result.json` を API 経由で `public-viewer` が描画する構成。詳細は [[pipeline]] の「軽量化と CLI 静的出力」節。
+ただしこれは CLI 向けの観察用HTMLであり、現行の Web 配信主経路はなお `hierarchical_result.json` を API 経由で `public-viewer` が描画する構成。詳細は [[pipeline]] の「軽量化と CLI 静的出力」節と [[analysis-core-and-web-ui]]。
 
 つまり deployment を考えるときは、[[usage-modes]] のうち **Web UI モードの配信** と **CLI モードの成果物持ち運び** を分けて考える方が事故が少ない。
 

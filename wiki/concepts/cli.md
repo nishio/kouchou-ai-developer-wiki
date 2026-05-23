@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
@@ -87,9 +88,11 @@ subprocess.Popen(["python", "-m", "analysis_core",
 
 API は `analysis_core` を import しない。**`python -m analysis_core` が canonical な境界面**。これにより `apps/api/` と `packages/analysis-core/` は依存方向が一方向（API→core）に整理されている。
 
-ただしこれは **CLI / 手動実行向けの sidecar 成果物** の話であり、Web の主経路を置き換えるものではない。current `apps/api/src/routers/report.py` は `hierarchical_result.json` を返し、`apps/public-viewer` はその JSON を fetch して描画する。`apps/api/src/services/report_launcher.py` が subprocess 起動時に `--without-html` を付けているのも、現行 Web 経路では HTML が配信対象ではないから、と読むのが自然。[[pr-825-standalone-html-observation-2026-05-19]]より
+ただしこれは **CLI / 手動実行向けの観察用HTML** の話であり、Web の主経路を置き換えるものではない。current `apps/api/src/routers/report.py` は `hierarchical_result.json` を返し、`apps/public-viewer` はその JSON を fetch して描画する。`apps/api/src/services/report_launcher.py` が subprocess 起動時に `--without-html` を付けているのも、現行 Web 経路では HTML が配信対象ではないから、と読むのが自然。[[pr-825-standalone-html-observation-2026-05-19]]より
 
-新しい読者向けには、ここを **「CLI 既定と API 挙動が食い違っている未解決問題」ではなく、「利用モードごとに artifact 契約を分けている」** と明記しておく方が混乱が少ない。CLI は手元で完結して読める `report.html` を重視し、Web は `hierarchical_result.json` + `public-viewer` を canonical path としている。[[usage-modes]]より
+2026-05-23 の maintainer 判断でも、この `report.html` は Web canonical にしない。したがって CLI の観察用HTMLと Web の JSON viewer は、「あとで統一されるはずの半端状態」ではなく、現在の artifact 契約として分けて読む。[[report-html-non-web-canonical-decision-2026-05-23]]より
+
+新しい読者向けには、ここを **「CLI 既定と API 挙動が食い違っている未解決問題」ではなく、「利用モードごとに artifact 契約を分けている」** と明記しておく方が混乱が少ない。CLI は手元で完結して読める `report.html` を重視し、Web は `hierarchical_result.json` + `public-viewer` を canonical path としている。判断の全体像は [[analysis-core-and-web-ui]]。[[usage-modes]]より
 
 ## 関連ドキュメント
 
@@ -110,12 +113,12 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 ## Open Questions
 
 - `--skip-interaction` を CLI から False に戻せない問題の解決
-- standalone `report.html` を保存・配信対象にしたいユースケースがあるか
 - `kouchou-analyze` PyPI 公開と GitHub Actions 自動リリース（[[refactoring-status]] 参照）
 
 ## Updates
 
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-18: `Issue #830` / `PR #832` により、`cluster_nums` 省略時は cube-root rule で推奨値を自動算出する方向が具体化したことを追記
-- 2026-05-19: `PR #825` merge 後の current `main` に合わせ、`--without-html` は既定 False へ直ったが、これは CLI 側 sidecar HTML の話であり Web の主経路は JSON + `public-viewer` のままだと補正
+- 2026-05-19: `PR #825` merge 後の current `main` に合わせ、`--without-html` は既定 False へ直ったが、これは CLI 向け観察用HTMLの話であり Web の主経路は JSON + `public-viewer` のままだと補正
 - 2026-05-20: open PR `#840` により、`run_workflow()` default 化へ向けた下回り実装が branch 上で進んでいることを追記
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` は Web canonical にしないと明記

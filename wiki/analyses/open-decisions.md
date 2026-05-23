@@ -9,6 +9,7 @@ sources:
   - slack-dev-kouchouai-2026-q1.md
   - pr-824-local-llm-https-observation-2026-05-19.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
@@ -23,7 +24,7 @@ sources:
 加えて 2026-05-19 以降は、[[usage-modes]] に合わせて各論点を次の 3 軸でも読む。
 
 - **Web UI** — 非専門家向け運用プロダクト (`admin` / `api` / `public-viewer` / 共有・公開)
-- **CLI** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / sidecar HTML)
+- **CLI** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / 観察用HTML)
 - **共通コア** — 両モードに跨る分析品質・provider・出力スキーマ・plugin 基盤
 
 2026-05-17 時点では `gh pr list -R digitaldemocracy2030/kouchou-ai --state open` も参照し、main にまだ無いが open PR として存在する作業を C に含めている。
@@ -174,13 +175,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### C-Web UI
 
-### C1. standalone `report.html` を保存・配信対象にするか
-
-`PR #825` 自体は 2026-05-18 に merge 済みで、current `main` の `analysis-core` CLI では自己完結型 `report.html` を既定生成する。ここまでは **完了済み**。[[pr-825-standalone-html-observation-2026-05-19]]より
-
-未完了なのは、これを **Web プロダクトのどこに位置づけるか** である。current `apps/api/src/routers/report.py` は `hierarchical_result.json` を返し、`apps/public-viewer` はその JSON を描画する。さらに `report_sync.py` も `report.html` を保持対象に含めない。したがって今の `report.html` は CLI / coding agent 向け sidecar に留まっており、**保存・配信対象へ昇格させる設計判断はまだ行われていない**。[[pr-825-standalone-html-observation-2026-05-19]]より
-
-### C2. PR #824 — LOCAL LLM の HTTPS 対応
+### C1. PR #824 — LOCAL LLM の HTTPS 対応
 
 `PR #824` は 2026-05-18 に merge 済みで、current `packages/analysis-core/src/analysis_core/services/llm.py` は `local_llm_address` に full URL を受け取れる helper と `LOCAL_LLM_API_KEY` 対応を持つ。`apps/api/src/services/report_launcher.py` も analysis 実行自体はこの `analysis-core` を subprocess 起動するため、**実際の分析経路は current `main` で HTTPS/full-URL 対応済み** と読める。[[pr-824-local-llm-https-observation-2026-05-19]]より
 
@@ -188,7 +183,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### C-共通コア
 
-### C3. フロント側可視化 plugin 基盤
+### C2. フロント側可視化 plugin 基盤
 
 `apps/public-viewer/components/charts/plugins/` に registry / types / validation と built-in plugin (`scatter`, `treemap`, `hierarchy-list`) がある。**基盤自体は既に main にある**。  
 未完なのは、外部 plugin ロードやバックエンドの「第 3 軸」としての統一設計まで含めた完成形。
@@ -201,7 +196,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 |---|---|
 | A. 未定 | 11 |
 | B. 方針決定済み・未着手 | 12 |
-| C. 着手済み・未完了 | 3 |
+| C. 着手済み・未完了 | 2 |
 
 「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
 
@@ -224,9 +219,10 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `#2_開発_広聴ai` ログから、Jigsaw 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加
 - 2026-05-18: A7 に、モバイルでは「静的画像 → 全体インタラクティブビュー」案も候補であることを追記
 - 2026-05-18: PR `#827` により、Jigsaw 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新
-- 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI sidecar HTML と Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
+- 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI 観察用HTMLと Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
 - 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
 - 2026-05-21: `main@0e1552d` を確認し、PR #840 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
 - 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加
 - 2026-05-21: `main@5d591ef` で PR #844 merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を open decision から外した

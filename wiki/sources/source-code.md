@@ -26,7 +26,7 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - **CLI は `kouchou-analyze` ／ `python -m analysis_core`**（[[cli]] 参照）。API サーバは subprocess でこれを呼ぶ
 - **Plugin dispatch は実装済みだが production パスで未使用** — `orchestrator.run_workflow()` は dormant、`orchestrator.run()` がレガシーループを直接実行
 - **`--skip-interaction` はなお argparse 上で False に戻せない**。一方 `--without-html` は `PR #825` で default `False` へ修正済み
-- **PR #825 は main に merge 済み**。ただし得られる `report.html` は CLI sidecar であり、Web の主経路は依然 `hierarchical_result.json` + `public-viewer`
+- **PR #825 は main に merge 済み**。ただし得られる `report.html` は CLI 向け観察用HTMLであり、Web の主経路は依然 `hierarchical_result.json` + `public-viewer`
 - **open PR `#840` では workflow default 化の blocker 潰しが進行中** — 初期 `comments` artifact、status 永続化、rerun artifact 再利用、`report.html` 契約合わせまで branch 上で着手済み。canonical current state は main と open PR を分けて読む必要がある
 - **`embeddings.pkl` は元の埋め込みベクトルを保存**。UMAP による 2D 化は `hierarchical_clustering` ステップ側で行う
 

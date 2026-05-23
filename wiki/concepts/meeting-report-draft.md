@@ -6,6 +6,8 @@ sources:
   - source-code.md
   - github-dev-docs.md
   - meeting-minutes.md
+  - analysis-core-web-ui-separation-decision-2026-05-23.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
 ---
 
 ## 目的
@@ -80,6 +82,12 @@ sources:
 - この手元実行で、workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡しておらず、通常フローが相対 `inputs/` / `outputs/` を見に行くバグも見つかった。`analysis_core.plugins.builtin.*` 側で path を受け渡すよう修正し、manual smoke と既存 `report_launcher` test まで通し直している。[[testing]]より [[source-code]]より
 - その後、plugin ごとに重複していた legacy config 組み立てを `_legacy_config.py` に寄せ、`analysis.extraction` が解決済みの input/output path を legacy step に渡す regression test も追加した。バグを直しただけでなく、同じ種類の path plumbing がまた散らばらないようにしている。[[testing]]より [[source-code]]より
 
+### 10. `report.html` は Web canonical にしない判断と、WebUI / core 分離の設計説明を wiki に固定した
+
+- 新規 [[analysis-core-and-web-ui]] を作り、「CLI だけでは一般利用者に重いので WebUI で包んだが、今度は研究用途に重くなったので core を切り出し、WebUI はそれを使う consumer に戻した」という設計判断を、歴史ページとは別にまとめた。[[analysis-core-web-ui-separation-decision-2026-05-23]]より
+- `report.html` は CLI / coding agent 向けの自己完結 **観察用HTML** で、Web の canonical path はこれまでどおり `hierarchical_result.json` + `public-viewer` とする。open question ではなく明示判断として整理し直した。[[usage-modes]]より [[report-html-non-web-canonical-decision-2026-05-23]]より
+- これで `API が --without-html 固定なのは未整合なのか` という混線を減らせる。今後の Web 側の議論は HTML 昇格の是非ではなく、JSON / viewer 契約前提で進めればよい。[[cli]]より [[refactoring-status]]より
+
 ## Open Questions
 
 - このページを「常に次回会議向け 1 枚」に保つか、会議ごとに snapshot を切るかはまだ未決
@@ -100,3 +108,4 @@ sources:
 - 2026-05-23: `launch_report_generation()` から通常フロー全体を踏む manual smoke を追加。最初の実行で workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡していないバグを検出し、`analysis_core.plugins.builtin.*` を修正したうえで、`tests/manual/report_launcher_subprocess_smoke.py -q -s` と `tests/services/test_report_launcher.py -q` の通過まで確認
 - 2026-05-23: path 修正後の plugin 側に残っていた legacy config 組み立ての重複を `_legacy_config.py` に集約し、`packages/analysis-core/tests/test_builtin_plugins.py` に extraction plugin の path 受け渡し regression test を追加。`packages/analysis-core` の関連 unit test と API manual smoke は再通過
 - 2026-05-23: TTTC の clone / CUI 前提から、実務のための Web UI 包装、さらに研究開発向けの `analysis-core` / PyPI 再切り出しへ至る入口設計の歴史を [[tttc-to-analysis-core-history]] に整理。Web UI と CLI が競合ではなく役割分担だと説明しやすくした
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] と [[analysis-core-web-ui-separation-decision-2026-05-23]] を反映し、`report.html` は Web canonical にせず、WebUI / core 分離の設計判断も会議向け下書きに追記

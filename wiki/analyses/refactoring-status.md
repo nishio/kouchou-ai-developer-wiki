@@ -7,6 +7,7 @@ sources:
   - meeting-minutes.md
   - source-code.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md
 ---
 
@@ -15,7 +16,7 @@ sources:
 2026-05-20 時点では、[[usage-modes]] に合わせて次の 3 軸でも読む。
 
 - **Web UI** — `admin` / `api` / `public-viewer` / 配信・共有の改善
-- **CLI / analysis-core** — `analysis-core` / PyPI / 中間成果物 / sidecar HTML の改善
+- **CLI / analysis-core** — `analysis-core` / PyPI / 中間成果物 / 観察用HTML の改善
 - **共通基盤** — 両モードで共有するパイプライン、plugin 基盤、provider、旧コード削除
 
 ## 出典
@@ -54,7 +55,7 @@ sources:
 
 **未完**：
 
-- Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定している。ただしこれは「CLI 既定に未追随な半端状態」というより、**Web は JSON + `public-viewer`、CLI は self-contained `report.html` sidecar** という artifact 契約の意図的分岐と読んだ方が正確である（[[usage-modes]], [[cli]]）
+- Web/API 経路は current `apps/api/src/services/report_launcher.py` で `python -m analysis_core ... --without-html` を固定している。ただしこれは「CLI 既定に未追随な半端状態」というより、**Web は JSON + `public-viewer`、CLI は self-contained `report.html` を観察用に持つ** という artifact 契約の意図的分岐と読んだ方が正確である（[[usage-modes]], [[cli]], [[analysis-core-and-web-ui]]）
 
 ### Phase 3a — plugin インフラ ✅ 完了
 
@@ -116,7 +117,8 @@ warnings.warn("hierarchical_main.py is deprecated. "
 利用モード: **CLI / analysis-core**（ただし Web UI との境界論点を持つ）
 
 2026-05-19 時点では `PR #825` は merge 済みで、`analysis-core` CLI は自己完結型 `report.html` を既定生成できる。  
-ただしこれは **CLI / coding agent 向け sidecar 出力** であり、Web プロダクトの主経路を置き換えたわけではない。current `public-viewer` はなお `/reports/{slug}` から `hierarchical_result.json` を fetch して描画し、`report_sync.py` も `report.html` を保持対象に含めない。したがって「静的 HTML 出力の実装」は入ったが、「プロダクトの配信経路として採用された」とまでは言えない。
+ただしこれは **CLI / coding agent 向け観察用HTML出力** であり、Web プロダクトの主経路を置き換えたわけではない。current `public-viewer` はなお `/reports/{slug}` から `hierarchical_result.json` を fetch して描画し、`report_sync.py` も `report.html` を保持対象に含めない。したがって「静的 HTML 出力の実装」は入ったが、「プロダクトの配信経路として採用された」とまでは言えない。
+2026-05-23 の maintainer 判断でも、この分離は維持される。`report.html` を Web canonical に昇格させる前提ではなく、CLI 向け観察用HTMLとして扱う方針で読む。[[report-html-non-web-canonical-decision-2026-05-23]]より
 
 ## 「別リポジトリでリファクタする」の方針との整合
 
@@ -138,7 +140,6 @@ warnings.warn("hierarchical_main.py is deprecated. "
 
 - `hierarchical_status.json` のどこまでを legacy 完全互換に寄せるべきか（現状整理は [[hierarchical-status-semantics]]）
 - 旧 `apps/api/broadlistening/pipeline/steps/` 完全削除のタイミング
-- Web/API でも将来 `report.html` を生成・保存対象に寄せるのか、それとも CLI sidecar に留めるのか
 - `--skip-interaction` の argparse バグ修正 ([[cli]])
 
 workflow default 化を止めていた実装差分と、その後どこまで解消されたかの履歴は [[workflow-defaultization-blockers]] を参照。
@@ -148,6 +149,7 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 ## Updates
 
 - 2026-05-17: 初回作成（コードリーディング結果から）
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を Open Questions から外した
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「フロント側は実装済み、Python 側は未実装」と表現を精密化
 - 2026-05-20: [[usage-modes]] に合わせ、各 Phase / 周辺論点 / `PR #825` を Web UI / CLI / 共通基盤のどこに効く話か読めるよう補助線を追加
 - 2026-05-20: `main@b4d4bcf` を再確認し、Phase 2.5 の自動 PyPI release 導入済み、Phase 3b の dormant 継続、Phase 8 の docs drift、`apps/api` の `--without-html` 固定を反映

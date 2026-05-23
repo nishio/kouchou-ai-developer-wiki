@@ -22,11 +22,11 @@ sources:
 - **C: WebUI** — B をラップした現行プロダクト
 - **D: ホスト型デモ** — エンジニアのいない組織向け（未提供）
 
-2026 年に入って B のテコ入れが進行中。[[cli|kouchou-analyze CLI]] が PyPI 配信されており、[[pipeline]] の Python 直接静的 HTML 出力（PR #825、main 済み）は **CLI 側 sidecar 出力** として入っている。
+2026 年に入って B のテコ入れが進行中。[[cli|kouchou-analyze CLI]] が PyPI 配信されており、[[pipeline]] の Python 直接静的 HTML 出力（PR #825、main 済み）は **CLI 向け観察用HTML出力** として入っている。
 
 この 4 形態のうち、現在の実務で特に重要なのは **非専門家向け Web UI モード** と **研究者・データサイエンティスト向け CLI モード** の 2 本柱。詳細は [[usage-modes]]。
 
-この A/B/C/D 整理が出てきた背景、すなわち **TTTC の clone 前提ツールを Web UI で包み、その後 `analysis-core` / PyPI へ再切り出した経緯** は [[tttc-to-analysis-core-history]] にまとめた。[[meeting-minutes]]より
+この A/B/C/D 整理が出てきた背景、すなわち **TTTC の clone 前提ツールを Web UI で包み、その後 `analysis-core` / PyPI へ再切り出した経緯** は [[tttc-to-analysis-core-history]] にまとめた。現在の設計判断として「なぜ Web UI は core の consumer なのか」は [[analysis-core-and-web-ui]]。[[meeting-minutes]]より
 
 ## ランタイム構成
 

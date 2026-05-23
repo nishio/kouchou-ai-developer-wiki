@@ -89,8 +89,8 @@ gh pr list -R digitaldemocracy2030/kouchou-ai --state open
 
 1. **どの利用モードの改善か**  
    `Web UI` / `CLI` / `共通基盤`
-2. **その変更は主経路を変えるのか、sidecar / 補助経路の改善なのか**  
-   例: `PR #825` は CLI 側 sidecar HTML の改善であり、Web の主経路変更ではない
+2. **その変更は主経路を変えるのか、補助出力 / 補助経路の改善なのか**  
+   例: `PR #825` は CLI 向け観察用HTMLの改善であり、Web の主経路変更ではない
 
 AI エージェントや人間が作った **draft PR は、そのまま merge 対象とみなさない** 方が安全。少なくとも 2026-05-18 の運用では、draft は「まだ merge 手順に入っていない作業中の状態」と解釈し、**ready for review に切り替えてから** review / merge 判断に進むルールを置くのがよい。特に AI エージェント起点の PR は「一度 draft で出し、人間が内容を見て ready にする」方が事故が少ない。[[coding-agents]]より
 

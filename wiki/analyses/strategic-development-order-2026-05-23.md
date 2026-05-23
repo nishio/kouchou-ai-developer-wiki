@@ -6,6 +6,7 @@ sources:
   - plugin-system.md
   - refactoring-status.md
   - open-decisions.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
   - book-release-development-plan-2026-09.md
   - broad-listening-book-extractions.md
   - development-priority-roadmap-2026-05-23.md
@@ -160,11 +161,11 @@ current `main` では workflow default 化 (`PR #840` 相当) と CLI preflight 
 
 長期的に重要なのは、ここで **無理に 1 本化しない** ことである。
 
-- CLI: 再現実験、比較、`report.html`、中間成果物
+- CLI: 再現実験、比較、CLI 向け観察用HTMLの `report.html`、中間成果物
 - Web UI: admin 操作、公開・共有、`public-viewer`、運用 UX
 - distribution: Windows、Zip、Docker / WSL2、static hosting
 
-この 3 面を混ぜると、`report.html` を Web canonical にしたいのか、CLI sidecar のままでよいのか、Windows を research path まで正式サポートするのか、議論が全部混ざる。  
+この 3 面を混ぜると、`report.html` は Web canonical にしないという artifact 契約と、Windows を research path まで正式サポートするのか、という別論点が全部混ざる。[[report-html-non-web-canonical-decision-2026-05-23]]より  
 したがって順番としては、**先に基盤と plugin を固め、その後で distribution / Web product を各面ごとに最適化** するのがよい。[[refactoring-status]]より [[windows-distribution-options]]より
 
 ここでの論点は:
@@ -172,7 +173,7 @@ current `main` では workflow default 化 (`PR #840` 相当) と CLI preflight 
 - `#496` Docker なし経路を product 本線にするか補助線にするか
 - `#518` static export 検証を Web 配信品質の gate にするか
 - `#731` `#666` を distribution lane の改善として扱うか、platform 変更の根拠にするか
-- `report.html` を CLI-only に留めるか、Web 配信対象に昇格させるか
+- `report.html` を CLI 向け観察用HTMLとして固定したうえで、Web artifact 契約を JSON + `public-viewer` 前提で詰める
 
 工数目安:
 
@@ -265,7 +266,7 @@ analysis mode が増えるほど、「このレポートは何を保証し、何
    `python -m analysis_core` / `PipelineOrchestrator.run_workflow()` を正規経路として明文化し、旧 `apps/api/broadlistening/pipeline/` は Phase 8 の削除対象として扱う。
 
 2. **artifact contract**
-   `hierarchical_result.json`, `hierarchical_status.json`, `report.html` のうち、何が必須で、何が mode-specific な sidecar かを固定する。特に `report.html` を CLI sidecar に留めるのか、将来 Web 配信対象へ育てるのかを保留込みで書き分ける。
+   `hierarchical_result.json`, `hierarchical_status.json`, `report.html` のうち、何が必須で、何が利用モード別の補助出力かを固定する。特に `report.html` は CLI 向け観察用HTML、Web canonical path は `hierarchical_result.json` + `public-viewer` と明記する。[[report-html-non-web-canonical-decision-2026-05-23]]より
 
 3. **validation contract**
    `#838` を、end-user CLI の fail-fast 機能にするのか、maintainer 向け diagnostic / test helper にするのか決める。ここを曖昧にしたまま plugin 実験を始めると、artifact の壊れ方と実験失敗が混ざる。
@@ -395,10 +396,10 @@ analysis mode が増えるほど、利用者に何を説明するかが重要に
 
 - `analysis_mode` を product 上でどこまで見せるのか、設定ファイルだけで持つのか
 - visualization plugin の backend / frontend 契約をどこで一本化するのか
-- `report.html` は CLI sidecar のままが本質なのか、それとも Web 配信の第 2 正規成果物に育てるのか
 - `#496` を Docker 回避の docs 拡張として済ませるのか、配布戦略の再定義として扱うのか
 
 ## Updates
 
 - 2026-05-23: 初版作成。issue-centric な短中期 roadmap とは別に、CLI / workflow / plugin / Web 配布を 3 層 platform として見た長期順序を追加
 - 2026-05-23: 「次にやるべきこと」を、`analysis-core` の contract 固定スプリントとして具体化し、entrypoint / artifact / validation / capability の 4 契約を先に決めるべきだと追記
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` Web canonical 化の問いを確定事項へ寄せた

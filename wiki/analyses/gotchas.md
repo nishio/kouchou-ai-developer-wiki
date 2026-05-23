@@ -16,7 +16,7 @@ sources:
 2026-05-19 以降は、[[usage-modes]] に合わせて次の 3 軸で読む。
 
 - **Web UI** — 非専門家向け運用プロダクト (`admin` / `api` / `public-viewer` / 共有・公開)
-- **CLI / analysis-core** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / sidecar HTML)
+- **CLI / analysis-core** — 研究者・データサイエンティスト・agent 向け (`analysis-core` / 中間成果物 / PyPI / 観察用HTML)
 - **共通運用** — どちらの利用モードでも踏みうる環境・レビュー・ツールチェイン
 
 ## Web UI の gotchas
@@ -50,7 +50,7 @@ sources:
 
 current `analysis-core` CLI は `--without-html` の default が `False` になり、`hierarchical_visualization` が pure-Python の自己完結型 `report.html` を生成する。つまり **CLI / 手動実行 / coding agent 直実行では、Node や API server なしで HTML を見られる**。[[pr-825-standalone-html-observation-2026-05-19]]より
 
-ただし current Web プロダクトは `apps/api/src/routers/report.py` が `hierarchical_result.json` を返し、`apps/public-viewer` がそれを fetch して描画する構成で、`report_sync.py` も `report.html` を保持対象に含めない。したがって `PR #825` が merge 済みだからといって、**Web 表示が standalone HTML に切り替わった**、あるいは **admin/API 経路で HTML を残すべきはずだ** と考えるとずれる。`report.html` は現状では sidecar 成果物。[[pr-825-standalone-html-observation-2026-05-19]]より
+ただし current Web プロダクトは `apps/api/src/routers/report.py` が `hierarchical_result.json` を返し、`apps/public-viewer` がそれを fetch して描画する構成で、`report_sync.py` も `report.html` を保持対象に含めない。したがって `PR #825` が merge 済みだからといって、**Web 表示が standalone HTML に切り替わった**、あるいは **admin/API 経路で HTML を残すべきはずだ** と考えるとずれる。`report.html` は現状では CLI 向け観察用HTML。[[pr-825-standalone-html-observation-2026-05-19]]より
 
 ### デプロイ・ホスティング
 
@@ -238,5 +238,5 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-18: merge 理由コメントと通常 merge を先に試し、admin merge は最後の手段にする運用メモを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` から、散布図の見た目とクラスタ妥当性を同一視しやすい問題を追記
 - 2026-05-19: `analysis-core-v0.1.1` failure から、release test に version literal を埋めると自動 publish を塞ぐことを追記
-- 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI sidecar だと補正
+- 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI 向け観察用HTMLだと補正
 - 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編

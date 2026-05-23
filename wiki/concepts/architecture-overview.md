@@ -72,6 +72,7 @@ CSV アップロード (admin UI)        ┐
   `kouchou-analyze` / `python -m analysis_core` → ローカル成果物
 
 両者は `packages/analysis-core/` を共有するが、表示経路は別。`public-viewer` は `hierarchical_result.json` を描画し、CLI 側では必要に応じて standalone `report.html` も使える。
+この分離の設計判断を説明するページとしては [[analysis-core-and-web-ui]] が近い。
 
 ## 主要ライブラリ・依存
 

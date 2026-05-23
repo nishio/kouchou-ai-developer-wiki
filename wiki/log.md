@@ -1,5 +1,30 @@
 # Log
 
+## [2026-05-23 14:48] filing-back | WebUI / analysis-core 分離の設計判断を独立ページ化し、旧語を廃止
+
+- 新規 source [[analysis-core-web-ui-separation-decision-2026-05-23]] と新規 concept [[analysis-core-and-web-ui]] を追加し、「WebUI で包んだ理由」「その後 core を切り出した理由」「Web は JSON、CLI は `report.html` を持つ理由」を歴史ページと分離して整理
+- [[tttc-to-analysis-core-history]] は歴史、[[analysis-core-and-web-ui]] は現在のソフトウェア設計判断、という役割分担になるよう導線を追加
+- wiki 全体で旧語をやめ、`report.html` は `CLI 向け観察用HTML`、一般論では `補助出力` という言い方へ統一
+- 関連ページとして [[usage-modes]] / [[cli]] / [[architecture-overview]] / [[deployment]] / [[pipeline]] / [[refactoring-status]] / [[gotchas]] / [[meeting-report-draft]] / source 群も同じ用語に補正
+
+## [2026-05-23 14:49] lint | WebUI / core 分離ページ追加と用語統一後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 新規 [[analysis-core-and-web-ui]] と [[analysis-core-web-ui-separation-decision-2026-05-23]] を含め、今回の更新による新規問題はなし。孤立 page は既知の 12 件のまま
+
+## [2026-05-23 13:46] lint | `report.html` 非 Web canonical 判断反映後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のみで、新規 source [[report-html-non-web-canonical-decision-2026-05-23]] 追加を含め今回の更新による新規問題はなし
+
+## [2026-05-23 13:38] filing-back | `report.html` を Web canonical にしない判断を wiki に反映
+
+- 新規 source [[report-html-non-web-canonical-decision-2026-05-23]] を追加し、`report.html` は Web canonical にしないという maintainer の明示判断を記録
+- [[open-decisions]] から stale になった `report.html` Web canonical 論点を外し、[[usage-modes]] / [[cli]] / [[refactoring-status]] / [[workflow-defaultization-blockers]] / [[strategic-development-order-2026-05-23]] を確定判断へ補正
+- [[meeting-report-draft]] にも、CLI 観察用HTMLと Web canonical path の分離を次回定例向け要点として追記
+
 ## [2026-05-21 20:59] lint | 健全性確認 + 未 filing-back な in-flight 変更の棚卸し
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -39,7 +64,7 @@
 ## [2026-05-21 14:54] filing-back | CLI `report.html` と API `--without-html` の意図的分岐を docs に明記
 
 - [[refactoring-status]] の `report.html` 関連記述を補正し、API の `--without-html` 固定は「CLI 既定に未追随」より「利用モード別 artifact 契約の意図的分岐」と読めるよう更新
-- [[usage-modes]] に、Web は JSON + `public-viewer`、CLI は self-contained `report.html` sidecar を重視することを明示し、なぜ API が `--without-html` 固定なのかを新規読者向けに補足
+- [[usage-modes]] に、Web は JSON + `public-viewer`、CLI は self-contained `report.html` 観察用HTMLを重視することを明示し、なぜ API が `--without-html` 固定なのかを新規読者向けに補足
 - [[cli]] にも同趣旨の説明を追記し、「未整合」ではなく「モード別 canonical path の違い」として読ませる導線を追加
 
 ## [2026-05-21 14:38] lint | Task 2.5.6 独立PR判断の filing-back 後の健全性確認
@@ -172,10 +197,10 @@
 ## [2026-05-19 13:05] filing-back | `PR #824` / `PR #825` merge 後の current `main` 状態を補正
 
 - 新規 source [[pr-824-local-llm-https-observation-2026-05-19]] を追加し、`PR #824` は analysis 実行経路では full URL / `LOCAL_LLM_API_KEY` 対応済みだが、`/admin/models` の model list probe はまだ `host:port` + `http://` 前提であることを整理
-- 新規 source [[pr-825-standalone-html-observation-2026-05-19]] を追加し、`PR #825` は current `analysis-core` CLI では `report.html` 既定生成まで main に入った一方、Web の主経路は依然 `hierarchical_result.json` + `public-viewer` であり HTML は sidecar 成果物に留まることを整理
-- [[open-decisions]] / [[gotchas]] / [[cli]] を更新し、「どの経路まで直っているか」だけでなく「それが Web 主経路なのか sidecar なのか」も分けて整理
+- 新規 source [[pr-825-standalone-html-observation-2026-05-19]] を追加し、`PR #825` は current `analysis-core` CLI では `report.html` 既定生成まで main に入った一方、Web の主経路は依然 `hierarchical_result.json` + `public-viewer` であり HTML は CLI 向け観察用に留まることを整理
+- [[open-decisions]] / [[gotchas]] / [[cli]] を更新し、「どの経路まで直っているか」だけでなく「それが Web 主経路なのか CLI 向け観察用HTMLなのか」も分けて整理
 
-## [2026-05-19 13:20] filing-back | `PR #825` の整理を「admin/API 未反映」から「CLI sidecar と Web 主経路の別物」へ補正
+## [2026-05-19 13:20] filing-back | `PR #825` の整理を「admin/API 未反映」から「CLI 観察用HTMLと Web 主経路の別物」へ補正
 
 - `apps/public-viewer/app/[slug]/page.tsx`、`apps/api/src/routers/report.py`、`apps/api/src/services/report_sync.py` を確認し、Web 表示は `hierarchical_result.json` を public API 経由で描画しており、`report.html` は保持対象でも配信主経路でもないことを確認
 - [[pr-825-standalone-html-observation-2026-05-19]] / [[open-decisions]] / [[gotchas]] / [[cli]] / [[index]] の `PR #825` 記述を、この構造に合わせて補正
@@ -233,7 +258,7 @@
 ## [2026-05-20 11:42] filing-back | `contributing` に利用モード起点の PR 読解ルールを追加
 
 - [[contributing]] に、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追加
-- review 方針と open PR の見方にも、主経路変更か sidecar 変更かを見分ける観点を追記
+- review 方針と open PR の見方にも、主経路変更か補助出力変更かを見分ける観点を追記
 
 ## [2026-05-20 11:42] lint | `contributing` 更新後の健全性確認
 

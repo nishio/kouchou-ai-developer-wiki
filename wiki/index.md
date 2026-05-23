@@ -2,12 +2,13 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-新規コントリビュータは [[kouchou-ai]] → [[usage-modes]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]] の順に読むと早い。
+新規コントリビュータは [[kouchou-ai]] → [[usage-modes]] → [[analysis-core-and-web-ui]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]] の順に読むと早い。
 
 ## Concepts
 
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
 - [usage-modes](concepts/usage-modes.md) — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core の使い分け
+- [analysis-core-and-web-ui](concepts/analysis-core-and-web-ui.md) — なぜ Web UI は `analysis-core` を使う consumer で、Web は JSON、CLI は観察用HTMLを持つのか
 - [broadlistening](concepts/broadlistening.md) — ブロードリスニング手法の定義と用語
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
 - [pipeline](concepts/pipeline.md) — 解析パイプライン（extraction → embedding → 階層クラスタリング → 可視化）
@@ -60,6 +61,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [issue-830-pr-832-auto-cluster-defaults-2026-05-18](sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md) — CLI / analysis-core のクラスタ数デフォルト見直し issue / PR 観測メモ
 - [pypi-release-observation-2026-05-19](sources/pypi-release-observation-2026-05-19.md) — `analysis-core-v0.1.1` / `v0.1.2` の PyPI publish 実観測
 - [pr-825-standalone-html-observation-2026-05-19](sources/pr-825-standalone-html-observation-2026-05-19.md) — `PR #825` merge 後、CLI は自己完結型 `report.html` を既定生成するが Web の主経路は依然 JSON + `public-viewer` という観測
+- [analysis-core-web-ui-separation-decision-2026-05-23](sources/analysis-core-web-ui-separation-decision-2026-05-23.md) — WebUI と `analysis-core` の分離、および Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ
+- [report-html-non-web-canonical-decision-2026-05-23](sources/report-html-non-web-canonical-decision-2026-05-23.md) — `report.html` を Web canonical にせず CLI / coding agent 向け観察用HTMLに留めるという maintainer 判断メモ
 - [pr-735-issue-685-observation-2026-05-19](sources/pr-735-issue-685-observation-2026-05-19.md) — `PR #735` は issue 妥当でも patch は stale という観測メモ
 - [pr-801-react-override-observation-2026-05-19](sources/pr-801-react-override-observation-2026-05-19.md) — `PR #801` は React version 統一の意図は妥当でも current `main` では `pnpm.overrides` 置換が回帰になるという観測メモ
 - [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ

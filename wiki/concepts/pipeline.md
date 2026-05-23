@@ -95,7 +95,7 @@ sources:
 - 従来は「サーバを立てて `npm run build`」する必要があったが、AI コーディングエージェントは「サーバ無しで HTML を出して静的ホスト」したい
 - Python から直接静的 HTML を吐く実装を追加。デフォルトをこちらにする方針
 - 旧サーバ経路との見た目は 100% 同一ではない — 「実験的ビューを試しやすい」副産物がある
-- ただし current プロダクトの主経路はなお `hierarchical_result.json` を `public-viewer` で描画する形で、`report.html` は CLI 向け sidecar 成果物として理解する方が正確
+- ただし current プロダクトの主経路はなお `hierarchical_result.json` を `public-viewer` で描画する形で、`report.html` は CLI 向け観察用HTMLとして理解する方が正確
 
 ## PR #827 が何を具体化したか
 

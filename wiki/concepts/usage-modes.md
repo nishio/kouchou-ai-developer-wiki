@@ -6,7 +6,9 @@ sources:
   - meeting-minutes.md
   - github-dev-docs.md
   - source-code.md
+  - analysis-core-web-ui-separation-decision-2026-05-23.md
   - pr-825-standalone-html-observation-2026-05-19.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
 ---
 
 ## なぜ分けて考えるか
@@ -14,6 +16,7 @@ sources:
 `kouchou-ai` には「同じ解析コアを別の入口から使う」複数モードがある。これを混ぜると、**ある PR が Web プロダクト改善なのか、CLI / 研究用途の改善なのか** を誤読しやすい。特に `PR #825` のような「CLI では重要だが Web の主経路は変えない」変更は、利用モードを分けていないと整理を誤る。
 
 この分岐は後付けの分類ではなく、**TTTC の clone / CUI 前提 → Web UI 包装 → `analysis-core` / PyPI への再切り出し** という歴史の結果でもある。詳細は [[tttc-to-analysis-core-history]]。[[meeting-minutes]]より
+歴史ではなく現在の設計判断として読むなら [[analysis-core-and-web-ui]]。[[analysis-core-web-ui-separation-decision-2026-05-23]]より
 
 ## 主要 2 モード
 
@@ -83,11 +86,12 @@ sources:
 - `embeddings.pkl`
 - `hierarchical_clusters.csv`
 - `hierarchical_result.json`
-- `report.html` (`PR #825` 以降の sidecar HTML)
+- `report.html` (`PR #825` 以降の観察用HTML)
 
 注意点:
 
-- `report.html` は **CLI 側の自己完結型 sidecar 成果物**。Web の主経路とは別
+- `report.html` は **CLI 側の自己完結型観察用HTML**。Web の主経路とは別
+- 2026-05-23 の maintainer 判断でも、`report.html` は Web canonical にしない。Web は引き続き `hierarchical_result.json` + `public-viewer` を canonical path とする。[[report-html-non-web-canonical-decision-2026-05-23]]より
 - したがって `CLI 既定では HTML を生成するのに、なぜ API は `--without-html` 固定なのか` という疑問への答えは、「同じ解析コアでも利用モードごとに保持・配信したい artifact が違うから」である
 - CLI の改善が、そのまま Web プロダクトの改善とは限らない
 - このモードでは `Mac` / `Linux` で CLI を使えることをほぼ前提にしてよい
@@ -136,7 +140,6 @@ sources:
 ## Open Questions
 
 - Jupyter Notebook を「CLI モードの一部」とみなすか、独立した第 3 モードとして切り出すか
-- 将来 `report.html` を Web 配信対象に昇格させるなら、Web UI モードとの関係をどう説明し直すか
 - 非専門家向け配布形として、`Zip + setup.bat + browser open` をどこまで正式サポート対象にするか — 段階整理は [[windows-distribution-options]]
 
 ## Updates
@@ -145,3 +148,4 @@ sources:
 - 2026-05-19: 研究者・データサイエンティスト向けは `Mac/Linux + CLI` を正規入口とし、`Windows` は `WSL2/Docker` 寄せでよい一方、非専門家向けは `Zip + setup.bat + Web UI` に近い入口を目標形として追う整理を追記
 - 2026-05-19: 会話中の整理を反映し、「研究者向けの CLI 改善」と「非エンジニア向け Web UI 完結導線」は別の最適化問題だと明記
 - 2026-05-23: この二分が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` は Web canonical にしないと明記

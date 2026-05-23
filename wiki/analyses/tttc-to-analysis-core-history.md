@@ -6,12 +6,15 @@ sources:
   - meeting-minutes.md
   - source-code.md
   - broad-listening-book-source.md
+  - analysis-core-web-ui-separation-decision-2026-05-23.md
   - pypi-release-observation-2026-05-19.md
 ---
 
 ## 結論
 
 ユーザの整理は概ね正しい。広聴AIの入口設計は、**TTTC / 初期広聴AIの clone 前提・開発者向け入口** から出発し、**非専門家でも扱えるように server / Web UI で包み**、その結果として **研究者や開発者には重くなったので `analysis-core` を PyPI / CLI として切り出し、server はそれを呼ぶ consumer に戻す**、という順で変化してきた。[[meeting-minutes]]より [[source-code]]より
+
+このページは **歴史的経緯** を追うためのもの。現在の設計判断として「なぜ Web UI が `analysis-core` を使う consumer で、なぜ Web は JSON、CLI は `report.html` を持つのか」を短く読むなら [[analysis-core-and-web-ui]] を参照。[[analysis-core-web-ui-separation-decision-2026-05-23]]より
 
 ## 時系列
 

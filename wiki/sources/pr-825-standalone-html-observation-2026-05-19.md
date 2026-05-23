@@ -1,6 +1,6 @@
 ---
 type: source
-summary: "`PR #825` merge 後の current `main` では `analysis-core` CLI が自己完結型 `report.html` を生成するが、Web の主経路はなお `hierarchical_result.json` + `public-viewer` であり HTML は sidecar 成果物に留まるという観測メモ"
+summary: "`PR #825` merge 後の current `main` では `analysis-core` CLI が自己完結型 `report.html` を生成するが、Web の主経路はなお `hierarchical_result.json` + `public-viewer` であり HTML は CLI 向け観察用に留まるという観測メモ"
 sources:
   - source-code.md
   - github-dev-docs.md
@@ -17,7 +17,7 @@ sources:
 - 一方、current `apps/api/src/services/report_launcher.py` は `launch_report_generation()` と `launch_report_generation_from_config()` の両方で `python -m analysis_core ... --without-html` を固定で付けている
 - current `apps/api/src/routers/report.py` が public に返すのは `hierarchical_result.json` であり、`apps/public-viewer/app/[slug]/page.tsx` も `/reports/{slug}` を fetch して React UI で描画する。つまり **Web の主経路は JSON + public-viewer** であって `report.html` ではない
 - current `apps/api/src/services/report_sync.py` の `PRESERVED_REPORT_FILES` に `report.html` は入っていないため、生成しても storage sync 後に保持対象にならない
-- したがって `PR #825` の位置づけは、**CLI / 手動実行 / coding agent 直実行向けの sidecar HTML 出力が main に入った** であって、**Web 配信経路が HTML へ移行した** ではない
+- したがって `PR #825` の位置づけは、**CLI / 手動実行 / coding agent 直実行向けの観察用HTML出力が main に入った** であって、**Web 配信経路が HTML へ移行した** ではない
 
 ## Open Questions
 
@@ -27,4 +27,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
-- 2026-05-19: `public-viewer` / API router / report sync を確認し、`report.html` は Web の主経路ではなく sidecar 成果物だと補足
+- 2026-05-19: `public-viewer` / API router / report sync を確認し、`report.html` は Web の主経路ではなく CLI 向け観察用HTMLだと補足

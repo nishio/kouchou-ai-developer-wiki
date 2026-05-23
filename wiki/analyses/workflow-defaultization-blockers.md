@@ -5,6 +5,7 @@ sources:
   - github-dev-docs.md
   - source-code.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md
+  - report-html-non-web-canonical-decision-2026-05-23.md
 ---
 
 # `run_workflow()` default 化の blocker
@@ -99,7 +100,7 @@ workflow path は main で production 入口へ入ったが、なお follow-up �
    merge blocker ではないが、provider 差分や artifact 欠損パターン差分は今後も足せる。
 
 5. **`report.html` の位置づけ整理**
-   current main でも CLI sidecar と Web canonical output は分かれたままである。
+   current main でも CLI 向け観察用HTMLと Web canonical output は分かれたままであり、2026-05-23 の maintainer 判断でも `report.html` は Web canonical にしない。[[report-html-non-web-canonical-decision-2026-05-23]]より
 
 ## 含意
 
@@ -114,12 +115,12 @@ workflow path は main で production 入口へ入ったが、なお follow-up �
 - 初期 `comments` artifact は engine が暗黙注入するべきか、input plugin を workflow に明示的に入れるべきか
 - `hierarchical_status.json` のような legacy status file を workflow path でも維持するのか、別形式へ移すのか
 - `without_html` / `without-html` をどの層で正規化するのがよいか
-- visualization artifact は `report.html` に一本化するのか、Web/UI 用に別 output contract を持つのか
 
 ## Updates
 
 - 2026-05-20: 初回作成。current `main@b4d4bcf` を読み、`run_workflow()` default 化を止めている実装差分を整理
 - 2026-05-20: open PR [[pr-840-workflow-defaultization-observation-2026-05-20]] を反映し、4 blocker のうち初期 artifact / status / key drift / visualization 契約には先行実装が出ていると追記
+- 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` 一本化の問いを Open Questions から外した
 - 2026-05-20: 同 PR の追加 commit を反映し、CLI default path も branch 上では workflow 側へ切り替わったため、残差分を e2e / API 運用 / docs 側へ整理し直した
 - 2026-05-20: 「まだ安全に切り替えられない理由」と「残課題の優先順」を追記し、workflow path の現在位置を説明しやすくした
 - 2026-05-20: 追加 commit により CLI `main()` と API `report_launcher` の service-level 確認まで進んだこと、pre-push hook blocker が PR `#841` に切り出されたことを反映
