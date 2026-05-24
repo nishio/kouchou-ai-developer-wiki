@@ -63,6 +63,9 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-825-standalone-html-observation-2026-05-19](sources/pr-825-standalone-html-observation-2026-05-19.md) — `PR #825` merge 後、CLI は自己完結型 `report.html` を既定生成するが Web の主経路は依然 JSON + `public-viewer` という観測
 - [analysis-core-web-ui-separation-decision-2026-05-23](sources/analysis-core-web-ui-separation-decision-2026-05-23.md) — WebUI と `analysis-core` の分離、および Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ
 - [report-html-non-web-canonical-decision-2026-05-23](sources/report-html-non-web-canonical-decision-2026-05-23.md) — `report.html` を Web canonical にせず CLI / coding agent 向け観察用HTMLに留めるという maintainer 判断メモ
+- [kouchou-ai-direction-2025-12-06](sources/kouchou-ai-direction-2025-12-06.md) — 2025-12-06 の「広聴AIの方向性について」メモ。用途別インサイト、散布図方式の限界、GUI より config、安定版発想の問題設定
+- [kouchou-ai-direction-2-2025-12-13](sources/kouchou-ai-direction-2-2025-12-13.md) — 2025-12-13 の「広聴AIの方向性について2」メモ。stable v4 と別軸の次世代探索へ収束した選択肢比較
+- [kensuzuki-broad-listening-insight-types-2025-11-29](sources/kensuzuki-broad-listening-insight-types-2025-11-29.md) — 鈴木健ブログ。ブロードリスニングは用途ごとに欲しいインサイトが違い、TTTC / 広聴AI は主にアジェンダ発見向きだという整理
 - [pr-735-issue-685-observation-2026-05-19](sources/pr-735-issue-685-observation-2026-05-19.md) — `PR #735` は issue 妥当でも patch は stale という観測メモ
 - [pr-801-react-override-observation-2026-05-19](sources/pr-801-react-override-observation-2026-05-19.md) — `PR #801` は React version 統一の意図は妥当でも current `main` では `pnpm.overrides` 置換が回帰になるという観測メモ
 - [pr-802-overview-config-observation-2026-05-19](sources/pr-802-overview-config-observation-2026-05-19.md) — `PR #802` は `Overview` だけの null-safe 化で `config` 欠損対応としては不十分という観測メモ

@@ -1,5 +1,18 @@
 # Log
 
+## [2026-05-25 00:20] lint | 方向性会議 2 本と鈴木健ブログの ingest 後に wiki を lint
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま。今回追加した [[kouchou-ai-direction-2025-12-06]] / [[kouchou-ai-direction-2-2025-12-13]] / [[kensuzuki-broad-listening-insight-types-2025-11-29]] に起因する新規問題はなし
+
+## [2026-05-25 00:19] ingest | 方向性会議 2 本と鈴木健ブログを source 化
+
+- Google Docs export から `raw/kouchou-ai-direction-2025-12-06.txt` と `raw/kouchou-ai-direction-2-2025-12-13.txt` を取得し、2025-12 の「広聴AIの方向性について」会議 2 本を独立 source として分離
+- はてな記事 `2025-11-29 ブロードリスニングにおけるインサイトの分類とツールの使い分け` を `raw/kensuzuki-broad-listening-insight-types-2025-11-29.*` に保存し、新規 source [[kensuzuki-broad-listening-insight-types-2025-11-29]] を追加
+- [[versioning-strategy]] に v4 / v5 分離判断の前史を補強し、[[slack-design-intents-2025-q4]] と [[strategic-development-order-2026-05-23]] にも新 source への導線を追加
+- `wiki/index.md` Sources を更新
+
 ## [2026-05-24 00:06] filing-back | PR #865 merge を反映し、Refactoring Status を current `main` に同期
 
 - `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で更新し、`main@e5ed743` を一次参照として確認

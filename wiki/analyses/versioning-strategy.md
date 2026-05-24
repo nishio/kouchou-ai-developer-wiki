@@ -5,6 +5,9 @@ type: analysis
 sources:
   - meeting-minutes.md
   - source-code.md
+  - kouchou-ai-direction-2025-12-06.md
+  - kouchou-ai-direction-2-2025-12-13.md
+  - kensuzuki-broad-listening-insight-types-2025-11-29.md
 ---
 
 ## 決定事項（[[meeting-minutes]] 2025-12-13）
@@ -20,6 +23,8 @@ sources:
 - 書籍出版（[[broad-listening-book]]）と連動するコード安定性が必要
 - 大規模リファクタは安定性のリスクが大きい
 - 「互換性を保ちたい vs 新機能を実験したい」のジレンマを、**バージョン軸の分割** で吸収
+
+この判断は 2025-12-13 に突然出たものではない。[[kouchou-ai-direction-2025-12-06]] では、鈴木健ブログ [[kensuzuki-broad-listening-insight-types-2025-11-29]] を踏まえて「ブロードリスニングは用途ごとに欲しいインサイトが違う」「現行散布図方式はアジェンダ発見には有効だが万能ではない」「GUI ノードエディタより config の方が現実的」という問題設定が共有された。続く [[kouchou-ai-direction-2-2025-12-13]] では、現行広聴AIを stable に保ちながら次世代探索を別軸へ出す 4 番案が実務的な落とし所として固まっている。[[kouchou-ai-direction-2025-12-06]]より [[kouchou-ai-direction-2-2025-12-13]]より
 
 ## v4.0.0 リリース
 
@@ -59,3 +64,4 @@ sources:
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を参照し、「v5 は未着手の未来機能」ではなく main にかなり流入済みだと補足
 - 2026-05-18: 2026-09 ごろの書籍リリース前提での実務計画ページ [[book-release-development-plan-2026-09]] への導線を追加
+- 2026-05-25: 2025-12-06 / 2025-12-13 の方向性メモと、出発点になった鈴木健ブログを source として分離し、v4 / v5 分離判断の前史を補強

@@ -12,6 +12,7 @@ sources:
   - development-priority-roadmap-2026-05-23.md
   - github-dev-docs.md
   - source-code.md
+  - kensuzuki-broad-listening-insight-types-2025-11-29.md
 ---
 
 [[development-priority-roadmap-2026-05-23]] は current open issues をもとに「いま詰まっているもの」を優先順に並べた短中期 roadmap である。  
@@ -31,6 +32,8 @@ sources:
 
 長期的な発見を増やしたいなら、優先順は **3 を先に思いつくこと** ではなく、**1 を先に固めて 3 を比較可能にし、その後で 2 に製品化する** になる。  
 ここを逆にして、現行 Web UI や Windows 配布だけを先に厚くすると、あとから新しい分析枝を入れるたびに glue code が増えて設計が崩れる。[[usage-modes]]より [[refactoring-status]]より
+
+この順序づけの背後には、鈴木健ブログ [[kensuzuki-broad-listening-insight-types-2025-11-29]] の「ブロードリスニングで欲しいインサイトは一種類ではない」という前提がある。もし用途ごとに自然な成果物が違うなら、先に 1 本の product を磨くより、**複数 mode を比較できる core と contract を整える方が長期価値に効く**。[[kensuzuki-broad-listening-insight-types-2025-11-29]]より
 
 ## Core Problem
 

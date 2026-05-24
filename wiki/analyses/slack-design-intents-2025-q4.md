@@ -6,6 +6,9 @@ sources:
   - slack-dev-kouchouai-2025-q4.md
   - meeting-minutes.md
   - source-code.md
+  - kouchou-ai-direction-2025-12-06.md
+  - kouchou-ai-direction-2-2025-12-13.md
+  - kensuzuki-broad-listening-insight-types-2025-11-29.md
 ---
 
 `[[slack-dev-kouchouai-2025-q4]]` を読むと、2025 4Q は「広聴AIをどの方向に進めるか」の認識合わせが進んだ時期だとわかる。2026-Q1 の具体化より一段抽象度が高いが、後の plugin 化や Jigsaw 系分類の前提はここでかなり揃っている。
@@ -61,6 +64,8 @@ sources:
 
 したがって 2025 4Q の意思決定は、**現行 UI / UX を保つ安定版リリース** と **次世代の plugin 化・リファクタリング** を時間的に分離することだった。
 
+この Slack 上の設計意図は、12 月の方向性メモでさらに明文化されている。[[kouchou-ai-direction-2025-12-06]] では「用途ごとに求めるインサイトが違うので 1 つの見せ方では足りない」という鈴木健ブログ [[kensuzuki-broad-listening-insight-types-2025-11-29]] の問題提起を受け、GUI より config、現行方式の価値を残しつつ次世代を別軸で試す、という筋が出てくる。[[kouchou-ai-direction-2-2025-12-13]] ではそれが「stable v4 と別軸の次世代探索」へ収束する。[[kouchou-ai-direction-2025-12-06]]より [[kouchou-ai-direction-2-2025-12-13]]より
+
 ## 6. pip 化は plugin platform への踏み台として選ばれた
 
 2025-12-10 週では「広聴AIをプラグインプラットフォームにする」のではなく、**分析部分だけ pip 化して他の BI ツールのプラグインとして容易に使えるようにする** 案が「半日でできる見積り」として出ている。
@@ -77,3 +82,4 @@ sources:
 
 - 2026-05-17: `#2_開発_広聴ai` の 2025 4Q ログから初回整理
 - 2026-05-17: `embeddings.pkl` に関する Slack 発言を、コードで確認された事実と切り分けて補足
+- 2026-05-25: 12 月の方向性メモ 2 本と鈴木健ブログへの導線を追加し、Slack での直感が会議でどう明文化されたかを補記
