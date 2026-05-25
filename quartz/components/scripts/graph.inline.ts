@@ -84,16 +84,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     fontSize,
     opacityScale,
     removeTags,
+    removeSlugs,
     showTags,
     focusOnHover,
     enableRadial,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
+  const removedSlugSet = new Set(removeSlugs ?? [])
   const data: Map<SimpleSlug, ContentDetails> = new Map(
-    Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
-      simplifySlug(k as FullSlug),
-      v,
-    ]),
+    Object.entries<ContentDetails>(await fetchData)
+      .map(([k, v]) => [simplifySlug(k as FullSlug), v] as const)
+      .filter(([k, _v]) => !removedSlugSet.has(k as string)),
   )
   const links: SimpleLinkData[] = []
   const tags: SimpleSlug[] = []
