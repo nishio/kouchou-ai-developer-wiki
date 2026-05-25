@@ -1487,3 +1487,80 @@
 - `python3 scripts/lint_wiki.py` を実行
 - 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
 - 孤立 page は既知の 12 件で、追加した 4 source / 3 analysis はすべて incoming link あり
+
+## [2026-05-25 16:57] filing-back | LLM grouping 最小実装を draft PR #866 として切り出し
+
+- `work/kouchou-ai/` の混在した実験差分から、`analysis_mode=llm_grouping` の workflow / spec / plugin / step / default prompt / tests だけを clean worktree `work/kouchou-ai-llm-grouping-pr/` に再構成
+- label refinement 系の step / prompt / 実験 config / outputs は含めず、別 PR に回す方針にした
+- branch `codex/llm-grouping-pr`、commit `4f893ab` を push し、draft PR `#866` `[codex] LLM grouping 分析モードを追加` を作成
+- `packages/analysis-core` で `rye run python -m pytest -q` を実行し、通常テスト `186 passed` を確認
+
+## [2026-05-25 17:00] lint | LLM grouping PR 切り出し記録後の健全性確認
+
+- システム `python3` では `PyYAML` が無かったため、`work/kouchou-ai-llm-grouping-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 17:09] github-triage | current main で解決済みの open issue を close
+
+- `work/kouchou-ai/` で `origin/main@e5ed743` を fetch 済みとして参照し、open PR は `#863` と `#866` の 2 本であることを確認
+- open issue を番号順に見て、merged PR / current code / docs / tests で解決済みと判断できた `#19` `#271` `#281` `#290` `#315` `#333` `#380` `#385` `#396` `#398` `#400` `#456` `#613` `#721` `#799` `#815` を close
+- `#79` `#253` `#391` `#477` `#537` `#690` などは、関連実装はあるが issue 本文の要件がまだ残る、または部分実装に留まるため open のまま残した
+
+## [2026-05-25 17:09] lint | issue close 棚卸し記録後の健全性確認
+
+- システム `python3 scripts/lint_wiki.py` は `PyYAML` 不足で失敗したため、`work/kouchou-ai-llm-grouping-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 17:18] filing-back | reuse-from を draft PR #867 として先に切り出し
+
+- `work/kouchou-ai/` の混在した実験差分から、既存出力を seed して再利用する `--reuse-from` だけを clean worktree `work/kouchou-ai-reuse-from-pr/` に再構成
+- LLM grouping / label refinement の実装は含めず、比較実験の土台として先に PR 化する方針にした
+- branch `codex/reuse-from-outputs`、commit `977d7eb` を push し、draft PR `#867` `[codex] 既存出力を再利用して再実行できるようにする` を作成
+- `packages/analysis-core` で `OPENAI_API_KEY=dummy rye run python -m pytest -q` を実行し、通常テスト `181 passed` を確認
+
+## [2026-05-25 17:19] lint | reuse-from PR 切り出し記録後の健全性確認
+
+- `work/kouchou-ai-reuse-from-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 17:23] github-ci | draft PR #867 の checks 通過を確認
+
+- `gh pr checks 867 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
+
+## [2026-05-25 17:23] lint | PR #867 CI 通過記録後の健全性確認
+
+- `work/kouchou-ai-reuse-from-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 17:59] filing-back | runtime user API key plumbing を draft PR #868 として切り出し
+
+- `USER_API_KEY` を `analysis-core` の API key validation、`StepContext`、built-in plugin の legacy runtime config、legacy step の LLM 呼び出しへ通す修正を clean worktree `work/kouchou-ai-user-api-key-pr/` で構成
+- user API key は `initialization()` の戻り config と status JSON に保存しないよう regression test を追加
+- branch `codex/user-api-key-plumbing`、commit `a21bf27` を push し、draft PR `#868` `[codex] 実行時ユーザーAPIキーの受け渡しを直す` を作成
+- `packages/analysis-core` で `OPENAI_API_KEY=dummy rye run python -m pytest -q` を実行し、通常テスト `181 passed` を確認
+
+## [2026-05-25 17:59] lint | PR #868 記録後の健全性確認
+
+- `work/kouchou-ai-user-api-key-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 18:02] github-ci | draft PR #868 の checks 通過を確認
+
+- `gh pr checks 868 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
+
+## [2026-05-25 18:02] lint | PR #868 CI 通過記録後の健全性確認
+
+- `work/kouchou-ai-user-api-key-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 18:05] lint | wiki push 前の健全性確認
+
+- `work/kouchou-ai-llm-grouping-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
