@@ -1,5 +1,66 @@
 # Log
 
+## [2026-05-25 09:41] filing-back | Jigsaw LLM grouping の実験ページを追加し、400 行日本語データ採用を記録
+
+- 新規 analysis [[jigsaw-llm-grouping-experiment]] を追加し、この実験は専用 wiki ページで継続観察すべきこと、最初の入力データとして `work/kouchou-ai/apps/admin/public/sample_comments.csv` の 400 行日本語コメントを使う判断を記録
+- 同ページに、目的、入力前処理の必要性（`comment` 1 列を `comment-id` / `comment-body` 形式へ変換）、観察ポイント、次に残すべき実験ログを整理
+- `wiki/index.md` Analyses に追記
+
+## [2026-05-25 09:32] filing-back | `analysis_mode=llm_grouping` の最小実装を analysis-core に追加
+
+- `work/kouchou-ai/` で `packages/analysis-core` に `analysis_mode=llm_grouping` を追加し、workflow / spec / config normalization を mode 切替対応に更新
+- 新規 step/plugin `llm_grouping` を追加し、`embedding` は `x/y` 用に残しつつ、cluster assignment 自体は raw argument を直接 LLM で決めて `hierarchical_clusters.csv` / `hierarchical_merge_labels.csv` を生成する最小実装を入れた
+- targeted test として `rye run pytest tests/test_compat.py tests/test_integration.py tests/test_llm_grouping.py -q` を実行し、20 件通過まで確認
+- [[meeting-report-draft]] にも、散布図互換の短期実装と次の代替 view 検討を追記
+
+## [2026-05-25 09:27] lint | 議事録 URL 棚卸し追加後に wiki を lint
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま。今回の `[[meeting-minutes-url-extraction-2026-05-25]]` 追加による新規問題はなし
+
+## [2026-05-25 09:26] filing-back | 議事録 HTML から URL 棚卸しを抽出し、派生 source 化
+
+- `raw/meeting_minutes.html` を取得し、`scripts/extract_meeting_minutes_urls.py` を追加。Google redirect を実 URL に戻しつつ、anchor と本文ベタ書き URL を合わせて `raw/meeting_minutes_urls.tsv` / `raw/meeting_minutes_urls_summary.md` を生成
+- 新規 source [[meeting-minutes-url-extraction-2026-05-25]] を追加し、531 unique URLs / 89 domains、`kouchou-ai repo` 136 件、`weekly history` 81 件、`slack permalink` 49 件などの棚卸し結果を要約
+- [[meeting-minutes]] にスクリプト導線を追記し、[[index]] Sources と [[meeting-report-draft]] にも反映
+
+## [2026-05-25 09:17] lint | 議事録 export 運用改善後に wiki を lint
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま。今回の `[[meeting-minutes]]` / `[[wiki-driven-workflow]]` / `[[local-dev-setup]]` 更新による新規問題はなし
+
+## [2026-05-25 09:16] filing-back | 議事録 txt export のリンク欠落リスクと html 補助取得を運用へ反映
+
+- `CLAUDE.md` の ingest / query / 運用方針を更新し、`raw/meeting_minutes.txt` は検索用、URL 確認が必要な時は `raw/meeting_minutes.html` を併用するルールを明記
+- [[meeting-minutes]] に `txt` export がリンク URL を落としうる制約と `html` export の補助取得コマンドを追記
+- [[wiki-driven-workflow]] / [[local-dev-setup]] にも同じ二段運用を反映し、オンボーディング時に URL 確認経路を確保しやすくした
+
+## [2026-05-25 08:51] lint | Jigsaw LLM grouping implementation plan 追加後に wiki を lint
+
+- `python3 scripts/lint_wiki.py` を実行
+- 新規 source の `index.md` 未登録を検出したため、[[index]] Sources に [[llm-grouping-implementation-observation-2026-05-25]] を追加
+- 孤立回避のため [[jigsaw-sensemaker-history]] Updates から [[jigsaw-llm-grouping-implementation-plan]] への導線を追加し、壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0 に戻す予定で補正
+
+## [2026-05-25 08:49] filing-back | Jigsaw 的 LLM 分類の implementation plan を current tree に即して整理
+
+- 新規 source [[llm-grouping-implementation-observation-2026-05-25]] を追加し、`work/kouchou-ai/main` と GitHub current state から、`PR #827` 計画文書は main 済みだが `analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装と観測
+- 新規 analysis [[jigsaw-llm-grouping-implementation-plan]] を追加し、Jigsaw 系実装は direct-step ではなく workflow canonical path に `analysis_mode` を差し込み、短期は embedding 併用の互換 `llm_grouping`、長期は capability contract へ進む順序が妥当と整理
+- `wiki/index.md` Analyses に新ページを追加
+
+## [2026-05-25 08:40] lint | PR #863 保留状態の反映後に wiki を lint
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま。今回の `[[meeting-report-draft]]` / `[[development-priority-roadmap-2026-05-23]]` 更新による新規問題はなし
+
+## [2026-05-25 08:38] filing-back | Windows setup PR #863 の保留状態とローカル除外設定を反映
+
+- `.claude/` を親 wiki repo の `.git/info/exclude` に追加し、ローカル設定由来の未追跡ノイズを作業ツリーから除外
+- [[meeting-report-draft]] に、`PR #863` は open のままだが Windows 検証環境が整備中のため review / merge 保留、という current state を追記
+- [[development-priority-roadmap-2026-05-23]] にも同じ保留状態を反映し、「最優先テーマではあるが直近の実作業は環境整備後の再確認」と補正
+
 ## [2026-05-25 00:20] lint | 方向性会議 2 本と鈴木健ブログの ingest 後に wiki を lint
 
 - `python3 scripts/lint_wiki.py` を実行
@@ -1237,3 +1298,35 @@
 - analyses/: gotchas, versioning-strategy, npm-vs-pnpm, glossary
 - 議事メモから書籍執筆スレッドは init.txt の指示に従い除外（broad-listening-book.md でスコープ宣言）
 - 議事メモ本体（meeting_minutes.txt）は raw/ にコピー保存
+## [2026-05-25 09:58] filing-back | 400 件日本語データで `analysis_mode=llm_grouping` の初回実験結果を記録
+
+- `~/kouchou-ai/.env` の OpenAI キーを使い、`apps/admin/public/sample_comments.csv` 400 件を `analysis-core` 入力形式へ整形して `analysis_mode=llm_grouping` を実行
+- 422 argument を 8 群へ分類し、`outputs/jigsaw_sample_comments_400_config/` に `hierarchical_result.json` と `report.html` を生成
+- 途中で `llm_grouping` spec の prompt 欠落と visualization workflow の `${config.report_dir}` 強制解決バグを検出し、current working tree の `analysis-core` を修正
+- 新規 source [[jigsaw-llm-grouping-experiment-output-2026-05-25]] と [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] を更新し、scatter 互換の限界と次に group-first view を優先すべき判断を反映
+## [2026-05-25 09:58] lint | LLM grouping 実験記録追記後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行し、壊れた wikilink / index 未登録 / フロントマター不備はいずれも 0
+- `jigsaw-llm-grouping-experiment` が孤立ページだったため、新規 source [[jigsaw-llm-grouping-experiment-output-2026-05-25]] からリンクして incoming を追加
+## [2026-05-25 10:00] filing-back | 同一 args で従来 hierarchical clustering と比較
+
+- `jigsaw_sample_comments_400_hierarchical_compare.json` を追加し、同じ 422 argument / 同じ `embeddings.pkl` を使って `cluster_nums: [8]` の従来 hierarchical clustering を別出力へ実行
+- 比較用出力では `hierarchical_status.json` を seed して `extraction` / `embedding` を skip し、clustering 以降だけを実行
+- 従来法は silhouette score `0.400`、centroid ベース再分類精度 `1.000` で、LLM grouping の `-0.039` / `0.488` より scatter 適合が明確に高いことを確認
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に比較結果を追記
+## [2026-05-25 10:03] filing-back | `broadlistening-research` の 2025-02 judge を使ってラベル品質も比較
+
+- `~/broadlistening-research/publish/2025-02-11-02-NISHIO.md` と `experiments/2025-02/evaluate_cluster_labels.py` を確認し、当時の評価軸が `一貫性 / 具体性 / 網羅性 / キーワード適切性` だったことを確認
+- 今回の `analysis-core` 出力には keyword が無いので、4 項目目を `区別性` に置き換え、各 top-level cluster の `label`, `description`, 意見例 5 件, 他ラベル一覧を OpenAI judge に与えて比較
+- judge 結果は `work/kouchou-ai/packages/analysis-core/outputs/label_quality_judge_2026-05-25.json` に保存し、平均総合点は `LLM grouping 85.0`, `hierarchical 80.4`、全体 winner も `llm_grouping`
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に「geometry と label semantics を別軸で評価すべき」という判断を追記
+## [2026-05-25 10:06] filing-back | 費用対効果の解釈を実験記録へ追記
+
+- same-args downstream 比較で `LLM grouping` が `35,654 tokens / 149s`、従来法が `7,088 tokens / 49s` だったことを、散布図品質・ラベル品質と並べて解釈
+- 「scatter 目的だと割高、label semantics 目的なら検討余地あり」という読みを [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に追記
+## [2026-05-25 10:34] filing-back | `K=20` でも同一 args 比較を実施
+
+- `jigsaw_sample_comments_400_k20_llm.json` / `jigsaw_sample_comments_400_k20_hierarchical.json` を追加し、`--reuse-from sample_comments_400_upstream_seed` で同じ 422 argument / embedding を再利用して `K=20` 比較を実施
+- `LLM grouping K20` は `52,088 tokens / 152s`、`hierarchical K20` は `17,387 tokens / 59s` で、geometry 指標は引き続き従来法が優位
+- OpenAI judge では cluster 平均点が `LLM K20 83.3`, `hierarchical K20 85.0` で、`K=8` と逆転した。一方でラベル集合をまとめて見た direct judge は `llm_grouping_k20` 勝ちを返しており、judge 粒度によるぶれも観測
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、`K` と judge granularity も主要変数として扱うべきという解釈を追記

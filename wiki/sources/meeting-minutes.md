@@ -28,6 +28,18 @@ curl -L -sS \
   > raw/meeting_minutes.txt
 ```
 
+`txt` export は grep しやすい一方、**Google Doc 内リンクや貼り付け URL が本文から落ちることがある**。リンク先そのものが論点になる時は、同時に HTML も保存して参照する：
+
+```bash
+curl -L -sS \
+  'https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/export?format=html' \
+  > raw/meeting_minutes.html
+```
+
+通常の要約・grep・時系列確認は `txt` を主とし、**URL の復元やリンク先確認が必要な時だけ `html` を補助線にする**。
+
+URL の棚卸しを一度まとめて取りたい時は、`scripts/extract_meeting_minutes_urls.py` を実行して `raw/meeting_minutes_urls.tsv` を生成する。派生 source の要約は [[meeting-minutes-url-extraction-2026-05-25]]。[[meeting-minutes-url-extraction-2026-05-25]]より
+
 Google Doc の見出しは「次回分」を先に立てていることがある。したがって、**見出し日付をそのまま実会議日と見なさず、前後の文脈も確認する**。
 
 ## Scope
@@ -44,6 +56,7 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 ## Open Questions
 
 - ドキュメントが Google Doc 1 本に集約されているため、過去回の検索が grep ベース。古い議論を引きたいときは日付で grep する運用
+- `txt` export だけではリンク URL が見えない週がある。URL 自体を根拠にしたい時の fallback は `raw/meeting_minutes.html`
 - 同名の人物が複数の表記（漢字/ローマ字/略称）で登場する — エイリアスを entities 配下のページで吸収する必要がある
 
 ## Updates
@@ -51,3 +64,5 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-05-17: 初回 ingest（次回分 2026/05/11 まで）
 - 2026-05-17: Google Doc export から再取得し、先頭見出しが `2026/05/18（次回分）` に更新されていることを確認
 - 2026-05-17: source 更新前に `raw/meeting_minutes.txt` を再取得する refresh protocol を追記
+- 2026-05-25: `txt` export ではリンク URL が落ちることがあるため、`raw/meeting_minutes.html` を補助取得する運用を追記
+- 2026-05-25: HTML export から URL を抽出する `scripts/extract_meeting_minutes_urls.py` と派生 source [[meeting-minutes-url-extraction-2026-05-25]] を追加

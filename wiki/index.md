@@ -41,6 +41,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ## Sources
 
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜 2026-05)
+- [meeting-minutes-url-extraction-2026-05-25](sources/meeting-minutes-url-extraction-2026-05-25.md) — 議事メモ HTML export から URL を抽出した棚卸し
 - [github-dev-docs](sources/github-dev-docs.md) — kouchou-ai リポジトリと `docs/development/`
 - [source-code](sources/source-code.md) — コード本体（docs ギャップを埋める一次参照）
 - [deepwiki-kouchou-ai](sources/deepwiki-kouchou-ai.md) — DeepWiki 生成のコードベース要約（補助ソース）
@@ -55,6 +56,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-824-admin-merge-observation-2026-05-18](sources/pr-824-admin-merge-observation-2026-05-18.md) — `PR #824` merge 時に checks success / `REVIEW_REQUIRED` / admin merge が併存した観測
 - [pr-824-local-llm-https-observation-2026-05-19](sources/pr-824-local-llm-https-observation-2026-05-19.md) — `PR #824` merge 後、analysis 実行経路は full URL LocalLLM に対応した一方で admin model list は旧前提のままという観測
 - [pr-827-llm-grouping-capabilities-plan-2026-05-18](sources/pr-827-llm-grouping-capabilities-plan-2026-05-18.md) — `PR #827` の LLM grouping / capability 自動判定計画の要約
+- [llm-grouping-implementation-observation-2026-05-25](sources/llm-grouping-implementation-observation-2026-05-25.md) — 2026-05-25 時点の current `main` 観測。`PR #827` 計画文書は main 済みだが、`analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装という整理
+- [jigsaw-llm-grouping-experiment-output-2026-05-25](sources/jigsaw-llm-grouping-experiment-output-2026-05-25.md) — 400 件日本語コメントでの `analysis_mode=llm_grouping` 実験結果。422 argument を 8 群へ分類できたが、embedding 由来 2D 散布図との相性は悪かったという観測
 - [seed-reproducibility-history](sources/seed-reproducibility-history.md) — UMAP / k-means の seed 固定と `PR #810` までの経緯
 - [codeql-docs](sources/codeql-docs.md) — CodeQL 公式 docs の要約
 - [pr-813-817-codeql-coderabbit-observation-2026-05-18](sources/pr-813-817-codeql-coderabbit-observation-2026-05-18.md) — `PR #813/#817` における CodeQL / CodeRabbit 設定混入と調整の観測メモ
@@ -139,5 +142,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [development-priority-roadmap-2026-05-23](analyses/development-priority-roadmap-2026-05-23.md) — 2026-05-23 時点の open issues / open PR を踏まえ、Windows 導入、既知バグ、運用基盤、説明責務・研究テーマの順で組み直した current roadmap
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — CLI / workflow / plugin / Web 配布を 3 層 platform として見た時の長期順序。issue 消化より先に共通実験基盤と plugin 実証を置く理由を整理
 - [jigsaw-sensemaker-history](analyses/jigsaw-sensemaker-history.md) — Jigsaw Sensemaker 的な第2分析モードと散布図中心プロダクトの緊張関係が、2025 4Q の Slack から 2026 Q1 の plugin 設計へどう繋がったかの時系列整理
+- [jigsaw-llm-grouping-implementation-plan](analyses/jigsaw-llm-grouping-implementation-plan.md) — Jigsaw 的な LLM 分類を current `kouchou-ai` に入れる時は、workflow canonical path への `analysis_mode` 導入、互換用 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の順に分けるのが妥当という実装整理
+- [jigsaw-llm-grouping-experiment](analyses/jigsaw-llm-grouping-experiment.md) — Jigsaw 的な LLM 分類の最初の実験は、`analysis_mode=llm_grouping` を 400 行の日本語コメントで回し、scatter 互換の限界と次の view 検討材料を取るのがよいという実験メモ
 - [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 広聴結果の公開UIに求められる 7 要件と、embedding 距離精度の非本質性。view plugin の上位契約として整理
 - [tttc-to-analysis-core-history](analyses/tttc-to-analysis-core-history.md) — TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の `analysis-core` をサーバが呼ぶ現在形までの入口設計の変遷

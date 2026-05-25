@@ -60,7 +60,7 @@ sources:
 
 ### 議事録について聞かれた時
 
-まず Google Doc export から `raw/meeting_minutes.txt` を取り直す。既存の [[meeting-minutes]] 要約があっても、**更新前に raw を refresh する** のが前提。[[meeting-minutes]]より
+まず Google Doc export から `raw/meeting_minutes.txt` を取り直す。既存の [[meeting-minutes]] 要約があっても、**更新前に raw を refresh する** のが前提。なお `txt` export は検索向きだがリンク URL を落とすことがあるため、URL 自体が必要な質問では `raw/meeting_minutes.html` も併読する。[[meeting-minutes]]より
 
 ### Slack の発言について聞かれた時
 
@@ -124,3 +124,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-05-19: 初版作成
 - 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記
 - 2026-05-23: GitHub Pages 配信の説明が MkDocs 時代の比較文のまま stale だったため、Quartz 配信中の current state に更新
+- 2026-05-25: 議事録 query で `txt` export がリンク URL を落としうる点と、`html` export を補助線にする運用を追記

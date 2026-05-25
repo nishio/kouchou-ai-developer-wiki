@@ -164,3 +164,4 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 
 - 2026-05-23: 初版作成。Jigsaw Sensemaker 的な第2分析モードと散布図の緊張関係を、meeting minutes / Slack / current docs の流れとして時系列に整理
 - 2026-05-23: 同日の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] が「散布図が受け入れられている要因」と「公開UIに求められる 7 要件」を明示分解し、`embedding 距離精度は公開UIの本質ではない / cluster grouping のみ保てれば十分` という view 側契約を整理。[[public-ui-requirements-for-broadlistening]] に独立ページとして filing-back し、短期互換案の技術バーが思っていたより低いことを記録
+- 2026-05-25: current `main` の workflow / viewer 実装差分まで見て、Jigsaw 系実装を `analysis_mode`、互換 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の 4 段へ落とした [[jigsaw-llm-grouping-implementation-plan]] を追加
