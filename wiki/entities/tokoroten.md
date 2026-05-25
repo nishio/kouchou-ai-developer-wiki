@@ -27,3 +27,5 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-25: `#2_開発_広聴ai_アルゴリズム開発` 2026-Q1 の短い spectral clustering メモを独立ページ化。tokoroten は TTTC を「`UMAP` の `n_neighbors` を小さめにして紐状分離を作り、それを `SpectralClustering` で切る scatter-first な系」と読んでおり、単なる `k-means` 代替というより可視化都合を含んだ理解だった。詳細は [[tokoroten-spectral-clustering-reading]]
+- 2026-05-25: 2025-12 方向性議論から 2026-Q1 spectral / 新妻 thread / LLM grouping 実験までを接続し、tokoroten とのアルゴリズム議論は手法比較ではなく、散布図 product・深い分析・説明責務・運用ワークフローを分け直す議論だったと整理。詳細は [[tokoroten-algorithm-discussion-retrospective]]

@@ -34,3 +34,4 @@ sources:
 
 - 2026-05-17: 初回作成
 - 2026-05-23: `#2_開発_広聴ai` の [[slack-public-ui-requirements-2026-05-23]] thread で「散布図が受け入れられている要因の分解」「広聴結果の公開UIに求められる 7 要件」「embedding 距離精度の非本質性」を整理。技術的な散布図論議を view 側要件の論議へ引き上げた contribution として [[public-ui-requirements-for-broadlistening]] にまとめた
+- 2026-05-25: 2026-05-23 の公開UI thread を、2025-12 の「ユーザー」「自治体」「材料」「実課題」志向と接続する考察を [[ohki-discussion-reflection-2026-05-25]] に filing-back

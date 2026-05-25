@@ -1,5 +1,73 @@
 # Log
 
+## [2026-05-25 13:08] filing-back | BERTopic と日本語 tokenizer の役割も整理
+
+- upstream / fork の `clustering.py` を見直し、`janome` + `CountVectorizer(tokenizer=...)` は spectral / `UMAP` の幾何を変える差分ではなく、BERTopic の topic representation / document info 取得を日本語で成立させるための差分だと整理
+- [[tttc-spectral-clustering-code-observation-2026-05-25]] に、fork の本丸差分は clustering 核ではなく BERTopic 周辺の日本語対応だという点と、current `analysis-core` では BERTopic / CountVectorizer 自体が消えているため main line では使われていない点を追記
+- [[meeting-report-draft]] にも、TTTC 系 tokenizer 差分は current clustering path では歴史的差分になっていることを反映
+
+## [2026-05-25 13:02] filing-back | TTTC fork 差分の本丸は日本語 tokenization だと追記
+
+- upstream `talk-to-the-city-reports` と fork `shugiinsenyo2024-tttc` の `scatter/pipeline/steps/clustering.py` を比較し、`UMAP -> SpectralClustering` や `n_neighbors <= 10` は共通である一方、目立つ差分は `janome` と `CountVectorizer(tokenizer=tokenize_japanese)` の導入だと確認
+- [[tttc-spectral-clustering-code-observation-2026-05-25]] に、fork 側の変更は clustering 核より BERTopic の語彙処理を日本語向けに寄せたもの、という読みを追記
+- [[meeting-report-draft]] にも、current `analysis-core` では BERTopic / CountVectorizer 自体が消えているため、この tokenizer 差分は main line では生きていない点を補足
+
+## [2026-05-25 12:50] filing-back | TTTC fork / upstream repo 内の spectral 意図説明の有無も確認
+
+- `/tmp/shugiinsenyo2024-tttc` と `/tmp/talk-to-the-city-reports` を見比べ、`README`、`git log --grep='spectral|UMAP|cluster|neighbor|BERTopic|HDBSCAN'`、`git blame`、GitHub issues 一覧を確認
+- fork 側 `clustering.py` は commit `dc13082` の `first commit`、upstream 側の対応実装は commit `0debc1a` の `first open-source commit` 由来で、どちらにも spectral / `n_neighbors` の explicit rationale はほぼ残っていないことを確認
+- [[tttc-spectral-clustering-code-observation-2026-05-25]] に、「fork / upstream の表層履歴から読めるのは実装形までで、意図はなお未確定」という点を追記
+
+## [2026-05-25 12:43] filing-back | clustering 議論の Deep Research 前に survey 計画を整理
+
+- 新規 source [[clustering-research-survey-seeds-2026-05-25]] を追加し、`UMAP -> clustering`、次元圧縮の caution、spectral clustering、BERTopic、可視化と分析の分離、評価軸の 6 棚に survey bucket を分解
+- 新規 analysis [[clustering-research-survey-plan]] を追加し、新妻 thread と tokoroten spectral 議論を外部研究で検証する時の優先読書順と、次の実作業候補を整理
+- `wiki/index.md` と [[meeting-report-draft]] にも、TTTC 意図掘り前に survey の棚を切ったことを反映
+
+## [2026-05-25 12:45] lint | tokoroten 振り返り追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 12:44] filing-back | tokoroten とのアルゴリズム議論を振り返り
+
+- 新規 analysis [[tokoroten-algorithm-discussion-retrospective]] を追加し、tokoroten との議論を「手法比較」ではなく「散布図 product / 深い分析 / 説明責務 / 運用ワークフローの分離」として整理
+- [[kouchou-ai-direction-2025-12-06]] / [[kouchou-ai-direction-2-2025-12-13]] / [[slack-tokoroten-spectral-clustering-notes-2026-q1]] / [[slack-niizuma-umap-kmeans-thread-2026-03-18]] / [[jigsaw-llm-grouping-experiment-output-2026-05-25]] を突き合わせ、stable v4 と次世代 analysis mode を分ける読みを追記
+- `wiki/index.md` / [[tokoroten]] / [[meeting-report-draft]] に導線を追加
+
+## [2026-05-25 12:40] lint | 新妻 thread 設計含意追記後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 12:39] filing-back | 新妻 thread の設計含意を追記
+
+- [[niizuma-thread-algorithm-critique]] に、`HDBSCAN` / `spherical k-means` への単純置換ではなく、分析 artifact / 表示 artifact / 説明 artifact を分けるべきという考察を追加
+- 後続の [[jigsaw-llm-grouping-experiment-output-2026-05-25]] も根拠に加え、意味分類の品質と scatter 上の自然さは別指標として評価すべきだと整理
+- [[meeting-report-draft]] にも、次回定例で読み上げやすい短い要点を追記
+
+## [2026-05-25 12:15] filing-back | TTTC spectral の Slack 解釈を historical code で検証
+
+- `ntv-experiment-public/shugiinsenyo2024-tttc@5e0a439` の `scatter/pipeline/steps/clustering.py` と、`digitaldemocracy2030/kouchou-ai@53f1209` の `hierarchical_clustering.py` を一次参照で確認
+- 新規 source [[tttc-spectral-clustering-code-observation-2026-05-25]] を追加し、TTTC が `UMAP` 後に `SpectralClustering` を掛け、`n_neighbors` 上限が 10、最終 `cluster-id` も spectral ラベルであることを記録
+- [[slack-tokoroten-spectral-clustering-notes-2026-q1]] と [[tokoroten-spectral-clustering-reading]] を更新し、「実装形までは確認済み」「紐状構造を作って切るのが方針、は未確定」という線引きを明示
+
+## [2026-05-25 12:15] filing-back | tokoroten の spectral clustering メモを独立ページ化
+
+- `oss_weekly_reporter` の `2026-02-11_to_2026-02-18` / `2026-03-04_to_2026-03-11` にある tokoroten の spectral clustering メモを再読し、近接文脈として `#2_開発_広聴ai` 2026-02-04 の mode 切替整理も併読
+- 新規 source [[slack-tokoroten-spectral-clustering-notes-2026-q1]] を追加し、「TTTC は小さめ `n_neighbors` で紐状分離を作り、それを `SpectralClustering` で切る」という読みを記録
+- 新規 analysis [[tokoroten-spectral-clustering-reading]] を追加し、spectral clustering を高次元での正しい代替というより scatter-first な cut 手法として理解していた点を整理
+- [[tokoroten]] entity / `wiki/index.md` / [[meeting-report-draft]] にも導線を追加
+
+## [2026-05-25 12:11] filing-back | 新妻 thread を独立ページ化し、アルゴリズム論点を塊で整理
+
+- `oss_weekly_reporter` の `2026-03-18_to_2026-03-25/raw/slack/2_開発_広聴ai_アルゴリズム開発.json` から、新妻氏参加の thread を切り出して再読
+- 新規 source [[slack-niizuma-umap-kmeans-thread-2026-03-18]] を追加し、論点を「`UMAP` 後 `k-means` 批判」「前段クラスタリング / `HDBSCAN` 案」「散布図とのトレードオフ」「LLM 直分類と説明責務」の 4 塊に整理
+- 新規 analysis [[niizuma-thread-algorithm-critique]] を追加し、この thread の本質を「幾何の自然さ・散布図の受容性・外部説明責務の衝突」として要約
+- `wiki/index.md` に新規 source / analysis を登録し、[[meeting-report-draft]] にも次回定例向けの短いメモを追記
+
 ## [2026-05-25 09:41] filing-back | Jigsaw LLM grouping の実験ページを追加し、400 行日本語データ採用を記録
 
 - 新規 analysis [[jigsaw-llm-grouping-experiment]] を追加し、この実験は専用 wiki ページで継続観察すべきこと、最初の入力データとして `work/kouchou-ai/apps/admin/public/sample_comments.csv` の 400 行日本語コメントを使う判断を記録
@@ -1330,3 +1398,74 @@
 - `LLM grouping K20` は `52,088 tokens / 152s`、`hierarchical K20` は `17,387 tokens / 59s` で、geometry 指標は引き続き従来法が優位
 - OpenAI judge では cluster 平均点が `LLM K20 83.3`, `hierarchical K20 85.0` で、`K=8` と逆転した。一方でラベル集合をまとめて見た direct judge は `llm_grouping_k20` 勝ちを返しており、judge 粒度によるぶれも観測
 - [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、`K` と judge granularity も主要変数として扱うべきという解釈を追記
+## [2026-05-25 11:36] filing-back | 多層 hierarchical `[8, 40]` の集約効果を確認
+
+- `jigsaw_sample_comments_400_hierarchical_8_40.json` を追加し、同じ 422 argument / embedding を `--reuse-from sample_comments_400_upstream_seed` で再利用して `[8, 40]` を実行
+- `level 1 = 8` の geometry は単層 `K=8` と大差なかったが、top-level label は `公共サービスと都市インフラ`, `顧客体験と業務効率化`, `医療・教育・生活の質向上` のように、より集約的な意味づけへ変化
+- OpenAI judge で単層 `K=8` と比較すると、`[8,40] level1` は平均 `82.1`、単層 `K=8` は `79.4` で、集約後の 8 layer の方が一貫性・網羅性で上回った
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、「差が出るのは 40 layer そのものより、そこから作る 8 layer の意味構成」という知見を追記
+## [2026-05-25 11:49] filing-back | `LLM grouping K=8` と `hierarchical [8,40] level1` を直接 judge
+
+- `~/kouchou-ai/.env` の OpenAI API key を使い、`outputs/jigsaw_sample_comments_400_config/` と `outputs/jigsaw_sample_comments_400_hierarchical_8_40/` の top-level labels を同じ judge で比較
+- 結果は `work/kouchou-ai/packages/analysis-core/outputs/label_quality_judge_k8_llm_vs_hierarchical_8_40_2026-05-25.json` に保存し、cluster 平均点は `LLM grouping K=8 = 85.6`, `hierarchical [8,40] level1 = 88.0`
+- 一方でラベル集合全体の direct judge は `llm_grouping_k8` 勝ちで、`[8,40]` は代表性に強いが見出しが長くなりやすく、readability では LLM grouping に分があると分かった
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、代表性と readability を別軸で持つべきことと、hierarchical 集約に短いラベルを後付けする折衷案の次ステップを追記
+## [2026-05-25 12:02] filing-back | 実験の product 含意と aggregation 改善仮説を追記
+
+- `K=8` では LLM grouping が強く、`K=20` では従来 hierarchical が強いという結果から、LLM grouping は粗い俯瞰向き、従来 hierarchical は細粒度分析向きという役割分担の仮説を整理
+- `[8,40]` で `一貫性 / 網羅性` が上がり `区別性` が少し下がったことを踏まえ、現状の改善ボトルネックは clustering 本体より top-level ラベル同士の差別化かもしれない、という読みを追加
+- 次の改善焦点として、`aggregation` step で「短い見出し」「sibling との差分強調」「粒度の揃い」「重複語の回避」を促す prompt / algorithm 変更案を [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に追記
+## [2026-05-25 12:39] filing-back | label refinement 実験用の新 step を `analysis-core` に追加
+
+- `merge_labelling` の後ろで top-level label set をまとめて見直す `hierarchical_label_refinement` step / plugin を追加し、`mode = none / setwise_refine / setwise_refine_short` を config で切り替えられるようにした
+- workflow, compat config, rerun specs も更新し、以後は clustering を固定したまま top-level label / description の改善案だけを比較実験できる土台を整備
+- `packages/analysis-core` では関連 test を追加・更新し、`rye run pytest tests/test_label_refinement.py tests/test_prompts.py tests/test_compat.py tests/test_imports.py tests/test_steps_paths.py tests/test_cli.py tests/test_integration.py tests/test_llm_grouping.py tests/test_pipeline_paths_integration.py tests/test_orchestration.py -q` で `123 passed`
+- [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、この実装を「aggregation 改善のための新しい実験系」として追記
+## [2026-05-25 13:05] filing-back | label refinement 3 mode の初回比較を実施
+
+- 同じ `[8,40]` cluster 構造を固定し、`none / setwise_refine / setwise_refine_short` の 3 条件を `jigsaw_sample_comments_400_hierarchical_8_40_refine_*.json` で実行
+- downstream cost は `none = 1,864 tokens / 7.5s`, `setwise_refine = 8,767 tokens / 23.8s`, `setwise_refine_short = 8,754 tokens / 18.8s`、平均ラベル長は `24.2 -> 17.6 -> 12.8` へ短縮
+- OpenAI judge の cluster 平均点は `none 87.0 > short 85.4 > setwise 84.1` だった一方、ラベル集合全体の direct judge は `setwise_refine` を 1 位、`none` を 2 位、`short` を 3 位と判定
+- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、「個別クラスタの代表性」と「一覧で見た時の readability」は別軸で、top-level label set の最適化では `setwise_refine` が有望だという知見を追記
+## [2026-05-25 13:18] filing-back | `setwise_refine` の prompt variation を比較
+
+- `contrast`（sibling 差分を前半に出す）と `balanced`（短さより領域保持を優先する）の 2 prompt を追加し、既存 `setwise` と同じ `[8,40]` 構造で比較
+- downstream token usage は `setwise 8,767`, `contrast 8,484`, `balanced 8,363`、平均ラベル長は `17.6`, `13.0`, `12.0`
+- OpenAI judge の cluster 平均点は `contrast 85.0 > setwise 84.4 > balanced 83.8` で、個別品質の best tradeoff は `contrast` に見えた
+- 一方で direct judge は `balanced > setwise > contrast` を返しており、algorithm 的な見出し品質と UI 上の一覧 readability を分けて扱う必要がある、という解釈を [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に追記
+
+## [2026-05-25 13:19] filing-back | ohki-shingo との公開UI議論を振り返って考察
+
+- 2026-05-23 の [[slack-public-ui-requirements-2026-05-23]] を、2025-12 の方向性議論にあった [[ohki-shingo]] の「ユーザー」「自治体」「材料」「実課題」志向と接続して [[ohki-discussion-reflection-2026-05-25]] に整理
+- 散布図互換の技術論ではなく、散布図が公開UIで担っていた説明責務をどう別 UI で満たすか、という読みを filing-back
+- [[ohki-shingo]] entity と [[meeting-report-draft]] にも導線を追加
+
+## [2026-05-25 13:20] lint | ohki-shingo 議論考察追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件で、追加した [[ohki-discussion-reflection-2026-05-25]] は [[ohki-shingo]] から incoming link あり
+
+## [2026-05-25 13:42] filing-back | judge の仕組み説明と Claude / 人間比較 bundle を追加
+
+- ここまでの label quality judge が OpenAI/GPT ベースで、生成側も同系統 LLM を使っている点を明文化し、[[label-judge-mechanism-2026-05-25]] を追加
+- `scripts/export_label_judge_bundle.py` を追加し、`[8,40]` の `none / setwise / contrast / balanced` について top-level label, description, size, representative arguments を同一フォーマットで書き出す [[label-refinement-judge-bundle-2026-05-25]] を生成
+- [[jigsaw-llm-grouping-experiment]] / [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[meeting-report-draft]] / `index.md` も更新し、次の優先度を「refinement mode 追加」から「judge calibration」へ置き直した
+
+## [2026-05-25 12:52] filing-back | nasuka の過去発言を振り返って考察
+
+- Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` であることを確認
+- `meeting-minutes` 内の `nasuka` / `sumino` / `角野` 発言を読み、運用基盤、実利用、分析品質、governance、チームみらい fork の観点で整理
+- 新規 analysis [[nasuka-statements-retrospective-2026-05-25]] を追加し、[[nasuka]] entity と `index.md` から導線を張った
+
+## [2026-05-25 12:55] lint | nasuka 発言考察追加後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件で、追加した [[nasuka-statements-retrospective-2026-05-25]] は [[nasuka]] から incoming link あり
+
+## [2026-05-25 12:56] filing-back | nasuka 考察を現在の開発タスクへ落とし込み
+
+- [[nasuka-statements-retrospective-2026-05-25]] に「今の開発への落とし込み」を追加
+- 失敗例収集 loop、再利用と手動編集、公開範囲、政党 fork から upstream へ戻す基準、facilitation role と domain contributor の分離を整理
+- [[meeting-report-draft]] に、次回定例で共有できる 2 行要約として追記

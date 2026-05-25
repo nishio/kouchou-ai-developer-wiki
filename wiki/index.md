@@ -49,6 +49,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [slack-dev-kouchouai-2025-q4](sources/slack-dev-kouchouai-2025-q4.md) — `#2_開発_広聴ai` の 2025 4Q 設計ログ抜粋
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) — `#2_開発_広聴ai` の設計意図が濃い 2026-Q1 ログ抜粋
 - [slack-kouchouai-algorithm-dev](sources/slack-kouchouai-algorithm-dev.md) — `#2_開発_広聴ai_アルゴリズム開発` の 2025-04 〜 2026-03 論点整理
+- [slack-niizuma-umap-kmeans-thread-2026-03-18](sources/slack-niizuma-umap-kmeans-thread-2026-03-18.md) — 新妻 thread を独立に読める source。`UMAP` 後 `k-means` 批判、前段クラスタリング、LLM 分類と説明責務
+- [slack-tokoroten-spectral-clustering-notes-2026-q1](sources/slack-tokoroten-spectral-clustering-notes-2026-q1.md) — tokoroten の spectral clustering メモ。TTTC は小さめ `n_neighbors` で紐状分離を作り、spectral で切るという読み
+- [tttc-spectral-clustering-code-observation-2026-05-25](sources/tttc-spectral-clustering-code-observation-2026-05-25.md) — TTTC と広聴AIの historical clustering code 比較。`UMAP -> SpectralClustering` と `n_neighbors <= 10` を一次参照で確認
+- [clustering-research-survey-seeds-2026-05-25](sources/clustering-research-survey-seeds-2026-05-25.md) — clustering 議論を外部研究で検証するための survey seed 集
 - [open-pr-observation-2026-05-18](sources/open-pr-observation-2026-05-18.md) — open PR review triage 実験で観測した head branch 更新挙動
 - [open-pr-snapshot-2026-05-18](sources/open-pr-snapshot-2026-05-18.md) — 2026-05-18 時点の open PR 一覧を作者種別付きで切った snapshot
 - [issue-493-pr-597-discussion](sources/issue-493-pr-597-discussion.md) — ScatterChart スクロール誤操作対策の issue / PR 議論メモ
@@ -58,6 +62,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [pr-827-llm-grouping-capabilities-plan-2026-05-18](sources/pr-827-llm-grouping-capabilities-plan-2026-05-18.md) — `PR #827` の LLM grouping / capability 自動判定計画の要約
 - [llm-grouping-implementation-observation-2026-05-25](sources/llm-grouping-implementation-observation-2026-05-25.md) — 2026-05-25 時点の current `main` 観測。`PR #827` 計画文書は main 済みだが、`analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装という整理
 - [jigsaw-llm-grouping-experiment-output-2026-05-25](sources/jigsaw-llm-grouping-experiment-output-2026-05-25.md) — 400 件日本語コメントでの `analysis_mode=llm_grouping` 実験結果。422 argument を 8 群へ分類できたが、embedding 由来 2D 散布図との相性は悪かったという観測
+- [label-refinement-judge-bundle-2026-05-25](sources/label-refinement-judge-bundle-2026-05-25.md) — `none / setwise / contrast / balanced` の top-level label set を Claude Code / 人間 judge が同一材料で比較できるように並べた bundle
 - [seed-reproducibility-history](sources/seed-reproducibility-history.md) — UMAP / k-means の seed 固定と `PR #810` までの経緯
 - [codeql-docs](sources/codeql-docs.md) — CodeQL 公式 docs の要約
 - [pr-813-817-codeql-coderabbit-observation-2026-05-18](sources/pr-813-817-codeql-coderabbit-observation-2026-05-18.md) — `PR #813/#817` における CodeQL / CodeRabbit 設定混入と調整の観測メモ
@@ -107,6 +112,11 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [slack-design-intents-2025-q4](analyses/slack-design-intents-2025-q4.md) — 2025 4Q の設計意図整理
 - [slack-design-intents-2026-q1](analyses/slack-design-intents-2026-q1.md) — Slack から読める実装意図の整理
 - [slack-algorithm-themes](analyses/slack-algorithm-themes.md) — アルゴリズム開発チャンネルから読める設計判断
+- [niizuma-thread-algorithm-critique](analyses/niizuma-thread-algorithm-critique.md) — 新妻 thread から読める、幾何・散布図・説明責務の衝突点
+- [tokoroten-spectral-clustering-reading](analyses/tokoroten-spectral-clustering-reading.md) — TTTC の spectral clustering を scatter-first な cut として読む整理
+- [clustering-research-survey-plan](analyses/clustering-research-survey-plan.md) — clustering 議論を Deep Research する前に何を読むべきかの棚分け
+- [tokoroten-algorithm-discussion-retrospective](analyses/tokoroten-algorithm-discussion-retrospective.md) — tokoroten とのアルゴリズム議論を、散布図 product・深い分析・説明責務の分離として振り返る
+- [nasuka-statements-retrospective-2026-05-25](analyses/nasuka-statements-retrospective-2026-05-25.md) — nasuka の過去発言を、運用基盤・実利用・分析品質・governance の観点で振り返る
 - [agent-sandboxing-strategy](analyses/agent-sandboxing-strategy.md) — AI コーディングエージェント向けの権限分離と devcontainer 方針
 - [chart-scroll-ux-decision](analyses/chart-scroll-ux-decision.md) — ScatterChart スクロール誤操作対策で好まれた UX と preview 不足の影響
 - [non-nishio-human-pr-status](analyses/non-nishio-human-pr-status.md) — nishio 以外の人間 authored open PR が stale に見える理由の整理
@@ -144,5 +154,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [jigsaw-sensemaker-history](analyses/jigsaw-sensemaker-history.md) — Jigsaw Sensemaker 的な第2分析モードと散布図中心プロダクトの緊張関係が、2025 4Q の Slack から 2026 Q1 の plugin 設計へどう繋がったかの時系列整理
 - [jigsaw-llm-grouping-implementation-plan](analyses/jigsaw-llm-grouping-implementation-plan.md) — Jigsaw 的な LLM 分類を current `kouchou-ai` に入れる時は、workflow canonical path への `analysis_mode` 導入、互換用 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の順に分けるのが妥当という実装整理
 - [jigsaw-llm-grouping-experiment](analyses/jigsaw-llm-grouping-experiment.md) — Jigsaw 的な LLM 分類の最初の実験は、`analysis_mode=llm_grouping` を 400 行の日本語コメントで回し、scatter 互換の限界と次の view 検討材料を取るのがよいという実験メモ
+- [label-judge-mechanism-2026-05-25](analyses/label-judge-mechanism-2026-05-25.md) — 2026-05-25 時点のラベル品質 judge は OpenAI/GPT ベースの補助評価であり、Claude / 人間 judge で較正すべきという整理
 - [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 広聴結果の公開UIに求められる 7 要件と、embedding 距離精度の非本質性。view plugin の上位契約として整理
+- [ohki-discussion-reflection-2026-05-25](analyses/ohki-discussion-reflection-2026-05-25.md) — ohki-shingo との議論を、散布図互換の技術論から自治体利用で公開UIが担う説明責務への問い直しとして考察
 - [tttc-to-analysis-core-history](analyses/tttc-to-analysis-core-history.md) — TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の `analysis-core` をサーバが呼ぶ現在形までの入口設計の変遷

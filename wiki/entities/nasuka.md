@@ -21,6 +21,10 @@ sources:
 - **PR #582** — team-mirai 固有の修正（cluster→issue link、Azure バグ修正）を upstream 戻し
 - **`nasuka/flexible-text-analyzer`** — 埋め込みを使わない LLM だけのクラスタリング前身プロトタイプ
 
+## Related Analyses
+
+- [[nasuka-statements-retrospective-2026-05-25]] — 過去発言を、運用基盤・実利用・分析品質・governance の観点で振り返る考察
+
 ## 名前表記
 
 `nasuka`, `Nasuka Sumino`, `角野` — 同一人物として参照。`sumino` 単体表記も同一人物のことがある（要文脈確認）
@@ -28,3 +32,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-05-25: 過去発言の振り返り [[nasuka-statements-retrospective-2026-05-25]] への導線を追加

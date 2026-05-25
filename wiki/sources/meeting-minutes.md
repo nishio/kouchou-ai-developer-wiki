@@ -9,7 +9,7 @@ sources:
 
 ## What it is
 
-[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/05/18（次回分）**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
+[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/05/25（次回分）**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
 
 ```
 YYYY/MM/DD（次回分）
@@ -66,3 +66,4 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-05-17: source 更新前に `raw/meeting_minutes.txt` を再取得する refresh protocol を追記
 - 2026-05-25: `txt` export ではリンク URL が落ちることがあるため、`raw/meeting_minutes.html` を補助取得する運用を追記
 - 2026-05-25: HTML export から URL を抽出する `scripts/extract_meeting_minutes_urls.py` と派生 source [[meeting-minutes-url-extraction-2026-05-25]] を追加
+- 2026-05-25: Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` になっていることを確認
