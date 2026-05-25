@@ -9,6 +9,7 @@ sources:
   - analysis-core-web-ui-separation-decision-2026-05-23.md
   - report-html-non-web-canonical-decision-2026-05-23.md
   - slack-public-ui-requirements-2026-05-23.md
+  - wiki-maintenance-observation-2026-05-25.md
 ---
 
 ## 目的
@@ -153,3 +154,4 @@ sources:
 - 2026-05-25: ohki さんとの公開UI議論も振り返った。要点は「散布図を残すか捨てるか」ではなく、散布図が担っていた量感・全体探索・個別意見への到達・恣意性の低さを、別 UI でどう満たすかという説明責務の話だった。次の view 実験は geometry 指標だけでなく、公開UI 7 要件で見るのがよさそう。[[ohki-discussion-reflection-2026-05-25]]より
 - 2026-05-25: nasuka さんの過去発言を振り返り、実利用で壊れる入口、抽出・ラベル品質の失敗例収集、再利用・手動編集・自動評価をつなぐ改善 loop、政党 fork から upstream へ戻す境界を次の論点として整理。[[nasuka-statements-retrospective-2026-05-25]]より
 - 2026-05-25: open issue を current `main@e5ed743` で棚卸しし、すでに解決済みだった `#19` `#271` `#281` `#290` `#315` `#333` `#380` `#385` `#396` `#398` `#400` `#456` `#613` `#721` `#799` `#815` を close。レポート再利用、属性フィルタ、静的ホスティング docs、エラーログ、E2E 基盤、LocalLLM、環境確認、フォーム入力 API key などは backlog から落とせる状態になった。[[github-dev-docs]]より [[source-code]]より
+- 2026-05-25: developer-wiki 側も少し整備した。Quartz graph から hub になりすぎる `index` / `log` を除外し、wiki 更新は PR 経由ではなく `main` 直接 push を基本にする運用を明文化した。`pnpm build` と wiki lint は通過した一方、`pnpm check` は `work/` 配下 clone を拾うため別途整理が必要。[[wiki-maintenance-observation-2026-05-25]]より

@@ -1564,3 +1564,22 @@
 - `work/kouchou-ai-llm-grouping-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
 - 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
 - 孤立 page は既知の 12 件のまま
+
+## [2026-05-25 18:54] filing-back | 散布図維持側の nishio スタンスを訂正
+
+- ユーザ本人から「『見た目のインパクトが強くて求める顧客がいる』（特にチームみらい等の宣伝用途）」という表現は不適切と指摘
+- 実際の議論は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替もあり得る」という時間軸ベースのスタンス
+- [[open-decisions]] A1 / [[pipeline]] Open Questions / [[jigsaw-sensemaker-history]] §2 / [[talk-to-the-city]] の 4 箇所を更新
+- `raw/meeting_minutes.txt` の line 3689 / 7326 を確認し、議事録には「顧客が割といる」「書籍化進行なども勘案」の両方が含まれていたが、wiki が前者だけを「チームみらい宣伝用途」へ過剰一般化していたことを訂正
+
+## [2026-05-25 19:22] filing-back | wiki graph 表示調整と main 直接 push 運用を記録
+
+- 新規 source [[wiki-maintenance-observation-2026-05-25]] を追加し、Quartz graph から `index` / `log` を除外した実装、`pnpm build` / wiki lint の検証結果、`pnpm check` が `work/` clone を拾う問題を整理
+- [[wiki-pages-publishing-stack]] に graph 表示チューニングの意図を追記し、[[wiki-driven-workflow]] に developer-wiki 更新は PR 経由ではなく `main` 直接 push を基本にする運用を明文化
+- [[meeting-report-draft]] に、developer-wiki 側の整備と残る `pnpm check` 課題を定例向け要点として追記
+
+## [2026-05-25 19:23] lint | wiki maintenance filing-back 後の健全性確認
+
+- `work/kouchou-ai-llm-grouping-pr/packages/analysis-core/.venv/bin/python scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件のまま

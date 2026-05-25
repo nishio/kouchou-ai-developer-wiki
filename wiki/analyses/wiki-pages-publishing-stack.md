@@ -3,6 +3,7 @@ type: analysis
 summary: "developer-wiki の GitHub Pages 配信は、現状の MkDocs adapter より Quartz を第一候補にした方が wiki の記法と公開体験が揃いやすい"
 sources:
   - wiki-pages-tooling-observation-2026-05-21.md
+  - wiki-maintenance-observation-2026-05-25.md
 ---
 
 この repo の `wiki/` は、普通の docs site というより **wikilink と相互参照を前提にした知識ベース** として育っている。したがって GitHub Pages 配信も「Markdown を HTML にするだけ」ではなく、**wiki 的なナビゲーションをどこまで自然に出せるか** で選ぶ方がよい。[[wiki-pages-tooling-observation-2026-05-21]]より
@@ -42,13 +43,20 @@ Quartz は Obsidian Flavored Markdown と wikilink を default で扱い、Explo
 
 2026-05-21 の実切替ではこの段取りをそのまま踏み、**Quartz が `wiki/` を直接読む構成** と **GitHub Pages workflow の Node/pnpm 化** まで反映した。結果として、配信系の source of truth が `wiki/` からぶれない構成になった。[[wiki-pages-tooling-observation-2026-05-21]]より
 
+## Graph 表示の扱い
+
+Quartz の Graph は wiki 的な横断導線として有用だが、この repo では `wiki/index.md` と `wiki/log.md` が全ページの hub になりやすい。2026-05-25 の更新では、page 自体は公開したまま、local / global graph から `index` と `log` の node だけを除外した。`quartz.layout.ts` から `Component.Graph({ localGraph: { removeSlugs: [...] }, globalGraph: { removeSlugs: [...] } })` を渡し、Graph 側で slug filter する実装である。[[wiki-maintenance-observation-2026-05-25]]より
+
+この判断は「`log.md` を隠す」ではなく、graph を概念間の関係把握に寄せるための表示チューニングである。`index` / `log` は Explorer、URL、本文リンクからは引き続き到達できる。[[wiki-maintenance-observation-2026-05-25]]より
+
 ## Open Questions
 
 - Quartz 本体をこの repo に vendor するか、publish 用の別 repo / subtree に分けるか
-- `wiki/log.md` をそのまま公開面に出すか、内部向け導線として扱うか
+- `wiki/log.md` は graph から除外したが、公開ページとしては残している。将来、内部向け導線へ寄せるかは未決
 - source ページを public に出し切るか、analysis / concept だけ前面に出すか
 
 ## Updates
 
 - 2026-05-21: 初版作成
 - 2026-05-21: 実装まで反映し、Quartz vendor / `pnpm build` / Pages workflow 差し替え / MkDocs 撤去まで進んだ current state を追記
+- 2026-05-25: graph から `index` / `log` を除外する表示チューニングと、その意図を追記

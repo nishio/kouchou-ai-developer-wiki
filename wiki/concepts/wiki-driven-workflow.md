@@ -5,6 +5,7 @@ sources:
   - source-code.md
   - github-dev-docs.md
   - meeting-minutes.md
+  - wiki-maintenance-observation-2026-05-25.md
 ---
 
 ## これは何か
@@ -102,6 +103,8 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 この repo の `wiki/` は docs 置き場というより **knowledge base / digital garden** に近いので、GitHub Pages 配信も単なる Markdown renderer ではなく wikilink 中心の公開体験で選ぶ方が自然である。現在は [[wiki-pages-publishing-stack]] の判断どおり、`wiki/` を直接読む Quartz 構成で GitHub Pages 配信している。[[wiki-pages-tooling-observation-2026-05-21]]より
 
+この repo 自体の更新は、原則として `main` への直接 commit / push で扱う。`kouchou-ai` 本体の変更と違い、developer-wiki の運用メモや表示調整を毎回 PR 経由にすると知識還流の速度が落ちるためである。2026-05-25 には一時的に GitHub 側の `Internal Server Error` で `git push origin main` が拒否されたが、`main` が unprotected かつ fast-forward 可能な時だけ `gh api ... git/refs/heads/main ... force=false` で直接進める fallback とした。退避 PR は例外扱いで、通常運用にはしない。[[wiki-maintenance-observation-2026-05-25]]より
+
 ## 向いていないケース
 
 - 単純な typo 修正だけで、文脈整理や調査が不要な時
@@ -118,6 +121,7 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 - この運用を新規コントリビュータ向け onboarding の標準フローとして docs に昇格させるべきか
 - `work/` に複数 clone がある時の命名規約をどこまで固定するか
+- `pnpm check` が `work/` 配下 clone を拾う状態を `tsconfig.json` 側で直すか
 
 ## Updates
 
@@ -125,3 +129,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記
 - 2026-05-23: GitHub Pages 配信の説明が MkDocs 時代の比較文のまま stale だったため、Quartz 配信中の current state に更新
 - 2026-05-25: 議事録 query で `txt` export がリンク URL を落としうる点と、`html` export を補助線にする運用を追記
+- 2026-05-25: developer-wiki 自体の更新は PR 経由にせず、main 直接 push を基本にする運用を追記

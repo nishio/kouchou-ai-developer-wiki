@@ -40,7 +40,7 @@ sources:
 [[meeting-minutes]] 2025-10-08, 2025-10-01：
 
 - ken-san：「散布図を見て満足する時代ではない、インサイト発見を中心にせよ」
-- [[nishio]]：「見た目のインパクトが強くて求める顧客がいる」（特にチームみらい等の宣伝用途）
+- [[nishio]]：少なくとも 2026-09 の書籍版リリース時点までは現行の散布図を温存する。より良い可視化が見つかれば、まずは併用し、最終的にデフォルトをそちらへ移すこともあり得る、というスタンス。
 
 技術的にも UMAP→クラスタリングは精度トレードオフを抱えており（[[pipeline]]）、代替を [[plugin-system|解析 plugin]] で実装するのか／散布図そのものを縮退させるのか **未決**。
 
@@ -223,3 +223,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-21: `main@5d591ef` で PR #844 merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を open decision から外した
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後は Phase 8 が open decision ではなくなったため B5 を除外。current tree から消えた phase docs への参照も補正
+- 2026-05-25: A1 の [[nishio]] スタンスを訂正。「チームみらい等の宣伝用途」という外部顧客像に紐づけた表現は不適切で、実際は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替も可」という時間軸のある立場である
