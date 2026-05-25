@@ -110,3 +110,4 @@ survey の次段として妥当なのは 2 本ある。
 ## Updates
 
 - 2026-05-25: Deep Research 前に、survey を `UMAP`, spectral, BERTopic, 可視化分離, 評価軸へ棚分けする計画を整理
+- 2026-05-25: nishio ↔ GPT の 2 本のブレスト（[[gpt-umap-clustering-bertopic-deep-research-2026-05-25]] / [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]]）を deep-research 応答として吸収。bucket 1 (UMAP→clustering) は「2D 用と 15D〜25D の分離が筋」、bucket 3 (spectral) は「数十件規模では LLM pairwise + spectral / agglomerative」、bucket 4 (BERTopic) は「backbone + LLM labeler への位置ずれ」と整理。詳細は [[clustering-deep-research-findings-2026-05-25]] へ filing back。Read order に LLM-as-pairwise-judge / 概念誘導系 (LLooM, TopicGPT) / ACL 2025 NIST 論文を追加すべきと記録

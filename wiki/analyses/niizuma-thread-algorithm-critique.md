@@ -90,3 +90,4 @@ tokoroten は、現代なら `TTTC Turbo` / `Sensemaker` のように LLM で直
 
 - 2026-05-25: 新妻 thread を、アルゴリズム批判・散布図制約・LLM説明責務の交点として整理
 - 2026-05-25: 後続の LLM grouping 実験も踏まえ、単一 pipeline の置換ではなく、分析 artifact / 表示 artifact / 説明 artifact の分離として読む考察を追記
+- 2026-05-25: nishio ↔ GPT のブレスト 3 本（clustering deep-research / 小規模 LLM pairwise + spectral / MST + bridge visualization）がこの critique の続編にあたる。[[clustering-deep-research-findings-2026-05-25]] が「2D UMAP と 15D〜25D を分けるべき」「BERTopic は backbone + LLM labeler へ」「数十件規模は LLM pairwise + spectral」と応答し、[[graph-visualization-proposal-2026-05-25]] が visualization 側から「クラスタ内 MST + クラスタ間 bridge + cluster-separated layout」で 3 artifact 分離を 1 つの図で実装する案を提示している

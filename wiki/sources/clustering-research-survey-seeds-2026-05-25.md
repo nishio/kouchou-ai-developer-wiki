@@ -116,3 +116,4 @@ TTTC の historical code では `BERTopic`, `HDBSCAN`, `UMAP`, `SpectralClusteri
 ## Updates
 
 - 2026-05-25: Deep Research 前段として survey bucket と検索軸を整理
+- 2026-05-25: nishio ↔ GPT のブレスト 2 本（[[gpt-umap-clustering-bertopic-deep-research-2026-05-25]] / [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]]）が、これらの bucket への deep-research 応答にあたる。`UMAP -> clustering` の妥当性、15D〜25D 推奨、`n_neighbors` のデータ依存、BERTopic の現代的位置づけ、小規模 N での LLM pairwise + spectral 設計が答えた。整理は [[clustering-deep-research-findings-2026-05-25]]

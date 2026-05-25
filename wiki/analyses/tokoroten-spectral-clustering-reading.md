@@ -114,3 +114,5 @@ tokoroten の読みでは、TTTC もまた **散布図都合の幾何をかな�
 ## Updates
 
 - 2026-05-25: tokoroten の spectral clustering メモを、scatter-first な TTTC 読みとして整理
+- 2026-05-25: deep-research による cross-check で、TTTC の小さめ `n_neighbors` 採用は document clustering 研究上は無理筋ではないと確認。Eklund et al. 2023 でも文書埋め込みでは小さめ `n_neighbors` が有利な場合があると報告されている。整理は [[clustering-deep-research-findings-2026-05-25]]
+- 2026-05-25: [[graph-visualization-proposal-2026-05-25]] は「TTTC 的 spectral は 2D 幾何の後始末」読みと別方向で、**2D 幾何そのものを graph drawing で作り直す** 設計案。UMAP に依存しない点が新しい

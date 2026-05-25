@@ -88,3 +88,5 @@ sources:
 ## Updates
 
 - 2026-05-21: 初回作成
+- 2026-05-25: 13.2.6 の「KJ法 / 表札 プロンプト」言及は prompt engineering tips としてだけでなく、product 設計原則として読み直せる。詳細は [[kj-method-broadlistening-framing-2026-05-25]]。原文復帰・既存カテゴリ非適用・表札の人間吟味・少数残存・対立/因果構造・現場返却の 6 原則のうち、current `kouchou-ai` は前 2 つを達成、後ろ 4 つは未達という棚分け
+- 2026-05-25: 13.2.4 の「UMAP 2D でクラスタリングしているのは標準作法と異なる妥協」自認は、外部 deep-research でも裏付けられた。同時に「clustering 用 UMAP は 15D〜25D」「BERTopic は backbone へ位置がずれた」など、書籍時点になかった現代的な落としどころが整理された。詳細は [[clustering-deep-research-findings-2026-05-25]]

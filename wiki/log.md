@@ -1469,3 +1469,21 @@
 - [[nasuka-statements-retrospective-2026-05-25]] に「今の開発への落とし込み」を追加
 - 失敗例収集 loop、再利用と手動編集、公開範囲、政党 fork から upstream へ戻す基準、facilitation role と domain contributor の分離を整理
 - [[meeting-report-draft]] に、次回定例で共有できる 2 行要約として追記
+
+## [2026-05-25 15:48] ingest | nishio ↔ GPT のブレスト 4 本を source / analysis 化
+
+- `raw/a.txt` `b.txt` `c.txt` `kawakita.md` を以下にリネーム
+  - `raw/gpt-umap-clustering-bertopic-deep-research-2026-05-25.txt`
+  - `raw/gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25.txt`
+  - `raw/gpt-mst-bridge-visualization-brainstorm-2026-05-25.txt`
+  - `raw/gpt-kawakita-kj-method-broadlistening-2026-05-25.md`
+- 各ブレストに対し source 4 本を追加：[[gpt-umap-clustering-bertopic-deep-research-2026-05-25]]、[[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]]、[[gpt-mst-bridge-visualization-brainstorm-2026-05-25]]、[[gpt-kawakita-kj-method-broadlistening-2026-05-25]]
+- 派生 analysis 3 本：[[clustering-deep-research-findings-2026-05-25]]（survey bucket への deep-research 応答整理）、[[graph-visualization-proposal-2026-05-25]]（MST + bridge を niizuma 批判への visualization 側の答えとして読み直し）、[[kj-method-broadlistening-framing-2026-05-25]]（KJ法を product 設計原則として再定義）
+- [[clustering-research-survey-plan]] / [[clustering-research-survey-seeds-2026-05-25]] / [[niizuma-thread-algorithm-critique]] / [[tokoroten-spectral-clustering-reading]] / [[broad-listening-book-extractions]] の Updates から新 analysis へ導線を張った
+- `index.md` の Sources / Analyses 両方を更新
+
+## [2026-05-25 15:52] lint | GPT ブレスト 4 本 ingest 後の健全性確認
+
+- `python3 scripts/lint_wiki.py` を実行
+- 壊れた wikilink / `index.md` 未登録 / frontmatter 不備はいずれも 0
+- 孤立 page は既知の 12 件で、追加した 4 source / 3 analysis はすべて incoming link あり

@@ -96,6 +96,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [windows-powershell-default-installation](sources/windows-powershell-default-installation.md) — Microsoft Learn を根拠に、Windows PowerShell 5.1 が Windows 10/11 系で既定インストールであることと `pwsh` 非同一を整理
 - [issue-731-windows-setup-mojibake](sources/issue-731-windows-setup-mojibake.md) — issue #731 の再現ログから、Windows setup の問題が表示崩れだけでなく `cmd.exe` のパース破綻でもあることを整理
 - [slack-public-ui-requirements-2026-05-23](sources/slack-public-ui-requirements-2026-05-23.md) — `#2_開発_広聴ai` 2026-05-23 thread。nishio の二段構え要約に対し、ohki-shingo が公開UI 7 要件と embedding 距離精度の非本質性を整理
+- [gpt-umap-clustering-bertopic-deep-research-2026-05-25](sources/gpt-umap-clustering-bertopic-deep-research-2026-05-25.md) — nishio ↔ GPT。`UMAP -> clustering` の妥当性、2D 用と clustering 用 15D〜25D の分離、`n_neighbors` のデータ依存、BERTopic が clustering backbone + LLM labeler へ位置がずれたという deep-research 整理
+- [gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25](sources/gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25.md) — nishio ↔ GPT。数十件規模では LLM pairwise scoring + spectral / agglomerative が筋。離散ラベル + relation type + reason、対称化・閾値疎化、cannot-link は constrained clustering、という設計提案
+- [gpt-mst-bridge-visualization-brainstorm-2026-05-25](sources/gpt-mst-bridge-visualization-brainstorm-2026-05-25.md) — nishio ↔ GPT。UMAP 2D に意味と可視化を背負わせる設計から抜け、`クラスタ内 MST + mutual kNN + クラスタ間 bridge edge + 2 段階 cluster-separated layout` で graph drawing として可視化する案
+- [gpt-kawakita-kj-method-broadlistening-2026-05-25](sources/gpt-kawakita-kj-method-broadlistening-2026-05-25.md) — nishio ↔ GPT。広聴AIを川喜田二郎の野外科学 / KJ法 に接続し、「混沌から公共的仮説を立ち上げる装置」として再定義する設計原則の整理
 
 ## Analyses
 
@@ -158,3 +162,6 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 広聴結果の公開UIに求められる 7 要件と、embedding 距離精度の非本質性。view plugin の上位契約として整理
 - [ohki-discussion-reflection-2026-05-25](analyses/ohki-discussion-reflection-2026-05-25.md) — ohki-shingo との議論を、散布図互換の技術論から自治体利用で公開UIが担う説明責務への問い直しとして考察
 - [tttc-to-analysis-core-history](analyses/tttc-to-analysis-core-history.md) — TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の `analysis-core` をサーバが呼ぶ現在形までの入口設計の変遷
+- [clustering-deep-research-findings-2026-05-25](analyses/clustering-deep-research-findings-2026-05-25.md) — survey bucket への 2026-05-25 時点の deep-research 応答。`UMAP -> clustering` は 2D と 15D〜25D の分離、BERTopic は backbone + LLM labeler へ、数十件規模は LLM pairwise + spectral、評価軸は 1 つに畳まない、と整理
+- [graph-visualization-proposal-2026-05-25](analyses/graph-visualization-proposal-2026-05-25.md) — UMAP 2D に意味と可視化を背負わせる設計から抜け、`クラスタ内 MST + mutual kNN + クラスタ間 bridge edge + 2 段階 cluster-separated layout` で graph drawing として可視化する案を niizuma 批判への visualization 側の答えとして整理
+- [kj-method-broadlistening-framing-2026-05-25](analyses/kj-method-broadlistening-framing-2026-05-25.md) — 広聴AIを川喜田二郎 / KJ法 に接続し、「混沌から公共的仮説を立ち上げる装置」として読み直す product 設計原則。書籍 13.2.6 の「KJ法プロンプト」を方法論側に展開し、ohki-shingo 公開UI要件 / jigsaw LLM grouping / graph visualization 提案と接続する
