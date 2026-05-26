@@ -77,13 +77,27 @@ for path in page_paths:
         outgoing[name].add(target)
         incoming[target].add(name)
 
-# also parse index.md to count its outgoing links (it's the catalog)
-index_text = (WIKI / "index.md").read_text(encoding="utf-8")
+# also parse index.md (human-facing curated nav) and index.txt (AI-facing full catalog)
+index_md_text = (WIKI / "index.md").read_text(encoding="utf-8")
 INDEX_LINK = re.compile(r"\(([a-zA-Z0-9_-]+/)?([a-zA-Z0-9_-]+)\.md\)")
-index_targets = set()
-for prefix, stem in INDEX_LINK.findall(index_text):
-    index_targets.add(stem)
-indexed = set(pages) & index_targets
+index_md_targets = set()
+for prefix, stem in INDEX_LINK.findall(index_md_text):
+    index_md_targets.add(stem)
+indexed_md = set(pages) & index_md_targets
+
+index_txt_path = WIKI / "index.txt"
+index_txt_stems: set[str] = set()
+if index_txt_path.exists():
+    for line in index_txt_path.read_text(encoding="utf-8").splitlines():
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split("\t")
+        if parts:
+            index_txt_stems.add(parts[0])
+indexed_txt = set(pages) & index_txt_stems
+
+# For "indexed" (used in orphan section header), prefer the AI catalog which is exhaustive
+indexed = indexed_txt if index_txt_path.exists() else indexed_md
 
 # ---------- Reports ----------
 print("=" * 60)
@@ -104,7 +118,7 @@ print()
 # 1. Orphan detection: pages with no incoming wikilinks
 orphans = sorted(page_ref(path) for path in page_paths if not incoming.get(path.stem))
 print(f"## 孤立ページ（incoming wikilinkなし）: {len(orphans)}")
-print("（index.md登録は別カウント）")
+print("（index.txt / index.md 登録は別カウント）")
 for name in orphans:
     stem = name.rsplit("/", 1)[-1]
     in_index = "✓index" if stem in indexed else "✗index"
@@ -129,11 +143,20 @@ for target in broken:
 print()
 
 # 3. Missing index entries
-missing_in_index = sorted(set(pages) - indexed)
-print(f"## index.mdに未登録: {len(missing_in_index)}")
-for name in missing_in_index:
-    typ = frontmatter[name].get("type", "?").strip()
-    print(f"  - [{typ}] {name}")
+# index.txt is the AI-facing exhaustive catalog and must include every page.
+# index.md is curated; pages missing from it is normal and not flagged here.
+if index_txt_path.exists():
+    missing_in_index_txt = sorted(set(pages) - indexed_txt)
+    print(f"## index.txtに未登録 (要 `python3 scripts/build_index_txt.py`): {len(missing_in_index_txt)}")
+    for name in missing_in_index_txt:
+        typ = frontmatter[name].get("type", "?").strip()
+        print(f"  - [{typ}] {name}")
+else:
+    missing_in_index_md = sorted(set(pages) - indexed_md)
+    print(f"## index.mdに未登録: {len(missing_in_index_md)}")
+    for name in missing_in_index_md:
+        typ = frontmatter[name].get("type", "?").strip()
+        print(f"  - [{typ}] {name}")
 print()
 
 # 4. Frontmatter health

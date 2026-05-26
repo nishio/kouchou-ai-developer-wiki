@@ -13,14 +13,18 @@ kouchou-ai-developer-wiki/
 │                      #   例: work/kouchou-ai/ に kouchou-ai 本体を clone
 │                      #   /tmp は ephemeral なので、永続的に参照したいものはここへ
 ├── wiki/              # LLMが生成・維持するwiki
-│   ├── index.md       # 全ページのカタログ
-│   ├── log.md         # 時系列の作業記録
+│   ├── index.md       # 人間向け curated navigation（onboarding / Concepts / Entities）
+│   ├── index.txt      # AI 向けフルカタログ（auto-generated, 全ページの stem/type/path/summary）
+│   ├── log.md         # 人間向け直近 7 日の作業履歴（full detail, newest first）
+│   ├── log.txt        # AI 向け全件 compact 履歴（auto-generated, <ts>\t<type>\t<title>）
 │   ├── concepts/      # 概念ページ
 │   ├── entities/      # 人物・ツール・プロジェクト
 │   ├── sources/       # ソースの要約
 │   └── analyses/      # 問いから生まれた考察
 └── scripts/
-    └── lint_wiki.py   # wikiの健全性チェック
+    ├── lint_wiki.py        # wikiの健全性チェック
+    ├── build_index_txt.py  # index.txt を frontmatter から regenerate
+    └── refresh_logs.py     # log.txt と log.md（直近 7 日）を再生成
 ```
 
 ## ページルール
@@ -51,8 +55,8 @@ sources:
 1. raw/の新ファイルを読む（a.txtのような名前なら適切にリネーム）
 2. 既存wikiページと照合
 3. 関連ページを更新 or 新規作成
-4. index.mdを更新
-5. log.mdに `## [YYYY-MM-DD HH:MM] ingest | <description>` を記録
+4. ページを追加・rename・削除した時は `python3 scripts/build_index_txt.py` で `wiki/index.txt` を regenerate（`index.md` は人間向け curated nav なので毎回触らなくてよい）
+5. log.md の先頭に `## [YYYY-MM-DD HH:MM] ingest | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期
 
 ### Query（質問）
 1. まず質問の対象が code / meeting minutes / Slack weekly logs / GitHub current state のどれかを切り分け、必要なら一次ソースを最新化する
@@ -62,20 +66,56 @@ sources:
    - Slack: `oss_weekly_reporter` 由来の raw / source を先に確認し、直読みは不足時のみ
    - GitHub current state: main だけでなく open PR / issue も観測
 2. 有用な回答はanalyses/にfiling back
-3. log.mdに `## [YYYY-MM-DD HH:MM] filing-back | <description>` を記録
+3. log.md の先頭に `## [YYYY-MM-DD HH:MM] filing-back | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期
 
 ### 定例会議向け下書きのメンテ
 1. Codex が GitHub Issue / PR の実装・調査・CI 対応・wiki 更新のような実務を進めたら、`wiki/concepts/meeting-report-draft.md` に要点を追記する
 2. 1 項目は「何をしたか / 何が決まったか / 次に何を見るか」が 2〜4 行で読める粒度に保つ
 3. 未 merge の作業は branch / PR 番号つきで「進行中」と明示し、main 済みの項目と混同させない
-4. 定例会議後は古い項目を消すのではなく、必要なら「## Updates」に次回向けの残件を追記して継続利用する
+4. 定例会議が終わったら draft を `wiki/concepts/meeting-report-YYYY-MM-DD.md`（その回の日付）へ rotate し、draft 本体は次回向けに空テンプレへ戻す。過去回は draft の `## 過去回` セクションから辿れる
+
+### Index メンテ方針
+
+`wiki/index.md` と `wiki/index.txt` は読者を分けた 2 ファイルで、メンテのルールも別になっている。
+
+- **`wiki/index.md` — 人間向け curated navigation**
+  - 内容: 新規コントリビュータの onboarding 5 ステップ、Concepts 全件、Entities 全件、Sources / Analyses は curated 入口ページだけ
+  - **入れないもの**: Sources (`sources/`) と Analyses (`analyses/`) のフラットな全件カタログ。これらは `index.txt` に集約し、人間が圧倒されない量に絞る
+  - 編集タイミング: Concept / Entity を新規追加した時、onboarding 導線を見直したい時、Sources / Analyses から特に重要なものを curated 入口に昇格させたい時。それ以外では触らない
+  - 編集方法: 手作業
+
+- **`wiki/index.txt` — AI 向けフルカタログ**
+  - 内容: `wiki/` 配下の全ページ（`index.md` / `log.md` を除く 156 ページ）の `<stem>\t<type>\t<path>\t<summary>` を type 別 → path 順で並べた TSV
+  - **手で編集しない**。各ページの frontmatter `summary` が source of truth で、`scripts/build_index_txt.py` がそこから生成する
+  - 編集タイミング: ページの追加・rename・削除、または既存ページの `summary` 変更があった時。コマンドは `python3 scripts/build_index_txt.py`
+  - `scripts/lint_wiki.py` は `index.txt` の完全性をチェックする。未登録ページがあれば regenerate 忘れのサイン
+
+**なぜ分離するか**: AI / LLM がナビゲーションに使うカタログは Markdown である必要がなく、機械可読な text で十分。一方で人間向けの index は curation の自由度が要り、増えるたびに onboarding 導線が埋もれない量に保ちたい。両者を 1 ファイルに同居させると、片方の都合がもう片方を圧迫する。
 
 ### Lint（健全性チェック）
 1. 機械的: `python3 scripts/lint_wiki.py`（孤立・壊れたリンク・未登録など）
 2. 意味的: 矛盾・stale claim・概念ページ不足・新質問の提案
-3. 完了後 `## [YYYY-MM-DD HH:MM] lint | <summary>` を log.md に記録
+3. **無検出 lint は log に記録しない**。lint で実際に問題を検出して直した場合のみ、何を直したかを `filing-back` として log.md に書く。`scripts/refresh_logs.py` は `type=lint` の entry を自動で除外するので、間違って書いても次回 refresh で消える
 
 > 時刻を含めるのは、深夜lint(`02:00`)と同日ingestの順序を区別するため。`[YYYY-MM-DD]`（時刻なし）は当日23:59として扱われる（後方互換）。
+
+### Log メンテ方針
+
+`wiki/log.md` と `wiki/log.txt` は読者を分けた 2 ファイルで、メンテのルールも別。
+
+- **`wiki/log.md` — 人間向け直近 7 日の作業履歴**
+  - 内容: 最新 entry から 7 日以内のものを newest-first で full detail。それより古い entry の本文は git log で参照する
+  - 編集タイミング: ingest / filing-back 後にこのファイルの先頭へ entry を追加し、続けて `python3 scripts/refresh_logs.py` を実行
+  - 編集方法: 手作業（追加のみ）。古い entry を削除するのは refresh スクリプトの仕事
+
+- **`wiki/log.txt` — AI 向け全件 compact 履歴**
+  - 内容: 過去全 entry の `<YYYY-MM-DD HH:MM>\t<type>\t<title>` を newest-first
+  - **手で編集しない**。`scripts/refresh_logs.py` が log.md の現状 + 既存 log.txt を merge して regenerate するので、過去 entry を保ったまま新規 entry を取り込める
+  - 削除してはいけない: log.txt は append-only な history。誤って消すと、log.md から既に落ちた古い entry の見出しは失われる（git 履歴からは復元可能）
+
+- **lint 記録ポリシー**: 無検出 lint は記録しない（過去 102 件は移行時にまとめて除去済み）。lint type entry は refresh スクリプトが自動で落とすので、意図せず書いても次回実行で消える
+
+- **entry の粒度**: 1 entry の本文は 2-4 行のブレットが目安。詳細は対応する wiki ページに送り、log には「何を / なぜ / 次に何を見るか」だけ残す
 
 ## 運用方針
 
