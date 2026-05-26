@@ -106,6 +106,7 @@ codeql-introduction-context	analysis	analyses/codeql-introduction-context.md	`PR
 codex-windows-environment-memo	analysis	analyses/codex-windows-environment-memo.md	Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
 development-priority-roadmap-2026-05-23	analysis	analyses/development-priority-roadmap-2026-05-23.md	2026-05-23 時点では、直近の優先順は Windows 初回導入の修復、ユーザー影響の大きい未解決バグ、公開・運用基盤の安定化、その後に説明責務と研究系改善を進めるのが妥当
 digital-agency-legal-rag	analysis	analyses/digital-agency-legal-rag.md	2026-05-25 時点の wiki / meeting minutes には『デジタル庁の条文RAG』を直接説明する整理はなく、デジタル庁・eGov・一般的な RAG 活用の断片的な言及があるに留まる
+fetch-reports-deprecation-and-storage-health-2026-05-26	analysis	analyses/fetch-reports-deprecation-and-storage-health-2026-05-26.md	`fetch_reports.py` はストレージ機能が無かった時期の移行用バックアップとしては理解できるが、2026-05-26 時点の current main では Azure Blob sync/download が本線になっており、deploy 前バックアップの常設手段として残すより storage health check へ置き換える方が筋がよい
 glossary	analysis	analyses/glossary.md	kouchou-ai 周辺の用語集 — 日本語特有・プロジェクト固有のショートハンド
 gotchas	analysis	analyses/gotchas.md	非自明な落とし穴・ハマりどころの一覧 — 経験的に繰り返し発生する footgun
 graph-visualization-proposal-2026-05-25	analysis	analyses/graph-visualization-proposal-2026-05-25.md	UMAP 2D に意味クラスタも可視化品質も背負わせる設計から抜け、`クラスタ内 MST + mutual kNN、クラスタ間 bridge edge、2 段階 cluster-separated layout` で graph drawing として可視化する案。既存 niizuma 批判への visualization 側の答えになりうる

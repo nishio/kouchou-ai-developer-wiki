@@ -3,7 +3,22 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-26 15:36] filing-back | 旧 issue `#629` を close し、`fetch_reports` 論点を `#870` / `#871` に再編
+
+
+- GitHub 上で `#629 [BUG] scripts/fetch_reports.pyでは「限定公開」「非公開」状態のレポートがバックアップできない` を close
+- 新規 issue `#870 [REFACTOR] fetch_reports.py を migration / 緊急救済専用へ降格し、通常運用から外す` を作成し、script の役割整理・docs 反映・通常 workflow からの分離を追う形にした
+- 新規 issue `#871 [BUG] Azure deploy の safety を fetch_reports 依存から Blob Storage health check に切り替える` を作成し、deploy safety の本線を API scrape ではなく Blob health check に置き換える実装課題として分離した
+
+## [2026-05-26 15:31] filing-back | `fetch_reports.py` を migration 手段として読み直し、storage health check 置換案を整理
+
+
+- 新規 analysis [[fetch-reports-deprecation-and-storage-health-2026-05-26]] を追加し、`fetch_reports.py` が「ストレージ機能が無かったころの deploy 前バックアップ」の名残であり、current `ReportSyncService` / `initialize_from_storage()` 本線とはずれていることを整理
+- `.github/workflows/azure-deploy.yml` が今も deploy 前に `python3 tools/scripts/fetch_reports.py` を叩いている一方、script 自体は `PUBLIC_API_KEY` で public `/reports` を読むだけなので non-public report を救えない、と current contract の破綻点を明記
+- 代案として、`fetch_reports.py` を migration / 緊急救済専用へ降格し、通常の deploy safety は Azure Blob の read/write を軽く確認する storage health check に置き換える方が筋だと整理
+
 ## [2026-05-26 15:10] filing-back | log を「人間向け 7 日 log.md」と「AI 向け全件 log.txt」に分離、無検出 lint は記録対象外に
+
 
 
 - 振り返り対象: `wiki/log.md` 1631 行 / 285 entries のうち lint type が 102 件 (36%) で、内容はすべて「無検出」のため信号対雑音比を悪化させていた。また全 entry が単一ファイルに積み上がる構造で、長期で読みづらくなる前提が無かった
@@ -13,6 +28,7 @@
 - `CLAUDE.md` を更新: 直系ディレクトリ説明、Ingest / Filing-back の手順、Lint セクションの「無検出は記録しない」、新規「### Log メンテ方針」セクション
 
 ## [2026-05-26 14:30] filing-back | wiki index を「人間向け curated index.md」と「AI 向け全件 index.txt」に分離
+
 
 
 
@@ -28,12 +44,14 @@
 
 
 
+
 - Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` で 7534 行になっていることを確認。今回会は「大リファクタリング完了」「LLM grouping 実験 / ラベル refinement 実験」「Issues 棚卸し」「デジタル庁RAG話題」が主議題
 - 議事録内で nishio 本人が developer-wiki について「人間が直接読むには情報多すぎ」「indexが溢れたらthinking effort多めで再構成したらいい」と言及している点をメモ。index/log の情報密度問題は本人認知済み
 - `wiki/concepts/meeting-report-draft.md` の旧内容（月曜版・次回向け 12 項目・Updates 47 件）を新規 [[meeting-report-2026-05-25]] へ rotate し、draft 本体は 2026-06-01 向けに空テンプレへ戻した。`## 過去回` セクションから archive を辿れる形にし、Open Question の「snapshot を切るか継続か」は snapshot 方針で解消
 - `wiki/index.md` にも archive ページを追加。`scripts/lint_wiki.py` は壊れた wikilink 0 / index 未登録 0 / frontmatter 不備 0 で通過
 
 ## [2026-05-25 20:38] filing-back | デジタル庁の条文RAGに関する既存知識の有無を整理
+
 
 
 
@@ -44,12 +62,14 @@
 
 
 
+
 - 新規 analysis [[issue-triage-open-remnants-2026-05-25]] を追加し、`#79` `#253` `#391` `#477` `#537` `#690` を current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で close しなかった理由を issue 本文単位で整理
 - `#79` は実行後 cost 表示ではなく事前 cost 見積もり、`#391` は手動接続チェックではなく作成開始時 preflight、`#477` は Azure 実行経路ではなく model UI 不整合が残る点を明記
 - `#253` は CLI 用 `report.html` の file URL 対応と Web 静的 export の失敗 UX を分離し、`#537` は OpenRouter provider と無料モデル対応を分離、`#690` は `ts-node-dev` がまだ残るため未実装と整理
 - `wiki/index.md` と [[meeting-report-draft]] に導線を追加
 
 ## [2026-05-25 19:47] filing-back | bug ラベル open issue を current main 基準で再点検し、stale な 3 件を close
+
 
 
 
@@ -63,10 +83,12 @@
 
 
 
+
 - 新規 analysis [[bug-issue-triage-2026-05-25]] を追加し、`bug` ラベル open issue のうち `#666` `#584` `#177` を stale として close した根拠と、`#629` `#477` `#741` `#478` `#283` `#121` を active に残した理由を 1 ページで整理
 - 環境起因で stale 化した issue と、current product contract 自体の穴として残る issue を分けて読むべきだという triage 観点を明記
 
 ## [2026-05-25 19:24] filing-back | remaining experiment WIP branch と issue #869 を作成
+
 
 
 
@@ -78,6 +100,7 @@
 
 
 
+
 - 新規 analysis [[issue-530-current-state]] を追加し、2026-05-25 時点の `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` では API 依存が `server/requirements.txt` ではなく `apps/api/pyproject.toml` / `requirements.lock` で管理されていること、Azure 依存も既に入っていることを整理
 - `setup_win.bat` の既定 `STORAGE_TYPE=local` と `apps/api/src/config.py` の default を根拠に、issue 本文の「ローカル初回セットアップで Azure 依存が必須」という説明は current 導線とずれると明記
 - open PR `#863` を併せて確認し、Windows 導入の current 論点が `requirements.txt` 追加ではなく setup UX / PowerShell 分離に寄っていることも記録
@@ -86,11 +109,13 @@
 
 
 
+
 - 新規 source [[wiki-maintenance-observation-2026-05-25]] を追加し、Quartz graph から `index` / `log` を除外した実装、`pnpm build` / wiki lint の検証結果、`pnpm check` が `work/` clone を拾う問題を整理
 - [[wiki-pages-publishing-stack]] に graph 表示チューニングの意図を追記し、[[wiki-driven-workflow]] に developer-wiki 更新は PR 経由ではなく `main` 直接 push を基本にする運用を明文化
 - [[meeting-report-draft]] に、developer-wiki 側の整備と残る `pnpm check` 課題を定例向け要点として追記
 
 ## [2026-05-25 18:54] filing-back | 散布図維持側の nishio スタンスを訂正
+
 
 
 
@@ -103,9 +128,11 @@
 
 
 
+
 - `gh pr checks 868 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
 
 ## [2026-05-25 17:59] filing-back | runtime user API key plumbing を draft PR #868 として切り出し
+
 
 
 
@@ -118,9 +145,11 @@
 
 
 
+
 - `gh pr checks 867 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
 
 ## [2026-05-25 17:18] filing-back | reuse-from を draft PR #867 として先に切り出し
+
 
 
 
@@ -133,11 +162,13 @@
 
 
 
+
 - `work/kouchou-ai/` で `origin/main@e5ed743` を fetch 済みとして参照し、open PR は `#863` と `#866` の 2 本であることを確認
 - open issue を番号順に見て、merged PR / current code / docs / tests で解決済みと判断できた `#19` `#271` `#281` `#290` `#315` `#333` `#380` `#385` `#396` `#398` `#400` `#456` `#613` `#721` `#799` `#815` を close
 - `#79` `#253` `#391` `#477` `#537` `#690` などは、関連実装はあるが issue 本文の要件がまだ残る、または部分実装に留まるため open のまま残した
 
 ## [2026-05-25 16:57] filing-back | LLM grouping 最小実装を draft PR #866 として切り出し
+
 
 
 
@@ -147,6 +178,7 @@
 - `packages/analysis-core` で `rye run python -m pytest -q` を実行し、通常テスト `186 passed` を確認
 
 ## [2026-05-25 15:48] ingest | nishio ↔ GPT のブレスト 4 本を source / analysis 化
+
 
 
 
@@ -164,6 +196,7 @@
 
 
 
+
 - ここまでの label quality judge が OpenAI/GPT ベースで、生成側も同系統 LLM を使っている点を明文化し、[[label-judge-mechanism-2026-05-25]] を追加
 - `scripts/export_label_judge_bundle.py` を追加し、`[8,40]` の `none / setwise / contrast / balanced` について top-level label, description, size, representative arguments を同一フォーマットで書き出す [[label-refinement-judge-bundle-2026-05-25]] を生成
 - [[jigsaw-llm-grouping-experiment]] / [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[meeting-report-draft]] / `index.md` も更新し、次の優先度を「refinement mode 追加」から「judge calibration」へ置き直した
@@ -172,11 +205,13 @@
 
 
 
+
 - 2026-05-23 の [[slack-public-ui-requirements-2026-05-23]] を、2025-12 の方向性議論にあった [[ohki-shingo]] の「ユーザー」「自治体」「材料」「実課題」志向と接続して [[ohki-discussion-reflection-2026-05-25]] に整理
 - 散布図互換の技術論ではなく、散布図が公開UIで担っていた説明責務をどう別 UI で満たすか、という読みを filing-back
 - [[ohki-shingo]] entity と [[meeting-report-draft]] にも導線を追加
 
 ## [2026-05-25 13:18] filing-back | `setwise_refine` の prompt variation を比較
+
 
 
 
@@ -189,11 +224,13 @@
 
 
 
+
 - upstream / fork の `clustering.py` を見直し、`janome` + `CountVectorizer(tokenizer=...)` は spectral / `UMAP` の幾何を変える差分ではなく、BERTopic の topic representation / document info 取得を日本語で成立させるための差分だと整理
 - [[tttc-spectral-clustering-code-observation-2026-05-25]] に、fork の本丸差分は clustering 核ではなく BERTopic 周辺の日本語対応だという点と、current `analysis-core` では BERTopic / CountVectorizer 自体が消えているため main line では使われていない点を追記
 - [[meeting-report-draft]] にも、TTTC 系 tokenizer 差分は current clustering path では歴史的差分になっていることを反映
 
 ## [2026-05-25 13:05] filing-back | label refinement 3 mode の初回比較を実施
+
 
 
 
@@ -206,11 +243,13 @@
 
 
 
+
 - upstream `talk-to-the-city-reports` と fork `shugiinsenyo2024-tttc` の `scatter/pipeline/steps/clustering.py` を比較し、`UMAP -> SpectralClustering` や `n_neighbors <= 10` は共通である一方、目立つ差分は `janome` と `CountVectorizer(tokenizer=tokenize_japanese)` の導入だと確認
 - [[tttc-spectral-clustering-code-observation-2026-05-25]] に、fork 側の変更は clustering 核より BERTopic の語彙処理を日本語向けに寄せたもの、という読みを追記
 - [[meeting-report-draft]] にも、current `analysis-core` では BERTopic / CountVectorizer 自体が消えているため、この tokenizer 差分は main line では生きていない点を補足
 
 ## [2026-05-25 12:56] filing-back | nasuka 考察を現在の開発タスクへ落とし込み
+
 
 
 
@@ -222,11 +261,13 @@
 
 
 
+
 - Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` であることを確認
 - `meeting-minutes` 内の `nasuka` / `sumino` / `角野` 発言を読み、運用基盤、実利用、分析品質、governance、チームみらい fork の観点で整理
 - 新規 analysis [[nasuka-statements-retrospective-2026-05-25]] を追加し、[[nasuka]] entity と `index.md` から導線を張った
 
 ## [2026-05-25 12:50] filing-back | TTTC fork / upstream repo 内の spectral 意図説明の有無も確認
+
 
 
 
@@ -238,11 +279,13 @@
 
 
 
+
 - 新規 analysis [[tokoroten-algorithm-discussion-retrospective]] を追加し、tokoroten との議論を「手法比較」ではなく「散布図 product / 深い分析 / 説明責務 / 運用ワークフローの分離」として整理
 - [[kouchou-ai-direction-2025-12-06]] / [[kouchou-ai-direction-2-2025-12-13]] / [[slack-tokoroten-spectral-clustering-notes-2026-q1]] / [[slack-niizuma-umap-kmeans-thread-2026-03-18]] / [[jigsaw-llm-grouping-experiment-output-2026-05-25]] を突き合わせ、stable v4 と次世代 analysis mode を分ける読みを追記
 - `wiki/index.md` / [[tokoroten]] / [[meeting-report-draft]] に導線を追加
 
 ## [2026-05-25 12:43] filing-back | clustering 議論の Deep Research 前に survey 計画を整理
+
 
 
 
@@ -254,11 +297,13 @@
 
 
 
+
 - [[niizuma-thread-algorithm-critique]] に、`HDBSCAN` / `spherical k-means` への単純置換ではなく、分析 artifact / 表示 artifact / 説明 artifact を分けるべきという考察を追加
 - 後続の [[jigsaw-llm-grouping-experiment-output-2026-05-25]] も根拠に加え、意味分類の品質と scatter 上の自然さは別指標として評価すべきだと整理
 - [[meeting-report-draft]] にも、次回定例で読み上げやすい短い要点を追記
 
 ## [2026-05-25 12:39] filing-back | label refinement 実験用の新 step を `analysis-core` に追加
+
 
 
 
@@ -271,11 +316,13 @@
 
 
 
+
 - `ntv-experiment-public/shugiinsenyo2024-tttc@5e0a439` の `scatter/pipeline/steps/clustering.py` と、`digitaldemocracy2030/kouchou-ai@53f1209` の `hierarchical_clustering.py` を一次参照で確認
 - 新規 source [[tttc-spectral-clustering-code-observation-2026-05-25]] を追加し、TTTC が `UMAP` 後に `SpectralClustering` を掛け、`n_neighbors` 上限が 10、最終 `cluster-id` も spectral ラベルであることを記録
 - [[slack-tokoroten-spectral-clustering-notes-2026-q1]] と [[tokoroten-spectral-clustering-reading]] を更新し、「実装形までは確認済み」「紐状構造を作って切るのが方針、は未確定」という線引きを明示
 
 ## [2026-05-25 12:15] filing-back | tokoroten の spectral clustering メモを独立ページ化
+
 
 
 
@@ -288,6 +335,7 @@
 
 
 
+
 - `oss_weekly_reporter` の `2026-03-18_to_2026-03-25/raw/slack/2_開発_広聴ai_アルゴリズム開発.json` から、新妻氏参加の thread を切り出して再読
 - 新規 source [[slack-niizuma-umap-kmeans-thread-2026-03-18]] を追加し、論点を「`UMAP` 後 `k-means` 批判」「前段クラスタリング / `HDBSCAN` 案」「散布図とのトレードオフ」「LLM 直分類と説明責務」の 4 塊に整理
 - 新規 analysis [[niizuma-thread-algorithm-critique]] を追加し、この thread の本質を「幾何の自然さ・散布図の受容性・外部説明責務の衝突」として要約
@@ -297,11 +345,13 @@
 
 
 
+
 - `K=8` では LLM grouping が強く、`K=20` では従来 hierarchical が強いという結果から、LLM grouping は粗い俯瞰向き、従来 hierarchical は細粒度分析向きという役割分担の仮説を整理
 - `[8,40]` で `一貫性 / 網羅性` が上がり `区別性` が少し下がったことを踏まえ、現状の改善ボトルネックは clustering 本体より top-level ラベル同士の差別化かもしれない、という読みを追加
 - 次の改善焦点として、`aggregation` step で「短い見出し」「sibling との差分強調」「粒度の揃い」「重複語の回避」を促す prompt / algorithm 変更案を [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に追記
 
 ## [2026-05-25 11:49] filing-back | `LLM grouping K=8` と `hierarchical [8,40] level1` を直接 judge
+
 
 
 
@@ -314,12 +364,14 @@
 
 
 
+
 - `jigsaw_sample_comments_400_hierarchical_8_40.json` を追加し、同じ 422 argument / embedding を `--reuse-from sample_comments_400_upstream_seed` で再利用して `[8, 40]` を実行
 - `level 1 = 8` の geometry は単層 `K=8` と大差なかったが、top-level label は `公共サービスと都市インフラ`, `顧客体験と業務効率化`, `医療・教育・生活の質向上` のように、より集約的な意味づけへ変化
 - OpenAI judge で単層 `K=8` と比較すると、`[8,40] level1` は平均 `82.1`、単層 `K=8` は `79.4` で、集約後の 8 layer の方が一貫性・網羅性で上回った
 - [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に、「差が出るのは 40 layer そのものより、そこから作る 8 layer の意味構成」という知見を追記
 
 ## [2026-05-25 10:34] filing-back | `K=20` でも同一 args 比較を実施
+
 
 
 
@@ -332,10 +384,12 @@
 
 
 
+
 - same-args downstream 比較で `LLM grouping` が `35,654 tokens / 149s`、従来法が `7,088 tokens / 49s` だったことを、散布図品質・ラベル品質と並べて解釈
 - 「scatter 目的だと割高、label semantics 目的なら検討余地あり」という読みを [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に追記
 
 ## [2026-05-25 10:03] filing-back | `broadlistening-research` の 2025-02 judge を使ってラベル品質も比較
+
 
 
 
@@ -348,12 +402,14 @@
 
 
 
+
 - `jigsaw_sample_comments_400_hierarchical_compare.json` を追加し、同じ 422 argument / 同じ `embeddings.pkl` を使って `cluster_nums: [8]` の従来 hierarchical clustering を別出力へ実行
 - 比較用出力では `hierarchical_status.json` を seed して `extraction` / `embedding` を skip し、clustering 以降だけを実行
 - 従来法は silhouette score `0.400`、centroid ベース再分類精度 `1.000` で、LLM grouping の `-0.039` / `0.488` より scatter 適合が明確に高いことを確認
 - [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]] / [[meeting-report-draft]] に比較結果を追記
 
 ## [2026-05-25 09:58] filing-back | 400 件日本語データで `analysis_mode=llm_grouping` の初回実験結果を記録
+
 
 
 
@@ -366,11 +422,13 @@
 
 
 
+
 - 新規 analysis [[jigsaw-llm-grouping-experiment]] を追加し、この実験は専用 wiki ページで継続観察すべきこと、最初の入力データとして `work/kouchou-ai/apps/admin/public/sample_comments.csv` の 400 行日本語コメントを使う判断を記録
 - 同ページに、目的、入力前処理の必要性（`comment` 1 列を `comment-id` / `comment-body` 形式へ変換）、観察ポイント、次に残すべき実験ログを整理
 - `wiki/index.md` Analyses に追記
 
 ## [2026-05-25 09:32] filing-back | `analysis_mode=llm_grouping` の最小実装を analysis-core に追加
+
 
 
 
@@ -383,11 +441,13 @@
 
 
 
+
 - `raw/meeting_minutes.html` を取得し、`scripts/extract_meeting_minutes_urls.py` を追加。Google redirect を実 URL に戻しつつ、anchor と本文ベタ書き URL を合わせて `raw/meeting_minutes_urls.tsv` / `raw/meeting_minutes_urls_summary.md` を生成
 - 新規 source [[meeting-minutes-url-extraction-2026-05-25]] を追加し、531 unique URLs / 89 domains、`kouchou-ai repo` 136 件、`weekly history` 81 件、`slack permalink` 49 件などの棚卸し結果を要約
 - [[meeting-minutes]] にスクリプト導線を追記し、[[index]] Sources と [[meeting-report-draft]] にも反映
 
 ## [2026-05-25 09:16] filing-back | 議事録 txt export のリンク欠落リスクと html 補助取得を運用へ反映
+
 
 
 
@@ -399,6 +459,7 @@
 
 
 
+
 - 新規 source [[llm-grouping-implementation-observation-2026-05-25]] を追加し、`work/kouchou-ai/main` と GitHub current state から、`PR #827` 計画文書は main 済みだが `analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装と観測
 - 新規 analysis [[jigsaw-llm-grouping-implementation-plan]] を追加し、Jigsaw 系実装は direct-step ではなく workflow canonical path に `analysis_mode` を差し込み、短期は embedding 併用の互換 `llm_grouping`、長期は capability contract へ進む順序が妥当と整理
 - `wiki/index.md` Analyses に新ページを追加
@@ -407,11 +468,13 @@
 
 
 
+
 - `.claude/` を親 wiki repo の `.git/info/exclude` に追加し、ローカル設定由来の未追跡ノイズを作業ツリーから除外
 - [[meeting-report-draft]] に、`PR #863` は open のままだが Windows 検証環境が整備中のため review / merge 保留、という current state を追記
 - [[development-priority-roadmap-2026-05-23]] にも同じ保留状態を反映し、「最優先テーマではあるが直近の実作業は環境整備後の再確認」と補正
 
 ## [2026-05-25 00:19] ingest | 方向性会議 2 本と鈴木健ブログを source 化
+
 
 
 
@@ -424,12 +487,14 @@
 
 
 
+
 - `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で更新し、`main@e5ed743` を一次参照として確認
 - [[refactoring-status]] を更新し、legacy cleanup merge 後の current state に合わせて Phase 8 を完了、refactoring 全体を done 判定へ補正
 - [[open-decisions]] から Phase 8 の open item を除外し、[[source-code]] / [[pipeline]] / [[gotchas]] / [[workflow-defaultization-blockers]] も current tree に合わせて補正
 - [[meeting-report-draft]] に `PR #865` と CI 修正を次回定例向け要点として追記
 
 ## [2026-05-23 15:20] ingest | Slack thread (2026-05-23) で ohki-shingo が整理した公開UI要件を取り込み
+
 
 
 
@@ -444,12 +509,14 @@
 
 
 
+
 - 新規 source [[analysis-core-web-ui-separation-decision-2026-05-23]] と新規 concept [[analysis-core-and-web-ui]] を追加し、「WebUI で包んだ理由」「その後 core を切り出した理由」「Web は JSON、CLI は `report.html` を持つ理由」を歴史ページと分離して整理
 - [[tttc-to-analysis-core-history]] は歴史、[[analysis-core-and-web-ui]] は現在のソフトウェア設計判断、という役割分担になるよう導線を追加
 - wiki 全体で旧語をやめ、`report.html` は `CLI 向け観察用HTML`、一般論では `補助出力` という言い方へ統一
 - 関連ページとして [[usage-modes]] / [[cli]] / [[architecture-overview]] / [[deployment]] / [[pipeline]] / [[refactoring-status]] / [[gotchas]] / [[meeting-report-draft]] / source 群も同じ用語に補正
 
 ## [2026-05-23 13:38] filing-back | `report.html` を Web canonical にしない判断を wiki に反映
+
 
 
 
@@ -461,10 +528,12 @@
 
 
 
+
 - [[tttc-to-analysis-core-history]] に、書籍 `10_00_DD2030による広聴AIの開発活動.md` の `TTTC Scatter vs 広聴AI` 比較表を反映し、Web 化の意味が「GUI追加」ではなく `環境構築責任と共有導線をサーバ側へ寄せること` だと明記
 - あわせて 13.3 の「Python 環境を持つ読者は手元でミニ広聴AIを動かす」導線を根拠として追記し、研究者・開発者向けに軽量な Python 実験入口が必要だった、という読みを補強
 
 ## [2026-05-23 13:06] filing-back | TTTC clone 前提から Web UI 包装、analysis-core/PyPI 再切り出しまでの歴史を整理
+
 
 
 
@@ -476,11 +545,13 @@
 
 
 
+
 - `analysis_core.plugins.builtin.*` に散らばっていた `_input_base_dir` / `_output_base_dir` / token usage 初期化の重複を `_legacy_config.py` に寄せて整理
 - `packages/analysis-core/tests/test_builtin_plugins.py` に、`analysis.extraction` が comment artifact から解決した input path と `ctx.output_dir.parent` を legacy step に渡す regression test を追加
 - 確認として `cd packages/analysis-core && rye run pytest tests/test_builtin_plugins.py tests/test_workflow_engine.py -q`、`rye run ruff check src/analysis_core/plugins/builtin tests/test_builtin_plugins.py`、`cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s`、`... rye run pytest tests/services/test_report_launcher.py -q` を実行し通過
 
 ## [2026-05-23 12:50] filing-back | API 通常フローの manual smoke と workflow path bug 修正を testing / meeting report に追記
+
 
 
 
@@ -492,11 +563,13 @@
 
 
 
+
 - `work/kouchou-ai/apps/api/tests/manual/report_launcher_subprocess_smoke.py` を追加。`execute_aggregation()` から **本物の subprocess** を起動し、`hierarchical_result.json`・`hierarchical_status.json`・`report_status.json` 更新まで確認する手元 smoke test として整理
 - [[testing]] に明示実行コマンド `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` を追加し、既定収集の対象外であることと、analysis-core 単体 e2e と API mock test の間を埋める目的を明記
 - [[meeting-report-draft]] にも、「analysis-core 単体の e2e だけでなく API 境界を手元で 1 回は踏めるようにした」という要点を追記
 
 ## [2026-05-23 11:32] filing-back | 定例会議向け下書きに Jigsaw 系第2モードの長期論点を追記
+
 
 
 
@@ -507,11 +580,13 @@
 
 
 
+
 - 新規 analysis [[development-priority-roadmap-2026-05-23]] を追加。2026-05-23 時点の GitHub current state を確認し、`#836` `#837` `#833` `#845` `#846` `#716` `#740` など 5/21-5/22 に close 済みの前提作りタスクを除外した current roadmap を作成
 - 優先順を「Windows 初回導入 (`#731`) → user-facing bug (`#584` `#493` `#629`) → 運用基盤 (`#741` `#518` `#558` `#546` `#838`) → 説明責務 / 研究テーマ (`#696` `#542` `#564` `#577` `#809`)」へ組み替え、実装工数と calendar の目安も追記
 - `wiki/index.md` Analyses に新ページへの導線を追加
 
 ## [2026-05-23 10:02] filing-back | issue-centric roadmap を補う長期戦略ページを追加
+
 
 
 
@@ -524,11 +599,13 @@
 
 
 
+
 - [[strategic-development-order-2026-05-23]] に `Core Problem` 節を追加し、「分析モード数の少なさ」より「第1モードが散布図を自然に出せることが product の既定前提になっており、第2モードが scatter-compatible な形へ無理に射影されやすいこと」が本質的問題だと追記
 - current code 上でも `apps/api/src/schemas/visualization_config.py`、`apps/admin/.../VisualizationConfigDialog.tsx`、`apps/public-viewer/components/charts/SelectChartButton.tsx` が `scatterAll` を既定にしている一方、`docs/development/plugin-guide.md` には散布図なし設定例があり、設計意図とプロダクト既定のズレがあることを確認
 - 長期戦略の問いを「analysis mode を増やすこと」から「散布図を前提にしない analysis mode でも product が成立する capability contract へ移れるか」へ寄せ直した
 
 ## [2026-05-23 10:02] filing-back | Jigsaw Sensemaker と散布図の緊張関係を時系列で整理
+
 
 
 
@@ -541,10 +618,12 @@
 
 
 
+
 - [[strategic-development-order-2026-05-23]] に `Working Formulation` を追加し、「embedding を前提としない分析様式でも、短期は embedding 併用で散布図互換に載せ、長期は散布図必須ビューをやめる」という二段構えを作業仮説として明文化
 - [[jigsaw-sensemaker-history]] に `Distilled Take` を追加し、この要約が 2025 4Q 〜 2026 Q1 の議論の収束形として読めることを補記
 
 ## [2026-05-23 00:10] ingest | Docker Desktop 回避策（WSL2 + Docker Engine）の GPT ブレストを反映
+
 
 
 
@@ -558,6 +637,7 @@
 
 
 
+
 - 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
 - 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
 - [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
@@ -566,11 +646,13 @@
 
 
 
+
 - 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
 - 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
 - [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
 
 ## [2026-05-22 23:45] ingest | Windows 配布形態に関する nishio ↔ GPT ブレストを取り込み
+
 
 
 
@@ -583,6 +665,7 @@
 
 
 
+
 - 新規 source [[windows-powershell-default-installation]] を追加。Microsoft Learn を根拠に、Windows PowerShell 5.1 は Windows client 10 以降で既定インストール、ただし `pwsh` とは別物であることを整理
 - [[local-dev-setup]] に「通常の Windows 10/11 なら PowerShell は入っている」と書ける根拠を追記
 - [[windows-distribution-options]] に、`setup_win.bat -> powershell.exe` 方針が Windows 10/11 対象として置きやすい前提であることを補記
@@ -591,11 +674,13 @@
 
 
 
+
 - `PR #858` は close し、issue #731 に「`.bat` 単体の ASCII 化ではなく、`setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体に分離する」方針をコメント
 - `work/kouchou-ai/` で branch `codex/issue-731-windows-setup-powershell` を切り、`setup_win.bat` の薄化、`setup_win.ps1` 新設、Windows セットアップ手順の doc 更新を実施
 - 新しい提案として `PR #863` を作成し、console codepage 依存を避けつつ日本語案内を残す構成へ切り替えた
 
 ## [2026-05-22 23:00] filing-back | 個人マシン runner の実行条件を手動限定へ変更
+
 
 
 
@@ -608,11 +693,13 @@
 
 
 
+
 - [[windows-real-machine-e2e-lessons]] に、docs deploy / repo checkout 上の client build / Docker image build / container 起動後 runtime build は別の観測面であることを追記
 - PR #862 の `public-viewer` failure は、repo には `apps/shared` が存在しても Docker image runner stage には入っていない、という runtime image 欠落だったと整理
 - [[gotchas]] に「CI の success はどの層の success かを確認する」という項目を追加
 
 ## [2026-05-22 22:37] filing-back | Windows 実機 E2E 構築の学びを wiki 化
+
 
 
 
@@ -625,6 +712,7 @@
 
 
 
+
 - Windows 実機では `curl.exe -I` が各 service に即 200 を返す一方、PowerShell の `Invoke-WebRequest` は同じ URL でタイムアウトすることを確認
 - `.github/workflows/windows-real-machine-e2e.yml` の readiness check を `Invoke-WebRequest` から `curl.exe --fail --head --silent --show-error --max-time 5` に変更
 - commit `5981d9e1` を PR branch に push し、`Windows real-machine setup E2E` を含む PR checks が全て success になったことを確認
@@ -634,12 +722,14 @@
 
 
 
+
 - `#860 -> draft PR #862` の Windows 実機 E2E が `public-viewer` の `Cannot find module '../shared/csp'` で失敗していることを確認
 - 原因は runtime build を行う Docker image に `apps/shared` が入っていないことだったため、`apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` に `apps/shared` の copy を追加
 - Windows 実機の Docker Desktop で `public-viewer` と `static-site-builder` の image build が成功することを確認し、commit `2928890b` を PR branch に push
 - [[meeting-report-draft]] に進行中項目として追記
 
 ## [2026-05-22 22:12] filing-back | Issue #860 を runner 実装込みで PR 化
+
 
 
 
@@ -662,6 +752,7 @@
 
 
 
+
 - `work/kouchou-ai/` を `main@e6b2d72` まで同期し、assignee なしの `#860` を `nishio` に assign
 - `docs/development/windows-real-machine-setup-verification.md` を追加し、`setup_win.bat` + Docker Desktop (Linux containers) の実機検証手順を整理
 - `docs/getting-started/windows-setup.md` から検証手順へリンクし、`mkdocs.yml` の nav に登録
@@ -673,11 +764,13 @@
 
 
 
+
 - 新規 [[codex-windows-environment-memo]] を作成
 - Issue #731 / draft PR #858 と Python 導入・wiki lint 復旧の体験を、個人情報を含めずに整理
 - `index.md` に analysis ページとして登録
 
 ## [2026-05-22 20:09] filing-back | Windows setup Issue #731 の進行中修正を記録
+
 
 
 
@@ -691,11 +784,13 @@
 
 
 
+
 - [[meeting-report-draft]] に「月曜にそのまま読む用」セクションを追加
 - technical term を減らし、`#740 -> PR #856` と `#710 -> PR #857` まで反映
 - 箇条書き全体も、会議で口頭共有しやすい短い文へ言い換え
 
 ## [2026-05-22 18:11] filing-back | PR #856 merge と Issue #740 close を wiki に反映
+
 
 
 
@@ -708,10 +803,12 @@
 
 
 
+
 - [[pr-852-error-log-visibility-observation-2026-05-22]] に、`stepKeys` 分離による client-admin build 修正、launch-time error payload 補完、CodeRabbit rate limit と status context の読み方、merge commit `6ff368d` までの更新を追記
 - [[meeting-report-draft]] に `#716 -> PR #852` の成果と、draft PR + CodeRabbit 運用知見を定例会議向け項目として追加
 
 ## [2026-05-22 00:43] filing-back | PR #852 merge と Issue #716 close を wiki に反映
+
 
 
 
@@ -723,11 +820,13 @@
 
 
 
+
 - 新規 source [[pr-852-error-log-visibility-observation-2026-05-22]] を追加
 - draft PR では CodeRabbit 自動 review が skip され、`@coderabbitai review` 後に review in progress 状態へ移ったことを記録
 - 同時点で `client-admin build` failure、他の主要 checks は概ね success / pending だったことも併記
 
 ## [2026-05-21 23:58] filing-back | 定例会議向けの Codex 報告下書きページを追加
+
 
 
 
@@ -739,9 +838,11 @@
 
 
 
+
 - `CLAUDE.md` の運用方針に、Issue / PR のタイトル・本文・コメントは特段の指示がない限り日本語をデフォルトにするルールを追記
 
 ## [2026-05-21 23:48] filing-back | Issue 着手前の assignee 確認と self-assign を運用ルール化
+
 
 
 
@@ -749,6 +850,7 @@
 - 並行して開発してしまう事故を避けるためのルールとして記録
 
 ## [2026-05-21 23:10] filing-back | PR #848 merge と Issue #846 close を wiki に反映
+
 
 
 
@@ -760,11 +862,13 @@
 
 
 
+
 - 新規 source [[pr-849-agent-review-request-observation-2026-05-21]] を追加し、`PR #849` で AI が reviewer request を送れてしまったが、これは望ましい運用ではないという観測を記録
 - [[coding-agents]] と [[contributing]] に、「人間 attention を使う GitHub 操作は AI の裁量外で、人間の明示指示が必要」というルールを追記
 - `CLAUDE.md` の運用方針にも reviewer request / approval 催促 / admin merge の明示指示制を追加
 
 ## [2026-05-21 22:19] filing-back | Issue #820 の current state を GitHub live state と current main で整理
+
 
 
 
@@ -776,11 +880,13 @@
 
 
 
+
 - `work/kouchou-ai/` を `origin/main@14e9772987b95af816d33e9fe09315715ac200b9` まで同期済みであることを確認し、`apps/api/src/routers/admin_report.py` の `/admin/environment/verify` が provider-aware であることを確認
 - 新規 analysis [[issue-707-current-state]] を追加し、`#707` の元報告は current main ではそのまま再現しない可能性が高く、論点は Azure path の UI/テスト整理と stale issue 化へ移っていると整理
 - `gh pr list` では 2026-05-21 時点の open PR が `#848` のみで、`#707` 直結 PR は観測されないことも併記
 
 ## [2026-05-21 21:45] filing-back | Issue #833 を UUID / CSP / LocalLLM UX に分割
+
 
 
 
@@ -792,11 +898,13 @@
 
 
 
+
 - `work/kouchou-ai/` の current `main@5d591ef` で static export 周辺を再確認し、Issue `#683` の元症状だった `opengraph-image.png` の `generateStaticParams()` 欠落 build error が current main では非再現であることを確認
 - GitHub Issue `#683` に確認結果をコメントし、論点が「未修正 build bug」ではなく no-report 時の期待挙動へ移っているとして close
 - [[issue-priority-through-2026-09]] から `#683` を「未解決の直接バグ」優先枠として扱う記述を外し、[[public-viewer-build-behavior]] と [[pr-835-static-build-fail-fast-observation-2026-05-19]] に current state 補記を追加
 
 ## [2026-05-21 20:42] filing-back | PR #844 merge と Issue #836 / #837 close を wiki に反映
+
 
 
 
@@ -808,12 +916,14 @@
 
 
 
+
 - 新規 [[pypi-release-timing-automation]] を作成し、「publish 自動化」と「tag 付け自動化」を段階分けして整理
 - 結論: tag 付けの自動化は 2026-05 時点では見送り、Trusted Publishing と TestPyPI 経路の方が先
 - [[pypi-release-trigger]] と [[pypi-auto-release-requirements]] の Open Questions に新ページへの導線を追加
 - [[open-decisions]] B3 にも判断サマリを併記
 
 ## [2026-05-21 20:02] filing-back | developer-wiki の GitHub Pages 配信を Quartz へ実切替
+
 
 
 
@@ -827,11 +937,13 @@
 
 
 
+
 - [[refactoring-status]] を更新し、`main@42d2afb` で Task 2.5.6（extras 分割）が merge 済みになったことを反映
 - [[open-decisions]] から stale になった B4 extras 分割項目を外し、open PR `#844` の analysis-core CLI preflight / filesystem-based docs を C4 として追加
 - `#838` については、runtime block ではなく developer/test concern 寄りという current 判断を C4 の説明に含めた
 
 ## [2026-05-21 15:05] filing-back | developer-wiki の GitHub Pages 配信は MkDocs より Quartz を第一候補とする方針を整理
+
 
 
 
@@ -843,11 +955,13 @@
 
 
 
+
 - [[refactoring-status]] の `report.html` 関連記述を補正し、API の `--without-html` 固定は「CLI 既定に未追随」より「利用モード別 artifact 契約の意図的分岐」と読めるよう更新
 - [[usage-modes]] に、Web は JSON + `public-viewer`、CLI は self-contained `report.html` 観察用HTMLを重視することを明示し、なぜ API が `--without-html` 固定なのかを新規読者向けに補足
 - [[cli]] にも同趣旨の説明を追記し、「未整合」ではなく「モード別 canonical path の違い」として読ませる導線を追加
 
 ## [2026-05-21 14:38] filing-back | Task 2.5.6 の extras 分割を独立 PR として切る条件を整理
+
 
 
 
@@ -859,12 +973,14 @@
 
 
 
+
 - `work/kouchou-ai/` を `main@0e1552d` まで fast-forward し、open PR が 0 件であることを確認
 - [[refactoring-status]] の Phase 3b を dormant から完了へ更新し、残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
 - [[workflow-defaultization-blockers]] を、未解決 blocker 一覧ではなく「解消された blocker と follow-up の整理」として読み替えた
 - [[open-decisions]] から Phase 3b default 化未完の項目を外した
 
 ## [2026-05-21 13:30] ingest | DD2030 書籍を開発向け source として取り込み
+
 
 
 
@@ -880,6 +996,7 @@
 
 
 
+
 - `work/kouchou-ai/` を `main@0e1552d` まで fast-forward し、open PR が 0 件であることを確認
 - [[refactoring-status]] の Phase 3b を dormant から完了へ更新し、残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
 - [[workflow-defaultization-blockers]] を、未解決 blocker 一覧ではなく「解消された blocker と follow-up の整理」として読み替えた
@@ -889,10 +1006,12 @@
 
 
 
+
 - [[pr-840-workflow-defaultization-observation-2026-05-20]] に `04a8e97` を反映し、refactoring docs / deprecated README が merge 後前提の canonical path へ更新されたと追記
 - [[workflow-defaultization-blockers]] の docs drift を「未着手」ではなく「主要 docs 更新済み、残差確認フェーズ」へ寄せ直した
 
 ## [2026-05-21 04:41] filing-back | Phase 3b の完了条件を必須条件と許容差分に分けて整理
+
 
 
 
@@ -904,11 +1023,13 @@
 
 
 
+
 - 新規ページ [[hierarchical-status-semantics]] を追加し、legacy `.run()` と workflow path の `hierarchical_status.json` を項目別に比較
 - [[workflow-defaultization-blockers]] から status file blocker の中身を新ページへリンク
 - [[refactoring-status]] の Open Questions に status semantics の残論点を追加
 
 ## [2026-05-21 04:21] filing-back | workflow default化の「実装上の切替」と「main / 運用宣言」の違いを wiki に追記
+
 
 
 
@@ -919,10 +1040,12 @@
 
 
 
+
 - [[workflow-defaultization-blockers]] の含意に、branch 実装状態と main / 運用宣言は別だという読み分けを追記
 - [[refactoring-status]] の Phase 3b に、branch 上でかなり切り替わっていることと canonical state はまだ別段階だという整理を追記
 
 ## [2026-05-21 02:42] filing-back | PR #840 の real rerun e2e と failure step status API 確認を wiki に反映
+
 
 
 
@@ -935,12 +1058,14 @@
 
 
 
+
 - [[pr-840-workflow-defaultization-observation-2026-05-20]] に `3737642`, `1e3ec9e`, `6f940fc`, `d43a07b`, `b163ba2` を反映し、failure semantics と duplicate/reuse rerun plan の確認が進んだことを追記
 - [[workflow-defaultization-blockers]] の「まだ足りないこと」を current state に合わせて更新し、入口確認より real LLM を含む実データ寄り e2e と docs 整理が中心になったと整理
 - [[refactoring-status]] の Phase 3b 説明を更新し、config rerun / duplicate reuse / `from_config()` rerun plan integration まで branch 上で確認が進んだと追記
 - PR #840 本文も、duplicate/reuse 経路と failure semantics まで反映した日本語説明へ更新
 
 ## [2026-05-20 18:07] filing-back | PR #840 の CLI/API 入口確認進展と PR #841 の hook blocker 切り出しを wiki に反映
+
 
 
 
@@ -953,6 +1078,7 @@
 
 
 
+
 - [[workflow-defaultization-blockers]] に、「まだ『そのまま切り替えて安全』と言い切れない理由」と「標準経路化の残課題（優先順）」を追記
 - [[refactoring-status]] の Open Questions 末尾に、この整理への参照を追加
 - draft PR `#840` の本文を、現在の実装段階に合わせた平易な日本語へ書き直すための整理として反映
@@ -961,10 +1087,12 @@
 
 
 
+
 - `pr-840-workflow-defaultization-observation-2026-05-20.md` に `cc17509`, `24e02cc`, `ec694b7` を追記
 - `workflow-defaultization-blockers.md`, `refactoring-status.md` を、CLI default path 切替と API launcher 共通化まで進んだ状態に更新
 
 ## [2026-05-20 12:46] filing-back | workflow default 化の実装進捗を wiki に反映
+
 
 
 
@@ -978,6 +1106,7 @@
 
 
 
+
 - 新規 analysis [[workflow-defaultization-blockers]] を追加し、Phase 3b が dormant の理由を「未使用」ではなく、初期 `comments` artifact、status 永続化、`without_html`/`without-html` key drift、visualization artifact 契約の差分として整理
 - [[refactoring-status]] の Phase 3b に、default 化 blocker の参照を追記
 - [[open-decisions]] の B6 を更新し、「切替タイミング未定」だけでなく、未吸収の実装差分があることを明記
@@ -988,11 +1117,13 @@
 
 
 
+
 - 新規 source ページ [[worktree-hygiene-observation-2026-05-20]] を追加し、`issue-830` 本筋ではなく `report validation` / static build fail-fast / `.venv-ci` / `apps/api/uv.lock` が混在していたことを観測メモ化
 - 新規 analysis ページ [[worktree-hygiene]] を追加し、`work/kouchou-ai/` を current tree の基準面として保つための dedicated worktree / ignore 運用を整理
 - `PR #839` (`[codex] ignore apps/api uv lockfile`) の作成、checks success、`REVIEW_REQUIRED` による block、`gh pr merge --admin` による merge を source に反映
 
 ## [2026-05-20 12:02] filing-back | `refactoring-status` を current `main@b4d4bcf` に同期
+
 
 
 
@@ -1005,10 +1136,12 @@
 
 
 
+
 - [[contributing]] に、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追加
 - review 方針と open PR の見方にも、主経路変更か補助出力変更かを見分ける観点を追記
 
 ## [2026-05-20 11:40] filing-back | `refactoring-status` に利用モード別の補助線を追加
+
 
 
 
@@ -1019,10 +1152,12 @@
 
 
 
+
 - [[problem-list-from-open-issues-2026-05-19]] に、「ユーザが感じた困りごとは本物でも issue 内の提案解は stale なことが多いので、両者を分けて読む」という heuristic を追記
 - [[usage-modes]] に、研究者・データサイエンティスト向けの `CLI` 最適化と、非エンジニア向けの `Zip + setup.bat + Web UI` 完結導線を別問題として扱う含意を追記
 
 ## [2026-05-19 17:51] filing-back | 利用モードごとの正規入口方針を wiki に反映
+
 
 
 
@@ -1033,10 +1168,12 @@
 
 
 
+
 - [[problem-list-from-open-issues-2026-05-19]] に `Priority Through 2026-09` を追加し、15 個の根本問題を current path 安定化と公開運用事故の回避を基準に並べ替えた
 - 入口の canonical path 固定、preflight、不安定な公開経路、provider 誤判定、失敗時の観測可能性を上位に置き、アルゴリズム探索や provider 拡張は後段へ回す整理にした
 
 ## [2026-05-19 17:28] filing-back | open issue 145 件から「解決すべき問題」一覧を抽出
+
 
 
 
@@ -1050,6 +1187,7 @@
 
 
 
+
 - 新規 source [[open-issues-snapshot-2026-05-19]] を追加し、`gh issue list` / `gh issue view` / `gh pr list` に基づく 2026-05-19 時点の open issue snapshot を記録
 - 新規 analysis [[issue-priority-through-2026-09]] を追加し、`analysis-core` CLI の canonical path 固定と Web/static 公開の事故回避を 9 月前の最優先とする整理を追記
 - [[book-release-development-plan-2026-09]] に update を追記し、issue ベースの優先度案を既存の 9 月計画ページから参照できるようにした
@@ -1059,10 +1197,12 @@
 
 
 
+
 - 新規 source ページ [[pr-722-filesystem-validation-observation-2026-05-19]] を追加し、draft/open/conflicting 状態と deprecated `server/...` 経路への増築である点を観測メモ化
 - 新規 analysis ページ [[pr-722-merge-assessment]] を追加し、「そのまま merge ではなく current `analysis-core` 向けに再設計」が妥当という判断を残した
 
 ## [2026-05-19 16:10] filing-back | `PR #801` は current `main` clean install で非再現だったことを追記
+
 
 
 

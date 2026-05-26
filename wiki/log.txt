@@ -3,6 +3,8 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-26 15:36	filing-back	旧 issue `#629` を close し、`fetch_reports` 論点を `#870` / `#871` に再編
+2026-05-26 15:31	filing-back	`fetch_reports.py` を migration 手段として読み直し、storage health check 置換案を整理
 2026-05-26 15:10	filing-back	log を「人間向け 7 日 log.md」と「AI 向け全件 log.txt」に分離、無検出 lint は記録対象外に
 2026-05-26 14:30	filing-back	wiki index を「人間向け curated index.md」と「AI 向け全件 index.txt」に分離
 2026-05-26 14:03	ingest	2026-05-25 定例後の議事録再取得と meeting-report-draft の rotate

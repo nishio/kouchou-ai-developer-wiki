@@ -28,7 +28,8 @@ sources:
 
 ## 次回定例向け下書き (2026-06-01 向け)
 
-（次回までの作業をここに追記）
+- `#629` の掘り下げとして、`fetch_reports.py` はストレージ機能が無かった初期の「deploy 前に API から吸い出して守る」発想の名残で、current main の storage sync / restore 本線とはずれていることを整理した。今後は script 自体を強化するより、migration 専用へ降格し、Azure Blob の read/write を軽く確認する storage health check を deploy safety に据える方が筋がよい。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
+- その整理に合わせて、旧 `#629` は close し、`#870`（`fetch_reports.py` の役割整理）と `#871`（deploy safety を Blob Storage health check に切り替える）へ分解した。次に実装するなら `#871` を先に進め、その後 `#870` で script / docs の降格を片付ける順がよい。[[github-dev-docs]]より [[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
 
 ## Open Questions
 
@@ -36,4 +37,5 @@ sources:
 
 ## Updates
 
-（次回までの作業の進行状況をここに追記）
+- 2026-05-26: `fetch_reports.py` を current storage 本線とのズレとして整理し、deploy 前バックアップ常設より storage health check 置換が筋だという analysis を追加
+- 2026-05-26: 旧 issue `#629` を close し、`#870` / `#871` に整理し直した
