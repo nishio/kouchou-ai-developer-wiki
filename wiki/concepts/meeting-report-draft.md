@@ -28,6 +28,14 @@ sources:
 
 ## 次回定例向け下書き (2026-06-01 向け)
 
+- pipeline step 追加判断に、open PR `#866` / `#867` / `#874` も反映した。`#866` は LLM grouping を既存 step に押し込まず workflow として切る良い例、`#867` は downstream step 比較のための reuse/rerun 基盤、`#874` は `layouts` という named layout artifact を first-class にする点では筋がある。ただし `#874` は CI failure が残っており、default workflow を 9 step 化する意味づけを PR 本文・docs・tests に反映する必要がある。[[pipeline-step-addition-framing-2026-05-27]]より [[open-pr-pipeline-step-observation-2026-05-28]]より
+- `#874` の設計判断をメンテナーと議論するため、短い論点整理と貼り付け用文面を [[pipeline-step-design-maintainer-discussion-2026-05-28]] に切り出した。論点は「CI で落ちている `8 steps` 固定テストを修正し、default pipeline への step 追加を許容する方向へ進むか」。許容するなら、単に `8 -> 9` ではなく、step graph / artifact contract を守るテストへ移行する。
+- `#741` 向けの最小修正として、clean worktree `work/kouchou-ai-issue-741/` の branch `codex/issue-741-azure-deploy-concurrency` で `.github/workflows/azure-deploy.yml` に workflow-level `concurrency` を追加した。`cancel-in-progress: false` で main の deploy を 1 本ずつ順番待ちさせ、`ContainerAppOperationInProgress` を起こしにくくする方針。[[issue-741-current-state-2026-05-26]]より
+- `#741` は current main で「毎回落ちる deploy bug」というより、2026-05-21 の build-context / admin build failure はすでに解消済みで、直近の本当の失敗は 2026-05-22 の `ContainerAppOperationInProgress` だったと整理した。つまり今の主因は npm flaky ではなく、近接する main push が Azure Container Apps 更新で競合すること。まず検討すべき修正は workflow-level concurrency と Azure update retry である。[[issue-741-current-state-2026-05-26]]より
+- `#121` と `#283` の再観測を踏まえ、スマホでは現状の散布図 UI をそのまま使うのは現実的でないという前提で、新規 issue `#872` `[FEATURE] スマホ環境では散布図と別ビューを提供する方針を検討する` を作成した。論点は「responsive 調整で粘るか」ではなく、「mobile では静的画像・クラスタ一覧・簡略図など別ビューを既定にするか」を決めること。これに合わせて `#121` と `#283` の `bug` ラベルは外し、上位検討 issue の参考課題へ寄せた。[[remaining-bug-issues-2026-05-26]]より [[github-dev-docs]]より
+- 残っている `[BUG]` title issue を live state と current `origin/main@e5ed743` で棚卸しした。`#283` `#121` は散布図 UI の未解決課題、`#741` は Azure deploy workflow の flakiness としてまだ active。一方 `#731` は stale 寄り、`#478` は禁則処理実装か HTML tooltip 再設計のどちらかが必要で、コストの割に効果が小さいため改善 feature 寄りの低優先先として扱い、`bug` ラベルも外した。[[remaining-bug-issues-2026-05-26]]より
+- `worktree: codex/mst-visualization-prototype` で `LLM grouping` 済み 422 argument の可視化を、MST overlay / supervised UMAP / semi-supervised UMAP / LDA / centroid-MDS と順に試したが、どれも「cluster が離れすぎる」か「他 group に混ざって見える」問題を解消できなかった。最終的には、embedding 由来散布図を主図にする発想をやめ、cluster 間配置と cluster 内配置を分離して点を所属島から出さない `semantic island map` を基準線にする判断へ寄せた。[[semantic-island-map-prototype-2026-05-26]]より
+- 直近研究で繰り返し出た「pipeline に step を足す」論点を整理した。結論は、step 数そのものではなく、境界・反例・bridge・未解決カードのような新しい durable artifact / capability を first-class にすべきかで判断すること。`label_refinement` は optional 実験、`interpretation_artifacts` は `aggregation` に押し込まず独立成果物として切る方が筋、という整理にした。[[pipeline-step-addition-framing-2026-05-27]]より
 - `#629` の掘り下げとして、`fetch_reports.py` はストレージ機能が無かった初期の「deploy 前に API から吸い出して守る」発想の名残で、current main の storage sync / restore 本線とはずれていることを整理した。今後は script 自体を強化するより、migration 専用へ降格し、Azure Blob の read/write を軽く確認する storage health check を deploy safety に据える方が筋がよい。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
 - その整理に合わせて、旧 `#629` は close し、`#870`（`fetch_reports.py` の役割整理）と `#871`（deploy safety を Blob Storage health check に切り替える）へ分解した。次に実装するなら `#871` を先に進め、その後 `#870` で script / docs の降格を片付ける順がよい。[[github-dev-docs]]より [[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
 
@@ -37,5 +45,18 @@ sources:
 
 ## Updates
 
+- 2026-05-28: pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映し、`#874` は named layout artifact として筋がある一方、CI failure と default 9 step 化の整理が必要だと追記
+- 2026-05-28: `#874` の step 追加設計判断をメンテナーと議論するため、`8 steps` 固定テストを修正して default pipeline への step 追加を許容するか、という意思決定に焦点を当てた brief へ修正
+- 2026-05-26: draft PR `#873` の checks を確認し、`CodeQL/Analyze (python)` は `github/codeql-action` archive の取得失敗で落ちており、concurrency 修正自体の failure ではないと確認
+- 2026-05-26: `#741` 向けに `azure-deploy.yml` へ workflow-level `concurrency` を追加する最小修正を `codex/issue-741-azure-deploy-concurrency` で開始
+- 2026-05-26: `#741` の現況を整理し、主因は npm flaky ではなく `main` 近接 push による Azure 更新競合だと読むページ [[issue-741-current-state-2026-05-26]] を追加
+- 2026-05-26: `#121` / `#283` の局所修正だけではスマホ利用の根本問題が残ると判断し、mobile 別ビュー方針を検討する issue `#872` を追加。合わせて両 issue の `bug` ラベルも除去
+- 2026-05-26: 残存 `[BUG]` title issue 5 件の整理を更新し、`#731` は stale 寄り、`#478` は改善 feature 寄りの低優先先として `bug` ラベルも除去、`#741` `#283` `#121` は active という判断に寄せた
+- 2026-05-26: `analysis-core` の単一 HTML 可視化で、クラスタ内 MST + クラスタ間 centroid MST を重ねる試作を `codex/mst-visualization-prototype` worktree で開始
+- 2026-05-26: MST overlay / supervised UMAP / LDA 系の試行では所属と geometry の衝突を解消できず、`LLM grouping` 可視化の主図は cluster-first な `semantic island map` に寄せる判断を [[semantic-island-map-prototype-2026-05-26]] として整理
+- 2026-05-27: pipeline step 追加案を、step 数ではなく成果物責務で判断する整理として [[pipeline-step-addition-framing-2026-05-27]] に filing back
 - 2026-05-26: `fetch_reports.py` を current storage 本線とのズレとして整理し、deploy 前バックアップ常設より storage health check 置換が筋だという analysis を追加
 - 2026-05-26: 旧 issue `#629` を close し、`#870` / `#871` に整理し直した
+- 2026-05-26: open PR review コメント対応として、`#867` `codex/reuse-from-outputs` で reuse seed 判定を source run の `completed_jobs` 基準へ修正し、seeded params も current config ではなく source params を保持するよう直した
+- 2026-05-26: open PR review コメント対応として、`#866` `codex/llm-grouping-pr` で `analysis_mode` の未知値 validation、prompt 変更の dependency 反映、legacy embeddings 読み込み時の安全化、`assignment_batch_size<=0` 時の batching 修正を入れた
+- 2026-05-26: open PR review コメント対応として、`#863` `codex/issue-731-windows-setup-powershell` で API key 改行エラーの日本語化、`docker compose` を `$PSScriptRoot` で実行する修正、非対話失敗時の compose exit code 保持を追加した

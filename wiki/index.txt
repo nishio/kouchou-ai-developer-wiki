@@ -57,6 +57,7 @@ meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — we
 open-issue-backlog-2026-05-19	source	sources/open-issue-backlog-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue 145 件を本文付きで読み、recent issue だけでなく古い backlog も含めて未解決問題の全体像を取るための source
 open-issues-snapshot-2026-05-19	source	sources/open-issues-snapshot-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue を新しい順に読み、`analysis-core` CLI 整備と Web/静的公開まわりの事故修正に論点が集中していることを記録した snapshot
 open-pr-observation-2026-05-18	source	sources/open-pr-observation-2026-05-18.md	2026-05-18 の open PR / review triage 実験で観測した head branch 更新挙動
+open-pr-pipeline-step-observation-2026-05-28	source	sources/open-pr-pipeline-step-observation-2026-05-28.md	2026-05-28 時点の open PR 観測。pipeline step 追加判断に直接関係するのは `#866` LLM grouping、`#874` semantic island layout、補助的に `#867` reuse-from で、`#874` は named layout artifact として筋がある一方 CI は未通過
 open-pr-snapshot-2026-05-18	source	sources/open-pr-snapshot-2026-05-18.md	2026-05-18 時点の `digitaldemocracy2030/kouchou-ai` open PR 一覧を、作者種別と stale 度合いを見るために取得したスナップショット
 pr-722-filesystem-validation-observation-2026-05-19	source	sources/pr-722-filesystem-validation-observation-2026-05-19.md	`PR #722` は 2025-10-23 作成の draft open PR で、ファイルシステム実行の文書化と validation を追加するが、2026-05-19 時点では deprecated な旧 `server/...` 経路を増築している
 pr-727-static-build-validation-observation-2026-05-19	source	sources/pr-727-static-build-validation-observation-2026-05-19.md	`PR #727` は「公開レポート 0 件時の静的 build エラー改善」を狙うが、2026-05-19 時点の patch には validation が実行されない不具合と API URL 解決のずれがある
@@ -113,6 +114,7 @@ graph-visualization-proposal-2026-05-25	analysis	analyses/graph-visualization-pr
 hierarchical-status-semantics	analysis	analyses/hierarchical-status-semantics.md	`hierarchical_status.json` は branch 上で workflow path でもほぼ legacy 互換になったが、`current_job` の残し方や `duration` など一部に意味論差分が残る
 issue-530-current-state	analysis	analyses/issue-530-current-state.md	Issue #530 の『`server/requirements.txt` を追加すべき』という処方箋は、2026-05-25 時点の current main には合っておらず、現行 repo では API 依存は `apps/api/requirements.lock` と `pyproject.toml` で管理されている
 issue-707-current-state	analysis	analyses/issue-707-current-state.md	Issue #707 は 2026-05-21 に close され、backend の provider-aware verify 実装が current main で非再現だったことから、元報告は stale bug と判断された
+issue-741-current-state-2026-05-26	analysis	analyses/issue-741-current-state-2026-05-26.md	Issue `#741` は 2026-05-26 時点で完全に stale ではないが、主因は当初想定の npm registry flaky よりも `main` への近接 push で Azure Container Apps 更新が競合することに寄っており、2026-05-21 の build-context failure はすでに main で解消済み
 issue-820-current-state	analysis	analyses/issue-820-current-state.md	Issue #820 は 2026-05-21 時点で open のままで、静的エクスポート配信先における CSP 設定ガイド不足を追う issue としてまだ有効であり、app 側の dynamic CSP header 整備は `PR #848` merge により別経路で先に前進した
 issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.md	2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
@@ -131,6 +133,8 @@ npm-vs-pnpm	analysis	analyses/npm-vs-pnpm.md	なぜ pnpm 必須で npm 非対応
 ohki-discussion-reflection-2026-05-25	analysis	analyses/ohki-discussion-reflection-2026-05-25.md	ohki-shingo との議論は、散布図互換の技術判断を、自治体利用で公開UIが担うべき説明責務へ引き戻したものとして読める
 open-decisions	analysis	analyses/open-decisions.md	未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類
 phase3b-exit-criteria	analysis	analyses/phase3b-exit-criteria.md	Phase 3b を「完了」と書くには workflow path が production 入口として実用互換であることを示せば足り、status file の byte-level 完全互換までは必須ではない
+pipeline-step-addition-framing-2026-05-27	analysis	analyses/pipeline-step-addition-framing-2026-05-27.md	直近研究で繰り返し出た pipeline step 追加案は、step 数ではなく「新しい成果物責務を first-class にするか」で判断するのが筋。境界・反例・bridge は独立成果物に、単なる label copy 改善は実験的 optional step に留める
+pipeline-step-design-maintainer-discussion-2026-05-28	analysis	analyses/pipeline-step-design-maintainer-discussion-2026-05-28.md	pipeline step 追加設計をメンテナーと議論するための論点整理。主題は `#874` を optional にするかではなく、`8 steps` 固定テストを修正して default pipeline への step 追加を許容する設計判断に進むかどうか
 pr-722-merge-assessment	analysis	analyses/pr-722-merge-assessment.md	`PR #722` は validation 強化の意図自体は理解できるが、2026-05-19 時点では deprecated shim を増築する stale patch なので、そのまま merge すべきではない
 pr-727-merge-assessment	analysis	analyses/pr-727-merge-assessment.md	`PR #727` は問題設定自体は妥当だが、2026-05-19 時点の patch は validation が実際には動かず、API URL 解決も現行実装とずれているため、そのまま merge すべきではない
 pr-735-merge-assessment	analysis	analyses/pr-735-merge-assessment.md	`PR #735` は `Issue #685` に触れる実問題を含むが、draft / conflicts / stale path 前提なので merge ではなく current tree への作り直しとして扱うべき
@@ -144,7 +148,9 @@ pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
 refactoring-status	analysis	analyses/refactoring-status.md	v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up
+remaining-bug-issues-2026-05-26	analysis	analyses/remaining-bug-issues-2026-05-26.md	2026-05-26 時点で open の `[BUG]` タイトル issue と周辺ラベルを current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で見直すと、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は上位検討 issue `#872` の参考課題として bug ラベルを外し、`#731` は stale 寄りで再観測または close 判断が必要
 report-slug-config-behavior	analysis	analyses/report-slug-config-behavior.md	`reports/:slug` は current 通常生成物なら `config` を返すが、router に validation が無いため壊れた成果物から `config` 欠損 payload を公開しうる
+semantic-island-map-prototype-2026-05-26	analysis	analyses/semantic-island-map-prototype-2026-05-26.md	`LLM grouping` された 422 argument の 2D 可視化を `UMAP` / supervised UMAP / LDA / centroid-MDS で試した結果、embedding 由来散布図を主図にするより、cluster-first な semantic island map の方が要件に合うと分かった
 slack-algorithm-themes	analysis	analyses/slack-algorithm-themes.md	`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類
 slack-design-intents-2025-q4	analysis	analyses/slack-design-intents-2025-q4.md	2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、SenseMaker志向、JSON/YAML カスタマイズ、v4/v5 分離
 slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、Jigsaw 系分類、可視化分離

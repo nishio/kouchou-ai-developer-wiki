@@ -3,6 +3,21 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-28 10:54	filing-back	pipeline step 追加設計のメンテナー議論用 brief を追加
+2026-05-28 00:08	filing-back	pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映
+2026-05-27 15:26	filing-back	pipeline step 追加案を成果物責務で判断する整理を追加
+2026-05-26 22:23	filing-back	`LLM grouping` 可視化は semantic island map を主図候補にする整理を追加
+2026-05-26 20:01	github-ci	draft PR `#873` の checks を確認し、失敗は CodeQL action 取得エラーだと切り分け
+2026-05-26 19:56	filing-back	`#741` 向けに Azure deploy の workflow concurrency を追加
+2026-05-26 19:51	filing-back	`#741` の現況を整理し、主因を Azure 更新競合へ読み替え
+2026-05-26 19:45	github-triage	`#121` と `#283` から `bug` ラベルを外し、`#872` の参考課題へ寄せた
+2026-05-26 19:43	filing-back	スマホ向けに散布図と別ビューを検討する issue `#872` を追加
+2026-05-26 19:33	filing-back	`#121` を実スマホ想定で再観測し、portrait では tap tooltip の広さが主要な使いづらさだと整理
+2026-05-26 19:29	filing-back	`#283` の viewport 別再確認で、一般的なスマホ幅でも overlap が出ることを確認
+2026-05-26 19:27	filing-back	`#283` を browser で再観測し、極小 viewport で hover overlap を再現
+2026-05-26 19:19	github-triage	`#478` から `bug` ラベルを外し、改善 feature 寄りの扱いへ揃えた
+2026-05-26 19:17	filing-back	`#478` を bug というより改善 feature 寄りの低優先先として位置づけ直し
+2026-05-26 18:37	filing-back	残っている `[BUG]` issue を live state と current main で棚卸し
 2026-05-26 15:36	filing-back	旧 issue `#629` を close し、`fetch_reports` 論点を `#870` / `#871` に再編
 2026-05-26 15:31	filing-back	`fetch_reports.py` を migration 手段として読み直し、storage health check 置換案を整理
 2026-05-26 15:10	filing-back	log を「人間向け 7 日 log.md」と「AI 向け全件 log.txt」に分離、無検出 lint は記録対象外に
