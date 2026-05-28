@@ -12,7 +12,7 @@ sources:
   - jigsaw-llm-grouping-experiment-output-2026-05-25.md
   - strategic-development-order-2026-05-23.md
   - open-pr-pipeline-step-observation-2026-05-28.md
-  - pipeline-step-design-maintainer-discussion-2026-05-28.md
+  - pipeline-step-default-policy-decision-2026-05-28.md
 ---
 
 直近の研究メモでは、「pipeline に step を追加する」方向の提案が複数回出ている。表面上は step 数を増やす話に見えるが、実際には次の 2 系統を分けて考えるべきである。
@@ -107,7 +107,7 @@ extraction
 
 新 step にしてよい条件:
 
-- 独立した durable artifact を出す
+- 後続から参照可能な独立成果物を出す
 - downstream consumer が 2 つ以上ある、または将来あり得る
 - 失敗時に、その step だけを再実行・検証したい
 - 評価指標が既存 step と異なる
@@ -162,25 +162,25 @@ extraction
 - この PR は step 追加そのものより先に入る価値が高い
 - `interpretation_artifacts` を試すなら、`--reuse-from` を前提にして実験設計するのがよい
 
-### `#874` semantic island layout は、表示 artifact の first-class 化として筋がある
+### `#874` semantic island layout は、実験 path の表示成果物として扱う
 
 `#874` は aggregation と visualization の間に `hierarchical_layout_generation` step を追加し、`hierarchical_result.json.layouts` に `embedding_umap` / `semantic_island_map` のような named layout を追加する。既存 `arguments[].x/y` は embedding 由来座標のまま残す。[[open-pr-pipeline-step-observation-2026-05-28]]より
 
-これは昨日の基準では **「新 step にしてよい」側** に入る。理由は、単なる prompt variant ではなく、後続 viewer が独立に選べる durable artifact を作っているからである。特に `arguments[].x/y` を上書きせず `layouts` を別 field にする設計は、後方互換性と責務分離の両方を守っている。
+これは「実験 path の独立 step」としては筋がある。単なる prompt variant ではなく、後続 viewer が独立に選べる表示成果物を作っているからである。特に `arguments[].x/y` を上書きせず `layouts` を別 field にする設計は、後方互換性と責務分離の両方を守っている。
 
-ただし注意点もある。`#874` は default hierarchical workflow に常時 `layout_generation` を足すため、pipeline は 8 step 前提から 9 step 前提へ変わる。実際に CI では、Ruff の import / `np` annotation 問題に加えて、`len(specs) == 8` / `len(plan) == 8` / `len(orchestrator.steps) == 8` の固定期待が残っていて Pytest が落ちている。[[open-pr-pipeline-step-observation-2026-05-28]]より
+しかし、それを標準パイプラインに常時追加する理由はまだ弱い。`#874` は default hierarchical workflow に常時 `layout_generation` を足すため、pipeline は 8 step 前提から 9 step 前提へ変わる。実際に CI では、Ruff の import / `np` annotation 問題に加えて、`len(specs) == 8` / `len(plan) == 8` / `len(orchestrator.steps) == 8` の固定期待が残っていて Pytest が落ちている。[[open-pr-pipeline-step-observation-2026-05-28]]より
 
-これは単なる test 修正漏れではなく、**「固定 8 step」という mental model がまだコードとテストに残っている** ことを示している。したがって `#874` を入れるなら、次を明確にすべきである。
+これは単なる test 修正漏れではなく、**実験的な表示機能を標準パイプラインへ入れないための gate** と読むべきである。したがって `#874` は、次を明確にした実験 path として扱うのがよい。[[pipeline-step-default-policy-decision-2026-05-28]]より
 
 - `layout_generation` は analysis step ではなく display artifact step である
 - `embedding_umap` を全 run で作る価値と、`semantic_island_map` を `llm_grouping` に限定して作る価値は分ける
 - `without_html` の時にも `layouts` を作るべきかを決める
-- default workflow に常時入れるのか、capability / config により no-op または optional にするのかを決める
+- 標準 workflow には常時入れず、capability / config / analysis mode のどれで明示有効化するかを決める
 
 判断:
 
 - `#874` の設計方向は肯定。`x/y` を壊さず named layout artifact を足すのは正しい
-- ただし merge 前に CI failure を直すだけでなく、「表示 artifact を first-class にする PR」として位置づけを PR 本文 / docs / tests に反映した方がよい
+- ただし標準パイプラインに追加するのは正しくない。現段階では実験用経路として明示有効化する形に戻す
 - `#874` は `interpretation_artifacts` ではない。これは「表示 artifact」の first-class 化であり、境界・反例・bridge reason の first-class 化は別に残る
 
 ### open PR を踏まえた merge / review 順
@@ -189,11 +189,11 @@ extraction
 
 1. `#867` — green。downstream step 比較の土台なので優先度が高い。
 2. `#866` — green。new mode を workflow として切る方向は妥当。
-3. `#874` — design は筋があるが、CI failure と「default 9 step 化」の整理が必要。`#866` / `#867` の後で review した方が見通しがよい。
+3. `#874` — design は実験として筋があるが、標準 workflow への常時追加はしない。`#866` / `#867` の後で、明示有効化される実験用経路へ戻す前提で review する。
 
 `#863`、`#868`、`#873` はそれぞれ重要だが、pipeline step 追加判断とは別レーンで扱う。
 
-メンテナーと議論する時の短い論点整理と貼り付け用文面は [[pipeline-step-design-maintainer-discussion-2026-05-28]] に切り出した。焦点は `#874` の optional 化ではなく、CI で落ちている `8 steps` 固定テストを修正して、default pipeline への step 追加を許容する設計判断へ進むかどうかである。
+`#874` についての判断は [[pipeline-step-default-policy-decision-2026-05-28]] に切り出した。焦点は「step を増やせるか」一般ではなく、実験的な semantic island layout 生成を標準パイプラインへ常時追加する理由があるかである。現時点ではその理由は弱く、`8 steps` 固定テストは維持する。
 
 ## Open Questions
 
@@ -201,12 +201,12 @@ extraction
 - `unresolved_cards` は exhaustive partitioning とどう両立させるか。`cluster_id = unresolved` ではなく、通常 cluster assignment に加えて `flags: ["boundary", "counterexample"]` を持つ方が安全かもしれない。
 - `label_refinement` は、将来的に `merge_labelling` へ吸収するのか、`semantic_presentation` のような広い step に改名するのか。
 - 大規模データで boundary / bridge をどこまで自動抽出できるか。小規模 LLM pairwise と同じ品質を期待すべきではない。
-- `#874` の `hierarchical_layout_generation` は default workflow に常時入れるべきか、それとも visualization / layout capability が必要な時だけ実行する optional step にするべきか。
-- `8 steps` 固定テストは default pipeline contract を守る gate として維持すべきか、それとも `step graph / artifact contract` を検証するテストへ移行すべきか。
+- `#874` の `hierarchical_layout_generation` を明示有効化する単位は、config、analysis mode、workflow variant のどれがよいか。
+- `8 steps` 固定テストをどこまで標準パイプライン contract として明文化するか。
 - named layout artifact が入った場合、将来の `interpretation_artifacts` も `hierarchical_result.json` に入れるのか、別 artifact にするのか。`layouts` は result JSON 内で自然だが、boundary / bridge reason は肥大化しやすい。
 
 ## Updates
 
 - 2026-05-27: 直近研究で繰り返し出た pipeline step 追加案を、step 数ではなく成果物責務で判断する方針として整理。`label_refinement` は optional 実験、境界・反例・bridge・未解決カードは `interpretation_artifacts` として first-class 化するのが筋、と結論づけた。
-- 2026-05-28: open PR `#866` / `#867` / `#874` を確認し、`#874` の `hierarchical_layout_generation` は named layout という表示 artifact を first-class にする点では筋があるが、default 9 step 化と CI failure の整理が必要だと補正した。
-- 2026-05-28: メンテナー議論用の短い論点整理として [[pipeline-step-design-maintainer-discussion-2026-05-28]] を追加し、`8 steps` 固定テストを修正して default pipeline への step 追加を許容するか、という意思決定へ導線を張った。
+- 2026-05-28: open PR `#866` / `#867` / `#874` を確認し、`#874` の `hierarchical_layout_generation` は named layout という表示 artifact を first-class にする点では筋があるが、標準パイプラインへ常時追加する理由は弱いと補正した。
+- 2026-05-28: [[pipeline-step-default-policy-decision-2026-05-28]] を追加し、`#874` は実験的機能なので標準パイプラインに追加せず、`8 steps` 固定テストを維持する判断へ補正した。

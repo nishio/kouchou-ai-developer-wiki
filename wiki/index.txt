@@ -134,7 +134,7 @@ ohki-discussion-reflection-2026-05-25	analysis	analyses/ohki-discussion-reflecti
 open-decisions	analysis	analyses/open-decisions.md	未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類
 phase3b-exit-criteria	analysis	analyses/phase3b-exit-criteria.md	Phase 3b を「完了」と書くには workflow path が production 入口として実用互換であることを示せば足り、status file の byte-level 完全互換までは必須ではない
 pipeline-step-addition-framing-2026-05-27	analysis	analyses/pipeline-step-addition-framing-2026-05-27.md	直近研究で繰り返し出た pipeline step 追加案は、step 数ではなく「新しい成果物責務を first-class にするか」で判断するのが筋。境界・反例・bridge は独立成果物に、単なる label copy 改善は実験的 optional step に留める
-pipeline-step-design-maintainer-discussion-2026-05-28	analysis	analyses/pipeline-step-design-maintainer-discussion-2026-05-28.md	pipeline step 追加設計をメンテナーと議論するための論点整理。主題は `#874` を optional にするかではなく、`8 steps` 固定テストを修正して default pipeline への step 追加を許容する設計判断に進むかどうか
+pipeline-step-default-policy-decision-2026-05-28	analysis	analyses/pipeline-step-default-policy-decision-2026-05-28.md	PR #874 の semantic island layout 生成は実験的機能なので、現時点では標準パイプラインに追加せず、明示的に有効化する実験用経路として扱うという判断
 pr-722-merge-assessment	analysis	analyses/pr-722-merge-assessment.md	`PR #722` は validation 強化の意図自体は理解できるが、2026-05-19 時点では deprecated shim を増築する stale patch なので、そのまま merge すべきではない
 pr-727-merge-assessment	analysis	analyses/pr-727-merge-assessment.md	`PR #727` は問題設定自体は妥当だが、2026-05-19 時点の patch は validation が実際には動かず、API URL 解決も現行実装とずれているため、そのまま merge すべきではない
 pr-735-merge-assessment	analysis	analyses/pr-735-merge-assessment.md	`PR #735` は `Issue #685` に触れる実問題を含むが、draft / conflicts / stale path 前提なので merge ではなく current tree への作り直しとして扱うべき

@@ -3,12 +3,18 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-28 12:33] filing-back | `#874` は実験的機能なので標準パイプラインに追加しない判断へ修正
+
+- [[pipeline-step-default-policy-decision-2026-05-28]] を追加し、`#874` の semantic island layout 生成は現時点では標準パイプラインに追加せず、明示有効化される実験用経路として扱う判断にした
+- [[pipeline-step-addition-framing-2026-05-27]] と [[meeting-report-draft]] も、`標準 9 step 化を検討する` ではなく `8 steps` 固定テストを標準パイプラインの gate として維持する整理へ補正した
+- 以前のメンテナー議論用 brief は判断ページへ置き換え、貼り付け用文面は削除した
+
 ## [2026-05-28 10:54] filing-back | pipeline step 追加設計のメンテナー議論用 brief を追加
 
 
 
-- 新規 analysis [[pipeline-step-design-maintainer-discussion-2026-05-28]] を追加し、`#874` の CI failure を「`8 steps` 固定テストを修正して default pipeline への step 追加を許容するか」という意思決定として整理した
-- メンテナーへ投げる貼り付け用文面を用意し、許容するなら単に `8 -> 9` ではなく step graph / artifact contract を守るテストへ移行し、許容しないなら `#874` は default workflow に step を足さない形へ戻す、という分岐にした
+- 新規 analysis を追加し、当初は `#874` の CI failure を「`8 steps` 固定テストを修正して標準パイプラインへの step 追加を許容するか」という意思決定として整理した
+- その後の判断で、この brief は [[pipeline-step-default-policy-decision-2026-05-28]] に置き換えた。結論は、実験的な semantic island layout 生成を標準パイプラインに追加しない、である
 - [[pipeline-step-addition-framing-2026-05-27]] と [[meeting-report-draft]] から導線を張った
 
 ## [2026-05-28 00:08] filing-back | pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映
@@ -26,7 +32,7 @@
 
 
 
-- 新規 analysis [[pipeline-step-addition-framing-2026-05-27]] を追加し、直近研究で繰り返し出た step 追加案を「step 数」ではなく「新しい durable artifact / capability を first-class にする必要があるか」で判断する方針として整理した
+- 新規 analysis [[pipeline-step-addition-framing-2026-05-27]] を追加し、直近研究で繰り返し出た step 追加案を「step 数」ではなく「新しい成果物責務を first-class にする必要があるか」で判断する方針として整理した
 - `label_refinement` は default complexity として見せない optional 実験、境界・反例・bridge・未解決カードは `aggregation` に押し込まず `interpretation_artifacts` として切るのが筋、と結論づけた
 - `work/kouchou-ai/` は dirty な `codex/remaining-experiment-wip@47008bc` だったため破壊せず、`origin/main@e5ed743` と WIP の差を分けて扱った
 
