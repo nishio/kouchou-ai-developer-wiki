@@ -4,6 +4,7 @@ summary: "PR #874 の semantic island layout 生成は実験的機能なので�
 sources:
   - pipeline-step-addition-framing-2026-05-27.md
   - open-pr-pipeline-step-observation-2026-05-28.md
+  - source-code.md
   - pipeline.md
   - strategic-development-order-2026-05-23.md
 ---
@@ -46,6 +47,21 @@ semantic island layout 生成は有用な実験候補ではあるが、まだ実
 - 通常実行の時間と mental model が増える
 
 実験的な表示手法に対して、これらを default の負担として引き受ける理由はまだ弱い。
+
+## source code を見た上での補強
+
+`#874` の source code を確認すると、この判断は「wiki 上の抽象論」ではなく、実装差分そのものからも必要である。PR head `27b3be6` は、実験用 layout を任意に呼べるようにするだけではなく、標準 workflow / specs / orchestrator / tests を 9 step 前提へ変更している。[[open-pr-pipeline-step-observation-2026-05-28]]より
+
+特に重要なのは次である。
+
+- `hierarchical_default.py` では `layout_generation` が `steps` に常時追加され、`visualization` は `layout_generation` に依存する。`include_visualization=False` でも `layout_generation` 自体は残る。[[source-code]]より
+- `hierarchical_specs.json` でも `hierarchical_visualization` の dependency が `hierarchical_aggregation` から `hierarchical_layout_generation` に変わっている。[[source-code]]より
+- `orchestrator.py` の `DEFAULT_STEPS` と workflow/status mapping に `hierarchical_layout_generation` が追加されている。つまり progress / rerun / skip の contract にも入っている。[[source-code]]より
+- tests は `len(plan) == 9` や `without_html=True` の rerun でも `hierarchical_layout_generation` が run されることを期待する形へ書き換えられている。[[source-code]]より
+
+このため、`#874` は「表示だけの内部実験」ではなく「標準パイプライン contract の変更」である。手元で PR branch の対象テストを実行すると、9 step 前提に書き換えられた局所テストは `4 passed` だった。これは実装内部の整合性確認にはなるが、標準パイプラインへの昇格判断を正当化するものではない。[[open-pr-pipeline-step-observation-2026-05-28]]より
+
+むしろ、`without_html=True` でも layout generation が run 対象になる点は、表示用実験を default に入れる設計の不自然さを強めている。HTML を出さない通常実行でも `hierarchical_result.json.layouts` を更新する理由が必要になるためである。
 
 ## 今回の PR への判断
 
@@ -97,3 +113,4 @@ semantic island layout 生成は有用な実験候補ではあるが、まだ実
 ## Updates
 
 - 2026-05-28: 初回作成。以前の「メンテナー議論用 brief」を廃止し、西尾判断として `#874` の実験的 layout 生成は標準パイプラインに追加しない方針へ修正した。
+- 2026-05-28: `#874` の source code を確認し、標準 workflow / specs / orchestrator / tests を 9 step 前提へ変更していること、特に `without_html=True` でも `layout_generation` が run 対象になることを判断根拠として追記した。

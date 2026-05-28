@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-28 12:45	filing-back	`#874` の source code 実装確認を追記
 2026-05-28 12:33	filing-back	`#874` は実験的機能なので標準パイプラインに追加しない判断へ修正
 2026-05-28 10:54	filing-back	pipeline step 追加設計のメンテナー議論用 brief を追加
 2026-05-28 00:08	filing-back	pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映

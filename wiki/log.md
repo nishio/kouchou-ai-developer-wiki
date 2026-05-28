@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-28 12:45] filing-back | `#874` の source code 実装確認を追記
+
+- PR head `27b3be6` の `hierarchical_default.py` / `hierarchical_specs.json` / `orchestrator.py` / tests を確認し、`#874` が標準 workflow / specs / status contract を 9 step 前提へ変える実装だと整理した
+- 特に `without_html=True` でも `hierarchical_layout_generation` が run 対象になるため、表示用実験を default に入れる不自然さが code 上も確認できると [[pipeline-step-default-policy-decision-2026-05-28]] に追記した
+- PR branch の局所テストは `4 passed` だったが、これは 9 step 前提の内部整合性確認であり、標準パイプライン昇格の根拠ではないと [[open-pr-pipeline-step-observation-2026-05-28]] に記録した
+
 ## [2026-05-28 12:33] filing-back | `#874` は実験的機能なので標準パイプラインに追加しない判断へ修正
 
 - [[pipeline-step-default-policy-decision-2026-05-28]] を追加し、`#874` の semantic island layout 生成は現時点では標準パイプラインに追加せず、明示有効化される実験用経路として扱う判断にした
