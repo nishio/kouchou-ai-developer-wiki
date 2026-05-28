@@ -28,6 +28,7 @@ sources:
 
 ## 次回定例向け下書き (2026-06-01 向け)
 
+- `#874` は commit `51a7c77` で、`hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults / standard step exports から外し、標準パイプラインを 8 step のまま維持する修正を push した。layout 生成 step と `layouts` を読む visualization は実験コードとして残すが、default では走らない。Ruff / Pytest / Server Tests / CodeQL / CodeRabbit は GitHub Actions で pass。
 - pipeline step 追加判断に、open PR `#866` / `#867` / `#874` も反映した。`#866` は LLM grouping を既存 step に押し込まず workflow として切る良い例、`#867` は downstream step 比較のための reuse/rerun 基盤、`#874` は `layouts` という named layout artifact を作る実験としては筋がある。ただし実験的な semantic island layout 生成を標準パイプラインで常時走らせる理由は弱く、現時点では標準 9 step 化せず、明示有効化される実験用経路に戻す判断とした。[[pipeline-step-addition-framing-2026-05-27]]より [[open-pr-pipeline-step-observation-2026-05-28]]より [[pipeline-step-default-policy-decision-2026-05-28]]より
 - `#741` 向けの最小修正として、clean worktree `work/kouchou-ai-issue-741/` の branch `codex/issue-741-azure-deploy-concurrency` で `.github/workflows/azure-deploy.yml` に workflow-level `concurrency` を追加した。`cancel-in-progress: false` で main の deploy を 1 本ずつ順番待ちさせ、`ContainerAppOperationInProgress` を起こしにくくする方針。[[issue-741-current-state-2026-05-26]]より
 - `#741` は current main で「毎回落ちる deploy bug」というより、2026-05-21 の build-context / admin build failure はすでに解消済みで、直近の本当の失敗は 2026-05-22 の `ContainerAppOperationInProgress` だったと整理した。つまり今の主因は npm flaky ではなく、近接する main push が Azure Container Apps 更新で競合すること。まず検討すべき修正は workflow-level concurrency と Azure update retry である。[[issue-741-current-state-2026-05-26]]より
@@ -44,6 +45,7 @@ sources:
 
 ## Updates
 
+- 2026-05-28: `#874` の実装を、実験的 layout 生成を default pipeline へ追加しない方針に合わせて修正し、標準 8 step contract を維持する形で PR branch へ push
 - 2026-05-28: pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映し、`#874` は named layout artifact として筋がある一方、標準パイプラインへ常時追加する理由は弱いと補正
 - 2026-05-28: `#874` の step 追加設計判断を、西尾判断として「実験的機能なので標準パイプラインには入れず、明示有効化される実験用経路に戻す」方針へ修正
 - 2026-05-26: draft PR `#873` の checks を確認し、`CodeQL/Analyze (python)` は `github/codeql-action` archive の取得失敗で落ちており、concurrency 修正自体の failure ではないと確認

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-28 17:41] filing-back | `#874` を標準 8 step contract 維持へ修正
+
+- `codex/mst-visualization-prototype` に commit `51a7c77` を push し、`hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults / standard step exports から外した
+- layout 生成 step と `layouts` 対応 visualization は実験コードとして残しつつ、default では走らない形にした
+- 手元では Ruff と analysis-core tests `184 passed` を確認し、GitHub Actions でも Ruff / Pytest / Server Tests / CodeQL / CodeRabbit が pass
+
 ## [2026-05-28 12:45] filing-back | `#874` の source code 実装確認を追記
 
 - PR head `27b3be6` の `hierarchical_default.py` / `hierarchical_specs.json` / `orchestrator.py` / tests を確認し、`#874` が標準 workflow / specs / status contract を 9 step 前提へ変える実装だと整理した
