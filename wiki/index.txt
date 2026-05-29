@@ -97,6 +97,7 @@ wiki-pages-tooling-observation-2026-05-21	source	sources/wiki-pages-tooling-obse
 windows-distribution-gpt-brainstorm-2026-05-22	source	sources/windows-distribution-gpt-brainstorm-2026-05-22.md	nishio と外部 GPT の対話メモ。Windows ユーザー向け配布形態を `exe` 単体化か Docker Compose ランチャーか、また正規入口を Docker Desktop と WSL2 のどちらに据えるか、という 2 つの論点を整理したブレスト
 windows-powershell-default-installation	source	sources/windows-powershell-default-installation.md	Microsoft Learn の PowerShell 公式ドキュメントより、Windows PowerShell 5.1 は Windows client 10 以降と Windows Server 2016 以降に既定でインストールされる、という事実確認
 worktree-hygiene-observation-2026-05-20	source	sources/worktree-hygiene-observation-2026-05-20.md	`work/kouchou-ai/` の dirty は `issue-830` 本筋ではなく、別件 2 系統と local 生成物が混ざった状態で、`apps/api/uv.lock` ignore を `PR #839` で main に反映して整理した観測メモ
+zenn-llm-as-a-judge-rubric-evaluation-2026-05-29	source	sources/zenn-llm-as-a-judge-rubric-evaluation-2026-05-29.md	Ubie Tech Blog の LLM-as-a-Judge / ルーブリック評価記事。抽象的な 1-5 点採点ではなく、true/false 可能な criteria に分解し、重要度ごとの points と negative criteria を持たせると、再現性と改善点の特定が上がるという実務向け整理
 agent-sandboxing-strategy	analysis	analyses/agent-sandboxing-strategy.md	AI コーディングエージェント向けの開発環境分離方針 — host full access を標準にしない
 analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md	`analysis-core` の extras 分割は独立 PR で切り出せるが、依存定義だけでなく eager import・CI・インストール導線を同時に整える必要がある
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
@@ -129,8 +130,10 @@ kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlis
 kouchou-ai-paper-draft-ja	analysis	analyses/kouchou-ai-paper-draft-ja.md	広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く
 kouchou-ai-paper-draft-strategy	analysis	analyses/kouchou-ai-paper-draft-strategy.md	広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較
 kouchou-ai-paper-evidence-map	analysis	analyses/kouchou-ai-paper-evidence-map.md	広聴AI紹介論文で想定する主張ごとに、既存の根拠、追加で必要な証拠、未解決ギャップを対応付けた表
-label-coverage-policy-2026-05-29	analysis	analyses/label-coverage-policy-2026-05-29.md	label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。1 キーワードでクラスタ全体を覆うのは不可能なので、最頻トピック A + 残差を覆う B の greedy max-coverage 的な発想を取る。ラベルから dimension が落ちる根本原因の一つは、上流 `hierarchical_initial_labelling` の `sampling_num=10` 完全ランダムサンプリングにもある
+label-coverage-policy-2026-05-29	analysis	analyses/label-coverage-policy-2026-05-29.md	label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。1 キーワードでクラスタ全体を覆うのは不可能なので、最頻トピック A + 残差を覆う B の greedy max-coverage 的な発想を取る。ラベルから dimension が落ちる根本原因の一つは、上流ラベリング入力が API 経由では最大30件、CLI/defaultでは10件のランダムサンプリングであることにもある
 label-judge-mechanism-2026-05-25	analysis	analyses/label-judge-mechanism-2026-05-25.md	2026-05-25 時点のラベル品質 judge は OpenAI/GPT ベースの補助評価であり、`cluster 単位 judge` と `label set 全体 judge` は見ているものが違う。設計判断に使う前に Claude / 人間 judge で較正すべきである
+label-quality-redesign-reset-2026-05-30	analysis	analyses/label-quality-redesign-reset-2026-05-30.md	label refinement 実験は現行実装のまま採用せず、ラベル品質改善を上流入力 sampling、代表例 artifact、judge 較正、UI 表示責務に分けて仕切り直す。今回の refinement は polish-only で中身を見ず、周辺の低コスト改善余地も大きい
+label-quality-rubric-evaluation-2026-05-29	analysis	analyses/label-quality-rubric-evaluation-2026-05-29.md	クラスタラベル品質の judge は、抽象的な 1-5 点ではなく、binary criteria + weights + fatal penalty のルーブリック評価に分解するのがよい。まず `[8,40]` の既存 judge bundle で人間判断に合わせて較正し、標準 pipeline には入れず experimental artifact として回す
 label-refinement-input-scope-2026-05-29	analysis	analyses/label-refinement-input-scope-2026-05-29.md	実験的に追加された hierarchical_label_refinement step は rep args を入力に取らず、上流ラベル + 子クラスタラベルだけを polish する設計になっている。これは『上流の merge_labelling が既に間違えたラベル』を refinement で救えない構造であり、polish が綺麗になるほど誤ラベルが固定化する危険を含む
 nasuka-statements-retrospective-2026-05-25	analysis	analyses/nasuka-statements-retrospective-2026-05-25.md	nasuka の過去発言は、広聴AIを実利用に耐える市民参加インフラへ移すための運用・信頼・反復改善の視点として読める
 niizuma-thread-algorithm-critique	analysis	analyses/niizuma-thread-algorithm-critique.md	新妻 thread は、UMAP後k-means批判そのものよりも『分析の筋の良さ』『散布図の見え方』『説明責務』が別問題だと露出させた点に価値がある
@@ -155,7 +158,7 @@ pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
 refactoring-status	analysis	analyses/refactoring-status.md	v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up
 remaining-bug-issues-2026-05-26	analysis	analyses/remaining-bug-issues-2026-05-26.md	2026-05-26 時点で open の `[BUG]` タイトル issue と周辺ラベルを current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で見直すと、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は上位検討 issue `#872` の参考課題として bug ラベルを外し、`#731` は stale 寄りで再観測または close 判断が必要
-remaining-issue-priority-2026-05-29	analysis	analyses/remaining-issue-priority-2026-05-29.md	2026-05-29 時点の open issue / open PR を見ると、最優先は新規 feature ではなく、進行中 PR の着地、Windows 導線のサポート境界、ラベル品質実験の採用判断、deploy safety の Blob health check 化である
+remaining-issue-priority-2026-05-29	analysis	analyses/remaining-issue-priority-2026-05-29.md	2026-05-29 時点の open issue 121 件を全件メタデータ確認し、本文を古い high-priority / user-facing issue まで読み直すと、project-wide 優先は `#221` 試行錯誤負担削減と `#564` 活用事例公開であり、tactical next は進行中 PR 着地と Windows / cost / API 不安の解消である
 report-slug-config-behavior	analysis	analyses/report-slug-config-behavior.md	`reports/:slug` は current 通常生成物なら `config` を返すが、router に validation が無いため壊れた成果物から `config` 欠損 payload を公開しうる
 semantic-island-map-prototype-2026-05-26	analysis	analyses/semantic-island-map-prototype-2026-05-26.md	`LLM grouping` された 422 argument の 2D 可視化を `UMAP` / supervised UMAP / LDA / centroid-MDS で試した結果、embedding 由来散布図を主図にするより、cluster-first な semantic island map の方が要件に合うと分かった
 slack-algorithm-themes	analysis	analyses/slack-algorithm-themes.md	`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類
@@ -164,6 +167,7 @@ slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2
 strategic-development-order-2026-05-23	analysis	analyses/strategic-development-order-2026-05-23.md	Issue 消化順ではなく、CLI / workflow / plugin / Web 配布を 3 層のプラットフォームとして見ると、先に固めるべきなのは `analysis-core` の共通基盤と plugin 実験の本番導線である
 tokoroten-algorithm-discussion-retrospective	analysis	analyses/tokoroten-algorithm-discussion-retrospective.md	tokoroten とのアルゴリズム議論は、クラスタリング手法の優劣ではなく、散布図プロダクト・深い分析・説明責務・運用ワークフローを分け直す議論だった
 tokoroten-spectral-clustering-reading	analysis	analyses/tokoroten-spectral-clustering-reading.md	tokoroten の spectral clustering メモは、TTTC を『高次元で正しく切る手法』ではなく『UMAP が作る 2D 形状を前提に切る散布図寄りの手法』として理解していた点が重要
+trial-and-error-burden-reduction-2026-05-29	analysis	analyses/trial-and-error-burden-reduction-2026-05-29.md	`#221` 系は単一機能ではなく、作成前確認、API/billing preflight、入力検証、進捗可視化、再利用の5面で「怖くて試せない」「失敗理由が分からない」「やり直しが高い」を減らすテーマである
 tttc-to-analysis-core-history	analysis	analyses/tttc-to-analysis-core-history.md	TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の analysis-core をサーバが呼ぶ現在形までの入口設計の変遷
 umap-seed-history	analysis	analyses/umap-seed-history.md	UMAP / k-means の seed 固定は「完全再現性を実現した仕組み」ではなく、「見た目の揺れを少しでも抑えたい要求」から生まれ、後に並列性とのトレードオフとして見直された
 versioning-strategy	analysis	analyses/versioning-strategy.md	v4 凍結 / v5 plugin 化のリリース戦略 — 書籍出版とのリスク調整

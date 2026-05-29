@@ -43,8 +43,27 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - `apps/api/src/services/report_launcher.py` — subprocess で CLI を呼ぶ層
 - `docs/refactoring/naming_convention.md` — source tree に残る refactoring 由来ドキュメント
 
+## `#221` 系で読んだ current facts (2026-05-29, main tip `0c294da`)
+
+- `apps/admin/app/create/page.tsx` は CSV / spreadsheet / plugin 入力を送信前に `comments` へ組み立て、`comments.length < clusterLv2` の時だけ `window.confirm` で続行確認している
+- `apps/admin/app/create/components/EnvironmentCheckDialog/` と `apps/api/src/routers/admin_report.py` の `/admin/environment/verify` で API 接続チェックは実装済み。OpenAI / Gemini などに軽い chat request を投げ、認証エラー、残高不足、rate limit を分類する
+- `apps/admin/app/create/parseCsv.ts` は `chardet` / `iconv-lite` / `papaparse` を使い、`apps/admin/app/create/utils/columnScorer.ts` はコメント列を推定する
+- `apps/admin/app/create/hooks/useClusterSettings.ts` はコメント数から推奨クラスタ数を自動設定する
+- `apps/api/src/services/llm_pricing.py` と ReportCard 側の `TokenUsage` は実行後の token usage / estimated cost 表示を支えているが、作成前見積もりにはまだ使われていない
+- `apps/admin/app/_components/ReportCard/DuplicateReportDialog/`、`apps/admin/app/reuse/[slug]/page.tsx`、`apps/api/src/services/report_duplicate.py`、`docs/user-guide/reuse-report.md` により、レポート再利用と中間成果物 reuse は current main に入っている
+
+## ラベル入力 sampling / UI 表示の current facts (2026-05-30, main tip `0c294da`)
+
+- 管理画面/API 経由の通常レポート作成では、`apps/api/src/services/report_launcher.py` が `hierarchical_initial_labelling.sampling_num = 30` と `hierarchical_merge_labelling.sampling_num = 30` を設定する
+- analysis-core の config 変換 / builtin plugin default では、initial / merge とも `sampling_num` default は `10`
+- 実際の抽出方法は、initial が `cluster_data.sample(n=sampling_num)`、merge が `current_cluster_data.sample(n=sampling_num)` で、どちらも seed なしの Polars random sample。最大被覆 / FPS / k-medoids / label coverage ではない
+- `hierarchical_aggregation` は `hierarchical_result.json` に全 arguments をそのまま入れる。ここで representative arguments は選んでいない
+- public-viewer の `HierarchyListChart` は deepest-level cluster だけ `argumentList.filter(arg.cluster_ids.includes(cluster.id))` で argument を持たせ、展開時に `argumentsList.slice(0, 10)` を表示する。順序は `hierarchical_result.json` の `arguments` 配列順で、ラベル適合度やクラスタ中心性による代表例選定ではない
+
 ## Updates
 
+- 2026-05-30: `work/kouchou-ai/main@0c294da` を確認し、ラベル付け時の sampling が API 経由では最大 30 件、CLI/default では 10 件で、選択は seed なし random sample であること、UI の「個別データ」表示は representative selection ではなく deepest-level cluster の配列先頭 10 件であることを追記
+- 2026-05-29: `work/kouchou-ai/main@0c294da` を確認し、`#221` 系の current facts として、作成画面の送信前 `window.confirm`、API 接続チェック、CSV parse / column scoring、推奨クラスタ数、実行後 token/cost 表示、再利用機能の実装状況を追記
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy pipeline Python 実装と source tree 上の phase docs が除去された current state へ更新
 - 2026-05-17: 初回 ingest（リファクタ／plugin／CLI／pip 化のコードリーディング）
 - 2026-05-17: AI コーディングエージェント向けの作業用 clone 置き場を `work/kouchou-ai/` に統一

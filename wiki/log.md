@@ -3,6 +3,60 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-30 02:34] filing-back | label refinement 実験を仕切り直す判断を整理
+
+- 今回の label refinement 実装は rep args を見ない polish-only で、上流 sampling / UI representative examples / judge の各層にも改善余地が大きいため、このまま採用候補として進めず仕切り直す判断を記録
+- 新規 analysis [[label-quality-redesign-reset-2026-05-30]] を追加し、ラベル品質改善を `ラベル生成入力 / refinement 責務 / rep args artifact / judge` の 4 レイヤに分解
+- 次の小さな実験候補は、sampling 全件入力、`典型例 / 幅 / 境界` に分けた rep args artifact、judge 入力と rubric 較正、UI 表示責務の切り分け
+
+## [2026-05-30 02:30] filing-back | rep args は典型例だけだと散らばりを隠す
+
+- centroid 近傍や label embedding 類似度で rep args を選ぶ案は納得感がある一方、典型例だけを並べるとクラスタ内の散らばりや副論点を過小に見せるリスクがあると整理
+- [[label-coverage-policy-2026-05-29]] に、rep args を `典型例 / 幅を見せる例 / 境界例` に分ける方針を追記
+- UI / judge 入力では、まず `典型例 2 + 幅 2 + 境界 1` のような少数構成で、納得感と過小表現のバランスを見るのが次の実験候補
+
+## [2026-05-30 02:02] filing-back | ラベル入力 sampling と UI 個別データ表示の現状を確認
+
+- `work/kouchou-ai/main@0c294da` を更新確認し、ラベル付け時の sampling は API 通常経路では initial / merge とも最大 30 件、analysis-core CLI/default では 10 件であると整理
+- 実際の選択は initial / merge とも Polars `DataFrame.sample(n=...)` の seed なし random sample。最大被覆、FPS、k-medoids、ラベル適合度による選択は入っていない
+- UI の `HierarchyListChart` は deepest-level cluster の arguments を `filter` し、初期表示は配列先頭 10 件 (`slice(0, 10)`)。代表例選定ではないため、[[label-coverage-policy-2026-05-29]] と [[source-code]] に補正を追記
+
+## [2026-05-30 01:32] filing-back | 過去ラベル出力 4 候補を rubric judge で再評価
+
+- `codex/remaining-experiment-wip` の rubric judge を、退避済み artifact branch の `jigsaw_sample_comments_400_hierarchical_8_40_refine_{none,setwise,contrast,balanced}` level 1 に対して `gpt-4o-mini` / `sample-mode all` で実行
+- 合計 usage は input 145,652 / output 29,187 / total 174,839 tokens、OpenAI 公開単価ベースの概算費用は $0.03936。結果 JSON は `work/kouchou-ai-remaining-experiment-wip/experiments/evaluation_report/outputs/rubric_eval_2026-05-30/` に保存
+- score_rate は `none=1.0`, `setwise=1.0`, `balanced=1.0`, `contrast=0.9766`、fatal flag は 0 件。v0 rubric は過去の human / Claude judge が拾ったラベルずれに対して甘く、criteria 厳格化か evidence 抽出前処理が次の課題
+
+## [2026-05-29 23:38] filing-back | 実験ブランチにラベル品質 rubric judge を追加
+
+- `work/kouchou-ai-remaining-experiment-wip` (`codex/remaining-experiment-wip`) に `experiments/evaluation_report/src/evaluation_label_rubric_llm.py` を追加し、cluster-level / label-set の binary criteria + points + fatal flags でラベル品質を評価できるようにした
+- `run_evaluation.py --judge rubric` で実行できるよう接続し、CSV/HTML レポートに `rubric_score_rate` / `rubric_score_5` / fatal flags / comment を追加。過去出力を直接再評価できるよう `--dataset-path` / `--output-dir` も追加し、README に使い方を追記
+- 検証: `/tmp` venv で prompt-only smoke、dataset-path smoke、CSV 出力 smoke、HTML render smoke、`ruff check`、`py_compile`、`PYTHONPATH=src pytest tests/test_label_refinement.py -q` (3 passed)
+
+## [2026-05-29 19:52] github-issue | `#221` 系の concrete tracking issue `#884` を起票
+
+- GitHub issue `#884` `[FEATURE] レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` を起票し、labels は `enhancement`, `Admin`, `API`, `design`, `high priority` を付与
+- `#221` は umbrella として残し、`#11`, `#79`, `#292`, `#391`, `#97` を `#884` の下位論点として本文表と checklist に整理。各 issue へ相互リンクコメントを追加した
+- 未分類だった `#391` に `enhancement`, `Admin`, `API` label を追加し、[[trial-and-error-burden-reduction-2026-05-29]] / [[remaining-issue-priority-2026-05-29]] / meeting report draft に反映
+
+## [2026-05-29 19:51] filing-back | ラベル品質 judge をルーブリック評価へ分解する案を整理
+
+- Zenn / Ubie の LLM-as-a-Judge ルーブリック評価記事を確認し、抽象的な 1-5 点採点ではなく `true/false` criteria + points + negative criteria で評価する要点を source 化
+- 新規 analysis [[label-quality-rubric-evaluation-2026-05-29]] を追加し、cluster-level と label-set の 2 層で、coverage / grounding / sibling distinction / scanability / register / fatal penalty を binary criteria に分ける案を整理
+- current main `0c294da` の `sampling_num=10` ランダム入力制約も踏まえ、まず既存 [[label-refinement-judge-bundle-2026-05-25]] で人間判断に較正し、標準 pipeline ではなく offline experimental artifact として回す方針にした
+
+## [2026-05-29 19:31] filing-back | `#221` 系の試行錯誤負担削減を作成前確認パネル中心に整理
+
+- `#221` を単一 feature ではなく、作成前確認、API / billing preflight、入力検証、実行中見通し、再利用の 5 面で「怖くて試せない / 失敗理由が分からない / やり直しが高い」を減らすテーマとして整理
+- current main には API 接続チェック、推奨クラスタ数、実行後 token/cost 表示、再利用機能が既にある一方、レポート作成開始前の判断面には統合されていないと確認
+- 新規 analysis [[trial-and-error-burden-reduction-2026-05-29]] を追加し、最初の PR は `apps/admin/app/create/page.tsx` の既存 `window.confirm` を作成前確認パネルへ置き換える slice がよいと記録。[[source-code]] にも `main@0c294da` の関連実装状況を追記
+
+## [2026-05-29 19:25] filing-back | open issue 121 件を再棚卸しし、優先順を補正
+
+- ユーザ指摘を受け、current open issue **121 件**を `gh issue list --limit 1000` で再確認。前回は全件メタデータは見ていたが本文精読が最近動いた issue 寄りだったため、`#221` / `#564` の high priority と古い user-facing issue (`#11`, `#79`, `#97`, `#292`, `#391`, `#542`, `#696` など) を読み直した
+- [[remaining-issue-priority-2026-05-29]] を補正し、project-wide priority は `#221` 試行錯誤負担削減と `#564` 活用事例公開を上位に戻した。tactical next は進行中 PR 着地、Windows guide 境界、label quality、deploy safety、viewer UX として分けて記録
+- `#221` は `#11` / `#79` / `#292` / `#391` / `#97` へ、`#564` は `#696` / `#542` と website/docs 作業へ分解して進めるのがよい、という整理に修正
+
 ## [2026-05-29 18:30] filing-back | CLAUDE.md に「work/kouchou-ai は常に main、実験ブランチは worktree」を明文化
 
 - 今日の judge 作業で私 (Claude) が `work/kouchou-ai/` 内で直接 `git checkout codex/remaining-experiment-wip` してコード grep してしまい、別セッションでさらに `codex/issue-876-developer-quickstart` に切り替わった状態に遭遇した。短時間の grep でも HEAD を動かすと、次の観察で想定外の state にぶつかる事故が起きると分かった
@@ -598,122 +652,3 @@
 
 - [[strategic-development-order-2026-05-23]] に `Working Formulation` を追加し、「embedding を前提としない分析様式でも、短期は embedding 併用で散布図互換に載せ、長期は散布図必須ビューをやめる」という二段構えを作業仮説として明文化
 - [[jigsaw-sensemaker-history]] に `Distilled Take` を追加し、この要約が 2025 4Q 〜 2026 Q1 の議論の収束形として読めることを補記
-
-## [2026-05-23 00:10] ingest | Docker Desktop 回避策（WSL2 + Docker Engine）の GPT ブレストを反映
-
-- `raw/docker-engine-wsl2-alternative-2026-05-23.txt` を新規追加
-- 新規 source [[docker-engine-wsl2-alternative-2026-05-23]] を追加。Docker Desktop ライセンス問題の回避策として WSL2 Ubuntu に Docker Engine + Compose plugin を直接入れる構成、UX コスト、2 本立て docs 案を critical lens で要約
-- [[windows-distribution-options]] にランタイム基盤の選択軸（ルート A: Docker Desktop / ルート B: Docker Engine in WSL2）を段階軸と直交する第 2 軸として追加し、Open Question にルート B を主要ルートへ昇格させるかを追記
-- [[local-dev-setup]] の Windows 配布 note を 2 軸（段階 / ランタイム基盤）案内に拡張
-- `wiki/index.md` の Sources / Analyses entry を更新
-
-## [2026-05-22 23:55] filing-back | `.bat` から PowerShell へ逃がす判断理由を source / analysis 化
-
-- 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
-- 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
-- [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
-
-## [2026-05-22 23:55] filing-back | `.bat` から PowerShell へ逃がす判断理由を source / analysis 化
-
-- 新規 source [[issue-731-windows-setup-mojibake]] を追加。issue #731 の再現ログから、問題が表示崩れではなく `cmd.exe` のパース破綻を含むことを整理
-- 新規 analysis [[windows-setup-encoding-decision]] を追加。`.bat` 単体で設定非依存に日本語対話を安全に扱いにくい理由と、ASCII ランチャー + PowerShell 本体へ分離する判断を整理
-- [[windows-distribution-options]] と [[local-dev-setup]] から、この判断理由へ辿れるようリンクを追加
-
-## [2026-05-22 23:45] ingest | Windows 配布形態に関する nishio ↔ GPT ブレストを取り込み
-
-- `raw/a.txt` を `raw/windows-distribution-gpt-brainstorm-2026-05-22.txt` にリネーム
-- 新規 source [[windows-distribution-gpt-brainstorm-2026-05-22]] を追加。GPT ブレストを critical lens で要約し、既存 [[usage-modes]] / [[local-dev-setup]] / 進行中の `setup_win.*` 作業と突き合わせた
-- 新規 analysis [[windows-distribution-options]] を追加。非専門家 Windows 配布を `setup_win.*` / ランチャー exe / デスクトップアプリ / 単体 exe の 4 段階で整理し、現状は段階 1 で進行中・段階 2 以降は open question として記録
-- [[usage-modes]] の Open Questions と [[local-dev-setup]] の Windows 落とし穴節から新 analysis へリンクし、`wiki/index.md` Sources / Analyses に追記
-
-## [2026-05-22 23:43] filing-back | Windows PowerShell 標準搭載の根拠を公式 source として追加
-
-- 新規 source [[windows-powershell-default-installation]] を追加。Microsoft Learn を根拠に、Windows PowerShell 5.1 は Windows client 10 以降で既定インストール、ただし `pwsh` とは別物であることを整理
-- [[local-dev-setup]] に「通常の Windows 10/11 なら PowerShell は入っている」と書ける根拠を追記
-- [[windows-distribution-options]] に、`setup_win.bat -> powershell.exe` 方針が Windows 10/11 対象として置きやすい前提であることを補記
-
-## [2026-05-22 23:27] filing-back | Issue #731 の Windows setup 対応方針を PowerShell 分離へ切り替え
-
-- `PR #858` は close し、issue #731 に「`.bat` 単体の ASCII 化ではなく、`setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体に分離する」方針をコメント
-- `work/kouchou-ai/` で branch `codex/issue-731-windows-setup-powershell` を切り、`setup_win.bat` の薄化、`setup_win.ps1` 新設、Windows セットアップ手順の doc 更新を実施
-- 新しい提案として `PR #863` を作成し、console codepage 依存を避けつつ日本語案内を残す構成へ切り替えた
-
-## [2026-05-22 23:00] filing-back | 個人マシン runner の実行条件を手動限定へ変更
-
-- PR #862 の review comment を受け、`actions/checkout` を SHA pinning し、`persist-credentials: false` を追加
-- 公開 repo の workflow が個人 Windows 実機 runner を使う危険を踏まえ、Real Windows E2E の `pull_request` trigger と `schedule` を削除
-- Real Windows E2E は `workflow_dispatch` かつ workflow に定義された実行者条件を満たす場合だけ動く形に変更
-- [[windows-real-machine-e2e-lessons]] / [[gotchas]] / [[meeting-report-draft]] に、個人マシン runner は PR や定期実行から動かさない判断を反映
-
-## [2026-05-22 22:43] filing-back | CI success と実機 E2E failure の観測面の違いを追記
-
-- [[windows-real-machine-e2e-lessons]] に、docs deploy / repo checkout 上の client build / Docker image build / container 起動後 runtime build は別の観測面であることを追記
-- PR #862 の `public-viewer` failure は、repo には `apps/shared` が存在しても Docker image runner stage には入っていない、という runtime image 欠落だったと整理
-- [[gotchas]] に「CI の success はどの層の success かを確認する」という項目を追加
-
-## [2026-05-22 22:37] filing-back | Windows 実機 E2E 構築の学びを wiki 化
-
-- 新規 analysis [[windows-real-machine-e2e-lessons]] を作成し、Issue #860 / PR #862 の runner、Docker Desktop、readiness check の学びを整理
-- [[gotchas]] の Windows インストール地獄に、runner 設定・app 実装・到達確認の問題を層で分ける注意点を追記
-- `index.md` に新規 analysis を登録
-- 個人情報を避け、公開 Issue / PR / commit / workflow と一般化できる症状だけを記録
-
-## [2026-05-22 22:33] filing-back | Issue #860 実機 E2E の readiness check を修正して成功確認
-
-- Windows 実機では `curl.exe -I` が各 service に即 200 を返す一方、PowerShell の `Invoke-WebRequest` は同じ URL でタイムアウトすることを確認
-- `.github/workflows/windows-real-machine-e2e.yml` の readiness check を `Invoke-WebRequest` から `curl.exe --fail --head --silent --show-error --max-time 5` に変更
-- commit `5981d9e1` を PR branch に push し、`Windows real-machine setup E2E` を含む PR checks が全て success になったことを確認
-- [[meeting-report-draft]] に実機 E2E 成功まで反映
-
-## [2026-05-22 22:26] filing-back | Issue #860 実機 E2E で見つかった Dockerfile 欠落を修正
-
-- `#860 -> draft PR #862` の Windows 実機 E2E が `public-viewer` の `Cannot find module '../shared/csp'` で失敗していることを確認
-- 原因は runtime build を行う Docker image に `apps/shared` が入っていないことだったため、`apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` に `apps/shared` の copy を追加
-- Windows 実機の Docker Desktop で `public-viewer` と `static-site-builder` の image build が成功することを確認し、commit `2928890b` を PR branch に push
-- [[meeting-report-draft]] に進行中項目として追記
-
-## [2026-05-22 22:12] filing-back | Issue #860 を runner 実装込みで PR 化
-
-- `#860 -> draft PR #862` として、Windows 実機検証 docs に加えて `setup_win.bat` の `--non-interactive` / `--skip-docker-start` / API key 引数を追加
-- `.github/workflows/windows-setup-script.yml` で hosted `windows-latest` 上の文字コード・Docker 未起動・`.env` 生成回帰を確認する軽量 CI を追加
-- `.github/workflows/windows-real-machine-e2e.yml` で self-hosted Windows runner label `kouchou-ai-e2e` を使う実機 E2E を追加し、`setup_win.bat` 実行後に `localhost:4000` / `3000` / `8000/docs` を待つ構成にした
-- CI 初回失敗は PowerShell 7 が期待 exit 1 を step failure として扱ったためで、commit `7287350e` で `$PSNativeCommandUseErrorActionPreference = $false` と `call .\setup_win.bat` に修正して push
-- hosted Windows では Docker が Windows containers として動いていたため、fake `docker.bat` を安定して使えるよう `setup_win.bat` の Docker 呼び出しを `call docker ...` に変更し、commit `1f6fa753` で再 push
-- PowerShell step が検査後も `$LASTEXITCODE=1` を job 終了コードとして返したため、commit `80787ccb` で軽量 CI の検査成功時に `exit 0` するよう修正して再 push
-- 実機 E2E job が custom label `kouchou-ai-e2e` 待ちで queued だったため、commit `db2676b5` で `runs-on: [self-hosted, Windows, X64]` に変更して再 push。PR checks 上で実機 runner が job を pickup した
-- 実機 runner `GALLERIA` には `pwsh` がなかったため、commit `08f5e76c` で self-hosted E2E workflow の shell を Windows PowerShell (`powershell`) に変更して再 push
-- 実機 runner の PowerShell execution policy が `.ps1` 実行を拒否したため、commit `6d21549a` で E2E workflow の PowerShell shell template に `-ExecutionPolicy Bypass` を追加して再 push
-- 実機 runner service の PATH に Docker CLI がなかったため、commit `5a7bc352` で `C:\Program Files\Docker\Docker\resources\bin\docker.exe` を明示し、`setup_win.bat` 実行時だけ PATH に Docker bin を追加して再 push
-- `docker compose down` の warning が PowerShell native error として step failure になったため、commit `66b96c0d` で Docker 操作ステップを `cmd` shell に寄せて再 push
-- 任意の PR で self-hosted runner を実行するのは危険という指摘を受け、commit `c2d220ed` で PR 起動時は PR author が `nishio` の場合だけ Real Windows E2E job を実行する条件を追加。nightly schedule と手動 `workflow_dispatch` は維持
-- 同じ PR への連続 push で古い E2E run が runner を占有し、最新 run が queued のままになる問題を確認。commit `146ec779` で `concurrency` / `cancel-in-progress` を追加し、古い in-progress run を手元で止めて最新 run が pickup されることを確認
-- [[meeting-report-draft]] に `#860 -> draft PR #862` の進行中項目を追記
-
-## [2026-05-22 21:12] filing-back | Issue #860 Windows 実機セットアップ検証 docs を作成
-
-- `work/kouchou-ai/` を `main@e6b2d72` まで同期し、assignee なしの `#860` を `nishio` に assign
-- `docs/development/windows-real-machine-setup-verification.md` を追加し、`setup_win.bat` + Docker Desktop (Linux containers) の実機検証手順を整理
-- `docs/getting-started/windows-setup.md` から検証手順へリンクし、`mkdocs.yml` の nav に登録
-- `python -m mkdocs build --strict` と `git diff --cached --check` を実行。新規ページの nav 未登録は解消済み
-- commit `b1fa148d` を `codex/windows-real-machine-setup-docs` に push 済み。PR 作成は GitHub コネクタ操作が拒否されたため未作成
-- [[meeting-report-draft]] に進行中項目として追記
-
-## [2026-05-22 20:24] filing-back | Codex による Windows 環境構築メモを追加
-
-- 新規 [[codex-windows-environment-memo]] を作成
-- Issue #731 / draft PR #858 と Python 導入・wiki lint 復旧の体験を、個人情報を含めずに整理
-- `index.md` に analysis ページとして登録
-
-## [2026-05-22 20:09] filing-back | Windows setup Issue #731 の進行中修正を記録
-
-- `work/kouchou-ai/` を `main@e6b2d72` まで同期し、open Issue から Windows 系の重要候補を確認
-- assignee なしの `#731` を `nishio` に assign してから、`codex/fix-windows-setup-mojibake` で `setup_win.bat` を修正
-- `setup_win.bat` の実行メッセージを ASCII 化し、API キー検証の重複を整理。Docker 未インストール環境で `cmd /c "echo. | setup_win.bat"` による停止パスを確認
-- commit `886c91a0` を push し、draft PR #858（`[codex] Windows setup の文字化け耐性を改善`）を作成
-- [[meeting-report-draft]] に進行中項目として追記
-
-## [2026-05-22 19:28] filing-back | 月曜定例会向けの meeting-report-draft をやさしい表現に整備
-
-- [[meeting-report-draft]] に「月曜にそのまま読む用」セクションを追加
-- technical term を減らし、`#740 -> PR #856` と `#710 -> PR #857` まで反映
-- 箇条書き全体も、会議で口頭共有しやすい短い文へ言い換え

@@ -81,4 +81,5 @@ top-level label set を **一覧でまとめて** 比較する judge である�
 
 ## Updates
 
+- 2026-05-29: Zenn / Ubie の LLM-as-a-Judge ルーブリック評価記事を踏まえ、現状の抽象軸を `true/false` criteria + points + fatal penalty に分解する案を [[label-quality-rubric-evaluation-2026-05-29]] として追加。既存 judge を置き換える前に `[8,40]` bundle と人間判断で較正する方針
 - 2026-05-25: 初版作成。現状の judge が OpenAI/GPT ベースであること、`cluster-level judge` と `label-set direct judge` が見ている対象の違い、Claude / 人間 judge による較正が必要な理由を整理

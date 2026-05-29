@@ -3,6 +3,16 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-30 02:34	filing-back	label refinement 実験を仕切り直す判断を整理
+2026-05-30 02:30	filing-back	rep args は典型例だけだと散らばりを隠す
+2026-05-30 02:02	filing-back	ラベル入力 sampling と UI 個別データ表示の現状を確認
+2026-05-30 01:32	filing-back	過去ラベル出力 4 候補を rubric judge で再評価
+2026-05-29 23:38	filing-back	実験ブランチにラベル品質 rubric judge を追加
+2026-05-29 20:02	filing-back	PR #883 の CodeRabbit 2 件を address
+2026-05-29 19:52	github-issue	`#221` 系の concrete tracking issue `#884` を起票
+2026-05-29 19:51	filing-back	ラベル品質 judge をルーブリック評価へ分解する案を整理
+2026-05-29 19:31	filing-back	`#221` 系の試行錯誤負担削減を作成前確認パネル中心に整理
+2026-05-29 19:25	filing-back	open issue 121 件を再棚卸しし、優先順を補正
 2026-05-29 18:30	filing-back	CLAUDE.md に「work/kouchou-ai は常に main、実験ブランチは worktree」を明文化
 2026-05-29 18:06	filing-back	残 Issue の優先順を live state で組み直し
 2026-05-29 18:05	filing-back	Issue #876 開発者向け導線を利用モード別に整理 (PR #883)
