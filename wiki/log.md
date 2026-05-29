@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-29 18:06] filing-back | 残 Issue の優先順を live state で組み直し
+
+- 2026-05-29 18:04 JST 時点の live GitHub state を確認し、`#873` merge により `#741` は close 済み、`#584` / `#629` は open ではなく、`#866` / `#867` / `#868` は merge 済みであることを反映
+- 新規 analysis [[remaining-issue-priority-2026-05-29]] を追加し、優先順を (1) `#883 -> #876` と `#863 -> #731` の進行中 PR 着地、(2) `#877` Windows guide 境界、(3) `#881` / `#882` / `#869` ラベル品質実験、(4) `#871` Blob health check、(5) `#872` / `#493` viewer UX に整理
+- 新しい可視化案 `#879` / `#880` や大型 feature は、導入・品質・運用安全性の bottleneck を先に減らした後でよいと位置づけた
+
 ## [2026-05-29 18:05] filing-back | Issue #876 開発者向け導線を利用モード別に整理 (PR #883)
 
 - `docs/development/developer-quickstart.md` を新規追加し、Docker Compose / dummy-server frontend dev / native (apps/api・apps/admin) / CLI (analysis-core) の 4 モードを「最初の 1 ページ」で判断できる canonical 入口にした。各モードに必要な環境変数・起動コマンド・確認 URL・落とし穴 (env file 置き場所、Docker rebuild trigger、analysis-core editable install) を集約
@@ -705,10 +711,3 @@
 - [[meeting-report-draft]] に「月曜にそのまま読む用」セクションを追加
 - technical term を減らし、`#740 -> PR #856` と `#710 -> PR #857` まで反映
 - 箇条書き全体も、会議で口頭共有しやすい短い文へ言い換え
-
-## [2026-05-22 18:11] filing-back | PR #856 merge と Issue #740 close を wiki に反映
-
-- `work/kouchou-ai/` を `main@fba8e81` まで同期し、`PR #856` が current main に入っていることを確認
-- [[problem-list-from-open-issues-2026-05-19]] と [[issue-priority-through-2026-09]] に、legacy `report_status.json` の `slug` 欠落による一覧取得バグが解消済みであることを補記
-- [[open-issues-snapshot-2026-05-19]] に `#740` close を補記し、artifact/schema 論点のうち直接再現していた list 取得バグが 1 件減った current state を追記
-- [[meeting-report-draft]] に `#740 -> PR #856` の会議共有用メモを追加
