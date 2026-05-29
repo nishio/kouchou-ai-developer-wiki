@@ -3,6 +3,11 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-29 18:05	filing-back	Issue #876 開発者向け導線を利用モード別に整理 (PR #883)
+2026-05-29 16:42	filing-back	FPS for labeling は 2025-06-18 にも提案されて 11 ヶ月保留だった
+2026-05-29 16:18	filing-back	sampling 改善は「全件渡し → ダメなら減らす」順で
+2026-05-29 16:05	filing-back	ラベル設計の人間判断と上流 sampling 制約を集約
+2026-05-29 15:42	filing-back	label_refinement step が rep args を入力に取らない設計を確認
 2026-05-29 13:31	filing-back	Issue #877 の Windows setup guide 境界を整理
 2026-05-29 03:02	filing-back	dirty 実験 clone を snapshot branch へ退避して clean main に戻した
 2026-05-29 03:00	filing-back	niizuma-thread-algorithm-critique の違和感マーカー 2 件を反映

@@ -3,6 +3,36 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-29 18:05] filing-back | Issue #876 開発者向け導線を利用モード別に整理 (PR #883)
+
+- `docs/development/developer-quickstart.md` を新規追加し、Docker Compose / dummy-server frontend dev / native (apps/api・apps/admin) / CLI (analysis-core) の 4 モードを「最初の 1 ページ」で判断できる canonical 入口にした。各モードに必要な環境変数・起動コマンド・確認 URL・落とし穴 (env file 置き場所、Docker rebuild trigger、analysis-core editable install) を集約
+- `README.md` を 240 行 → 92 行へ trim し、長い setup 説明はドキュメントサイトに集約。`docs/index.md` / `docs/getting-started/quickstart.md` / `mkdocs.yml` を新ページに合わせて整理（重複削除、nav 追加、Mode 別 anchor を `{#mode-1-docker-compose}` 等で固定し strict build pass）
+- branch `codex/issue-876-developer-quickstart` で PR #883 を開いた。次は CI と review コメント待ち
+
+## [2026-05-29 16:42] filing-back | FPS for labeling は 2025-06-18 にも提案されて 11 ヶ月保留だった
+
+- `raw/meeting_minutes.txt:5169-5170` (2025-06-18 定例) に、tokoroten「ラベリングのためには、ランダムサンプリングではなくて、Farthest Point Sampling を使った方がよさそう」、nishio「アルゴリズム的には良い、計算量がどうかは未確認」というやり取りがあり、約 11 ヶ月実装されないままだった
+- 今回 tokoroten が Slack で「Farestなんたらサンプリングで全体のサンプルを包括してタイトルをつけるってはいってるんだっけ」と書いたのは、自分の過去提案を思い出していたもの。今日の nishio「全件渡し」提案は、**過去に gating question として残っていた『FPS の計算量未確認』を、FPS を実装する前に sampling 自体の必要性を問うルートで回避する**構図になっている
+- [[label-coverage-policy-2026-05-29]] の Updates に history を 1 段落追記。実装コスト未確認のまま放置されてきたアイデアを別角度から前進させた事例として記録
+
+## [2026-05-29 16:18] filing-back | sampling 改善は「全件渡し → ダメなら減らす」順で
+
+- 前 entry の「sampling 戦略を `random → max coverage / FPS / k-medoids` に切り替える」という方針について、nishio から「ラベリングは extraction に比べてコストが小さいことが既知なので、まず `sampling_num` 無効化で全件渡して試す方が先」という指摘
+- [[label-coverage-policy-2026-05-29]] の Updates に、実験順序を (1) sampling_num 無効化で全件、(2) ダメなら max coverage / FPS / k-medoids、(3) tokoroten 案の emb 類似度総和は並行、と整理し直して追記。複雑なアルゴリズム選択より「上流 sampling が本当にボトルネックか」を最小コストで確認するのが先
+
+## [2026-05-29 16:05] filing-back | ラベル設計の人間判断と上流 sampling 制約を集約
+
+- Claude judge 後の 3 論点に Slack で人間判断が出たので [[label-coverage-policy-2026-05-29]] に集約: (1) ラベルは「目次」ではなく「要約」、欠落より冗長を取る (tokoroten: 「カテゴリ外が含まれてるほうが気持ち悪い」)、(2) 1 キーワード完全包括は不可能なので greedy max-coverage で上位 2〜3 軸まで「AとB」、(3) 口語 register は post-processing で吸収可能で優先度低
+- tokoroten が指摘した上流 sampling の問題をコードで確認: `hierarchical_initial_labelling` `merge_labelling` とも `sampling_num` デフォルト **10** (tokoroten 発言の 30 は誤りだが本質は正しい)、`polars.DataFrame.sample(n=...)` で完全ランダム → 大規模クラスタほどラベルが「実体」ではなく「ランダム 10 件」に引っ張られる。refinement の入力強化より上流 sampling 戦略 (max coverage / FPS / k-medoids) の見直しが本質
+- アルゴリズム候補として tokoroten 案 (タイトル候補 emb × 各要素 emb の cos 類似度総和最大化) と nishio 案 3 (候補を UI で人間に選ばせる) を記録。今回のループ (GPT judge → Markdown export → Claude judge → 論点 → 人間判断 → コード確認) が分業として機能した lesson も同 page に追記
+- [[label-refinement-input-scope-2026-05-29]] の Updates に新方針へのリンクを追加し、[[meeting-report-draft]] にも次回定例向け要点を保守した
+
+## [2026-05-29 15:42] filing-back | label_refinement step が rep args を入力に取らない設計を確認
+
+- Claude judge による bundle 検査で、4 mode (`none / setwise / contrast / balanced`) すべてが上流の誤ラベル (cluster 3 = 倫理 args なのに `公共安全`、cluster 5 = 業務効率 args なのに `顧客体験`) を保存していたので `hierarchical_label_refinement.py` の `_build_cluster_section` を読み、refinement LLM に渡しているのが `current_label / current_description / size / children` だけで、**rep args は一切渡していない**ことを確認
+- 新規 analysis [[label-refinement-input-scope-2026-05-29]] を追加し、これが「polish only」スコープの仕様通りの挙動であること、書き換え権限はあるのに中身に照らす材料は無いという構造が「整った嘘」リスクになること、default-on 昇格時には rep args 追加か上流品質 gate が前提になることを記録
+- 当面 `experimental default-off` で main 同梱する判断には影響しないが、refinement の責務範囲を product 判断として明示しておく必要がある
+
 ## [2026-05-29 13:31] filing-back | Issue #877 の Windows setup guide 境界を整理
 
 - 新規 source [[issue-877-windows-setup-guide-scope-2026-05-29]] と [[docker-desktop-license-2026-05-29]] を追加し、`#877` 本文・コメント・current main docs・関連 `#863` の状態・Docker Desktop 公式ライセンス注意を整理

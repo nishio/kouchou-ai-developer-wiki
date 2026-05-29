@@ -28,6 +28,12 @@ sources:
 
 ## 次回定例向け下書き (2026-06-01 向け)
 
+- ラベル refinement 実験 (`codex/remaining-experiment-wip`) の独立 judge を Claude で回し、`none / setwise / contrast / balanced` を 3 軸 (個別代表性 / 一覧読みやすさ / 隣接区別性) で比較した結果と、Slack で集めた人間判断を [[label-coverage-policy-2026-05-29]] に集約した。決まった方針: (1) ラベルは「目次」ではなく「要約」として上位 2〜3 軸までカバーする方向、(2) 1 キーワードで完全包括は無理なので greedy max-coverage の発想で「AとB」程度まで広げる、(3) `contrast` の「エンタメ」のような口語 register は post-processing で吸収可。次回提案したい実験は、tokoroten 案の「タイトル候補 emb × 各要素 emb の cos 類似度総和を最大化」と、上流 `hierarchical_initial_labelling` の sampling 戦略を `random → max coverage / FPS` に切り替えるテスト。
+- 上記の judge 中に、`hierarchical_label_refinement.py` が rep args を入力に取らず current_label + children labels だけで polish していることを確認し [[label-refinement-input-scope-2026-05-29]] に記録した。default-off で main 同梱は OK だが、default-on 昇格を語る前に上流の `sampling_num=10` 完全ランダムサンプリングの方が本質的なボトルネックである、という方針整理を提示する予定。
+- ラベル品質改善の議論が Slack / wiki / WIP branch / issue に散っていたため、上位トラッキング issue `#881` `[analysis-core] ラベル品質改善の実験・議論を追跡可能にする` を起票し、既存 `#869` からもリンクした。未実施実験として、KJ法的プロンプトが本当に効くのかを baseline / KJ prompt / neutral structured prompt で比べる `#882` も切り出した。[[github-dev-docs]]より [[label-coverage-policy-2026-05-29]]より [[kj-method-broadlistening-framing-2026-05-25]]より
+- 新しい可視化アイデアとして `#879` `[FEATURE] クラスタと時刻の掛け合わせでヒートマップ表示したい` と `#880` `[FEATURE] [8, 64] の分析をマンダラートで可視化したい` を起票した。`#879` はクラスタ別の時間的な盛り上がりを読むビュー、`#880` は主要 8 観点と 64 下位要素を探索するビューとして、まず mock / prototype で読みやすさを確認するのが次の一手。[[github-dev-docs]]より
+- Issue `#876` (`README / docs の開発者向け導線を current main に合わせて整理する`) に対して PR `#883` `codex/issue-876-developer-quickstart` を作成。新規 canonical `docs/development/developer-quickstart.md` を作り、Docker Compose / dummy-server + frontend dev / native (apps/api・apps/admin) / CLI (analysis-core) の 4 モードを「最初の 1 ページ」で判断できる入口にした。各モードに必要な環境変数・起動コマンド・確認 URL・よくある落とし穴（`.env` の置き場所、Docker rebuild trigger、`analysis-core` editable install）を集約し、`README.md` は 240 → 92 行へ trim、`docs/index.md` / `docs/getting-started/quickstart.md` / `mkdocs.yml` も新ページに合わせて整理。`mkdocs build --strict` pass 済み。次回までに CI / review コメントを通したい。
+
 - Windows setup guide issue `#877` は、API key や Docker Desktop 起動確認の文言整理だけでなく、Docker Desktop を入れられる個人 PC と、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない貸与 PC を分けるサポート境界の問題として整理した。短期は Docker Desktop が使える Windows 10/11 を標準入口にし、使えない環境は beginner guide の対象外または上級者向け WSL2 + Docker Engine 別ルートへ切り出すのが筋。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
 - developer-wiki の Pages subpath 問題を踏まえ、Quartz + GitHub Pages project-site の設計メモを public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` として外部化した。旧 Gist の `wiki/ -> content/` 変換は汎用 Obsidian vault には有効だが、この repo では `wiki/` direct build を維持し、`baseUrl` と生成物リンク検査で守る方針を明文化した。[[wiki-pages-publishing-stack]]より
 - developer-wiki の GitHub Pages で、index や検索結果のリンクが project-site subpath と噛み合わず壊れる問題を再点検した。Quartz 4 は `baseUrl` で project-site hosting を扱えるため、root 専用 `<base>` patch は撤去し、`scripts/check_pages_links.py` を CI に入れて build 後の全内部リンクが `/kouchou-ai-developer-wiki/` 配下に解決されることを検査する形に直した。[[wiki-pages-publishing-stack]]より [[wiki-pages-tooling-observation-2026-05-21]]より
@@ -50,6 +56,9 @@ sources:
 
 ## Updates
 
+- 2026-05-29: Issue `#876` (開発者向け導線整理) に対して PR `#883` を作成。`docs/development/developer-quickstart.md` を新規 canonical 入口にし、4 モード分岐と環境変数 / 起動コマンド / 落とし穴を 1 ページに集約。README は概要 + docs 導線に trim
+- 2026-05-29: ラベル品質改善の上位トラッキング issue `#881` と、KJ法的プロンプト比較実験 issue `#882` を起票し、既存 `#869` から辿れるように接続
+- 2026-05-29: 新しい可視化アイデアとして、クラスタ x 時刻のヒートマップ issue `#879` と、[8, 64] 分析のマンダラート可視化 issue `#880` を起票
 - 2026-05-29: `#877` のコメントを踏まえ、Windows setup guide は単なるトラブルシュート表ではなく、Docker Desktop 標準入口と組織管理端末 / ライセンス制約の非サポート境界を分ける docs issue として扱う整理を追加
 - 2026-05-28: `#874` の実装を、実験的 layout 生成を default pipeline へ追加しない方針に合わせて修正し、標準 8 step contract を維持する形で PR branch へ push
 - 2026-05-28: Quartz + GitHub Pages project-site の新 Gist を作成し、`wiki/` direct と `wiki/ -> content/` 変換の使い分けを定例共有向けに追記
