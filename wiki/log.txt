@@ -3,6 +3,8 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-29 18:30	filing-back	CLAUDE.md に「work/kouchou-ai は常に main、実験ブランチは worktree」を明文化
+2026-05-29 18:06	filing-back	残 Issue の優先順を live state で組み直し
 2026-05-29 18:05	filing-back	Issue #876 開発者向け導線を利用モード別に整理 (PR #883)
 2026-05-29 16:42	filing-back	FPS for labeling は 2025-06-18 にも提案されて 11 ヶ月保留だった
 2026-05-29 16:18	filing-back	sampling 改善は「全件渡し → ダメなら減らす」順で

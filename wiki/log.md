@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-29 18:30] filing-back | CLAUDE.md に「work/kouchou-ai は常に main、実験ブランチは worktree」を明文化
+
+- 今日の judge 作業で私 (Claude) が `work/kouchou-ai/` 内で直接 `git checkout codex/remaining-experiment-wip` してコード grep してしまい、別セッションでさらに `codex/issue-876-developer-quickstart` に切り替わった状態に遭遇した。短時間の grep でも HEAD を動かすと、次の観察で想定外の state にぶつかる事故が起きると分かった
+- CLAUDE.md の `## 運用方針` に「`work/kouchou-ai/` の HEAD は常に `main` を指す。他ブランチの観察は `git worktree add work/kouchou-ai-<topic> <branch>` で別 worktree に切ること」を 1 行追加
+- 復帰作業: `work/kouchou-ai/` を `main@0c294da` に戻し、`origin/main` と同期済み (working tree clean)
+
 ## [2026-05-29 18:06] filing-back | 残 Issue の優先順を live state で組み直し
 
 - 2026-05-29 18:04 JST 時点の live GitHub state を確認し、`#873` merge により `#741` は close 済み、`#584` / `#629` は open ではなく、`#866` / `#867` / `#868` は merge 済みであることを反映

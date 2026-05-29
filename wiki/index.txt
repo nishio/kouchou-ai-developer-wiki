@@ -129,7 +129,9 @@ kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlis
 kouchou-ai-paper-draft-ja	analysis	analyses/kouchou-ai-paper-draft-ja.md	広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く
 kouchou-ai-paper-draft-strategy	analysis	analyses/kouchou-ai-paper-draft-strategy.md	広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較
 kouchou-ai-paper-evidence-map	analysis	analyses/kouchou-ai-paper-evidence-map.md	広聴AI紹介論文で想定する主張ごとに、既存の根拠、追加で必要な証拠、未解決ギャップを対応付けた表
+label-coverage-policy-2026-05-29	analysis	analyses/label-coverage-policy-2026-05-29.md	label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。1 キーワードでクラスタ全体を覆うのは不可能なので、最頻トピック A + 残差を覆う B の greedy max-coverage 的な発想を取る。ラベルから dimension が落ちる根本原因の一つは、上流 `hierarchical_initial_labelling` の `sampling_num=10` 完全ランダムサンプリングにもある
 label-judge-mechanism-2026-05-25	analysis	analyses/label-judge-mechanism-2026-05-25.md	2026-05-25 時点のラベル品質 judge は OpenAI/GPT ベースの補助評価であり、`cluster 単位 judge` と `label set 全体 judge` は見ているものが違う。設計判断に使う前に Claude / 人間 judge で較正すべきである
+label-refinement-input-scope-2026-05-29	analysis	analyses/label-refinement-input-scope-2026-05-29.md	実験的に追加された hierarchical_label_refinement step は rep args を入力に取らず、上流ラベル + 子クラスタラベルだけを polish する設計になっている。これは『上流の merge_labelling が既に間違えたラベル』を refinement で救えない構造であり、polish が綺麗になるほど誤ラベルが固定化する危険を含む
 nasuka-statements-retrospective-2026-05-25	analysis	analyses/nasuka-statements-retrospective-2026-05-25.md	nasuka の過去発言は、広聴AIを実利用に耐える市民参加インフラへ移すための運用・信頼・反復改善の視点として読める
 niizuma-thread-algorithm-critique	analysis	analyses/niizuma-thread-algorithm-critique.md	新妻 thread は、UMAP後k-means批判そのものよりも『分析の筋の良さ』『散布図の見え方』『説明責務』が別問題だと露出させた点に価値がある
 non-nishio-human-pr-status	analysis	analyses/non-nishio-human-pr-status.md	2026-05-18 の stale cleanup 後、nishio 以外の人間 authored open PR は `shingo-ohki` の `#817` だけで、古い draft `#734` と `#597` は close 済み
@@ -153,6 +155,7 @@ pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
 refactoring-status	analysis	analyses/refactoring-status.md	v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up
 remaining-bug-issues-2026-05-26	analysis	analyses/remaining-bug-issues-2026-05-26.md	2026-05-26 時点で open の `[BUG]` タイトル issue と周辺ラベルを current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で見直すと、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は上位検討 issue `#872` の参考課題として bug ラベルを外し、`#731` は stale 寄りで再観測または close 判断が必要
+remaining-issue-priority-2026-05-29	analysis	analyses/remaining-issue-priority-2026-05-29.md	2026-05-29 時点の open issue / open PR を見ると、最優先は新規 feature ではなく、進行中 PR の着地、Windows 導線のサポート境界、ラベル品質実験の採用判断、deploy safety の Blob health check 化である
 report-slug-config-behavior	analysis	analyses/report-slug-config-behavior.md	`reports/:slug` は current 通常生成物なら `config` を返すが、router に validation が無いため壊れた成果物から `config` 欠損 payload を公開しうる
 semantic-island-map-prototype-2026-05-26	analysis	analyses/semantic-island-map-prototype-2026-05-26.md	`LLM grouping` された 422 argument の 2D 可視化を `UMAP` / supervised UMAP / LDA / centroid-MDS で試した結果、embedding 由来散布図を主図にするより、cluster-first な semantic island map の方が要件に合うと分かった
 slack-algorithm-themes	analysis	analyses/slack-algorithm-themes.md	`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類

@@ -121,6 +121,7 @@ sources:
 
 - ソースは「参考」であり無批判に採用しない
 - コード本体については `work/kouchou-ai/` の local clone を一次参照とし、docs / DeepWiki / meeting minutes は補助線として使う
+- `work/kouchou-ai/` の HEAD は常に `main` を指す。実験ブランチや別 PR ブランチの観察は `git worktree add work/kouchou-ai-<topic> <branch>` で別 worktree に切ること。短時間のコード grep でも `work/kouchou-ai/` 内で `git checkout <other-branch>` して HEAD を動かさない (別セッションが上書きしたり main 復帰し忘れたりして、次の観察で想定外の state にぶつかる事故が起きる)
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す。`txt` export はリンク URL を保持しないことがあるので、根拠に URL 自体が必要な時は `raw/meeting_minutes.html` を補助線として使う
 - Slack の発言を扱う時は、まず `oss_weekly_reporter` 由来の raw / source を一次参照とする。Slack connector の直読みは、週次ログで足りない時の補助確認に留める
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
