@@ -65,7 +65,7 @@ tokoroten は、現代なら `TTTC Turbo` / `Sensemaker` のように LLM で直
 ## 6. 設計判断としては、単一 pipeline の置換問題にしない方がよい
 
 この thread を実装方針に落とすなら、「`UMAP` 後 `k-means` を別の clustering 手法に差し替える」だけでは足りない。  
-むしろ、広聴AIが返す artifact を少なくとも 3 つに分けるべきだと読むのが自然である。
+むしろ、広聴AIが返す **artifact**（ここでは「広聴AI が分析結果として外部に返す出力物・成果物」の意。前述の「2D 上の配置アーティファクト」のような「手法が生む歪み」とは別語義なので注意）を少なくとも 3 つに分けるべきだと読むのが自然である。
 
 - **分析 artifact**: どの意見がどの論点群に属するか。ここでは 2D 散布図上の近さではなく、元の embedding、高次元 clustering、または LLM による分類基準を使えるようにする
 - **表示 artifact**: 非専門家が全体像を掴み、個別意見へ辿れる UI。ここではクラスタ境界が読みやすく見えることは価値だが、それを分析上の根拠と混同しない
@@ -82,7 +82,6 @@ tokoroten は、現代なら `TTTC Turbo` / `Sensemaker` のように LLM で直
 ## Open Questions
 
 - 「説明可能性を一定以上担保した LLM grouping」とは具体的に何を artifact として返せばよいか
-- supervised `UMAP` は短期互換案として十分か、それとも散布図前提を温存しすぎるか
 - 報道用途の説明責務と、自治体・政治家向けの実務用途の説明責務は同一水準で考えてよいか
 - 「分析 artifact / 表示 artifact / 説明 artifact」を `analysis-core` の schema と viewer contract にどう分けて入れるか
 
@@ -91,3 +90,5 @@ tokoroten は、現代なら `TTTC Turbo` / `Sensemaker` のように LLM で直
 - 2026-05-25: 新妻 thread を、アルゴリズム批判・散布図制約・LLM説明責務の交点として整理
 - 2026-05-25: 後続の LLM grouping 実験も踏まえ、単一 pipeline の置換ではなく、分析 artifact / 表示 artifact / 説明 artifact の分離として読む考察を追記
 - 2026-05-25: nishio ↔ GPT のブレスト 3 本（clustering deep-research / 小規模 LLM pairwise + spectral / MST + bridge visualization）がこの critique の続編にあたる。[[clustering-deep-research-findings-2026-05-25]] が「2D UMAP と 15D〜25D を分けるべき」「BERTopic は backbone + LLM labeler へ」「数十件規模は LLM pairwise + spectral」と応答し、[[graph-visualization-proposal-2026-05-25]] が visualization 側から「クラスタ内 MST + クラスタ間 bridge + cluster-separated layout」で 3 artifact 分離を 1 つの図で実装する案を提示している
+- 2026-05-29: 「supervised UMAP は短期互換案として十分か」は実験で否定的に解決したため Open Questions から外した。`work/kouchou-ai-mst-visualization-prototype/` での 422 argument / 8 cluster の比較では、強く掛けると cluster が不自然に離れて cluster 内がスカスカになり、弱くすると境界点が他 cluster に混ざる二択にしかならず、semi-supervised UMAP でも「離れすぎ」と「混ざりすぎ」の間で不安定だった。embedding 由来 2D 散布図を主図にする路線そのものを諦め、cluster-first な semantic island map に切り替える判断が出ている。[[semantic-island-map-prototype-2026-05-26]]より
+- 2026-05-29: 違和感マーカー (annotation-0013) を受け、「artifact」を最初に導入する箇所でカタカナ「アーティファクト（手法が生む歪み）」と英語「artifact（広聴AI が返す出力物）」が同じページに別語義で混在していることを明示した

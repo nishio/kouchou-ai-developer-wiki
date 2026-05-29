@@ -127,9 +127,10 @@ def main() -> int:
     ]
     for ts, typ, title, body in recent:
         md_lines.append(f"## [{ts}] {typ} | {title}")
-        if body.strip():
+        clean_body = body.strip("\n")
+        if clean_body.strip():
             md_lines.append("")
-            md_lines.append(body.rstrip())
+            md_lines.append(clean_body.rstrip())
         md_lines.append("")
     LOG_MD.write_text("\n".join(md_lines).rstrip() + "\n", encoding="utf-8")
 

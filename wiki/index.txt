@@ -37,6 +37,7 @@ broad-listening-book-source	source	sources/broad-listening-book-source.md	DD2030
 clustering-research-survey-seeds-2026-05-25	source	sources/clustering-research-survey-seeds-2026-05-25.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するための survey seed 集。UMAP 後 clustering、spectral clustering、BERTopic、可視化と分析の分離、評価軸
 codeql-docs	source	sources/codeql-docs.md	GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ
 deepwiki-kouchou-ai	source	sources/deepwiki-kouchou-ai.md	DeepWiki が生成した kouchou-ai コードベース要約。構造把握には有用だが、最新実装との差分確認が必要
+docker-desktop-license-2026-05-29	source	sources/docker-desktop-license-2026-05-29.md	2026-05-29 時点の Docker 公式文書確認。Docker Desktop は大規模 enterprise の商用利用や政府系 entity では paid subscription が必要になり得るため、自治体・大企業向け Windows 導線ではライセンス確認を前提にする必要がある
 docker-engine-wsl2-alternative-2026-05-23	source	sources/docker-engine-wsl2-alternative-2026-05-23.md	nishio と外部 GPT の対話。Docker Desktop を避ける選択肢として、WSL2 Ubuntu の中に Docker Engine + Docker Compose plugin を直接入れる構成と、その UX コストおよび 2 本立て docs 案を整理したブレスト
 github-dev-docs	source	sources/github-dev-docs.md	kouchou-ai リポジトリと docs/development/ の開発者ドキュメント
 gpt-kawakita-kj-method-broadlistening-2026-05-25	source	sources/gpt-kawakita-kj-method-broadlistening-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。広聴AIを川喜田二郎の野外科学・KJ法に接続し、`混沌から公共的仮説を立ち上げる装置` として再定義。AI支援KJ法は自動化ではなく人間が混沌と向き合うための足場、という設計原則
@@ -46,6 +47,7 @@ gpt-umap-clustering-bertopic-deep-research-2026-05-25	source	sources/gpt-umap-cl
 issue-493-pr-597-discussion	source	sources/issue-493-pr-597-discussion.md	`Issue #493` と `PR #597` で行われた ScatterChart スクロール誤操作対策の議論メモ
 issue-731-windows-setup-mojibake	source	sources/issue-731-windows-setup-mojibake.md	GitHub issue #731 の再現ログ。Windows で `setup_win.bat` 実行時に日本語が文字化けするだけでなく、一部行が別コマンドとして解釈されてセットアップが停止することを示す
 issue-830-pr-832-auto-cluster-defaults-2026-05-18	source	sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md	`Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ
+issue-877-windows-setup-guide-scope-2026-05-29	source	sources/issue-877-windows-setup-guide-scope-2026-05-29.md	GitHub issue #877 とコメントの観測。Windows setup guide の API key / Docker Desktop / WSL2 / メモリ不足分岐を整理する issue だが、コメントにより Docker Desktop ライセンス・組織管理端末・生 Windows サポート境界の論点へ広がっている
 jigsaw-llm-grouping-experiment-output-2026-05-25	source	sources/jigsaw-llm-grouping-experiment-output-2026-05-25.md	2026-05-25 に `analysis_mode=llm_grouping` を 400 件の日本語コメントで実行した観測。422 argument を 8 群へ分類でき、`report.html` も生成できたが、embedding 由来 2D 散布図との相性は悪かった
 kensuzuki-broad-listening-insight-types-2025-11-29	source	sources/kensuzuki-broad-listening-insight-types-2025-11-29.md	鈴木健 2025-11-29 ブログ。ブロードリスニングは用途ごとに欲しいインサイトが違い、TTTC / 広聴AI は主にアジェンダ発見向きだという整理
 kouchou-ai-direction-2-2025-12-13	source	sources/kouchou-ai-direction-2-2025-12-13.md	2025-12-13 の『広聴AIの方向性について2』メモ。選択肢比較のうえで、書籍まで現行系を stable v4 として保ち、次世代化は別軸で進める判断が固まった
@@ -117,6 +119,7 @@ issue-530-current-state	analysis	analyses/issue-530-current-state.md	Issue #530 
 issue-707-current-state	analysis	analyses/issue-707-current-state.md	Issue #707 は 2026-05-21 に close され、backend の provider-aware verify 実装が current main で非再現だったことから、元報告は stale bug と判断された
 issue-741-current-state-2026-05-26	analysis	analyses/issue-741-current-state-2026-05-26.md	Issue `#741` は 2026-05-26 時点で完全に stale ではないが、主因は当初想定の npm registry flaky よりも `main` への近接 push で Azure Container Apps 更新が競合することに寄っており、2026-05-21 の build-context failure はすでに main で解消済み
 issue-820-current-state	analysis	analyses/issue-820-current-state.md	Issue #820 は 2026-05-21 時点で open のままで、静的エクスポート配信先における CSP 設定ガイド不足を追う issue としてまだ有効であり、app 側の dynamic CSP header 整備は `PR #848` merge により別経路で先に前進した
+issue-877-windows-setup-guide-scope	analysis	analyses/issue-877-windows-setup-guide-scope.md	Issue #877 は Windows setup guide の文言修正だけでなく、Docker Desktop を標準入口にする範囲、組織管理端末で動かない場合の非サポート境界、WSL2 + Docker Engine を別ルートにするかを切り分ける issue として扱うのが妥当
 issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.md	2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
 jigsaw-llm-grouping-experiment	analysis	analyses/jigsaw-llm-grouping-experiment.md	Jigsaw 的な LLM 分類の最初の実験は、`analysis_mode=llm_grouping` を 400 行の日本語コメントで回し、scatter 互換の見え方がどこまで耐えるかを観察するのがよい

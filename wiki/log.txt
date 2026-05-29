@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-29 13:31	filing-back	Issue #877 の Windows setup guide 境界を整理
 2026-05-29 03:02	filing-back	dirty 実験 clone を snapshot branch へ退避して clean main に戻した
 2026-05-29 03:00	filing-back	niizuma-thread-algorithm-critique の違和感マーカー 2 件を反映
 2026-05-28 17:41	filing-back	`#874` を標準 8 step contract 維持へ修正

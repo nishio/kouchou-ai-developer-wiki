@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-29 13:31] filing-back | Issue #877 の Windows setup guide 境界を整理
+
+- 新規 source [[issue-877-windows-setup-guide-scope-2026-05-29]] と [[docker-desktop-license-2026-05-29]] を追加し、`#877` 本文・コメント・current main docs・関連 `#863` の状態・Docker Desktop 公式ライセンス注意を整理
+- 新規 analysis [[issue-877-windows-setup-guide-scope]] を追加し、短期は Docker Desktop が使える Windows 10/11 を標準入口にし、Docker Desktop / WSL2 が組織ポリシーで使えない環境は beginner guide の対象外または別上級者ルートへ切る判断を記録
+- [[meeting-report-draft]] に、次回定例で共有する Windows setup support boundary の要点を追記
+
 ## [2026-05-29 03:02] filing-back | dirty 実験 clone を snapshot branch へ退避して clean main に戻した
 
 - `work/kouchou-ai/` の dirty 状態から、Jigsaw 系実験の入力・config・出力 artifact と Next.js 生成差分を branch `codex/remaining-experiment-artifacts-2026-05-29`、commit `b56ac9b` として push

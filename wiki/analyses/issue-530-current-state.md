@@ -18,7 +18,7 @@ sources:
 
 ### current main には `server/requirements.txt` という前提自体がない
 
-`origin/main` の API Docker build は [apps/api/Dockerfile](/Users/nishio/kouchou-ai-developer-wiki/work/kouchou-ai/apps/api/Dockerfile) 相当の内容で、`COPY apps/api/pyproject.toml apps/api/requirements.lock apps/api/requirements-dev.lock ...` の後、`uv pip install ... -r requirements.lock` で依存を入れる。`server/requirements.txt` を COPY したり install したりする経路は current main には見当たらない。[[source-code]]より
+`origin/main` の API Docker build は `apps/api/Dockerfile` 相当の内容で、`COPY apps/api/pyproject.toml apps/api/requirements.lock apps/api/requirements-dev.lock ...` の後、`uv pip install ... -r requirements.lock` で依存を入れる。`server/requirements.txt` を COPY したり install したりする経路は current main には見当たらない。[[source-code]]より
 
 ### Azure 依存は既に `apps/api` 側へ入っている
 

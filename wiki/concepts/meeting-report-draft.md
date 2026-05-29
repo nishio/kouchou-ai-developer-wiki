@@ -28,6 +28,7 @@ sources:
 
 ## 次回定例向け下書き (2026-06-01 向け)
 
+- Windows setup guide issue `#877` は、API key や Docker Desktop 起動確認の文言整理だけでなく、Docker Desktop を入れられる個人 PC と、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない貸与 PC を分けるサポート境界の問題として整理した。短期は Docker Desktop が使える Windows 10/11 を標準入口にし、使えない環境は beginner guide の対象外または上級者向け WSL2 + Docker Engine 別ルートへ切り出すのが筋。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
 - developer-wiki の Pages subpath 問題を踏まえ、Quartz + GitHub Pages project-site の設計メモを public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` として外部化した。旧 Gist の `wiki/ -> content/` 変換は汎用 Obsidian vault には有効だが、この repo では `wiki/` direct build を維持し、`baseUrl` と生成物リンク検査で守る方針を明文化した。[[wiki-pages-publishing-stack]]より
 - developer-wiki の GitHub Pages で、index や検索結果のリンクが project-site subpath と噛み合わず壊れる問題を再点検した。Quartz 4 は `baseUrl` で project-site hosting を扱えるため、root 専用 `<base>` patch は撤去し、`scripts/check_pages_links.py` を CI に入れて build 後の全内部リンクが `/kouchou-ai-developer-wiki/` 配下に解決されることを検査する形に直した。[[wiki-pages-publishing-stack]]より [[wiki-pages-tooling-observation-2026-05-21]]より
 - `#874` は commit `51a7c77` で、`hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults / standard step exports から外し、標準パイプラインを 8 step のまま維持する修正を push した。layout 生成 step と `layouts` を読む visualization は実験コードとして残すが、default では走らない。Ruff / Pytest / Server Tests / CodeQL は GitHub Actions で pass、CodeRabbit は review in progress。
@@ -49,6 +50,7 @@ sources:
 
 ## Updates
 
+- 2026-05-29: `#877` のコメントを踏まえ、Windows setup guide は単なるトラブルシュート表ではなく、Docker Desktop 標準入口と組織管理端末 / ライセンス制約の非サポート境界を分ける docs issue として扱う整理を追加
 - 2026-05-28: `#874` の実装を、実験的 layout 生成を default pipeline へ追加しない方針に合わせて修正し、標準 8 step contract を維持する形で PR branch へ push
 - 2026-05-28: Quartz + GitHub Pages project-site の新 Gist を作成し、`wiki/` direct と `wiki/ -> content/` 変換の使い分けを定例共有向けに追記
 - 2026-05-28: developer-wiki Pages の subpath link break 再発を受け、Quartz `baseUrl` 方針に戻して `<base>` patch を撤去し、生成物リンク検査を CI に追加した要点を追記

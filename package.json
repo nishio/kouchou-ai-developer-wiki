@@ -13,6 +13,7 @@
     "quartz": "node ./quartz/bootstrap-cli.mjs",
     "build": "node ./quartz/bootstrap-cli.mjs build -d wiki",
     "serve": "node ./quartz/bootstrap-cli.mjs build --serve -d wiki",
+    "check:pages-links": "python3 scripts/check_pages_links.py",
     "check": "tsc --noEmit"
   },
   "bin": {
