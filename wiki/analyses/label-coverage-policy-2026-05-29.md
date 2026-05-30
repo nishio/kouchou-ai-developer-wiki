@@ -1,12 +1,13 @@
 ---
 type: analysis
-summary: "label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。1 キーワードでクラスタ全体を覆うのは不可能なので、最頻トピック A + 残差を覆う B の greedy max-coverage 的な発想を取る。ラベルから dimension が落ちる根本原因の一つは、上流ラベリング入力が API 経由では最大30件、CLI/defaultでは10件のランダムサンプリングであることにもある"
+summary: "label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。ただし評価基準はユースケース依存で、全体傾向把握と少数重要論点発見では sampling / rep args / judge の望ましい振る舞いが変わる。ラベルから dimension が落ちる根本原因の一つは、上流ラベリング入力が API 経由では最大30件、CLI/defaultでは10件のランダムサンプリングであることにもある"
 sources:
+  - slack-label-algorithm-improvement-2026-05-30.md
   - source-code.md
   - label-refinement-judge-bundle-2026-05-25.md
 ---
 
-[[label-refinement-input-scope-2026-05-29]] で Claude judge が「人間に当てるべき論点」として 3 件出した結果に対して、2026-05-29 の Slack 議論で複数人から人間判断が返ってきた。あわせて、tokoroten が上流の sampling 制約を指摘し、コード確認で「ラベルから軸が落ちる根本原因」が refinement 以前にもあることが分かった。本ページはその判断と方針を product 文脈で整理する。[[label-refinement-judge-bundle-2026-05-25]]より
+[[label-refinement-input-scope-2026-05-29]] で Claude judge が「人間に当てるべき論点」として 3 件出した結果に対して、2026-05-29〜30 の Slack 議論で複数人から人間判断が返ってきた。あわせて、tokoroten が上流の sampling 制約を指摘し、ohki-shingo がユースケースによって評価軸が変わることを指摘し、コード確認で「ラベルから軸が落ちる根本原因」が refinement 以前にもあることが分かった。本ページはその判断と方針を product 文脈で整理する。[[label-refinement-judge-bundle-2026-05-25]]より [[slack-label-algorithm-improvement-2026-05-30]]より
 
 ## 論点 1: 「短いが欠落」vs「長いが冗長」
 
@@ -45,6 +46,18 @@ sources:
 **人間判断: ユースケース次第。最悪、文字列置換で吸収できる。**
 
 `contrast` の `AIによるエンタメと研究革新` のような口語が混ざる件は、product のトーン (政策意思決定の補助 vs 軽量レポート) によって許容度が変わる。優先度は論点 1, 2 より下で、必要なら post-processing で揃えられる。
+
+## 前提: どのユースケースの出力か
+
+2026-05-30 の Slack で ohki-shingo は、具体的にどのユースケースのための出力を良くしたいのかによって、取り組む方向性が変わると指摘した。たとえば `全体傾向を把握したい` のか、`少数だが重要そうな論点を見つけたい` のかでは、適切な処理や評価が違う。[[slack-label-algorithm-improvement-2026-05-30]]より
+
+これは上の「欠落 NG」方針を弱める話ではなく、**何を欠落と呼ぶかを先に定義する必要がある**という補正である。
+
+- **全体傾向把握**: ラベルは cluster mass の大きい上位トピックを安定して要約するべき。random sampling による偶然の欠落は避けたいが、極小の edge case まで label に詰めると scanability が崩れる
+- **少数重要論点発見**: ラベルだけに全 minority dimension を詰めるのは無理がある。むしろ `幅を見せる例` や `境界例`、minority flag、subtopic list のような別 artifact で拾う方がよい
+- **公開 UI の説明責務**: label は入口であり、description / rep args / 個別意見への drill-down とセットで誤誘導を避ける必要がある
+
+したがって次の実験では、`全件入力でラベル品質が上がるか` だけでなく、どのユースケースの quality を測っているかを run metadata と judge prompt に明示する必要がある。
 
 ## 上流の sampling 制約 (新発見)
 
@@ -108,9 +121,11 @@ UI 上は「代表例 3 件」だけより、`典型例 2 + 幅 2 + 境界 1` �
 - UI / judge に渡す rep args を `典型例 / 幅を見せる例 / 境界例` に分ける場合、それぞれ何件ずつ出すのがよいか。まずは `典型例 2 + 幅 2 + 境界 1` のような少数構成で十分か
 - 「上位 2〜3 軸まで」というカバレッジ方針を product として明文化する場所はどこか (refinement prompt? UI 仕様? guidelines?)
 - 候補を UI で人間に選ばせる UX (案 3) はどのフェーズに位置付けるか (作成時の admin UX? 公開後のレビュー UX?)
+- `全体傾向把握` と `少数重要論点発見` を別 mode として扱うなら、label / description / rep args / judge rubric のどこを共通化し、どこを分けるべきか
 
 ## Updates
 
+- 2026-05-30: ユーザー提供の Slack ログを source 化し、ohki-shingo の「全体傾向把握か、少数だが重要な論点発見かで処理・評価が変わる」という指摘を追記。次の実験では use-case contract を run metadata / judge prompt に明示する必要がある
 - 2026-05-30: nishio の指摘を受け、centroid 近傍や label embedding 類似度だけで rep args を選ぶと、クラスタ内の散らばりを過小に見せるリスクがあると追記。rep args は `典型例 / 幅を見せる例 / 境界例` を分けて設計する方針がよい
 - 2026-05-30: current main `0c294da` を再確認し、ラベル付け時の `sampling_num` は API 通常経路では 30、analysis-core default では 10 であると補正。どちらも Polars の seed なし random sample で、最大被覆ではない。UI の「個別データ」表示は representative selection ではなく deepest-level cluster の配列先頭 10 件であることも追記
 - 2026-05-29: 初版作成。Slack での人間判断 (論点 1: カバレッジ優先 / 論点 2: 上位 2-3 軸まで / 論点 3: 後回し OK) と、tokoroten が指摘した sampling 制約をコード確認 (`sampling_num` デフォルト 10、polars ランダム sample) して記録。refinement 改善より先に上流 sampling 戦略を見直す方が本質的、という方針につながった

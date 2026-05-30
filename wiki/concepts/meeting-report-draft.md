@@ -29,6 +29,7 @@ sources:
 ## 次回定例向け下書き (2026-06-01 向け)
 
 - label refinement 実験は、このまま main 昇格を目指すより仕切り直す判断に寄せた。現行 refinement は rep args を見ない polish-only で、上流 sampling は random、UI の個別データも代表例選定ではなく配列先頭、rubric judge v0 も過去のズレを十分に検出できていない。次は refinement prompt を磨くのではなく、(1) sampling 全件入力実験、(2) `典型例 / 幅 / 境界` に分けた rep args artifact、(3) judge 入力と rubric 較正、(4) UI 表示責務を分けて小さく検証する。[[label-quality-redesign-reset-2026-05-30]] に整理済み。
+- ohki-shingo の Slack 指摘を受け、ラベル品質改善はまず「全体傾向の把握」を良くしたいのか「少数だが重要な論点の発見」を良くしたいのかを固定する必要があると補正した。前者なら上位トピックの安定カバー、後者なら minority / boundary / residual evidence を別 artifact として残す設計が要る。次の実験では use-case contract を run metadata / judge prompt に明示する。[[slack-label-algorithm-improvement-2026-05-30]]より [[label-quality-redesign-reset-2026-05-30]]より
 - current main `0c294da` のラベル入力 sampling と UI 個別データ表示を確認した。ラベル付け時は API 通常経路では initial / merge とも最大 30 件、analysis-core default では 10 件で、どちらも Polars の seed なし random sample。最大被覆 / FPS / k-medoids / ラベル適合度による選択ではない。UI の階層リストも representative selection ではなく、deepest-level cluster の arguments を配列先頭から 10 件表示している。次に改善するなら、まず全件入力でラベル品質が上がるかを見るか、代表例選定を別 artifact として定義する必要がある。
 - 実装済み rubric judge を、退避済み過去出力 `jigsaw_sample_comments_400_hierarchical_8_40_refine_{none,setwise,contrast,balanced}` の level 1 に対して `gpt-4o-mini` / `sample-mode all` で実行した。合計 174,839 tokens、概算 $0.03936。結果は `none / setwise / balanced` が score_rate 1.0、`contrast` が 0.9766、fatal flag 0 件で、現行 v0 rubric は human / Claude judge が拾っていたラベルずれを十分に検出できていない。次は criteria を厳格化するか、judge 前に evidence / topic candidates を抽出してから採点する必要がある。
 - `codex/remaining-experiment-wip` にラベル品質の rubric judge を実装した。新規 `experiments/evaluation_report/src/evaluation_label_rubric_llm.py` は cluster-level と label-set を `true/false` criteria + points + fatal flags で評価し、`run_evaluation.py --judge rubric` から実行できる。過去出力ディレクトリを直接指定する `--dataset-path` / `--output-dir` も追加したので、既存成果物をコピーせず再評価できる。CSV/HTML には `rubric_score_rate` と要確認フラグを出す。検証は prompt-only smoke、dataset-path smoke、CSV/HTML render smoke、Ruff、py_compile、`tests/test_label_refinement.py` 3 passed まで確認済み。次は既存 `[8,40]` bundle で human judge と照合する。
@@ -63,6 +64,7 @@ sources:
 
 ## Updates
 
+- 2026-05-30: Slack のラベル改善議論を source 化し、全体傾向把握と少数重要論点発見では処理・評価が変わるという use-case contract の論点を次回共有項目へ追加
 - 2026-05-30: label refinement 実験をそのまま採用せず、sampling / rep args artifact / judge 較正 / UI 表示責務に分けて仕切り直す判断を次回共有項目へ追加
 - 2026-05-30: ラベル付け時の sampling が API 経由では最大 30 件、CLI/default では 10 件の random sample で、UI の個別データ表示も代表例選定ではなく配列先頭 10 件であることを次回共有項目へ追加
 - 2026-05-30: 実装済み rubric judge で過去出力 4 候補を再評価し、費用と「v0 rubric がまだ甘い」結果を次回共有項目へ追加

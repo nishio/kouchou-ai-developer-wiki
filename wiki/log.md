@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-30 12:13] filing-back | Slack のラベル改善議論を source 化しユースケース分岐を追記
+
+- ユーザー提供の 2026-05-29〜30 Slack アルゴリズム改善ログを raw と source page [[slack-label-algorithm-improvement-2026-05-30]] として固定
+- ohki-shingo の「全体傾向把握」と「少数だが重要な論点発見」では処理・評価が変わるという指摘を [[label-coverage-policy-2026-05-29]] / [[label-quality-redesign-reset-2026-05-30]] に追記
+- 次のラベル品質実験は algorithm choice 先行ではなく、use-case contract → evidence artifact → judge の順で切る方針に補正
+
 ## [2026-05-30 02:34] filing-back | label refinement 実験を仕切り直す判断を整理
 
 - 今回の label refinement 実装は rep args を見ない polish-only で、上流 sampling / UI representative examples / judge の各層にも改善余地が大きいため、このまま採用候補として進めず仕切り直す判断を記録
@@ -616,39 +622,3 @@
 - `work/kouchou-ai/apps/api/tests/manual/report_launcher_subprocess_smoke.py` を追加。`execute_aggregation()` から **本物の subprocess** を起動し、`hierarchical_result.json`・`hierarchical_status.json`・`report_status.json` 更新まで確認する手元 smoke test として整理
 - [[testing]] に明示実行コマンド `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` を追加し、既定収集の対象外であることと、analysis-core 単体 e2e と API mock test の間を埋める目的を明記
 - [[meeting-report-draft]] にも、「analysis-core 単体の e2e だけでなく API 境界を手元で 1 回は踏めるようにした」という要点を追記
-
-## [2026-05-23 11:32] filing-back | 定例会議向け下書きに Jigsaw 系第2モードの長期論点を追記
-
-- [[meeting-report-draft]] の「月曜にそのまま読む用」と「次回定例向け下書き」に、Jigsaw Sensemaker 的な第2分析モードは自然な散布図を出しにくい一方、散布図は依然としてユーザ価値が高い、という緊張関係の整理を追加
-- 短期は散布図互換の暫定案、長期は散布図必須ビューの前提解体、という二段構えを会議で口頭共有しやすい形に圧縮し、[[strategic-development-order-2026-05-23]] と [[jigsaw-sensemaker-history]] への導線もつないだ
-
-## [2026-05-23 10:02] filing-back | current roadmap を open issues / wiki から再整理
-
-- 新規 analysis [[development-priority-roadmap-2026-05-23]] を追加。2026-05-23 時点の GitHub current state を確認し、`#836` `#837` `#833` `#845` `#846` `#716` `#740` など 5/21-5/22 に close 済みの前提作りタスクを除外した current roadmap を作成
-- 優先順を「Windows 初回導入 (`#731`) → user-facing bug (`#584` `#493` `#629`) → 運用基盤 (`#741` `#518` `#558` `#546` `#838`) → 説明責務 / 研究テーマ (`#696` `#542` `#564` `#577` `#809`)」へ組み替え、実装工数と calendar の目安も追記
-- `wiki/index.md` Analyses に新ページへの導線を追加
-
-## [2026-05-23 10:02] filing-back | issue-centric roadmap を補う長期戦略ページを追加
-
-- 新規 analysis [[strategic-development-order-2026-05-23]] を追加。`usage-modes`, `plugin-system`, `refactoring-status`, `book-release-development-plan-2026-09`, `broad-listening-book-extractions` を束ね、`kouchou-ai` を「共通実験基盤 / 製品導線 / 探索枝」の 3 層 platform として見る長期順序を整理
-- 優先順を「`analysis-core` の canonical contract 固定 → plugin 実証 1 本目 → Web / CLI / distribution の役割固定 → experiment portfolio 運用 → trust layer」の順で記述し、短期 bugfix 順と別レイヤだと明示
-- [[development-priority-roadmap-2026-05-23]] に、本ページが short / mid-term triage であり、長期順は新ページを参照すべき旨を追記
-- `wiki/index.md` Analyses に新ページへの導線を追加
-
-## [2026-05-23 10:02] filing-back | 第2分析モードを散布図前提が縛る問題を長期戦略へ明記
-
-- [[strategic-development-order-2026-05-23]] に `Core Problem` 節を追加し、「分析モード数の少なさ」より「第1モードが散布図を自然に出せることが product の既定前提になっており、第2モードが scatter-compatible な形へ無理に射影されやすいこと」が本質的問題だと追記
-- current code 上でも `apps/api/src/schemas/visualization_config.py`、`apps/admin/.../VisualizationConfigDialog.tsx`、`apps/public-viewer/components/charts/SelectChartButton.tsx` が `scatterAll` を既定にしている一方、`docs/development/plugin-guide.md` には散布図なし設定例があり、設計意図とプロダクト既定のズレがあることを確認
-- 長期戦略の問いを「analysis mode を増やすこと」から「散布図を前提にしない analysis mode でも product が成立する capability contract へ移れるか」へ寄せ直した
-
-## [2026-05-23 10:02] filing-back | Jigsaw Sensemaker と散布図の緊張関係を時系列で整理
-
-- Google Doc export から `raw/meeting_minutes.txt` を再取得したうえで、meeting minutes / `#2_開発_広聴ai` / `#2_開発_広聴ai_アルゴリズム開発` を再読
-- 新規 analysis [[jigsaw-sensemaker-history]] を追加し、2025 4Q の「現行散布図方式の限界認識」から、2026 Q1 の「Jigsaw 系を受け入れるには可視化を分析から切り離す必要がある」という設計意図までを時系列で整理
-- [[strategic-development-order-2026-05-23]] で現在の core problem として書いた「scatter-first な product 契約が第2モードを縛る」という見立てが、過去ログにも連続して現れていたことを明文化
-- `wiki/index.md` Analyses に新ページへの導線を追加
-
-## [2026-05-23 10:02] filing-back | Jigsaw系第2モードの移行戦略を一文で要約
-
-- [[strategic-development-order-2026-05-23]] に `Working Formulation` を追加し、「embedding を前提としない分析様式でも、短期は embedding 併用で散布図互換に載せ、長期は散布図必須ビューをやめる」という二段構えを作業仮説として明文化
-- [[jigsaw-sensemaker-history]] に `Distilled Take` を追加し、この要約が 2025 4Q 〜 2026 Q1 の議論の収束形として読めることを補記

@@ -3,6 +3,8 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-30 12:13	filing-back	Slack のラベル改善議論を source 化しユースケース分岐を追記
+2026-05-30 03:15	filing-back	PR #883 の CodeRabbit 2 件を address
 2026-05-30 02:34	filing-back	label refinement 実験を仕切り直す判断を整理
 2026-05-30 02:30	filing-back	rep args は典型例だけだと散らばりを隠す
 2026-05-30 02:02	filing-back	ラベル入力 sampling と UI 個別データ表示の現状を確認
