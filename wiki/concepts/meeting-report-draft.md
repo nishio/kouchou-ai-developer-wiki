@@ -16,47 +16,81 @@ sources:
 
 ## 使い方
 
+- まず冒頭の「月曜にそのまま読む用」を 8 項目以内に保つ。詳細は下のテーマ別セクションへ送る
 - 1 項目は 2〜4 行程度で、`やったこと / 現在地 / 次の一手` が分かる粒度にする
 - merge 済みか進行中かを明記する
 - issue 番号、PR 番号、main commit などの検索キーを残す
-- 会議で読まない細かい実装詳細はこのページに詰め込まず、関連ページへ送る
+- 会議で読まない細かい実装詳細はこのページに詰め込まず、関連 analysis / source ページへ送る
+- 同じテーマで新しい情報が来たら、新しい bullet を足すのではなく既存セクションを書き換える
 - 会議が終わったら本ページを `wiki/concepts/meeting-report-YYYY-MM-DD.md` へ rotate し、本ページは次回向けに空に戻す
 
 ## 過去回
 
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
 
-## 次回定例向け下書き (2026-06-01 向け)
+## 月曜にそのまま読む用 (2026-06-01 向け)
 
-- label refinement 実験は、このまま main 昇格を目指すより仕切り直す判断に寄せた。現行 refinement は rep args を見ない polish-only で、上流 sampling は random、UI の個別データも代表例選定ではなく配列先頭、rubric judge v0 も過去のズレを十分に検出できていない。次は refinement prompt を磨くのではなく、(1) sampling 全件入力実験、(2) `典型例 / 幅 / 境界` に分けた rep args artifact、(3) judge 入力と rubric 較正、(4) UI 表示責務を分けて小さく検証する。[[label-quality-redesign-reset-2026-05-30]] に整理済み。
-- ohki-shingo の Slack 指摘を受け、ラベル品質改善はまず「全体傾向の把握」を良くしたいのか「少数だが重要な論点の発見」を良くしたいのかを固定する必要があると補正した。前者なら上位トピックの安定カバー、後者なら minority / boundary / residual evidence を別 artifact として残す設計が要る。次の実験では use-case contract を run metadata / judge prompt に明示する。[[slack-label-algorithm-improvement-2026-05-30]]より [[label-quality-redesign-reset-2026-05-30]]より
-- current main `0c294da` のラベル入力 sampling と UI 個別データ表示を確認した。ラベル付け時は API 通常経路では initial / merge とも最大 30 件、analysis-core default では 10 件で、どちらも Polars の seed なし random sample。最大被覆 / FPS / k-medoids / ラベル適合度による選択ではない。UI の階層リストも representative selection ではなく、deepest-level cluster の arguments を配列先頭から 10 件表示している。次に改善するなら、まず全件入力でラベル品質が上がるかを見るか、代表例選定を別 artifact として定義する必要がある。
-- 実装済み rubric judge を、退避済み過去出力 `jigsaw_sample_comments_400_hierarchical_8_40_refine_{none,setwise,contrast,balanced}` の level 1 に対して `gpt-4o-mini` / `sample-mode all` で実行した。合計 174,839 tokens、概算 $0.03936。結果は `none / setwise / balanced` が score_rate 1.0、`contrast` が 0.9766、fatal flag 0 件で、現行 v0 rubric は human / Claude judge が拾っていたラベルずれを十分に検出できていない。次は criteria を厳格化するか、judge 前に evidence / topic candidates を抽出してから採点する必要がある。
-- `codex/remaining-experiment-wip` にラベル品質の rubric judge を実装した。新規 `experiments/evaluation_report/src/evaluation_label_rubric_llm.py` は cluster-level と label-set を `true/false` criteria + points + fatal flags で評価し、`run_evaluation.py --judge rubric` から実行できる。過去出力ディレクトリを直接指定する `--dataset-path` / `--output-dir` も追加したので、既存成果物をコピーせず再評価できる。CSV/HTML には `rubric_score_rate` と要確認フラグを出す。検証は prompt-only smoke、dataset-path smoke、CSV/HTML render smoke、Ruff、py_compile、`tests/test_label_refinement.py` 3 passed まで確認済み。次は既存 `[8,40]` bundle で human judge と照合する。
-- Zenn / Ubie の LLM-as-a-Judge ルーブリック評価記事を参考に、ラベル品質 judge を `true/false` criteria + points + negative criteria に分解する案を [[label-quality-rubric-evaluation-2026-05-29]] に整理した。`一貫性 / 具体性 / 網羅性 / 区別性` をそのまま 1-5 点化するのではなく、cluster-level と label-set の 2 層で、coverage / grounding / sibling distinction / scanability / register / fatal penalty を見る。まず既存 `[8,40]` judge bundle で人間判断と照合し、pipeline 標準 step ではなく offline experimental artifact として回すのが次の一手。
-- ラベル refinement 実験 (`codex/remaining-experiment-wip`) の独立 judge を Claude で回し、`none / setwise / contrast / balanced` を 3 軸 (個別代表性 / 一覧読みやすさ / 隣接区別性) で比較した結果と、Slack で集めた人間判断を [[label-coverage-policy-2026-05-29]] に集約した。決まった方針: (1) ラベルは「目次」ではなく「要約」として上位 2〜3 軸までカバーする方向、(2) 1 キーワードで完全包括は無理なので greedy max-coverage の発想で「AとB」程度まで広げる、(3) `contrast` の「エンタメ」のような口語 register は post-processing で吸収可。次回提案したい実験は、tokoroten 案の「タイトル候補 emb × 各要素 emb の cos 類似度総和を最大化」と、上流 `hierarchical_initial_labelling` の sampling 戦略を `random → max coverage / FPS` に切り替えるテスト。
-- 上記の judge 中に、`hierarchical_label_refinement.py` が rep args を入力に取らず current_label + children labels だけで polish していることを確認し [[label-refinement-input-scope-2026-05-29]] に記録した。default-off で main 同梱は OK だが、default-on 昇格を語る前に上流の `sampling_num=10` 完全ランダムサンプリングの方が本質的なボトルネックである、という方針整理を提示する予定。
-- ラベル品質改善の議論が Slack / wiki / WIP branch / issue に散っていたため、上位トラッキング issue `#881` `[analysis-core] ラベル品質改善の実験・議論を追跡可能にする` を起票し、既存 `#869` からもリンクした。未実施実験として、KJ法的プロンプトが本当に効くのかを baseline / KJ prompt / neutral structured prompt で比べる `#882` も切り出した。[[github-dev-docs]]より [[label-coverage-policy-2026-05-29]]より [[kj-method-broadlistening-framing-2026-05-25]]より
-- 新しい可視化アイデアとして `#879` `[FEATURE] クラスタと時刻の掛け合わせでヒートマップ表示したい` と `#880` `[FEATURE] [8, 64] の分析をマンダラートで可視化したい` を起票した。`#879` はクラスタ別の時間的な盛り上がりを読むビュー、`#880` は主要 8 観点と 64 下位要素を探索するビューとして、まず mock / prototype で読みやすさを確認するのが次の一手。[[github-dev-docs]]より
-- Issue `#876` (`README / docs の開発者向け導線を current main に合わせて整理する`) に対して PR `#883` `codex/issue-876-developer-quickstart` を作成。新規 canonical `docs/development/developer-quickstart.md` を作り、Docker Compose / dummy-server + frontend dev / native (apps/api・apps/admin) / CLI (analysis-core) の 4 モードを「最初の 1 ページ」で判断できる入口にした。各モードに必要な環境変数・起動コマンド・確認 URL・よくある落とし穴（`.env` の置き場所、Docker rebuild trigger、`analysis-core` editable install）を集約し、`README.md` は 240 → 92 行へ trim、`docs/index.md` / `docs/getting-started/quickstart.md` / `mkdocs.yml` も新ページに合わせて整理。`mkdocs build --strict` pass 済み。CodeRabbit 2 件 (README の MkDocs `!!! note` → GitHub 用 blockquote 化、developer-quickstart の削除済み README セクションへの broken link → `ollama pull <model>` の inline 説明 + Ollama 公式モデルライブラリリンク) を commit `3bd57a6` で address 済み、残は人間 reviewer 承認待ち。
-- 残 issue の優先順を live state で組み直した。current open は 121 件で、全件メタデータ確認後に古い high priority も読み直すと、project-wide には `#221` 試行錯誤負担削減と `#564` 活用事例公開を上位に戻すべきだった。tactical next は `#883 -> #876` と `#863 -> #731` の進行中 PR 着地、`#877` Windows guide 境界、`#881` / `#882` / `#869` ラベル品質実験、`#871` Blob health check、`#872` / `#493` viewer UX。[[remaining-issue-priority-2026-05-29]]より
-- `#221` 系を掘り下げ、単一 feature ではなく「作成前確認 / API・billing preflight / 入力検証 / 実行中見通し / 再利用」の 5 面で試行錯誤負担を下げるテーマと整理した。この具体 issue として `#884` `[FEATURE] レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` を起票し、`#221`, `#11`, `#79`, `#292`, `#391`, `#97` へ整理コメントを追加。最初の PR は `apps/admin/app/create/page.tsx` の既存 `window.confirm` を作成前確認パネルへ置き換える slice。[[trial-and-error-burden-reduction-2026-05-29]]より
+1. ラベル品質改善は **仕切り直し方向** に寄せました。今の refinement 実装は polish-only で rep args を見ておらず、上流 sampling もランダム、UI の代表例表示も配列先頭、rubric judge も過去のズレを十分に検出できていない、と複数の層に同時に課題が見つかりました。次は prompt を磨くのではなく、ユースケース契約 → sampling 全件入力 → rep args artifact → judge 較正、の順で小さく検証します。[[label-quality-redesign-reset-2026-05-30]]より
+2. 上のユースケース契約について nishio との対話で **「全体傾向把握ユースケース」 1 本に確定** し、tokoroten が Slack で **「デカい見落とし / デカい違和感を見つける」** と operational に言い換えました。合わせて **広聴AI の core stance** を **「構造把握スタンスのツールであって、定量分析スタンスのツールではない」** と明文化しています ([[analysis-stance]])。Web UI に契約選択は露出せず、少数重要論点系は CLI 分析者の prompt 責務、minority residual artifact なし。KJ #3/#4/#5 と公開UI 7 要件の #5/#7 は別ツール側に倒れ、本体は 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理です。
+3. 構造把握装置の構造的限界として **「インサイト見つけられず止まる」現象** が ohki-shingo から提示され、reader 側に prior mental model がない / 一致している場合は突合素材があっても差異が生まれない、と説明されました。「すでにある総合計画に意見がどうマッピングされるか」のような明示的な prior model を持つ運用が構造把握装置が最も活きる場面、という整理です。UX 指針としては、ユーザは自分のしたいことを区別できない解像度で持つので **デフォルトモード提供 → 反応見て別 view を案内** する事後誘導型に倒し、選択強制は避ける。「ざっくり / 詳細」モード切替 + サンプル分析カタログを補助として用意する方向。[[slack-stance-discussion-2026-05-30]]より
+4. 「別ツール」エコシステムの空き地に対する nishio の答えとして **CLI に多様な実験機能を積み、それが共有・比較・継承されるコミュニティを育てる** という二段構造のビジョンを [[broadlistening-tool-ecosystem-vision]] として整理しました。tokoroten の DivCon や Long Context 再分類のような少数意見救出系は CLI 拡張として位置づけ。Web UI に複雑機能を載せて DivCon 方向の発展が抑制された反省を踏まえます。
+5. 進行中 PR は 2 本: 開発者向け docs 4 モード整理の `PR #883`(`#876`)、`fetch_reports.py` 降格 branch (`#870`)。`#741` Azure deploy flaky は `PR #873` で workflow `concurrency` を追加し merge 済みで close、deploy safety の残課題は `#871` Blob health check に絞れています。[[remaining-issue-priority-2026-05-29]]より
+6. open issue 121 件を再棚卸しし、project-wide 優先は `#221` 試行錯誤負担削減と `#564` 活用事例公開に戻しました。`#221` は単一 feature ではなく「作成前確認 / preflight / 入力検証 / 実行中見通し / 再利用」の 5 面のテーマとして整理し、具体起点として `#884`(作成前確認パネル) を切り出しました。[[trial-and-error-burden-reduction-2026-05-29]]より
+7. Windows setup `#877` は、Docker Desktop が使える Windows 10/11 を標準入口にし、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない端末は beginner guide のサポート境界外として明示する方針にしました。[[issue-877-windows-setup-guide-scope]]より
+8. パイプライン step 追加判断は **「step 数」ではなく「新しい成果物責務を first-class にすべきか」** で決める方針にしました。`#874` の semantic island layout 生成は実験経路に戻し、標準パイプラインは 8 step のまま維持します。[[pipeline-step-default-policy-decision-2026-05-28]]より
+9. スマホでの散布図 UX は、responsive 微調整より別ビュー方針を検討する `#872` を新規起票しました。`#121` `#283` も `bug` ラベルを外して `#872` の参考課題に寄せています。MST / supervised UMAP の試作からは、cluster 間と cluster 内を分けて点を所属島から出さない `semantic island map` を基準線にする判断も出ました。これは構造把握スタンス / 全体傾向把握ユースケース確定後も構造把握用主図候補として広聴AI 本体に残る位置づけです。[[semantic-island-map-prototype-2026-05-26]]より
+10. developer-wiki の GitHub Pages は subpath link が壊れていた問題を Quartz `baseUrl` 方針で直し、生成物リンク検査を CI に追加しました。Quartz + GitHub Pages project-site の設計メモは public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` として外出ししています。[[wiki-pages-publishing-stack]]より
 
-- Windows setup guide issue `#877` は、API key や Docker Desktop 起動確認の文言整理だけでなく、Docker Desktop を入れられる個人 PC と、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない貸与 PC を分けるサポート境界の問題として整理した。短期は Docker Desktop が使える Windows 10/11 を標準入口にし、使えない環境は beginner guide の対象外または上級者向け WSL2 + Docker Engine 別ルートへ切り出すのが筋。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
-- developer-wiki の Pages subpath 問題を踏まえ、Quartz + GitHub Pages project-site の設計メモを public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` として外部化した。旧 Gist の `wiki/ -> content/` 変換は汎用 Obsidian vault には有効だが、この repo では `wiki/` direct build を維持し、`baseUrl` と生成物リンク検査で守る方針を明文化した。[[wiki-pages-publishing-stack]]より
-- developer-wiki の GitHub Pages で、index や検索結果のリンクが project-site subpath と噛み合わず壊れる問題を再点検した。Quartz 4 は `baseUrl` で project-site hosting を扱えるため、root 専用 `<base>` patch は撤去し、`scripts/check_pages_links.py` を CI に入れて build 後の全内部リンクが `/kouchou-ai-developer-wiki/` 配下に解決されることを検査する形に直した。[[wiki-pages-publishing-stack]]より [[wiki-pages-tooling-observation-2026-05-21]]より
-- `#874` は commit `51a7c77` で、`hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults / standard step exports から外し、標準パイプラインを 8 step のまま維持する修正を push した。layout 生成 step と `layouts` を読む visualization は実験コードとして残すが、default では走らない。Ruff / Pytest / Server Tests / CodeQL は GitHub Actions で pass、CodeRabbit は review in progress。
-- pipeline step 追加判断に、open PR `#866` / `#867` / `#874` も反映した。`#866` は LLM grouping を既存 step に押し込まず workflow として切る良い例、`#867` は downstream step 比較のための reuse/rerun 基盤、`#874` は `layouts` という named layout artifact を作る実験としては筋がある。ただし実験的な semantic island layout 生成を標準パイプラインで常時走らせる理由は弱く、現時点では標準 9 step 化せず、明示有効化される実験用経路に戻す判断とした。[[pipeline-step-addition-framing-2026-05-27]]より [[open-pr-pipeline-step-observation-2026-05-28]]より [[pipeline-step-default-policy-decision-2026-05-28]]より
-- `#741` 向けの最小修正として `.github/workflows/azure-deploy.yml` に workflow-level `concurrency` を追加する `PR #873` を作成し、2026-05-28 に merge 済み。これにより `#741` は close 済みで、今後の deploy safety 残課題は `fetch_reports.py` 依存を Blob Storage health check へ置き換える `#871` 側に絞られた。[[issue-741-current-state-2026-05-26]]より [[remaining-issue-priority-2026-05-29]]より
-- `#741` は「npm flaky」ではなく、近接する main push が Azure Container Apps 更新で競合する `ContainerAppOperationInProgress` 問題として読み替え、workflow-level serialization で一旦閉じた。次に見るべきは Azure update retry ではなく、current storage contract と deploy safety のズレを解く `#871`。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
-- `#121` と `#283` の再観測を踏まえ、スマホでは現状の散布図 UI をそのまま使うのは現実的でないという前提で、新規 issue `#872` `[FEATURE] スマホ環境では散布図と別ビューを提供する方針を検討する` を作成した。論点は「responsive 調整で粘るか」ではなく、「mobile では静的画像・クラスタ一覧・簡略図など別ビューを既定にするか」を決めること。これに合わせて `#121` と `#283` の `bug` ラベルは外し、上位検討 issue の参考課題へ寄せた。[[remaining-bug-issues-2026-05-26]]より [[github-dev-docs]]より
-- 残っている `[BUG]` title issue は 2026-05-29 時点で再確認し、`#741` は close 済みに更新した。現在の `bug` ラベル open issue は `#731` / `#700` / `#477` で、`#731` は `PR #863` 対応中、`#700` は他 contributor assigned、`#477` は Azure model UI 不整合として残るが直近最優先ではない。[[remaining-issue-priority-2026-05-29]]より
-- `worktree: codex/mst-visualization-prototype` で `LLM grouping` 済み 422 argument の可視化を、MST overlay / supervised UMAP / semi-supervised UMAP / LDA / centroid-MDS と順に試したが、どれも「cluster が離れすぎる」か「他 group に混ざって見える」問題を解消できなかった。最終的には、embedding 由来散布図を主図にする発想をやめ、cluster 間配置と cluster 内配置を分離して点を所属島から出さない `semantic island map` を基準線にする判断へ寄せた。[[semantic-island-map-prototype-2026-05-26]]より
-- 直近研究で繰り返し出た「pipeline に step を足す」論点を整理した。結論は、step 数そのものではなく、境界・反例・bridge・未解決カードのような新しい成果物責務を first-class にすべきかで判断すること。`label_refinement` は optional 実験、`interpretation_artifacts` は `aggregation` に押し込まず独立成果物として切る方が筋、という整理にした。[[pipeline-step-addition-framing-2026-05-27]]より
-- `#629` の掘り下げとして、`fetch_reports.py` はストレージ機能が無かった初期の「deploy 前に API から吸い出して守る」発想の名残で、current main の storage sync / restore 本線とはずれていることを整理した。今後は script 自体を強化するより、migration 専用へ降格し、Azure Blob の read/write を軽く確認する storage health check を deploy safety に据える方が筋がよい。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
-- その整理に合わせて、旧 `#629` は close し、`#870`（`fetch_reports.py` の役割整理）と `#871`（deploy safety を Blob Storage health check に切り替える）へ分解した。次に実装するなら `#871` を先に進め、その後 `#870` で script / docs の降格を片付ける順がよい。[[github-dev-docs]]より [[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
-- `#870` は branch `codex/issue-870-fetch-reports-cleanup` で着手し、`azure-update-deployment` から `tools/scripts/fetch_reports.py` を外し、script 自体も削除した。Blob Storage 本線に合わせて deployment docs を修正し、環境構築後の read/write 確認は既存の `apps/api/scripts/test_storage.py` を使う案内へ寄せた。PR はこれから作成する。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
-- `work/kouchou-ai/` に残っていた Jigsaw 系実験 artifact と Next.js 生成差分は、branch `codex/remaining-experiment-artifacts-2026-05-29` commit `b56ac9b` として退避した。これにより一次参照 clone は `main@6955202` へ戻して clean にでき、以後の code 観測と実験再開点を分離した。[[remaining-experiment-artifacts-snapshot-2026-05-29]]より
+(新しい可視化アイデア `#879` ヒートマップ / `#880` マンダラートは検討材料として残す。優先 lane の整理を先に進める想定)
+
+## 次回定例向け詳細 (テーマ別)
+
+### 1. ラベル品質改善: 仕切り直し
+
+- Slack `#2_開発_広聴ai` 2026-05-29〜30 の議論を受けたユースケース契約は、nishio との対話で **「全体傾向把握ユースケース」一本** に確定 (詳細 [[label-quality-redesign-reset-2026-05-30]])。Web UI には契約選択を露出せず、CLI = 分析者が「重要」を prompt に書く責務、minority residual artifact なし、`analysis_mode` は契約と直交。次の実験以降は全体傾向把握最適化で sampling / rep args / judge を固める。[[slack-label-algorithm-improvement-2026-05-30]]より
+- 現行 `hierarchical_label_refinement` の責務範囲を確認した結果、refinement は rep args を入力に取らず current_label + children labels だけで polish しており、`整った嘘` リスクがある polish-only 仕様だと分かった。default-off で main 同梱は OK だが、default-on 昇格を語る前段の整理が必要。[[label-refinement-input-scope-2026-05-29]]より
+- 上流のラベル付け時 sampling は、API 通常経路で最大 30 件、analysis-core CLI/default で 10 件、いずれも Polars の seed なし random sample。最大被覆 / FPS / k-medoids / 適合度選択は入っていない。UI の階層リストも representative selection ではなく配列先頭 10 件である。改善の本丸は refinement より上流にある可能性が高い。[[label-coverage-policy-2026-05-29]]より
+- 実装した rubric judge を退避済み過去出力 4 候補に当てると `none / setwise / balanced` が score_rate 1.0、`contrast` が 0.9766、fatal flag 0 件で、人間 / Claude judge が拾ったズレを v0 rubric は検出できていない。判定そのものを較正する必要がある。総コストは 174,839 tokens / 概算 \$0.0394。[[label-quality-rubric-evaluation-2026-05-29]]より
+- 次の slice は (1) `sampling_num` を外して全件入力にしてラベル品質が上がるか、(2) `典型例 / 幅 / 境界` に分けた rep args artifact を生成、(3) UI / judge の入力をその artifact に揃える、(4) rubric criteria を厳格化する、を別々に切る。仕切り直しの全体像は [[label-quality-redesign-reset-2026-05-30]] に。
+- 議論が散らないよう、上位トラッキング issue `#881` と KJ法的 prompt 比較実験 issue `#882` を起票し、既存 `#869` から辿れるように接続した。
+
+### 2. 進行中 PR の着地と Azure deploy safety
+
+- `PR #883` (`codex/issue-876-developer-quickstart`): `docs/development/developer-quickstart.md` を新規 canonical 入口にし、Docker Compose / dummy-server + frontend dev / native / CLI の 4 モードを「最初の 1 ページ」で判断できる構成にした。README は 240 → 92 行に trim、`mkdocs build --strict` pass。CodeRabbit 2 件は commit `3bd57a6` で address 済み (`!!! note` → GitHub blockquote 化、Ollama 公式モデルライブラリリンクへの差し替え)。残は人間 reviewer 承認待ち。
+- `#741` Azure deploy flaky は `PR #873` で `azure-deploy.yml` に workflow-level `concurrency` を追加して merge 済みで close。根本は npm flaky ではなく近接 main push による `ContainerAppOperationInProgress` だったので、serialization で一旦閉じた。[[issue-741-current-state-2026-05-26]]より
+- deploy safety の残課題は `fetch_reports.py` 依存。current main の storage sync / restore 本線とずれており、`PUBLIC_API_KEY` 経由のため非公開レポートも救えない。旧 `#629` は close し、`#870`(script 降格) と `#871`(Blob Storage health check 置換) に分解した。実装順は `#871` を先、`#870` で docs / script 整理を後、が筋。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
+- `#870` 着手中: branch `codex/issue-870-fetch-reports-cleanup` で `azure-update-deployment` から `tools/scripts/fetch_reports.py` を外し、script 自体を削除。read/write 確認は既存 `apps/api/scripts/test_storage.py` を使う docs へ寄せた。PR はこれから作成。
+
+### 3. 残 issue の優先順を live state で組み直し
+
+- current open 121 件、`high priority` は `#221` と `#564` の 2 件。古い user-facing issue (`#11` `#79` `#97` `#292` `#391` 等) まで本文を読み直し、project-wide 優先順を組み直した: (1) `#221` 試行錯誤負担削減、(2) `#564` 活用事例公開、(3) 進行中 PR と Windows 導線の着地、(4) deploy / storage safety、(5) ラベル品質実験、(6) viewer UX (mobile 方針先決め)。[[remaining-issue-priority-2026-05-29]]より
+- `#221` 系は「作成前確認 / API・billing preflight / 入力検証 / 実行中見通し / 再利用」の 5 面に分け、最初の slice は `apps/admin/app/create/page.tsx` の既存 `window.confirm` を作成前確認パネルへ置き換える。具体 issue として `#884` を起票し、`#11` `#79` `#97` `#292` `#391` へ整理コメントを追加した。[[trial-and-error-burden-reduction-2026-05-29]]より
+- 残存 `[BUG]` title issue は `#741` close を反映済み。現在の `bug` ラベル open は `#731`(PR `#863` 対応中) / `#700`(他 contributor assigned) / `#477`(Azure model UI 不整合、直近最優先ではない)。
+
+### 4. Windows setup guide のサポート境界 (#877)
+
+- `#877` の本質は文言整理ではなく **サポート境界の問題**。Docker Desktop が入れられる Windows 10/11 を標準入口にし、組織ポリシーやライセンス制約で Docker Desktop / WSL2 が使えない貸与 PC は beginner guide の対象外、または別ルートとして明示する。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
+- `PR #863`(`codex/issue-731-windows-setup-powershell`) も並行進行中で、`#731` 日本語 UX 戻しを担当。CodeRabbit 対応として API key 改行エラーの日本語化、`docker compose` を `$PSScriptRoot` で実行する修正、非対話失敗時の compose exit code 保持を追加済み。
+
+### 5. パイプライン step 追加判断のフレーミング
+
+- 直近研究で繰り返し出た「pipeline に step を足す」論点を、step 数ではなく「新しい成果物責務を first-class にすべきか」で判断する方針として整理した。`label_refinement` は default complexity として見せない optional 実験、境界・反例・bridge・未解決カードは `aggregation` に押し込まず `interpretation_artifacts` として切るのが筋。[[pipeline-step-addition-framing-2026-05-27]]より
+- 適用例として `#874` の semantic island layout 生成は、`layouts` という named layout artifact を作る方向としては筋がよいが、標準パイプラインで常時走らせる理由は弱い。commit `51a7c77` で `hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults から外し、明示有効化される実験経路に戻した。標準 8 step contract と固定テストは維持。[[pipeline-step-default-policy-decision-2026-05-28]]より
+- 関連 open PR の整理: `#866` LLM grouping は workflow として切る良い例、`#867` reuse-from は downstream 比較の基盤。[[open-pr-pipeline-step-observation-2026-05-28]]より
+
+### 6. スマホ向け散布図と semantic island map
+
+- `#121` `#283` を実機相当 viewport で再観測した結果、portrait では tap tooltip が plot 幅の大半 (363/390px) を覆い、`360x520` 等の小型では hover overlap が複数件再現する。responsive 微調整だけでは根本問題が残ると判断し、mobile では静的画像 / クラスタ一覧 / 簡略図など別ビュー方針を検討する `#872` を新規起票。両 issue の `bug` ラベルは外し、`#872` の参考課題に寄せた。[[remaining-bug-issues-2026-05-26]]より
+- `worktree: codex/mst-visualization-prototype` で `LLM grouping` 済み 422 argument の可視化を MST overlay / supervised UMAP / semi-supervised UMAP / LDA / centroid-MDS と試したが、いずれも「離れすぎ」か「混ざりすぎ」で解決しなかった。embedding 由来散布図を主図にする発想をやめ、cluster 間配置と cluster 内配置を分離して点を所属島から出さない `semantic island map` を `LLM grouping` 向け cluster-first view の基準線にする方向にした。[[semantic-island-map-prototype-2026-05-26]]より
+
+### 7. developer-wiki Pages の整備
+
+- developer-wiki の GitHub Pages で、index や検索結果のリンクが project-site subpath と噛み合わず壊れる問題を再点検。Quartz 4 は `baseUrl` で project-site hosting を扱えるため、root 専用 `<base>` patch は撤去し、`scripts/check_pages_links.py` を CI に入れて build 後の全内部リンクが `/kouchou-ai-developer-wiki/` 配下に解決されることを検査する形に直した。[[wiki-pages-publishing-stack]]より
+- Quartz + GitHub Pages project-site の設計メモを public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` に外出しした。旧 Gist の `wiki/ -> content/` 変換は汎用 Obsidian vault には有効だが、この repo では `wiki/` direct build を維持する判断を明文化。
+
+### 8. 新しい可視化アイデア (検討材料)
+
+- `#879` `[FEATURE] クラスタと時刻の掛け合わせでヒートマップ表示したい` と `#880` `[FEATURE] [8, 64] の分析をマンダラートで可視化したい` を起票。`#879` はクラスタ別の時間的盛り上がりを読むビュー、`#880` は主要 8 観点と 64 下位要素を探索するビューとして、まず mock / prototype で読みやすさを確認するのが次の一手。優先 lane (`#221` / Windows / ラベル品質 / deploy safety) の整理を先に進める想定。
 
 ## Open Questions
 
@@ -64,35 +98,24 @@ sources:
 
 ## Updates
 
-- 2026-05-30: Slack のラベル改善議論を source 化し、全体傾向把握と少数重要論点発見では処理・評価が変わるという use-case contract の論点を次回共有項目へ追加
-- 2026-05-30: label refinement 実験をそのまま採用せず、sampling / rep args artifact / judge 較正 / UI 表示責務に分けて仕切り直す判断を次回共有項目へ追加
-- 2026-05-30: ラベル付け時の sampling が API 経由では最大 30 件、CLI/default では 10 件の random sample で、UI の個別データ表示も代表例選定ではなく配列先頭 10 件であることを次回共有項目へ追加
-- 2026-05-30: 実装済み rubric judge で過去出力 4 候補を再評価し、費用と「v0 rubric がまだ甘い」結果を次回共有項目へ追加
-- 2026-05-29: `codex/remaining-experiment-wip` に rubric judge 実装を追加し、CLI 接続、CSV/HTML 表示、過去出力を直接再評価できる `--dataset-path`、検証結果を次回共有項目へ追加
-- 2026-05-29: Zenn / Ubie のルーブリック評価記事を参考に、ラベル品質 judge を binary criteria + weights に分解する案を次回共有項目へ追加
-- 2026-05-29: Issue `#876` (開発者向け導線整理) に対して PR `#883` を作成。`docs/development/developer-quickstart.md` を新規 canonical 入口にし、4 モード分岐と環境変数 / 起動コマンド / 落とし穴を 1 ページに集約。README は概要 + docs 導線に trim
-- 2026-05-29: live open issues / PR を再確認し、open issue 121 件のうち `#221` / `#564` の high priority を上位テーマに戻したうえで、tactical next を進行中 PR 着地、Windows guide 境界、ラベル品質実験、Blob health check、viewer UX に整理
-- 2026-05-29: `#221` 系を掘り下げ、作成前確認パネルを最初の実装 slice とする考察を [[trial-and-error-burden-reduction-2026-05-29]] に filing back。具体 issue `#884` も起票し、下位 issue へ整理コメントを追加
-- 2026-05-29: ラベル品質改善の上位トラッキング issue `#881` と、KJ法的プロンプト比較実験 issue `#882` を起票し、既存 `#869` から辿れるように接続
-- 2026-05-29: 新しい可視化アイデアとして、クラスタ x 時刻のヒートマップ issue `#879` と、[8, 64] 分析のマンダラート可視化 issue `#880` を起票
-- 2026-05-29: `#877` のコメントを踏まえ、Windows setup guide は単なるトラブルシュート表ではなく、Docker Desktop 標準入口と組織管理端末 / ライセンス制約の非サポート境界を分ける docs issue として扱う整理を追加
-- 2026-05-28: `#874` の実装を、実験的 layout 生成を default pipeline へ追加しない方針に合わせて修正し、標準 8 step contract を維持する形で PR branch へ push
-- 2026-05-28: Quartz + GitHub Pages project-site の新 Gist を作成し、`wiki/` direct と `wiki/ -> content/` 変換の使い分けを定例共有向けに追記
-- 2026-05-28: developer-wiki Pages の subpath link break 再発を受け、Quartz `baseUrl` 方針に戻して `<base>` patch を撤去し、生成物リンク検査を CI に追加した要点を追記
-- 2026-05-28: pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映し、`#874` は named layout artifact として筋がある一方、標準パイプラインへ常時追加する理由は弱いと補正
-- 2026-05-28: `#874` の step 追加設計判断を、西尾判断として「実験的機能なので標準パイプラインには入れず、明示有効化される実験用経路に戻す」方針へ修正
-- 2026-05-26: draft PR `#873` の checks を確認し、`CodeQL/Analyze (python)` は `github/codeql-action` archive の取得失敗で落ちており、concurrency 修正自体の failure ではないと確認
-- 2026-05-26: `#741` 向けに `azure-deploy.yml` へ workflow-level `concurrency` を追加する最小修正を `codex/issue-741-azure-deploy-concurrency` で開始
-- 2026-05-26: `#741` の現況を整理し、主因は npm flaky ではなく `main` 近接 push による Azure 更新競合だと読むページ [[issue-741-current-state-2026-05-26]] を追加
-- 2026-05-26: `#121` / `#283` の局所修正だけではスマホ利用の根本問題が残ると判断し、mobile 別ビュー方針を検討する issue `#872` を追加。合わせて両 issue の `bug` ラベルも除去
-- 2026-05-26: 残存 `[BUG]` title issue 5 件の整理を更新し、`#731` は stale 寄り、`#478` は改善 feature 寄りの低優先先として `bug` ラベルも除去、`#741` `#283` `#121` は active という判断に寄せた
-- 2026-05-26: `analysis-core` の単一 HTML 可視化で、クラスタ内 MST + クラスタ間 centroid MST を重ねる試作を `codex/mst-visualization-prototype` worktree で開始
-- 2026-05-26: MST overlay / supervised UMAP / LDA 系の試行では所属と geometry の衝突を解消できず、`LLM grouping` 可視化の主図は cluster-first な `semantic island map` に寄せる判断を [[semantic-island-map-prototype-2026-05-26]] として整理
-- 2026-05-27: pipeline step 追加案を、step 数ではなく成果物責務で判断する整理として [[pipeline-step-addition-framing-2026-05-27]] に filing back
-- 2026-05-26: `fetch_reports.py` を current storage 本線とのズレとして整理し、deploy 前バックアップ常設より storage health check 置換が筋だという analysis を追加
-- 2026-05-26: 旧 issue `#629` を close し、`#870` / `#871` に整理し直した
-- 2026-05-29: `#870` 向けに `fetch_reports.py` を削除し、`azure-update-deployment` と Azure Blob Storage ドキュメントを Blob sync / `test_storage.py` 前提へ更新
-- 2026-05-29: `work/kouchou-ai/` の dirty 実験 artifact を branch `codex/remaining-experiment-artifacts-2026-05-29@b56ac9b` へ退避し、常用 clone を `main@6955202` の clean 状態へ復帰
-- 2026-05-26: open PR review コメント対応として、`#867` `codex/reuse-from-outputs` で reuse seed 判定を source run の `completed_jobs` 基準へ修正し、seeded params も current config ではなく source params を保持するよう直した
-- 2026-05-26: open PR review コメント対応として、`#866` `codex/llm-grouping-pr` で `analysis_mode` の未知値 validation、prompt 変更の dependency 反映、legacy embeddings 読み込み時の安全化、`assignment_batch_size<=0` 時の batching 修正を入れた
-- 2026-05-26: open PR review コメント対応として、`#863` `codex/issue-731-windows-setup-powershell` で API key 改行エラーの日本語化、`docker compose` を `$PSScriptRoot` で実行する修正、非対話失敗時の compose exit code 保持を追加した
+- 2026-05-30: 月曜読み上げ用要約を冒頭に追加し、本文を 8 テーマへ束ね直した。Updates もテーマごとの最終判断だけを残す形へ整理
+- 2026-05-30: 「別ツール」エコシステムへの答えとして **CLI + 共有コミュニティ** 二段構造を [[broadlistening-tool-ecosystem-vision]] で整理。tokoroten の DivCon や Long Context 再分類は CLI 拡張の位置づけ。Web UI に複雑機能を載せて DivCon 方向が抑制された反省を踏まえる
+- 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス、`β 装置` → 構造把握装置 など)。略号は時間が経つと読めなくなるため、内容で読める表現にした
+- 2026-05-30: 構造把握装置の構造的限界「止まる現象」を [[slack-stance-discussion-2026-05-30]] / [[analysis-stance]] で整理。reader 側に prior model がない場合は突合素材があっても差異が生まれない。UX 指針としてデフォルトモード + 反応事後誘導型に倒し、「ざっくり / 詳細」モード切替とサンプル分析カタログを補助に
+- 2026-05-30: tokoroten が全体傾向把握ユースケースを **「デカい見落とし / デカい違和感を見つける」** と operational に言い換え。「全体傾向把握」より具体的で判断軸として使いやすい
+- 2026-05-30: core stance **「広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない」** を [[analysis-stance]] として明文化。KJ #3/#4/#5 と公開UI 7 要件 #5/#7 は別ツール側に倒れ、本体は構造把握装置 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理に
+- 2026-05-30: nishio との対話でユースケース契約を **「全体傾向把握ユースケース」 1 本に確定**。Web UI 非露出、少数重要論点系は CLI 分析者責務、minority residual artifact なし。下流 4 レイヤ (sampling / rep args / judge / refinement) を全体傾向把握最適化で揃える方向に [[label-quality-redesign-reset-2026-05-30]]
+- 2026-05-30: ラベル品質改善は仕切り直し方向に確定。sampling / rep args / judge / UI 表示責務を別々に検証する [[label-quality-redesign-reset-2026-05-30]]
+- 2026-05-30: 実装済み rubric judge v0 は過去出力で甘いと確認。criteria 厳格化または evidence 抽出前処理が次の課題 [[label-quality-rubric-evaluation-2026-05-29]]
+- 2026-05-29: open issue 121 件を再棚卸し。project-wide 優先を `#221` / `#564` に戻し、`#221` 系の起点として `#884` を起票 [[remaining-issue-priority-2026-05-29]] [[trial-and-error-burden-reduction-2026-05-29]]
+- 2026-05-29: Windows setup `#877` をサポート境界問題として整理。Docker Desktop 不可環境は beginner guide 対象外として明示する方針 [[issue-877-windows-setup-guide-scope]]
+- 2026-05-29: ラベル品質改善の上位トラッキング `#881` と KJ法 prompt 比較実験 `#882` を起票。`work/kouchou-ai/` の dirty 実験は branch `codex/remaining-experiment-artifacts-2026-05-29@b56ac9b` へ退避し常用 clone を clean に復帰
+- 2026-05-29: PR `#883` を作成し、developer-quickstart で 4 モード分岐を 1 ページに集約。README は 92 行に trim
+- 2026-05-29: `#870` 着手。`fetch_reports.py` を削除し deploy docs を Blob sync / `test_storage.py` 前提へ更新
+- 2026-05-28: `#874` は実験経路に戻し、標準パイプラインは 8 step のまま維持する方針で commit `51a7c77` を push
+- 2026-05-28: developer-wiki Pages の subpath 問題を Quartz `baseUrl` 方針へ戻し、生成物リンク検査を CI に追加。Quartz 設計メモは public Gist として外出し
+- 2026-05-26: `#741` を `PR #873` (workflow `concurrency` 追加) で merge し close。残 deploy safety は `#870` / `#871` に分解
+- 2026-05-26: スマホ別ビュー方針の検討 issue `#872` を起票。`#121` / `#283` の `bug` ラベルは除去し参考課題化
+- 2026-05-26: MST / supervised UMAP の試作から、`LLM grouping` 可視化の主図は `semantic island map` を基準線にする判断
+- 2026-05-27: pipeline step 追加判断を「step 数」ではなく「成果物責務」で判断する整理 [[pipeline-step-addition-framing-2026-05-27]]
+- 2026-05-26: open PR review コメント対応として `#867` `#866` `#863` をそれぞれ更新済み

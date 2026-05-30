@@ -69,4 +69,5 @@ prototype では次のように作った。
 
 ## Updates
 
+- 2026-05-30: 2026-05-30 の対話で「広聴AI = 構造把握スタンス」「全体傾向把握ユースケース一本」「KJ 原則 #3/#4/#5 は別ツール」が確定 ([[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]])。これに照らすと semantic island map は **構造把握用の主図候補として広聴AI 本体に残せる** (別ツール候補に倒れない)。理由: cluster-first で「島から出ない」点配置は (1) reader が「ここに塊がある」を指さしやすい解説素材性、(2) reader が「自分なら何と名付けるか / どう切るか」を島に対して試せる突合素材性、の両方で構造把握の評価軸に合う。一方で対立カード・bridge カード・因果図示など「構造を artifact として明示する」機能は別ツール側
 - 2026-05-26: `work/kouchou-ai-mst-visualization-prototype/` で MST overlay, supervised UMAP, semi-supervised UMAP, LDA, centroid-MDS を順に比較し、最終的に semantic island map を採用する判断を記録

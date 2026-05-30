@@ -3,6 +3,65 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-30 18:00] filing-back | scikit-learn 風 decision flowchart を Mermaid で 2 種類試作
+
+- Slack で tokoroten が [scikit-learn estimator チャート](https://scikit-learn.org/1.3/tutorial/machine_learning_map/) を引いて「この手の図を作りますか？」と提案し、ohki-shingo が「開発時の共有材料に良い」と賛同、nishio が「むしろ環境構築にもこういう図がいい (Mac/Linux? No → Docker Desktop 使える? No → 使える人を探せ)」と別案を出した。両方を試作する依頼
+- 新規 analysis [[decision-flowchart-prototype-2026-05-30]] を作成し、(A) ユースケース分岐版 (開発者向け / 機能カタログ / スコープ外を率直に書ける)、(B) 環境構築版 (個人向け / `#883` developer-quickstart 取り込み候補) を Mermaid で書いた
+- 各図の色分け: 緑 = 標準サポート、橙 = 上級者 / CLI、赤 = スコープ外 / 「使える人を探せ」。scikit-learn の率直さ (「データ50件ない？もっと集めてこい」) を意識して、product 境界を明示する書き方にした
+- 比較表 + 検討事項 + Open Questions で、両図の用途棲み分け (A = wiki / 開発議論、B = ユーザ docs) と正本化の判断材料を残した。Mermaid レンダリングが Quartz / MkDocs で通るかは未確認
+
+## [2026-05-30 17:30] filing-back | 用語を descriptive な日本語に統一 (略号撤廃)
+
+- nishio 指摘「`contract A` `β` `α` のような略号は時間が経つと意味がわからなくなる」を受け、対話内で使ってきた仮ラベルを全 wiki 横断で内容で読める日本語表現に置換した
+- 主な置換: `contract A` → `全体傾向把握ユースケース`、`contract B` / `B 系` → `少数重要論点ユースケース系`、`β スタンス` / `β` → `構造把握スタンス`、`β 装置` → `構造把握装置`、`β 評価軸` → `構造把握の評価軸`、`α スタンス` / `α` → `定量分析スタンス`、`α 倒れ` → `定量分析倒れ`、`default mode` → `デフォルトモード`
+- 影響範囲: [[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] / [[thinking-targets]] / [[meeting-report-draft]] / [[public-ui-requirements-for-broadlistening]] / [[semantic-island-map-prototype-2026-05-26]] / [[broadlistening-tool-ecosystem-vision]] / [[slack-stance-discussion-2026-05-30]] / [[kouchou-ai]] / [[index]] の本文を全て更新。各 Updates にも置換を明記し、過去ログとの対応がたどれるようにした
+
+## [2026-05-30 17:00] ingest | Slack team channel での stance 議論を source / analysis 化
+
+- 2026-05-30 の `#2_開発_広聴ai` で nishio / tokoroten / ohki-shingo が contract A / β stance / UX / エコシステムを議論した thread をユーザから受領。`raw/slack-stance-discussion-2026-05-30.txt` に保存し、source page [[slack-stance-discussion-2026-05-30]] と新規 analysis [[broadlistening-tool-ecosystem-vision]] を作成
+- 新規 source の主な抽出物: (1) tokoroten による contract A の operational 言い換え「デカい見落とし / デカい違和感を見つける」、(2) ohki-shingo が「止まる」現象を β 装置の構造的帰結として提示、(3) nishio が default mode + 反応事後誘導型 UX を整理、(4) 「ざっくり / 詳細」モード + サンプル分析カタログ案、(5) CLI + 共有コミュニティ エコシステムビジョン、(6) DivCon 抑制の反省
+- [[analysis-stance]] に 3 セクション追加: 「β 装置の構造的限界 — 止まる現象」「Web UI の UX 指針」「エコシステム — CLI と共有コミュニティ」。contract A の言い換えとして tokoroten 表現を本文に取り込んだ
+- [[meeting-report-draft]] の月曜読み上げ用を 8 → 10 項目に拡張。新規 #3 (止まる現象 + UX 指針) と #4 (エコシステムビジョン) を追加。foundational design 判断が一度に複数固まった週なので、人間負担を理由に圧縮せず保持
+
+## [2026-05-30 16:30] filing-back | β / contract A / 別ツール 分業の含意を関連ページに伝播
+
+- nishio に「じっくり考えて」と委ねられた整合性パスとして、core stance ([[analysis-stance]]) が他ページの整理と矛盾しないか・含意が伝播できているかを確認した
+- [[public-ui-requirements-for-broadlistening]] に「contract A / β / 別ツール 分業との照合」セクションを追加。ohki-shingo 7 要件のうち #5 (少数意見埋没回避) と #7 (次の問いの可視化) は別ツール担当に倒れた、広聴AI 本体は残り 5 件 + β 評価軸 2 件 (解説素材性 / 突合素材性) で評価する、と整理
+- [[semantic-island-map-prototype-2026-05-26]] に β 主図候補としての位置づけを Updates で追記。cluster-first / 島から出ない配置が解説素材性 (指さしやすい) と突合素材性 (自分の切り方を試せる) の両方に合う、と β 装置評価軸で読み直した
+- [[kouchou-ai]] に core stance リンクを追加し、[[thinking-targets]] の 3-1 を「別ツール側に倒れた、エコシステム未整理」、2-2 を「β 評価軸を含む合否基準」に補正
+
+## [2026-05-30 16:00] filing-back | analysis-stance に「reader は解説する人 / 意外性は主観依存」を追記
+
+- thinking-targets 対話の派生で、β 装置の評価軸として「reader が他者に構造を解説できるか」が浮上。nishio は「意外 = 事前に持っていた暗黙の分類との食い違い」と言語化し、同時に「これは個人主観に依存するので product 的ではない」と境界線を引いた
+- [[analysis-stance]] に新セクション「reader は『読む人』ではなく『解説する人』」を追加し、(1) reader は他者に語る主体、(2) 語りやすさの源は意外性 = 事前 mental model 差分、(3) 意外性そのものは主観依存で product 保証範囲外、(4) product として狙えるのは一段手前の「突合素材を提供する」装置、を整理
+- 散布図の β 装置としての強さも「reader が自分の色分け / 分類 / 粒度を重ね合わせやすい」突合素材として再評価できる、と接続
+
+## [2026-05-30 15:30] filing-back | core stance 「広聴AI は β 構造把握、α 定量分析ではない」を概念ページ化
+
+- thinking-targets での KJ 法的原則の対話で、nishio が「α/β 分類は概念ページにすべき」「β が正しい」「広聴AI は定量分析のためのツールではない」と明示。新規 concept [[analysis-stance]] を作成し、core stance として明文化
+- α (頻度分布) vs β (構造把握) の 2 stance を定義し、広聴AI = β を選んだ判断、「定量分析ツールではない」の意味、β を実現する手段 (散布図 / cluster + drill-down / 階層 tree / semantic island map prototype)、β 哲学と「KJ 原則 #3 #4 #5 は別ツール補完」の分業を整理
+- 派生する設計判断を明示: 散布図維持 stance / semantic island map は β 主図候補として残る / `interpretation_artifacts` は別ツール側 / 継続関与 (#6) は β の時間軸方向延長として整合 / 公開UI 7 要件は β 寄り
+- 関連ページに反映: [[label-quality-redesign-reset-2026-05-30]] に「contract A は β で実現する」を追記、[[thinking-targets]] に core stance へのリンク、[[index]] の最初に読むべき欄に追加。前段で「semantic island map → 別ツール候補」と書いた α 倒れの整理を修正
+
+## [2026-05-30 15:00] filing-back | ラベル品質の use-case 契約を contract A 1 本に確定
+
+- thinking-targets での思考対話で、最上位レイヤ (use-case 契約) を **A (全体傾向把握) 一本**に固定。Web UI には契約選択を露出せず、B (少数重要論点発見) は契約として並列に置かない。理由: (1) "重要" は確率的事象でツール側が保証できない、(2) "重要"の定義は分析者の責務でデータサイエンス素養を要する。一般ユーザに露出する概念ではない
+- B 系は CLI / `analysis-core` での分析者カスタム prompt として残す。CLI docs にも "重要を言語化する責務" を教育する priority は低い。A run の副産物として minority residual artifact も作らない (約束しない)
+- これにより下流 4 レイヤ (sampling / rep args / judge / refinement) は contract A 最適化で揃う。FPS / 境界保存 / minority preservation 系は B 用の道具なので A 用パイプラインからは外す。`analysis_mode` (アルゴリズム選択) は契約と直交する整理に
+- [[label-quality-redesign-reset-2026-05-30]] の Use Case Gate と Reset The Problem を A 前提で書き換え、[[thinking-targets]] 1-1 を確定マーク + 下流 1-2〜1-5 を A 前提に補正、[[meeting-report-draft]] の該当 bullet も A 確定で更新
+
+## [2026-05-30 14:20] filing-back | 「考えること」の入口として thinking-targets.md を新設
+
+- ユーザ方針 `考えることをやりたい` を受け、未着地論点のうち「思考と判断が入れば前に進む」ものだけを集めた思考ハブ [[thinking-targets]] を新設。完了報告 ([[meeting-report-draft]]) と全体棚卸し ([[open-decisions]]) とは目的を分けた
+- 構成は 4 ブロック: (1) ラベル品質仕切り直しの 5 レイヤ (use-case 契約 / sampling / rep args / judge / refinement)、(2) 次の view 方向 (散布図役割再定義 / semantic island map 合否基準 / KJ 法的原則 / スマホ別ビュー)、(3) pipeline 境界 (`interpretation_artifacts` / `analysis_mode` 分岐)、(4) 公開・運用摩擦 (ホスト / private default / DB / 論文戦略)
+- 各項目に `問い / 思考の最小単位 / 決まれば動けること / 関連ページ` の 4 行 contract を入れ、思考が実装の slice に変わったらここから外して関連 analysis / [[meeting-report-draft]] / [[open-decisions]] へ送る運用にした。[[index]] からも導線を追加
+
+## [2026-05-30 14:00] filing-back | meeting-report-draft を月曜読み上げ用要約 + 8 テーマへ再構成
+
+- 直近 1 週間で `meeting-report-draft.md` が 30 弱のフラットな箇条書きに膨らみ、人間が会議で読み上げるには情報密度が高すぎる状態だった。前回 [[meeting-report-2026-05-25]] の構造を踏襲し、冒頭に「月曜にそのまま読む用 (8項目)」を置き、本文をテーマ別 8 セクションへ束ね直した
+- 同じテーマで新しい情報が来たら bullet を足すのではなく既存セクションを書き換える、という運用方針も「使い方」セクションに明文化。Updates も時系列の重複イベントを削り、テーマごとの最終判断だけ残す形へ整理
+- 詳細な根拠は既存 analysis ([[label-quality-redesign-reset-2026-05-30]] / [[remaining-issue-priority-2026-05-29]] / [[trial-and-error-burden-reduction-2026-05-29]] / [[pipeline-step-default-policy-decision-2026-05-28]] / [[semantic-island-map-prototype-2026-05-26]] など) へリンクで送り、draft 本体は判断と進捗だけに絞った
+
 ## [2026-05-30 12:13] filing-back | Slack のラベル改善議論を source 化しユースケース分岐を追記
 
 - ユーザー提供の 2026-05-29〜30 Slack アルゴリズム改善ログを raw と source page [[slack-label-algorithm-improvement-2026-05-30]] として固定
@@ -579,54 +638,3 @@
 - [[refactoring-status]] を更新し、legacy cleanup merge 後の current state に合わせて Phase 8 を完了、refactoring 全体を done 判定へ補正
 - [[open-decisions]] から Phase 8 の open item を除外し、[[source-code]] / [[pipeline]] / [[gotchas]] / [[workflow-defaultization-blockers]] も current tree に合わせて補正
 - [[meeting-report-draft]] に `PR #865` と CI 修正を次回定例向け要点として追記
-
-## [2026-05-23 15:20] ingest | Slack thread (2026-05-23) で ohki-shingo が整理した公開UI要件を取り込み
-
-- 新規 source [[slack-public-ui-requirements-2026-05-23]] を追加し、`#2_開発_広聴ai` 想定の 2026-05-23 thread を記録。oss_weekly_reporter dump は 2026-05-20 までなので、当面 `raw/slack-public-ui-requirements-2026-05-23.txt` を一次根拠にする旨も明記
-- 新規 analysis [[public-ui-requirements-for-broadlistening]] を追加し、(a) 散布図が受け入れられている要因 5 要素、(b) 公開UIに求められる 7 要件、(c) embedding 距離精度の非本質性（クラスタ間分離は必要だがクラスタ内距離精度は不要）を整理。view plugin の上位契約として明示
-- [[jigsaw-sensemaker-history]] に Updates と Open Questions を追記し、ohki-shingo の整理を「散布図役割の別 view 代替」への回答として接続
-- [[ohki-shingo]] entity に 2026-05-23 の contribution を追記
-- [[meeting-report-draft]] にも次回定例向けの要点として追記
-- `index.md` に新規 source / analysis を登録
-
-## [2026-05-23 14:48] filing-back | WebUI / analysis-core 分離の設計判断を独立ページ化し、旧語を廃止
-
-- 新規 source [[analysis-core-web-ui-separation-decision-2026-05-23]] と新規 concept [[analysis-core-and-web-ui]] を追加し、「WebUI で包んだ理由」「その後 core を切り出した理由」「Web は JSON、CLI は `report.html` を持つ理由」を歴史ページと分離して整理
-- [[tttc-to-analysis-core-history]] は歴史、[[analysis-core-and-web-ui]] は現在のソフトウェア設計判断、という役割分担になるよう導線を追加
-- wiki 全体で旧語をやめ、`report.html` は `CLI 向け観察用HTML`、一般論では `補助出力` という言い方へ統一
-- 関連ページとして [[usage-modes]] / [[cli]] / [[architecture-overview]] / [[deployment]] / [[pipeline]] / [[refactoring-status]] / [[gotchas]] / [[meeting-report-draft]] / source 群も同じ用語に補正
-
-## [2026-05-23 13:38] filing-back | `report.html` を Web canonical にしない判断を wiki に反映
-
-- 新規 source [[report-html-non-web-canonical-decision-2026-05-23]] を追加し、`report.html` は Web canonical にしないという maintainer の明示判断を記録
-- [[open-decisions]] から stale になった `report.html` Web canonical 論点を外し、[[usage-modes]] / [[cli]] / [[refactoring-status]] / [[workflow-defaultization-blockers]] / [[strategic-development-order-2026-05-23]] を確定判断へ補正
-- [[meeting-report-draft]] にも、CLI 観察用HTMLと Web canonical path の分離を次回定例向け要点として追記
-
-## [2026-05-23 13:21] filing-back | 入口設計の歴史整理に broad-listening-book の根拠を追加
-
-- [[tttc-to-analysis-core-history]] に、書籍 `10_00_DD2030による広聴AIの開発活動.md` の `TTTC Scatter vs 広聴AI` 比較表を反映し、Web 化の意味が「GUI追加」ではなく `環境構築責任と共有導線をサーバ側へ寄せること` だと明記
-- あわせて 13.3 の「Python 環境を持つ読者は手元でミニ広聴AIを動かす」導線を根拠として追記し、研究者・開発者向けに軽量な Python 実験入口が必要だった、という読みを補強
-
-## [2026-05-23 13:06] filing-back | TTTC clone 前提から Web UI 包装、analysis-core/PyPI 再切り出しまでの歴史を整理
-
-- 新規 analysis [[tttc-to-analysis-core-history]] を追加し、TTTC / 初期広聴AIの clone / CUI 前提、実務上の共有要請からの Web UI / server 化、研究開発向けに `packages/analysis-core` と CLI / PyPI を切り出して API が consumer に回った流れを 1 ページに整理
-- [[usage-modes]] と [[kouchou-ai]] から新ページへの導線を追加し、「Web UI と CLI は後付けの対立ではなく、歴史的に分化した役割分担」という読み方を補強
-- [[meeting-report-draft]] にも 1 行追記し、定例会議でこの歴史整理を口頭共有しやすくした
-
-## [2026-05-23 13:02] filing-back | workflow plugin の legacy config 重複削減と回帰テスト追加を記録
-
-- `analysis_core.plugins.builtin.*` に散らばっていた `_input_base_dir` / `_output_base_dir` / token usage 初期化の重複を `_legacy_config.py` に寄せて整理
-- `packages/analysis-core/tests/test_builtin_plugins.py` に、`analysis.extraction` が comment artifact から解決した input path と `ctx.output_dir.parent` を legacy step に渡す regression test を追加
-- 確認として `cd packages/analysis-core && rye run pytest tests/test_builtin_plugins.py tests/test_workflow_engine.py -q`、`rye run ruff check src/analysis_core/plugins/builtin tests/test_builtin_plugins.py`、`cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s`、`... rye run pytest tests/services/test_report_launcher.py -q` を実行し通過
-
-## [2026-05-23 12:50] filing-back | API 通常フローの manual smoke と workflow path bug 修正を testing / meeting report に追記
-
-- [[testing]] の API subprocess smoke 行を更新し、`execute_aggregation()` だけでなく `launch_report_generation()` から通常フロー全体を local provider + 偽 OpenAI 互換 LLM で踏めることを追記
-- full flow smoke の初回実行で、workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡しておらず相対 `inputs/` / `outputs/` を見に行くバグを検出したため、[[meeting-report-draft]] に「手元 smoke を足しただけでなく、そこで見つかった path bug まで直した」要点を追記
-- `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` と `... rye run pytest tests/services/test_report_launcher.py -q` の通過を記録
-
-## [2026-05-23 12:28] filing-back | API -> subprocess -> analysis-core の手元 smoke test を testing / meeting report に追記
-
-- `work/kouchou-ai/apps/api/tests/manual/report_launcher_subprocess_smoke.py` を追加。`execute_aggregation()` から **本物の subprocess** を起動し、`hierarchical_result.json`・`hierarchical_status.json`・`report_status.json` 更新まで確認する手元 smoke test として整理
-- [[testing]] に明示実行コマンド `ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` を追加し、既定収集の対象外であることと、analysis-core 単体 e2e と API mock test の間を埋める目的を明記
-- [[meeting-report-draft]] にも、「analysis-core 単体の e2e だけでなく API 境界を手元で 1 回は踏めるようにした」という要点を追記

@@ -3,6 +3,15 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-30 18:00	filing-back	scikit-learn 風 decision flowchart を Mermaid で 2 種類試作
+2026-05-30 17:30	filing-back	用語を descriptive な日本語に統一 (略号撤廃)
+2026-05-30 17:00	ingest	Slack team channel での stance 議論を source / analysis 化
+2026-05-30 16:30	filing-back	β / contract A / 別ツール 分業の含意を関連ページに伝播
+2026-05-30 16:00	filing-back	analysis-stance に「reader は解説する人 / 意外性は主観依存」を追記
+2026-05-30 15:30	filing-back	core stance 「広聴AI は β 構造把握、α 定量分析ではない」を概念ページ化
+2026-05-30 15:00	filing-back	ラベル品質の use-case 契約を contract A 1 本に確定
+2026-05-30 14:20	filing-back	「考えること」の入口として thinking-targets.md を新設
+2026-05-30 14:00	filing-back	meeting-report-draft を月曜読み上げ用要約 + 8 テーマへ再構成
 2026-05-30 12:13	filing-back	Slack のラベル改善議論を source 化しユースケース分岐を追記
 2026-05-30 03:15	filing-back	PR #883 の CodeRabbit 2 件を address
 2026-05-30 02:34	filing-back	label refinement 実験を仕切り直す判断を整理

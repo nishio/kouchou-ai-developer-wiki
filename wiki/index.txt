@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/build_index_txt.py
 
 analysis-core-and-web-ui	concept	concepts/analysis-core-and-web-ui.md	Web UI が analysis-core を consumer として使い、Web は JSON、CLI は観察用HTMLを持つ理由
+analysis-stance	concept	concepts/analysis-stance.md	広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない。クラスタサイズと頻度分布で全体を分かったことにする (定量分析倒れ) のではなく、ユーザに全体構造を読ませることを目的とする。Web UI が担う唯一の全体傾向把握ユースケース (= tokoroten 言い換えで『デカい見落とし / デカい違和感を見つける』) も、構造把握スタンスで実現する
 architecture-overview	concept	concepts/architecture-overview.md	kouchou-ai のランタイム構成 — api / public-viewer / admin / static-site-builder / ollama の 5 サービス
 broadlistening	concept	concepts/broadlistening.md	ブロードリスニング — 大規模自由記述意見を LLM で集約・クラスタリングし「意見の地図」を作る手法
 cli	concept	concepts/cli.md	kouchou-analyze CLI と python -m analysis_core — pip install で使える
@@ -18,6 +19,7 @@ meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議
 pipeline	concept	concepts/pipeline.md	解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
 plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を plugin 化する設計。v5.0 の中核
 testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
+thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
 usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理
 wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	developer-wiki repo で文脈整理し、`work/kouchou-ai/` で実装確認し、最終的に `digitaldemocracy2030/kouchou-ai` へ PR を出す二層運用
 anno	entity	entities/anno.md	安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者
@@ -89,6 +91,7 @@ slack-kouchouai-algorithm-dev	source	sources/slack-kouchouai-algorithm-dev.md	`o
 slack-label-algorithm-improvement-2026-05-30	source	sources/slack-label-algorithm-improvement-2026-05-30.md	2026-05-29〜30 の Slack アルゴリズム改善ログ。ラベル欠落 vs 冗長、random sampling / 全件入力、rep args 選定、評価ユースケース分岐が議論された
 slack-niizuma-umap-kmeans-thread-2026-03-18	source	sources/slack-niizuma-umap-kmeans-thread-2026-03-18.md	`#2_開発_広聴ai_アルゴリズム開発` 2026-03-18〜2026-03-21 の新妻スレッド。UMAP後k-means批判、前段クラスタリング案、supervised UMAP、LLM直分類と説明責務
 slack-public-ui-requirements-2026-05-23	source	sources/slack-public-ui-requirements-2026-05-23.md	2026-05-23 ごろの Slack で、nishio が散布図互換／散布図必須撤廃の二段構えを述べたのに対し、ohki-shingo が『公開UIに求められる要件』と『embedding 距離精度の非本質性』を整理した thread
+slack-stance-discussion-2026-05-30	source	sources/slack-stance-discussion-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で nishio / ohki-shingo / tokoroten が広聴AI のユースケース契約と analysis-stance を議論。全体傾向把握ユースケースの精密な言い換え (デカい見落とし / デカい違和感)、止まる現象の構造的説明、デフォルトモード UX 指針、CLI + コミュニティのエコシステムビジョンが出た
 slack-tokoroten-spectral-clustering-notes-2026-q1	source	sources/slack-tokoroten-spectral-clustering-notes-2026-q1.md	2026-Q1 の tokoroten による spectral clustering メモ。TTTC は小さめ `n_neighbors` で紐状分離を作り、SpectralClustering で切っているのではないか、という読み
 source-code	source	sources/source-code.md	kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照
 tttc-spectral-clustering-code-observation-2026-05-25	source	sources/tttc-spectral-clustering-code-observation-2026-05-25.md	TTTC commit `5e0a439` と広聴AI commit `53f1209` の clustering 実装比較。TTTC は embedding を UMAP 2D に落としてから SpectralClustering を掛け、`n_neighbors` は `min(n_samples - 1, 10)`
@@ -104,12 +107,14 @@ analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
 book-release-development-plan-2026-09	analysis	analyses/book-release-development-plan-2026-09.md	2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する
 broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理
+broadlistening-tool-ecosystem-vision	analysis	analyses/broadlistening-tool-ecosystem-vision.md	広聴AI Web UI を simple な default モードに絞り、CLI に多様な実験機能を追加し、新しい分析手法が試行錯誤され共有されるコミュニティを育てる、という二段構造のエコシステムビジョン。analysis-stance で『別ツールで補完』とした空き地に対する nishio の答え
 bug-issue-triage-2026-05-25	analysis	analyses/bug-issue-triage-2026-05-25.md	2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った
 chart-scroll-ux-decision	analysis	analyses/chart-scroll-ux-decision.md	ScatterChart のスクロール誤操作対策では、click-to-enable より「短い遅延付きの自動ロック解除」と視覚フィードバックが好まれ、preview 環境不足が実装収束を妨げた
 clustering-deep-research-findings-2026-05-25	analysis	analyses/clustering-deep-research-findings-2026-05-25.md	[[clustering-research-survey-plan]] が立てた survey bucket への 2026-05-25 時点の deep-research 応答。`UMAP -> clustering` は否定されないが 2D 用と clustering 用は分離（15D〜25D 推奨）、BERTopic は完成品から backbone へ、数十件規模は LLM pairwise + spectral が筋という整理
 clustering-research-survey-plan	analysis	analyses/clustering-research-survey-plan.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するには、`UMAP -> clustering`、spectral clustering、BERTopic、可視化と分析の分離、評価軸を別棚で読むべき
 codeql-introduction-context	analysis	analyses/codeql-introduction-context.md	`PR #817` 文脈では、CodeQL は accidental な混入をきっかけに常設の security scan として整理された
 codex-windows-environment-memo	analysis	analyses/codex-windows-environment-memo.md	Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
+decision-flowchart-prototype-2026-05-30	analysis	analyses/decision-flowchart-prototype-2026-05-30.md	scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。ユースケース分岐版は開発時の共有材料、環境構築版は導入導線の整理用。両方を見比べる試作段階のページ
 development-priority-roadmap-2026-05-23	analysis	analyses/development-priority-roadmap-2026-05-23.md	2026-05-23 時点では、直近の優先順は Windows 初回導入の修復、ユーザー影響の大きい未解決バグ、公開・運用基盤の安定化、その後に説明責務と研究系改善を進めるのが妥当
 digital-agency-legal-rag	analysis	analyses/digital-agency-legal-rag.md	2026-05-25 時点の wiki / meeting minutes には『デジタル庁の条文RAG』を直接説明する整理はなく、デジタル庁・eGov・一般的な RAG 活用の断片的な言及があるに留まる
 fetch-reports-deprecation-and-storage-health-2026-05-26	analysis	analyses/fetch-reports-deprecation-and-storage-health-2026-05-26.md	`fetch_reports.py` はストレージ機能が無かった時期の移行用バックアップとしては理解できるが、2026-05-26 時点の current main では Azure Blob sync/download が本線になっており、deploy 前バックアップの常設手段として残すより storage health check へ置き換える方が筋がよい

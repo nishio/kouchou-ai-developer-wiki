@@ -28,6 +28,8 @@ sources:
 
 この A/B/C/D 整理が出てきた背景、すなわち **TTTC の clone 前提ツールを Web UI で包み、その後 `analysis-core` / PyPI へ再切り出した経緯** は [[tttc-to-analysis-core-history]] にまとめた。現在の設計判断として「なぜ Web UI は core の consumer なのか」は [[analysis-core-and-web-ui]]。[[meeting-minutes]]より
 
+設計判断の core stance としては **「広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない」** ([[analysis-stance]]) を抑える。「全体傾向を把握する」は数を数えるだけで完結する装置ではなく、reader が構造を読み解くための装置として設計する。
+
 ## ランタイム構成
 
 詳細は [[architecture-overview]]。要約：
@@ -70,5 +72,6 @@ sources:
 
 ## Updates
 
+- 2026-05-30: 設計判断の core stance として [[analysis-stance]] (広聴AI = 構造把握スタンス、定量分析スタンスではない) への導線を追加
 - 2026-05-17: 初回作成
 - 2026-05-23: 4 つの配布形態が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加

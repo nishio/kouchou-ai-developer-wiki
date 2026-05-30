@@ -12,6 +12,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 - [broadlistening](concepts/broadlistening.md) — ブロードリスニング手法の定義と用語
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
+- [analysis-stance](concepts/analysis-stance.md) — 広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない、という core stance
 - [usage-modes](concepts/usage-modes.md) — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core の使い分け
 - [analysis-core-and-web-ui](concepts/analysis-core-and-web-ui.md) — なぜ Web UI は analysis-core を使う consumer で、Web は JSON、CLI は観察用HTMLを持つのか
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
@@ -24,10 +25,11 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [coding-agents](concepts/coding-agents.md) — Devin / Claude Code / Codex の協働運用
 - [gotchas](analyses/gotchas.md) — 非自明な落とし穴の一覧
 
-**いま何が起きているか:**
+**いま何を考えるか / 何が起きているか:**
 
+- [thinking-targets](concepts/thinking-targets.md) — 今、人間の思考と判断が要る論点のハブ (ラベル品質仕切り直し / 次の view 方向 / pipeline 境界 / 公開運用摩擦)
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況、current main との同期
-- [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類
+- [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類 (全体棚卸し)
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — 3 層 platform として見た時の長期順序
 - [issue-priority-through-2026-09](analyses/issue-priority-through-2026-09.md) — 2026-09 書籍リリースを前提にした優先度整理
 - [bug-issue-triage-2026-05-25](analyses/bug-issue-triage-2026-05-25.md) — `bug` ラベル open issue の current main 基準での再点検
