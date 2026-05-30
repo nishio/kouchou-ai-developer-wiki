@@ -120,6 +120,8 @@ sources:
 ## 運用方針
 
 - ソースは「参考」であり無批判に採用しない
+- **二分原則**: 「コード実験は `work/kouchou-ai/` 配下で topic branch / worktree を切る、developer-wiki repo 自体は常に main で作業する」。developer-wiki に topic branch を作って commit を溜めると、main に届かないまま wiki サイト (Quartz / GitHub Pages 公開先) に反映されない事故が起きる。実際 2026-05 にこの形で 9 commits 分の wiki 更新が main 不在のまま積まれていた
+- developer-wiki 更新は PR 経由ではなく **`main` 直接 push を基本** にする。CI が必要な変更 (Quartz build / 内部リンク検査) は CI 失敗が出てから fix push する流れで十分
 - コード本体については `work/kouchou-ai/` の local clone を一次参照とし、docs / DeepWiki / meeting minutes は補助線として使う
 - `work/kouchou-ai/` の HEAD は常に `main` を指す。実験ブランチや別 PR ブランチの観察は `git worktree add work/kouchou-ai-<topic> <branch>` で別 worktree に切ること。短時間のコード grep でも `work/kouchou-ai/` 内で `git checkout <other-branch>` して HEAD を動かさない (別セッションが上書きしたり main 復帰し忘れたりして、次の観察で想定外の state にぶつかる事故が起きる)
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す。`txt` export はリンク URL を保持しないことがあるので、根拠に URL 自体が必要な時は `raw/meeting_minutes.html` を補助線として使う

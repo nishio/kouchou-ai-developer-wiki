@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-30 18:30] filing-back | CLAUDE.md に「wiki 自体は常に main、コード実験は work/ 内で topic branch」の二分原則を追記
+
+- 直前の commit / push 検証で、過去 9 commit 分の wiki 更新が `codex/wiki-experiment-artifacts-note` topic branch に積まれたまま main に届いておらず、Quartz / GitHub Pages 公開先に反映されない状態が放置されていたことが判明 (main fast-forward + push で解消済み)
+- nishio が「コード実験は `work/` 内の repo に topic branch を切る、wiki 自体はずっと main でいい」と二分原則を明示。CLAUDE.md `## 運用方針` に明文化し、過去の事故事例 (9 commits 不在) も実害として併記
+- ついでに「developer-wiki 更新は PR 経由ではなく main 直接 push を基本」も同じセクションに統合 ([[wiki-driven-workflow]] に既存だったが、運用方針からは導線が弱かった)。memory にも feedback として保存
+
 ## [2026-05-30 18:00] filing-back | scikit-learn 風 decision flowchart を Mermaid で 2 種類試作
 
 - Slack で tokoroten が [scikit-learn estimator チャート](https://scikit-learn.org/1.3/tutorial/machine_learning_map/) を引いて「この手の図を作りますか？」と提案し、ohki-shingo が「開発時の共有材料に良い」と賛同、nishio が「むしろ環境構築にもこういう図がいい (Mac/Linux? No → Docker Desktop 使える? No → 使える人を探せ)」と別案を出した。両方を試作する依頼
