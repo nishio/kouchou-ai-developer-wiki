@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-30 23:30] filing-back | decision-flowchart 試作を team feedback で v2 へ修正 + 不足知識を fix
+
+- [[decision-flowchart-prototype-2026-05-30]] 初版に対する nishio / tokoroten の team feedback ([[slack-flowchart-feedback-2026-05-30]] 新規) を受けて v2 へ書き直した
+- 試作 A: 最初の分岐を「ラベル付きデータ持ってる?」から **「データ量はどれくらい?」** に変更。「ラベル付きデータ」は jargon で一般読者に伝わらない (tokoroten 指摘)。広聴AI 系の出発点は本来データ量
+- 試作 B: 最初の分岐を OS から **「利用主体 (個人 / 大組織)」** に変更。Docker Desktop の license が個人無料 / 大組織有料で大きく分かれるため (nishio: 「個人で試すのは無料、自治体は有料、って話が抜けてる」)。OS 軸は二段目に置き直し、**platform 安定性ティア (Linux > Mac > Windows)** を明示。「ダマで使う」灰色領域は推奨しないと率直に書いた
+- 意味区分は背景色 (Mermaid `classDef`) から **ノード本文中の `[ラベル]` テキスト表記** に置換。背景色はダークモード / 色覚特性で読めないため (nishio 指摘)
+- 不足していた知識を fix: [[docker-desktop-license-2026-05-29]] に「決定フロー上の重み」「platform 安定性ティア」を追記。nishio コメント「AI も正しいフローチャートをかけないくらい把握できてないってことか」は、wiki にこれらの知識が書かれていなかったことを反映していた
+
 ## [2026-05-30 18:30] filing-back | CLAUDE.md に「wiki 自体は常に main、コード実験は work/ 内で topic branch」の二分原則を追記
 
 - 直前の commit / push 検証で、過去 9 commit 分の wiki 更新が `codex/wiki-experiment-artifacts-note` topic branch に積まれたまま main に届いておらず、Quartz / GitHub Pages 公開先に反映されない状態が放置されていたことが判明 (main fast-forward + push で解消済み)

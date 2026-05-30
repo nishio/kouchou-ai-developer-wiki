@@ -87,6 +87,7 @@ role-model-papers-polis-birdwatch	source	sources/role-model-papers-polis-birdwat
 seed-reproducibility-history	source	sources/seed-reproducibility-history.md	UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810
 slack-dev-kouchouai-2025-q4	source	sources/slack-dev-kouchouai-2025-q4.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2025-10-01 〜 2025-12-31）— 現行方式の限界認識、plugin 化、v4/v5 二段構え
 slack-dev-kouchouai-2026-q1	source	sources/slack-dev-kouchouai-2026-q1.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、Jigsaw 系分類の設計意図
+slack-flowchart-feedback-2026-05-30	source	sources/slack-flowchart-feedback-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた
 slack-kouchouai-algorithm-dev	source	sources/slack-kouchouai-algorithm-dev.md	`oss_weekly_reporter` の `#2_開発_広聴ai_アルゴリズム開発` 抜粋（2025-04 〜 2026-03）— UMAP→k-means への批判、対立軸発見、LLM分類、可視化代替案
 slack-label-algorithm-improvement-2026-05-30	source	sources/slack-label-algorithm-improvement-2026-05-30.md	2026-05-29〜30 の Slack アルゴリズム改善ログ。ラベル欠落 vs 冗長、random sampling / 全件入力、rep args 選定、評価ユースケース分岐が議論された
 slack-niizuma-umap-kmeans-thread-2026-03-18	source	sources/slack-niizuma-umap-kmeans-thread-2026-03-18.md	`#2_開発_広聴ai_アルゴリズム開発` 2026-03-18〜2026-03-21 の新妻スレッド。UMAP後k-means批判、前段クラスタリング案、supervised UMAP、LLM直分類と説明責務
@@ -114,7 +115,7 @@ clustering-deep-research-findings-2026-05-25	analysis	analyses/clustering-deep-r
 clustering-research-survey-plan	analysis	analyses/clustering-research-survey-plan.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するには、`UMAP -> clustering`、spectral clustering、BERTopic、可視化と分析の分離、評価軸を別棚で読むべき
 codeql-introduction-context	analysis	analyses/codeql-introduction-context.md	`PR #817` 文脈では、CodeQL は accidental な混入をきっかけに常設の security scan として整理された
 codex-windows-environment-memo	analysis	analyses/codex-windows-environment-memo.md	Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
-decision-flowchart-prototype-2026-05-30	analysis	analyses/decision-flowchart-prototype-2026-05-30.md	scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。ユースケース分岐版は開発時の共有材料、環境構築版は導入導線の整理用。両方を見比べる試作段階のページ
+decision-flowchart-prototype-2026-05-30	analysis	analyses/decision-flowchart-prototype-2026-05-30.md	scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。試作後に team feedback で初版の前提誤り (ラベル付きデータ jargon、Mac=Docker Desktop OK 飛躍など) を修正。ノードの意味区分は背景色ではなく明示的な文字ラベルで表現する
 development-priority-roadmap-2026-05-23	analysis	analyses/development-priority-roadmap-2026-05-23.md	2026-05-23 時点では、直近の優先順は Windows 初回導入の修復、ユーザー影響の大きい未解決バグ、公開・運用基盤の安定化、その後に説明責務と研究系改善を進めるのが妥当
 digital-agency-legal-rag	analysis	analyses/digital-agency-legal-rag.md	2026-05-25 時点の wiki / meeting minutes には『デジタル庁の条文RAG』を直接説明する整理はなく、デジタル庁・eGov・一般的な RAG 活用の断片的な言及があるに留まる
 fetch-reports-deprecation-and-storage-health-2026-05-26	analysis	analyses/fetch-reports-deprecation-and-storage-health-2026-05-26.md	`fetch_reports.py` はストレージ機能が無かった時期の移行用バックアップとしては理解できるが、2026-05-26 時点の current main では Azure Blob sync/download が本線になっており、deploy 前バックアップの常設手段として残すより storage health check へ置き換える方が筋がよい
