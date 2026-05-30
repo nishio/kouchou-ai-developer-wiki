@@ -9,6 +9,14 @@
 - ohki-shingo の「全体傾向把握」と「少数だが重要な論点発見」では処理・評価が変わるという指摘を [[label-coverage-policy-2026-05-29]] / [[label-quality-redesign-reset-2026-05-30]] に追記
 - 次のラベル品質実験は algorithm choice 先行ではなく、use-case contract → evidence artifact → judge の順で切る方針に補正
 
+## [2026-05-30 03:15] filing-back | PR #883 の CodeRabbit 2 件を address
+
+- worktree `work/kouchou-ai-issue-876` を新規追加 (実験ブランチ規約に沿った別 worktree) し、PR #883 ブランチで作業
+- README `!!! note` (MkDocs 専用 admonition、GitHub では plain text 表示) を `> **Note**:` blockquote へ書き換え
+- developer-quickstart の Mode 1 ローカル LLM セクションが「README の削除済みセクション」を参照していた broken link を、`ollama pull <model>` の inline 説明 + [Ollama 公式モデルライブラリ](https://ollama.com/library) リンクへ差し替え
+- 実コード (`apps/api/src/services/llm_models.py`) を確認し、Ollama モデルが admin UI から動的選択される flow であることを踏まえた文面に修正 (最初に書いた `LOCAL_LLM_*` env で指定、は不正確だったので訂正)
+- `mkdocs build --strict` ローカル pass、commit `3bd57a6` を push 済み。CI 再走と人間 reviewer 承認待ち
+
 ## [2026-05-30 02:34] filing-back | label refinement 実験を仕切り直す判断を整理
 
 - 今回の label refinement 実装は rep args を見ない polish-only で、上流 sampling / UI representative examples / judge の各層にも改善余地が大きいため、このまま採用候補として進めず仕切り直す判断を記録
