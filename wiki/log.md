@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 15:30] github-pr | PR #883 を撤回し、Issue #876 を新方針で修正
+
+- nishio 指示「現状の PR は撤回する / Issues を見直して、修正する / この原稿へのリンクを置いても良い」を受けて実行
+- PR `#883` を close。撤回理由 (詰まる読者シナリオ 4 種、新方針 7 項目) と wiki 草案リンクを日本語で close コメントに添えた
+- Issue `#876` 本文に `## 2026-05-31 更新: 新方針 (PR #883 撤回後)` セクションを追記。追加要件 (3 サブ役割化、5 読者像、Mode 1 default 廃止、環境構築前提、構造把握スタンス紹介、Mode 4 データ量前提、代替ルート) と追加完了条件、草案・参考リンク 5 本を整理。元の `## 背景 / 提案 / 完了条件 / 参考` セクションは維持
+- Issue `#876` に同等の方針説明コメントも追加 (本文と内容ほぼ同じだが、issue 検索や RSS で拾いやすくするため)
+- [[meeting-report-draft]] の月曜読み上げ用 #5 と詳細セクションも、`PR #883` 撤回 + Issue 修正の現状に書き換えた
+
 ## [2026-05-31 14:58] filing-back | Node runtime を外す Windows 単一 exe 前提 issue #885 を起票
 
 - tokoroten / nishio の Slack 議論「Windows ユーザには実行バイナリ 1 個が嬉しい」「Node は build 済み assets / SPA にして server wrapper を Python へ」を [[slack-windows-single-exe-2026-05-31]] として source 化
