@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 20:35] filing-back | hardware 調達込みの広聴AI Local Box route を整理
+
+- 既存の普通の業務 PC で local LLM を動かすより、認定 local box を 1 台調達して browser から使わせる route が現実的と整理
+- [[hardware-procurement-local-ai-route-2026-05-31]] を作成し、Demo / Standard / High-memory box tier と単一 exe route との違いを明文化
+- RTX 5060 Ti 16GB / RTX 5070 Ti 16GB / RTX PRO 4000 Blackwell 24GB / Mac mini M4 Pro / Foundry Local を [[local-ai-hardware-procurement-market-notes-2026-05-31]] に source 化
+
 ## [2026-05-31 20:05] filing-back | local AI runtime 条件を満たす user share を推定
 
 - Chrome Prompt API / Foundry Local / Phi Silica route の到達率を [[local-ai-runtime-user-share-estimate-2026-05-31]] として整理

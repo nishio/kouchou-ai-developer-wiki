@@ -11,6 +11,7 @@ sources:
   - chrome-built-in-ai-docs-2026-05-31.md
   - windows-native-local-ai-docs-2026-05-31.md
   - local-ai-runtime-user-share-estimate-2026-05-31.md
+  - hardware-procurement-local-ai-route-2026-05-31.md
 ---
 
 ## 問い
@@ -57,6 +58,8 @@ Windows route は 2 種類ある。Phi Silica / Windows AI APIs は Copilot+ PC 
 
 user share の rough estimate では、Chrome Prompt API は一般 desktop なら 45〜55% 程度に届く可能性があるが、自治体・組織貸与 PC では 20〜40% 程度に落ちる。Foundry Local + small model は browser 依存がないため 25〜50% 程度の target user に届く可能性があり、first spike として最もよい。Phi Silica / Copilot+ PC は installed base がまだ小さく、target user では 1〜5% 程度の future option と見る。[[local-ai-runtime-user-share-estimate-2026-05-31]]より
 
+既存の普通の業務 PC で local LLM を動かすこと自体が茨の道なら、hardware 調達込みの route がある。この場合は「担当者 PC に単一 exe」ではなく、認定済み **広聴AI Local Box** を 1 台置き、担当者は browser で使う構成が現実的である。support target を任意の Windows PC から数 SKU の local box に絞れるため、API 契約不要・local 完結の価値を保ちつつ、普通の業務 PC でも使える。[[hardware-procurement-local-ai-route-2026-05-31]]より
+
 ## Issue 化
 
 `digitaldemocracy2030/kouchou-ai#885` として、`#289` の直接再開ではなく「`#289` を現実的に再評価するための前提 issue」として起票した。2026-05-31 15:07 に nishio 指摘を受け、body を更新して MVP を external API route / offline bundled-model route の 2 本比較に変更した。2026-05-31 19:25 には Chrome / Windows native local AI runtime も offline route の候補として追記した。完了条件も、同梱モデル候補・モデル配布方式・CPU で現実的に待てるデータ量・API route との品質差 UX・native runtime option の比較を含む形へ修正した。[[github-dev-docs]]より
@@ -73,9 +76,11 @@ user share の rough estimate では、Chrome Prompt API は一般 desktop な�
 - Chrome Prompt API を batch analysis backend として使う設計は成立するか、client-side 補助用途に限定すべきか
 - Foundry Local の preview maturity、model catalog、Japanese quality、license / redistribution 条件をどう確認するか
 - 広聴AI target user の実機 spec をどう測るか。Steam Hardware Survey は高 spec 側に偏るため、自治体・政党・市民団体の貸与 PC を直接見る必要がある
+- hardware 調達 route を `#885` の Windows 単一 exe から分離し、「広聴AI Local Box」issue として独立させるか
 
 ## Updates
 
+- 2026-05-31: hardware 調達込み route を追加。担当者 PC を高性能化するより、認定済み local box を 1 台置いて browser から使わせる方が support boundary を切りやすい
 - 2026-05-31: Chrome / Foundry Local / Phi Silica route の user share estimate を追加。Foundry Local + small model は first spike 候補、Chrome Prompt API は補助用途、Phi Silica / Copilot+ は future option と整理
 - 2026-05-31: tokoroten 指摘「Chrome / Windows の native LLM support を使えないか」を受け、offline route に native local AI runtime route を追加。Chrome Prompt API は browser lifecycle 依存が強く、Foundry Local は Python/OpenAI-compatible/embedding まで揃うため最初の spike 候補と整理
 - 2026-05-31: nishio 指摘「適当なモデルを同梱して API 契約不要で local 完結」を受け、MVP scope を external API route / offline bundled-model route の 2 本比較に修正。`#885` body も同じ方針へ更新

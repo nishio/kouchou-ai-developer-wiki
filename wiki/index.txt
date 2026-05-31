@@ -57,6 +57,7 @@ kouchou-ai-direction-2-2025-12-13	source	sources/kouchou-ai-direction-2-2025-12-
 kouchou-ai-direction-2025-12-06	source	sources/kouchou-ai-direction-2025-12-06.md	2025-12-06 の『広聴AIの方向性について』メモ。現行散布図方式の限界、用途別のツール使い分け、GUI より設定ファイル、書籍に合わせた安定版という問題設定が明示された
 label-refinement-judge-bundle-2026-05-25	source	sources/label-refinement-judge-bundle-2026-05-25.md	Claude Code や人間が同じ材料で top-level label set を比較できるよう、`[8,40]` の label refinement 候補 4 本を同一フォーマットで並べた judge bundle
 llm-grouping-implementation-observation-2026-05-25	source	sources/llm-grouping-implementation-observation-2026-05-25.md	2026-05-25 時点の current `main` 観測では、LLM grouping 計画文書は main に入り、実行経路は workflow canonical だが、`analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装
+local-ai-hardware-procurement-market-notes-2026-05-31	source	sources/local-ai-hardware-procurement-market-notes-2026-05-31.md	2026-05-31 時点の local AI hardware 調達 route 検討用 source。RTX 5060 Ti 16GB / RTX 5070 Ti 16GB / RTX PRO 4000 Blackwell 24GB / Mac mini M4 Pro / Foundry Local 公式情報を、広聴AI local box 構想の判断材料として整理
 local-ai-user-share-market-stats-2026-05-31	source	sources/local-ai-user-share-market-stats-2026-05-31.md	2026-05-31 時点で local AI runtime のユーザー到達率を推定するための外部統計メモ。Chrome desktop share、Steam Hardware Survey の RAM/CPU/VRAM、Gartner PC shipment、Canalys AI-capable PC forecast、Chrome Prompt API / Foundry Local / Phi Silica 公式要件を整理
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
 meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-05, ~7300 lines, JP)
@@ -128,6 +129,7 @@ fetch-reports-deprecation-and-storage-health-2026-05-26	analysis	analyses/fetch-
 glossary	analysis	analyses/glossary.md	kouchou-ai 周辺の用語集 — 日本語特有・プロジェクト固有のショートハンド
 gotchas	analysis	analyses/gotchas.md	非自明な落とし穴・ハマりどころの一覧 — 経験的に繰り返し発生する footgun
 graph-visualization-proposal-2026-05-25	analysis	analyses/graph-visualization-proposal-2026-05-25.md	UMAP 2D に意味クラスタも可視化品質も背負わせる設計から抜け、`クラスタ内 MST + mutual kNN、クラスタ間 bridge edge、2 段階 cluster-separated layout` で graph drawing として可視化する案。既存 niizuma 批判への visualization 側の答えになりうる
+hardware-procurement-local-ai-route-2026-05-31	analysis	analyses/hardware-procurement-local-ai-route-2026-05-31.md	広聴AIの API 契約不要 local 完結を、既存業務 PC ではなく hardware 調達込みで実現する route の整理。担当者 PC を高性能化するより、認定済み local box / appliance を 1 台置いて browser から使わせる方が現実的。単一 exe とは別物だが、自治体・組織向け pilot には筋が良い
 hierarchical-status-semantics	analysis	analyses/hierarchical-status-semantics.md	`hierarchical_status.json` は branch 上で workflow path でもほぼ legacy 互換になったが、`current_job` の残し方や `duration` など一部に意味論差分が残る
 issue-530-current-state	analysis	analyses/issue-530-current-state.md	Issue #530 の『`server/requirements.txt` を追加すべき』という処方箋は、2026-05-25 時点の current main には合っておらず、現行 repo では API 依存は `apps/api/requirements.lock` と `pyproject.toml` で管理されている
 issue-707-current-state	analysis	analyses/issue-707-current-state.md	Issue #707 は 2026-05-21 に close され、backend の provider-aware verify 実装が current main で非再現だったことから、元報告は stale bug と判断された
