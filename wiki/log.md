@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 00:30] filing-back | PR #883 を再構成方針へ切り替え、不足分析を analysis 化
+
+- nishio が PR #883 (`docs/development/developer-quickstart.md` 新設) について「もうちょっと何が語られるべきかを整理してから作るべきだな」と判断。直近 1 週間で固まった整理が PR 内容に反映されていない
+- 不足項目を [[pr-883-restructuring-2026-05-31]] に整理: (1) 読者像 (開発者 / 自治体担当 / 一般ユーザ) の明示、(2) 利用主体 (個人 / 大組織) を Mode 選択前に置く、(3) platform 安定性ティア (Linux > Mac > Windows) を OS 軸で明示、(4) Docker Desktop license 取得可否を前提条件として書く、(5) Mode 4 (CLI) のデータ量前提 (数百件以上)、(6) 構造把握スタンスの 1 段落紹介、(7) 「困ったら」代替経路の明示
+- 詰まる読者シナリオを 4 種類列挙: 大組織 + Docker Desktop ライセンスなしの人、Windows ユーザ、自治体担当 (評価役)、小規模データ持ちユーザ。現状 docs はいずれも行き止まりまたは期待値ずれ
+- [[meeting-report-draft]] の月曜読み上げ用 #5 と詳細セクションも、PR #883 を「merge を急がず再構成」する判断に書き換えた。次の一手 (draft 戻し / 追加 commit / 別 PR) は nishio 判断待ち
+
 ## [2026-05-30 23:30] filing-back | decision-flowchart 試作を team feedback で v2 へ修正 + 不足知識を fix
 
 - [[decision-flowchart-prototype-2026-05-30]] 初版に対する nishio / tokoroten の team feedback ([[slack-flowchart-feedback-2026-05-30]] 新規) を受けて v2 へ書き直した
@@ -645,10 +652,3 @@
 - はてな記事 `2025-11-29 ブロードリスニングにおけるインサイトの分類とツールの使い分け` を `raw/kensuzuki-broad-listening-insight-types-2025-11-29.*` に保存し、新規 source [[kensuzuki-broad-listening-insight-types-2025-11-29]] を追加
 - [[versioning-strategy]] に v4 / v5 分離判断の前史を補強し、[[slack-design-intents-2025-q4]] と [[strategic-development-order-2026-05-23]] にも新 source への導線を追加
 - `wiki/index.md` Sources を更新
-
-## [2026-05-24 00:06] filing-back | PR #865 merge を反映し、Refactoring Status を current `main` に同期
-
-- `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で更新し、`main@e5ed743` を一次参照として確認
-- [[refactoring-status]] を更新し、legacy cleanup merge 後の current state に合わせて Phase 8 を完了、refactoring 全体を done 判定へ補正
-- [[open-decisions]] から Phase 8 の open item を除外し、[[source-code]] / [[pipeline]] / [[gotchas]] / [[workflow-defaultization-blockers]] も current tree に合わせて補正
-- [[meeting-report-draft]] に `PR #865` と CI 修正を次回定例向け要点として追記

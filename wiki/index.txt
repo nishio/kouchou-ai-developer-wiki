@@ -157,6 +157,7 @@ pr-735-merge-assessment	analysis	analyses/pr-735-merge-assessment.md	`PR #735` �
 pr-801-merge-assessment	analysis	analyses/pr-801-merge-assessment.md	`PR #801` は React version 統一の狙いは妥当でも、current `main` では既存 `minimatch` override を消す stale patch になっているため、そのまま merge すべきではない
 pr-802-merge-assessment	analysis	analyses/pr-802-merge-assessment.md	`PR #802` は crash を消す狙い自体は理解できるが、`Overview` の1箇所だけでは `result.config` 欠損への対処として不十分なので、そのまま merge すべきではない
 pr-814-merge-assessment	analysis	analyses/pr-814-merge-assessment.md	`PR #814` は問題意識に沿った小さな修正だが、2026-05-19 時点では draft / review 未充足で即 merge ではなく、`BUILD_SLUGS` 経路の誤診断を先に詰めたい
+pr-883-restructuring-2026-05-31	analysis	analyses/pr-883-restructuring-2026-05-31.md	PR #883 developer-quickstart は merge を急がず、直近 1 週間で固まった整理 (利用主体先行分岐、platform 安定性ティア、Docker Desktop license の決定フロー上の重み、データ量前提、構造把握スタンス) を docs に取り込んでから書き直すべき。現状の 4 モード分岐は読者像と Mode 選択前提が暗黙のため、Docker Desktop が使えない人や自治体担当が詰む構造になっている
 problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-open-issues-2026-05-19.md	open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
 public-ui-requirements-for-broadlistening	analysis	analyses/public-ui-requirements-for-broadlistening.md	広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出
 public-viewer-build-behavior	analysis	analyses/public-viewer-build-behavior.md	`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある
