@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-31 01:30	filing-back	PR #883 書き直し草案を全文 markdown で作成
 2026-05-31 01:00	filing-back	「開発者」ラベルが 3 サブ役割を一括りにしていた
 2026-05-31 00:30	filing-back	PR #883 を再構成方針へ切り替え、不足分析を analysis 化
 2026-05-30 23:30	filing-back	decision-flowchart 試作を team feedback で v2 へ修正 + 不足知識を fix

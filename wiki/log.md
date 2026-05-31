@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 01:30] filing-back | PR #883 書き直し草案を全文 markdown で作成
+
+- [[pr-883-restructuring-2026-05-31]] の再構成方針を反映した `docs/development/developer-quickstart.md` 全文草案を [[pr-883-developer-quickstart-draft-2026-05-31]] として作成。kouchou-ai repo にそのままペーストできる形
+- 主要変更: (1) 冒頭に「あなたはどの読者像ですか?」5 像、(2) 「広聴 AI は何のためのツールか」(構造把握スタンス 1 段落)、(3) 「環境構築の前提確認」(利用主体 → OS、Docker Desktop license と platform 安定性ティアを明示)、(4) 「代替ルート」(WSL2 / SaaS 待ち / 動かせる人を探す)、(5) 各 Mode 冒頭に「こんな人向け」「メリット・デメリット」、(6) 「困ったら」、(7) Mode 4 に「数百件以上必要」、(8) 「迷ったら Mode 1」表現を全削除
+- Mode 1〜4 の手順本体は既存内容を維持。位置付け (デフォルト推奨 vs 用途別オプション) だけを書き換えた
+- 周辺 docs (README / getting-started/quickstart / docs/index) との整合性確認は別 commit 想定として Open Questions に列挙
+
 ## [2026-05-31 01:00] filing-back | 「開発者」ラベルが 3 サブ役割を一括りにしていた
 
 - PR #883 (developer-quickstart) で「Mode 1 Docker Compose default」を維持する根拠を nishio と議論。「開発者」というラベルが実は (1) 組織内デモ役 (橋渡し役、エンジニアではない可能性)、(2) WebUI 開発者 (エンジニア)、(3) 分析者・研究者 (DS 素養) の 3 サブ役割を一括りにしていたことが判明
