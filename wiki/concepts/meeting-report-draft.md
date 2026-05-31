@@ -36,7 +36,7 @@ sources:
 4. 「別ツール」エコシステムの空き地に対する nishio の答えとして **CLI に多様な実験機能を積み、それが共有・比較・継承されるコミュニティを育てる** という二段構造のビジョンを [[broadlistening-tool-ecosystem-vision]] として整理しました。tokoroten の DivCon や Long Context 再分類のような少数意見救出系は CLI 拡張として位置づけ。Web UI に複雑機能を載せて DivCon 方向の発展が抑制された反省を踏まえます。
 5. 進行中 PR は 2 本: 開発者向け docs 4 モード整理の `PR #883`(`#876`) と `fetch_reports.py` 降格 branch (`#870`)。`PR #883` は **merge を急がず再構成する判断** に切り替えました。理由は直近 1 週間で固まった整理 (利用主体先行分岐 / platform 安定性ティア / Docker Desktop license の決定フロー上の重み / データ量前提 / 構造把握スタンス) が docs に反映されておらず、現状だと「Docker Desktop を組織で使えない人」や「自治体担当の評価役」が詰まる構造のため。再構成方針は [[pr-883-restructuring-2026-05-31]] に整理済み。`#741` Azure deploy flaky は `PR #873` で workflow `concurrency` を追加し merge 済みで close、deploy safety の残課題は `#871` Blob health check に絞れています。[[remaining-issue-priority-2026-05-29]]より
 6. open issue 121 件を再棚卸しし、project-wide 優先は `#221` 試行錯誤負担削減と `#564` 活用事例公開に戻しました。`#221` は単一 feature ではなく「作成前確認 / preflight / 入力検証 / 実行中見通し / 再利用」の 5 面のテーマとして整理し、具体起点として `#884`(作成前確認パネル) を切り出しました。[[trial-and-error-burden-reduction-2026-05-29]]より
-7. Windows setup `#877` は、Docker Desktop が使える Windows 10/11 を標準入口にし、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない端末は beginner guide のサポート境界外として明示する方針にしました。[[issue-877-windows-setup-guide-scope]]より
+7. Windows setup `#877` は、Docker Desktop が使える Windows 10/11 を標準入口にし、組織ポリシー / ライセンスで Docker Desktop や WSL2 が使えない端末は beginner guide のサポート境界外として明示する方針にしました。加えて tokoroten / nishio の「単一実行バイナリ」議論を受け、Node runtime を build-time assets に閉じ込めて Python/FastAPI + static assets runtime へ寄せる前提 issue `#885` を起票しました。[[issue-877-windows-setup-guide-scope]]より [[node-runtime-free-windows-exe-2026-05-31]]より
 8. パイプライン step 追加判断は **「step 数」ではなく「新しい成果物責務を first-class にすべきか」** で決める方針にしました。`#874` の semantic island layout 生成は実験経路に戻し、標準パイプラインは 8 step のまま維持します。[[pipeline-step-default-policy-decision-2026-05-28]]より
 9. スマホでの散布図 UX は、responsive 微調整より別ビュー方針を検討する `#872` を新規起票しました。`#121` `#283` も `bug` ラベルを外して `#872` の参考課題に寄せています。MST / supervised UMAP の試作からは、cluster 間と cluster 内を分けて点を所属島から出さない `semantic island map` を基準線にする判断も出ました。これは構造把握スタンス / 全体傾向把握ユースケース確定後も構造把握用主図候補として広聴AI 本体に残る位置づけです。[[semantic-island-map-prototype-2026-05-26]]より
 10. developer-wiki の GitHub Pages は subpath link が壊れていた問題を Quartz `baseUrl` 方針で直し、生成物リンク検査を CI に追加しました。Quartz + GitHub Pages project-site の設計メモは public Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` として外出ししています。[[wiki-pages-publishing-stack]]より
@@ -71,6 +71,7 @@ sources:
 
 - `#877` の本質は文言整理ではなく **サポート境界の問題**。Docker Desktop が入れられる Windows 10/11 を標準入口にし、組織ポリシーやライセンス制約で Docker Desktop / WSL2 が使えない貸与 PC は beginner guide の対象外、または別ルートとして明示する。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
 - `PR #863`(`codex/issue-731-windows-setup-powershell`) も並行進行中で、`#731` 日本語 UX 戻しを担当。CodeRabbit 対応として API key 改行エラーの日本語化、`docker compose` を `$PSScriptRoot` で実行する修正、非対話失敗時の compose exit code 保持を追加済み。
+- tokoroten / nishio の 2026-05-31 Slack で「Windows ユーザには実行バイナリ 1 個が嬉しい」→「Node を runtime 同梱せず、frontend を SPA/static assets にし、server-side wrapper を Python へ寄せる」案が出た。current main の `apps/admin` / `apps/static-site-builder` は薄い Node wrapper が多いため、段階的には可能と判断し、前提 issue `#885` を起票。次は `apps/admin` の server actions / route handlers を client fetch or FastAPI へ寄せる feasibility slice。[[node-runtime-free-windows-exe-2026-05-31]]より
 
 ### 5. パイプライン step 追加判断のフレーミング
 
@@ -106,6 +107,7 @@ sources:
 - 2026-05-30: core stance **「広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない」** を [[analysis-stance]] として明文化。KJ #3/#4/#5 と公開UI 7 要件 #5/#7 は別ツール側に倒れ、本体は構造把握装置 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理に
 - 2026-05-30: nishio との対話でユースケース契約を **「全体傾向把握ユースケース」 1 本に確定**。Web UI 非露出、少数重要論点系は CLI 分析者責務、minority residual artifact なし。下流 4 レイヤ (sampling / rep args / judge / refinement) を全体傾向把握最適化で揃える方向に [[label-quality-redesign-reset-2026-05-30]]
 - 2026-05-30: ラベル品質改善は仕切り直し方向に確定。sampling / rep args / judge / UI 表示責務を別々に検証する [[label-quality-redesign-reset-2026-05-30]]
+- 2026-05-31: Windows 単一実行バイナリ配布を再評価する前提として、Node runtime を build-time assets に閉じ込め、runtime を Python/FastAPI + static assets に寄せる route を [[node-runtime-free-windows-exe-2026-05-31]] に整理。GitHub issue `#885` を起票
 - 2026-05-30: 実装済み rubric judge v0 は過去出力で甘いと確認。criteria 厳格化または evidence 抽出前処理が次の課題 [[label-quality-rubric-evaluation-2026-05-29]]
 - 2026-05-29: open issue 121 件を再棚卸し。project-wide 優先を `#221` / `#564` に戻し、`#221` 系の起点として `#884` を起票 [[remaining-issue-priority-2026-05-29]] [[trial-and-error-burden-reduction-2026-05-29]]
 - 2026-05-29: Windows setup `#877` をサポート境界問題として整理。Docker Desktop 不可環境は beginner guide 対象外として明示する方針 [[issue-877-windows-setup-guide-scope]]

@@ -1,7 +1,7 @@
 ---
 name: windows-distribution-options
 type: analysis
-summary: "非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理し、現状進行は最下段の `setup_win.*` 系で、ランチャー exe より上は明示的な意思決定が未着のまま"
+summary: "非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-05-31 時点で、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route が `#885` として追加された"
 sources:
   - windows-distribution-gpt-brainstorm-2026-05-22.md
   - meeting-minutes.md
@@ -9,6 +9,8 @@ sources:
   - windows-powershell-default-installation.md
   - windows-setup-encoding-decision.md
   - docker-engine-wsl2-alternative-2026-05-23.md
+  - slack-windows-single-exe-2026-05-31.md
+  - node-runtime-free-windows-exe-2026-05-31.md
 ---
 
 ## 問い
@@ -53,6 +55,14 @@ sources:
 - 利点: ユーザーは Docker Desktop すら不要
 - 限界: kouchou-ai 本体を「ローカル単体実行しやすい構造」に再構築する必要があり、規模としては別プロジェクトになる
 - 現状: 着手意図なし
+
+### 段階 4a: Node runtime を消す前提 refactor
+
+2026-05-31 に tokoroten / nishio の Slack 断片から、段階 4 を「Python と Node を両方同梱する」問題としてではなく、**Node を build-time に閉じ込め、frontend を SPA/static assets として Python/FastAPI から配信する**問題として再評価する案が出た。[[slack-windows-single-exe-2026-05-31]]より
+
+current main の確認では、`apps/admin` の Node runtime 責務は server-side fetch、server actions、route handlers、CSP headers に寄っており、多くは既存 FastAPI endpoint への薄い wrapper と読める。`apps/static-site-builder` も Express で `pnpm run build:static` と zip を実行するだけなので、API そのものは Python に寄せられる。したがって、完全単体 exe の前提として **runtime Node なしで Web UI を動かす** issue `#885` を起票した。[[node-runtime-free-windows-exe-2026-05-31]]より
+
+ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。まずは OpenAI/Gemini API、local storage、CPU、localhost、Docker なしに MVP を絞る判断が必要。[[node-runtime-free-windows-exe-2026-05-31]]より
 
 ## 正規入口を Docker Desktop に置く前提
 
@@ -113,6 +123,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 ## Open Questions
 
 - 非専門家向け Windows 体験のゴールを `setup_win.*` 系で打ち止めるか、段階 2 (ランチャー exe) へ進むかを正式に意思決定するタイミング
+- `#885` の Node runtime 排除 route を段階 4 の前提 refactor として進めるか、それとも段階 2 の Docker Desktop launcher route を優先するか
 - 段階 2 に進む場合の言語スタック (Go / Tauri / Electron / .NET) の選定。kouchou-ai 本体の保守者層と乖離しすぎないこと
 - Docker Desktop ライセンス前提のままで自治体・行政展開を続けられる範囲。回避策が必要になる場面の見極め
 - ルート B（WSL2 Ubuntu + Docker Engine）を「上級者向け補助ルート」に留めるか、主要利用者層のライセンス事情を踏まえて「主要ルート」へ昇格させるか
@@ -120,5 +131,6 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 
 ## Updates
 
+- 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
 - 2026-05-22: 初回作成。`setup_win.*` 進行と GPT ブレストを突き合わせ、段階 1〜4 の整理と現状判断材料をまとめた
 - 2026-05-23: ランタイム基盤の選択軸（Docker Desktop / Docker Engine in WSL2）を段階軸とは直交する第 2 軸として追記し、ルート B を主要ルートに昇格させるかを Open Question に追加

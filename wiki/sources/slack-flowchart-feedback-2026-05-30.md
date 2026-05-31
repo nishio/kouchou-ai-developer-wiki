@@ -1,7 +1,8 @@
 ---
 type: source
 summary: "2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた"
-sources_raw: raw/slack-flowchart-feedback-2026-05-30.txt
+sources:
+  - slack-flowchart-feedback-2026-05-30.txt
 ---
 
 [[decision-flowchart-prototype-2026-05-30]] 試作 A / B に対する team channel での feedback。試作の方向は否定されず、内容の精度が指摘された。

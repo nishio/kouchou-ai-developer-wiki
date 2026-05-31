@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 14:58] filing-back | Node runtime を外す Windows 単一 exe 前提 issue #885 を起票
+
+- tokoroten / nishio の Slack 議論「Windows ユーザには実行バイナリ 1 個が嬉しい」「Node は build 済み assets / SPA にして server wrapper を Python へ」を [[slack-windows-single-exe-2026-05-31]] として source 化
+- current main の `apps/admin` / `apps/public-viewer` / `apps/static-site-builder` を確認し、runtime Node 依存は薄い wrapper が多く段階的には削れると判断。詳細 analysis [[node-runtime-free-windows-exe-2026-05-31]] を作成
+- `digitaldemocracy2030/kouchou-ai#885` を起票。`#289` の直接再開ではなく、Windows 単一実行ファイル配布を再評価するための前提 refactor issue として整理
+- [[windows-distribution-options]] と [[meeting-report-draft]] に `#885` を反映
+- lint で既存 Slack source 2 件の `sources_raw` frontmatter が `sources` として認識されていないことを検出し、`sources` に正規化
+
 ## [2026-05-31 01:30] filing-back | PR #883 書き直し草案を全文 markdown で作成
 
 - [[pr-883-restructuring-2026-05-31]] の再構成方針を反映した `docs/development/developer-quickstart.md` 全文草案を [[pr-883-developer-quickstart-draft-2026-05-31]] として作成。kouchou-ai repo にそのままペーストできる形

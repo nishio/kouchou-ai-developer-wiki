@@ -1,7 +1,8 @@
 ---
 type: source
 summary: "2026-05-30 #2_開発_広聴ai Slack で nishio / ohki-shingo / tokoroten が広聴AI のユースケース契約と analysis-stance を議論。全体傾向把握ユースケースの精密な言い換え (デカい見落とし / デカい違和感)、止まる現象の構造的説明、デフォルトモード UX 指針、CLI + コミュニティのエコシステムビジョンが出た"
-sources_raw: raw/slack-stance-discussion-2026-05-30.txt
+sources:
+  - slack-stance-discussion-2026-05-30.txt
 ---
 
 2026-05-30 の `#2_開発_広聴ai` thread。前段の [[slack-label-algorithm-improvement-2026-05-30]] と nishio が Claude (= 私) と進めた [[analysis-stance]] 議論を受けて、team channel で contract / UX / エコシステムビジョンの整理が一気に進んだ。
