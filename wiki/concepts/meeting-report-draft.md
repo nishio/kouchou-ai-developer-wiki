@@ -22,11 +22,41 @@ sources:
 - issue 番号、PR 番号、main commit などの検索キーを残す
 - 会議で読まない細かい実装詳細はこのページに詰め込まず、関連 analysis / source ページへ送る
 - 同じテーマで新しい情報が来たら、新しい bullet を足すのではなく既存セクションを書き換える
+- **「議題候補」セクション** は team の判断・議論・合意が必要な論点を集める場所。status 報告 (「月曜にそのまま読む用」) とは別物として扱う
 - 会議が終わったら本ページを `wiki/concepts/meeting-report-YYYY-MM-DD.md` へ rotate し、本ページは次回向けに空に戻す
 
 ## 過去回
 
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
+
+## 議題候補 (2026-06-01 定例)
+
+### 議題 1: PR #883 撤回後の developer-quickstart 再設計をどう進めるか
+
+**経緯**: `PR #883` (Issue `#876` 対応の developer-quickstart 4 モード整理) を作成・CodeRabbit 対応まで進めたあと、直近 1 週間の整理 (構造把握スタンス確定、3 サブ役割化、利用主体先行分岐、Docker Desktop license の決定フロー上の重み、Mode 1 default 廃止) が反映できていないことに気付き、2026-05-31 に **撤回 (close)** した。Issue `#876` 本体には `## 2026-05-31 更新: 新方針` セクションを追記し、全文草案 [[pr-883-developer-quickstart-draft-2026-05-31]] も用意済み。
+
+**team に判断を仰ぎたい点**:
+
+1. **草案レビュー**: 全文草案 (https://nishio.github.io/kouchou-ai-developer-wiki/analyses/pr-883-developer-quickstart-draft-2026-05-31/) の 5 読者像分岐と「Mode 1 default 廃止」方針で進めて問題ないか
+2. **次の PR を誰が書くか**: nishio 単独で書き直すか、Codex に再度任せるか、別 contributor に依頼するか
+3. **スコープ拡張の判断**: 周辺 docs (`README.md` / `docs/getting-started/quickstart.md` / `docs/index.md`) も「Mode 1 default」前提が残っていれば併せて見直すか、developer-quickstart だけ先行で land して周辺は別 PR にするか
+4. **「自治体担当本人」読者像への現実的接点**: 草案では SaaS ホスト型待ち / 動かせる人を探す としか書けていない。コミュニティ Slack / discord などの窓口を docs に明示するか ([[open-decisions]] A2 と関連)
+
+### 議題 2: 「組織内デモ役」(橋渡し役) を product 設計の独立読者像として扱うか
+
+**経緯**: 「開発者」というラベルが実は 3 サブ役割 (組織内デモ役 / WebUI 開発者 / 分析者・研究者) を一括りにしていたという 2026-05-31 の整理 ([[pr-883-restructuring-2026-05-31]] / [[broadlistening-tool-ecosystem-vision]] 読者像 3 像)。中でも **「組織内デモ役」(エンジニアではないが PC 操作はできる橋渡し役)** は `Web UI = 一般ユーザ` / `CLI = 研究者` の二段構造では明示的に扱っていなかった第三像。広聴AI の現実の普及はこの層が担う。
+
+**team に判断を仰ぎたい点**:
+
+1. この読者像を product / docs の設計判断に組み込んでよいか。具体的には:
+   - `developer-quickstart.md` 冒頭の 5 読者像分岐に明示する (草案ではそうしている)
+   - [[analysis-stance]] の「reader は解説する人」セクションに代表例として明示する (済み)
+   - `#564` 活用事例公開 issue でも「組織内デモ役向け事例」を意識する
+2. SaaS ホスト型 `kouchou-ai.dd2030.org` の本格運用が `組織内デモ役 / 自治体担当本人` の最大の接点になる。体制不足で先送りされ続けているが ([[open-decisions]] A2)、ここでもう一度 priority を上げ直すか
+
+### 議題 3: 議事録運用として、議題候補セクションを meeting-report-draft に常設するか
+
+Codex (= 私) が今回初めて「status 報告」と分けて「議題候補」を立てた。team が discussion 材料として有用と感じれば常設にしたい。フィードバックを聞きたい。
 
 ## 月曜にそのまま読む用 (2026-06-01 向け)
 

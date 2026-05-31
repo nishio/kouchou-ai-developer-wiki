@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-05-31 16:00	filing-back	2026-06-01 定例の議題候補 3 件を meeting-report-draft に追加
 2026-05-31 15:30	github-pr	PR #883 を撤回し、Issue #876 を新方針で修正
 2026-05-31 14:58	filing-back	Node runtime を外す Windows 単一 exe 前提 issue #885 を起票
 2026-05-31 01:30	filing-back	PR #883 書き直し草案を全文 markdown で作成

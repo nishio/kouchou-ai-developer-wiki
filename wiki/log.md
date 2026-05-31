@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 16:00] filing-back | 2026-06-01 定例の議題候補 3 件を meeting-report-draft に追加
+
+- nishio 指示「明日の定例での議題にしよう」を受け、PR #883 撤回後の developer-quickstart 再設計を team discussion の議題として位置づけた
+- meeting-report-draft に新規 `## 議題候補 (2026-06-01 定例)` セクションを追加 (status 報告とは別物として「使い方」にも明文化)
+- 議題 1: developer-quickstart 再設計の進め方 (草案レビュー / 担当 / スコープ拡張 / 自治体担当本人接点)
+- 議題 2: 「組織内デモ役」を product 設計の独立読者像として扱うか (SaaS ホスト型 priority 再考含む)
+- 議題 3: 議事録運用として「議題候補」セクションを常設にするかのメタ問い
+
 ## [2026-05-31 15:30] github-pr | PR #883 を撤回し、Issue #876 を新方針で修正
 
 - nishio 指示「現状の PR は撤回する / Issues を見直して、修正する / この原稿へのリンクを置いても良い」を受けて実行
