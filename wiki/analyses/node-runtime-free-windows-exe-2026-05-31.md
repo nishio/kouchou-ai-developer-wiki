@@ -1,11 +1,12 @@
 ---
 type: analysis
-summary: "Windows 単一実行ファイル配布を再評価する前提として、Web UI の Node runtime を build-time の frontend assets に押し込み、runtime を Python/FastAPI + static assets に寄せる案は段階的には実現可能。ただし admin SPA 化、public-viewer live/static export 方針、Python packaging の依存サイズが主要リスク"
+summary: "Windows 単一実行ファイル配布を再評価する前提として、Web UI の Node runtime を build-time の frontend assets に押し込み、runtime を Python/FastAPI + static assets に寄せる案は段階的には実現可能。MVP は外部 API route と API 契約不要の offline bundled-model route を比較すべきで、admin SPA 化・public-viewer 方針・Python/model packaging が主要リスク"
 sources:
   - slack-windows-single-exe-2026-05-31.md
   - source-code.md
   - nextjs-static-export-docs-2026-05-31.md
   - windows-distribution-options.md
+  - github-dev-docs.md
 ---
 
 ## 問い
@@ -32,11 +33,19 @@ sources:
 
 第二段階は FastAPI に static serving を持たせること。prebuilt admin assets と public-viewer assets を FastAPI が配信し、API と UI を 1 port に寄せる。これにより CORS と base path の問題を単純化できるが、CSP headers は Next `headers()` から Python 側へ移す必要がある。[[source-code]]より [[nextjs-static-export-docs-2026-05-31]]より
 
-第三段階は Windows packaging spike。MVP は OpenAI/Gemini API、local storage、CPU、localhost、Docker なしに絞るのがよい。`analysis-core` の optional dependencies には `torch`, `numba`, `scipy`, `umap-learn` が含まれるため、バイナリサイズ、hidden import、Windows の antivirus 誤検知、local embeddings / GPU / Ollama を同時に背負わない scope 定義が重要になる。[[source-code]]より
+第三段階は Windows packaging spike。ここは当初「OpenAI/Gemini API、local storage、CPU、localhost、Docker なし」を最小 MVP と見ていたが、nishio 指摘により、単一実行ファイル配布の価値は **API 契約なしで local 完結できること**にもあると修正した。したがって `#885` の MVP は、(1) artifact を小さくし品質を優先する external API route と、(2) 軽量 chat / embedding model を同梱して local 完結を優先する offline bundled-model route の 2 本を比較する形に更新した。[[github-dev-docs]]より
+
+## 同梱モデル route
+
+current code には `provider="local"` の OpenAI 互換 local LLM 経路と、`is_embedded_at_local` の SentenceTransformer local embedding 経路が既にある。`request_to_local_llm()` は Ollama / LM Studio のような OpenAI 互換 endpoint を叩き、`request_to_local_embed()` は `sentence-transformers/paraphrase-multilingual-mpnet-base-v2` を遅延ロードする。つまり「local inference を使うための抽象」は既にある。[[source-code]]より
+
+ただし、これはそのままでは「同梱モデル」ではない。現状の local LLM は外部 runtime (Ollama / LM Studio など) を前提にし、local embedding は Hugging Face cache / 初回 download に寄る。Windows 単一実行ファイルで API 契約不要・ネットワーク不要を目指すなら、モデルファイルを配布物に含めるか初回起動時 download にするか、package 内の local path からロードするか、推論 runtime を Python 内に持つか OpenAI 互換 local server として同梱起動するか、を product scope として決める必要がある。[[source-code]]より [[github-dev-docs]]より
+
+この route はユーザー価値が強い一方、モデルサイズ、ライセンス、Windows antivirus 誤検知、初回ロード時間、CPU 速度、品質差の説明が主要リスクになる。既存 issue では `#471` が local LLM benchmark / 推奨スペック / 標準モデル未決を扱い、`#450` が embedding model 選択、`#573` が PLaMo-Embedding-1B 実験を扱っている。`#573` の観測では PLaMo-Embedding-1B は CPU で現行 multilingual-mpnet より遅く、クラスタリング指標も低かったため、同梱モデル選定は「日本語特化っぽい」だけでは決められない。[[github-dev-docs]]より
 
 ## Issue 化
 
-`digitaldemocracy2030/kouchou-ai#885` として、`#289` の直接再開ではなく「`#289` を現実的に再評価するための前提 issue」として起票した。完了条件は、Node runtime 依存一覧、admin static assets 化方針、static-site-builder の扱い、local desktop MVP scope、可能なら prototype branch での FastAPI static serving + 主要 admin flow 確認である。[[slack-windows-single-exe-2026-05-31]]より
+`digitaldemocracy2030/kouchou-ai#885` として、`#289` の直接再開ではなく「`#289` を現実的に再評価するための前提 issue」として起票した。2026-05-31 15:07 に nishio 指摘を受け、body を更新して MVP を external API route / offline bundled-model route の 2 本比較に変更した。完了条件も、同梱モデル候補・モデル配布方式・CPU で現実的に待てるデータ量・API route との品質差 UX を含む形へ修正した。[[github-dev-docs]]より
 
 ## Open Questions
 
@@ -44,8 +53,11 @@ sources:
 - admin API key を static client に載せる local desktop threat model をどう明文化するか
 - public-viewer の OGP / revalidate / ISR 相当を static fallback に倒してよいか
 - PyInstaller / Nuitka のどちらを packaging spike の first try にするか
-- local embeddings / Ollama / GPU をどの段階で scope に戻すか
+- offline bundled-model route は Python process 内 inference に寄せるか、同梱 local server を起動する形にするか
+- モデルを配布物に同梱するか、初回起動時 download にするか
+- API route と offline route を同一 UI で切り替えるか、配布物を分けるか
 
 ## Updates
 
+- 2026-05-31: nishio 指摘「適当なモデルを同梱して API 契約不要で local 完結」を受け、MVP scope を external API route / offline bundled-model route の 2 本比較に修正。`#885` body も同じ方針へ更新
 - 2026-05-31: 初版作成。Slack の単一実行バイナリ議論を受け、current main の Node runtime 責務を確認し、`#885` を起票した

@@ -7,7 +7,7 @@
 
 - tokoroten / nishio の Slack 議論「Windows ユーザには実行バイナリ 1 個が嬉しい」「Node は build 済み assets / SPA にして server wrapper を Python へ」を [[slack-windows-single-exe-2026-05-31]] として source 化
 - current main の `apps/admin` / `apps/public-viewer` / `apps/static-site-builder` を確認し、runtime Node 依存は薄い wrapper が多く段階的には削れると判断。詳細 analysis [[node-runtime-free-windows-exe-2026-05-31]] を作成
-- `digitaldemocracy2030/kouchou-ai#885` を起票。`#289` の直接再開ではなく、Windows 単一実行ファイル配布を再評価するための前提 refactor issue として整理
+- `digitaldemocracy2030/kouchou-ai#885` を起票。`#289` の直接再開ではなく、Windows 単一実行ファイル配布を再評価するための前提 refactor issue として整理。nishio 指摘を受け、MVP は external API route / offline bundled-model route の 2 本比較に修正
 - [[windows-distribution-options]] と [[meeting-report-draft]] に `#885` を反映
 - lint で既存 Slack source 2 件の `sources_raw` frontmatter が `sources` として認識されていないことを検出し、`sources` に正規化
 

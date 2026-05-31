@@ -62,7 +62,7 @@ sources:
 
 current main の確認では、`apps/admin` の Node runtime 責務は server-side fetch、server actions、route handlers、CSP headers に寄っており、多くは既存 FastAPI endpoint への薄い wrapper と読める。`apps/static-site-builder` も Express で `pnpm run build:static` と zip を実行するだけなので、API そのものは Python に寄せられる。したがって、完全単体 exe の前提として **runtime Node なしで Web UI を動かす** issue `#885` を起票した。[[node-runtime-free-windows-exe-2026-05-31]]より
 
-ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。まずは OpenAI/Gemini API、local storage、CPU、localhost、Docker なしに MVP を絞る判断が必要。[[node-runtime-free-windows-exe-2026-05-31]]より
+ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。MVP も外部 API route だけでなく、軽量モデルを同梱して **API 契約不要で local 完結**する offline bundled-model route を比較すべき、という整理に更新した。[[node-runtime-free-windows-exe-2026-05-31]]より
 
 ## 正規入口を Docker Desktop に置く前提
 
@@ -132,5 +132,6 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 ## Updates
 
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
+- 2026-05-31: `#885` の MVP を external API route / offline bundled-model route の 2 本比較に修正。単一バイナリの価値は Docker なしだけでなく API 契約不要にもある
 - 2026-05-22: 初回作成。`setup_win.*` 進行と GPT ブレストを突き合わせ、段階 1〜4 の整理と現状判断材料をまとめた
 - 2026-05-23: ランタイム基盤の選択軸（Docker Desktop / Docker Engine in WSL2）を段階軸とは直交する第 2 軸として追記し、ルート B を主要ルートに昇格させるかを Open Question に追加
