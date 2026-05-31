@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 01:00] filing-back | 「開発者」ラベルが 3 サブ役割を一括りにしていた
+
+- PR #883 (developer-quickstart) で「Mode 1 Docker Compose default」を維持する根拠を nishio と議論。「開発者」というラベルが実は (1) 組織内デモ役 (橋渡し役、エンジニアではない可能性)、(2) WebUI 開発者 (エンジニア)、(3) 分析者・研究者 (DS 素養) の 3 サブ役割を一括りにしていたことが判明
+- それぞれ最適 Mode が違う: 組織内デモ役 = Mode 1、WebUI 開発者 = Mode 2 / 3 (目的別)、分析者・研究者 = Mode 4 CLI。「Mode 1 が default」は廃止すべき
+- 「組織内デモ役」はさらに (a) 自治体担当本人 / (b) ベンダー橋渡し役 / (c) NPO 評価役 に細分化。(a) は事実上「一般ユーザと開発者の中間」で従来 docs の盲点。広聴AI の現実の普及はこの層が担う
+- [[pr-883-restructuring-2026-05-31]] を 5 読者像で再構成案へ更新、[[broadlistening-tool-ecosystem-vision]] に「読者像 3 像」セクションを追加、[[analysis-stance]] の「reader は解説する人」に「組織内デモ役」代表例を追記、memory にも「開発者」ラベルの注意を保存
+
 ## [2026-05-31 00:30] filing-back | PR #883 を再構成方針へ切り替え、不足分析を analysis 化
 
 - nishio が PR #883 (`docs/development/developer-quickstart.md` 新設) について「もうちょっと何が語られるべきかを整理してから作るべきだな」と判断。直近 1 週間で固まった整理が PR 内容に反映されていない
