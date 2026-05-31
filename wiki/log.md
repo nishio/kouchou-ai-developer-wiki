@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 20:05] filing-back | local AI runtime 条件を満たす user share を推定
+
+- Chrome Prompt API / Foundry Local / Phi Silica route の到達率を [[local-ai-runtime-user-share-estimate-2026-05-31]] として整理
+- target user では Chrome Prompt API 20〜40%、Foundry Local + small model 25〜50%、Phi Silica / Copilot+ 1〜5% 程度と推定
+- Foundry Local は browser 依存がなく現行 `provider="local"` に近いため first spike 候補。Chrome Prompt API は補助用途、Phi Silica は future option
+
 ## [2026-05-31 19:25] filing-back | Chrome / Windows native local AI runtime route を #885 に追加
 
 - 追加 Slack 断片「20B class model」「Chrome / Windows native LLM support」を [[slack-local-llm-native-runtime-2026-05-31]] として source 化
