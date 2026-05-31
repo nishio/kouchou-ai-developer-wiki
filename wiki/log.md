@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-05-31 19:25] filing-back | Chrome / Windows native local AI runtime route を #885 に追加
+
+- 追加 Slack 断片「20B class model」「Chrome / Windows native LLM support」を [[slack-local-llm-native-runtime-2026-05-31]] として source 化
+- Chrome Prompt API と Microsoft Foundry Local / Phi Silica 公式 docs を確認し、[[chrome-built-in-ai-docs-2026-05-31]] / [[windows-native-local-ai-docs-2026-05-31]] に要点を整理
+- [[node-runtime-free-windows-exe-2026-05-31]] と `digitaldemocracy2030/kouchou-ai#885` を更新し、offline route を direct bundled model と platform-managed native runtime に分けて比較する方針へ修正
+- 現時点の first spike 候補は、Python SDK・OpenAI-compatible endpoint・embeddings を持つ Foundry Local。Chrome Prompt API は browser lifecycle 依存が強く primary batch backend には弱い
+
 ## [2026-05-31 16:00] filing-back | 2026-06-01 定例の議題候補 3 件を meeting-report-draft に追加
 
 - nishio 指示「明日の定例での議題にしよう」を受け、PR #883 撤回後の developer-quickstart 再設計を team discussion の議題として位置づけた

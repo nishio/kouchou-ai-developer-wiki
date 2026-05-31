@@ -1,11 +1,13 @@
 ---
 name: llm-providers
-summary: "対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama)"
+summary: "対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装"
 type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - source-code.md
+  - windows-native-local-ai-docs-2026-05-31.md
+  - chrome-built-in-ai-docs-2026-05-31.md
 ---
 
 ## 対応プロバイダ
@@ -18,6 +20,14 @@ sources:
 | OpenRouter | `OPENROUTER_API_KEY` | 他社モデルへのルーティング |
 | LocalLLM (Ollama) | `--profile ollama` | 既定モデル `hf.co/elyza/Llama-3-ELYZA-JP-8B-GGUF` |
 | LM Studio 等 | "LOCAL LLM" 扱い | PR #422 で [[tokoroten]] が一般化 |
+
+## Local provider の次候補 (未実装)
+
+Windows 単一実行ファイル / API 契約不要 route では、Foundry Local が current `provider="local"` に最も接続しやすい候補である。Foundry Local は Python SDK、OpenAI-compatible local endpoint、embedding API、model download/cache 管理を持つため、既存の OpenAI-compatible local LLM 経路に近い。ただし 2026-05-31 時点では広聴AI main には未実装で、model catalog の日本語品質、license / redistribution、first-run download UX、preview maturity の確認が必要。[[windows-native-local-ai-docs-2026-05-31]]より [[source-code]]より
+
+Chrome Prompt API / Gemini Nano は browser 内 local model として有望だが、Python/FastAPI の batch pipeline から直接使う provider ではない。client-side 補助や browser-only 実験には向くが、分析 backend として使うには browser tab lifecycle と user activation を抱える。[[chrome-built-in-ai-docs-2026-05-31]]より
+
+Phi Silica / Windows AI APIs は Copilot+ PC / NPU 向けの Windows native local model route だが、experimental channel や supported device 制約があるため、現時点では primary provider ではなく future option として観測する。[[windows-native-local-ai-docs-2026-05-31]]より
 
 ## なぜ複数プロバイダ対応か
 
@@ -51,8 +61,10 @@ Issue #660（2025-07-30 マージ）— OpenAI / OpenRouter のキーを管理�
 
 - Embedding モデルのデフォルト変更（精度 vs コスト vs 一貫性）
 - 「LOCAL LLM」というカテゴリ名そのものを「self-hosted endpoint」等にリネームすべきか
+- Foundry Local を `provider="local"` の単なる endpoint として扱うか、first-class provider として model download/cache/progress UI まで持つか
 
 ## Updates
 
+- 2026-05-31: Windows local 完結 route の候補として Foundry Local / Chrome Prompt API / Phi Silica を追記。Foundry Local は現行 OpenAI-compatible local endpoint に接続しやすいが未実装
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を確認し、LOCAL LLM の HTTPS 対応は「議事メモ上の報告あり・main 反映は要再確認」という書き方に修正

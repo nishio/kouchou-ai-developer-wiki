@@ -12,7 +12,7 @@ coding-agents	concept	concepts/coding-agents.md	Devin / Claude Code / Codex の�
 contributing	concept	concepts/contributing.md	コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
 deployment	concept	concepts/deployment.md	デプロイ — Azure 本番、静的サイト書き出し、PyPI リリース
 kouchou-ai	concept	concepts/kouchou-ai.md	広聴AI — DD2030 配下の OSS ブロードリスニング実装。CSV → 抽出 → 埋め込み → 階層クラスタリング → 可視化
-llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama)
+llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装
 local-dev-setup	concept	concepts/local-dev-setup.md	ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
 meeting-report-2026-05-25	concept	concepts/meeting-report-2026-05-25.md	2026-05-25 定例で Codex が報告した内容のスナップショット
 meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる
@@ -36,6 +36,7 @@ talk-to-the-city	entity	entities/talk-to-the-city.md	TTTC — kouchou-ai の上�
 tokoroten	entity	entities/tokoroten.md	中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当
 analysis-core-web-ui-separation-decision-2026-05-23	source	sources/analysis-core-web-ui-separation-decision-2026-05-23.md	CLI は一般利用者に重く、WebUI は研究用途に重かったため core を切り出し、Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ
 broad-listening-book-source	source	sources/broad-listening-book-source.md	DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む
+chrome-built-in-ai-docs-2026-05-31	source	sources/chrome-built-in-ai-docs-2026-05-31.md	Chrome Prompt API / built-in AI 公式 docs の要点。Gemini Nano を Chrome 内で使い、初回 model download 後は外部送信なしで動く一方、Chrome desktop・storage・RAM/CPU/GPU 条件と browser/API lifecycle への依存がある
 clustering-research-survey-seeds-2026-05-25	source	sources/clustering-research-survey-seeds-2026-05-25.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するための survey seed 集。UMAP 後 clustering、spectral clustering、BERTopic、可視化と分析の分離、評価軸
 codeql-docs	source	sources/codeql-docs.md	GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ
 deepwiki-kouchou-ai	source	sources/deepwiki-kouchou-ai.md	DeepWiki が生成した kouchou-ai コードベース要約。構造把握には有用だが、最新実装との差分確認が必要
@@ -91,6 +92,7 @@ slack-dev-kouchouai-2026-q1	source	sources/slack-dev-kouchouai-2026-q1.md	`oss_w
 slack-flowchart-feedback-2026-05-30	source	sources/slack-flowchart-feedback-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた
 slack-kouchouai-algorithm-dev	source	sources/slack-kouchouai-algorithm-dev.md	`oss_weekly_reporter` の `#2_開発_広聴ai_アルゴリズム開発` 抜粋（2025-04 〜 2026-03）— UMAP→k-means への批判、対立軸発見、LLM分類、可視化代替案
 slack-label-algorithm-improvement-2026-05-30	source	sources/slack-label-algorithm-improvement-2026-05-30.md	2026-05-29〜30 の Slack アルゴリズム改善ログ。ラベル欠落 vs 冗長、random sampling / 全件入力、rep args 選定、評価ユースケース分岐が議論された
+slack-local-llm-native-runtime-2026-05-31	source	sources/slack-local-llm-native-runtime-2026-05-31.md	2026-05-31 Slack で nishio と tokoroten が、API 契約不要の local LLM 実行可能性について、20B 級モデルの現実化と Chrome / Windows の native LLM support を使う方向を議論した
 slack-niizuma-umap-kmeans-thread-2026-03-18	source	sources/slack-niizuma-umap-kmeans-thread-2026-03-18.md	`#2_開発_広聴ai_アルゴリズム開発` 2026-03-18〜2026-03-21 の新妻スレッド。UMAP後k-means批判、前段クラスタリング案、supervised UMAP、LLM直分類と説明責務
 slack-public-ui-requirements-2026-05-23	source	sources/slack-public-ui-requirements-2026-05-23.md	2026-05-23 ごろの Slack で、nishio が散布図互換／散布図必須撤廃の二段構えを述べたのに対し、ohki-shingo が『公開UIに求められる要件』と『embedding 距離精度の非本質性』を整理した thread
 slack-stance-discussion-2026-05-30	source	sources/slack-stance-discussion-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で nishio / ohki-shingo / tokoroten が広聴AI のユースケース契約と analysis-stance を議論。全体傾向把握ユースケースの精密な言い換え (デカい見落とし / デカい違和感)、止まる現象の構造的説明、デフォルトモード UX 指針、CLI + コミュニティのエコシステムビジョンが出た
@@ -102,6 +104,7 @@ weekly-log-2026-05-06	source	sources/weekly-log-2026-05-06.md	nishio/oss_weekly_
 wiki-maintenance-observation-2026-05-25	source	sources/wiki-maintenance-observation-2026-05-25.md	developer-wiki の graph 表示調整と main 直接 push 運用を 2026-05-25 の実作業から整理した観測メモ
 wiki-pages-tooling-observation-2026-05-21	source	sources/wiki-pages-tooling-observation-2026-05-21.md	この developer-wiki repo の GitHub Pages 現状実装と Quartz 公式 docs を突き合わせた観測メモ
 windows-distribution-gpt-brainstorm-2026-05-22	source	sources/windows-distribution-gpt-brainstorm-2026-05-22.md	nishio と外部 GPT の対話メモ。Windows ユーザー向け配布形態を `exe` 単体化か Docker Compose ランチャーか、また正規入口を Docker Desktop と WSL2 のどちらに据えるか、という 2 つの論点を整理したブレスト
+windows-native-local-ai-docs-2026-05-31	source	sources/windows-native-local-ai-docs-2026-05-31.md	Microsoft 公式 docs から見た Windows native local AI の要点。Phi Silica は Copilot+ PC / NPU 向け Windows AI APIs、Foundry Local は Python SDK・OpenAI-compatible endpoint・embeddings・model lifecycle 管理を持つ local runtime で、広聴AIには Foundry Local が特に接続しやすい
 windows-powershell-default-installation	source	sources/windows-powershell-default-installation.md	Microsoft Learn の PowerShell 公式ドキュメントより、Windows PowerShell 5.1 は Windows client 10 以降と Windows Server 2016 以降に既定でインストールされる、という事実確認
 worktree-hygiene-observation-2026-05-20	source	sources/worktree-hygiene-observation-2026-05-20.md	`work/kouchou-ai/` の dirty は `issue-830` 本筋ではなく、別件 2 系統と local 生成物が混ざった状態で、`apps/api/uv.lock` ignore を `PR #839` で main に反映して整理した観測メモ
 zenn-llm-as-a-judge-rubric-evaluation-2026-05-29	source	sources/zenn-llm-as-a-judge-rubric-evaluation-2026-05-29.md	Ubie Tech Blog の LLM-as-a-Judge / ルーブリック評価記事。抽象的な 1-5 点採点ではなく、true/false 可能な criteria に分解し、重要度ごとの points と negative criteria を持たせると、再現性と改善点の特定が上がるという実務向け整理
@@ -146,7 +149,7 @@ label-quality-rubric-evaluation-2026-05-29	analysis	analyses/label-quality-rubri
 label-refinement-input-scope-2026-05-29	analysis	analyses/label-refinement-input-scope-2026-05-29.md	実験的に追加された hierarchical_label_refinement step は rep args を入力に取らず、上流ラベル + 子クラスタラベルだけを polish する設計になっている。これは『上流の merge_labelling が既に間違えたラベル』を refinement で救えない構造であり、polish が綺麗になるほど誤ラベルが固定化する危険を含む
 nasuka-statements-retrospective-2026-05-25	analysis	analyses/nasuka-statements-retrospective-2026-05-25.md	nasuka の過去発言は、広聴AIを実利用に耐える市民参加インフラへ移すための運用・信頼・反復改善の視点として読める
 niizuma-thread-algorithm-critique	analysis	analyses/niizuma-thread-algorithm-critique.md	新妻 thread は、UMAP後k-means批判そのものよりも『分析の筋の良さ』『散布図の見え方』『説明責務』が別問題だと露出させた点に価値がある
-node-runtime-free-windows-exe-2026-05-31	analysis	analyses/node-runtime-free-windows-exe-2026-05-31.md	Windows 単一実行ファイル配布を再評価する前提として、Web UI の Node runtime を build-time の frontend assets に押し込み、runtime を Python/FastAPI + static assets に寄せる案は段階的には実現可能。MVP は外部 API route と API 契約不要の offline bundled-model route を比較すべきで、admin SPA 化・public-viewer 方針・Python/model packaging が主要リスク
+node-runtime-free-windows-exe-2026-05-31	analysis	analyses/node-runtime-free-windows-exe-2026-05-31.md	Windows 単一実行ファイル配布を再評価する前提として、Web UI の Node runtime を build-time の frontend assets に押し込み、runtime を Python/FastAPI + static assets に寄せる案は段階的には実現可能。MVP は外部 API route と API 契約不要の offline route を比較し、offline は自前 bundled-model だけでなく Chrome / Windows native local AI runtime も見るべき
 non-nishio-human-pr-status	analysis	analyses/non-nishio-human-pr-status.md	2026-05-18 の stale cleanup 後、nishio 以外の人間 authored open PR は `shingo-ohki` の `#817` だけで、古い draft `#734` と `#597` は close 済み
 npm-vs-pnpm	analysis	analyses/npm-vs-pnpm.md	なぜ pnpm 必須で npm 非対応か — plugin システムが要求する node_modules 分離
 ohki-discussion-reflection-2026-05-25	analysis	analyses/ohki-discussion-reflection-2026-05-25.md	ohki-shingo との議論は、散布図互換の技術判断を、自治体利用で公開UIが担うべき説明責務へ引き戻したものとして読める
