@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 17:28] filing-back | PR #887 の scattergl CSP regression を整理
+
+- [[issue-887-scattergl-csp-regression-2026-06-01]] を作成し、`PR #848` で入った production CSP と Plotly `scattergl` / `@plotly/regl` の runtime eval 要件が噛み合わなかったことを整理
+- 報告 URL の CSP header と Playwright 再現では `.no-webgl` overlay が表示状態で、旧レポート schema ではなく viewer runtime 条件の regression と判断
+- `PR #848` の目的、変更内容、dynamic hosting / static export の境界、`#887` で補った不足を追記。早期検知策として production `next start` smoke、CSP helper contract、CSP header 付き static hosting E2E、post-deploy smoke を切り分けた
+
 ## [2026-06-01 17:10] filing-back | open issue 124 件を subagent で全件 triage
 
 - `digitaldemocracy2030/kouchou-ai` の open issue 124 件を 5 subagent に分け、本文・コメント・assignee・必要な current main / wiki 文脈まで読み直した
@@ -480,15 +486,4 @@
 - `USER_API_KEY` を `analysis-core` の API key validation、`StepContext`、built-in plugin の legacy runtime config、legacy step の LLM 呼び出しへ通す修正を clean worktree `work/kouchou-ai-user-api-key-pr/` で構成
 - user API key は `initialization()` の戻り config と status JSON に保存しないよう regression test を追加
 - branch `codex/user-api-key-plumbing`、commit `a21bf27` を push し、draft PR `#868` `[codex] 実行時ユーザーAPIキーの受け渡しを直す` を作成
-- `packages/analysis-core` で `OPENAI_API_KEY=dummy rye run python -m pytest -q` を実行し、通常テスト `181 passed` を確認
-
-## [2026-05-25 17:23] github-ci | draft PR #867 の checks 通過を確認
-
-- `gh pr checks 867 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
-
-## [2026-05-25 17:18] filing-back | reuse-from を draft PR #867 として先に切り出し
-
-- `work/kouchou-ai/` の混在した実験差分から、既存出力を seed して再利用する `--reuse-from` だけを clean worktree `work/kouchou-ai-reuse-from-pr/` に再構成
-- LLM grouping / label refinement の実装は含めず、比較実験の土台として先に PR 化する方針にした
-- branch `codex/reuse-from-outputs`、commit `977d7eb` を push し、draft PR `#867` `[codex] 既存出力を再利用して再実行できるようにする` を作成
 - `packages/analysis-core` で `OPENAI_API_KEY=dummy rye run python -m pytest -q` を実行し、通常テスト `181 passed` を確認
