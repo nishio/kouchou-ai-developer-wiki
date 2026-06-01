@@ -45,6 +45,7 @@ sources:
 
 - 進行中 PR: #888 (`codex/public-viewer-build-serve-split`)。`apps/public-viewer/entrypoint.sh` から runtime build を消し、`Dockerfile` の builder stage で `.next` を作る構成に変更した。
 - 実装判断: `/` と `/faq` は `connection()` で request-time rendering に寄せた。一方 `[slug]` に `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため、non-export では `generateStaticParams() => []` と fallback metadata、runtime env 読みで対応した。
+- CodeRabbit review 対応: `/` の `generateMetadata()` は `connection()` で request-time 化し、API-less build を維持しつつ reporter-specific metadata を復元した。`[slug]` metadata の request-time 化は `/example` 500 を起こすため見送った。
 - 次に見ること: Docker build を CI / daemon 起動済み環境で通すことと、別 PR で Azure deploy readiness poll / representative report smoke を入れること。
 
 ## Open Questions

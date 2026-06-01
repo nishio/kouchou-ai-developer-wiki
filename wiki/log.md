@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 23:36] filing-back | PR #888 CodeRabbit review を反映
+
+- CodeRabbit が `apps/public-viewer/app/page.tsx` の dynamic metadata fallback を指摘し、`/` の `generateMetadata()` を `connection()` で request-time 化して reporter-specific title を復元
+- `[slug]` metadata への同適用は `/example` が `DYNAMIC_SERVER_USAGE` で 500 になるため見送り、non-export fallback metadata を維持
+- PR #888 では API-less dynamic build、fixture API あり static export、runtime smoke、Jest 94 件を再確認し、CodeRabbit thread は resolved
+
 ## [2026-06-01 23:06] filing-back | public-viewer build/serve 分離を実装確認
 
 - `codex/public-viewer-build-serve-split` / PR #888 で、dynamic hosting の API-less build、static export の fixture API build、Dockerfile build stage 化、entrypoint の `next start` 化を実装
