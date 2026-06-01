@@ -36,6 +36,7 @@ polimoney	entity	entities/polimoney.md	政治資金可視化 OSS。kouchou-ai �
 talk-to-the-city	entity	entities/talk-to-the-city.md	TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived
 tokoroten	entity	entities/tokoroten.md	中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当
 analysis-core-web-ui-separation-decision-2026-05-23	source	sources/analysis-core-web-ui-separation-decision-2026-05-23.md	CLI は一般利用者に重く、WebUI は研究用途に重かったため core を切り出し、Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ
+azure-container-apps-docs-2026-06-01	source	sources/azure-container-apps-docs-2026-06-01.md	Azure Container Apps 公式 docs の apps / jobs / Consumption billing 周辺の要点。public-viewer の build/serve 分離と固定費判断の補助線
 broad-listening-book-source	source	sources/broad-listening-book-source.md	DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む
 chrome-built-in-ai-docs-2026-05-31	source	sources/chrome-built-in-ai-docs-2026-05-31.md	Chrome Prompt API / built-in AI 公式 docs の要点。Gemini Nano を Chrome 内で使い、初回 model download 後は外部送信なしで動く一方、Chrome desktop・storage・RAM/CPU/GPU 条件と browser/API lifecycle への依存がある
 clustering-research-survey-seeds-2026-05-25	source	sources/clustering-research-survey-seeds-2026-05-25.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するための survey seed 集。UMAP 後 clustering、spectral clustering、BERTopic、可視化と分析の分離、評価軸
@@ -43,6 +44,7 @@ codeql-docs	source	sources/codeql-docs.md	GitHub / CodeQL 公式ドキュメン�
 deepwiki-kouchou-ai	source	sources/deepwiki-kouchou-ai.md	DeepWiki が生成した kouchou-ai コードベース要約。構造把握には有用だが、最新実装との差分確認が必要
 docker-desktop-license-2026-05-29	source	sources/docker-desktop-license-2026-05-29.md	2026-05-29 時点の Docker 公式文書確認。Docker Desktop は大規模 enterprise の商用利用や政府系 entity では paid subscription が必要になり得るため、自治体・大企業向け Windows 導線ではライセンス確認を前提にする必要がある
 docker-engine-wsl2-alternative-2026-05-23	source	sources/docker-engine-wsl2-alternative-2026-05-23.md	nishio と外部 GPT の対話。Docker Desktop を避ける選択肢として、WSL2 Ubuntu の中に Docker Engine + Docker Compose plugin を直接入れる構成と、その UX コストおよび 2 本立て docs 案を整理したブレスト
+github-actions-timeout-docs-2026-06-01	source	sources/github-actions-timeout-docs-2026-06-01.md	GitHub Actions 公式 docs の timeout-minutes / Actions limits 周辺の要点。Azure Deployment readiness poll の timeout 設計用
 github-dev-docs	source	sources/github-dev-docs.md	kouchou-ai リポジトリと docs/development/ の開発者ドキュメント
 gpt-kawakita-kj-method-broadlistening-2026-05-25	source	sources/gpt-kawakita-kj-method-broadlistening-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。広聴AIを川喜田二郎の野外科学・KJ法に接続し、`混沌から公共的仮説を立ち上げる装置` として再定義。AI支援KJ法は自動化ではなく人間が混沌と向き合うための足場、という設計原則
 gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25	source	sources/gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。データ量が数十件規模の時、LLM に N:N 類似度を出させて spectral clustering する案を検討。LLM-as-pairwise-oracle + 対称化・校正・疎化した affinity graph + spectral/agglomerative の設計を推奨
@@ -62,6 +64,7 @@ local-ai-hardware-procurement-market-notes-2026-05-31	source	sources/local-ai-ha
 local-ai-user-share-market-stats-2026-05-31	source	sources/local-ai-user-share-market-stats-2026-05-31.md	2026-05-31 時点で local AI runtime のユーザー到達率を推定するための外部統計メモ。Chrome desktop share、Steam Hardware Survey の RAM/CPU/VRAM、Gartner PC shipment、Canalys AI-capable PC forecast、Chrome Prompt API / Foundry Local / Phi Silica 公式要件を整理
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
 meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7600 lines, JP)
+nextjs-dynamic-build-docs-2026-06-01	source	sources/nextjs-dynamic-build-docs-2026-06-01.md	Next.js 公式 docs の generateStaticParams / connection / route segment config 周辺の要点。public-viewer dynamic build を API なしで通す設計の補助線
 nextjs-static-export-docs-2026-05-31	source	sources/nextjs-static-export-docs-2026-05-31.md	Next.js 公式 docs の static export / route handler 周辺の要点。静的 export は HTML/CSS/JS assets として配信できる一方、request-time server runtime に依存する機能は使えないため、Server Actions・request 依存 route・ISR/cache revalidate を使う current admin/public-viewer はそのままでは runtime Node なしにできない
 open-issue-backlog-2026-05-19	source	sources/open-issue-backlog-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue 145 件を本文付きで読み、recent issue だけでなく古い backlog も含めて未解決問題の全体像を取るための source
 open-issues-snapshot-2026-05-19	source	sources/open-issues-snapshot-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue を新しい順に読み、`analysis-core` CLI 整備と Web/静的公開まわりの事故修正に論点が集中していることを記録した snapshot
@@ -176,6 +179,7 @@ pr-883-restructuring-2026-05-31	analysis	analyses/pr-883-restructuring-2026-05-3
 problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-open-issues-2026-05-19.md	open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
 public-ui-requirements-for-broadlistening	analysis	analyses/public-ui-requirements-for-broadlistening.md	広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出
 public-viewer-build-behavior	analysis	analyses/public-viewer-build-behavior.md	`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある
+public-viewer-build-serve-split-refactor-plan-2026-06-01	analysis	analyses/public-viewer-build-serve-split-refactor-plan-2026-06-01.md	public-viewer の build-time API 依存を dynamic hosting から外し、container 起動時 next build を撤去するための段階的リファクタ計画
 public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-runtime-build-history-2026-06-01.md	public-viewer が container 起動後に next build する構成になった歴史的経緯と、Azure Deploy false positive / OOM 問題につながった堆積を整理
 pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.md	`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先

@@ -6,6 +6,9 @@ sources:
   - github-dev-docs.md
   - slack-dev-kouchouai-2026-q1.md
   - meeting-minutes.md
+  - github-actions-timeout-docs-2026-06-01.md
+  - azure-container-apps-docs-2026-06-01.md
+  - nextjs-dynamic-build-docs-2026-06-01.md
   - public-viewer-build-behavior.md
   - windows-real-machine-e2e-lessons.md
   - pr-887-production-deploy-observation-2026-06-01.md
@@ -120,6 +123,135 @@ sources:
 - image build 済み `.next` を runner stage へ運び、entrypoint は `pnpm run start` だけにできるか
 - deploy confirmation を stable URL 200 ではなく latest revision readiness + representative report smoke にできるか
 
+## 改善方針
+
+改善は 3 段階に分けるのがよい。
+
+### 1. すぐ止血する
+
+まず `public-viewer` の memory を 1Gi から 2Gi に上げる。これは `#887` 型の `next build` TypeScript phase exit 137 を減らす暫定策で、2026-06-01 定例でも提案された。ただし `minReplicas: 1` のままなら running resource の memory allocation が増えるため、固定費・常時 resource 消費の増加を受け入れる判断になる。[[meeting-minutes]]より [[azure-container-apps-docs-2026-06-01]]より
+
+同時に startup probe timeout だけを伸ばしても、OOM で kill される問題は解決しない。probe 調整は「build は成功するが時間がかかる」場合の補助に留める。
+
+### 2. CI の false positive を潰す
+
+Azure Deployment workflow は `az containerapp update` 後に `latestRevisionName` を取得し、その revision が `Healthy` かつ `latestReadyRevisionName` と一致するまで poll する。stable URL の root 200 は最後の smoke として残してよいが、deploy success の主条件にしない。[[pr-887-production-deploy-observation-2026-06-01]]より
+
+さらに representative report URL で次を確認する。
+
+- stable URL と revision-specific URL の両方が 200 を返す
+- CSP が期待値を含む
+- 代表的な report page で致命的な client-side error がない
+- 今回のような `.no-webgl` overlay が見える regression を smoke で拾える
+
+これにより、「新 revision は Ready ではないが旧 revision が 200」という状態を success にしない。
+
+ただし現行 Azure Deployment workflow は `jobs.deploy.timeout-minutes: 20` を明示している。直近 successful run はおおむね 7〜8 分で終わっているが、これは stable URL 200 で早期 success しているためで、latest revision readiness を待つと数分増える。`#785` の Slack 観測では new revision 作成から Ready まで約 4 分だったため、通常時は 20 分内に収まる可能性が高い。一方、`#887` は Ready まで約 2 時間 10 分かかっており、20 分には絶対に収まらない。[[github-dev-docs]]より [[slack-dev-kouchouai-2026-q1]]より [[pr-887-production-deploy-observation-2026-06-01]]より
+
+したがって readiness poll は GitHub Actions の job timeout に任せない方がよい。例えば script 側に `READINESS_TIMEOUT_SECONDS=600` などを持たせ、timeout したら latest revision status / logs を出して fail する。job timeout は build / push / update / readiness / smoke の合計に余裕を持たせて 25〜30 分程度へ上げる。GitHub Actions docs 上は job timeout default は 360 分だが、この repo では 2025-07 に実 deploy 時間を考慮して 20 分が明示追加されている。[[github-actions-timeout-docs-2026-06-01]]より [[github-dev-docs]]より
+
+### 3. build と serve を分離する
+
+恒久策は `public-viewer` の runtime container から `pnpm run build` を外し、entrypoint を `pnpm run start` だけにすることである。Azure Container Apps docs でも、継続 HTTP service と有限 task は apps / jobs として分かれている。`next build` は finite task なので、serve container の startup path に置かない方が責務として自然である。[[azure-container-apps-docs-2026-06-01]]より
+
+ただし、今すぐ Dockerfile builder stage へ `pnpm run build` を移すだけでは危ない。dynamic hosting の normal build では API fetch を不要化し、static export のときだけ `/reports` / report data を fetch する分岐へ整理する必要がある。候補は以下。
+
+- dynamic hosting: `generateStaticParams()` は空、page / metadata は request-time fetch に寄せる
+- static export: `NEXT_PUBLIC_OUTPUT_MODE=export` の時だけ `getStaticBuildReportSlugs()` で API から slug list を取る
+- CI: public-viewer dynamic build は API なしで通る unit を追加し、static export build は dummy-server / mock API で別途検証する
+- Docker: builder stage で `.next` を作り、runner stage は `.next`, `public`, 必要 node_modules / standalone output を持って `next start` だけ実行する
+
+`next build` を Container Apps jobs に逃がす案も概念上は可能だが、build artifact をどこへ置き、serve app がどう取り込むかという別の運用複雑性が出る。まずは GitHub Actions / Docker image build 内で build を完結させる方が単純である。
+
+## 推奨順序
+
+1. `public-viewer` memory を 2Gi にして production を止血する。
+2. Azure Deployment workflow に latest revision readiness wait を入れる。
+3. representative report smoke を追加する。
+4. dynamic hosting build から API-dependent static generation を外す。
+5. Docker image build 時に `.next` を作り、runtime entrypoint から `pnpm run build` と `.next` 削除を消す。
+6. 2Gi が不要になったら memory を 1Gi へ戻せるか実測する。
+
+段階的な実装計画と各段階の合格条件は [[public-viewer-build-serve-split-refactor-plan-2026-06-01]] に分けた。
+
+## API なし dynamic build の実装スケッチ
+
+`API なしで public-viewer dynamic build が通る` とは、`NEXT_PUBLIC_OUTPUT_MODE=export` ではない通常の `pnpm run build` で、`/`, `/faq`, `/[slug]` が build time に API fetch / prerender されない状態を指す。request-time Node runtime は残るため、実際のアクセス時には API を fetch する。[[nextjs-dynamic-build-docs-2026-06-01]]より
+
+中心は以下の分岐である。
+
+- static export: build 時に `/reports` を fetch し、ready slug を `generateStaticParams()` で列挙する
+- dynamic hosting: `generateStaticParams()` は API を叩かず `[]` を返し、page render は `connection()` で request-time に送る
+
+実装の候補:
+
+```ts
+// apps/public-viewer/app/utils/static-build.ts
+export const isStaticExportBuild = () => process.env.NEXT_PUBLIC_OUTPUT_MODE === "export";
+```
+
+```ts
+// apps/public-viewer/app/[slug]/page.tsx
+import { connection } from "next/server";
+
+export async function generateStaticParams() {
+  if (!isStaticExportBuild()) {
+    return [];
+  }
+
+  const reports = await fetchReportListOrThrowForStaticExport();
+  return getStaticBuildReportSlugs(reports);
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  if (!isStaticExportBuild()) {
+    return { title: "広聴AI" };
+  }
+
+  // static export では従来どおり API から metadata / report を取る
+}
+
+export default async function Page({ params }: PageProps) {
+  if (!isStaticExportBuild()) {
+    await connection();
+  }
+
+  // ここから下は dynamic hosting では request-time fetch
+  const slug = (await params).slug;
+  ...
+}
+```
+
+root page と FAQ も同様に、dynamic hosting では page の先頭で `await connection()` してから API fetch する。`generateMetadata()` は build-time API fetch の入口になりやすいため、まず dynamic hosting では static fallback metadata を返すのが安全である。
+
+```ts
+// apps/public-viewer/app/page.tsx
+import { connection } from "next/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  if (!isStaticExportBuild()) {
+    return { title: "広聴AI" };
+  }
+  // static export only: API metadata fetch
+}
+
+export default async function Page() {
+  if (!isStaticExportBuild()) {
+    await connection();
+  }
+  // request-time fetch
+}
+```
+
+`export const dynamic = "force-dynamic"` でも似た効果はあるが、static export と同じ route file で共存しにくい。`connection()` は実行時分岐に置けるため、`NEXT_PUBLIC_OUTPUT_MODE=export` の path だけ build-time fetch を残しやすい。[[nextjs-dynamic-build-docs-2026-06-01]]より
+
+この変更後に追加すべき regression test:
+
+- `API_BASEPATH` / `NEXT_PUBLIC_API_BASEPATH` を未設定にして `pnpm --filter @kouchou-ai/public-viewer build` が通る
+- dummy-server ありで `pnpm --filter @kouchou-ai/public-viewer build:static` が通る
+- dummy-server なしの `build:static` は明示 error で fail する
+- Docker image build で `.next` が作られ、runtime `entrypoint.sh` が `next start` だけで起動する
+
 ## Open Questions
 
 - dynamic hosting では `generateStaticParams()` を完全に空化 / dynamic 化し、static export だけが API から slug list を取る、という分岐に寄せられるか。
@@ -130,3 +262,6 @@ sources:
 
 - 2026-06-01: 初版作成。`PR #8` / `#780` / `#782` / `#784` / `#785` / `#851` / `#862` / `#887` と Slack weekly log を突き合わせ、runtime build 構成が戦術的修正の積み重ねで残っていることを整理。
 - 2026-06-01: `PR #746` の monorepo 化、`PR #828` / `#835` の build-time API 依存整理、2026-06-01 時点の Azure resource 実値を追加し、runtime build がなぜ残り続けたかを補強。
+- 2026-06-01: 改善方針を、memory 2Gi の止血、latest revision readiness check、build/serve 分離の 3 段階として追記。
+- 2026-06-01: latest revision readiness poll は現行 `jobs.deploy.timeout-minutes: 20` と衝突しうるため、script 側 readiness timeout と job timeout 引き上げを分けて設計する注意点を追記。
+- 2026-06-01: API なし dynamic build の実装スケッチとして、dynamic hosting では `connection()` で request-time rendering へ寄せ、static export だけ build-time API fetch を残す方針を追記。

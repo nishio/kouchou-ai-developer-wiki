@@ -3,6 +3,30 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 22:05] filing-back | public-viewer build/serve 分離リファクタ計画を作成
+
+- 通常 dynamic hosting は request-time API fetch、static export は build-time API fetch に分ける方針を、実装前に段階計画として整理
+- [[public-viewer-build-serve-split-refactor-plan-2026-06-01]] を作成し、Phase 0 baseline から dynamic build API-less 化、Docker runtime build 撤去、CI、Azure readiness、resource 再評価まで PR split と合格条件を明文化
+- [[public-viewer-runtime-build-history-2026-06-01]] から新計画ページへ導線を追加
+
+## [2026-06-01 22:00] filing-back | public-viewer API-less dynamic build の実装案を整理
+
+- Next.js docs の `generateStaticParams` / `connection()` / route segment config を確認し、dynamic hosting と static export を同じ route file で分ける補助線として [[nextjs-dynamic-build-docs-2026-06-01]] を作成
+- dynamic hosting では `generateStaticParams()` を API なし `[]`、page render は `connection()` で request-time、`generateMetadata()` は static fallback にする実装スケッチを整理
+- [[public-viewer-runtime-build-history-2026-06-01]] に API なし dynamic build の手順と regression test 案を追記
+
+## [2026-06-01 21:50] filing-back | readiness poll と GitHub Actions timeout の関係を整理
+
+- 現行 Azure Deployment workflow は `jobs.deploy.timeout-minutes: 20` で、2025-07 に実 deploy 時間を考慮して明示追加されたものと確認
+- latest revision readiness poll を入れる場合は、GitHub Actions job timeout で cancel させず、script 側 timeout で revision status / logs を出して fail させる方がよいと整理
+- [[github-actions-timeout-docs-2026-06-01]] を作成し、[[public-viewer-runtime-build-history-2026-06-01]] に timeout 設計の注意を追記
+
+## [2026-06-01 21:40] filing-back | public-viewer runtime build 改善方針を整理
+
+- Azure Container Apps docs を確認し、継続 HTTP app と finite task の責務分離、Consumption の running resource 課金を補助線として [[azure-container-apps-docs-2026-06-01]] を作成
+- 改善順序を、(1) memory 2Gi で止血、(2) latest revision readiness / representative report smoke で deploy false positive を潰す、(3) dynamic hosting build の API 依存を外して runtime `next build` を撤去、に整理
+- [[public-viewer-runtime-build-history-2026-06-01]] に改善方針と推奨順序を追記
+
 ## [2026-06-01 21:32] filing-back | public-viewer runtime build 史の追加調査を反映
 
 - `PR #746` の monorepo / pnpm workspace 化、`#828` / `#835` の build-time API 依存整理、2026-06-01 時点の Azure `public-viewer` resource (`0.5 CPU / 1Gi`) を追加確認

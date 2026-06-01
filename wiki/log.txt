@@ -3,6 +3,10 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-01 22:05	filing-back	public-viewer build/serve 分離リファクタ計画を作成
+2026-06-01 22:00	filing-back	public-viewer API-less dynamic build の実装案を整理
+2026-06-01 21:50	filing-back	readiness poll と GitHub Actions timeout の関係を整理
+2026-06-01 21:40	filing-back	public-viewer runtime build 改善方針を整理
 2026-06-01 21:32	filing-back	public-viewer runtime build 史の追加調査を反映
 2026-06-01 21:20	filing-back	public-viewer runtime build の歴史的経緯を整理
 2026-06-01 21:00	ingest	2026-06-01 定例議事録の取得と反映
