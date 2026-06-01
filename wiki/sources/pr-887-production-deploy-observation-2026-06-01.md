@@ -52,18 +52,26 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 
 ## Historical Deploy Success Observation
 
-2026-06-01 20:00 JST に直近の successful Azure Deployment logs を見直したところ、stable URL の `200` だけで deploy success とする false positive risk は `PR #887` で初めて発生したものではなかった。
+2026-06-01 20:00-20:21 JST に successful Azure Deployment logs を見直したところ、stable URL の `200` だけで deploy success とする false positive は `PR #887` で初めて発生したものではなかった。最初は `#851` 以降として確認したが、追加で `#851` より前も同じ pattern を確認した。
 
 代表例:
 
-- run `26233160797` (`#851`, 2026-05-21T14:49Z): public-viewer update 後に `latestReadyRevisionName=public-viewer--0000115`, `latestRevisionName=public-viewer--0000127` のまま、直後の stable URL health check が `viewer=200` で deploy success。
+- run `24284854583` (`#821`, 2026-04-11T14:54Z): `latestReadyRevisionName=public-viewer--0000064`, `latestRevisionName=public-viewer--0000067` のまま、直後の stable URL health check が `viewer=200` で deploy success。
+- run `26015790429` (`#822`, 2026-05-18T05:50Z): `latestReadyRevisionName=public-viewer--0000067`, `latestRevisionName=public-viewer--0000070` のまま `viewer=200` で success。
+- run `26071376089` (`#834`, 2026-05-19T02:01Z): `latestReadyRevisionName=public-viewer--0000094`, `latestRevisionName=public-viewer--0000097` のまま `viewer=200` で success。
+- run `26227173617` (`#847`, 2026-05-21T13:00Z): `latestReadyRevisionName=public-viewer--0000115`, `latestRevisionName=public-viewer--0000124` のまま `viewer=200` で success。
+- run `26233160797` (`#851`, 2026-05-21T14:49Z): `latestReadyRevisionName=public-viewer--0000115`, `latestRevisionName=public-viewer--0000127` のまま `viewer=200` で success。
 - run `26292984181` (`#862`, 2026-05-22T14:22Z): `latestReadyRevisionName=public-viewer--0000144`, `latestRevisionName=public-viewer--0000145` のまま `viewer=200` で success。
 - run `26336042113` (`#865`, 2026-05-23T15:10Z): `latestReadyRevisionName=public-viewer--0000145`, `latestRevisionName=public-viewer--0000151` のまま `viewer=200` で success。
 - run `26557210484` (`#873`, 2026-05-28T05:54Z): `latestReadyRevisionName=public-viewer--0000151`, `latestRevisionName=public-viewer--0000154` のまま `viewer=200` で success。
 - run `26618586471` (`#875`, 2026-05-29T04:54Z): `latestReadyRevisionName=public-viewer--0000162`, `latestRevisionName=public-viewer--0000163` のまま `viewer=200` で success。
 - run `26743672825` (`#887`, 2026-06-01T08:32Z): `latestReadyRevisionName=public-viewer--0000163`, `latestRevisionName=public-viewer--0000166` のまま `viewer=200` で success。
 
-つまり `PR #887` の deploy が特別に deploy confirmation を壊したのではない。以前から GitHub Actions は new revision readiness を待たず、旧 ready revision が stable domain で 200 を返すと success になっていた。`#887` では新 revision が exit 137 を繰り返し、Ready まで約 2 時間 10 分かかったため、人間の確認タイミングと重なって問題が顕在化した。
+つまり `PR #887` の deploy が特別に deploy confirmation を壊したのではない。GitHub Actions は以前から new revision readiness を待たず、旧 ready revision が stable domain で 200 を返すと success になっていた。ログで実例を確認できた最古は `#821` の 2026-04-11T14:54Z である。
+
+さらに `PR #785` (2026-02-07T05:14:52Z merge) の diff を見ると、この時点でも deploy confirmation は `https://$PUBLIC_VIEWER_DOMAIN/` への stable URL `curl` で success を判断していた。`#785` は retry count を増やし status code を出す改善で、latest revision readiness check は追加していない。2 月以前の Actions logs は GitHub API が `410` を返しており、同じ粒度の historical mismatch 実例は確認できなかったが、設計上の false positive risk は `#785` 時点でも存在していた。
+
+`#887` では新 revision が exit 137 を繰り返し、Ready まで約 2 時間 10 分かかったため、人間の確認タイミングと重なって問題が顕在化した。
 
 ## Open Questions
 
@@ -75,4 +83,4 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 - 2026-06-01: 初版作成。PR #887 merge 後の deployment success 表示と、本番 stable URL がまだ旧 CSP / `.no-webgl` visible だった観測を記録。
 - 2026-06-01: Azure CLI login 後に ACA logs を確認。`public-viewer--0000166` は `Unhealthy / Degraded` で、startup `next build` の TypeScript phase が `Killed`、container は exit 137 だった。
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、stable URL も `unsafe-eval` 付き CSP を返すことを確認。
-- 2026-06-01: 直近 successful deploy logs を見直し、旧 ready revision の 200 で deploy success になる false positive risk は少なくとも `#851` 以降継続していたと確認。
+- 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 で deploy success になる false positive は実例として少なくとも `#821` (2026-04-11) まで確認。`#785` 時点の workflow も stable URL curl 判定で、latest revision readiness は見ていなかった。

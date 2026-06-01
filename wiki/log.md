@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 20:21] filing-back | Deploy success false positive を #851 以前へ遡及
+
+- successful Azure Deployment logs を追加で遡り、旧 ready revision の 200 で deploy success になる実例は少なくとも `#821` (2026-04-11) まで確認
+- `#785` の workflow diff でも stable URL `curl` 判定で、latest revision readiness check は入っていなかった。ただし 2 月以前の Actions logs は失効済みで同じ粒度の実例確認は不可
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に `#851` は境界ではないと追記
+
 ## [2026-06-01 20:00] filing-back | Deploy success false positive は #887 固有ではない
 
 - 直近 successful Azure Deployment logs を見直し、`public-viewer` は少なくとも `#851` 以降、`latestReadyRevisionName` が旧 revision のままでも stable URL `viewer=200` で success になっていたと確認

@@ -72,7 +72,7 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 ただしこれは永続障害ではなく、同 revision はその後 self-recover した。2026-06-01 19:44 JST に再確認すると `latestReadyRevisionName` は `public-viewer--0000166` になり、stable URL / revision-specific URL とも `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返した。logs では 2026-06-01T10:40:40Z に再試行 build が始まり、2026-06-01T10:41:10Z に `next start` が ready、2026-06-01T10:41:26Z に revision ready になった。Ready failure window は `public-viewer--0000166` 作成の 2026-06-01T08:31:53Z から 2026-06-01T10:41:26Z までと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
 
-重要なのは、この deploy success false positive は `#887` で初めて起きた問題ではない点である。直近 successful deploy logs を見直すと、少なくとも `#851` の 2026-05-21T14:49Z 以降、public-viewer は `latestReadyRevisionName` が旧 revision のままでも、stable URL が `viewer=200` を返すと workflow が success になっていた。`#887` だけが特別に壊したというより、以前から new revision readiness を待っていない deploy confirmation があり、今回は Ready まで約 2 時間 10 分かかったため人間の確認で露出した。[[pr-887-production-deploy-observation-2026-06-01]]より
+重要なのは、この deploy success false positive は `#887` で初めて起きた問題ではない点である。successful deploy logs を遡ると、実例としては少なくとも `#821` の 2026-04-11T14:54Z まで、public-viewer は `latestReadyRevisionName` が旧 revision のままでも、stable URL が `viewer=200` を返すと workflow が success になっていた。`#851` はこの既存 pattern の途中であり、境界ではなかった。`#785` (2026-02-07) の workflow diff でも stable URL `curl` で success を判断しており、latest revision readiness は見ていない。ただし 2 月以前の Actions logs は失効しているため、同じ粒度で historical mismatch 実例を確認できる最古は `#821` である。`#887` だけが特別に壊したというより、以前から new revision readiness を待っていない deploy confirmation があり、今回は Ready まで約 2 時間 10 分かかったため人間の確認で露出した。[[pr-887-production-deploy-observation-2026-06-01]]より
 
 ## Open Questions
 
@@ -88,4 +88,4 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 - 2026-06-01: `PR #887` merge 後の production deploy success が false positive で、本番 stable URL は旧 CSP / `.no-webgl` visible のままだったことを追記。
 - 2026-06-01: Azure logs で `public-viewer--0000166` の startup `next build` が TypeScript phase で `Killed`、exit 137 になっていたことを追記。
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、本番 stable URL も `unsafe-eval` 付き CSP を返すことを追記。
-- 2026-06-01: successful deploy logs を見直し、旧 ready revision の 200 による deploy success false positive は `#887` 固有ではなく、少なくとも `#851` 以降の既存挙動だったことを追記。
+- 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 による deploy success false positive は実例として少なくとも `#821` まで確認できること、`#785` 時点の workflow 設計にも同じ risk があったことを追記。
