@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 17:52] filing-back | PR #887 production deploy false positive を追記
+
+- `PR #887` は merge 済みで Azure Deployment workflow も success だが、本番 stable URL は旧 CSP のまま `unsafe-eval` を含まず、Playwright でも `.no-webgl` overlay が visible と確認
+- GitHub Actions log では public-viewer の `latestRevisionName` は `public-viewer--0000166` まで進む一方、`latestReadyRevisionName` は旧 `public-viewer--0000163` のままだった
+- [[pr-887-production-deploy-observation-2026-06-01]] を source 化し、[[issue-887-scattergl-csp-regression-2026-06-01]] と [[meeting-report-draft]] に「deploy success は旧 ready revision 200 による false positive」と追記
+
 ## [2026-06-01 17:28] filing-back | PR #887 の scattergl CSP regression を整理
 
 - [[issue-887-scattergl-csp-regression-2026-06-01]] を作成し、`PR #848` で入った production CSP と Plotly `scattergl` / `@plotly/regl` の runtime eval 要件が噛み合わなかったことを整理

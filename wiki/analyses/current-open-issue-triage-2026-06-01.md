@@ -12,6 +12,7 @@ sources:
   - issue-877-windows-setup-guide-scope.md
   - public-ui-requirements-for-broadlistening.md
   - umap-seed-history.md
+  - pr-887-production-deploy-observation-2026-06-01.md
 ---
 
 # Current Open Issue Triage 2026-06-01
@@ -19,6 +20,8 @@ sources:
 2026-06-01 17:10 JST 時点で `digitaldemocracy2030/kouchou-ai` の open issue は 124 件。5 つの subagent に issue 番号帯を分け、各 issue の本文・コメントを `gh issue view --comments` で読み、必要に応じて `work/kouchou-ai/` の current main (`0c294dafbe8cf1dc49b1532a3f7bb35740b5625b`) と既存 wiki を照合した。GitHub への close / comment / assign は行っていない。[[github-dev-docs]]より [[source-code]]より
 
 同時点の open PR は `#887` と `#863` の 2 本。`#887` は `#886` を close する Plotly scattergl CSP 修正で checks は green だが merge は blocked。`#863` は `#731` を close する Windows setup の `.bat` / PowerShell 分離で、実機確認と review 判断が残る。[[github-dev-docs]]より
+
+2026-06-01 17:50 JST 追記: `#887` は merge 済みで、open PR は `#863` の 1 本になった。ただし Azure Deployment success 後も本番 stable URL は旧 CSP / `.no-webgl` visible のままで、deploy confirmation が旧 ready revision の 200 を見た false positive と判断している。詳細は [[issue-887-scattergl-csp-regression-2026-06-01]]。[[pr-887-production-deploy-observation-2026-06-01]]より
 
 ## 結論
 

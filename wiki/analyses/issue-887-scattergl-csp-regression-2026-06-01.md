@@ -6,6 +6,7 @@ sources:
   - source-code.md
   - current-open-issue-triage-2026-06-01.md
   - issue-820-current-state.md
+  - pr-887-production-deploy-observation-2026-06-01.md
 ---
 
 # Issue 887 Scattergl CSP Regression 2026-06-01
@@ -59,13 +60,23 @@ static hosting については、`http-server` で素の static file を出す�
 
 最後に、post-deploy の scheduled smoke として、公開 viewer の代表 URL に対して response CSP と `.no-webgl` visible を見るのも有効である。これは PR gate ではなく、本番環境・配信基盤・環境変数の組み合わせがずれた時の検知帯として扱うのがよい。[[github-dev-docs]]より
 
+## Production deploy 後の追加確認
+
+`PR #887` は 2026-06-01T08:24:45Z に merge 済みで、Azure Deployment workflow run `26743672825` も merge commit `1881695159b3b91a970499e142e9b335fea273c3` を対象に success になっていた。しかし 2026-06-01 17:30-17:50 JST に本番 stable URL を確認すると、report URL の CSP はまだ `script-src 'self' 'unsafe-inline'` で、`unsafe-eval` を含んでいなかった。Playwright でも `.no-webgl` overlay が visible のまま残っていたため、ユーザに見える状態としては直っていない。[[pr-887-production-deploy-observation-2026-06-01]]より
+
+GitHub Actions log では、public-viewer の `latestRevisionName` は `public-viewer--0000164` から `0000166` まで進んだ一方、`latestReadyRevisionName` は最後まで旧 revision の `public-viewer--0000163` のままだった。その後の deploy confirmation は stable domain の root に `curl` して `viewer=200` を得た時点で成功扱いにしており、新 revision が ready になったことや代表 report URL が修正後 CSP を返すことは見ていない。つまり今回の「デプロイ成功」は、新 revision の成功ではなく旧 ready revision の 200 による false positive と読むべきである。[[pr-887-production-deploy-observation-2026-06-01]]より
+
+revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`0000164` / `0000165` は 404、`0000166` は root / report URL とも 60 秒 timeout だった。次に見るべきは `public-viewer--0000166` の Azure Container Apps revision status / logs であり、deploy workflow 側も stable URL ではなく latest revision readiness と representative report smoke を見るように修正する必要がある。[[pr-887-production-deploy-observation-2026-06-01]]より
+
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
 - production dynamic smoke test は通常 PR に常時入れるか、CSP / public-viewer chart 関連変更時だけ走らせる path-filtered test にするか。
 - static hosting CSP test は docs examples を source of truth にするか、実際の header fixture を別に持つか。
+- `public-viewer--0000166` が ready にならない直接原因は、startup build の timeout、runtime error、readiness probe 失敗のどれか。
 
 ## Updates
 
 - 2026-06-01: 初版作成。Issue `#886`、PR `#887`、`PR #848`、current `main@0c294da`、報告 URL の header / Playwright 再現を突き合わせた。
 - 2026-06-01: `PR #848` の目的、変更内容、dynamic hosting / static export の境界、`#887` で補った不足を追記。
+- 2026-06-01: `PR #887` merge 後の production deploy success が false positive で、本番 stable URL は旧 CSP / `.no-webgl` visible のままだったことを追記。
