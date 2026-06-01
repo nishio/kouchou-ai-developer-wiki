@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 19:34] filing-back | PR #887 production revision の exit 137 を確認
+
+- Azure CLI login 後に `public-viewer--0000166` を確認し、`Unhealthy / Degraded`、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` と判明
+- console log では startup `next build` が compile 成功後の TypeScript phase で `Killed`、system log では startup probe failure 連続と exit 137 を確認
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に、deploy false positive の直接原因として runtime build kill を追記
+
 ## [2026-06-01 17:52] filing-back | PR #887 production deploy false positive を追記
 
 - `PR #887` は merge 済みで Azure Deployment workflow も success だが、本番 stable URL は旧 CSP のまま `unsafe-eval` を含まず、Playwright でも `.no-webgl` overlay が visible と確認
@@ -457,39 +463,3 @@
 
 - 新規 analysis [[bug-issue-triage-2026-05-25]] を追加し、`bug` ラベル open issue のうち `#666` `#584` `#177` を stale として close した根拠と、`#629` `#477` `#741` `#478` `#283` `#121` を active に残した理由を 1 ページで整理
 - 環境起因で stale 化した issue と、current product contract 自体の穴として残る issue を分けて読むべきだという triage 観点を明記
-
-## [2026-05-25 19:24] filing-back | remaining experiment WIP branch と issue #869 を作成
-
-- `work/kouchou-ai/` の dirty 実験差分から、生成 outputs / 実験用 config を除いたコードとテストだけを `codex/remaining-experiment-wip` に WIP snapshot として commit
-- branch `codex/remaining-experiment-wip`、commit `47008bc` を push
-- label refinement PR 化までの残作業を GitHub issue `#869` `[analysis-core] label refinement PR化までの残作業整理` に記録
-
-## [2026-05-25 19:24] filing-back | Issue #530 の current-state 判断を追加
-
-- 新規 analysis [[issue-530-current-state]] を追加し、2026-05-25 時点の `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` では API 依存が `server/requirements.txt` ではなく `apps/api/pyproject.toml` / `requirements.lock` で管理されていること、Azure 依存も既に入っていることを整理
-- `setup_win.bat` の既定 `STORAGE_TYPE=local` と `apps/api/src/config.py` の default を根拠に、issue 本文の「ローカル初回セットアップで Azure 依存が必須」という説明は current 導線とずれると明記
-- open PR `#863` を併せて確認し、Windows 導入の current 論点が `requirements.txt` 追加ではなく setup UX / PowerShell 分離に寄っていることも記録
-
-## [2026-05-25 19:22] filing-back | wiki graph 表示調整と main 直接 push 運用を記録
-
-- 新規 source [[wiki-maintenance-observation-2026-05-25]] を追加し、Quartz graph から `index` / `log` を除外した実装、`pnpm build` / wiki lint の検証結果、`pnpm check` が `work/` clone を拾う問題を整理
-- [[wiki-pages-publishing-stack]] に graph 表示チューニングの意図を追記し、[[wiki-driven-workflow]] に developer-wiki 更新は PR 経由ではなく `main` 直接 push を基本にする運用を明文化
-- [[meeting-report-draft]] に、developer-wiki 側の整備と残る `pnpm check` 課題を定例向け要点として追記
-
-## [2026-05-25 18:54] filing-back | 散布図維持側の nishio スタンスを訂正
-
-- ユーザ本人から「『見た目のインパクトが強くて求める顧客がいる』（特にチームみらい等の宣伝用途）」という表現は不適切と指摘
-- 実際の議論は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替もあり得る」という時間軸ベースのスタンス
-- [[open-decisions]] A1 / [[pipeline]] Open Questions / [[jigsaw-sensemaker-history]] §2 / [[talk-to-the-city]] の 4 箇所を更新
-- `raw/meeting_minutes.txt` の line 3689 / 7326 を確認し、議事録には「顧客が割といる」「書籍化進行なども勘案」の両方が含まれていたが、wiki が前者だけを「チームみらい宣伝用途」へ過剰一般化していたことを訂正
-
-## [2026-05-25 18:02] github-ci | draft PR #868 の checks 通過を確認
-
-- `gh pr checks 868 --watch --interval 10` で、Ruff / Pytest / Server Tests / CodeQL / CodeRabbit がすべて pass したことを確認
-
-## [2026-05-25 17:59] filing-back | runtime user API key plumbing を draft PR #868 として切り出し
-
-- `USER_API_KEY` を `analysis-core` の API key validation、`StepContext`、built-in plugin の legacy runtime config、legacy step の LLM 呼び出しへ通す修正を clean worktree `work/kouchou-ai-user-api-key-pr/` で構成
-- user API key は `initialization()` の戻り config と status JSON に保存しないよう regression test を追加
-- branch `codex/user-api-key-plumbing`、commit `a21bf27` を push し、draft PR `#868` `[codex] 実行時ユーザーAPIキーの受け渡しを直す` を作成
-- `packages/analysis-core` で `OPENAI_API_KEY=dummy rye run python -m pytest -q` を実行し、通常テスト `181 passed` を確認

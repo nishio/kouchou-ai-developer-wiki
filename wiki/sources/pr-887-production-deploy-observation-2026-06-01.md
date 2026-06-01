@@ -33,11 +33,23 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 手元の Azure CLI は account 情報までは見えたが、Container Apps の revision / logs 取得は refresh token expiry で失敗した。そのため `public-viewer--0000166` がなぜ ready にならないかは、Azure Container Apps の live logs / revision status を別途確認する必要がある。
 
+## Azure Logs After Login
+
+2026-06-01 19:34 JST に Azure CLI login 後、Container Apps の current status と `public-viewer--0000166` logs を確認できた。
+
+- `az containerapp show` では `latestRevisionName` は `public-viewer--0000166`、`latestReadyRevisionName` は旧 `public-viewer--0000163`。traffic は `latestRevision: true, weight: 100` だが、ready revision は更新されていない。
+- `az containerapp revision show --revision public-viewer--0000166` は `health=Unhealthy`、`running=Degraded`、`details="Deployment Progress Deadline Exceeded. 0/1 replicas ready."`。
+- console log では container startup 後に `pnpm run build` が走り、`next build` は `Compiled successfully` まで進んだが、`Running TypeScript ...` の後に `Killed` で終了した。
+- system log では `Probe of StartUp failed with status code: 1` が連続し、container は `exit code '137'` で terminate されていた。
+
+`137` は SIGKILL を表すため、最有力は `next build` の TypeScript phase が ACA の `public-viewer` resource (`cpu: 0.5`, `memory: 1Gi`) 内でメモリ不足により kill されたケースである。startup probe failure は、Next server が listen する前に build が kill され続けている結果と読むのが妥当である。
+
 ## Open Questions
 
-- `public-viewer--0000166` は startup build 中に timeout しているのか、runtime error で落ちているのか、readiness probe だけが失敗しているのか。
+- emergency fix として `public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
 - deploy confirmation は stable URL の 200 ではなく、latest revision が ready になったこと、および representative report URL の CSP / `.no-webgl` を確認する形に直すべきか。
 
 ## Updates
 
 - 2026-06-01: 初版作成。PR #887 merge 後の deployment success 表示と、本番 stable URL がまだ旧 CSP / `.no-webgl` visible だった観測を記録。
+- 2026-06-01: Azure CLI login 後に ACA logs を確認。`public-viewer--0000166` は `Unhealthy / Degraded` で、startup `next build` の TypeScript phase が `Killed`、container は exit 137 だった。

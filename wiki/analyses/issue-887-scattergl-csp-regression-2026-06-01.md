@@ -68,15 +68,18 @@ GitHub Actions log では、public-viewer の `latestRevisionName` は `public-v
 
 revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`0000164` / `0000165` は 404、`0000166` は root / report URL とも 60 秒 timeout だった。次に見るべきは `public-viewer--0000166` の Azure Container Apps revision status / logs であり、deploy workflow 側も stable URL ではなく latest revision readiness と representative report smoke を見るように修正する必要がある。[[pr-887-production-deploy-observation-2026-06-01]]より
 
+2026-06-01 19:34 JST に Azure CLI login 後の ACA logs を確認すると、`public-viewer--0000166` は `Unhealthy / Degraded` で、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` だった。console log では `pnpm run build` が起動し、`next build` は compile 成功後の TypeScript phase で `Killed`。system log では startup probe failure が連続し、container は exit code `137` で terminate されていた。したがって新 revision が ready にならない直接原因は、production 起動時に走る `next build` が ACA の `public-viewer` resource (`cpu: 0.5`, `memory: 1Gi`) 内で kill され、`next start` まで到達していないことと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
+
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
 - production dynamic smoke test は通常 PR に常時入れるか、CSP / public-viewer chart 関連変更時だけ走らせる path-filtered test にするか。
 - static hosting CSP test は docs examples を source of truth にするか、実際の header fixture を別に持つか。
-- `public-viewer--0000166` が ready にならない直接原因は、startup build の timeout、runtime error、readiness probe 失敗のどれか。
+- `public-viewer--0000166` の emergency recovery は memory increase で通すか、runtime build をやめて image build 時に `.next` を作る修正まで待つか。
 
 ## Updates
 
 - 2026-06-01: 初版作成。Issue `#886`、PR `#887`、`PR #848`、current `main@0c294da`、報告 URL の header / Playwright 再現を突き合わせた。
 - 2026-06-01: `PR #848` の目的、変更内容、dynamic hosting / static export の境界、`#887` で補った不足を追記。
 - 2026-06-01: `PR #887` merge 後の production deploy success が false positive で、本番 stable URL は旧 CSP / `.no-webgl` visible のままだったことを追記。
+- 2026-06-01: Azure logs で `public-viewer--0000166` の startup `next build` が TypeScript phase で `Killed`、exit 137 になっていたことを追記。
