@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 23:45] filing-back | Dependabot alerts の定期観測を運用メモ化
+
+- `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を GitHub current state の定期観測対象として `CLAUDE.md` / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に追記
+- main / open PR / issue だけでは security alert を拾えないため、security / dependency 保守時は Dependabot alerts も確認する方針にした
+- 公開 wiki には alert の具体的な脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけ残す運用として [[meeting-report-draft]] に議題化
+
 ## [2026-06-01 23:36] filing-back | PR #888 CodeRabbit review を反映
 
 - CodeRabbit が `apps/public-viewer/app/page.tsx` の dynamic metadata fallback を指摘し、`/` の `generateMetadata()` を `connection()` で request-time 化して reporter-specific title を復元

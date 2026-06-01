@@ -32,12 +32,13 @@ sources:
 
 ## 議題候補 (2026-06-08 定例)
 
-(追加予定)
+- Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) を週次または定例前の確認対象として固定するか。公開 wiki には alert 詳細を転記せず、対応 issue / PR / 優先度判断だけ残す運用でよいか。
 
 ## 月曜にそのまま読む用 (2026-06-08 向け)
 
 - 進行中: `public-viewer` の startup `next build` 撤去に向けて、PR #888 (`codex/public-viewer-build-serve-split`) で実装を進めた。dynamic hosting は API なしで `next build`、static export は fixture API ありで build する形に分離し、container 起動は `next start` のみにした。
   ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が通過した。
+- wiki 運用: Dependabot alerts を GitHub current state の定期観測対象として `CLAUDE.md` / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に追記した。main / open PR / issue だけでは拾えない security live state として扱い、公開 wiki には脆弱性詳細を転記しない方針にした。
 
 ## 次回定例向け詳細 (テーマ別)
 
@@ -47,6 +48,11 @@ sources:
 - 実装判断: `/` と `/faq` は `connection()` で request-time rendering に寄せた。一方 `[slug]` に `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため、non-export では `generateStaticParams() => []` と fallback metadata、runtime env 読みで対応した。
 - CodeRabbit review 対応: `/` の `generateMetadata()` は `connection()` で request-time 化し、API-less build を維持しつつ reporter-specific metadata を復元した。`[slug]` metadata の request-time 化は `/example` 500 を起こすため見送った。
 - 次に見ること: Docker build を CI / daemon 起動済み環境で通すことと、別 PR で Azure deploy readiness poll / representative report smoke を入れること。
+
+### security alert 運用
+
+- Dependabot alerts は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守では `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を定期確認対象に含める。
+- 公開 wiki には alert の具体的な脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す。確認頻度と担当は次回定例で決めたい。
 
 ## Open Questions
 

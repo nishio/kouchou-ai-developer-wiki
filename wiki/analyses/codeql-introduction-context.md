@@ -40,13 +40,17 @@ CodeQL は GitHub の静的解析エンジンで、コードを解析して脆�
 
 2026-06-01 定例では、tokoroten から Actions に `node20` / CodeQL deprecated 系の警告が出ていること、Dependabot にも警告があることが共有され、nishio は「これは最優先でやるべき」と反応した。現時点では具体 issue / PR 番号まではこの wiki に固定していないが、CodeQL は一度入れて終わりではなく、action runtime や security alert の保守が必要な運用物として扱うべき状態になっている。[[meeting-minutes]]より
 
+Dependabot alerts は GitHub Security 側の live state であり、main / open PR / issue の観測だけでは取りこぼす。したがって security / dependency 保守では `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を定期的に確認する。ただし alert の具体的な脆弱性詳細は公開 wiki に転記せず、対応 issue / PR / 優先度判断だけを残すのがよい。
+
 ## Open Questions
 
 - `#815` の議論で誰がどの論点を出したか
 - merge 後の `main` に schedule / concurrency / paths-ignore がどのタイミングで入ったか
 - 2026-06-01 定例で出た `node20` / CodeQL deprecated 警告と Dependabot 警告を、どの issue / PR で消すか
+- Dependabot alerts の確認頻度と担当を、週次確認として固定するか
 
 ## Updates
 
 - 2026-05-18: 初版作成
 - 2026-06-01: 定例で Actions / CodeQL / Dependabot 警告が最優先扱いになったことを追記。CodeQL を CI に入れた経緯だけでなく、継続保守対象として見る必要が出ている
+- 2026-06-01: Dependabot alerts ページを定期観測対象として明記し、公開 wiki には脆弱性詳細を転記しない方針を追記

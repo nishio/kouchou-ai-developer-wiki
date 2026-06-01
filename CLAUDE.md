@@ -51,7 +51,7 @@ sources:
 0. ソースコード由来の更新なら `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で最新化し、参照 commit をメモする
 0. 議事メモ由来の更新なら Google Doc の export (`https://docs.google.com/document/d/<id>/export?format=txt`) から `raw/meeting_minutes.txt` を最新化する。`txt` は検索用であり、Google Doc 内リンクや貼り付け URL は落ちうるので、リンク先確認が要る時は `export?format=html` も保存して併読する
 0. Slack / GitHub の週次ログ由来の更新なら、まず `oss_weekly_reporter` 由来の最新データに到達する。既存 source で足りなければ、対象週の raw JSON を更新または再取得する
-0. GitHub の現在進行形の状態を扱うなら open PR も確認する（例: `gh pr list -R digitaldemocracy2030/kouchou-ai --state open`）
+0. GitHub の現在進行形の状態を扱うなら open PR も確認する（例: `gh pr list -R digitaldemocracy2030/kouchou-ai --state open`）。security / dependency 系の話題では GitHub Security の Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) も確認対象に含める
 1. raw/の新ファイルを読む（a.txtのような名前なら適切にリネーム）
 2. 既存wikiページと照合
 3. 関連ページを更新 or 新規作成
@@ -64,7 +64,7 @@ sources:
    - code: `work/kouchou-ai/` を最新化して local clone を一次参照
    - meeting minutes: `raw/meeting_minutes.txt` を Google Doc export から再取得。URL やリンク先が論点なら `raw/meeting_minutes.html` も併せて更新する
    - Slack: `oss_weekly_reporter` 由来の raw / source を先に確認し、直読みは不足時のみ
-   - GitHub current state: main だけでなく open PR / issue も観測
+   - GitHub current state: main だけでなく open PR / issue も観測。security / dependency 系では Dependabot alerts も live state として観測
 2. 有用な回答はanalyses/にfiling back
 3. log.md の先頭に `## [YYYY-MM-DD HH:MM] filing-back | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期
 
@@ -127,6 +127,7 @@ sources:
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す。`txt` export はリンク URL を保持しないことがあるので、根拠に URL 自体が必要な時は `raw/meeting_minutes.html` を補助線として使う
 - Slack の発言を扱う時は、まず `oss_weekly_reporter` 由来の raw / source を一次参照とする。Slack connector の直読みは、週次ログで足りない時の補助確認に留める
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
+- Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守対象として定期的に確認する。ただし公開 wiki には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `work/kouchou-ai/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、必要に応じて `oss_weekly_reporter` 系データへの到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
