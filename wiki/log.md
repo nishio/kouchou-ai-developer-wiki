@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 20:00] filing-back | Deploy success false positive は #887 固有ではない
+
+- 直近 successful Azure Deployment logs を見直し、`public-viewer` は少なくとも `#851` 以降、`latestReadyRevisionName` が旧 revision のままでも stable URL `viewer=200` で success になっていたと確認
+- `#887` はこの既存 deploy confirmation 欠陥に、startup `next build` exit 137 による長い Ready 遅延が重なって人間の確認で露出したケース
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に「今回だけの regression ではない」と追記
+
 ## [2026-06-01 19:44] filing-back | PR #887 production revision が self-recover
 
 - `public-viewer--0000166` は 2026-06-01T10:41:26Z に Ready になり、19:44 JST 確認時点で `latestReadyRevisionName` も `public-viewer--0000166` に更新
@@ -449,23 +455,3 @@
 
 - 新規 analysis [[digital-agency-legal-rag]] を追加し、2026-05-25 時点の `wiki/` と `raw/meeting_minutes.txt` には「デジタル庁の条文RAG」を直接説明する整理は無いと記録
 - 周辺言及として、一般的な RAG 議論、デジタル庁の中で関連したことをやっている人がいるという伝聞、`eGov` パブコメ連携案、回答案下書きへの RAG 活用案があることを要約
-
-## [2026-05-25 19:54] filing-back | open のまま残した issue 6 件の判断理由を整理
-
-- 新規 analysis [[issue-triage-open-remnants-2026-05-25]] を追加し、`#79` `#253` `#391` `#477` `#537` `#690` を current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で close しなかった理由を issue 本文単位で整理
-- `#79` は実行後 cost 表示ではなく事前 cost 見積もり、`#391` は手動接続チェックではなく作成開始時 preflight、`#477` は Azure 実行経路ではなく model UI 不整合が残る点を明記
-- `#253` は CLI 用 `report.html` の file URL 対応と Web 静的 export の失敗 UX を分離し、`#537` は OpenRouter provider と無料モデル対応を分離、`#690` は `ts-node-dev` がまだ残るため未実装と整理
-- `wiki/index.md` と [[meeting-report-draft]] に導線を追加
-
-## [2026-05-25 19:47] filing-back | bug ラベル open issue を current main 基準で再点検し、stale な 3 件を close
-
-- `bug` ラベルの open issue を current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と open PR で棚卸し
-- `#666` は古い `requirements-torch.txt` ベース Dockerfile を前提にした Windows build error で、current `apps/api/Dockerfile` とは前提が一致しないためコメント付きで close
-- `#584` は `execute_aggregation()` rerun 後も token usage を保持する current 実装と回帰テスト `test_execute_aggregation_runs_monitor_flow_and_preserves_existing_status` を根拠に stale と判断し close
-- `#177` は current `Makefile` の `az containerapp update --set-env-vars` で値が引用され、`&` による分断経路が見当たらないため close
-- `#629` `#477` `#741` `#478` `#283` `#121` は current main だけでは stale と言えず残し、`#731` `#700` は assignee / 進行中状況を踏まえて触れていない
-
-## [2026-05-25 19:47] filing-back | bug issue 再点検の判断を独立 analysis に整理
-
-- 新規 analysis [[bug-issue-triage-2026-05-25]] を追加し、`bug` ラベル open issue のうち `#666` `#584` `#177` を stale として close した根拠と、`#629` `#477` `#741` `#478` `#283` `#121` を active に残した理由を 1 ページで整理
-- 環境起因で stale 化した issue と、current product contract 自体の穴として残る issue を分けて読むべきだという triage 観点を明記

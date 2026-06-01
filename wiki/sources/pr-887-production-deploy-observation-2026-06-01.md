@@ -50,6 +50,21 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2026-06-01T10:41:10Z に `next start` が `Ready in 203ms` まで到達した。system log では 2026-06-01T10:41:26Z に `Successfully provisioned revision 'public-viewer--0000166'` が出ている。したがって、Ready failure の window は少なくとも revision 作成時刻 2026-06-01T08:31:53Z から、revision ready になった 2026-06-01T10:41:26Z までである。
 
+## Historical Deploy Success Observation
+
+2026-06-01 20:00 JST に直近の successful Azure Deployment logs を見直したところ、stable URL の `200` だけで deploy success とする false positive risk は `PR #887` で初めて発生したものではなかった。
+
+代表例:
+
+- run `26233160797` (`#851`, 2026-05-21T14:49Z): public-viewer update 後に `latestReadyRevisionName=public-viewer--0000115`, `latestRevisionName=public-viewer--0000127` のまま、直後の stable URL health check が `viewer=200` で deploy success。
+- run `26292984181` (`#862`, 2026-05-22T14:22Z): `latestReadyRevisionName=public-viewer--0000144`, `latestRevisionName=public-viewer--0000145` のまま `viewer=200` で success。
+- run `26336042113` (`#865`, 2026-05-23T15:10Z): `latestReadyRevisionName=public-viewer--0000145`, `latestRevisionName=public-viewer--0000151` のまま `viewer=200` で success。
+- run `26557210484` (`#873`, 2026-05-28T05:54Z): `latestReadyRevisionName=public-viewer--0000151`, `latestRevisionName=public-viewer--0000154` のまま `viewer=200` で success。
+- run `26618586471` (`#875`, 2026-05-29T04:54Z): `latestReadyRevisionName=public-viewer--0000162`, `latestRevisionName=public-viewer--0000163` のまま `viewer=200` で success。
+- run `26743672825` (`#887`, 2026-06-01T08:32Z): `latestReadyRevisionName=public-viewer--0000163`, `latestRevisionName=public-viewer--0000166` のまま `viewer=200` で success。
+
+つまり `PR #887` の deploy が特別に deploy confirmation を壊したのではない。以前から GitHub Actions は new revision readiness を待たず、旧 ready revision が stable domain で 200 を返すと success になっていた。`#887` では新 revision が exit 137 を繰り返し、Ready まで約 2 時間 10 分かかったため、人間の確認タイミングと重なって問題が顕在化した。
+
 ## Open Questions
 
 - 一度は self-recover したが、runtime build が memory pressure で exit 137 になる risk は残る。`public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
@@ -60,3 +75,4 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 - 2026-06-01: 初版作成。PR #887 merge 後の deployment success 表示と、本番 stable URL がまだ旧 CSP / `.no-webgl` visible だった観測を記録。
 - 2026-06-01: Azure CLI login 後に ACA logs を確認。`public-viewer--0000166` は `Unhealthy / Degraded` で、startup `next build` の TypeScript phase が `Killed`、container は exit 137 だった。
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、stable URL も `unsafe-eval` 付き CSP を返すことを確認。
+- 2026-06-01: 直近 successful deploy logs を見直し、旧 ready revision の 200 で deploy success になる false positive risk は少なくとも `#851` 以降継続していたと確認。

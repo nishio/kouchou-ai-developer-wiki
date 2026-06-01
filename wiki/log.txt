@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-01 20:00	filing-back	Deploy success false positive は #887 固有ではない
 2026-06-01 19:44	filing-back	PR #887 production revision が self-recover
 2026-06-01 19:34	filing-back	PR #887 production revision の exit 137 を確認
 2026-06-01 17:52	filing-back	PR #887 production deploy false positive を追記
