@@ -215,4 +215,5 @@ docker run --rm -p 3000:3000 \
 
 ## Updates
 
+- 2026-06-01: `codex/public-viewer-build-serve-split` / PR #888 で Phase 0〜3 を実装確認。baseline では API なし dynamic build が `/` / `/faq` の static generation timeout で止まり、実装後は API なし `pnpm --filter @kouchou-ai/public-viewer build`、fixture API あり `build:static`、runtime smoke (`/`, `/faq/`, `/example/`) が成功した。実装中に `[slug]` page へ `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため採用せず、non-export の `generateStaticParams() => []` と runtime env 読み (`process.env[key]`) で request 時 API を読む形にした。Docker build は手元 Docker daemon 未起動で未検証だが、CI に Docker build step を追加した。
 - 2026-06-01: 初版作成。dynamic build/API 依存除去、runtime build 撤去、CI、Azure readiness、resource reevaluation を段階分割。

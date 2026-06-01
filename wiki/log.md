@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 23:06] filing-back | public-viewer build/serve 分離を実装確認
+
+- `codex/public-viewer-build-serve-split` / PR #888 で、dynamic hosting の API-less build、static export の fixture API build、Dockerfile build stage 化、entrypoint の `next start` 化を実装
+- baseline では API なし dynamic build が `/` / `/faq` の static generation timeout で止まり、実装後は Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が成功
+- [[public-viewer-build-serve-split-refactor-plan-2026-06-01]] と [[meeting-report-draft]] に、`[slug]` では `connection()` を採用しない実装判断と Docker daemon 未起動による未検証点を追記
+
 ## [2026-06-01 22:36] filing-back | Pages link check failure を修正
 
 - GitHub Pages の最新 deploy が link check で失敗し、Quartz site が 2026-05-31 版のまま止まっていたため、新規追加ページが 404 になっていたと確認

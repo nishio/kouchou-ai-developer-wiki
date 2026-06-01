@@ -36,11 +36,16 @@ sources:
 
 ## 月曜にそのまま読む用 (2026-06-08 向け)
 
-(追加予定)
+- 進行中: `public-viewer` の startup `next build` 撤去に向けて、PR #888 (`codex/public-viewer-build-serve-split`) で実装を進めた。dynamic hosting は API なしで `next build`、static export は fixture API ありで build する形に分離し、container 起動は `next start` のみにした。
+  ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。Docker build は手元 daemon 未起動で未検証なので、CI の Docker build step で拾う。
 
 ## 次回定例向け詳細 (テーマ別)
 
-(追加予定)
+### public-viewer build/serve 分離
+
+- 進行中 PR: #888 (`codex/public-viewer-build-serve-split`)。`apps/public-viewer/entrypoint.sh` から runtime build を消し、`Dockerfile` の builder stage で `.next` を作る構成に変更した。
+- 実装判断: `/` と `/faq` は `connection()` で request-time rendering に寄せた。一方 `[slug]` に `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため、non-export では `generateStaticParams() => []` と fallback metadata、runtime env 読みで対応した。
+- 次に見ること: Docker build を CI / daemon 起動済み環境で通すことと、別 PR で Azure deploy readiness poll / representative report smoke を入れること。
 
 ## Open Questions
 
