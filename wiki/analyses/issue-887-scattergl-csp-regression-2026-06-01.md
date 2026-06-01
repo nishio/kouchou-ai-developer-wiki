@@ -70,12 +70,14 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 2026-06-01 19:34 JST に Azure CLI login 後の ACA logs を確認すると、`public-viewer--0000166` は `Unhealthy / Degraded` で、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` だった。console log では `pnpm run build` が起動し、`next build` は compile 成功後の TypeScript phase で `Killed`。system log では startup probe failure が連続し、container は exit code `137` で terminate されていた。したがって新 revision が ready にならない直接原因は、production 起動時に走る `next build` が ACA の `public-viewer` resource (`cpu: 0.5`, `memory: 1Gi`) 内で kill され、`next start` まで到達していないことと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
 
+ただしこれは永続障害ではなく、同 revision はその後 self-recover した。2026-06-01 19:44 JST に再確認すると `latestReadyRevisionName` は `public-viewer--0000166` になり、stable URL / revision-specific URL とも `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返した。logs では 2026-06-01T10:40:40Z に再試行 build が始まり、2026-06-01T10:41:10Z に `next start` が ready、2026-06-01T10:41:26Z に revision ready になった。Ready failure window は `public-viewer--0000166` 作成の 2026-06-01T08:31:53Z から 2026-06-01T10:41:26Z までと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
+
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
 - production dynamic smoke test は通常 PR に常時入れるか、CSP / public-viewer chart 関連変更時だけ走らせる path-filtered test にするか。
 - static hosting CSP test は docs examples を source of truth にするか、実際の header fixture を別に持つか。
-- `public-viewer--0000166` の emergency recovery は memory increase で通すか、runtime build をやめて image build 時に `.next` を作る修正まで待つか。
+- `public-viewer--0000166` は self-recover したが、runtime `next build` が memory pressure で exit 137 になる risk は残る。memory increase で暫定回避するか、runtime build をやめて image build 時に `.next` を作る修正へ進むか。
 
 ## Updates
 
@@ -83,3 +85,4 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 - 2026-06-01: `PR #848` の目的、変更内容、dynamic hosting / static export の境界、`#887` で補った不足を追記。
 - 2026-06-01: `PR #887` merge 後の production deploy success が false positive で、本番 stable URL は旧 CSP / `.no-webgl` visible のままだったことを追記。
 - 2026-06-01: Azure logs で `public-viewer--0000166` の startup `next build` が TypeScript phase で `Killed`、exit 137 になっていたことを追記。
+- 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、本番 stable URL も `unsafe-eval` 付き CSP を返すことを追記。

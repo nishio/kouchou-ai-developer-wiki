@@ -44,12 +44,19 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 `137` は SIGKILL を表すため、最有力は `next build` の TypeScript phase が ACA の `public-viewer` resource (`cpu: 0.5`, `memory: 1Gi`) 内でメモリ不足により kill されたケースである。startup probe failure は、Next server が listen する前に build が kill され続けている結果と読むのが妥当である。
 
+## Recovery Observation
+
+2026-06-01 19:44 JST に再確認すると、`public-viewer--0000166` は `Healthy / RunningAtMaxScale` になり、`latestReadyRevisionName` も `public-viewer--0000166` へ更新されていた。stable URL / revision-specific URL とも HTTP 200 で、CSP は `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返していた。
+
+console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2026-06-01T10:41:10Z に `next start` が `Ready in 203ms` まで到達した。system log では 2026-06-01T10:41:26Z に `Successfully provisioned revision 'public-viewer--0000166'` が出ている。したがって、Ready failure の window は少なくとも revision 作成時刻 2026-06-01T08:31:53Z から、revision ready になった 2026-06-01T10:41:26Z までである。
+
 ## Open Questions
 
-- emergency fix として `public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
+- 一度は self-recover したが、runtime build が memory pressure で exit 137 になる risk は残る。`public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
 - deploy confirmation は stable URL の 200 ではなく、latest revision が ready になったこと、および representative report URL の CSP / `.no-webgl` を確認する形に直すべきか。
 
 ## Updates
 
 - 2026-06-01: 初版作成。PR #887 merge 後の deployment success 表示と、本番 stable URL がまだ旧 CSP / `.no-webgl` visible だった観測を記録。
 - 2026-06-01: Azure CLI login 後に ACA logs を確認。`public-viewer--0000166` は `Unhealthy / Degraded` で、startup `next build` の TypeScript phase が `Killed`、container は exit 137 だった。
+- 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、stable URL も `unsafe-eval` 付き CSP を返すことを確認。

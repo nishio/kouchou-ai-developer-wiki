@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 19:44] filing-back | PR #887 production revision が self-recover
+
+- `public-viewer--0000166` は 2026-06-01T10:41:26Z に Ready になり、19:44 JST 確認時点で `latestReadyRevisionName` も `public-viewer--0000166` に更新
+- stable URL / revision-specific URL とも CSP は `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返し、`#887` の本番反映を確認
+- Ready failure window は `public-viewer--0000166` 作成の 2026-06-01T08:31:53Z から Ready の 2026-06-01T10:41:26Z まで。runtime `next build` の exit 137 risk は残る
+
 ## [2026-06-01 19:34] filing-back | PR #887 production revision の exit 137 を確認
 
 - Azure CLI login 後に `public-viewer--0000166` を確認し、`Unhealthy / Degraded`、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` と判明
