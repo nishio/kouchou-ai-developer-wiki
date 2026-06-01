@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 22:36] filing-back | Pages link check failure を修正
+
+- GitHub Pages の最新 deploy が link check で失敗し、Quartz site が 2026-05-31 版のまま止まっていたため、新規追加ページが 404 になっていたと確認
+- [[pr-883-developer-quickstart-draft-2026-05-31]] の貼り付け用 code block を `markdown` から `text` に変え、外側 fence を四連バッククォートにして草案内の相対リンクを実リンク化しないよう修正
+- [[meeting-report-2026-06-01]] の草案 URL を絶対 URL から wikilink に戻し、Quartz の `.html` 出力と link checker の期待を揃えた
+
 ## [2026-06-01 22:05] filing-back | public-viewer build/serve 分離リファクタ計画を作成
 
 - 通常 dynamic hosting は request-time API fetch、static export は build-time API fetch に分ける方針を、実装前に段階計画として整理

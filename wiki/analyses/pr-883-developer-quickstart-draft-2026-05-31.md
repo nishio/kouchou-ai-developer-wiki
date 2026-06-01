@@ -17,7 +17,7 @@ sources:
 
 ---
 
-```markdown
+````text
 # 開発者向けスタートガイド
 
 このページは「広聴 AI を自分のローカルで動かしたい人」向けの canonical な入口です。下の **「あなたはどの読者像ですか?」** から始めて、対応する節へ進んでください。
@@ -344,7 +344,7 @@ kouchou-analyze --config config.json
 - アーキテクチャをもっと知る ⇒ [ドキュメントサイトのトップ](../index.md)
 - コントリビュート手順 ⇒ [コントリビューションガイド](contributing.md)
 - AI コーディングエージェント (Claude Code / Codex) と協働する ⇒ [Claude Code / Codex スキル](ai-assistants.md)
-```
+````
 
 ---
 

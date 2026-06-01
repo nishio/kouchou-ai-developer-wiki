@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-01 22:36	filing-back	Pages link check failure を修正
 2026-06-01 22:05	filing-back	public-viewer build/serve 分離リファクタ計画を作成
 2026-06-01 22:00	filing-back	public-viewer API-less dynamic build の実装案を整理
 2026-06-01 21:50	filing-back	readiness poll と GitHub Actions timeout の関係を整理

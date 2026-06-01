@@ -26,7 +26,7 @@ sources:
 
 **team に判断を仰ぎたい点**:
 
-1. **草案レビュー**: 全文草案 (https://nishio.github.io/kouchou-ai-developer-wiki/analyses/pr-883-developer-quickstart-draft-2026-05-31/) の 5 読者像分岐と「Mode 1 default 廃止」方針で進めて問題ないか
+1. **草案レビュー**: 全文草案 [[pr-883-developer-quickstart-draft-2026-05-31]] の 5 読者像分岐と「Mode 1 default 廃止」方針で進めて問題ないか
 2. **次の PR を誰が書くか**: nishio 単独で書き直すか、Codex に再度任せるか、別 contributor に依頼するか
 3. **スコープ拡張の判断**: 周辺 docs (`README.md` / `docs/getting-started/quickstart.md` / `docs/index.md`) も「Mode 1 default」前提が残っていれば併せて見直すか、developer-quickstart だけ先行で land して周辺は別 PR にするか
 4. **「自治体担当本人」読者像への現実的接点**: 草案では SaaS ホスト型待ち / 動かせる人を探す としか書けていない。コミュニティ Slack / discord などの窓口を docs に明示するか ([[open-decisions]] A2 と関連)
