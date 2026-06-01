@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-01 17:10	filing-back	open issue 124 件を subagent で全件 triage
 2026-05-31 20:35	filing-back	hardware 調達込みの広聴AI Local Box route を整理
 2026-05-31 20:05	filing-back	local AI runtime 条件を満たす user share を推定
 2026-05-31 19:25	filing-back	Chrome / Windows native local AI runtime route を #885 に追加
