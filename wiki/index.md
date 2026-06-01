@@ -2,7 +2,7 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（156 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（197 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
 ## 最初に読むべき (推奨順)
 
@@ -54,7 +54,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
-- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-05-25](concepts/meeting-report-2026-05-25.md)）
+- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)、前回: [meeting-report-2026-05-25](concepts/meeting-report-2026-05-25.md)）
 
 ## 全件カタログ / 人物・組織
 

@@ -6,6 +6,7 @@ sources:
   - local-ai-hardware-procurement-market-notes-2026-05-31.md
   - node-runtime-free-windows-exe-2026-05-31.md
   - windows-native-local-ai-docs-2026-05-31.md
+  - meeting-minutes.md
 ---
 
 ## 問い
@@ -29,6 +30,8 @@ sources:
 - 高品質が必要な時だけ API route に切り替える、または別 profile にする
 
 この構成なら、担当者の PC は 8GB RAM の事務用 Windows でもよい。重い local inference は box 側で吸収し、support target も「認定 box」だけになる。[[local-ai-hardware-procurement-market-notes-2026-05-31]]より
+
+2026-06-01 定例でも、来年くらいに local LLM で動く時代が来ると、Talk to the City 的なアルゴリズムの **large context を要求しない** 性質が強みに化ける、という見方が共有された。ローカルマシン / local LLM で完結すれば、データを外部に出さずに分析できる。tokoroten は `RTX Spark（RTX5070相当＋20コアARM＋128GBメモリ）` のような認定 hardware で動くと言えると楽、と例示しており、これは本ページの local box route と整合する。[[meeting-minutes]]より
 
 ## Hardware tier
 
@@ -71,7 +74,9 @@ sources:
 - local box の OS は Windows にするか、Linux / macOS appliance も許すか
 - 自治体ネットワークで LAN 内 web service を立てることの security review はどの程度重いか
 - model download を初回起動時に許すか、事前 preload 済み image として配るか
+- `RTX Spark` のような具体 SKU / appliance を候補として扱う場合、実在スペック・供給時期・価格・日本国内調達性を別途一次情報で確認する必要がある
 
 ## Updates
 
 - 2026-05-31: 初版作成。既存業務 PC ではなく hardware 調達込みで API 契約不要 local 完結を実現する route を整理
+- 2026-06-01: 定例議事録を反映し、local LLM 時代には TTTC 的な large context 不要アルゴリズムが強みになること、認定 hardware で「これで動く」と言える route が有効であることを追記

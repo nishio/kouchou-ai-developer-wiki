@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - pr-887-production-deploy-observation-2026-06-01.md
 ---
 
 ## Azure（本番運用）
@@ -24,6 +25,10 @@ azure-save-env    azure-setup-all
 - [[ohki-shingo]] が Azure 環境を主担当（[[meeting-minutes]] 2025-07-09 で account 作成、admin 追加募集中）
 - main マージで自動デプロイする CI が 2025-07-30 に着地（Issue #642）
 - 公開デモ環境 `https://admin.kouchou-ai.dd2030.org/` は VM 上で手動運用
+
+2026-06-01 の `PR #887` 本番反映では、Azure Deployment workflow は success になったが、public-viewer の new revision はしばらく Ready にならず、stable URL は旧 ready revision を返していた。原因は二層で、(1) deploy confirmation が stable URL の 200 だけを見て new revision readiness を待っていない、(2) `public-viewer` は container 起動後に `entrypoint.sh` で `next build` を実行しており、1Gi memory 環境で TypeScript phase が exit 137 になり得る、というもの。暫定策は memory increase、恒久策は latest revision readiness と代表 report smoke を deploy check に入れること。[[pr-887-production-deploy-observation-2026-06-01]]より [[meeting-minutes]]より
+
+`public-viewer` の起動時 `next build` は、2025-03 の初期 Docker 化で「build時にAPIサーバーを参照するため、APIサーバーの起動を待ってからbuildを行う」ために入った。その後、monorepo / pnpm workspace / Turbopack / shared package の問題を runner image 側の copy 追加や `turbopack.root` で延命してきた経緯がある。詳細は [[public-viewer-runtime-build-history-2026-06-01]]。
 
 ## 静的サイト書き出し (GitHub Pages 等)
 
@@ -68,6 +73,7 @@ PR #825 で Python が直接自己完結型 `report.html` を吐けるように�
 
 - 非エンジニアでもアクセスしやすい SaaS ホスト戦略
 - 自動デプロイの kill-switch / rollback プロセス
+- Azure Deployment の success 条件を stable URL 200 ではなく、latest revision readiness と代表 report URL の実動作確認へ寄せる具体実装
 
 ## Updates
 
@@ -75,3 +81,5 @@ PR #825 で Python が直接自己完結型 `report.html` を吐けるように�
 - 2026-05-18: PyPI 自動 publish の不足要件を整理した [[pypi-auto-release-requirements]] への導線を追加
 - 2026-05-18: `Azure Deployment` workflow で `No subscriptions found` による `azure/login@v2` failure を観測したが、同日 rerun では `Azure CLI ログイン` が成功した。少なくともこの事例は「恒久的な資格情報破損」と断定せず、一時的な Azure 側不調や secret / 権限状態の揺れも候補に残すべき
 - 2026-05-19: `analysis-core-v*` tag push 起点の自動 publish と、`0.1.1` failure / `0.1.2` success の実観測を反映
+- 2026-06-01: `PR #887` 本番反映で、Deploy Success が旧 ready revision の 200 による false positive になりうること、public-viewer startup `next build` が 1Gi memory で exit 137 になりうることを追記。暫定 memory increase と readiness / representative report smoke の必要性を整理
+- 2026-06-01: `public-viewer` の runtime `next build` は初期 Docker 化からの API 起動待ち設計であり、以後の monorepo / Turbopack / runner stage copy 漏れ修正で温存されてきた経緯を [[public-viewer-runtime-build-history-2026-06-01]] に整理して導線を追加

@@ -4,6 +4,7 @@ summary: "PR #887 merge 後の Azure Deployment 成功表示と、本番 public-
 sources:
   - github-dev-docs.md
   - source-code.md
+  - meeting-minutes.md
 ---
 
 # PR 887 Production Deploy Observation 2026-06-01
@@ -83,6 +84,12 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 
 その結果、「CI は `Deploy Success` と言っているが、新 revision は Ready になっておらず、ユーザには古い ready revision が出続ける」という状態が発生する。`#887` については exit 137 が確認できたが、過去の deploy success false positive 全てが OOM / SIGKILL だったとは確認していない。
 
+## 2026-06-01 Meeting Treatment
+
+2026-06-01 定例では、この観測が「問題1: チェックがおかしい」「問題2: 時々 OOM で死ぬ」として共有された。CI は新 revision の Ready を待たず stable URL を叩くため、旧 revision が 200 を返すだけで Deploy Success になる。一方で public-viewer は container 起動後に `entrypoint.sh` で `next build` を実行しており、`#887` では TypeScript phase が OOM らしい SIGKILL (exit 137) で落ちた、という整理である。[[meeting-minutes]]より
+
+当面の運用判断として、`public-viewer` の memory が 1Gi らしいため 2Gi に増やすのが暫定策として提案された。その後に、Azure デモ環境の deploy CI、new revision readiness、代表 report URL の動作状態チェックを改善する必要がある。[[meeting-minutes]]より
+
 ## Open Questions
 
 - 一度は self-recover したが、runtime build が memory pressure で exit 137 になる risk は残る。`public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
@@ -96,3 +103,4 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 - 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 で deploy success になる false positive は実例として少なくとも `#821` (2026-04-11) まで確認。`#785` 時点の workflow も stable URL curl 判定で、latest revision readiness は見ていなかった。
 - 2026-06-01: `#821` の mismatch は SIGKILL を意味しないと追記。`public-viewer--0000067` は metadata 上 `Healthy` で、4/11 logs は retention 切れのため exit 137 の有無は検証不能。
 - 2026-06-01: CI が new revision readiness を見ず、stable URL の旧 ready revision 200 で success になることと、`#887` では起動時 `next build` の TypeScript phase が exit 137 だったことを短い説明版として追記。
+- 2026-06-01: 定例議事録で、この問題が deploy check 欠陥と public-viewer OOM の二層として共有され、暫定策として 1Gi から 2Gi への memory increase、その後の deploy CI / readiness check 改善が示されたことを追記。

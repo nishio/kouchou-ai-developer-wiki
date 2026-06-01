@@ -54,6 +54,10 @@ sources:
 
 「広く使ってもらう」上で最大の摩擦点だが、責任主体が定まらない。
 
+2026-06-01 定例では、developer-quickstart の読者像整理と合わせて **「自治体担当本人 / 組織内デモ役が一番欲しいのは、自分で構築しなくても触れる環境」** という論点が明示された。nishio は少なくとも現 Azure 環境で「見せる」ことは手軽にした方がよいとしつつ、課金して秘密情報を入れて分析する SaaS 本番運用とは別問題として切り分けた。[[meeting-minutes]]より
+
+同じ議論で、1 つのインスタンスに複数ユーザの秘密情報を入れるのは避けるべきで、やるならユーザごとに現 Azure デモ環境相当を丸ごと複製する方向が示された。一方、ユーザに admin を触らせず、データ投入は運営側が行い、report viewer だけ見せる案も出たが、admin 画面で試行錯誤する体験自体に価値があるかどうかは未決のまま残った。[[meeting-minutes]]より
+
 ### A3. DB 導入のタイミング
 
 [[meeting-minutes]] 2025-05-21, 2025-06-25 で毎回「v4.0 のあたり」と言いつつ毎回先送り。**ファイルストレージ継続が暗黙の現状維持**。SQLite 候補が [[nasuka]] の cluster-title 編集 (PR #545) で検討されたが採用されず。
@@ -218,6 +222,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI 観察用HTMLと Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
 - 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
+- 2026-06-01: A2 に、自治体担当本人 / 組織内デモ役向けの Azure 体験環境 priority、秘密情報を扱う SaaS 本番運用との切り分け、ユーザ単位環境複製 vs viewer-only デモ vs admin 試行錯誤体験の未決論点を追記
 - 2026-05-21: `main@0e1552d` を確認し、PR #840 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
 - 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加
 - 2026-05-21: `main@5d591ef` で PR #844 merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外

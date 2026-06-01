@@ -4,6 +4,7 @@ summary: "`PR #817` 文脈では、CodeQL は accidental な混入をきっか�
 sources:
   - codeql-docs.md
   - pr-813-817-codeql-coderabbit-observation-2026-05-18.md
+  - meeting-minutes.md
 ---
 
 ## Short Answer
@@ -37,11 +38,15 @@ CodeQL は GitHub の静的解析エンジンで、コードを解析して脆�
 
 `PR #817` の文脈では、CodeQL 導入は「セキュリティスキャンを新規企画した」というより、**混入した CI 設定を棚卸しした結果、残す価値があると判断して最小限の常設 scan として整えた** もの。したがって、「なぜ導入したか」への短い答えは、**脆弱性検出の自動化のためだが、導入の発火点自体は accidental inclusion だった**。[[codeql-docs]]より [[pr-813-817-codeql-coderabbit-observation-2026-05-18]]より
 
+2026-06-01 定例では、tokoroten から Actions に `node20` / CodeQL deprecated 系の警告が出ていること、Dependabot にも警告があることが共有され、nishio は「これは最優先でやるべき」と反応した。現時点では具体 issue / PR 番号まではこの wiki に固定していないが、CodeQL は一度入れて終わりではなく、action runtime や security alert の保守が必要な運用物として扱うべき状態になっている。[[meeting-minutes]]より
+
 ## Open Questions
 
 - `#815` の議論で誰がどの論点を出したか
 - merge 後の `main` に schedule / concurrency / paths-ignore がどのタイミングで入ったか
+- 2026-06-01 定例で出た `node20` / CodeQL deprecated 警告と Dependabot 警告を、どの issue / PR で消すか
 
 ## Updates
 
 - 2026-05-18: 初版作成
+- 2026-06-01: 定例で Actions / CodeQL / Dependabot 警告が最優先扱いになったことを追記。CodeQL を CI に入れた経緯だけでなく、継続保守対象として見る必要が出ている

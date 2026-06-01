@@ -5,6 +5,7 @@ sources:
   - slack-stance-discussion-2026-05-30.md
   - analysis-stance.md
   - usage-modes.md
+  - meeting-minutes.md
 ---
 
 ## 結論
@@ -28,6 +29,8 @@ sources:
 | 分析者 / 研究者 | 新しい分析手法を試したい、アルゴリズムを触りたい | データサイエンス素養あり | CLI / analysis-core、コミュニティ共有 |
 
 「組織内デモ役」は Web UI を使うが、エンジニアではない可能性が高い **第三像** で、これまで `Web UI = 一般ユーザ` / `CLI = 研究者` の二段構造では明示的に扱っていなかった。広聴AI の現実の普及を担うのはむしろこの層 (自治体への導入推進、書籍からの読者、政党 / NPO の評価役) なので、エコシステム設計でも独立した像として扱う。
+
+2026-06-01 定例で、この読者像は team discussion に掛けられた。nishio の反応は、非エンジニアの橋渡し役に手元 Windows マシンで起動させようとすること自体が複雑さを生んでおり、短期は Azure デモ環境で「見せる」方向へ寄せる方がよい、というものだった。したがって「組織内デモ役 = Mode 1 Docker Compose」と固定せず、短期は hosted demo / Azure 体験環境、長期は local LLM / local box route も含めて扱う。[[meeting-minutes]]より
 
 ## なぜこの構造か
 
@@ -68,4 +71,5 @@ CLI は分析者向けなので、複雑機能を載せても simple さは壊�
 ## Updates
 
 - 2026-05-31: 「読者像 3 像」セクションを追加。Web UI = 一般ユーザ / CLI = 研究者 の二段構造では扱えていなかった **第三像「組織内デモ役」(エンジニアではないが PC 操作はできる橋渡し役)** を明示。[[pr-883-restructuring-2026-05-31]] の読者像細分化と整合
+- 2026-06-01: 定例議事録を反映し、組織内デモ役を手元 Windows / Docker Compose に寄せすぎると複雑になるため、短期は Azure デモ環境で「見せる」方向へ寄せる判断を追記
 - 2026-05-30: 初版。[[slack-stance-discussion-2026-05-30]] で nishio が言語化した CLI + コミュニティビジョンを、[[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] が残した「別ツールで補完」の空き地に対する答えとして整理

@@ -15,6 +15,7 @@ kouchou-ai	concept	concepts/kouchou-ai.md	広聴AI — DD2030 配下の OSS ブ�
 llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装
 local-dev-setup	concept	concepts/local-dev-setup.md	ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
 meeting-report-2026-05-25	concept	concepts/meeting-report-2026-05-25.md	2026-05-25 定例で Codex が報告した内容のスナップショット
+meeting-report-2026-06-01	concept	concepts/meeting-report-2026-06-01.md	2026-06-01 定例で Codex が報告した内容と議題候補のスナップショット
 meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる
 pipeline	concept	concepts/pipeline.md	解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
 plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を plugin 化する設計。v5.0 の中核
@@ -60,7 +61,7 @@ llm-grouping-implementation-observation-2026-05-25	source	sources/llm-grouping-i
 local-ai-hardware-procurement-market-notes-2026-05-31	source	sources/local-ai-hardware-procurement-market-notes-2026-05-31.md	2026-05-31 時点の local AI hardware 調達 route 検討用 source。RTX 5060 Ti 16GB / RTX 5070 Ti 16GB / RTX PRO 4000 Blackwell 24GB / Mac mini M4 Pro / Foundry Local 公式情報を、広聴AI local box 構想の判断材料として整理
 local-ai-user-share-market-stats-2026-05-31	source	sources/local-ai-user-share-market-stats-2026-05-31.md	2026-05-31 時点で local AI runtime のユーザー到達率を推定するための外部統計メモ。Chrome desktop share、Steam Hardware Survey の RAM/CPU/VRAM、Gartner PC shipment、Canalys AI-capable PC forecast、Chrome Prompt API / Foundry Local / Phi Silica 公式要件を整理
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
-meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-05, ~7300 lines, JP)
+meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7600 lines, JP)
 nextjs-static-export-docs-2026-05-31	source	sources/nextjs-static-export-docs-2026-05-31.md	Next.js 公式 docs の static export / route handler 周辺の要点。静的 export は HTML/CSS/JS assets として配信できる一方、request-time server runtime に依存する機能は使えないため、Server Actions・request 依存 route・ISR/cache revalidate を使う current admin/public-viewer はそのままでは runtime Node なしにできない
 open-issue-backlog-2026-05-19	source	sources/open-issue-backlog-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue 145 件を本文付きで読み、recent issue だけでなく古い backlog も含めて未解決問題の全体像を取るための source
 open-issues-snapshot-2026-05-19	source	sources/open-issues-snapshot-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue を新しい順に読み、`analysis-core` CLI 整備と Web/静的公開まわりの事故修正に論点が集中していることを記録した snapshot
@@ -175,6 +176,7 @@ pr-883-restructuring-2026-05-31	analysis	analyses/pr-883-restructuring-2026-05-3
 problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-open-issues-2026-05-19.md	open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
 public-ui-requirements-for-broadlistening	analysis	analyses/public-ui-requirements-for-broadlistening.md	広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出
 public-viewer-build-behavior	analysis	analyses/public-viewer-build-behavior.md	`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある
+public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-runtime-build-history-2026-06-01.md	public-viewer が container 起動後に next build する構成になった歴史的経緯と、Azure Deploy false positive / OOM 問題につながった堆積を整理
 pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.md	`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
@@ -194,7 +196,7 @@ tttc-to-analysis-core-history	analysis	analyses/tttc-to-analysis-core-history.md
 umap-seed-history	analysis	analyses/umap-seed-history.md	UMAP / k-means の seed 固定は「完全再現性を実現した仕組み」ではなく、「見た目の揺れを少しでも抑えたい要求」から生まれ、後に並列性とのトレードオフとして見直された
 versioning-strategy	analysis	analyses/versioning-strategy.md	v4 凍結 / v5 plugin 化のリリース戦略 — 書籍出版とのリスク調整
 wiki-pages-publishing-stack	analysis	analyses/wiki-pages-publishing-stack.md	developer-wiki の GitHub Pages 配信は、現状の MkDocs adapter より Quartz を第一候補にした方が wiki の記法と公開体験が揃いやすい
-windows-distribution-options	analysis	analyses/windows-distribution-options.md	非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-05-31 時点で、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route が `#885` として追加された
+windows-distribution-options	analysis	analyses/windows-distribution-options.md	非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-06-01 定例では、短期は手元 Windows 起動より Azure 体験環境を優先しつつ、Windows standalone と local LLM route は探索を続ける位置づけになった
 windows-real-machine-e2e-lessons	analysis	analyses/windows-real-machine-e2e-lessons.md	Issue #860 / PR #862 の Windows 実機 E2E 構築で分かった self-hosted runner と Docker Desktop の落とし穴
 windows-setup-encoding-decision	analysis	analyses/windows-setup-encoding-decision.md	Windows setup で日本語メッセージを扱う時、`.bat` 単体でコードページ差異を吸収するのは難しく、ASCII ランチャー + PowerShell 本体へ分離する判断が妥当、という理由整理
 workflow-defaultization-blockers	analysis	analyses/workflow-defaultization-blockers.md	`run_workflow()` default 化を止めていた主 blocker は main で解消され、Phase 8 cleanup 後はいま何が follow-up だけ残っているかを切り分ける履歴ページ

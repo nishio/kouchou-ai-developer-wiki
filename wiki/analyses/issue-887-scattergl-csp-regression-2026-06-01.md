@@ -7,6 +7,7 @@ sources:
   - current-open-issue-triage-2026-06-01.md
   - issue-820-current-state.md
   - pr-887-production-deploy-observation-2026-06-01.md
+  - meeting-minutes.md
 ---
 
 # Issue 887 Scattergl CSP Regression 2026-06-01
@@ -76,6 +77,8 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 簡単に言うと、CI は Docker image build / push と `az containerapp update` の後、stable URL が 200 を返せば `Deploy Success` としているが、その 200 は旧 ready revision から返っている場合がある。CI は `latestRevisionName == latestReadyRevisionName` を待っていない。一方 `public-viewer` は container 起動後に `entrypoint.sh` で `pnpm run build` を実行し、`#887` では `next build` の `Running TypeScript ...` phase が exit 137 で kill された。結果として、新 revision が Ready にならない間は旧 revision が serving され続ける。過去の false positive 全部が OOM だったとは言えないが、`#887` の Ready 遅延の直接原因は起動時 `next build` の SIGKILL と整理できる。[[pr-887-production-deploy-observation-2026-06-01]]より
 
+2026-06-01 定例でも、この論点は「チェックがおかしい」と「時々 OOM で死ぬ」の二層として共有された。暫定対応は `public-viewer` memory を 1Gi から 2Gi へ増やす案、その後の恒久対応は Azure デモ環境の deploy CI / 動作状態チェックを改善する案である。[[meeting-minutes]]より
+
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
@@ -93,3 +96,4 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 - 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 による deploy success false positive は実例として少なくとも `#821` まで確認できること、`#785` 時点の workflow 設計にも同じ risk があったことを追記。
 - 2026-06-01: `#821` は readiness lag の false positive 実例であり、SIGKILL / exit 137 の実例ではないことを追記。
 - 2026-06-01: CI が new revision readiness を待たず旧 ready revision の stable URL 200 で success になる点と、`#887` の SIGKILL が起動時 `next build` の TypeScript phase だった点を短い説明として追記。
+- 2026-06-01: 定例議事録での扱いを反映し、暫定策は memory 2Gi、恒久策は deploy CI / readiness / representative report smoke の改善と整理。

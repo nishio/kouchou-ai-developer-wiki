@@ -3,6 +3,24 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 21:32] filing-back | public-viewer runtime build 史の追加調査を反映
+
+- `PR #746` の monorepo / pnpm workspace 化、`#828` / `#835` の build-time API 依存整理、2026-06-01 時点の Azure `public-viewer` resource (`0.5 CPU / 1Gi`) を追加確認
+- `#887` は runtime build を導入したのではなく、既存 startup build OOM と stable URL health check false positive が重なって露出したケースと整理
+- [[public-viewer-runtime-build-history-2026-06-01]] を増補し、誤解しやすい点を明文化
+
+## [2026-06-01 21:20] filing-back | public-viewer runtime build の歴史的経緯を整理
+
+- `PR #8` 初期 Docker 化から `client` / `public-viewer` は API 起動後に `next build` する構成で、entrypoint コメントにも「build時にAPIサーバーを参照するため」と残っていた
+- 2026-02 の monorepo / Turbopack 対応 (`#782` / `#784` / `#785`) と 2026-05 の runner stage copy 漏れ修正 (`#851` / `#862`) は runtime build をやめずに成立条件を足す延命だったと整理
+- [[public-viewer-runtime-build-history-2026-06-01]] を作成し、[[deployment]] から導線を追加
+
+## [2026-06-01 21:00] ingest | 2026-06-01 定例議事録の取得と反映
+
+- Google Doc export から `raw/meeting_minutes.txt` / `.html` を再取得し、先頭見出しが `2026/06/01（次回分）`、txt 7654 行であることを確認。URL 棚卸しも 550 unique URLs / 93 domains へ更新
+- `#887` deploy success false positive / public-viewer OOM、Actions / CodeQL / Dependabot 警告、quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route を関連ページへ反映
+- [[meeting-report-draft]] を [[meeting-report-2026-06-01]] へ rotate し、draft 本体を 2026-06-08 向けテンプレートへ戻した
+
 ## [2026-06-01 20:51] filing-back | Deploy Success false positive の短い説明を追記
 
 - Azure Deploy CI は new revision readiness ではなく stable URL 200 を見ており、旧 ready revision が 200 を返すだけで success になりうる、と説明を整理

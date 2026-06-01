@@ -1,7 +1,7 @@
 ---
 name: windows-distribution-options
 type: analysis
-summary: "非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-05-31 時点で、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route が `#885` として追加された"
+summary: "非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-06-01 定例では、短期は手元 Windows 起動より Azure 体験環境を優先しつつ、Windows standalone と local LLM route は探索を続ける位置づけになった"
 sources:
   - windows-distribution-gpt-brainstorm-2026-05-22.md
   - meeting-minutes.md
@@ -18,6 +18,8 @@ sources:
 [[kouchou-ai|広聴 AI]] を **Windows の非専門家にも届ける** ときに、どの粒度の「配布物」を正規入口にすべきか。`setup_win.bat` のような shell script レベルで止めるのか、独立した `kouchou-ai-launcher.exe` を作るのか、最終的に Docker 不要の単体 exe まで持っていくのか、という選択肢の差を整理する。
 
 `usage-modes` の 2 軸（非専門家向け Web UI / 研究者・データサイエンティスト向け CLI）のうち、本 analysis は **非専門家向け Web UI モードの配布** に絞る。研究者向けは [[usage-modes]] が示すとおり `Mac/Linux + CLI`、Windows 研究者は `WSL2/Docker` 寄せで割り切れる。
+
+2026-06-01 定例での補正として、非エンジニアの「組織内デモ役」に手元 Windows マシンで起動させる方向へ寄せすぎると複雑になるため、短期は Azure デモ環境で「見せる」導線を優先する方がよい、という判断が出た。一方で tokoroten からは Windows standalone を試す方向性も出ており、ローカルマシン + local LLM でデータを外に出さず分析できる将来価値は残る。したがって Windows 配布は **短期の普及導線ではなく、中長期の privacy / offline route** として見る方が現在地に近い。[[meeting-minutes]]より
 
 ## 4 段階の配布形態
 
@@ -124,6 +126,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 
 - 非専門家向け Windows 体験のゴールを `setup_win.*` 系で打ち止めるか、段階 2 (ランチャー exe) へ進むかを正式に意思決定するタイミング
 - `#885` の Node runtime 排除 route を段階 4 の前提 refactor として進めるか、それとも段階 2 の Docker Desktop launcher route を優先するか
+- 短期の「見せる」導線を Azure 体験環境へ寄せた時、Windows standalone はどの user story (privacy / API 契約不要 / local LLM / offline pilot) を成功条件にするか
 - 段階 2 に進む場合の言語スタック (Go / Tauri / Electron / .NET) の選定。kouchou-ai 本体の保守者層と乖離しすぎないこと
 - Docker Desktop ライセンス前提のままで自治体・行政展開を続けられる範囲。回避策が必要になる場面の見極め
 - ルート B（WSL2 Ubuntu + Docker Engine）を「上級者向け補助ルート」に留めるか、主要利用者層のライセンス事情を踏まえて「主要ルート」へ昇格させるか
@@ -132,6 +135,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 ## Updates
 
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
+- 2026-06-01: 定例議事録を反映し、非エンジニア橋渡し役の短期導線は Azure デモ環境を優先し、Windows standalone は中長期の privacy / offline / local LLM route として探索する位置づけへ補正
 - 2026-05-31: `#885` の MVP を external API route / offline bundled-model route の 2 本比較に修正。単一バイナリの価値は Docker なしだけでなく API 契約不要にもある
 - 2026-05-31: offline route に Chrome / Windows native local AI runtime の検討を追加。現時点では Chrome Prompt API は batch backend として弱く、Foundry Local が current `provider="local"` に接続しやすい候補
 - 2026-05-22: 初回作成。`setup_win.*` 進行と GPT ブレストを突き合わせ、段階 1〜4 の整理と現状判断材料をまとめた

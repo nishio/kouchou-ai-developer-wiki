@@ -8,6 +8,7 @@ sources:
   - broadlistening-tool-ecosystem-vision.md
   - docker-desktop-license-2026-05-29.md
   - github-dev-docs.md
+  - meeting-minutes.md
 ---
 
 [[pr-883-restructuring-2026-05-31]] で整理した再構成方針を反映した、`docs/development/developer-quickstart.md` の置き換え草案。`---` で挟まれた区間がそのまま docs にペーストできる markdown。
@@ -43,7 +44,8 @@ sources:
 
 意思決定者 / 予算決定者 / 同僚に動くものを見せたい方。本人はエンジニアでもデータサイエンティストでもない場合がありますが、コマンドライン操作と Docker のインストールはできる前提。
 
-- **推奨**: [Mode 1: Docker Compose](#mode-1-docker-compose) で全体を一発起動
+- **推奨**: 利用可能な hosted demo / Azure 体験環境がある場合は、まずそちらを使う
+- 手元で全体動作を持つ必要がある場合だけ、[Mode 1: Docker Compose](#mode-1-docker-compose) で全体を起動
 - 大組織所属の場合は Docker Desktop の license 確認が必要です。先に [環境構築の前提確認](#env-prerequisites) を見てください
 
 ### D. WebUI 開発者 (エンジニア)
@@ -380,8 +382,10 @@ kouchou-analyze --config config.json
 - 「広聴 AI は何のためのツールか」段落は冒頭に置くか、Mode 選択の後に置くか (順序によって読者の入りやすさが変わる)
 - Mode 2/3 を「WebUI 開発者」の触りたい場所別に直接案内している (公開 UI → Mode 2、API → Mode 3、admin → Mode 3) が、Mode 2 で実は admin も触れるので overlap を docs でどう書くか
 - B 「自治体担当本人」に対する SaaS ホスト型の案内が「本格運用待ち」止まりで、現実的な接点がない。せめてコミュニティ Slack 等の窓口を書くべきかもしれない
+- C 「組織内デモ役」は、2026-06-01 定例 feedback では手元 Windows / Docker Compose に寄せすぎるより Azure 体験環境を優先した方がよいとされた。草案を実 docs にする時は、hosted demo の実在状況と URL / 申込導線を確認してから書く必要がある
 - `WSL2 + Docker Engine` の上級者ルートを別 docs ([[docker-engine-wsl2-alternative-2026-05-23]] 相当の正式 docs ページ) に切り出して、developer-quickstart からはリンクのみにする方が清潔か
 
 ## Updates
 
+- 2026-06-01: 定例 feedback を反映し、組織内デモ役の第一候補を手元 Mode 1 固定から hosted demo / Azure 体験環境優先へ補正。手元 Docker Compose は「必要な場合だけ」の選択肢にした
 - 2026-05-31: 初版。[[pr-883-restructuring-2026-05-31]] の再構成方針を反映し、kouchou-ai repo の docs/development/developer-quickstart.md に直接ペーストできる全文草案として作成
