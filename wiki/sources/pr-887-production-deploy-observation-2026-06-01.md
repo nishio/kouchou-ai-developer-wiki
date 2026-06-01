@@ -71,6 +71,8 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 
 さらに `PR #785` (2026-02-07T05:14:52Z merge) の diff を見ると、この時点でも deploy confirmation は `https://$PUBLIC_VIEWER_DOMAIN/` への stable URL `curl` で success を判断していた。`#785` は retry count を増やし status code を出す改善で、latest revision readiness check は追加していない。2 月以前の Actions logs は GitHub API が `410` を返しており、同じ粒度の historical mismatch 実例は確認できなかったが、設計上の false positive risk は `#785` 時点でも存在していた。
 
+なお、`#821` の mismatch は `#887` と同じく exit 137 / SIGKILL だったことを意味しない。2026-06-01 に `public-viewer--0000067` の Azure revision metadata を確認すると `health=Healthy`, `running=Stopped`, `lastActive=2026-05-18T08:23:59Z` であり、revision 自体は後に healthy になって served していた。Log Analytics workspace の retention は 30 日で、2026-04-11 の console / system logs は残っていないため、`Killed` や `exit code 137` は確認できない。したがって `#821` から言えるのは「deploy confirmation が readiness 完了前に旧 ready revision の 200 で成功した」までで、SIGKILL は `#887` の Azure logs でのみ確認できた別の観測である。
+
 `#887` では新 revision が exit 137 を繰り返し、Ready まで約 2 時間 10 分かかったため、人間の確認タイミングと重なって問題が顕在化した。
 
 ## Open Questions
@@ -84,3 +86,4 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 - 2026-06-01: Azure CLI login 後に ACA logs を確認。`public-viewer--0000166` は `Unhealthy / Degraded` で、startup `next build` の TypeScript phase が `Killed`、container は exit 137 だった。
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、stable URL も `unsafe-eval` 付き CSP を返すことを確認。
 - 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 で deploy success になる false positive は実例として少なくとも `#821` (2026-04-11) まで確認。`#785` 時点の workflow も stable URL curl 判定で、latest revision readiness は見ていなかった。
+- 2026-06-01: `#821` の mismatch は SIGKILL を意味しないと追記。`public-viewer--0000067` は metadata 上 `Healthy` で、4/11 logs は retention 切れのため exit 137 の有無は検証不能。

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 20:30] filing-back | #821 は SIGKILL 実例ではなく readiness lag と切り分け
+
+- `public-viewer--0000067` の Azure revision metadata は `Healthy / Stopped` で、2026-05-18 まで active。`#821` の deploy false positive は SIGKILL とは断定できない
+- Log Analytics retention は 30 日で 2026-04-11 の logs は残っておらず、`Killed` / exit 137 の有無は検証不能
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に、SIGKILL は `#887` logs で確認した別観測と追記
+
 ## [2026-06-01 20:21] filing-back | Deploy success false positive を #851 以前へ遡及
 
 - successful Azure Deployment logs を追加で遡り、旧 ready revision の 200 で deploy success になる実例は少なくとも `#821` (2026-04-11) まで確認
