@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-01 20:51] filing-back | Deploy Success false positive の短い説明を追記
+
+- Azure Deploy CI は new revision readiness ではなく stable URL 200 を見ており、旧 ready revision が 200 を返すだけで success になりうる、と説明を整理
+- `#887` の SIGKILL は container 起動後 `entrypoint.sh` の `pnpm run build`、`next build` の `Running TypeScript ...` phase で発生。過去 false positive 全てを OOM とは断定しない
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に短い説明版を追記
+
 ## [2026-06-01 20:30] filing-back | #821 は SIGKILL 実例ではなく readiness lag と切り分け
 
 - `public-viewer--0000067` の Azure revision metadata は `Healthy / Stopped` で、2026-05-18 まで active。`#821` の deploy false positive は SIGKILL とは断定できない
@@ -462,8 +468,3 @@
 - 議事録内で nishio 本人が developer-wiki について「人間が直接読むには情報多すぎ」「indexが溢れたらthinking effort多めで再構成したらいい」と言及している点をメモ。index/log の情報密度問題は本人認知済み
 - `wiki/concepts/meeting-report-draft.md` の旧内容（月曜版・次回向け 12 項目・Updates 47 件）を新規 [[meeting-report-2026-05-25]] へ rotate し、draft 本体は 2026-06-01 向けに空テンプレへ戻した。`## 過去回` セクションから archive を辿れる形にし、Open Question の「snapshot を切るか継続か」は snapshot 方針で解消
 - `wiki/index.md` にも archive ページを追加。`scripts/lint_wiki.py` は壊れた wikilink 0 / index 未登録 0 / frontmatter 不備 0 で通過
-
-## [2026-05-25 20:38] filing-back | デジタル庁の条文RAGに関する既存知識の有無を整理
-
-- 新規 analysis [[digital-agency-legal-rag]] を追加し、2026-05-25 時点の `wiki/` と `raw/meeting_minutes.txt` には「デジタル庁の条文RAG」を直接説明する整理は無いと記録
-- 周辺言及として、一般的な RAG 議論、デジタル庁の中で関連したことをやっている人がいるという伝聞、`eGov` パブコメ連携案、回答案下書きへの RAG 活用案があることを要約

@@ -75,6 +75,14 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 
 `#887` では新 revision が exit 137 を繰り返し、Ready まで約 2 時間 10 分かかったため、人間の確認タイミングと重なって問題が顕在化した。
 
+## Short Explanation
+
+この問題を短く説明すると、Azure Deployment CI は Docker image を build / push し、`az containerapp update` で新 revision を作るところまでは実行しているが、**その new revision が Ready になったことは確認していない**。最後の health check は stable URL (`https://$PUBLIC_VIEWER_DOMAIN/`) に対する `curl` なので、旧 ready revision が 200 を返すだけで `Deploy Success` になる。
+
+一方、`public-viewer` は container 起動後の `entrypoint.sh` で `.next` を消してから `pnpm run build` を実行し、その後 `pnpm run start` する。`#887` ではこの起動時 build の `next build` が `Compiled successfully` 後の `Running TypeScript ...` phase で `Killed` / exit 137 になっていた。したがって `next start` まで到達せず、startup probe は失敗し続けた。
+
+その結果、「CI は `Deploy Success` と言っているが、新 revision は Ready になっておらず、ユーザには古い ready revision が出続ける」という状態が発生する。`#887` については exit 137 が確認できたが、過去の deploy success false positive 全てが OOM / SIGKILL だったとは確認していない。
+
 ## Open Questions
 
 - 一度は self-recover したが、runtime build が memory pressure で exit 137 になる risk は残る。`public-viewer` の memory を増やすか、runtime `next build` をやめて image build 時に `.next` を作る方向へ寄せるか。
@@ -87,3 +95,4 @@ console log では 2026-06-01T10:40:40Z に再度 startup build が始まり、2
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、stable URL も `unsafe-eval` 付き CSP を返すことを確認。
 - 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 で deploy success になる false positive は実例として少なくとも `#821` (2026-04-11) まで確認。`#785` 時点の workflow も stable URL curl 判定で、latest revision readiness は見ていなかった。
 - 2026-06-01: `#821` の mismatch は SIGKILL を意味しないと追記。`public-viewer--0000067` は metadata 上 `Healthy` で、4/11 logs は retention 切れのため exit 137 の有無は検証不能。
+- 2026-06-01: CI が new revision readiness を見ず、stable URL の旧 ready revision 200 で success になることと、`#887` では起動時 `next build` の TypeScript phase が exit 137 だったことを短い説明版として追記。

@@ -74,6 +74,8 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 
 重要なのは、この deploy success false positive は `#887` で初めて起きた問題ではない点である。successful deploy logs を遡ると、実例としては少なくとも `#821` の 2026-04-11T14:54Z まで、public-viewer は `latestReadyRevisionName` が旧 revision のままでも、stable URL が `viewer=200` を返すと workflow が success になっていた。`#851` はこの既存 pattern の途中であり、境界ではなかった。`#785` (2026-02-07) の workflow diff でも stable URL `curl` で success を判断しており、latest revision readiness は見ていない。ただし 2 月以前の Actions logs は失効しているため、同じ粒度で historical mismatch 実例を確認できる最古は `#821` である。`#821` の `public-viewer--0000067` は後に `Healthy` になって 2026-05-18 まで active だったため、ここから SIGKILL だったとは言えない。`#887` だけが特別に deploy confirmation を壊したというより、以前から new revision readiness を待っていない deploy confirmation があり、今回は Ready まで約 2 時間 10 分かかったことと、Azure logs で exit 137 が観測できたことが重なって露出した。[[pr-887-production-deploy-observation-2026-06-01]]より
 
+簡単に言うと、CI は Docker image build / push と `az containerapp update` の後、stable URL が 200 を返せば `Deploy Success` としているが、その 200 は旧 ready revision から返っている場合がある。CI は `latestRevisionName == latestReadyRevisionName` を待っていない。一方 `public-viewer` は container 起動後に `entrypoint.sh` で `pnpm run build` を実行し、`#887` では `next build` の `Running TypeScript ...` phase が exit 137 で kill された。結果として、新 revision が Ready にならない間は旧 revision が serving され続ける。過去の false positive 全部が OOM だったとは言えないが、`#887` の Ready 遅延の直接原因は起動時 `next build` の SIGKILL と整理できる。[[pr-887-production-deploy-observation-2026-06-01]]より
+
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
@@ -90,3 +92,4 @@ revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`00
 - 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、本番 stable URL も `unsafe-eval` 付き CSP を返すことを追記。
 - 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 による deploy success false positive は実例として少なくとも `#821` まで確認できること、`#785` 時点の workflow 設計にも同じ risk があったことを追記。
 - 2026-06-01: `#821` は readiness lag の false positive 実例であり、SIGKILL / exit 137 の実例ではないことを追記。
+- 2026-06-01: CI が new revision readiness を待たず旧 ready revision の stable URL 200 で success になる点と、`#887` の SIGKILL が起動時 `next build` の TypeScript phase だった点を短い説明として追記。

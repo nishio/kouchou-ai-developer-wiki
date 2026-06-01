@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-01 20:51	filing-back	Deploy Success false positive の短い説明を追記
 2026-06-01 20:30	filing-back	#821 は SIGKILL 実例ではなく readiness lag と切り分け
 2026-06-01 20:21	filing-back	Deploy success false positive を #851 以前へ遡及
 2026-06-01 20:00	filing-back	Deploy success false positive は #887 固有ではない
