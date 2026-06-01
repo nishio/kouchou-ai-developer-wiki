@@ -42,11 +42,13 @@ CodeQL は GitHub の静的解析エンジンで、コードを解析して脆�
 
 Dependabot alerts は GitHub Security 側の live state であり、main / open PR / issue の観測だけでは取りこぼす。したがって security / dependency 保守では `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を定期的に確認する。ただし alert の具体的な脆弱性詳細は公開 wiki に転記せず、対応 issue / PR / 優先度判断だけを残すのがよい。
 
+2026-06-02 00:00 JST 時点では、Dependabot alerts 19 件に対応する draft PR #889 を作成した。変更は root `pnpm.overrides` と `pnpm-lock.yaml` の dependency-only PR で、`pnpm audit --json` は vulnerabilities 0 まで確認済み。open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていないため、差分上の干渉は小さい。alert の具体的な脆弱性詳細は公開 wiki / PR 本文には転記していない。
+
 ## Open Questions
 
 - `#815` の議論で誰がどの論点を出したか
 - merge 後の `main` に schedule / concurrency / paths-ignore がどのタイミングで入ったか
-- 2026-06-01 定例で出た `node20` / CodeQL deprecated 警告と Dependabot 警告を、どの issue / PR で消すか
+- PR #889 で Dependabot alerts が実際に close されるか
 - Dependabot alerts の確認頻度と担当を、週次確認として固定するか
 
 ## Updates
@@ -54,3 +56,4 @@ Dependabot alerts は GitHub Security 側の live state であり、main / open 
 - 2026-05-18: 初版作成
 - 2026-06-01: 定例で Actions / CodeQL / Dependabot 警告が最優先扱いになったことを追記。CodeQL を CI に入れた経緯だけでなく、継続保守対象として見る必要が出ている
 - 2026-06-01: Dependabot alerts ページを定期観測対象として明記し、公開 wiki には脆弱性詳細を転記しない方針を追記
+- 2026-06-02: Dependabot alerts 19 件に対応する draft PR #889 を作成したこと、dependency-only 差分で既存 open PR との干渉が小さいことを追記

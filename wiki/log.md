@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-02 00:00] filing-back | Dependabot alerts 対応 PR #889 を作成
+
+- Dependabot alerts 19 件を確認し、root `pnpm.overrides` と `pnpm-lock.yaml` だけを更新する draft PR #889 (`codex/dependabot-alerts-2026-06-01`) を作成
+- `pnpm audit --json` は vulnerabilities 0、public-viewer 94 tests / admin 111 tests / static-site-builder build / `git diff --check` が通過
+- open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていないため差分上の干渉は小さい。alert 詳細は公開 wiki / PR 本文には転記していない
+
 ## [2026-06-01 23:45] filing-back | Dependabot alerts の定期観測を運用メモ化
 
 - `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を GitHub current state の定期観測対象として `CLAUDE.md` / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に追記
