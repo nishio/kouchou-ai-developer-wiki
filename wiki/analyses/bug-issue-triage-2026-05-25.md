@@ -26,7 +26,7 @@ current `apps/api/src/services/report_launcher.py` の `_monitor_process()` は�
 
 ### `#177` は issue 本文の `&` 分断経路が current main では見当たらない
 
-current `Makefile` の Azure 設定更新経路では `az containerapp update --set-env-vars` に渡す `OPENAI_API_KEY` `PUBLIC_API_KEY` `ADMIN_API_KEY` `BASIC_AUTH_PASSWORD` などが `'KEY=$(VALUE)'` の形で引用されている。そのため、issue 本文の `ADMIN_API_KEY=foo&bar` がシェル上で `&` で分断される経路は少なくとも current tree 上では見つからなかった。別経路がある可能性は残るが、元 issue の説明だけでは current 再現箇所を特定できない。[[source-code]]より
+current `Makefile` の Azure 設定更新経路では、環境変数を shell に渡す箇所が引用されており、issue 本文のように値中の `&` がシェル上で分断される経路は少なくとも current tree 上では見つからなかった。公開 wiki では secret / access 周辺の具体名や deploy command details は残さず、別経路がある可能性だけを Open Questions に残す。[[source-code]]より
 
 ### `#629` は current script/endpoint の責務ずれとしてなお現役
 
@@ -58,3 +58,4 @@ issue #741 は main push 時の Azure deploy が flaky に失敗するという�
 ## Updates
 
 - 2026-05-25: 初版作成。open `bug` issue を current `main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と open PR で棚卸しし、stale 3 件の close と active issue の残し方を整理
+- 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、Azure 設定更新経路の secret 名・具体 command details を削除

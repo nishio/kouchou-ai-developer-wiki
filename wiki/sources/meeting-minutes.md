@@ -67,4 +67,4 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-05-25: `txt` export ではリンク URL が落ちることがあるため、`raw/meeting_minutes.html` を補助取得する運用を追記
 - 2026-05-25: HTML export から URL を抽出する `scripts/extract_meeting_minutes_urls.py` と派生 source [[meeting-minutes-url-extraction-2026-05-25]] を追加
 - 2026-05-25: Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` になっていることを確認
-- 2026-06-01: Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しが `2026/06/01（次回分）`、txt が 7654 行になっていることを確認。主題は `#887` deploy success false positive / public-viewer OOM、Actions / CodeQL / Dependabot 警告、developer-quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route
+- 2026-06-01: Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しが `2026/06/01（次回分）`、txt が 7654 行になっていることを確認。主題は `#887` deploy success false positive / public-viewer runtime build risk、Actions / CodeQL / Dependabot 警告、developer-quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route。デプロイ詳細と alert 詳細は公開 wiki へ転記しない

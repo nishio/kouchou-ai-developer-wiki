@@ -17,7 +17,7 @@ sources:
 
 [[kouchou-ai]] 本体の活動はこの週は **非常に薄い**：
 
-- GitHub `digitaldemocracy2030/kouchou-ai`: **Dependabot の PR 2 本のみ** (#822, #823 — `next` を 16.2.x → 16.2.6 にバンプ、Next.js のセキュリティアドバイザリ一括対応)。人間が書いた PR / Issue / Discussion はゼロ
+- GitHub `digitaldemocracy2030/kouchou-ai`: **Dependabot の PR 2 本のみ** (#822, #823 — dependency update)。人間が書いた PR / Issue / Discussion はゼロ。公開 wiki では alert / advisory の具体的な脆弱性詳細は扱わない
 - Slack `#2_開発_広聴ai`: メッセージ 1 通（[[nishio]] が Karpathy 風 LLM Wiki を kouchou-ai に適用したい旨）
 
 代わりに **周辺チャンネル** に新規コントリビュータが知っておくべきコンテキストが多い：

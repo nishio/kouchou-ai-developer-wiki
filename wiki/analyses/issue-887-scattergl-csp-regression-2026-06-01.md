@@ -61,39 +61,28 @@ static hosting については、`http-server` で素の static file を出す�
 
 最後に、post-deploy の scheduled smoke として、公開 viewer の代表 URL に対して response CSP と `.no-webgl` visible を見るのも有効である。これは PR gate ではなく、本番環境・配信基盤・環境変数の組み合わせがずれた時の検知帯として扱うのがよい。[[github-dev-docs]]より
 
-## Production deploy 後の追加確認
+## Production deploy 後の追加確認（公開版）
 
-`PR #887` は 2026-06-01T08:24:45Z に merge 済みで、Azure Deployment workflow run `26743672825` も merge commit `1881695159b3b91a970499e142e9b335fea273c3` を対象に success になっていた。しかし 2026-06-01 17:30-17:50 JST に本番 stable URL を確認すると、report URL の CSP はまだ `script-src 'self' 'unsafe-inline'` で、`unsafe-eval` を含んでいなかった。Playwright でも `.no-webgl` overlay が visible のまま残っていたため、ユーザに見える状態としては直っていない。[[pr-887-production-deploy-observation-2026-06-01]]より
+`PR #887` は merge されたが、その後のデプロイ確認では、GitHub Actions 上の success とユーザに見える実反映状態が一時的にズレていた。公開 wiki では実環境 URL、run ID、revision 名、ログ断片、resource 値は扱わず、次の構造だけを残す。[[pr-887-production-deploy-observation-2026-06-01]]より
 
-GitHub Actions log では、public-viewer の `latestRevisionName` は `public-viewer--0000164` から `0000166` まで進んだ一方、`latestReadyRevisionName` は最後まで旧 revision の `public-viewer--0000163` のままだった。その後の deploy confirmation は stable domain の root に `curl` して `viewer=200` を得た時点で成功扱いにしており、新 revision が ready になったことや代表 report URL が修正後 CSP を返すことは見ていない。つまり今回の「デプロイ成功」は、新 revision の成功ではなく旧 ready revision の 200 による false positive と読むべきである。[[pr-887-production-deploy-observation-2026-06-01]]より
+- 現行の deploy confirmation は、公開 URL が HTTP 200 を返すことに寄りすぎており、新しく作られた revision が Ready になったことを十分に確認していなかった。
+- `public-viewer` は container 起動後に production build を実行する構成だったため、build failure / 長時間化が deploy readiness と混ざり、success 判定を誤読しやすい。
+- `PR #887` の CSP 修正そのものが deploy confirmation を壊したのではなく、既存の readiness 確認不足と runtime build 構成のリスクが露出したケースとして扱うのが妥当である。
 
-revision-specific URL でも、`public-viewer--0000163` は旧 CSP で 200、`0000164` / `0000165` は 404、`0000166` は root / report URL とも 60 秒 timeout だった。次に見るべきは `public-viewer--0000166` の Azure Container Apps revision status / logs であり、deploy workflow 側も stable URL ではなく latest revision readiness と representative report smoke を見るように修正する必要がある。[[pr-887-production-deploy-observation-2026-06-01]]より
-
-2026-06-01 19:34 JST に Azure CLI login 後の ACA logs を確認すると、`public-viewer--0000166` は `Unhealthy / Degraded` で、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` だった。console log では `pnpm run build` が起動し、`next build` は compile 成功後の TypeScript phase で `Killed`。system log では startup probe failure が連続し、container は exit code `137` で terminate されていた。したがって新 revision が ready にならない直接原因は、production 起動時に走る `next build` が ACA の `public-viewer` resource (`cpu: 0.5`, `memory: 1Gi`) 内で kill され、`next start` まで到達していないことと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
-
-ただしこれは永続障害ではなく、同 revision はその後 self-recover した。2026-06-01 19:44 JST に再確認すると `latestReadyRevisionName` は `public-viewer--0000166` になり、stable URL / revision-specific URL とも `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返した。logs では 2026-06-01T10:40:40Z に再試行 build が始まり、2026-06-01T10:41:10Z に `next start` が ready、2026-06-01T10:41:26Z に revision ready になった。Ready failure window は `public-viewer--0000166` 作成の 2026-06-01T08:31:53Z から 2026-06-01T10:41:26Z までと見てよい。[[pr-887-production-deploy-observation-2026-06-01]]より
-
-重要なのは、この deploy success false positive は `#887` で初めて起きた問題ではない点である。successful deploy logs を遡ると、実例としては少なくとも `#821` の 2026-04-11T14:54Z まで、public-viewer は `latestReadyRevisionName` が旧 revision のままでも、stable URL が `viewer=200` を返すと workflow が success になっていた。`#851` はこの既存 pattern の途中であり、境界ではなかった。`#785` (2026-02-07) の workflow diff でも stable URL `curl` で success を判断しており、latest revision readiness は見ていない。ただし 2 月以前の Actions logs は失効しているため、同じ粒度で historical mismatch 実例を確認できる最古は `#821` である。`#821` の `public-viewer--0000067` は後に `Healthy` になって 2026-05-18 まで active だったため、ここから SIGKILL だったとは言えない。`#887` だけが特別に deploy confirmation を壊したというより、以前から new revision readiness を待っていない deploy confirmation があり、今回は Ready まで約 2 時間 10 分かかったことと、Azure logs で exit 137 が観測できたことが重なって露出した。[[pr-887-production-deploy-observation-2026-06-01]]より
-
-簡単に言うと、CI は Docker image build / push と `az containerapp update` の後、stable URL が 200 を返せば `Deploy Success` としているが、その 200 は旧 ready revision から返っている場合がある。CI は `latestRevisionName == latestReadyRevisionName` を待っていない。一方 `public-viewer` は container 起動後に `entrypoint.sh` で `pnpm run build` を実行し、`#887` では `next build` の `Running TypeScript ...` phase が exit 137 で kill された。結果として、新 revision が Ready にならない間は旧 revision が serving され続ける。過去の false positive 全部が OOM だったとは言えないが、`#887` の Ready 遅延の直接原因は起動時 `next build` の SIGKILL と整理できる。[[pr-887-production-deploy-observation-2026-06-01]]より
-
-2026-06-01 定例でも、この論点は「チェックがおかしい」と「時々 OOM で死ぬ」の二層として共有された。暫定対応は `public-viewer` memory を 1Gi から 2Gi へ増やす案、その後の恒久対応は Azure デモ環境の deploy CI / 動作状態チェックを改善する案である。[[meeting-minutes]]より
+恒久対応は、公開 URL の 200 だけでなく latest revision readiness と代表 report smoke を見ること、さらに `public-viewer` の build と serve を分離して container 起動時 build をなくすことに寄せる。2026-06-01 定例でも、この論点は「デプロイ成功判定の甘さ」と「起動時 build の運用リスク」の二層として共有された。[[meeting-minutes]]より
 
 ## Open Questions
 
 - `unsafe-eval` は `unsafe-inline` と組み合わさると CSP の XSS 抑止を弱める。`scattergl` を使う viewer だけに限定する現在の `#887` 方針でよいか、将来 `scattergl` をやめる / fallback を持つ方向も追うか。
 - production dynamic smoke test は通常 PR に常時入れるか、CSP / public-viewer chart 関連変更時だけ走らせる path-filtered test にするか。
 - static hosting CSP test は docs examples を source of truth にするか、実際の header fixture を別に持つか。
-- `public-viewer--0000166` は self-recover したが、runtime `next build` が memory pressure で exit 137 になる risk は残る。memory increase で暫定回避するか、runtime build をやめて image build 時に `.next` を作る修正へ進むか。
+- runtime build が deploy readiness と混ざるリスクは残る。resource 調整で暫定回避するか、runtime build をやめて image build 時に `.next` を作る修正へ進むか。
 
 ## Updates
 
 - 2026-06-01: 初版作成。Issue `#886`、PR `#887`、`PR #848`、current `main@0c294da`、報告 URL の header / Playwright 再現を突き合わせた。
 - 2026-06-01: `PR #848` の目的、変更内容、dynamic hosting / static export の境界、`#887` で補った不足を追記。
-- 2026-06-01: `PR #887` merge 後の production deploy success が false positive で、本番 stable URL は旧 CSP / `.no-webgl` visible のままだったことを追記。
-- 2026-06-01: Azure logs で `public-viewer--0000166` の startup `next build` が TypeScript phase で `Killed`、exit 137 になっていたことを追記。
-- 2026-06-01: 19:44 JST 時点で `public-viewer--0000166` が Ready になり、本番 stable URL も `unsafe-eval` 付き CSP を返すことを追記。
-- 2026-06-01: successful deploy logs を追加で遡り、旧 ready revision の 200 による deploy success false positive は実例として少なくとも `#821` まで確認できること、`#785` 時点の workflow 設計にも同じ risk があったことを追記。
-- 2026-06-01: `#821` は readiness lag の false positive 実例であり、SIGKILL / exit 137 の実例ではないことを追記。
-- 2026-06-01: CI が new revision readiness を待たず旧 ready revision の stable URL 200 で success になる点と、`#887` の SIGKILL が起動時 `next build` の TypeScript phase だった点を短い説明として追記。
-- 2026-06-01: 定例議事録での扱いを反映し、暫定策は memory 2Gi、恒久策は deploy CI / readiness / representative report smoke の改善と整理。
+- 2026-06-01: `PR #887` merge 後、production deploy success と実反映状態が一時的にズレうることを追記。
+- 2026-06-01: 実環境ログから runtime build が readiness に影響することを確認したが、公開 wiki では revision / run / resource / log details を削除。
+- 2026-06-01: CI が new revision readiness を十分に待たない点と、起動時 build が deploy readiness と混ざる点を公開可能な説明として整理。
+- 2026-06-01: 定例議事録での扱いを反映し、恒久策は deploy CI / readiness / representative report smoke の改善と build / serve 分離と整理。

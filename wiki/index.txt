@@ -10,7 +10,7 @@ broadlistening	concept	concepts/broadlistening.md	ブロードリスニング �
 cli	concept	concepts/cli.md	kouchou-analyze CLI と python -m analysis_core — pip install で使える
 coding-agents	concept	concepts/coding-agents.md	Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態
 contributing	concept	concepts/contributing.md	コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
-deployment	concept	concepts/deployment.md	デプロイ — Azure 本番、静的サイト書き出し、PyPI リリース
+deployment	concept	concepts/deployment.md	デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する
 kouchou-ai	concept	concepts/kouchou-ai.md	広聴AI — DD2030 配下の OSS ブロードリスニング実装。CSV → 抽出 → 埋め込み → 階層クラスタリング → 可視化
 llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装
 local-dev-setup	concept	concepts/local-dev-setup.md	ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
@@ -87,7 +87,7 @@ pr-835-static-build-fail-fast-observation-2026-05-19	source	sources/pr-835-stati
 pr-840-workflow-defaultization-observation-2026-05-20	source	sources/pr-840-workflow-defaultization-observation-2026-05-20.md	draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用に加え、CLI/API 入口と duplicate/reuse rerun plan の integration 確認まで段階的に進めている
 pr-849-agent-review-request-observation-2026-05-21	source	sources/pr-849-agent-review-request-observation-2026-05-21.md	`PR #849` では AI が人間 reviewer request を送れてしまったが、これは望ましい運用ではなく、review 依頼と承認要請は人間オーナーの明示判断に限るべきという観測メモ
 pr-852-error-log-visibility-observation-2026-05-22	source	sources/pr-852-error-log-visibility-observation-2026-05-22.md	PR #852 で CodeRabbit を手動トリガーしたところ、draft PR のため自動 review は skip され、`@coderabbitai review` 後に review in progress 状態へ移行した。同時点で client-admin build が failure、他の主要 checks は概ね success だった
-pr-887-production-deploy-observation-2026-06-01	source	sources/pr-887-production-deploy-observation-2026-06-01.md	PR #887 merge 後の Azure Deployment 成功表示と、本番 public-viewer がまだ旧 CSP / .no-webgl overlay を返していた観測
+pr-887-production-deploy-observation-2026-06-01	source	sources/pr-887-production-deploy-observation-2026-06-01.md	PR #887 merge 後に、デプロイ成功判定と実反映状態がズレうることを公開可能な粒度で整理した観測メモ。実環境 URL・revision・ログ・resource 値などの詳細は公開しない
 pypi-release-observation-2026-05-19	source	sources/pypi-release-observation-2026-05-19.md	`analysis-core-v0.1.1` / `v0.1.2` tag push で観測した PyPI publish workflow の実挙動
 remaining-experiment-artifacts-snapshot-2026-05-29	source	sources/remaining-experiment-artifacts-snapshot-2026-05-29.md	`work/kouchou-ai/` に残っていた Jigsaw 系実験の入力・設定・出力 artifact と Next.js 生成差分を、branch `codex/remaining-experiment-artifacts-2026-05-29` commit `b56ac9b` として退避し、一次参照 clone は `main@6955202` へ戻した運用メモ
 report-html-non-web-canonical-decision-2026-05-23	source	sources/report-html-non-web-canonical-decision-2026-05-23.md	`report.html` を Web canonical にせず、CLI / coding agent 向け観察用HTMLに留めると maintainer が 2026-05-23 に明示した判断メモ
@@ -139,7 +139,7 @@ hardware-procurement-local-ai-route-2026-05-31	analysis	analyses/hardware-procur
 hierarchical-status-semantics	analysis	analyses/hierarchical-status-semantics.md	`hierarchical_status.json` は branch 上で workflow path でもほぼ legacy 互換になったが、`current_job` の残し方や `duration` など一部に意味論差分が残る
 issue-530-current-state	analysis	analyses/issue-530-current-state.md	Issue #530 の『`server/requirements.txt` を追加すべき』という処方箋は、2026-05-25 時点の current main には合っておらず、現行 repo では API 依存は `apps/api/requirements.lock` と `pyproject.toml` で管理されている
 issue-707-current-state	analysis	analyses/issue-707-current-state.md	Issue #707 は 2026-05-21 に close され、backend の provider-aware verify 実装が current main で非再現だったことから、元報告は stale bug と判断された
-issue-741-current-state-2026-05-26	analysis	analyses/issue-741-current-state-2026-05-26.md	Issue `#741` は 2026-05-26 時点で完全に stale ではないが、主因は当初想定の npm registry flaky よりも `main` への近接 push で Azure Container Apps 更新が競合することに寄っており、2026-05-21 の build-context failure はすでに main で解消済み
+issue-741-current-state-2026-05-26	analysis	analyses/issue-741-current-state-2026-05-26.md	Issue `#741` は 2026-05-26 時点で完全に stale ではないが、主因は当初想定の npm registry flaky よりも `main` への近接 push で deploy 更新が競合することに寄っており、公開 wiki では詳細ログに踏み込まず concurrency 課題として整理する
 issue-820-current-state	analysis	analyses/issue-820-current-state.md	Issue #820 は 2026-05-21 時点で open のままで、静的エクスポート配信先における CSP 設定ガイド不足を追う issue としてまだ有効であり、app 側の dynamic CSP header 整備は `PR #848` merge により別経路で先に前進した
 issue-877-windows-setup-guide-scope	analysis	analyses/issue-877-windows-setup-guide-scope.md	Issue #877 は Windows setup guide の文言修正だけでなく、Docker Desktop を標準入口にする範囲、組織管理端末で動かない場合の非サポート境界、WSL2 + Docker Engine を別ルートにするかを切り分ける issue として扱うのが妥当
 issue-887-scattergl-csp-regression-2026-06-01	analysis	analyses/issue-887-scattergl-csp-regression-2026-06-01.md	PR #848 で入った env-aware CSP header と PR #887 の Plotly scattergl CSP 修正について、壊れた理由と早期検知できたテストを整理した考察
@@ -180,7 +180,7 @@ problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-ope
 public-ui-requirements-for-broadlistening	analysis	analyses/public-ui-requirements-for-broadlistening.md	広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出
 public-viewer-build-behavior	analysis	analyses/public-viewer-build-behavior.md	`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある
 public-viewer-build-serve-split-refactor-plan-2026-06-01	analysis	analyses/public-viewer-build-serve-split-refactor-plan-2026-06-01.md	public-viewer の build-time API 依存を dynamic hosting から外し、container 起動時 next build を撤去するための段階的リファクタ計画
-public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-runtime-build-history-2026-06-01.md	public-viewer が container 起動後に next build する構成になった歴史的経緯と、Azure Deploy false positive / OOM 問題につながった堆積を整理
+public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-runtime-build-history-2026-06-01.md	public-viewer が container 起動後に next build する構成になった歴史的経緯と、deploy readiness 誤読リスクにつながった堆積を公開可能な粒度で整理
 pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.md	`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない

@@ -35,6 +35,11 @@ kouchou-ai-developer-wiki/
 - 矛盾・未解決の論点は「## Open Questions」セクションで明示
 - 更新は上書きせず「## Updates」で追記
 
+### 公開境界
+- Dependabot alerts の具体的な脆弱性詳細は公開 wiki に書かない。公開 wiki には、対応 issue / PR / 優先度判断 / 担当確認だけを残す
+- デプロイに関する詳細は公開 wiki に書かない。公開 wiki に残すのは設計判断・公開可能な課題・PR/issue の粒度までとし、実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、手順、secret / access 周辺の情報は載せない
+- デプロイ詳細の一次置き場は Google Drive の **「広聴AI-Azureデモ環境」**。アクセス権は大木・西尾・小野(moai)
+
 ### フロントマター例
 ```yaml
 ---
@@ -51,7 +56,7 @@ sources:
 0. ソースコード由来の更新なら `work/kouchou-ai/` を `git fetch origin && git pull --ff-only` で最新化し、参照 commit をメモする
 0. 議事メモ由来の更新なら Google Doc の export (`https://docs.google.com/document/d/<id>/export?format=txt`) から `raw/meeting_minutes.txt` を最新化する。`txt` は検索用であり、Google Doc 内リンクや貼り付け URL は落ちうるので、リンク先確認が要る時は `export?format=html` も保存して併読する
 0. Slack / GitHub の週次ログ由来の更新なら、まず `oss_weekly_reporter` 由来の最新データに到達する。既存 source で足りなければ、対象週の raw JSON を更新または再取得する
-0. GitHub の現在進行形の状態を扱うなら open PR も確認する（例: `gh pr list -R digitaldemocracy2030/kouchou-ai --state open`）。security / dependency 系の話題では GitHub Security の Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) も確認対象に含める
+0. GitHub の現在進行形の状態を扱うなら open PR も確認する（例: `gh pr list -R digitaldemocracy2030/kouchou-ai --state open`）。security / dependency 系の話題では GitHub Security の Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) も確認対象に含めるが、alert の具体的な脆弱性詳細は公開 wiki に転記しない
 1. raw/の新ファイルを読む（a.txtのような名前なら適切にリネーム）
 2. 既存wikiページと照合
 3. 関連ページを更新 or 新規作成
@@ -64,7 +69,7 @@ sources:
    - code: `work/kouchou-ai/` を最新化して local clone を一次参照
    - meeting minutes: `raw/meeting_minutes.txt` を Google Doc export から再取得。URL やリンク先が論点なら `raw/meeting_minutes.html` も併せて更新する
    - Slack: `oss_weekly_reporter` 由来の raw / source を先に確認し、直読みは不足時のみ
-   - GitHub current state: main だけでなく open PR / issue も観測。security / dependency 系では Dependabot alerts も live state として観測
+   - GitHub current state: main だけでなく open PR / issue も観測。security / dependency 系では Dependabot alerts も live state として観測するが、脆弱性詳細は公開 wiki に転記しない
 2. 有用な回答はanalyses/にfiling back
 3. log.md の先頭に `## [YYYY-MM-DD HH:MM] filing-back | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期
 
@@ -128,6 +133,7 @@ sources:
 - Slack の発言を扱う時は、まず `oss_weekly_reporter` 由来の raw / source を一次参照とする。Slack connector の直読みは、週次ログで足りない時の補助確認に留める
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
 - Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守対象として定期的に確認する。ただし公開 wiki には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す
+- Azure デモ環境などデプロイに関する詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は Google Drive **「広聴AI-Azureデモ環境」** で管理する。公開 wiki では、設計判断・公開可能な課題・対応 issue / PR の粒度に留める
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `work/kouchou-ai/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、必要に応じて `oss_weekly_reporter` 系データへの到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する

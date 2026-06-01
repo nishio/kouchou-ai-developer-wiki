@@ -21,7 +21,7 @@ sources:
 
 同時点の open PR は `#887` と `#863` の 2 本。`#887` は `#886` を close する Plotly scattergl CSP 修正で checks は green だが merge は blocked。`#863` は `#731` を close する Windows setup の `.bat` / PowerShell 分離で、実機確認と review 判断が残る。[[github-dev-docs]]より
 
-2026-06-01 17:50 JST 追記: `#887` は merge 済みで、open PR は `#863` の 1 本になった。ただし Azure Deployment success 後も本番 stable URL は旧 CSP / `.no-webgl` visible のままで、deploy confirmation が旧 ready revision の 200 を見た false positive と判断している。詳細は [[issue-887-scattergl-csp-regression-2026-06-01]]。[[pr-887-production-deploy-observation-2026-06-01]]より
+2026-06-01 17:50 JST 追記: `#887` は merge 済みで、open PR は `#863` の 1 本になった。ただし Azure Deployment success 後、デプロイ成功判定とユーザに見える反映状態が一時的にズレたため、deploy confirmation が new revision readiness を十分に確認していない可能性があると判断した。詳細は公開可能な粒度で [[issue-887-scattergl-csp-regression-2026-06-01]] に整理した。[[pr-887-production-deploy-observation-2026-06-01]]より
 
 ## 結論
 

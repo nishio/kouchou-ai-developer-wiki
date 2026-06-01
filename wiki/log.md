@@ -3,10 +3,16 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-02 00:06] filing-back | 公開 wiki の秘匿境界を更新
+
+- Dependabot alert の具体的な脆弱性詳細と、Azure デモ環境などデプロイ詳細を公開 wiki に書かない方針を `CLAUDE.md` / [[wiki-driven-workflow]] / [[deployment]] に追記
+- デプロイ詳細の一次置き場を Google Drive「広聴AI-Azureデモ環境」とし、アクセス権は大木・西尾・小野(moai) と明記
+- 既存の deploy 関連ページと log を、実環境 URL、resource 名・サイズ、revision / run details、ログ、具体手順を出さない公開粒度へサニタイズ
+
 ## [2026-06-02 00:00] filing-back | Dependabot alerts 対応 PR #889 を作成
 
-- Dependabot alerts 19 件を確認し、root `pnpm.overrides` と `pnpm-lock.yaml` だけを更新する draft PR #889 (`codex/dependabot-alerts-2026-06-01`) を作成
-- `pnpm audit --json` は vulnerabilities 0、public-viewer 94 tests / admin 111 tests / static-site-builder build / `git diff --check` が通過
+- Dependabot alerts に対応するため、root `pnpm.overrides` と `pnpm-lock.yaml` だけを更新する draft PR #889 (`codex/dependabot-alerts-2026-06-01`) を作成
+- `pnpm audit --json`、public-viewer tests / admin tests / static-site-builder build / `git diff --check` が通過
 - open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていないため差分上の干渉は小さい。alert 詳細は公開 wiki / PR 本文には転記していない
 
 ## [2026-06-01 23:45] filing-back | Dependabot alerts の定期観測を運用メモ化
@@ -47,20 +53,20 @@
 
 ## [2026-06-01 21:50] filing-back | readiness poll と GitHub Actions timeout の関係を整理
 
-- 現行 Azure Deployment workflow は `jobs.deploy.timeout-minutes: 20` で、2025-07 に実 deploy 時間を考慮して明示追加されたものと確認
-- latest revision readiness poll を入れる場合は、GitHub Actions job timeout で cancel させず、script 側 timeout で revision status / logs を出して fail させる方がよいと整理
+- Azure Deployment の readiness poll を入れる場合、GitHub Actions job timeout と script 側 timeout を分ける方がよいと整理
+- timeout 時は公開可能な status だけを出し、実環境 URL、revision / run details、ログは公開 wiki に残さない方針に合わせた
 - [[github-actions-timeout-docs-2026-06-01]] を作成し、[[public-viewer-runtime-build-history-2026-06-01]] に timeout 設計の注意を追記
 
 ## [2026-06-01 21:40] filing-back | public-viewer runtime build 改善方針を整理
 
-- Azure Container Apps docs を確認し、継続 HTTP app と finite task の責務分離、Consumption の running resource 課金を補助線として [[azure-container-apps-docs-2026-06-01]] を作成
-- 改善順序を、(1) memory 2Gi で止血、(2) latest revision readiness / representative report smoke で deploy false positive を潰す、(3) dynamic hosting build の API 依存を外して runtime `next build` を撤去、に整理
+- Azure Container Apps docs を確認し、継続 HTTP app と finite task の責務分離、running resource 課金を補助線として [[azure-container-apps-docs-2026-06-01]] を作成
+- 改善順序を、(1) resource 調整で止血、(2) latest revision readiness / representative report smoke で deploy false positive を潰す、(3) dynamic hosting build の API 依存を外して runtime `next build` を撤去、に整理
 - [[public-viewer-runtime-build-history-2026-06-01]] に改善方針と推奨順序を追記
 
 ## [2026-06-01 21:32] filing-back | public-viewer runtime build 史の追加調査を反映
 
-- `PR #746` の monorepo / pnpm workspace 化、`#828` / `#835` の build-time API 依存整理、2026-06-01 時点の Azure `public-viewer` resource (`0.5 CPU / 1Gi`) を追加確認
-- `#887` は runtime build を導入したのではなく、既存 startup build OOM と stable URL health check false positive が重なって露出したケースと整理
+- `PR #746` の monorepo / pnpm workspace 化、`#828` / `#835` の build-time API 依存整理を追加確認
+- `#887` は runtime build を導入したのではなく、既存 startup build risk と deploy health check false positive が重なって露出したケースと整理
 - [[public-viewer-runtime-build-history-2026-06-01]] を増補し、誤解しやすい点を明文化
 
 ## [2026-06-01 21:20] filing-back | public-viewer runtime build の歴史的経緯を整理
@@ -72,50 +78,50 @@
 ## [2026-06-01 21:00] ingest | 2026-06-01 定例議事録の取得と反映
 
 - Google Doc export から `raw/meeting_minutes.txt` / `.html` を再取得し、先頭見出しが `2026/06/01（次回分）`、txt 7654 行であることを確認。URL 棚卸しも 550 unique URLs / 93 domains へ更新
-- `#887` deploy success false positive / public-viewer OOM、Actions / CodeQL / Dependabot 警告、quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route を関連ページへ反映
+- `#887` deploy success false positive / public-viewer runtime build risk、Actions / CodeQL / Dependabot 警告、quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route を関連ページへ反映。デプロイ詳細と alert 詳細は公開粒度へ落とした
 - [[meeting-report-draft]] を [[meeting-report-2026-06-01]] へ rotate し、draft 本体を 2026-06-08 向けテンプレートへ戻した
 
 ## [2026-06-01 20:51] filing-back | Deploy Success false positive の短い説明を追記
 
-- Azure Deploy CI は new revision readiness ではなく stable URL 200 を見ており、旧 ready revision が 200 を返すだけで success になりうる、と説明を整理
-- `#887` の SIGKILL は container 起動後 `entrypoint.sh` の `pnpm run build`、`next build` の `Running TypeScript ...` phase で発生。過去 false positive 全てを OOM とは断定しない
+- Azure Deploy CI は new revision readiness ではなく公開 URL 200 に寄っており、旧 revision が応答するだけで success になりうる、と説明を整理
+- `#887` では runtime build が readiness に影響したが、公開 wiki では実ログ・revision・resource details を削除。過去 false positive 全てを同じ原因とは断定しない
 - [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に短い説明版を追記
 
-## [2026-06-01 20:30] filing-back | #821 は SIGKILL 実例ではなく readiness lag と切り分け
+## [2026-06-01 20:30] filing-back | 過去 deploy 観測を readiness lag と切り分け
 
-- `public-viewer--0000067` の Azure revision metadata は `Healthy / Stopped` で、2026-05-18 まで active。`#821` の deploy false positive は SIGKILL とは断定できない
-- Log Analytics retention は 30 日で 2026-04-11 の logs は残っておらず、`Killed` / exit 137 の有無は検証不能
-- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に、SIGKILL は `#887` logs で確認した別観測と追記
+- 過去の deploy false positive は runtime build failure とは断定できず、new revision readiness 前に公開 URL 200 で success しうる観測として切り分けた
+- 実環境 metadata / log retention / revision details は公開 wiki に残さない方針に合わせて削除
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に、readiness lag と runtime build risk を分けて追記
 
 ## [2026-06-01 20:21] filing-back | Deploy success false positive を #851 以前へ遡及
 
-- successful Azure Deployment logs を追加で遡り、旧 ready revision の 200 で deploy success になる実例は少なくとも `#821` (2026-04-11) まで確認
-- `#785` の workflow diff でも stable URL `curl` 判定で、latest revision readiness check は入っていなかった。ただし 2 月以前の Actions logs は失効済みで同じ粒度の実例確認は不可
+- successful Azure Deployment logs を追加で遡り、公開 URL 200 だけで deploy success になる設計 risk は `#887` 固有ではないと確認
+- `#785` の workflow diff でも公開 URL 判定で、latest revision readiness check は入っていなかった。ただし具体 run / log details は公開 wiki から削除
 - [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に `#851` は境界ではないと追記
 
 ## [2026-06-01 20:00] filing-back | Deploy success false positive は #887 固有ではない
 
-- 直近 successful Azure Deployment logs を見直し、`public-viewer` は少なくとも `#851` 以降、`latestReadyRevisionName` が旧 revision のままでも stable URL `viewer=200` で success になっていたと確認
-- `#887` はこの既存 deploy confirmation 欠陥に、startup `next build` exit 137 による長い Ready 遅延が重なって人間の確認で露出したケース
+- 直近 successful Azure Deployment logs を見直し、公開 URL 200 だけで success になりうる deploy confirmation 欠陥は `#887` 固有ではないと確認
+- `#887` はこの既存 deploy confirmation 欠陥に、startup build risk が重なって人間の確認で露出したケース
 - [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に「今回だけの regression ではない」と追記
 
-## [2026-06-01 19:44] filing-back | PR #887 production revision が self-recover
+## [2026-06-01 19:44] filing-back | PR #887 production reflection を再確認
 
-- `public-viewer--0000166` は 2026-06-01T10:41:26Z に Ready になり、19:44 JST 確認時点で `latestReadyRevisionName` も `public-viewer--0000166` に更新
-- stable URL / revision-specific URL とも CSP は `script-src 'self' 'unsafe-inline' 'unsafe-eval'` を返し、`#887` の本番反映を確認
-- Ready failure window は `public-viewer--0000166` 作成の 2026-06-01T08:31:53Z から Ready の 2026-06-01T10:41:26Z まで。runtime `next build` の exit 137 risk は残る
+- PR #887 の反映状態を再確認し、最終的に expected CSP が返る状態へ追いついたことを確認
+- 一方で、deploy success と実反映が一時的にズレうる readiness 問題と runtime build risk は残る
+- 実環境 URL、revision / run details、ログ、resource 値は公開 wiki に残さない方針に合わせて削除
 
-## [2026-06-01 19:34] filing-back | PR #887 production revision の exit 137 を確認
+## [2026-06-01 19:34] filing-back | PR #887 production runtime build risk を確認
 
-- Azure CLI login 後に `public-viewer--0000166` を確認し、`Unhealthy / Degraded`、`Deployment Progress Deadline Exceeded. 0/1 replicas ready.` と判明
-- console log では startup `next build` が compile 成功後の TypeScript phase で `Killed`、system log では startup probe failure 連続と exit 137 を確認
-- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に、deploy false positive の直接原因として runtime build kill を追記
+- 非公開の実環境確認で、startup build が readiness に影響しうることを確認
+- 公開 wiki では status / logs / revision / resource details を残さず、runtime build risk と deploy false positive の構造だけを記録する方針へ修正
+- [[pr-887-production-deploy-observation-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] / [[meeting-report-draft]] に、deploy false positive と runtime build risk の関係を公開可能な粒度で追記
 
 ## [2026-06-01 17:52] filing-back | PR #887 production deploy false positive を追記
 
-- `PR #887` は merge 済みで Azure Deployment workflow も success だが、本番 stable URL は旧 CSP のまま `unsafe-eval` を含まず、Playwright でも `.no-webgl` overlay が visible と確認
-- GitHub Actions log では public-viewer の `latestRevisionName` は `public-viewer--0000166` まで進む一方、`latestReadyRevisionName` は旧 `public-viewer--0000163` のままだった
-- [[pr-887-production-deploy-observation-2026-06-01]] を source 化し、[[issue-887-scattergl-csp-regression-2026-06-01]] と [[meeting-report-draft]] に「deploy success は旧 ready revision 200 による false positive」と追記
+- `PR #887` は merge 済みで Azure Deployment workflow も success だが、ユーザに見える反映状態とのズレが一時的にあったと確認
+- GitHub Actions log から、new revision readiness を十分に待たず公開 URL 200 で success になる設計 risk と整理
+- [[pr-887-production-deploy-observation-2026-06-01]] を source 化し、[[issue-887-scattergl-csp-regression-2026-06-01]] と [[meeting-report-draft]] に公開可能な粒度で追記
 
 ## [2026-06-01 17:28] filing-back | PR #887 の scattergl CSP regression を整理
 
@@ -451,12 +457,12 @@
 
 - issue `#741` の assignee を確認して `nishio` を assign し、dirty な `work/kouchou-ai/` は触らず `origin/main` から clean worktree `work/kouchou-ai-issue-741/` を作成
 - branch `codex/issue-741-azure-deploy-concurrency` で `.github/workflows/azure-deploy.yml` に `concurrency: group: azure-deploy-${{ github.ref }}, cancel-in-progress: false` を追加し、main 向け deploy を 1 本ずつ順番待ちさせる最小修正を入れた
-- 直近 failure の主因が `ContainerAppOperationInProgress` だったため、まずは npm retry ではなく workflow-level serialization を優先する判断として [[issue-741-current-state-2026-05-26]] と整合させた
+- 直近 failure の主因が deploy 更新競合だったため、まずは npm retry ではなく workflow-level serialization を優先する判断として [[issue-741-current-state-2026-05-26]] と整合させた
 
 ## [2026-05-26 19:51] filing-back | `#741` の現況を整理し、主因を Azure 更新競合へ読み替え
 
 - 新規 analysis [[issue-741-current-state-2026-05-26]] を追加し、`Azure Deployment` の recent runs を再読した結果、2026-05-21 の連続 failure は repo 再編直後の build-context / admin build breakage で、その後の main では解消済みだと整理
-- 直近の実質的な failure は 2026-05-22 `run 26270671888` の `ContainerAppOperationInProgress` で、同時刻の別 success run とぶつかった Azure Container Apps 更新競合だと読んだ
+- 直近の実質的な failure は、同時間帯の別 success run とぶつかった Azure deploy 更新競合だと読んだ。具体 run ID / log details は公開 wiki に残さない
 - これにより `#741` は「npm flaky」より「workflow concurrency / Azure update retry」の問題として扱う方が筋だと判断し、[[meeting-report-draft]] にも反映した
 
 ## [2026-05-26 19:45] github-triage | `#121` と `#283` から `bug` ラベルを外し、`#872` の参考課題へ寄せた

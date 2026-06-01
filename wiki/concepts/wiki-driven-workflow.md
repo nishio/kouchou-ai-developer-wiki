@@ -73,6 +73,16 @@ main だけでは不十分なことがあるので、open PR や issue も併せ
 
 security / dependency 系の話題では、GitHub Security の Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) も live state として扱う。これは main clone や open PR 一覧だけでは拾えないため、定期的な保守観測に含める。ただし alert の具体的な脆弱性詳細は公開 wiki に転記せず、対応 issue / PR / 優先度判断だけを残す。2026-06-01 定例では Actions / CodeQL / Dependabot 警告が優先対応対象として共有されていた。[[meeting-minutes]]より
 
+### 公開 wiki に書かない情報
+
+この repo の `wiki/` は GitHub Pages で公開されるため、公開境界を先に決める。
+
+- Dependabot alerts の具体的な脆弱性詳細は公開 wiki に書かない。確認した事実を残す場合も、対応 issue / PR / 優先度判断 / 担当確認の粒度に留める。
+- Azure デモ環境などのデプロイ詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は載せない。
+- デプロイ詳細の一次置き場は Google Drive の **「広聴AI-Azureデモ環境」**。アクセス権は大木・西尾・小野(moai)。公開 wiki からは、設計判断・公開可能な課題・対応 issue / PR だけを参照する。
+
+これは「観測しない」という意味ではない。AI エージェントやメンテナは必要に応じて live state / private source を確認するが、filing-back する時に公開粒度へ落とす。`CLAUDE.md` より
+
 ### 答えた後
 
 有用な整理が生まれたら `wiki/analyses/` や既存 concept / source に filing-back し、`wiki/log.md` に記録する。  
@@ -133,3 +143,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-05-25: 議事録 query で `txt` export がリンク URL を落としうる点と、`html` export を補助線にする運用を追記
 - 2026-05-25: developer-wiki 自体の更新は PR 経由にせず、main 直接 push を基本にする運用を追記
 - 2026-06-01: Dependabot alerts を GitHub current state の定期観測対象として追記。公開 wiki には脆弱性詳細を転記しない方針も明記
+- 2026-06-01: 公開 wiki に Dependabot 脆弱性詳細とデプロイ詳細を書かない境界を追記。デプロイ詳細の一次置き場を Google Drive「広聴AI-Azureデモ環境」と明記

@@ -1,6 +1,6 @@
 ---
 name: deployment
-summary: "デプロイ — Azure 本番、静的サイト書き出し、PyPI リリース"
+summary: "デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する"
 type: concept
 sources:
   - github-dev-docs.md
@@ -8,27 +8,20 @@ sources:
   - pr-887-production-deploy-observation-2026-06-01.md
 ---
 
-## Azure（本番運用）
+## Azure（デモ環境・本番運用）
 
-[[dd2030]] の本番デプロイ先。`Makefile` に専用ターゲットが揃っている：
+Azure デモ環境の運用詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は、Google Drive の **「広聴AI-Azureデモ環境」** を一次置き場にする。アクセス権は大木・西尾・小野(moai)。`CLAUDE.md` より
 
-```
-azure-cli         azure-login        azure-build        azure-push
-azure-deploy      azure-info         azure-config-update
-azure-cleanup     azure-status       azure-apply-policies
-azure-save-env    azure-setup-all
-```
+公開 wiki に残すのは次の粒度に限定する。
 
-サービスごとの log ターゲットもある。詳細手順は `docs/deployment/azure.md`。
+- どの issue / PR がデプロイ運用に影響したか
+- どの設計判断が公開コードや docs に反映されたか
+- どの未解決課題を次に見るべきか
+- 非公開詳細を参照すべき場合の置き場
 
-- `.env.example` の注記：Azure 経路は `STORAGE_TYPE=azure_blob` 必須
-- [[ohki-shingo]] が Azure 環境を主担当（[[meeting-minutes]] 2025-07-09 で account 作成、admin 追加募集中）
-- main マージで自動デプロイする CI が 2025-07-30 に着地（Issue #642）
-- 公開デモ環境 `https://admin.kouchou-ai.dd2030.org/` は VM 上で手動運用
+2026-06-01 の `PR #887` 本番反映では、デプロイ成功判定と実際の反映状態にズレが出うること、また `public-viewer` の起動時 build が運用リスクになることが共有された。公開 wiki では詳細ログや実環境値は扱わず、恒久策として build / serve の責務分離と deploy readiness smoke を検討する、という課題粒度だけ残す。[[pr-887-production-deploy-observation-2026-06-01]]より [[meeting-minutes]]より
 
-2026-06-01 の `PR #887` 本番反映では、Azure Deployment workflow は success になったが、public-viewer の new revision はしばらく Ready にならず、stable URL は旧 ready revision を返していた。原因は二層で、(1) deploy confirmation が stable URL の 200 だけを見て new revision readiness を待っていない、(2) `public-viewer` は container 起動後に `entrypoint.sh` で `next build` を実行しており、1Gi memory 環境で TypeScript phase が exit 137 になり得る、というもの。暫定策は memory increase、恒久策は latest revision readiness と代表 report smoke を deploy check に入れること。[[pr-887-production-deploy-observation-2026-06-01]]より [[meeting-minutes]]より
-
-`public-viewer` の起動時 `next build` は、2025-03 の初期 Docker 化で「build時にAPIサーバーを参照するため、APIサーバーの起動を待ってからbuildを行う」ために入った。その後、monorepo / pnpm workspace / Turbopack / shared package の問題を runner image 側の copy 追加や `turbopack.root` で延命してきた経緯がある。詳細は [[public-viewer-runtime-build-history-2026-06-01]]。
+`public-viewer` の起動時 `next build` は、初期 Docker 化で「API 起動後に build したい」という設計から入った。その後の monorepo / pnpm workspace / shared package 化で runtime build の依存が増えたため、container 起動時 build をやめる方向が現在の改善軸になっている。詳細な実環境観測ではなく、設計上の経緯は [[public-viewer-runtime-build-history-2026-06-01]] に整理する。
 
 ## 静的サイト書き出し (GitHub Pages 等)
 
@@ -43,7 +36,7 @@ make client-build-static
 
 - SaaS ホスティング `kouchou-ai.dd2030.org`（体制不足で先送り）
 - 埋め込み fetch 型 HTML
-- BASIC 認証付き Azure ホスティング
+- 認証付きクラウドホスティング
 
 ## CLI からの静的 HTML 出力（2026-05 〜）
 
@@ -72,14 +65,15 @@ PR #825 で Python が直接自己完結型 `report.html` を吐けるように�
 ## Open Questions
 
 - 非エンジニアでもアクセスしやすい SaaS ホスト戦略
-- 自動デプロイの kill-switch / rollback プロセス
-- Azure Deployment の success 条件を stable URL 200 ではなく、latest revision readiness と代表 report URL の実動作確認へ寄せる具体実装
+- 自動デプロイの kill-switch / rollback プロセスを公開可能な抽象度でどう表現するか
+- Azure Deployment の success 条件をどの公開粒度で issue / PR 化するか
 
 ## Updates
 
 - 2026-05-17: 初回作成
 - 2026-05-18: PyPI 自動 publish の不足要件を整理した [[pypi-auto-release-requirements]] への導線を追加
-- 2026-05-18: `Azure Deployment` workflow で `No subscriptions found` による `azure/login@v2` failure を観測したが、同日 rerun では `Azure CLI ログイン` が成功した。少なくともこの事例は「恒久的な資格情報破損」と断定せず、一時的な Azure 側不調や secret / 権限状態の揺れも候補に残すべき
+- 2026-05-18: Azure Deployment workflow の一時失敗を観測したが、公開 wiki では資格情報・権限・実環境状態の詳細に踏み込まず、「一時的な外部環境不調や権限状態の揺れも候補に残す」粒度に留める
 - 2026-05-19: `analysis-core-v*` tag push 起点の自動 publish と、`0.1.1` failure / `0.1.2` success の実観測を反映
-- 2026-06-01: `PR #887` 本番反映で、Deploy Success が旧 ready revision の 200 による false positive になりうること、public-viewer startup `next build` が 1Gi memory で exit 137 になりうることを追記。暫定 memory increase と readiness / representative report smoke の必要性を整理
+- 2026-06-01: `PR #887` 本番反映で、デプロイ成功判定と実反映状態がズレうること、public-viewer startup build が運用リスクになることを公開可能な粒度で追記
 - 2026-06-01: `public-viewer` の runtime `next build` は初期 Docker 化からの API 起動待ち設計であり、以後の monorepo / Turbopack / runner stage copy 漏れ修正で温存されてきた経緯を [[public-viewer-runtime-build-history-2026-06-01]] に整理して導線を追加
+- 2026-06-01: Azure デモ環境などデプロイ詳細は公開 wiki に書かず、Google Drive「広聴AI-Azureデモ環境」を一次置き場にする方針へ更新

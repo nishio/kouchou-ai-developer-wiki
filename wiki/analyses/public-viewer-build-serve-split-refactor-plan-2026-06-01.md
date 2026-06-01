@@ -163,32 +163,32 @@ docker run --rm -p 3000:3000 \
 
 作業:
 
-- `Azure Deployment` の job timeout を 25〜30 分程度へ引き上げる
-- script 側 readiness timeout を 10 分程度で明示する
-- `az containerapp update` 後に latest revision を取得し、latest ready になるまで poll する
-- timeout 時は revision status / logs を出して fail する
+- job timeout と script 側 readiness timeout を分けて設計する
+- deploy update 後に new revision readiness を確認する
+- timeout 時は公開可能な範囲の status を出して fail する
 - representative report smoke を追加する
+- 実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順は公開 wiki に書かず、Google Drive「広聴AI-Azureデモ環境」側で扱う
 
 合格条件:
 
 - latest revision が Ready になるまで deploy success にならない
 - Ready にならない場合は GitHub Actions timeout ではなく、script 側 timeout の明示 error で落ちる
-- stable URL だけでなく representative report URL も見る
+- 公開 URL だけでなく representative report URL も見る
 
 ## Phase 5: Resource Re-evaluation
 
-目的: runtime build を消した後、2Gi が必要かを再評価する。
+目的: runtime build を消した後、暫定 resource 調整がまだ必要かを再評価する。
 
 作業:
 
-- 2Gi 暫定増強後に Phase 1〜4 を入れる
-- startup build が消えた後、1Gi に戻して revision readiness / memory pressure を観測する
-- `minReplicas: 1` を続けるか、cold start と固定費の tradeoff を別途検討する
+- 暫定 resource 調整後に Phase 1〜4 を入れる
+- startup build が消えた後、元の resource 水準へ戻して revision readiness / memory pressure を観測する
+- minimum replica 設定をどうするか、cold start と固定費の tradeoff を別途検討する
 
 合格条件:
 
-- 1Gi に戻しても deploy / startup / representative report smoke が安定する
-- 1Gi に戻せない場合、理由が runtime serve memory なのか別要因なのか切り分けられている
+- 元の resource 水準へ戻しても deploy / startup / representative report smoke が安定する
+- 戻せない場合、理由が runtime serve resource なのか別要因なのか切り分けられている
 
 ## Suggested PR Split
 
@@ -196,7 +196,7 @@ docker run --rm -p 3000:3000 \
 2. Dockerfile / entrypoint から runtime build を撤去する PR
 3. CI に API-less dynamic build と static export build checks を追加する PR
 4. Azure Deployment readiness / smoke を改善する PR
-5. memory 2Gi -> 1Gi の再評価 PR または infra change
+5. 暫定 resource 調整の再評価 PR または infra change
 
 この順序なら、各 PR の rollback 単位が小さく、runtime build 撤去前に dynamic build の正しさを確認できる。
 
@@ -211,9 +211,10 @@ docker run --rm -p 3000:3000 \
 
 - dynamic hosting でも metadata を API 由来にしたい場合、`generateMetadata()` を request-time に安全に寄せられるか。
 - `connection()` と `revalidate = 300` の組み合わせで、期待どおり API response が更新されるか。
-- representative report smoke の slug は固定 fixture にするか、本番 API から ready report を選ぶか。
+- representative report smoke の slug は固定 fixture にするか、本番 API から ready report を選ぶか。後者の具体値は公開 wiki に置かない。
 
 ## Updates
 
 - 2026-06-01: `codex/public-viewer-build-serve-split` / PR #888 で Phase 0〜3 を実装確認。baseline では API なし dynamic build が `/` / `/faq` の static generation timeout で止まり、実装後は API なし `pnpm --filter @kouchou-ai/public-viewer build`、fixture API あり `build:static`、runtime smoke (`/`, `/faq/`, `/example/`) が成功した。実装中に `[slug]` page へ `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため採用せず、non-export の `generateStaticParams() => []` と fallback metadata、runtime env 読み (`process.env[key]`) で request 時 API を読む形にした。手元 Docker daemon は未起動だったが、PR #888 の CI `client build` で API-less dynamic build、static export build、Docker build が成功した。CodeRabbit review 後、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認し、reporter-specific metadata を復元した。
 - 2026-06-01: 初版作成。dynamic build/API 依存除去、runtime build 撤去、CI、Azure readiness、resource reevaluation を段階分割。
+- 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、timeout / resource / revision / log の具体値を非公開運用側へ寄せる表現へ更新。

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-02 00:06	filing-back	公開 wiki の秘匿境界を更新
 2026-06-02 00:00	filing-back	Dependabot alerts 対応 PR #889 を作成
 2026-06-01 23:45	filing-back	Dependabot alerts の定期観測を運用メモ化
 2026-06-01 23:36	filing-back	PR #888 CodeRabbit review を反映
@@ -16,11 +17,11 @@
 2026-06-01 21:20	filing-back	public-viewer runtime build の歴史的経緯を整理
 2026-06-01 21:00	ingest	2026-06-01 定例議事録の取得と反映
 2026-06-01 20:51	filing-back	Deploy Success false positive の短い説明を追記
-2026-06-01 20:30	filing-back	#821 は SIGKILL 実例ではなく readiness lag と切り分け
+2026-06-01 20:30	filing-back	過去 deploy 観測を readiness lag と切り分け
 2026-06-01 20:21	filing-back	Deploy success false positive を #851 以前へ遡及
 2026-06-01 20:00	filing-back	Deploy success false positive は #887 固有ではない
-2026-06-01 19:44	filing-back	PR #887 production revision が self-recover
-2026-06-01 19:34	filing-back	PR #887 production revision の exit 137 を確認
+2026-06-01 19:44	filing-back	PR #887 production reflection を再確認
+2026-06-01 19:34	filing-back	PR #887 production runtime build risk を確認
 2026-06-01 17:52	filing-back	PR #887 production deploy false positive を追記
 2026-06-01 17:28	filing-back	PR #887 の scattergl CSP regression を整理
 2026-06-01 17:10	filing-back	open issue 124 件を subagent で全件 triage
