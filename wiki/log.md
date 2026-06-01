@@ -7,7 +7,7 @@
 
 - `codex/public-viewer-build-serve-split` / PR #888 で、dynamic hosting の API-less build、static export の fixture API build、Dockerfile build stage 化、entrypoint の `next start` 化を実装
 - baseline では API なし dynamic build が `/` / `/faq` の static generation timeout で止まり、実装後は Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が成功
-- [[public-viewer-build-serve-split-refactor-plan-2026-06-01]] と [[meeting-report-draft]] に、`[slug]` では `connection()` を採用しない実装判断と Docker daemon 未起動による未検証点を追記
+- PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が成功。[[public-viewer-build-serve-split-refactor-plan-2026-06-01]] と [[meeting-report-draft]] に、`[slug]` では `connection()` を採用しない実装判断を追記
 
 ## [2026-06-01 22:36] filing-back | Pages link check failure を修正
 

@@ -37,7 +37,7 @@ sources:
 ## 月曜にそのまま読む用 (2026-06-08 向け)
 
 - 進行中: `public-viewer` の startup `next build` 撤去に向けて、PR #888 (`codex/public-viewer-build-serve-split`) で実装を進めた。dynamic hosting は API なしで `next build`、static export は fixture API ありで build する形に分離し、container 起動は `next start` のみにした。
-  ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。Docker build は手元 daemon 未起動で未検証なので、CI の Docker build step で拾う。
+  ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が通過した。
 
 ## 次回定例向け詳細 (テーマ別)
 
