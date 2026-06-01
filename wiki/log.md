@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-02 00:29] filing-back | Dependabot alerts 対応 PR #889 を admin merge
+
+- PR #889 は最新 main を取り込んでも conflict なし。CodeRabbit の指摘には PR 本文とコメントで「latest ではなく advisory patched range 対応」と明記して対応
+- CodeQL workflow の python / javascript jobs は success、CodeRabbit は pass。GitHub Advanced Security の集約 `CodeQL` check-run だけ queued のまま残ったため、明示指示どおり admin merge
+- merge 後の Dependabot open alerts は 19 件から 6 件へ減少。alert 詳細は公開 wiki / PR 本文には転記していない
+
 ## [2026-06-02 00:06] filing-back | 公開 wiki の秘匿境界を更新
 
 - Dependabot alert の具体的な脆弱性詳細と、Azure デモ環境などデプロイ詳細を公開 wiki に書かない方針を `CLAUDE.md` / [[wiki-driven-workflow]] / [[deployment]] に追記

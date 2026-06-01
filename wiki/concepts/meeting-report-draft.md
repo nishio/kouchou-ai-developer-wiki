@@ -40,7 +40,7 @@ sources:
 - 進行中: `public-viewer` の startup `next build` 撤去に向けて、PR #888 (`codex/public-viewer-build-serve-split`) で実装を進めた。dynamic hosting は API なしで `next build`、static export は fixture API ありで build する形に分離し、container 起動は `next start` のみにした。
   ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が通過した。
 - wiki 運用: Dependabot alerts を GitHub current state の定期観測対象として `CLAUDE.md` / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に追記した。main / open PR / issue だけでは拾えない security live state として扱い、公開 wiki には脆弱性詳細を転記しない方針にした。あわせて、デプロイ詳細は公開 wiki に書かず Google Drive「広聴AI-Azureデモ環境」側で管理する方針に更新した。
-- 進行中: Dependabot alerts に対し、draft PR #889 (`codex/dependabot-alerts-2026-06-01`) を作成した。`pnpm.overrides` と `pnpm-lock.yaml` だけを更新し、audit / tests / build は通過。alert 詳細は公開 PR / wiki に転記していない。
+- main 済み: Dependabot alerts に対し、PR #889 (`codex/dependabot-alerts-2026-06-01`) を admin merge した。`pnpm.overrides` と `pnpm-lock.yaml` だけを更新し、audit / tests / build は通過。merge 後の Dependabot open alerts は 19 件から 6 件へ減った。alert 詳細は公開 PR / wiki に転記していない。
 
 ## 次回定例向け詳細 (テーマ別)
 
@@ -60,7 +60,7 @@ sources:
 
 - デプロイ詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run details、ログ、具体手順、secret / access 周辺は Google Drive「広聴AI-Azureデモ環境」側で扱う。
 - 公開 wiki に残すのは、設計判断・公開可能な課題・対応 issue / PR・次に見る論点の粒度にする。
-- 進行中 PR: #889 (`codex/dependabot-alerts-2026-06-01`)。open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていないため、差分上の干渉は小さい。
+- main 済み PR: #889 (`codex/dependabot-alerts-2026-06-01`)。open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていなかったため、差分上の干渉は小さかった。
 
 ## Open Questions
 
