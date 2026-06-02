@@ -72,10 +72,10 @@ sources:
 
 > 単に LLM に「KJ法で整理して」と投げるのは避けるべきです。それでは過程がブラックボックス化し、KJ法で重視される「発想の根拠・プロセス・産物が見える」性質が失われます。
 
-である。これは [[jigsaw-llm-grouping-experiment-output-2026-05-25]] が観測した「LLM grouping は top-level label では強いが scatter 互換は悪い」「分類根拠が `reason` 列にしか残らない」状況にも当てはまる。
+である。これは [[llm-grouping-experiment-output-2026-05-25]] が観測した「LLM grouping は top-level label では強いが scatter 互換は悪い」「分類根拠が `reason` 列にしか残らない」状況にも当てはまる。
 
 LLM grouping の次の改良点としては、`reason` を意思決定に乗る形式で残す（cluster ごと、boundary case ごと、unresolved case ごと）ことが、KJ法的観点では重要になる。  
-これは [[jigsaw-llm-grouping-implementation-plan]] の延長で `analysis_capabilities` の output に明示できる。
+これは [[llm-grouping-implementation-plan]] の延長で `analysis_capabilities` の output に明示できる。
 
 ## 6. 設計判断への落とし込み（優先度低）
 
@@ -109,4 +109,4 @@ current `kouchou-ai` の implementation backlog に対しては、本ブレス�
 
 ## Updates
 
-- 2026-05-25: 川喜田二郎 / KJ法 に接続するブレストを、product 設計原則の棚として整理。既存の「KJ法 prompt」言及（書籍 13.2.6）からは方法論側に展開され、ohki-shingo の公開UI要件、jigsaw LLM grouping、graph visualization 提案と複数地点で接続する
+- 2026-05-25: 川喜田二郎 / KJ法 に接続するブレストを、product 設計原則の棚として整理。既存の「KJ法 prompt」言及（書籍 13.2.6）からは方法論側に展開され、ohki-shingo の公開UI要件、LLM grouping、graph visualization 提案と複数地点で接続する

@@ -68,7 +68,7 @@ sources:
 
 ### A5. 多言語 i18n の扱い
 
-[[meeting-minutes]] 2026-01-26：「v5.0 リリースは日本語ユーザにフォーカス」が方針だが、Polis / Jigsaw への plugin 経由ブリッジは "maybe"。**英語版書籍／英語ユーザベース** との関係はオープン。
+[[meeting-minutes]] 2026-01-26：「v5.0 リリースは日本語ユーザにフォーカス」が方針だが、Polis など外部ツール への plugin 経由ブリッジは "maybe"。**英語版書籍／英語ユーザベース** との関係はオープン。
 
 ### A6. レビュー／マージ基準
 
@@ -159,7 +159,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 [[coding-agents]]：Devin / Copilot Agent の PR をどこまで人間が引き取るかの線引きは PR テンプレ以上に明文化されていない。draft 扱い＋ CLA 範囲は決まっているが、**マージ判断者の責任範囲は曖昧**。
 
-### B14. Jigsaw 系 LLM 分類の互換枝
+### B14. LLM grouping 系 LLM 分類の互換枝
 
 [[slack-dev-kouchouai-2026-q1]] 2026-02-11, 2026-02-25：**まずは `extraction, embedding` の後ろで LLM クラスタリングに分岐する** 方針が語られている。理由は、既存のパイプラインや可視化との両立を保ったまま分析プロセス切り替え部分を検証したいから。
 
@@ -216,9 +216,9 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-17: `apps/api/src/services/report_duplicate.py` / `docs/user-guide/reuse-report.md` / admin UI を確認し、レポート再利用機能は C から除外
 - 2026-05-17: 可視化 plugin 基盤は frontend 側で実装済み、LOCAL LLM HTTPS は main では未完了寄りに補正
 - 2026-05-17: `gh pr list` で open PR を確認し、C カテゴリが「main 未反映だが open PR に存在するもの」を含むことを明記
-- 2026-05-17: `#2_開発_広聴ai` ログから、Jigsaw 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加
+- 2026-05-17: `#2_開発_広聴ai` ログから、LLM grouping 系 LLM 分類の互換枝と taxonomy-guided 亜種を B に追加
 - 2026-05-18: A7 に、モバイルでは「静的画像 → 全体インタラクティブビュー」案も候補であることを追記
-- 2026-05-18: PR `#827` により、Jigsaw 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新
+- 2026-05-18: PR `#827` により、LLM grouping 系 LLM 分類の互換枝は doc-only の計画 PR として具体化した、と B14 を更新
 - 2026-05-19: `PR #825` / `PR #824` merge 後の current `main@55e93e1` を確認し、前者は CLI 観察用HTMLと Web 主経路を分けて整理し直し、後者は analysis 実行完了だが `/admin/models` が旧前提のまま、と補正
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
 - 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加

@@ -6,6 +6,13 @@ sources:
   - source-code.md
   - github-dev-docs.md
   - meeting-minutes.md
+  - nishio-source-freshness-criterion-2026-06-02.md
+  - nishio-llm-grouping-terminology-correction-2026-06-02.md
+  - nishio-one-factor-experiment-principle-2026-06-02.md
+  - one-factor-experiment-principle-2026-06-02.md
+  - codex-log-experiment-archive-cli-2026-06-02.md
+  - llm-grouping-400-tree-label-corpus-2026-06-02.md
+  - weekly-log-2026-05-20.md
 ---
 
 ## 目的
@@ -41,6 +48,13 @@ sources:
   ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が通過した。
 - wiki 運用: Dependabot alerts を GitHub current state の定期観測対象として `CLAUDE.md` / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に追記した。main / open PR / issue だけでは拾えない security live state として扱い、公開 wiki には脆弱性詳細を転記しない方針にした。あわせて、デプロイ詳細は公開 wiki に書かず Google Drive「広聴AI-Azureデモ環境」側で管理する方針に更新した。
 - main 済み: Dependabot alerts に対し、PR #889 (`codex/dependabot-alerts-2026-06-01`) を admin merge した。`pnpm.overrides` と `pnpm-lock.yaml` だけを更新し、audit / tests / build は通過。merge 後の Dependabot open alerts は 19 件から 6 件へ減った。alert 詳細は公開 PR / wiki に転記していない。
+- main 済み: CodeQL Action v3 の 2026-12 deprecation warning 対応として、PR #893 (`codex/codeql-action-v4`) を admin merge した。`.github/workflows/codeql.yml` の `init` / `autobuild` / `analyze` を `github/codeql-action/*@v4` へ更新し、workflow 構造・trigger・permissions は変えていない。
+- main 済み: Code scanning alerts 対応 PR #892 (`codex/code-scanning-fixes`) を admin merge した。admin の API URL 組み立て、static build endpoint、API エラー返却の公開可能な範囲を修正し、PR branch の code scanning open alerts は 0 件。alert 詳細は公開 wiki に転記していない。
+- main 済み: nishio authored の open PR を整理し、PR #893 → #890 → #892 → #863 の順で admin merge した。#863 は draft だったが、mergeable と checks pass を確認して ready 化してから merge した。merge 後の nishio authored open PR は 0 件。
+- 進行中: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、first slice として `codex/experiment-storage` で `analysis-core` に `--experiment-root` / `--experiment-id` を追加した。
+  さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次の採用判断用実験は `factor_under_test` を 1 つに絞る。
+- wiki 整理: 議事録 / Slack 由来情報の鮮度基準を [[wiki-driven-workflow]] と主要 source に追記した。今後はページ更新日ではなく、`last_checked` / `last_read` と `coverage` を見て「いつ時点まで読んだ観測か」を判断する。さらに [[jigsaw-sensemaker]] を追加し、Jigsaw Sensemaker は LLM grouping の一例だが、LLM grouping 全体を Jigsaw と呼ぶと混乱する、という呼び分けを整理した。
+- wiki ingest: `oss_weekly_reporter` の `2026-05-20_to_2026-05-27` weekly dump を [[weekly-log-2026-05-20]] として source 化した。公開 UI 要件 thread、MST / bridge 可視化 seed、実験 artifact 保存方針の Slack 上の前段を公式 dump で確認できた。
 
 ## 次回定例向け詳細 (テーマ別)
 
@@ -49,18 +63,38 @@ sources:
 - 進行中 PR: #888 (`codex/public-viewer-build-serve-split`)。`apps/public-viewer/entrypoint.sh` から runtime build を消し、`Dockerfile` の builder stage で `.next` を作る構成に変更した。
 - 実装判断: `/` と `/faq` は `connection()` で request-time rendering に寄せた。一方 `[slug]` に `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため、non-export では `generateStaticParams() => []` と fallback metadata、runtime env 読みで対応した。
 - CodeRabbit review 対応: `/` の `generateMetadata()` は `connection()` で request-time 化し、API-less build を維持しつつ reporter-specific metadata を復元した。`[slug]` metadata の request-time 化は `/example` 500 を起こすため見送った。
-- 次に見ること: Docker build を CI / daemon 起動済み環境で通すことと、別 PR で Azure deploy readiness poll / representative report smoke を入れること。
+- 次に見ること: Docker build を CI / daemon 起動済み環境で通すこと。Azure deploy readiness poll / representative report smoke は PR #890 で main 済みなので、次は main push 後の deploy 挙動を見る。
 
 ### security alert 運用
 
 - Dependabot alerts は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守では `https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot` を定期確認対象に含める。
 - 公開 wiki には alert の具体的な脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す。確認頻度と担当は次回定例で決めたい。
+- CodeQL Action v3 deprecation warning への対応は PR #893 で main 済み。`.github/workflows/codeql.yml` 内の CodeQL action 参照だけを v4 に上げ、security scan の対象言語や実行条件は維持している。
+- Code scanning alerts の実装修正は PR #892 で main 済み。PR branch では open alerts 0 件まで確認済みで、merge 後に main 側 alert が close されるかを見る。
 
 ### public wiki の公開境界
 
 - デプロイ詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run details、ログ、具体手順、secret / access 周辺は Google Drive「広聴AI-Azureデモ環境」側で扱う。
 - 公開 wiki に残すのは、設計判断・公開可能な課題・対応 issue / PR・次に見る論点の粒度にする。
-- main 済み PR: #889 (`codex/dependabot-alerts-2026-06-01`)。open PR #888 / #863 は `package.json` / `pnpm-lock.yaml` を触っていなかったため、差分上の干渉は小さかった。
+- main 済み PR: #889 (`codex/dependabot-alerts-2026-06-01`), #890, #892, #893, #863。open PR #888 は `package.json` / `pnpm-lock.yaml` を触っていないため、差分上の干渉は小さい。
+
+### CLI pipeline 実験 lane
+
+- [[cli-pipeline-experiment-roadmap-2026-06-02]] を追加し、CLI / analysis-core を pipeline variant、judge、view prototype の実験場として位置づけ直した。
+- 追加で [[clustering-labeling-comparison-corpus-2026-06-02]] を作成し、judge 改善の前に dataset / tree_run / labelling_run / human_observation / judge_run を分けて蓄積する必要があると補正した。
+- [[experiment-result-storage-policy-2026-06-02]] を追加し、実験結果の保存先を `work/` scratch、`raw/experiments/` raw snapshot、`wiki/` public summary の 3 層に分けた。`CLAUDE.md` にも運用ルールとして追記済み。
+- 進行中 branch: `codex/experiment-storage`。`analysis-core` CLI に `--experiment-root` / `--experiment-id` / `--experiment-overwrite` を足し、既存 output から `manifest.json`、`datasets.jsonl`、`tree_runs.jsonl`、`labelling_runs.jsonl`、artifact copy を作る first slice を実装した。対象テスト 13 件と ruff は通過。
+- [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加し、既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に移した。`bundles/tree_label_matrix.md` / `.html` で top-level labels と `[8,40]` refinement を横比較できる。
+- [[one-factor-experiment-principle-2026-06-02]] を追加し、複数要素を同時に変えた run は exploratory、採用判断用の clean experiment は current `main` baseline から `factor_under_test` を 1 つだけ変える、という原則を明文化した。
+- 次の順序は、judge / evidence contract → ラベル生成入力 → label/refinement → Mandalart mock → sticky board mock。Mandalart / 付箋ビューは最初から Web default にせず、standalone HTML / JSON の CLI artifact として読みやすさを確認する。
+- 次に見ること: corpus の 4 observation を judge v1 が拾えるか。ただし judge v1 や label 改善へ進む時は、tree 固定で labelling process だけを変える、または label output 固定で judge rubric だけを変える形に切る。`#880` マンダラートや付箋ビューは、ラベル品質 loop と接続する view prototype として扱う。
+
+### source freshness 運用
+
+- [[nishio-source-freshness-criterion-2026-06-02]] を追加し、議事録 / Slack source は「いつ時点まで読んだか」を freshness marker として明示する方針にした。
+- [[meeting-minutes]] には `last_checked: 2026-06-01` と coverage を追加。Slack source では [[slack-dev-kouchouai-2025-q4]] / [[slack-dev-kouchouai-2026-q1]] / [[slack-kouchouai-algorithm-dev]] / [[weekly-log-2026-05-06]] に `last_read` と coverage を追記した。
+- [[weekly-log-2026-05-20]] を追加し、Slack 由来の最新読解 marker を 2026-05-20_to_2026-05-27 / `data@d0e340c96c05` まで進めた。
+- 次に見ること: 今後 Slack source を増やす時、この marker を必須 frontmatter にするか。`oss_weekly_reporter` 自体の最新化日と、Wiki が実際に読んだ対象週を分ける必要があるか。
 
 ## Open Questions
 
@@ -69,6 +103,18 @@ sources:
 ## Updates
 
 - 2026-06-01: 2026-06-01 定例後に [[meeting-report-2026-06-01]] へ rotate し、本ページを 2026-06-08 向けの空テンプレートへ戻した
+- 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加し、CLI pipeline 実験 lane に「探索 corpus と clean experiment を分け、採用判断は 1 要素ずつ変える」方針を追記
+- 2026-06-02: [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加し、既存 LLM grouping 400 件実験を raw comparison corpus に移したことを追記
+- 2026-06-02: `codex/experiment-storage` で `analysis-core` CLI に実験 archive first slice を実装したことを CLI pipeline 実験 lane に追記
+- 2026-06-02: [[experiment-result-storage-policy-2026-06-02]] と `CLAUDE.md` に実験結果の 3 層保存方針を追加
+- 2026-06-02: [[clustering-labeling-comparison-corpus-2026-06-02]] を追加し、ラベル品質実験は judge 改善の前に tree / labelling output 比較コーパスを作る順序へ補正
+- 2026-06-02: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、次回定例向けに追記
+- 2026-06-02: nishio authored open PR #893 / #890 / #892 / #863 を admin merge したことを追記
+- 2026-06-02: CodeQL Action v3 deprecation warning 対応として、PR #893 (`codex/codeql-action-v4`) で CodeQL workflow の action 参照を v4 へ更新したことを追記
+- 2026-06-02: Code scanning alerts 対応 PR #892 の作成を追記
+- 2026-06-02: 議事録 / Slack 由来情報の freshness marker を [[wiki-driven-workflow]] と主要 source に追記
+- 2026-06-02: [[jigsaw-sensemaker]] を追加し、Jigsaw Sensemaker と LLM grouping の呼び分けを整理。禁止語 lint は不要として `scripts/lint_wiki.py` から撤去
+- 2026-06-02: `oss_weekly_reporter` の 2026-05-20_to_2026-05-27 weekly dump を source 化し、公開 UI / MST 可視化 / 実験 artifact 保存方針の前段として反映
 - 2026-06-01: Dependabot 脆弱性詳細とデプロイ詳細を公開 wiki に書かない方針を次回定例向け議題に追加
 - 2026-05-31: 「議題候補」セクションを status 報告と分ける運用を追加。2026-06-01 定例で、developer-quickstart 再設計、組織内デモ役 / SaaS ホスト型、議題候補常設化を相談対象にした
 - 2026-05-30: 月曜読み上げ用要約を冒頭に追加し、本文をテーマ別に束ね直した

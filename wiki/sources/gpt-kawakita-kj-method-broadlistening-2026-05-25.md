@@ -98,7 +98,7 @@ AI:
 - [[broad-listening-book-extractions]] が記録した「KJ法 / 表札 という日本語専門用語をプロンプトに載せると label 品質が上がる」（書籍 13.2.6）は、本ブレストの理論的裏付けと読める。「単に KJ法 prompt を使う」ことと「KJ法的設計原則を product に通す」ことは別問題だと整理できる。
 - [[broadlistening]] の「散布図タイプ vs Long Context タイプ」二分類に対し、本ブレストは **どちらの系統であれ KJ法的な原則（原文復帰、既存カテゴリ非適用、表札は人間、少数残存、現場返却）が要る** と主張する。
 - [[public-ui-requirements-for-broadlistening]] が ohki-shingo の整理として書いた公開UI 7 要件と、本ブレストの設計原則（特に「原文に戻れる」「少数・矛盾を残す」）は重なる部分がある。
-- [[jigsaw-llm-grouping-experiment]] の `analysis_mode=llm_grouping` 設計判断は、本ブレストの「`LLMにKJ法やらせて` は避けるべき」と整合的（LLM 直分類だけで終わらせず、人間が混沌と向き合う足場として位置づける）。
+- [[llm-grouping-experiment]] の `analysis_mode=llm_grouping` 設計判断は、本ブレストの「`LLMにKJ法やらせて` は避けるべき」と整合的（LLM 直分類だけで終わらせず、人間が混沌と向き合う足場として位置づける）。
 - [[kensuzuki-broad-listening-insight-types-2025-11-29]] の「ブロードリスニングは用途ごとに欲しいインサイトが違う」と本ブレストの「川喜田的には公共的仮説の生成が目的」は補完関係にある。前者は用途別、後者は方法論的視座。
 
 ## Open Questions

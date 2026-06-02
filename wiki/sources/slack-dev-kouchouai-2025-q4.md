@@ -3,8 +3,11 @@ name: slack-dev-kouchouai-2025-q4
 summary: "`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2025-10-01 〜 2025-12-31）— 現行方式の限界認識、plugin 化、v4/v5 二段構え"
 type: source
 url: https://github.com/nishio/oss_weekly_reporter/tree/data/data
+last_read: 2026-05-17
+coverage: "2025-10-01〜2025-12-31 のうち設計判断が濃い 7 週"
 sources:
   - init.txt
+  - nishio-source-freshness-criterion-2026-06-02.md
 ---
 
 ## What it is
@@ -21,11 +24,15 @@ sources:
 
 2025 4Q は、広聴AIの現行アルゴリズムや散布図 UI の価値を認めつつ、**それだけでは深いインサイト探索に限界がある** という認識が固まり、そこから plugin 化・pip 化・v4/v5 の二段構えへ繋がっていく時期。
 
+## Freshness marker
+
+この source の鮮度基準は、**2026-05-17 に `oss_weekly_reporter` から 2025 4Q の対象 7 週を読んで `raw/oss_weekly_reporter/2025-q4-dev-kouchou-ai/` に固定した時点**。対象は `#2_開発_広聴ai` の選択週であり、2025 4Q の全 Slack 発言や他 channel を網羅するものではない。[[nishio-source-freshness-criterion-2026-06-02]]より
+
 ## Coverage by topic
 
 - **現行方式の価値と限界**: 全体像把握や「抜け漏れ発見」には効くが、実務家向けの深い洞察にはしんどい
 - **埋め込み散布図方式の理論的弱点**: Slack では `embeddings.pkl` が UMAP 後 2D だという認識が語られていること、賛否が同一クラスタに入りやすいこと、少数意見が潰れやすいこと
-- **SenseMaker / Jigsaw への関心**: 「切り口を先に作ってから再分類する」方式への志向、時間とコストを払うオプションとしての扱い
+- **LLM grouping / sensemaking への関心**: 「切り口を先に作ってから再分類する」方式への志向、時間とコストを払うオプションとしての扱い
 - **plugin / workflow 構想**: GUI ノードエディタではなく JSON/YAML によるカスタマイズを現実路線とする
 - **v4 安定化と v5 plugin 化の分離**: まず v4.0.0 安定版、次に落ち着いてリファクタして v5.0.0
 - **analysis-core の pip 化**: 「広聴AIを plugin platform にする」より先に、分析部分を pip 化して他ツールから再利用可能にする案
@@ -45,3 +52,4 @@ sources:
 
 - 2026-05-17: `oss_weekly_reporter` から 2025 4Q の設計判断が濃い 7 週分を `raw/` に取り込み
 - 2026-05-17: `embeddings.pkl` の扱いについて、Slack 上の認識とコード実装がズレる点を Open Questions に追記
+- 2026-06-02: source の鮮度基準として `last_read` / `coverage` と Freshness marker を明示

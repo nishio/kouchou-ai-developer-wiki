@@ -128,7 +128,7 @@ nishio の元提案では「LLM で N:N 類似関係を抽出し、関係の強�
 - [[niizuma-thread-algorithm-critique]] が「分析 artifact / 表示 artifact / 説明 artifact を分けるべき」と整理した方向の **具体的な visualization 設計案** として読める。bridge edge は「説明 artifact」の機能も担う。
 - [[tokoroten-spectral-clustering-reading]] の「TTTC 的 spectral は 2D 幾何の後始末」読みに対し、こちらは **2D 幾何そのものを graph drawing で作り直す** 方向。UMAP に依存しない。
 - [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]] の LLM pairwise graph は、この設計の入力（意味関係層）として自然に接続する。
-- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] が「LLM grouping は top-level label では強いが scatter 互換は悪い」と観測したことへの応答：scatter 自体を作り直す方向。
+- [[llm-grouping-experiment-output-2026-05-25]] が「LLM grouping は top-level label では強いが scatter 互換は悪い」と観測したことへの応答：scatter 自体を作り直す方向。
 
 ## Open Questions
 
@@ -141,7 +141,7 @@ nishio の元提案では「LLM で N:N 類似関係を抽出し、関係の強�
 
 - 並行ブレスト: [[gpt-umap-clustering-bertopic-deep-research-2026-05-25]] / [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]]
 - 議論の出発点: [[niizuma-thread-algorithm-critique]] / [[slack-niizuma-umap-kmeans-thread-2026-03-18]]
-- 関連既存実験: [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]]
+- 関連既存実験: [[llm-grouping-experiment-output-2026-05-25]] / [[llm-grouping-experiment]]
 - 派生 analysis: [[graph-visualization-proposal-2026-05-25]]
 
 ## Updates

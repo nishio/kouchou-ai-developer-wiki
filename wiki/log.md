@@ -3,6 +3,137 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-02 21:41] filing-back | Jigsaw Sensemaker と LLM grouping の呼び分けを整理
+
+- nishio の追加指摘を受け、禁止語 lint は不要と判断して `scripts/lint_wiki.py` の禁止語チェックを撤去
+- [[jigsaw-sensemaker]] を entity として作成し、Jigsaw Sensemaker は広義の LLM grouping の一例だが、LLM grouping 全体を Jigsaw と呼ぶと混乱する、と整理
+- `CLAUDE.md` / [[nishio-llm-grouping-terminology-correction-2026-06-02]] / [[meeting-report-draft]] を、固有名詞と一般カテゴリを呼び分ける方針へ更新
+
+## [2026-06-02 21:01] filing-back | pipeline 実験は 1 要素ずつ変える原則を追加
+
+- nishio の「実験をやってみるのは大事だが、main から一度にいろいろ変えると解釈が難しい」という指摘を [[nishio-one-factor-experiment-principle-2026-06-02]] として source 化
+- [[one-factor-experiment-principle-2026-06-02]] を追加し、既存 artifact 由来の comparison corpus は exploratory、採用判断用の clean experiment は current `main` baseline から `factor_under_test` を 1 つだけ変える方針に整理
+- [[clustering-labeling-comparison-corpus-2026-06-02]] / [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[experiment-result-storage-policy-2026-06-02]] / [[llm-grouping-400-tree-label-corpus-2026-06-02]] / [[meeting-report-draft]] / `CLAUDE.md` に反映
+
+## [2026-06-02 20:50] filing-back | LLM grouping の旧呼称を一般名へ統一
+
+- nishio の「LLM grouping を特定企業名由来の旧呼称で呼ばない」という指摘を [[nishio-llm-grouping-terminology-correction-2026-06-02]] として source 化
+- 関連ページの stem / summary / 本文 / log / generator script 参照を `LLM grouping` / `LLM 直接グルーピング` へ統一し、旧 stem は `llm-grouping-*` 系へ rename
+- `CLAUDE.md` に用語ルールを追加し、`python3 scripts/lint_wiki.py` で broken link 0 を確認
+
+## [2026-06-02 20:45] filing-back | LLM grouping 400 件実験を raw comparison corpus に移行
+
+- 既存 artifact branch `codex/remaining-experiment-artifacts-2026-05-29` の LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化
+- 1 dataset / 5 tree run / 10 labelling run / 5 judge run / 4 observation を `manifest.json` と JSONL に保存し、`bundles/tree_label_matrix.md` / `.html` を生成
+- [[llm-grouping-400-tree-label-corpus-2026-06-02]] を source 化し、[[experiment-result-storage-policy-2026-06-02]] / [[clustering-labeling-comparison-corpus-2026-06-02]] / [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[meeting-report-draft]] に反映。次はこの corpus 上で judge / evidence contract を較正する
+
+## [2026-06-02 20:36] filing-back | CLI 実験 archive first slice を実装
+
+- nishio の「やってみよう、まず何をする？」を受け、judge / view より前に実験結果を比較可能に保存する first slice として `codex/experiment-storage` を作成
+- `analysis-core` CLI に `--experiment-root` / `--experiment-id` / `--experiment-overwrite` を追加し、1 回の pipeline output から `manifest.json`、dataset / tree / labelling JSONL、artifact copy を作る実装を追加
+- [[codex-log-experiment-archive-cli-2026-06-02]] を source 化し、[[experiment-result-storage-policy-2026-06-02]] / [[clustering-labeling-comparison-corpus-2026-06-02]] / [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[meeting-report-draft]] に反映。対象テスト 13 件と ruff / diff check は通過
+
+## [2026-06-02 20:18] ingest | 2026-05-20 週の Slack / GitHub weekly dump を source 化
+
+- `work/oss_weekly_reporter` を `data@d0e340c96c05` まで fast-forward し、`2026-05-20_to_2026-05-27` の `ai_reports/kouchou-ai.md` / `ai_reports/slack.md` / raw Slack / raw GitHub を確認
+- [[weekly-log-2026-05-20]] を新規作成し、kouchou-ai GitHub の refactor / Windows / CSP / LLM grouping と、Slack の公開 UI 要件・MST/bridge 可視化・実験 artifact 保存方針を整理
+- [[slack-public-ui-requirements-2026-05-23]] を公式 weekly dump 確認済みに更新し、[[graph-visualization-proposal-2026-05-25]] / [[experiment-result-storage-policy-2026-06-02]] / [[meeting-report-draft]] に source として接続
+
+## [2026-06-02 20:06] filing-back | 議事録と Slack の鮮度基準を明示
+
+- nishio の「議事録をいつ時点まで読んだか、Slack をいつ時点まで読んだかを情報の新しさの基準として書くべき」という指摘を [[nishio-source-freshness-criterion-2026-06-02]] として source 化
+- [[wiki-driven-workflow]] に、Wiki の鮮度はページ更新日ではなく source の最終取得・読解日と coverage で判断する方針を追記
+- [[meeting-minutes]] に `last_checked: 2026-06-01`、主要 Slack source に `last_read` / `coverage` と Freshness marker を追記。`CLAUDE.md` と [[meeting-report-draft]] にも運用として反映
+
+## [2026-06-02 20:02] filing-back | 実験結果の保存先を 3 層に分ける
+
+- nishio の「実験結果をどこにどのように蓄積するかが宙に浮いている」という指摘を [[nishio-experiment-result-storage-question-2026-06-02]] として source 化し、[[experiment-result-storage-policy-2026-06-02]] を新規作成
+- 方針は `work/kouchou-ai*/.../outputs/` = scratch、`raw/experiments/<experiment_id>/` = gitignored な一次 artifact snapshot、`wiki/sources` / `wiki/analyses` = public manifest / summary / 判断の 3 層
+- [[clustering-labeling-comparison-corpus-2026-06-02]] / [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[meeting-report-draft]] / `CLAUDE.md` に反映。比較コーパスの first slice は storage convention 固定から始める
+
+## [2026-06-02 19:58] filing-back | judge 改善の前に tree × labelling output 比較コーパスを置く
+
+- nishio の追加メモを [[nishio-clustering-labeling-comparison-corpus-2026-06-02]] として source 化し、[[clustering-labeling-comparison-corpus-2026-06-02]] を新規作成
+- 結論は、品質 judge 改善に進む前に `dataset / tree_run / labelling_run / human_observation / judge_run` を分けて蓄積し、各 clustering method が作る tree と、その tree を入力にした labelling process の label output を比較できる corpus を作ること
+- [[cli-pipeline-experiment-roadmap-2026-06-02]] の順序を `comparison corpus → judge/evidence contract → label input → label/refinement → view prototype` に補正し、[[label-quality-redesign-reset-2026-05-30]] と [[meeting-report-draft]] にも反映
+
+## [2026-06-02 19:48] filing-back | CLI で pipeline を試行錯誤して発展させる順序を整理
+
+- nishio のメモを [[nishio-cli-pipeline-ideas-2026-06-02]] として source 化し、[[cli-pipeline-experiment-roadmap-2026-06-02]] を新規作成
+- 結論は、Web UI は simple に保ち、CLI / analysis-core 側で judge / evidence artifact / label 改善 / マンダラート・付箋ビューを比較可能な artifact として育てる方針
+- 順序は「品質 judge / evidence contract → ラベル生成入力 → label/refinement → Mandalart mock → sticky board mock」。ラベル品質改善の採用判断は、judge が人間判断と揃ってからにする
+- `work/kouchou-ai/` は `git fetch origin && git pull --ff-only` で current main `3c5d1f026757` まで最新化して参照。ラベル付け sampling / public-viewer 個別データ表示の前提が残っていることを [[source-code]] にも追記
+
+## [2026-06-02 13:30] ingest | annotation #21-#27 を見落としていた、改善プロセスを修正
+
+- 「ingest したたくさんのコメントの指摘をほとんど無視しているように見える。改善プロセスがうまく動いていないから」との指摘を受け、annotation 13:10 追加分 (#21-#27) が ingest 漏れだったことを確認。これまで「処理した」と log に書きながら、annotation の literal な指摘箇所だけ surface 修正して根底の原則を文書全体に適用できていなかった、という指摘も含む
+- 7 件を [[deploy-success-but-nothing-changed-story-2026-06-01]] に反映:
+  - #21 (Codex 引用過剰詳細): 2 節 Codex 引用から `latestRevisionName` / `latestReadyRevisionName` / `stable root の 200` を削除し短縮
+  - #22 (判定の誤りを本文で補う): 「デプロイ成功の判定そのものが嘘をついていた」を本文の自分の声で書き、Codex 引用に依存しない reveal に
+  - #25 (「殺されては再起動し...」不要): 削除
+  - #26 (へんなたとえ): 「来たアクセスに返事する係」「自分のアプリを一から作り直す」「本番の現場で、毎回、コンパイルからやり直していた」を「起動するたびに、配信する web アプリを一から build してから動き始める作り」へ書き直し
+  - #27 (メモリ増やせば直る / 固定費が上がる思考): 4 節後段に「止血策はすぐ思いつく。1Gi → 2Gi。だが build のときだけ必要なメモリを 24 時間動いているサーバに常時割り当てると固定費が上がる」を追加し、そのうえで歴史調査に行く流れに
+- 10 節 bullet、Open Questions の対応箇所、4 節冒頭の「立ち上がりが遅い」→「立ち上がりきれない」も同時に揃えた
+- 改善プロセス自体の問題として、以下を再確認:
+  - (a) ingest を求められたら、自分の「前回ここまで処理した」という記憶ではなく、`raw/annotation-*.md` 全件に対して `status: pending` を grep し直す。記憶ベースで判断するから今回 #21-#27 を逃した
+  - (b) 指摘されたら literal 行だけでなく、同じ原則が他に当てはまる箇所も文書全体で走査する
+  - 当初 (a) に「毎ラウンド polling する」と書いていたが、それは busywork でノイズを増やすだけ。ingest や feedback の trigger があるときに sweep する方向に修正
+
+## [2026-06-02 13:22] filing-back | story の「ずっと同じ偽の成功」「ずっと壊れていた」を遡及範囲に合わせて訂正
+
+- 「『ずっと』は正しくないって ingest しなかったっけ？なぜ無視している？」との指摘を受け、3 節と 10 節の「ずっと」表現を訂正
+- 既存 ingest ([[pr-887-production-deploy-observation-2026-06-01]] / 過去 deploy 遡及メモ) では、`#821` (2026-04-11) までは実例を確認、それ以前は Actions logs が保存期間切れで失効していて検証不可、と書いていたのに story では continuous occurrence にしてしまっていた
+- 3 節: 「少なくとも 2 ヶ月前から、ずっと同じ偽の成功を出し続けていた」→「少なくとも 2 ヶ月前のデプロイにも、同じ偽の成功の実例が混じっていた。それより前は Actions の logs が保存期間切れで失効していて、同じ粒度では確認できない」
+- 3 節: 「今回のバグは今日壊れたのではなく、ずっと壊れていた」→「少なくとも 2 ヶ月前から同じ壊れ方が記録に残っていた」
+- 10 節 bullet も同様に修正
+- ingest 済みの観測を story 段階で書きこぼさない、every deploy が false positive だったわけではないので past deploys を一律 broken と書かない、というルールを再確認
+
+## [2026-06-02 13:15] filing-back | story 3 節から「なぜ今日見えたか」の speculation を撤去
+
+- 「『普段は新版がすぐ Ready になって入れ替わる』は past deploys が smooth だったと仮定していて根拠が無い、Kill されていたのだから」との指摘を受け再修正
+- 3 節からは「窓」「Ready になる時間」「普段は気づかない」など、なぜ今日に限って見えたかの speculation を全て撤去。「もとから壊れていた」「今日は人間がたまたま『直ってない』と気づいた」だけに削る
+- Kill されていた事実は 4 節の本物の発見として保留し、3 節締めは「新しいバージョンに何が起きていたかは次節」という open question 渡しに変更
+- 自分が観測していない past deploys の挙動を、ストーリー流れの都合で推定しないルールが、annotation #20 を起点に再確認された
+
+## [2026-06-02 13:08] filing-back | annotation #20 の反映不足を story 3-4 節に反映
+
+- 「コメントで指摘した内容が原稿の修正に生かされてない」との指摘を受け、annotation #20 (今回 SIGKILL で死んでたのを発見したのでは？) を再評価
+- 3 節の「別の事情で...遅れた」「たまたま気づけた」の枠組みを撤去。「新しいバージョンが Ready にならない『窓』が異常に長く続いたことで、もとから壊れていた偽の成功が初めて人間に見えた」「何が新版を Ready にさせなかったかは次節で発見される本当の事件」へ書き直し
+- 4 節冒頭も「立ち上がりが遅かった理由」→「立ち上がりきれない理由」に修正し、SIGKILL crash loop と整合
+- 「たまたま遅かったから気づけた」と「実は SIGKILL で殺されていた、というのを発見した」は意味が違う、という annotation の本意をストーリーの骨格に組み込んだ
+
+## [2026-06-02 13:03] ingest | nishio による story 1-2 節の文体編集を取り込み
+
+- [[deploy-success-but-nothing-changed-story-2026-06-01]] 1 節から「正確には、画面の何もかもが…ユーザに届くものは何ひとつ変わっていない」の重複説明を削除、語尾を「ひと言だけ投げる」→「ひと言投げる」、「返事を返してきた」→「返事を返した」に整理
+- Codex 引用直前の lead を短縮することで、「直っていない」→ 人間の問い → Codex 返答 の流れがより直結する
+- 資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] には該当文が無かったため cross-page の追従は不要
+
+## [2026-06-02 12:58] ingest | Codex 会話ログ 2 ターン (17:47 / 19:33) を source 化し、story と資料版に反映
+
+- 2026-06-01 17:47 / 19:33 の Codex とのやりとりを raw `codex-log-pr-887-deploy-investigation-2026-06-01.txt` として保存し、[[codex-log-pr-887-deploy-investigation-2026-06-01]] を source ページ化
+- Turn 1 (「直ってなくないですか？」→ false positive 確認) と Turn 2 (「az login したけど見れるようになった？」→ SIGKILL / OOM 特定) の verbatim 引用を [[deploy-success-but-nothing-changed-story-2026-06-01]] 第 1-2 節と第 4 節、[[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] 第 2 / 第 5 ステップに反映
+- これで「人間が短い問いを投げて Agent が裏取りを返す」型が、想像ではなく一次ログとして固定化された
+
+## [2026-06-02 12:50] ingest | annotation #16-#20 を [[deploy-success-but-nothing-changed-story-2026-06-01]] に反映
+
+- nishio による違和感マーカー 5 件 (#16-#20) を ingest。すべて attribution 訂正と SIGKILL 発見の扱いに関する指摘
+- PR #887 を AI 製と断定する表現を削除、「Agent が自発的に live state を見にいった」「Agent が別の問いに進んだ」を「人間が調査を頼んだ」「人間がもうひとつ問いを足した」に書き直し
+- 3-4 節を「たまたま立ち上がりが遅くて気づけた」から「立ち上がりが SIGKILL で殺されていた、というのが今回の発見」に再構成し、午前中の偽成功と一本の線でつなげる形に
+- 10 節に役割分担 (人間=次の問いを選ぶ、Agent=実際に掘って観測を残す) を明文化。資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] は事実列挙のみで attribution の問題は無く、今回は無変更
+- annotation 5 件は status `pending` → `processed` に更新
+
+## [2026-06-02 00:57] filing-back | runtime build 撤去エピソードを資料版とストーリー版に分離
+
+- [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] は PR 番号・検証コマンド・revision 名込みの資料寄り技術ページとして復元
+- [[deploy-success-but-nothing-changed-story-2026-06-01]] を新規作成。「デプロイ成功なのに画面が変わらない」を hook に、PR 番号や技術用語を冒頭に出さず前提知識ゼロでも読めるストーリー版として分離
+- 相互に「詳細は資料版へ」「ストーリーで読みたい場合はこちらへ」とリンクし、技術詳細とメタ視点 (Wiki つき Coding Agent の動き方) を別 entry point から辿れるようにした
+
+## [2026-06-02 00:46] filing-back | Code scanning alerts 対応 PR #892 を作成
+
+- GitHub code scanning alerts に対応する draft PR #892 (`codex/code-scanning-fixes`) を作成。公開 wiki には alert 詳細を転記せず、対応 PR と検証結果だけを記録
+- admin の API URL 組み立て、static-site-builder の build endpoint、API のエラー返却を公開可能な粒度で修正
+- PR branch の code scanning open alerts は 0 件。targeted Jest / static-site-builder build / API ruff・pytest は通過。admin lint 全体は既存の formatting / import / hook dependency 指摘で失敗
+
 ## [2026-06-02 00:29] filing-back | Dependabot alerts 対応 PR #889 を admin merge
 
 - PR #889 は最新 main を取り込んでも conflict なし。CodeRabbit の指摘には PR 本文とコメントで「latest ではなく advisory patched range 対応」と明記して対応
@@ -312,7 +443,7 @@
 
 ## [2026-05-30 01:32] filing-back | 過去ラベル出力 4 候補を rubric judge で再評価
 
-- `codex/remaining-experiment-wip` の rubric judge を、退避済み artifact branch の `jigsaw_sample_comments_400_hierarchical_8_40_refine_{none,setwise,contrast,balanced}` level 1 に対して `gpt-4o-mini` / `sample-mode all` で実行
+- `codex/remaining-experiment-wip` の rubric judge を、退避済み artifact branch の `llm_grouping_sample_comments_400_hierarchical_8_40_refine_{none,setwise,contrast,balanced}` level 1 に対して `gpt-4o-mini` / `sample-mode all` で実行
 - 合計 usage は input 145,652 / output 29,187 / total 174,839 tokens、OpenAI 公開単価ベースの概算費用は $0.03936。結果 JSON は `work/kouchou-ai-remaining-experiment-wip/experiments/evaluation_report/outputs/rubric_eval_2026-05-30/` に保存
 - score_rate は `none=1.0`, `setwise=1.0`, `balanced=1.0`, `contrast=0.9766`、fatal flag は 0 件。v0 rubric は過去の human / Claude judge が拾ったラベルずれに対して甘く、criteria 厳格化か evidence 抽出前処理が次の課題
 
@@ -396,7 +527,7 @@
 
 ## [2026-05-29 03:02] filing-back | dirty 実験 clone を snapshot branch へ退避して clean main に戻した
 
-- `work/kouchou-ai/` の dirty 状態から、Jigsaw 系実験の入力・config・出力 artifact と Next.js 生成差分を branch `codex/remaining-experiment-artifacts-2026-05-29`、commit `b56ac9b` として push
+- `work/kouchou-ai/` の dirty 状態から、LLM grouping 系実験の入力・config・出力 artifact と Next.js 生成差分を branch `codex/remaining-experiment-artifacts-2026-05-29`、commit `b56ac9b` として push
 - 新規 source [[remaining-experiment-artifacts-snapshot-2026-05-29]] を追加し、何を退避したか、なぜ `work/kouchou-ai/` を dirty のまま残さないか、実験再開時の branch を記録した
 - 退避後は `work/kouchou-ai/` を `main` へ戻して `origin/main@6955202` まで fast-forward し、developer-wiki から参照する一次 clone を clean 状態へ復帰させた
 
@@ -452,103 +583,3 @@
 - `work/kouchou-ai-mst-visualization-prototype/` で 422 argument / 8 clusters の可視化を、MST overlay, supervised UMAP, semi-supervised UMAP, LDA, centroid-MDS まで比較し、embedding 由来散布図を主図にすると「離れすぎ」か「混ざりすぎ」のどちらかに寄りやすいと整理した
 - 新規 analysis [[semantic-island-map-prototype-2026-05-26]] を追加し、cluster 間配置と cluster 内配置を分離して点を所属島から出さない `semantic island map` を、`LLM grouping` 向け cluster-first view の基準線として記録した
 - [[meeting-report-draft]] も、MST 試作の途中経過ではなく「最終的にどの方向を採るか」が読める書き方へ更新した
-
-## [2026-05-26 20:01] github-ci | draft PR `#873` の checks を確認し、失敗は CodeQL action 取得エラーだと切り分け
-
-- `gh pr checks 873 --watch` で draft PR `#873` の checks を確認し、`Analyze (javascript)` は pass、`CodeRabbit` は skipped、`CodeQL/Analyze (python)` だけが fail していることを確認
-- failed log を見ると、原因は `github/codeql-action@v3` archive の取得失敗 (`An action could not be found at the URI ...`) であり、今回の `.github/workflows/azure-deploy.yml` 修正内容による failure ではなかった
-- [[meeting-report-draft]] にも「PR #873 の check failure は CodeQL infrastructure 側で、concurrency 修正自体の失敗ではない」と追記
-
-## [2026-05-26 19:56] filing-back | `#741` 向けに Azure deploy の workflow concurrency を追加
-
-- issue `#741` の assignee を確認して `nishio` を assign し、dirty な `work/kouchou-ai/` は触らず `origin/main` から clean worktree `work/kouchou-ai-issue-741/` を作成
-- branch `codex/issue-741-azure-deploy-concurrency` で `.github/workflows/azure-deploy.yml` に `concurrency: group: azure-deploy-${{ github.ref }}, cancel-in-progress: false` を追加し、main 向け deploy を 1 本ずつ順番待ちさせる最小修正を入れた
-- 直近 failure の主因が deploy 更新競合だったため、まずは npm retry ではなく workflow-level serialization を優先する判断として [[issue-741-current-state-2026-05-26]] と整合させた
-
-## [2026-05-26 19:51] filing-back | `#741` の現況を整理し、主因を Azure 更新競合へ読み替え
-
-- 新規 analysis [[issue-741-current-state-2026-05-26]] を追加し、`Azure Deployment` の recent runs を再読した結果、2026-05-21 の連続 failure は repo 再編直後の build-context / admin build breakage で、その後の main では解消済みだと整理
-- 直近の実質的な failure は、同時間帯の別 success run とぶつかった Azure deploy 更新競合だと読んだ。具体 run ID / log details は公開 wiki に残さない
-- これにより `#741` は「npm flaky」より「workflow concurrency / Azure update retry」の問題として扱う方が筋だと判断し、[[meeting-report-draft]] にも反映した
-
-## [2026-05-26 19:45] github-triage | `#121` と `#283` から `bug` ラベルを外し、`#872` の参考課題へ寄せた
-
-- GitHub 上で `#121 [BUG] 縦長画面での散布図の表示がおかしい` と `#283 [BUG] ScatterChartの全画面表示で要約文が「全画面終了」ボタンの後ろに隠れないようにする処理が不安定` から `bug` ラベルを除去
-- 上位 issue `#872` が「スマホでは別ビューを提供する方針を検討する」入口になったため、両 issue は緊急 bug ではなく mobile/scatter UX の参考課題として扱う方針へ揃えた
-- [[remaining-bug-issues-2026-05-26]] と [[meeting-report-draft]] も、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は `[BUG]` title は残るが label は外れた状態だと分かるよう更新した
-
-## [2026-05-26 19:43] filing-back | スマホ向けに散布図と別ビューを検討する issue `#872` を追加
-
-- GitHub 上で新規 issue `#872 [FEATURE] スマホ環境では散布図と別ビューを提供する方針を検討する` を作成
-- `#121` の「portrait では tap tooltip が plot 幅の大半を覆う」観測と、`#283` の「mobile-sized viewport でも hover overlap が起こりうる」観測を背景に、responsive 調整だけでなく mobile 専用ビュー方針を明示的に検討する入口として切り出した
-- 関連 issue は `#121` `#283` `#266` `#52` を本文で束ね、静的画像 / クラスタ一覧 / 簡略図などを候補として列挙した
-
-## [2026-05-26 19:33] filing-back | `#121` を実スマホ想定で再観測し、portrait では tap tooltip の広さが主要な使いづらさだと整理
-
-- Browser で `http://localhost:3000/example` の fullscreen 散布図を `390x844` / `360x640` / `844x390` / `1280x720` で比較し、portrait では annotation は bounds 内に収まるが、249px 幅ラベルが画面に対して相対的に大きく、散布図の余白がかなり圧迫されることを確認
-- 実スマホ寄りの tap 相当操作では tooltip は `#283` のようにボタン裏へ潜るのではなく button 下へ出る一方、`390x844` では tooltip 幅が `363-366px` と plot 幅 `390px` の大半を覆い、散布図を読み続けにくい
-- [[remaining-bug-issues-2026-05-26]] の `#121` 節に、`#283` の hover 問題とは別に「縦長では tap tooltip が広すぎる」という実スマホ寄りの使いづらさを追記
-
-## [2026-05-26 19:29] filing-back | `#283` の viewport 別再確認で、一般的なスマホ幅でも overlap が出ることを確認
-
-- Browser で fullscreen 散布図の hover overlap を viewport 別に再確認し、`390x844` で 4 件、`393x852` で 5 件、`412x915` で 3 件、`430x932` では 0 件、`360x640` で 8 件、`360x520` で 7 件を観測
-- これにより `#283` は「かなり極端に小さい viewport だけ」の問題ではなく、一般的なスマホ幅相当でも hover 条件次第で再現しうると判断した。ただし観測は touch ではなく mobile-sized viewport 上の desktop hover である点を明記した
-
-## [2026-05-26 19:27] filing-back | `#283` を browser で再観測し、極小 viewport で hover overlap を再現
-
-- `work/kouchou-ai/` で `public-viewer` と `dummy-server` を起動し、Browser で `http://localhost:3000/example` を fullscreen 表示して `#283` の再現条件を再観測
-- viewport `420x720` では hover がボタン直下に寄る程度だったが、`360x520` まで縮めると `fullScreenButtons` と hover text が重なる座標を少なくとも 7 点確認し、issue 本文の「極小サイズで不安定」は current main でも再現すると判断
-- [[remaining-bug-issues-2026-05-26]] の `#283` 節 Updates に、button rect と overlap 件数を含む観測結果を追記
-
-## [2026-05-26 19:19] github-triage | `#478` から `bug` ラベルを外し、改善 feature 寄りの扱いへ揃えた
-
-- GitHub 上で `#478 [BUG] Clientの意見の説明が禁則処理ができていない` から `bug` ラベルを除去
-- [[remaining-bug-issues-2026-05-26]] と [[meeting-report-draft]] も更新し、`#478` は title 上の `[BUG]` は残るが triage 上は改善 feature 寄りの低優先先として扱う状態に揃えた
-
-## [2026-05-26 19:17] filing-back | `#478` を bug というより改善 feature 寄りの低優先先として位置づけ直し
-
-- [[remaining-bug-issues-2026-05-26]] を更新し、`#478` は原因コードこそ current main に残るものの、解法が禁則処理実装か HTML tooltip 再設計に限られ、コストに対する効果が小さいため、bug というより改善 feature 寄りの低優先先として扱う判断を追記
-- [[meeting-report-draft]] にも同じ判断を反映し、残存 `[BUG]` のうち積極的に詰める対象から `#478` を外し、`#741` `#283` `#121` を相対的に上位へ置く形にした
-
-## [2026-05-26 18:37] filing-back | 残っている `[BUG]` issue を live state と current main で棚卸し
-
-- 新規 analysis [[remaining-bug-issues-2026-05-26]] を追加し、2026-05-26 時点で open の `[BUG]` issue が `#741` `#731` `#478` `#283` `#121` の 5 件であることを整理
-- `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` を照合すると、`#478` `#283` `#121` は散布図 UI の未解決課題、`#741` は Azure deploy workflow の flakiness としてまだ active と判断した
-- `#731` は current `setup_win.bat` から issue 本文の日本語バッチ行が既に消えており stale 寄りだが、日本語 UX を戻す open PR `#863` が残っているため、close するか PR を進めるかの判断論点として切り出した
-
-## [2026-05-26 15:36] filing-back | 旧 issue `#629` を close し、`fetch_reports` 論点を `#870` / `#871` に再編
-
-- GitHub 上で `#629 [BUG] scripts/fetch_reports.pyでは「限定公開」「非公開」状態のレポートがバックアップできない` を close
-- 新規 issue `#870 [REFACTOR] fetch_reports.py を migration / 緊急救済専用へ降格し、通常運用から外す` を作成し、script の役割整理・docs 反映・通常 workflow からの分離を追う形にした
-- 新規 issue `#871 [BUG] Azure deploy の safety を fetch_reports 依存から Blob Storage health check に切り替える` を作成し、deploy safety の本線を API scrape ではなく Blob health check に置き換える実装課題として分離した
-
-## [2026-05-26 15:31] filing-back | `fetch_reports.py` を migration 手段として読み直し、storage health check 置換案を整理
-
-- 新規 analysis [[fetch-reports-deprecation-and-storage-health-2026-05-26]] を追加し、`fetch_reports.py` が「ストレージ機能が無かったころの deploy 前バックアップ」の名残であり、current `ReportSyncService` / `initialize_from_storage()` 本線とはずれていることを整理
-- `.github/workflows/azure-deploy.yml` が今も deploy 前に `python3 tools/scripts/fetch_reports.py` を叩いている一方、script 自体は `PUBLIC_API_KEY` で public `/reports` を読むだけなので non-public report を救えない、と current contract の破綻点を明記
-- 代案として、`fetch_reports.py` を migration / 緊急救済専用へ降格し、通常の deploy safety は Azure Blob の read/write を軽く確認する storage health check に置き換える方が筋だと整理
-
-## [2026-05-26 15:10] filing-back | log を「人間向け 7 日 log.md」と「AI 向け全件 log.txt」に分離、無検出 lint は記録対象外に
-
-- 振り返り対象: `wiki/log.md` 1631 行 / 285 entries のうち lint type が 102 件 (36%) で、内容はすべて「無検出」のため信号対雑音比を悪化させていた。また全 entry が単一ファイルに積み上がる構造で、長期で読みづらくなる前提が無かった
-- 設計: `index.md` / `index.txt` 分離と同じパターンを log にも適用。`log.md` = 人間向け直近 7 日 full detail、`log.txt` = AI 向け全件 compact (`<ts>\t<type>\t<title>`)
-- 新規スクリプト `scripts/refresh_logs.py` を追加。log.md の現状を parse → 既存 log.txt と merge → log.txt を newest-first で regenerate、続けて log.md を直近 7 日分に trim。`type=lint` の entry は両方から自動除外
-- 移行結果: log.md 1631 → 952 行 / 127 entries (直近 7 日, cutoff 2026-05-19 14:30)。log.txt 189 行 / 184 entries (全期間)。lint 102 件と 7 日超過 58 件が log.md から落ちた
-- `CLAUDE.md` を更新: 直系ディレクトリ説明、Ingest / Filing-back の手順、Lint セクションの「無検出は記録しない」、新規「### Log メンテ方針」セクション
-
-## [2026-05-26 14:30] filing-back | wiki index を「人間向け curated index.md」と「AI 向け全件 index.txt」に分離
-
-- 振り返り対象: `wiki/index.md` が 172 行・`wiki/log.md` が 1631 行 (285 entries 全部 2026-05、うち lint が 36%) と発散。新規コントリビュータ向けの onboarding 導線が 130 行のフラットカタログに埋もれていた
-- ユーザ判断: AI ナビゲーションは Markdown である必要がなく、ファイル名+要約の text file で十分。`index.md`（人間向け curated nav）と `index.txt`（AI 向け全件カタログ）を分離する
-- 新規スクリプト `scripts/build_index_txt.py` を追加し、各ページの frontmatter から `<stem>\t<type>\t<path>\t<summary>` を 156 ページ分生成。`wiki/index.txt` は auto-generated として commit する
-- `wiki/index.md` を 172 → 47 行に縮小。Concepts (16) / Entities (12) の curated list は残し、Sources (61) / Analyses (66) のフラットリストは削除して `index.txt` ポインタへ集約。onboarding 5 ページ導線も維持
-- `scripts/lint_wiki.py` の「index.md 未登録」チェックを「index.txt 未登録」チェックへ切り替え。auto-gen の同期忘れだけを検出する形にして、index.md の curation 自由度を確保
-- `CLAUDE.md` に `index.txt` regenerate 手順と meeting-report rotate ルールを追記
-- lint 通過: 156 pages、broken link 0、index.txt 未登録 0、frontmatter 不備 0
-
-## [2026-05-26 14:03] ingest | 2026-05-25 定例後の議事録再取得と meeting-report-draft の rotate
-
-- Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` で 7534 行になっていることを確認。今回会は「大リファクタリング完了」「LLM grouping 実験 / ラベル refinement 実験」「Issues 棚卸し」「デジタル庁RAG話題」が主議題
-- 議事録内で nishio 本人が developer-wiki について「人間が直接読むには情報多すぎ」「indexが溢れたらthinking effort多めで再構成したらいい」と言及している点をメモ。index/log の情報密度問題は本人認知済み
-- `wiki/concepts/meeting-report-draft.md` の旧内容（月曜版・次回向け 12 項目・Updates 47 件）を新規 [[meeting-report-2026-05-25]] へ rotate し、draft 本体は 2026-06-01 向けに空テンプレへ戻した。`## 過去回` セクションから archive を辿れる形にし、Open Question の「snapshot を切るか継続か」は snapshot 方針で解消
-- `wiki/index.md` にも archive ページを追加。`scripts/lint_wiki.py` は壊れた wikilink 0 / index 未登録 0 / frontmatter 不備 0 で通過

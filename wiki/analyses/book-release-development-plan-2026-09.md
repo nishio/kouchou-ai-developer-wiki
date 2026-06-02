@@ -100,7 +100,7 @@ sources:
 - workflow engine の default 化判断
 - capability / requirements 判定の整合
 - frontend plugin 基盤と backend 側の説明責務整理
-- Jigsaw 系など次の分析モードを受けるための土台整理
+- LLM grouping 系など次の分析モードを受けるための土台整理
 
 ただし、何でも同時に入れるのではなく、**9 月までに一貫した v5 ストーリーになる順番** で進める。
 

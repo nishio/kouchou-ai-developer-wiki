@@ -28,7 +28,7 @@ nasuka は、想定ユーザーを大きく「政党」と「自治体」と整�
 
 nasuka のアルゴリズム観は、派手な新手法よりも、まず入力と出力の品質を現場で確認できるようにする方向に寄っている。抽出が prompt に引っ張られて関係ないテキストを含む問題、部分的に処理されないデータ、タイトルが抽象的すぎる問題、短い入力から過剰に意見を生成する問題など、失敗モードが具体的に挙がっている。[[meeting-minutes]]より
 
-そのうえで `flexible-text-analyzer` の共有は、embedding を使わず LLM only でトピック抽出と割当をする選択肢を示していた。nishio のメモでは、これは分類が説明しやすくなる可能性がある一方、散布図は出ないという tradeoff と整理されている。後の Jigsaw / LLM grouping 系の議論を考えると、nasuka の実験はかなり早い段階で「散布図互換ではない分析モード」の入口を示していた。[[meeting-minutes]]より
+そのうえで `flexible-text-analyzer` の共有は、embedding を使わず LLM only でトピック抽出と割当をする選択肢を示していた。nishio のメモでは、これは分類が説明しやすくなる可能性がある一方、散布図は出ないという tradeoff と整理されている。後の LLM grouping 系の議論を考えると、nasuka の実験はかなり早い段階で「散布図互換ではない分析モード」の入口を示していた。[[meeting-minutes]]より
 
 ## Governance
 
@@ -63,7 +63,7 @@ nasuka の発言から引くなら、次の開発優先度は単体機能より 
 5. **facilitation role と domain contributor を分ける**  
    特定政治勢力に近い contributor が実利用知見を持ち込むことは価値がある。一方、会議進行・対外顔役・優先順位判断は中立に見える必要がある。この 2 つを「参加可否」ではなく「役割分担」として設計するのが現実的である。[[meeting-minutes]]より
 
-この 5 点は、今の `analysis-core` / Jigsaw 系実験とも接続する。`llm_grouping` や label refinement の評価を進める時も、単発 judge だけでなく、失敗例を残し、同一入力で比較し、人間が直した結果を次の prompt / model 改善に戻す loop が必要になる。[[meeting-minutes]]より
+この 5 点は、今の `analysis-core` / LLM grouping 系実験とも接続する。`llm_grouping` や label refinement の評価を進める時も、単発 judge だけでなく、失敗例を残し、同一入力で比較し、人間が直した結果を次の prompt / model 改善に戻す loop が必要になる。[[meeting-minutes]]より
 
 ## Open Questions
 

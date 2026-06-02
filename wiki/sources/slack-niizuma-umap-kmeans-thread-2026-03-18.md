@@ -17,7 +17,7 @@ sources:
 - `UMAP` 後クラスタリングへの違和感を、新妻氏がかなり技術的に言語化している
 - nishio 側も「先に 2D にするのは性能劣化が大きい」という先行研究を引いて概ね同意している
 - ただし「分析上もっとも素直な構成」と「2D 散布図として綺麗に見える構成」は一致しない、という product 側の制約も同時に露出している
-- さらに supervised `UMAP`、`spherical k-means`、`TTTC Turbo` / `Sensemaker` のような LLM 直分類へ議論が分岐する
+- さらに supervised `UMAP`、`spherical k-means`、`TTTC Turbo` などの LLM 直接分類` のような LLM 直分類へ議論が分岐する
 
 という点で、単なる批判メモではなく **次の設計分岐の見取り図** になっている。[[slack-kouchouai-algorithm-dev]]より
 
@@ -41,7 +41,7 @@ nishio は、先に 2D にしてからクラスタリングする構成は性能
 
 ### 4. 分岐案: supervised `UMAP` と LLM 直分類
 
-tokoroten は、クラスタ結果を考慮して 2D に落としたいなら supervised `UMAP` があると指摘し、加えて現代なら `TTTC Turbo` や `Sensemaker` のように embedding を介さず LLM で直接分類した方が精度は高いだろうと述べる。[[slack-kouchouai-algorithm-dev]]より
+tokoroten は、クラスタ結果を考慮して 2D に落としたいなら supervised `UMAP` があると指摘し、加えて現代なら `TTTC Turbo` など` のように embedding を介さず LLM で直接分類した方が精度は高いだろうと述べる。[[slack-kouchouai-algorithm-dev]]より
 
 新妻氏はこれに対し、`TTTC Turbo` 型はマスコミ利用上は説明しやすく実務インセンティブもあると認めつつ、**「LLM が分類した以上の説明がしにくい」ことを個人的には気にしている** と返す。  
 そのため新妻氏にとっての関心は、単に精度の高い置換先ではなく、一定以上の説明責務を担保できるアルゴリズムの確保にある。[[slack-kouchouai-algorithm-dev]]より
@@ -50,7 +50,7 @@ tokoroten は、クラスタ結果を考慮して 2D に落としたいなら su
 
 - この thread を設計判断として読んだ整理は [[niizuma-thread-algorithm-critique]]
 - チャンネル全体の広い論点整理は [[slack-algorithm-themes]]
-- `UMAP` 批判から Jigsaw / LLM grouping に繋がる流れは [[jigsaw-sensemaker-history]]
+- `UMAP` 批判から LLM grouping に繋がる流れは [[llm-grouping-background-history]]
 
 ## Open Questions
 

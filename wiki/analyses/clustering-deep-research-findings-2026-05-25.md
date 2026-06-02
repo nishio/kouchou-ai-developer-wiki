@@ -55,7 +55,7 @@ bucket 4 （BERTopic 系 pipeline はどこで clustering をしているか）�
 である。[[gpt-umap-clustering-bertopic-deep-research-2026-05-25]]より
 
 これは current `kouchou-ai` の `analysis_mode=llm_grouping` 設計と整合する。  
-[[jigsaw-llm-grouping-experiment-output-2026-05-25]] が「LLM grouping は top-level label では強いが scatter 互換は悪い」と観測したのは、まさに **clustering backbone + LLM labeler という現代の落としどころ** に対応するパターンとも読める。
+[[llm-grouping-experiment-output-2026-05-25]] が「LLM grouping は top-level label では強いが scatter 互換は悪い」と観測したのは、まさに **clustering backbone + LLM labeler という現代の落としどころ** に対応するパターンとも読める。
 
 設計判断としては、
 
@@ -63,7 +63,7 @@ bucket 4 （BERTopic 系 pipeline はどこで clustering をしているか）�
 - ただし c-TF-IDF の topic 表現をそのままユーザに見せる UI は古い
 - LLM labeler + interactive merge/split + 代表文書 + 境界事例を返す contract が必要
 
-となる。これは [[jigsaw-llm-grouping-implementation-plan]] の方向（`analysis_mode` + `analysis_capabilities` + viewer `requirements`）と矛盾しない。
+となる。これは [[llm-grouping-implementation-plan]] の方向（`analysis_mode` + `analysis_capabilities` + viewer `requirements`）と矛盾しない。
 
 ## 5. 数十件規模では LLM pairwise + spectral / agglomerative が筋
 
@@ -91,7 +91,7 @@ current `kouchou-ai` の Web UI は 10,000 件超を想定しており、数十�
 - UX（飛地の少なさ、drill-down、編集容易性）
 - コスト、再実行安定性
 
-これらは **同一 winner を返さない**。 [[niizuma-thread-algorithm-critique]] と [[jigsaw-llm-grouping-experiment-output-2026-05-25]] が既に示している通り、1 つの algorithm score に畳むと設計判断を誤る。
+これらは **同一 winner を返さない**。 [[niizuma-thread-algorithm-critique]] と [[llm-grouping-experiment-output-2026-05-25]] が既に示している通り、1 つの algorithm score に畳むと設計判断を誤る。
 
 survey 計画の評価軸分離方針（bucket 5 / 6）は、Deep Research 後も維持すべきだ。
 
@@ -119,7 +119,7 @@ survey 計画の評価軸分離方針（bucket 5 / 6）は、Deep Research 後�
 
 1. **`analysis_mode` を data scale で切り分ける** — 数十件用と 1 万件用は別 plugin。current Web UI は大規模前提だが、`policy-pr-hub` 系の小規模 UI を切り出すか、`analysis-core` の plugin として明示する。
 2. **UMAP `n_components` を可変化する** — clustering 用は 15D〜25D、表示用は 2D、で同一 embedding から両方を出す。これは [[niizuma-thread-algorithm-critique]] の「分析 artifact / 表示 artifact / 説明 artifact 分離」と直接対応する。
-3. **LLM labeler を BERTopic 系 backbone に重ねる契約を整える** — [[jigsaw-llm-grouping-implementation-plan]] の延長線で、`representative_docs` を analysis-core の output に追加する。
+3. **LLM labeler を BERTopic 系 backbone に重ねる契約を整える** — [[llm-grouping-implementation-plan]] の延長線で、`representative_docs` を analysis-core の output に追加する。
 4. **小規模専用の LLM pairwise + spectral plugin を実証する** — チームみらい 300 件規模で試す価値が高い。実装より前に [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]] の推奨プロトコルを 1 度動かしてみる。
 
 ただし、これらは **すべて Deep Research の応答であって、current `kouchou-ai` の implementation backlog 上の優先順位とは別** である。  

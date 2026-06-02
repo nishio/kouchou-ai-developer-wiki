@@ -3,6 +3,27 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-02 21:41	filing-back	Jigsaw Sensemaker と LLM grouping の呼び分けを整理
+2026-06-02 21:01	filing-back	pipeline 実験は 1 要素ずつ変える原則を追加
+2026-06-02 20:50	filing-back	LLM grouping の旧呼称を一般名へ統一
+2026-06-02 20:45	filing-back	LLM grouping 400 件実験を raw comparison corpus に移行
+2026-06-02 20:36	filing-back	CLI 実験 archive first slice を実装
+2026-06-02 20:18	ingest	2026-05-20 週の Slack / GitHub weekly dump を source 化
+2026-06-02 20:06	filing-back	議事録と Slack の鮮度基準を明示
+2026-06-02 20:02	filing-back	実験結果の保存先を 3 層に分ける
+2026-06-02 19:58	filing-back	judge 改善の前に tree × labelling output 比較コーパスを置く
+2026-06-02 19:48	filing-back	CLI で pipeline を試行錯誤して発展させる順序を整理
+2026-06-02 13:30	ingest	annotation #21-#27 を見落としていた、改善プロセスを修正
+2026-06-02 13:22	filing-back	story の「ずっと同じ偽の成功」「ずっと壊れていた」を遡及範囲に合わせて訂正
+2026-06-02 13:15	filing-back	story 3 節から「なぜ今日見えたか」の speculation を撤去
+2026-06-02 13:08	filing-back	annotation #20 の反映不足を story 3-4 節に反映
+2026-06-02 13:03	ingest	nishio による story 1-2 節の文体編集を取り込み
+2026-06-02 12:58	ingest	Codex 会話ログ 2 ターン (17:47 / 19:33) を source 化し、story と資料版に反映
+2026-06-02 12:50	ingest	annotation #16-#20 を [[deploy-success-but-nothing-changed-story-2026-06-01]] に反映
+2026-06-02 00:57	filing-back	runtime build 撤去エピソードを資料版とストーリー版に分離
+2026-06-02 00:57	filing-back	runtime build 撤去エピソードをストーリー形式でまとめ
+2026-06-02 00:57	filing-back	PR #887→#888 runtime build 撤去エピソードをまとめ
+2026-06-02 00:46	filing-back	Code scanning alerts 対応 PR #892 を作成
 2026-06-02 00:29	filing-back	Dependabot alerts 対応 PR #889 を admin merge
 2026-06-02 00:06	filing-back	公開 wiki の秘匿境界を更新
 2026-06-02 00:00	filing-back	Dependabot alerts 対応 PR #889 を作成
@@ -131,11 +152,11 @@
 2026-05-25 10:03	filing-back	`broadlistening-research` の 2025-02 judge を使ってラベル品質も比較
 2026-05-25 10:00	filing-back	同一 args で従来 hierarchical clustering と比較
 2026-05-25 09:58	filing-back	400 件日本語データで `analysis_mode=llm_grouping` の初回実験結果を記録
-2026-05-25 09:41	filing-back	Jigsaw LLM grouping の実験ページを追加し、400 行日本語データ採用を記録
+2026-05-25 09:41	filing-back	LLM grouping LLM grouping の実験ページを追加し、400 行日本語データ採用を記録
 2026-05-25 09:32	filing-back	`analysis_mode=llm_grouping` の最小実装を analysis-core に追加
 2026-05-25 09:26	filing-back	議事録 HTML から URL 棚卸しを抽出し、派生 source 化
 2026-05-25 09:16	filing-back	議事録 txt export のリンク欠落リスクと html 補助取得を運用へ反映
-2026-05-25 08:49	filing-back	Jigsaw 的 LLM 分類の implementation plan を current tree に即して整理
+2026-05-25 08:49	filing-back	LLM groupingの implementation plan を current tree に即して整理
 2026-05-25 08:38	filing-back	Windows setup PR #863 の保留状態とローカル除外設定を反映
 2026-05-25 00:19	ingest	方向性会議 2 本と鈴木健ブログを source 化
 2026-05-24 00:06	filing-back	PR #865 merge を反映し、Refactoring Status を current `main` に同期
@@ -147,12 +168,12 @@
 2026-05-23 13:02	filing-back	workflow plugin の legacy config 重複削減と回帰テスト追加を記録
 2026-05-23 12:50	filing-back	API 通常フローの manual smoke と workflow path bug 修正を testing / meeting report に追記
 2026-05-23 12:28	filing-back	API -> subprocess -> analysis-core の手元 smoke test を testing / meeting report に追記
-2026-05-23 11:32	filing-back	定例会議向け下書きに Jigsaw 系第2モードの長期論点を追記
+2026-05-23 11:32	filing-back	定例会議向け下書きに LLM grouping 系第2モードの長期論点を追記
 2026-05-23 10:02	filing-back	current roadmap を open issues / wiki から再整理
 2026-05-23 10:02	filing-back	issue-centric roadmap を補う長期戦略ページを追加
 2026-05-23 10:02	filing-back	第2分析モードを散布図前提が縛る問題を長期戦略へ明記
-2026-05-23 10:02	filing-back	Jigsaw Sensemaker と散布図の緊張関係を時系列で整理
-2026-05-23 10:02	filing-back	Jigsaw系第2モードの移行戦略を一文で要約
+2026-05-23 10:02	filing-back	LLM 直接グルーピング と散布図の緊張関係を時系列で整理
+2026-05-23 10:02	filing-back	LLM grouping系第2モードの移行戦略を一文で要約
 2026-05-23 00:10	ingest	Docker Desktop 回避策（WSL2 + Docker Engine）の GPT ブレストを反映
 2026-05-22 23:55	filing-back	`.bat` から PowerShell へ逃がす判断理由を source / analysis 化
 2026-05-22 23:45	ingest	Windows 配布形態に関する nishio ↔ GPT ブレストを取り込み

@@ -60,7 +60,7 @@ sources:
 - 問い: 「散布図を 2026-09 書籍リリース時点まで温存」「より良い view が見つかれば併用→デフォルト切替」という時間軸スタンス ([[open-decisions]] A1) を、具体的にどんな比較基準で切り替えるか
 - 思考の最小単位: 散布図が今担っている説明責務 5 要素 ([[public-ui-requirements-for-broadlistening]]) を、`semantic island map` などの代替で何 % 満たせれば併用 / 切替に進むかを書く
 - 決まれば動けること: prototype 評価の合否ラインができる
-- 関連: [[jigsaw-sensemaker-history]], [[ohki-discussion-reflection-2026-05-25]]
+- 関連: [[llm-grouping-background-history]], [[ohki-discussion-reflection-2026-05-25]]
 
 ### 2-2. `semantic island map` の合否基準 (構造把握用主図候補)
 
@@ -98,7 +98,7 @@ sources:
 - 問い: `llm_grouping` (#866 で merge) の後、`label refinement` / `interpretation_artifacts` / 次の view 用 layout 生成などをどう mode と直交させるか
 - 思考の最小単位: mode と option の二軸で、現在の `hierarchical_default` と将来 mode 候補 3 つを表にする
 - 決まれば動けること: 次の analysis_mode を追加する時の workflow / spec 切り出し方が決まる
-- 関連: [[jigsaw-llm-grouping-implementation-plan]], [[plugin-system]]
+- 関連: [[llm-grouping-implementation-plan]], [[plugin-system]]
 
 ## 4. 公開・運用の摩擦 (重要だが直近の思考優先度は下)
 

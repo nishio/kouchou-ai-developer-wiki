@@ -39,7 +39,7 @@ sources:
 
 利用者視点では、これは [[usage-modes]] にある **CLI モード** のコアにあたる。Web UI モードでも計算自体はこのパイプラインを共有するが、表示経路は `public-viewer` 側で分かれる。
 
-## Jigsaw 系 LLM 分類をどう差し込む想定だったか
+## LLM grouping 系 LLM 分類をどう差し込む想定だったか
 
 [[slack-dev-kouchouai-2026-q1]] 2026-02-11 週では、近い将来の案として **`extraction, embedding` の後に LLM ベースのクラスタリングへ分岐する枝** が語られている。これは理論上の最適形ではなく、まずは **既存のパイプラインや可視化と両立する形で分析切り替え部分を検証する** ための互換性優先案。
 
@@ -103,21 +103,21 @@ sources:
 - 短期は `analysis_mode=llm_grouping` を追加しつつ `embedding` を残し、`x/y` と `cluster-level-*` を従来フォーマットで出して viewer 互換を維持する
 - 長期は `analysis_capabilities` を実データから自動導出し、可視化 mode の可否を `requirements` で判定する
 
-これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **Jigsaw Sensemaker 的なもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。Jigsaw 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
+これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **LLM 直接グルーピングのもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。LLM grouping 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
 ## Open Questions
 
 - `extraction.skip: true` オプションの実装（複数回希望されているが未着地、議事メモ 2026-05-18 見出し時点）
 - レポート再利用（Issue #19）は 2026-02 に「実装し終わった」報告あり、現状確認が必要
 - 散布図の維持／削除：「散布図を見て満足する時代ではない」(ken-san, 2025-10-01) vs [[nishio]]「少なくとも 2026-09 書籍版リリース時点までは温存し、より良い可視化が見つかれば併用→デフォルト切替も可」。未決（詳細は [[open-decisions]] A1）
-- Jigsaw 系 LLM 分類を `embedding` 後の互換枝として入れるのか、`embedding` 自体を省く独立 workflow にするのか
+- LLM grouping 系 LLM 分類を `embedding` 後の互換枝として入れるのか、`embedding` 自体を省く独立 workflow にするのか
 
 ## Updates
 
 - 2026-05-17: 初回作成
-- 2026-05-17: `#2_開発_広聴ai` ログ由来の Jigsaw 系 LLM 分類導入意図を追記
+- 2026-05-17: `#2_開発_広聴ai` ログ由来の LLM grouping 系 LLM 分類導入意図を追記
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D とする記述を撤回し、Slack 発言と `main@3809a7a` のコード実装を分離
-- 2026-05-18: PR `#827` を参照し、Jigsaw 系 LLM 分類の互換枝が plan PR として具体化したことを追記
+- 2026-05-18: PR `#827` を参照し、LLM grouping 系 LLM 分類の互換枝が plan PR として具体化したことを追記
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` を source に追加し、UMAP→クラスタリングへの継続的批判を補足
 - 2026-05-21: 書籍 13 章を [[broad-listening-book-source]] / [[broad-listening-book-extractions]] として ingest し、設計判断の出版可能形を相互リンク
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、旧 `apps/api/broadlistening/pipeline/` 実装削除後の current path に合わせて配置と実行モードの説明を更新

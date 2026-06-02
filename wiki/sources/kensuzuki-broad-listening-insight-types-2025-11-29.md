@@ -34,7 +34,7 @@ sources:
 ## Open Questions
 
 - ブログで挙げられた各用途に対して、kouchou-ai が今後どこまで cover するのかは未確定
-- 「アジェンダ発見に強い mode」と「対立軸・分類木に強い mode」を同一 product でどう扱うかは、現在も [[jigsaw-sensemaker-history]] と [[plugin-system]] の open question である
+- 「アジェンダ発見に強い mode」と「対立軸・分類木に強い mode」を同一 product でどう扱うかは、現在も [[llm-grouping-background-history]] と [[plugin-system]] の open question である
 
 ## Updates
 

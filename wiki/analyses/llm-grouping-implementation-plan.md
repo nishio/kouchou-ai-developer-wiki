@@ -1,15 +1,15 @@
 ---
 type: analysis
-summary: "Jigsaw 的な LLM 分類を実装するなら、short term は workflow canonical path に `analysis_mode=llm_grouping` を差し込み viewer 互換を保ち、long term は `analysis_capabilities` と plugin `requirements` へ収束させるのが筋がよい"
+summary: "LLM groupingを実装するなら、short term は workflow canonical path に `analysis_mode=llm_grouping` を差し込み viewer 互換を保ち、long term は `analysis_capabilities` と plugin `requirements` へ収束させるのが筋がよい"
 sources:
   - llm-grouping-implementation-observation-2026-05-25.md
   - pr-827-llm-grouping-capabilities-plan-2026-05-18.md
-  - jigsaw-sensemaker-history.md
+  - llm-grouping-background-history.md
   - public-ui-requirements-for-broadlistening.md
 ---
 
-Jigsaw 的な LLM 分類を current `kouchou-ai` に入れる時の本質は、**新しい clustering step を 1 本足すこと** ではなく、**「散布図を自然には生まない分析モード」を current product にどう受け入れるか** である。  
-そのため、実装は短期互換と長期契約を分けて設計した方がよい。短期は `analysis_mode=llm_grouping` を workflow canonical path に差し込み、viewer 互換の `x/y` と `cluster-level-*` を暫定的に出す。長期は `analysis_capabilities` と chart plugin `requirements` を整え、scatter-first 前提を弱める。[[jigsaw-sensemaker-history]]より [[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[llm-grouping-implementation-observation-2026-05-25]]より
+LLM groupingを current `kouchou-ai` に入れる時の本質は、**新しい clustering step を 1 本足すこと** ではなく、**「散布図を自然には生まない分析モード」を current product にどう受け入れるか** である。  
+そのため、実装は短期互換と長期契約を分けて設計した方がよい。短期は `analysis_mode=llm_grouping` を workflow canonical path に差し込み、viewer 互換の `x/y` と `cluster-level-*` を暫定的に出す。長期は `analysis_capabilities` と chart plugin `requirements` を整え、scatter-first 前提を弱める。[[llm-grouping-background-history]]より [[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[llm-grouping-implementation-observation-2026-05-25]]より
 
 ## 先に結論
 
@@ -20,11 +20,11 @@ Jigsaw 的な LLM 分類を current `kouchou-ai` に入れる時の本質は、*
 2. **短期の `llm_grouping` は embedding を残す**  
    目的は viewer 互換と product への最短搭載であり、理想的な分析純度ではない。`x/y` は embedding 由来でよい。[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[public-ui-requirements-for-broadlistening]]より
 3. **`llm_grouping` step は cluster tree と assignment を canonical artifact として返す**  
-   旧 hierarchical 実装の副産物に寄せるのでなく、`argument -> cluster_ids` と `clusters(level/id/parent/label/takeaway/value)` を first-class に作る。[[jigsaw-sensemaker-history]]より
+   旧 hierarchical 実装の副産物に寄せるのでなく、`argument -> cluster_ids` と `clusters(level/id/parent/label/takeaway/value)` を first-class に作る。[[llm-grouping-background-history]]より
 4. **aggregation で `analysis_capabilities` を生成する**  
    capability は config で人間が宣言する値ではなく、result artifact から導出する派生値として持つ。[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[llm-grouping-implementation-observation-2026-05-25]]より
 5. **viewer 側は scatter を default 前提にせず、available mode から fallback する**  
-   長期は `hierarchyList` / `treemap` / scatter を対等に扱う。Jigsaw 系の default view は当面 `hierarchyList` が無難で、scatter は capability がある時だけ出せばよい。[[public-ui-requirements-for-broadlistening]]より [[jigsaw-sensemaker-history]]より
+   長期は `hierarchyList` / `treemap` / scatter を対等に扱う。LLM grouping 系の default view は当面 `hierarchyList` が無難で、scatter は capability がある時だけ出せばよい。[[public-ui-requirements-for-broadlistening]]より [[llm-grouping-background-history]]より
 
 ## 実装の芯
 
@@ -47,7 +47,7 @@ current `main` は `PipelineOrchestrator.run_default()` が `run_workflow()` を
 
 ### 2. `llm_grouping` は 1 本の workflow step として始める
 
-初回実装では、Jigsaw 的分類を細かく 3 step に分けるより、まずは 1 plugin で
+初回実装では、LLM groupingを細かく 3 step に分けるより、まずは 1 plugin で
 
 - グループ候補の発見
 - 各 argument の cluster assignment
@@ -66,7 +66,7 @@ current `main` は `PipelineOrchestrator.run_default()` が `run_workflow()` を
 
 ### 3. 短期互換のため、embedding は切らない
 
-理想論としては Jigsaw 系は embedding 非依存でよい。しかし current product に最短で載せるには、
+理想論としては LLM grouping 系は embedding 非依存でよい。しかし current product に最短で載せるには、
 
 - scatter の URL / UI / shared understanding を壊さない
 - 既存 viewer の大半をそのまま使う
@@ -82,7 +82,7 @@ current `main` は `PipelineOrchestrator.run_default()` が `run_workflow()` を
 - `overview`
 - `aggregation`
 
-で十分で、`hierarchical_clustering` だけを外す構成が妥当である。`x/y` は semantic truth ではなく viewer compatibility layer と割り切る。[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[jigsaw-sensemaker-history]]より
+で十分で、`hierarchical_clustering` だけを外す構成が妥当である。`x/y` は semantic truth ではなく viewer compatibility layer と割り切る。[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]より [[llm-grouping-background-history]]より
 
 ## 具体的な変更順
 
@@ -125,7 +125,7 @@ requirements?: CapabilityKey[]
 
 のように置き換えるのが自然である。[[llm-grouping-implementation-observation-2026-05-25]]より
 
-ここまで行けば、Jigsaw 系 mode の default chart を `hierarchyList` にしても UI が破綻しない。
+ここまで行けば、LLM grouping 系 mode の default chart を `hierarchyList` にしても UI が破綻しない。
 
 ### Phase 3. taxonomy-guided を別 mode で増やす
 
@@ -134,7 +134,7 @@ taxonomy-guided は `llm_grouping` のオプションでも動くが、product /
 - 新規論点発見モード
 - 既存カテゴリへの整列モード
 
-が目的としてかなり違うからである。[[jigsaw-sensemaker-history]]より
+が目的としてかなり違うからである。[[llm-grouping-background-history]]より
 
 短期は `analysis_mode=llm_grouping` だけで始め、taxonomy-guided は
 
@@ -151,7 +151,7 @@ taxonomy-guided は `llm_grouping` のオプションでも動くが、product /
 
 ### scatter の default は mode ごとに切り替える
 
-Jigsaw 系で `enabledCharts` を手でいじるより、`defaultChart` の fallback を
+LLM grouping 系で `enabledCharts` を手でいじるより、`defaultChart` の fallback を
 
 1. report 設定の希望
 2. mode requirements に適合するか
@@ -164,7 +164,7 @@ Jigsaw 系で `enabledCharts` を手でいじるより、`defaultChart` の fall
 初回 PR で同時にやらない方がよいのは次である。
 
 - taxonomy-guided 実装
-- 専用 Jigsaw view の導入
+- 専用 LLM grouping view の導入
 - scatter を消す判断
 - capability の viewer 再計算と warning 可視化
 
@@ -184,8 +184,8 @@ Jigsaw 系で `enabledCharts` を手でいじるより、`defaultChart` の fall
 - `llm_grouping` の出力 tree を multi-level にするのか、まず 1 level だけで始めるのか
 - `overview` prompt を hierarchical 前提の文面から mode 別に分ける必要があるか
 - taxonomy-guided を同じ mode の strategy として持たせるか、別 mode に分けるか
-- Jigsaw 系の default view は当面 `hierarchyList` で十分か、それとも最初から専用 view を切るべきか
+- LLM grouping 系の default view は当面 `hierarchyList` で十分か、それとも最初から専用 view を切るべきか
 
 ## Updates
 
-- 2026-05-25: 初版作成。`PR #827` 計画文書、Jigsaw 系の歴史整理、public UI 要件、current main の code 観測を突き合わせて implementation order を具体化
+- 2026-05-25: 初版作成。`PR #827` 計画文書、LLM grouping 系の歴史整理、public UI 要件、current main の code 観測を突き合わせて implementation order を具体化

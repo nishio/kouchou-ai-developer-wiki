@@ -40,6 +40,11 @@ kouchou-ai-developer-wiki/
 - デプロイに関する詳細は公開 wiki に書かない。公開 wiki に残すのは設計判断・公開可能な課題・PR/issue の粒度までとし、実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、手順、secret / access 周辺の情報は載せない
 - デプロイ詳細の一次置き場は Google Drive の **「広聴AI-Azureデモ環境」**。アクセス権は大木・西尾・小野(moai)
 
+### 用語ルール
+- `analysis_mode=llm_grouping` や LLM による直接分類・グルーピングの一般名は、`LLM grouping` / `LLM 直接グルーピング` とする
+- `Jigsaw Sensemaker` は固有名詞として扱い、広義の LLM grouping の一例として説明する。`LLM grouping` 全体を `Jigsaw` と呼ぶと、一般カテゴリと特定ツールが混ざって混乱するので避ける
+- source に固有名詞が出ている場合は、固有名詞そのものの話なのか、一般的な LLM grouping の話なのかを明示する
+
 ### フロントマター例
 ```yaml
 ---
@@ -73,11 +78,37 @@ sources:
 2. 有用な回答はanalyses/にfiling back
 3. log.md の先頭に `## [YYYY-MM-DD HH:MM] filing-back | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期
 
+### 情報鮮度の明示
+
+- 議事録 Google Doc と Slack / `oss_weekly_reporter` は追記され続けるため、Wiki の鮮度は「ページ更新日」ではなく「その source をいつ時点まで読んだか」で判断する
+- 議事録 source には、Google Doc export の最終取得日、先頭見出し、`txt` / `html` の取得有無を明示する
+- Slack source には、最終読解日、対象 channel、対象週または対象期間、`raw/` に固定 snapshot があるかを明示する
+- 最新確認なしで答える時は、既存 Wiki を「その freshness marker 時点の観測」として扱い、現在進行形の状態を断定しない
+
 ### 定例会議向け下書きのメンテ
 1. Codex が GitHub Issue / PR の実装・調査・CI 対応・wiki 更新のような実務を進めたら、`wiki/concepts/meeting-report-draft.md` に要点を追記する
 2. 1 項目は「何をしたか / 何が決まったか / 次に何を見るか」が 2〜4 行で読める粒度に保つ
 3. 未 merge の作業は branch / PR 番号つきで「進行中」と明示し、main 済みの項目と混同させない
 4. 定例会議が終わったら draft を `wiki/concepts/meeting-report-YYYY-MM-DD.md`（その回の日付）へ rotate し、draft 本体は次回向けに空テンプレへ戻す。過去回は draft の `## 過去回` セクションから辿れる
+
+### 実験結果の蓄積
+
+CLI / analysis-core の実験結果は 3 層に分けて扱う。
+
+1. `work/kouchou-ai*/packages/analysis-core/outputs/` は scratch。実行直後の確認・再実行・デバッグ用で、長期保存したとは見なさない
+2. 長期比較したい一次 artifact は `raw/experiments/<experiment_id>/` に固定する。`manifest.json`、`datasets.jsonl`、`tree_runs.jsonl`、`labelling_runs.jsonl`、`human_observations.jsonl`、`judge_runs.jsonl`、`artifacts/`、`bundles/` を置く。`raw/` は gitignored なので、ここは local / private な一次置き場
+3. 公開 wiki (`wiki/sources/` / `wiki/analyses/`) には manifest / summary / 判断だけを置く。raw comments 全件、embeddings、full `hierarchical_result.json`、secret、実環境 URL、巨大 JSON は載せない
+
+共有が必要な大きな artifact は、Google Drive / GitHub release artifact / 別 repo など権限管理できる場所に置き、公開 wiki には pointer と hash だけを残す。実験結果を filing back する時は、`work/` の output path ではなく、`raw/experiments/<experiment_id>/` の snapshot と対応する wiki source / analysis を作る。
+
+### 実験設計の切り分け
+
+CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の clean experiment を分ける。
+
+- 複数要素を同時に変えた run は `exploratory` と明記し、仮説生成・failure mode 発見・judge calibration に使う。単独で winner 判定や採用判断に使わない
+- 採用判断に使う clean experiment は current `main` の baseline から `factor_under_test` を 1 つだけ変える
+- `manifest.json` または対応 source には、`experiment_class`、`baseline_experiment_id`、`factor_under_test`、`fixed_inputs`、`changed_inputs`、`comparison_question` を残す
+- tree generation を比較する時は、tree が変わることで label output も従属的に変わる。したがって labelling process / evidence policy / judge は固定し、変えた要素が tree generation だけだと明記する
 
 ### Index メンテ方針
 

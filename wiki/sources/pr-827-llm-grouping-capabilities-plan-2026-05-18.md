@@ -8,7 +8,7 @@ sources:
   - slack-dev-kouchouai-2026-q1.md
 ---
 
-2026-05-18 時点の open PR `#827` (`docs: add plan for llm grouping and capability auto-detection`) で、source repo ルートに追加された `PLAN_llm_grouping_capabilities.md` を観測したメモ。内容は実装ではなく、**Jigsaw 系 LLM 分類を既存 viewer 互換で段階導入するための計画**。[[github-dev-docs]]より
+2026-05-18 時点の open PR `#827` (`docs: add plan for llm grouping and capability auto-detection`) で、source repo ルートに追加された `PLAN_llm_grouping_capabilities.md` を観測したメモ。内容は実装ではなく、**LLM grouping 系 LLM 分類を既存 viewer 互換で段階導入するための計画**。[[github-dev-docs]]より
 
 ## 観測事項
 
@@ -27,7 +27,7 @@ sources:
 ## 含意
 
 - source repo ルートの Markdown として置くより、**設計判断の経緯を既存の [[pipeline]] / [[plugin-system]] / [[open-decisions]] と接続して読める wiki の方が文脈を保ちやすい**。[[github-dev-docs]]より
-- 既存 wiki では [[open-decisions]] B14 が「Jigsaw 系 LLM 分類の互換枝」を未着手として整理していたが、2026-05-18 時点では **実装 PR ではなく plan PR として一段具体化** した、と更新できる。[[slack-dev-kouchouai-2026-q1]]より
+- 既存 wiki では [[open-decisions]] B14 が「LLM grouping 系 LLM 分類の互換枝」を未着手として整理していたが、2026-05-18 時点では **実装 PR ではなく plan PR として一段具体化** した、と更新できる。[[slack-dev-kouchouai-2026-q1]]より
 
 ## Open Questions
 

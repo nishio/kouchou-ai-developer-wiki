@@ -4,18 +4,18 @@ type: analysis
 summary: "広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出"
 sources:
   - slack-public-ui-requirements-2026-05-23.md
-  - jigsaw-sensemaker-history.md
+  - llm-grouping-background-history.md
   - slack-design-intents-2026-q1.md
   - plugin-system.md
   - pipeline.md
 ---
 
-[[jigsaw-sensemaker-history]] は「embedding を前提としない分析様式と散布図中心 product の緊張関係」を時系列で整理したものだが、そこで残っていた **「散布図が担っていた役割を別 view でどう代替するか」** は概念のままだった。  
+[[llm-grouping-background-history]] は「embedding を前提としない分析様式と散布図中心 product の緊張関係」を時系列で整理したものだが、そこで残っていた **「散布図が担っていた役割を別 view でどう代替するか」** は概念のままだった。  
 2026-05-23 の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] がこの問いを明示的に分解し、`公開UIに求められる要件` を 7 項目で言語化している。本ページはこの整理を、`analysis_mode` / `view` を独立化する設計判断に紐付けて記録するものである。
 
 ## 結論
 
-広聴結果の公開UIに求められる要件は次の 7 項目に整理できる。これは embedding / 散布図とは独立で、SenseMaker 系 / taxonomy-guided / 距離空間ベース のいずれの分析方式でも満たすべき view 側契約である。
+広聴結果の公開UIに求められる要件は次の 7 項目に整理できる。これは embedding / 散布図とは独立で、long-context LLM 直接分類 / taxonomy-guided / 距離空間ベース のいずれの分析方式でも満たすべき view 側契約である。
 
 1. **量の可視化** — どのような声をどれくらい扱ったのか
 2. **整理の観点の可視化** — どういう観点で整理されたのか
@@ -39,7 +39,7 @@ sources:
 
 つまり散布図の価値は **距離の精密さではなく、これら要件の同時提示にある** と読める。[[slack-public-ui-requirements-2026-05-23]]より
 
-[[jigsaw-sensemaker-history]] が辿った「散布図方式の限界」議論はクラスタリング精度・対立軸埋没・次元圧縮の弊害という **分析側** の限界が中心だったが、本ページの整理は **view 側の役割** を切り出している。両者は補完関係にある。
+[[llm-grouping-background-history]] が辿った「散布図方式の限界」議論はクラスタリング精度・対立軸埋没・次元圧縮の弊害という **分析側** の限界が中心だったが、本ページの整理は **view 側の役割** を切り出している。両者は補完関係にある。
 
 ## embedding 距離精度の非本質性
 
@@ -50,15 +50,15 @@ sources:
 
 [[slack-public-ui-requirements-2026-05-23]]より
 
-これは [[jigsaw-sensemaker-history]] が記録している 2026-Q1 の **「embedding は理論上必須ではないが、移行上は便利な足場」** という [[slack-design-intents-2026-q1]] の判断と整合する。Jigsaw 系分析を散布図互換に射影するための `x/y` 計算は、**semantic distance を高精度に再現する必要はなく、cluster grouping が視覚的に保たれていればよい** ということになる。
+これは [[llm-grouping-background-history]] が記録している 2026-Q1 の **「embedding は理論上必須ではないが、移行上は便利な足場」** という [[slack-design-intents-2026-q1]] の判断と整合する。LLM grouping 系分析を散布図互換に射影するための `x/y` 計算は、**semantic distance を高精度に再現する必要はなく、cluster grouping が視覚的に保たれていればよい** ということになる。
 
 これは短期の散布図互換案（[[pipeline]] の `PR #827` 計画にある `analysis_mode=llm_grouping` の `x/y` 互換）に対する技術的バーを大きく緩める。force-directed 配置・per-cluster local UMAP・LLM ラベルベースの 2D 配置などが、すべて「公開UIとして十分な距離精度を満たす」候補に入ってくる。
 
 ## `analysis_mode` / `view` 独立化との対応
 
-[[slack-design-intents-2026-q1]] と [[jigsaw-sensemaker-history]] では、可視化分離は
+[[slack-design-intents-2026-q1]] と [[llm-grouping-background-history]] では、可視化分離は
 
-- 「Jigsaw 系分析を platform に受け入れるための必要条件」（必要性の議論）
+- 「LLM grouping 系分析を platform に受け入れるための必要条件」（必要性の議論）
 
 として説明されてきた。本ページの 7 項目は、これに **「view 側の充足条件」** を補う。
 
@@ -102,7 +102,7 @@ sources:
 | 整理の観点の可視化 | △（クラスタラベルはあるが、選んだ観点の根拠は弱い） |
 | 主要論点の可視化 | △（クラスタ summary は出るが「論点」として整理されているとは限らない） |
 | 個別意見への辿り | ◯（点クリックで原文に到達。ただし `#710 -> PR #857` で長く壊れていた） |
-| 少数意見の埋没回避 | × の傾向（次元圧縮で潰れやすい）[[jigsaw-sensemaker-history]]より |
+| 少数意見の埋没回避 | × の傾向（次元圧縮で潰れやすい）[[llm-grouping-background-history]]より |
 | 恣意性の排除 | ◯（生意見と分類が同時に見えるため恣意性は弱く見える） |
 | 次の問いの可視化 | × （明示的な「次に議論すべき論点」表示なし） |
 
@@ -110,7 +110,7 @@ sources:
 
 ## Open Questions
 
-- 7 要件のうち、`#2 整理の観点の可視化` と `#7 次の問いの可視化` は SenseMaker / taxonomy-guided 分析の方が強そうだが、これは [[ohki-shingo]] の整理を実装契約に落とせば自然に出るのか、別途設計が要るのか
+- 7 要件のうち、`#2 整理の観点の可視化` と `#7 次の問いの可視化` は LLM 直接分類 / taxonomy-guided 分析の方が強そうだが、これは [[ohki-shingo]] の整理を実装契約に落とせば自然に出るのか、別途設計が要るのか
 - 自治体利用文脈での自答として整理されているが、選挙・市民参加・社内アンケートなど他文脈でも 7 要件は同じか、文脈ごとに weight が変わるか
 - 短期の散布図互換案で、cluster grouping のみ保証する 2D 配置を行うとして、その配置の `決まり方` を docs / レポート上でどう開示すれば「恣意性の排除」要件を満たすか
 - view plugin の契約として、本ページの 7 要件を docs に正式記述するなら、どのページが正本になるか（ここか [[plugin-system]] か [[broadlistening]] か）
@@ -119,4 +119,4 @@ sources:
 
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β` → 構造把握スタンス / 構造把握装置 など)
 - 2026-05-30: 全体傾向把握ユースケース / 別ツール 分業 / 構造把握スタンスとの照合セクションを追加。7 要件のうち 5/7 は別ツール側、残り 5 件が広聴AI 本体、加えて構造把握の評価軸 (解説素材性 / 突合素材性) が 2 件加わる、と整理し直した
-- 2026-05-23: 初版作成。`#2_開発_広聴ai` の 2026-05-23 thread で [[ohki-shingo]] が整理した「散布図の受け入れ要因 5 要素」「公開UI 7 要件」「embedding 距離精度の非本質性」を、[[jigsaw-sensemaker-history]] が残していた『散布図の役割を別 view でどう代替するか』への回答として再整理
+- 2026-05-23: 初版作成。`#2_開発_広聴ai` の 2026-05-23 thread で [[ohki-shingo]] が整理した「散布図の受け入れ要因 5 要素」「公開UI 7 要件」「embedding 距離精度の非本質性」を、[[llm-grouping-background-history]] が残していた『散布図の役割を別 view でどう代替するか』への回答として再整理

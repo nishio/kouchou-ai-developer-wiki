@@ -6,14 +6,14 @@ sources:
   - kouchou-ai-direction-2025-12-06.md
   - kouchou-ai-direction-2-2025-12-13.md
   - public-ui-requirements-for-broadlistening.md
-  - jigsaw-sensemaker-history.md
+  - llm-grouping-background-history.md
 ---
 
 2026-05-23 の [[slack-public-ui-requirements-2026-05-23]] での [[ohki-shingo]] との議論は、「散布図を残すか捨てるか」ではなく、**散布図が公開UIで担っていた説明責務をどう再実装するか** という問いとして読むのがよい。[[slack-public-ui-requirements-2026-05-23]]より
 
 ## Takeaway
 
-[[nishio]] の整理は、短期には embedding を前提としない分析様式でも散布図互換を維持し、長期には散布図必須の view をやめる、という二段構えだった。[[jigsaw-sensemaker-history]]より  
+[[nishio]] の整理は、短期には embedding を前提としない分析様式でも散布図互換を維持し、長期には散布図必須の view をやめる、という二段構えだった。[[llm-grouping-background-history]]より  
 これに対して [[ohki-shingo]] は、散布図の是非を直接裁くのではなく、まず「なぜ現状の散布図が人間には受け入れられやすいのか」「広聴結果の公開UIに求められるものは何なのか」と問いを分けた。[[slack-public-ui-requirements-2026-05-23]]より
 
 この分け方が重要なのは、議論の評価軸を **技術方式の優劣** から **利用者に対する説明責務** へ移しているからである。散布図は本質ではないが、量感、整理されている感覚、全体探索、個別意見への到達、恣意性の低さを一画面で示しやすかった。したがって代替 view は「散布図でないこと」ではなく、これらの役割を満たすことで評価されるべきである。[[slack-public-ui-requirements-2026-05-23]]より [[public-ui-requirements-for-broadlistening]]より
@@ -32,7 +32,7 @@ sources:
 
 第一に、`analysis_mode` / `view` の独立化は、単なる plugin architecture の美しさではなく、公開UIの説明責務を守るための分離として説明できる。下位契約はデータ構造や capability だが、上位契約は量、観点、論点、個別意見、少数意見、恣意性、次の問いを示せることになる。[[public-ui-requirements-for-broadlistening]]より
 
-第二に、短期の散布図互換案で必要なのは、embedding 距離の精密な再現ではなく、同じ論点グループが自然にまとまって見え、根拠や限界や原意見へ辿れることである。これは `llm_grouping` 系を scatter-compatible に載せる技術的ハードルを下げる一方で、配置の説明可能性や少数意見の扱いをレビュー対象にする必要がある。[[slack-public-ui-requirements-2026-05-23]]より [[jigsaw-sensemaker-history]]より
+第二に、短期の散布図互換案で必要なのは、embedding 距離の精密な再現ではなく、同じ論点グループが自然にまとまって見え、根拠や限界や原意見へ辿れることである。これは `llm_grouping` 系を scatter-compatible に載せる技術的ハードルを下げる一方で、配置の説明可能性や少数意見の扱いをレビュー対象にする必要がある。[[slack-public-ui-requirements-2026-05-23]]より [[llm-grouping-background-history]]より
 
 第三に、長期的には「散布図をやめる」よりも「散布図が満たしていた信頼形成の機能を別 UI で満たす」が正しい表現になる。散布図を外しても個別意見に戻れない、分類根拠が見えない、少数意見が消える、次の議論が見えないなら、公開UIとしては後退しうる。[[public-ui-requirements-for-broadlistening]]より
 

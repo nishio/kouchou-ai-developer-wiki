@@ -30,7 +30,7 @@ sources:
 書籍 13.5 ([[broad-listening-book-source]]) は、ブロードリスニング実装を二系統に整理している：
 
 - **散布図タイプ** — kouchou-ai / TTTC Scatter。Embedding → UMAP → クラスタリング → 可視化。「意見の地図」を自動生成、直感的だが 2D 圧縮後クラスタリングのため精度は妥協
-- **Long Context タイプ** — TTTC Turbo / Google Jigsaw Sensemaker / 富士通-中央省庁実証実験。Embedding と UMAP を使わず LLM に直接全件読ませる。賛否分離・ニュアンス区別に強く精度が高いが、見栄えのする散布図は出ない
+- **Long Context タイプ** — TTTC Turbo / embedding を介さない LLM 直接グルーピング / 富士通-中央省庁実証実験。Embedding と UMAP を使わず LLM に直接全件読ませる。賛否分離・ニュアンス区別に強く精度が高いが、見栄えのする散布図は出ない
 
 kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_grouping` ([[pr-827-llm-grouping-capabilities-plan-2026-05-18]]) は Long Context 系統の枝を内包しようとしている。両者は技術的に急発展しており、長短は今後変動する。
 

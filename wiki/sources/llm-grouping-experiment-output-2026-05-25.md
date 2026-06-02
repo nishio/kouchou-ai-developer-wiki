@@ -6,7 +6,7 @@ sources:
   - llm-grouping-implementation-observation-2026-05-25.md
 ---
 
-2026-05-25 に `work/kouchou-ai/packages/analysis-core` 上で、`apps/admin/public/sample_comments.csv` を `comment-id, comment-body` 形式へ整形し、`analysis_mode=llm_grouping` の最初の実験を行った観測メモである。これは [[jigsaw-llm-grouping-experiment]] の実行結果ページにあたる。コード実装は current working tree の `analysis-core` を使い、出力は `outputs/jigsaw_sample_comments_400_config/` に生成した。[[source-code]]より [[llm-grouping-implementation-observation-2026-05-25]]より
+2026-05-25 に `work/kouchou-ai/packages/analysis-core` 上で、`apps/admin/public/sample_comments.csv` を `comment-id, comment-body` 形式へ整形し、`analysis_mode=llm_grouping` の最初の実験を行った観測メモである。これは [[llm-grouping-experiment]] の実行結果ページにあたる。コード実装は current working tree の `analysis-core` を使い、出力は `outputs/llm_grouping_sample_comments_400_config/` に生成した。[[source-code]]より [[llm-grouping-implementation-observation-2026-05-25]]より
 
 ## Observations
 
@@ -58,7 +58,7 @@ sources:
 - `hierarchical` は `一貫性 26.4 / 30`, `具体性 19.6 / 25`, `網羅性 21.0 / 25`, `区別性 13.4 / 20`
 - 全体比較の judge は winner を **`llm_grouping`** とし、理由は「具体的で読みやすく、重複が少なく、各クラスタが明確で代表性が高い」だった
 
-この結果は、「scatter 指標では従来法が強いが、ラベル品質では LLM grouping が上」という分離を示している。したがって、今回の比較で本当に見るべきなのは散布図品質だけではなく、**cluster geometry と label semantics を別軸で評価すること** だと分かる。[[jigsaw-llm-grouping-experiment]]より
+この結果は、「scatter 指標では従来法が強いが、ラベル品質では LLM grouping が上」という分離を示している。したがって、今回の比較で本当に見るべきなのは散布図品質だけではなく、**cluster geometry と label semantics を別軸で評価すること** だと分かる。[[llm-grouping-experiment]]より
 
 ## Cost Effectiveness Interpretation
 
@@ -71,7 +71,7 @@ sources:
 
 ## K=20 Comparison
 
-次の発展実験として、同じ 422 argument / 同じ `embeddings.pkl` を使い、`K=20` でも `LLM grouping` と従来 hierarchical clustering を比較した。設定ファイルは `jigsaw_sample_comments_400_k20_llm.json` と `jigsaw_sample_comments_400_k20_hierarchical.json` で、どちらも `--reuse-from sample_comments_400_upstream_seed` により upstream を再利用した。[[source-code]]より
+次の発展実験として、同じ 422 argument / 同じ `embeddings.pkl` を使い、`K=20` でも `LLM grouping` と従来 hierarchical clustering を比較した。設定ファイルは `llm_grouping_sample_comments_400_k20_llm.json` と `llm_grouping_sample_comments_400_k20_hierarchical.json` で、どちらも `--reuse-from sample_comments_400_upstream_seed` により upstream を再利用した。[[source-code]]より
 
 ### Geometry
 
@@ -95,7 +95,7 @@ sources:
 
 ## Hierarchical [8, 40] Comparison
 
-これまでは単層の `K=8` を見ていたが、多層 hierarchical clustering の効果を見るため、同じ 422 argument / embedding を使って `cluster_nums: [8, 40]` も実行した。これは「40 クラスタで一度分けてから 8 クラスタへ集約する」形になる。設定ファイルは `jigsaw_sample_comments_400_hierarchical_8_40.json`、出力は `outputs/jigsaw_sample_comments_400_hierarchical_8_40/` である。[[source-code]]より
+これまでは単層の `K=8` を見ていたが、多層 hierarchical clustering の効果を見るため、同じ 422 argument / embedding を使って `cluster_nums: [8, 40]` も実行した。これは「40 クラスタで一度分けてから 8 クラスタへ集約する」形になる。設定ファイルは `llm_grouping_sample_comments_400_hierarchical_8_40.json`、出力は `outputs/llm_grouping_sample_comments_400_hierarchical_8_40/` である。[[source-code]]より
 
 ### Geometry
 
@@ -125,7 +125,7 @@ sources:
 
 ## LLM K=8 Vs Hierarchical [8, 40] Level1
 
-`[8, 40]` の上位 8 layer が、`LLM grouping K=8` の代替としてどこまで使えるかを見るため、OpenAI judge で top-level label を直接比較した。比較対象は `outputs/jigsaw_sample_comments_400_config/` の `LLM grouping K=8` と、`outputs/jigsaw_sample_comments_400_hierarchical_8_40/` の `level 1` である。judge 結果は `work/kouchou-ai/packages/analysis-core/outputs/label_quality_judge_k8_llm_vs_hierarchical_8_40_2026-05-25.json` に保存した。[[source-code]]より
+`[8, 40]` の上位 8 layer が、`LLM grouping K=8` の代替としてどこまで使えるかを見るため、OpenAI judge で top-level label を直接比較した。比較対象は `outputs/llm_grouping_sample_comments_400_config/` の `LLM grouping K=8` と、`outputs/llm_grouping_sample_comments_400_hierarchical_8_40/` の `level 1` である。judge 結果は `work/kouchou-ai/packages/analysis-core/outputs/label_quality_judge_k8_llm_vs_hierarchical_8_40_2026-05-25.json` に保存した。[[source-code]]より
 
 ### Judge Result
 
@@ -143,7 +143,7 @@ sources:
 
 ## Emerging Product Implications
 
-今回の一連の比較をまとめると、`LLM grouping` と従来 hierarchical clustering は「どちらが上か」ではなく、**向いている観察粒度が違う** と読む方が自然である。[[jigsaw-llm-grouping-experiment]]より
+今回の一連の比較をまとめると、`LLM grouping` と従来 hierarchical clustering は「どちらが上か」ではなく、**向いている観察粒度が違う** と読む方が自然である。[[llm-grouping-experiment]]より
 
 - `K=8` のような粗い top-level grouping では、`LLM grouping` は読みやすくまとまりの良いラベルを返しやすかった
 - しかし `K=20` まで細かくすると、`LLM grouping` は token を増やしているのに平均 label quality が `85.0 -> 83.3` と下がり、逆に従来 hierarchical は `80.4 -> 85.0` と上がった
@@ -165,7 +165,7 @@ sources:
 
 ## Label Refinement Mode Comparison
 
-上の仮説を受けて、`analysis-core` に `hierarchical_label_refinement` step を追加し、`merge_labelling` の後で top-level label set だけを再編集できるようにした。今回の比較では、同じ `[8, 40]` cluster 構造を固定したまま、`mode = none / setwise_refine / setwise_refine_short` の 3 条件を実行した。出力はそれぞれ `outputs/jigsaw_sample_comments_400_hierarchical_8_40_refine_none/`, `..._setwise/`, `..._short/` である。[[source-code]]より
+上の仮説を受けて、`analysis-core` に `hierarchical_label_refinement` step を追加し、`merge_labelling` の後で top-level label set だけを再編集できるようにした。今回の比較では、同じ `[8, 40]` cluster 構造を固定したまま、`mode = none / setwise_refine / setwise_refine_short` の 3 条件を実行した。出力はそれぞれ `outputs/llm_grouping_sample_comments_400_hierarchical_8_40_refine_none/`, `..._setwise/`, `..._short/` である。[[source-code]]より
 
 ### Cost And Shape
 

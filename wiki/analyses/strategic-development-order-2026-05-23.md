@@ -40,7 +40,7 @@ sources:
 現状のボトルネックは、「分析モードがまだ 2 種類程度しかない」こと自体ではない。  
 より本質的な問題は、**第 1 の分析モードが事実上「散布図を自然に出せるモード」として product の中心に座っており、想定される第 2 の分析モードはその前提を満たせない可能性が高い** ことである。[[pipeline]]より [[plugin-system]]より
 
-ここでいう **第 2 の分析モード** は、単なる「別のクラスタリング手法」ではなく、ユーザが 2026-05-23 時点で明示したように **Jigsaw Sensemaker 的な分析モード** を念頭に置く。  
+ここでいう **第 2 の分析モード** は、単なる「別のクラスタリング手法」ではなく、ユーザが 2026-05-23 時点で明示したように **LLM 直接グルーピングの分析モード** を念頭に置く。  
 すなわち、embedding 空間上の距離と 2D 散布図を前提にするのではなく、LLM がトピック、立場、分類ツリー、対立軸を直接構成する **long-context / taxonomy-guided / tree-native** な系統である。[[slack-design-intents-2026-q1]]より [[broad-listening-book-extractions]]より
 
 このねじれは、現在の実装と計画の両方に見えている。
@@ -48,32 +48,32 @@ sources:
 - current `public-viewer` の chart default は scatter 系が中心である
 - admin の visualization config も `scatterAll` を既定に置いている
 - `PR #827` の短期計画は、`analysis_mode=llm_grouping` でも一旦 `x/y` と `cluster-level-*` を従来互換で出して viewer 互換を維持する、としている
-- しかし Jigsaw Sensemaker / long-context 系の分析は、自然な散布図を出せない可能性が高い
+- しかし LLM 直接グルーピング / long-context 系の分析は、自然な散布図を出せない可能性が高い
 
 つまり第 2 モードは、「本当にその分析に自然な出力」を返す前に、**scatter-compatible な形へ無理に射影しないと product に乗れない** という圧力を受けている。  
 これでは plugin architecture が「分析の自由度を増やす仕組み」ではなく、**既存散布図 UI に合うものだけを第二級市民として追加する仕組み** に劣化する。
 
 したがって長期戦略で最初に解くべき論点は、「分析モードを増やすこと」ではなく、**散布図を前提にしない analysis mode でも product が成立する契約へ移れるか** である。
 
-### Why Jigsaw Makes The Problem Sharper
+### Why LLM grouping Makes The Problem Sharper
 
-Jigsaw Sensemaker 的な第 2 モードを想定すると、この問題はさらに明確になる。
+LLM 直接グルーピングの第 2 モードを想定すると、この問題はさらに明確になる。
 
-- Jigsaw 系は「距離空間の地図」を出したいのではなく、「どんな立場があり、何が対立軸で、どの分類木に属するか」を出したい
+- LLM grouping 系は「距離空間の地図」を出したいのではなく、「どんな立場があり、何が対立軸で、どの分類木に属するか」を出したい
 - そのため自然な主成果物は `x/y` ではなく、**tree / taxonomy / stance grouping / evidence links** である
-- もしこれを scatter 前提の product に載せるためだけに 2D 座標を捏造すると、Jigsaw 系の本来の価値である「賛否や論点の区別」がむしろ読みにくくなる
+- もしこれを scatter 前提の product に載せるためだけに 2D 座標を捏造すると、LLM grouping 系の本来の価値である「賛否や論点の区別」がむしろ読みにくくなる
 
-つまり Jigsaw 系を本気で第 2 モードにするなら、必要なのは「Jigsaw でも散布図を描けるようにすること」より、**散布図を持たない mode が first-class citizen になれる viewer / capability contract** である。
+つまり LLM grouping 系を本気で第 2 モードにするなら、必要なのは「LLM grouping でも散布図を描けるようにすること」より、**散布図を持たない mode が first-class citizen になれる viewer / capability contract** である。
 
 ### Working Formulation
 
 2026-05-23 時点の作業仮説を一文でまとめると、次の通りである。
 
-> embedding を前提としない分析様式（例: Jigsaw Sensemaker）を可能にしたい。しかし embedding を前提としている散布図は見た目のインパクトが強く、ユーザが欲しがるので簡単には捨てられない。そこで、互換のために一時的に「embedding を前提としない分析様式」でも embedding を併用して散布図互換にする案と、長期的に「散布図が必須なビュー」をやめる案の二段構えで進むのがよい。
+> embedding を前提としない分析様式（例: LLM 直接グルーピング）を可能にしたい。しかし embedding を前提としている散布図は見た目のインパクトが強く、ユーザが欲しがるので簡単には捨てられない。そこで、互換のために一時的に「embedding を前提としない分析様式」でも embedding を併用して散布図互換にする案と、長期的に「散布図が必須なビュー」をやめる案の二段構えで進むのがよい。
 
 この定式化の重要な点は、短期案と長期案を混同しないことにある。
 
-- **短期案**: Jigsaw 系 mode でも一旦 `x/y` を持たせ、既存 viewer / scatter UX を壊さず比較実験を始める
+- **短期案**: LLM grouping 系 mode でも一旦 `x/y` を持たせ、既存 viewer / scatter UX を壊さず比較実験を始める
 - **長期案**: scatter を必須 capability から外し、tree / taxonomy / stance grouping を主成果物にできる mode を first-class citizen として扱う
 
 短期案は migration strategy としては合理的だが、長期の到達点にしてはいけない。長期の本丸は、**「新 mode でも散布図を出せるか」ではなく、「散布図を出さない mode でも product が成立するか」** である。
@@ -91,7 +91,7 @@ Jigsaw Sensemaker 的な第 2 モードを想定すると、この問題はさ�
 3. **product 側が mode 増加に耐えない**
    新 mode を 1 つ増やすたびに、scatter 前提の fallback、dummy capability、例外 UI が増えて、設計が複雑化する。
 
-したがって、ここで問うべきなのは「Jigsaw 系分析をどう実装するか」より前に、**散布図は『分析の本体』なのか、『特定 capability を持つ mode だけが使える view』なのか** である。
+したがって、ここで問うべきなのは「LLM grouping 系分析をどう実装するか」より前に、**散布図は『分析の本体』なのか、『特定 capability を持つ mode だけが使える view』なのか** である。
 
 ## なぜ短期 bugfix 順では足りないか
 
@@ -140,7 +140,7 @@ current `main` では workflow default 化 (`PR #840` 相当) と CLI preflight 
 - `analysis_mode` を本当に切り替え可能か
 - capability metadata から visualization gating ができるか
 - 散布図を出せない分析方式を product がどう扱うか
-- taxonomy-guided 分類や Jigsaw / long-context 系統を同じ枠に載せられるか
+- taxonomy-guided 分類や LLM grouping / long-context 系統を同じ枠に載せられるか
 
 つまりここは「新アルゴリズム 1 件」ではなく、**plugin architecture が現実に耐えるかを調べるための本命テスト** である。[[open-decisions]]より [[broad-listening-book-extractions]]より
 

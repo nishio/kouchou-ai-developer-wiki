@@ -58,10 +58,11 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - analysis-core の config 変換 / builtin plugin default では、initial / merge とも `sampling_num` default は `10`
 - 実際の抽出方法は、initial が `cluster_data.sample(n=sampling_num)`、merge が `current_cluster_data.sample(n=sampling_num)` で、どちらも seed なしの Polars random sample。最大被覆 / FPS / k-medoids / label coverage ではない
 - `hierarchical_aggregation` は `hierarchical_result.json` に全 arguments をそのまま入れる。ここで representative arguments は選んでいない
-- public-viewer の `HierarchyListChart` は deepest-level cluster だけ `argumentList.filter(arg.cluster_ids.includes(cluster.id))` で argument を持たせ、展開時に `argumentsList.slice(0, 10)` を表示する。順序は `hierarchical_result.json` の `arguments` 配列順で、ラベル適合度やクラスタ中心性による代表例選定ではない
+- public-viewer の `HierarchyListChart` は deepest-level cluster だけ `argumentList.filter(arg.cluster_ids.includes(cluster.id))` で argument を持たせ、展開時に `maxDisplay=10` の default で `argumentsList.slice(0, maxDisplay)` を表示する。順序は `hierarchical_result.json` の `arguments` 配列順で、ラベル適合度やクラスタ中心性による代表例選定ではない
 
 ## Updates
 
+- 2026-06-02: `work/kouchou-ai/main@3c5d1f026757` を再確認し、ラベル付け sampling の前提が残っていることを確認。API 経由は `apps/api/src/services/report_launcher.py` で initial / merge とも `sampling_num=30`、analysis-core built-in plugin と compat config は default `10`。`apps/public-viewer/components/charts/HierarchyListChart.tsx` の個別データ表示も `maxDisplay=10` の配列先頭表示で、representative selection ではない
 - 2026-05-30: `work/kouchou-ai/main@0c294da` を確認し、ラベル付け時の sampling が API 経由では最大 30 件、CLI/default では 10 件で、選択は seed なし random sample であること、UI の「個別データ」表示は representative selection ではなく deepest-level cluster の配列先頭 10 件であることを追記
 - 2026-05-29: `work/kouchou-ai/main@0c294da` を確認し、`#221` 系の current facts として、作成画面の送信前 `window.confirm`、API 接続チェック、CSV parse / column scoring、推奨クラスタ数、実行後 token/cost 表示、再利用機能の実装状況を追記
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy pipeline Python 実装と source tree 上の phase docs が除去された current state へ更新

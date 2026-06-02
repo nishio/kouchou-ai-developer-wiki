@@ -9,7 +9,7 @@ sources:
 
 ## What Changed
 
-`work/kouchou-ai-mst-visualization-prototype/` で、`jigsaw_sample_comments_400_config` の 422 argument / 8 clusters を対象に可視化の試作を複数系統で比較した。対象は current `analysis-core` の `hierarchical_result.json` と `embeddings.pkl` で、最終表示は prototype 側 `report-mst-prototype.html` に逐次反映した。[[source-code]]より
+`work/kouchou-ai-mst-visualization-prototype/` で、`llm_grouping_sample_comments_400_config` の 422 argument / 8 clusters を対象に可視化の試作を複数系統で比較した。対象は current `analysis-core` の `hierarchical_result.json` と `embeddings.pkl` で、最終表示は prototype 側 `report-mst-prototype.html` に逐次反映した。[[source-code]]より
 
 試した系統は大きく 5 つだった。
 

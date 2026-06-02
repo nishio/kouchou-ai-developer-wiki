@@ -4,26 +4,27 @@ type: source
 summary: "2026-05-23 ごろの Slack で、nishio が散布図互換／散布図必須撤廃の二段構えを述べたのに対し、ohki-shingo が『公開UIに求められる要件』と『embedding 距離精度の非本質性』を整理した thread"
 sources:
   - slack-public-ui-requirements-2026-05-23.txt
+  - weekly-log-2026-05-20.md
 ---
 
 ## What it is
 
-2026-05-23 ごろに `#2_開発_広聴ai` 想定の Slack で行われた thread の生記録。`oss_weekly_reporter` の data branch は 2026-05-20 までの dump しか持っていないため、現時点ではこの thread の一次ソースは `raw/slack-public-ui-requirements-2026-05-23.txt` のみ。
+2026-05-23 ごろに `#2_開発_広聴ai` で行われた thread の記録。初版時点では `oss_weekly_reporter` の data branch が 2026-05-20 までしかなく、一次ソースは `raw/slack-public-ui-requirements-2026-05-23.txt` のみだった。その後、2026-06-02 に `oss_weekly_reporter` の `2026-05-20_to_2026-05-27` 週次 dump を取得し、この thread が `raw/slack/2_開発_広聴ai.json` と `markdown/slack/all_summary.md` で確認できた。[[weekly-log-2026-05-20]]より
 
 参加者は [[nishio]] と [[ohki-shingo]]。
 
 ## Refresh protocol
 
 1. `work/oss_weekly_reporter/` の `data` branch を `git fetch origin data` で更新
-2. 2026-05-20 以降の週次 dump（少なくとも `2026-05-20_to_2026-05-27` 以降）に `2_開発_広聴ai.json` が出たら `rg "散布図|embedding|公開UI"` で当該 thread を確認
-3. 公式 dump で本文を確認できた段階で、ここを公式 source に差し替え、`raw/` は補助扱いにする
+2. `data/2026-05-20_to_2026-05-27/raw/slack/2_開発_広聴ai.json` または `markdown/slack/all_summary.md` で `rg "散布図|embedding|公開UI"` して thread を確認
+3. 今後の更新では `weekly-log-2026-05-20` を公式 dump 側 source、`raw/slack-public-ui-requirements-2026-05-23.txt` を初回切り出しの補助 source として扱う
 
 ## 1. nishio: 二段構えの要約
 
-> embeddingを前提としない分析様式(例: SenseMaker)を可能にしたい。しかし、embeddingを前提としている散布図は、見た目のインパクトが強く、ユーザが欲しがるので簡単には捨てられない。
+> embeddingを前提としない分析様式(例: LLM 直接分類)を可能にしたい。しかし、embeddingを前提としている散布図は、見た目のインパクトが強く、ユーザが欲しがるので簡単には捨てられない。
 > そこで互換のために一時的に "embeddingを前提としない分析様式" でもembeddingを併用して、散布図互換 にする案 と、長期的に 散布図が必須なビュー をやめる案の二段構えで進むのが良い。
 
-これは [[jigsaw-sensemaker-history]] でいう Distilled Take（短期: 散布図互換 / 長期: 散布図必須前提の解体）の Slack 上の短文化である。
+これは [[llm-grouping-background-history]] でいう Distilled Take（短期: 散布図互換 / 長期: 散布図必須前提の解体）の Slack 上の短文化である。
 
 ## 2. ohki-shingo: そもそも論として再質問
 
@@ -74,5 +75,8 @@ sources:
 
 ## Open Questions
 
-- 公式 dump で本 thread が確認できた段階で、本ページを公式 source に差し替えるべきか、生 raw 由来の本ページを記録として残すべきか
 - `oss_weekly_reporter` が `#2_開発_広聴ai` の thread を後続 reply 含めて保持するか、ヘッダのみで切れるかは未確認
+
+## Updates
+
+- 2026-06-02: `oss_weekly_reporter` の `2026-05-20_to_2026-05-27` 週次 dump で本 thread を確認し、[[weekly-log-2026-05-20]] を source に追加。初回 raw 切り出しは補助 source 扱いにした。

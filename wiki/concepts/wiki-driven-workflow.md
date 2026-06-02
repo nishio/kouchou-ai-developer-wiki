@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - wiki-maintenance-observation-2026-05-25.md
+  - nishio-source-freshness-criterion-2026-06-02.md
 ---
 
 ## これは何か
@@ -54,6 +55,14 @@ sources:
 ## 「調べて」と言われた時の最新ソース確認順
 
 この repo では、質問に答える前に **「どのソースが一次で、どう最新化するか」** を切り分ける必要がある。単に既存 Wiki ページを読むだけで済ませない。
+
+### 情報鮮度の基準
+
+Wiki の情報鮮度は、ページの編集日時ではなく **対象 source をいつ時点まで読んだか** を基準に読む。特に議事録 Google Doc と Slack / `oss_weekly_reporter` は追記され続けるため、source ページ側に「最終取得・読解日」「対象期間」「対象 channel / raw snapshot の有無」を明示する。[[nishio-source-freshness-criterion-2026-06-02]]より
+
+- 議事録は [[meeting-minutes]] の freshness marker を見る。Google Doc export を最後に取り直した日、先頭見出し、`txt` / `html` の取得有無が基準になる。
+- Slack は各 Slack source の freshness marker を見る。対象週・対象 channel・最後に読んだ日・`raw/` に固定 snapshot があるかを基準にし、未取得の最新週を含む断定には使わない。
+- 最新確認なしで答える場合は、「この Wiki では `<marker>` 時点まで観測」として扱い、現在進行形の状態を断定しない。最新状態が論点なら source を再取得してから答える。
 
 ### コード本体について聞かれた時
 
@@ -144,3 +153,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-05-25: developer-wiki 自体の更新は PR 経由にせず、main 直接 push を基本にする運用を追記
 - 2026-06-01: Dependabot alerts を GitHub current state の定期観測対象として追記。公開 wiki には脆弱性詳細を転記しない方針も明記
 - 2026-06-01: 公開 wiki に Dependabot 脆弱性詳細とデプロイ詳細を書かない境界を追記。デプロイ詳細の一次置き場を Google Drive「広聴AI-Azureデモ環境」と明記
+- 2026-06-02: 議事録 / Slack の情報鮮度は「いつ時点まで source を読んだか」を基準にし、source ページに freshness marker を明示する運用を追記

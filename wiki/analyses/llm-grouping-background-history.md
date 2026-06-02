@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "Jigsaw Sensemaker 的な第2分析モードと散布図の緊張関係は、2025 4Q の『現行散布図方式の限界認識』から始まり、2026 Q1 に『可視化を分析から切り離す必要条件』として明文化されていた"
+summary: "LLM 直接グルーピングの第2分析モードと散布図の緊張関係は、2025 4Q の『現行散布図方式の限界認識』から始まり、2026 Q1 に『可視化を分析から切り離す必要条件』として明文化されていた"
 sources:
   - meeting-minutes.md
   - slack-dev-kouchouai-2025-q4.md
@@ -11,15 +11,15 @@ sources:
   - plugin-system.md
 ---
 
-Jigsaw Sensemaker 的な第2分析モードと、現行の散布図中心プロダクトの緊張関係は、2026-05 に突然見えた論点ではない。  
-Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行散布図方式は役に立つが深掘りには限界がある」** という認識が共有され、**2026 Q1 には「Jigsaw 系分析を入れるなら可視化を分析から切り離す必要がある」** という設計意図まで進んでいた。[[slack-design-intents-2025-q4]]より [[slack-design-intents-2026-q1]]より
+LLM 直接グルーピングの第2分析モードと、現行の散布図中心プロダクトの緊張関係は、2026-05 に突然見えた論点ではない。  
+Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行散布図方式は役に立つが深掘りには限界がある」** という認識が共有され、**2026 Q1 には「LLM grouping 系分析を入れるなら可視化を分析から切り離す必要がある」** という設計意図まで進んでいた。[[slack-design-intents-2025-q4]]より [[slack-design-intents-2026-q1]]より
 
 ## 結論
 
 振り返ると、議論は次の 4 段で進んでいる。
 
 1. **散布図方式の価値は認めるが、限界も強く意識されていた**
-2. **Jigsaw / Sensemaker は別分析モードとして早くから視野に入っていた**
+2. **LLM grouping / sensemaking は別分析モードとして早くから視野に入っていた**
 3. **ただし第2モードをいきなり本流にせず、既存構造に寄せた互換枝として試す方針になった**
 4. **その過程で「散布図を自然に出せない mode を扱うには、可視化を分析から疎結合にする必要がある」と明文化された**
 
@@ -44,14 +44,14 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 
 という不満が出ていた。[[slack-design-intents-2025-q4]]より
 
-この段階では、Jigsaw / Sensemaker はまだ plugin 設計の文脈ではなく、**現行散布図方式の外にある高級オプション** として意識されていた。[[slack-design-intents-2025-q4]]より
+この段階では、LLM grouping / sensemaking はまだ plugin 設計の文脈ではなく、**現行散布図方式の外にある高級オプション** として意識されていた。[[slack-design-intents-2025-q4]]より
 
 ## 2. 2025-10 の議事録: 散布図を捨てたい気持ちと、捨てにくさが同時にある
 
 議事メモ `2025-10-22` では、議論がより露骨である。
 
 - TTTC は Scatter から Turbo / `tttc-light-js` に移り、Turbo 以降は散布図を捨てている
-- Google Jigsaw Sensemaker も embedding を介さず、LLM でトピック特定と分類を行う
+- LLM 直接グルーピングも embedding を介さず、LLM でトピック特定と分類を行う
 - `nishio` は「散布図で表示するための embedding が、より良い分析をする上での障害になっている」と感じている
 - しかし一方で、想定ユーザは散布図を欲しがる可能性があり、目立つ機能を切り捨てる判断は簡単ではない
 
@@ -82,15 +82,15 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 
 という不満から出ている点である。[[slack-algorithm-themes]]より
 
-2025-10 以降は Jigsaw SenseMaker や対立軸発見、taxonomy 当てはめ、LLM 直接分類が有力視され、**第2モードは scatter の改良版ではなく、別の分析様式** として見られていた。[[slack-kouchouai-algorithm-dev]]より
+2025-10 以降は LLM 直接グルーピング や対立軸発見、taxonomy 当てはめ、LLM 直接分類が有力視され、**第2モードは scatter の改良版ではなく、別の分析様式** として見られていた。[[slack-kouchouai-algorithm-dev]]より
 
-## 4. 2026 Q1: Jigsaw 系を「まず既存構造に寄せて入れる」方針
+## 4. 2026 Q1: LLM grouping 系を「まず既存構造に寄せて入れる」方針
 
-2026 Q1 の `#2_開発_広聴ai` では、Jigsaw 系分類をどう導入するかがかなり具体化する。
+2026 Q1 の `#2_開発_広聴ai` では、LLM grouping 系分類をどう導入するかがかなり具体化する。
 
 2026-02-11 週の Slack では、
 
-- Jigsaw 的 LLM 分類を `extraction, embedding` の後ろに差し込む
+- LLM groupingを `extraction, embedding` の後ろに差し込む
 - まずは既存のパイプラインや可視化と両立する形で試す
 
 という互換性優先案が語られている。[[slack-design-intents-2026-q1]]より
@@ -110,13 +110,13 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 
 この論点が最もはっきり出るのは 2026-01-28 週の Slack である。
 
-- Jigsaw Sensemaker 的アプローチは分析の選択肢として十分あり得る
+- LLM 直接グルーピングアプローチは分析の選択肢として十分あり得る
 - しかし自然な散布図は出せない
 - したがって、管理者が可視化方式を選択可能にし、散布図を作れない分析も同じプラットフォームで扱えるようにする必要がある
 
 と書かれている。[[slack-design-intents-2026-q1]]より
 
-この記述から分かるのは、可視化分離は nice-to-have ではなく、**Jigsaw 系分析を platform に受け入れるための必要条件** だったということだ。[[plugin-system]]より
+この記述から分かるのは、可視化分離は nice-to-have ではなく、**LLM grouping 系分析を platform に受け入れるための必要条件** だったということだ。[[plugin-system]]より
 
 ## 6. 2026-05 の docs / plan に残った形
 
@@ -138,7 +138,7 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 
 この履歴を 2026-05-23 時点の言葉で要約すると、議論は次の二段構えへ収束している。
 
-- **短期**: embedding を前提としない分析様式（Jigsaw Sensemaker 系）でも、互換のために一時的に embedding を併用し、散布図互換で product に載せる
+- **短期**: embedding を前提としない分析様式（LLM 直接グルーピング系）でも、互換のために一時的に embedding を併用し、散布図互換で product に載せる
 - **長期**: 散布図を必須ビューとみなす前提をやめ、scatter を自然に出さない analysis mode でも first-class citizen として扱う
 
 これは「散布図を残すか捨てるか」の二択ではなく、**ユーザが欲しがる散布図の強さを利用しつつ、その前提に分析の将来を縛られないようにする移行戦略** と理解するのがよい。
@@ -150,18 +150,18 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 1. 2025 4Q: 現行散布図方式の限界認識
 2. 2025-10 議事録: 散布図を捨てたいが捨てにくい、という product 上の葛藤
 3. アルゴリズム開発 Slack: 分析と可視化の分離要求
-4. 2026 Q1: Jigsaw 系を互換枝として試しつつ、可視化疎結合を必要条件とする設計意図
+4. 2026 Q1: LLM grouping 系を互換枝として試しつつ、可視化疎結合を必要条件とする設計意図
 5. 2026-05 docs: `analysis_mode` / `analysis_capabilities` / `requirements` という言葉への結晶化
 
 ## Open Questions
 
-- Jigsaw Sensemaker 的な第2モードの default view は `hierarchyList` / `treemap` / 専用 view のどれが妥当か
+- LLM 直接グルーピングの第2モードの default view は `hierarchyList` / `treemap` / 専用 view のどれが妥当か
 - `PR #827` の短期互換案である `x/y` 射影を、本当に product 実装へ入れるのか、それとも docs 上の移行案に留めるのか
 - taxonomy-guided な実務モードと、新規論点発見モードを同じ UI に載せるべきか分けるべきか
 - 散布図が担っていた「公開UIとしての役割」を別 view で担保するための要件は何か → [[public-ui-requirements-for-broadlistening]] に整理
 
 ## Updates
 
-- 2026-05-23: 初版作成。Jigsaw Sensemaker 的な第2分析モードと散布図の緊張関係を、meeting minutes / Slack / current docs の流れとして時系列に整理
+- 2026-05-23: 初版作成。LLM 直接グルーピングの第2分析モードと散布図の緊張関係を、meeting minutes / Slack / current docs の流れとして時系列に整理
 - 2026-05-23: 同日の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] が「散布図が受け入れられている要因」と「公開UIに求められる 7 要件」を明示分解し、`embedding 距離精度は公開UIの本質ではない / cluster grouping のみ保てれば十分` という view 側契約を整理。[[public-ui-requirements-for-broadlistening]] に独立ページとして filing-back し、短期互換案の技術バーが思っていたより低いことを記録
-- 2026-05-25: current `main` の workflow / viewer 実装差分まで見て、Jigsaw 系実装を `analysis_mode`、互換 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の 4 段へ落とした [[jigsaw-llm-grouping-implementation-plan]] を追加
+- 2026-05-25: current `main` の workflow / viewer 実装差分まで見て、LLM grouping 系実装を `analysis_mode`、互換 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の 4 段へ落とした [[llm-grouping-implementation-plan]] を追加

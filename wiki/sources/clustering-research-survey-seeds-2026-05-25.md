@@ -83,7 +83,7 @@ TTTC の historical code では `BERTopic`, `HDBSCAN`, `UMAP`, `SpectralClusteri
 - 両立しないなら、view artifact と analysis artifact をどう分けるべきか
 
 である。  
-これは `TTTC vs 広聴AI vs Jigsaw` の product 設計にも直結する。[[slack-niizuma-umap-kmeans-thread-2026-03-18]]より [[tttc-spectral-clustering-code-observation-2026-05-25]]より
+これは `TTTC vs 広聴AI vs LLM grouping` の product 設計にも直結する。[[slack-niizuma-umap-kmeans-thread-2026-03-18]]より [[tttc-spectral-clustering-code-observation-2026-05-25]]より
 
 ### 6. 何をもって「良い clustering」とするか
 

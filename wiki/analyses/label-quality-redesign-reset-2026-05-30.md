@@ -4,6 +4,7 @@ summary: "label refinement 実験は現行実装のまま採用せず、ラベ�
 sources:
   - slack-label-algorithm-improvement-2026-05-30.md
   - slack-stance-discussion-2026-05-30.md
+  - clustering-labeling-comparison-corpus-2026-06-02.md
   - source-code.md
   - label-refinement-input-scope-2026-05-29.md
   - label-coverage-policy-2026-05-29.md
@@ -51,6 +52,8 @@ label refinement 実験から始まった一連の調査は、現行 `hierarchic
 4. **代表例 artifact**: UI と judge が使う rep args を `典型例 + 幅` を主軸にする。「境界例」は全体傾向把握の主入力ではない (少数重要論点系の道具)。配列先頭依存はやめる
 5. **judge**: 全体傾向把握用の rubric として、coverage と sibling distinction を重く配点する。minority residual の検出ペナルティは入れない (少数重要論点系の judge の仕事)。criteria 厳格化の前に、judge が見る evidence を rep args artifact に固定し、人間判断と照合する
 
+2026-06-02 の追加整理で、この 5 の前にさらに **比較コーパス / 実験台帳** が必要だと分かった。judge を改善しようにも、各 clustering method が作った tree と、その tree を入力にした labelling process の output が蓄積・比較できていなければ、何を judge が正しく見るべきかが曖昧なままになる。したがって次の実務順は、`tree_run / labelling_run / human_observation` を分けて保存する比較コーパスを作り、その corpus 上で judge を較正することである。[[clustering-labeling-comparison-corpus-2026-06-02]]より
+
 ## refinement より先に試す低コスト改善
 
 今回見つかった低コスト改善候補は、refinement より先に試す価値がある。
@@ -66,12 +69,13 @@ label refinement 実験から始まった一連の調査は、現行 `hierarchic
 
 既存の label refinement PR / branch は、採用候補というより「問題を発見した実験」として扱う。次の PR は refinement そのものではなく、より小さい slice に分ける。
 
+- tree / labelling output 比較コーパスの作成
 - sampling 全件入力実験
 - rep args artifact 生成
 - UI 表示の rep args 差し替え
 - judge 入力 / rubric 較正
 
-この順にすると、どこで品質が上がったか、どこでコストが増えたか、どこで judge が外したかを追跡しやすい。
+この順にすると、まず比較対象を固定でき、その後にどこで品質が上がったか、どこでコストが増えたか、どこで judge が外したかを追跡しやすい。
 
 ## Open Questions
 
@@ -83,6 +87,7 @@ label refinement 実験から始まった一連の調査は、現行 `hierarchic
 
 ## Updates
 
+- 2026-06-02: judge 改善の前段として、各 clustering method の tree と各 labelling process の label output を蓄積・比較する corpus が必要だと補正。[[clustering-labeling-comparison-corpus-2026-06-02]] を追加し、Issue / PR 戦略の順序も tree / labelling output 比較コーパス作成を先頭にした
 - 2026-05-30: 用語を descriptive な日本語に揃え直した。`contract A` を `全体傾向把握ユースケース`、`contract B / B 系` を `少数重要論点ユースケース系`、`β スタンス` を `構造把握スタンス`、`α 定量分析` を `定量分析スタンス` に置換。略号は時間が経つと文脈なしには読めなくなるため、内容で読める表現に統一
 - 2026-05-30: nishio との対話で「広聴AI は構造把握スタンスのツールであり定量分析ツールではない」が core stance として確定 ([[analysis-stance]] 新規)。全体傾向把握ユースケースも定量分析ではなく構造把握スタンスで実現することを明示。これにより sampling / rep args / judge は単なる頻度カバレッジ最適化ではなく「構造を読める材料」として設計する必要がある
 - 2026-05-30: nishio との対話でユースケース契約を確定。**「全体傾向把握ユースケース」一本** を Web UI / 標準 run の唯一の契約とし、「少数重要論点ユースケース」は契約として並列に置かず CLI 分析者の prompt 責務に寄せる。「重要を言語化する責務」は product として educate しない (Web UI 完全非露出、CLI docs も priority 低)。全体傾向把握 run の副産物として minority residual artifact も作らない (約束しない)。これにより下流 4 レイヤは全体傾向把握最適化で揃い、`仕切り直しレイヤ` 節を全体傾向把握前提で書き換えた

@@ -6,11 +6,14 @@ sources:
   - gpt-mst-bridge-visualization-brainstorm-2026-05-25.md
   - niizuma-thread-algorithm-critique.md
   - tokoroten-spectral-clustering-reading.md
-  - jigsaw-llm-grouping-experiment-output-2026-05-25.md
+  - llm-grouping-experiment-output-2026-05-25.md
+  - weekly-log-2026-05-20.md
 ---
 
 [[gpt-mst-bridge-visualization-brainstorm-2026-05-25]] は、nishio 発案の「クラスタ内 MST + クラスタまたぎ edge を明瞭分離を壊さない範囲で追加」という可視化案を、既存研究と突き合わせて改良した提案である。  
 この案の価値は、UMAP 2D を巡る議論を、UMAP のパラメータ調整・clustering アルゴリズム選択ではなく、**graph drawing 系の設計問題に置き換える** ところにある。
+
+この発案は、2026-05-25 の `#2_開発_広聴ai_アルゴリズム開発` でも「1 意見 = 1 点」の点群要件、UMAP 2D と意味クラスタリングの衝突、クラスタ内 MST とクラスタ間 bridge edge の組み合わせとして共有されていた。[[weekly-log-2026-05-20]]より
 
 ## 1. UMAP 2D の問題を 3 要求の衝突として読み直す
 
@@ -81,7 +84,7 @@ current `kouchou-ai` は Plotly 散布図 + 階層ツリー UI を持つ。MST +
 - **B. View plugin として cluster-separated graph layout を別 view に追加** — `analysis_mode` ではなく viewer level の選択肢。「scatter view」「graph view」をユーザが切り替える。[[public-ui-requirements-for-broadlistening]] の view plugin 契約と整合する。
 - **C. `analysis-core` の output schema に MST edges / bridge edges / cluster centers を追加** — フルパス。後方互換性を保ちつつ、新 viewer がこれを使う設計。
 
-短期的には A、中期的には B、長期的には C が筋に見える。[[jigsaw-llm-grouping-implementation-plan]] が示した `analysis_capabilities` / viewer `requirements` の枠組みは、ここでも使える。
+短期的には A、中期的には B、長期的には C が筋に見える。[[llm-grouping-implementation-plan]] が示した `analysis_capabilities` / viewer `requirements` の枠組みは、ここでも使える。
 
 ## 7. 評価軸：bridge usefulness を中心に置く
 
@@ -102,7 +105,7 @@ bridge usefulness は従来 UMAP 評価には出てこない指標であり、�
 
 本案を current `kouchou-ai` の implementation backlog に乗せるかどうかは別問題である。  
 [[development-priority-roadmap-2026-05-23]] / [[strategic-development-order-2026-05-23]] は Windows 配布・既知バグ・運用基盤を優先しており、可視化設計の作り直しはそれより下位である。  
-ただし、[[jigsaw-llm-grouping-experiment]] のような小規模実証実験で **scatter 互換の限界が露出した時の代替案** として、本提案を持っておく価値は高い。
+ただし、[[llm-grouping-experiment]] のような小規模実証実験で **scatter 互換の限界が露出した時の代替案** として、本提案を持っておく価値は高い。
 
 優先順位の整理：
 
@@ -120,3 +123,4 @@ bridge usefulness は従来 UMAP 評価には出てこない指標であり、�
 ## Updates
 
 - 2026-05-25: nishio ↔ GPT の MST + bridge 提案を、niizuma 批判への visualization 側の答え／tokoroten 読みと違う方向／2 段階 layout の妥当性／current への移植経路、として整理
+- 2026-06-02: `oss_weekly_reporter` の 2026-05-20_to_2026-05-27 週次 dump で、MST + bridge 案の Slack 上の seed 発言を確認し、[[weekly-log-2026-05-20]] を source に追加

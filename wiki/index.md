@@ -2,7 +2,7 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（197 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（219 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
 ## 最初に読むべき (推奨順)
 
@@ -39,7 +39,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI
 - [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核、production 未配線）
-- [jigsaw-llm-grouping-implementation-plan](analyses/jigsaw-llm-grouping-implementation-plan.md) — `analysis_mode=llm_grouping` 第2分析モードの実装方針
+- [llm-grouping-implementation-plan](analyses/llm-grouping-implementation-plan.md) — `analysis_mode=llm_grouping` 第2分析モードの実装方針
+- [jigsaw-sensemaker](entities/jigsaw-sensemaker.md) — Jigsaw Sensemaker は LLM grouping の一例であり、LLM grouping 全体を Jigsaw と呼ぶと混乱する、という用語整理
 - [clustering-deep-research-findings-2026-05-25](analyses/clustering-deep-research-findings-2026-05-25.md) — UMAP / clustering / BERTopic の deep-research 整理
 - [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 公開UI 7 要件、view plugin の上位契約
 
@@ -51,7 +52,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 ## プロジェクト自体について
 
-- [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用
+- [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用。議事録 / Slack の鮮度基準もここを見る
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
 - [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)、前回: [meeting-report-2026-05-25](concepts/meeting-report-2026-05-25.md)）

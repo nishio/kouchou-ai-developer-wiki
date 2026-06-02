@@ -3,10 +3,10 @@ type: source
 summary: "Claude Code や人間が同じ材料で top-level label set を比較できるよう、`[8,40]` の label refinement 候補 4 本を同一フォーマットで並べた judge bundle"
 sources:
   - source-code.md
-  - jigsaw-llm-grouping-experiment-output-2026-05-25.md
+  - llm-grouping-experiment-output-2026-05-25.md
 ---
 
-このページは、`[8,40]` の top-level label refinement 候補を **Claude Code judge** と **人間 judge** が同じ材料で比較できるように整形した bundle である。現状の OpenAI judge は同系統 LLM による self-evaluation バイアスを疑うべきなので、まず判断対象を固定した上で別 judge を差し込める形にした。[[jigsaw-llm-grouping-experiment-output-2026-05-25]]より
+このページは、`[8,40]` の top-level label refinement 候補を **Claude Code judge** と **人間 judge** が同じ材料で比較できるように整形した bundle である。現状の OpenAI judge は同系統 LLM による self-evaluation バイアスを疑うべきなので、まず判断対象を固定した上で別 judge を差し込める形にした。[[llm-grouping-experiment-output-2026-05-25]]より
 
 ## Judge Instructions
 
@@ -16,7 +16,7 @@ sources:
 2. ラベル集合全体の読みやすさ
 3. 隣接ラベルとの区別のしやすさ
 
-OpenAI judge の cluster 平均点と direct judge はこの 3 軸を混ぜると winner が割れた。したがって、この bundle でも **1 cluster ずつの妥当性** と **一覧で並べた時の scanability** を意図的に分けて判断する必要がある。[[jigsaw-llm-grouping-experiment-output-2026-05-25]]より
+OpenAI judge の cluster 平均点と direct judge はこの 3 軸を混ぜると winner が割れた。したがって、この bundle でも **1 cluster ずつの妥当性** と **一覧で並べた時の scanability** を意図的に分けて判断する必要がある。[[llm-grouping-experiment-output-2026-05-25]]より
 
 ## Common Setup
 
@@ -30,7 +30,7 @@ OpenAI judge の cluster 平均点と direct judge はこの 3 軸を混ぜる�
 
 `merge_labelling` の結果をそのまま使う baseline。
 
-- output dir: `jigsaw_sample_comments_400_hierarchical_8_40_refine_none`
+- output dir: `llm_grouping_sample_comments_400_hierarchical_8_40_refine_none`
 - top-level cluster count: 8
 
 ### 1. AI技術によるエンターテイメントと研究開発の革新
@@ -109,7 +109,7 @@ OpenAI judge の cluster 平均点と direct judge はこの 3 軸を混ぜる�
 
 sibling 全体を見て代表性と重複抑制を両立させる最初の refinement。
 
-- output dir: `jigsaw_sample_comments_400_hierarchical_8_40_refine_setwise`
+- output dir: `llm_grouping_sample_comments_400_hierarchical_8_40_refine_setwise`
 - top-level cluster count: 8
 
 ### 1. AIによるエンターテイメントと研究開発の革新
@@ -188,7 +188,7 @@ sibling 全体を見て代表性と重複抑制を両立させる最初の refin
 
 sibling 差分を前半に出し、短くしつつ意味差を残す prompt variant。
 
-- output dir: `jigsaw_sample_comments_400_hierarchical_8_40_refine_contrast`
+- output dir: `llm_grouping_sample_comments_400_hierarchical_8_40_refine_contrast`
 - top-level cluster count: 8
 
 ### 1. AIによるエンタメと研究革新
@@ -267,7 +267,7 @@ sibling 差分を前半に出し、短くしつつ意味差を残す prompt vari
 
 短さと読みやすさを優先し、一覧 heading として揃えやすい prompt variant。
 
-- output dir: `jigsaw_sample_comments_400_hierarchical_8_40_refine_balanced`
+- output dir: `llm_grouping_sample_comments_400_hierarchical_8_40_refine_balanced`
 - top-level cluster count: 8
 
 ### 1. AIによるエンタメ革新

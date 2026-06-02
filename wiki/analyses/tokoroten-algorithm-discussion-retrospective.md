@@ -8,10 +8,10 @@ sources:
   - slack-tokoroten-spectral-clustering-notes-2026-q1.md
   - slack-niizuma-umap-kmeans-thread-2026-03-18.md
   - tttc-spectral-clustering-code-observation-2026-05-25.md
-  - jigsaw-llm-grouping-experiment-output-2026-05-25.md
+  - llm-grouping-experiment-output-2026-05-25.md
 ---
 
-tokoroten とのアルゴリズム議論を振り返ると、表面上は `UMAP`、`k-means`、`HDBSCAN`、`SpectralClustering`、Jigsaw / Sensemaker の比較に見える。  
+tokoroten とのアルゴリズム議論を振り返ると、表面上は `UMAP`、`k-means`、`HDBSCAN`、`SpectralClustering`、LLM grouping / sensemaking の比較に見える。  
 しかし本質は、**広聴AIが何を成果物として約束しているのかを分解し直す議論** だったと読む方がよい。
 
 ## 1. tokoroten の初期批判は「精度が低い」ではなく「用途を間違えると危ない」だった
@@ -53,7 +53,7 @@ tokoroten の 2026-Q1 spectral clustering メモは、TTTC が `UMAP` 後に `Sp
 この thread は、アルゴリズム論争が **幾何の自然さ・散布図での受容性・外部説明責務** の衝突だと示している。[[slack-niizuma-umap-kmeans-thread-2026-03-18]]より
 
 さらに 2026-05-25 の LLM grouping 実験では、LLM grouping は label semantics では強い一方、embedding 由来の 2D scatter とは相性が悪いことが観測された。  
-逆に従来 hierarchical clustering は scatter geometry では強いが、ラベル集合の読みやすさでは別評価が必要だった。[[jigsaw-llm-grouping-experiment-output-2026-05-25]]より
+逆に従来 hierarchical clustering は scatter geometry では強いが、ラベル集合の読みやすさでは別評価が必要だった。[[llm-grouping-experiment-output-2026-05-25]]より
 
 これを踏まえると、tokoroten との議論の着地点は「よりよい単一アルゴリズム」ではない。  
 少なくとも次の 3 artifact を分けるべき、という方向に見える。
@@ -78,7 +78,7 @@ tokoroten はそこを早い段階から突いていた。
 したがって今後の実装判断では、次の態度がよい。
 
 - `classic_scatter` は agenda discovery / 参加感 / 全体俯瞰の mode として守る
-- `llm_grouping` や Jigsaw 系は、散布図互換ではなく group-first / explanation-first の mode として育てる
+- `llm_grouping` や LLM grouping 系は、散布図互換ではなく group-first / explanation-first の mode として育てる
 - `SpectralClustering` や `HDBSCAN` は「正解」ではなく、どの artifact を改善するかを明示して試す
 - deep insight や少数意見救済を売るなら、入力収集プロセス、分類基準、説明 artifact まで含めて設計する
 
@@ -88,7 +88,7 @@ tokoroten はそこを早い段階から突いていた。
 
 - stable v4 の公開説明では、散布図の価値と限界をどこまで明示するべきか
 - `analysis-core` の schema で、分析 artifact / 表示 artifact / 説明 artifact をどう分けて表現するか
-- Jigsaw / Sensemaker 系 mode は、散布図を持たない前提でどの viewer を first-class にするべきか
+- LLM grouping / sensemaking 系 mode は、散布図を持たない前提でどの viewer を first-class にするべきか
 - 少数意見救済を主張する場合、どの評価データセットと観測指標を標準にするべきか
 
 ## Updates

@@ -6,12 +6,12 @@ sources:
   - github-dev-docs.md
 ---
 
-2026-05-25 に `work/kouchou-ai/` の current `main` と GitHub PR 状態を確認し、Jigsaw 系 `llm_grouping` 実装の足場がどこまで main にあるかを観測したメモ。`gh pr view 827 -R digitaldemocracy2030/kouchou-ai --json state` では `PR #827` は **MERGED** で、計画文書 `PLAN_llm_grouping_capabilities.md` は current tree に存在する。[[github-dev-docs]]より
+2026-05-25 に `work/kouchou-ai/` の current `main` と GitHub PR 状態を確認し、LLM grouping 系 `llm_grouping` 実装の足場がどこまで main にあるかを観測したメモ。`gh pr view 827 -R digitaldemocracy2030/kouchou-ai --json state` では `PR #827` は **MERGED** で、計画文書 `PLAN_llm_grouping_capabilities.md` は current tree に存在する。[[github-dev-docs]]より
 
 ## 観測事項
 
 - `PLAN_llm_grouping_capabilities.md` は repo root に存在し、短期は `analysis_mode=llm_grouping` + viewer 互換、長期は `analysis_capabilities` と `requirements` の導入、という二段計画を main 上の文書として保持している。[[source-code]]より
-- `packages/analysis-core/src/analysis_core/orchestrator.py` では `run_default()` が `run_workflow()` を呼ぶ canonical path になっている。したがって、Jigsaw 系実装を入れるなら deprecated な direct-step `run()` ではなく workflow path 側に差し込むのが current tree と整合する。[[source-code]]より
+- `packages/analysis-core/src/analysis_core/orchestrator.py` では `run_default()` が `run_workflow()` を呼ぶ canonical path になっている。したがって、LLM grouping 系実装を入れるなら deprecated な direct-step `run()` ではなく workflow path 側に差し込むのが current tree と整合する。[[source-code]]より
 - ただし同ファイルの `run_workflow()` は現状 `HIERARCHICAL_DEFAULT_WORKFLOW` を固定で使っており、`analysis_mode` に応じた workflow 切替はまだない。[[source-code]]より
 - `packages/analysis-core/src/analysis_core/workflows/hierarchical_default.py` も `extraction -> embedding -> hierarchical_clustering -> ...` の固定列で、`llm_grouping` ステップは存在しない。[[source-code]]より
 - `apps/public-viewer/components/charts/plugins/types.ts` には mode ごとの `canBeDisabled` / `isDisabled` はあるが、plugin manifest の `requirements` はまだ無い。[[source-code]]より

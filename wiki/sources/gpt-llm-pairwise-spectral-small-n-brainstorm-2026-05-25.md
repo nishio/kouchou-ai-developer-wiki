@@ -89,7 +89,7 @@ Viswanathan et al.（LLM を clustering の前・中・後に組み込む手法�
 
 ## Compared to existing wiki claims
 
-- [[jigsaw-llm-grouping-experiment-output-2026-05-25]] の 400 件規模 `analysis_mode=llm_grouping` 実験とは別の **小規模（数十件）向け代替設計** を提示している。
+- [[llm-grouping-experiment-output-2026-05-25]] の 400 件規模 `analysis_mode=llm_grouping` 実験とは別の **小規模（数十件）向け代替設計** を提示している。
 - [[tokoroten-spectral-clustering-reading]] が「TTTC 的 spectral は scatter-first」と読んだのに対し、ここでの spectral は **明示的に高次元 affinity graph を切る** 手法として使われる。同じ「spectral」でも意図が違う。
 - [[niizuma-thread-algorithm-critique]] の「分析 artifact と表示 artifact を分ける」「LLM 直分類でも説明責務が残る」読みと整合する：LLM pairwise graph は各 edge に `reason` を残せるため、説明 artifact として強い。
 
@@ -103,7 +103,7 @@ Viswanathan et al.（LLM を clustering の前・中・後に組み込む手法�
 
 - 並行ブレスト: [[gpt-umap-clustering-bertopic-deep-research-2026-05-25]] / [[gpt-mst-bridge-visualization-brainstorm-2026-05-25]]
 - 類似手法の議論: [[tokoroten-spectral-clustering-reading]] / [[slack-tokoroten-spectral-clustering-notes-2026-q1]]
-- 既存 LLM grouping 実験: [[jigsaw-llm-grouping-experiment-output-2026-05-25]] / [[jigsaw-llm-grouping-experiment]]
+- 既存 LLM grouping 実験: [[llm-grouping-experiment-output-2026-05-25]] / [[llm-grouping-experiment]]
 - 派生 analysis: [[clustering-deep-research-findings-2026-05-25]]
 
 ## Updates

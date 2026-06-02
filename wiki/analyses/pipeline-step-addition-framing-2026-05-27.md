@@ -9,7 +9,7 @@ sources:
   - gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25.md
   - gpt-mst-bridge-visualization-brainstorm-2026-05-25.md
   - gpt-kawakita-kj-method-broadlistening-2026-05-25.md
-  - jigsaw-llm-grouping-experiment-output-2026-05-25.md
+  - llm-grouping-experiment-output-2026-05-25.md
   - strategic-development-order-2026-05-23.md
   - open-pr-pipeline-step-observation-2026-05-28.md
   - pipeline-step-default-policy-decision-2026-05-28.md
@@ -17,7 +17,7 @@ sources:
 
 直近の研究メモでは、「pipeline に step を追加する」方向の提案が複数回出ている。表面上は step 数を増やす話に見えるが、実際には次の 2 系統を分けて考えるべきである。
 
-1. `hierarchical_label_refinement` 的な **top-level label set の後処理**。`merge_labelling` の後で、既存 cluster 構造を変えずに見出しの短さ・粒度・差分を整える実験である。[[jigsaw-llm-grouping-experiment-output-2026-05-25]]より
+1. `hierarchical_label_refinement` 的な **top-level label set の後処理**。`merge_labelling` の後で、既存 cluster 構造を変えずに見出しの短さ・粒度・差分を整える実験である。[[llm-grouping-experiment-output-2026-05-25]]より
 2. `representative_docs`、`boundary_cases`、`counterexamples`、`unresolved_cards`、`bridge edge reason` のような **解釈・説明責務を持つ成果物**。これは UMAP / BERTopic 系研究、LLM pairwise graph、MST + bridge 可視化、KJ 法ブレストの複数箇所で繰り返し現れている。[[gpt-umap-clustering-bertopic-deep-research-2026-05-25]]より [[gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25]]より [[gpt-mst-bridge-visualization-brainstorm-2026-05-25]]より [[gpt-kawakita-kj-method-broadlistening-2026-05-25]]より
 
 ## 結論
@@ -54,7 +54,7 @@ step を足す懸念は正しい。current pipeline は既に extraction → emb
 - artifact versioning が増える
 - 利用者が「何を設定すべきか」を理解しにくくなる
 
-特に `label_refinement` はこの危険がある。これは label の一覧 readability を改善する実験としては有用だが、project の根本目的そのものではない。`setwise` / `contrast` / `balanced` のような prompt variation が step として増殖すると、pipeline が prompt 実験の履歴で膨らむ。[[jigsaw-llm-grouping-experiment-output-2026-05-25]]より
+特に `label_refinement` はこの危険がある。これは label の一覧 readability を改善する実験としては有用だが、project の根本目的そのものではない。`setwise` / `contrast` / `balanced` のような prompt variation が step として増殖すると、pipeline が prompt 実験の履歴で膨らむ。[[llm-grouping-experiment-output-2026-05-25]]より
 
 したがって `label_refinement` は、当面は **default off / `mode=none` の実験 step** として扱い、安定したら「semantic presentation」系の内部 mode に吸収するくらいがよい。これを product の恒久的な主要段として強く打ち出すのは早い。
 

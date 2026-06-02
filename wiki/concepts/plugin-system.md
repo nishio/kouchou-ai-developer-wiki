@@ -88,15 +88,15 @@ sources:
 - **YouTube input plugin**（実装済み）— URL からコメント自動収集
 - **階層リスト view plugin**（outliner 風）
 - **Polis input plugin** — 容易と判定
-- **Jigsaw analysis plugin** — 散布図データが出ない設計上の難点あり
+- **LLM grouping analysis plugin** — 散布図データが出ない設計上の難点あり
 
 `[[slack-dev-kouchouai-2026-q1]]` で補足される設計意図：
 
-- Jigsaw 系分析はまず `extraction, embedding` の後ろに差し込む互換枝として考えられていた
+- LLM grouping 系分析はまず `extraction, embedding` の後ろに差し込む互換枝として考えられていた
 - その亜種として **既存のカテゴリーツリーをパラメータで与える分類** も想定されていた
 - 自治体の事業計画・予算カテゴリに合わせた分類ニーズがその具体例
-- Jigsaw 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
-- したがって Jigsaw Sensemaker 的な第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
+- LLM grouping 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
+- したがって LLM 直接グルーピングの第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
 
 ## 関連ドキュメント
 
@@ -115,4 +115,4 @@ sources:
 
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正
-- 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と Jigsaw 系 analysis plugin の結びつきを追記
+- 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と LLM grouping 系 analysis plugin の結びつきを追記

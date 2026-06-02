@@ -52,7 +52,7 @@ tokoroten のメモを踏まえると、TTTC 的 spectral clustering はこの�
 
 2026-02-04 の `#2_開発_広聴ai` では、nishio が将来の大きな開発候補として
 
-1. Jigsaw 的なもの
+1. LLM grouping
 2. 既存構成の延長
 3. オリジナル TTTC 的な spectral clustering
 
@@ -92,7 +92,7 @@ tokoroten の読みでは、TTTC もまた **散布図都合の幾何をかな�
 
 である。[[slack-tokoroten-spectral-clustering-notes-2026-q1]]より
 
-したがって spectral clustering の専用メモは有用だが、より大きい解説テーマは **「TTTC / 広聴AI / Jigsaw 系はそれぞれ何を最適化しているのか」** になる。  
+したがって spectral clustering の専用メモは有用だが、より大きい解説テーマは **「TTTC / 広聴AI / LLM groupingはそれぞれ何を最適化しているのか」** になる。  
 この page はその入口として置く価値がある。
 
 ## Practical Priority
