@@ -39,6 +39,20 @@
 - spine 再設計 (デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐) を [[kouchou-ai-docs-entry-restructure-2026-06-03]] にまとめ。`getting-started/` を `self-hosting/` 等に改名し、既存 docs は改善・削除も含めて柔軟に扱う方針
 - LLM grouping / tokoroten DivCon・Farbrain / nishio マンダラート可視化など散在する実験的機能のカタログを本体 docs 内にフラットに置く提案を [[experimental-features-catalog-proposal-2026-06-03]] に整理。個人 repo の stale 対策として「最終確認日」を catalog エントリの必須項目にすることをルール化
 
+## [2026-06-03 15:50] filing-back | スコープ線（キーインサイト発見まで）の系譜を 2025-07 から現在の plugin 化方針まで整理
+
+- 2025-07-16 マーケ戦略 mtg の ingest で、「広聴AI のスコープはキーインサイト発見まで、その先は伴走パートナー」という線引きが**1 年弱前から一貫している**ことが見えたので、analyses 側に [[kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03]] として系譜整理
+- 4 マイルストーン（2025-07 マーケ mtg → 2025-11-29 鈴木健ブログ → 2025-12-06 方向性会議 → 現在の plugin-system / broadlistening-tool-ecosystem-vision）を時系列で並べ、一貫した点と変化した点を切り分けた
+- 変化したのは「2025-07 のペルソナ三層（自治体担当 / 首長 / 現場）」が「2026 の三像（一般ユーザ / 組織内デモ役 / 分析者）」へ細分化し、橋渡し役が独立の像として明示された点、および UI 系の優先度低 → 公開 UI 要件が前景化した点
+- [[broadlistening-tool-ecosystem-vision]] の Updates から新系譜ページへバックリンク
+
+## [2026-06-03 15:39] ingest | 2025-07-16 広聴AIマーケティング戦略 mtg を単発議事録として取り込み
+
+- Slack で 小野（moai, コミュマネ）が共有した Google Doc を発掘・ingest。週次定例とは別の単発会議で、関治之 / 鈴木健 / 筧大日朗 / nao yo4 / 東健二郎 が朝 8時台に集まりマーケ戦略を議論したもの
+- 議事メモは「ユーザータイプは初期に地方自治体 / 事例研究は導入→キーインサイト→政策反映→市民満足度向上の 6 段階 / 広聴AI の射程はキーインサイト発見まで、その先はパートナー」など、2025-12-06 [[kouchou-ai-direction-2025-12-06]] や 2025-11-29 [[kensuzuki-broad-listening-insight-types-2025-11-29]] に繋がる議論の早い起点
+- raw を `raw/marketing-strategy-mtg-2025-07-16.txt` / `.html` に固定、要約 source を [[marketing-strategy-mtg-2025-07-16]] として作成
+- `[a]〜[k]` の Google Doc コメント 11 件は export に本文は残るが著者名は残らないため、著者不明として収録
+
 ## [2026-06-03 02:00] filing-back | story から「9. 同じ日に、もう 1 件」(Dependabot) を削除
 
 - 旧 9 節「同じ日に、もう 1 件」が deploy success false positive → runtime build 撤去という本筋に対して関係ない、との指摘を受け削除

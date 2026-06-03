@@ -4,6 +4,7 @@ summary: "TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 a
 type: entity
 sources:
   - meeting-minutes.md
+  - note-annotakahiro-broadlistening-resources-2025-02-05.md
 ---
 
 ## What
