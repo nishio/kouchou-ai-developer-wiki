@@ -6,6 +6,8 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - broad-listening-book-source.md
+  - nishio-amusement-park-map-metaphor-2026-06-03.md
+  - note-annotakahiro-broadlistening-resources-2025-02-05.md
 ---
 
 ## 定義
@@ -13,6 +15,16 @@ sources:
 **ブロードリスニング (broad listening)** は、放送 (broad**casting**) の対義として、多数の市民・利用者・参加者から自由記述意見を集めて LLM で集約・整理・可視化する手法。**広く「聴く」** ことに重点がある。
 
 [[kouchou-ai]] はこの手法のリファレンス実装の一つで、[[talk-to-the-city|Talk to the City]] のフォークから出発した日本語特化版。
+
+## 読み方 — 「遊園地の地図」比喩
+
+「意見の地図」は静的なマップではなく、reader が **俯瞰してゾーン構成を把握 → 関心のあるゾーンを選択 → drill in** という三段の探索パターンで読むことを前提にしている。遊園地の地図に例えるなら、「この辺が西部劇ゾーンでこの辺が SF ゾーンなのか〜、SF に興味があるから SF ゾーンを詳しく見てみよう」という読み方になる。[[nishio-amusement-park-map-metaphor-2026-06-03]]より
+
+ここから出てくる帰結：
+
+- 全件を頭から読むのではなく、ゾーン名（上位クラスタラベル）が「関心で選ぶ手がかり」として機能することが前提になる
+- 上位ラベルの品質が低くゾーン名として機能しないと、この探索は成立せず、reader は地図を捨てて全件読みに戻るか諦める
+- したがって階層構造とラベル品質は「見栄え」ではなく **reader の探索を成立させるための機能要件** である
 
 ## 典型的なパイプライン
 
@@ -58,3 +70,4 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 
 - 2026-05-17: 初回作成
 - 2026-05-21: 書籍 13.5 由来の散布図 vs Long Context 二アーキ整理を追加（[[broad-listening-book-source]]）
+- 2026-06-03: 「遊園地の地図」比喩で reader の探索パターン（俯瞰 → ゾーン選択 → drill in）を言語化し、ラベル品質が機能要件である理由を追記（[[nishio-amusement-park-map-metaphor-2026-06-03]]）

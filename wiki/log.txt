@@ -3,9 +3,11 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-03 16:30	ingest	「遊園地の地図」比喩を broadlistening.md の「読み方」セクションに追記
 2026-06-03 16:15	filing-back	story 末尾に「仕組みそのものに興味があれば → [[wiki-driven-workflow]]」を追加
 2026-06-03 16:10	filing-back	story の Updates / Open Questions 節を削除
 2026-06-03 16:05	filing-back	story 6-8 節の attribution と曖昧表現を再修正
+2026-06-03 15:51	filing-back	kouchou-ai docs 入口構造の再設計と実験的機能カタログの提案
 2026-06-03 02:00	filing-back	story から「9. 同じ日に、もう 1 件」(Dependabot) を削除
 2026-06-03 01:46	filing-back	blind A/B HTML に回答 JSONL 出力フォームを追加
 2026-06-03 00:35	filing-back	blind A/B label preference bundle を生成

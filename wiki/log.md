@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-03 16:30] ingest | 「遊園地の地図」比喩を broadlistening.md の「読み方」セクションに追記
+
+- nishio から「この辺が西部劇ゾーンでこの辺が SF ゾーンなのか〜、SF に興味があるから SF ゾーンを詳しく見てみよう」という比喩
+- 「意見の地図」を reader 体験側から言い直した拡張: 俯瞰 → ゾーン選択 → drill in の三段探索パターン
+- [[nishio-amusement-park-map-metaphor-2026-06-03]] を source 化し、[[broadlistening]] に「読み方」節を新設。上位ラベル品質が機能要件である理由としても接続
+- index.txt regenerate 済み
+
 ## [2026-06-03 16:15] filing-back | story 末尾に「仕組みそのものに興味があれば → [[wiki-driven-workflow]]」を追加
 
 - 「この仕組み自体を解説しているのは wiki-driven-workflow なので、興味を持った人が読む先として提示すべき」と指摘
@@ -25,6 +32,12 @@
 - 6 節を「人間が『ここまで掘った内容を wiki に残しておこう』と指示し、Agent はこの 考古学的調査 の結果を…」へ、7 節を「人間が『実装に入る前にまず計画を書いて』と指示する。Agent はいきなり…まず計画ページを書いた」へ書き直し
 - 8 節の「妥協」段を「実装してみると計画段階では気づけなかった制約に当たった節もあった。ある変更を入れたら別のページが壊れる、というような。そのたびに『この案は採らない、なぜなら〜』を計画ページに追記して、別の手段に切り替えた」へ。技術詳細 (`connection()` を `[slug]` に入れたら `/example` が `DYNAMIC_SERVER_USAGE` で 500 になった件) はストーリー粒度では具体名を出さず、抽象度を上げつつ「何の話か」が読み取れる程度に
 - nishio が直接編集した typographic styling (「考古学的調査」の前後スペース) は、私のリライト中に一度落としてしまったので復元
+
+## [2026-06-03 15:51] filing-back | kouchou-ai docs 入口構造の再設計と実験的機能カタログの提案
+
+- nishio との対話で「kouchou-ai docs が `getting-started/` から始まる構造は『興味を持った人 = 開発者』というバイアスを産む」「`getting-started` というネーミング自体がおかしい」という違和感を整理し、source [[nishio-docs-entry-restructure-discussion-2026-06-03]] に固定
+- spine 再設計 (デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐) を [[kouchou-ai-docs-entry-restructure-2026-06-03]] にまとめ。`getting-started/` を `self-hosting/` 等に改名し、既存 docs は改善・削除も含めて柔軟に扱う方針
+- LLM grouping / tokoroten DivCon・Farbrain / nishio マンダラート可視化など散在する実験的機能のカタログを本体 docs 内にフラットに置く提案を [[experimental-features-catalog-proposal-2026-06-03]] に整理。個人 repo の stale 対策として「最終確認日」を catalog エントリの必須項目にすることをルール化
 
 ## [2026-06-03 02:00] filing-back | story から「9. 同じ日に、もう 1 件」(Dependabot) を削除
 
