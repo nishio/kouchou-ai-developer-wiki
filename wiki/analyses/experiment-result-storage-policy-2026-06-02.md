@@ -2,6 +2,9 @@
 type: analysis
 summary: "実験結果の保存先を 3 層に分ける方針。`work/kouchou-ai/.../outputs/` は一時実行物、`raw/experiments/<experiment_id>/` は gitignored な一次 artifact snapshot、公開 wiki は manifest / summary / 判断だけを持つ。採用判断用実験では `factor_under_test` も記録する"
 sources:
+  - nishio-blind-human-label-presentation-context-2026-06-02.md
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
   - one-factor-experiment-principle-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - codex-log-experiment-archive-cli-2026-06-02.md
@@ -50,6 +53,7 @@ raw/experiments/
     datasets.jsonl
     tree_runs.jsonl
     labelling_runs.jsonl
+    human_preferences.jsonl
     human_observations.jsonl
     judge_runs.jsonl
     artifacts/
@@ -113,6 +117,7 @@ raw/experiments/
 - labelling run artifact
 - judge run artifact
 - generated comparison bundle
+- human preference の blind A/B winner / tie / confidence / reason tags / presentation context
 - human observation の元メモ
 - prompt / config / model / commit / token / cost metadata
 
@@ -157,9 +162,9 @@ raw/experiments/
 
 1. `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に既存 LLM grouping 400 件実験の比較 artifact を集める
 2. `manifest.json`、`tree_runs.jsonl`、`labelling_runs.jsonl` を手で最小作成する
-3. `bundles/tree_label_matrix.md` を作り、人間 observation を書ける欄を置く
+3. `bundles/tree_label_matrix.md` を作り、人間 preference / observation を書ける欄を置く
 4. `wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md` に公開 summary を作る
-5. そのうえで judge v1 が human observation を拾えるかを見る
+5. そのうえで judge v1 が human preference を再現できるかを見る
 
 この順にすると、「どこに保存したか」「何を比較したか」「judge が何を見ているか」が同時に固定される。
 
@@ -176,6 +181,8 @@ raw/experiments/
 
 ## Updates
 
+- 2026-06-02: [[nishio-blind-human-label-presentation-context-2026-06-02]] を追加し、`human_preferences.jsonl` には algorithm / process origin を人間に隠したか、A/B 表示順、`presentation_context` も保存する方針を追記した。
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加し、ラベル品質評価では `human_preferences.jsonl` に A/B winner / tie / confidence / reason tags を保存し、judge はその preference を再現できるかで較正する方針を追記した。
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加し、採用判断用の clean experiment では `experiment_class` / `baseline_experiment_id` / `factor_under_test` / `fixed_inputs` / `changed_inputs` を manifest に残す方針を追記した。
 - 2026-06-02: [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加。既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に保存し、first corpus と tree-label matrix bundle を作成した。
 - 2026-06-02: [[codex-log-experiment-archive-cli-2026-06-02]] を追加。`work/kouchou-ai-experiment-storage` の topic branch `codex/experiment-storage` で、`analysis-core` CLI から `raw/experiments/<experiment_id>/` 形式の最小 archive を生成する first slice を実装した。

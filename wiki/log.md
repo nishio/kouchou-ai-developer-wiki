@@ -33,6 +33,24 @@
 - 節番号を 9 / 10 へ繰り上げ。frontmatter summary と lead 段落は Dependabot に触れていなかったため無変更
 - 「同日内の運用ルール即再利用」というメタ視点自体は資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] には残っており、ストーリー版の文脈純度を優先した
 
+## [2026-06-03 01:46] filing-back | blind A/B HTML に回答 JSONL 出力フォームを追加
+
+- `scripts/build_label_preference_bundle.py` を更新し、`label_preference_ab.html` に winner / confidence / reason tags / free text の入力フォームを追加
+- 完成済み回答だけを `human_preferences.jsonl` へ追記できる JSONL として textarea に出すようにし、任意の `evaluator_id` 入力と copy button も追加
+- [[codex-log-label-preference-bundle-2026-06-03]] / [[label-quality-human-preference-improvement-plan-2026-06-03]] / [[meeting-report-draft]] に反映。HTML 内に candidate origin が出ていないことと、Playwright でフォーム入力から JSONL が出ることを確認
+
+## [2026-06-03 00:35] filing-back | blind A/B label preference bundle を生成
+
+- `scripts/build_label_preference_bundle.py` を追加し、既存 LLM grouping 400 件 corpus の `hierarchical_8_40` tree を固定して `none` vs `setwise` の blind A/B bundle を生成
+- raw artifact に `human_preference_questions.jsonl` 24 件、空の `human_preferences.jsonl`、`human_preferences.schema.json`、`bundles/label_preference_ab.md` / `.html` を追加し、`manifest.json` に `human_preference_questions: 24` と `human_preferences: 0` を追記
+- [[codex-log-label-preference-bundle-2026-06-03]] を source 化し、[[label-quality-human-preference-improvement-plan-2026-06-03]] / [[llm-grouping-400-tree-label-corpus-2026-06-02]] / [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[meeting-report-draft]] に反映。`py_compile` と origin 非表示確認は通過
+
+## [2026-06-03 00:15] filing-back | ラベル品質評価改善計画を作成
+
+- nishio の「改善計画を Wiki に書く？」という確認を [[nishio-label-evaluation-improvement-plan-request-2026-06-03]] として source 化
+- [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加し、次の implementation slice を既存 LLM grouping 400 件 corpus の `hierarchical_8_40` 固定、algorithm 由来を隠した A/B bundle、`human_preferences.jsonl` schema 作成に整理
+- [[cli-pipeline-experiment-roadmap-2026-06-02]] / [[meeting-report-draft]] に接続。full UI は最初の clean A/B ではなく、label 単体 / 隣接 label 集合 / label + 代表例の分解テスト後の統合確認として扱う
+
 ## [2026-06-03 00:01] filing-back | annotation #16-#27 を SQLite 上でも applied に migrate
 
 - annotation-wiki 側で `bin/annotations` CLI が完成 ([handoff plan: /tmp/annotation-wiki-cli-plan.md](file:///tmp/annotation-wiki-cli-plan.md))

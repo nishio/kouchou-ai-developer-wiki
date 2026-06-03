@@ -2,6 +2,9 @@
 type: source
 summary: "LLM grouping 400 件実験の既存 artifact を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化した source。5 tree run、10 labelling run、5 judge run、4 observation を保存し、tree-label matrix bundle を作成した"
 sources:
+  - codex-log-label-preference-bundle-2026-06-03.md
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - one-factor-experiment-principle-2026-06-02.md
   - llm-grouping-experiment-output-2026-05-25.md
@@ -95,6 +98,8 @@ labelling / refinement run:
 
 この corpus は、既存 artifact を整理した retrospective / exploratory corpus である。current `main` から 1 要素だけ変えた clean experiment ではないため、方式採用の直接根拠にはしない。価値は、tree / labelling / judge / human observation を横並びにして、次に 1 要素だけ変える実験を設計する材料を作った点にある。[[nishio-one-factor-experiment-principle-2026-06-02]]より
 
+また、この corpus は当初 blind A/B の human preference を持っていなかった。2026-06-03 に first slice として、`hierarchical_8_40` tree を固定し、`none` vs `setwise` の label variants から 24 件の pending question を `human_preference_questions.jsonl` に生成した。まだ人間回答は入っておらず、`human_preferences.jsonl` は空である。[[codex-log-label-preference-bundle-2026-06-03]]より
+
 ## Open Questions
 
 - この raw corpus を複数人で共有する場合、Google Drive / GitHub release artifact / 別 repo のどこに置くか。
@@ -102,7 +107,11 @@ labelling / refinement run:
 - `human_observations.jsonl` の schema を今の narrative 形式のまま進めるか、severity / failure_type / affected_label_id を必須にするか。
 - judge v1 はこの corpus の 4 observation を最小 calibration set として使えるか。
 - 次の clean experiment は、tree 固定で labelling process だけを変えるか、label output 固定で judge rubric だけを変えるか。
+- A/B preference bundle は、この corpus の `bundles/tree_label_matrix.html` を拡張して作るか、別の comparison UI を作るか。
+- 生成済み `label_preference_ab.html` をそのまま human review に使うか、回答入力 UI を別に作るか。
 
 ## Updates
 
+- 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。`human_preference_questions.jsonl` 24 件、空の `human_preferences.jsonl`、schema、blind A/B Markdown / HTML bundle を生成したことを反映した。
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。現 corpus はまだ human preference を持たない探索 corpus であり、次の clean slice で label variants と `human_preferences.jsonl` を追加する境界を追記した。
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加。既存 artifact から作った corpus は exploratory として扱い、採用判断用の clean experiment ではないことを明記した。

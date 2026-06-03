@@ -109,6 +109,7 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - 採用判断に使う clean experiment は current `main` の baseline から `factor_under_test` を 1 つだけ変える
 - `manifest.json` または対応 source には、`experiment_class`、`baseline_experiment_id`、`factor_under_test`、`fixed_inputs`、`changed_inputs`、`comparison_question` を残す
 - tree generation を比較する時は、tree が変わることで label output も従属的に変わる。したがって labelling process / evidence policy / judge は固定し、変えた要素が tree generation だけだと明記する
+- ラベル品質の人間評価では、単独 label の絶対批評を前提にしない。同じ tree / evidence / 表示文脈から作った複数 label 案を blind A/B で比較し、`A / B / tie / unsure`、confidence、任意の理由タグを保存する。人間には algorithm / process 由来を見せず、A/B の表示順を randomize / counterbalance する。困難な full UI 評価は最初から行わず、`presentation_context` は `label_only`、`sibling_label_set`、`label_with_representatives` に分解する。judge はこの pairwise preference を再現できるかで較正する
 
 ### Index メンテ方針
 

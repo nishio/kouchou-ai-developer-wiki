@@ -1,7 +1,9 @@
 ---
 type: analysis
-summary: "pipeline 実験は探索 corpus と採用判断用の clean experiment を分け、採用判断では current main baseline から `factor_under_test` を 1 つだけ変えるべきという実験設計原則。複数要素変更 run は仮説生成や judge 較正には使えるが、単独で winner 判定しない"
+summary: "pipeline 実験は探索 corpus と採用判断用の clean experiment を分け、採用判断では current main baseline から `factor_under_test` を 1 つだけ変えるべきという実験設計原則。ラベル品質は単独批評ではなく A/B preference で人間評価し、複数要素変更 run は単独で winner 判定しない"
 sources:
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - llm-grouping-400-tree-label-corpus-2026-06-02.md
   - clustering-labeling-comparison-corpus-2026-06-02.md
@@ -17,6 +19,8 @@ CLI / `analysis-core` で pipeline を試す時は、**探索 corpus** と **採
 
 したがって、採用判断に使う実験では、baseline を current `main` の run に置き、`factor_under_test` を 1 つだけ明示する。複数要素を同時に変えた run は `exploratory` として扱い、仮説生成、failure mode 発見、judge calibration に使うが、単独で winner 判定しない。
 
+ただしラベル品質では、人間に単独 label の絶対評価や詳細批評を求める前提も危うい。人間評価は、同じ tree / evidence から生成した複数 label 案の A/B preference として集め、その preference を judge が再現できるかを見る順序にする。[[human-pairwise-label-preference-experiment-2026-06-02]]より
+
 ## 2 種類の実験
 
 ### 探索 corpus
@@ -25,7 +29,7 @@ CLI / `analysis-core` で pipeline を試す時は、**探索 corpus** と **採
 
 - tree shape、label set、judge result、人間 observation を横並びにする
 - 失敗モードや評価軸を洗い出す
-- judge が拾うべき human observation を作る
+- judge が再現すべき human preference / observation を作る
 - 次に切る clean experiment の候補を作る
 
 2026-06-02 の `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` はこの位置づけである。5 tree run / 10 labelling run / 5 judge run / 4 observation を保存したので、比較の材料としては有用だが、複数要素が混ざった retrospective corpus であり、採用判断の causal evidence ではない。[[llm-grouping-400-tree-label-corpus-2026-06-02]]より
@@ -84,13 +88,20 @@ clean experiment は、採用判断や実装変更の根拠にするためのも
 
 clustering method 比較では、tree が変わるため label output も従属的に変わる。この場合の `factor_under_test` は tree generation であり、labelling process と evidence policy を固定して、tree 差が label set にどう伝播するかを見る。
 
+## Human Preference を先に集める
+
+人間評価は、まず pairwise preference にする。単独 label を見て「どこが悪いか」を言語化してもらうのではなく、同じ cluster / 同じ label set に対する候補 A/B を blind に出し、`A / B / tie / unsure` を選んでもらう。理由は optional なタグでよい。[[nishio-human-pairwise-label-preference-before-judge-2026-06-02]]より
+
+この時も 1 要素原則は維持する。たとえば label prompt を比べる block では tree と evidence を固定し、evidence policy を比べる block では prompt と tree を固定する。複数 parameter variants を作ることはよいが、1 つの A/B 比較で変わっている軸を混ぜない。
+
 ## 次にやる clean experiment
 
 最初の clean experiment は、既存 corpus から仮説を選んで 1 要素に切り直す。
 
-1. `hierarchical_8_40` の tree を固定し、labelling process だけを変える。
-2. tree と label output を固定し、judge rubric だけを変えて 4 human observations を拾えるかを見る。
-3. current `main` の label prompt を baseline にし、evidence policy だけを `random sample` から `representative artifact` に変える。
+1. `hierarchical_8_40` の tree と evidence を固定し、labelling process だけを変えた label variants を作る。
+2. その variants を人間に blind A/B で見せ、preference を集める。
+3. judge rubric / prompt は、その preference を再現できるかで較正する。
+4. 次に、prompt を固定して evidence policy だけを `random sample` から `representative artifact` に変える。
 
 この順にすると、judge 改善、label 改善、view prototype が「なんとなく良い」ではなく、どの要素が効いたかを説明できる。
 
@@ -99,7 +110,9 @@ clustering method 比較では、tree が変わるため label output も従属�
 - clean experiment の `baseline_experiment_id` は current `main` commit ごとに作るか、dataset ごとに固定 baseline を持つか。
 - 1 つの PR に exploratory corpus 作成と clean experiment を同居させてよいか。レビュー上は分ける方が読みやすい可能性が高い。
 - `factor_under_test` の語彙を自由記述にするか、`tree_generation` / `labelling_process` / `evidence_policy` / `judge_rubric` / `view_layout` などに enum 化するか。
+- pairwise preference の比較単位は cluster label 単位か、label set 全体か。
 
 ## Updates
 
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。ラベル品質の人間評価は単独批評ではなく、同じ tree / evidence から作った label variants の A/B preference として集める方針に補正した。
 - 2026-06-02: 初版作成。nishio の「やってみるのは大事だが、main から一度にいろいろ変えると解釈が難しい。1 要素ずつ変えた実験にすべき」という指摘を、探索 corpus と clean experiment の区別として整理した。

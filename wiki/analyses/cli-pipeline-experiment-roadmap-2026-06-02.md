@@ -1,7 +1,13 @@
 ---
 type: analysis
-summary: "CLI を pipeline 実験の場として使い、まず clustering tree と labelling output の比較コーパスを作り、採用判断では 1 要素ずつ変えながら品質 judge / evidence artifact / ラベル改善 / マンダラート・付箋ビューを順に育てるロードマップ。Web UI は simple に保ち、CLI で比較可能な artifact を貯めてから昇格判断する"
+summary: "CLI を pipeline 実験の場として使い、まず clustering tree と labelling output の比較コーパスを作り、label variants の A/B human preference を集めてから judge / evidence artifact / ラベル改善 / マンダラート・付箋ビューを順に育てるロードマップ。Web UI は simple に保ち、CLI で比較可能な artifact を貯めてから昇格判断する"
 sources:
+  - codex-log-label-preference-bundle-2026-06-03.md
+  - label-quality-human-preference-improvement-plan-2026-06-03.md
+  - nishio-label-evaluation-improvement-plan-request-2026-06-03.md
+  - nishio-blind-human-label-presentation-context-2026-06-02.md
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
   - one-factor-experiment-principle-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - codex-log-experiment-archive-cli-2026-06-02.md
@@ -31,24 +37,28 @@ CLI / `analysis-core` は、Web UI に複雑さを載せずに **pipeline を試
 
 また、実験を実際にやってみることは大事だが、current `main` から一度に複数要素を変えると結果の解釈が難しくなる。既存 artifact から作る corpus は exploratory として使い、採用判断用の clean experiment では `factor_under_test` を 1 つだけ変える。[[one-factor-experiment-principle-2026-06-02]]より
 
+さらに、人間評価は単独 label の絶対批評から始めない。先に同じ tree / evidence から複数の label variants を作り、人間には A/B でどちらがよいかを聞く。その preference を judge 較正の教師信号にする。A/B では algorithm / process 由来を隠し、困難な full UI 評価は label 単体、隣接 label 集合、label + 代表例の分解テストとして扱う。[[human-pairwise-label-preference-experiment-2026-06-02]]より [[nishio-blind-human-label-presentation-context-2026-06-02]]より
+
 したがって今回の並びは、次の順に補正する。
 
 0. **比較コーパス / 実験台帳を作る**。
 1. **実験ごとに 1 つの `factor_under_test` を決める**。
-2. **その corpus 上で品質 judge / evidence contract を直す**。
-3. **ラベル生成入力と代表例 artifact を固定する**。
-4. **その上でラベル生成 / refinement を改善する**。
-5. **マンダラート / 付箋ビューを CLI 由来の display artifact として試す**。
-6. **比較結果を残し、Web UI へ入れるかを別判断にする**。
+2. **同じ tree / evidence で label variants を作る**。
+3. **人間に blind A/B preference を聞く**。
+4. **その preference を再現するように judge を較正する**。
+5. **ラベル生成入力と代表例 artifact を固定する**。
+6. **その上でラベル生成 / refinement を改善する**。
+7. **マンダラート / 付箋ビューを CLI 由来の display artifact として試す**。
+8. **比較結果を残し、Web UI へ入れるかを別判断にする**。
 
-ポイントは、ラベル品質改善を急いで winner を決めないこと。現状の rubric judge v0 は過去出力のズレを十分に検出できておらず、judge が見る evidence も representative artifact として固定されていない。さらに、どの tree とどの labelling process を評価しているかも混ざりがちである。したがって、ラベル改善実験は走らせてよいが、採用判断は比較コーパスと judge / evidence の較正後にする。[[label-quality-redesign-reset-2026-05-30]]より [[label-quality-rubric-evaluation-2026-05-29]]より [[clustering-labeling-comparison-corpus-2026-06-02]]より
+ポイントは、ラベル品質改善を急いで winner を決めないこと。現状の rubric judge v0 は過去出力のズレを十分に検出できておらず、judge が見る evidence も representative artifact として固定されていない。さらに、人間も単独 label だけでは十分に批判しにくい。したがって、まず比較可能な label variants を作り、pairwise preference を集め、その preference を judge が再現できるようにしてから、採用判断に進む。[[label-quality-redesign-reset-2026-05-30]]より [[label-quality-rubric-evaluation-2026-05-29]]より [[clustering-labeling-comparison-corpus-2026-06-02]]より
 
 ## CLI 実験場としての意味
 
 CLI は「上級者向けの同じ product」ではなく、分析者 / 研究者が次のような実験を回す場所である。[[broadlistening-tool-ecosystem-vision]]より
 
 - `sampling_num`、全件入力、代表例選定、prompt variant を固定条件で比較する
-- `label_quality_rubric.jsonl` のような judge artifact を保存し、後で人間判断と照合する
+- `human_preferences.jsonl` や `label_quality_rubric.jsonl` のような evaluation artifact を保存し、後で人間判断と judge を照合する
 - `mandalart.html`、`sticky_board.html`、`cards.json` のような view prototype を既存 output から作る
 - 同じ入力・同じ hierarchy に対して、label / judge / view だけを差し替えて差分を見る
 - 成功した実験だけを issue / PR に切り出し、Web UI には簡単な表示として入れる
@@ -68,23 +78,36 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 - 既存 LLM grouping 400 件実験の `LLM grouping K=8`、`hierarchical K=8`、`K=20`、`[8,40]`、refinement variants を `tree_run` / `labelling_run` に分けて登録する
 - 登録先は `raw/experiments/<experiment_id>/` とし、公開 wiki には manifest と summary だけを置く
 - top-level tree と label set を横並びにした Markdown / HTML bundle を作る
-- 人間が「この tree はこう見える」「この label はここが変」という observation を書ける場所を作る
-- judge はその observation を拾えるかで較正する
+- 人間が A/B preference と「この tree はこう見える」「この label はここが変」という observation を書ける場所を作る
+- judge はその preference / observation を拾えるかで較正する
 
-### 1. 品質 judge / evidence contract
+### 1. Label variants と human preference
 
-最初に直すべきは、label prompt ではなく judge が見る材料と失敗定義である。現状は、ラベル生成側も judge 側も sampling / evidence が揃っておらず、rubric judge v0 もほぼ満点を返してしまった。[[label-quality-rubric-evaluation-2026-05-29]]より
+最初に直すべきは、label prompt でも judge rubric でもなく、人間が比較しやすい評価セットを作ることである。単独 label の批評を求めず、同じ tree / evidence / display context から作った label variants を blind A/B で見せる。[[human-pairwise-label-preference-experiment-2026-06-02]]より
+
+最小 slice:
+
+- `hierarchical_8_40` tree を固定する
+- evidence policy と model を固定する
+- current label process と sibling-aware / setwise などの label variants を作る
+- 人間には algorithm / process 名を見せず、`A / B / tie / unsure` と confidence を選んでもらう
+- `presentation_context` は `label_only` / `sibling_label_set` / `label_with_representatives` のどれかを固定して保存する
+- optional に `covers_more` / `distinguishes_siblings` / `more_concise` / `less_unsupported` などの理由タグを保存する
+
+### 2. 品質 judge / evidence contract
+
+次に直すべきは、judge が見る材料と失敗定義である。現状は、ラベル生成側も judge 側も sampling / evidence が揃っておらず、rubric judge v0 もほぼ満点を返してしまった。[[label-quality-rubric-evaluation-2026-05-29]]より
 
 最小 slice:
 
 - judge 入力を `label / description / size / representative arguments / sibling labels` に固定する
 - representative arguments は配列先頭ではなく、`典型例 + 幅` を明示した artifact にする
 - rubric は `coverage` と `sibling distinction` を重くし、`材料にない主張` と `見えている重要軸の欠落` を fatal 寄りに扱う
-- `[8,40]` 既存 bundle で、人間判断が「これは落とすべき」と見る 1-2 件を judge が落とせるか確認する
+- `[8,40]` 既存 bundle 由来の A/B preference で、人間の winner / tie / reason tags を judge が再現できるか確認する
 
-これは「judge を標準 pipeline に常時入れる」という意味ではない。まずは CLI / offline evaluation artifact として始め、0 の comparison bundle に対する人間 observation と照合する。[[label-quality-rubric-evaluation-2026-05-29]]より
+これは「judge を標準 pipeline に常時入れる」という意味ではない。まずは CLI / offline evaluation artifact として始め、1 の preference bundle に対する人間判断と照合する。[[label-quality-rubric-evaluation-2026-05-29]]より
 
-### 2. ラベル生成入力
+### 3. ラベル生成入力
 
 次に、LLM に何を見せてラベルを作るかを固定する。current main では、API 経由は initial / merge とも最大 30 件、analysis-core の built-in plugin / compat config default は 10 件の seed なし random sample でラベル付けしている。大きな cluster では、ラベルが cluster 全体ではなく「当たった標本」を説明している可能性がある。[[source-code]]より [[label-coverage-policy-2026-05-29]]より
 
@@ -95,7 +118,7 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 - judge は 0 の固定 evidence contract を使う
 - 改善判定は総合点だけでなく、`MISSING_VISIBLE_AXIS` や `UNSUPPORTED_AXIS` の減少を見る
 
-### 3. ラベル生成 / refinement
+### 4. ラベル生成 / refinement
 
 ラベル改善は、現行 `hierarchical_label_refinement` の polish-only をそのまま育てるのではなく、元 arguments または設計された representative artifact を見て label / description を再生成できる責務として再検討する。現行 refinement は rep args を入力に取らないため、上流ラベルが誤っている場合に中身と照らして直せない。[[label-quality-redesign-reset-2026-05-30]]より
 
@@ -108,13 +131,13 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 
 この 4 つは同じ「ラベル品質」でも、失敗モードと judge criteria が違う。
 
-### 4. マンダラート view
+### 5. マンダラート view
 
 マンダラートは、`[8,64]` のような階層と相性がよい。中心に全体 summary、周囲 8 マスに top-level cluster、各 top-level cluster をさらに 8 下位要素へ展開する view として試せる。`#880` も、主要 8 観点と 64 下位要素を探索する view として mock / prototype で読みやすさを確認するのが次の一手と整理されている。[[current-open-issue-triage-2026-06-01]]より
 
 ただしこれは、最初から標準 pipeline の新 step にする必要はない。まずは CLI output の `hierarchical_result.json` から `mandalart.html` を生成する display prototype で十分である。必要になってから、layout metadata や `analysis_capabilities` に載せるかを判断する。
 
-### 5. 付箋ビュー
+### 6. 付箋ビュー
 
 付箋ビューは、KJ 法的にカードを眺める / 並べ替える / 人間が意味づけるための view 候補である。今回の nishio メモでは、マンダラートと並ぶ view 案として出た。[[nishio-cli-pipeline-ideas-2026-06-02]]より
 
@@ -141,11 +164,13 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 1. **experiment storage convention**: `work/` scratch、`raw/experiments/` raw snapshot、`wiki/` public summary の 3 層を固定する
 2. **comparison corpus ledger**: dataset / tree_run / labelling_run / human_observation / judge_run を分けて保存する
 3. **tree-label comparison bundle**: 既存 LLM grouping 400 件実験から、tree と label set を横並びにする Markdown / HTML を作る
-4. **judge evidence artifact**: representative arguments を固定し、judge と human review が同じ材料を見る
-5. **rubric judge v1**: comparison bundle の人間 observation に合わせて criteria を締める
-6. **label input sweep**: random / all args / representative artifact を同一 hierarchy で比較する
-7. **Mandalart mock**: `[8,64]` の `hierarchical_result.json` から standalone HTML を生成する
-8. **Sticky board mock**: `cards.json` と standalone HTML を生成し、典型例 / 幅 / 境界候補を目視できるようにする
+4. **label variant A/B bundle**: 同じ tree / evidence で複数 label 案を作り、blind comparison UI / JSONL を作る
+5. **human preference collection**: algorithm / process 由来を隠し、`presentation_context`、`A / B / tie / unsure`、confidence、reason tags を保存する
+6. **judge evidence artifact**: representative arguments を固定し、judge と human review が同じ材料を見る
+7. **rubric judge v1**: pairwise preference に合わせて criteria を締める
+8. **label input sweep**: random / all args / representative artifact を同一 hierarchy で比較する
+9. **Mandalart mock**: `[8,64]` の `hierarchical_result.json` から standalone HTML を生成する
+10. **Sticky board mock**: `cards.json` と standalone HTML を生成し、典型例 / 幅 / 境界候補を目視できるようにする
 
 この順にすると、マンダラートや付箋ビューが「見た目の新機能」で終わらず、ラベル品質と evidence 設計の改善 loop に接続できる。
 
@@ -153,13 +178,18 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 
 同日、2 と 3 の初回版として、既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に登録し、`bundles/tree_label_matrix.md` / `.html` を作った。これで次の issue / PR slice は、judge / evidence contract の較正へ進める。具体的には、この corpus の 4 human observations を judge v1 が拾えるかを見る。[[llm-grouping-400-tree-label-corpus-2026-06-02]]より
 
-ただしこの corpus は retrospective / exploratory であり、そのまま方式採用の根拠にはしない。次の clean slice は、`manifest.json` に `experiment_class`、`baseline_experiment_id`、`factor_under_test`、`fixed_inputs`、`changed_inputs` を入れ、たとえば `hierarchical_8_40` tree 固定で labelling process だけを変える、または label output 固定で judge rubric だけを変える形に切る。[[one-factor-experiment-principle-2026-06-02]]より
+ただしこの corpus は retrospective / exploratory であり、そのまま方式採用の根拠にはしない。次の clean slice は、`manifest.json` に `experiment_class`、`baseline_experiment_id`、`factor_under_test`、`fixed_inputs`、`changed_inputs` を入れ、`hierarchical_8_40` tree / evidence 固定で labelling process だけを変えた label variants を作る。judge rubric はその後、人間の A/B preference を再現できるかで較正する。[[one-factor-experiment-principle-2026-06-02]]より [[human-pairwise-label-preference-experiment-2026-06-02]]より
+
+2026-06-03 時点では、この次の実務計画を [[label-quality-human-preference-improvement-plan-2026-06-03]] に切り出した。さらに first implementation slice として、既存 corpus の `hierarchical_8_40` を使い、algorithm / process 由来を隠した A/B bundle と `human_preferences` 系 JSONL / schema を生成した。[[codex-log-label-preference-bundle-2026-06-03]]より
 
 ## Open Questions
 
 - comparison corpus は既存 LLM grouping 400 件実験だけで始めて足りるか。別 dataset も同時に入れるべきか。
 - `raw/experiments/` は gitignored local snapshot なので、共有 artifact をどこへ置くか。
-- 品質 judge v1 の正解データは、まず `[8,40]` bundle の top-level 8 cluster だけで足りるか。
+- A/B preference collection は、まず `[8,40]` bundle の top-level 8 cluster だけで足りるか。
+- 品質 judge v1 は winner / tie 予測から始めるか、reason tags まで予測対象に含めるか。
+- 最初の presentation context は label 単体ではなく、現実 UI の分解テストとして `sibling_label_set` または `label_with_representatives` から始めるべきか。
+- full UI 統合確認は、分解テストで候補を絞った後に別途行うだけで足りるか。
 - representative artifact は `hierarchical_result.json` 内に入れるか、別 `representative_arguments.json` として保存するか。
 - マンダラートは `[8,64]` 専用でよいか、任意 cluster 数を 8 枠へ折りたたむルールが必要か。
 - 付箋ビューは read-only から始めるか、人間の並べ替え結果を保存するところまで含めるか。
@@ -168,6 +198,11 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 
 ## Updates
 
+- 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。`scripts/build_label_preference_bundle.py` で 24 件の blind A/B questions と Markdown / HTML bundle を生成したことを反映した。
+- 2026-06-03: [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加。次の implementation slice を、`hierarchical_8_40` 固定の blind A/B bundle と `human_preferences.jsonl` schema 作成として明確化した。
+- 2026-06-02: [[nishio-blind-human-label-presentation-context-2026-06-02]] を追加。A/B evaluation では algorithm / process 由来を人間に隠し、提示文脈を label 単体 / 隣接 label 集合 / label + 代表例に分ける方針を追記した。
+- 2026-06-02: nishio の補足を受け、full UI context を同列の A/B 条件から外し、label 単体 / 隣接 label 集合 / label + 代表例への分解テストとして扱う方針に補正した。
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。judge 改善の前に、同じ tree / evidence から作った label variants を人間に blind A/B 比較してもらい、その preference を judge 較正データにする順序へ補正した。
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加。既存 corpus は exploratory、採用判断用の clean experiment は `factor_under_test` を 1 つに絞る方針をロードマップに反映した。
 - 2026-06-02: [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加。既存 LLM grouping 400 件実験の comparison corpus と tree-label matrix bundle ができたため、次の slice を judge / evidence contract 較正へ進める状態に更新した。
 - 2026-06-02: [[codex-log-experiment-archive-cli-2026-06-02]] を追加。最初の issue / PR slice である experiment storage convention を `analysis-core` CLI の `--experiment-root` / `--experiment-id` 実装として進め、次は comparison corpus ledger と tree-label comparison bundle に進む流れへ更新した。

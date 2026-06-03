@@ -1,7 +1,10 @@
 ---
 type: analysis
-summary: "品質 judge を改善する前に、dataset × clustering tree × labelling process × label output を蓄積する比較コーパスを作るべきという整理。採用判断に使う実験は 1 要素ずつ変え、judge はこの corpus 上で人間が見た失敗を検出できるかを較正する"
+summary: "品質 judge を改善する前に、dataset × clustering tree × labelling process × label output を蓄積する比較コーパスを作るべきという整理。採用判断に使う実験は 1 要素ずつ変え、人間には単独批評ではなく label variants の A/B preference を聞く"
 sources:
+  - nishio-blind-human-label-presentation-context-2026-06-02.md
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
   - one-factor-experiment-principle-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - codex-log-experiment-archive-cli-2026-06-02.md
@@ -34,6 +37,8 @@ sources:
 
 2026-06-02 の追加整理で、さらに実験の読み方も分ける必要があると分かった。既存 artifact から作る comparison corpus は探索には有用だが、current `main` から一度に多くの要素を変えている場合、採用判断の因果根拠にはならない。採用判断に使う clean experiment は、baseline から `factor_under_test` を 1 つだけ変える。[[one-factor-experiment-principle-2026-06-02]]より
 
+また、人間評価も単独 label の批評から始めるべきではない。人間は単独 label だけを見て詳細に言語化しにくいので、同じ tree / evidence から作った複数 label variants を並べ、A/B でどちらがよいかを聞く。その pairwise preference を judge 較正データにする。A/B の algorithm / process 由来は隠し、提示文脈は `label_only`、`sibling_label_set`、`label_with_representatives` に分ける。full UI context は複合要因が多く困難なので、最初の clean A/B ではなく分解テスト後の統合確認として扱う。[[human-pairwise-label-preference-experiment-2026-06-02]]より [[nishio-blind-human-label-presentation-context-2026-06-02]]より
+
 ## なぜ judge 先行では足りないか
 
 現状の judge 改善は、評価対象が曖昧なままになりやすい。
@@ -43,7 +48,7 @@ sources:
 - evidence が違う: random sample、all args、representative args、children label だけ、などが混在する
 - judge 粒度が違う: cluster 単位平均と label set 全体比較で判断が割れる
 
-この状態で rubric を細かくしても、「judge が何を見て何に勝たせたのか」が不明なままになる。rubric は単体の採点表としてではなく、比較コーパス上で **人間が見た失敗を検出できるか** を試す道具として育てるべきである。[[label-quality-rubric-evaluation-2026-05-29]]より
+この状態で rubric を細かくしても、「judge が何を見て何に勝たせたのか」が不明なままになる。さらに、人間に単独 label の欠点を詳細に書いてもらう前提も弱い。rubric は単体の採点表としてではなく、比較コーパス上で **人間の A/B preference を再現できるか** を試す道具として育てるべきである。[[label-quality-rubric-evaluation-2026-05-29]]より [[nishio-human-pairwise-label-preference-before-judge-2026-06-02]]より
 
 ## 保存する単位
 
@@ -90,16 +95,17 @@ tree を入力として label / description を作る層。
 
 ここでは tree を固定できるので、「同じ tree で label process だけを変える」比較ができる。
 
-### 4. Human Observation / Judge Run
+### 4. Human Preference / Observation / Judge Run
 
 評価はさらに後段に分ける。
 
+- `human_preference_id`: 同じ cluster / label set に対する blind A/B の winner、tie、confidence、reason tags、presentation context
 - `human_observation_id`: 人間が見た違和感、良い点、落ちた軸、重複 pair
 - `judge_run_id`: judge prompt / rubric version / evidence input / score
-- judge が human observation を拾えたか
+- judge が human preference / observation を拾えたか
 - judge が過剰に問題視した false positive
 
-judge 改善の主タスクは、score を上げることではなく、human observation と judge result のズレを減らすことになる。
+judge 改善の主タスクは、score を上げることではなく、まず human preference と judge result のズレを減らすことになる。言語化された observation は preference の理由を読む補助として扱う。
 
 ## 比較の切り方
 
@@ -110,7 +116,8 @@ judge 改善の主タスクは、score を上げることではなく、human ob
 | labelling process 比較 | dataset + tree | labelling process | 同じ tree で label がどう変わるか |
 | clustering tree 比較 | dataset + labelling process | clustering method / params | tree 構造の違いが label set にどう出るか |
 | evidence policy 比較 | dataset + tree + label prompt | random / all / representative | 欠落や unsupported axis が減るか |
-| judge 較正 | comparison bundle | rubric / judge model | 人間が見た失敗を拾えるか |
+| human preference | dataset + tree + evidence + display context | labelling process variants | 人間がどちらを好むか |
+| judge 較正 | pairwise preference bundle | rubric / judge model | 人間の preference を再現できるか |
 
 この分解により、`LLM grouping が良い`、`hierarchical が良い`、`balanced が良い` のような粗い結論ではなく、「粗い俯瞰 tree では読みやすいが、細粒度 tree では sibling distinction が落ちる」のような実装に戻せる判断になる。
 
@@ -142,6 +149,7 @@ raw/experiments/<experiment_id>/
   datasets.jsonl
   tree_runs.jsonl
   labelling_runs.jsonl
+  human_preferences.jsonl
   human_observations.jsonl
   judge_runs.jsonl
   artifacts/
@@ -154,9 +162,9 @@ CLI の first slice は次の 3 つに絞る。
 
 1. 既存 outputs から `tree_run` / `labelling_run` metadata を抽出する
 2. top-level tree + labels を横並びにした Markdown / HTML bundle を生成する
-3. 人間が bundle に観察メモを追記できる形式を作る
+3. 人間が bundle 上で A/B preference と観察メモを追記できる形式を作る
 
-これで、judge 改善は「bundle 上の人間観察をどれだけ拾えるか」という具体的な仕事になる。
+これで、judge 改善は「bundle 上の人間 preference をどれだけ再現できるか」という具体的な仕事になる。
 
 2026-06-02 の `codex/experiment-storage` first slice では、このうち 1 を CLI option として実装した。`--experiment-root` / `--experiment-id` を指定すると、既存 output から `datasets.jsonl`、`tree_runs.jsonl`、`labelling_runs.jsonl` と artifact copy を作る。2 の tree-label comparison bundle と 3 の human observation 追記は次の slice として残る。[[codex-log-experiment-archive-cli-2026-06-02]]より
 
@@ -166,13 +174,19 @@ CLI の first slice は次の 3 つに絞る。
 
 - normalized tree artifact は既存 CSV から都度生成するだけでよいか、保存すべきか。
 - tree の違いをどう表現するか。cluster size distribution / parent-child structure / representative examples / label set のどれを first view に置くか。
-- human observation は Markdown comment で十分か、JSONL として structured に残すべきか。
+- human preference は `human_preferences.jsonl` として分けるか、`human_observations.jsonl` の subtype として扱うか。
+- A/B preference は cluster label 単位で集めるか、label set 全体で集めるか。
+- presentation context は `label_only` / `sibling_label_set` / `label_with_representatives` の 3 種で足りるか。
+- full UI 統合確認は、分解テストで候補を絞った後にどの粒度で行うか。
 - comparison corpus は [[experiment-result-storage-policy-2026-06-02]] の 3 層方針で始めるとして、複数人共有が必要になった時に Google Drive / GitHub release artifact / 別 repo のどれへ移すか。
 - `#881` ラベル品質 tracking issue は、この comparison corpus 作成を first slice に差し替えるべきか。
 - `factor_under_test` の語彙は自由記述で始めるか、`tree_generation` / `labelling_process` / `evidence_policy` / `judge_rubric` などに固定するか。
 
 ## Updates
 
+- 2026-06-02: [[nishio-blind-human-label-presentation-context-2026-06-02]] を追加。human preference では algorithm / process 由来を隠し、提示文脈を記録する方針を追記した。
+- 2026-06-02: nishio の補足を受け、full UI context は同列の clean A/B 条件ではなく、`label_only` / `sibling_label_set` / `label_with_representatives` に分解した後の統合確認として扱う方針へ補正した。
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。人間評価は単独 label 批評ではなく、同じ tree / evidence から作った label variants の A/B preference を先に集める方針へ補正した。
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加。既存 corpus は exploratory として扱い、採用判断用の clean experiment では `factor_under_test` を 1 つだけ変える原則を追記した。
 - 2026-06-02: [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加。既存 LLM grouping 400 件実験を 1 dataset / 5 tree run / 10 labelling run / 5 judge run / 4 observation の比較コーパスへ移し、tree-label matrix bundle を作成した。
 - 2026-06-02: [[codex-log-experiment-archive-cli-2026-06-02]] を追加。比較コーパスの first slice として、`analysis-core` CLI から dataset / tree / labelling JSONL と artifact copy を生成できる topic branch `codex/experiment-storage` を作成した。

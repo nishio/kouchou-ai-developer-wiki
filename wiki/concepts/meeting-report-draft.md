@@ -10,6 +10,12 @@ sources:
   - nishio-llm-grouping-terminology-correction-2026-06-02.md
   - nishio-one-factor-experiment-principle-2026-06-02.md
   - one-factor-experiment-principle-2026-06-02.md
+  - nishio-blind-human-label-presentation-context-2026-06-02.md
+  - nishio-human-pairwise-label-preference-before-judge-2026-06-02.md
+  - human-pairwise-label-preference-experiment-2026-06-02.md
+  - nishio-label-evaluation-improvement-plan-request-2026-06-03.md
+  - label-quality-human-preference-improvement-plan-2026-06-03.md
+  - codex-log-label-preference-bundle-2026-06-03.md
   - codex-log-experiment-archive-cli-2026-06-02.md
   - llm-grouping-400-tree-label-corpus-2026-06-02.md
   - weekly-log-2026-05-20.md
@@ -52,7 +58,7 @@ sources:
 - main 済み: Code scanning alerts 対応 PR #892 (`codex/code-scanning-fixes`) を admin merge した。admin の API URL 組み立て、static build endpoint、API エラー返却の公開可能な範囲を修正し、PR branch の code scanning open alerts は 0 件。alert 詳細は公開 wiki に転記していない。
 - main 済み: nishio authored の open PR を整理し、PR #893 → #890 → #892 → #863 の順で admin merge した。#863 は draft だったが、mergeable と checks pass を確認して ready 化してから merge した。merge 後の nishio authored open PR は 0 件。
 - 進行中: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、first slice として `codex/experiment-storage` で `analysis-core` に `--experiment-root` / `--experiment-id` を追加した。
-  さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次の採用判断用実験は `factor_under_test` を 1 つに絞る。
+  さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次は同じ tree / evidence で label variants を作り、人間に A/B preference を聞く。
 - wiki 整理: 議事録 / Slack 由来情報の鮮度基準を [[wiki-driven-workflow]] と主要 source に追記した。今後はページ更新日ではなく、`last_checked` / `last_read` と `coverage` を見て「いつ時点まで読んだ観測か」を判断する。さらに [[jigsaw-sensemaker]] を追加し、Jigsaw Sensemaker は LLM grouping の一例だが、LLM grouping 全体を Jigsaw と呼ぶと混乱する、という呼び分けを整理した。
 - wiki ingest: `oss_weekly_reporter` の `2026-05-20_to_2026-05-27` weekly dump を [[weekly-log-2026-05-20]] として source 化した。公開 UI 要件 thread、MST / bridge 可視化 seed、実験 artifact 保存方針の Slack 上の前段を公式 dump で確認できた。
 
@@ -86,8 +92,12 @@ sources:
 - 進行中 branch: `codex/experiment-storage`。`analysis-core` CLI に `--experiment-root` / `--experiment-id` / `--experiment-overwrite` を足し、既存 output から `manifest.json`、`datasets.jsonl`、`tree_runs.jsonl`、`labelling_runs.jsonl`、artifact copy を作る first slice を実装した。対象テスト 13 件と ruff は通過。
 - [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加し、既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に移した。`bundles/tree_label_matrix.md` / `.html` で top-level labels と `[8,40]` refinement を横比較できる。
 - [[one-factor-experiment-principle-2026-06-02]] を追加し、複数要素を同時に変えた run は exploratory、採用判断用の clean experiment は current `main` baseline から `factor_under_test` を 1 つだけ変える、という原則を明文化した。
-- 次の順序は、judge / evidence contract → ラベル生成入力 → label/refinement → Mandalart mock → sticky board mock。Mandalart / 付箋ビューは最初から Web default にせず、standalone HTML / JSON の CLI artifact として読みやすさを確認する。
-- 次に見ること: corpus の 4 observation を judge v1 が拾えるか。ただし judge v1 や label 改善へ進む時は、tree 固定で labelling process だけを変える、または label output 固定で judge rubric だけを変える形に切る。`#880` マンダラートや付箋ビューは、ラベル品質 loop と接続する view prototype として扱う。
+- [[human-pairwise-label-preference-experiment-2026-06-02]] を追加し、人間評価は単独 label 批評ではなく、同じ tree / evidence から作った label variants の blind A/B preference として集める方針に補正した。
+- 追加で、A/B 評価では algorithm / process 由来を人間に隠し、困難な full UI 評価は label 単体 / 隣接 label 集合 / label + 代表例の分解テストとして扱う方針にした。
+- [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加し、次の implementation slice を `hierarchical_8_40` 固定の blind A/B bundle と `human_preferences.jsonl` schema 作成に絞った。
+- `scripts/build_label_preference_bundle.py` を追加し、既存 corpus から 24 件の pending blind A/B questions、空の `human_preferences.jsonl`、schema、Markdown / HTML bundle を生成した。HTML には回答フォームと JSONL output textarea を追加し、表示 bundle には candidate origin を出していない。
+- 次の順序は、label variants → human A/B preference → judge calibration → evidence contract → label/refinement → Mandalart mock → sticky board mock。Mandalart / 付箋ビューは最初から Web default にせず、standalone HTML / JSON の CLI artifact として読みやすさを確認する。
+- 次に見ること: `hierarchical_8_40` tree / evidence 固定で label process だけを変えた A/B bundle を作れるか。judge v1 は、この preference を再現できるかで見る。`#880` マンダラートや付箋ビューは、ラベル品質 loop と接続する view prototype として扱う。
 
 ### source freshness 運用
 
@@ -103,6 +113,12 @@ sources:
 ## Updates
 
 - 2026-06-01: 2026-06-01 定例後に [[meeting-report-2026-06-01]] へ rotate し、本ページを 2026-06-08 向けの空テンプレートへ戻した
+- 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加し、blind A/B bundle 生成の実行結果を CLI pipeline 実験 lane に追記
+- 2026-06-03: `label_preference_ab.html` に回答フォームと JSONL output textarea を追加したことを CLI pipeline 実験 lane に追記
+- 2026-06-03: [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加し、ラベル品質評価改善の次 slice を blind A/B bundle と `human_preferences.jsonl` schema 作成として追記
+- 2026-06-02: [[nishio-blind-human-label-presentation-context-2026-06-02]] を追加し、A/B evaluation では algorithm 由来を隠し、提示文脈を分けて記録する方針を CLI pipeline 実験 lane に追記
+- 2026-06-02: full UI context は困難なので、A/B 評価では label 単体 / 隣接 label 集合 / label + 代表例の 3 つへ分解して扱う方針に補正
+- 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加し、人間評価を単独 label 批評ではなく A/B preference collection にする方針を CLI pipeline 実験 lane に追記
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加し、CLI pipeline 実験 lane に「探索 corpus と clean experiment を分け、採用判断は 1 要素ずつ変える」方針を追記
 - 2026-06-02: [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加し、既存 LLM grouping 400 件実験を raw comparison corpus に移したことを追記
 - 2026-06-02: `codex/experiment-storage` で `analysis-core` CLI に実験 archive first slice を実装したことを CLI pipeline 実験 lane に追記
