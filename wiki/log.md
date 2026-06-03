@@ -3,6 +3,43 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-03 16:15] filing-back | story 末尾に「仕組みそのものに興味があれば → [[wiki-driven-workflow]]」を追加
+
+- 「この仕組み自体を解説しているのは wiki-driven-workflow なので、興味を持った人が読む先として提示すべき」と指摘
+- 旧「詳細を追いたい場合」を「次に読む」に改名し、二つの subsection に分けた:
+  - 「仕組みそのものに興味があれば」→ [[wiki-driven-workflow]] (raw/ / wiki/ / work/ の三層、ingest と filing-back の回り方)
+  - 「このエピソードの技術詳細を追いたければ」→ 既存の資料版・source ページ群
+- ストーリーを読み終わった人の関心は「このエピソード固有の技術」と「このやり方そのもの」の 2 方向に分かれる、という設計
+
+## [2026-06-03 16:10] filing-back | story の Updates / Open Questions 節を削除
+
+- nishio から「story にとっては過剰な詳細」と指摘
+- Updates 7 件は git history + log.md filing-back entry で track 済みのため、ページ末尾から削除
+- Open Questions 3 件 (比喩が届くか / Wiki なしの説得力 / 外部発信転用) は writer note であり reader 向けではないため削除
+- 資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] には Open Questions / Updates が残るので、編集者向けメタ情報はそちらで参照可能
+- 全ページ schema (CLAUDE.md「## ページルール > 全ページ共通」) は Open Questions / Updates 必須としているが、ストーリーは reader 体験を優先して逸脱した。lint は schema を強制しない作りなので無問題
+
+## [2026-06-03 16:05] filing-back | story 6-8 節の attribution と曖昧表現を再修正
+
+- nishio から (a) 6 節「Agent はこの考古学的調査の結果を…wiki にまとめた」と 7 節「Agent はいきなりリファクタリングに突っ込まなかった。まず計画ページを書いた」も人間の指示、(b) 8 節「妥協もあった。妥協の理由は計画ページに追記した」が何の話か曖昧、と指摘
+- 6 節を「人間が『ここまで掘った内容を wiki に残しておこう』と指示し、Agent はこの 考古学的調査 の結果を…」へ、7 節を「人間が『実装に入る前にまず計画を書いて』と指示する。Agent はいきなり…まず計画ページを書いた」へ書き直し
+- 8 節の「妥協」段を「実装してみると計画段階では気づけなかった制約に当たった節もあった。ある変更を入れたら別のページが壊れる、というような。そのたびに『この案は採らない、なぜなら〜』を計画ページに追記して、別の手段に切り替えた」へ。技術詳細 (`connection()` を `[slug]` に入れたら `/example` が `DYNAMIC_SERVER_USAGE` で 500 になった件) はストーリー粒度では具体名を出さず、抽象度を上げつつ「何の話か」が読み取れる程度に
+- nishio が直接編集した typographic styling (「考古学的調査」の前後スペース) は、私のリライト中に一度落としてしまったので復元
+
+## [2026-06-03 02:00] filing-back | story から「9. 同じ日に、もう 1 件」(Dependabot) を削除
+
+- 旧 9 節「同じ日に、もう 1 件」が deploy success false positive → runtime build 撤去という本筋に対して関係ない、との指摘を受け削除
+- 旧 10 節 bullet からの「同じ日のうちにセキュリティ対応にも着手し、運用ルールを即再利用」、旧 11 節 bullet の「セキュリティ詳細を公開側に書かない…」も同時に撤去
+- 節番号を 9 / 10 へ繰り上げ。frontmatter summary と lead 段落は Dependabot に触れていなかったため無変更
+- 「同日内の運用ルール即再利用」というメタ視点自体は資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] には残っており、ストーリー版の文脈純度を優先した
+
+## [2026-06-03 00:01] filing-back | annotation #16-#27 を SQLite 上でも applied に migrate
+
+- annotation-wiki 側で `bin/annotations` CLI が完成 ([handoff plan: /tmp/annotation-wiki-cli-plan.md](file:///tmp/annotation-wiki-cli-plan.md))
+- 既に [[deploy-success-but-nothing-changed-story-2026-06-01]] に反映済みだった #16-#27 を `~/annotation-wiki/bin/annotations apply <id> --note "..."` で 12 件まとめて status migrate。SQLite の source of truth と本文の実状態を整合させた
+- 残り pending (kouchou-ai-developer-wiki) は #13, #14 のみで、これは別ファイル `niizuma-thread-algorithm-critique.md` 用、別タスクのため温存
+- 過去自分が `sed` で書き換えた `raw/annotation-001[6-9].md` / `0020-0027.md` の `status: processed` は非標準値で SQLite とも乖離。今後 raw は片方向 export の snapshot として扱い、agent は CLI のみで status を触る
+
 ## [2026-06-02 21:41] filing-back | Jigsaw Sensemaker と LLM grouping の呼び分けを整理
 
 - nishio の追加指摘を受け、禁止語 lint は不要と判断して `scripts/lint_wiki.py` の禁止語チェックを撤去
@@ -571,15 +608,3 @@
 - 新規 source [[open-pr-pipeline-step-observation-2026-05-28]] を追加し、2026-05-28 時点の open PR 6 本のうち、step 追加判断に関係する `#866` LLM grouping、`#867` reuse-from、`#874` semantic island layout を整理した
 - [[pipeline-step-addition-framing-2026-05-27]] に open PR 節を追記し、`#866` は new mode を workflow として切る良い例、`#867` は downstream step 比較の基盤、`#874` は named layout という表示 artifact の first-class 化として筋があるが CI failure と default 9 step 化の整理が必要、と補正した
 - `#874` の失敗は Ruff の import / `np` annotation と、`tests/test_orchestration.py` などに残る `8 steps` 固定期待が主因だと確認した
-
-## [2026-05-27 15:26] filing-back | pipeline step 追加案を成果物責務で判断する整理を追加
-
-- 新規 analysis [[pipeline-step-addition-framing-2026-05-27]] を追加し、直近研究で繰り返し出た step 追加案を「step 数」ではなく「新しい成果物責務を first-class にする必要があるか」で判断する方針として整理した
-- `label_refinement` は default complexity として見せない optional 実験、境界・反例・bridge・未解決カードは `aggregation` に押し込まず `interpretation_artifacts` として切るのが筋、と結論づけた
-- `work/kouchou-ai/` は dirty な `codex/remaining-experiment-wip@47008bc` だったため破壊せず、`origin/main@e5ed743` と WIP の差を分けて扱った
-
-## [2026-05-26 22:23] filing-back | `LLM grouping` 可視化は semantic island map を主図候補にする整理を追加
-
-- `work/kouchou-ai-mst-visualization-prototype/` で 422 argument / 8 clusters の可視化を、MST overlay, supervised UMAP, semi-supervised UMAP, LDA, centroid-MDS まで比較し、embedding 由来散布図を主図にすると「離れすぎ」か「混ざりすぎ」のどちらかに寄りやすいと整理した
-- 新規 analysis [[semantic-island-map-prototype-2026-05-26]] を追加し、cluster 間配置と cluster 内配置を分離して点を所属島から出さない `semantic island map` を、`LLM grouping` 向け cluster-first view の基準線として記録した
-- [[meeting-report-draft]] も、MST 試作の途中経過ではなく「最終的にどの方向を採るか」が読める書き方へ更新した

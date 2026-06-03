@@ -3,6 +3,11 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-03 16:15	filing-back	story 末尾に「仕組みそのものに興味があれば → [[wiki-driven-workflow]]」を追加
+2026-06-03 16:10	filing-back	story の Updates / Open Questions 節を削除
+2026-06-03 16:05	filing-back	story 6-8 節の attribution と曖昧表現を再修正
+2026-06-03 02:00	filing-back	story から「9. 同じ日に、もう 1 件」(Dependabot) を削除
+2026-06-03 00:01	filing-back	annotation #16-#27 を SQLite 上でも applied に migrate
 2026-06-02 21:41	filing-back	Jigsaw Sensemaker と LLM grouping の呼び分けを整理
 2026-06-02 21:01	filing-back	pipeline 実験は 1 要素ずつ変える原則を追加
 2026-06-02 20:50	filing-back	LLM grouping の旧呼称を一般名へ統一
