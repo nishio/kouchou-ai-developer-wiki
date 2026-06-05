@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-05 16:54] filing-back | PR #896 / #897 を all green + CodeRabbit OK で admin merge
+
+- open PR を確認し、#896 は draft 解除後に全 checks green、CodeRabbit actionable comment なしを確認して admin merge。merge commit は `2c5ff1e`
+- #897 も全 checks green、CodeRabbit actionable comment なしを確認して admin merge。merge commit は `983ce94`
+- 残 open PR は tokoroten さんの draft #891 のみ。draft かつ別作者なので ready / merge 対象外として残した
+
 ## [2026-06-05 16:39] filing-back | dedicated worktree の lefthook / node_modules gotcha を追記
 
 - `codex/api-docker-dependency-check` worktree の commit / push で `Can't find lefthook in PATH` が出た件を、local dependency 未導入の gotcha として整理
@@ -619,9 +625,3 @@
 - `docs/development/developer-quickstart.md` を新規追加し、Docker Compose / dummy-server frontend dev / native (apps/api・apps/admin) / CLI (analysis-core) の 4 モードを「最初の 1 ページ」で判断できる canonical 入口にした。各モードに必要な環境変数・起動コマンド・確認 URL・落とし穴 (env file 置き場所、Docker rebuild trigger、analysis-core editable install) を集約
 - `README.md` を 240 行 → 92 行へ trim し、長い setup 説明はドキュメントサイトに集約。`docs/index.md` / `docs/getting-started/quickstart.md` / `mkdocs.yml` を新ページに合わせて整理（重複削除、nav 追加、Mode 別 anchor を `{#mode-1-docker-compose}` 等で固定し strict build pass）
 - branch `codex/issue-876-developer-quickstart` で PR #883 を開いた。次は CI と review コメント待ち
-
-## [2026-05-29 16:42] filing-back | FPS for labeling は 2025-06-18 にも提案されて 11 ヶ月保留だった
-
-- `raw/meeting_minutes.txt:5169-5170` (2025-06-18 定例) に、tokoroten「ラベリングのためには、ランダムサンプリングではなくて、Farthest Point Sampling を使った方がよさそう」、nishio「アルゴリズム的には良い、計算量がどうかは未確認」というやり取りがあり、約 11 ヶ月実装されないままだった
-- 今回 tokoroten が Slack で「Farestなんたらサンプリングで全体のサンプルを包括してタイトルをつけるってはいってるんだっけ」と書いたのは、自分の過去提案を思い出していたもの。今日の nishio「全件渡し」提案は、**過去に gating question として残っていた『FPS の計算量未確認』を、FPS を実装する前に sampling 自体の必要性を問うルートで回避する**構図になっている
-- [[label-coverage-policy-2026-05-29]] の Updates に history を 1 段落追記。実装コスト未確認のまま放置されてきたアイデアを別角度から前進させた事例として記録

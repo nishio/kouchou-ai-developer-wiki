@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-05 16:54	filing-back	PR #896 / #897 を all green + CodeRabbit OK で admin merge
 2026-06-05 16:39	filing-back	dedicated worktree の lefthook / node_modules gotcha を追記
 2026-06-05 12:30	ingest	Azure デモ動線化 4 問の Ohki 返答 + nishio 決定 を resolution として filing back
 2026-06-04 23:00	ingest	nishio→Ohki の Azure デモ動線化 4 問と docs spine refinement を filing back

@@ -58,7 +58,7 @@ sources:
 - main 済み: Dependabot alerts に対し、PR #889 (`codex/dependabot-alerts-2026-06-01`) を admin merge した。`pnpm.overrides` と `pnpm-lock.yaml` だけを更新し、audit / tests / build は通過。merge 後の Dependabot open alerts は 19 件から 6 件へ減った。alert 詳細は公開 PR / wiki に転記していない。
 - main 済み: CodeQL Action v3 の 2026-12 deprecation warning 対応として、PR #893 (`codex/codeql-action-v4`) を admin merge した。`.github/workflows/codeql.yml` の `init` / `autobuild` / `analyze` を `github/codeql-action/*@v4` へ更新し、workflow 構造・trigger・permissions は変えていない。
 - main 済み: Code scanning alerts 対応 PR #892 (`codex/code-scanning-fixes`) を admin merge した。admin の API URL 組み立て、static build endpoint、API エラー返却の公開可能な範囲を修正し、PR branch の code scanning open alerts は 0 件。alert 詳細は公開 wiki に転記していない。
-- 進行中: API Docker image と test 環境の依存差分を検知するため、PR #896 (`codex/api-docker-dependency-check`) で Dockerfile contract pytest と `API Docker Dependency Smoke` workflow を追加した。PR #895 と同じ `/packages/analysis-core[full]` 修正を含め、Dockerfile 変更時に server pytest と実 image import smoke が走る形にし、PR CI は全 pass。[[source-code]]より
+- main 済み: all green + CodeRabbit actionable comment なしを確認し、PR #896 (`codex/api-docker-dependency-check`) と PR #897 (`codex-fix-mixed-type-csv-input`) を admin merge した。#896 は API Docker image と test 環境の依存差分を Dockerfile contract pytest + `API Docker Dependency Smoke` で検知する修正、#897 は混在型 CSV 属性を文字列として扱う修正。[[source-code]]より
 - main 済み: nishio authored の open PR を整理し、PR #893 → #890 → #892 → #863 の順で admin merge した。#863 は draft だったが、mergeable と checks pass を確認して ready 化してから merge した。merge 後の nishio authored open PR は 0 件。
 - 進行中: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、first slice として `codex/experiment-storage` で `analysis-core` に `--experiment-root` / `--experiment-id` を追加した。
   さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次は同じ tree / evidence で label variants を作り、人間に A/B preference を聞く。
@@ -83,10 +83,14 @@ sources:
 
 ### API Docker 依存整合性
 
-- PR #895 で見つかった根本原因は、CI が `requirements-dev.lock` / all-features 前提で通る一方、API Dockerfile は local `analysis-core` を extras なしで入れていたこと。PR #896 (`codex/api-docker-dependency-check`) では、Dockerfile が `/packages/analysis-core[full]` を quote 付きで install することを pytest で固定した。[[source-code]]より
+- PR #895 で見つかった根本原因は、CI が `requirements-dev.lock` / all-features 前提で通る一方、API Dockerfile は local `analysis-core` を extras なしで入れていたこと。PR #896 (`codex/api-docker-dependency-check`) では、Dockerfile が `/packages/analysis-core[full]` を quote 付きで install することを pytest で固定し、2026-06-05 に admin merge した。[[source-code]]より
 - 追加 workflow `API Docker Dependency Smoke` は Dockerfile / API dependency lock / analysis-core dependency manifest 変更時だけ API image を build し、container 内で `hierarchical_clustering`, `sklearn`, `scipy`, `umap`, `numba`, `sentence_transformers`, `torch`, `google.genai` の import を確認する。
 - ローカルでは新規 pytest、ruff、workflow YAML / bash 構文検証まで通過。PR #896 の CI では `dependency-smoke`、server pytest、ruff、CodeQL が全 pass。
 - 副次メモ: `codex/api-docker-dependency-check` worktree で commit / push 時に `Can't find lefthook in PATH` が出たが、原因は dedicated worktree 側に `node_modules` が無かったこと。`pnpm install --frozen-lockfile` 後に lefthook 1.13.6 と pre-push ruff checks が正常起動したため、[[worktree-hygiene]] に運用メモとして反映。
+
+### mixed-type CSV 入力
+
+- PR #897 (`codex-fix-mixed-type-csv-input`) は、ユーザー入力 CSV の属性列に数値と文字列が混ざる場合でも文字列として扱うため、analysis-core 側に schema inference を抑える共通 CSV reader を追加し、API の input CSV 生成も明示 schema に寄せた。CI は analysis-core / server / CodeQL / ruff 全 pass、CodeRabbit は actionable comment なし。2026-06-05 に admin merge 済み。[[source-code]]より
 
 ### public wiki の公開境界
 
@@ -122,6 +126,7 @@ sources:
 
 ## Updates
 
+- 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記
 - 2026-06-05: `codex/api-docker-dependency-check` で API Dockerfile の `analysis-core[full]` install contract test と実 image dependency smoke workflow を追加したことを追記
 - 2026-06-05: Azure デモ動線化 4 問は 2026-06-05 大木さん返答 + nishio 決定 ([[azure-demo-visibility-thread-resolution-2026-06-05]]) で着地。議題候補を「次の手順 (container env 修正 + 公開文言反映 + 公開事例ページ更新) のオーナー割り当て」に書き換え
