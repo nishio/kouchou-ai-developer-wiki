@@ -1,7 +1,8 @@
 ---
 type: analysis
-summary: "ラベル品質改善の次の実務計画。既存 LLM grouping 400 件 corpus を探索材料に、`hierarchical_8_40` tree などを固定して label variants を作り、algorithm 由来を隠した A/B bundle で human preference を集め、その preference を再現する judge を較正してから evidence / labelling / tree の clean experiment へ進む"
+summary: "ラベル品質改善の次の実務計画。既存 LLM grouping 400 件 corpus を探索材料に、`hierarchical_8_40` tree などを固定して label variants を作り、algorithm 由来を隠した A/B bundle で human preference を集め、その preference を再現する judge を較正してから evidence / labelling / tree の clean experiment へ進む。2026-06-03 に 7 件回した時点で、prompt few-shot 由来のテンプレ冗長度が confound と判明し、prompt 修正からやり直しに reset"
 sources:
+  - labelling-prompt-few-shot-template-confound-2026-06-03.md
   - codex-log-label-preference-bundle-2026-06-03.md
   - nishio-label-evaluation-improvement-plan-request-2026-06-03.md
   - human-pairwise-label-preference-experiment-2026-06-02.md
@@ -14,6 +15,8 @@ sources:
   - label-quality-redesign-reset-2026-05-30.md
   - label-quality-rubric-evaluation-2026-05-29.md
 ---
+
+> **Status (2026-06-03)**: この実験は仕切り直し。label_only 7 件を回した時点で、勝因が `labelling_process` ではなく labelling prompt few-shot 由来のテンプレ冗長度差だと判明した。詳細と次の方針は [[labelling-prompt-few-shot-template-confound-2026-06-03]] を参照。本ページの Plan セクションはアーカイブとして残す
 
 ## 結論
 
@@ -156,6 +159,8 @@ full UI は最後に統合確認として扱う。最初の clean A/B には入�
 
 ## Updates
 
+- 2026-06-03: **実験仕切り直しを決定**。nishio が label_only 7 件 (cluster 1_1〜1_7) を回した結果、7/7 で「短い候補」が winner となり、勝因は `labelling_process` ではなく labelling prompt few-shot 由来のテンプレ冗長度差だと判明。3 文脈すべてに同じ confound があるため、残り 17 件は回さず prompt 修正から再出発する。詳細は [[labelling-prompt-few-shot-template-confound-2026-06-03]]
+- 2026-06-03: 信頼度ラジオの "1 / 2 / 3" が意味不明だったため、HTML / md に `1 低 / 2 中 / 3 高` ラベルを追加し bundle を再生成
 - 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。first implementation slice として、`hierarchical_8_40` 固定の blind A/B bundle と `human_preferences` 系 JSONL / schema を生成したことを反映した。
 - 2026-06-03: `label_preference_ab.html` に回答フォームと JSONL output textarea を追加したことを反映した。
 - 2026-06-03: 初版作成。nishio の「改善計画を Wiki に書く？」という確認を受け、blind A/B preference collection から judge calibration へ進む実務計画として整理した。

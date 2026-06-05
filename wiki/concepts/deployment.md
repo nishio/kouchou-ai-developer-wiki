@@ -6,6 +6,7 @@ sources:
   - github-dev-docs.md
   - meeting-minutes.md
   - pr-887-production-deploy-observation-2026-06-01.md
+  - azure-demo-visibility-thread-resolution-2026-06-05.md
 ---
 
 ## Azure（デモ環境・本番運用）
@@ -20,6 +21,8 @@ Azure デモ環境の運用詳細は公開 wiki に書かない。実環境 URL�
 - 非公開詳細を参照すべき場合の置き場
 
 2026-06-01 の `PR #887` 本番反映では、デプロイ成功判定と実際の反映状態にズレが出うること、また `public-viewer` の起動時 build が運用リスクになることが共有された。公開 wiki では詳細ログや実環境値は扱わず、恒久策として build / serve の責務分離と deploy readiness smoke を検討する、という課題粒度だけ残す。[[pr-887-production-deploy-observation-2026-06-01]]より [[meeting-minutes]]より
+
+2026-06-05 に viewer 公開 + admin 共用への動線拡張方針が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地した。実施前提として、現状 container env に置かれている dd2030 提供の fallback `OPENAI_API_KEY` を外し、ユーザがキーを入れなかったら動かない構成へ寄せる必要がある（具体的な設定箇所や値は本ページではなく Google Drive「広聴 AI-Azure デモ環境」側で扱う）。公開時の明示文言は「共用環境」「個人情報・未公開情報・機微情報を入れない」「データ保存や継続稼働は保証しない」の 3 点。
 
 `public-viewer` の起動時 `next build` は、初期 Docker 化で「API 起動後に build したい」という設計から入った。その後の monorepo / pnpm workspace / shared package 化で runtime build の依存が増えたため、container 起動時 build をやめる方向が現在の改善軸になっている。詳細な実環境観測ではなく、設計上の経緯は [[public-viewer-runtime-build-history-2026-06-01]] に整理する。
 
@@ -77,3 +80,4 @@ PR #825 で Python が直接自己完結型 `report.html` を吐けるように�
 - 2026-06-01: `PR #887` 本番反映で、デプロイ成功判定と実反映状態がズレうること、public-viewer startup build が運用リスクになることを公開可能な粒度で追記
 - 2026-06-01: `public-viewer` の runtime `next build` は初期 Docker 化からの API 起動待ち設計であり、以後の monorepo / Turbopack / runner stage copy 漏れ修正で温存されてきた経緯を [[public-viewer-runtime-build-history-2026-06-01]] に整理して導線を追加
 - 2026-06-01: Azure デモ環境などデプロイ詳細は公開 wiki に書かず、Google Drive「広聴AI-Azureデモ環境」を一次置き場にする方針へ更新
+- 2026-06-05: Azure デモ動線化が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地し、viewer 公開 + admin 共用を進める方向で合意。container env の dd2030 fallback `OPENAI_API_KEY` 除去と 3 点明示文言が前提として残る、と本文に反映

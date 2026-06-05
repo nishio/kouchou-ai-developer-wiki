@@ -58,6 +58,10 @@ sources:
 
 同じ議論で、1 つのインスタンスに複数ユーザの秘密情報を入れるのは避けるべきで、やるならユーザごとに現 Azure デモ環境相当を丸ごと複製する方向が示された。一方、ユーザに admin を触らせず、データ投入は運営側が行い、report viewer だけ見せる案も出たが、admin 画面で試行錯誤する体験自体に価値があるかどうかは未決のまま残った。[[meeting-minutes]]より
 
+2026-06-04 に nishio が dd2030 Slack で Ohki さん宛に 4 問の具体質問として整理した。(Q1) viewer 公開、(Q2) admin 画面共用 + 「共用環境なので秘密情報を入れないで」明示、(Q3) Github admin (大木さん他) がワンクリックで上げる 1 ヶ月専用試用環境、(Q4) 365 日稼働 SaaS は大木さん不参加の確認、の 4 層。Q3 は「ユーザごとに現 Azure デモ環境相当を丸ごと複製」案を on-demand provisioning + Github admin トリガー + 1 ヶ月期限つき、として具体化したもの。[[azure-demo-public-visibility-proposal-2026-06-04]] / [[nishio-slack-azure-demo-visibility-proposal-2026-06-04]]より
+
+2026-06-05 に大木さんから返答があり、nishio 決定として着地した。**viewer 公開と admin 共用は進める** (前提: container の dd2030 フォールバック `OPENAI_API_KEY` を外す。公開時に「共用 / 機微情報禁止 / データ保存・継続稼働非保証」の 3 点明示)。**1 ヶ月専用試用環境は優先度低**で保留し、代わりに「公開事例 / サンプルレポート / サンプル CSV を見せる導線の充実」が自治体ユーザ向けの優先方向となった。**365 日 SaaS は提供主体・責任範囲の整理項目化** とし、責任を持って継続運用・サポートできる主体を立てる方向で未着地のまま残す。あわせて、デモ環境の現時点の価値は「自分たちのデータを投入して試す場所」よりも「使い方や準備すべきデータを理解するための参照環境」として見直す再フレームが出ている。[[azure-demo-visibility-thread-resolution-2026-06-05]] / [[azure-demo-public-visibility-proposal-2026-06-04]]より
+
 ### A3. DB 導入のタイミング
 
 [[meeting-minutes]] 2025-05-21, 2025-06-25 で毎回「v4.0 のあたり」と言いつつ毎回先送り。**ファイルストレージ継続が暗黙の現状維持**。SQLite 候補が [[nasuka]] の cluster-title 編集 (PR #545) で検討されたが採用されず。
@@ -229,3 +233,5 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を open decision から外した
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後は Phase 8 が open decision ではなくなったため B5 を除外。current tree から消えた phase docs への参照も補正
 - 2026-05-25: A1 の [[nishio]] スタンスを訂正。「チームみらい等の宣伝用途」という外部顧客像に紐づけた表現は不適切で、実際は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替も可」という時間軸のある立場である
+- 2026-06-04: A2 に [[azure-demo-public-visibility-proposal-2026-06-04]] への接続を追記。nishio が Ohki さん宛に Slack で 4 問 ((Q1) viewer 公開 / (Q2) admin 共用 + 秘密情報禁止明示 / (Q3) Github admin ワンクリックの 1 ヶ月専用試用環境 / (Q4) 365 日 SaaS 不参加確認) として decompose した
+- 2026-06-05: A2 に [[azure-demo-visibility-thread-resolution-2026-06-05]] による着地を追記。viewer 公開と admin 共用は進める (前提: container の dd2030 フォールバックキー除去、3 点明示文言)、1 ヶ月専用試用環境は優先度低 + 公開事例導線が代替方向、365 日 SaaS は提供主体・責任範囲の整理項目化、デモ環境の価値は「参照環境」へ再フレーム

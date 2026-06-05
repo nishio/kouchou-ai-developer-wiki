@@ -3,6 +3,49 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-05 16:39] filing-back | dedicated worktree の lefthook / node_modules gotcha を追記
+
+- `codex/api-docker-dependency-check` worktree の commit / push で `Can't find lefthook in PATH` が出た件を、local dependency 未導入の gotcha として整理
+- Git hook は worktree root の `node_modules` から lefthook を探すため、main worktree に依存が入っていても dedicated worktree では `pnpm install --frozen-lockfile` が必要
+- [[worktree-hygiene]] に実務ルール、[[gotchas]] に短い検索用メモを追加。`meeting-report-draft` には PR #896 の副次メモとして追記
+
+## [2026-06-05 12:30] ingest | Azure デモ動線化 4 問の Ohki 返答 + nishio 決定 を resolution として filing back
+
+- 2026-06-05 11:36 大木さん返答、12:18 nishio 決定で着地: viewer 公開 + admin 共用は進める (前提: container の dd2030 fallback `OPENAI_API_KEY` 除去 + 「共用 / 機微情報禁止 / 保存・継続稼働非保証」3 点明示)、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化
+- あわせてデモ環境の現時点の価値を「自分たちのデータを投入して試す場所」から「使い方や準備すべきデータを理解するための参照環境」へ再フレーム。admin からのサンプル CSV ダウンロードと公開事例が実際の価値の中心
+- [[azure-demo-visibility-thread-resolution-2026-06-05]] を source 化。[[azure-demo-public-visibility-proposal-2026-06-04]] に Resolution + 再フレーム節を追加、[[open-decisions]] A2 / [[deployment]] / [[kouchou-ai-docs-entry-restructure-2026-06-03]] / [[meeting-report-draft]] の関連箇所を更新
+- 次は container env 修正 + 公開文言反映 + 公開事例ページ更新のオーナー割り当て (2026-06-08 定例予定)
+
+## [2026-06-04 23:00] ingest | nishio→Ohki の Azure デモ動線化 4 問と docs spine refinement を filing back
+
+- nishio が 2026-06-04 22:00 / 22:29 dd2030 Slack に docs spine refinement と Azure デモを docs から動線化する 4 問を投稿
+- 22:00 投稿は [[kouchou-ai-docs-entry-restructure-2026-06-03]] の spine を refinement (tier 2 を「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択化)
+- 22:29 投稿は Ohki さん宛 4 問 ((Q1) viewer 公開 / (Q2) admin 共用 + 「秘密情報入れないで」明示 / (Q3) Github admin ワンクリックの 1 ヶ月専用試用環境 / (Q4) 365 日 SaaS 不参加確認) として decompose
+- [[nishio-slack-azure-demo-visibility-proposal-2026-06-04]] を source 化、[[azure-demo-public-visibility-proposal-2026-06-04]] を analysis 化
+- [[kouchou-ai-docs-entry-restructure-2026-06-03]] / [[open-decisions]] A2 / [[meeting-report-draft]] にリンクと議題候補を追加。4 問は大木さん回答待ち、2026-06-08 定例で口頭整理候補
+
+## [2026-06-04 12:10] filing-back | confound 分析を補正、仕切り直し方針を 3 動線 (A/B/C) に拡張
+
+- refinement step (`hierarchical_label_refinement.py`) を読み直したところ、verbosity confound の真の構造は (1) INITIAL/MERGE few-shot template と (2) `setwise_refine` の length 制約なし の **2 つの独立 issue の合成**だった
+- さらに `setwise_refine_short` が `max_label_length=18` で既に存在し、A/B candidate pair の選択 (`scripts/build_label_preference_bundle.py` の hard-coded `none` vs `setwise_refine`) が confound の実装上の引き金でもあった
+- [[labelling-prompt-few-shot-template-confound-2026-06-03]] を補正、初版の「prompt few-shot だけが root cause」を撤回。「仕切り直しの方針」を A (base prompt few-shot 修正) / B (`setwise_refine` に length 制約) / C (既存 `setwise_refine_short` artifact で bundle 組み替え) の 3 動線に拡張
+- 着手順は nishio の判断待ち
+
+## [2026-06-03 23:50] filing-back | deploy-success story を index.md から到達可能にする
+
+- nishio から「今日作ったストーリーが発見できない」「一般読者向けに改善してたやつ」との指摘。確認したところ [[deploy-success-but-nothing-changed-story-2026-06-01]] への逆リンクは資料版 [[pr-887-pr-888-runtime-build-removal-episode-2026-06-01]] からの 1 本だけで、[[index]] からは到達不能だった
+- [[index]] の「最初に読むべき」直下に「雰囲気を掴むためのストーリー」として 1 行入口を追加し、「プロジェクト自体について」の [[wiki-driven-workflow]] 直下にも「実際にどう動くかの一日エピソード」として併記
+- 今日 8e110d8 で「ストーリーを完成」した成果物を、navigation 側へ反映する後追い filing-back
+
+## [2026-06-03 23:44] filing-back | 2026-06-02 LLM grouping 400 件 corpus の human preference A/B を仕切り直し決定として close
+
+- nishio が label_only 7 件 (cluster 1_1〜1_7) を blind A/B で回答。7/7 で「短い候補」が winner、confidence 全 3。`human_preferences.jsonl` に保存
+- 検証中に sibling_label_set / label_with_representatives も同じスタイル confound を踏むと nishio が指摘、prompt の few-shot 例 `AIによる業務効率の大幅向上とコスト効率化` / `AI技術の導入による意見分析の効率化への期待` が `〜による〜の〜` テンプレと冗長度差を焼き付けていると判明
+- 実験は terminated 扱い。残り 17 件 (sibling_label_set / label_with_representatives) は同じ confound のため回さない。manifest.json に `status=terminated` と理由を記録
+- 新ページ [[labelling-prompt-few-shot-template-confound-2026-06-03]] を作成、[[label-quality-human-preference-improvement-plan-2026-06-03]] にも reset status を追記
+- 信頼度 1/2/3 が意味不明だったので `scripts/build_label_preference_bundle.py` に `1 低 / 2 中 / 3 高` ラベルを追加して bundle 再生成済み
+- 次は prompt few-shot を topic-neutral + 明示制約付きに差し替える PR からやり直し
+
 ## [2026-06-03 16:30] ingest | 「遊園地の地図」比喩を broadlistening.md の「読み方」セクションに追記
 
 - nishio から「この辺が西部劇ゾーンでこの辺が SF ゾーンなのか〜、SF に興味があるから SF ゾーンを詳しく見てみよう」という比喩
@@ -582,74 +625,3 @@
 - `raw/meeting_minutes.txt:5169-5170` (2025-06-18 定例) に、tokoroten「ラベリングのためには、ランダムサンプリングではなくて、Farthest Point Sampling を使った方がよさそう」、nishio「アルゴリズム的には良い、計算量がどうかは未確認」というやり取りがあり、約 11 ヶ月実装されないままだった
 - 今回 tokoroten が Slack で「Farestなんたらサンプリングで全体のサンプルを包括してタイトルをつけるってはいってるんだっけ」と書いたのは、自分の過去提案を思い出していたもの。今日の nishio「全件渡し」提案は、**過去に gating question として残っていた『FPS の計算量未確認』を、FPS を実装する前に sampling 自体の必要性を問うルートで回避する**構図になっている
 - [[label-coverage-policy-2026-05-29]] の Updates に history を 1 段落追記。実装コスト未確認のまま放置されてきたアイデアを別角度から前進させた事例として記録
-
-## [2026-05-29 16:18] filing-back | sampling 改善は「全件渡し → ダメなら減らす」順で
-
-- 前 entry の「sampling 戦略を `random → max coverage / FPS / k-medoids` に切り替える」という方針について、nishio から「ラベリングは extraction に比べてコストが小さいことが既知なので、まず `sampling_num` 無効化で全件渡して試す方が先」という指摘
-- [[label-coverage-policy-2026-05-29]] の Updates に、実験順序を (1) sampling_num 無効化で全件、(2) ダメなら max coverage / FPS / k-medoids、(3) tokoroten 案の emb 類似度総和は並行、と整理し直して追記。複雑なアルゴリズム選択より「上流 sampling が本当にボトルネックか」を最小コストで確認するのが先
-
-## [2026-05-29 16:05] filing-back | ラベル設計の人間判断と上流 sampling 制約を集約
-
-- Claude judge 後の 3 論点に Slack で人間判断が出たので [[label-coverage-policy-2026-05-29]] に集約: (1) ラベルは「目次」ではなく「要約」、欠落より冗長を取る (tokoroten: 「カテゴリ外が含まれてるほうが気持ち悪い」)、(2) 1 キーワード完全包括は不可能なので greedy max-coverage で上位 2〜3 軸まで「AとB」、(3) 口語 register は post-processing で吸収可能で優先度低
-- tokoroten が指摘した上流 sampling の問題をコードで確認: `hierarchical_initial_labelling` `merge_labelling` とも `sampling_num` デフォルト **10** (tokoroten 発言の 30 は誤りだが本質は正しい)、`polars.DataFrame.sample(n=...)` で完全ランダム → 大規模クラスタほどラベルが「実体」ではなく「ランダム 10 件」に引っ張られる。refinement の入力強化より上流 sampling 戦略 (max coverage / FPS / k-medoids) の見直しが本質
-- アルゴリズム候補として tokoroten 案 (タイトル候補 emb × 各要素 emb の cos 類似度総和最大化) と nishio 案 3 (候補を UI で人間に選ばせる) を記録。今回のループ (GPT judge → Markdown export → Claude judge → 論点 → 人間判断 → コード確認) が分業として機能した lesson も同 page に追記
-- [[label-refinement-input-scope-2026-05-29]] の Updates に新方針へのリンクを追加し、[[meeting-report-draft]] にも次回定例向け要点を保守した
-
-## [2026-05-29 15:42] filing-back | label_refinement step が rep args を入力に取らない設計を確認
-
-- Claude judge による bundle 検査で、4 mode (`none / setwise / contrast / balanced`) すべてが上流の誤ラベル (cluster 3 = 倫理 args なのに `公共安全`、cluster 5 = 業務効率 args なのに `顧客体験`) を保存していたので `hierarchical_label_refinement.py` の `_build_cluster_section` を読み、refinement LLM に渡しているのが `current_label / current_description / size / children` だけで、**rep args は一切渡していない**ことを確認
-- 新規 analysis [[label-refinement-input-scope-2026-05-29]] を追加し、これが「polish only」スコープの仕様通りの挙動であること、書き換え権限はあるのに中身に照らす材料は無いという構造が「整った嘘」リスクになること、default-on 昇格時には rep args 追加か上流品質 gate が前提になることを記録
-- 当面 `experimental default-off` で main 同梱する判断には影響しないが、refinement の責務範囲を product 判断として明示しておく必要がある
-
-## [2026-05-29 13:31] filing-back | Issue #877 の Windows setup guide 境界を整理
-
-- 新規 source [[issue-877-windows-setup-guide-scope-2026-05-29]] と [[docker-desktop-license-2026-05-29]] を追加し、`#877` 本文・コメント・current main docs・関連 `#863` の状態・Docker Desktop 公式ライセンス注意を整理
-- 新規 analysis [[issue-877-windows-setup-guide-scope]] を追加し、短期は Docker Desktop が使える Windows 10/11 を標準入口にし、Docker Desktop / WSL2 が組織ポリシーで使えない環境は beginner guide の対象外または別上級者ルートへ切る判断を記録
-- [[meeting-report-draft]] に、次回定例で共有する Windows setup support boundary の要点を追記
-
-## [2026-05-29 03:02] filing-back | dirty 実験 clone を snapshot branch へ退避して clean main に戻した
-
-- `work/kouchou-ai/` の dirty 状態から、LLM grouping 系実験の入力・config・出力 artifact と Next.js 生成差分を branch `codex/remaining-experiment-artifacts-2026-05-29`、commit `b56ac9b` として push
-- 新規 source [[remaining-experiment-artifacts-snapshot-2026-05-29]] を追加し、何を退避したか、なぜ `work/kouchou-ai/` を dirty のまま残さないか、実験再開時の branch を記録した
-- 退避後は `work/kouchou-ai/` を `main` へ戻して `origin/main@6955202` まで fast-forward し、developer-wiki から参照する一次 clone を clean 状態へ復帰させた
-
-## [2026-05-29 03:00] filing-back | niizuma-thread-algorithm-critique の違和感マーカー 2 件を反映
-
-- annotation-0013 を受け、3-artifact 列挙の直前に「ここでの artifact は『広聴AI が返す出力物』の意で、前述の『2D 上の配置アーティファクト』の『歪み』とは別語義」と注を追加し、同一ページ内で artifact が二義的に使われる落とし穴を明示した
-- annotation-0014 を受け、Open Question「supervised UMAP は短期互換案として十分か」を Open Questions から外し、`work/kouchou-ai-mst-visualization-prototype/` で実験否定済みであることを 2026-05-29 Updates として記録（詳細は [[semantic-island-map-prototype-2026-05-26]] を参照）
-
-## [2026-05-28 17:41] filing-back | `#874` を標準 8 step contract 維持へ修正
-
-- `codex/mst-visualization-prototype` に commit `51a7c77` を push し、`hierarchical_layout_generation` を標準 workflow / specs / orchestrator / config defaults / standard step exports から外した
-- layout 生成 step と `layouts` 対応 visualization は実験コードとして残しつつ、default では走らない形にした
-- 手元では Ruff と analysis-core tests `184 passed` を確認し、GitHub Actions でも Ruff / Pytest / Server Tests / CodeQL は pass、CodeRabbit は review in progress
-
-## [2026-05-28 13:25] filing-back | Quartz + GitHub Pages project-site の新 Gist を作成
-
-- Scrapbox から辿った旧 Gist の `wiki/ -> content/` 変換方式と、この repo の `wiki/` direct build 方式を分けて整理した
-- 新 Gist `https://gist.github.com/nishio/35d604f23a39aca369ac74db8b65b655` を public で作成し、Quartz `baseUrl`、`<base>` patch 回避、生成物リンク検査、GitHub Actions の `fetch-depth: 0` をまとめた
-- [[wiki-pages-tooling-observation-2026-05-21]] と [[wiki-pages-publishing-stack]] に、方式選択の判断と新 Gist への導線を追記した
-
-## [2026-05-28 12:38] filing-back | developer-wiki Pages の subpath link check を追加
-
-- Quartz は GitHub Pages project-site hosting を `baseUrl` で扱えるため、root 専用 `<base>` patch は撤去し、`Head.tsx` を upstream 相当へ戻した
-- `scripts/check_pages_links.py` を追加し、build 後の `public/` 全 HTML について内部リンク・asset・`fetch()` が `/kouchou-ai-developer-wiki/` 配下の存在する path に解決されることを検査するようにした
-- [[wiki-pages-tooling-observation-2026-05-21]] と [[wiki-pages-publishing-stack]] に、subpath 問題は HTML patch ではなく Quartz `baseUrl` + 生成物検査で守る方針として追記した
-
-## [2026-05-28 12:33] filing-back | `#874` は実験的機能なので標準パイプラインに追加しない判断へ修正
-
-- [[pipeline-step-default-policy-decision-2026-05-28]] を追加し、`#874` の semantic island layout 生成は現時点では標準パイプラインに追加せず、明示有効化される実験用経路として扱う判断にした
-- [[pipeline-step-addition-framing-2026-05-27]] と [[meeting-report-draft]] も、`標準 9 step 化を検討する` ではなく `8 steps` 固定テストを標準パイプラインの gate として維持する整理へ補正した
-- 以前のメンテナー議論用 brief は判断ページへ置き換え、貼り付け用文面は削除した
-
-## [2026-05-28 10:54] filing-back | pipeline step 追加設計のメンテナー議論用 brief を追加
-
-- 新規 analysis を追加し、当初は `#874` の CI failure を「`8 steps` 固定テストを修正して標準パイプラインへの step 追加を許容するか」という意思決定として整理した
-- その後の判断で、この brief は [[pipeline-step-default-policy-decision-2026-05-28]] に置き換えた。結論は、実験的な semantic island layout 生成を標準パイプラインに追加しない、である
-- [[pipeline-step-addition-framing-2026-05-27]] と [[meeting-report-draft]] から導線を張った
-
-## [2026-05-28 00:08] filing-back | pipeline step 追加判断に open PR `#866` / `#867` / `#874` を反映
-
-- 新規 source [[open-pr-pipeline-step-observation-2026-05-28]] を追加し、2026-05-28 時点の open PR 6 本のうち、step 追加判断に関係する `#866` LLM grouping、`#867` reuse-from、`#874` semantic island layout を整理した
-- [[pipeline-step-addition-framing-2026-05-27]] に open PR 節を追記し、`#866` は new mode を workflow として切る良い例、`#867` は downstream step 比較の基盤、`#874` は named layout という表示 artifact の first-class 化として筋があるが CI failure と default 9 step 化の整理が必要、と補正した
-- `#874` の失敗は Ruff の import / `np` annotation と、`tests/test_orchestration.py` などに残る `8 steps` 固定期待が主因だと確認した

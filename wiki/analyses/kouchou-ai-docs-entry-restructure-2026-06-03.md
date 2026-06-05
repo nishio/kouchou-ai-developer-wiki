@@ -3,6 +3,8 @@ type: analysis
 summary: kouchou-ai 本体 docs の入口を「セットアップ」起点から「デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐」という spine に組み替える提案。`getting-started/` というネーミング自体がバイアスを産んでいたという指摘も含む
 sources:
   - nishio-docs-entry-restructure-discussion-2026-06-03.md
+  - nishio-slack-azure-demo-visibility-proposal-2026-06-04.md
+  - azure-demo-visibility-thread-resolution-2026-06-05.md
 ---
 
 ## 背景と問題提起
@@ -18,11 +20,13 @@ sources:
 
 ```
 1. 入口: デモサイトでレポートを見る
-   └ レポート viewer の使い方 (クラスタ閲覧 / representative / フィルタ等)
+   ├ レポート viewer の使い方 (クラスタ閲覧 / representative / フィルタ等)
+   └ dd2030 以外でレポートを公開しているサイト・自治体へのリンク集
 
 2. 「自分のデータで分析レポートを作りたい」分岐
-   ├ a. 誰かが host したサービスを使う (managed)
-   └ b. 自分で host する (self-host)
+   ├ a. 誰かが建ててくれたサーバを使う (dd2030 が SaaS 提供するならここ)
+   ├ b. サーバを建ててくれる人を探す (仲介者・代行者の連絡先リスト)
+   └ c. 自分でサーバを建てる (技術力と適切な計算環境が必要)
        └ ここで初めてセットアップ手順 (現 getting-started/* の中身) が登場
 
 3. 「研究者・開発者はこちら」分岐
@@ -31,6 +35,8 @@ sources:
 ```
 
 セットアップは spine の入口ではなく、特定のニーズを持った人 (= 自分で host したい人) が辿り着く先のページ。
+
+tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-proposal-2026-06-04]] で refinement された。従来案の「(a) managed / (b) self-host」では「自分で建てる気はないが、社内 / 自治体内に建ててくれそうな人がいる」読者の経路がなかった。仲介者経路 (b) を明示することで、[[broadlistening-tool-ecosystem-vision]] の「組織内デモ役」「橋渡し役」が docs 内で対応する分岐を持てる。
 
 ## ネーミング方針
 
@@ -56,7 +62,13 @@ sources:
 
 - spine 2-a「誰かが host したサービスで分析する」は、現時点で actually 提供されているか未確認
 - Azure デモ環境は存在するが、それは展示用であって「任意のユーザーが任意データを投げる service」とは違う可能性が高い
-- 提供されていないなら、docs 上では「現状は self-host のみ。managed は将来の選択肢」と明示する
+- 2026-06-04 に [[azure-demo-public-visibility-proposal-2026-06-04]] として 4 問が Ohki さんに投げられ、2026-06-05 に着地した ([[azure-demo-visibility-thread-resolution-2026-06-05]])。**viewer 公開と admin 共用は進める方向**で、これにより spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。ただし前提として container env の dd2030 fallback `OPENAI_API_KEY` を外し、3 点明示文言 (共用 / 機微情報禁止 / 保存・継続稼働非保証) を加える必要がある
+- spine tier 1 のコンテンツ目的は **「使い方や準備すべきデータを理解するための参照環境」** であって「データ投入の予行演習」ではない、という再フレームも同 thread で出ている。docs 内コンテンツの設計 (viewer 操作解説 + サンプル CSV ダウンロード導線 + 公開事例リンク集) に直接効く
+
+### 仲介者経路の docs 表現
+
+- spine tier 2 選択肢 b「サーバを建ててくれる人を探す」は、docs に連絡先リスト or 代行可能な個人 / 法人ディレクトリを置く形で実装する想定
+- 誰がリストをメンテするか、申告のあった代行者を docs に載せる基準、紹介後のトラブル時の責任分界点は未決
 
 ### レポート viewer の使い方をどこまで書くか
 
@@ -72,3 +84,8 @@ sources:
 
 - mkdocs.yml の nav は手書きの順序リスト。spine 変更は nav 全面書き換えになる
 - 段階移行 (新 spine の入口だけ先に作って既存ページは順次移動) か、PR 一発で構造刷新するか
+
+## Updates
+
+- 2026-06-04: tier 2 を「(a) managed / (b) self-host」の 2 択から「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択へ refinement ([[nishio-slack-azure-demo-visibility-proposal-2026-06-04]])。Azure デモを docs から動線化するための具体 4 問は [[azure-demo-public-visibility-proposal-2026-06-04]] へ切り出した
+- 2026-06-05: Azure デモ動線化 4 問が [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地。viewer 公開 + admin 共用は進める方向で、spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。tier 1 のコンテンツ目的は「データ投入の予行演習」ではなく「使い方や準備すべきデータを理解するための参照環境」、と再フレーム

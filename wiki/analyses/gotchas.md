@@ -176,6 +176,10 @@ PR #862 では docs deploy や repo checkout 上の client build が success で
 
 `docs/development/why-pnpm.md`：[[plugin-system]] が strict isolation な `node_modules` を前提とするため。詳細は [[npm-vs-pnpm]]。
 
+### 別 worktree では lefthook 用の `node_modules` も入れ直す
+
+`kouchou-ai` の Git hook は worktree root から `node_modules/lefthook...` を探す。main worktree に `node_modules` があっても dedicated worktree には共有されないので、commit / push 時に `Can't find lefthook in PATH` が出たら、その worktree root で `pnpm install --frozen-lockfile` を実行する。詳細は [[worktree-hygiene]]。[[source-code]]より
+
 ### Biome の CI 強制が弱い
 
 `lefthook.yml` で Biome 系は `skip: true`、`docs/testing.md` の CI ワークフロー列挙にも Biome 系がない。フロントエンドの lint 強制力はバックエンド（ruff）より緩い可能性。
