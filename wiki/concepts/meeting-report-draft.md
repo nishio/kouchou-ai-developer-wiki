@@ -59,6 +59,7 @@ sources:
 - main 済み: CodeQL Action v3 の 2026-12 deprecation warning 対応として、PR #893 (`codex/codeql-action-v4`) を admin merge した。`.github/workflows/codeql.yml` の `init` / `autobuild` / `analyze` を `github/codeql-action/*@v4` へ更新し、workflow 構造・trigger・permissions は変えていない。
 - main 済み: Code scanning alerts 対応 PR #892 (`codex/code-scanning-fixes`) を admin merge した。admin の API URL 組み立て、static build endpoint、API エラー返却の公開可能な範囲を修正し、PR branch の code scanning open alerts は 0 件。alert 詳細は公開 wiki に転記していない。
 - main 済み: all green + CodeRabbit actionable comment なしを確認し、PR #896 (`codex/api-docker-dependency-check`) と PR #897 (`codex-fix-mixed-type-csv-input`) を admin merge した。#896 は API Docker image と test 環境の依存差分を Dockerfile contract pytest + `API Docker Dependency Smoke` で検知する修正、#897 は混在型 CSV 属性を文字列として扱う修正。[[source-code]]より
+- 進行中: issue #898 の aarch64 Docker で `import umap` が `Illegal instruction` になる件は、UMAP 代替や `NUMBA_DISABLE_JIT=1` ではなく、Numba JIT の CPU target を `NUMBA_CPU_NAME=generic` にする最小方針で draft PR #899 (`codex/issue-898-aarch64-numba`) を作成。クラスタリング実装は変えず、`compose.yaml` / `.env.example` / Mac/Linux setup 生成 `.env` だけを更新した。aarch64 Docker 実機確認が必要なため draft のまま。[[source-code]]より
 - main 済み: nishio authored の open PR を整理し、PR #893 → #890 → #892 → #863 の順で admin merge した。#863 は draft だったが、mergeable と checks pass を確認して ready 化してから merge した。merge 後の nishio authored open PR は 0 件。
 - 進行中: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、first slice として `codex/experiment-storage` で `analysis-core` に `--experiment-root` / `--experiment-id` を追加した。
   さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次は同じ tree / evidence で label variants を作り、人間に A/B preference を聞く。
@@ -87,6 +88,7 @@ sources:
 - 追加 workflow `API Docker Dependency Smoke` は Dockerfile / API dependency lock / analysis-core dependency manifest 変更時だけ API image を build し、container 内で `hierarchical_clustering`, `sklearn`, `scipy`, `umap`, `numba`, `sentence_transformers`, `torch`, `google.genai` の import を確認する。
 - ローカルでは新規 pytest、ruff、workflow YAML / bash 構文検証まで通過。PR #896 の CI では `dependency-smoke`、server pytest、ruff、CodeQL が全 pass。
 - 副次メモ: `codex/api-docker-dependency-check` worktree で commit / push 時に `Can't find lefthook in PATH` が出たが、原因は dedicated worktree 側に `node_modules` が無かったこと。`pnpm install --frozen-lockfile` 後に lefthook 1.13.6 と pre-push ruff checks が正常起動したため、[[worktree-hygiene]] に運用メモとして反映。
+- issue #898 は、aarch64 Docker で `import umap` 自体が `Illegal instruction` で落ちる報告。`NUMBA_DISABLE_JIT=1` は避け、UMAP / clustering logic も差し替えず、Numba が LLVM に渡す CPU target だけを `generic` にする方針で draft PR #899 を作成。ローカル macOS arm64 venv では `NUMBA_CPU_NAME=generic` が Numba に読まれ、UMAP import も通過。Docker daemon 停止中のため Linux/arm64 container での再現確認は未実施。PR 本文には aarch64 環境の人に試してもらう必要があることを明記。
 
 ### mixed-type CSV 入力
 
@@ -112,6 +114,9 @@ sources:
 - `scripts/build_label_preference_bundle.py` を追加し、既存 corpus から 24 件の pending blind A/B questions、空の `human_preferences.jsonl`、schema、Markdown / HTML bundle を生成した。HTML には回答フォームと JSONL output textarea を追加し、表示 bundle には candidate origin を出していない。
 - 次の順序は、label variants → human A/B preference → judge calibration → evidence contract → label/refinement → Mandalart mock → sticky board mock。Mandalart / 付箋ビューは最初から Web default にせず、standalone HTML / JSON の CLI artifact として読みやすさを確認する。
 - 次に見ること: `hierarchical_8_40` tree / evidence 固定で label process だけを変えた A/B bundle を作れるか。judge v1 は、この preference を再現できるかで見る。`#880` マンダラートや付箋ビューは、ラベル品質 loop と接続する view prototype として扱う。
+- **2026-06-09 進展**: v1 bundle (`refine_none` vs `refine_setwise`) で nishio が label_only 7 件を回答、7/7 で setwise が winner。当初これを「verbosity confound」として整理し仕切り直したが、再調査で `refine_none` と `refine_setwise` の長さ direction を逆に取り違えていたと判明。実際は refine_none (refinement なし = merge_labels そのまま) が verbose、refine_setwise (sibling-aware) が shorter。v1 結果は「refinement on > refinement off」を測っていた。詳細と 3 度の補正履歴は [[labelling-prompt-few-shot-template-confound-2026-06-03]]
+- **2026-06-09 v2 bundle**: 既存 artifact だけで sibling-awareness 単独 isolate は不可と確認 (4 つの refined variants すべて sibling-aware) ため、length cap だけが factor の `refine_setwise` vs `refine_short` に組み替え。v1 は `archives/v1_none_vs_setwise_refine_2026-06-03/` に退避、7 件の preferences も同梱保存。次は v2 24 件の回答待ち
+- **次に見ること**: MERGE_LABELLING_PROMPT few-shot 例 `AI技術の導入による意見分析の効率化への期待` を topic-neutral + 短さ指示付きに直す PR (issue #881 の child 候補)。これは v2 と独立に進められる。さらに sibling-awareness 単独 isolate には新 mode `refine_independent` (sibling 情報を見ず単独 refine) の追加が必要
 
 ### source freshness 運用
 
@@ -126,6 +131,7 @@ sources:
 
 ## Updates
 
+- 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記
 - 2026-06-05: `codex/api-docker-dependency-check` で API Dockerfile の `analysis-core[full]` install contract test と実 image dependency smoke workflow を追加したことを追記
