@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:56] filing-back | open-decisions に tool catalog placement を反映
+
+- [[open-decisions]] の current overlay を 4 件から 5 件へ補正し、[[public-tool-catalog-draft-2026-06-30]] の canonical placement を短期未決として追加
+- #564 / 8/2 / docs のどこを tool catalog 正本にするかを、人間判断待ちの項目として [[thinking-targets]] と揃えた
+
 ## [2026-06-30 17:50] filing-back | 公開向け tool catalog draft を作成
 
 - [[public-tool-catalog-draft-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を `collect / deepen / analyze / show / classify / read-and-act` に分ける外向け draft に整理

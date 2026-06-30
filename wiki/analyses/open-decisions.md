@@ -18,6 +18,7 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - docs-issue-map-2026-06-30.md
+  - public-tool-catalog-draft-2026-06-30.md
 ---
 
 [[kouchou-ai]] には進行中の作業が多数あり、`docs/` や [[meeting-minutes]] が断片的に語る状態を新規コントリビュータが追いづらい。本ページでは課題を **3 つの状態** に分類して並べる。
@@ -40,14 +41,15 @@ sources:
 
 ## 2026-06-30 current overlay
 
-このページ本体は 2026-05 の棚卸しを含むため、下の件数や分類だけで現在地を判断しない。2026-06-30 の `work/kouchou-ai/main@d5c9ece`、GitHub live state、議事録、`work/slack-logs/main@341cf80` を合わせた最新の短期未決は次の 4 つである。[[current-status-2026-06-30]]より
+このページ本体は 2026-05 の棚卸しを含むため、下の件数や分類だけで現在地を判断しない。2026-06-30 の `work/kouchou-ai/main@d5c9ece`、GitHub live state、議事録、`work/slack-logs/main@341cf80` を合わせた最新の短期未決は次の 5 つである。[[current-status-2026-06-30]]より
 
 1. **公開事例と trust layer の placement**: #564 の公開事例ページ、basic explainer / FAQ、#696 の誤読防止、#542 の責任所在は、別々の docs issue ではなく「初回説明 + 公開事例リスト + レポートの読み方 + 何を保証しないか」のセットとして扱う必要がある。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] にあり、未決なのは canonical copy の置き場所と承認者。
-2. **8/2 first demo**: 公式性、viewer demo、deep case のどれを主 artifact にするかが未決。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都 / 舞鶴2040 / 北見 / 奈良 / 八代などに広がったが、source strength と政治文脈を分ける必要がある。[[public-case-page-skeleton-2026-06-30]]より
-3. **docs-safe PR 順序**: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は、同じ docs 群でも reader contract が違う。次に本体 repo へ出す PR を 1 本選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
-4. **Azure demo / SaaS 境界**: 6/5 に viewer 公開と admin 共用は進める方向へ倒れ、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目として残った。したがって A2 は「全部未定」ではなく、公開事例 / サンプルレポート / reading guide で参照環境の価値を補う段階に移っている。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
+2. **tool catalog の canonical placement**: 広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を `collect / deepen / analyze / show / classify / read-and-act` に分ける draft はできたが、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどこを正本にするかは未決。[[public-tool-catalog-draft-2026-06-30]]より
+3. **8/2 first demo**: 公式性、viewer demo、deep case のどれを主 artifact にするかが未決。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都 / 舞鶴2040 / 北見 / 奈良 / 八代などに広がったが、source strength と政治文脈を分ける必要がある。[[public-case-page-skeleton-2026-06-30]]より
+4. **docs-safe PR 順序**: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は、同じ docs 群でも reader contract が違う。次に本体 repo へ出す PR を 1 本選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
+5. **Azure demo / SaaS 境界**: 6/5 に viewer 公開と admin 共用は進める方向へ倒れ、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目として残った。したがって A2 は「全部未定」ではなく、公開事例 / サンプルレポート / reading guide で参照環境の価値を補う段階に移っている。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
-この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。16:12 JST の #564 再読で、公開事例ページには事例 detail だけでなく初回説明 FAQ / 一枚絵 / 説明資料導線も必要だと補正した。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。16:12 JST の #564 再読で、公開事例ページには事例 detail だけでなく初回説明 FAQ / 一枚絵 / 説明資料導線も必要だと補正し、17:50 JST には tool catalog draft を #564 / 8/2 へ転用できる形にした。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より [[public-tool-catalog-draft-2026-06-30]]より
 
 ## A. 未定（合意なし／対立あり）
 
@@ -233,6 +235,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ## Updates
 
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を #564 / 8/2 / docs の人間判断項目として明示。
 - 2026-06-30: [[current-status-2026-06-30]] をもとに current overlay を追加し、#564/#696/#542 trust layer、8/2 first demo、docs-safe PR 順序、Azure demo / SaaS 境界を短期未決として明示。
 - 2026-05-17: 初回作成 — 議事メモ＋コードリーディング結果を 3 分類で整理
 - 2026-05-17: `main@3809a7a` を再確認し、CodeRabbit は「未配線」ではなく最小導入済みへ修正
