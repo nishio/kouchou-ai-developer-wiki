@@ -4,6 +4,7 @@ summary: "2026-06-22 議事録から見た 8/2 イベント、Brand Compass、hi
 sources:
   - meeting-minutes.md
   - meeting_minutes.txt
+  - meeting-brand-compass-information-strategy-2026-06-30.md
 ---
 
 ## What it is
@@ -12,7 +13,7 @@ sources:
 
 ## Freshness marker
 
-この source の鮮度基準は、2026-06-30 に再取得した `raw/meeting_minutes.txt` を 2026-06-30 14:41 JST に確認した時点。先頭見出しは `2026/06/22`、txt は 7703 行だった。`2026/06/29` 見出しはまだ export 内に見当たらない。[[meeting-minutes]]より
+この source の鮮度基準は、2026-06-30 に再取得した `raw/meeting_minutes.txt` を 2026-06-30 17:15 JST に確認した時点。先頭見出しは `2026/06/22`、txt は 7702 行だった。`2026/06/29` 見出しはまだ export 内に見当たらない。[[meeting-minutes]]より
 
 ## Observations
 
@@ -26,8 +27,14 @@ tokoroten は 8/2 イベントについて、ブロードリスニングで何�
 
 8/2 イベントの文脈は、単一の新機能要求ではなく、ブロードリスニングの実践・技術・ツールを人に説明できる状態へ近づける要求として読むのが自然。特に「情報発信と事例の積み上げ」が priority 軸に含まれているため、既存 viewer / docs / public examples の入口を整理する作業は、実装を急がなくても価値がある。
 
+Brand Compass に沿った開発は、単独の設計文書名としてだけではなく、M2 / stable v4、情報発信、外部向けの物語、自治体利用者課題調査、A/B/C/D 配布形態の説明を合わせる判断フィルタとして読むとよい。詳細は [[meeting-brand-compass-information-strategy-2026-06-30]] に切り出した。
+
 ## Open Questions
 
 - 8/2 イベントで実際に出す artifact は、既存 viewer の公開例、技術解説、ツール紹介、運用事例のどれを主軸にするのか。
 - 4 トラックのうち、広聴AI developer wiki が短期で支援しやすいのは「技術」と「ツール」だが、「国会」「地方政治」実践側の公開可能事例をどこまで接続できるか。
 - イベント向けの docs は広聴AI本体 repo、dd2030.org、broadlisteningbook.com、developer wiki のどこを canonical にするのか。
+
+## Updates
+
+- 2026-06-30: freshness marker を 16:33 export の 7702 行に揃え、Brand Compass / 情報発信の議事録文脈を [[meeting-brand-compass-information-strategy-2026-06-30]] に切り出した。

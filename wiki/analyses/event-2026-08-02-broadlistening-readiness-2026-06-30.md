@@ -14,11 +14,14 @@ sources:
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
+  - meeting-brand-compass-information-strategy-2026-06-30.md
 ---
 
 ## Conclusion
 
 8/2 イベント向けの次の一手は、すぐ新機能を実装することより、ブロードリスニングを「実践」「技術」「ツール」の各入口から説明できる状態にすること。議事録上の priority には情報発信と事例の積み上げが含まれており、Slack 上でも Codex は状況把握と LLM Wiki / docs 更新を中心に走らせる方針が共有されている。[[meeting-2026-06-22-event-priority]]より [[slack-logs-repository]]より
+
+Brand Compass 文脈まで広げると、8/2 準備は「見せる demo を選ぶ」だけではない。stable v4 / M2 に向けて現行価値を安定化し、公開事例・レポートの読み方・A/B/C/D 配布形態・外部向けの「聞く能力」ストーリーを揃えることが、情報発信と事例積み上げの実務になる。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
 ## Event lanes
 
@@ -45,6 +48,7 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 - [[docs-issue-map-2026-06-30]] の docs 群と接続し、#876 developer quickstart、#877 Windows setup、#885 Node runtime 排除をイベント説明に混ぜない。イベント向けには「利用者に見せる説明」と「開発者が整える前提」を分ける。
 - Yokohama Hack! 文脈では、収集手法そのものを kouchou-ai 本体に取り込む判断を急がない。input plugin / data collection docs の候補として論点化し、owner と issue が見えたら実装 lane に移す。
 - public examples / demo は公開境界を守る。実環境 URL、resource 名、revision、ログ、secret / access 周辺は developer wiki に書かず、公開 wiki では設計判断と公開可能な課題に留める。
+- Brand Compass / 情報発信の観点では、A/B/C/D 配布形態を「誰に何を提供しているか」の説明として使う。8/2 の技術 / ツール lane では、研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial を混ぜずに説明する。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
 ## Open Questions
 
@@ -52,9 +56,11 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 - 国会 / 地方政治の実践 lane で使える公開可能事例はどれか。事例名だけでなく、どの artifact を見せてよいかの公開境界確認が必要。
 - 奈良 / 渋谷区 / 八代市のどれを 8/2 の第一デモにするか。URL は public でも、スクリーンショット利用や政治文脈の話し方は別途確認が必要。
 - 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、それとも周辺エコシステムとして docs で接続するだけにするべきか。
+- Brand Compass 本体のどの項目を、8/2 の story / case / docs / demo selection に明示的に反映するか。
 
 ## Updates
 
+- 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、8/2 readiness は first demo 選定だけでなく stable v4 / 情報発信 / A/B/C/D 配布形態の説明を揃える作業だと補正。
 - 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo を #564 / #696 / #542 の trust layer と接続。
 - 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 で使える公開事例 / demo 素材を public-ready、確認待ち、fallback に分けた。
 - 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、技術・ツール入口の 1 枚 draft を固定。

@@ -9,6 +9,7 @@ sources:
   - analysis-core-web-ui-separation-decision-2026-05-23.md
   - pr-825-standalone-html-observation-2026-05-19.md
   - report-html-non-web-canonical-decision-2026-05-23.md
+  - meeting-brand-compass-information-strategy-2026-06-30.md
 ---
 
 ## なぜ分けて考えるか
@@ -102,6 +103,7 @@ sources:
 - 研究者・データサイエンティスト向けには、カスタマイズ性の高い CLI パイプラインがあればよい
 - 非エンジニアの試行錯誤ユースケースでは、CLI 作業は最小限にし、レポート作成から確認まで Web UI で閉じる必要がある
 - したがって「CLI をきれいにする」と「非エンジニア向け入口を良くする」は別問題として優先度を付けた方がよい
+- A/B/C/D の分類は、実装の配布形態だけでなく対外説明にも使える。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial は、8/2 や #564 の説明で混ぜずに出すと、誰に何を提供しているかが伝わりやすい。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
 ## 共有コアと分岐点
 
@@ -144,6 +146,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、A/B/C/D 分類は実装構成だけでなく Brand Compass / 情報発信上の説明軸でもあると追記。
 - 2026-05-19: 初版作成。Web UI と CLI / analysis-core を分ける軸を明文化
 - 2026-05-19: 研究者・データサイエンティスト向けは `Mac/Linux + CLI` を正規入口とし、`Windows` は `WSL2/Docker` 寄せでよい一方、非専門家向けは `Zip + setup.bat + Web UI` に近い入口を目標形として追う整理を追記
 - 2026-05-19: 会話中の整理を反映し、「研究者向けの CLI 改善」と「非エンジニア向け Web UI 完結導線」は別の最適化問題だと明記

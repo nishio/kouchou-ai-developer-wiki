@@ -33,6 +33,7 @@ sources:
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
+  - meeting-brand-compass-information-strategy-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
@@ -64,6 +65,8 @@ Slack の広聴AI本体 channel は、直近14日では新しい実装論点が�
 
 議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。イベント案は「国会」「地方政治」「技術」「ツール」の lane を含むので、実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-2026-06-22-event-priority]]より
 
+Brand Compass / 情報発信は、8/2 だけの slogan ではなく、stable v4 / M2、公開事例と trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態をつなぐ判断フィルタとして読める。[[meeting-brand-compass-information-strategy-2026-06-30]]より
+
 横浜型ブロードリスニングは、Slack 上では市民の声の「収集」手法を中心にした Yokohama Hack! 募集として共有されている。広聴AIの current asset は analysis / viewer / docs 側が中心なので、収集と分析可視化を分けて説明するのが安全。[[slack-yokohama-hack-2026-06-26]]より
 
 GitHub 現在地としては、PR #903 の docs inventory は小さく直せそうだが、user attention を使う review request / merge には踏み込まない。PR #891 は draft のままなので、[[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に状況把握を固定した。issue #898 は PR #899 merge 済みだが issue は open で、aarch64 実機確認または close 判断が残っている。
@@ -83,6 +86,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「初回説明 FAQ + 公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 奈良市 / 岩手県 / 広島県 / 東京都 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / 東京都知事選 2024 TTTC / M-1 / JINS / GMO / 中野駅新北口などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「candidate / adjacent」を分けて扱う。
 - Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出し、大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズなどを direct verification queue に置いた。これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。
+- Brand Compass / 情報発信の議事録文脈は [[meeting-brand-compass-information-strategy-2026-06-30]] に固定した。次の判断では、first demo / #564 placement / docs-safe PR が stable v4 の安定化、公開 trust layer、A/B/C/D 説明のどこに効くかを見る。
 - #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、初回説明 block、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
 - #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「課題発見ツールとしての説明」「読み方」「保証しない範囲」「個別レポート発行主体」「外部向け利用時の注意」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
@@ -97,6 +101,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / trust layer / 外部ストーリー / A/B/C/D 配布形態の判断フィルタとして current snapshot に接続。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。
 - 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録の公開事例一覧を direct verification queue として国内 broad listening 事例 map に接続した。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口の public source を国内 broad listening 事例 map に接続した。

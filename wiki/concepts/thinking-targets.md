@@ -14,6 +14,7 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
+  - meeting-brand-compass-information-strategy-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
 ---
@@ -31,19 +32,21 @@ sources:
 
 6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか**、**公開事例と trust layer をどこに置くか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
 
+Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、#564/#696/#542、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
+
 ### 0-1. 8/2 の first demo を何にするか
 
 - 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
-- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote などは、first demo ではなく direct verification queue として別枠に置く
+- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote などは、first demo ではなく direct verification queue として別枠に置く。Brand Compass 観点では、demo が `聞く能力` の story と A/B/C/D 配布形態のどこに当たるかも 1 行で添える
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
-- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]]
+- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
 ### 0-2. #564 / #696 / #542 の canonical placement
 
 - 問い: 公開事例リスト、basic explainer / FAQ、レポートの読み方、責任所在を DD2030 website、kouchou-ai docs、public-viewer、README のどこに置くか。1 箇所だけに置くと、事例ページと viewer の間で説明が抜ける
-- 思考の最小単位: canonical copy を 1 つ決め、他の surface は短い導線にする。`広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` への初回説明と、レポート誤読防止の文言承認者も決める
+- 思考の最小単位: canonical copy を 1 つ決め、他の surface は短い導線にする。`広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` への初回説明と、レポート誤読防止の文言承認者も決める。A/B/C/D 配布形態を public page に出す場合、D hosted trial は現状未提供 / 要責任整理として表現する
 - 決まれば動けること: #564 の case page first slice と、#696 / #542 の README/docs/viewer 反映 PR を分けて切れる
-- 関連: [[public-case-page-skeleton-2026-06-30]], [[report-reading-guide-minimum-wording-2026-06-30]], [[issue-564-public-case-trust-layer-scope-2026-06-30]]
+- 関連: [[public-case-page-skeleton-2026-06-30]], [[report-reading-guide-minimum-wording-2026-06-30]], [[issue-564-public-case-trust-layer-scope-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
 ### 0-3. docs-safe PR の順序 (#876 / #877 / #885)
 

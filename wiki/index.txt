@@ -77,6 +77,7 @@ local-ai-hardware-procurement-market-notes-2026-05-31	source	sources/local-ai-ha
 local-ai-user-share-market-stats-2026-05-31	source	sources/local-ai-user-share-market-stats-2026-05-31.md	2026-05-31 時点で local AI runtime のユーザー到達率を推定するための外部統計メモ。Chrome desktop share、Steam Hardware Survey の RAM/CPU/VRAM、Gartner PC shipment、Canalys AI-capable PC forecast、Chrome Prompt API / Foundry Local / Phi Silica 公式要件を整理
 marketing-strategy-mtg-2025-07-16	source	sources/marketing-strategy-mtg-2025-07-16.md	2025-07-16 朝 8時台のボード級『広聴AI マーケティング戦略 mtg』議事メモ。ユーザーターゲット・事例研究・パートナー戦略・プロダクト品質・OSS の射程を議論した単発会議
 meeting-2026-06-22-event-priority	source	sources/meeting-2026-06-22-event-priority.md	2026-06-22 議事録から見た 8/2 イベント、Brand Compass、high priority issue、情報発信、運用ポリシーの優先軸
+meeting-brand-compass-information-strategy-2026-06-30	source	sources/meeting-brand-compass-information-strategy-2026-06-30.md	議事録から見た Brand Compass / 情報発信 / stable v4 / 利用者課題調査の接続。Brand Compass 本体ではなく、議事録上の判断フィルタを要約する
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
 meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7700 lines, JP)
 nextjs-dynamic-build-docs-2026-06-01	source	sources/nextjs-dynamic-build-docs-2026-06-01.md	Next.js 公式 docs の generateStaticParams / connection / route segment config 周辺の要点。public-viewer dynamic build を API なしで通す設計の補助線
