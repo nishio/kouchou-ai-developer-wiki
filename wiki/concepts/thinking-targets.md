@@ -6,6 +6,12 @@ sources:
   - meeting-minutes.md
   - github-dev-docs.md
   - source-code.md
+  - current-status-2026-06-30.md
+  - docs-issue-map-2026-06-30.md
+  - event-2026-08-02-broadlistening-readiness-2026-06-30.md
+  - public-case-page-skeleton-2026-06-30.md
+  - report-reading-guide-minimum-wording-2026-06-30.md
+  - slack-logs-repository.md
 ---
 
 このページは **「次に何を考えれば前に進むか」だけ** を集める。
@@ -16,6 +22,38 @@ sources:
 - ここは「思考と判断が入れば、実装 / 実験 / PR がはっきり動き出す論点」のみ
 
 各項目には `問い / 思考の最小単位 / どう決まれば動けるか / 関連ページ` を置く。問いの解像度が上がって実装フェーズに入ったらここから外し、関連 analysis ページへ送る。
+
+## 0. 2026-06-30 immediate thinking queue
+
+6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか**、**公開事例と trust layer をどこに置くか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
+
+### 0-1. 8/2 の first demo を何にするか
+
+- 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良 / 八代 / 舞鶴2040 / 渋谷区 / 宇多津町を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
+- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る
+- 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
+- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]]
+
+### 0-2. #564 / #696 / #542 の canonical placement
+
+- 問い: 公開事例リスト、レポートの読み方、責任所在を DD2030 website、kouchou-ai docs、public-viewer、README のどこに置くか。1 箇所だけに置くと、事例ページと viewer の間で説明が抜ける
+- 思考の最小単位: canonical copy を 1 つ決め、他の surface は短い導線にする。文言承認者も決める
+- 決まれば動けること: #564 の case page first slice と、#696 / #542 の README/docs/viewer 反映 PR を分けて切れる
+- 関連: [[public-case-page-skeleton-2026-06-30]], [[report-reading-guide-minimum-wording-2026-06-30]], [[issue-564-public-case-trust-layer-scope-2026-06-30]]
+
+### 0-3. docs-safe PR の順序 (#876 / #877 / #885)
+
+- 問い: developer docs、Windows setup、Node runtime 排除の docs / prototype をどの順で本体 repo に出すか。同じ docs 群でも、#876 は読者像、#877 は current supported Windows path、#885 は将来の単体 exe / static export 前提で、混ぜると reader contract が崩れる
+- 思考の最小単位: 次の PR を 1 本だけ選ぶ。選択肢は `#876 docs spine`、`#877 Windows supported path`、`#885/#903 inventory correction`、`#696/#542 reading guide docs` の 4 つ
+- 決まれば動けること: 人間の作業 branch と衝突しにくい file-by-file PR slice が切れる
+- 関連: [[docs-issue-map-2026-06-30]], [[issue-876-docs-pr-slice-2026-06-30]], [[issue-877-docs-pr-slice-2026-06-30]], [[issue-885-node-runtime-next-scope-2026-06-30]]
+
+### 0-4. Slack / 議事録 source 運用の次の固定
+
+- 問い: `digitaldemocracy2030/slack-logs` を Slack raw 一次 source として定着させた後、既存の `oss_weekly_reporter` source をどこまで置き換えるか。また、議事録 `2026/06/29` 見出しが export に出た時、どの source / analysis を先に更新するか
+- 思考の最小単位: Slack は raw/mirror を一次、weekly reporter は GitHub activity と AI 要約の補助線、という役割を canonical docs にどこまで反映するか決める
+- 決まれば動けること: 今後の wiki ingest が「どのログを先に読むか」で迷わなくなる
+- 関連: [[slack-logs-repository]], [[current-status-2026-06-30]], [[wiki-driven-workflow]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
 
@@ -126,6 +164,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、#564/#696/#542 trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス など)
 - 2026-05-30: 構造把握スタンス / 全体傾向把握ユースケース / 別ツール 分業の含意を関連ページに伝播。[[public-ui-requirements-for-broadlistening]] に 7 要件のうち #5/#7 は別ツール側、本体 5 件 + 構造把握の評価軸 2 件で評価する、を追記。[[semantic-island-map-prototype-2026-05-26]] に構造把握用主図候補としての評価視点を追記。[[kouchou-ai]] に core stance リンクを追加。3-1 を別ツール側に倒れた旨で更新、2-2 を構造把握の評価軸を含む合否基準に補正
 - 2026-05-30: 「広聴AI = 構造把握スタンス」を [[analysis-stance]] として概念ページ化。全体傾向把握ユースケースは構造把握スタンスで実現、定量分析スタンスではない、を core stance に明示

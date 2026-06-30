@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:55] filing-back | 6/30 時点の思考ハブを更新
+
+- [[thinking-targets]] を更新し、8/2 first demo、#564/#696/#542 placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として追加
+- [[open-decisions]] に 2026-06-30 current overlay を追加し、公開事例 trust layer、8/2、docs-safe PR、Azure demo / SaaS 境界を短期未決として整理
+- [[current-status-2026-06-30]] / [[meeting-report-draft]] から、人間が次に判断する 4 論点へ接続
+
 ## [2026-06-30 15:50] filing-back | #696 / #542 レポート読み方文言を固定
 
 - [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページ・public-viewer・README/docs に置く誤読防止と責任所在の最小文言案を整理

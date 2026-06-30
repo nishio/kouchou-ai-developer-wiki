@@ -50,6 +50,8 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - thinking-targets.md
+  - open-decisions.md
 ---
 
 ## 目的
@@ -169,6 +171,7 @@ sources:
 - [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 誤読防止 / #542 責任所在の最小文言案を作った。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで、読み方・保証しない範囲・個別レポート発行主体を揃える scope として扱う。
 - [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake、外部公開ページは primary URL 確認済み case list として分ける必要を整理した。舞鶴2040は Slack lead から public viewer / 特設サイト / 市公式 project page へ接続できた。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
+- [[thinking-targets]] / [[open-decisions]] を 6/30 状態へ同期した。会議で人間に聞くべき短期未決は、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 つ。
 
 ### docs-first / no-conflict lane
 
@@ -187,6 +190,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[thinking-targets]] / [[open-decisions]] を更新し、6/30 時点の短期未決を定例向けに接続
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言案と current footer 差分を定例向けに整理
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 事例の公開Web検索 pass を定例向けに整理
 - 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの first slice を定例向けに整理
