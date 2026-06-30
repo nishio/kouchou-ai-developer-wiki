@@ -7,6 +7,7 @@ sources:
   - public-broadlistening-artifacts-2026-06-30.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
+  - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - current-status-2026-06-30.md
 ---
 
@@ -45,6 +46,8 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 
 事例管理の運用では、`lead intake` と `public page` を分ける。Slack / Drive / issue comment は lead の発見に使い、外部ページは primary URL と許諾・文脈確認を通ったものだけを載せる。[[slack-case-introduction-channel-2026-03-04]]より
 
+`lead intake` は、単に内部で候補を拾うだけでは足りない。Slack `#2_広報_pr` の 2026-04 議論では、DD2030 から見えない活用に気づくには、HP 上で導入事例マップや掲載希望の受け皿を見せる必要がある、という発想が出ていた。#564 の public page は、確認済み事例一覧と候補 intake を明確に分けたうえで、外部から候補が入る導線を持つ方が自然である。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+
 ## Recommended next page shape
 
 外部公開へ移す前の developer wiki 正本としては、`公開事例マップ` を次の章立てにするのがよい。
@@ -62,9 +65,11 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 - 広島県のように `広聴AI` と明記しない broad listening / DD2030 cooperation 事例を、広聴AI事例ページに載せるか、別カテゴリに分けるか。
 - 検索で見えたが 404 だった viewer / PDF の現行 URL を誰が確認するか。
 - JINS や M-1 のような TTTC / broad listening adjacent cases を #564 の公開事例ページに載せるか、技術・歴史 reference に分けるか。
+- 外部からの事例候補 intake を public page に置く場合、source strength / tool lineage / 掲載許諾を誰が判定するか。
 
 ## Updates
 
+- 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、公開事例ページには確認済み事例一覧だけでなく事例候補 intake 導線も必要だと追記。
 - 2026-06-30: 16:05 JST の追加Web検索を反映し、岩手県・日本維新の会を candidate から昇格、東京都 / GovTech東京・北見・日本テレビ衆院選・M-1・JINS を分類へ追加。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake であり public case list とは分ける必要があると追記。
 - 2026-06-30: 初回作成。公開Web検索をもとに、8/2 と #564 へ接続する日本国内 broad listening use case map を作成した。

@@ -8,6 +8,7 @@ sources:
   - japan-broadlistening-use-case-map-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
 ---
 
@@ -36,6 +37,8 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 
 この block には、利用状況一覧の一枚絵や、自治体向け説明資料 / 動画へのリンクを置ける。ただし、Drive 内資料や未許諾動画をそのまま公開リンクにしない。公開可能になったものだけを載せる。
 
+FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では、メンバー向け QA と外向け QA が混ざる問題、参加検討者と既存参加者では読む FAQ が違う問題が出ていた。website PR #192 は 2026-06-19 に merge 済みだが、カテゴリ分けは別途考える扱いになった。#564 の公開事例ページでは、少なくとも `導入検討者向け` / `レポート閲覧者向け` / `既に関わっている人向け` を混ぜない方がよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+
 ### 1. 最初に見る 3 事例
 
 1 ページ目の最初は、件数を多く見せるより `source strength` の異なる 3 類型を出す。
@@ -63,6 +66,8 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 一覧とは別に、SNS 発信や初回説明に使う `利用状況の一枚絵` を作る場合は、同じ分類を使う。つまり、プロダクト x 政党・行政・議員・その他組織の grid にしても、`実績` / `予定` / `候補` / `adjacent` を混ぜない。
 
 Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候補を拾う lead intake として扱い、外部公開の evidence にはしない。Slack lead には広聴AI case、広義の broad listening 言及、AI assistant、いどばた関連、内部リンクが混ざるため、primary URL が確認できるまで `candidate` に留める。[[slack-case-introduction-channel-2026-03-04]]より
+
+公開ページには、確認済み事例一覧とは別に `掲載候補を教えてください` 導線を置く余地がある。`#2_広報_pr` では、DD2030 から見えないところで進む活用に気づく方法、HP の導入事例マップ、掲載 OK 確認、事例を集めたいことを伝える必要が議論されていた。したがって public page は `実績を見せる場所` と `候補を受け取る場所` を分けるのがよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
 ### 3. 事例詳細テンプレート
 
@@ -104,6 +109,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 4. 詳細ページ化は宇多津町、渋谷区、岩手県のような自治体公式 source が強い 1 件に絞る。
 5. レポートの読み方と免責を同じ PR / 同じページに含める。
 6. candidate は「確認中」として、公開 URL が有効になるまで本文の実績には混ぜない。
+7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
 
 ## Do not include
 
@@ -119,9 +125,11 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 - 初回説明 block は DD2030 website に置くか、自治体向け説明資料 / 動画を別 artifact として置くか。
 - #696 / #542 の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
 - 公開事例の候補管理を GitHub issue、Drive、website repo、developer wiki のどこで canonical にするか。
+- 事例掲載 intake を外部ページに置く場合、問い合わせ先・確認担当・掲載可否の判断基準をどこで管理するか。
 
 ## Updates
 
+- 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。
 - 2026-06-30: #564 を再読し、公開事例ページに初回説明 FAQ / 一枚絵 / 説明資料導線を置く必要を追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページに置く「レポートの読み方」の実文言 draft へ接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack case channel は lead intake、外部ページは primary URL 確認済み case list として分ける方針を追記。

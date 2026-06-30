@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 16:41	filing-back	広報SlackのFAQ/事例マップ議論を source 化
 2026-06-30 16:34	filing-back	議事録 export freshness を再確認
 2026-06-30 16:28	filing-back	Slack source ops を補強
 2026-06-30 16:19	filing-back	#696/#542 の reading guide scope を補正

@@ -10,6 +10,7 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - azure-demo-public-visibility-proposal-2026-06-04.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - kouchou-ai-docs-entry-restructure-2026-06-03.md
@@ -87,6 +88,8 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-03-04]]より
 
+Slack `#2_広報_pr` の 2026-03/04 raw では、website FAQ の読者分離、HP に導入事例マップを載せる案、掲載してほしいという声を受ける導線、他自治体の使い方を知るユーザー会の発想が出ていた。これは #564 を「公開事例一覧」だけで閉じず、`FAQ / reading guide`、`confirmed case list`、`case intake`、`future user group` に分けるべき根拠になる。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+
 ## What Not To Do
 
 - #564 のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
@@ -101,6 +104,7 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 - 8/2 用に、奈良 / 渋谷区 / 八代市 / 舞鶴2040 / 宇多津町のどれを first demo / official context にするかを人間が選べる判断表へ落とす。
 - 事例ごとの公開可能 / 要許諾 / 不使用を `public-broadlistening-artifacts` の freshness marker で管理する。
 - `#1_事例紹介_全体` の lead を、confirmed / broad listening mention / adjacent civic AI / internal pointer に triage する表へ落とす。
+- `#2_広報_pr` 由来の FAQ 読者分離と case intake を、public case page の skeleton に反映する。
 - 本体 docs に移すなら、#876 の developer quickstart とは別に、docs spine first slice として「事例を見る / レポートを読む」入口を切る。
 
 ## Open Questions
@@ -109,9 +113,11 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 - #696 / #542 の minimum wording は誰が承認するか。技術的正確性だけでなく、法務・運営・渉外の判断が要る。
 - 事例 schema の field を全部埋められない public artifact を、事例として出すか、リンク集に留めるか。
 - #1_事例紹介_全体 channel や Drive にある素材を、誰が公開可否で scrub するか。
+- 事例 map / case intake / user group は #564 first slice に含めるか、future section に留めるか。
 
 ## Updates
 
+- 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、#564 を confirmed case list だけでなく FAQ / case intake / user group の情報設計として読む補助線を追加。
 - 2026-06-30: #696 / #542 / #539 の再読を反映し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正。
 - 2026-06-30: #564 を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言と placement を #564 trust layer の実装前 draft として接続。

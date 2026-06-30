@@ -50,6 +50,7 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -81,7 +82,7 @@ sources:
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
-- #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。#564 再読で、毎回の個別説明を減らす一枚絵 / 説明資料導線も必要だと確認した。#696/#542/#539 再読で、課題発見ツールとしての説明、内部分析と外部アピールの分離、termsLink と OSS 免責の分離も必要だと補正した。[[public-case-page-skeleton-2026-06-30]]より
+- #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
 - 次に決めたいこと: [[thinking-targets]] に immediate thinking queue として、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点を集約した。会議ではここだけ見れば次の行動を選べる。
@@ -185,6 +186,7 @@ sources:
 - [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、#564 活用事例公開は #696 誤読防止 / #542 責任所在と合わせた trust layer として扱うと整理した。8/2 で外に出すなら「公開事例リスト + レポートの読み方 + 何を保証しないか」が最小単位。
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、公開Web検索で宇多津町、渋谷区、広島県、舞鶴2040、奈良、八代、国民民主党などを整理した。8/2 では事例数を増やすより、自治体公式 / viewer demo / 政治・国会 / Talk to the City 系譜 / candidate を分けて説明するのが安全。
 - [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの構成案を作った。最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ first slice に入れる方針。
+- [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、website FAQ の読者分離、導入事例マップ、case intake、ユーザー会の過去議論を #564 public case page の情報設計へ接続した。
 - [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 誤読防止 / #542 責任所在の最小文言案を作った。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで、読み方・保証しない範囲・個別レポート発行主体を揃える scope として扱う。
 - [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake、外部公開ページは primary URL 確認済み case list として分ける必要を整理した。舞鶴2040は Slack lead から public viewer / 特設サイト / 市公式 project page へ接続できた。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:41] filing-back | 広報SlackのFAQ/事例マップ議論を source 化
+
+- [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、`#2_広報_pr` の 2026-03/04 raw と website PR #192 merged state から、FAQ 読者分離・導入事例マップ・case intake・ユーザー会の論点を整理
+- [[public-case-page-skeleton-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] に、確認済み事例一覧と掲載候補 intake を分ける方針を反映
+
 ## [2026-06-30 16:34] filing-back | 議事録 export freshness を再確認
 
 - Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を 16:33 JST に再取得し、[[meeting-minutes]] の freshness marker を先頭見出し `2026/06/22` / `2026/06/29` 見出し未検出 / txt 7702 行 / URL unique 551 件へ補正
