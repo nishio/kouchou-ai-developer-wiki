@@ -6,11 +6,14 @@ sources:
   - meeting-minutes.md
   - note-annotakahiro-broadlistening-resources-2025-02-05.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
+  - public-web-kouchouai-tttc-lineage-2026-06-30.md
 ---
 
 ## What
 
 **Talk to the City (TTTC)** は AI Objectives Institute が開発した [[broadlistening|ブロードリスニング]] ツール。[[kouchou-ai]] はその Scatter 版からフォーク。
+
+公開説明では、TTTC は「広聴AIの前史」と「TTTC direct / adjacent な国内事例」の両方に出てくる。DD2030 公式ページは、2024 年の東京都知事選 / 日本テレビ衆院選報道 / `シン東京2050` を TTTC / AI 意見分析の流れとして示し、2025-03-16 の広聴AI OSS 公開へつなげている。したがって、広聴AIの confirmed case と TTTC direct / pre-kouchou lineage は分けて説明する。[[public-web-kouchouai-tttc-lineage-2026-06-30]]より
 
 ## バリエーション
 
@@ -37,6 +40,7 @@ TTTC は CLI ツール。チームあんのが SaaS 風のプレビュー／共�
 
 ## Updates
 
+- 2026-06-30: [[public-web-kouchouai-tttc-lineage-2026-06-30]] を反映し、DD2030 公式ページ上の TTTC → 国内前史 → 広聴AI OSS 公開の公開 lineage を追加。公開事例では TTTC direct / pre-kouchou lineage と広聴AI confirmed case を分ける。
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、tttc-light-js は現行上流だが scatter なし、Sensemaker とは data fit が異なるという切り分けを追記。
 - 2026-05-17: 初回作成
 - 2026-05-25: 散布図維持側を「顧客がいる」から、[[nishio]] 本人の時間軸ベースのスタンス（書籍版までは温存／良い代替が出れば併用→切替）に表現を訂正

@@ -122,7 +122,7 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
   - 編集方法: 手作業
 
 - **`wiki/index.txt` — AI 向けフルカタログ**
-  - 内容: `wiki/` 配下の全ページ（`index.md` / `log.md` を除く 156 ページ）の `<stem>\t<type>\t<path>\t<summary>` を type 別 → path 順で並べた TSV
+  - 内容: `wiki/` 配下の全ページ（`index.md` / `log.md` を除く 282 ページ）の `<stem>\t<type>\t<path>\t<summary>` を type 別 → path 順で並べた TSV
   - **手で編集しない**。各ページの frontmatter `summary` が source of truth で、`scripts/build_index_txt.py` がそこから生成する
   - 編集タイミング: ページの追加・rename・削除、または既存ページの `summary` 変更があった時。コマンドは `python3 scripts/build_index_txt.py`
   - `scripts/lint_wiki.py` は `index.txt` の完全性をチェックする。未登録ページがあれば regenerate 忘れのサイン

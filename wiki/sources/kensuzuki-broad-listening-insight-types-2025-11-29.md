@@ -2,6 +2,7 @@
 type: source
 summary: "鈴木健 2025-11-29 ブログ。ブロードリスニングは用途ごとに欲しいインサイトが違い、TTTC / 広聴AI は主にアジェンダ発見向きだという整理"
 sources:
+  - https://kensuzuki.hatenablog.com/2025/11/29/052230
   - meeting-minutes.md
 ---
 
@@ -38,4 +39,5 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 追加公開Web検索で現行 URL を再確認し、[[public-web-kouchouai-tttc-lineage-2026-06-30]] から国内事例分類の scope guardrail として参照。
 - 2026-05-25: はてなブログ本文から初回作成

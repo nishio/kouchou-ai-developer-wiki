@@ -122,6 +122,7 @@ pr-852-error-log-visibility-observation-2026-05-22	source	sources/pr-852-error-l
 pr-887-production-deploy-observation-2026-06-01	source	sources/pr-887-production-deploy-observation-2026-06-01.md	PR #887 merge 後に、デプロイ成功判定と実反映状態がズレうることを公開可能な粒度で整理した観測メモ。実環境 URL・revision・ログ・resource 値などの詳細は公開しない
 public-broadlistening-artifacts-2026-06-30	source	sources/public-broadlistening-artifacts-2026-06-30.md	8/2 イベント向けの公開事例候補として、2026-06-30 に確認した public viewer / official page / public article の棚卸し
 public-web-broadlistening-japan-use-cases-2026-06-30	source	sources/public-web-broadlistening-japan-use-cases-2026-06-30.md	2026-06-30 に公開Web検索で確認した、日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例の棚卸し
+public-web-kouchouai-tttc-lineage-2026-06-30	source	sources/public-web-kouchouai-tttc-lineage-2026-06-30.md	2026-06-30 の追加公開Web検索で確認した、Talk to the City から広聴AIへの系譜と、国内事例分類に使う公開根拠
 pypi-release-observation-2026-05-19	source	sources/pypi-release-observation-2026-05-19.md	`analysis-core-v0.1.1` / `v0.1.2` tag push で観測した PyPI publish workflow の実挙動
 remaining-experiment-artifacts-snapshot-2026-05-29	source	sources/remaining-experiment-artifacts-snapshot-2026-05-29.md	`work/kouchou-ai/` に残っていた LLM grouping 系実験の入力・設定・出力 artifact と Next.js 生成差分を、branch `codex/remaining-experiment-artifacts-2026-05-29` commit `b56ac9b` として退避し、一次参照 clone は `main@6955202` へ戻した運用メモ
 report-html-non-web-canonical-decision-2026-05-23	source	sources/report-html-non-web-canonical-decision-2026-05-23.md	`report.html` を Web canonical にせず、CLI / coding agent 向け観察用HTMLに留めると maintainer が 2026-05-23 に明示した判断メモ

@@ -4,7 +4,9 @@ summary: "2026-06-30 に公開Web検索で確認した、日本国内の広聴AI
 last_checked: 2026-06-30
 coverage: "public web search; official pages, public viewers, organization announcements, and candidates that still need primary confirmation"
 sources:
+  - https://dd2030.org/kouchou-ai/
   - https://dd2030.org/kouchou-ai/case
+  - https://note.com/nishiohirokazu/n/nb37adf96fe50
   - https://www.town.utazu.lg.jp/page/4114.html
   - https://www.city.shibuya.tokyo.jp/kusei/kocho/questionnaire/kuminishikichosa_ai.html
   - https://www.city.shibuya.tokyo.jp/kusei/hodo/hodo-2025/hodo_20250702.html
@@ -70,6 +72,7 @@ sources:
   - broad-listening-book-public-case-appendix-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - public-web-kouchouai-tttc-lineage-2026-06-30.md
 ---
 
 ## What it is
@@ -95,6 +98,8 @@ sources:
 2026-06-30 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan、Democracy X、litela、公明党、富士通の公開章と footnote URL を確認した。Code for Japan 章は加古川市の公開済み市民意識調査データ、加古川市版 Decidim、品川区 `しなトーク` を広聴AI/Decidim 連携として説明している。公明党 We Connect、litela Recogra、富士通パブリックコメント AI は public source ありへ進められるが、広聴AI confirmed case ではなく、広義 broad listening / 対面議論支援 / LLM直接分類 adjacent と分ける。Democracy X の長崎県知事選は、公開章で事例名を確認できるが、個別 public report URL が未確認なので candidate のままにする。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 2026-06-30 18:46 JST に追加検索し、東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニング、相模原市の意見募集結果 PDF を確認した。前 3 件は `collect / deepen / deliberate` 側の public platform / campaign practice として扱い、広聴AI confirmed case とは分ける。相模原市 PDF は市民意見内で広聴AI / いどばた / AI avatar / ブロードリスニング技術が提案され、市の回答が付いた official document だが、実施済み事例ではなく需要シグナルとして扱う。
+
+2026-06-30 19:39 JST に追加検索し、DD2030 公式の広聴AIページと西尾 note「Talk to the City と広聴AIの歴史」を確認した。新規 confirmed case の追加ではなく、TTTC direct / pre-kouchou lineage、広聴AI confirmed case、broad listening adjacent を分ける公開根拠として [[public-web-kouchouai-tttc-lineage-2026-06-30]] に固定した。
 
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
@@ -140,6 +145,8 @@ DD2030 のブロードリスニング説明ページは、2024〜2025 年に日�
 
 Talk to the City は広聴AIの系譜理解には重要だが、公開事例マップでは `Talk to the City そのものを使った事例` と `Talk to the City を参考にした広聴AI事例` を混ぜない。八代市 public viewer の footer でも、広聴AIが AI Objectives Institute の Talk to the City を参考に開発されていると説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
 
+DD2030 公式の広聴AIページは、2024 年の東京都知事選、2024 年の日本テレビ衆院選報道、`シン東京2050` を TTTC / AI opinion analysis の前史として挙げたうえで、2025-03-16 の広聴AI OSS 公開へ接続している。したがって、外部向け case page では「広聴AI導入実績」と「TTTC / pre-kouchou lineage」を同じ category にしない方がよい。[[public-web-kouchouai-tttc-lineage-2026-06-30]]より
+
 東京都知事選 2024 の技術記録は、選挙 campaign 文脈で Talk to the City を使った public technical note として読める。ただし、これは広聴AI post-OSS の導入事例ではなく、TTTC 直接利用 / 前史 / 運用知見として扱う。
 
 M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生して機能追加したツールで X 投稿を分析した public example である。JINS の Zenn 記事は、Talk-To-The-City でお客様の声分析を行う実務寄りの技術紹介で、Yahoo!ニュースコメントを例にしている。GMO Developers の記事も、NTV 衆院選 broad listening データを題材にした技術記事として確認できる。いずれも `広聴AI導入実績` ではなく、TTTC / broad listening の日本語利用可能性・周辺実践として扱う。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
@@ -173,6 +180,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 ## Updates
 
+- 2026-06-30: 19:39 JST の追加検索で、DD2030 公式広聴AIページと西尾 note を確認し、[[public-web-kouchouai-tttc-lineage-2026-06-30]] として TTTC direct / pre-kouchou lineage と広聴AI confirmed case の分類根拠を固定した。
 - 2026-06-30: 18:46 JST の追加検索で、東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニング、相模原市意見募集結果 PDF を確認し、広聴AI実績ではなく `collect / deepen / deliberate` 側の public practice / demand signal として分類した。
 - 2026-06-30: 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI を source strength 付きで追記。長崎県知事選は public report URL 未確認なので candidate のまま。
 - 2026-06-30: 18:05 JST の追加検索で、Web book 「本書の読みかた」に見える Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。

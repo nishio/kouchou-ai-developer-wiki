@@ -11,6 +11,7 @@ sources:
   - current-status-2026-06-30.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
   - slack-prance-event-broadlistening-session-2026-06-30.md
+  - public-web-kouchouai-tttc-lineage-2026-06-30.md
 ---
 
 ## Conclusion
@@ -30,6 +31,8 @@ sources:
 - **候補 / adjacent**: 中野駅新北口、与謝野町、東大阪市、太田市、田原本町、富岡市、長崎県知事選、相模原市の意見募集結果 PDF など。与謝野町は official PDF があるが、広聴AI confirmed ではなく AI 支援住民対話 adjacent として扱う。相模原市は公式 PDF 内の市民提案・市回答であり、実施済み case ではなく municipality demand signal。東大阪市 / 太田市 / 田原本町 / 富岡市 / 長崎県知事選は primary URL 追加確認待ち。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として有用だが、public case list の一次根拠にはしない。2026-03/04 raw には北見の広聴AI・いどばた lead、舞鶴2040、相模原市 AI avatar、宮崎県の broad listening 言及、和歌山県いどばたへの内部リンクなどが混ざっており、`広聴AI confirmed case` / `broad listening mention` / `adjacent civic AI` / `internal pointer` に分ける必要がある。[[slack-case-introduction-channel-2026-03-04]]より
+
+19:39 JST の追加公開Web検索では、新しい confirmed case よりも分類根拠が補強された。DD2030 公式ページは TTTC 起源、2024 年の東京都知事選 / 日本テレビ衆院選報道 / `シン東京2050`、2025-03-16 の広聴AI OSS 公開を一続きに説明している。したがって公開事例ページでは、TTTC direct / pre-kouchou lineage、広聴AI confirmed case、broad listening adjacent を分ける必要がある。[[public-web-kouchouai-tttc-lineage-2026-06-30]]より
 
 ## Implication for 8/2
 
@@ -90,6 +93,7 @@ Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / �
 
 ## Updates
 
+- 2026-06-30 19:39 JST: 追加公開Web検索で DD2030 公式広聴AIページと西尾 note を確認し、TTTC direct / pre-kouchou lineage と広聴AI confirmed case を分ける根拠として [[public-web-kouchouai-tttc-lineage-2026-06-30]] を追加。
 - 2026-06-30 19:04 JST: `#dd_prance_event2026` の 8/2 実践セッション計画を反映し、奈良 / 舞鶴2040は地方自治側の優先確認候補、国会側は国会・国政選挙・政党・選挙報道の claim 分離が必要だと追記。
 - 2026-06-30: 18:46 JST の追加検索を反映し、東京都AI戦略いどばた会議 / すぎなみブロードリスニング / 中央区みんなでアップデート会議を `collect / deepen / deliberate` 側に分類し、相模原市 official PDF は実施済み事例ではなく demand signal として扱う方針にした。
 - 2026-06-30: 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI を source strength 付き分類へ進めた。長崎県知事選は public report URL 未確認なので candidate のまま。

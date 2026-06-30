@@ -5,11 +5,14 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - public-web-kouchouai-tttc-lineage-2026-06-30.md
 ---
 
 ## 概要
 
 **広聴AI (kouchou-ai)** は [[dd2030|デジタル民主主義2030]] が開発する [[broadlistening|ブロードリスニング]] の OSS 実装。[[talk-to-the-city|Talk to the City (TTTC)]] の Scatter 版を起点に、**日本語ユーザ・自治体／政党・非エンジニア運用** に最適化されている。
+
+DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都知事選 / 日本テレビ衆院選報道 / `シン東京2050` などの国内前史を挙げ、その後に日本の自治体・政治家の実務向け改善として広聴AIが開発され、2025-03-16 に OSS 公開されたと説明している。公開事例整理では、これらの前史を `TTTC direct / pre-kouchou lineage` として扱い、広聴AI confirmed case と混ぜない。[[public-web-kouchouai-tttc-lineage-2026-06-30]]より
 
 リポジトリ: `digitaldemocracy2030/kouchou-ai`。利用シナリオは「自治体や政党が収集した自由記述コメント（数百〜数万件）を、CSV でアップロードして意見の地図を作る」。
 
@@ -72,6 +75,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[public-web-kouchouai-tttc-lineage-2026-06-30]] を反映し、DD2030 公式ページ上の TTTC 起源 / 国内前史 / 2025-03-16 OSS 公開の公開説明を追加。公開事例では前史と広聴AI confirmed case を混ぜない。
 - 2026-05-30: 設計判断の core stance として [[analysis-stance]] (広聴AI = 構造把握スタンス、定量分析スタンスではない) への導線を追加
 - 2026-05-17: 初回作成
 - 2026-05-23: 4 つの配布形態が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加

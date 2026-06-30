@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 19:39] filing-back | TTTC と広聴AIの公開 lineage source を追加
+
+- 追加Web検索で DD2030 公式広聴AIページ、西尾 note「Talk to the City と広聴AIの歴史」、安野チーム公式 note、鈴木健ブログを確認し、[[public-web-kouchouai-tttc-lineage-2026-06-30]] として source 化
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] / [[talk-to-the-city]] / [[kouchou-ai]] / [[meeting-report-draft]] に、TTTC direct / pre-kouchou lineage と広聴AI confirmed case を混ぜない分類根拠として反映
+
 ## [2026-06-30 19:30] filing-back | high priority issue の label query footgun を固定
 
 - GitHub live state を 19:30 JST に再確認し、open PR は #903 / #891、open high priority issue は #884 / #564 / #221、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 で変化なしと確認

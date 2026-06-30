@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 19:39	filing-back	TTTC と広聴AIの公開 lineage source を追加
 2026-06-30 19:30	filing-back	high priority issue の label query footgun を固定
 2026-06-30 19:23	filing-back	Devin / AI agent 運用と繰り返し Web 更新候補を固定
 2026-06-30 19:15	filing-back	人間判断キューを 19:15 live state へ圧縮
