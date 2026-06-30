@@ -25,6 +25,8 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 
 同時に、#696 の誤読防止と #542 の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか** の 3 点セットである。[[current-open-issue-triage-2026-06-01]]より
 
+2026-06-30 16:12 JST に #564 を再読すると、要求は事例 detail だけではなく、初回説明の反復コスト削減にも向いている。`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` へ事前に答える説明 block、一枚絵、自治体向け説明資料 / 動画への導線も #564 の scope に入る。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+
 公開Web検索で確認できた事例は、自治体公式 trial、public viewer、政党・国会での broad listening 利用、Talk to the City の系譜、検索 snippet だけの候補に分かれる。#564 のページ設計では、事例数を増やす前に `classification` / `source_strength` / `tool lineage` を明示する必要がある。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
 ## Why this matters for 8/2
@@ -57,6 +59,16 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 | source strength | official page / public viewer / organization article / secondary article / search snippet |
 | tool lineage | 広聴AI / Talk to the City / 広義の broad listening / AI analysis |
 
+この schema とは別に、ページ冒頭には `basic explainer` が要る。これは「個別事例の説明」ではなく、問い合わせ前に共通認識を作るための入口である。
+
+| explainer item | role |
+|---|---|
+| 広聴AIとは何か | ツールの最短説明 |
+| 何ができる / できない | 期待値調整と誤読防止 |
+| どう使える | アンケート / SNS / 対面記録 / パブコメなどの入力例 |
+| 使うには何が必要 | データ、体制、公開範囲、費用、責任主体 |
+| まず見る事例 | official context / viewer demo / deep case の 3 種 |
+
 ## Placement Recommendation
 
 短期の wiki / docs-safe action としては、developer wiki にこの scope を残すだけで十分に価値がある。外部公開へ移す場合は、1 PR / 1 page で全部を解こうとせず、次の順序に分ける。
@@ -83,6 +95,7 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 ## Next Wiki-Safe Actions
 
 - `#564/#696/#542` を合わせた public case page の skeleton を developer wiki に置く。
+- #564 の public page first slice には、事例一覧の前に basic explainer / FAQ を置く。
 - 8/2 用に、奈良 / 渋谷区 / 八代市 / 舞鶴2040 / 宇多津町のどれを first demo / official context にするかを人間が選べる判断表へ落とす。
 - 事例ごとの公開可能 / 要許諾 / 不使用を `public-broadlistening-artifacts` の freshness marker で管理する。
 - `#1_事例紹介_全体` の lead を、confirmed / broad listening mention / adjacent civic AI / internal pointer に triage する表へ落とす。
@@ -97,6 +110,7 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 
 ## Updates
 
+- 2026-06-30: #564 を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言と placement を #564 trust layer の実装前 draft として接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。
 - 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。

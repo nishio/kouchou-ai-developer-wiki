@@ -75,9 +75,9 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
 - 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に追加し、渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 Democracy-X public article / viewer、synthetic sample fallback に分けた。次は、第一 demo の人間判断と、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
-- Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「公開事例リスト + レポートの読み方 + 何を保証しないか」を 3 点セットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
+- Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「初回説明 FAQ + 公開事例リスト + レポートの読み方 + 何を保証しないか」をセットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 岩手県 / 広島県 / 東京都 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / M-1 / JINS などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「candidate / adjacent」を分けて扱う。
-- #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
+- #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、初回説明 block、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
 - #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
@@ -91,6 +91,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: #564 を再読し、公開事例ページには事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと補正した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] に 16:05 JST 追加Web検索分を反映し、岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS などを分類へ追加した。
 - 2026-06-30: [[docs-issue-map-2026-06-30]] に #696/#542 reading guide docs と next PR choice matrix を追加した。
 - 2026-06-30: 15:59 に GitHub live state を再確認し、open PR 2 本 / open issue 123 件 / nishio assigned 6 件 / #564 #696 #542 open unassigned が変わっていないことを追記。

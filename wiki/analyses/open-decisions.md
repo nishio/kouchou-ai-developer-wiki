@@ -14,6 +14,7 @@ sources:
   - current-status-2026-06-30.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
+  - github-issues-564-696-542-trust-layer-live-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - docs-issue-map-2026-06-30.md
@@ -41,12 +42,12 @@ sources:
 
 このページ本体は 2026-05 の棚卸しを含むため、下の件数や分類だけで現在地を判断しない。2026-06-30 の `work/kouchou-ai/main@d5c9ece`、GitHub live state、議事録、`work/slack-logs/main@341cf80` を合わせた最新の短期未決は次の 4 つである。[[current-status-2026-06-30]]より
 
-1. **公開事例と trust layer の placement**: #564 の公開事例ページ、#696 の誤読防止、#542 の責任所在は、別々の docs issue ではなく「公開事例リスト + レポートの読み方 + 何を保証しないか」の 3 点セットとして扱う必要がある。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] にあり、未決なのは canonical copy の置き場所と承認者。
-2. **8/2 first demo**: 公式性、viewer demo、deep case のどれを主 artifact にするかが未決。候補は渋谷区 / 宇多津町 / 舞鶴2040 / 奈良 / 八代などに広がったが、source strength と政治文脈を分ける必要がある。[[public-case-page-skeleton-2026-06-30]]より
+1. **公開事例と trust layer の placement**: #564 の公開事例ページ、basic explainer / FAQ、#696 の誤読防止、#542 の責任所在は、別々の docs issue ではなく「初回説明 + 公開事例リスト + レポートの読み方 + 何を保証しないか」のセットとして扱う必要がある。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] にあり、未決なのは canonical copy の置き場所と承認者。
+2. **8/2 first demo**: 公式性、viewer demo、deep case のどれを主 artifact にするかが未決。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都 / 舞鶴2040 / 北見 / 奈良 / 八代などに広がったが、source strength と政治文脈を分ける必要がある。[[public-case-page-skeleton-2026-06-30]]より
 3. **docs-safe PR 順序**: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は、同じ docs 群でも reader contract が違う。次に本体 repo へ出す PR を 1 本選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 4. **Azure demo / SaaS 境界**: 6/5 に viewer 公開と admin 共用は進める方向へ倒れ、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目として残った。したがって A2 は「全部未定」ではなく、公開事例 / サンプルレポート / reading guide で参照環境の価値を補う段階に移っている。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
-この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。
+この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。16:12 JST の #564 再読で、公開事例ページには事例 detail だけでなく初回説明 FAQ / 一枚絵 / 説明資料導線も必要だと補正した。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
 ## A. 未定（合意なし／対立あり）
 

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:12] filing-back | #564 公開事例ページに初回説明 block を追加
+
+- GitHub issue #564 を再読し、公開事例 detail だけでなく `広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` に答える basic explainer が必要だと整理
+- [[public-case-page-skeleton-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] に FAQ / 一枚絵 / 説明資料導線を追加
+- [[thinking-targets]] / [[open-decisions]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、8/2 first demo と #564/#696/#542 placement の判断へ接続
+
 ## [2026-06-30 16:05] filing-back | 国内 broad listening 事例を追加検索で補強
 
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] に東京都 / GovTech東京、岩手県、日本維新の会、北見、日本テレビ衆院選、M-1 2024、JINS を source strength 付きで追記

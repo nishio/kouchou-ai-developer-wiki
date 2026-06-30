@@ -2,7 +2,7 @@
 type: source
 summary: "Issue #564 / #696 / #542 の live state。活用事例公開は、誤読防止とレポート責任所在を含む trust layer として扱う必要がある"
 last_checked: 2026-06-30
-coverage: "GitHub issue #564, #696, #542 を gh issue view で確認。いずれも open / unassigned"
+coverage: "2026-06-30 16:12 JST に GitHub issue #564, #696, #542 を gh issue view で確認。いずれも open / unassigned"
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/564
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/696
@@ -16,7 +16,7 @@ sources:
 
 広聴AIの公開事例・導入説明・レポートの読み方に関係する GitHub issue の live state。
 
-2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。GitHub への comment / assign / close は行っていない。
+2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。16:12 JST に #564 を再確認したが、state / assignee / comments は変わっていない。GitHub への comment / assign / close は行っていない。
 
 ## Freshness marker
 
@@ -38,6 +38,9 @@ sources:
 - 質問は「意見を集める具体的方法」「X からの収集方法」「費用」「手書き意見 / OCR」「どんな話題に使えるか」「どう使うとよいか」まで広い。
 - 事例公開で公開されがちなのは成果物・発表だが、自治体が本当に知りたいのは、導入検討、体制づくり、テーマ決定、実施内容、やってみた結果、成果 / report までの連なり。
 - dd2030 website に、利用検討者向けの説明資料や活用事例を公開できる形にしておく案が出ている。
+- `広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` という最初の説明を、毎回個別対応しなくてよい形でまとめたいというコメントがある。
+- 利用状況一覧の一枚絵、プロダクト x 政党・行政・議員・その他組織のグリッド、有賀さんの自治体向け説明資料 / 動画の再利用など、事例 detail とは別の「最初に渡す武器」も求められている。
+- 既にコンタクトのあった国政政党・政治団体は引き継ぎ待ちという運用メモがある。公開ページは渉外情報そのものではなく、公開可能な説明・事例・導入 FAQ に絞る必要がある。
 
 ## Issue #696: 誤読防止
 
@@ -71,6 +74,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 16:12 JST に #564 を再読し、活用事例公開は事例 detail だけでなく、初回説明 FAQ / 一枚絵 / 説明資料導線も求められていると追記。
 - 2026-06-30: [[source-code]] と [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#542 は current main では footer 単純追加ではなく、README / docs / viewer / 事例ページの責任境界統一として読むと補正。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake として使い、外部公開では primary URL 確認済み case だけを載せる方針を追記。
 - 2026-06-30: 初回作成。Issue #564 / #696 / #542 を live state として確認し、活用事例公開を trust layer として扱う必要を固定した。
