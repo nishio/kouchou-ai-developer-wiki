@@ -81,7 +81,7 @@ sources:
 
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
-- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
+- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
@@ -89,7 +89,7 @@ sources:
 
 ## 議題候補 (2026-06-30 更新)
 
-- 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都の official context、奈良 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
+- 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 奈良市 / 岩手県 / 東京都の official context、奈良 #全員市長 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
 - #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
 - Slack / 議事録の source 運用は概ね固定した。残りは、議事録 export に `2026/06/29` 以降の見出しが入った時に、どの source / analysis を先に更新するか。[[wiki-driven-workflow]]より
@@ -185,6 +185,7 @@ sources:
 - [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、公開事例 / demo 素材を棚卸しした。現時点の安全な順序は、渋谷区 official page / PDF で trust context、奈良 #全員市長 public viewer で UI 実演、八代市は政治・政策文脈を扱える場合の deep case、synthetic sample は fallback。広島県・朝日新聞・企業系は許諾 / 公開 URL 確認待ち。
 - [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、#564 活用事例公開は #696 誤読防止 / #542 責任所在と合わせた trust layer として扱うと整理した。8/2 で外に出すなら「公開事例リスト + レポートの読み方 + 何を保証しないか」が最小単位。
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、公開Web検索で宇多津町、渋谷区、広島県、舞鶴2040、奈良、八代、国民民主党などを整理した。8/2 では事例数を増やすより、自治体公式 / viewer demo / 政治・国会 / Talk to the City 系譜 / candidate を分けて説明するのが安全。
+- 追加Web検索で奈良市 official PDF 群を自治体公式 document case として確認し、東京都知事選 2024 TTTC / GMO / 中野駅新北口を adjacent practice として分類した。奈良市 official document case と奈良 #全員市長 viewer demo は、同じ地域名でも source strength と public risk が違うため、8/2 や #564 では分けて扱う。
 - [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの構成案を作った。最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ first slice に入れる方針。
 - [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、website FAQ の読者分離、導入事例マップ、case intake、ユーザー会の過去議論を #564 public case page の情報設計へ接続した。
 - [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 誤読防止 / #542 責任所在の最小文言案を作った。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで、読み方・保証しない範囲・個別レポート発行主体を揃える scope として扱う。
@@ -209,6 +210,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 追加Web検索で奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口を確認し、8/2 readiness と公開事例 map の読み上げを補正。
 - 2026-06-30: Slack source ops を補強し、直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` の三分法と user id 解決を読み上げ欄へ反映。
 - 2026-06-30: #696 / #542 / #539 再読を反映し、reading guide に課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を追加。
 - 2026-06-30: #564 再読を反映し、公開事例ページの読み上げを「初回説明 FAQ + 事例リスト + reading guide + 保証しない範囲」に補正。

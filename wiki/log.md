@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:48] filing-back | 国内 broad listening 事例を追加検索で再補強
+
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] に奈良市 official PDF 群、渋谷区 press release、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を追記し、奈良市は自治体公式 document case へ昇格
+- [[japan-broadlistening-use-case-map-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[public-case-page-skeleton-2026-06-30]] から、奈良市 official document case と奈良 #全員市長 viewer demo を分ける判断へ接続
+
 ## [2026-06-30 16:41] filing-back | 広報SlackのFAQ/事例マップ議論を source 化
 
 - [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、`#2_広報_pr` の 2026-03/04 raw と website PR #192 merged state から、FAQ 読者分離・導入事例マップ・case intake・ユーザー会の論点を整理

@@ -7,6 +7,7 @@ sources:
   - https://dd2030.org/kouchou-ai/case
   - https://www.town.utazu.lg.jp/page/4114.html
   - https://www.city.shibuya.tokyo.jp/kusei/kocho/questionnaire/kuminishikichosa_ai.html
+  - https://www.city.shibuya.tokyo.jp/kusei/hodo/hodo-2025/hodo_20250702.html
   - https://files.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/38d509b421d049c4ad53536fc88ae4ca/kuminishikichosa_ai.pdf
   - https://www.seisakukikaku.metro.tokyo.lg.jp/basic-plan/choki-plan/ikenbosyu
   - https://www.seisakukikaku.metro.tokyo.lg.jp/basic-plan/2050-tokyo
@@ -14,6 +15,9 @@ sources:
   - https://www.pref.hiroshima.lg.jp/site/hiroshima-dx-torikumi/hiroshimanomirai.html
   - https://www.pref.iwate.jp/kensei/kouchoukouhou/1086730.html
   - https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/086/730/genkou.pdf
+  - https://www.city.nara.lg.jp/uploaded/attachment/212492.pdf
+  - https://www.city.nara.lg.jp/uploaded/attachment/212398.pdf
+  - https://www.city.nara.lg.jp/uploaded/attachment/208222.pdf
   - https://maizuru2040.jp/wordpress/
   - https://maizuru2040.jp/kouchou-ai-reports/
   - https://maizuru2040.jp/kouchou-ai-reports/faq/
@@ -26,8 +30,11 @@ sources:
   - https://new-kokumin.jp/news/diet/20250307_2
   - https://o-ishin.jp/broad_listening/
   - https://note.com/annotakahiro24/n/ndd21a8ba3eec
+  - https://note.com/nishiohirokazu/n/n6389bc1e355f
   - https://note.com/nasukas/n/n6d8afdfa34ca
   - https://zenn.dev/jins/articles/06c5c89bd6d744
+  - https://developers.gmo.jp/technology/50905/
+  - https://ideiryosuke-nakano.com/activities/3707/
   - https://dd2030.org/broad-listening/
   - public-broadlistening-artifacts-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
@@ -45,6 +52,8 @@ sources:
 
 2026-06-30 16:05 JST に追加検索し、東京都 / GovTech東京、岩手県、日本維新の会、北見、日テレ衆院選、M-1 2024、JINS の公開ページを確認した。追加分は、広聴AI confirmed case、広義の broad listening case、Talk to the City / 派生ツールの adjacent case に分ける。
 
+2026-06-30 16:48 JST に追加検索し、奈良市の official PDF 群、渋谷区 press release、東京都知事選 2024 の Talk to the City 利用記録、GMO Developers の broad listening 技術記事、中野駅新北口周辺まちづくりの public article を確認した。奈良市 official PDF は、既存の `奈良 #全員市長` public viewer とは別文脈の自治体公式 document case として扱う。GMO / 中野は広聴AI confirmed case ではなく、Talk to the City / broad listening adjacent practice として分類する。
+
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
 ## Confirmed public cases
@@ -55,6 +64,7 @@ sources:
 | 東京都 / GovTech東京 `シン東京2050` | government official + GovTech article | 東京都は 2050 東京戦略の意見募集を、安野氏の技術サポートを受けたブロードリスニング手法として公開し、最終ページでは AI 分析により戦略の政策体系を見直したと説明している。GovTech東京 note は、同 project を内製開発事例として説明している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | TTTC / 広聴AIの系譜説明で重要。広聴AI post-OSS の自治体導入とは分ける。 |
 | 宇多津町 | municipality official | 第2次宇多津町総合計画の町民アンケート自由記述 396 件を、広聴AIで整理するブロードリスニング trial として公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式かつ件数・用途が明確。#564 の public case schema に最も載せやすい。 |
 | 渋谷区 | municipality official | 令和6年度区民意識調査の自由回答 6,037 件を対象に、デジタル民主主義2030の広聴AIでブロードリスニング trial を実施。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 既存の 8/2 棚卸しにも入っている trust context。PDF は HTTP 200 を確認。 |
+| 奈良市総合計画関連資料 | municipality official PDF | 奈良市の総合計画関連 official PDF 群で、広聴AIを用いて市民意見 1,361 件を整理した資料が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `奈良 #全員市長` public viewer とは別の自治体公式 document case。viewer demo ではなく official proof として扱う。 |
 | 広島県 | prefecture official | 「デジタル化で描く未来の広島」で、意見をブロードリスニング（AI技術）で整理・見える化・公表し、デジタル民主主義2030の協力を得て実施すると公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | ページ上では `広聴AI` の語は確認できないため、広義の broad listening / DD2030 cooperation として扱う。 |
 | 岩手県 | prefecture official + PDF | 県公式ページは、幸福について考えるワークショップ等のコメントを対象にブロードリスニング trial を実施したと説明し、PDF では DD2030 の広聴AIを用いたと明記している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `広聴AI` と自治体公式 source がそろう。BOOTS 協力 case として扱う。 |
 | 舞鶴2040 | public viewer + FAQ + city project page | `#みんなでつくる舞鶴2040` の特設サイト / レポート一覧 public viewer があり、FAQ で広聴AIは DD2030 の OSS 成果物と説明されている。舞鶴市公式ページでは、意見募集と特設サイトでの公表、総合計画への参考利用が確認できる。[[slack-case-introduction-channel-2026-03-04]]より | 8/2 の viewer demo 候補に追加できる。市公式ページと特設サイト / viewer を分けて引用する。 |
@@ -71,12 +81,16 @@ DD2030 のブロードリスニング説明ページは、2024〜2025 年に日�
 
 Talk to the City は広聴AIの系譜理解には重要だが、公開事例マップでは `Talk to the City そのものを使った事例` と `Talk to the City を参考にした広聴AI事例` を混ぜない。八代市 public viewer の footer でも、広聴AIが AI Objectives Institute の Talk to the City を参考に開発されていると説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
 
-M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生して機能追加したツールで X 投稿を分析した public example である。JINS の Zenn 記事は、Talk-To-The-City でお客様の声分析を行う実務寄りの技術紹介で、Yahoo!ニュースコメントを例にしている。どちらも `広聴AI導入実績` ではなく、TTTC / broad listening の日本語利用可能性・周辺実践として扱う。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
+東京都知事選 2024 の技術記録は、選挙 campaign 文脈で Talk to the City を使った public technical note として読める。ただし、これは広聴AI post-OSS の導入事例ではなく、TTTC 直接利用 / 前史 / 運用知見として扱う。
+
+M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生して機能追加したツールで X 投稿を分析した public example である。JINS の Zenn 記事は、Talk-To-The-City でお客様の声分析を行う実務寄りの技術紹介で、Yahoo!ニュースコメントを例にしている。GMO Developers の記事も、NTV 衆院選 broad listening データを題材にした技術記事として確認できる。いずれも `広聴AI導入実績` ではなく、TTTC / broad listening の日本語利用可能性・周辺実践として扱う。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
+
+中野駅新北口周辺まちづくりの public article は、DD2030 の実験として broad listening の資料 URL と件数が示されている。ただし自治体公式ではなく、公開記事中の表記も `公聴AI` になっているため、広聴AI confirmed case ではなく、local politics / broad listening adjacent lead として扱う。
 
 ## Candidate leads not yet confirmed enough
 
-- 奈良市 official PDF: Web 検索では `広聴AI` / 1361 ideas / `こんなまちになったらいいな` が見えるが、既知 PDF URL は 404 だった。public viewer は confirmed、official PDF は candidate。
-- アルティウスリンク、朝日新聞 M研、GMO など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
+- 奈良市 official PDF: 16:48 JST の追加検索で現行 PDF 群を確認できたため、candidate から official document case へ昇格した。ただし `奈良 #全員市長` public viewer とは別文脈として扱う。
+- アルティウスリンク、朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
 - Slack `#1_事例紹介_全体` の lead: [[slack-case-introduction-channel-2026-03-04]] に固定した通り、Slack lead は candidate intake として有用だが、外部公開では primary public URL へ昇格したものだけを実績扱いにする。
 
 ## Open Questions
@@ -84,11 +98,13 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 - 8/2 の public viewer demo は、奈良、八代、舞鶴2040のどれを第一候補にするか。
 - #564 の外部公開ページに載せる case は、自治体公式 source に限るか、政党・国会・選挙報道・viewer-only case も含めるか。
 - Talk to the City 由来の日本事例は、広聴AIページに入れるか、ブロードリスニングの歴史 / 系譜ページへ分けるか。
+- 奈良市 official documents と `奈良 #全員市長` viewer は、同じ奈良県内の事例としてまとめるか、自治体公式 document case と政治 / viewer demo case に分けるか。
 - 404 になっている viewer / PDF は、単なる URL 移動か、公開停止か。
-- 北見、M-1、JINS のような public viewer / technical article / adjacent practice を、公開事例ページに載せるか、開発者向け reference に留めるか。
+- 北見、M-1、JINS、GMO、中野のような public viewer / technical article / adjacent practice を、公開事例ページに載せるか、開発者向け reference に留めるか。
 
 ## Updates
 
+- 2026-06-30: 16:48 JST の追加検索で、奈良市 official PDF 群を candidate から自治体公式 document case へ昇格し、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を adjacent practice として追記した。
 - 2026-06-30: 16:05 JST の追加検索で、東京都 / GovTech東京、岩手県、日本維新の会、北見、日本テレビ衆院選、M-1 2024、JINS を source strength 付きで追記し、岩手県と日本維新の会を candidate から昇格した。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、舞鶴2040を Slack lead から official project page / special site / public viewer 確認済み case として補強した。
 - 2026-06-30: 初回作成。公開Web検索で、日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を confirmed / candidate / secondary context に分けた。

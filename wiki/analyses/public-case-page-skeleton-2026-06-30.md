@@ -45,7 +45,7 @@ FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では�
 
 | role | candidate | reason |
 |---|---|---|
-| 自治体公式 proof | 宇多津町または渋谷区 | 自治体公式ページ上で、広聴AI / ブロードリスニング trial と件数・用途が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より |
+| 自治体公式 proof | 宇多津町、渋谷区、奈良市のいずれか | 自治体公式ページ / PDF 上で、広聴AI / ブロードリスニング trial と件数・用途が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より |
 | viewer demo | 舞鶴2040または奈良 #全員市長 | public viewer の読み方を実際に見せられる。舞鶴2040は政治色を下げたい場合の代替候補。[[japan-broadlistening-use-case-map-2026-06-30]]より |
 | deep case | 八代市 Democracy-X | 記事と viewer があり、実践 lane と技術 lane をつなぎやすい。ただし政治・政策文脈の説明が必要。[[event-2026-08-02-public-example-inventory-2026-06-30]]より |
 
@@ -106,7 +106,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 1. 初回説明 block を置き、`広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` に短く答える。
 2. 現在確認済みの public source だけを載せる。
 3. 事例一覧には `classification` / `source_strength` / `tool_lineage` を入れる。
-4. 詳細ページ化は宇多津町、渋谷区、岩手県のような自治体公式 source が強い 1 件に絞る。
+4. 詳細ページ化は宇多津町、渋谷区、奈良市、岩手県のような自治体公式 source が強い 1 件に絞る。
 5. レポートの読み方と免責を同じ PR / 同じページに含める。
 6. candidate は「確認中」として、公開 URL が有効になるまで本文の実績には混ぜない。
 7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
@@ -122,6 +122,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 - 外部正本は DD2030 website の `kouchou-ai/case` でよいか、kouchou-ai docs 側にも mirror を置くか。
 - 最初の詳細事例は宇多津町、渋谷区、舞鶴2040、八代市のどれにするか。
+- 奈良市 official document case と奈良 #全員市長 viewer demo は、同じ地域名で混同されやすいので、公開ページ上でどう分けるか。
 - 初回説明 block は DD2030 website に置くか、自治体向け説明資料 / 動画を別 artifact として置くか。
 - #696 / #542 の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
 - 公開事例の候補管理を GitHub issue、Drive、website repo、developer wiki のどこで canonical にするか。
@@ -129,6 +130,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 ## Updates
 
+- 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。
 - 2026-06-30: #564 を再読し、公開事例ページに初回説明 FAQ / 一枚絵 / 説明資料導線を置く必要を追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページに置く「レポートの読み方」の実文言 draft へ接続。

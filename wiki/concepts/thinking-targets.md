@@ -31,7 +31,7 @@ sources:
 
 ### 0-1. 8/2 の first demo を何にするか
 
-- 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
+- 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
 - 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
 - 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]]
@@ -166,6 +166,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 追加Web検索で奈良市 official PDF 群を自治体公式 proof に昇格し、奈良市 document case と奈良 #全員市長 viewer demo を 8/2 first demo 判断で分ける必要を追記。
 - 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、#564/#696/#542 trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス など)
 - 2026-05-30: 構造把握スタンス / 全体傾向把握ユースケース / 別ツール 分業の含意を関連ページに伝播。[[public-ui-requirements-for-broadlistening]] に 7 要件のうち #5/#7 は別ツール側、本体 5 件 + 構造把握の評価軸 2 件で評価する、を追記。[[semantic-island-map-prototype-2026-05-26]] に構造把握用主図候補としての評価視点を追記。[[kouchou-ai]] に core stance リンクを追加。3-1 を別ツール側に倒れた旨で更新、2-2 を構造把握の評価軸を含む合否基準に補正

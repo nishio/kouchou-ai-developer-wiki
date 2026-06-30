@@ -20,7 +20,7 @@ sources:
 
 8/2 イベントで衝突なく使いやすい demo stack は、(1) 渋谷区 official page / PDF で自治体公式の public artifact があることを示す、(2) 奈良 #全員市長の public viewer で広聴AIの読み方を見せる、(3) 八代市は深い実践事例として扱えるが、政治・政策文脈の表現に注意する、という順序が安全である。[[public-broadlistening-artifacts-2026-06-30]]より
 
-公開Web検索で、宇多津町、岩手県、広島県、東京都 / GovTech東京、舞鶴2040、北見、国民民主党、日本維新の会などの public source も確認できた。ただし 8/2 の default demo order は大きく変えず、公式性を補強する source と viewer demo の代替候補として使うのがよい。[[japan-broadlistening-use-case-map-2026-06-30]]より
+公開Web検索で、宇多津町、奈良市、岩手県、広島県、東京都 / GovTech東京、舞鶴2040、北見、国民民主党、日本維新の会などの public source も確認できた。ただし 8/2 の default demo order は大きく変えず、公式性を補強する source と viewer demo の代替候補として使うのがよい。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
 Azure デモ環境は、現時点では「自分のデータを投入する場所」より「使い方や準備データを理解する参照環境」として位置づけ直されている。したがって 8/2 では、専用環境を主役にするより、公開事例 / サンプルレポート / サンプル CSV の導線を前面に出す方がよい。[[azure-demo-public-visibility-proposal-2026-06-04]]より [[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
@@ -30,6 +30,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 |---|---|---|---|---|
 | 奈良 #全員市長 | public viewer: https://everyonemayor.github.io/kouchou-ai/2025-7-13/ | 1,000 件規模の public viewer として、全体図 / 濃いクラスタ / 階層図 / 個別意見へ戻る流れを見せやすい。[[public-broadlistening-artifacts-2026-06-30]]より | local politics / campaign context の説明が必要。イベント直前に URL と表示状態を再確認する。 | primary viewer demo 候補 |
 | 渋谷区 official trial | official page / PDF | 自治体公式ページとして、広聴AIが公共 sector で試されている証拠を示せる。[[public-broadlistening-artifacts-2026-06-30]]より | viewer 実演というより official proof。スクリーンショット利用や PDF 図表利用は要確認。 | trust / context 用 |
+| 奈良市総合計画関連資料 | official PDF group | 広聴AIで市民意見 1,361 件を整理した自治体公式 document case として使える。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `奈良 #全員市長` viewer とは別文脈。PDF の図表・ページ引用は許諾 / 引用範囲確認。 | trust / context 用 |
 | 八代市 Democracy-X | public article + result viewer | 実践 lane と技術 lane をつなぐ深いケース。政策課題の発見と viewer を接続できる。[[public-broadlistening-artifacts-2026-06-30]]より | 選挙・政策文脈を含む。「みんなが一番望んでいる」ではなく「そのニーズが見つかった」と説明する。[[meeting-minutes]]より | speaker が文脈を扱える場合の deep case |
 | 舞鶴2040 | public viewer + FAQ | 地域の未来像づくりに寄った public viewer で、広聴AI OSS 成果物の活用が FAQ で確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 実施主体・許諾・スクリーンショット利用可否を確認する。 | 政治色を下げたい場合の viewer demo 代替候補 |
 | 北見 | public portal + viewer | レポート一覧と portal が公開され、市民の声をアンケート・メール・SNS・広聴AI・いどばたAIで集め可視化すると説明している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式ではなく地域 project として扱う。実施主体・許諾・スクリーンショット利用可否を確認する。 | viewer demo 代替候補 |
@@ -46,7 +47,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 ## Recommended 8/2 Demo Order
 
-1. 渋谷区 official page / PDF を冒頭に置き、自治体公式の public artifact があることを示す。
+1. 渋谷区 official page / PDF、または奈良市 official PDF を冒頭に置き、自治体公式の public artifact があることを示す。
 2. 奈良 #全員市長 public viewer で、全体図、濃いクラスタ、階層図、クラスタ説明、個別意見への戻り方を見せる。
 3. 八代市は、政治・政策文脈を説明できる speaker がいる場合だけ deep case として扱う。表現は「そのニーズが見つかった」に寄せる。
 4. live viewer が落ちた場合、または政治文脈を避けたい場合に備えて、synthetic sample CSV / static screenshot / recorded flow の fallback を用意する。
@@ -71,6 +72,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 ## Open Questions
 
 - 8/2 の第一候補 viewer は奈良 #全員市長でよいか。それとも八代市、舞鶴2040、synthetic sample、別自治体を主役にするか。
+- 奈良市 official PDF と奈良 #全員市長 viewer を同じスライドに置くか、自治体公式 proof と viewer demo として分けるか。
 - 渋谷区 PDF / 八代市 viewer / 奈良 viewer のスクリーンショットをスライドに載せてよいか。
 - sample CSV を public repo / docs 側に置くなら、どの repository のどの path を canonical にするか。
 - 広島県の公開中間結果など、追加で候補へ昇格できる artifact を誰が確認するか。
@@ -78,6 +80,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 ## Updates
 
+- 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群を trust / context 用の自治体公式 document case として追加した。
 - 2026-06-30: 16:05 JST の追加Web検索を反映し、岩手県 / 東京都 / 北見 / 日本維新の会を trust context / viewer demo / political context の候補に追加。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、宇多津町 / 舞鶴2040 / 広島県 / 国民民主党などを official context / viewer demo / political context に分類して追記。
 - 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo は #696 誤読防止 / #542 責任所在とセットで出す必要があると追記。
