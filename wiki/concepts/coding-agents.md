@@ -7,6 +7,7 @@ sources:
   - meeting-minutes.md
   - weekly-log-2026-05-06.md
   - pr-849-agent-review-request-observation-2026-05-21.md
+  - slack-codex-goal-speed-control-2026-06-30.md
 ---
 
 ## エージェントの種類と使われ方
@@ -67,6 +68,19 @@ AI が自律でやるべきなのは、`REVIEW_REQUIRED` や `BLOCKED` を観測
 
 Codex が実務を進めた時は、Issue / PR / CI / wiki の更新が会議前に散逸しやすい。そこで、この wiki では **次の定例会議で読むための下書き** を [[meeting-report-draft]] に保守する。会議で必要なのは完全な changelog ではなく、**何を直したか、何が main に入ったか、次に何を見るか** である。[[meeting-report-draft]]より
 
+## Codex `/goal` の速度制御
+
+2026-06-30 の Slack `#2_開発_広聴ai` では、Codex `/goal` を広聴AIに使う案と同時に、全力で走らせると人間が追いつけないため、まず状況把握と LLM Wiki / docs 更新を中心にする方針が共有された。[[slack-codex-goal-speed-control-2026-06-30]]より
+
+この方針は、AI エージェントを弱く使うという意味ではない。広い goal では、実装 PR を増やす前に、過去議論・issue・Slack・議事録を読み、source freshness を揃え、`thinking-targets` / `meeting-report-draft` / 関連 wiki ページに還流する方が、人間の判断可能性を保てる。
+
+Codex `/goal` のような persistent goal では、次を基本ループにする。
+
+- まず current state を pull / observe し、freshness marker を残す。
+- 実装に入る前に、wiki / docs / meeting draft へ理解を固定する。
+- GitHub comment、review request、approval 催促のような人間 attention を使う操作は明示指示まで避ける。
+- 本体 PR に進む候補は `thinking-targets` へ出し、人間が slice を選べる状態にする。
+
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
@@ -74,6 +88,7 @@ Codex が実務を進めた時は、Issue / PR / CI / wiki の更新が会議前
 
 ## Updates
 
+- 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` はまず状況把握・LLM Wiki・docs 更新を中心に走らせ、人間が追える速度に制御する運用を追記
 - 2026-05-17: 初回作成
 - 2026-05-18: host full access を標準化しない権限分離方針への参照を追加
 - 2026-05-18: AI エージェント起点の draft PR は、ready for review にするまで merge しない運用メモを追記

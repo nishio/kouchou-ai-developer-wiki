@@ -52,6 +52,7 @@ sources:
   - slack-case-introduction-channel-2026-03-04.md
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - slack-codex-goal-speed-control-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -82,6 +83,7 @@ sources:
 
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
+- agent ops: Slack 6/30 では Codex `/goal` を広聴AIで試す案と同時に、人間が追いつけなくなるため、まず状況把握・LLM Wiki・docs 更新中心で進める方針が共有された。今回の wiki 更新群はその運用に沿って、実装 PR より先に current state と未決論点を固定している。[[slack-codex-goal-speed-control-2026-06-30]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
@@ -196,6 +198,7 @@ sources:
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
 - [[thinking-targets]] / [[open-decisions]] を 6/30 状態へ同期した。会議で人間に聞くべき短期未決は、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 つ。
 - [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221 / #884 の作成前確認パネルを 6/30 high priority の code-safe slice 候補として再浮上させた。current main では spreadsheet path の warning gap と手動 API check の分離が残っている。
+- [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` の運用は状況把握・LLM Wiki・docs 更新を先にして、人間が次の slice を選べる速度に制御する、と定例向けに固定した。
 
 ### docs-first / no-conflict lane
 
@@ -214,6 +217,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` の速度制御と wiki/docs-first 運用を定例下書きへ反映
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として定例下書きへ反映。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口を確認し、8/2 readiness と公開事例 map の読み上げを補正。
 - 2026-06-30: Slack source ops を補強し、直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` の三分法と user id 解決を読み上げ欄へ反映。

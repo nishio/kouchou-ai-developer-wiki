@@ -8,6 +8,7 @@ sources:
   - slack-logs-repository.md
   - wiki-maintenance-observation-2026-05-25.md
   - nishio-source-freshness-criterion-2026-06-02.md
+  - slack-codex-goal-speed-control-2026-06-30.md
 ---
 
 ## これは何か
@@ -102,6 +103,19 @@ security / dependency 系の話題では、GitHub Security の Dependabot alerts
 有用な整理が生まれたら `wiki/analyses/` や既存 concept / source に filing-back し、`wiki/log.md` に記録する。  
 つまりこの repo の Query は「その場で答える」だけでなく、**再利用可能な知識へ還流するところまで** が 1 セット。`CLAUDE.md` より
 
+## 長い AI goal の速度制御
+
+Codex `/goal` のように persistent な goal を広い目的で走らせる場合、この wiki-driven workflow をさらに強く使う。2026-06-30 Slack では、広聴AIに Codex `/goal` を使う案と同時に、人間が追いつけなくなるため、まず状況把握と LLM Wiki / docs 更新を中心にする方針が共有された。[[slack-codex-goal-speed-control-2026-06-30]]より
+
+この運用では、AI の最初の成果物は PR ではなく、**人間が次の PR / issue / demo / docs を選べる状態**である。
+
+1. `work/kouchou-ai/`、`work/slack-logs/`、必要な raw source を最新化する。
+2. current main、open PR / issue、Slack、議事録を同じ snapshot として読む。
+3. source / analysis / concept / meeting draft を更新し、未決論点を `thinking-targets` へ寄せる。
+4. 本体 repo の code PR に進む時は、assignee / ownership / human attention を確認してから小さい slice を切る。
+
+これにより、AI が速く進みすぎて「何を見て何を決めたか」を人間が追えなくなる問題を避けられる。
+
 ## 誤解しやすい点
 
 ### 「Wiki repo で作業しているなら、この repo に PR を出すのでは？」ではない
@@ -151,6 +165,7 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 ## Updates
 
+- 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、persistent goal はまず状況把握・wiki / docs 更新・thinking-targets 整理を行い、人間が次の slice を選べる状態を作る運用を追記
 - 2026-05-19: 初版作成
 - 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記
 - 2026-05-23: GitHub Pages 配信の説明が MkDocs 時代の比較文のまま stale だったため、Quartz 配信中の current state に更新

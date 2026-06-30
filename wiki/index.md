@@ -2,7 +2,7 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（269 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（270 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
 ## 最初に読むべき (推奨順)
 

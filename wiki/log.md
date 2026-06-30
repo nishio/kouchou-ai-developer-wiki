@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:59] filing-back | Codex goal の速度制御を Slack から source 化
+
+- [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Slack 6/30 の Codex `/goal` 共有を「人間が追える速度で、まず状況把握・LLM Wiki・docs 更新を進める」運用判断として固定
+- [[coding-agents]] / [[wiki-driven-workflow]] / [[meeting-report-draft]] に、persistent goal では実装 PR より先に source freshness と未決論点を wiki へ還流する方針を追記
+
 ## [2026-06-30 16:54] filing-back | #221/#884 試行錯誤負担削減を live recheck
 
 - [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、current main では作成前確認パネルが未実装であることを固定
