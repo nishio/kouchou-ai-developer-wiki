@@ -8,6 +8,7 @@ sources:
   - broad-listening-book-source.md
   - nishio-amusement-park-map-metaphor-2026-06-03.md
   - note-annotakahiro-broadlistening-resources-2025-02-05.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
 ---
 
 ## 定義
@@ -15,6 +16,8 @@ sources:
 **ブロードリスニング (broad listening)** は、放送 (broad**casting**) の対義として、多数の市民・利用者・参加者から自由記述意見を集めて LLM で集約・整理・可視化する手法。**広く「聴く」** ことに重点がある。
 
 [[kouchou-ai]] はこの手法のリファレンス実装の一つで、[[talk-to-the-city|Talk to the City]] のフォークから出発した日本語特化版。
+
+ただし実務上は、「ブロードリスニング」という語が **狭義には収集済み自由記述の分析・可視化**、**広義には interactive な収集・深掘り・対話設計まで含む活動全体** を指すことがある。議事録では、首長やトップ層には kouchou-ai が、広報・広聴の現場部署には [[idobata]] のような深掘りツールが、それぞれブロードリスニングとして認識される可能性があると整理されている。公開 docs ではこのズレを tool catalog で分ける必要がある。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 
 ## 読み方 — 「遊園地の地図」比喩
 
@@ -62,7 +65,8 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 ## 関連プロジェクト
 
 - [[talk-to-the-city|TTTC]] — 上流。AIObjectives Institute 発、現在 archived (2025-08-01)。tttc-light-js は scatter なし
-- **[[idobata]]** — 1-on-1 深掘りインタビュー AI。提案／PR データを kouchou-ai 側にも渡す
+- **[[idobata]]** — 1-on-1 深掘り interview AI。広聴AIで theme を見つけて idobata へ渡す、または idobata 由来の提案 / PR データを kouchou-ai で分析する接続があり得る。ただし AI-generated long text は通常の短文 survey と data shape が違う
+- **Cartographer** — idobata 系の派生プロトタイプ。追加質問生成・会議理解・user research 設計の抜け検出に寄るため、kouchou-ai の標準 analysis mode と混ぜない
 - **DivCon** ([[tokoroten]]) — 自治体データを扱う別系統の実験
 - **farbrain** (`tokoroten/farbrain`) — UMAP+k-means+ラベリングを使ったゲーミフィケーション派生
 
@@ -71,3 +75,4 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 - 2026-05-17: 初回作成
 - 2026-05-21: 書籍 13.5 由来の散布図 vs Long Context 二アーキ整理を追加（[[broad-listening-book-source]]）
 - 2026-06-03: 「遊園地の地図」比喩で reader の探索パターン（俯瞰 → ゾーン選択 → drill in）を言語化し、ラベル品質が機能要件である理由を追記（[[nishio-amusement-park-map-metaphor-2026-06-03]]）
+- 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、狭義の分析・可視化と広義の収集・深掘りを分ける tool catalog の必要性を追記。

@@ -18,6 +18,7 @@ sources:
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
 ---
 
 このページは **「次に何を考えれば前に進むか」だけ** を集める。
@@ -34,6 +35,8 @@ sources:
 6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか**、**公開事例と trust layer をどこに置くか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
 
 Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、#564/#696/#542、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
+
+さらに、議事録からは「広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js」を全部 `ブロードリスニング` と呼ぶと、収集・深掘り・分析・可視化・LLM直接分類が混ざることが見えている。8/2 や #564 では tool ecosystem を出す前に、どの lane を広聴AI本体の約束とするかを決める必要がある。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 
 ### 0-1. 8/2 の first demo を何にするか
 
@@ -83,6 +86,13 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 思考の最小単位: first page の読者を `自治体導入検討者` に固定するか、`国内 broad listening の広がりを知りたい人` まで広げるかを決める。前者なら first 3 は自治体公式 + viewer + deep case に絞り、企業/VOCや TTTC lineage は後段または別ページに送る
 - 決まれば動けること: #564 public page の章立てと、Web book 付録由来候補の掲載基準を固定できる
 - 関連: [[public-web-broadlistening-japan-use-cases-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[public-case-page-skeleton-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]]
+
+### 0-8. 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog をどこに置くか
+
+- 問い: `広聴AI = 分析・可視化`、`いどばた / Cartographer = 収集・深掘り`、`Jigsaw Sensemaker / tttc-light-js = LLM直接分類 / TTTC lineage` という役割境界を、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどこに置くか
+- 思考の最小単位: `collect / deepen / analyze / classify / discuss` の 5 列 tool catalog を 1 枚作り、どこまでを広聴AI本体の promise として書くか決める。対立軸発見は魅力的だが、現行 default ではなく LLM grouping / long-context route の未決論点として表現する
+- 決まれば動けること: 8/2 のツール比較、#564 の初回説明 FAQ、自治体 user research の質問項目、idobata bridge の owner 論点を同じ language で扱える
+- 関連: [[meeting-cartographer-idobata-boundary-2026-06-30]], [[broadlistening]], [[idobata]], [[jigsaw-sensemaker]], [[talk-to-the-city]], [[meeting-municipality-user-research-scope-2026-06-30]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
 

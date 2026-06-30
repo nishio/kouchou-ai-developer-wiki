@@ -55,6 +55,7 @@ sources:
   - meeting-brand-compass-information-strategy-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
   - slack-codex-goal-speed-control-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
@@ -90,6 +91,7 @@ sources:
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録由来の大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町も primary / organization page まで確認した。ただし、8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選び、企業/VOCや TTTC lineage は応用領域として分ける。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - Brand Compass / 情報発信: 議事録上では、stable v4 / M2、公開事例と trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態がつながっている。Brand Compass は別議題ではなく、8/2 first demo・#564 placement・docs-safe PR 順序を選ぶ判断フィルタとして扱う。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 - 自治体 user research: 議事録の自治体向けアンケート案を読み直し、`広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要を整理した。#564 の case intake は公開事例候補と掲載許諾の受け皿で、user research は roadmap の前提検証なので、同じフォームに混ぜない方がよい。[[meeting-municipality-user-research-scope-2026-06-30]]より
+- tool boundary: 議事録から、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を source 化した。公開説明では、広聴AIを「集まった自由記述の分析・可視化」、いどばた / Cartographer を「収集・深掘り・追加質問」、Jigsaw / tttc-light-js を「LLM直接分類 / TTTC lineage」と分け、対立軸発見は current default ではなく未決の long-context route として扱う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
@@ -103,6 +105,7 @@ sources:
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
 - #221 / #884 の作成前確認パネルを次 code-safe slice にするか決める。first slice は CSV / Spreadsheet / plugin を同じ pre-create review に通し、費用/時間は粗い帯または placeholder、API check は status 統合、sample-first / reuse は導線に留める。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - 自治体 user research をどう切るか決める。`広聴活動一般の実態調査` と `広聴AI適合ケースの探索` を分けるか、どの部署 / 役割 / sampling route を対象にするか。[[meeting-municipality-user-research-scope-2026-06-30]]より
+- 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog をどこに置くか決める。#564 case page、8/2 event material、kouchou-ai docs、DD2030 website のどれを canonical にするかで、読者が広聴AI本体に期待する capability が変わる。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 - Slack / 議事録の source 運用は概ね固定した。残りは、議事録 export に `2026/06/29` 以降の見出しが入った時に、どの source / analysis を先に更新するか。[[wiki-driven-workflow]]より
 
 ## 過去の議題候補 (2026-06-08 定例)

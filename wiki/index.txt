@@ -26,7 +26,7 @@ wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	developer-wiki rep
 anno	entity	entities/anno.md	安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者
 broad-listening-book	entity	entities/broad-listening-book.md	DD2030 書籍「選挙を変えたブロードリスニング」（インプレス、CC BY-NC 4.0）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う
 dd2030	entity	entities/dd2030.md	デジタル民主主義2030 — kouchou-ai の親プロジェクト／組織
-idobata	entity	entities/idobata.md	AI による 1-on-1 ディープインタビュー OSS。kouchou-ai と提案／PR データを連携
+idobata	entity	entities/idobata.md	AI による 1-on-1 深掘り interview OSS。広聴AIとは収集・深掘りと分析・可視化の役割を分け、theme discovery や提案 / PR データで接続する
 jigsaw-sensemaker	entity	entities/jigsaw-sensemaker.md	Jigsaw Sensemaker は、広義には LLM grouping に属する外部ツール / 分析アプローチとして扱う。LLM grouping 全体を Jigsaw と呼ぶと、一般カテゴリと固有名詞が混ざって混乱する
 kuboon	entity	entities/kuboon.md	Ohkubo KOHEI — Outline self-host とドキュメント基盤運用
 nasuka	entity	entities/nasuka.md	Nasuka Sumino (角野) — 元会議ファシリ、抽出プロンプト・limited-publish 等を実装
@@ -78,6 +78,7 @@ local-ai-user-share-market-stats-2026-05-31	source	sources/local-ai-user-share-m
 marketing-strategy-mtg-2025-07-16	source	sources/marketing-strategy-mtg-2025-07-16.md	2025-07-16 朝 8時台のボード級『広聴AI マーケティング戦略 mtg』議事メモ。ユーザーターゲット・事例研究・パートナー戦略・プロダクト品質・OSS の射程を議論した単発会議
 meeting-2026-06-22-event-priority	source	sources/meeting-2026-06-22-event-priority.md	2026-06-22 議事録から見た 8/2 イベント、Brand Compass、high priority issue、情報発信、運用ポリシーの優先軸
 meeting-brand-compass-information-strategy-2026-06-30	source	sources/meeting-brand-compass-information-strategy-2026-06-30.md	議事録から見た Brand Compass / 情報発信 / stable v4 / 利用者課題調査の接続。Brand Compass 本体ではなく、議事録上の判断フィルタを要約する
+meeting-cartographer-idobata-boundary-2026-06-30	source	sources/meeting-cartographer-idobata-boundary-2026-06-30.md	議事録から見た Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界。収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を混ぜないための整理
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
 meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7700 lines, JP)
 meeting-municipality-user-research-scope-2026-06-30	source	sources/meeting-municipality-user-research-scope-2026-06-30.md	議事録から見た自治体利用者課題調査の scope。広聴活動一般の探索と、広聴AIが活きるケースの探索を分ける必要がある

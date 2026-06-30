@@ -36,6 +36,7 @@ sources:
   - meeting-brand-compass-information-strategy-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -70,6 +71,8 @@ Brand Compass / 情報発信は、8/2 だけの slogan ではなく、stable v4 
 
 自治体利用者課題調査は、#564 の public case page / case intake と分けて扱う必要がある。議事録上では、既存接点が広報・広聴課 / デジタル推進部署に偏っている可能性があり、広聴活動一般の探索と、広聴AIが活きるケースの探索を切り分ける論点が出ている。[[meeting-municipality-user-research-scope-2026-06-30]]より
 
+さらに議事録から、広聴AI、いどばた、Cartographer、Jigsaw Sensemaker、tttc-light-js は、同じ broad listening ecosystem に見えても役割が違うことを source 化した。広聴AIは収集済み自由記述の分析・可視化、いどばた / Cartographer は収集・深掘り・追加質問、Jigsaw / tttc-light-js は LLM直接分類や TTTC lineage の別 route として分ける。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
+
 横浜型ブロードリスニングは、Slack 上では市民の声の「収集」手法を中心にした Yokohama Hack! 募集として共有されている。広聴AIの current asset は analysis / viewer / docs 側が中心なので、収集と分析可視化を分けて説明するのが安全。[[slack-yokohama-hack-2026-06-26]]より
 
 GitHub 現在地としては、PR #903 の docs inventory は小さく直せそうだが、user attention を使う review request / merge には踏み込まない。PR #891 は draft のままなので、[[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に状況把握を固定した。issue #898 は PR #899 merge 済みだが issue は open で、aarch64 実機確認または close 判断が残っている。
@@ -94,6 +97,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、初回説明 block、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
 - #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「課題発見ツールとしての説明」「読み方」「保証しない範囲」「個別レポート発行主体」「外部向け利用時の注意」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
+- Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界は [[meeting-cartographer-idobata-boundary-2026-06-30]] に固定した。次の公開 docs では、収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を同じ `広聴AI` の promise として混ぜない。
 - 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。Slack source ops は [[slack-logs-repository]] / [[wiki-driven-workflow]] に補強し、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json`、source の使い分けは直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` とした。
 
@@ -102,10 +106,12 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存 `oss_weekly_reporter` 由来 weekly source とどこで cross-reference するか。
 - 8/2 イベント向けの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれに置くべきか。
 - 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、周辺エコシステムとして docs で接続するだけにするべきか。
+- 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog は、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどれを canonical にするべきか。
 
 ## Updates
 
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
+- 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を current snapshot に接続。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体 user research は #564 case intake と分け、広聴活動一般の探索と広聴AI適合ケース探索を切り分けると整理。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / trust layer / 外部ストーリー / A/B/C/D 配布形態の判断フィルタとして current snapshot に接続。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。

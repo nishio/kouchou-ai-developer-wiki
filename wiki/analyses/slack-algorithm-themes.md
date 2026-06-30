@@ -5,6 +5,7 @@ sources:
   - slack-kouchouai-algorithm-dev.md
   - source-code.md
   - meeting-minutes.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
 ---
 
 `[[slack-kouchouai-algorithm-dev]]` を読むと、アルゴリズム開発チャンネルは単なる実験メモ置き場ではなく、**広聴AIの現行パイプラインをどこで疑い、何を次の軸に据えるか** をかなり率直に議論している場だと分かる。
@@ -48,6 +49,8 @@ sources:
 このチャンネルでは、embedding ベース方式は同一話題内の賛否を近くに置いてしまう、既存カテゴリに照らす実験をしても何でも既存分類へ押し込めてしまう、少数意見が `n_neighbors` に埋もれやすい、といった不満がある。  
 LLM 分類は、その不満に対して **分類基準そのものを人間可読な軸や tree に寄せられる** 可能性として見られている。
 
+議事録側でも、対立軸発見を embedding + 2D scatter の延長で扱うより、LLM long context / LLM 直接分類 / Jigsaw Sensemaker 的な tree-native route で扱う方が自然ではないか、という整理が出ている。ただし同時に、これは「現行広聴AIの default capability」として約束するものではなく、idobata / Cartographer の interactive lane とも分けて考える必要がある。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
+
 ## 5. taxonomy-guided classification はこのチャンネルでも具体的ユーザ要求に接続している
 
 2025-10 の東京都カテゴリ実験や 2026-02-27 の自治体予算カテゴリへの要望は、[[slack-dev-kouchouai-2026-q1]] の taxonomy-guided classification と別筋ではない。  
@@ -68,7 +71,9 @@ LLM 分類は、その不満に対して **分類基準そのものを人間可�
 - UMAP 前クラスタリングや supervised UMAP を `main` にどう落とすかは、2026-05 時点でも未実装
 - 対立軸発見は問題設定として魅力的だが、広聴AIの標準出力にどこまで入れるかは未決
 - taxonomy-guided な実務モードと、新規論点発見モードを同一 UX に載せる方法はまだ見えていない
+- 対立軸発見を進める場合、kouchou-ai の LLM grouping mode に入れるのか、Cartographer / idobata 側の interactive workflow に寄せるのか、別 tool として扱うのかが未決
 
 ## Updates
 
+- 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、対立軸発見は embedding scatter の拡張ではなく LLM long-context / tree-native route の設計論点として扱うが、現行 default と断定しない方針を追記。
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` の初回整理

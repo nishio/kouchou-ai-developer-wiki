@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:43] filing-back | Cartographer / いどばた / 広聴AI の役割境界を source 化
+
+- [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、議事録から Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界を整理
+- [[broadlistening]] / [[idobata]] / [[jigsaw-sensemaker]] / [[talk-to-the-city]] / [[slack-algorithm-themes]] に、収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を混ぜない方針を反映
+
 ## [2026-06-30 17:30] filing-back | Web book 付録候補を direct verification
 
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[broad-listening-book-public-case-appendix-2026-06-30]] に、大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町の public source 確認結果を追記
