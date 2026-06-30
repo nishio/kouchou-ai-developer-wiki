@@ -31,6 +31,8 @@ sources:
   - spherical-kmeans-experiment-scope-2026-06-30.md
   - github-issue-876-live-2026-06-30.md
   - issue-876-docs-pr-slice-2026-06-30.md
+  - github-issue-877-live-2026-06-30.md
+  - issue-877-docs-pr-slice-2026-06-30.md
 ---
 
 ## 目的
@@ -144,7 +146,7 @@ sources:
 - docs 系 issue / PR の横断地図として [[docs-issue-map-2026-06-30]] を追加した。#876 は developer quickstart / docs entry、#877 は Windows supported path、#885 は runtime Node 排除、#903 は #885 の inventory docs で、同じ docs 群でも混ぜると読者像と配布方針が崩れる。
 - #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案を照合した。developer quickstart 草案は 5 読者像 / Mode 1 default 廃止などを概ね満たすが、本体 docs の README / index / quickstart / nav はまだ setup-first のままなので、次 PR は単体ページ追加で閉じるより導線調整を含める判断が必要。
 - 追加で [[github-issue-876-live-2026-06-30]] と [[issue-876-docs-pr-slice-2026-06-30]] を作り、#876 は open / nishio assigned のまま、直接 close する open PR がないことを確認。次 PR は `docs/development/developer-quickstart.md` 単体ではなく、mkdocs nav、README、docs/index、getting-started/quickstart の役割を同時に下げる first slice として整理した。
-- #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に本体 docs PR 化前の章立てを固定した。標準入口は Docker Desktop が使える Windows 10/11 に絞り、組織貸与 PC で Docker Desktop / WSL2 が塞がれる場合は初心者向け guide の対象外として IT 管理者・技術者へ渡す方針。
+- #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に本体 docs PR 化前の章立てを固定し、[[github-issue-877-live-2026-06-30]] / [[issue-877-docs-pr-slice-2026-06-30]] で open / unassigned の live state と file-by-file scope まで整理した。標準入口は Docker Desktop が使える Windows 10/11 に絞り、組織貸与 PC で Docker Desktop / WSL2 が塞がれる場合は初心者向け guide の対象外として IT 管理者・技術者へ渡す方針。
 - PR #903 は human authored docs PR なので、AI が勝手に branch push せず、[[pr-903-node-runtime-doc-review-2026-06-30]] にレビュー観点を固定し、[[pr-903-review-comment-draft-2026-06-30]] に投稿前コメント案を置いた。CodeRabbit 指摘 3 点に加え、current main の `csvDownloadCommon` / `jsonDownload` server actions が inventory から漏れている可能性を短く伝える案。
 - issue #898 は PR #899 merge 済みだが、[[issue-898-close-readiness-2026-06-30]] に整理した通り aarch64 Docker での解消確認がまだない。AI 単独 close は避け、Apple Silicon Docker などで `NUMBA_CPU_NAME=generic` と `import umap`、実レポート生成を確認してから close 判断する。
 
@@ -159,6 +161,7 @@ sources:
 - 2026-06-30: 人間と衝突しにくい docs-first lane として、[[pr-903-node-runtime-doc-review-2026-06-30]] と [[issue-898-close-readiness-2026-06-30]] を追加した
 - 2026-06-30: [[docs-issue-map-2026-06-30]] を追加し、#876 / #877 / #885 / #903 の依存関係と混ぜない境界を定例向けに整理
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 Windows guide の対象 / 対象外、troubleshoot 範囲、docs PR slice を定例向けに整理
+- 2026-06-30: [[github-issue-877-live-2026-06-30]] / [[issue-877-docs-pr-slice-2026-06-30]] を追加し、#877 の次 PR scope を Windows guide の対象 / 対象外、API key 前提、troubleshooting 表、developer verification 住み分けとして file-by-file に固定
 - 2026-06-30: [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、#876 は developer quickstart 単体ではなく README / docs index / quickstart / nav の setup-first 導線も確認してから再着手する必要があると整理
 - 2026-06-30: [[github-issue-876-live-2026-06-30]] / [[issue-876-docs-pr-slice-2026-06-30]] を追加し、#876 の次 PR scope を `developer-quickstart` + nav + README / docs index / quickstart の導線調整として file-by-file に固定
 - 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR #903 に直接投稿せず、docs inventory の修正観点 4 点をコメント案として固定

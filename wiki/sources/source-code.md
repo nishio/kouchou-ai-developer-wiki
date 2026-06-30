@@ -68,8 +68,19 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 
 この事実は、Spherical K-means / Faiss K-means / 15D〜25D UMAP などの実験を設計する時の baseline として使う。詳細な実験候補は [[spherical-kmeans-experiment-scope-2026-06-30]]。
 
+## Windows setup current facts (2026-06-30, main tip `d5c9ece6e3b3`)
+
+Windows setup の current main は、`setup_win.bat` が ASCII-only launcher、`setup_win.ps1` が日本語 GUI dialog / non-interactive mode を持つ本体という分担になっている。`.bat` は PowerShell を起動するだけで、codepage 差による日本語 parsing 破綻を避けている。
+
+`setup_win.ps1` は Docker Desktop の起動確認、OpenAI / Gemini API key 入力、prefix warning、`.env` 生成、`docker compose up -d --build` を担う。`--non-interactive`、`--skip-docker-start`、`--skip-api-key-validation`、`--openai-api-key`、`--gemini-api-key` も持つ。
+
+Windows CI は 2 層に分かれている。`.github/workflows/windows-setup-script.yml` は hosted `windows-latest` 上で `.bat` の ASCII-only check、Docker 未起動時 path、非対話 `.env` 生成を確認する。一方、`.github/workflows/windows-real-machine-e2e.yml` は `workflow_dispatch`、`github.actor == 'nishio'`、self-hosted Windows runner で、Docker Desktop + `setup_win.bat` + localhost 到達まで見る重い手動 E2E である。
+
+この構成に対し、`docs/getting-started/windows-setup.md` は `setup_win.ps1` dialog 前提を一部反映済みだが、API key 前提が OpenAI / Gemini 両方必須に見え、Docker Desktop を使えない組織端末や WSL2 禁止端末の対象外分岐はまだ弱い。#877 の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
+
 ## Updates
 
+- 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Windows setup が ASCII-only `setup_win.bat` launcher + GUI/non-interactive `setup_win.ps1` 本体、hosted script test + self-hosted Windows E2E の 2 層になっていることを追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、`hierarchical_clustering.py` の current baseline が「元 embedding → 2D UMAP → sklearn KMeans → ward merge」であることを追記
 - 2026-06-02: `work/kouchou-ai/main@3c5d1f026757` を再確認し、ラベル付け sampling の前提が残っていることを確認。API 経由は `apps/api/src/services/report_launcher.py` で initial / merge とも `sampling_num=30`、analysis-core built-in plugin と compat config は default `10`。`apps/public-viewer/components/charts/HierarchyListChart.tsx` の個別データ表示も `maxDisplay=10` の配列先頭表示で、representative selection ではない
 - 2026-05-30: `work/kouchou-ai/main@0c294da` を確認し、ラベル付け時の sampling が API 経由では最大 30 件、CLI/default では 10 件で、選択は seed なし random sample であること、UI の「個別データ」表示は representative selection ではなく deepest-level cluster の配列先頭 10 件であることを追記

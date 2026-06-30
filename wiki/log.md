@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:19] filing-back | #877 Windows setup guide PR slice を具体化
+
+- [[github-issue-877-live-2026-06-30]] を追加し、issue #877 が open / unassigned のまま、Docker Desktop supported path と対象外環境を切る docs issue として扱う現在地を GitHub live state として固定
+- [[issue-877-docs-pr-slice-2026-06-30]] を追加し、`docs/getting-started/windows-setup.md` の対象 / 対象外、API key 前提、troubleshooting 表、developer verification との住み分けを file-by-file PR slice として整理
+- [[source-code]] に current main の Windows setup facts (`setup_win.bat` launcher、`setup_win.ps1` GUI/non-interactive、hosted script test + self-hosted E2E) を追記
+
 ## [2026-06-30 14:15] filing-back | #876 developer docs PR slice を具体化
 
 - [[github-issue-876-live-2026-06-30]] を追加し、issue #876 が open / nishio assigned のまま、PR #883 撤回後の 5 読者像・Mode 1 default 廃止方針が issue 本文に反映済みであることを GitHub live state として固定
