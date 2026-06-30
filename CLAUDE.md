@@ -73,7 +73,7 @@ sources:
 2. `wiki/` を検索して回答を作成
    - code: `work/kouchou-ai/` を最新化して local clone を一次参照
    - meeting minutes: `raw/meeting_minutes.txt` を Google Doc export から再取得。URL やリンク先が論点なら `raw/meeting_minutes.html` も併せて更新する
-   - Slack: `work/slack-logs/` の `mirror/` / `raw/` を先に確認する。週次 AI 要約や GitHub activity が必要なら `oss_weekly_reporter` も併読し、Slack connector の直読みは repository snapshot で足りない時の補助確認に留める
+   - Slack: `work/slack-logs/` の `mirror/` / `raw/` を先に確認する。message の `user` は user id なので、発言者が論点になる時だけ `mirror/users.json` または同月の `state/users-YYYY-MM.json` で解決する。週次 AI 要約や GitHub activity が必要なら `oss_weekly_reporter` も併読し、Slack connector の直読みは repository snapshot で足りない時の補助確認に留める
    - GitHub current state: main だけでなく open PR / issue も観測。security / dependency 系では Dependabot alerts も live state として観測するが、脆弱性詳細は公開 wiki に転記しない
 2. 有用な回答はanalyses/にfiling back
 3. log.md の先頭に `## [YYYY-MM-DD HH:MM] filing-back | <description>` を追加し、`python3 scripts/refresh_logs.py` で log.txt と log.md の 7 日窓を同期

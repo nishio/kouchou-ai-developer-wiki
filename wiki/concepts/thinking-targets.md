@@ -53,7 +53,7 @@ sources:
 ### 0-4. Slack / 議事録 source 運用の次の固定
 
 - 問い: `digitaldemocracy2030/slack-logs` を Slack raw 一次 source として定着させた後、既存の `oss_weekly_reporter` source をどこまで置き換えるか。また、議事録 `2026/06/29` 見出しが export に出た時、どの source / analysis を先に更新するか
-- 思考の最小単位: Slack は raw/mirror を一次、weekly reporter は GitHub activity と AI 要約の補助線、という役割を canonical docs にどこまで反映するか決める
+- 思考の最小単位: Slack は raw/mirror を一次、weekly reporter は GitHub activity と AI 要約の補助線、という役割を canonical docs にどこまで反映するか決める。2026-06-30 時点では、一括置換せず、直近 Slack は `mirror/`、古い Slack は `raw/`、週次流れは既存 `weekly-log-*` / `oss_weekly_reporter` を残す三分法に寄せた
 - 決まれば動けること: 今後の wiki ingest が「どのログを先に読むか」で迷わなくなる
 - 関連: [[slack-logs-repository]], [[current-status-2026-06-30]], [[wiki-driven-workflow]]
 

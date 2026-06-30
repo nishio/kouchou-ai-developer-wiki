@@ -81,16 +81,17 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「課題発見ツールとしての説明」「読み方」「保証しない範囲」「個別レポート発行主体」「外部向け利用時の注意」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
-- docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
+- docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。Slack source ops は [[slack-logs-repository]] / [[wiki-driven-workflow]] に補強し、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json`、source の使い分けは直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` とした。
 
 ## Open Questions
 
-- `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存 `oss_weekly_reporter` 由来 source とどこまで置き換えるか。
+- `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存 `oss_weekly_reporter` 由来 weekly source とどこで cross-reference するか。
 - 8/2 イベント向けの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれに置くべきか。
 - 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、周辺エコシステムとして docs で接続するだけにするべきか。
 
 ## Updates
 
+- 2026-06-30: [[slack-logs-repository]] / [[wiki-driven-workflow]] / `CLAUDE.md` を更新し、Slack user id 解決と raw / mirror / oss_weekly_reporter の三分法を source ops として固定した。
 - 2026-06-30: #696 / #542 / #539 を再読し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正した。
 - 2026-06-30: #564 を再読し、公開事例ページには事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと補正した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] に 16:05 JST 追加Web検索分を反映し、岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS などを分類へ追加した。

@@ -3,7 +3,7 @@ type: source
 summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical、mirror は直近14日の rolling snapshot"
 url: https://github.com/digitaldemocracy2030/slack-logs
 last_checked: 2026-06-30
-coverage: "work/slack-logs main@341cf80, mirror synced_at=2026-06-30T04:12:50Z, window=2026-06-16T04:12:50Z〜2026-06-30T04:12:50Z; raw canonical は 2025-01〜2026-04"
+coverage: "work/slack-logs main@341cf80, mirror synced_at=2026-06-30T04:12:50Z, window=2026-06-16T04:12:50Z〜2026-06-30T04:12:50Z; raw canonical は 2025-01〜2026-04; README / sync metadata / users snapshot を確認"
 sources:
   - slack-logs README.md
   - slack-logs mirror/sync.json
@@ -18,6 +18,7 @@ README 上の設計は二層：
 
 - `raw/`: 月次 canonical。`raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` に public channel のメッセージと thread を保存する。保全用で、2026-06-30 確認時点では 2025-01〜2026-04 が入っている。
 - `mirror/`: rolling snapshot。`mirror/slack/<channel_id>.jsonl.gz` に直近14日分を保存し、`mirror/sync.json` に最終同期時刻、window、channel 数、message 数が入る。現状確認用で、履歴保全ではなく上書きされる。
+- `state/` と `mirror/users.json`: Slack user id を表示名へ解決するための `users.list` snapshot。canonical を読む時は同月の `state/users-<YYYY-MM>.json`、mirror を読む時は `mirror/users.json` を使う。
 
 `nishio/oss_weekly_reporter` は週次 AI report / GitHub report 生成の系統として引き続き有用だが、Slack raw の最新一次確認は `slack-logs` の `mirror/` と `raw/` を優先する。
 
@@ -32,6 +33,8 @@ README 上の設計は二層：
 - `C08JQEUR79U`: `8_開発_広聴ai_github`
 - `C08VDRM8012`: `8_開発_広聴ai_figma`
 - `C08UYDUBMG8`: `7_広聴ai読書会`
+- `C08K4CUB12T`: `2_広報_pr`
+- `C08LJ9T5MLY`: `1_事例紹介_全体`
 
 ## How to read
 
@@ -63,6 +66,10 @@ PY
 
 古い月の stable な根拠は `raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` を読む。`mirror/` は上書きされるので、そこから得た観測を wiki に残す時は commit、`synced_at`、window、channel ID を併記する。
 
+JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の message / thread reply である。message の `user` は `U...` の user id なので、人名や handle が論点になる時は `mirror/users.json` または同月の `state/users-YYYY-MM.json` で解決する。ただし wiki に残す時は、発言者名そのものが判断に必要な場合だけ残し、通常は channel / 日付 / 論点の要約に落とす。
+
+`raw/` は保全層だが 2 ヶ月遅延が前提で、直近 2 ヶ月は入らない。直近論点は `mirror/`、古い確定議論は `raw/`、GitHub activity と合わせた週次流れは `oss_weekly_reporter` という三分法で読む。
+
 ## 2026-06-30 Observation
 
 `mirror/` の直近14日では、広聴AI本体 channel は実装論点としては静かだった：
@@ -84,13 +91,16 @@ PY
 - 週次で GitHub / Slack をまとめて眺める: `oss_weekly_reporter` の `ai_reports/`
 - 過去に wiki 化済みの週次 source: `weekly-log-*` ページを freshness marker として読む
 
+置き換えは一括で行わない。既存 `weekly-log-*` source は、その週の AI 要約 / GitHub activity つき観測として残し、新しく Slack 発言そのものを確認する時だけ `slack-logs` の `raw/` / `mirror/` を一次参照にする。
+
 ## Open Questions
 
-- `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存の `oss_weekly_reporter` 由来 raw snapshot を置き換えるか、履歴として併存させるか。
+- `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存の `oss_weekly_reporter` 由来 weekly source とどのページで cross-reference するか。
 - `mirror/` 由来の観測をどの粒度で source 化するか。上書きされるため、重要な観測は commit hash と一緒に wiki / raw snapshot 側へ固定する必要がある。
 - GitHub report は `slack-logs` には無いので、GitHub weekly activity の source は `oss_weekly_reporter` を継続するか、GitHub live state から都度生成するか。
 
 ## Updates
 
+- 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
 - 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。

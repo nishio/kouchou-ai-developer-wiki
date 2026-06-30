@@ -77,6 +77,8 @@ Wiki の情報鮮度は、ページの編集日時ではなく **対象 source �
 
 まず `work/slack-logs/` を `git pull --ff-only` で最新化し、`mirror/sync.json` の `synced_at` / window / channel 数を確認する。直近14日は `mirror/slack/<channel_id>.jsonl.gz`、2ヶ月以上前の stable な根拠は `raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` を読む。`mirror/` は上書きされるので、重要な観測を wiki に残す時は commit hash、`synced_at`、window、channel ID を併記する。[[slack-logs-repository]]より
 
+message の `user` は Slack user id なので、発言者が論点になる時だけ `mirror/users.json` または同月の `state/users-YYYY-MM.json` で表示名に解決する。通常の filing-back では raw 発言者名より、channel / 日付 / 論点 / source freshness を残す方が安全で再利用しやすい。
+
 週次の流れを掴む、または GitHub activity と一緒に見る時は `oss_weekly_reporter` の `ai_reports/` と既存 `weekly-log-*` source を補助線として使う。古い source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
 
 ### GitHub の現在進行形について聞かれた時
@@ -158,3 +160,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-06-01: 公開 wiki に Dependabot 脆弱性詳細とデプロイ詳細を書かない境界を追記。デプロイ詳細の一次置き場を Google Drive「広聴AI-Azureデモ環境」と明記
 - 2026-06-02: 議事録 / Slack の情報鮮度は「いつ時点まで source を読んだか」を基準にし、source ページに freshness marker を明示する運用を追記
 - 2026-06-30: Slack raw の最新一次参照を `digitaldemocracy2030/slack-logs` の `mirror/` / `raw/` に更新し、`oss_weekly_reporter` は週次 AI report / GitHub report 補助線として位置づけ直した
+- 2026-06-30: Slack message の user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使うが、wiki へは発言者名より channel / 日付 / 論点 / freshness marker を優先して残す運用を追記

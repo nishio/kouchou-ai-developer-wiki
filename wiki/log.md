@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:28] filing-back | Slack source ops を補強
+
+- [[slack-logs-repository]] に README / sync metadata / users snapshot の再確認結果を追記し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を固定
+- [[wiki-driven-workflow]] と `CLAUDE.md` に、Slack message の `user` は必要時だけ `mirror/users.json` / `state/users-YYYY-MM.json` で解決する運用を追記
+- [[thinking-targets]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、Slack / 議事録 source 運用の残論点を議事録 6/29 以降の再取得へ寄せた
+
 ## [2026-06-30 16:19] filing-back | #696/#542 の reading guide scope を補正
 
 - GitHub issue #696 / #542 / #539 を再読し、誤読防止は LLM 免責だけでなく、課題発見ツール説明、内部分析と外部アピールの分離、termsLink と OSS 免責の分離を含むと整理

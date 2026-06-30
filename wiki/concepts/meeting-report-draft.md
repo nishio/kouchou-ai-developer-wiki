@@ -79,7 +79,7 @@ sources:
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
-- source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。今後は Slack raw は `work/slack-logs`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` を補助線として使う。[[slack-logs-repository]]より
+- source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。#564 再読で、毎回の個別説明を減らす一枚絵 / 説明資料導線も必要だと確認した。#696/#542/#539 再読で、課題発見ツールとしての説明、内部分析と外部アピールの分離、termsLink と OSS 免責の分離も必要だと補正した。[[public-case-page-skeleton-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
@@ -91,7 +91,7 @@ sources:
 - 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都の official context、奈良 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
 - #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
-- Slack / 議事録の source 運用をこのまま canonical にするか確認する。`slack-logs` raw/mirror を一次、`oss_weekly_reporter` を週次要約 / GitHub activity 補助線にする方針で問題ないか。[[wiki-driven-workflow]]より
+- Slack / 議事録の source 運用は概ね固定した。残りは、議事録 export に `2026/06/29` 以降の見出しが入った時に、どの source / analysis を先に更新するか。[[wiki-driven-workflow]]より
 
 ## 過去の議題候補 (2026-06-08 定例)
 
@@ -207,6 +207,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: Slack source ops を補強し、直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` の三分法と user id 解決を読み上げ欄へ反映。
 - 2026-06-30: #696 / #542 / #539 再読を反映し、reading guide に課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を追加。
 - 2026-06-30: #564 再読を反映し、公開事例ページの読み上げを「初回説明 FAQ + 事例リスト + reading guide + 保証しない範囲」に補正。
 - 2026-06-30: 追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したため、読み上げ欄と 8/2 first demo 候補を更新。
