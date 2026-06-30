@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:13] filing-back | 国内事例候補を book 章で再分類
+
+- `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、[[broad-listening-book-public-case-appendix-2026-06-30]] と [[public-web-broadlistening-japan-use-cases-2026-06-30]] の source strength を補正
+- Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI は public source ありへ進めたが、自治体公式の広聴AI proof / 8/2 first demo 候補とは分ける。Democracy X / 長崎県知事選は public report URL 未確認のまま候補扱い
+
 ## [2026-06-30 18:05] filing-back | 国内事例の追加候補キューを補強
 
 - Web検索で見えた Web book 目次由来の Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を [[broad-listening-book-public-case-appendix-2026-06-30]] の primary confirmation queue に追加
