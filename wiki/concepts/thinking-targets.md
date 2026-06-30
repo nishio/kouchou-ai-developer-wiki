@@ -17,6 +17,7 @@ sources:
   - meeting-brand-compass-information-strategy-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - development-next-actions-live-2026-06-30.md
   - slack-logs-repository.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
@@ -63,9 +64,9 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 ### 0-4. #221 / #884 の作成前確認パネルを次 code-safe slice にするか
 
 - 問い: high priority の #221 / #884 を、次の本体 PR として進めるか。#884 は current main で未実装で、CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している
-- 思考の最小単位: first slice を「CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review を出す」に絞るかを決める。費用/時間は placeholder または粗い帯、API check は status 表示、sample-first / reuse は導線に留める
+- 思考の最小単位: first slice を「CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review を出す」に絞るかを決める。費用/時間は placeholder または粗い帯、API check は status 表示、sample-first / reuse は導線に留める。2026-06-30 18:44 JST の live check でも #884 は open / high priority / unassigned で、開発 next action 第一候補として残っている。[[development-next-actions-live-2026-06-30]]より
 - 決まれば動けること: `apps/admin/app/create/page.tsx` 周辺に閉じた実装 PR を切れる。#11/#79/#292/#391/#97 をどこまで close 可能かは PR 後に個別判定する
-- 関連: [[trial-and-error-burden-reduction-2026-05-29]], [[github-issues-221-884-trial-burden-live-2026-06-30]]
+- 関連: [[trial-and-error-burden-reduction-2026-05-29]], [[github-issues-221-884-trial-burden-live-2026-06-30]], [[development-next-actions-live-2026-06-30]]
 
 ### 0-5. Slack / 議事録 source 運用の次の固定
 
@@ -204,6 +205,7 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 ## Updates
 
+- 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action は #884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 / #898 を次点として見ると 0-4 に追記。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通は first demo ではなく implementation partner / adjacent practice として 0-1 と 0-7 に追加。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を first demo ではなく source strength / tool lineage で分ける判断を 0-1 と 0-7 に追加。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として immediate queue に追加。

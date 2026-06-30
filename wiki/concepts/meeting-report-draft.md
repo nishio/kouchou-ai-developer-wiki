@@ -55,6 +55,7 @@ sources:
   - meeting-brand-compass-information-strategy-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - development-next-actions-live-2026-06-30.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
   - website-kouchou-ai-case-live-2026-06-30.md
@@ -97,7 +98,7 @@ sources:
 - public tool catalog: 上の境界を [[public-tool-catalog-draft-2026-06-30]] に落とし、#564 case page と 8/2 技術・ツール資料で使える `collect / deepen / analyze / show / classify / read-and-act` の 1 枚 draft にした。次は、DD2030 website、kouchou-ai docs、8/2 material のどこを正本にするかを決める。
 - website case page: DD2030 website は #564 の自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、選挙報道 / 東京都 / 宇多津町の 3 件のみ。#208 / #216 / #125 が短期 case 更新の受け皿、#123 が長期の横断 case-news list 化として残っている。#125 には hosted viewer 候補もあるが、canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしない。[[website-kouchou-ai-case-live-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
-- #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+- #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。2026-06-30 18:44 JST の live check でも open PR は #903 / #891、high priority issue は #884 / #564 / #221 のまま。開発 next action としては #884 作成前確認パネルが第一候補で、全入力経路を同じ pre-create review に通す first slice がよい。[[development-next-actions-live-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
 - 次に決めたいこと: [[thinking-targets]] と [[open-decisions]] に immediate thinking queue / current overlay として、8/2 first demo、#564/#696/#542 の canonical placement、tool catalog placement、docs-safe PR 順序、Slack / 議事録 source 運用などを集約した。会議ではここだけ見れば次の行動を選べる。
@@ -107,7 +108,7 @@ sources:
 - 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 奈良市 / 岩手県 / 東京都の official context、奈良 #全員市長 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
 - #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
-- #221 / #884 の作成前確認パネルを次 code-safe slice にするか決める。first slice は CSV / Spreadsheet / plugin を同じ pre-create review に通し、費用/時間は粗い帯または placeholder、API check は status 統合、sample-first / reuse は導線に留める。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+- #221 / #884 の作成前確認パネルを次 code-safe slice にするか決める。first slice は CSV / Spreadsheet / plugin を同じ pre-create review に通し、費用/時間は粗い帯または placeholder、API check は status 統合、sample-first / reuse は導線に留める。次点は #903 review comment、#885 child slice、#898 validation。[[development-next-actions-live-2026-06-30]]より
 - 自治体 user research をどう切るか決める。`広聴活動一般の実態調査` と `広聴AI適合ケースの探索` を分けるか、どの部署 / 役割 / sampling route を対象にするか。[[meeting-municipality-user-research-scope-2026-06-30]]より
 - 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog をどこに置くか決める。#564 case page、8/2 event material、kouchou-ai docs、DD2030 website のどれを canonical にするかで、読者が広聴AI本体に期待する capability が変わる。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 - Slack / 議事録の source 運用は概ね固定した。残りは、議事録 export に `2026/06/29` 以降の見出しが入った時に、どの source / analysis を先に更新するか。[[wiki-driven-workflow]]より
@@ -230,6 +231,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action の優先候補を #884 first、#903 review comment、#885 child slice、#898 validation に圧縮して定例下書きへ反映。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の再確認を反映し、website issue #125 の hosted viewer 候補は canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしないと追記。
 - 2026-06-30: 18:30 JST の議事録 export / Slack re-pull を反映し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror は `main@341cf80` から変化なしと読み上げ欄へ追記。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで定例下書きへ反映。
