@@ -11,6 +11,8 @@ sources:
   - docker-engine-wsl2-alternative-2026-05-23.md
   - slack-windows-single-exe-2026-05-31.md
   - node-runtime-free-windows-exe-2026-05-31.md
+  - github-pr-891-live-2026-06-30.md
+  - pr-891-standalone-packaging-scope-2026-06-30.md
 ---
 
 ## 問い
@@ -65,6 +67,8 @@ sources:
 current main の確認では、`apps/admin` の Node runtime 責務は server-side fetch、server actions、route handlers、CSP headers に寄っており、多くは既存 FastAPI endpoint への薄い wrapper と読める。`apps/static-site-builder` も Express で `pnpm run build:static` と zip を実行するだけなので、API そのものは Python に寄せられる。したがって、完全単体 exe の前提として **runtime Node なしで Web UI を動かす** issue `#885` を起票した。[[node-runtime-free-windows-exe-2026-05-31]]より
 
 ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。MVP も外部 API route だけでなく、軽量モデル同梱や Foundry Local のような native local AI runtime で **API 契約不要で local 完結**する offline route を比較すべき、という整理に更新した。[[node-runtime-free-windows-exe-2026-05-31]]より
+
+PR #891 は、この段階 4a の探索を実コードで先取りした draft と読める。embeddable Python + FastAPI + static public-viewer/admin assets を bundle に入れ、`/viewer` / `/admin-ui` を FastAPI から配信するため、Node runtime を bundle runtime から外す方向に沿っている。一方で 2026-06-30 時点では draft / dirty / stale で、`report_launcher` の subprocess interpreter、admin static export の build-time source mutation、baked API keys、installer 未実装などが残るため、current supported path ではなく prototype lane として扱う。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より
 
 ## 正規入口を Docker Desktop に置く前提
 
@@ -134,6 +138,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 
 ## Updates
 
+- 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として整理し、embeddable Python + static viewer/admin の prototype だが current supported path ではないと追記
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
 - 2026-06-01: 定例議事録を反映し、非エンジニア橋渡し役の短期導線は Azure デモ環境を優先し、Windows standalone は中長期の privacy / offline / local LLM route として探索する位置づけへ補正
 - 2026-05-31: `#885` の MVP を external API route / offline bundled-model route の 2 本比較に修正。単一バイナリの価値は Docker なしだけでなく API 契約不要にもある

@@ -35,6 +35,8 @@ sources:
   - issue-877-docs-pr-slice-2026-06-30.md
   - github-issue-885-pr-903-live-2026-06-30.md
   - issue-885-node-runtime-next-scope-2026-06-30.md
+  - github-pr-891-live-2026-06-30.md
+  - pr-891-standalone-packaging-scope-2026-06-30.md
 ---
 
 ## 目的
@@ -151,6 +153,7 @@ sources:
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に本体 docs PR 化前の章立てを固定し、[[github-issue-877-live-2026-06-30]] / [[issue-877-docs-pr-slice-2026-06-30]] で open / unassigned の live state と file-by-file scope まで整理した。標準入口は Docker Desktop が使える Windows 10/11 に絞り、組織貸与 PC で Docker Desktop / WSL2 が塞がれる場合は初心者向け guide の対象外として IT 管理者・技術者へ渡す方針。
 - PR #903 は human authored docs PR なので、AI が勝手に branch push せず、[[pr-903-node-runtime-doc-review-2026-06-30]] にレビュー観点を固定し、[[pr-903-review-comment-draft-2026-06-30]] に投稿前コメント案を置いた。CodeRabbit 指摘 3 点に加え、current main の `csvDownloadCommon` / `jsonDownload` server actions が inventory から漏れている可能性を短く伝える案。
 - issue #885 / PR #903 は [[github-issue-885-pr-903-live-2026-06-30]] で live state を固定し、[[issue-885-node-runtime-next-scope-2026-06-30]] で「#903 は第1完了条件の一部で、#885 全体の closure ではない」と整理した。次は inventory 精度を小さく締め、admin export prototype と static-site-builder runtime build 判断を分けるのが衝突しにくい。
+- PR #891 は [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に固定した。embeddable Python + static viewer/admin は #885 の prototype evidence だが、draft / dirty / stale で、`report_launcher` interpreter、baked key、installer 未実装などが残るため、#877 の current Windows setup とは混ぜない。
 - issue #898 は PR #899 merge 済みだが、[[issue-898-close-readiness-2026-06-30]] に整理した通り aarch64 Docker での解消確認がまだない。AI 単独 close は避け、Apple Silicon Docker などで `NUMBA_CPU_NAME=generic` と `import umap`、実レポート生成を確認してから close 判断する。
 
 ## Open Questions
@@ -159,6 +162,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 Windows standalone draft を #885 prototype lane として定例向けに整理
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#885 は #903 後に inventory 精度、admin export prototype、static-site-builder runtime build 判断へ分けると定例向けに追記
 - 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記
 - 2026-06-17: GitHub live state を再確認し、PR #899 が 2026-06-06 に main merge 済みであること、issue #898 は open のまま解消確認待ちであることを反映

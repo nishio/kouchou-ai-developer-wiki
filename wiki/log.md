@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:33] filing-back | PR #891 Windows standalone draft を整理
+
+- [[github-pr-891-live-2026-06-30]] を追加し、PR #891 が open / draft / dirty / stale のまま、embeddable Python + static viewer/admin を試す Windows standalone prototype である現在地を固定
+- [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、#891 は #885 の FastAPI static serving / packaging route の evidence だが、#877 current Windows setup guide とは混ぜないと整理
+- [[windows-distribution-options]] / [[issue-885-node-runtime-next-scope-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から PR #891 の next slice へ接続
+
 ## [2026-06-30 14:29] filing-back | #885 Node runtime 次 scope を整理
 
 - [[github-issue-885-pr-903-live-2026-06-30]] を追加し、issue #885 が open / unassigned、PR #903 が open / review required / blocked の docs-only inventory PR である現在地を GitHub live state として固定

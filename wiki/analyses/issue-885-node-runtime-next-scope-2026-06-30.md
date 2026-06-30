@@ -8,6 +8,8 @@ sources:
   - pr-903-node-runtime-doc-review-2026-06-30.md
   - pr-903-review-comment-draft-2026-06-30.md
   - docs-issue-map-2026-06-30.md
+  - github-pr-891-live-2026-06-30.md
+  - pr-891-standalone-packaging-scope-2026-06-30.md
 ---
 
 ## Conclusion
@@ -40,6 +42,8 @@ admin 側の次 prototype は、`app/page.tsx` の server-side fetch を client 
 
 admin / public-viewer の prebuilt assets を FastAPI が serve し、API と UI を 1 port に寄せる prototype は、CORS / base path / CSP の問題を単純化する可能性がある。ただし Next `headers()` / middleware / instrumentation に寄っている部分は Python 側 static serving の責務として再配置する必要がある。[[source-code]]より
 
+PR #891 は、この prototype を draft branch で先取りしている。viewer は `/viewer`、admin は `/admin-ui` の static SPA として FastAPI から配信し、standalone mode では runtime fetch に寄せる。ただし draft / dirty / stale で、`standalone-prep.mjs` による build-time source mutation、static UI への API key bake、`report_launcher` の subprocess interpreter 問題、installer 未実装などが残るため、#885 の完了ではなく prototype evidence と読む。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より
+
 ### 5. Packaging And Offline Routes
 
 Windows packaging spike は、external API route と offline route を分けて比較する。external API route は OpenAI / Gemini API、local storage、CPU、Docker なしで artifact size と品質を優先する。offline route は API 契約なし、local storage、CPU、Docker なしで local 完結を優先し、Foundry Local + small model を first spike 候補、Chrome Prompt API を client-side 補助候補、Phi Silica / Windows AI APIs を future option と見る。[[node-runtime-free-windows-exe-2026-05-31]]より
@@ -70,4 +74,5 @@ Windows packaging spike は、external API route と offline route を分けて�
 
 ## Updates
 
+- 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として接続し、FastAPI static serving と packaging/offline route の prototype evidence だが readiness risk が残ると追記。
 - 2026-06-30: 初回作成。issue #885 / PR #903 live state と current main の Node runtime touchpoint をもとに、#903 後の next scope を inventory accuracy、admin export prototype、static-site-builder decision、FastAPI static serving、packaging/offline route に分解した。

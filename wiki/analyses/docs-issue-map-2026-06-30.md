@@ -16,6 +16,8 @@ sources:
   - issue-877-docs-pr-slice-2026-06-30.md
   - github-issue-885-pr-903-live-2026-06-30.md
   - issue-885-node-runtime-next-scope-2026-06-30.md
+  - github-pr-891-live-2026-06-30.md
+  - pr-891-standalone-packaging-scope-2026-06-30.md
   - github-dev-docs.md
 ---
 
@@ -29,6 +31,7 @@ sources:
 | issue #877 | open | unassigned | Windows setup guide の supported path と対象外環境を切る docs issue |
 | issue #885 | open | unassigned | Windows 単一実行ファイル配布の前提として runtime Node 依存を外す issue |
 | PR #903 | open, review required, blocked | yasumorishima authored | #885 完了条件の第1項である Node runtime inventory docs。docs-only だが CodeRabbit 指摘あり |
+| PR #891 | open, draft, dirty | tokoroten authored | Windows standalone prototype。docs issue ではないが、#885 の FastAPI static serving / packaging route と接続する |
 
 これらは全部「docs」と呼べるが、同じページに詰めると読者像が混ざる。#876 は「誰がどの入口を読むか」、#877 は「Windows の初心者向け supported path はどこまでか」、#885/#903 は「Windows 単一 exe を現実的にするための技術前提」を扱う。
 
@@ -48,6 +51,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 - `#877` に単一 exe / offline local LLM / Foundry Local まで混ぜない。ここは現行 supported path の明確化で、future distribution は `#885` 側。
 - `#885` を「Windows setup 初心者救済」として語りすぎない。単一 exe は将来の配布 route であり、current docs の Docker Desktop path を即座に置き換えるものではない。
 - PR #903 を merge blocker 解消だけで扱わない。Node runtime inventory の粒度は、後続の admin export / static-site-builder 設計へ効く。
+- PR #891 を #877 の current Windows setup guide に混ぜない。これは future prototype であり、draft / dirty / stale のため supported path として読ませない。
 
 ## Safe Next Steps
 
@@ -66,6 +70,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 ## Updates
 
+- 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 は docs issue ではないが #885 prototype lane として横断地図に接続。
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#903 merge は #885 closure ではなく、inventory 精度・admin export・static-site-builder decision の順に分けると明示。
 - 2026-06-30: 初回作成。issue #876 / #877 / #885 と PR #903 の live state、既存 Wiki の再構成方針、Windows setup 境界、Node runtime inventory 観点を横断整理した。
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 を本体 docs PR に落とす時の章立て、対象外範囲、troubleshoot 表を具体化した。

@@ -17,6 +17,8 @@ sources:
   - issue-877-docs-pr-slice-2026-06-30.md
   - github-issue-885-pr-903-live-2026-06-30.md
   - issue-885-node-runtime-next-scope-2026-06-30.md
+  - github-pr-891-live-2026-06-30.md
+  - pr-891-standalone-packaging-scope-2026-06-30.md
 ---
 
 ## Snapshot
@@ -41,7 +43,7 @@ Slack の広聴AI本体 channel は、直近14日では新しい実装論点が�
 
 議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-minutes]]より
 
-GitHub 現在地としては、PR #903 の docs inventory は小さく直せそうだが、user attention を使う review request / merge には踏み込まない。PR #891 は draft のままなので、今は状況把握対象。issue #898 は PR #899 merge 済みだが issue は open で、aarch64 実機確認または close 判断が残っている。
+GitHub 現在地としては、PR #903 の docs inventory は小さく直せそうだが、user attention を使う review request / merge には踏み込まない。PR #891 は draft のままなので、[[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に状況把握を固定した。issue #898 は PR #899 merge 済みだが issue は open で、aarch64 実機確認または close 判断が残っている。
 
 ## Next
 
@@ -49,6 +51,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案の差分を確認し、[[issue-876-docs-pr-slice-2026-06-30]] に次の本体 docs PR の file-by-file first slice を固定した。`docs/development/developer-quickstart.md` 単体追加ではなく、README / docs index / quickstart / mkdocs nav の役割を同時に下げる方針。[[source-code]]より
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に docs PR 化前の具体アウトラインを固定し、[[issue-877-docs-pr-slice-2026-06-30]] に本体 docs PR の file-by-file slice を追加した。current main の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線まで反映済みだが、API key 前提と対象外環境の切り分けがまだ弱い。[[source-code]]より
 - PR #903 は、[[pr-903-node-runtime-doc-review-2026-06-30]] に docs 精度のレビュー観点を固定し、[[pr-903-review-comment-draft-2026-06-30]] に投稿前コメント案を置いた。[[github-issue-885-pr-903-live-2026-06-30]] で #885 / #903 の live state を改めて固定し、[[issue-885-node-runtime-next-scope-2026-06-30]] で #903 後の #885 scope を inventory accuracy、admin export prototype、static-site-builder decision に分けた。AI からはまだ GitHub へ投稿していない。
+- PR #891 は [[github-pr-891-live-2026-06-30]] で live state と head ref を固定し、[[pr-891-standalone-packaging-scope-2026-06-30]] で #885 prototype lane として整理した。embeddable Python + static viewer/admin は #885 の FastAPI static serving と packaging route に接続するが、draft / dirty / stale、`report_launcher` interpreter、baked keys、installer 未実装などが残る。
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
@@ -60,6 +63,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に固定し、Windows standalone draft は #885 prototype lane だが current supported path ではないと整理。
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、PR #903 は #885 第1完了条件の一部であり、次は inventory 精度、admin export prototype、static-site-builder runtime build 判断を分けると整理。
 - 2026-06-30: 6/29 Slack の Spherical K-means / Faiss K-means 言及を [[slack-algorithm-kmeans-2026-06-29]] / [[spherical-kmeans-experiment-scope-2026-06-30]] に切り出し、採用判断ではなく clean experiment 候補として接続。
 - 2026-06-30: issue #876 live state を [[github-issue-876-live-2026-06-30]] に固定し、[[issue-876-docs-pr-slice-2026-06-30]] で developer docs PR の file-by-file first slice を整理。
