@@ -62,6 +62,11 @@ sources:
   - https://www.komei.or.jp/komeinews/p406695/
   - https://global.fujitsu/ja-jp/pr/news/2026/02/03-01
   - https://recogra.app/
+  - https://2025ai.takahiroanno.com/
+  - https://note.com/yukihoz/n/nce0d25fafd68
+  - https://idobata.yukihoz.tokyo/top
+  - https://suginami-broad-listening.com/
+  - https://www.city.sagamihara.kanagawa.jp/_res/projects/default_project/_page_/001/015/646/2026jikisagamiharashisougoukeikakusuishin.pdf
   - broad-listening-book-public-case-appendix-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
@@ -89,6 +94,8 @@ sources:
 
 2026-06-30 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan、Democracy X、litela、公明党、富士通の公開章と footnote URL を確認した。Code for Japan 章は加古川市の公開済み市民意識調査データ、加古川市版 Decidim、品川区 `しなトーク` を広聴AI/Decidim 連携として説明している。公明党 We Connect、litela Recogra、富士通パブリックコメント AI は public source ありへ進められるが、広聴AI confirmed case ではなく、広義 broad listening / 対面議論支援 / LLM直接分類 adjacent と分ける。Democracy X の長崎県知事選は、公開章で事例名を確認できるが、個別 public report URL が未確認なので candidate のままにする。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
+2026-06-30 18:46 JST に追加検索し、東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニング、相模原市の意見募集結果 PDF を確認した。前 3 件は `collect / deepen / deliberate` 側の public platform / campaign practice として扱い、広聴AI confirmed case とは分ける。相模原市 PDF は市民意見内で広聴AI / いどばた / AI avatar / ブロードリスニング技術が提案され、市の回答が付いた official document だが、実施済み事例ではなく需要シグナルとして扱う。
+
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
 ## Confirmed public cases
@@ -111,6 +118,8 @@ sources:
 | 国民民主党 / 伊藤孝恵議員 | party official | 就職氷河期世代の声を、電話、Googleフォーム、SNS、YouTube live などから集め、AIで収集・分析し政策ニーズを可視化したブロードリスニング結果として国会質疑に用いた。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。AI broad listening の政治・国会利用例として扱う。 |
 | 日本維新の会 | party official | 政策AI活用プロジェクトとしてブロードリスニングを導入し、X / Google Form / YouTube コメントで意見募集すると公開している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。実施中 campaign / party official broad listening として扱う。 |
 | チームみらい マニフェスト策定 | party / campaign official | official policy page で、GitHub / いどばた / ブロードリスニング等を用いて政策改善を進め、短期間に 1000 件超の意見を集めたと説明している。Talk to the City、広聴AI、いどばたの名前も出ている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 政党・政策形成 case として扱う。広聴AI単独の導入実績ではなく、複数 tool を組み合わせた参加型政策形成として分類する。 |
+| 東京都AI戦略いどばた会議 | public policy platform | 安野貴博氏が運営する東京都AI戦略会議向けの政策議論 platform として、いどばた熟議システム、X、YouTube 等から意見を集め、AI 技術も使って政策提言を作成・改善する public site を確認。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI confirmed case ではなく、いどばた / 政策共創 / 大規模熟議 platform の public example。8/2 では技術・ツールの幅を示す補助線にする。 |
+| すぎなみブロードリスニング | public campaign / civic platform | public site で、市民参加型意見交換 platform として公開され、参加者数・意見数・リアクション数、政策テーマ別の投稿導線を確認。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI導入実績ではなく、選挙・政策文脈の broad listening platform。杉並区公式ではなく campaign / civic practice として source strength を分ける。 |
 | 公明党 We Connect | party official + book chapter | 公式特設サイトと公明新聞記事で、若者・現役世代の声を政策立案へつなぐアンケート、AI等による多角的分析、参院選重点政策への反映プロセスを確認。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed ではない。党組織と Google Form / AI 分析を組み合わせた broad listening adjacent case として扱う。 |
 | 日本テレビ衆院選報道 | public article / broadcast context | 安野チームの note は、日本テレビの衆院選報道をブロードリスニングで支援したと説明している。DD2030 公式ページも選挙報道を活用事例に含めている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI前史 / TTTC派生の報道利用。公式 NTV一次ページは追加確認対象。 |
 
@@ -121,6 +130,7 @@ sources:
 | サイボウズ `白黒つけない会議` | company official + public reports | サイボウズ official project page と report page で、投稿された意見を DD2030 の OSS `kouchou-ai` で可視化・分類した report が公開されていることを確認。Cybozu Labs の plurality 研究ページからも関連 project として辿れる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体公式 case ではないが、広聴AI confirmed public artifact として強い。#564 の自治体向け first 3 ではなく、活用領域の広がりとして出す。 |
 | アルティウスリンク VOC / Broad Listening Service | company official press release | 2026-05-11 の official release で、広聴AIを活用したコンタクトセンター VOC 分析と `Broad Listening Service` 強化が公開されている。2025-05-22 release では、先行して LLM による問合せ理由分類アプリの導入が説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / VOC case。公共 sector の広聴AI事例とは別に、顧客の声分析への応用として分類する。 |
 | DirectVote | campaign official | 安野氏の campaign official page で、DirectVote と Talk to the City / ブロードリスニング系の参加導線を確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI confirmed case ではなく、政治参加 / TTTC lineage / broad listening 前史として扱う。 |
+| 中央区みんなでアップデート会議 | local politician note + public platform | 中央区議会議員の note で、区民が中央区の課題について議論できる platform として紹介され、public site も確認できた。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AIではなく、いどばた / civic discussion platform の local practice。自治体公式 proof ではなく、政治家個人が作った実践として扱う。 |
 | litela Recogra / 田原本町・富岡市 | book chapter + product page | litela 章で、対面グループ議論をリアルタイム可視化し、ファシリテーターの文脈理解と全体共有を支援する Recogra の田原本町・富岡市実証が説明されている。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed case ではなく、対面議論の `facilitate / deepen` 側の adjacent practice。 |
 | 富士通パブリックコメント AI | company official press release + book column | 富士通 official release と book column で、中央省庁とパブリックコメント業務に Takane を用いる実証を行い、意見分類・要約・条項対応付け・傾向分析を扱ったことを確認。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed ではなく、LLM 直接分類 / 行政パブコメ処理の adjacent case。 |
 
@@ -138,9 +148,12 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 与謝野未来会議は、与謝野町 official PDF で AI / デジタルを使った住民提案の public artifact を確認できる。ただし今回の direct verification では、広聴AIで自由記述を分析・可視化した confirmed artifact までは確認していない。したがって `広聴AI confirmed` ではなく、いどばた / AI 支援型住民対話 / civic deliberation adjacent として扱う。
 
+東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニングは、いずれも `収集・深掘り・政策共創` 側の public practice として有用である。ただし、広聴AIの `analyze / show` 実績ではないため、#564 の広聴AI活用事例ページへ入れるなら「周辺ツール / broad listening の広がり」枠に分ける。
+
 ## Candidate leads not yet confirmed enough
 
 - Web book 付録 / 目次由来の追加候補: 大阪府、チームみらい、DirectVote、アルティウスリンク、サイボウズ、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI は public source ありへ進めた。ただし、大阪府は広義 broad listening、チームみらいは複数 tool の参加型政策形成、DirectVote は TTTC lineage、アルティウスリンクは VOC / enterprise、サイボウズは企業 civic discussion、Code for Japan は implementation partner verified、litela は対面議論支援、富士通は LLM直接分類 adjacent なので、同じ `広聴AI導入実績` として並べない。与謝野町は AI支援住民対話 adjacent、東大阪市 / 太田市 / 田原本町 / 富岡市 / 長崎県知事選は追加 primary confirmation queue に残す。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+- 相模原市の意見募集結果 PDF: official document 内で市民意見として広聴AI / いどばた / AI avatar / ブロードリスニング技術の試験導入が提案され、市の回答が付いている。ただし実施済み活用事例ではないため、`public demand signal` / `municipality interest` として扱い、case list には昇格しない。
 - 奈良市 official PDF: 16:48 JST の追加検索で現行 PDF 群を確認できたため、candidate から official document case へ昇格した。ただし `奈良 #全員市長` public viewer とは別文脈として扱う。
 - 朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
 - Slack `#1_事例紹介_全体` の lead: [[slack-case-introduction-channel-2026-03-04]] に固定した通り、Slack lead は candidate intake として有用だが、外部公開では primary public URL へ昇格したものだけを実績扱いにする。
@@ -156,9 +169,11 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 - サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の公開事例ページに入れるか、自治体向けページとは別の「応用領域」section に分けるか。
 - Democracy X / 長崎県知事選は、どの public report URL を source of truth として確認するか。
 - Code for Japan / 加古川市・品川区や litela Recogra のような implementation partner verified / adjacent practice を、DD2030 website に載せる場合、自治体公式 proof と同じ表に置くか、応用領域 / 実装支援者 section に分けるか。
+- いどばた / broad listening platform の public practice を、広聴AI case page に隣接枠として載せるか、別の tool catalog / broad listening history page に分けるか。
 
 ## Updates
 
+- 2026-06-30: 18:46 JST の追加検索で、東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニング、相模原市意見募集結果 PDF を確認し、広聴AI実績ではなく `collect / deepen / deliberate` 側の public practice / demand signal として分類した。
 - 2026-06-30: 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI を source strength 付きで追記。長崎県知事選は public report URL 未確認なので candidate のまま。
 - 2026-06-30: 18:05 JST の追加検索で、Web book 「本書の読みかた」に見える Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。
 - 2026-06-30: 17:30 JST の追加 direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町の public source を確認し、tool lineage と source strength に応じて `自治体 broad listening` / `政党・政策形成` / `企業・VOC` / `AI支援住民対話 adjacent` へ分類した。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:49] filing-back | いどばた系・その他 broad listening 事例を追加分類
+
+- 追加Web検索で東京都AI戦略いどばた会議、すぎなみブロードリスニング、中央区みんなでアップデート会議、相模原市意見募集結果 PDF を確認し、[[public-web-broadlistening-japan-use-cases-2026-06-30]] に追記
+- 3 件は広聴AI confirmed case ではなく `collect / deepen / deliberate` 側、相模原市 PDF は実施済み事例ではなく municipality demand signal として [[japan-broadlistening-use-case-map-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[meeting-report-draft]] へ反映
+
 ## [2026-06-30 18:44] filing-back | 開発 next action を live state から圧縮
 
 - [[development-next-actions-live-2026-06-30]] を追加し、18:44 JST の open PR / high priority issue / nishio assigned issue 確認から、#884 作成前確認パネルを開発 next action 第一候補として固定
