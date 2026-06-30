@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:54] filing-back | #221/#884 試行錯誤負担削減を live recheck
+
+- [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、current main では作成前確認パネルが未実装であることを固定
+- [[trial-and-error-burden-reduction-2026-05-29]] / [[thinking-targets]] / [[meeting-report-draft]] へ、CSV / Spreadsheet / plugin を同じ pre-create review に通す first slice として接続
+
 ## [2026-06-30 16:48] filing-back | 国内 broad listening 事例を追加検索で再補強
 
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] に奈良市 official PDF 群、渋谷区 press release、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を追記し、奈良市は自治体公式 document case へ昇格

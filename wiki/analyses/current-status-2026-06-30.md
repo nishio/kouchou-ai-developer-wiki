@@ -32,6 +32,7 @@ sources:
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
+  - github-issues-221-884-trial-burden-live-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -54,6 +55,8 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 
 2026-06-30 15:59 に GitHub live state を再確認したが、open PR は #903 / #891 の 2 本、open issue は 123 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#564 / #696 / #542 も open / unassigned のままだった。
 
+2026-06-30 16:54 に high priority issue を再確認し、open high priority は #884 / #564 / #221 の 3 件だった。#884 は #221 の concrete tracking issue として open / unassigned のままで、作成前確認パネルは current main にはまだ入っていない。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+
 ## Reading
 
 Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では 6/29 に embedding / Spherical K-means / Faiss K-means の話が出ており、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に固定した。採用判断ではなく、clustering space / objective / backend を分けた clean experiment 候補として扱うのが妥当。[[slack-logs-repository]]より
@@ -67,6 +70,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 ## Next
 
 - docs 系 issue / PR の横断地図は [[docs-issue-map-2026-06-30]] に固定した。#876 / #877 / #885 / #903 は同じ docs 群でも読者像・Windows supported path・Node runtime 技術前提を分けて扱う。
+- #221 / #884 の試行錯誤負担削減は [[github-issues-221-884-trial-burden-live-2026-06-30]] に live recheck を固定した。current main では CSV / plugin に `window.confirm` が残り、spreadsheet は同じ警告を通らず、API check は手動、reuse は別導線である。次に code-safe に進めるなら、全入力経路を同じ pre-create review に通す first slice が自然。
 - [[docs-issue-map-2026-06-30]] には #696/#542 reading guide docs も docs-safe lane として追加した。次 PR 選びでは、#903 review comment、#877 Windows guide、#876 docs spine、#696/#542 reading guide、#885 prototype を collision risk と human decision で分けて見る。
 - #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案の差分を確認し、[[issue-876-docs-pr-slice-2026-06-30]] に次の本体 docs PR の file-by-file first slice を固定した。`docs/development/developer-quickstart.md` 単体追加ではなく、README / docs index / quickstart / mkdocs nav の役割を同時に下げる方針。[[source-code]]より
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に docs PR 化前の具体アウトラインを固定し、[[issue-877-docs-pr-slice-2026-06-30]] に本体 docs PR の file-by-file slice を追加した。current main の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線まで反映済みだが、API key 前提と対象外環境の切り分けがまだ弱い。[[source-code]]より
@@ -91,6 +95,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口の public source を国内 broad listening 事例 map に接続した。
 - 2026-06-30: [[slack-logs-repository]] / [[wiki-driven-workflow]] / `CLAUDE.md` を更新し、Slack user id 解決と raw / mirror / oss_weekly_reporter の三分法を source ops として固定した。
 - 2026-06-30: #696 / #542 / #539 を再読し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正した。

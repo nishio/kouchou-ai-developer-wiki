@@ -7,6 +7,7 @@ sources:
   - remaining-issue-priority-2026-05-29.md
   - problem-list-from-open-issues-2026-05-19.md
   - development-priority-roadmap-2026-05-23.md
+  - github-issues-221-884-trial-burden-live-2026-06-30.md
 ---
 
 ## 問い
@@ -76,6 +77,8 @@ Issue を新しく切るなら、タイトルは `レポート作成前に入力
 
 2026-05-29 にこの方針で `#884` `[FEATURE] レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` を起票した。labels は `enhancement`, `Admin`, `API`, `design`, `high priority`。`#221` には concrete tracking issue としてコメントし、`#11`, `#79`, `#292`, `#391`, `#97` にも `#884` の下位論点として整理するコメントを追加した。`#391` は未分類だったため `enhancement`, `Admin`, `API` label も追加した。[[github-dev-docs]]より
 
+2026-06-30 の live recheck でも、#884 は open / high priority / unassigned のままで、#221 は umbrella として open のまま。high priority issue は #884 / #564 / #221 の 3 件で、試行錯誤負担削減はまだ現行の短期 priority に残っている。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+
 完了条件の最小形:
 
 - CSV / spreadsheet / plugin のどの入力でも、送信前に同じ確認パネルを通る
@@ -85,6 +88,14 @@ Issue を新しく切るなら、タイトルは `レポート作成前に入力
 - コスト/時間は「目安なし」でもよいが、表示領域を先に作る。入れる場合は粗い帯に留める
 
 次の PR で、coarse cost estimator と time bucket を入れる。価格表は変わるので、金額の精度より「見積もりの粒度と責任範囲」を先に決めるべきである。[[source-code]]より
+
+## 2026-06-30 live recheck
+
+`work/kouchou-ai main@d5c9ece` では、`apps/admin/app/create/page.tsx` の create flow はまだ CSV / plugin path の `window.confirm` と、送信ボタン横の手動 `EnvironmentCheckDialog` に分かれている。spreadsheet path は comments を組み立てるが、`comments.length < clusterLv2` の同じ警告を通っていない。したがって #884 の first slice は「既存 confirm の見た目改善」ではなく、CSV / Spreadsheet / plugin を同じ pre-create review model に通す修正として切るべきである。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+
+API check は既に `authentication_error` / `insufficient_quota` / `rate_limit_error` / `unknown_error` を表示できるため、新規に API check を作るより、作成前確認パネル内で `未確認 / OK / error` を見せ、どの error を hard block にするかを決める方が current main に合う。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+
+reuse は `docs/user-guide/reuse-report.md`、`/reuse/:slug`、`DuplicateReportDialog`、analysis-core `reuse_from` まで入っている。したがって #221 の「やり直しコスト削減」は、未実装大機能ではなく、作成前確認で大規模入力に sample-first / reuse を促す UX へ接続するのが短期の筋である。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 
 ## 注意点
 
@@ -102,5 +113,6 @@ Issue を新しく切るなら、タイトルは `レポート作成前に入力
 
 ## Updates
 
+- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 が open / high priority のまま current main でも未実装であること、spreadsheet path の警告抜け、API check / reuse の既存能力との接続を追記。
 - 2026-05-29: 方針に沿って GitHub issue `#884` を起票し、`#221`, `#11`, `#79`, `#292`, `#391`, `#97` へ相互リンクコメントを追加。`#391` には `enhancement`, `Admin`, `API` label を追加した。
 - 2026-05-29: 初版作成。open issue 再棚卸し後の `#221` 系について、current main の作成画面、API 接続チェック、token/cost 表示、再利用機能と照合して整理した。

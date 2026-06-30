@@ -13,6 +13,7 @@ sources:
   - japan-broadlistening-use-case-map-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
+  - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
 ---
 
@@ -50,7 +51,14 @@ sources:
 - 決まれば動けること: 人間の作業 branch と衝突しにくい file-by-file PR slice が切れる
 - 関連: [[docs-issue-map-2026-06-30]], [[issue-876-docs-pr-slice-2026-06-30]], [[issue-877-docs-pr-slice-2026-06-30]], [[issue-885-node-runtime-next-scope-2026-06-30]]
 
-### 0-4. Slack / 議事録 source 運用の次の固定
+### 0-4. #221 / #884 の作成前確認パネルを次 code-safe slice にするか
+
+- 問い: high priority の #221 / #884 を、次の本体 PR として進めるか。#884 は current main で未実装で、CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している
+- 思考の最小単位: first slice を「CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review を出す」に絞るかを決める。費用/時間は placeholder または粗い帯、API check は status 表示、sample-first / reuse は導線に留める
+- 決まれば動けること: `apps/admin/app/create/page.tsx` 周辺に閉じた実装 PR を切れる。#11/#79/#292/#391/#97 をどこまで close 可能かは PR 後に個別判定する
+- 関連: [[trial-and-error-burden-reduction-2026-05-29]], [[github-issues-221-884-trial-burden-live-2026-06-30]]
+
+### 0-5. Slack / 議事録 source 運用の次の固定
 
 - 問い: `digitaldemocracy2030/slack-logs` を Slack raw 一次 source として定着させた後、既存の `oss_weekly_reporter` source をどこまで置き換えるか。また、議事録 `2026/06/29` 見出しが export に出た時、どの source / analysis を先に更新するか
 - 思考の最小単位: Slack は raw/mirror を一次、weekly reporter は GitHub activity と AI 要約の補助線、という役割を canonical docs にどこまで反映するか決める。2026-06-30 時点では、一括置換せず、直近 Slack は `mirror/`、古い Slack は `raw/`、週次流れは既存 `weekly-log-*` / `oss_weekly_reporter` を残す三分法に寄せた
@@ -166,6 +174,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として immediate queue に追加。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群を自治体公式 proof に昇格し、奈良市 document case と奈良 #全員市長 viewer demo を 8/2 first demo 判断で分ける必要を追記。
 - 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、#564/#696/#542 trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス など)

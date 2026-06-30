@@ -51,6 +51,7 @@ sources:
   - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
+  - github-issues-221-884-trial-burden-live-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -83,6 +84,7 @@ sources:
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
+- #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
 - 次に決めたいこと: [[thinking-targets]] に immediate thinking queue として、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点を集約した。会議ではここだけ見れば次の行動を選べる。
@@ -92,6 +94,7 @@ sources:
 - 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 奈良市 / 岩手県 / 東京都の official context、奈良 #全員市長 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
 - #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
+- #221 / #884 の作成前確認パネルを次 code-safe slice にするか決める。first slice は CSV / Spreadsheet / plugin を同じ pre-create review に通し、費用/時間は粗い帯または placeholder、API check は status 統合、sample-first / reuse は導線に留める。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - Slack / 議事録の source 運用は概ね固定した。残りは、議事録 export に `2026/06/29` 以降の見出しが入った時に、どの source / analysis を先に更新するか。[[wiki-driven-workflow]]より
 
 ## 過去の議題候補 (2026-06-08 定例)
@@ -192,6 +195,7 @@ sources:
 - [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake、外部公開ページは primary URL 確認済み case list として分ける必要を整理した。舞鶴2040は Slack lead から public viewer / 特設サイト / 市公式 project page へ接続できた。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
 - [[thinking-targets]] / [[open-decisions]] を 6/30 状態へ同期した。会議で人間に聞くべき短期未決は、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 つ。
+- [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221 / #884 の作成前確認パネルを 6/30 high priority の code-safe slice 候補として再浮上させた。current main では spreadsheet path の warning gap と手動 API check の分離が残っている。
 
 ### docs-first / no-conflict lane
 
@@ -210,6 +214,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として定例下書きへ反映。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口を確認し、8/2 readiness と公開事例 map の読み上げを補正。
 - 2026-06-30: Slack source ops を補強し、直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` の三分法と user id 解決を読み上げ欄へ反映。
 - 2026-06-30: #696 / #542 / #539 再読を反映し、reading guide に課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を追加。
