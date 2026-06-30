@@ -12,9 +12,11 @@ sources:
   - https://www.seisakukikaku.metro.tokyo.lg.jp/basic-plan/choki-plan/ikenbosyu
   - https://www.seisakukikaku.metro.tokyo.lg.jp/basic-plan/2050-tokyo
   - https://note.govtechtokyo.jp/n/ndcf8d6b35939
+  - https://www.pref.osaka.lg.jp/o060020/senryaku_kikaku/broad_listening.html
   - https://www.pref.hiroshima.lg.jp/site/hiroshima-dx-torikumi/hiroshimanomirai.html
   - https://www.pref.iwate.jp/kensei/kouchoukouhou/1086730.html
   - https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/086/730/genkou.pdf
+  - https://www.town.yosano.lg.jp/assets/yosanomiraikaigi_teian.pdf
   - https://www.city.nara.lg.jp/uploaded/attachment/212492.pdf
   - https://www.city.nara.lg.jp/uploaded/attachment/212398.pdf
   - https://www.city.nara.lg.jp/uploaded/attachment/208222.pdf
@@ -32,8 +34,15 @@ sources:
   - https://note.com/annotakahiro24/n/ndd21a8ba3eec
   - https://note.com/nishiohirokazu/n/n6389bc1e355f
   - https://note.com/nasukas/n/n6d8afdfa34ca
+  - https://policy.team-mir.ai/policies/digital-democracy
+  - https://takahiroanno.com/directvote
   - https://zenn.dev/jins/articles/06c5c89bd6d744
   - https://developers.gmo.jp/technology/50905/
+  - https://cybozu.co.jp/not-shirokuro/
+  - https://cybozu.co.jp/not-shirokuro/ai00101/
+  - https://labs.cybozu.co.jp/research/plurality.html
+  - https://www.altius-link.com/news/detail20260511.html
+  - https://www.altius-link.com/news/detail20250522.html
   - https://ideiryosuke-nakano.com/activities/3707/
   - https://dd2030.org/broad-listening/
   - https://github.com/digitaldemocracy2030/broad-listening-book/blob/main/99_%E4%BB%98%E9%8C%B2_%E5%85%AC%E9%96%8B%E4%BA%8B%E4%BE%8B%E4%B8%80%E8%A6%A7.md
@@ -62,6 +71,8 @@ sources:
 
 2026-06-30 17:05 JST に追加検索し、Web book / GitHub 付録 `99_付録_公開事例一覧.md`、Docswell の広聴AI技術解説、東大阪市の public note、JMOOC PDF を確認した。Web book 付録は大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど、既存 map にない候補を含む public catalog だが、各 primary URL を direct に再確認したわけではないため、`book appendix candidate` として扱う。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
+2026-06-30 17:30 JST に Web book 付録由来候補の一部を direct verification した。大阪府は府公式の broad listening 実証ページ、チームみらいは official policy page、DirectVote は安野氏の campaign official page、サイボウズは official project / report page、アルティウスリンクは official press release、与謝野町は official proposal PDF まで確認した。大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンクは `candidate` から direct public source ありへ進められるが、tool lineage はそれぞれ違う。与謝野町は AI / デジタル活用の public artifact は確認できるが、広聴AI confirmed case ではなく、いどばた / AI 支援型住民対話の周辺実践として扱う。
+
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
 ## Confirmed public cases
@@ -70,6 +81,7 @@ sources:
 |---|---|---|---|
 | DD2030 official case page | DD2030 official | 広聴AIの活用事例として、選挙報道、東京都 2050 戦略案、宇多津町の 3 類型が紹介されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 事例名の入口として使えるが、個別の詳しい根拠は各 primary page を併読する。 |
 | 東京都 / GovTech東京 `シン東京2050` | government official + GovTech article | 東京都は 2050 東京戦略の意見募集を、安野氏の技術サポートを受けたブロードリスニング手法として公開し、最終ページでは AI 分析により戦略の政策体系を見直したと説明している。GovTech東京 note は、同 project を内製開発事例として説明している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | TTTC / 広聴AIの系譜説明で重要。広聴AI post-OSS の自治体導入とは分ける。 |
+| 大阪府 万博効果のブロードリスニング | prefecture official | 府公式ページで、大阪・関西万博開催による影響をテーマに broad listening 実証実験を行い、結果概要・中間レポート・最終レポートを公開していることを確認。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式 broad listening case として扱う。ページ上の主要 tool / 実施体制は広聴AI confirmed ではなく、広義の broad listening / Liqlid 等の協力 case として分ける。 |
 | 宇多津町 | municipality official | 第2次宇多津町総合計画の町民アンケート自由記述 396 件を、広聴AIで整理するブロードリスニング trial として公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式かつ件数・用途が明確。#564 の public case schema に最も載せやすい。 |
 | 渋谷区 | municipality official | 令和6年度区民意識調査の自由回答 6,037 件を対象に、デジタル民主主義2030の広聴AIでブロードリスニング trial を実施。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 既存の 8/2 棚卸しにも入っている trust context。PDF は HTTP 200 を確認。 |
 | 奈良市総合計画関連資料 | municipality official PDF | 奈良市の総合計画関連 official PDF 群で、広聴AIを用いて市民意見 1,361 件を整理した資料が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `奈良 #全員市長` public viewer とは別の自治体公式 document case。viewer demo ではなく official proof として扱う。 |
@@ -81,7 +93,16 @@ sources:
 | 八代市 Democracy-X | public article + viewer | Democracy-X 記事で、八代市長と連携し、広聴AIを用いて市民の声を可視化したブロードリスニングとして説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | Deep case 候補。ただし政治・政策文脈の言い方に注意する。 |
 | 国民民主党 / 伊藤孝恵議員 | party official | 就職氷河期世代の声を、電話、Googleフォーム、SNS、YouTube live などから集め、AIで収集・分析し政策ニーズを可視化したブロードリスニング結果として国会質疑に用いた。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。AI broad listening の政治・国会利用例として扱う。 |
 | 日本維新の会 | party official | 政策AI活用プロジェクトとしてブロードリスニングを導入し、X / Google Form / YouTube コメントで意見募集すると公開している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。実施中 campaign / party official broad listening として扱う。 |
+| チームみらい マニフェスト策定 | party / campaign official | official policy page で、GitHub / いどばた / ブロードリスニング等を用いて政策改善を進め、短期間に 1000 件超の意見を集めたと説明している。Talk to the City、広聴AI、いどばたの名前も出ている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 政党・政策形成 case として扱う。広聴AI単独の導入実績ではなく、複数 tool を組み合わせた参加型政策形成として分類する。 |
 | 日本テレビ衆院選報道 | public article / broadcast context | 安野チームの note は、日本テレビの衆院選報道をブロードリスニングで支援したと説明している。DD2030 公式ページも選挙報道を活用事例に含めている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI前史 / TTTC派生の報道利用。公式 NTV一次ページは追加確認対象。 |
+
+## Enterprise / civic adjacent cases
+
+| case | source strength | what was confirmed | notes |
+|---|---|---|---|
+| サイボウズ `白黒つけない会議` | company official + public reports | サイボウズ official project page と report page で、投稿された意見を DD2030 の OSS `kouchou-ai` で可視化・分類した report が公開されていることを確認。Cybozu Labs の plurality 研究ページからも関連 project として辿れる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体公式 case ではないが、広聴AI confirmed public artifact として強い。#564 の自治体向け first 3 ではなく、活用領域の広がりとして出す。 |
+| アルティウスリンク VOC / Broad Listening Service | company official press release | 2026-05-11 の official release で、広聴AIを活用したコンタクトセンター VOC 分析と `Broad Listening Service` 強化が公開されている。2025-05-22 release では、先行して LLM による問合せ理由分類アプリの導入が説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / VOC case。公共 sector の広聴AI事例とは別に、顧客の声分析への応用として分類する。 |
+| DirectVote | campaign official | 安野氏の campaign official page で、DirectVote と Talk to the City / ブロードリスニング系の参加導線を確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI confirmed case ではなく、政治参加 / TTTC lineage / broad listening 前史として扱う。 |
 
 ## Talk to the City / adjacent context
 
@@ -95,11 +116,13 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 中野駅新北口周辺まちづくりの public article は、DD2030 の実験として broad listening の資料 URL と件数が示されている。ただし自治体公式ではなく、公開記事中の表記も `公聴AI` になっているため、広聴AI confirmed case ではなく、local politics / broad listening adjacent lead として扱う。
 
+与謝野未来会議は、与謝野町 official PDF で AI / デジタルを使った住民提案の public artifact を確認できる。ただし今回の direct verification では、広聴AIで自由記述を分析・可視化した confirmed artifact までは確認していない。したがって `広聴AI confirmed` ではなく、いどばた / AI 支援型住民対話 / civic deliberation adjacent として扱う。
+
 ## Candidate leads not yet confirmed enough
 
-- Web book 付録由来の追加候補: 大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど。公開 catalog としては有用だが、外部公開事例へ載せる前に primary URL を個別確認し、`広聴AI confirmed` / `TTTC lineage` / `broad listening adjacent` / `book appendix candidate` を分ける。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+- Web book 付録由来の追加候補: 大阪府、チームみらい、DirectVote、アルティウスリンク、サイボウズは 2026-06-30 17:30 JST の direct verification で public source ありへ進めた。ただし、大阪府は広義 broad listening、チームみらいは複数 tool の参加型政策形成、DirectVote は TTTC lineage、アルティウスリンクは VOC / enterprise、サイボウズは企業 civic discussion なので、同じ `広聴AI導入実績` として並べない。与謝野町は AI支援住民対話 adjacent、東大阪市 / 太田市 / 公明党は追加 primary confirmation queue に残す。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 - 奈良市 official PDF: 16:48 JST の追加検索で現行 PDF 群を確認できたため、candidate から official document case へ昇格した。ただし `奈良 #全員市長` public viewer とは別文脈として扱う。
-- アルティウスリンク、朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
+- 朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
 - Slack `#1_事例紹介_全体` の lead: [[slack-case-introduction-channel-2026-03-04]] に固定した通り、Slack lead は candidate intake として有用だが、外部公開では primary public URL へ昇格したものだけを実績扱いにする。
 
 ## Open Questions
@@ -110,9 +133,11 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 - 奈良市 official documents と `奈良 #全員市長` viewer は、同じ奈良県内の事例としてまとめるか、自治体公式 document case と政治 / viewer demo case に分けるか。
 - 404 になっている viewer / PDF は、単なる URL 移動か、公開停止か。
 - 北見、M-1、JINS、GMO、中野のような public viewer / technical article / adjacent practice を、公開事例ページに載せるか、開発者向け reference に留めるか。
+- サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の公開事例ページに入れるか、自治体向けページとは別の「応用領域」section に分けるか。
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の追加 direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町の public source を確認し、tool lineage と source strength に応じて `自治体 broad listening` / `政党・政策形成` / `企業・VOC` / `AI支援住民対話 adjacent` へ分類した。
 - 2026-06-30: 17:05 JST の追加検索で、Web book 付録 `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] に source 化し、大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズなどを direct verification queue に追加した。
 - 2026-06-30: 16:48 JST の追加検索で、奈良市 official PDF 群を candidate から自治体公式 document case へ昇格し、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を adjacent practice として追記した。
 - 2026-06-30: 16:05 JST の追加検索で、東京都 / GovTech東京、岩手県、日本維新の会、北見、日本テレビ衆院選、M-1 2024、JINS を source strength 付きで追記し、岩手県と日本維新の会を candidate から昇格した。

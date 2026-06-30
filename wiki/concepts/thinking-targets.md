@@ -38,7 +38,7 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 ### 0-1. 8/2 の first demo を何にするか
 
 - 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
-- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote などは、first demo ではなく direct verification queue として別枠に置く。Brand Compass 観点では、demo が `聞く能力` の story と A/B/C/D 配布形態のどこに当たるかも 1 行で添える
+- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は 2026-06-30 17:30 JST に public source を確認済みだが、first demo ではなく `広義 broad listening` / `政党・政策形成` / `TTTC lineage` / `企業・VOC` / `AI 支援住民対話 adjacent` として別枠に置く。Brand Compass 観点では、demo が `聞く能力` の story と A/B/C/D 配布形態のどこに当たるかも 1 行で添える
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
 - 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
@@ -76,6 +76,13 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 思考の最小単位: `広聴活動一般の探索` と `広聴AI適合ケースの探索` のどちらを先に聞くか決める。対象部署、役割、人数規模、sampling route、Cartographer / いどばた / 広聴AI のどれに解くべき課題かを 1 枚に分ける
 - 決まれば動けること: user research instrument を public case intake と混ぜずに作れる。#564 の case intake は public artifact / 掲載許諾 / source strength、user research は roadmap 前提検証として分けられる
 - 関連: [[meeting-municipality-user-research-scope-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]], [[public-case-page-skeleton-2026-06-30]]
+
+### 0-7. 企業 / VOC / 広義 broad listening を公開事例ページに入れるか
+
+- 問い: サイボウズ / アルティウスリンクのような企業・VOC case、大阪府のような広義 broad listening case、DirectVote / チームみらいのような政党・TTTC lineage case を、DD2030 website の `kouchou-ai/case` に同居させるか、ブロードリスニング全体 / 応用領域 / 系譜ページへ分けるか
+- 思考の最小単位: first page の読者を `自治体導入検討者` に固定するか、`国内 broad listening の広がりを知りたい人` まで広げるかを決める。前者なら first 3 は自治体公式 + viewer + deep case に絞り、企業/VOCや TTTC lineage は後段または別ページに送る
+- 決まれば動けること: #564 public page の章立てと、Web book 付録由来候補の掲載基準を固定できる
+- 関連: [[public-web-broadlistening-japan-use-cases-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[public-case-page-skeleton-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
 
@@ -186,6 +193,7 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を first demo ではなく source strength / tool lineage で分ける判断を 0-1 と 0-7 に追加。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として immediate queue に追加。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群を自治体公式 proof に昇格し、奈良市 document case と奈良 #全員市長 viewer demo を 8/2 first demo 判断で分ける必要を追記。
 - 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、#564/#696/#542 trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。

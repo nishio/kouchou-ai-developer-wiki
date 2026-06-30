@@ -21,9 +21,9 @@ sources:
 
 8/2 イベントで衝突なく使いやすい demo stack は、(1) 渋谷区 official page / PDF で自治体公式の public artifact があることを示す、(2) 奈良 #全員市長の public viewer で広聴AIの読み方を見せる、(3) 八代市は深い実践事例として扱えるが、政治・政策文脈の表現に注意する、という順序が安全である。[[public-broadlistening-artifacts-2026-06-30]]より
 
-公開Web検索で、宇多津町、奈良市、岩手県、広島県、東京都 / GovTech東京、舞鶴2040、北見、国民民主党、日本維新の会などの public source も確認できた。ただし 8/2 の default demo order は大きく変えず、公式性を補強する source と viewer demo の代替候補として使うのがよい。[[japan-broadlistening-use-case-map-2026-06-30]]より
+公開Web検索で、宇多津町、奈良市、岩手県、広島県、東京都 / GovTech東京、大阪府、舞鶴2040、北見、国民民主党、日本維新の会、チームみらいなどの public source も確認できた。ただし 8/2 の default demo order は大きく変えず、公式性を補強する source と viewer demo の代替候補として使うのがよい。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
-Web book 付録の公開事例一覧は、8/2 で「日本での活用が複数領域に広がっている」ことを示す breadth source として使える。ただし、大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなどは primary URL を direct verification してから外部スライドや demo に載せる。first demo の根拠には、引き続き direct 確認済みの official page / public viewer を使う。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+Web book 付録の公開事例一覧は、8/2 で「日本での活用が複数領域に広がっている」ことを示す breadth source として使える。2026-06-30 17:30 JST の direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで進めた。ただし、first demo の根拠には、引き続き direct 確認済みの official page / public viewer を使う。サイボウズ / アルティウスリンクは応用領域、与謝野町は AI 支援住民対話 adjacent として補助線に留める。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 Azure デモ環境は、現時点では「自分のデータを投入する場所」より「使い方や準備データを理解する参照環境」として位置づけ直されている。したがって 8/2 では、専用環境を主役にするより、公開事例 / サンプルレポート / サンプル CSV の導線を前面に出す方がよい。[[azure-demo-public-visibility-proposal-2026-06-04]]より [[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
@@ -40,12 +40,16 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 | 宇多津町 | municipality official page | 第2次総合計画の町民アンケート自由記述 396 件を広聴AIで整理した自治体公式 case。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | viewer demo ではなく official proof。 | trust / context 用 |
 | 岩手県 | prefecture official page + PDF | 幸福について考えるワークショップ等のコメントを対象に、DD2030 の広聴AIを用いたブロードリスニング trial として確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | BOOTS 協力 case。PDF 図表を使う場合は引用・許諾確認。 | trust / context 用 |
 | 東京都 / GovTech東京 | government official + GovTech article | 2050 東京戦略の意見募集と AI 分析、GovTech東京の内製開発事例が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | TTTC / 広聴AIの系譜説明に向く。current 広聴AI導入事例とは分ける。 | history / context 用 |
+| 大阪府 万博効果のブロードリスニング | prefecture official page | 万博開催による影響をテーマにした broad listening 実証実験と report 公開が府公式ページで確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI confirmed ではなく、広義 broad listening / Liqlid 等の協力 case として説明する。 | official context / breadth slide |
 | 広島県 | prefecture official page | 意見をブロードリスニング（AI技術）で整理・見える化・公表し、DD2030 協力で実施すると公式ページにある。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `広聴AI` の語はページ上で確認できないため、広義の broad listening / DD2030 cooperation として説明する。 | official context 用 |
 | 国民民主党 / 伊藤孝恵議員 | party official page | AI で政策ニーズを可視化したブロードリスニング結果を国会質疑に用いた public case。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。政治・国会文脈の説明が必要。 | broad listening の活用幅を示す補助例 |
 | 日本維新の会 | party official page | 政策AI活用プロジェクトとしてブロードリスニングの意見募集を公開している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI利用とは断定しない。party campaign / 実施中 project として表現する。 | broad listening の活用幅を示す補助例 |
-| Web book 付録の追加候補 | public catalog | 大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど、既存棚卸しにない候補を public URL 付きで示す。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 個別 primary URL 未確認のまま demo / 外部資料に載せない。source strength と tool lineage を再分類する。 | breadth slide / next verification queue |
+| チームみらい | party / campaign official page | GitHub / いどばた / ブロードリスニング等を使った政策改善と、1000 件超の意見収集を official policy page で確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 複数 tool を組み合わせた政策形成 case。広聴AI単独実績としては出さない。 | broad listening の活用幅を示す補助例 |
+| サイボウズ | company official project / public reports | `白黒つけない会議` で DD2030 OSS `kouchou-ai` による可視化・分類 report が公開されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体向け first demo とは分ける。 | 応用領域 / breadth slide |
+| アルティウスリンク | company official press release | 広聴AIを活用したコンタクトセンター VOC 分析と `Broad Listening Service` 強化が official release で確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / VOC case。公共 sector の広聴AI事例とは別に説明する。 | 応用領域 / breadth slide |
+| Web book 付録の残候補 | public catalog | 東大阪市、太田市、公明党など、既存棚卸しにない候補を public catalog から拾える。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 個別 primary URL 未確認のまま demo / 外部資料に載せない。source strength と tool lineage を再分類する。 | next verification queue |
 | 朝日新聞 | book case | ラベル抽象化、SNS キーワード設計、外れ値除外要望など、技術説明の lesson が多い。[[broad-listening-book-extractions]]より | 図表・紙面・引用・画像は権利確認が必要。 | lesson 用。viewer demo にはしない |
-| サイボウズ / 富士通 / 企業・NPO系 | book / meeting references | 公共 sector 以外の利用可能性を示せる。[[broad-listening-book-source]]より | 権利者、顔出し、公開範囲の確認が必要。 | owner confirmation 後 |
+| 富士通 / その他企業・NPO系 | book / meeting references | 公共 sector 以外の利用可能性を示せる。[[broad-listening-book-source]]より | 権利者、顔出し、公開範囲の確認が必要。 | owner confirmation 後 |
 | 岩手県 / 郡山 / kuu village | meeting references | pipeline of prospects として、広聴AIが複数現場で話題化していることを示せる。[[meeting-minutes]]より | 公開 artifact が未確認。Slack / 議事録だけで外部説明しない。 | background only |
 | synthetic sample CSV | 自前で作るサンプル | 権利・個人情報リスクが低く、admin upload の操作説明に使える。 | 現実の説得力は弱い。サンプル設計が必要。 | fallback / technical dry-run |
 
@@ -80,10 +84,12 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 - 渋谷区 PDF / 八代市 viewer / 奈良 viewer のスクリーンショットをスライドに載せてよいか。
 - sample CSV を public repo / docs 側に置くなら、どの repository のどの path を canonical にするか。
 - 広島県の公開中間結果など、追加で候補へ昇格できる artifact を誰が確認するか。
-- 岩手県・東京都・北見を 8/2 の context slide に載せる場合、どの1枚にどの source strength で置くか。
+- 岩手県・東京都・大阪府・北見を 8/2 の context slide に載せる場合、どの1枚にどの source strength で置くか。
+- サイボウズ / アルティウスリンクを 8/2 の「応用領域」slide に入れるか、それとも自治体・政治文脈だけに絞るか。
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を source strength 付きで棚卸しへ反映した。
 - 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録の追加候補は breadth source / direct verification queue として扱い、8/2 first demo には direct 確認済み official / viewer を使うと整理。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群を trust / context 用の自治体公式 document case として追加した。
 - 2026-06-30: 16:05 JST の追加Web検索を反映し、岩手県 / 東京都 / 北見 / 日本維新の会を trust context / viewer demo / political context の候補に追加。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:30] filing-back | Web book 付録候補を direct verification
+
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[broad-listening-book-public-case-appendix-2026-06-30]] に、大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町の public source 確認結果を追記
+- [[japan-broadlistening-use-case-map-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[public-case-page-skeleton-2026-06-30]] / [[thinking-targets]] で、自治体公式・政党・TTTC lineage・企業/VOC・AI支援住民対話 adjacent を分ける判断に接続
+
 ## [2026-06-30 17:20] filing-back | 自治体 user research scope を議事録から source 化
 
 - [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体向けアンケート / user research は `広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要があると整理

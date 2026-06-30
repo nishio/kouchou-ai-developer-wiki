@@ -87,7 +87,7 @@ sources:
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
 - agent ops: Slack 6/30 では Codex `/goal` を広聴AIで試す案と同時に、人間が追いつけなくなるため、まず状況把握・LLM Wiki・docs 更新中心で進める方針が共有された。今回の wiki 更新群はその運用に沿って、実装 PR より先に current state と未決論点を固定している。[[slack-codex-goal-speed-control-2026-06-30]]より
-- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録から大阪府・与謝野町・東大阪市・公明党・チームみらい・DirectVote などの追加候補も拾った。ただし、8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選ぶ。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
+- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録由来の大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町も primary / organization page まで確認した。ただし、8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選び、企業/VOCや TTTC lineage は応用領域として分ける。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - Brand Compass / 情報発信: 議事録上では、stable v4 / M2、公開事例と trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態がつながっている。Brand Compass は別議題ではなく、8/2 first demo・#564 placement・docs-safe PR 順序を選ぶ判断フィルタとして扱う。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 - 自治体 user research: 議事録の自治体向けアンケート案を読み直し、`広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要を整理した。#564 の case intake は公開事例候補と掲載許諾の受け皿で、user research は roadmap の前提検証なので、同じフォームに混ぜない方がよい。[[meeting-municipality-user-research-scope-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
@@ -223,6 +223,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで定例下書きへ反映。
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` の速度制御と wiki/docs-first 運用を定例下書きへ反映
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として定例下書きへ反映。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口を確認し、8/2 readiness と公開事例 map の読み上げを補正。

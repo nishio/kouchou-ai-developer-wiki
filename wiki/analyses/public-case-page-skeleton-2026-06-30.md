@@ -11,6 +11,7 @@ sources:
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
+  - broad-listening-book-public-case-appendix-2026-06-30.md
 ---
 
 ## Conclusion
@@ -46,7 +47,7 @@ FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では�
 
 | role | candidate | reason |
 |---|---|---|
-| 自治体公式 proof | 宇多津町、渋谷区、奈良市のいずれか | 自治体公式ページ / PDF 上で、広聴AI / ブロードリスニング trial と件数・用途が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より |
+| 自治体公式 proof | 宇多津町、渋谷区、奈良市、岩手県のいずれか | 自治体公式ページ / PDF 上で、広聴AI / ブロードリスニング trial と件数・用途が確認できる。大阪府も府公式 broad listening case として補助線になるが、広聴AI confirmed ではなく広義 broad listening と明示する。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より |
 | viewer demo | 舞鶴2040または奈良 #全員市長 | public viewer の読み方を実際に見せられる。舞鶴2040は政治色を下げたい場合の代替候補。[[japan-broadlistening-use-case-map-2026-06-30]]より |
 | deep case | 八代市 Democracy-X | 記事と viewer があり、実践 lane と技術 lane をつなぎやすい。ただし政治・政策文脈の説明が必要。[[event-2026-08-02-public-example-inventory-2026-06-30]]より |
 
@@ -71,6 +72,8 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 公開ページには、確認済み事例一覧とは別に `掲載候補を教えてください` 導線を置く余地がある。`#2_広報_pr` では、DD2030 から見えないところで進む活用に気づく方法、HP の導入事例マップ、掲載 OK 確認、事例を集めたいことを伝える必要が議論されていた。したがって public page は `実績を見せる場所` と `候補を受け取る場所` を分けるのがよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
 ただし、case intake と自治体 user research は分ける。case intake は public artifact / 掲載許諾 / source strength を確認する導線で、自治体 user research は広聴活動一般の課題や広聴AIが活きるケースを探索する導線である。両者を同じフォームにすると、事例候補収集と product discovery が混ざる。[[meeting-municipality-user-research-scope-2026-06-30]]より
+
+2026-06-30 17:30 JST の direct verification で、Web book 付録由来の大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで確認できた。公開ページへ移す時は、これらを `広聴AI導入実績` に一括投入せず、`広義 broad listening`、`政党・政策形成`、`TTTC lineage`、`企業 / VOC`、`AI 支援住民対話 adjacent` に分ける。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 ### 3. 事例詳細テンプレート
 
@@ -113,6 +116,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 5. レポートの読み方と免責を同じ PR / 同じページに含める。
 6. candidate は「確認中」として、公開 URL が有効になるまで本文の実績には混ぜない。
 7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
+8. サイボウズ / アルティウスリンクのような企業・VOC case を載せるなら、自治体向け first slice の後段に `応用領域` として置く。自治体の導入検討者が最初に見る 3 事例とは混ぜない。
 
 ## Do not include
 
@@ -126,6 +130,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 - 外部正本は DD2030 website の `kouchou-ai/case` でよいか、kouchou-ai docs 側にも mirror を置くか。
 - 最初の詳細事例は宇多津町、渋谷区、舞鶴2040、八代市のどれにするか。
 - 奈良市 official document case と奈良 #全員市長 viewer demo は、同じ地域名で混同されやすいので、公開ページ上でどう分けるか。
+- 大阪府のような広義 broad listening 公式 case、サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の `kouchou-ai/case` に入れるか、ブロードリスニング全体 / 応用領域の別 section に分けるか。
 - 初回説明 block は DD2030 website に置くか、自治体向け説明資料 / 動画を別 artifact として置くか。
 - #696 / #542 の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
 - 公開事例の候補管理を GitHub issue、Drive、website repo、developer wiki のどこで canonical にするか。
@@ -134,6 +139,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、case intake と自治体 user research は目的が違うため、同じフォームに混ぜない方がよいと追記。
 - 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。

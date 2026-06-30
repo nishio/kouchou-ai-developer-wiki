@@ -87,8 +87,8 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
 - 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に追加し、渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 Democracy-X public article / viewer、synthetic sample fallback に分けた。次は、第一 demo の人間判断と、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「初回説明 FAQ + 公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
-- 公開Web検索で、宇多津町 / 渋谷区 / 奈良市 / 岩手県 / 広島県 / 東京都 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / 東京都知事選 2024 TTTC / M-1 / JINS / GMO / 中野駅新北口などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「candidate / adjacent」を分けて扱う。
-- Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出し、大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズなどを direct verification queue に置いた。これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。
+- 公開Web検索で、宇多津町 / 渋谷区 / 奈良市 / 岩手県 / 広島県 / 東京都 / 大阪府 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / チームみらい / 東京都知事選 2024 TTTC / DirectVote / M-1 / JINS / GMO / サイボウズ / アルティウスリンク / 中野駅新北口などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「企業 / VOC」「candidate / adjacent」を分けて扱う。
+- Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出した。2026-06-30 17:30 JST の direct verification で、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は primary / organization page まで進めたが、これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。東大阪市 / 太田市 / 公明党は追加確認待ち。
 - Brand Compass / 情報発信の議事録文脈は [[meeting-brand-compass-information-strategy-2026-06-30]] に固定した。次の判断では、first demo / #564 placement / docs-safe PR が stable v4 の安定化、公開 trust layer、A/B/C/D 説明のどこに効くかを見る。
 - 自治体 user research の scope は [[meeting-municipality-user-research-scope-2026-06-30]] に固定した。public case intake は事例候補収集、user research は roadmap 前提検証として分ける。
 - #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、初回説明 block、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
@@ -105,6 +105,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体 user research は #564 case intake と分け、広聴活動一般の探索と広聴AI適合ケース探索を切り分けると整理。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / trust layer / 外部ストーリー / A/B/C/D 配布形態の判断フィルタとして current snapshot に接続。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。
