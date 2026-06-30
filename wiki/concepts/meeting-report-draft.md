@@ -21,6 +21,7 @@ sources:
   - weekly-log-2026-05-20.md
   - slack-logs-repository.md
   - current-status-2026-06-30.md
+  - docs-issue-map-2026-06-30.md
   - pr-903-node-runtime-doc-review-2026-06-30.md
   - issue-898-close-readiness-2026-06-30.md
 ---
@@ -132,6 +133,7 @@ sources:
 
 ### docs-first / no-conflict lane
 
+- docs 系 issue / PR の横断地図として [[docs-issue-map-2026-06-30]] を追加した。#876 は developer quickstart / docs entry、#877 は Windows supported path、#885 は runtime Node 排除、#903 は #885 の inventory docs で、同じ docs 群でも混ぜると読者像と配布方針が崩れる。
 - PR #903 は human authored docs PR なので、AI が勝手に branch push せず、[[pr-903-node-runtime-doc-review-2026-06-30]] にレビュー観点を固定した。CodeRabbit 指摘 3 点に加え、current main の `csvDownloadCommon` / `jsonDownload` server actions が inventory から漏れている可能性を確認。次に触るなら docs-only の count / last verified / server action inventory 修正に絞る。
 - issue #898 は PR #899 merge 済みだが、[[issue-898-close-readiness-2026-06-30]] に整理した通り aarch64 Docker での解消確認がまだない。AI 単独 close は避け、Apple Silicon Docker などで `NUMBA_CPU_NAME=generic` と `import umap`、実レポート生成を確認してから close 判断する。
 
@@ -144,6 +146,7 @@ sources:
 - 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記
 - 2026-06-17: GitHub live state を再確認し、PR #899 が 2026-06-06 に main merge 済みであること、issue #898 は open のまま解消確認待ちであることを反映
 - 2026-06-30: 人間と衝突しにくい docs-first lane として、[[pr-903-node-runtime-doc-review-2026-06-30]] と [[issue-898-close-readiness-2026-06-30]] を追加した
+- 2026-06-30: [[docs-issue-map-2026-06-30]] を追加し、#876 / #877 / #885 / #903 の依存関係と混ぜない境界を定例向けに整理
 - 2026-06-30: 議事録を 2026-06-22 先頭見出しまで再取得し、Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` を追加。`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線へ位置づけ直し、[[current-status-2026-06-30]] に現状 snapshot を固定した
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記

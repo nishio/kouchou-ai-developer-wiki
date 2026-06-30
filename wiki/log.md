@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 13:42] filing-back | docs 系 issue の横断地図を追加
+
+- [[docs-issue-map-2026-06-30]] を追加し、#876 developer quickstart、#877 Windows setup guide、#885 Node runtime 排除、PR #903 inventory docs の関係を整理
+- #876 は入口設計、#877 は現行 Windows supported path、#885/#903 は将来の単一 exe 前提と切り分け、同じ docs 群でも混ぜない方針を明示
+- [[current-status-2026-06-30]] と [[meeting-report-draft]] から横断地図へリンク
+
 ## [2026-06-30 13:27] filing-back | PR #903 と issue #898 の docs-safe 現状整理
 
 - [[pr-903-node-runtime-doc-review-2026-06-30]] を追加し、human authored PR #903 に直接 push せず、CodeRabbit 指摘と current main の server action inventory 漏れ候補を整理
