@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:55] filing-back | #884 作成前確認パネルの実装契約を整理
+
+- GitHub #884 / #221 と `work/kouchou-ai/main@d5c9ece` の create flow / EnvironmentCheckDialog / reuse / TokenUsage を再確認し、[[issue-884-pre-create-review-contract-2026-06-30]] を追加
+- first PR は `window.confirm` 置換ではなく、CSV / Spreadsheet / plugin を同じ review model に通し、Spreadsheet warning gap と plugin preview/import 件数混同を塞ぐ scope として [[development-next-actions-live-2026-06-30]] / [[meeting-report-draft]] に接続
+
 ## [2026-06-30 18:49] filing-back | いどばた系・その他 broad listening 事例を追加分類
 
 - 追加Web検索で東京都AI戦略いどばた会議、すぎなみブロードリスニング、中央区みんなでアップデート会議、相模原市意見募集結果 PDF を確認し、[[public-web-broadlistening-japan-use-cases-2026-06-30]] に追記

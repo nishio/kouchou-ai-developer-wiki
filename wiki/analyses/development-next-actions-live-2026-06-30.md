@@ -6,6 +6,7 @@ sources:
   - current-status-2026-06-30.md
   - docs-issue-map-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
+  - issue-884-pre-create-review-contract-2026-06-30.md
   - trial-and-error-burden-reduction-2026-05-29.md
   - pr-903-review-comment-draft-2026-06-30.md
   - issue-885-node-runtime-next-scope-2026-06-30.md
@@ -35,6 +36,8 @@ sources:
 開発 next action の第一候補は #884 `レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` である。理由は、(1) high priority かつ unassigned、(2) #221 umbrella から実装可能な first slice に落ちている、(3) current main で CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している、(4) `apps/admin/app/create/page.tsx` 周辺に差分を閉じやすい、の 4 点。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 
 first PR は「既存 confirm の見た目改善」ではなく、CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review model を作る slice にする。表示する最小情報は、コメント件数、コメント列、属性列、クラスタ数、provider / model、API check status、件数とクラスタ数の警告、費用 / 時間の placeholder または粗い帯でよい。[[trial-and-error-burden-reduction-2026-05-29]]より
+
+18:55 JST の追加確認で、この first PR の実装契約を [[issue-884-pre-create-review-contract-2026-06-30]] に切り出した。重要なのは、送信 payload を別途再構築するのではなく、current `onSubmit` 内の comments construction を review と create で共有すること、Spreadsheet path の warning gap を塞ぐこと、plugin preview 件数と import 後 comments 件数を混同しないことである。
 
 実装に着手する場合は、repo 運用上、先に issue #884 の assignee 有無を再確認し、AI が着手するなら自分を assign してから branch / PR へ進む必要がある。[[source-code]]より
 
@@ -67,4 +70,5 @@ first PR は「既存 confirm の見た目改善」ではなく、CSV / Spreadsh
 
 ## Updates
 
+- 2026-06-30: [[issue-884-pre-create-review-contract-2026-06-30]] を追加し、#884 first PR の review model / warning policy / test gates を実装前仕様として接続した。
 - 2026-06-30: 初回作成。18:44 JST の GitHub live state をもとに、開発 next action は #884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 / #898 を次点として整理した。

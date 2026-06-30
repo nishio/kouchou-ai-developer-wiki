@@ -1,7 +1,7 @@
 ---
 type: source
 summary: "Issue #221 / #884 と下位 issue の 2026-06-30 live state。試行錯誤負担削減は #884 の作成前確認パネル first slice に具体化されているが、current main ではまだ window.confirm と手動 API check が分離している"
-last_checked: 2026-06-30 16:54 JST
+last_checked: 2026-06-30 18:55 JST
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/221
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/884
@@ -13,17 +13,20 @@ sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/877
   - source-code.md
   - trial-and-error-burden-reduction-2026-05-29.md
+  - issue-884-pre-create-review-contract-2026-06-30.md
 ---
 
 ## What it is
 
 2026-06-30 16:54 JST に GitHub issue live state と `work/kouchou-ai` current main (`d5c9ece`) を再確認したメモ。目的は、`#221` 試行錯誤負担削減がまだ抽象 umbrella なのか、実装可能な first slice に落ちているのかを確認すること。
 
+2026-06-30 18:55 JST に #884 / #221 の live state と `work/kouchou-ai/main@d5c9ece` を再確認し、state は変わっていないことを確認した。追加で、first PR の実装契約を [[issue-884-pre-create-review-contract-2026-06-30]] に切り出した。
+
 ## Freshness marker
 
-- `work/kouchou-ai`: `main@d5c9ece`, `git pull --ff-only` 済み。
-- high priority open issue: `#884`, `#564`, `#221` の 3 件。
-- `gh issue view` で `#221`, `#884`, `#11`, `#79`, `#292`, `#391`, `#97`, `#877` を確認。
+- `work/kouchou-ai`: `main@d5c9ece`, 18:55 JST に `git pull --ff-only` 済み。
+- high priority open issue: `#884`, `#564`, `#221` の 3 件（16:54 JST 確認）。
+- `gh issue view` で `#221`, `#884`, `#11`, `#79`, `#292`, `#391`, `#97`, `#877` を確認（#221 / #884 は 18:55 JST に再確認）。
 
 ## Live issue state
 
@@ -63,4 +66,5 @@ spreadsheet path に既存 warning がない点は、#884 の first PR で自然
 
 ## Updates
 
+- 2026-06-30: 18:55 JST に #884 / #221 と `work/kouchou-ai/main@d5c9ece` を再確認し、first PR の review model / warning policy / test gates を [[issue-884-pre-create-review-contract-2026-06-30]] に切り出した。
 - 2026-06-30: 初回作成。#221/#884 と下位 issue、current main の create / environment check / reuse flow を照合し、#884 first slice が今も妥当であることを固定した。
