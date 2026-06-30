@@ -23,7 +23,7 @@ sources:
 - **政治・国会文脈の事例**: 国民民主党 / 伊藤孝恵議員、日本維新の会、チームみらい、八代市、奈良 #全員市長。文脈説明と誤読防止が必須。
 - **系譜・歴史文脈**: Talk to the City、東京都知事選 2024、東京都 2050 戦略案、DirectVote、日本テレビ衆院選報道、M-1 2024。広聴AIそのものの導入実績ではなく、ブロードリスニングの発展として分ける。
 - **企業 / VOC / civic discussion**: サイボウズ、アルティウスリンク、JINS、GMO。サイボウズとアルティウスリンクは direct public source ありへ進められるが、自治体向け first demo ではなく応用領域として扱う。
-- **候補 / adjacent**: 中野駅新北口、与謝野町、東大阪市、太田市、公明党など。与謝野町は official PDF があるが、広聴AI confirmed ではなく AI 支援住民対話 adjacent として扱う。東大阪市 / 太田市 / 公明党は primary URL 追加確認待ち。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+- **候補 / adjacent**: 中野駅新北口、与謝野町、東大阪市、太田市、加古川市、田原本町、富岡市、長崎県知事選、公明党、富士通など。与謝野町は official PDF があるが、広聴AI confirmed ではなく AI 支援住民対話 adjacent として扱う。東大阪市 / 太田市 / 加古川市 / 田原本町 / 富岡市 / 長崎県知事選 / 公明党 / 富士通は primary URL 追加確認待ち。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として有用だが、public case list の一次根拠にはしない。2026-03/04 raw には北見の広聴AI・いどばた lead、舞鶴2040、相模原市 AI avatar、宮崎県の broad listening 言及、和歌山県いどばたへの内部リンクなどが混ざっており、`広聴AI confirmed case` / `broad listening mention` / `adjacent civic AI` / `internal pointer` に分ける必要がある。[[slack-case-introduction-channel-2026-03-04]]より
 
@@ -61,7 +61,7 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 3. 政治・国会・選挙報道の事例: 国民民主党、日本維新の会、チームみらい、奈良、八代、日本テレビ衆院選報道。
 4. Talk to the City と広聴AIの関係: 直接利用、派生利用、広義の broad listening を分ける。東京都知事選 2024 / DirectVote / M-1 / JINS / GMO はここに入れる。
 5. 企業 / VOC / civic discussion: サイボウズ、アルティウスリンク。自治体向け first demo とは分け、応用領域として出す。
-6. 候補と追加確認リスト: 北見、中野駅新北口、与謝野町、東大阪市、太田市、公明党、企業・メディア系。与謝野町は AI 支援住民対話 adjacent、東大阪市 / 太田市 / 公明党は primary confirmation queue。
+6. 候補と追加確認リスト: 北見、中野駅新北口、与謝野町、東大阪市、太田市、加古川市、田原本町、富岡市、長崎県知事選、公明党、富士通、企業・メディア系。与謝野町は AI 支援住民対話 adjacent、他は primary confirmation queue。
 
 ## Open Questions
 
@@ -73,10 +73,12 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 - Web book 付録由来の候補は、どの順で primary URL direct verification するか。
 - JINS や M-1 のような TTTC / broad listening adjacent cases を #564 の公開事例ページに載せるか、技術・歴史 reference に分けるか。
 - サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の公開事例ページに入れるか、自治体向けページとは別の応用領域 section に分けるか。
+- Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI は、事業者 case、自治体 case、選挙 / 政治 case、技術 reference のどれに分類するか。
 - 外部からの事例候補 intake を public page に置く場合、source strength / tool lineage / 掲載許諾を誰が判定するか。
 
 ## Updates
 
+- 2026-06-30: 18:05 JST の追加Web検索を反映し、Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を `book appendix candidate` から source strength 付き分類へ進めた。
 - 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録由来の追加候補は `book appendix candidate` として primary URL direct verification queue に置くと整理した。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群を自治体公式 document case へ昇格、東京都知事選 2024 TTTC / GMO / 中野駅新北口を adjacent practice として分類した。

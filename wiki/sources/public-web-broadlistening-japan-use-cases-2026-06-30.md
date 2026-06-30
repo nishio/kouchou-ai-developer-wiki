@@ -73,6 +73,8 @@ sources:
 
 2026-06-30 17:30 JST に Web book 付録由来候補の一部を direct verification した。大阪府は府公式の broad listening 実証ページ、チームみらいは official policy page、DirectVote は安野氏の campaign official page、サイボウズは official project / report page、アルティウスリンクは official press release、与謝野町は official proposal PDF まで確認した。大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンクは `candidate` から direct public source ありへ進められるが、tool lineage はそれぞれ違う。与謝野町は AI / デジタル活用の public artifact は確認できるが、広聴AI confirmed case ではなく、いどばた / AI 支援型住民対話の周辺実践として扱う。
 
+2026-06-30 18:05 JST に追加検索し、Web book 「本書の読みかた」に出ている Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を追加候補として確認した。これは chapter-level の観測であり、各案件の primary page を直確認していないため、confirmed case には昇格せず primary confirmation queue に置く。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
 ## Confirmed public cases
@@ -120,7 +122,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 ## Candidate leads not yet confirmed enough
 
-- Web book 付録由来の追加候補: 大阪府、チームみらい、DirectVote、アルティウスリンク、サイボウズは 2026-06-30 17:30 JST の direct verification で public source ありへ進めた。ただし、大阪府は広義 broad listening、チームみらいは複数 tool の参加型政策形成、DirectVote は TTTC lineage、アルティウスリンクは VOC / enterprise、サイボウズは企業 civic discussion なので、同じ `広聴AI導入実績` として並べない。与謝野町は AI支援住民対話 adjacent、東大阪市 / 太田市 / 公明党は追加 primary confirmation queue に残す。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+- Web book 付録 / 目次由来の追加候補: 大阪府、チームみらい、DirectVote、アルティウスリンク、サイボウズは 2026-06-30 17:30 JST の direct verification で public source ありへ進めた。ただし、大阪府は広義 broad listening、チームみらいは複数 tool の参加型政策形成、DirectVote は TTTC lineage、アルティウスリンクは VOC / enterprise、サイボウズは企業 civic discussion なので、同じ `広聴AI導入実績` として並べない。与謝野町は AI支援住民対話 adjacent、東大阪市 / 太田市 / 加古川市 / 田原本町 / 富岡市 / 長崎県知事選 / 公明党 / 富士通は追加 primary confirmation queue に残す。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 - 奈良市 official PDF: 16:48 JST の追加検索で現行 PDF 群を確認できたため、candidate から official document case へ昇格した。ただし `奈良 #全員市長` public viewer とは別文脈として扱う。
 - 朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
 - Slack `#1_事例紹介_全体` の lead: [[slack-case-introduction-channel-2026-03-04]] に固定した通り、Slack lead は candidate intake として有用だが、外部公開では primary public URL へ昇格したものだけを実績扱いにする。
@@ -134,9 +136,11 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 - 404 になっている viewer / PDF は、単なる URL 移動か、公開停止か。
 - 北見、M-1、JINS、GMO、中野のような public viewer / technical article / adjacent practice を、公開事例ページに載せるか、開発者向け reference に留めるか。
 - サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の公開事例ページに入れるか、自治体向けページとは別の「応用領域」section に分けるか。
+- Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI は、それぞれどの primary page を source of truth として確認するか。
 
 ## Updates
 
+- 2026-06-30: 18:05 JST の追加検索で、Web book 「本書の読みかた」に見える Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。
 - 2026-06-30: 17:30 JST の追加 direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町の public source を確認し、tool lineage と source strength に応じて `自治体 broad listening` / `政党・政策形成` / `企業・VOC` / `AI支援住民対話 adjacent` へ分類した。
 - 2026-06-30: 17:05 JST の追加検索で、Web book 付録 `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] に source 化し、大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズなどを direct verification queue に追加した。
 - 2026-06-30: 16:48 JST の追加検索で、奈良市 official PDF 群を candidate から自治体公式 document case へ昇格し、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を adjacent practice として追記した。

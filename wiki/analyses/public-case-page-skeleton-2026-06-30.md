@@ -14,6 +14,7 @@ sources:
   - broad-listening-book-public-case-appendix-2026-06-30.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
+  - website-kouchou-ai-case-live-2026-06-30.md
 ---
 
 ## Conclusion
@@ -124,6 +125,14 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
 8. サイボウズ / アルティウスリンクのような企業・VOC case を載せるなら、自治体向け first slice の後段に `応用領域` として置く。自治体の導入検討者が最初に見る 3 事例とは混ぜない。
 
+## Website current state
+
+2026-06-30 17:59 JST に `digitaldemocracy2030/website` を確認したところ、`src/kouchou-ai/case.vto` が広聴AI活用事例ページの直接更新先で、現行掲載は選挙報道、東京都 2050 戦略案、宇多津町の 3 件だった。選挙報道と東京都は説明文のみでリンクがなく、宇多津町だけ official page へのリンクがある。[[website-kouchou-ai-case-live-2026-06-30]]より
+
+website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに投稿された事例をもとにウェブサイト更新PRを作成する`、#125 `[活用事例]リンク追加/UI改善` が open で存在する。#125 には「広聴AIの活用事例ではないかも？」という候補分類の不安が明記されているため、developer wiki 側の `tool_lineage` / `source_strength` は、そのまま website PR 前の guardrail として使える。[[website-kouchou-ai-case-live-2026-06-30]]より
+
+一方で、#123 `プロダクト別の事例ページから、プロダクト横断のニュース一覧に変える` も open のままで、長期的には product-specific `case.vto` 直書きではなく、tagged / cross-product case-news list へ移る可能性がある。したがって first slice は `src/kouchou-ai/case.vto` に載せる最小改修、長期情報設計は #123 側、と分けた方がよい。
+
 ## Do not include
 
 - Slack-only / Drive-only の事例、許諾未確認のスクリーンショット、内部説明資料の中身。
@@ -146,6 +155,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 ## Updates
 
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 `src/kouchou-ai/case.vto`、#208/#216/#125/#123 を確認。first slice は `case.vto` 直更新、長期は横断 case-news list と分ける方針を追記。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、事例ページ冒頭に tool catalog を置き、`tool_lineage` を `kouchou-ai` / `TTTC lineage` / `broad listening adjacent` / `idobata` / `enterprise` / `candidate` で分ける方針を追記。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、case intake と自治体 user research は目的が違うため、同じフォームに混ぜない方がよいと追記。
 - 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。

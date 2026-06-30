@@ -57,6 +57,7 @@ sources:
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
+  - website-kouchou-ai-case-live-2026-06-30.md
   - slack-codex-goal-speed-control-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
@@ -89,16 +90,17 @@ sources:
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
 - agent ops: Slack 6/30 では Codex `/goal` を広聴AIで試す案と同時に、人間が追いつけなくなるため、まず状況把握・LLM Wiki・docs 更新中心で進める方針が共有された。今回の wiki 更新群はその運用に沿って、実装 PR より先に current state と未決論点を固定している。[[slack-codex-goal-speed-control-2026-06-30]]より
-- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録由来の大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町も primary / organization page まで確認した。ただし、8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選び、企業/VOCや TTTC lineage は応用領域として分ける。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
+- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録由来の大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町も primary / organization page まで確認した。Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通は候補キューで、confirmed には昇格しない。ただし、8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選び、企業/VOCや TTTC lineage は応用領域として分ける。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - Brand Compass / 情報発信: 議事録上では、stable v4 / M2、公開事例と trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態がつながっている。Brand Compass は別議題ではなく、8/2 first demo・#564 placement・docs-safe PR 順序を選ぶ判断フィルタとして扱う。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 - 自治体 user research: 議事録の自治体向けアンケート案を読み直し、`広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要を整理した。#564 の case intake は公開事例候補と掲載許諾の受け皿で、user research は roadmap の前提検証なので、同じフォームに混ぜない方がよい。[[meeting-municipality-user-research-scope-2026-06-30]]より
 - tool boundary: 議事録から、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を source 化した。公開説明では、広聴AIを「集まった自由記述の分析・可視化」、いどばた / Cartographer を「収集・深掘り・追加質問」、Jigsaw / tttc-light-js を「LLM直接分類 / TTTC lineage」と分け、対立軸発見は current default ではなく未決の long-context route として扱う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 - public tool catalog: 上の境界を [[public-tool-catalog-draft-2026-06-30]] に落とし、#564 case page と 8/2 技術・ツール資料で使える `collect / deepen / analyze / show / classify / read-and-act` の 1 枚 draft にした。次は、DD2030 website、kouchou-ai docs、8/2 material のどこを正本にするかを決める。
+- website case page: DD2030 website は #564 の自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、選挙報道 / 東京都 / 宇多津町の 3 件のみ。#208 / #216 / #125 が短期 case 更新の受け皿、#123 が長期の横断 case-news list 化として残っている。[[website-kouchou-ai-case-live-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
-- 次に決めたいこと: [[thinking-targets]] に immediate thinking queue として、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点を集約した。会議ではここだけ見れば次の行動を選べる。
+- 次に決めたいこと: [[thinking-targets]] と [[open-decisions]] に immediate thinking queue / current overlay として、8/2 first demo、#564/#696/#542 の canonical placement、tool catalog placement、docs-safe PR 順序、Slack / 議事録 source 運用などを集約した。会議ではここだけ見れば次の行動を選べる。
 
 ## 議題候補 (2026-06-30 更新)
 
@@ -207,7 +209,7 @@ sources:
 - [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 誤読防止 / #542 責任所在の最小文言案を作った。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで、読み方・保証しない範囲・個別レポート発行主体を揃える scope として扱う。
 - [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake、外部公開ページは primary URL 確認済み case list として分ける必要を整理した。舞鶴2040は Slack lead から public viewer / 特設サイト / 市公式 project page へ接続できた。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
-- [[thinking-targets]] / [[open-decisions]] を 6/30 状態へ同期した。会議で人間に聞くべき短期未決は、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 つ。
+- [[thinking-targets]] / [[open-decisions]] を 6/30 状態へ同期した。会議で人間に聞くべき短期未決は、8/2 first demo、#564/#696/#542 の canonical placement、tool catalog placement、docs-safe PR 順序、Slack / 議事録 source 運用など。
 - [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221 / #884 の作成前確認パネルを 6/30 high priority の code-safe slice 候補として再浮上させた。current main では spreadsheet path の warning gap と手動 API check の分離が残っている。
 - [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` の運用は状況把握・LLM Wiki・docs 更新を先にして、人間が次の slice を選べる速度に制御する、と定例向けに固定した。
 
@@ -229,6 +231,7 @@ sources:
 ## Updates
 
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで定例下書きへ反映。
+- 2026-06-30: 18:05 JST の追加Web検索で見えた Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通を候補キューとして定例向けに補足。
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` の速度制御と wiki/docs-first 運用を定例下書きへ反映
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として定例下書きへ反映。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口を確認し、8/2 readiness と公開事例 map の読み上げを補正。

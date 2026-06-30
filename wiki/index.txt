@@ -146,6 +146,7 @@ slack-windows-single-exe-2026-05-31	source	sources/slack-windows-single-exe-2026
 slack-yokohama-hack-2026-06-26	source	sources/slack-yokohama-hack-2026-06-26.md	2026-06-26 Slack で共有された Yokohama Hack! / 横浜型ブロードリスニングの観測。市民の声の収集手法を中心にした AI 実証募集として読む
 source-code	source	sources/source-code.md	kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照
 tttc-spectral-clustering-code-observation-2026-05-25	source	sources/tttc-spectral-clustering-code-observation-2026-05-25.md	TTTC commit `5e0a439` と広聴AI commit `53f1209` の clustering 実装比較。TTTC は embedding を UMAP 2D に落としてから SpectralClustering を掛け、`n_neighbors` は `min(n_samples - 1, 10)`
+website-kouchou-ai-case-live-2026-06-30	source	sources/website-kouchou-ai-case-live-2026-06-30.md	DD2030 website 側の広聴AI活用事例ページ live state。`src/kouchou-ai/case.vto` が直接更新先で、#208/#216/#125/#123 が #564 の外部正本候補と分類リスクに関係する
 weekly-log-2026-05-06	source	sources/weekly-log-2026-05-06.md	nishio/oss_weekly_reporter の週次ダンプ (2026-05-06 〜 2026-05-13) — Slack/GitHub の生ログ
 weekly-log-2026-05-20	source	sources/weekly-log-2026-05-20.md	nishio/oss_weekly_reporter の週次ダンプ (2026-05-20 〜 2026-05-27) — kouchou-ai の refactor / Windows / CSP / LLM grouping と、Slack の公開UI・MST可視化・実験保存方針
 wiki-maintenance-observation-2026-05-25	source	sources/wiki-maintenance-observation-2026-05-25.md	developer-wiki の graph 表示調整と main 直接 push 運用を 2026-05-25 の実作業から整理した観測メモ

@@ -3,6 +3,16 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:05] filing-back | 国内事例の追加候補キューを補強
+
+- Web検索で見えた Web book 目次由来の Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を [[broad-listening-book-public-case-appendix-2026-06-30]] の primary confirmation queue に追加
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] / [[current-status-2026-06-30]] では、confirmed case には昇格せず、追加一次確認待ちとして扱う方針を反映
+
+## [2026-06-30 17:59] filing-back | website case page の live state を固定
+
+- [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の `src/kouchou-ai/case.vto`、#208/#216/#125/#123 の現在地を確認
+- [[public-case-page-skeleton-2026-06-30]] / [[public-tool-catalog-draft-2026-06-30]] / [[open-decisions]] に、短期は `case.vto` first slice、長期は cross-product case-news list 可能性として分ける判断材料を追記
+
 ## [2026-06-30 17:56] filing-back | open-decisions に tool catalog placement を反映
 
 - [[open-decisions]] の current overlay を 4 件から 5 件へ補正し、[[public-tool-catalog-draft-2026-06-30]] の canonical placement を短期未決として追加

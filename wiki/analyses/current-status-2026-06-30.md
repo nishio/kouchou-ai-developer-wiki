@@ -38,6 +38,7 @@ sources:
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
+  - website-kouchou-ai-case-live-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -92,7 +93,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に追加し、渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 Democracy-X public article / viewer、synthetic sample fallback に分けた。次は、第一 demo の人間判断と、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「初回説明 FAQ + 公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 奈良市 / 岩手県 / 広島県 / 東京都 / 大阪府 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / チームみらい / 東京都知事選 2024 TTTC / DirectVote / M-1 / JINS / GMO / サイボウズ / アルティウスリンク / 中野駅新北口などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「企業 / VOC」「candidate / adjacent」を分けて扱う。
-- Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出した。2026-06-30 17:30 JST の direct verification で、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は primary / organization page まで進めたが、これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。東大阪市 / 太田市 / 公明党は追加確認待ち。
+- Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出した。2026-06-30 17:30 JST の direct verification で、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は primary / organization page まで進めたが、これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。18:05 JST の追加検索で Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI も primary confirmation queue に入れた。
 - Brand Compass / 情報発信の議事録文脈は [[meeting-brand-compass-information-strategy-2026-06-30]] に固定した。次の判断では、first demo / #564 placement / docs-safe PR が stable v4 の安定化、公開 trust layer、A/B/C/D 説明のどこに効くかを見る。
 - 自治体 user research の scope は [[meeting-municipality-user-research-scope-2026-06-30]] に固定した。public case intake は事例候補収集、user research は roadmap 前提検証として分ける。
 - #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、初回説明 block、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
@@ -100,7 +101,8 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界は [[meeting-cartographer-idobata-boundary-2026-06-30]] に固定した。次の公開 docs では、収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を同じ `広聴AI` の promise として混ぜない。
 - その外向け転用 draft は [[public-tool-catalog-draft-2026-06-30]] に作成した。#564 case page と 8/2 tool material では、`collect / deepen / analyze / show / classify / read-and-act` を分け、`tool_lineage` を広聴AI confirmed / TTTC lineage / broad listening adjacent / idobata / enterprise / candidate で扱う。
-- 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
+- DD2030 website 側は [[website-kouchou-ai-case-live-2026-06-30]] に固定した。現行 `src/kouchou-ai/case.vto` は直書きで、広聴AI case は選挙報道 / 東京都 2050 戦略案 / 宇多津町の 3 件。#208 / #216 / #125 が website case 更新の受け皿、#123 が長期の cross-product case-news list 化として open。
+- 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、tool catalog placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。Slack source ops は [[slack-logs-repository]] / [[wiki-driven-workflow]] に補強し、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json`、source の使い分けは直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` とした。
 
 ## Open Questions
@@ -115,9 +117,11 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を current snapshot に接続。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、#564 / 8/2 に転用する tool catalog draft を current snapshot に接続。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 case page / issue state を #564 placement 判断へ接続。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体 user research は #564 case intake と分け、広聴活動一般の探索と広聴AI適合ケース探索を切り分けると整理。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / trust layer / 外部ストーリー / A/B/C/D 配布形態の判断フィルタとして current snapshot に接続。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。
+- 2026-06-30: 18:05 JST の追加Web検索を反映し、Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。
 - 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録の公開事例一覧を direct verification queue として国内 broad listening 事例 map に接続した。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群、東京都知事選 2024 TTTC、GMO、中野駅新北口の public source を国内 broad listening 事例 map に接続した。
 - 2026-06-30: [[slack-logs-repository]] / [[wiki-driven-workflow]] / `CLAUDE.md` を更新し、Slack user id 解決と raw / mirror / oss_weekly_reporter の三分法を source ops として固定した。
