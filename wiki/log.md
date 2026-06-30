@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:01] filing-back | PR #903 review comment draft を追加
+
+- [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR #903 へ直接投稿せず、last verified / Server Actions count / static-site-builder dev script / CSV・JSON download actions の 4 点をコメント案として固定
+- PR #903 は open / review required / blocked のまま、差分は `docs/development/web-ui-node-runtime-dependencies.md` 1 ファイル追加で変化なしと確認
+- [[pr-903-node-runtime-doc-review-2026-06-30]] / [[docs-issue-map-2026-06-30]] / [[meeting-report-draft]] からコメント案へ接続
+
 ## [2026-06-30 13:57] filing-back | #876 developer docs の gap audit を追加
 
 - [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、PR #883 撤回後草案、6/3 docs spine 議論、Azure demo 動線化議論、current main docs を照合

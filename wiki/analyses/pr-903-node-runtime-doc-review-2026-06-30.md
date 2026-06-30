@@ -7,6 +7,7 @@ sources:
   - current-status-2026-06-30.md
   - node-runtime-free-windows-exe-2026-05-31.md
   - wiki-driven-workflow.md
+  - pr-903-review-comment-draft-2026-06-30.md
 ---
 
 ## Snapshot
@@ -34,7 +35,7 @@ PR #903 は `#885` の「Node runtime を外す前の棚卸し」として有用
 ## Safe Next Steps
 
 - PR #903 の作者 / assignee を尊重し、AI から勝手に branch push しない。
-- 人間が対応するなら、CodeRabbit 3 点に加え、CSV / JSON download server actions を inventory に入れるか対象外理由を追記する。
+- 人間が対応するなら、[[pr-903-review-comment-draft-2026-06-30]] のコメント案を使い、CodeRabbit 3 点に加え、CSV / JSON download server actions を inventory に入れるか対象外理由を追記する。
 - AI が対応する場合も、まず「docs-only で小さく直してよいか」を確認してから、PR branch ではなく必要なら別 PR / コメント案で進める。
 
 ## Open Questions
@@ -45,3 +46,4 @@ PR #903 は `#885` の「Node runtime を外す前の棚卸し」として有用
 ## Updates
 
 - 2026-06-30: 初回作成。PR #903 metadata、CodeRabbit 指摘、`work/kouchou-ai/main@d5c9ece` の static-site-builder / admin server actions を確認した。
+- 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR に直接投稿せず、last verified / count 整合 / static-site-builder dev script / CSV・JSON download actions の 4 点を短く伝えるコメント案として固定した。
