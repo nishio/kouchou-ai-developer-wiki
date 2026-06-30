@@ -24,7 +24,7 @@ README 上の設計は二層：
 
 ## Freshness marker
 
-この source の鮮度基準は、**2026-06-30 に `work/slack-logs` を `main@341cf80` まで clone / pull / 確認した時点**。`mirror/sync.json` は `synced_at=2026-06-30T04:12:50.909454+00:00`、`window_days=14`、`window_oldest=2026-06-16T04:12:50.909454+00:00`、`window_latest=2026-06-30T04:12:50.909454+00:00`、`channel_count=58`、`message_count=506` だった。
+この source の鮮度基準は、**2026-06-30 18:29 JST に `work/slack-logs` を re-pull し、`main@341cf80` から変化がないと確認した時点**。`mirror/sync.json` は `synced_at=2026-06-30T04:12:50.909454+00:00`、`window_days=14`、`window_oldest=2026-06-16T04:12:50.909454+00:00`、`window_latest=2026-06-30T04:12:50.909454+00:00`、`channel_count=58`、`message_count=506` だった。
 
 2026-06-30 確認時点の広聴AI関連 channel は次の ID で引ける：
 
@@ -101,6 +101,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 ## Updates
 
+- 2026-06-30 18:29 JST: `work/slack-logs` を re-pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` から変化がないことを再確認した。
 - 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
 - 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。

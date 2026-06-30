@@ -53,9 +53,9 @@ sources:
 
 ## Source Freshness
 
-議事録は 2026-06-30 16:33 JST に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7702 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
+議事録は 2026-06-30 18:30 JST に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7702 行、HTML URL 棚卸しは unique 550 件。[[meeting-minutes]]より
 
-Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` / window `2026-06-16〜06-30` まで確認した。[[slack-logs-repository]]より
+Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、2026-06-30 18:29 JST に re-pull して `main@341cf80` / `synced_at=2026-06-30T04:12:50Z` / window `2026-06-16〜06-30` から変化がないことを確認した。[[slack-logs-repository]]より
 
 `oss_weekly_reporter` は `data@e2c9b20` まで fast-forward 済みで、weekly dump は `2026-06-17_to_2026-06-24` まである。今後の Slack raw 一次確認は `slack-logs`、週次 AI 要約や GitHub activity とのセット確認は `oss_weekly_reporter` という使い分けが妥当。
 
@@ -114,6 +114,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: 18:30 JST に議事録 Google Doc export と `work/slack-logs` を再確認し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror も `main@341cf80` から変化なしと補正した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を current snapshot に接続。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、#564 / 8/2 に転用する tool catalog draft を current snapshot に接続。

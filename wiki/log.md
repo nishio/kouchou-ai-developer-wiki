@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:33] filing-back | 議事録とSlack freshnessを再確認
+
+- Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を 18:30 JST に再取得し、[[meeting-minutes]] を先頭見出し `2026/06/22` / `2026/06/29` 見出し未検出 / txt 7702 行 / URL unique 550 件へ補正
+- `work/slack-logs` を re-pull し、[[slack-logs-repository]] は `main@341cf80` / `synced_at=2026-06-30T04:12:50Z` から変化なしと確認。[[current-status-2026-06-30]] / [[meeting-report-draft]] の source freshness も同じ観測へ揃えた
+
 ## [2026-06-30 18:26] filing-back | broad-listening book source freshness を補正
 
 - [[broad-listening-book-source]] の参照 commit を `work/broad-listening-book/main@9c22db6` へ更新し、5/21 初回章マップと 6/30 事例分類用途を分けた

@@ -23,7 +23,7 @@ YYYY/MM/DD（次回分）
 
 ## Freshness marker
 
-この source の鮮度基準は、**2026-06-30 16:33 JST に Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得した時点**。その時点の先頭見出しは `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、HTML 由来の URL 棚卸しは unique 551 件だった。[[nishio-source-freshness-criterion-2026-06-02]]より
+この source の鮮度基準は、**2026-06-30 18:30 JST に Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得した時点**。その時点の先頭見出しは `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、HTML 由来の URL 棚卸しは unique 550 件だった。[[nishio-source-freshness-criterion-2026-06-02]]より
 
 2026-06-22 より後の議事録内容を根拠にする場合は、まず `raw/meeting_minutes.txt` を再取得し、URL やリンク先が論点なら `raw/meeting_minutes.html` も更新する。HTML export は minified されることがあり、`wc -l` の行数は空/少数に見えてもファイルサイズと URL 抽出結果で確認する。
 
@@ -80,3 +80,4 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-06-02: source の鮮度基準として `last_checked` / `coverage` と Freshness marker を明示
 - 2026-06-30: Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しが `2026/06/22`、txt が 7702 行になっていることを確認。主題は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーの優先軸。HTML URL 棚卸しは unique 551 件へ更新
 - 2026-06-30 16:33 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 551 件と再確認。8/2 イベントと優先軸の該当箇所は [[meeting-2026-06-22-event-priority]] に切り出した
+- 2026-06-30 18:30 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 550 件と再確認。内容面では 16:33 観測から新しい議事録見出しは増えていない
