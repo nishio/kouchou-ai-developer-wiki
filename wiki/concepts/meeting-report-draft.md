@@ -47,6 +47,7 @@ sources:
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
+  - public-case-page-skeleton-2026-06-30.md
 ---
 
 ## 目的
@@ -162,6 +163,7 @@ sources:
 - [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、公開事例 / demo 素材を棚卸しした。現時点の安全な順序は、渋谷区 official page / PDF で trust context、奈良 #全員市長 public viewer で UI 実演、八代市は政治・政策文脈を扱える場合の deep case、synthetic sample は fallback。広島県・朝日新聞・企業系は許諾 / 公開 URL 確認待ち。
 - [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、#564 活用事例公開は #696 誤読防止 / #542 責任所在と合わせた trust layer として扱うと整理した。8/2 で外に出すなら「公開事例リスト + レポートの読み方 + 何を保証しないか」が最小単位。
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、公開Web検索で宇多津町、渋谷区、広島県、舞鶴2040、奈良、八代、国民民主党などを整理した。8/2 では事例数を増やすより、自治体公式 / viewer demo / 政治・国会 / Talk to the City 系譜 / candidate を分けて説明するのが安全。
+- [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの構成案を作った。最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ first slice に入れる方針。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
 
 ### docs-first / no-conflict lane
@@ -182,6 +184,7 @@ sources:
 ## Updates
 
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 事例の公開Web検索 pass を定例向けに整理
+- 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの first slice を定例向けに整理
 - 2026-06-30: [[github-issues-564-696-542-trust-layer-live-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、8/2 公開事例 demo を #564 / #696 / #542 の trust layer として定例向けに整理
 - 2026-06-30: [[public-broadlistening-artifacts-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 イベントで使う公開事例 / demo 素材の候補とリスクを定例向けに整理
 - 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベント向けの技術・ツール入口 draft を定例向けに整理

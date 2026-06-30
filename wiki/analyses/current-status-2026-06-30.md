@@ -29,6 +29,7 @@ sources:
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
+  - public-case-page-skeleton-2026-06-30.md
 ---
 
 ## Snapshot
@@ -69,6 +70,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に追加し、渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 Democracy-X public article / viewer、synthetic sample fallback に分けた。次は、第一 demo の人間判断と、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「公開事例リスト + レポートの読み方 + 何を保証しないか」を 3 点セットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 広島県 / 舞鶴2040 / 奈良 #全員市長 / 八代市 / 国民民主党などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「candidate」を分けて扱う。
+- #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
 ## Open Questions
@@ -80,6 +82,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 ## Updates
 
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 活用事例を公開Web source strength ごとに整理した。
+- 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの first slice を整理した。
 - 2026-06-30: [[github-issues-564-696-542-trust-layer-live-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、#564 活用事例公開を #696 誤読防止 / #542 責任所在と合わせた trust layer として整理した。
 - 2026-06-30: [[public-broadlistening-artifacts-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 イベントの公開事例 / demo 素材を棚卸しした。
 - 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベント向け技術・ツール入口の 1 枚 draft を固定。

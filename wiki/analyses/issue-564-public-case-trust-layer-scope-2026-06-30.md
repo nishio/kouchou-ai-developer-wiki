@@ -7,6 +7,7 @@ sources:
   - public-broadlistening-artifacts-2026-06-30.md
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
+  - public-case-page-skeleton-2026-06-30.md
   - azure-demo-public-visibility-proposal-2026-06-04.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - kouchou-ai-docs-entry-restructure-2026-06-03.md
@@ -64,6 +65,8 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 
 Azure デモ環境は「自分のデータを投入する場所」ではなく「使い方や準備データを理解する参照環境」と再フレームされているため、公開事例 / sample report / sample CSV の導線は、専用試用環境より先に整える価値が高い。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
+公開ページへ落とす具体 skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。最初に見る 3 事例、事例一覧の分類軸、詳細テンプレート、レポートの読み方、first slice、載せない情報を分け、DD2030 website の `kouchou-ai/case` 拡張を想定した。
+
 ## What Not To Do
 
 - #564 のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
@@ -87,5 +90,6 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 ## Updates
 
+- 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、#564 の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
 - 2026-06-30: 初回作成。Issue #564 を 8/2 公開事例棚卸しと接続し、#696 / #542 を含む trust layer として次 scope を整理した。

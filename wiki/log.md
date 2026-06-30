@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:30] filing-back | #564 公開事例ページ skeleton を整理
+
+- GitHub issue #564 を再確認し、open / high priority / unassigned のまま、導入検討から成果公開までを知りたいという自治体側の質問群が核心であることを確認
+- [[public-case-page-skeleton-2026-06-30]] を追加し、公開事例ページを「最初に見る 3 事例 / source strength 付き一覧 / 詳細テンプレート / レポートの読み方 / 載せない情報」に分解
+- [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、外部公開前の first slice へ接続
+
 ## [2026-06-30 15:22] filing-back | 国内 broad listening 活用事例を公開Web検索で整理
 
 - [[public-web-broadlistening-japan-use-cases-2026-06-30]] を追加し、宇多津町 / 渋谷区 / 広島県 / 舞鶴2040 / 奈良 / 八代 / 国民民主党などを confirmed / candidate / secondary context に分類
