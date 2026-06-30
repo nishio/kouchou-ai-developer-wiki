@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 19:23] filing-back | Devin / AI agent 運用と繰り返し Web 更新候補を固定
+
+- `work/slack-logs/main@7c17dd3` の 2026-06-23〜06-30 mirror から、Devin の用途・対象 repo・費用上限の明文化、議事録から Web サイトを更新する繰り返し task 候補、merge / billing / review owner は人間判断に残す境界を [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] として source 化
+- [[coding-agents]] / [[wiki-driven-workflow]] / [[meeting-report-draft]] に、AI agent は source freshness と draft diff までを担い、public boundary / 掲載許諾 / merge は人間 review owner に返す運用を追記
+
 ## [2026-06-30 19:15] filing-back | 人間判断キューを 19:15 live state へ圧縮
 
 - `work/kouchou-ai/main@d5c9ece` と GitHub open PR / high priority issue / nishio assigned issue を 19:15 JST に再確認し、状態変化なしを [[current-status-2026-06-30]] / [[development-next-actions-live-2026-06-30]] / [[github-issues-221-884-trial-burden-live-2026-06-30]] へ反映

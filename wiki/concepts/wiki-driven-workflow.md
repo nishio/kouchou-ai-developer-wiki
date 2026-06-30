@@ -9,6 +9,7 @@ sources:
   - wiki-maintenance-observation-2026-05-25.md
   - nishio-source-freshness-criterion-2026-06-02.md
   - slack-codex-goal-speed-control-2026-06-30.md
+  - slack-devin-ops-and-recurring-web-updates-2026-06-30.md
 ---
 
 ## これは何か
@@ -116,6 +117,12 @@ Codex `/goal` のように persistent な goal を広い目的で走らせる場
 
 これにより、AI が速く進みすぎて「何を見て何を決めたか」を人間が追えなくなる問題を避けられる。
 
+## 繰り返しタスクを agent 化する時
+
+2026-06-23〜06-30 の Slack では、毎週の議事録を見て Web サイトを更新するような繰り返しタスクを Devin 化できると、Web サイトを活発に保てそうだという案が出ている。これは wiki-driven workflow の自然な応用だが、公開面を直接触るため、先に contract を切る必要がある。[[slack-devin-ops-and-recurring-web-updates-2026-06-30]]より
+
+最小 contract は、`議事録 export / Slack mirror をいつ時点まで読んだか`、`公開 wiki / website に書いてよい粒度か`、`どのページが canonical か`、`人間 review owner は誰か` の 4 点である。AI agent は source freshness と draft diff を作るところまでを担い、掲載許諾・外部向け表現・merge は人間判断に残す。
+
 ## 誤解しやすい点
 
 ### 「Wiki repo で作業しているなら、この repo に PR を出すのでは？」ではない
@@ -160,11 +167,13 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 ## Open Questions
 
 - この運用を新規コントリビュータ向け onboarding の標準フローとして docs に昇格させるべきか
+- 議事録から Web サイトを更新する繰り返し agent task の canonical page / review owner をどこに置くか
 - `work/` に複数 clone がある時の命名規約をどこまで固定するか
 - `pnpm check` が `work/` 配下 clone を拾う状態を `tsconfig.json` 側で直すか
 
 ## Updates
 
+- 2026-06-30: [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] を追加し、議事録から Web サイトを更新する繰り返し agent task は source freshness、public boundary、canonical page、human review owner を先に決める必要があると追記
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、persistent goal はまず状況把握・wiki / docs 更新・thinking-targets 整理を行い、人間が次の slice を選べる状態を作る運用を追記
 - 2026-05-19: 初版作成
 - 2026-05-19: 「コード / 議事録 / Slack / GitHub」を調べる時の最新ソース確認順を追記

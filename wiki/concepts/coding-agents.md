@@ -8,6 +8,7 @@ sources:
   - weekly-log-2026-05-06.md
   - pr-849-agent-review-request-observation-2026-05-21.md
   - slack-codex-goal-speed-control-2026-06-30.md
+  - slack-devin-ops-and-recurring-web-updates-2026-06-30.md
 ---
 
 ## エージェントの種類と使われ方
@@ -26,6 +27,10 @@ sources:
 - 指示は Slack `#devin部屋` で出す（opt-in メンテナのみ）
 
 この「draft 扱い」は単なるラベルではなく、**draft のまま merge しない** という運用まで含めて解釈した方がよい。2026-05-18 の実作業では、draft PR を merge してしまう事故が起きたため、AI エージェント起点の PR は **人間が ready for review に切り替えてから merge 判断する** ルールを明示しておく価値がある。[[contributing]]より
+
+2026-06-23〜06-30 の Slack では、Devin を今後も使ってよいのか、使ってよいなら用途・対象 repository・費用上限をどこに明文化するか、という運用論点が再浮上した。Slack 上の記憶や口頭合意だけでは、新しいメンテナや AI agent が判断できないため、利用対象、権限、費用、review owner は docs 化する必要がある。[[slack-devin-ops-and-recurring-web-updates-2026-06-30]]より
+
+同じ議論では、毎週の議事録を見て Web サイトを更新するような繰り返しタスクが AI agent 向きの候補として挙がっている。ただしこれは「公開してよい内容の scrub」「source freshness」「掲載許諾」「最終 review owner」が絡むため、単に bot に任せるのではなく、wiki / docs に判断を固定してから website diff に切る方が安全である。[[slack-devin-ops-and-recurring-web-updates-2026-06-30]]より
 
 ## 既知の Devin 失敗モード
 
@@ -84,10 +89,13 @@ Codex `/goal` のような persistent goal では、次を基本ループにす�
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
+- Devin の利用対象 repository / 用途 / 費用上限 / review owner を、Slack 記憶ではなくどの docs に置くか
+- 議事録から Web サイトを更新する繰り返しタスクを agent 化する場合、public boundary scrub と最終 review を誰が担うか
 - AI 生成テストの品質保証
 
 ## Updates
 
+- 2026-06-30: [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] を追加し、Devin の用途・費用上限・対象 repo の明文化、議事録から Web サイトを更新する繰り返しタスク候補、merge / billing / review owner は人間側に残す境界を追記
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` はまず状況把握・LLM Wiki・docs 更新を中心に走らせ、人間が追える速度に制御する運用を追記
 - 2026-05-17: 初回作成
 - 2026-05-18: host full access を標準化しない権限分離方針への参照を追加

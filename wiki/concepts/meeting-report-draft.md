@@ -60,6 +60,7 @@ sources:
   - public-tool-catalog-draft-2026-06-30.md
   - website-kouchou-ai-case-live-2026-06-30.md
   - slack-codex-goal-speed-control-2026-06-30.md
+  - slack-devin-ops-and-recurring-web-updates-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -90,7 +91,7 @@ sources:
 
 - 現状確認: 2026-06-30 19:15 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 2026-06-30 19:04 JST に議事録 export を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` / `2026/06/30` 見出しは未検出、txt 7703 行 / URL unique 551 件。Slack は `digitaldemocracy2030/slack-logs` を `main@7c17dd3` へ fast-forward し、mirror は `synced_at=2026-06-30T09:54:03Z` / window `2026-06-16〜06-30` / message_count 541。Slack は直近 `mirror/`、古い発言 `raw/`、週次流れ `oss_weekly_reporter` の三分法にし、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使う。[[slack-logs-repository]]より
-- agent ops: Slack 6/30 では Codex `/goal` を広聴AIで試す案と同時に、人間が追いつけなくなるため、まず状況把握・LLM Wiki・docs 更新中心で進める方針が共有された。今回の wiki 更新群はその運用に沿って、実装 PR より先に current state と未決論点を固定している。[[slack-codex-goal-speed-control-2026-06-30]]より
+- agent ops: Slack 6/30 では Codex `/goal` を広聴AIで試す案と同時に、人間が追いつけなくなるため、まず状況把握・LLM Wiki・docs 更新中心で進める方針が共有された。Devin 側でも、用途・対象 repo・費用上限の明文化と、議事録から Web サイトを更新する繰り返しタスク候補が出ている。今回の wiki 更新群はその運用に沿って、実装 PR より先に current state と未決論点を固定している。[[slack-codex-goal-speed-control-2026-06-30]]より [[slack-devin-ops-and-recurring-web-updates-2026-06-30]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・奈良市 official PDF・日本維新の会・北見・M-1/JINS/GMO を確認し、Web book 付録由来の大阪府・チームみらい・DirectVote・サイボウズ・アルティウスリンク・与謝野町も primary / organization page まで確認した。Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI も public source ありへ進めたが、自治体公式の広聴AI proof や first demo 候補とは分ける。追加で東京都AI戦略いどばた会議・すぎなみブロードリスニング・中央区みんなでアップデート会議を `collect / deepen / deliberate` 側、相模原市 official PDF を demand signal として分類した。さらに `#dd_prance_event2026` から、実践 lane では奈良 / 舞鶴2040の優先度が上がるが、Slack-only lead ではなく primary public source と許諾・話者文脈へ戻す必要があると整理した。8/2 の first demo は direct 確認済みの自治体公式 proof / viewer demo / deep case から選び、企業/VOC・TTTC lineage・いどばた系 platform は応用領域として分ける。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - Brand Compass / 情報発信: 議事録上では、stable v4 / M2、公開事例と trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態がつながっている。Brand Compass は別議題ではなく、8/2 first demo・#564 placement・docs-safe PR 順序を選ぶ判断フィルタとして扱う。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 - 自治体 user research: 議事録の自治体向けアンケート案を読み直し、`広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要を整理した。#564 の case intake は公開事例候補と掲載許諾の受け皿で、user research は roadmap の前提検証なので、同じフォームに混ぜない方がよい。[[meeting-municipality-user-research-scope-2026-06-30]]より
@@ -233,6 +234,7 @@ sources:
 
 - 2026-06-30: 19:04 JST の議事録 export / Slack re-pull を反映し、議事録は `2026/06/29` / `2026/06/30` 見出し未検出のまま、Slack mirror は `main@7c17dd3` / `synced_at=2026-06-30T09:54Z` へ更新。`#dd_prance_event2026` の 8/2 実践 lane lead も読み上げ欄へ追記。
 - 2026-06-30: 19:15 JST の GitHub live state / `work/kouchou-ai` pull を反映し、現状確認と #884 next action を 19:15 snapshot に更新。[[open-decisions]] overlay は 8/2 実践 lane framing と #884 code-safe slice を含む 6 件へ補正。
+- 2026-06-30: [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] を追加し、Devin の用途・費用上限・対象 repo の明文化、議事録から Web サイトを更新する繰り返し agent task 候補を agent ops 読み上げ欄へ反映。
 - 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action の優先候補を #884 first、#903 review comment、#885 child slice、#898 validation に圧縮して定例下書きへ反映。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の再確認を反映し、website issue #125 の hosted viewer 候補は canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしないと追記。
 - 2026-06-30: 18:30 JST の議事録 export / Slack re-pull を反映し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror は `main@341cf80` から変化なしと読み上げ欄へ追記。
