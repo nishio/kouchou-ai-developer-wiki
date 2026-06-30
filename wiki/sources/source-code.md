@@ -110,6 +110,7 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 ## Updates
 
+- 2026-06-30 19:15 JST: `work/kouchou-ai/main@d5c9ece` が origin と一致し、19:15 JST 時点でも main tip は PR #899 merge のままと確認
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `README.md` / `docs/index.md` / `apps/public-viewer/components/Footer.tsx` / `apps/api/public/meta/default/metadata.json` / `packages/report-schema/src/index.ts` を確認し、レポート責任所在と免責文言の current facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `docs/index.md` / `docs/user-guide/how-to-use.md` / `docs/user-guide/cli-quickstart.md` / `docs/development/plugin-guide.md` を確認し、8/2 イベント向け技術・ツール入口 draft の根拠になる current docs public-entry facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Web UI Node runtime facts として admin の server fetch / server actions / CSP、public-viewer export mode、static-site-builder runtime `pnpm run build:static` と dev script mismatch を追記

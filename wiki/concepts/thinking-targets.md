@@ -21,6 +21,7 @@ sources:
   - slack-logs-repository.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
 ---
 
 このページは **「次に何を考えれば前に進むか」だけ** を集める。
@@ -34,7 +35,7 @@ sources:
 
 ## 0. 2026-06-30 immediate thinking queue
 
-6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか**、**公開事例と trust layer をどこに置くか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
+6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか / 誰が実践 lane を担うか**、**公開事例と trust layer をどこに置くか**、**#884 を次の code-safe slice にするか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
 
 Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、#564/#696/#542、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
@@ -42,10 +43,10 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 ### 0-1. 8/2 の first demo を何にするか
 
-- 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
-- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は 2026-06-30 17:30 JST に public source を確認済み、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI は 18:13 JST に public source ありへ進めた。ただし first demo ではなく、`広義 broad listening` / `政党・政策形成` / `TTTC lineage` / `企業・VOC` / `AI 支援住民対話 adjacent` / `implementation partner` / `対面議論支援` / `LLM直接分類 adjacent` として別枠に置く。長崎県知事選は public report URL 未確認の候補に残す。Brand Compass 観点では、demo が `聞く能力` の story と A/B/C/D 配布形態のどこに当たるかも 1 行で添える
+- 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。さらに、実践 lane の主役・話者文脈を first demo と同じものにするか分けるか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
+- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件`、`実践 lane の話者候補 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否、話者文脈を 1 行で見る。`#dd_prance_event2026` では奈良 / 舞鶴2040 が地方自治側の planning lead として再浮上したが、Slack-only lead は外部 proof にせず primary public source に戻す。Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は 2026-06-30 17:30 JST に public source を確認済み、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI は 18:13 JST に public source ありへ進めた。ただし first demo ではなく、`広義 broad listening` / `政党・政策形成` / `TTTC lineage` / `企業・VOC` / `AI 支援住民対話 adjacent` / `implementation partner` / `対面議論支援` / `LLM直接分類 adjacent` として別枠に置く。長崎県知事選は public report URL 未確認の候補に残す。Brand Compass 観点では、demo が `聞く能力` の story と A/B/C/D 配布形態のどこに当たるかも 1 行で添える
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
-- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
+- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[slack-prance-event-broadlistening-session-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
 ### 0-2. #564 / #696 / #542 の canonical placement
 
@@ -205,6 +206,7 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 ## Updates
 
+- 2026-06-30: `#dd_prance_event2026` source と 19:15 JST GitHub live check を反映し、0-1 を first demo だけでなく実践 lane の話者・文脈選定まで含む問いに補正。
 - 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action は #884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 / #898 を次点として見ると 0-4 に追記。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通は first demo ではなく implementation partner / adjacent practice として 0-1 と 0-7 に追加。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を first demo ではなく source strength / tool lineage で分ける判断を 0-1 と 0-7 に追加。

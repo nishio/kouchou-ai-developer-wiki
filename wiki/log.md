@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 19:15] filing-back | 人間判断キューを 19:15 live state へ圧縮
+
+- `work/kouchou-ai/main@d5c9ece` と GitHub open PR / high priority issue / nishio assigned issue を 19:15 JST に再確認し、状態変化なしを [[current-status-2026-06-30]] / [[development-next-actions-live-2026-06-30]] / [[github-issues-221-884-trial-burden-live-2026-06-30]] へ反映
+- [[open-decisions]] / [[thinking-targets]] を更新し、短期未決を `8/2 first demo + 実践 lane framing`、#564/#696/#542 placement、tool catalog placement、#884 code-safe slice、docs-safe PR 順序、Azure demo / SaaS 境界の 6 件へ圧縮
+
 ## [2026-06-30 19:04] filing-back | Slack/議事録 freshness と 8/2 実践 lane を再確認
 
 - Google Doc export を 19:04 JST に再取得し、[[meeting-minutes]] を先頭見出し `2026/06/22` / `2026/06/29`・`2026/06/30` 見出し未検出 / txt 7703 行 / URL unique 551 件へ更新
