@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 19:04] filing-back | Slack/議事録 freshness と 8/2 実践 lane を再確認
+
+- Google Doc export を 19:04 JST に再取得し、[[meeting-minutes]] を先頭見出し `2026/06/22` / `2026/06/29`・`2026/06/30` 見出し未検出 / txt 7703 行 / URL unique 551 件へ更新
+- `work/slack-logs` を `main@7c17dd3` へ fast-forward し、[[slack-prance-event-broadlistening-session-2026-06-30]] を追加。`#dd_prance_event2026` は 8/2 国会 / 地方自治 broad listening 実践 lane の planning lead だが、外部 proof は奈良 / 舞鶴2040 などの primary public source に戻す方針として [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] / [[meeting-report-draft]] へ接続
+
 ## [2026-06-30 18:55] filing-back | #884 作成前確認パネルの実装契約を整理
 
 - GitHub #884 / #221 と `work/kouchou-ai/main@d5c9ece` の create flow / EnvironmentCheckDialog / reuse / TokenUsage を再確認し、[[issue-884-pre-create-review-contract-2026-06-30]] を追加

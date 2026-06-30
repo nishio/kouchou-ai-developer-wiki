@@ -39,6 +39,7 @@ sources:
   - meeting-cartographer-idobata-boundary-2026-06-30.md
   - public-tool-catalog-draft-2026-06-30.md
   - website-kouchou-ai-case-live-2026-06-30.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -53,9 +54,9 @@ sources:
 
 ## Source Freshness
 
-議事録は 2026-06-30 18:30 JST に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7702 行、HTML URL 棚卸しは unique 550 件。[[meeting-minutes]]より
+議事録は 2026-06-30 19:04 JST に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` / `2026/06/30` 見出しはまだ export 内に見当たらない。txt は 7703 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
 
-Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、2026-06-30 18:29 JST に re-pull して `main@341cf80` / `synced_at=2026-06-30T04:12:50Z` / window `2026-06-16〜06-30` から変化がないことを確認した。[[slack-logs-repository]]より
+Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、2026-06-30 19:04 JST に `main@7c17dd3` へ fast-forward した。mirror は `synced_at=2026-06-30T09:54:03Z` / window `2026-06-16〜06-30` / message_count 541。[[slack-logs-repository]]より
 
 `oss_weekly_reporter` は `data@e2c9b20` まで fast-forward 済みで、weekly dump は `2026-06-17_to_2026-06-24` まである。今後の Slack raw 一次確認は `slack-logs`、週次 AI 要約や GitHub activity とのセット確認は `oss_weekly_reporter` という使い分けが妥当。
 
@@ -66,6 +67,8 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 ## Reading
 
 Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では 6/29 に embedding / Spherical K-means / Faiss K-means の話が出ており、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に固定した。採用判断ではなく、clustering space / objective / backend を分けた clean experiment 候補として扱うのが妥当。[[slack-logs-repository]]より
+
+全 channel keyword pass では、`#dd_prance_event2026` に 8/2 の国会 / 地方自治 broad listening 実践セッション計画が見えた。これは code 実装論点ではなく、公開事例 map の優先順位と session framing の lead である。奈良 / 舞鶴2040は地方自治側の候補として重みが増すが、Slack-only の planning memo ではなく primary public source に戻して扱う。[[slack-prance-event-broadlistening-session-2026-06-30]]より
 
 議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。イベント案は「国会」「地方政治」「技術」「ツール」の lane を含むので、実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-2026-06-22-event-priority]]より
 
@@ -91,6 +94,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
 - 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に追加し、渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 Democracy-X public article / viewer、synthetic sample fallback に分けた。次は、第一 demo の人間判断と、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
+- 8/2 の実践 lane は、`#dd_prance_event2026` の Slack planning lead で国会 / 地方自治の session framing が見えた。国会側は国会・国政選挙・政党・選挙報道の claim を分け、地方自治側は奈良 / 舞鶴2040の primary source と許諾・話者文脈を確認する。
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「初回説明 FAQ + 公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 奈良市 / 岩手県 / 広島県 / 東京都 / 大阪府 / 舞鶴2040 / 北見 / 奈良 #全員市長 / 八代市 / 国民民主党 / 日本維新の会 / チームみらい / 東京都知事選 2024 TTTC / DirectVote / M-1 / JINS / GMO / サイボウズ / アルティウスリンク / 中野駅新北口などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「企業 / VOC」「candidate / adjacent」を分けて扱う。
 - Web book 付録 `99_付録_公開事例一覧.md` は [[broad-listening-book-public-case-appendix-2026-06-30]] に切り出した。2026-06-30 17:30 JST の direct verification で、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町は primary / organization page まで進めたが、これは 8/2 の first demo を増やす根拠ではなく、source strength と tool lineage の分類を増やす根拠として扱う。18:13 JST には `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI を public source ありへ進めた。ただし、いずれも自治体公式の広聴AI proof や first demo 候補とは分ける。
@@ -114,6 +118,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30 19:04 JST: 議事録 Google Doc export を再取得して `2026/06/29` / `2026/06/30` 見出し未検出のままと確認し、`work/slack-logs main@7c17dd3` の `#dd_prance_event2026` から 8/2 実践 lane の planning lead を追加した。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を 18:37 JST に再確認し、website issue #125 の hosted viewer 候補は public case page では canonical public artifact 確認待ちの candidate として扱うと補正した。
 - 2026-06-30: 18:30 JST に議事録 Google Doc export と `work/slack-logs` を再確認し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror も `main@341cf80` から変化なしと補正した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。

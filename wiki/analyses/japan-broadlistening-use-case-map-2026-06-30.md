@@ -10,6 +10,7 @@ sources:
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - current-status-2026-06-30.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
 ---
 
 ## Conclusion
@@ -39,6 +40,8 @@ Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として�
 viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補になる。舞鶴2040は public viewer と FAQ が確認でき、タイトルも地域の未来づくりに寄っているため、政治・選挙色を下げたい場合の代替候補になり得る。北見は public portal / viewer として読みやすいが、自治体公式 source ではなく地域 project として source strength を下げる。ただし実施主体、公開許諾、イベントでのスクリーンショット利用可否は別途確認する。
 
 東京都AI戦略いどばた会議、すぎなみブロードリスニング、中央区みんなでアップデート会議は、8/2 の first demo を置き換える素材ではなく、`collect / deepen / deliberate` 側の public practice として tool ecosystem slide に置くのが自然である。広聴AIの viewer 操作を見せる素材にすると、分析・可視化 tool と収集・熟議 platform の役割が混ざる。
+
+Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / 舞鶴2040を地方自治側の優先確認候補として押し上げる。ただし、Slack-only の計画メモは external proof ではない。公開資料や #564 では、奈良市 official PDF / 奈良 #全員市長 viewer / 舞鶴2040 public viewer・FAQ・舞鶴市公式 page という primary source へ戻して説明する。国会側も同様に、国会・国政選挙・政党・選挙報道を source strength と tool lineage で分ける。[[slack-prance-event-broadlistening-session-2026-06-30]]より
 
 ## Implication for #564
 
@@ -87,6 +90,7 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 
 ## Updates
 
+- 2026-06-30 19:04 JST: `#dd_prance_event2026` の 8/2 実践セッション計画を反映し、奈良 / 舞鶴2040は地方自治側の優先確認候補、国会側は国会・国政選挙・政党・選挙報道の claim 分離が必要だと追記。
 - 2026-06-30: 18:46 JST の追加検索を反映し、東京都AI戦略いどばた会議 / すぎなみブロードリスニング / 中央区みんなでアップデート会議を `collect / deepen / deliberate` 側に分類し、相模原市 official PDF は実施済み事例ではなく demand signal として扱う方針にした。
 - 2026-06-30: 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI を source strength 付き分類へ進めた。長崎県知事選は public report URL 未確認なので candidate のまま。
 - 2026-06-30: 18:05 JST の追加Web検索を反映し、Code for Japan / 加古川市、Democracy X / 長崎県知事選、litela / 田原本町・富岡市、富士通パブリックコメント AI を primary confirmation queue に追加した。

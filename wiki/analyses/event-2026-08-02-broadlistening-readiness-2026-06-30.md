@@ -15,6 +15,7 @@ sources:
   - public-broadlistening-artifacts-2026-06-30.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - meeting-brand-compass-information-strategy-2026-06-30.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
 ---
 
 ## Conclusion
@@ -33,6 +34,8 @@ Brand Compass 文脈まで広げると、8/2 準備は「見せる demo を選�
 - ブロードリスニングのツール
 
 developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの「技術」「ツール」lane である。ただし実践 lane と切り離すと、ツール説明が「何のために使うか」を失う。したがって、既存 docs では [[broadlistening]]、[[usage-modes]]、[[public-ui-requirements-for-broadlistening]] を束ね、実践から tool / viewer / pipeline へ降りる導線を作るのがよい。
+
+19:04 JST の Slack mirror 再確認では、`#dd_prance_event2026` に国会 / 地方自治の実践 lane 計画が見えた。これは docs / wiki 側が「技術・ツールだけ」へ閉じないための lead だが、Slack-only の planning memo を外部 proof にはしない。実践 lane で奈良 / 舞鶴2040を扱う場合も、primary public source と session framing の確認に戻す。[[slack-prance-event-broadlistening-session-2026-06-30]]より
 
 ## Yokohama context
 
@@ -60,6 +63,7 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 
 ## Updates
 
+- 2026-06-30 19:04 JST: `#dd_prance_event2026` の 8/2 実践 lane 計画を反映し、技術・ツール lane と国会 / 地方自治の実践 lane を接続しつつ、Slack-only lead を外部 proof にしない方針を追記。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、8/2 readiness は first demo 選定だけでなく stable v4 / 情報発信 / A/B/C/D 配布形態の説明を揃える作業だと補正。
 - 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo を #564 / #696 / #542 の trust layer と接続。
 - 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 で使える公開事例 / demo 素材を public-ready、確認待ち、fallback に分けた。

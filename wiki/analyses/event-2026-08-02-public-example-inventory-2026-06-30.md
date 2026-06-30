@@ -11,6 +11,7 @@ sources:
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - broad-listening-book-source.md
   - broad-listening-book-extractions.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
   - meeting-minutes.md
   - source-code.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
@@ -26,6 +27,8 @@ sources:
 Web book 付録の公開事例一覧は、8/2 で「日本での活用が複数領域に広がっている」ことを示す breadth source として使える。2026-06-30 17:30 JST の direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで進めた。ただし、first demo の根拠には、引き続き direct 確認済みの official page / public viewer を使う。サイボウズ / アルティウスリンクは応用領域、与謝野町は AI 支援住民対話 adjacent として補助線に留める。18:13 JST には Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI も public source ありへ進めたが、これらも first demo ではなく implementation partner / 政党 AI / 対面議論支援 / LLM直接分類 adjacent として扱う。Democracy X / 長崎県知事選は public report URL 未確認のため candidate のまま。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 18:46 JST の追加検索で、東京都AI戦略いどばた会議、すぎなみブロードリスニング、中央区みんなでアップデート会議、相模原市意見募集結果 PDF も確認した。これらは first demo の代替ではなく、`collect / deepen / deliberate` 側の public practice として使う。相模原市 PDF は official document だが、広聴AI / いどばた / AI avatar / ブロードリスニング技術への市民提案と市回答であり、実施済み case ではない。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
+
+19:04 JST の Slack mirror 全 channel keyword pass では、`#dd_prance_event2026` に 8/2 の国会 / 地方自治 broad listening 実践セッション計画が見えた。これは外部公開 proof ではなく planning lead だが、地方自治側では奈良 / 舞鶴2040の優先度を上げ、国会側では「国会で使った」と「国政選挙・政党・政策形成で使った」を分ける必要を示す。[[slack-prance-event-broadlistening-session-2026-06-30]]より
 
 Azure デモ環境は、現時点では「自分のデータを投入する場所」より「使い方や準備データを理解する参照環境」として位置づけ直されている。したがって 8/2 では、専用環境を主役にするより、公開事例 / サンプルレポート / サンプル CSV の導線を前面に出す方がよい。[[azure-demo-public-visibility-proposal-2026-06-04]]より [[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
@@ -72,6 +75,8 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 政治色を下げたい場合は、奈良 viewer の代替として舞鶴2040 viewer、または北見 portal / viewer を第一候補にできる可能性がある。舞鶴2040は public viewer と FAQ が確認できたため、次に見るべきは表示安定性ではなく、イベントでの見せ方・許諾・実施主体の説明である。北見も public viewer はあるが、自治体公式 source ではなく地域 project として扱う。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
+実践 lane の session planning では、奈良と舞鶴2040は viewer demo 候補であると同時に、地方自治側の話者・文脈候補でもある。ただし Slack-only の planning lead で事例を昇格させず、奈良市 official PDF / 奈良 #全員市長 public viewer / 舞鶴2040 public viewer・FAQ・舞鶴市公式 page という primary source で説明する。[[slack-prance-event-broadlistening-session-2026-06-30]]より
+
 いどばた / broad listening platform 系の public practice を見せる場合は、viewer demo の前後ではなく tool ecosystem context に置く。広聴AIの読み方を見せる画面と、意見収集・対話・政策共創の画面を同じ demo として扱うと、8/2 の短い説明で capability が混ざる。
 
 この順序なら、技術・ツール lane だけで閉じず、実践 lane と接続しながらも、未確認の deployment detail や private data に触れずに説明できる。[[event-2026-08-02-tech-tool-brief-draft-2026-06-30]]より
@@ -102,6 +107,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 ## Updates
 
+- 2026-06-30 19:04 JST: `#dd_prance_event2026` の 8/2 実践セッション計画を反映し、奈良 / 舞鶴2040は planning lead として優先度が上がるが、外部 proof は primary public source で扱う方針を追記した。
 - 2026-06-30: 18:46 JST の追加検索を反映し、東京都AI戦略いどばた会議 / すぎなみブロードリスニング / 中央区みんなでアップデート会議を tool ecosystem context に追加した。相模原市 official PDF は demand signal であり、実績・demo には使わない。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通を first demo ではなく implementation partner / adjacent practice として棚卸しへ追加した。長崎県知事選は public report URL 未確認の候補に残した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を source strength 付きで棚卸しへ反映した。

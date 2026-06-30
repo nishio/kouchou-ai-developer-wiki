@@ -3,11 +3,12 @@ type: source
 summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical、mirror は直近14日の rolling snapshot"
 url: https://github.com/digitaldemocracy2030/slack-logs
 last_checked: 2026-06-30
-coverage: "work/slack-logs main@341cf80, mirror synced_at=2026-06-30T04:12:50Z, window=2026-06-16T04:12:50Z〜2026-06-30T04:12:50Z; raw canonical は 2025-01〜2026-04; README / sync metadata / users snapshot を確認"
+coverage: "work/slack-logs main@7c17dd3, mirror synced_at=2026-06-30T09:54:03Z, window=2026-06-16T09:54:03Z〜2026-06-30T09:54:03Z; raw canonical は 2025-01〜2026-04; README / sync metadata / users snapshot / broad listening keyword pass を確認"
 sources:
   - slack-logs README.md
   - slack-logs mirror/sync.json
   - nishio-source-freshness-criterion-2026-06-02.md
+  - slack-prance-event-broadlistening-session-2026-06-30.md
 ---
 
 ## What it is
@@ -24,7 +25,7 @@ README 上の設計は二層：
 
 ## Freshness marker
 
-この source の鮮度基準は、**2026-06-30 18:29 JST に `work/slack-logs` を re-pull し、`main@341cf80` から変化がないと確認した時点**。`mirror/sync.json` は `synced_at=2026-06-30T04:12:50.909454+00:00`、`window_days=14`、`window_oldest=2026-06-16T04:12:50.909454+00:00`、`window_latest=2026-06-30T04:12:50.909454+00:00`、`channel_count=58`、`message_count=506` だった。
+この source の鮮度基準は、**2026-06-30 19:04 JST に `work/slack-logs` を re-pull し、`main@7c17dd3` まで fast-forward した時点**。`mirror/sync.json` は `synced_at=2026-06-30T09:54:03.075042+00:00`、`window_days=14`、`window_oldest=2026-06-16T09:54:03.075042+00:00`、`window_latest=2026-06-30T09:54:03.075042+00:00`、`channel_count=58`、`message_count=541` だった。
 
 2026-06-30 確認時点の広聴AI関連 channel は次の ID で引ける：
 
@@ -35,6 +36,7 @@ README 上の設計は二層：
 - `C08UYDUBMG8`: `7_広聴ai読書会`
 - `C08K4CUB12T`: `2_広報_pr`
 - `C08LJ9T5MLY`: `1_事例紹介_全体`
+- `C0B4L1JB8RM`: `dd_prance_event2026`
 
 ## How to read
 
@@ -77,8 +79,9 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 - `#2_開発_広聴ai`: 2026-06-26 に Hal Seki が「横浜型ブロードリスニング」/ Yokohama Hack! の募集を共有。市民意見の収集・分析・検討のうち「収集」手法の課題解決を目的にしたソリューション募集として読める。詳細は [[slack-yokohama-hack-2026-06-26]]。2026-06-30 には nishio が Codex `/goal` を広聴AIで試す案と、全力で走らせず状況把握と LLM Wiki / Doc 更新を中心にする運用案を共有。
 - `#2_開発_広聴ai_アルゴリズム開発`: 2026-06-29 に tokoroten が embedding アルゴリズム見直しの文脈で、ベクトル検索 / embedding 最前線の資料、Spherical K-means、Faiss K-means に言及。
 - `#8_開発_広聴ai_github`: 2026-06-27 に GitHub bot message が 1 件。PR #903 の docs inventory と同時期。
+- 全 channel keyword pass では、`#dd_prance_event2026` に 8/2 イベントの国会 / 地方自治 broad listening 実践セッション計画があり、奈良 / 舞鶴2040 を含む実践 lane の候補・注意点として読めた。詳細は [[slack-prance-event-broadlistening-session-2026-06-30]]。
 
-つまり 2026-06-16〜06-30 の Slack では、広聴AI本体の新しい実装論点は大きく増えておらず、現在進行形の状態は GitHub open PR / issue と議事録で補う必要がある。一方で、AI エージェント運用は「先に状況把握と wiki / docs 更新」という速度制御の方針が Slack 上でも明示された。
+つまり 2026-06-16〜06-30 の Slack では、広聴AI本体の新しい実装論点は大きく増えておらず、現在進行形の code 状態は GitHub open PR / issue と議事録で補う必要がある。一方で、AI エージェント運用は「先に状況把握と wiki / docs 更新」という速度制御の方針が Slack 上でも明示され、8/2 実践 lane は public case map の優先順位を調整する lead として追加で読める。
 
 ## Relationship to oss_weekly_reporter
 
@@ -101,6 +104,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 ## Updates
 
+- 2026-06-30 19:04 JST: `work/slack-logs` を `main@7c17dd3` へ fast-forward し、`synced_at=2026-06-30T09:54:03Z` / message_count 541 まで確認。全 channel keyword pass で `#dd_prance_event2026` の 8/2 実践 lane を [[slack-prance-event-broadlistening-session-2026-06-30]] に切り出した。
 - 2026-06-30 18:29 JST: `work/slack-logs` を re-pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` から変化がないことを再確認した。
 - 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。

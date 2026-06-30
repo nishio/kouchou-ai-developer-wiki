@@ -1,15 +1,15 @@
 ---
 type: source
 summary: "2026-06-30 の Slack `#2_開発_広聴ai` で共有された Codex `/goal` 運用メモ。長い goal は人間が追える速度に制御し、まず状況把握・LLM Wiki・docs 更新を中心に走らせる"
-last_read: 2026-06-30 16:59 JST
-coverage: "work/slack-logs main@341cf80, mirror window 2026-06-16T04:12:50Z〜2026-06-30T04:12:50Z, channel C08F7JZPD63 (#2_開発_広聴ai), 2026-06-30 12:56/13:03 JST の2件"
+last_read: 2026-06-30 19:04 JST
+coverage: "work/slack-logs main@7c17dd3, mirror window 2026-06-16T09:54:03Z〜2026-06-30T09:54:03Z, channel C08F7JZPD63 (#2_開発_広聴ai), 2026-06-30 12:56/13:03 JST の2件"
 sources:
   - slack-logs-repository.md
 ---
 
 ## What it is
 
-2026-06-30 の Slack `#2_開発_広聴ai` で、Codex `/goal` を広聴AIに使う案と、その速度制御方針が共有された。`digitaldemocracy2030/slack-logs` の `mirror/slack/C08F7JZPD63.jsonl.gz` を `work/slack-logs main@341cf80` で読んだ観測である。[[slack-logs-repository]]より
+2026-06-30 の Slack `#2_開発_広聴ai` で、Codex `/goal` を広聴AIに使う案と、その速度制御方針が共有された。`digitaldemocracy2030/slack-logs` の `mirror/slack/C08F7JZPD63.jsonl.gz` を `work/slack-logs main@7c17dd3` で読んだ観測である。[[slack-logs-repository]]より
 
 この source は raw 発言の全文保存ではなく、AI エージェント運用として再利用できる判断だけを残す。
 
@@ -39,4 +39,5 @@ Codex `/goal` のような persistent goal は、単発タスクよりも速く�
 
 ## Updates
 
+- 2026-06-30 19:04 JST: `work/slack-logs main@7c17dd3` へ source freshness を更新。該当 2 件の判断内容は変わらない。
 - 2026-06-30: 初回作成。Slack `#2_開発_広聴ai` の Codex `/goal` 共有を、長い goal の速度制御と wiki/docs-first 運用として固定した。
