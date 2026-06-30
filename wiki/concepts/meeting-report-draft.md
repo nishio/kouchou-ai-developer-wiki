@@ -27,6 +27,8 @@ sources:
   - windows-setup-guide-outline-2026-06-30.md
   - issue-876-developer-docs-gap-audit-2026-06-30.md
   - pr-903-review-comment-draft-2026-06-30.md
+  - slack-algorithm-kmeans-2026-06-29.md
+  - spherical-kmeans-experiment-scope-2026-06-30.md
 ---
 
 ## 目的
@@ -116,6 +118,7 @@ sources:
 - 進行中 branch: `codex/experiment-storage`。`analysis-core` CLI に `--experiment-root` / `--experiment-id` / `--experiment-overwrite` を足し、既存 output から `manifest.json`、`datasets.jsonl`、`tree_runs.jsonl`、`labelling_runs.jsonl`、artifact copy を作る first slice を実装した。対象テスト 13 件と ruff は通過。
 - [[llm-grouping-400-tree-label-corpus-2026-06-02]] を追加し、既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に移した。`bundles/tree_label_matrix.md` / `.html` で top-level labels と `[8,40]` refinement を横比較できる。
 - [[one-factor-experiment-principle-2026-06-02]] を追加し、複数要素を同時に変えた run は exploratory、採用判断用の clean experiment は current `main` baseline から `factor_under_test` を 1 つだけ変える、という原則を明文化した。
+- 2026-06-29 Slack で出た Spherical K-means / Faiss K-means は、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に切り出した。current main は「元 embedding → 2D UMAP → sklearn KMeans → ward merge」なので、即置換ではなく clustering space / objective / backend を分けた clean experiment として扱う。最初は 2D UMAP と clustering 用 15D〜25D UMAP の比較が因果を読みやすい。
 - [[human-pairwise-label-preference-experiment-2026-06-02]] を追加し、人間評価は単独 label 批評ではなく、同じ tree / evidence から作った label variants の blind A/B preference として集める方針に補正した。
 - 追加で、A/B 評価では algorithm / process 由来を人間に隠し、困難な full UI 評価は label 単体 / 隣接 label 集合 / label + 代表例の分解テストとして扱う方針にした。
 - [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加し、次の implementation slice を `hierarchical_8_40` 固定の blind A/B bundle と `human_preferences.jsonl` schema 作成に絞った。
@@ -132,7 +135,7 @@ sources:
 - [[nishio-source-freshness-criterion-2026-06-02]] を追加し、議事録 / Slack source は「いつ時点まで読んだか」を freshness marker として明示する方針にした。
 - [[meeting-minutes]] は 2026-06-30 に Google Doc export を再取得し、先頭見出し `2026/06/22` / txt 7702 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。
 - Slack raw の一次参照を `digitaldemocracy2030/slack-logs` に更新し、[[slack-logs-repository]] を追加。直近14日は `mirror/`、古い public channel log は `raw/`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` 補助線として扱う。2026-06-30 確認時点の mirror は `synced_at=2026-06-30T04:12Z` / window `2026-06-16〜06-30`。
-- 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
+- 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件で、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験候補として整理した。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
 
 ### docs-first / no-conflict lane
 
@@ -155,6 +158,7 @@ sources:
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 Windows guide の対象 / 対象外、troubleshoot 範囲、docs PR slice を定例向けに整理
 - 2026-06-30: [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、#876 は developer quickstart 単体ではなく README / docs index / quickstart / nav の setup-first 導線も確認してから再着手する必要があると整理
 - 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR #903 に直接投稿せず、docs inventory の修正観点 4 点をコメント案として固定
+- 2026-06-30: 6/29 Slack の Spherical K-means / Faiss K-means 言及を [[slack-algorithm-kmeans-2026-06-29]] / [[spherical-kmeans-experiment-scope-2026-06-30]] に切り出し、即置換ではなく clean experiment 候補として定例向けに整理
 - 2026-06-30: 議事録を 2026-06-22 先頭見出しまで再取得し、Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` を追加。`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線へ位置づけ直し、[[current-status-2026-06-30]] に現状 snapshot を固定した
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記

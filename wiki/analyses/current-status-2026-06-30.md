@@ -9,6 +9,8 @@ sources:
   - windows-setup-guide-outline-2026-06-30.md
   - issue-876-developer-docs-gap-audit-2026-06-30.md
   - pr-903-review-comment-draft-2026-06-30.md
+  - slack-algorithm-kmeans-2026-06-29.md
+  - spherical-kmeans-experiment-scope-2026-06-30.md
 ---
 
 ## Snapshot
@@ -29,7 +31,7 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 
 ## Reading
 
-Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では embedding / Spherical K-means / Faiss K-means の話が出ているが、採用判断にはまだ GitHub issue / 実験設計への接続が必要。[[slack-logs-repository]]より
+Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では 6/29 に embedding / Spherical K-means / Faiss K-means の話が出ており、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に固定した。採用判断ではなく、clustering space / objective / backend を分けた clean experiment 候補として扱うのが妥当。[[slack-logs-repository]]より
 
 議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-minutes]]より
 
@@ -42,6 +44,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に docs PR 化前の具体アウトラインを固定した。current main の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線まで反映済みだが、API key 前提と対象外環境の切り分けがまだ弱い。[[source-code]]より
 - PR #903 は、[[pr-903-node-runtime-doc-review-2026-06-30]] に docs 精度のレビュー観点を固定し、[[pr-903-review-comment-draft-2026-06-30]] に投稿前コメント案を置いた。AI からはまだ GitHub へ投稿していない。
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
+- 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
 ## Open Questions
@@ -51,6 +54,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: 6/29 Slack の Spherical K-means / Faiss K-means 言及を [[slack-algorithm-kmeans-2026-06-29]] / [[spherical-kmeans-experiment-scope-2026-06-30]] に切り出し、採用判断ではなく clean experiment 候補として接続。
 - 2026-06-30: PR #903 docs inventory のレビュー観点と issue #898 close readiness へのリンクを追加。
 - 2026-06-30: docs 系 issue / PR の横断地図として [[docs-issue-map-2026-06-30]] を追加。
 - 2026-06-30: #877 の Windows setup guide を本体 docs PR に落とすための具体アウトラインとして [[windows-setup-guide-outline-2026-06-30]] を追加。

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 14:08	filing-back	Spherical K-means / Faiss K-means Slack 議論を整理
 2026-06-30 14:01	filing-back	PR #903 review comment draft を追加
 2026-06-30 13:57	filing-back	#876 developer docs の gap audit を追加
 2026-06-30 13:51	filing-back	#877 Windows guide outline を具体化

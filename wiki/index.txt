@@ -114,6 +114,7 @@ report-html-non-web-canonical-decision-2026-05-23	source	sources/report-html-non
 report-slug-config-repro-2026-05-19	source	sources/report-slug-config-repro-2026-05-19.md	2026-05-19 時点の `/reports/{slug}` は通常生成物では `config` 付き JSON を返す一方、壊れた `hierarchical_result.json` を置くと `config` 欠損でも 200 で素通しするという再現メモ
 role-model-papers-polis-birdwatch	source	sources/role-model-papers-polis-birdwatch.md	広聴AI紹介論文のロールモデルとして参照しやすい vTaiwan / Polis と Birdwatch / Community Notes 論文の要点
 seed-reproducibility-history	source	sources/seed-reproducibility-history.md	UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810
+slack-algorithm-kmeans-2026-06-29	source	sources/slack-algorithm-kmeans-2026-06-29.md	2026-06-29 の Slack #2_開発_広聴ai_アルゴリズム開発で、Embedding 最前線資料の共有をきっかけに、embedding algorithm の見直し、Spherical K-means、Faiss K-means が短く言及された thread
 slack-dev-kouchouai-2025-q4	source	sources/slack-dev-kouchouai-2025-q4.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2025-10-01 〜 2025-12-31）— 現行方式の限界認識、plugin 化、v4/v5 二段構え
 slack-dev-kouchouai-2026-q1	source	sources/slack-dev-kouchouai-2026-q1.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、LLM grouping 系分類の設計意図
 slack-flowchart-feedback-2026-05-30	source	sources/slack-flowchart-feedback-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた
@@ -233,6 +234,7 @@ semantic-island-map-prototype-2026-05-26	analysis	analyses/semantic-island-map-p
 slack-algorithm-themes	analysis	analyses/slack-algorithm-themes.md	`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類
 slack-design-intents-2025-q4	analysis	analyses/slack-design-intents-2025-q4.md	2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、long-context LLM 直接分類志向、JSON/YAML カスタマイズ、v4/v5 分離
 slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、LLM grouping 系分類、可視化分離
+spherical-kmeans-experiment-scope-2026-06-30	analysis	analyses/spherical-kmeans-experiment-scope-2026-06-30.md	Slack で出た Spherical K-means / Faiss K-means は、current main の 2D UMAP + KMeans を即置換する判断ではなく、clustering 空間・clustering objective・実装 backend を分けた clean experiment 候補として扱うべき
 strategic-development-order-2026-05-23	analysis	analyses/strategic-development-order-2026-05-23.md	Issue 消化順ではなく、CLI / workflow / plugin / Web 配布を 3 層のプラットフォームとして見ると、先に固めるべきなのは `analysis-core` の共通基盤と plugin 実験の本番導線である
 tokoroten-algorithm-discussion-retrospective	analysis	analyses/tokoroten-algorithm-discussion-retrospective.md	tokoroten とのアルゴリズム議論は、クラスタリング手法の優劣ではなく、散布図プロダクト・深い分析・説明責務・運用ワークフローを分け直す議論だった
 tokoroten-spectral-clustering-reading	analysis	analyses/tokoroten-spectral-clustering-reading.md	tokoroten の spectral clustering メモは、TTTC を『高次元で正しく切る手法』ではなく『UMAP が作る 2D 形状を前提に切る散布図寄りの手法』として理解していた点が重要

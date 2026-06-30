@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:08] filing-back | Spherical K-means / Faiss K-means Slack 議論を整理
+
+- [[slack-algorithm-kmeans-2026-06-29]] を追加し、`work/slack-logs/main@341cf8022d32` の `#2_開発_広聴ai_アルゴリズム開発` mirror から 2026-06-29 の embedding / Spherical K-means / Faiss K-means 言及を source 化
+- [[spherical-kmeans-experiment-scope-2026-06-30]] を追加し、current main の「元 embedding → 2D UMAP → sklearn KMeans → ward merge」を baseline に、clustering space / objective / backend を分けて clean experiment 化する方針を整理
+- [[source-code]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、採用判断ではなく実験候補として接続
+
 ## [2026-06-30 14:01] filing-back | PR #903 review comment draft を追加
 
 - [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR #903 へ直接投稿せず、last verified / Server Actions count / static-site-builder dev script / CSV・JSON download actions の 4 点をコメント案として固定
