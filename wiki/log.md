@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:29] filing-back | #885 Node runtime 次 scope を整理
+
+- [[github-issue-885-pr-903-live-2026-06-30]] を追加し、issue #885 が open / unassigned、PR #903 が open / review required / blocked の docs-only inventory PR である現在地を GitHub live state として固定
+- [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#903 は #885 第1完了条件の一部であり、次は inventory 精度、admin export prototype、static-site-builder runtime build 判断に分けると整理
+- [[source-code]] / [[current-status-2026-06-30]] / [[docs-issue-map-2026-06-30]] / [[meeting-report-draft]] から #885 の次 action へ接続
+
 ## [2026-06-30 14:19] filing-back | #877 Windows setup guide PR slice を具体化
 
 - [[github-issue-877-live-2026-06-30]] を追加し、issue #877 が open / unassigned のまま、Docker Desktop supported path と対象外環境を切る docs issue として扱う現在地を GitHub live state として固定

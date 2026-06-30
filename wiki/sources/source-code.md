@@ -78,8 +78,19 @@ Windows CI は 2 層に分かれている。`.github/workflows/windows-setup-scr
 
 この構成に対し、`docs/getting-started/windows-setup.md` は `setup_win.ps1` dialog 前提を一部反映済みだが、API key 前提が OpenAI / Gemini 両方必須に見え、Docker Desktop を使えない組織端末や WSL2 禁止端末の対象外分岐はまだ弱い。#877 の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
 
+## Web UI Node runtime current facts (2026-06-30, main tip `d5c9ece6e3b3`)
+
+`apps/admin` は `next.config.ts` で `output: "standalone"`、`serverActions.bodySizeLimit: "100mb"`、`async headers()` による CSP 付与を持つ。`app/page.tsx` は Server Component で `/admin/reports` を `cache: "no-store"` 付きで fetch しており、static export の阻害点として読める。
+
+admin の `"use server"` は 11 ファイルにある。create/report/edit/delete/visibility/config/plugin/environment check 系に加え、`apps/admin/app/_components/ReportCard/ActionMenu/csvDownloadCommon.ts` と `jsonDownload.ts` も `"use server"` で、API から取得した CSV / JSON を `Buffer.from(...).toString("base64")` で返している。PR #903 の inventory docs では、この download 系 server actions を含めるか、対象外理由を書くと後続の admin export 化で迷いにくい。
+
+`apps/public-viewer` は `NEXT_PUBLIC_OUTPUT_MODE=export` で `output: "export"`、`basePath`、`assetPrefix`、`distDir` を切り替える。export build 時は server fetch が build-time fetch へ倒れる一方、通常 runtime では `connection()`、ISR / `revalidateTag` route、OGP route など Next server 機能が残る。
+
+`apps/static-site-builder/src/index.ts` は Express の `POST /build` で `pnpm run build:static` を子プロセス実行し、`apps/public-viewer/out` を zip 化して返す。`package.json` の `dev` script は存在しない `src/server.ts` を指し、実体は `src/index.ts` である。この runtime build が残る限り、public-viewer が export mode を持っていても単一 exe には Node / pnpm / Next build 環境が戻る。#885 の次 scope は [[issue-885-node-runtime-next-scope-2026-06-30]]。
+
 ## Updates
 
+- 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Web UI Node runtime facts として admin の server fetch / server actions / CSP、public-viewer export mode、static-site-builder runtime `pnpm run build:static` と dev script mismatch を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Windows setup が ASCII-only `setup_win.bat` launcher + GUI/non-interactive `setup_win.ps1` 本体、hosted script test + self-hosted Windows E2E の 2 層になっていることを追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、`hierarchical_clustering.py` の current baseline が「元 embedding → 2D UMAP → sklearn KMeans → ward merge」であることを追記
 - 2026-06-02: `work/kouchou-ai/main@3c5d1f026757` を再確認し、ラベル付け sampling の前提が残っていることを確認。API 経由は `apps/api/src/services/report_launcher.py` で initial / merge とも `sampling_num=30`、analysis-core built-in plugin と compat config は default `10`。`apps/public-viewer/components/charts/HierarchyListChart.tsx` の個別データ表示も `maxDisplay=10` の配列先頭表示で、representative selection ではない
