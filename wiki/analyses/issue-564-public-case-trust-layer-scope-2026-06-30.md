@@ -18,6 +18,7 @@ sources:
   - current-open-issue-triage-2026-06-01.md
   - remaining-issue-priority-2026-05-29.md
   - source-code.md
+  - meeting-municipality-user-research-scope-2026-06-30.md
 ---
 
 ## Conclusion
@@ -90,6 +91,8 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 
 Slack `#2_広報_pr` の 2026-03/04 raw では、website FAQ の読者分離、HP に導入事例マップを載せる案、掲載してほしいという声を受ける導線、他自治体の使い方を知るユーザー会の発想が出ていた。これは #564 を「公開事例一覧」だけで閉じず、`FAQ / reading guide`、`confirmed case list`、`case intake`、`future user group` に分けるべき根拠になる。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
+一方で、自治体 user research は #564 の case intake と分ける。#564 の導線は、導入検討者への説明と公開事例候補の受け皿である。自治体 user research は、既存接点に偏らず「広聴活動一般の課題」と「広聴AIが活きるケース」を切り分けて聞く product discovery である。[[meeting-municipality-user-research-scope-2026-06-30]]より
+
 ## What Not To Do
 
 - #564 のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
@@ -114,9 +117,11 @@ Slack `#2_広報_pr` の 2026-03/04 raw では、website FAQ の読者分離、H
 - 事例 schema の field を全部埋められない public artifact を、事例として出すか、リンク集に留めるか。
 - #1_事例紹介_全体 channel や Drive にある素材を、誰が公開可否で scrub するか。
 - 事例 map / case intake / user group は #564 first slice に含めるか、future section に留めるか。
+- 自治体 user research を #564 の public case page と同じ入口で扱うか、別の調査 instrument として切るか。
 
 ## Updates
 
+- 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、#564 の case intake と自治体 user research は目的が違うため分けると整理。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、#564 を confirmed case list だけでなく FAQ / case intake / user group の情報設計として読む補助線を追加。
 - 2026-06-30: #696 / #542 / #539 の再読を反映し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正。
 - 2026-06-30: #564 を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。

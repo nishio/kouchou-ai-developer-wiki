@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:20] filing-back | 自治体 user research scope を議事録から source 化
+
+- [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体向けアンケート / user research は `広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要があると整理
+- [[public-case-page-skeleton-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[thinking-targets]] に、#564 の case intake と user research は目的が違うため同じフォームに混ぜない方針を追記
+
 ## [2026-06-30 17:15] filing-back | Brand Compass と情報発信の議事録文脈を source 化
 
 - [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / M2、公開事例 trust layer、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態の判断フィルタとして整理

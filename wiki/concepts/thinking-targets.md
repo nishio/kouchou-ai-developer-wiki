@@ -15,6 +15,7 @@ sources:
   - report-reading-guide-minimum-wording-2026-06-30.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
   - meeting-brand-compass-information-strategy-2026-06-30.md
+  - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
 ---
@@ -68,6 +69,13 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 思考の最小単位: Slack は raw/mirror を一次、weekly reporter は GitHub activity と AI 要約の補助線、という役割を canonical docs にどこまで反映するか決める。2026-06-30 時点では、一括置換せず、直近 Slack は `mirror/`、古い Slack は `raw/`、週次流れは既存 `weekly-log-*` / `oss_weekly_reporter` を残す三分法に寄せた
 - 決まれば動けること: 今後の wiki ingest が「どのログを先に読むか」で迷わなくなる
 - 関連: [[slack-logs-repository]], [[current-status-2026-06-30]], [[wiki-driven-workflow]]
+
+### 0-6. 自治体利用者課題調査をどう切るか
+
+- 問い: 自治体向けアンケート / user research を、広聴活動一般の実態調査として広く聞くのか、広聴AIが活きるケース発見に絞るのか、2 つの instrument に分けるのか。既存接点は広聴AIを入口にした広報・広聴課 / デジタル推進部署に偏っている可能性がある
+- 思考の最小単位: `広聴活動一般の探索` と `広聴AI適合ケースの探索` のどちらを先に聞くか決める。対象部署、役割、人数規模、sampling route、Cartographer / いどばた / 広聴AI のどれに解くべき課題かを 1 枚に分ける
+- 決まれば動けること: user research instrument を public case intake と混ぜずに作れる。#564 の case intake は public artifact / 掲載許諾 / source strength、user research は roadmap 前提検証として分けられる
+- 関連: [[meeting-municipality-user-research-scope-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]], [[public-case-page-skeleton-2026-06-30]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
 

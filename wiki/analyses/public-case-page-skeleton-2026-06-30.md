@@ -10,6 +10,7 @@ sources:
   - slack-case-introduction-channel-2026-03-04.md
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
+  - meeting-municipality-user-research-scope-2026-06-30.md
 ---
 
 ## Conclusion
@@ -69,6 +70,8 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 公開ページには、確認済み事例一覧とは別に `掲載候補を教えてください` 導線を置く余地がある。`#2_広報_pr` では、DD2030 から見えないところで進む活用に気づく方法、HP の導入事例マップ、掲載 OK 確認、事例を集めたいことを伝える必要が議論されていた。したがって public page は `実績を見せる場所` と `候補を受け取る場所` を分けるのがよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
+ただし、case intake と自治体 user research は分ける。case intake は public artifact / 掲載許諾 / source strength を確認する導線で、自治体 user research は広聴活動一般の課題や広聴AIが活きるケースを探索する導線である。両者を同じフォームにすると、事例候補収集と product discovery が混ざる。[[meeting-municipality-user-research-scope-2026-06-30]]より
+
 ### 3. 事例詳細テンプレート
 
 1 事例を深く紹介する時は、#564 のコメントにある自治体側の質問へ答える順序にする。
@@ -127,9 +130,11 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 - #696 / #542 の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
 - 公開事例の候補管理を GitHub issue、Drive、website repo、developer wiki のどこで canonical にするか。
 - 事例掲載 intake を外部ページに置く場合、問い合わせ先・確認担当・掲載可否の判断基準をどこで管理するか。
+- 自治体 user research を public case page の case intake と同居させるか、別 instrument として設計するか。
 
 ## Updates
 
+- 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、case intake と自治体 user research は目的が違うため、同じフォームに混ぜない方がよいと追記。
 - 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。
 - 2026-06-30: #564 を再読し、公開事例ページに初回説明 FAQ / 一枚絵 / 説明資料導線を置く必要を追記。

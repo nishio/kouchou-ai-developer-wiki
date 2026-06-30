@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 17:20	filing-back	自治体 user research scope を議事録から source 化
 2026-06-30 17:15	filing-back	Brand Compass と情報発信の議事録文脈を source 化
 2026-06-30 17:05	filing-back	Web book 付録の公開事例一覧を source 化
 2026-06-30 16:59	filing-back	Codex goal の速度制御を Slack から source 化

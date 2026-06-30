@@ -6,6 +6,7 @@ coverage: "raw/meeting_minutes.txt; 2026-06-22 priority list plus older meeting 
 sources:
   - meeting-minutes.md
   - meeting-2026-06-22-event-priority.md
+  - meeting-municipality-user-research-scope-2026-06-30.md
   - kouchou-ai.md
   - usage-modes.md
 ---
@@ -30,6 +31,8 @@ sources:
 
 利用者課題調査の文脈では、DD2030 が接触できている自治体関係者は、広聴AIを入口に接点ができた広報・広聴課やデジタル推進部署に偏っている可能性が示されている。そのため「自治体の広聴活動における課題」を分かったつもりにならず、広聴AIが活きそうなケースと、広聴活動一般の課題を分けて聞く必要がある。[[meeting-minutes]]より
 
+この利用者課題調査は [[meeting-municipality-user-research-scope-2026-06-30]] に切り出した。#564 の public case page / case intake は導入検討者向け説明と事例候補収集であり、自治体 user research は roadmap の前提を検証するための探索として分ける。[[meeting-municipality-user-research-scope-2026-06-30]]より
+
 配布形態 A/B/C/D は、単なる実装構成ではなく、対外説明の切り口でもある。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial を分けることで、誰に何を提供しているのかを説明しやすくなる。[[kouchou-ai]]より [[usage-modes]]より
 
 ## Reading
@@ -52,4 +55,5 @@ Brand Compass に沿った開発は、個別 issue の優先順位表をその�
 
 ## Updates
 
+- 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体利用者課題調査は public case page / case intake と分ける必要があると追記。
 - 2026-06-30: 初回作成。議事録から、Brand Compass / 情報発信 / stable v4 / 外部発信 / 利用者課題調査の接続を固定した。
