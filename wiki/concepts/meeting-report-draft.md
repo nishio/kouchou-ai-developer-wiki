@@ -37,6 +37,9 @@ sources:
   - issue-885-node-runtime-next-scope-2026-06-30.md
   - github-pr-891-live-2026-06-30.md
   - pr-891-standalone-packaging-scope-2026-06-30.md
+  - meeting-2026-06-22-event-priority.md
+  - slack-yokohama-hack-2026-06-26.md
+  - event-2026-08-02-broadlistening-readiness-2026-06-30.md
 ---
 
 ## 目的
@@ -141,9 +144,14 @@ sources:
 
 - 2026-06-30 時点の横断 snapshot は [[current-status-2026-06-30]] に固定した。コード main / open PR / issue / 議事録 / Slack log の鮮度を同じページで読める。
 - [[nishio-source-freshness-criterion-2026-06-02]] を追加し、議事録 / Slack source は「いつ時点まで読んだか」を freshness marker として明示する方針にした。
-- [[meeting-minutes]] は 2026-06-30 に Google Doc export を再取得し、先頭見出し `2026/06/22` / txt 7702 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。
+- [[meeting-minutes]] は 2026-06-30 に Google Doc export を再取得し、先頭見出し `2026/06/22` / txt 7703 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。イベント lane と priority 軸は [[meeting-2026-06-22-event-priority]] に切り出した。
 - Slack raw の一次参照を `digitaldemocracy2030/slack-logs` に更新し、[[slack-logs-repository]] を追加。直近14日は `mirror/`、古い public channel log は `raw/`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` 補助線として扱う。2026-06-30 確認時点の mirror は `synced_at=2026-06-30T04:12Z` / window `2026-06-16〜06-30`。
-- 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件で、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験候補として整理した。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
+- 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。横浜型ブロードリスニングは [[slack-yokohama-hack-2026-06-26]] に固定。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件で、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験候補として整理した。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
+
+### 8/2 event readiness lane
+
+- [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加した。8/2 イベントは単一の新機能要求ではなく、国会 / 地方政治 / 技術 / ツールの各 lane からブロードリスニングを説明する準備として扱う。Codex が人間と衝突しにくく進めるなら、まず「技術・ツール入口」1 枚 draft、公開可能事例の棚卸し、収集 / import / analyze / show / discuss の役割分離を docs / wiki で進める。
+- 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
 
 ### docs-first / no-conflict lane
 
@@ -162,6 +170,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[meeting-2026-06-22-event-priority]] / [[slack-yokohama-hack-2026-06-26]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加し、8/2 イベント向けに人間と衝突しにくい docs / wiki readiness lane を定例向けに整理
 - 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 Windows standalone draft を #885 prototype lane として定例向けに整理
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#885 は #903 後に inventory 精度、admin export prototype、static-site-builder runtime build 判断へ分けると定例向けに追記
 - 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記

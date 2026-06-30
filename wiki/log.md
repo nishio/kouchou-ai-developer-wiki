@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:41] filing-back | 8/2 イベント readiness を整理
+
+- [[meeting-2026-06-22-event-priority]] を追加し、2026-06-22 議事録の 8/2 イベント lane、Brand Compass / high priority issue / 情報発信 / 運用ポリシーの優先軸を source 化
+- [[slack-yokohama-hack-2026-06-26]] を追加し、Slack mirror の横浜型ブロードリスニング共有を「収集」手法中心の Yokohama Hack! 文脈として固定
+- [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加し、次は技術・ツール入口 draft、公開可能事例棚卸し、収集 / 分析可視化の役割分離を docs / wiki で進めると整理
+
 ## [2026-06-30 14:33] filing-back | PR #891 Windows standalone draft を整理
 
 - [[github-pr-891-live-2026-06-30]] を追加し、PR #891 が open / draft / dirty / stale のまま、embeddable Python + static viewer/admin を試す Windows standalone prototype である現在地を固定

@@ -19,6 +19,9 @@ sources:
   - issue-885-node-runtime-next-scope-2026-06-30.md
   - github-pr-891-live-2026-06-30.md
   - pr-891-standalone-packaging-scope-2026-06-30.md
+  - meeting-2026-06-22-event-priority.md
+  - slack-yokohama-hack-2026-06-26.md
+  - event-2026-08-02-broadlistening-readiness-2026-06-30.md
 ---
 
 ## Snapshot
@@ -31,7 +34,7 @@ sources:
 
 ## Source Freshness
 
-議事録は 2026-06-30 に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7702 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
+議事録は 2026-06-30 に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7703 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
 
 Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` / window `2026-06-16〜06-30` まで確認した。[[slack-logs-repository]]より
 
@@ -41,7 +44,9 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 
 Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では 6/29 に embedding / Spherical K-means / Faiss K-means の話が出ており、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に固定した。採用判断ではなく、clustering space / objective / backend を分けた clean experiment 候補として扱うのが妥当。[[slack-logs-repository]]より
 
-議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-minutes]]より
+議事録 6/22 回は、8/2 イベントでブロードリスニングをどう出すか、Brand Compass、high priority issues、情報発信、運用ポリシーが主題。イベント案は「国会」「地方政治」「技術」「ツール」の lane を含むので、実装を急ぐより、現在の priority 軸と docs / wiki の入口を揃える作業が先に効く。[[meeting-2026-06-22-event-priority]]より
+
+横浜型ブロードリスニングは、Slack 上では市民の声の「収集」手法を中心にした Yokohama Hack! 募集として共有されている。広聴AIの current asset は analysis / viewer / docs 側が中心なので、収集と分析可視化を分けて説明するのが安全。[[slack-yokohama-hack-2026-06-26]]より
 
 GitHub 現在地としては、PR #903 の docs inventory は小さく直せそうだが、user attention を使う review request / merge には踏み込まない。PR #891 は draft のままなので、[[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に状況把握を固定した。issue #898 は PR #899 merge 済みだが issue は open で、aarch64 実機確認または close 判断が残っている。
 
@@ -54,15 +59,18 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - PR #891 は [[github-pr-891-live-2026-06-30]] で live state と head ref を固定し、[[pr-891-standalone-packaging-scope-2026-06-30]] で #885 prototype lane として整理した。embeddable Python + static viewer/admin は #885 の FastAPI static serving と packaging route に接続するが、draft / dirty / stale、`report_launcher` interpreter、baked keys、installer 未実装などが残る。
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
+- 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定した。次は、ブロードリスニング技術・ツール入口の 1 枚 draft、公開可能事例の棚卸し、収集 / import / analyze / show / discuss の役割分離を進めるのが衝突しにくい。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
 ## Open Questions
 
 - `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存 `oss_weekly_reporter` 由来 source とどこまで置き換えるか。
-- 8/2 イベント向けのブロードリスニング表示は、既存 viewer / docs のどの入口を最優先で整えるべきか。
+- 8/2 イベント向けの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれに置くべきか。
+- 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、周辺エコシステムとして docs で接続するだけにするべきか。
 
 ## Updates
 
+- 2026-06-30: [[meeting-2026-06-22-event-priority]] / [[slack-yokohama-hack-2026-06-26]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加し、8/2 イベントと横浜型ブロードリスニングを docs-safe lane として整理。
 - 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に固定し、Windows standalone draft は #885 prototype lane だが current supported path ではないと整理。
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、PR #903 は #885 第1完了条件の一部であり、次は inventory 精度、admin export prototype、static-site-builder runtime build 判断を分けると整理。
 - 2026-06-30: 6/29 Slack の Spherical K-means / Faiss K-means 言及を [[slack-algorithm-kmeans-2026-06-29]] / [[spherical-kmeans-experiment-scope-2026-06-30]] に切り出し、採用判断ではなく clean experiment 候補として接続。

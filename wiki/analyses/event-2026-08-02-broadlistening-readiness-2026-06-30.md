@@ -1,0 +1,51 @@
+---
+type: analysis
+summary: "8/2 イベントと横浜型ブロードリスニングを踏まえ、人間と衝突しにくく進める docs / wiki / demo readiness の整理"
+sources:
+  - meeting-2026-06-22-event-priority.md
+  - slack-yokohama-hack-2026-06-26.md
+  - slack-logs-repository.md
+  - current-status-2026-06-30.md
+  - broadlistening.md
+  - usage-modes.md
+  - public-ui-requirements-for-broadlistening.md
+  - docs-issue-map-2026-06-30.md
+---
+
+## Conclusion
+
+8/2 イベント向けの次の一手は、すぐ新機能を実装することより、ブロードリスニングを「実践」「技術」「ツール」の各入口から説明できる状態にすること。議事録上の priority には情報発信と事例の積み上げが含まれており、Slack 上でも Codex は状況把握と LLM Wiki / docs 更新を中心に走らせる方針が共有されている。[[meeting-2026-06-22-event-priority]]より [[slack-logs-repository]]より
+
+## Event lanes
+
+議事録のタイムライン案から見ると、8/2 イベントには少なくとも 4 つの説明 lane がある。
+
+- 国会から見るブロードリスニング実践
+- 地方政治とブロードリスニング実践
+- ブロードリスニングの技術
+- ブロードリスニングのツール
+
+developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの「技術」「ツール」lane である。ただし実践 lane と切り離すと、ツール説明が「何のために使うか」を失う。したがって、既存 docs では [[broadlistening]]、[[usage-modes]]、[[public-ui-requirements-for-broadlistening]] を束ね、実践から tool / viewer / pipeline へ降りる導線を作るのがよい。
+
+## Yokohama context
+
+横浜型ブロードリスニングは、Slack 上の共有では市民の声の「収集」手法を中心にした課題解決として読まれている。PR TIMES 経由で確認できる横浜市行財政局リリースでも、段階的な実証の第一歩は収集手法の検証に寄っている。[[slack-yokohama-hack-2026-06-26]]より
+
+このため、広聴AIの current pipeline だけを前面に出すと焦点がずれる可能性がある。docs では `collect / import / analyze / show / discuss` のように、意見収集と分析可視化を分けて説明し、広聴AIが強いのは現時点では `analyze / show` 側だと明示するほうがよい。
+
+## Safe next actions
+
+- 8/2 イベント向けに、公開可能な「ブロードリスニング技術・ツール入口」1 枚を draft 化する。最初の骨子は、ブロードリスニングとは何か、広聴AIが扱う入力、analysis / viewer が出すもの、現時点の配布形態、公開できる事例、未対応範囲。
+- [[docs-issue-map-2026-06-30]] の docs 群と接続し、#876 developer quickstart、#877 Windows setup、#885 Node runtime 排除をイベント説明に混ぜない。イベント向けには「利用者に見せる説明」と「開発者が整える前提」を分ける。
+- Yokohama Hack! 文脈では、収集手法そのものを kouchou-ai 本体に取り込む判断を急がない。input plugin / data collection docs の候補として論点化し、owner と issue が見えたら実装 lane に移す。
+- public examples / demo は公開境界を守る。実環境 URL、resource 名、revision、ログ、secret / access 周辺は developer wiki に書かず、公開 wiki では設計判断と公開可能な課題に留める。
+
+## Open Questions
+
+- 8/2 イベントでの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれか。
+- 国会 / 地方政治の実践 lane で使える公開可能事例はどれか。事例名だけでなく、どの artifact を見せてよいかの公開境界確認が必要。
+- 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、それとも周辺エコシステムとして docs で接続するだけにするべきか。
+
+## Updates
+
+- 2026-06-30: 初回作成。2026-06-22 議事録の 8/2 イベント lane と、2026-06-26 Slack の横浜型ブロードリスニング共有を合わせ、次の docs-safe action を整理。

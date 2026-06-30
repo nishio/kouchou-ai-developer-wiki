@@ -67,7 +67,7 @@ PY
 
 `mirror/` の直近14日では、広聴AI本体 channel は実装論点としては静かだった：
 
-- `#2_開発_広聴ai`: 2026-06-26 に Hal Seki が「横浜型ブロードリスニング」/ Yokohama Hack! の募集を共有。市民意見の収集・分析・検討のうち「収集」手法の課題解決を目的にしたソリューション募集として読める。2026-06-30 には nishio が Codex `/goal` を広聴AIで試す案と、全力で走らせず状況把握と LLM Wiki / Doc 更新を中心にする運用案を共有。
+- `#2_開発_広聴ai`: 2026-06-26 に Hal Seki が「横浜型ブロードリスニング」/ Yokohama Hack! の募集を共有。市民意見の収集・分析・検討のうち「収集」手法の課題解決を目的にしたソリューション募集として読める。詳細は [[slack-yokohama-hack-2026-06-26]]。2026-06-30 には nishio が Codex `/goal` を広聴AIで試す案と、全力で走らせず状況把握と LLM Wiki / Doc 更新を中心にする運用案を共有。
 - `#2_開発_広聴ai_アルゴリズム開発`: 2026-06-29 に tokoroten が embedding アルゴリズム見直しの文脈で、ベクトル検索 / embedding 最前線の資料、Spherical K-means、Faiss K-means に言及。
 - `#8_開発_広聴ai_github`: 2026-06-27 に GitHub bot message が 1 件。PR #903 の docs inventory と同時期。
 
@@ -93,3 +93,4 @@ PY
 ## Updates
 
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
+- 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。
