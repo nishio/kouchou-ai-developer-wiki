@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:05] filing-back | 国内 broad listening 事例を追加検索で補強
+
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] に東京都 / GovTech東京、岩手県、日本維新の会、北見、日本テレビ衆院選、M-1 2024、JINS を source strength 付きで追記
+- [[japan-broadlistening-use-case-map-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] を更新し、自治体公式 / viewer demo / 政治・国会 / TTTC adjacent を分離
+- [[current-status-2026-06-30]] / [[meeting-report-draft]] から、8/2 first demo と #564 公開事例ページの判断材料へ接続
+
 ## [2026-06-30 16:00] filing-back | docs-safe PR 候補の比較表を追加
 
 - [[docs-issue-map-2026-06-30]] に #696/#542 reading guide docs を docs-safe lane として追加

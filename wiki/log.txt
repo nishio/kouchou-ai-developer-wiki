@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 16:05	filing-back	国内 broad listening 事例を追加検索で補強
 2026-06-30 16:00	filing-back	docs-safe PR 候補の比較表を追加
 2026-06-30 15:59	filing-back	定例下書きの現行読み上げ欄を更新
 2026-06-30 15:55	filing-back	6/30 時点の思考ハブを更新

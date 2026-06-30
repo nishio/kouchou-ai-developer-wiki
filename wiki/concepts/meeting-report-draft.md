@@ -80,7 +80,7 @@ sources:
 
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。今後は Slack raw は `work/slack-logs`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` を補助線として使う。[[slack-logs-repository]]より
-- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
+- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「事例リスト + レポートの読み方 + 何を保証しないか」を 3 点セットにする方針で整理した。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで wording を揃える scope として扱う。[[report-reading-guide-minimum-wording-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
@@ -88,7 +88,7 @@ sources:
 
 ## 議題候補 (2026-06-30 更新)
 
-- 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町の official context、奈良 / 舞鶴2040の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
+- 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町 / 岩手県の official context、奈良 / 舞鶴2040 / 北見の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
 - #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
 - 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
 - Slack / 議事録の source 運用をこのまま canonical にするか確認する。`slack-logs` raw/mirror を一次、`oss_weekly_reporter` を週次要約 / GitHub activity 補助線にする方針で問題ないか。[[wiki-driven-workflow]]より
@@ -207,6 +207,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したため、読み上げ欄と 8/2 first demo 候補を更新。
 - 2026-06-30: [[docs-issue-map-2026-06-30]] に next PR choice matrix を追加したことを読み上げ欄へ反映。
 - 2026-06-30: 冒頭に 2026-06-30 更新の読み上げ用要約と議題候補を追加し、旧 2026-06-08 欄を過去メモとして残した。
 - 2026-06-30: [[thinking-targets]] / [[open-decisions]] を更新し、6/30 時点の短期未決を定例向けに接続
