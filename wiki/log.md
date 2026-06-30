@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:19] filing-back | #696/#542 の reading guide scope を補正
+
+- GitHub issue #696 / #542 / #539 を再読し、誤読防止は LLM 免責だけでなく、課題発見ツール説明、内部分析と外部アピールの分離、termsLink と OSS 免責の分離を含むと整理
+- [[report-reading-guide-minimum-wording-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[docs-issue-map-2026-06-30]] に reading guide scope を反映
+- [[current-status-2026-06-30]] / [[meeting-report-draft]] から、#564/#696/#542 trust layer の会議報告へ接続
+
 ## [2026-06-30 16:12] filing-back | #564 公開事例ページに初回説明 block を追加
 
 - GitHub issue #564 を再読し、公開事例 detail だけでなく `広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` に答える basic explainer が必要だと整理

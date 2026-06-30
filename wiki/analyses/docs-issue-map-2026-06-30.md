@@ -48,7 +48,7 @@ sources:
 
 PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 authored なので、AI が勝手に branch push せず、まず CodeRabbit 指摘と current main の inventory 漏れ候補を整理するのが安全。[[pr-903-node-runtime-doc-review-2026-06-30]]より
 
-`#696/#542` は #564 の公開事例ページと独立に扱うと説明抜けを起こしやすい。current main の public-viewer footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える docs lane として扱うのがよい。[[report-reading-guide-minimum-wording-2026-06-30]]より
+`#696/#542` は #564 の公開事例ページと独立に扱うと説明抜けを起こしやすい。current main の public-viewer footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「課題発見ツールとしての説明」「読み方」「保証しない範囲」「個別レポート発行主体」「外部向け利用時の注意」を揃える docs lane として扱うのがよい。[[report-reading-guide-minimum-wording-2026-06-30]]より
 
 ## How Not To Mix Them
 
@@ -67,7 +67,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 2. **#877 の Windows guide PR slice は file-by-file に固定した**: [[github-issue-877-live-2026-06-30]] で #877 が open / unassigned のまま、直接 close する open PR がないことを確認し、[[issue-877-docs-pr-slice-2026-06-30]] に `windows-setup.md` の対象 / 対象外、API key 前提、troubleshooting 表、developer verification との住み分けを整理した。
 3. **#876 の docs PR slice は Wiki 上で file-by-file に固定した**: [[github-issue-876-live-2026-06-30]] で #876 が open / nishio assigned のまま、直接 close する open PR がないことを確認し、[[issue-876-docs-pr-slice-2026-06-30]] に `developer-quickstart` + mkdocs nav + README / docs index / quickstart の最小導線調整を整理した。
 4. **#885 は PR #903 だけで閉じない**: [[github-issue-885-pr-903-live-2026-06-30]] で #885 open / unassigned、PR #903 open / review required / blocked を再確認した。[[issue-885-node-runtime-next-scope-2026-06-30]] の通り、#903 は第1完了条件の一部なので、次は inventory 精度、admin static export prototype、static-site-builder runtime build 判断を分けて進める。
-5. **#696/#542 reading guide docs は public trust layer として別 PR にする**: [[report-reading-guide-minimum-wording-2026-06-30]] に最小文言案を固定した。README / docs index / public-viewer dialog / 公開事例ページのどれを canonical にするかを決めてから、本体 docs へ薄く反映する。
+5. **#696/#542 reading guide docs は public trust layer として別 PR にする**: [[report-reading-guide-minimum-wording-2026-06-30]] に最小文言案を固定した。README / docs index / public-viewer dialog / 公開事例ページのどれを canonical にするか、termsLink / 利用規約と OSS 側免責をどう分けるかを決めてから、本体 docs へ薄く反映する。
 
 ## Next PR Choice Matrix
 
@@ -87,6 +87,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 ## Updates
 
+- 2026-06-30: #696/#542 reading guide docs の scope に、課題発見ツール説明、外部向け利用時の注意、termsLink と OSS 免責の分離を追記。
 - 2026-06-30: #696/#542 reading guide docs を docs-safe lane に追加し、次 PR choice matrix を追記。
 - 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 は docs issue ではないが #885 prototype lane として横断地図に接続。
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#903 merge は #885 closure ではなく、inventory 精度・admin export・static-site-builder decision の順に分けると明示。

@@ -23,7 +23,7 @@ sources:
 
 Issue #564 は「事例を並べる」だけでは閉じない。自治体や導入検討者が知りたいのは、成果物の URL だけでなく、導入検討、体制づくり、テーマ決定、実施内容、やってみた結果、公開 report までの流れである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-同時に、#696 の誤読防止と #542 の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか** の 3 点セットである。[[current-open-issue-triage-2026-06-01]]より
+同時に、#696 の誤読防止と #542 の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意** のセットである。[[current-open-issue-triage-2026-06-01]]より
 
 2026-06-30 16:12 JST に #564 を再読すると、要求は事例 detail だけではなく、初回説明の反復コスト削減にも向いている。`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` へ事前に答える説明 block、一枚絵、自治体向け説明資料 / 動画への導線も #564 の scope に入る。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
@@ -83,6 +83,8 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の public-viewer footer には責任所在の短い文言が既にあるため、次の実装は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える scope として切るのがよい。[[source-code]]より
 
+#696 / #542 / #539 を再読すると、この reading guide は LLM 免責だけでは足りない。広聴AIを課題発見ツールとして説明すること、内部分析と有権者・外部向けアピールを分けること、termsLink / 利用規約はレポート発行主体側の設定であり OSS 側の免責とは別であることを、公開事例ページと viewer / docs で揃える必要がある。[[report-reading-guide-minimum-wording-2026-06-30]]より
+
 Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-03-04]]より
 
 ## What Not To Do
@@ -110,6 +112,7 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 
 ## Updates
 
+- 2026-06-30: #696 / #542 / #539 の再読を反映し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正。
 - 2026-06-30: #564 を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言と placement を #564 trust layer の実装前 draft として接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。

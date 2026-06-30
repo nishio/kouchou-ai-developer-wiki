@@ -81,7 +81,7 @@ sources:
 - 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
 - source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。今後は Slack raw は `work/slack-logs`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` を補助線として使う。[[slack-logs-repository]]より
 - 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したが、次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
-- #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか」をセットにする方針で整理した。#564 再読で、毎回の個別説明を減らす一枚絵 / 説明資料導線も必要だと確認した。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで wording を揃える scope として扱う。[[public-case-page-skeleton-2026-06-30]]より
+- #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。#564 再読で、毎回の個別説明を減らす一枚絵 / 説明資料導線も必要だと確認した。#696/#542/#539 再読で、課題発見ツールとしての説明、内部分析と外部アピールの分離、termsLink と OSS 免責の分離も必要だと補正した。[[public-case-page-skeleton-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 - docs-safe PR の比較表は [[docs-issue-map-2026-06-30]] に追加済み。#903 review comment は low risk、#877 Windows guide は medium、#876 docs spine は nishio assigned で medium-high、#696/#542 reading guide は canonical placement / wording 承認者待ち、#885 prototype は high risk と整理した。
 - 次に決めたいこと: [[thinking-targets]] に immediate thinking queue として、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点を集約した。会議ではここだけ見れば次の行動を選べる。
@@ -207,6 +207,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: #696 / #542 / #539 再読を反映し、reading guide に課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を追加。
 - 2026-06-30: #564 再読を反映し、公開事例ページの読み上げを「初回説明 FAQ + 事例リスト + reading guide + 保証しない範囲」に補正。
 - 2026-06-30: 追加Web検索で岩手県・東京都/GovTech東京・日本維新の会・北見・M-1/JINS も確認したため、読み上げ欄と 8/2 first demo 候補を更新。
 - 2026-06-30: [[docs-issue-map-2026-06-30]] に next PR choice matrix を追加したことを読み上げ欄へ反映。
