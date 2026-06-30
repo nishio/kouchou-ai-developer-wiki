@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:15] filing-back | #876 developer docs PR slice を具体化
+
+- [[github-issue-876-live-2026-06-30]] を追加し、issue #876 が open / nishio assigned のまま、PR #883 撤回後の 5 読者像・Mode 1 default 廃止方針が issue 本文に反映済みであることを GitHub live state として固定
+- [[issue-876-docs-pr-slice-2026-06-30]] を追加し、次の本体 docs PR を `developer-quickstart` 単体ではなく mkdocs nav、README、docs/index、getting-started/quickstart の役割調整まで含める file-by-file first slice として整理
+- [[docs-issue-map-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から #876 の次 action へ接続
+
 ## [2026-06-30 14:08] filing-back | Spherical K-means / Faiss K-means Slack 議論を整理
 
 - [[slack-algorithm-kmeans-2026-06-29]] を追加し、`work/slack-logs/main@341cf8022d32` の `#2_開発_広聴ai_アルゴリズム開発` mirror から 2026-06-29 の embedding / Spherical K-means / Faiss K-means 言及を source 化

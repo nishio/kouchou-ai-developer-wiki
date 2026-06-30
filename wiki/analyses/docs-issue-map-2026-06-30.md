@@ -10,6 +10,8 @@ sources:
   - node-runtime-free-windows-exe-2026-05-31.md
   - pr-903-node-runtime-doc-review-2026-06-30.md
   - pr-903-review-comment-draft-2026-06-30.md
+  - github-issue-876-live-2026-06-30.md
+  - issue-876-docs-pr-slice-2026-06-30.md
   - github-dev-docs.md
 ---
 
@@ -49,7 +51,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 1. **PR #903 の docs review コメントを人間判断で投稿する**: [[pr-903-review-comment-draft-2026-06-30]] に、直接 push ではなく CodeRabbit 3 点 + CSV / JSON download server actions の扱いを短く伝えるコメント案を固定した。
 2. **#877 の Windows guide outline を docs PR に変換する**: [[windows-setup-guide-outline-2026-06-30]] に supported / unsupported path の表、troubleshoot 範囲、docs PR slice を固定した。次は本体 docs に触る前に assignee / 着手宣言を確認する。
-3. **#876 の docs PR slice を決める**: [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案を照合した。developer quickstart 草案は追加要件を概ね満たすが、README / docs index / quickstart / nav は setup-first のままなので、次 PR は単体ページ追加ではなく導線調整を含める判断が要る。
+3. **#876 の docs PR slice は Wiki 上で file-by-file に固定した**: [[github-issue-876-live-2026-06-30]] で #876 が open / nishio assigned のまま、直接 close する open PR がないことを確認し、[[issue-876-docs-pr-slice-2026-06-30]] に `developer-quickstart` + mkdocs nav + README / docs index / quickstart の最小導線調整を整理した。
 4. **#885 は PR #903 の整理後に戻る**: Node runtime inventory の粒度が固まってから、admin static assets prototype か static-site-builder 方針へ進む。
 
 ## Open Questions
@@ -64,3 +66,4 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 を本体 docs PR に落とす時の章立て、対象外範囲、troubleshoot 表を具体化した。
 - 2026-06-30: [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、#876 草案が満たす範囲と current main docs に残る setup-first gap を整理した。
 - 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR #903 に投稿する前のレビューコメント案を Wiki 側に固定した。
+- 2026-06-30: [[github-issue-876-live-2026-06-30]] / [[issue-876-docs-pr-slice-2026-06-30]] を追加し、#876 の次 PR scope を file-by-file に固定。
