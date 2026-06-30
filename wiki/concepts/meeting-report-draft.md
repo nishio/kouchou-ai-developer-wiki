@@ -40,6 +40,7 @@ sources:
   - meeting-2026-06-22-event-priority.md
   - slack-yokohama-hack-2026-06-26.md
   - event-2026-08-02-broadlistening-readiness-2026-06-30.md
+  - event-2026-08-02-tech-tool-brief-draft-2026-06-30.md
 ---
 
 ## 目的
@@ -151,6 +152,7 @@ sources:
 ### 8/2 event readiness lane
 
 - [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加した。8/2 イベントは単一の新機能要求ではなく、国会 / 地方政治 / 技術 / ツールの各 lane からブロードリスニングを説明する準備として扱う。Codex が人間と衝突しにくく進めるなら、まず「技術・ツール入口」1 枚 draft、公開可能事例の棚卸し、収集 / import / analyze / show / discuss の役割分離を docs / wiki で進める。
+- [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、「ブロードリスニングの技術と広聴AI」の 1 枚 draft を固定した。内容は、意見の地図、Web UI / CLI の二入口、public-viewer が見せるもの、横浜文脈では収集と分析可視化を混ぜないこと、demo で見せる順序、言ってはいけない claim。
 - 横浜型ブロードリスニングは、初回文脈では市民の声の「収集」手法が中心。広聴AIの current asset は analysis / viewer / docs 側なので、横浜文脈へ接続する時は「収集手法そのもの」と「収集後の分析・可視化」を混ぜない。input plugin / data collection docs へ入れるかは owner / issue を見てから判断する。
 
 ### docs-first / no-conflict lane
@@ -170,6 +172,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベント向けの技術・ツール入口 draft を定例向けに整理
 - 2026-06-30: [[meeting-2026-06-22-event-priority]] / [[slack-yokohama-hack-2026-06-26]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加し、8/2 イベント向けに人間と衝突しにくい docs / wiki readiness lane を定例向けに整理
 - 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 Windows standalone draft を #885 prototype lane として定例向けに整理
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、#885 は #903 後に inventory 精度、admin export prototype、static-site-builder runtime build 判断へ分けると定例向けに追記

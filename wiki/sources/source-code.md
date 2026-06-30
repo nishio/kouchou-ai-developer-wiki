@@ -88,8 +88,19 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 `apps/static-site-builder/src/index.ts` は Express の `POST /build` で `pnpm run build:static` を子プロセス実行し、`apps/public-viewer/out` を zip 化して返す。`package.json` の `dev` script は存在しない `src/server.ts` を指し、実体は `src/index.ts` である。この runtime build が残る限り、public-viewer が export mode を持っていても単一 exe には Node / pnpm / Next build 環境が戻る。#885 の次 scope は [[issue-885-node-runtime-next-scope-2026-06-30]]。
 
+## Current docs public-entry facts (2026-06-30, main tip `d5c9ece6e3b3`)
+
+本体 docs の `docs/index.md` は、広聴AIをブロードリスニングのためのソフトウェアとして説明し、主な機能を CSV アップロード、濃いクラスタ抽出、階層的クラスタリング、予定機能としてパブリックコメント用分析 / 多数派攻撃防御に分けている。クイックスタートは OS 別セットアップへの導線が中心で、技術・ツール紹介の 1 枚説明はまだ薄い。
+
+`docs/user-guide/how-to-use.md` は、レポート作成者と閲覧者を分け、admin では CSV アップロード、AI 詳細設定、CSV 出力モード、管理者向けレポート一覧からのダウンロードを説明している。public-viewer 側は、クラスタリング可視化、クラスタ説明、処理・データの詳細、分析実行者情報で構成され、可視化方法は全体図、濃いクラスタ、階層図の 3 種類として説明されている。
+
+`docs/user-guide/cli-quickstart.md` は、`kouchou-ai-analysis-core[embeddings,clustering]` を入れて `kouchou-analyze` を実行する CLI 入口を説明している。output として `hierarchical_result.json`、CLI ローカル確認用 `report.html`、`hierarchical_overview.txt`、各種 CSV / pickle / status を案内し、`report.html` は Web canonical ではなくローカル確認用補助 HTML と明記している。
+
+`docs/development/plugin-guide.md` は、入力プラグイン、分析プラグイン、可視化プラグインの 3 種を説明している。横浜型ブロードリスニングの「収集」文脈へ接続するなら、現時点では input plugin / data collection docs の候補として扱うのが自然だが、current docs は開発者向け plugin guide であり、利用者向けの収集手法説明ではない。
+
 ## Updates
 
+- 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `docs/index.md` / `docs/user-guide/how-to-use.md` / `docs/user-guide/cli-quickstart.md` / `docs/development/plugin-guide.md` を確認し、8/2 イベント向け技術・ツール入口 draft の根拠になる current docs public-entry facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Web UI Node runtime facts として admin の server fetch / server actions / CSP、public-viewer export mode、static-site-builder runtime `pnpm run build:static` と dev script mismatch を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Windows setup が ASCII-only `setup_win.bat` launcher + GUI/non-interactive `setup_win.ps1` 本体、hosted script test + self-hosted Windows E2E の 2 層になっていることを追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、`hierarchical_clustering.py` の current baseline が「元 embedding → 2D UMAP → sklearn KMeans → ward merge」であることを追記

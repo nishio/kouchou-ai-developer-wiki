@@ -22,6 +22,7 @@ sources:
   - meeting-2026-06-22-event-priority.md
   - slack-yokohama-hack-2026-06-26.md
   - event-2026-08-02-broadlistening-readiness-2026-06-30.md
+  - event-2026-08-02-tech-tool-brief-draft-2026-06-30.md
 ---
 
 ## Snapshot
@@ -59,7 +60,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - PR #891 は [[github-pr-891-live-2026-06-30]] で live state と head ref を固定し、[[pr-891-standalone-packaging-scope-2026-06-30]] で #885 prototype lane として整理した。embeddable Python + static viewer/admin は #885 の FastAPI static serving と packaging route に接続するが、draft / dirty / stale、`report_launcher` interpreter、baked keys、installer 未実装などが残る。
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - 6/29 Slack の Spherical K-means / Faiss K-means は、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験 scope として切り出した。最初の clean experiment は、current main baseline から 2D UMAP と clustering 用 15D〜25D UMAP を比較するところが最も因果を読みやすい。
-- 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定した。次は、ブロードリスニング技術・ツール入口の 1 枚 draft、公開可能事例の棚卸し、収集 / import / analyze / show / discuss の役割分離を進めるのが衝突しにくい。
+- 8/2 イベント向け docs-safe lane は [[event-2026-08-02-broadlistening-readiness-2026-06-30]] に固定し、技術・ツール入口の 1 枚 draft は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に作成した。次は、公開可能事例の棚卸しと、収集 / import / analyze / show / discuss の役割分離を本体 docs または公開ページへ移す判断。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
 ## Open Questions
@@ -70,6 +71,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベント向け技術・ツール入口の 1 枚 draft を固定。
 - 2026-06-30: [[meeting-2026-06-22-event-priority]] / [[slack-yokohama-hack-2026-06-26]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] を追加し、8/2 イベントと横浜型ブロードリスニングを docs-safe lane として整理。
 - 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] に固定し、Windows standalone draft は #885 prototype lane だが current supported path ではないと整理。
 - 2026-06-30: [[github-issue-885-pr-903-live-2026-06-30]] / [[issue-885-node-runtime-next-scope-2026-06-30]] を追加し、PR #903 は #885 第1完了条件の一部であり、次は inventory 精度、admin export prototype、static-site-builder runtime build 判断を分けると整理。

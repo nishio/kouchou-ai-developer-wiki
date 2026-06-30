@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:49] filing-back | 8/2 技術・ツール入口 draft を追加
+
+- [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベントの「ブロードリスニングの技術 / ツール」向け 1 枚 draft を作成
+- [[source-code]] に current main docs の public-entry facts を追記し、docs/index、user-guide、CLI quickstart、plugin guide の現状から draft の根拠を固定
+- [[event-2026-08-02-broadlistening-readiness-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、次は公開可能事例棚卸しと掲載先判断へ接続
+
 ## [2026-06-30 14:41] filing-back | 8/2 イベント readiness を整理
 
 - [[meeting-2026-06-22-event-priority]] を追加し、2026-06-22 議事録の 8/2 イベント lane、Brand Compass / high priority issue / 情報発信 / 運用ポリシーの優先軸を source 化
