@@ -2,7 +2,7 @@
 type: source
 summary: "DD2030 website 側の広聴AI活用事例ページ live state。`src/kouchou-ai/case.vto` が直接更新先で、#208/#216/#125/#123 が #564 の外部正本候補と分類リスクに関係する"
 last_checked: 2026-06-30
-coverage: "2026-06-30 17:59 JST に digitaldemocracy2030/website の GitHub issue / PR と work/website/main@2d28aad を確認。コード変更は行っていない"
+coverage: "2026-06-30 18:37 JST に digitaldemocracy2030/website の GitHub issue / PR と work/website/main@2d28aad を再確認。コード変更は行っていない"
 sources:
   - https://github.com/digitaldemocracy2030/website
   - https://github.com/digitaldemocracy2030/website/issues/208
@@ -19,7 +19,7 @@ sources:
 
 ## Freshness
 
-2026-06-30 17:59 JST に `digitaldemocracy2030/website` を `work/website/` へ clone し、`main@2d28aad` を確認した。open PR は #217 `Add English landing page` と #211 `Week51 Summary Update` の 2 本で、広聴AI case page そのものを触る open PR は見当たらなかった。GitHub への comment / assign / close は行っていない。
+2026-06-30 17:59 JST に `digitaldemocracy2030/website` を `work/website/` へ clone し、`main@2d28aad` を確認した。18:37 JST に re-pull しても `main@2d28aad` のままで、open PR は #217 `Add English landing page` と #211 `Week51 Summary Update` の 2 本、広聴AI case page そのものを触る open PR は見当たらなかった。GitHub への comment / assign / close は行っていない。
 
 open issue では、#208 `広聴AIの利用事例を更新する`、#216 `Slackに投稿された事例をもとにウェブサイト更新PRを作成する`、#125 `[活用事例]リンク追加/UI改善`、#123 `プロダクト別の事例ページから、プロダクト横断のニュース一覧に変える` が #564 の外部正本候補に直接関係する。
 
@@ -59,6 +59,8 @@ website repo には、product 別の case page がある。
 
 #125 には、選挙報道や東京都 2050 戦略案が「広聴AIの活用事例ではないかも？」という注記つきで候補に挙がっている。これは、現行 `case.vto` へ候補を直接追加すると、広聴AI confirmed case、TTTC lineage、広義 broad listening、media / adjacent case が混ざりやすいことを示す。
 
+#125 のコメントにはチームみらい関連の hosted viewer URL も候補として出ているが、公開 wiki では実環境 URL を転記しない。website へ載せる場合も、その URL 自体ではなく、canonical な public artifact、発行主体、source strength、tool lineage を確認してから扱う必要がある。
+
 このため、[[public-tool-catalog-draft-2026-06-30]] の `tool_lineage` 分類は、単なる内部整理ではなく website issue #125 の分類不安に対する直接の guardrail になる。
 
 ### #123 プロダクト別の事例ページから横断ニュース一覧へ
@@ -80,6 +82,7 @@ website repo には、product 別の case page がある。
 - DD2030 website は #564 の外部正本として自然だが、現状は `case.vto` 直書きであり、事例 schema / source strength / tool lineage を持つ構造にはなっていない。
 - #208 と #216 は、developer wiki で整理した public case candidates を website PR へ移す受け皿になる。
 - #125 の分類不安を踏まえると、website へ追加する前に `kouchou-ai confirmed`、`TTTC lineage`、`broad listening adjacent`、`idobata / dialogue`、`enterprise / VOC`、`candidate` を分ける必要がある。
+- GitHub issue や Slack に貼られた hosted viewer URL は、そのまま website の公開実績リンクにしない。canonical public source と掲載許諾が確認できるまで candidate として扱う。
 - #123 が open のため、長期的な canonical は product-specific page ではなく、tagged / cross-product case-news list になる可能性がある。短期 PR と長期情報設計を混ぜない方がよい。
 
 ## Open Questions
@@ -91,4 +94,5 @@ website repo には、product 別の case page がある。
 
 ## Updates
 
+- 2026-06-30: 18:37 JST に website repo / issue / PR を再確認し、`work/website/main@2d28aad` から変化なし、case page 直接更新 PR なしと補正。#125 の hosted viewer 候補は公開 wiki に URL 転記せず、canonical public artifact 確認待ちの candidate として扱う方針を追記。
 - 2026-06-30: 初回作成。website repo の case page 構造、関連 issue (#208/#216/#125/#123/#126/#40/#135)、open PR を確認し、#564 の外部正本候補としての DD2030 website の現在地を固定した。

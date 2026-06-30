@@ -95,7 +95,7 @@ sources:
 - 自治体 user research: 議事録の自治体向けアンケート案を読み直し、`広聴活動一般の探索` と `広聴AIが活きるケースの探索` を分ける必要を整理した。#564 の case intake は公開事例候補と掲載許諾の受け皿で、user research は roadmap の前提検証なので、同じフォームに混ぜない方がよい。[[meeting-municipality-user-research-scope-2026-06-30]]より
 - tool boundary: 議事録から、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を source 化した。公開説明では、広聴AIを「集まった自由記述の分析・可視化」、いどばた / Cartographer を「収集・深掘り・追加質問」、Jigsaw / tttc-light-js を「LLM直接分類 / TTTC lineage」と分け、対立軸発見は current default ではなく未決の long-context route として扱う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 - public tool catalog: 上の境界を [[public-tool-catalog-draft-2026-06-30]] に落とし、#564 case page と 8/2 技術・ツール資料で使える `collect / deepen / analyze / show / classify / read-and-act` の 1 枚 draft にした。次は、DD2030 website、kouchou-ai docs、8/2 material のどこを正本にするかを決める。
-- website case page: DD2030 website は #564 の自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、選挙報道 / 東京都 / 宇多津町の 3 件のみ。#208 / #216 / #125 が短期 case 更新の受け皿、#123 が長期の横断 case-news list 化として残っている。[[website-kouchou-ai-case-live-2026-06-30]]より
+- website case page: DD2030 website は #564 の自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、選挙報道 / 東京都 / 宇多津町の 3 件のみ。#208 / #216 / #125 が短期 case 更新の受け皿、#123 が長期の横断 case-news list 化として残っている。#125 には hosted viewer 候補もあるが、canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしない。[[website-kouchou-ai-case-live-2026-06-30]]より
 - #564 / #696 / #542: 公開事例ページは「初回説明 FAQ + 事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意」をセットにする方針で整理した。Slack `#2_広報_pr` の過去議論から、FAQ は読者別に分け、確認済み事例一覧とは別に掲載候補 intake を置く必要も見えている。[[public-case-page-skeleton-2026-06-30]]より
 - #221 / #884: high priority の試行錯誤負担削減はまだ open / unassigned。current main では CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している。次に code-safe に進めるなら、全入力経路を同じ作成前確認パネルへ通す first slice がよい。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 - docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
@@ -230,6 +230,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の再確認を反映し、website issue #125 の hosted viewer 候補は canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしないと追記。
 - 2026-06-30: 18:30 JST の議事録 export / Slack re-pull を反映し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror は `main@341cf80` から変化なしと読み上げ欄へ追記。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで定例下書きへ反映。
 - 2026-06-30: 18:13 JST に `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、定例下書きでは first demo 候補ではなく source strength / tool lineage 補強として扱うよう補正。

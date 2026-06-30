@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:38] filing-back | website case issue の hosted URL 境界を補強
+
+- [[website-kouchou-ai-case-live-2026-06-30]] を 18:37 JST に再確認し、`work/website/main@2d28aad` / open PR 2 本 / case page 直接更新 PR なしのままと確認
+- website issue #125 の hosted viewer 候補は URL を公開 wiki に転記せず、[[public-case-page-skeleton-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] では canonical public artifact / 掲載許諾 / tool lineage 確認待ちの candidate として扱う方針を反映
+
 ## [2026-06-30 18:33] filing-back | 議事録とSlack freshnessを再確認
 
 - Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を 18:30 JST に再取得し、[[meeting-minutes]] を先頭見出し `2026/06/22` / `2026/06/29` 見出し未検出 / txt 7702 行 / URL unique 550 件へ補正

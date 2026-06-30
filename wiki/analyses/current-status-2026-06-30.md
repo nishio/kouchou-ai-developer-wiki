@@ -101,7 +101,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界は [[meeting-cartographer-idobata-boundary-2026-06-30]] に固定した。次の公開 docs では、収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を同じ `広聴AI` の promise として混ぜない。
 - その外向け転用 draft は [[public-tool-catalog-draft-2026-06-30]] に作成した。#564 case page と 8/2 tool material では、`collect / deepen / analyze / show / classify / read-and-act` を分け、`tool_lineage` を広聴AI confirmed / TTTC lineage / broad listening adjacent / idobata / enterprise / candidate で扱う。
-- DD2030 website 側は [[website-kouchou-ai-case-live-2026-06-30]] に固定した。現行 `src/kouchou-ai/case.vto` は直書きで、広聴AI case は選挙報道 / 東京都 2050 戦略案 / 宇多津町の 3 件。#208 / #216 / #125 が website case 更新の受け皿、#123 が長期の cross-product case-news list 化として open。
+- DD2030 website 側は [[website-kouchou-ai-case-live-2026-06-30]] に固定した。現行 `src/kouchou-ai/case.vto` は直書きで、広聴AI case は選挙報道 / 東京都 2050 戦略案 / 宇多津町の 3 件。#208 / #216 / #125 が website case 更新の受け皿、#123 が長期の cross-product case-news list 化として open。#125 の hosted viewer 候補は、canonical public artifact / 掲載許諾 / tool lineage 確認まで公開実績リンクにしない。
 - 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、tool catalog placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。Slack source ops は [[slack-logs-repository]] / [[wiki-driven-workflow]] に補強し、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json`、source の使い分けは直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` とした。
 
@@ -114,6 +114,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を 18:37 JST に再確認し、website issue #125 の hosted viewer 候補は public case page では canonical public artifact 確認待ちの candidate として扱うと補正した。
 - 2026-06-30: 18:30 JST に議事録 Google Doc export と `work/slack-logs` を再確認し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror も `main@341cf80` から変化なしと補正した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を current snapshot に接続。

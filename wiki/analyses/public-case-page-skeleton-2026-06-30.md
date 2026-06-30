@@ -127,6 +127,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
 8. サイボウズ / アルティウスリンクのような企業・VOC case を載せるなら、自治体向け first slice の後段に `応用領域` として置く。自治体の導入検討者が最初に見る 3 事例とは混ぜない。
 9. Code for Japan / 公明党 / litela / 富士通のような public source ありの周辺事例は、`広聴AI confirmed` ではなく、implementation partner / 政党 AI / 対面議論支援 / LLM直接分類 adjacent として別枠にする。
+10. GitHub issue / Slack に貼られた hosted viewer URL は、canonical public artifact と掲載許諾を確認するまで公開実績リンクにしない。
 
 ## Website current state
 
@@ -134,12 +135,15 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに投稿された事例をもとにウェブサイト更新PRを作成する`、#125 `[活用事例]リンク追加/UI改善` が open で存在する。#125 には「広聴AIの活用事例ではないかも？」という候補分類の不安が明記されているため、developer wiki 側の `tool_lineage` / `source_strength` は、そのまま website PR 前の guardrail として使える。[[website-kouchou-ai-case-live-2026-06-30]]より
 
+#125 のコメントには hosted viewer URL も候補として出ているが、これは公開事例ページへそのまま載せる根拠にしない。GitHub issue や Slack に貼られた viewer URL は、canonical な public artifact、発行主体、掲載許諾、source strength、tool lineage を確認できるまで `candidate` として扱う。[[website-kouchou-ai-case-live-2026-06-30]]より
+
 一方で、#123 `プロダクト別の事例ページから、プロダクト横断のニュース一覧に変える` も open のままで、長期的には product-specific `case.vto` 直書きではなく、tagged / cross-product case-news list へ移る可能性がある。したがって first slice は `src/kouchou-ai/case.vto` に載せる最小改修、長期情報設計は #123 側、と分けた方がよい。
 
 ## Do not include
 
 - Slack-only / Drive-only の事例、許諾未確認のスクリーンショット、内部説明資料の中身。
 - Azure デモ環境の URL、resource 名、revision、run log、secret / access 周辺。
+- GitHub issue / Slack に貼られただけで、canonical public source と掲載許諾が未確認の hosted viewer URL。
 - 「広聴AIが民意を証明した」「多数派がこの政策を望んでいる」のような断定。
 - 広聴AIではない broad listening 事例を、広聴AI利用実績として扱う表現。
 
@@ -157,6 +161,7 @@ website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに
 
 ## Updates
 
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の #125 再確認を反映し、GitHub issue / Slack に貼られた hosted viewer URL は canonical public artifact と掲載許諾確認まで公開実績リンクにしない方針を追記。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通を公開ページへ載せる場合は implementation partner / adjacent practice として分類する方針を追記。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 `src/kouchou-ai/case.vto`、#208/#216/#125/#123 を確認。first slice は `case.vto` 直更新、長期は横断 case-news list と分ける方針を追記。
