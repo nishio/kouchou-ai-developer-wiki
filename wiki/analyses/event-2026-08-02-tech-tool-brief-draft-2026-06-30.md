@@ -12,6 +12,8 @@ sources:
   - public-ui-requirements-for-broadlistening.md
   - source-code.md
   - docs-issue-map-2026-06-30.md
+  - public-broadlistening-artifacts-2026-06-30.md
+  - event-2026-08-02-public-example-inventory-2026-06-30.md
 ---
 
 ## Intended Use
@@ -34,11 +36,14 @@ sources:
 
 ### デモで見せるなら
 
-1. 小さな公開可能 CSV を用意する。
-2. admin で CSV をアップロードし、問いとクラスタ数を設定する。
-3. public-viewer で全体図、濃いクラスタ、階層図を切り替える。
-4. クラスタ説明から個別意見へ戻り、AI のまとめを人間が検証できることを見せる。
-5. 技術 audience には、同じ結果の `hierarchical_result.json` と CLI の `report.html` は別の入口であり、Web canonical は JSON + public-viewer であると説明する。
+1. 渋谷区 official page / PDF で、自治体公式の public artifact があることを示す。
+2. 奈良 #全員市長 public viewer で、全体図、濃いクラスタ、階層図を切り替える。
+3. クラスタ説明から個別意見へ戻り、AI のまとめを人間が検証できることを見せる。
+4. 八代市は、政治・政策文脈を説明できる speaker がいる場合だけ deep case として扱う。
+5. live viewer が落ちる場合や政治文脈を避ける場合に備え、小さな synthetic sample CSV / static screenshot / recorded flow を fallback にする。
+6. 技術 audience には、同じ結果の `hierarchical_result.json` と CLI の `report.html` は別の入口であり、Web canonical は JSON + public-viewer であると説明する。
+
+公開事例候補の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に固定した。[[public-broadlistening-artifacts-2026-06-30]]より
 
 ## What Not To Claim
 
@@ -49,11 +54,12 @@ sources:
 
 ## Missing Before Public Use
 
-- どの公開可能データ・公開可能レポートをデモに使うか。
-- 国会 / 地方政治の実践 lane と、技術 / ツール lane をつなぐ具体事例をどこまで公開できるか。
+- どの公開可能データ・公開可能レポートを最終採用するか。候補棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に作成済みだが、スライド掲載・スクリーンショット利用・speaker framing は未決。
+- 国会 / 地方政治の実践 lane と、技術 / ツール lane をつなぐ具体事例をどこまで公開できるか。八代市は public artifact がある一方、政治・政策文脈の表現確認が必要。
 - この draft を置く canonical な場所が、広聴AI本体 docs、dd2030.org、broadlisteningbook.com、developer wiki のどれか。
 - Yokohama Hack! 文脈に対して、input plugin / data collection docs の issue を切るか、周辺エコシステムの説明に留めるか。
 
 ## Updates
 
+- 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、demo 候補を渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 deep case、synthetic sample fallback に分けた。
 - 2026-06-30: 初回作成。[[event-2026-08-02-broadlistening-readiness-2026-06-30]] の次 action として、技術・ツール入口の 1 枚 draft を固定した。

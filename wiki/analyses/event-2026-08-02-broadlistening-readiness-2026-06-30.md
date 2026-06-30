@@ -11,6 +11,8 @@ sources:
   - public-ui-requirements-for-broadlistening.md
   - docs-issue-map-2026-06-30.md
   - event-2026-08-02-tech-tool-brief-draft-2026-06-30.md
+  - event-2026-08-02-public-example-inventory-2026-06-30.md
+  - public-broadlistening-artifacts-2026-06-30.md
 ---
 
 ## Conclusion
@@ -37,6 +39,7 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 ## Safe next actions
 
 - 8/2 イベント向けに、公開可能な「ブロードリスニング技術・ツール入口」1 枚を draft 化する。初稿は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に固定した。最初の骨子は、ブロードリスニングとは何か、広聴AIが扱う入力、analysis / viewer が出すもの、現時点の配布形態、公開できる事例、未対応範囲。
+- 公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に固定した。現時点では、渋谷区 official page / PDF を trust context、奈良 #全員市長 public viewer を primary viewer demo、八代市を political / policy context に注意する deep case、synthetic CSV を fallback として扱う。[[public-broadlistening-artifacts-2026-06-30]]より
 - [[docs-issue-map-2026-06-30]] の docs 群と接続し、#876 developer quickstart、#877 Windows setup、#885 Node runtime 排除をイベント説明に混ぜない。イベント向けには「利用者に見せる説明」と「開発者が整える前提」を分ける。
 - Yokohama Hack! 文脈では、収集手法そのものを kouchou-ai 本体に取り込む判断を急がない。input plugin / data collection docs の候補として論点化し、owner と issue が見えたら実装 lane に移す。
 - public examples / demo は公開境界を守る。実環境 URL、resource 名、revision、ログ、secret / access 周辺は developer wiki に書かず、公開 wiki では設計判断と公開可能な課題に留める。
@@ -45,9 +48,11 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 
 - 8/2 イベントでの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれか。
 - 国会 / 地方政治の実践 lane で使える公開可能事例はどれか。事例名だけでなく、どの artifact を見せてよいかの公開境界確認が必要。
+- 奈良 / 渋谷区 / 八代市のどれを 8/2 の第一デモにするか。URL は public でも、スクリーンショット利用や政治文脈の話し方は別途確認が必要。
 - 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、それとも周辺エコシステムとして docs で接続するだけにするべきか。
 
 ## Updates
 
+- 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 で使える公開事例 / demo 素材を public-ready、確認待ち、fallback に分けた。
 - 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、技術・ツール入口の 1 枚 draft を固定。
 - 2026-06-30: 初回作成。2026-06-22 議事録の 8/2 イベント lane と、2026-06-26 Slack の横浜型ブロードリスニング共有を合わせ、次の docs-safe action を整理。

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 14:56] filing-back | 8/2 公開事例 / demo 素材を棚卸し
+
+- [[public-broadlistening-artifacts-2026-06-30]] を追加し、奈良 #全員市長 public viewer、渋谷区 official page / PDF、八代市 Democracy-X public article / viewer を公開事例候補として確認
+- [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 の demo 順序を渋谷区 trust context、奈良 viewer 実演、八代市 deep case、synthetic sample fallback に整理
+- [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、人間が決める公開採用判断へ接続
+
 ## [2026-06-30 14:49] filing-back | 8/2 技術・ツール入口 draft を追加
 
 - [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、8/2 イベントの「ブロードリスニングの技術 / ツール」向け 1 枚 draft を作成
