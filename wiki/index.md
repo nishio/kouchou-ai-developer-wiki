@@ -57,6 +57,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用。議事録 / Slack の鮮度基準もここを見る
 - [deploy-success-but-nothing-changed-story-2026-06-01](analyses/deploy-success-but-nothing-changed-story-2026-06-01.md) — wiki-driven-workflow が実際にどう動くかの一日エピソード (前提知識ゼロ向け narrative)
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
+- [slack-logs-repository](sources/slack-logs-repository.md) — dd2030 Slack public channel log の新しい一次置き場。最新14日は mirror、古い月は raw canonical を読む
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
 - [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)、前回: [meeting-report-2026-05-25](concepts/meeting-report-2026-05-25.md)）
 

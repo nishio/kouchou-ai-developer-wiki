@@ -1,10 +1,10 @@
 ---
 name: meeting-minutes
-summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7600 lines, JP)"
+summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7700 lines, JP)"
 type: source
 url: https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit
-last_checked: 2026-06-01
-coverage: "2025-03-26頃〜2026-06-01 先頭見出し"
+last_checked: 2026-06-30
+coverage: "2025-03-26頃〜2026-06-22 先頭見出し"
 sources:
   - meeting_minutes.txt
   - nishio-source-freshness-criterion-2026-06-02.md
@@ -12,7 +12,7 @@ sources:
 
 ## What it is
 
-[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/06/01（次回分）**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
+[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/06/22**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
 
 ```
 YYYY/MM/DD（次回分）
@@ -23,9 +23,9 @@ YYYY/MM/DD（次回分）
 
 ## Freshness marker
 
-この source の鮮度基準は、**2026-06-01 に Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得した時点**。その時点の先頭見出しは `2026/06/01（次回分）`、txt は 7654 行だった。[[nishio-source-freshness-criterion-2026-06-02]]より
+この source の鮮度基準は、**2026-06-30 に Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得した時点**。その時点の先頭見出しは `2026/06/22`、txt は 7702 行、HTML 由来の URL 棚卸しは unique 551 件だった。[[nishio-source-freshness-criterion-2026-06-02]]より
 
-2026-06-01 より後の議事録内容を根拠にする場合は、まず `raw/meeting_minutes.txt` を再取得し、URL やリンク先が論点なら `raw/meeting_minutes.html` も更新する。
+2026-06-22 より後の議事録内容を根拠にする場合は、まず `raw/meeting_minutes.txt` を再取得し、URL やリンク先が論点なら `raw/meeting_minutes.html` も更新する。
 
 ## Refresh protocol
 
@@ -78,3 +78,4 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-05-25: Google Doc export から `raw/meeting_minutes.txt` を再取得し、先頭見出しが `2026/05/25（次回分）` になっていることを確認
 - 2026-06-01: Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しが `2026/06/01（次回分）`、txt が 7654 行になっていることを確認。主題は `#887` deploy success false positive / public-viewer runtime build risk、Actions / CodeQL / Dependabot 警告、developer-quickstart 読者像、SaaS / Azure 体験環境、Windows standalone / local LLM route。デプロイ詳細と alert 詳細は公開 wiki へ転記しない
 - 2026-06-02: source の鮮度基準として `last_checked` / `coverage` と Freshness marker を明示
+- 2026-06-30: Google Doc export から `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しが `2026/06/22`、txt が 7702 行になっていることを確認。主題は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーの優先軸。HTML URL 棚卸しは unique 551 件へ更新

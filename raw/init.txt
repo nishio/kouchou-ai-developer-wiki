@@ -9,5 +9,8 @@ https://github.com/digitaldemocracy2030/kouchou-ai
 特にここに開発者ドキュメントがある
 https://github.com/digitaldemocracy2030/kouchou-ai/tree/main/docs/development
 
-ここにGitHubやSlackのログがある
+Slack public channel log の新しい一次置き場
+https://github.com/digitaldemocracy2030/slack-logs
+
+ここにGitHubや週次AI要約のログがある
 https://github.com/nishio/oss_weekly_reporter/tree/data/data/2026-05-06_to_2026-05-13/raw

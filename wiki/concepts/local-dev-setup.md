@@ -5,6 +5,7 @@ type: concept
 sources:
   - github-dev-docs.md
   - meeting-minutes.md
+  - slack-logs-repository.md
   - windows-powershell-default-installation.md
 ---
 
@@ -42,9 +43,9 @@ docker compose up
 1. `work/kouchou-ai/` に本体 repo の local clone を置く
 2. `raw/meeting_minutes.txt` を Google Doc export から取得する
 3. 議事録中の URL も見る必要があるなら `raw/meeting_minutes.html` も取得する
-4. Slack / GitHub の週次観測が必要なら `oss_weekly_reporter` 由来の raw データか、その要約 source を確認する
+4. Slack の最新観測が必要なら `work/slack-logs/` に `digitaldemocracy2030/slack-logs` を clone し、`mirror/` / `raw/` を確認する。週次 AI 要約や GitHub 活動まとめが必要なら `oss_weekly_reporter` も確認する
 
-つまり onboarding の初手は「アプリを起動する」だけではなく、**コード・議事録・週次ログの 3 系統の一次ソースへ辿り着ける状態を作ること**。[[source-code]] / [[meeting-minutes]] / [[weekly-log-2026-05-06]]より
+つまり onboarding の初手は「アプリを起動する」だけではなく、**コード・議事録・Slack log / 週次ログの一次ソースへ辿り着ける状態を作ること**。[[source-code]] / [[meeting-minutes]] / [[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
 
 ### 最小オンボーディング手順
 
@@ -52,6 +53,7 @@ docker compose up
 git clone https://github.com/nishio/kouchou-ai-developer-wiki.git
 cd kouchou-ai-developer-wiki
 git clone https://github.com/digitaldemocracy2030/kouchou-ai.git work/kouchou-ai
+git clone https://github.com/digitaldemocracy2030/slack-logs.git work/slack-logs
 curl -L -sS \
   'https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/export?format=txt' \
   > raw/meeting_minutes.txt
@@ -60,7 +62,7 @@ curl -L -sS \
   > raw/meeting_minutes.html
 ```
 
-`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `oss_weekly_reporter` の該当週データを見に行く。`raw/init.txt` に初期参照先が書かれている。完全にローカルへ持ちたいなら、その repo も `work/` 配下へ clone しておくと再利用しやすい。[[weekly-log-2026-05-06]]より
+`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `work/slack-logs/` の `mirror/`（直近14日）または `raw/`（月次 canonical）を見る。週次 AI 要約や GitHub activity とのセット確認が必要なら `oss_weekly_reporter` の該当週データも併読する。[[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
 
 ## フロントエンドだけ動かす（dummy API 利用）
 
@@ -126,3 +128,4 @@ AI コーディングエージェントの長期運用では、host machine full
 - 2026-05-18: AI エージェント向けには devcontainer と Compose を役割分離する方針への参照を追加
 - 2026-05-19: clone 後に揃えるべき local data と最小オンボーディング手順を追記
 - 2026-05-25: 議事録のリンク URL を追えるよう、`raw/meeting_minutes.html` 取得を任意の補助手順として追加
+- 2026-06-30: Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` clone を追加し、`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線として位置づけ直した

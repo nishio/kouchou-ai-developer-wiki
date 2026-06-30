@@ -5,6 +5,7 @@ sources:
   - source-code.md
   - github-dev-docs.md
   - meeting-minutes.md
+  - slack-logs-repository.md
   - wiki-maintenance-observation-2026-05-25.md
   - nishio-source-freshness-criterion-2026-06-02.md
 ---
@@ -58,10 +59,10 @@ sources:
 
 ### 情報鮮度の基準
 
-Wiki の情報鮮度は、ページの編集日時ではなく **対象 source をいつ時点まで読んだか** を基準に読む。特に議事録 Google Doc と Slack / `oss_weekly_reporter` は追記され続けるため、source ページ側に「最終取得・読解日」「対象期間」「対象 channel / raw snapshot の有無」を明示する。[[nishio-source-freshness-criterion-2026-06-02]]より
+Wiki の情報鮮度は、ページの編集日時ではなく **対象 source をいつ時点まで読んだか** を基準に読む。特に議事録 Google Doc と Slack log は追記され続けるため、source ページ側に「最終取得・読解日」「対象期間」「対象 channel / raw snapshot の有無」を明示する。[[nishio-source-freshness-criterion-2026-06-02]]より
 
 - 議事録は [[meeting-minutes]] の freshness marker を見る。Google Doc export を最後に取り直した日、先頭見出し、`txt` / `html` の取得有無が基準になる。
-- Slack は各 Slack source の freshness marker を見る。対象週・対象 channel・最後に読んだ日・`raw/` に固定 snapshot があるかを基準にし、未取得の最新週を含む断定には使わない。
+- Slack は [[slack-logs-repository]] と各 Slack source の freshness marker を見る。最新14日は `digitaldemocracy2030/slack-logs` の `mirror/`、古い public channel log は同 repo の `raw/` を優先し、週次 AI 要約や GitHub 活動まとめは `oss_weekly_reporter` を補助線にする。
 - 最新確認なしで答える場合は、「この Wiki では `<marker>` 時点まで観測」として扱い、現在進行形の状態を断定しない。最新状態が論点なら source を再取得してから答える。
 
 ### コード本体について聞かれた時
@@ -74,7 +75,9 @@ Wiki の情報鮮度は、ページの編集日時ではなく **対象 source �
 
 ### Slack の発言について聞かれた時
 
-まず `oss_weekly_reporter` 由来の raw / source を確認する。既存の週次 source で足りなければ、**Slack を直接読みに行く前に `oss_weekly_reporter` 側の最新取得データへ到達する**。`weekly-log` 系 source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
+まず `work/slack-logs/` を `git pull --ff-only` で最新化し、`mirror/sync.json` の `synced_at` / window / channel 数を確認する。直近14日は `mirror/slack/<channel_id>.jsonl.gz`、2ヶ月以上前の stable な根拠は `raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` を読む。`mirror/` は上書きされるので、重要な観測を wiki に残す時は commit hash、`synced_at`、window、channel ID を併記する。[[slack-logs-repository]]より
+
+週次の流れを掴む、または GitHub activity と一緒に見る時は `oss_weekly_reporter` の `ai_reports/` と既存 `weekly-log-*` source を補助線として使う。古い source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
 
 ### GitHub の現在進行形について聞かれた時
 
@@ -154,3 +157,4 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-06-01: Dependabot alerts を GitHub current state の定期観測対象として追記。公開 wiki には脆弱性詳細を転記しない方針も明記
 - 2026-06-01: 公開 wiki に Dependabot 脆弱性詳細とデプロイ詳細を書かない境界を追記。デプロイ詳細の一次置き場を Google Drive「広聴AI-Azureデモ環境」と明記
 - 2026-06-02: 議事録 / Slack の情報鮮度は「いつ時点まで source を読んだか」を基準にし、source ページに freshness marker を明示する運用を追記
+- 2026-06-30: Slack raw の最新一次参照を `digitaldemocracy2030/slack-logs` の `mirror/` / `raw/` に更新し、`oss_weekly_reporter` は週次 AI report / GitHub report 補助線として位置づけ直した

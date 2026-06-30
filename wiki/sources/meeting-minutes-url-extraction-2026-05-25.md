@@ -9,12 +9,12 @@ sources:
 
 [[meeting-minutes]] の `raw/meeting_minutes.html` から URL を抽出し、`raw/meeting_minutes_urls.tsv` と `raw/meeting_minutes_urls_summary.md` に整理した派生 source。`txt` export では落ちるリンク先 URL や、ラベルだけ見えていた anchor の実体を再回収するための棚卸しである。[[meeting-minutes]]より
 
-2026-06-01 時点の抽出結果は **550 unique URLs / 93 domains**。主な内訳は次の通り。
+2026-06-30 時点の抽出結果は **551 unique URLs / 93 domains**。主な内訳は次の通り。
 
 - `kouchou-ai repo`: 141
 - `weekly history` (`dd2030.org/history/...`): 83
 - `slack permalink`: 50
-- `google docs/drive`: 28
+- `google docs/drive`: 29
 - `broad-listening-book`: 54
 - `external web`: 138
 
@@ -52,3 +52,4 @@ sources:
 
 - 2026-05-25: `raw/meeting_minutes.html` を取得し、`scripts/extract_meeting_minutes_urls.py` で URL 531 件を抽出。`raw/meeting_minutes_urls.tsv` と `raw/meeting_minutes_urls_summary.md` を生成
 - 2026-06-01: 最新 HTML export で URL 棚卸しを再生成し、550 unique URLs / 93 domains へ更新。2026-06-01 回の `PR #887`、Azure Deployment run、Dependabot、High Priority / Good First Issue query へのリンクが追加された
+- 2026-06-30: 最新 HTML export で URL 棚卸しを再生成し、551 unique URLs / 93 domains へ更新。2026-06-22 回の High Priority / Good First Issue query、運用ポリシー、8/2 イベントタイムライン spreadsheet へのリンクが追加された

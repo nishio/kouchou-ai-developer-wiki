@@ -19,6 +19,7 @@ sources:
   - codex-log-experiment-archive-cli-2026-06-02.md
   - llm-grouping-400-tree-label-corpus-2026-06-02.md
   - weekly-log-2026-05-20.md
+  - slack-logs-repository.md
 ---
 
 ## 目的
@@ -59,7 +60,7 @@ sources:
 - main 済み: CodeQL Action v3 の 2026-12 deprecation warning 対応として、PR #893 (`codex/codeql-action-v4`) を admin merge した。`.github/workflows/codeql.yml` の `init` / `autobuild` / `analyze` を `github/codeql-action/*@v4` へ更新し、workflow 構造・trigger・permissions は変えていない。
 - main 済み: Code scanning alerts 対応 PR #892 (`codex/code-scanning-fixes`) を admin merge した。admin の API URL 組み立て、static build endpoint、API エラー返却の公開可能な範囲を修正し、PR branch の code scanning open alerts は 0 件。alert 詳細は公開 wiki に転記していない。
 - main 済み: all green + CodeRabbit actionable comment なしを確認し、PR #896 (`codex/api-docker-dependency-check`) と PR #897 (`codex-fix-mixed-type-csv-input`) を admin merge した。#896 は API Docker image と test 環境の依存差分を Dockerfile contract pytest + `API Docker Dependency Smoke` で検知する修正、#897 は混在型 CSV 属性を文字列として扱う修正。[[source-code]]より
-- 進行中: issue #898 の aarch64 Docker で `import umap` が `Illegal instruction` になる件は、UMAP 代替や `NUMBA_DISABLE_JIT=1` ではなく、Numba JIT の CPU target を `NUMBA_CPU_NAME=generic` にする最小方針で draft PR #899 (`codex/issue-898-aarch64-numba`) を作成。クラスタリング実装は変えず、`compose.yaml` / `.env.example` / Mac/Linux setup 生成 `.env` だけを更新した。aarch64 Docker 実機確認が必要なため draft のまま。[[source-code]]より
+- main 済み / 確認待ち: issue #898 の aarch64 Docker で `import umap` が `Illegal instruction` になる件は、UMAP 代替や `NUMBA_DISABLE_JIT=1` ではなく、Numba JIT の CPU target を `NUMBA_CPU_NAME=generic` にする最小方針で PR #899 (`codex/issue-898-aarch64-numba`) を作成し、2026-06-06 に main merge 済み。クラスタリング実装は変えず、`compose.yaml` / `.env.example` / Mac/Linux setup 生成 `.env` だけを更新した。issue #898 は open のままなので、aarch64 Docker 実機での解消確認は引き続き見る。[[source-code]]より
 - main 済み: nishio authored の open PR を整理し、PR #893 → #890 → #892 → #863 の順で admin merge した。#863 は draft だったが、mergeable と checks pass を確認して ready 化してから merge した。merge 後の nishio authored open PR は 0 件。
 - 進行中: CLI で pipeline を試行錯誤して発展させる順序を [[cli-pipeline-experiment-roadmap-2026-06-02]] に整理し、first slice として `codex/experiment-storage` で `analysis-core` に `--experiment-root` / `--experiment-id` を追加した。
   さらに既存 LLM grouping 400 件実験を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化し、5 tree run / 10 labelling run / 5 judge run / 4 observation と tree-label matrix bundle を作った。これは探索 corpus として扱い、次は同じ tree / evidence で label variants を作り、人間に A/B preference を聞く。
@@ -88,7 +89,7 @@ sources:
 - 追加 workflow `API Docker Dependency Smoke` は Dockerfile / API dependency lock / analysis-core dependency manifest 変更時だけ API image を build し、container 内で `hierarchical_clustering`, `sklearn`, `scipy`, `umap`, `numba`, `sentence_transformers`, `torch`, `google.genai` の import を確認する。
 - ローカルでは新規 pytest、ruff、workflow YAML / bash 構文検証まで通過。PR #896 の CI では `dependency-smoke`、server pytest、ruff、CodeQL が全 pass。
 - 副次メモ: `codex/api-docker-dependency-check` worktree で commit / push 時に `Can't find lefthook in PATH` が出たが、原因は dedicated worktree 側に `node_modules` が無かったこと。`pnpm install --frozen-lockfile` 後に lefthook 1.13.6 と pre-push ruff checks が正常起動したため、[[worktree-hygiene]] に運用メモとして反映。
-- issue #898 は、aarch64 Docker で `import umap` 自体が `Illegal instruction` で落ちる報告。`NUMBA_DISABLE_JIT=1` は避け、UMAP / clustering logic も差し替えず、Numba が LLVM に渡す CPU target だけを `generic` にする方針で draft PR #899 を作成。ローカル macOS arm64 venv では `NUMBA_CPU_NAME=generic` が Numba に読まれ、UMAP import も通過。Docker daemon 停止中のため Linux/arm64 container での再現確認は未実施。PR 本文には aarch64 環境の人に試してもらう必要があることを明記。
+- issue #898 は、aarch64 Docker で `import umap` 自体が `Illegal instruction` で落ちる報告。`NUMBA_DISABLE_JIT=1` は避け、UMAP / clustering logic も差し替えず、Numba が LLVM に渡す CPU target だけを `generic` にする方針で PR #899 を作成し、2026-06-06 に merge commit `d5c9ece` で main 済み。ローカル macOS arm64 venv では `NUMBA_CPU_NAME=generic` が Numba に読まれ、UMAP import も通過。issue #898 は open のままで、GitHub issue 上には aarch64 Docker での解消確認コメントはまだ残っていない。
 
 ### mixed-type CSV 入力
 
@@ -120,10 +121,11 @@ sources:
 
 ### source freshness 運用
 
+- 2026-06-30 時点の横断 snapshot は [[current-status-2026-06-30]] に固定した。コード main / open PR / issue / 議事録 / Slack log の鮮度を同じページで読める。
 - [[nishio-source-freshness-criterion-2026-06-02]] を追加し、議事録 / Slack source は「いつ時点まで読んだか」を freshness marker として明示する方針にした。
-- [[meeting-minutes]] には `last_checked: 2026-06-01` と coverage を追加。Slack source では [[slack-dev-kouchouai-2025-q4]] / [[slack-dev-kouchouai-2026-q1]] / [[slack-kouchouai-algorithm-dev]] / [[weekly-log-2026-05-06]] に `last_read` と coverage を追記した。
-- [[weekly-log-2026-05-20]] を追加し、Slack 由来の最新読解 marker を 2026-05-20_to_2026-05-27 / `data@d0e340c96c05` まで進めた。
-- 次に見ること: 今後 Slack source を増やす時、この marker を必須 frontmatter にするか。`oss_weekly_reporter` 自体の最新化日と、Wiki が実際に読んだ対象週を分ける必要があるか。
+- [[meeting-minutes]] は 2026-06-30 に Google Doc export を再取得し、先頭見出し `2026/06/22` / txt 7702 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。
+- Slack raw の一次参照を `digitaldemocracy2030/slack-logs` に更新し、[[slack-logs-repository]] を追加。直近14日は `mirror/`、古い public channel log は `raw/`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` 補助線として扱う。2026-06-30 確認時点の mirror は `synced_at=2026-06-30T04:12Z` / window `2026-06-16〜06-30`。
+- 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
 
 ## Open Questions
 
@@ -132,6 +134,8 @@ sources:
 ## Updates
 
 - 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記
+- 2026-06-17: GitHub live state を再確認し、PR #899 が 2026-06-06 に main merge 済みであること、issue #898 は open のまま解消確認待ちであることを反映
+- 2026-06-30: 議事録を 2026-06-22 先頭見出しまで再取得し、Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` を追加。`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線へ位置づけ直し、[[current-status-2026-06-30]] に現状 snapshot を固定した
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記
 - 2026-06-05: `codex/api-docker-dependency-check` で API Dockerfile の `analysis-core[full]` install contract test と実 image dependency smoke workflow を追加したことを追記
