@@ -34,8 +34,8 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Next
 
-- PR #903 は、着手するなら assignee / owner を確認した上で CodeRabbit 指摘を小さく直す候補。
-- issue #898 は、aarch64 Docker 実機確認ができるか、確認不能なら issue 上でどの状態まで close 可能かを整理する候補。
+- PR #903 は、[[pr-903-node-runtime-doc-review-2026-06-30]] に docs 精度のレビュー観点を固定した。着手するなら assignee / owner を確認した上で CodeRabbit 指摘と追加 server action inventory を小さく直す候補。
+- issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
 ## Open Questions
@@ -45,4 +45,5 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: PR #903 docs inventory のレビュー観点と issue #898 close readiness へのリンクを追加。
 - 2026-06-30: 初回作成。`work/kouchou-ai` / GitHub open PR・issue / 議事録 export / `work/slack-logs` / `work/oss_weekly_reporter` の最新確認をまとめた。

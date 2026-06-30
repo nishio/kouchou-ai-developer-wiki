@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 13:27] filing-back | PR #903 と issue #898 の docs-safe 現状整理
+
+- [[pr-903-node-runtime-doc-review-2026-06-30]] を追加し、human authored PR #903 に直接 push せず、CodeRabbit 指摘と current main の server action inventory 漏れ候補を整理
+- [[issue-898-close-readiness-2026-06-30]] を追加し、PR #899 merge 済みの issue #898 は aarch64 Docker 解消確認前に AI 単独 close しない方針を明示
+- [[meeting-report-draft]] に docs-first / no-conflict lane として次に見る順序を追記
+
 ## [2026-06-30 13:10] filing-back | 議事録と Slack log の freshness を更新
 
 - 議事録 Google Doc export を再取得し、[[meeting-minutes]] を `last_checked: 2026-06-30` / 先頭見出し `2026/06/22` / txt 7702 行 / URL unique 551 件へ更新

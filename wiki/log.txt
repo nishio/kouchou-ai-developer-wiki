@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 13:27	filing-back	PR #903 と issue #898 の docs-safe 現状整理
 2026-06-30 13:10	filing-back	議事録と Slack log の freshness を更新
 2026-06-17 12:58	filing-back	PR #899 merge 済みを live state から反映
 2026-06-09 12:30	filing-back	label preference A/B v2 bundle に組み替え (setwise vs short)

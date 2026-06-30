@@ -20,6 +20,9 @@ sources:
   - llm-grouping-400-tree-label-corpus-2026-06-02.md
   - weekly-log-2026-05-20.md
   - slack-logs-repository.md
+  - current-status-2026-06-30.md
+  - pr-903-node-runtime-doc-review-2026-06-30.md
+  - issue-898-close-readiness-2026-06-30.md
 ---
 
 ## 目的
@@ -127,6 +130,11 @@ sources:
 - Slack raw の一次参照を `digitaldemocracy2030/slack-logs` に更新し、[[slack-logs-repository]] を追加。直近14日は `mirror/`、古い public channel log は `raw/`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` 補助線として扱う。2026-06-30 確認時点の mirror は `synced_at=2026-06-30T04:12Z` / window `2026-06-16〜06-30`。
 - 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
 
+### docs-first / no-conflict lane
+
+- PR #903 は human authored docs PR なので、AI が勝手に branch push せず、[[pr-903-node-runtime-doc-review-2026-06-30]] にレビュー観点を固定した。CodeRabbit 指摘 3 点に加え、current main の `csvDownloadCommon` / `jsonDownload` server actions が inventory から漏れている可能性を確認。次に触るなら docs-only の count / last verified / server action inventory 修正に絞る。
+- issue #898 は PR #899 merge 済みだが、[[issue-898-close-readiness-2026-06-30]] に整理した通り aarch64 Docker での解消確認がまだない。AI 単独 close は避け、Apple Silicon Docker などで `NUMBA_CPU_NAME=generic` と `import umap`、実レポート生成を確認してから close 判断する。
+
 ## Open Questions
 
 - Codex 以外の AI エージェント（Devin / Copilot Agent）の報告も同じページに寄せるかは未整理
@@ -135,6 +143,7 @@ sources:
 
 - 2026-06-05: issue #898 の aarch64 Docker / UMAP / Numba `Illegal instruction` 対応として、`NUMBA_DISABLE_JIT=1` や UMAP 代替ではなく `NUMBA_CPU_NAME=generic` に絞った draft PR #899 を追記
 - 2026-06-17: GitHub live state を再確認し、PR #899 が 2026-06-06 に main merge 済みであること、issue #898 は open のまま解消確認待ちであることを反映
+- 2026-06-30: 人間と衝突しにくい docs-first lane として、[[pr-903-node-runtime-doc-review-2026-06-30]] と [[issue-898-close-readiness-2026-06-30]] を追加した
 - 2026-06-30: 議事録を 2026-06-22 先頭見出しまで再取得し、Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` を追加。`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線へ位置づけ直し、[[current-status-2026-06-30]] に現状 snapshot を固定した
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記
