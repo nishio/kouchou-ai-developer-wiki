@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:04] filing-back | #564 公開事例を trust layer として整理
+
+- [[github-issues-564-696-542-trust-layer-live-2026-06-30]] を追加し、Issue #564 / #696 / #542 の live state を open / unassigned のまま確認
+- [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、#564 活用事例公開は「公開事例リスト + レポートの読み方 + 何を保証しないか」を最小単位にする必要があると整理
+- [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[event-2026-08-02-broadlistening-readiness-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から、8/2 公開事例 demo と trust layer を接続
+
 ## [2026-06-30 14:56] filing-back | 8/2 公開事例 / demo 素材を棚卸し
 
 - [[public-broadlistening-artifacts-2026-06-30]] を追加し、奈良 #全員市長 public viewer、渋谷区 official page / PDF、八代市 Democracy-X public article / viewer を公開事例候補として確認

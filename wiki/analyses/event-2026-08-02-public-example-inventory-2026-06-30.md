@@ -11,6 +11,7 @@ sources:
   - broad-listening-book-extractions.md
   - meeting-minutes.md
   - source-code.md
+  - issue-564-public-case-trust-layer-scope-2026-06-30.md
 ---
 
 ## Conclusion
@@ -52,6 +53,8 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 本体 docs / 公開ページに移すなら、最初の landing は「自分で環境を立てる」ではなく、公開事例と viewer の読み方に置く方が自然である。current docs は OS 別 setup と user guide に寄っており、8/2 の短い説明には「事例を見る → viewer を読む → 自分のデータを準備する → 必要なら setup へ進む」という導線が不足している。[[source-code]]より
 
+ただし、公開事例は単独で出さず、#696 の誤読防止と #542 の責任所在を含む trust layer として扱う。最小単位は「公開事例リスト + レポートの読み方 + 何を保証しないか」であり、詳細 scope は [[issue-564-public-case-trust-layer-scope-2026-06-30]] に固定した。
+
 ## Open Questions
 
 - 8/2 の第一候補 viewer は奈良 #全員市長でよいか。それとも八代市、synthetic sample、別自治体を主役にするか。
@@ -61,4 +64,5 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 ## Updates
 
+- 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo は #696 誤読防止 / #542 責任所在とセットで出す必要があると追記。
 - 2026-06-30: 初回作成。公開 artifact として奈良 #全員市長 / 渋谷区 / 八代市を primary 候補に置き、広島県・朝日新聞・企業系は確認待ち、synthetic sample は fallback として整理した。
