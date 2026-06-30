@@ -12,6 +12,8 @@ sources:
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - meeting-municipality-user-research-scope-2026-06-30.md
   - broad-listening-book-public-case-appendix-2026-06-30.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
+  - public-tool-catalog-draft-2026-06-30.md
 ---
 
 ## Conclusion
@@ -41,6 +43,8 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 
 FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では、メンバー向け QA と外向け QA が混ざる問題、参加検討者と既存参加者では読む FAQ が違う問題が出ていた。website PR #192 は 2026-06-19 に merge 済みだが、カテゴリ分けは別途考える扱いになった。#564 の公開事例ページでは、少なくとも `導入検討者向け` / `レポート閲覧者向け` / `既に関わっている人向け` を混ぜない方がよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
+この block には、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を混同しないための短い tool catalog も入れる。`collect / deepen / analyze / show / classify / read-and-act` を分け、広聴AI本体の promise は収集済み自由記述の分析・可視化に置く。[[public-tool-catalog-draft-2026-06-30]]より
+
 ### 1. 最初に見る 3 事例
 
 1 ページ目の最初は、件数を多く見せるより `source strength` の異なる 3 類型を出す。
@@ -64,6 +68,8 @@ FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では�
 | public artifact | official page / PDF / viewer / article の URL |
 | 何を見られるか | 意見収集、分析結果、viewer 操作、政策利用、発表資料など |
 | 注意 | 代表性、責任所在、政治・選挙文脈、権利確認、個人情報、誤読可能性 |
+
+`tool lineage` は、少なくとも `kouchou-ai`、`Talk to the City lineage`、`broad listening adjacent`、`idobata / dialogue`、`enterprise / VOC`、`candidate` を分ける。外向けに細かすぎる場合でも、内部整理ではこの分類を持っておくと、広義 broad listening や enterprise VOC を広聴AI confirmed case と誤って載せるリスクを下げられる。[[public-tool-catalog-draft-2026-06-30]]より
 
 一覧とは別に、SNS 発信や初回説明に使う `利用状況の一枚絵` を作る場合は、同じ分類を使う。つまり、プロダクト x 政党・行政・議員・その他組織の grid にしても、`実績` / `予定` / `候補` / `adjacent` を混ぜない。
 
@@ -140,6 +146,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 ## Updates
 
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、事例ページ冒頭に tool catalog を置き、`tool_lineage` を `kouchou-ai` / `TTTC lineage` / `broad listening adjacent` / `idobata` / `enterprise` / `candidate` で分ける方針を追記。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、case intake と自治体 user research は目的が違うため、同じフォームに混ぜない方がよいと追記。
 - 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。

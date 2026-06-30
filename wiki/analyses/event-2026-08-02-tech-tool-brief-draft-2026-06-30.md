@@ -14,6 +14,8 @@ sources:
   - docs-issue-map-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
+  - meeting-cartographer-idobata-boundary-2026-06-30.md
+  - public-tool-catalog-draft-2026-06-30.md
 ---
 
 ## Intended Use
@@ -34,6 +36,8 @@ sources:
 
 横浜型ブロードリスニングの文脈では、初回の募集は市民の声の「収集」手法に焦点がある。広聴AIは現時点では、収集そのものをすべて担うというより、収集後の分析・可視化・共有に強い。したがって説明では、`collect / import / analyze / show / discuss` を分け、広聴AIが current asset として強いのは `import / analyze / show` 側だと明示する。[[slack-yokohama-hack-2026-06-26]]より [[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
 
+ツール ecosystem を 1 枚にするなら、`collect` はアンケート・SNS・対面記録など、`deepen` はいどばた / Cartographer、`analyze / show` は広聴AI、`classify` は LLM grouping / Jigsaw Sensemaker / tttc-light-js、`read-and-act` は人間の追加調査・政策判断として分ける。これにより、広聴AIをブロードリスニング全体の総称として見せず、現行 product capability と周辺 route を同じ図に載せられる。[[public-tool-catalog-draft-2026-06-30]]より
+
 ### デモで見せるなら
 
 1. 渋谷区 official page / PDF で、自治体公式の public artifact があることを示す。
@@ -49,6 +53,7 @@ sources:
 
 - 広聴AIは統計的世論調査ではない。自由記述を構造把握する道具であり、代表性や政策判断を自動保証するものではない。[[kouchou-ai]]より
 - 横浜型ブロードリスニングの「収集」課題を、広聴AIがすでに full solution として解いているとは言わない。input plugin や data collection docs へ接続できる可能性はあるが、current claim は収集後の分析・可視化に寄せる。[[slack-yokohama-hack-2026-06-26]]より
+- いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を、広聴AIの current product capability として列挙しない。周辺 tool / adjacent route として分けて説明する。[[public-tool-catalog-draft-2026-06-30]]より
 - #876 developer quickstart、#877 Windows setup、#885 Node runtime 排除のような開発者向け issue を、イベント向けの利用者説明に混ぜない。これらは裏側の整備であり、イベント資料では必要に応じて「今後の配布改善」としてだけ触れる。[[docs-issue-map-2026-06-30]]より
 - デプロイ詳細、実環境 URL、resource 名、revision、ログ、secret / access 周辺情報は公開 wiki / イベント draft に書かない。
 
@@ -62,4 +67,5 @@ sources:
 ## Updates
 
 - 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、demo 候補を渋谷区 official page / PDF、奈良 #全員市長 public viewer、八代市 deep case、synthetic sample fallback に分けた。
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、8/2 の技術・ツール 1 枚資料では collect / deepen / analyze / classify / read-and-act を分ける方針を追記。
 - 2026-06-30: 初回作成。[[event-2026-08-02-broadlistening-readiness-2026-06-30]] の次 action として、技術・ツール入口の 1 枚 draft を固定した。

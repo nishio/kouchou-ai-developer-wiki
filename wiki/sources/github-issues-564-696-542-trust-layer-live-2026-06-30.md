@@ -2,7 +2,7 @@
 type: source
 summary: "Issue #564 / #696 / #542 の live state。活用事例公開は、誤読防止とレポート責任所在を含む trust layer として扱う必要がある"
 last_checked: 2026-06-30
-coverage: "2026-06-30 16:19 JST に GitHub issue #564, #696, #542 と #542 の参照元 #539 を gh issue view で確認。#564/#696/#542 は open / unassigned"
+coverage: "2026-06-30 17:50 JST に GitHub issue #564, #696, #542 を gh issue view で再確認。#564/#696/#542 は open / unassigned"
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/564
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/696
@@ -17,7 +17,7 @@ sources:
 
 広聴AIの公開事例・導入説明・レポートの読み方に関係する GitHub issue の live state。
 
-2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。16:12 JST に #564、16:19 JST に #696 / #542 / #539 を再確認したが、state / assignee / comments は変わっていない。GitHub への comment / assign / close は行っていない。
+2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。16:12 JST に #564、16:19 JST に #696 / #542 / #539 を確認し、17:50 JST に #564 / #696 / #542 を再確認したが、state / assignee / comments は変わっていない。GitHub への comment / assign / close は行っていない。
 
 ## Freshness marker
 
@@ -81,6 +81,7 @@ sources:
 ## Updates
 
 - 2026-06-30: 16:19 JST に #696 / #542 / #539 を再読し、内部分析と対外アピールの混同、課題発見ツールとしての説明、termsLink はレポート出力者側のものという責任境界を追記。
+- 2026-06-30: 17:50 JST に #564 / #696 / #542 の live state を再確認し、open / unassigned のままであることを freshness marker に反映。
 - 2026-06-30: 16:12 JST に #564 を再読し、活用事例公開は事例 detail だけでなく、初回説明 FAQ / 一枚絵 / 説明資料導線も求められていると追記。
 - 2026-06-30: [[source-code]] と [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#542 は current main では footer 単純追加ではなく、README / docs / viewer / 事例ページの責任境界統一として読むと補正。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake として使い、外部公開では primary URL 確認済み case だけを載せる方針を追記。

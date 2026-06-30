@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:50] filing-back | 公開向け tool catalog draft を作成
+
+- [[public-tool-catalog-draft-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を `collect / deepen / analyze / show / classify / read-and-act` に分ける外向け draft に整理
+- [[public-case-page-skeleton-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に、#564 公開事例ページと 8/2 技術・ツール資料へ転用する導線を追記
+
 ## [2026-06-30 17:43] filing-back | Cartographer / いどばた / 広聴AI の役割境界を source 化
 
 - [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、議事録から Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界を整理

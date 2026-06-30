@@ -246,6 +246,7 @@ pr-903-node-runtime-doc-review-2026-06-30	analysis	analyses/pr-903-node-runtime-
 pr-903-review-comment-draft-2026-06-30	analysis	analyses/pr-903-review-comment-draft-2026-06-30.md	PR #903 に直接投稿せず Wiki 側に固定したレビューコメント案。CodeRabbit 3 点に加え、CSV / JSON download server actions の inventory 漏れを短く伝え、human-authored docs PR への安全な next action にする
 problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-open-issues-2026-05-19.md	open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
 public-case-page-skeleton-2026-06-30	analysis	analyses/public-case-page-skeleton-2026-06-30.md	Issue #564 の活用事例公開を、導入検討者向けの公開ページへ落とすためのページ構成案
+public-tool-catalog-draft-2026-06-30	analysis	analyses/public-tool-catalog-draft-2026-06-30.md	広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を外向けに混同なく説明するための tool catalog draft。#564 公開事例ページと 8/2 技術・ツール資料へ転用する
 public-ui-requirements-for-broadlistening	analysis	analyses/public-ui-requirements-for-broadlistening.md	広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出
 public-viewer-build-behavior	analysis	analyses/public-viewer-build-behavior.md	`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある
 public-viewer-build-serve-split-refactor-plan-2026-06-01	analysis	analyses/public-viewer-build-serve-split-refactor-plan-2026-06-01.md	public-viewer の build-time API 依存を dynamic hosting から外し、container 起動時 next build を撤去するための段階的リファクタ計画

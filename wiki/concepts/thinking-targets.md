@@ -19,6 +19,7 @@ sources:
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
+  - public-tool-catalog-draft-2026-06-30.md
 ---
 
 このページは **「次に何を考えれば前に進むか」だけ** を集める。
@@ -90,9 +91,9 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 ### 0-8. 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog をどこに置くか
 
 - 問い: `広聴AI = 分析・可視化`、`いどばた / Cartographer = 収集・深掘り`、`Jigsaw Sensemaker / tttc-light-js = LLM直接分類 / TTTC lineage` という役割境界を、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどこに置くか
-- 思考の最小単位: `collect / deepen / analyze / classify / discuss` の 5 列 tool catalog を 1 枚作り、どこまでを広聴AI本体の promise として書くか決める。対立軸発見は魅力的だが、現行 default ではなく LLM grouping / long-context route の未決論点として表現する
+- 思考の最小単位: [[public-tool-catalog-draft-2026-06-30]] の `collect / deepen / analyze / show / classify / read-and-act` を、外部正本へ置くかどうか決める。対立軸発見は魅力的だが、現行 default ではなく LLM grouping / long-context route の未決論点として表現する
 - 決まれば動けること: 8/2 のツール比較、#564 の初回説明 FAQ、自治体 user research の質問項目、idobata bridge の owner 論点を同じ language で扱える
-- 関連: [[meeting-cartographer-idobata-boundary-2026-06-30]], [[broadlistening]], [[idobata]], [[jigsaw-sensemaker]], [[talk-to-the-city]], [[meeting-municipality-user-research-scope-2026-06-30]]
+- 関連: [[public-tool-catalog-draft-2026-06-30]], [[meeting-cartographer-idobata-boundary-2026-06-30]], [[broadlistening]], [[idobata]], [[jigsaw-sensemaker]], [[talk-to-the-city]], [[meeting-municipality-user-research-scope-2026-06-30]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
 

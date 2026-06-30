@@ -37,6 +37,7 @@ sources:
   - meeting-municipality-user-research-scope-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - meeting-cartographer-idobata-boundary-2026-06-30.md
+  - public-tool-catalog-draft-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -98,6 +99,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「課題発見ツールとしての説明」「読み方」「保証しない範囲」「個別レポート発行主体」「外部向け利用時の注意」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界は [[meeting-cartographer-idobata-boundary-2026-06-30]] に固定した。次の公開 docs では、収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を同じ `広聴AI` の promise として混ぜない。
+- その外向け転用 draft は [[public-tool-catalog-draft-2026-06-30]] に作成した。#564 case page と 8/2 tool material では、`collect / deepen / analyze / show / classify / read-and-act` を分け、`tool_lineage` を広聴AI confirmed / TTTC lineage / broad listening adjacent / idobata / enterprise / candidate で扱う。
 - 6/30 に増えた source / analysis を [[thinking-targets]] と [[open-decisions]] に接続し直した。直近の人間判断待ちは、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用である。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。Slack source ops は [[slack-logs-repository]] / [[wiki-driven-workflow]] に補強し、user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json`、source の使い分けは直近 `mirror/`・古い Slack `raw/`・週次流れ `oss_weekly_reporter` とした。
 
@@ -112,6 +114,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 - 2026-06-30: 17:30 JST の direct verification を反映し、Web book 付録由来の大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を source strength 付きで current snapshot に接続。
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を追加し、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の役割境界を current snapshot に接続。
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、#564 / 8/2 に転用する tool catalog draft を current snapshot に接続。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、自治体 user research は #564 case intake と分け、広聴活動一般の探索と広聴AI適合ケース探索を切り分けると整理。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、Brand Compass / 情報発信を stable v4 / trust layer / 外部ストーリー / A/B/C/D 配布形態の判断フィルタとして current snapshot に接続。
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#884 / #221 が high priority open のまま、作成前確認パネルが current main 未実装であることを current snapshot に接続。
