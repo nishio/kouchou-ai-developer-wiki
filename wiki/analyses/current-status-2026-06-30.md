@@ -40,6 +40,7 @@ sources:
   - public-tool-catalog-draft-2026-06-30.md
   - website-kouchou-ai-case-live-2026-06-30.md
   - slack-prance-event-broadlistening-session-2026-06-30.md
+  - github-high-priority-label-query-footgun-2026-06-30.md
   - thinking-targets.md
   - open-decisions.md
 ---
@@ -60,9 +61,9 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 
 `oss_weekly_reporter` は `data@e2c9b20` まで fast-forward 済みで、weekly dump は `2026-06-17_to_2026-06-24` まである。今後の Slack raw 一次確認は `slack-logs`、週次 AI 要約や GitHub activity とのセット確認は `oss_weekly_reporter` という使い分けが妥当。
 
-2026-06-30 19:15 JST に GitHub live state を再確認したが、open PR は #903 / #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#564 / #696 / #542 も open / unassigned のままだった。
+2026-06-30 19:30 JST に GitHub live state を再確認したが、open PR は #903 / #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#564 / #696 / #542 も open / unassigned のままだった。
 
-2026-06-30 19:15 JST の high priority issue 再確認でも、open high priority は #884 / #564 / #221 の 3 件だった。#884 は #221 の concrete tracking issue として open / unassigned のままで、作成前確認パネルは current main にはまだ入っていない。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+2026-06-30 19:30 JST の high priority issue 再確認でも、open high priority は #884 / #564 / #221 の 3 件だった。正しい label query は `--label "high priority"` であり、`--label "priority: high"` では 0 件に見える。#884 は #221 の concrete tracking issue として open / unassigned のままで、作成前確認パネルは current main にはまだ入っていない。[[github-issues-221-884-trial-burden-live-2026-06-30]]より [[github-high-priority-label-query-footgun-2026-06-30]]より
 
 ## Reading
 
@@ -119,6 +120,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 ## Updates
 
 - 2026-06-30 19:15 JST: `work/kouchou-ai/main@d5c9ece` が origin と一致すること、open PR 2 本 / high priority issue 3 件 / nishio assigned 6 件が変わらないことを再確認した。
+- 2026-06-30 19:30 JST: GitHub live state を再確認し、open PR 2 本 / high priority issue 3 件 / nishio assigned 6 件は変わらないことを確認。high priority label の正しい query は `--label "high priority"` で、`priority: high` では 0 件に見える footgun を [[github-high-priority-label-query-footgun-2026-06-30]] に切り出した。
 - 2026-06-30 19:04 JST: 議事録 Google Doc export を再取得して `2026/06/29` / `2026/06/30` 見出し未検出のままと確認し、`work/slack-logs main@7c17dd3` の `#dd_prance_event2026` から 8/2 実践 lane の planning lead を追加した。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を 18:37 JST に再確認し、website issue #125 の hosted viewer 候補は public case page では canonical public artifact 確認待ちの candidate として扱うと補正した。
 - 2026-06-30: 18:30 JST に議事録 Google Doc export と `work/slack-logs` を再確認し、議事録は `2026/06/29` 見出し未検出のまま、Slack mirror も `main@341cf80` から変化なしと補正した。

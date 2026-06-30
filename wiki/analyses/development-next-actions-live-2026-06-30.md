@@ -1,7 +1,7 @@
 ---
 type: analysis
-summary: "2026-06-30 19:15 JST 時点の開発 next action 候補。open PR / high priority issue / nishio assigned issue を live 確認し、#884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 prototype と #898 validation を次点として整理する"
-last_checked: 2026-06-30 19:15 JST
+summary: "2026-06-30 19:30 JST 時点の開発 next action 候補。open PR / high priority issue / nishio assigned issue を live 確認し、#884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 prototype と #898 validation を次点として整理する"
+last_checked: 2026-06-30 19:30 JST
 sources:
   - current-status-2026-06-30.md
   - docs-issue-map-2026-06-30.md
@@ -11,6 +11,7 @@ sources:
   - pr-903-review-comment-draft-2026-06-30.md
   - issue-885-node-runtime-next-scope-2026-06-30.md
   - issue-898-close-readiness-2026-06-30.md
+  - github-high-priority-label-query-footgun-2026-06-30.md
   - source-code.md
   - https://github.com/digitaldemocracy2030/kouchou-ai/pulls
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/884
@@ -18,7 +19,7 @@ sources:
 
 ## Freshness
 
-2026-06-30 19:15 JST に GitHub live state を再確認した。確認範囲は、open PR、`high priority` open issue、nishio assigned open issue、#884 の assignee / labels / updatedAt である。全 open issue の再 triage はしていない。
+2026-06-30 19:30 JST に GitHub live state を再確認した。確認範囲は、open PR、`high priority` open issue、nishio assigned open issue、#884 の assignee / labels / updatedAt である。全 open issue の再 triage はしていない。
 
 確認結果は 18:44 JST の確認と同じだった。
 
@@ -28,6 +29,8 @@ sources:
 | high priority issue | #884 / #564 / #221 の 3 件、すべて unassigned |
 | nishio assigned issue | #898 / #876 / #519 / #370 / #255 / #11 |
 | #884 | open / high priority / unassigned。2026-05-29 から updatedAt は動いていない |
+
+なお、GitHub label の exact name は `high priority` であり、`priority: high` ではない。誤った label 名で `gh issue list` すると 0 件に見えるため、live state 確認では `--label "high priority"` を使う。[[github-high-priority-label-query-footgun-2026-06-30]]より
 
 このため、開発 next action 判断では「今日の文脈に関係する live state は読んだ」と言える。ただし、全 issue を本文・コメントまで読み直した 2026-06-01 triage の更新版ではない。
 
@@ -71,5 +74,6 @@ first PR は「既存 confirm の見た目改善」ではなく、CSV / Spreadsh
 ## Updates
 
 - 2026-06-30 19:15 JST: GitHub live state を再確認し、open PR 2 本 / high priority issue 3 件 / nishio assigned 6 件は 18:44 JST から変化なし。#884 は引き続き open / high priority / unassigned。
+- 2026-06-30 19:30 JST: GitHub live state を再確認し、open PR 2 本 / high priority issue 3 件 / nishio assigned 6 件は変化なし。`high priority` label 名の query footgun を [[github-high-priority-label-query-footgun-2026-06-30]] に切り出した。
 - 2026-06-30: [[issue-884-pre-create-review-contract-2026-06-30]] を追加し、#884 first PR の review model / warning policy / test gates を実装前仕様として接続した。
 - 2026-06-30: 初回作成。18:44 JST の GitHub live state をもとに、開発 next action は #884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 / #898 を次点として整理した。

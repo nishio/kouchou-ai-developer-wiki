@@ -35,6 +35,7 @@ GitHub Web から、または `gh api repos/digitaldemocracy2030/kouchou-ai/cont
 - **`skills/` ディレクトリが侮れない**: Claude Code / Codex 向けに凝縮されたアーキテクチャ／開発／テストの SKILL.md がある。新規コントリビュータの onboarding には `docs/` より先に読むのが効率的
 - **`CLAUDE.md` は薄い**: 上記 `skills/` 3 本へのポインタのみ
 - **テスト関連 CI ワークフロー** (`docs/testing.md` で列挙): `server-pytest.yml`, `client-jest.yml`, `client-admin-jest.yml`, `e2e-tests.yml`, `ruff-check.yml`。フロントエンドの Biome は lefthook 上では `skip: true` で CI も明示されていない — バックエンドより強制力が弱い
+- **high priority issue の label 名は exact に `high priority`**: `priority: high` ではない。`gh issue list --label "priority: high"` は 0 件を返すため、live state 確認では `--label "high priority"` を使う。[[github-high-priority-label-query-footgun-2026-06-30]]より
 
 ## Open Questions
 
@@ -43,4 +44,5 @@ GitHub Web から、または `gh api repos/digitaldemocracy2030/kouchou-ai/cont
 
 ## Updates
 
+- 2026-06-30: high priority issue 確認時の label 名 footgun を追記。正しい query は `--label "high priority"`。
 - 2026-05-17: 初回 ingest（`init.txt` の指示に基づくリポジトリ全体把握）
