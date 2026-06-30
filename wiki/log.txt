@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 15:44	filing-back	Slack 事例紹介 channel の全期間 raw を分類
 2026-06-30 15:39	filing-back	Slack 事例紹介 channel を lead intake として整理
 2026-06-30 15:30	filing-back	#564 公開事例ページ skeleton を整理
 2026-06-30 15:22	filing-back	国内 broad listening 活用事例を公開Web検索で整理

@@ -1,8 +1,8 @@
 ---
 type: source
-summary: "Slack #1_事例紹介_全体 の 2026-04 raw snapshot。公開事例候補の lead intake として有用だが、外部公開の根拠には primary URL 確認が必要"
+summary: "Slack #1_事例紹介_全体 の 2026-03/04 raw snapshot。公開事例候補の lead intake として有用だが、外部公開の根拠には primary URL 確認が必要"
 last_checked: 2026-06-30
-coverage: "work/slack-logs main@341cf80; raw/slack/C08LJ9T5MLY/2026-04.jsonl.gz; mirror 2026-06-16〜2026-06-30"
+coverage: "work/slack-logs main@341cf80; raw/slack/C08LJ9T5MLY/2025-01〜2026-04; substantive rows were only in 2026-03/04; mirror 2026-06-16〜2026-06-30"
 sources:
   - slack-logs-repository.md
   - https://maizuru2040.jp/wordpress/
@@ -20,13 +20,13 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 
 ## Freshness marker
 
-2026-06-30 に `work/slack-logs` を `main@341cf80` まで確認した時点の観測。`raw/slack/C08LJ9T5MLY/2026-04.jsonl.gz` には 7 rows があり、2026-04-08〜2026-04-19 に少数の事例 lead があった。2026-05 / 2026-06 の raw file は存在するが、本文 row は実質なかった。直近14日の `mirror/slack/C08LJ9T5MLY.jsonl.gz` も substantive message はなかった。[[slack-logs-repository]]より
+2026-06-30 に `work/slack-logs` を `main@341cf80` まで確認した時点の観測。`raw/slack/C08LJ9T5MLY/2025-01〜2026-04` のうち、substantive row があったのは 2026-03 と 2026-04 だけだった。2025-01〜2026-02 は各月 1 metadata row のみ、2026-03 は 3 text rows、2026-04 は 6 text rows。直近14日の `mirror/slack/C08LJ9T5MLY.jsonl.gz` も substantive message はなかった。[[slack-logs-repository]]より
 
 ## Observations
 
 ### Channel role
 
-`#1_事例紹介_全体` は、公開可能な実績リストそのものではなく、事例 candidate を投げ込む lead intake として読むのが安全である。2026-04 の raw には、広聴AIの confirmed case、隣接する AI assistant / いどばた的 use case、政治家の broad listening 言及、他 channel への内部リンクが混ざっていた。[[slack-logs-repository]]より
+`#1_事例紹介_全体` は、公開可能な実績リストそのものではなく、事例 candidate を投げ込む lead intake として読むのが安全である。2026-03/04 の raw には、広聴AI / いどばたの地域 lead、広聴AIの confirmed case、隣接する AI assistant、政治家の broad listening 言及、他 channel への内部リンクが混ざっていた。[[slack-logs-repository]]より
 
 したがって、#564 の公開事例ページへ移す時は、Slack channel から直接「実績」として転記せず、各 lead を次の分類へ落とす必要がある。
 
@@ -36,6 +36,17 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 | broad listening mention | ブロードリスニングの実施予定・意向・一般言及で、広聴AI利用とは限らない |
 | adjacent civic AI | AI avatar / chatbot / いどばた的対話など、広聴AIとは別ツールだが近い実践 |
 | internal pointer | Slack / Drive / 別 channel への参照。公開前に primary URL と許諾確認が必要 |
+
+### Raw lead inventory
+
+| month | lead | classification | public handling |
+|---|---|---|---|
+| 2026-03 | 北見での広聴AI・いどばたビジョンを使った「市民の声の可視化」体験会。北海道新聞 URL が共有されていた。 | broad listening / DD2030 tool lead | 新聞記事や主催者資料を primary source として確認するまで、外部公開の confirmed case にはしない。 |
+| 2026-03 | 北見市議会議員選挙の当選 follow-up。 | political follow-up | ツール活用事例ではなく活動文脈の follow-up。public case list には入れない。 |
+| 2026-04 | 舞鶴2040。特設サイト、広聴AI回答結果、市公式 project page が確認できる。 | confirmed 広聴AI case | public case / viewer demo 候補。市公式 project page と特設サイト / viewer / FAQ を分けて引用する。 |
+| 2026-04 | 相模原市の生成AI avatar 実証。 | adjacent civic AI | 広聴AI / broad listening 事例ではない。周辺 civic AI lead として別管理。 |
+| 2026-04 | 宮崎県知事選関連の broad listening 言及。 | broad listening mention | 実施予定・意向の言及として扱い、広聴AI利用とは断定しない。 |
+| 2026-04 | 和歌山県のいどばた事例への Slack 内部リンク。 | internal pointer / idobata lead | public URL と公開可否を確認するまで public case list には入れない。 |
 
 ### 舞鶴2040 lead
 
@@ -63,9 +74,12 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 ## Open Questions
 
 - `#1_事例紹介_全体` の 2026-05 以降に substantive row がないのは、channel 利用が少ないためか、backfill / export の制約か。
+- 北見の体験会を public case へ昇格する場合、北海道新聞記事以外に、主催者資料や公開 viewer があるか。
+- 宮崎の broad listening 言及は、実施済み case になったのか、意向表明で止まったのか。
 - 事例 candidate は GitHub issue、Slack channel、Drive、website repo のどこを canonical intake にするか。
 - 舞鶴2040を #564 の first public detailed case に昇格する場合、誰が実施主体・掲載許諾・スクリーンショット利用を確認するか。
 
 ## Updates
 
+- 2026-06-30: 2025-01〜2026-04 raw を月別に確認し、substantive row は 2026-03/04 のみだったと追記。北見 / 舞鶴 / 相模原 / 宮崎 / 和歌山を lead inventory に分類した。
 - 2026-06-30: 初回作成。`#1_事例紹介_全体` の 2026-04 raw を確認し、Slack lead intake と public case list を分ける必要を整理した。

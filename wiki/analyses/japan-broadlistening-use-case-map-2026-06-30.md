@@ -3,7 +3,7 @@ type: analysis
 summary: "公開Web検索で確認した日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を、8/2 イベントと #564 公開事例整備へ接続する地図"
 sources:
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
-  - slack-case-introduction-channel-2026-04.md
+  - slack-case-introduction-channel-2026-03-04.md
   - public-broadlistening-artifacts-2026-06-30.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
@@ -22,7 +22,7 @@ sources:
 - **系譜・歴史文脈**: Talk to the City、東京都 2050 戦略案、選挙報道。広聴AIそのものの導入実績ではなく、ブロードリスニングの発展として分ける。
 - **候補**: 日本維新の会、岩手県、奈良市 official PDF、企業・メディア系。現行 primary URL を確認するまで公開資料では補助線に留める。
 
-Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として有用だが、public case list の一次根拠にはしない。2026-04 raw には舞鶴2040、相模原市 AI avatar、宮崎県の broad listening 言及、和歌山県いどばたへの内部リンクなどが混ざっており、`広聴AI confirmed case` / `broad listening mention` / `adjacent civic AI` / `internal pointer` に分ける必要がある。[[slack-case-introduction-channel-2026-04]]より
+Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として有用だが、public case list の一次根拠にはしない。2026-03/04 raw には北見の広聴AI・いどばた lead、舞鶴2040、相模原市 AI avatar、宮崎県の broad listening 言及、和歌山県いどばたへの内部リンクなどが混ざっており、`広聴AI confirmed case` / `broad listening mention` / `adjacent civic AI` / `internal pointer` に分ける必要がある。[[slack-case-introduction-channel-2026-03-04]]より
 
 ## Implication for 8/2
 
@@ -43,7 +43,7 @@ viewer demo は、奈良と八代に加えて舞鶴2040が候補になる。舞�
 
 この分類を入れないと、「広聴AIが民意を保証した」「同じ技術で全事例が作られた」と誤読される。#696 / #542 と接続した trust layer は、事例数が増えるほど重要になる。
 
-事例管理の運用では、`lead intake` と `public page` を分ける。Slack / Drive / issue comment は lead の発見に使い、外部ページは primary URL と許諾・文脈確認を通ったものだけを載せる。[[slack-case-introduction-channel-2026-04]]より
+事例管理の運用では、`lead intake` と `public page` を分ける。Slack / Drive / issue comment は lead の発見に使い、外部ページは primary URL と許諾・文脈確認を通ったものだけを載せる。[[slack-case-introduction-channel-2026-03-04]]より
 
 ## Recommended next page shape
 
@@ -64,5 +64,5 @@ viewer demo は、奈良と八代に加えて舞鶴2040が候補になる。舞�
 
 ## Updates
 
-- 2026-06-30: [[slack-case-introduction-channel-2026-04]] を追加し、Slack 事例紹介 channel は lead intake であり public case list とは分ける必要があると追記。
+- 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake であり public case list とは分ける必要があると追記。
 - 2026-06-30: 初回作成。公開Web検索をもとに、8/2 と #564 へ接続する日本国内 broad listening use case map を作成した。

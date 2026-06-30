@@ -8,7 +8,7 @@ sources:
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
-  - slack-case-introduction-channel-2026-04.md
+  - slack-case-introduction-channel-2026-03-04.md
   - azure-demo-public-visibility-proposal-2026-06-04.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - kouchou-ai-docs-entry-restructure-2026-06-03.md
@@ -68,7 +68,7 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 公開ページへ落とす具体 skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。最初に見る 3 事例、事例一覧の分類軸、詳細テンプレート、レポートの読み方、first slice、載せない情報を分け、DD2030 website の `kouchou-ai/case` 拡張を想定した。
 
-Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-04]]より
+Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-03-04]]より
 
 ## What Not To Do
 
@@ -94,7 +94,7 @@ Slack `#1_事例紹介_全体` は candidate intake として有用だが、publ
 
 ## Updates
 
-- 2026-06-30: [[slack-case-introduction-channel-2026-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。
+- 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。
 - 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、#564 の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
 - 2026-06-30: 初回作成。Issue #564 を 8/2 公開事例棚卸しと接続し、#696 / #542 を含む trust layer として次 scope を整理した。
