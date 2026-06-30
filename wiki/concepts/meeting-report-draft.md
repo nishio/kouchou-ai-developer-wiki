@@ -173,7 +173,7 @@ sources:
 
 - 2026-06-30 時点の横断 snapshot は [[current-status-2026-06-30]] に固定した。コード main / open PR / issue / 議事録 / Slack log の鮮度を同じページで読める。
 - [[nishio-source-freshness-criterion-2026-06-02]] を追加し、議事録 / Slack source は「いつ時点まで読んだか」を freshness marker として明示する方針にした。
-- [[meeting-minutes]] は 2026-06-30 に Google Doc export を再取得し、先頭見出し `2026/06/22` / txt 7703 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。イベント lane と priority 軸は [[meeting-2026-06-22-event-priority]] に切り出した。
+- [[meeting-minutes]] は 2026-06-30 16:33 JST に Google Doc export を再取得し、先頭見出し `2026/06/22` / `2026/06/29` 見出し未検出 / txt 7702 行 / URL unique 551 件まで freshness marker を進めた。6/22 回は 8/2 イベントでブロードリスニングをどう出すか、Brand Compass / high priority issue / 情報発信 / 運用ポリシーが主題。イベント lane と priority 軸は [[meeting-2026-06-22-event-priority]] に切り出した。
 - Slack raw の一次参照を `digitaldemocracy2030/slack-logs` に更新し、[[slack-logs-repository]] を追加。直近14日は `mirror/`、古い public channel log は `raw/`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` 補助線として扱う。2026-06-30 確認時点の mirror は `synced_at=2026-06-30T04:12Z` / window `2026-06-16〜06-30`。
 - 直近 mirror では `#2_開発_広聴ai` は 6/26 の横浜型ブロードリスニング共有に加え、6/30 に Codex `/goal` を広聴AIへ使う案と、状況把握 / LLM Wiki / Doc 更新中心で進める速度制御方針が共有された。横浜型ブロードリスニングは [[slack-yokohama-hack-2026-06-26]] に固定。`#2_開発_広聴ai_アルゴリズム開発` は 6/29 の embedding / Spherical K-means / Faiss K-means 話が 6 件で、[[spherical-kmeans-experiment-scope-2026-06-30]] に実験候補として整理した。広聴AI本体の実装論点は Slack より GitHub open PR / issue 側を併読する必要がある。
 

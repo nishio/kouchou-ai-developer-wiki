@@ -46,7 +46,7 @@ sources:
 
 ## Source Freshness
 
-議事録は 2026-06-30 に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7703 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
+議事録は 2026-06-30 16:33 JST に Google Doc export を再取得し、先頭見出しは `2026/06/22`。`2026/06/29` 見出しはまだ export 内に見当たらない。txt は 7702 行、HTML URL 棚卸しは unique 551 件。[[meeting-minutes]]より
 
 Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone / pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` / window `2026-06-16〜06-30` まで確認した。[[slack-logs-repository]]より
 

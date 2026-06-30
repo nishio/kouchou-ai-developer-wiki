@@ -24,7 +24,7 @@ sources:
 
 ## Freshness marker
 
-2026-06-30 に公開 URL を確認した時点の観測。上記 5 URL はいずれも HTTP 200 を返した。議事録 source は 2026-06-30 に Google Doc export を再取得済みで、先頭見出しは `2026/06/22`、txt は 7703 行だった。[[meeting-minutes]]より
+2026-06-30 に公開 URL を確認した時点の観測。上記 5 URL はいずれも HTTP 200 を返した。議事録 source は 2026-06-30 16:33 JST に Google Doc export を再取得済みで、先頭見出しは `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行だった。[[meeting-minutes]]より
 
 同日 15:22 JST に公開Web検索を追加で行い、宇多津町、渋谷区、広島県、舞鶴2040、奈良 #全員市長、八代市、国民民主党などを `confirmed` / `candidate` / `secondary context` に分けた。詳細は [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定した。
 
