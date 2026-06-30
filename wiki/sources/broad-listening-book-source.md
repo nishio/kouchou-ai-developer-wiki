@@ -47,6 +47,7 @@ sources:
 
 - `00_序文.md` / `00_本書の読みかた.md` / `01〜03` — ブロードリスニング概念定義、デジタル民主主義文脈
 - `04_01〜04_04` / `06_01〜06_05` / `07_*` / `09_*` / `10_01〜10_05` / `11_02〜11_05` — 個別事例。要求仕様や障害事例として読める箇所は Priority 2 章にも触れられているのでまず Priority 2 を読む
+- `99_付録_公開事例一覧.md` — Web 公開された国内事例 catalog。外部ページ化では primary URL を個別確認する必要があるので、direct confirmation 済み事例は [[public-web-broadlistening-japan-use-cases-2026-06-30]]、付録由来の追加候補は [[broad-listening-book-public-case-appendix-2026-06-30]] を見る
 - `99_付録_用語集.md` — 書籍側用語集。[[glossary]] と突き合わせる
 
 ### コードとプロンプト
@@ -64,4 +65,5 @@ sources:
 
 ## Updates
 
+- 2026-06-30: Web 公開版の `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] として切り出し、公開事例 catalog は primary URL 確認済みと付録由来候補を分ける運用に補正した。
 - 2026-05-21: 初回作成。`5826726` 時点で章マップを取得

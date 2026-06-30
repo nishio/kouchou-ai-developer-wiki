@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 17:05] filing-back | Web book 付録の公開事例一覧を source 化
+
+- [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book / GitHub 付録 `99_付録_公開事例一覧.md` を国内 broad listening 追加候補カタログとして固定
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] / [[event-2026-08-02-public-example-inventory-2026-06-30]] に、大阪府・与謝野町・東大阪市・公明党・チームみらい・DirectVote・アルティウスリンク・サイボウズなどは direct verification queue として扱う方針を追記
+
 ## [2026-06-30 16:59] filing-back | Codex goal の速度制御を Slack から source 化
 
 - [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Slack 6/30 の Codex `/goal` 共有を「人間が追える速度で、まず状況把握・LLM Wiki・docs 更新を進める」運用判断として固定

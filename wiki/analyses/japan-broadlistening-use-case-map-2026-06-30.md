@@ -9,6 +9,7 @@ sources:
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - slack-pr-channel-website-faq-case-map-2026-03-04.md
   - current-status-2026-06-30.md
+  - broad-listening-book-public-case-appendix-2026-06-30.md
 ---
 
 ## Conclusion
@@ -22,6 +23,7 @@ sources:
 - **政治・国会文脈の事例**: 国民民主党 / 伊藤孝恵議員、日本維新の会、八代市、奈良 #全員市長。文脈説明と誤読防止が必須。
 - **系譜・歴史文脈**: Talk to the City、東京都知事選 2024、東京都 2050 戦略案、日本テレビ衆院選報道、M-1 2024。広聴AIそのものの導入実績ではなく、ブロードリスニングの発展として分ける。
 - **候補 / adjacent**: JINS、GMO、中野駅新北口、企業・メディア系。現行 primary URL と掲載許諾を確認するまで公開資料では補助線に留める。
+- **book appendix candidate**: 大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど。Web book 付録の public catalog には載っているが、外部公開ページへ載せる前に primary URL を direct verification する。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 Slack `#1_事例紹介_全体` は、事例 candidate の lead intake として有用だが、public case list の一次根拠にはしない。2026-03/04 raw には北見の広聴AI・いどばた lead、舞鶴2040、相模原市 AI avatar、宮崎県の broad listening 言及、和歌山県いどばたへの内部リンクなどが混ざっており、`広聴AI confirmed case` / `broad listening mention` / `adjacent civic AI` / `internal pointer` に分ける必要がある。[[slack-case-introduction-channel-2026-03-04]]より
 
@@ -58,7 +60,7 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 2. 自治体 / 公共 sector の事例: 宇多津町、渋谷区、奈良市、岩手県、広島県、東京都 2050 戦略案。
 3. 政治・国会・選挙報道の事例: 国民民主党、日本維新の会、奈良、八代、日本テレビ衆院選報道。
 4. Talk to the City と広聴AIの関係: 直接利用、派生利用、広義の broad listening を分ける。東京都知事選 2024 / M-1 / JINS / GMO はここに入れる。
-5. 候補と追加確認リスト: 北見、中野駅新北口、企業・メディア系。
+5. 候補と追加確認リスト: 北見、中野駅新北口、Web book 付録由来の大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズ、企業・メディア系。
 
 ## Open Questions
 
@@ -67,11 +69,13 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 - DD2030 website の `kouchou-ai/case` は外部正本として十分か、それとも #564 の schema に沿って拡張する必要があるか。
 - 広島県のように `広聴AI` と明記しない broad listening / DD2030 cooperation 事例を、広聴AI事例ページに載せるか、別カテゴリに分けるか。
 - 検索で見えたが 404 だった viewer / PDF の現行 URL を誰が確認するか。
+- Web book 付録由来の候補は、どの順で primary URL direct verification するか。
 - JINS や M-1 のような TTTC / broad listening adjacent cases を #564 の公開事例ページに載せるか、技術・歴史 reference に分けるか。
 - 外部からの事例候補 intake を public page に置く場合、source strength / tool lineage / 掲載許諾を誰が判定するか。
 
 ## Updates
 
+- 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録由来の追加候補は `book appendix candidate` として primary URL direct verification queue に置くと整理した。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群を自治体公式 document case へ昇格、東京都知事選 2024 TTTC / GMO / 中野駅新北口を adjacent practice として分類した。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、公開事例ページには確認済み事例一覧だけでなく事例候補 intake 導線も必要だと追記。
 - 2026-06-30: 16:05 JST の追加Web検索を反映し、岩手県・日本維新の会を candidate から昇格、東京都 / GovTech東京・北見・日本テレビ衆院選・M-1・JINS を分類へ追加。

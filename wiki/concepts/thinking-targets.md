@@ -13,6 +13,7 @@ sources:
   - japan-broadlistening-use-case-map-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
   - report-reading-guide-minimum-wording-2026-06-30.md
+  - broad-listening-book-public-case-appendix-2026-06-30.md
   - github-issues-221-884-trial-burden-live-2026-06-30.md
   - slack-logs-repository.md
 ---
@@ -33,9 +34,9 @@ sources:
 ### 0-1. 8/2 の first demo を何にするか
 
 - 問い: 8/2 で、自治体公式 proof、viewer demo、deep case のどれを主 artifact にするか。奈良市 official PDF / 奈良 #全員市長 / 八代 / 舞鶴2040 / 北見 / 渋谷区 / 宇多津町 / 岩手県 / 東京都を同列に見せると、政治文脈、公式性、viewer 実演、Talk to the City 系譜が混ざる
-- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る
+- 思考の最小単位: `公式性を示す 1 件`、`viewer 操作を見せる 1 件`、`深掘り case 1 件` を人間が選ぶ。候補ごとに source strength、政治・選挙文脈、許諾・スクリーンショット可否を 1 行で見る。Web book 付録由来の大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote などは、first demo ではなく direct verification queue として別枠に置く
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
-- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]]
+- 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]]
 
 ### 0-2. #564 / #696 / #542 の canonical placement
 

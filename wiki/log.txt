@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 17:05	filing-back	Web book 付録の公開事例一覧を source 化
 2026-06-30 16:59	filing-back	Codex goal の速度制御を Slack から source 化
 2026-06-30 16:54	filing-back	#221/#884 試行錯誤負担削減を live recheck
 2026-06-30 16:48	filing-back	国内 broad listening 事例を追加検索で再補強

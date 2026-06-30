@@ -36,6 +36,12 @@ sources:
   - https://developers.gmo.jp/technology/50905/
   - https://ideiryosuke-nakano.com/activities/3707/
   - https://dd2030.org/broad-listening/
+  - https://github.com/digitaldemocracy2030/broad-listening-book/blob/main/99_%E4%BB%98%E9%8C%B2_%E5%85%AC%E9%96%8B%E4%BA%8B%E4%BE%8B%E4%B8%80%E8%A6%A7.md
+  - https://broadlisteningbook.com/ja/
+  - https://www.docswell.com/s/tokoroten/ZL1M88-2025-06-14-014546
+  - https://note.com/kosonippon/n/n67fe713c2811
+  - https://www.jmooc.jp/images/upload/2026/06/JMOOCWS_20260325_Tanenobu_1780904234037.pdf
+  - broad-listening-book-public-case-appendix-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
 ---
@@ -53,6 +59,8 @@ sources:
 2026-06-30 16:05 JST に追加検索し、東京都 / GovTech東京、岩手県、日本維新の会、北見、日テレ衆院選、M-1 2024、JINS の公開ページを確認した。追加分は、広聴AI confirmed case、広義の broad listening case、Talk to the City / 派生ツールの adjacent case に分ける。
 
 2026-06-30 16:48 JST に追加検索し、奈良市の official PDF 群、渋谷区 press release、東京都知事選 2024 の Talk to the City 利用記録、GMO Developers の broad listening 技術記事、中野駅新北口周辺まちづくりの public article を確認した。奈良市 official PDF は、既存の `奈良 #全員市長` public viewer とは別文脈の自治体公式 document case として扱う。GMO / 中野は広聴AI confirmed case ではなく、Talk to the City / broad listening adjacent practice として分類する。
+
+2026-06-30 17:05 JST に追加検索し、Web book / GitHub 付録 `99_付録_公開事例一覧.md`、Docswell の広聴AI技術解説、東大阪市の public note、JMOOC PDF を確認した。Web book 付録は大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど、既存 map にない候補を含む public catalog だが、各 primary URL を direct に再確認したわけではないため、`book appendix candidate` として扱う。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 広聴AI本体の public viewer は HTML に大きな JSON が埋め込まれているため、URL、title / description、reporter、comment count など公開 HTML 上で読める範囲を確認した。検索 snippet だけの事例はこのページでは confirmed に昇格しない。
 
@@ -89,6 +97,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 ## Candidate leads not yet confirmed enough
 
+- Web book 付録由来の追加候補: 大阪府、与謝野町、東大阪市、公明党、チームみらい、DirectVote、アルティウスリンク、サイボウズなど。公開 catalog としては有用だが、外部公開事例へ載せる前に primary URL を個別確認し、`広聴AI confirmed` / `TTTC lineage` / `broad listening adjacent` / `book appendix candidate` を分ける。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 - 奈良市 official PDF: 16:48 JST の追加検索で現行 PDF 群を確認できたため、candidate から official document case へ昇格した。ただし `奈良 #全員市長` public viewer とは別文脈として扱う。
 - アルティウスリンク、朝日新聞 M研など: 検索や既存書籍 source では関連例として見えるが、今回の public web pass では primary page を十分に確認できていない。外部資料へ載せるなら個別確認が必要。
 - Slack `#1_事例紹介_全体` の lead: [[slack-case-introduction-channel-2026-03-04]] に固定した通り、Slack lead は candidate intake として有用だが、外部公開では primary public URL へ昇格したものだけを実績扱いにする。
@@ -104,6 +113,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 ## Updates
 
+- 2026-06-30: 17:05 JST の追加検索で、Web book 付録 `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] に source 化し、大阪府 / 与謝野町 / 東大阪市 / 公明党 / チームみらい / DirectVote / アルティウスリンク / サイボウズなどを direct verification queue に追加した。
 - 2026-06-30: 16:48 JST の追加検索で、奈良市 official PDF 群を candidate から自治体公式 document case へ昇格し、東京都知事選 2024 TTTC、GMO Developers、中野駅新北口を adjacent practice として追記した。
 - 2026-06-30: 16:05 JST の追加検索で、東京都 / GovTech東京、岩手県、日本維新の会、北見、日本テレビ衆院選、M-1 2024、JINS を source strength 付きで追記し、岩手県と日本維新の会を candidate から昇格した。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、舞鶴2040を Slack lead から official project page / special site / public viewer 確認済み case として補強した。
