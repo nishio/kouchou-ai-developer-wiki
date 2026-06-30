@@ -8,6 +8,7 @@ sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/696
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/542
   - slack-logs-repository.md
+  - slack-case-introduction-channel-2026-04.md
 ---
 
 ## What it is
@@ -23,6 +24,8 @@ sources:
 - `#542` は open / unassigned。2025-05-19 作成で、レポートに関する責任の所在を README / footer などに明記する提案。
 
 `#564` 本文・コメントには Slack 由来の事例紹介 channel や Google Drive へのポインタがある。ただし Drive 内の非公開資料や Slack-only anecdote は、この source では公開 wiki に転記しない。`work/slack-logs` の `#1_事例紹介_全体` (`C08LJ9T5MLY`) raw / mirror は存在するが、2026-06-30 確認時点の local snapshot では 2025-05 / 2025-06 の該当メッセージ本文は入っていなかった。[[slack-logs-repository]]より
+
+その後 `#1_事例紹介_全体` の 2026-04 raw を確認し、舞鶴2040など少数の事例 lead があることを [[slack-case-introduction-channel-2026-04]] に固定した。これは public case list の一次根拠ではなく、primary URL 確認へ進める lead intake として扱う。
 
 ## Issue #564: 活用事例を集めて公開する
 
@@ -61,4 +64,5 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[slack-case-introduction-channel-2026-04]] を追加し、`#1_事例紹介_全体` は lead intake として使い、外部公開では primary URL 確認済み case だけを載せる方針を追記。
 - 2026-06-30: 初回作成。Issue #564 / #696 / #542 を live state として確認し、活用事例公開を trust layer として扱う必要を固定した。

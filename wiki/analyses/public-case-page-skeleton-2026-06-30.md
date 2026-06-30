@@ -6,6 +6,7 @@ sources:
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
+  - slack-case-introduction-channel-2026-04.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
 ---
 
@@ -40,6 +41,8 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 | public artifact | official page / PDF / viewer / article の URL |
 | 何を見られるか | 意見収集、分析結果、viewer 操作、政策利用、発表資料など |
 | 注意 | 代表性、責任所在、政治・選挙文脈、権利確認、個人情報、誤読可能性 |
+
+Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候補を拾う lead intake として扱い、外部公開の evidence にはしない。Slack lead には広聴AI case、広義の broad listening 言及、AI assistant、いどばた関連、内部リンクが混ざるため、primary URL が確認できるまで `candidate` に留める。[[slack-case-introduction-channel-2026-04]]より
 
 ### 3. 事例詳細テンプレート
 
@@ -95,4 +98,5 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 
 ## Updates
 
+- 2026-06-30: [[slack-case-introduction-channel-2026-04]] を追加し、Slack case channel は lead intake、外部ページは primary URL 確認済み case list として分ける方針を追記。
 - 2026-06-30: 初回作成。#564 の issue コメント、公開Web検索、#696 / #542 の trust layer をもとに、公開事例ページの構成案を固定した。

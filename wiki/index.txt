@@ -123,6 +123,7 @@ report-slug-config-repro-2026-05-19	source	sources/report-slug-config-repro-2026
 role-model-papers-polis-birdwatch	source	sources/role-model-papers-polis-birdwatch.md	広聴AI紹介論文のロールモデルとして参照しやすい vTaiwan / Polis と Birdwatch / Community Notes 論文の要点
 seed-reproducibility-history	source	sources/seed-reproducibility-history.md	UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810
 slack-algorithm-kmeans-2026-06-29	source	sources/slack-algorithm-kmeans-2026-06-29.md	2026-06-29 の Slack #2_開発_広聴ai_アルゴリズム開発で、Embedding 最前線資料の共有をきっかけに、embedding algorithm の見直し、Spherical K-means、Faiss K-means が短く言及された thread
+slack-case-introduction-channel-2026-04	source	sources/slack-case-introduction-channel-2026-04.md	Slack #1_事例紹介_全体 の 2026-04 raw snapshot。公開事例候補の lead intake として有用だが、外部公開の根拠には primary URL 確認が必要
 slack-dev-kouchouai-2025-q4	source	sources/slack-dev-kouchouai-2025-q4.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2025-10-01 〜 2025-12-31）— 現行方式の限界認識、plugin 化、v4/v5 二段構え
 slack-dev-kouchouai-2026-q1	source	sources/slack-dev-kouchouai-2026-q1.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、LLM grouping 系分類の設計意図
 slack-flowchart-feedback-2026-05-30	source	sources/slack-flowchart-feedback-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた

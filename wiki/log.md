@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:39] filing-back | Slack 事例紹介 channel を lead intake として整理
+
+- [[slack-case-introduction-channel-2026-04]] を追加し、`#1_事例紹介_全体` の 2026-04 raw は事例 candidate の lead intake であり、外部公開には primary URL 確認が必要と整理
+- 舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ接続できる confirmed case として [[public-web-broadlistening-japan-use-cases-2026-06-30]] に補強
+- [[japan-broadlistening-use-case-map-2026-06-30]] / [[public-case-page-skeleton-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] から、Slack lead と public case list の境界へ接続
+
 ## [2026-06-30 15:30] filing-back | #564 公開事例ページ skeleton を整理
 
 - GitHub issue #564 を再確認し、open / high priority / unassigned のまま、導入検討から成果公開までを知りたいという自治体側の質問群が核心であることを確認

@@ -8,6 +8,7 @@ sources:
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
+  - slack-case-introduction-channel-2026-04.md
   - azure-demo-public-visibility-proposal-2026-06-04.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - kouchou-ai-docs-entry-restructure-2026-06-03.md
@@ -67,6 +68,8 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 公開ページへ落とす具体 skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。最初に見る 3 事例、事例一覧の分類軸、詳細テンプレート、レポートの読み方、first slice、載せない情報を分け、DD2030 website の `kouchou-ai/case` 拡張を想定した。
 
+Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-04]]より
+
 ## What Not To Do
 
 - #564 のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
@@ -79,6 +82,7 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 - `#564/#696/#542` を合わせた public case page の skeleton を developer wiki に置く。
 - 8/2 用に、奈良 / 渋谷区 / 八代市 / 舞鶴2040 / 宇多津町のどれを first demo / official context にするかを人間が選べる判断表へ落とす。
 - 事例ごとの公開可能 / 要許諾 / 不使用を `public-broadlistening-artifacts` の freshness marker で管理する。
+- `#1_事例紹介_全体` の lead を、confirmed / broad listening mention / adjacent civic AI / internal pointer に triage する表へ落とす。
 - 本体 docs に移すなら、#876 の developer quickstart とは別に、docs spine first slice として「事例を見る / レポートを読む」入口を切る。
 
 ## Open Questions
@@ -90,6 +94,7 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 ## Updates
 
+- 2026-06-30: [[slack-case-introduction-channel-2026-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。
 - 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、#564 の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
 - 2026-06-30: 初回作成。Issue #564 を 8/2 公開事例棚卸しと接続し、#696 / #542 を含む trust layer として次 scope を整理した。
