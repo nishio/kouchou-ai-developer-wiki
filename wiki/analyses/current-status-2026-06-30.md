@@ -67,6 +67,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 ## Next
 
 - docs 系 issue / PR の横断地図は [[docs-issue-map-2026-06-30]] に固定した。#876 / #877 / #885 / #903 は同じ docs 群でも読者像・Windows supported path・Node runtime 技術前提を分けて扱う。
+- [[docs-issue-map-2026-06-30]] には #696/#542 reading guide docs も docs-safe lane として追加した。次 PR 選びでは、#903 review comment、#877 Windows guide、#876 docs spine、#696/#542 reading guide、#885 prototype を collision risk と human decision で分けて見る。
 - #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案の差分を確認し、[[issue-876-docs-pr-slice-2026-06-30]] に次の本体 docs PR の file-by-file first slice を固定した。`docs/development/developer-quickstart.md` 単体追加ではなく、README / docs index / quickstart / mkdocs nav の役割を同時に下げる方針。[[source-code]]より
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に docs PR 化前の具体アウトラインを固定し、[[issue-877-docs-pr-slice-2026-06-30]] に本体 docs PR の file-by-file slice を追加した。current main の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線まで反映済みだが、API key 前提と対象外環境の切り分けがまだ弱い。[[source-code]]より
 - PR #903 は、[[pr-903-node-runtime-doc-review-2026-06-30]] に docs 精度のレビュー観点を固定し、[[pr-903-review-comment-draft-2026-06-30]] に投稿前コメント案を置いた。[[github-issue-885-pr-903-live-2026-06-30]] で #885 / #903 の live state を改めて固定し、[[issue-885-node-runtime-next-scope-2026-06-30]] で #903 後の #885 scope を inventory accuracy、admin export prototype、static-site-builder decision に分けた。AI からはまだ GitHub へ投稿していない。
@@ -90,6 +91,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[docs-issue-map-2026-06-30]] に #696/#542 reading guide docs と next PR choice matrix を追加した。
 - 2026-06-30: 15:59 に GitHub live state を再確認し、open PR 2 本 / open issue 123 件 / nishio assigned 6 件 / #564 #696 #542 open unassigned が変わっていないことを追記。
 - 2026-06-30: [[thinking-targets]] / [[open-decisions]] を更新し、6/30 時点の短期未決を人間向け導線に接続した。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 は footer 単純追加ではなく README / docs / viewer / 事例ページの文言統一として扱うと整理した。

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 16:00] filing-back | docs-safe PR 候補の比較表を追加
+
+- [[docs-issue-map-2026-06-30]] に #696/#542 reading guide docs を docs-safe lane として追加
+- 次 PR choice matrix を追加し、#903 review comment / #877 Windows guide / #876 docs spine / #696/#542 reading guide / #885 prototype を collision risk と human decision で比較
+- [[current-status-2026-06-30]] / [[meeting-report-draft]] から、次に本体 docs へ出す PR を選ぶ導線へ接続
+
 ## [2026-06-30 15:59] filing-back | 定例下書きの現行読み上げ欄を更新
 
 - [[meeting-report-draft]] の冒頭に 2026-06-30 更新の読み上げ用要約と議題候補を追加し、旧 2026-06-08 欄を過去メモとして残した
