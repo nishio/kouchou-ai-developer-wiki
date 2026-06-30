@@ -52,6 +52,8 @@ Slack log は `digitaldemocracy2030/slack-logs` を `work/slack-logs/` に clone
 
 `oss_weekly_reporter` は `data@e2c9b20` まで fast-forward 済みで、weekly dump は `2026-06-17_to_2026-06-24` まである。今後の Slack raw 一次確認は `slack-logs`、週次 AI 要約や GitHub activity とのセット確認は `oss_weekly_reporter` という使い分けが妥当。
 
+2026-06-30 15:59 に GitHub live state を再確認したが、open PR は #903 / #891 の 2 本、open issue は 123 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#564 / #696 / #542 も open / unassigned のままだった。
+
 ## Reading
 
 Slack の広聴AI本体 channel は、直近14日では新しい実装論点が多くない。6/26 の Yokohama Hack! / 横浜型ブロードリスニング共有と、6/30 の Codex `/goal` 活用・速度制御方針が中心。アルゴリズム channel では 6/29 に embedding / Spherical K-means / Faiss K-means の話が出ており、[[slack-algorithm-kmeans-2026-06-29]] と [[spherical-kmeans-experiment-scope-2026-06-30]] に固定した。採用判断ではなく、clustering space / objective / backend を分けた clean experiment 候補として扱うのが妥当。[[slack-logs-repository]]より
@@ -88,6 +90,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: 15:59 に GitHub live state を再確認し、open PR 2 本 / open issue 123 件 / nishio assigned 6 件 / #564 #696 #542 open unassigned が変わっていないことを追記。
 - 2026-06-30: [[thinking-targets]] / [[open-decisions]] を更新し、6/30 時点の短期未決を人間向け導線に接続した。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 は footer 単純追加ではなく README / docs / viewer / 事例ページの文言統一として扱うと整理した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 活用事例を公開Web source strength ごとに整理した。

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 15:59	filing-back	定例下書きの現行読み上げ欄を更新
 2026-06-30 15:55	filing-back	6/30 時点の思考ハブを更新
 2026-06-30 15:50	filing-back	#696 / #542 レポート読み方文言を固定
 2026-06-30 15:44	filing-back	Slack 事例紹介 channel の全期間 raw を分類

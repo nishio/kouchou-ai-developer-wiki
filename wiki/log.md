@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:59] filing-back | 定例下書きの現行読み上げ欄を更新
+
+- [[meeting-report-draft]] の冒頭に 2026-06-30 更新の読み上げ用要約と議題候補を追加し、旧 2026-06-08 欄を過去メモとして残した
+- [[current-status-2026-06-30]] に GitHub live recheck を追記し、open PR 2 本 / open issue 123 件 / #564 #696 #542 open unassigned が変わっていないことを確認
+- 会議で見るべき論点を、8/2 first demo、#564/#696/#542 placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点へ圧縮
+
 ## [2026-06-30 15:55] filing-back | 6/30 時点の思考ハブを更新
 
 - [[thinking-targets]] を更新し、8/2 first demo、#564/#696/#542 placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として追加

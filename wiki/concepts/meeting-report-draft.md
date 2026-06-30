@@ -76,14 +76,30 @@ sources:
 - [[meeting-report-2026-06-01]] — ラベル品質仕切り直し、構造把握スタンス、open issue 全件棚卸し、PR #887 deploy false positive / runtime build risk、PR #883 撤回後の quickstart 再設計、Windows / local LLM route など
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
 
-## 議題候補 (2026-06-08 定例)
+## そのまま読む用 (2026-06-30 更新)
+
+- 現状確認: `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、open issue は 123 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。[[current-status-2026-06-30]]より
+- source freshness: 議事録は 2026-06-30 export 時点で先頭見出し `2026/06/22`、Slack は `digitaldemocracy2030/slack-logs` `main@341cf80` / mirror window `2026-06-16〜06-30` まで確認済み。今後は Slack raw は `work/slack-logs`、週次 AI 要約や GitHub activity は `oss_weekly_reporter` を補助線として使う。[[slack-logs-repository]]より
+- 8/2 readiness: 技術・ツール入口 draft、公開事例 / demo 素材棚卸し、国内 broad listening 活用事例 map を wiki に固定した。次の人間判断は、8/2 の first demo を「自治体公式 proof / viewer demo / deep case」のどれに置くか。[[event-2026-08-02-broadlistening-readiness-2026-06-30]]より
+- #564 / #696 / #542: 公開事例ページは「事例リスト + レポートの読み方 + 何を保証しないか」を 3 点セットにする方針で整理した。current main の footer には責任所在の短文が既にあるため、次は README / docs / viewer dialog / 公開事例ページで wording を揃える scope として扱う。[[report-reading-guide-minimum-wording-2026-06-30]]より
+- docs-safe lane: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は reader contract が違う。人間と衝突しにくく進めるには、次に本体 repo へ出す PR を 1 本だけ選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
+- 次に決めたいこと: [[thinking-targets]] に immediate thinking queue として、8/2 first demo、#564/#696/#542 の canonical placement、docs-safe PR 順序、Slack / 議事録 source 運用の 4 点を集約した。会議ではここだけ見れば次の行動を選べる。
+
+## 議題候補 (2026-06-30 更新)
+
+- 8/2 で見せる first demo を決める。候補は渋谷区 / 宇多津町の official context、奈良 / 舞鶴2040の viewer demo、八代市の deep case。source strength、政治文脈、スクリーンショット許諾を分けて判断する。[[japan-broadlistening-use-case-map-2026-06-30]]より
+- #564 / #696 / #542 の canonical placement を決める。DD2030 website、kouchou-ai docs、public-viewer、README のどこを正本にするか、文言承認者を誰にするかが未決。[[public-case-page-skeleton-2026-06-30]]より
+- 次に本体 repo へ出す docs-safe PR を 1 本選ぶ。候補は #876 docs spine、#877 Windows supported path、#885/#903 inventory correction、#696/#542 reading guide docs。[[thinking-targets]]より
+- Slack / 議事録の source 運用をこのまま canonical にするか確認する。`slack-logs` raw/mirror を一次、`oss_weekly_reporter` を週次要約 / GitHub activity 補助線にする方針で問題ないか。[[wiki-driven-workflow]]より
+
+## 過去の議題候補 (2026-06-08 定例)
 
 - Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) を週次または定例前の確認対象として固定するか。公開 wiki には alert 詳細を転記せず、対応 issue / PR / 優先度判断だけ残す運用でよいか。
 - デプロイ詳細は公開 wiki に書かず、Google Drive「広聴AI-Azureデモ環境」を一次置き場にする方針でよいか。アクセス権は大木・西尾・小野(moai)。
 - Azure デモ動線化は 2026-06-05 Slack で着地済み ([[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]])。共有事項: viewer 公開と admin 共用は進める方針、ただし container の dd2030 フォールバック `OPENAI_API_KEY` 除去と「共用 / 機微情報禁止 / 保存・継続稼働非保証」3 点明示が前提。1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化。デモ環境の現時点の価値は「データ投入の場所」より「使い方理解の参照環境」として再フレーム。次の手順 (container env 修正 + 公開文言の docs / admin 反映 + 公開事例ページ更新) のオーナーをどう割り当てるかを定例で詰めたい
 - docs entry spine の改訂 ([[kouchou-ai-docs-entry-restructure-2026-06-03]]): 入口を viewer に置き、tier 2 を「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択にして、getting-started/ は (c) 配下に押し込む方針への合意確認。Azure デモ動線化が tier 1 / tier 2-a の docs 動線を埋める前提と接続する
 
-## 月曜にそのまま読む用 (2026-06-08 向け)
+## 過去の読み上げメモ (2026-06-08 向け)
 
 - 進行中: `public-viewer` の startup `next build` 撤去に向けて、PR #888 (`codex/public-viewer-build-serve-split`) で実装を進めた。dynamic hosting は API なしで `next build`、static export は fixture API ありで build する形に分離し、container 起動は `next start` のみにした。
   ローカルでは Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`, `/faq/`, `/example/`) が通過。PR #888 の CI `client build` でも API-less dynamic build、static export build、Docker build が通過した。
@@ -190,6 +206,7 @@ sources:
 
 ## Updates
 
+- 2026-06-30: 冒頭に 2026-06-30 更新の読み上げ用要約と議題候補を追加し、旧 2026-06-08 欄を過去メモとして残した。
 - 2026-06-30: [[thinking-targets]] / [[open-decisions]] を更新し、6/30 時点の短期未決を定例向けに接続
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言案と current footer 差分を定例向けに整理
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 事例の公開Web検索 pass を定例向けに整理
