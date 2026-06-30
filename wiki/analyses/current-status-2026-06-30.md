@@ -7,6 +7,7 @@ sources:
   - meeting-minutes.md
   - slack-logs-repository.md
   - windows-setup-guide-outline-2026-06-30.md
+  - issue-876-developer-docs-gap-audit-2026-06-30.md
 ---
 
 ## Snapshot
@@ -36,6 +37,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 ## Next
 
 - docs 系 issue / PR の横断地図は [[docs-issue-map-2026-06-30]] に固定した。#876 / #877 / #885 / #903 は同じ docs 群でも読者像・Windows supported path・Node runtime 技術前提を分けて扱う。
+- #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案の差分を確認した。`docs/development/developer-quickstart.md` は未実装で、README / docs index / quickstart / mkdocs nav はまだ setup-first のまま。[[source-code]]より
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に docs PR 化前の具体アウトラインを固定した。current main の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線まで反映済みだが、API key 前提と対象外環境の切り分けがまだ弱い。[[source-code]]より
 - PR #903 は、[[pr-903-node-runtime-doc-review-2026-06-30]] に docs 精度のレビュー観点を固定した。着手するなら assignee / owner を確認した上で CodeRabbit 指摘と追加 server action inventory を小さく直す候補。
 - issue #898 は、[[issue-898-close-readiness-2026-06-30]] に close 判定条件を固定した。aarch64 Docker 実機確認ができるか、確認不能なら issue 上で pending validation とする。
@@ -51,4 +53,5 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - 2026-06-30: PR #903 docs inventory のレビュー観点と issue #898 close readiness へのリンクを追加。
 - 2026-06-30: docs 系 issue / PR の横断地図として [[docs-issue-map-2026-06-30]] を追加。
 - 2026-06-30: #877 の Windows setup guide を本体 docs PR に落とすための具体アウトラインとして [[windows-setup-guide-outline-2026-06-30]] を追加。
+- 2026-06-30: #876 developer quickstart / docs entry の gap audit として [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加。
 - 2026-06-30: 初回作成。`work/kouchou-ai` / GitHub open PR・issue / 議事録 export / `work/slack-logs` / `work/oss_weekly_reporter` の最新確認をまとめた。

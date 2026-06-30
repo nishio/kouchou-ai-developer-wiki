@@ -25,6 +25,7 @@ sources:
   - pr-903-node-runtime-doc-review-2026-06-30.md
   - issue-898-close-readiness-2026-06-30.md
   - windows-setup-guide-outline-2026-06-30.md
+  - issue-876-developer-docs-gap-audit-2026-06-30.md
 ---
 
 ## 目的
@@ -135,6 +136,7 @@ sources:
 ### docs-first / no-conflict lane
 
 - docs 系 issue / PR の横断地図として [[docs-issue-map-2026-06-30]] を追加した。#876 は developer quickstart / docs entry、#877 は Windows supported path、#885 は runtime Node 排除、#903 は #885 の inventory docs で、同じ docs 群でも混ぜると読者像と配布方針が崩れる。
+- #876 は [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案を照合した。developer quickstart 草案は 5 読者像 / Mode 1 default 廃止などを概ね満たすが、本体 docs の README / index / quickstart / nav はまだ setup-first のままなので、次 PR は単体ページ追加で閉じるより導線調整を含める判断が必要。
 - #877 の Windows setup guide は、[[windows-setup-guide-outline-2026-06-30]] に本体 docs PR 化前の章立てを固定した。標準入口は Docker Desktop が使える Windows 10/11 に絞り、組織貸与 PC で Docker Desktop / WSL2 が塞がれる場合は初心者向け guide の対象外として IT 管理者・技術者へ渡す方針。
 - PR #903 は human authored docs PR なので、AI が勝手に branch push せず、[[pr-903-node-runtime-doc-review-2026-06-30]] にレビュー観点を固定した。CodeRabbit 指摘 3 点に加え、current main の `csvDownloadCommon` / `jsonDownload` server actions が inventory から漏れている可能性を確認。次に触るなら docs-only の count / last verified / server action inventory 修正に絞る。
 - issue #898 は PR #899 merge 済みだが、[[issue-898-close-readiness-2026-06-30]] に整理した通り aarch64 Docker での解消確認がまだない。AI 単独 close は避け、Apple Silicon Docker などで `NUMBA_CPU_NAME=generic` と `import umap`、実レポート生成を確認してから close 判断する。
@@ -150,6 +152,7 @@ sources:
 - 2026-06-30: 人間と衝突しにくい docs-first lane として、[[pr-903-node-runtime-doc-review-2026-06-30]] と [[issue-898-close-readiness-2026-06-30]] を追加した
 - 2026-06-30: [[docs-issue-map-2026-06-30]] を追加し、#876 / #877 / #885 / #903 の依存関係と混ぜない境界を定例向けに整理
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 Windows guide の対象 / 対象外、troubleshoot 範囲、docs PR slice を定例向けに整理
+- 2026-06-30: [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、#876 は developer quickstart 単体ではなく README / docs index / quickstart / nav の setup-first 導線も確認してから再着手する必要があると整理
 - 2026-06-30: 議事録を 2026-06-22 先頭見出しまで再取得し、Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` を追加。`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線へ位置づけ直し、[[current-status-2026-06-30]] に現状 snapshot を固定した
 - 2026-06-05: all green + CodeRabbit actionable comment なしを確認して PR #896 / #897 を ready/admin merge したことを追記
 - 2026-06-05: dedicated worktree では `node_modules` も別なので、`Can't find lefthook in PATH` は各 worktree root で `pnpm install --frozen-lockfile` して解消する、という知見を [[worktree-hygiene]] / [[gotchas]] に追記

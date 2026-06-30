@@ -4,6 +4,7 @@ summary: "2026-06-30 時点の docs 系 issue / PR (#876, #877, #885, #903) の�
 sources:
   - current-status-2026-06-30.md
   - pr-883-restructuring-2026-05-31.md
+  - issue-876-developer-docs-gap-audit-2026-06-30.md
   - issue-877-windows-setup-guide-scope.md
   - windows-setup-guide-outline-2026-06-30.md
   - node-runtime-free-windows-exe-2026-05-31.md
@@ -47,7 +48,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 1. **PR #903 の docs review 観点をコメント案にする**: 直接 push ではなく、CodeRabbit 3 点 + CSV / JSON download server actions の扱いを短く伝える案を作る。
 2. **#877 の Windows guide outline を docs PR に変換する**: [[windows-setup-guide-outline-2026-06-30]] に supported / unsupported path の表、troubleshoot 範囲、docs PR slice を固定した。次は本体 docs に触る前に assignee / 着手宣言を確認する。
-3. **#876 の developer quickstart 草案を最新方針へ再点検する**: Hosted demo / Azure 体験環境、読者像 5 分岐、Mode 1 default 廃止、CLI データ量前提が草案に入っているか確認する。
+3. **#876 の docs PR slice を決める**: [[issue-876-developer-docs-gap-audit-2026-06-30]] で current main と草案を照合した。developer quickstart 草案は追加要件を概ね満たすが、README / docs index / quickstart / nav は setup-first のままなので、次 PR は単体ページ追加ではなく導線調整を含める判断が要る。
 4. **#885 は PR #903 の整理後に戻る**: Node runtime inventory の粒度が固まってから、admin static assets prototype か static-site-builder 方針へ進む。
 
 ## Open Questions
@@ -60,3 +61,4 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 - 2026-06-30: 初回作成。issue #876 / #877 / #885 と PR #903 の live state、既存 Wiki の再構成方針、Windows setup 境界、Node runtime inventory 観点を横断整理した。
 - 2026-06-30: [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 を本体 docs PR に落とす時の章立て、対象外範囲、troubleshoot 表を具体化した。
+- 2026-06-30: [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、#876 草案が満たす範囲と current main docs に残る setup-first gap を整理した。

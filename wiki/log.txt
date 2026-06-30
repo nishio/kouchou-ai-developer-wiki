@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-06-30 13:57	filing-back	#876 developer docs の gap audit を追加
 2026-06-30 13:51	filing-back	#877 Windows guide outline を具体化
 2026-06-30 13:42	filing-back	docs 系 issue の横断地図を追加
 2026-06-30 13:27	filing-back	PR #903 と issue #898 の docs-safe 現状整理

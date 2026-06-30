@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 13:57] filing-back | #876 developer docs の gap audit を追加
+
+- [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加し、PR #883 撤回後草案、6/3 docs spine 議論、Azure demo 動線化議論、current main docs を照合
+- developer quickstart 草案は 5 読者像 / Mode 1 default 廃止などを概ね満たす一方、README / docs index / quickstart / mkdocs nav は setup-first のままと整理
+- [[docs-issue-map-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] に #876 の次 PR scope 判断を接続
+
 ## [2026-06-30 13:51] filing-back | #877 Windows guide outline を具体化
 
 - [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 の Windows setup guide を本体 docs PR に落とす前の章立て、対象 / 対象外、troubleshoot 表を固定
