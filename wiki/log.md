@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 18:26] filing-back | broad-listening book source freshness を補正
+
+- [[broad-listening-book-source]] の参照 commit を `work/broad-listening-book/main@9c22db6` へ更新し、5/21 初回章マップと 6/30 事例分類用途を分けた
+- [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[thinking-targets]] / [[public-case-page-skeleton-2026-06-30]] に、Code for Japan / 公明党 / litela / 富士通は first demo ではなく implementation partner / adjacent practice として扱う方針を反映
+
 ## [2026-06-30 18:13] filing-back | 国内事例候補を book 章で再分類
 
 - `work/broad-listening-book/main@9c22db6` の Code for Japan / Democracy X / litela / 公明党 / 富士通章を確認し、[[broad-listening-book-public-case-appendix-2026-06-30]] と [[public-web-broadlistening-japan-use-cases-2026-06-30]] の source strength を補正

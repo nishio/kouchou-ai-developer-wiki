@@ -82,6 +82,8 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 2026-06-30 17:30 JST の direct verification で、Web book 付録由来の大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで確認できた。公開ページへ移す時は、これらを `広聴AI導入実績` に一括投入せず、`広義 broad listening`、`政党・政策形成`、`TTTC lineage`、`企業 / VOC`、`AI 支援住民対話 adjacent` に分ける。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
+2026-06-30 18:13 JST の book 章確認で、Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI も public source ありへ進めた。ただし公開ページでは、これらを自治体公式 proof と同じ表に無造作に入れず、`implementation partner verified`、`政党 AI / broad listening adjacent`、`対面議論支援`、`LLM直接分類 adjacent` に分ける。Democracy X / 長崎県知事選は public report URL 未確認なので candidate のままにする。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+
 ### 3. 事例詳細テンプレート
 
 1 事例を深く紹介する時は、#564 のコメントにある自治体側の質問へ答える順序にする。
@@ -124,6 +126,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 6. candidate は「確認中」として、公開 URL が有効になるまで本文の実績には混ぜない。
 7. `掲載候補を教えてください` 導線を置くなら、候補投稿は public case list へ直結させず、primary URL / 実施主体 / 掲載可否 / source strength の確認 queue に入れる。
 8. サイボウズ / アルティウスリンクのような企業・VOC case を載せるなら、自治体向け first slice の後段に `応用領域` として置く。自治体の導入検討者が最初に見る 3 事例とは混ぜない。
+9. Code for Japan / 公明党 / litela / 富士通のような public source ありの周辺事例は、`広聴AI confirmed` ではなく、implementation partner / 政党 AI / 対面議論支援 / LLM直接分類 adjacent として別枠にする。
 
 ## Website current state
 
@@ -154,6 +157,7 @@ website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに
 
 ## Updates
 
+- 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通を公開ページへ載せる場合は implementation partner / adjacent practice として分類する方針を追記。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 `src/kouchou-ai/case.vto`、#208/#216/#125/#123 を確認。first slice は `case.vto` 直更新、長期は横断 case-news list と分ける方針を追記。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、事例ページ冒頭に tool catalog を置き、`tool_lineage` を `kouchou-ai` / `TTTC lineage` / `broad listening adjacent` / `idobata` / `enterprise` / `candidate` で分ける方針を追記。

@@ -10,7 +10,7 @@ sources:
 
 - リポジトリ: `digitaldemocracy2030/broad-listening-book`
 - ローカル clone: `work/broad-listening-book/`
-- 参照 commit: `5826726` (2026-05-21 時点 main)
+- 参照 commit: `9c22db6` (2026-06-30 18:13 JST に `work/broad-listening-book/` main を確認。初回章マップは `5826726`)
 - ライセンス: CC BY-NC 4.0（タグ `license-cc-by-4.0-final` まで CC BY 4.0）
 - 主担当: [[tokoroten]]、出版社はインプレス、英語版／Web は Luke Closs
 
@@ -39,14 +39,14 @@ sources:
 - `column/1万件の声を集めて気づいたこと.md` — 9,688 件集めても多くが断片的立場表明にとどまる、「スケールアップ」より「スケールアウト」、合意形成のボトルネックは **自己理解**（青山柊太朗 / 多元現実）
 - `column/安全な共感.md` — 散布図 UX の固有価値、Polis が返信機能を意図的に排除した設計、SNS 分断装置からの全体像復元、「ノイジーマイノリティ」の留保
 - `column/ワードクラウドは分析ではない.md` — 頻度ベース可視化の限界、なぜセマンティッククラスタリングが必要か
-- `06_*` 国政選挙各党 — チームみらい・国民民主・公明党・維新・再生の道のそれぞれ異なる利用形態。要件差分が読める
+- `06_*` 国政選挙各党 — チームみらい・国民民主・公明党・維新・再生の道のそれぞれ異なる利用形態。要件差分が読める。公明党 We Connect は公式 source ありだが、広聴AI confirmed ではなく、党組織・Google Form・AI 分析を組み合わせた broad listening adjacent として扱う
 - `08_*` 自治体 (太田市・広島) — 太田市の「自分ごと化会議」は事前 AI 対話による自己理解促進を組み込んだ設計、広島は 3,000 件の自記式意見処理。組織採用がボトルネック
 - `11_海外におけるブロードリスニング` — Polis / vTaiwan / Remesh / Birdwatch、AI ツールは熟議文化に上乗せされる accent であって熟議の代替ではない、という設計哲学（Vaidya）
 
 ### Priority 3: 補助・背景
 
 - `00_序文.md` / `00_本書の読みかた.md` / `01〜03` — ブロードリスニング概念定義、デジタル民主主義文脈
-- `04_01〜04_04` / `06_01〜06_05` / `07_*` / `09_*` / `10_01〜10_05` / `11_02〜11_05` — 個別事例。要求仕様や障害事例として読める箇所は Priority 2 章にも触れられているのでまず Priority 2 を読む
+- `04_01〜04_04` / `06_01〜06_05` / `07_*` / `09_*` / `10_01〜10_05` / `11_02〜11_05` — 個別事例。要求仕様や障害事例として読める箇所は Priority 2 章にも触れられているのでまず Priority 2 を読む。Code for Japan / Democracy X / litela / 富士通 chapter は、implementation partner verified case や adjacent practice の分類根拠として使い、自治体公式 proof や 8/2 first demo 候補とは分ける
 - `99_付録_公開事例一覧.md` — Web 公開された国内事例 catalog。外部ページ化では primary URL を個別確認する必要があるので、direct confirmation 済み事例は [[public-web-broadlistening-japan-use-cases-2026-06-30]]、付録由来の追加候補は [[broad-listening-book-public-case-appendix-2026-06-30]] を見る
 - `99_付録_用語集.md` — 書籍側用語集。[[glossary]] と突き合わせる
 
@@ -65,5 +65,6 @@ sources:
 
 ## Updates
 
+- 2026-06-30: `work/broad-listening-book` を `9c22db6` で確認済みとし、Code for Japan / Democracy X / litela / 公明党 / 富士通章を [[broad-listening-book-public-case-appendix-2026-06-30]] と国内事例 map の source strength 補正に使ったことを追記した。
 - 2026-06-30: Web 公開版の `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] として切り出し、公開事例 catalog は primary URL 確認済みと付録由来候補を分ける運用に補正した。
 - 2026-05-21: 初回作成。`5826726` 時点で章マップを取得

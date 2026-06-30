@@ -23,7 +23,7 @@ sources:
 
 公開Web検索で、宇多津町、奈良市、岩手県、広島県、東京都 / GovTech東京、大阪府、舞鶴2040、北見、国民民主党、日本維新の会、チームみらいなどの public source も確認できた。ただし 8/2 の default demo order は大きく変えず、公式性を補強する source と viewer demo の代替候補として使うのがよい。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
-Web book 付録の公開事例一覧は、8/2 で「日本での活用が複数領域に広がっている」ことを示す breadth source として使える。2026-06-30 17:30 JST の direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで進めた。ただし、first demo の根拠には、引き続き direct 確認済みの official page / public viewer を使う。サイボウズ / アルティウスリンクは応用領域、与謝野町は AI 支援住民対話 adjacent として補助線に留める。[[broad-listening-book-public-case-appendix-2026-06-30]]より
+Web book 付録の公開事例一覧は、8/2 で「日本での活用が複数領域に広がっている」ことを示す breadth source として使える。2026-06-30 17:30 JST の direct verification で、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町は primary / organization page まで進めた。ただし、first demo の根拠には、引き続き direct 確認済みの official page / public viewer を使う。サイボウズ / アルティウスリンクは応用領域、与謝野町は AI 支援住民対話 adjacent として補助線に留める。18:13 JST には Code for Japan / 加古川市・品川区、公明党 We Connect、litela Recogra、富士通パブリックコメント AI も public source ありへ進めたが、これらも first demo ではなく implementation partner / 政党 AI / 対面議論支援 / LLM直接分類 adjacent として扱う。Democracy X / 長崎県知事選は public report URL 未確認のため candidate のまま。[[broad-listening-book-public-case-appendix-2026-06-30]]より
 
 Azure デモ環境は、現時点では「自分のデータを投入する場所」より「使い方や準備データを理解する参照環境」として位置づけ直されている。したがって 8/2 では、専用環境を主役にするより、公開事例 / サンプルレポート / サンプル CSV の導線を前面に出す方がよい。[[azure-demo-public-visibility-proposal-2026-06-04]]より [[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
@@ -47,9 +47,13 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 | チームみらい | party / campaign official page | GitHub / いどばた / ブロードリスニング等を使った政策改善と、1000 件超の意見収集を official policy page で確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 複数 tool を組み合わせた政策形成 case。広聴AI単独実績としては出さない。 | broad listening の活用幅を示す補助例 |
 | サイボウズ | company official project / public reports | `白黒つけない会議` で DD2030 OSS `kouchou-ai` による可視化・分類 report が公開されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体向け first demo とは分ける。 | 応用領域 / breadth slide |
 | アルティウスリンク | company official press release | 広聴AIを活用したコンタクトセンター VOC 分析と `Broad Listening Service` 強化が official release で確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / VOC case。公共 sector の広聴AI事例とは別に説明する。 | 応用領域 / breadth slide |
-| Web book 付録の残候補 | public catalog | 東大阪市、太田市、公明党など、既存棚卸しにない候補を public catalog から拾える。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 個別 primary URL 未確認のまま demo / 外部資料に載せない。source strength と tool lineage を再分類する。 | next verification queue |
+| Code for Japan / 加古川市・品川区 Decidim | implementation partner chapter + city / Decidim public pages | 広聴AI/Decidim 連携として public source ありへ進められる。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 自治体公式ページ側の広聴AI明記ではなく、実装支援者 verified として扱う。first demo にはしない。 | breadth / implementation partner context |
+| 公明党 We Connect | party official + book chapter | 党組織・Google Form・AI 分析を組み合わせた政策立案 process として public source がある。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed ではない。政党 AI / broad listening adjacent として表現する。 | political context / breadth slide |
+| litela Recogra | product page + book chapter | 田原本町・富岡市の対面グループ議論支援が公開章で説明されている。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed ではなく、対面議論の facilitate / deepen 側 adjacent practice。 | tool ecosystem context |
+| 富士通パブリックコメント AI | company official press release + book column | パブリックコメント業務の意見分類・要約・対応付け支援の public source がある。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 広聴AI confirmed ではなく、LLM直接分類 / 行政パブコメ処理 adjacent。 | enterprise / public admin context |
+| Web book 付録の残候補 | public catalog | 東大阪市、太田市、田原本町、富岡市、長崎県知事選など、既存棚卸しにない候補を public catalog から拾える。[[broad-listening-book-public-case-appendix-2026-06-30]]より | 個別 primary URL 未確認のまま demo / 外部資料に載せない。source strength と tool lineage を再分類する。 | next verification queue |
 | 朝日新聞 | book case | ラベル抽象化、SNS キーワード設計、外れ値除外要望など、技術説明の lesson が多い。[[broad-listening-book-extractions]]より | 図表・紙面・引用・画像は権利確認が必要。 | lesson 用。viewer demo にはしない |
-| 富士通 / その他企業・NPO系 | book / meeting references | 公共 sector 以外の利用可能性を示せる。[[broad-listening-book-source]]より | 権利者、顔出し、公開範囲の確認が必要。 | owner confirmation 後 |
+| その他企業・NPO系 | book / meeting references | 公共 sector 以外の利用可能性を示せる。[[broad-listening-book-source]]より | 権利者、顔出し、公開範囲の確認が必要。富士通は別行の LLM直接分類 adjacent として扱う。 | owner confirmation 後 |
 | 岩手県 / 郡山 / kuu village | meeting references | pipeline of prospects として、広聴AIが複数現場で話題化していることを示せる。[[meeting-minutes]]より | 公開 artifact が未確認。Slack / 議事録だけで外部説明しない。 | background only |
 | synthetic sample CSV | 自前で作るサンプル | 権利・個人情報リスクが低く、admin upload の操作説明に使える。 | 現実の説得力は弱い。サンプル設計が必要。 | fallback / technical dry-run |
 
@@ -89,6 +93,7 @@ Azure デモ環境は、現時点では「自分のデータを投入する場�
 
 ## Updates
 
+- 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通を first demo ではなく implementation partner / adjacent practice として棚卸しへ追加した。長崎県知事選は public report URL 未確認の候補に残した。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を source strength 付きで棚卸しへ反映した。
 - 2026-06-30: [[broad-listening-book-public-case-appendix-2026-06-30]] を追加し、Web book 付録の追加候補は breadth source / direct verification queue として扱い、8/2 first demo には direct 確認済み official / viewer を使うと整理。
 - 2026-06-30: 16:48 JST の追加Web検索を反映し、奈良市 official PDF 群を trust / context 用の自治体公式 document case として追加した。
