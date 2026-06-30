@@ -7,6 +7,7 @@ sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/564
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/696
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/542
+  - source-code.md
   - slack-logs-repository.md
   - slack-case-introduction-channel-2026-03-04.md
 ---
@@ -55,6 +56,12 @@ sources:
 
 提案は、README / footer の免責事項に、レポートに関する責任の所在を明記すること。これは #696 の「誤読防止」と #564 の「事例公開」を支える trust layer として読むべきである。
 
+## Current code cross-check
+
+2026-06-30 に `work/kouchou-ai/main@d5c9ece6e3b3` を確認したところ、public-viewer footer には既にレポーター帰属と発行責任者への問い合わせ文言が入っている。一方 README / docs index の免責は LLM バイアスと保証なしが中心で、個別レポートの発行主体と OSS / DD2030 の責任境界は揃っていない。[[source-code]]より
+
+したがって #542 は、current main では「footer 文言が完全に欠けている」というより、README / docs / public-viewer / 事例ページの文言統一問題として読む方がよい。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。
+
 ## Open Questions
 
 - #564 の正本は kouchou-ai issue のままでよいか、それとも website repo / dd2030 website 側へ移管するか。
@@ -64,5 +71,6 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[source-code]] と [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#542 は current main では footer 単純追加ではなく、README / docs / viewer / 事例ページの責任境界統一として読むと補正。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake として使い、外部公開では primary URL 確認済み case だけを載せる方針を追記。
 - 2026-06-30: 初回作成。Issue #564 / #696 / #542 を live state として確認し、活用事例公開を trust layer として扱う必要を固定した。

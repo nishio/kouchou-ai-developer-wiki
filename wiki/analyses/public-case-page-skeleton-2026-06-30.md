@@ -6,6 +6,7 @@ sources:
   - issue-564-public-case-trust-layer-scope-2026-06-30.md
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
+  - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
 ---
@@ -72,6 +73,8 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 この section は #696 / #542 の最小版であり、事例ページと別に実装するとリンク切れや説明抜けが起きやすい。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
+実際に外へ出す文言 draft は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。事例ページ上部は短い説明、viewer footer / dialog は常設注意、README / docs は OSS と個別レポートの責任境界、metadata は発行主体表示という役割分担にする。
+
 ## First slice
 
 外部公開へ移す前の first slice は、DD2030 website の `kouchou-ai/case` を拡張する想定で、次の範囲に絞るのが衝突しにくい。
@@ -98,5 +101,6 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 ## Updates
 
+- 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページに置く「レポートの読み方」の実文言 draft へ接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack case channel は lead intake、外部ページは primary URL 確認済み case list として分ける方針を追記。
 - 2026-06-30: 初回作成。#564 の issue コメント、公開Web検索、#696 / #542 の trust layer をもとに、公開事例ページの構成案を固定した。

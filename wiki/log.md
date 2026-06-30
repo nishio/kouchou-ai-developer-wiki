@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:50] filing-back | #696 / #542 レポート読み方文言を固定
+
+- [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページ・public-viewer・README/docs に置く誤読防止と責任所在の最小文言案を整理
+- [[source-code]] を更新し、current main の footer には責任所在の短文が既にあり、README/docs は LLM 免責中心であることを確認
+- [[github-issues-564-696-542-trust-layer-live-2026-06-30]] / [[public-case-page-skeleton-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から #564 trust layer へ接続
+
 ## [2026-06-30 15:44] filing-back | Slack 事例紹介 channel の全期間 raw を分類
 
 - [[slack-case-introduction-channel-2026-03-04]] を 2025-01〜2026-04 の全期間 raw 確認に更新し、substantive row は 2026-03/04 のみだったと整理

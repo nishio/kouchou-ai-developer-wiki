@@ -30,6 +30,7 @@ sources:
   - public-web-broadlistening-japan-use-cases-2026-06-30.md
   - japan-broadlistening-use-case-map-2026-06-30.md
   - public-case-page-skeleton-2026-06-30.md
+  - report-reading-guide-minimum-wording-2026-06-30.md
   - slack-case-introduction-channel-2026-03-04.md
 ---
 
@@ -72,6 +73,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 - Issue #564 / #696 / #542 は [[github-issues-564-696-542-trust-layer-live-2026-06-30]] に live state を固定し、[[issue-564-public-case-trust-layer-scope-2026-06-30]] で「公開事例リスト + レポートの読み方 + 何を保証しないか」を 3 点セットとして扱う scope に整理した。8/2 の公開事例 demo は、事例だけでなく trust layer と一緒に出す方が安全。
 - 公開Web検索で、宇多津町 / 渋谷区 / 広島県 / 舞鶴2040 / 奈良 #全員市長 / 八代市 / 国民民主党などの国内 broad listening 事例を [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定し、[[japan-broadlistening-use-case-map-2026-06-30]] で 8/2 と #564 へ接続した。今後は「自治体公式」「public viewer」「政党・国会」「Talk to the City 系譜」「candidate」を分けて扱う。
 - #564 の公開事例ページ skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。外部公開へ移すなら、最初に見る 3 事例、source strength 付き一覧、詳細テンプレート、レポートの読み方、載せない情報を同じ slice に入れる。
+- #696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の footer には責任所在の短文が既にあるため、次は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える。
 - Slack `#1_事例紹介_全体` の 2026-03/04 raw は [[slack-case-introduction-channel-2026-03-04]] に固定した。舞鶴2040は Slack lead から特設サイト / public viewer / 舞鶴市公式 project page へ昇格できるが、channel 全体は lead intake であり、外部公開では primary URL 確認済み case だけを使う。
 - docs / wiki 側は、`slack-logs` を Slack raw 一次 source として定着させ、議事録は `2026/06/29` 以降の見出しが入ったら再取得する。
 
@@ -83,6 +85,7 @@ GitHub 現在地としては、PR #903 の docs inventory は小さく直せそ�
 
 ## Updates
 
+- 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 は footer 単純追加ではなく README / docs / viewer / 事例ページの文言統一として扱うと整理した。
 - 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、国内 broad listening 活用事例を公開Web source strength ごとに整理した。
 - 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 公開事例ページの first slice を整理した。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel と public case list の境界を整理した。

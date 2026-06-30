@@ -98,8 +98,19 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 `docs/development/plugin-guide.md` は、入力プラグイン、分析プラグイン、可視化プラグインの 3 種を説明している。横浜型ブロードリスニングの「収集」文脈へ接続するなら、現時点では input plugin / data collection docs の候補として扱うのが自然だが、current docs は開発者向け plugin guide であり、利用者向けの収集手法説明ではない。
 
+## Report disclaimer / responsibility current facts (2026-06-30, main tip `d5c9ece6e3b3`)
+
+`apps/public-viewer/components/Footer.tsx` は footer に「レポート内容はレポーターに帰属します」と表示し、免責 dialog では「このレポート内容に関する質問や意見はレポート発行責任者へお問い合わせください」という趣旨の文言を出している。その直後に、LLM のバイアス、信頼性の低い結果、保証なし、重要判断時の検証必要性を説明している。
+
+`README.md` と `docs/index.md` の免責事項は、LLM バイアス、保証なし、重要判断時の検証必要性が中心であり、個別レポートの発行主体と OSS / DD2030 側の責任境界は public-viewer footer ほど明示されていない。
+
+`apps/api/public/meta/default/metadata.json` は `reporter`、`message`、`webLink`、`privacyLink`、`termsLink`、`brandColor` を持つ。`termsLink` は `null` で、report schema の `Meta` 型も `reporter` / `message` / links / brand color までで、責任主体や問い合わせ先を分けた専用 field はまだない。
+
+このため #542 は、current main では「footer に責任所在を単純追加する」より、「README / docs / public-viewer / 公開事例ページで、個別レポートの発行主体、OSS の保証範囲、図とラベルの読み方を揃える」問題として扱うのが正確である。文言案は [[report-reading-guide-minimum-wording-2026-06-30]]。
+
 ## Updates
 
+- 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `README.md` / `docs/index.md` / `apps/public-viewer/components/Footer.tsx` / `apps/api/public/meta/default/metadata.json` / `packages/report-schema/src/index.ts` を確認し、レポート責任所在と免責文言の current facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `docs/index.md` / `docs/user-guide/how-to-use.md` / `docs/user-guide/cli-quickstart.md` / `docs/development/plugin-guide.md` を確認し、8/2 イベント向け技術・ツール入口 draft の根拠になる current docs public-entry facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Web UI Node runtime facts として admin の server fetch / server actions / CSP、public-viewer export mode、static-site-builder runtime `pnpm run build:static` と dev script mismatch を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Windows setup が ASCII-only `setup_win.bat` launcher + GUI/non-interactive `setup_win.ps1` 本体、hosted script test + self-hosted Windows E2E の 2 層になっていることを追記
