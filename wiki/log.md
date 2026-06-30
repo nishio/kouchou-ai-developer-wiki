@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 13:51] filing-back | #877 Windows guide outline を具体化
+
+- [[windows-setup-guide-outline-2026-06-30]] を追加し、#877 の Windows setup guide を本体 docs PR に落とす前の章立て、対象 / 対象外、troubleshoot 表を固定
+- current main `d5c9ece` の `docs/getting-started/windows-setup.md` は `setup_win.ps1` 導線を含む一方、API key 前提と組織管理端末の非対象分岐が弱いことを整理
+- [[docs-issue-map-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から #877 の次アクションへ接続
+
 ## [2026-06-30 13:42] filing-back | docs 系 issue の横断地図を追加
 
 - [[docs-issue-map-2026-06-30]] を追加し、#876 developer quickstart、#877 Windows setup guide、#885 Node runtime 排除、PR #903 inventory docs の関係を整理

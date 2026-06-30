@@ -242,5 +242,6 @@ wiki-pages-publishing-stack	analysis	analyses/wiki-pages-publishing-stack.md	dev
 windows-distribution-options	analysis	analyses/windows-distribution-options.md	非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-06-01 定例では、短期は手元 Windows 起動より Azure 体験環境を優先しつつ、Windows standalone と local LLM route は探索を続ける位置づけになった
 windows-real-machine-e2e-lessons	analysis	analyses/windows-real-machine-e2e-lessons.md	Issue #860 / PR #862 の Windows 実機 E2E 構築で分かった self-hosted runner と Docker Desktop の落とし穴
 windows-setup-encoding-decision	analysis	analyses/windows-setup-encoding-decision.md	Windows setup で日本語メッセージを扱う時、`.bat` 単体でコードページ差異を吸収するのは難しく、ASCII ランチャー + PowerShell 本体へ分離する判断が妥当、という理由整理
+windows-setup-guide-outline-2026-06-30	analysis	analyses/windows-setup-guide-outline-2026-06-30.md	Issue #877 の Windows setup guide を current main に落とすための具体アウトライン。対象環境 / 対象外環境を冒頭で切り、Docker Desktop supported path 内だけをトラブルシュートする
 workflow-defaultization-blockers	analysis	analyses/workflow-defaultization-blockers.md	`run_workflow()` default 化を止めていた主 blocker は main で解消され、Phase 8 cleanup 後はいま何が follow-up だけ残っているかを切り分ける履歴ページ
 worktree-hygiene	analysis	analyses/worktree-hygiene.md	`work/kouchou-ai/` は current issue の作業場として保ち、別件試作は dedicated worktree に逃がし、canonical でない local 生成物は ignore まで含めて早めに掃除した方が混乱が少ない
