@@ -5,6 +5,8 @@ sources:
   - github-issues-564-696-542-trust-layer-live-2026-06-30.md
   - event-2026-08-02-public-example-inventory-2026-06-30.md
   - public-broadlistening-artifacts-2026-06-30.md
+  - public-web-broadlistening-japan-use-cases-2026-06-30.md
+  - japan-broadlistening-use-case-map-2026-06-30.md
   - azure-demo-public-visibility-proposal-2026-06-04.md
   - azure-demo-visibility-thread-resolution-2026-06-05.md
   - kouchou-ai-docs-entry-restructure-2026-06-03.md
@@ -19,6 +21,8 @@ sources:
 Issue #564 は「事例を並べる」だけでは閉じない。自治体や導入検討者が知りたいのは、成果物の URL だけでなく、導入検討、体制づくり、テーマ決定、実施内容、やってみた結果、公開 report までの流れである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
 同時に、#696 の誤読防止と #542 の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか** の 3 点セットである。[[current-open-issue-triage-2026-06-01]]より
+
+公開Web検索で確認できた事例は、自治体公式 trial、public viewer、政党・国会での broad listening 利用、Talk to the City の系譜、検索 snippet だけの候補に分かれる。#564 のページ設計では、事例数を増やす前に `classification` / `source_strength` / `tool lineage` を明示する必要がある。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
 ## Why this matters for 8/2
 
@@ -46,6 +50,9 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 | どの artifact を見るべきか | viewer / PDF / 記事 / 発表資料のうち、導入検討者に見せる入口 |
 | 何が分かったか | 「民意を証明した」ではなく、発見された論点・次に調べるべき問い |
 | 注意 | 代表性、責任所在、政治・選挙文脈、権利確認、個人情報の扱い |
+| 分類 | 自治体公式 / public viewer / 政党・国会 / メディア / 企業 / candidate |
+| source strength | official page / public viewer / organization article / secondary article / search snippet |
+| tool lineage | 広聴AI / Talk to the City / 広義の broad listening / AI analysis |
 
 ## Placement Recommendation
 
@@ -67,7 +74,7 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 ## Next Wiki-Safe Actions
 
 - `#564/#696/#542` を合わせた public case page の skeleton を developer wiki に置く。
-- 8/2 用に、奈良 / 渋谷区 / 八代市のどれを first demo にするかを人間が選べる判断表へ落とす。
+- 8/2 用に、奈良 / 渋谷区 / 八代市 / 舞鶴2040 / 宇多津町のどれを first demo / official context にするかを人間が選べる判断表へ落とす。
 - 事例ごとの公開可能 / 要許諾 / 不使用を `public-broadlistening-artifacts` の freshness marker で管理する。
 - 本体 docs に移すなら、#876 の developer quickstart とは別に、docs spine first slice として「事例を見る / レポートを読む」入口を切る。
 
@@ -80,4 +87,5 @@ Azure デモ環境は「自分のデータを投入する場所」ではなく�
 
 ## Updates
 
+- 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、#564 の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
 - 2026-06-30: 初回作成。Issue #564 を 8/2 公開事例棚卸しと接続し、#696 / #542 を含む trust layer として次 scope を整理した。

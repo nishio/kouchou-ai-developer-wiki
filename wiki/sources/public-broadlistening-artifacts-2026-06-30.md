@@ -9,6 +9,8 @@ sources:
   - https://files.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/38d509b421d049c4ad53536fc88ae4ca/kuminishikichosa_ai.pdf
   - https://democracy-x.org/news/yatsushiro-kouchouai-202508/
   - https://democracy-x.github.io/kouchou-ai-yatsushiro/47ae7bf4-e5de-4dbd-82ab-520160f373d6/
+  - public-web-broadlistening-japan-use-cases-2026-06-30.md
+  - japan-broadlistening-use-case-map-2026-06-30.md
   - meeting-minutes.md
   - broad-listening-book-source.md
   - broad-listening-book-extractions.md
@@ -23,6 +25,8 @@ sources:
 ## Freshness marker
 
 2026-06-30 に公開 URL を確認した時点の観測。上記 5 URL はいずれも HTTP 200 を返した。議事録 source は 2026-06-30 に Google Doc export を再取得済みで、先頭見出しは `2026/06/22`、txt は 7703 行だった。[[meeting-minutes]]より
+
+同日 15:22 JST に公開Web検索を追加で行い、宇多津町、渋谷区、広島県、舞鶴2040、奈良 #全員市長、八代市、国民民主党などを `confirmed` / `candidate` / `secondary context` に分けた。詳細は [[public-web-broadlistening-japan-use-cases-2026-06-30]] に固定した。
 
 ## Public artifacts checked
 
@@ -49,6 +53,8 @@ sources:
 
 ## Related candidates from meeting minutes / book source
 
+- 宇多津町: 公開Web検索で、町公式ページに第2次総合計画の町民アンケート自由記述 396 件を広聴AIで整理した trial が確認できた。これは candidate ではなく confirmed public case に昇格できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
+- 舞鶴2040: 公開 viewer と FAQ が確認でき、広聴AI OSS 成果物を活用した public viewer として扱える。8/2 の viewer demo 候補に追加できるが、実施主体・許諾・政治文脈は別途確認が必要。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
 - 広島県: 議事録では、公開中間結果、2,549 件規模、以前の類似 public comment が 13 件 / 5 人だったことなどが記録されている。ただし 8/2 でそのまま見せるには最新公開 URL と許諾の確認が必要。[[meeting-minutes]]より
 - 朝日新聞: 書籍 source では、ラベル抽象化、見出しプロンプト、SNS キーワード設計、外れ値除外要望など、技術説明に有用な運用知見が多い。ただし図表・紙面・引用は権利確認が必要。[[broad-listening-book-source]]より
 - サイボウズ / 富士通など企業・NPO系: 書籍・議事録上の事例として有用だが、権利者・顔出し・公開範囲の確認が必要。[[meeting-minutes]]より
@@ -62,4 +68,5 @@ sources:
 
 ## Updates
 
+- 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、公開Web検索で確認した宇多津町 / 舞鶴2040 / 広島県 / 国民民主党などを confirmed / candidate に分けて接続した。
 - 2026-06-30: 初回作成。8/2 イベント向けの公開事例候補として、奈良 #全員市長、渋谷区、八代市の公開 artifact を確認し、広島県 / 朝日新聞 / 企業系は確認待ち候補として分けた。

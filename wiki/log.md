@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-06-30 15:22] filing-back | 国内 broad listening 活用事例を公開Web検索で整理
+
+- [[public-web-broadlistening-japan-use-cases-2026-06-30]] を追加し、宇多津町 / 渋谷区 / 広島県 / 舞鶴2040 / 奈良 / 八代 / 国民民主党などを confirmed / candidate / secondary context に分類
+- [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、8/2 と #564 では自治体公式、viewer demo、政治・国会、Talk to the City 系譜、candidate を分ける必要があると整理
+- [[event-2026-08-02-public-example-inventory-2026-06-30]] / [[issue-564-public-case-trust-layer-scope-2026-06-30]] / [[current-status-2026-06-30]] / [[meeting-report-draft]] から公開事例 trust layer へ接続
+
 ## [2026-06-30 15:04] filing-back | #564 公開事例を trust layer として整理
 
 - [[github-issues-564-696-542-trust-layer-live-2026-06-30]] を追加し、Issue #564 / #696 / #542 の live state を open / unassigned のまま確認
