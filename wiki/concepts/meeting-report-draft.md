@@ -320,3 +320,5 @@ sources:
 
 - [PR #910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910) / `codex/issue-905-extraction-failures`。正常0件とAPI例外・時間切れ・不正応答を分離し、errorで中断する。未merge。
 - analysis-core 210件、API parser 19件、変更ファイルRuff成功。標準workflowの後段未実行も確認。ラベル段階と失敗時費用集計は残件。[[issues-response-plan-2026-09-07]]より
+
+- PR #910のGitHub CIも全件成功。自動レビュー完了、未merge。

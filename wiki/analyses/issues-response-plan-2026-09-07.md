@@ -78,3 +78,5 @@ sources:
 抽出時のAPI例外・batch timeout・不正JSON / キー欠落 / 型不正を正常0件から分離し、失敗件数・回答ID・エラー種別を示してerror終了する。標準workflowとlegacyで後段未実行・部分CSV未出力を確認した。analysis-core 210件、API parser 19件、変更ファイルRuffが成功。実データLLM再実行は行っていない。
 
 #905全体はcloseせず、ラベル生成の部分失敗、部分再実行、失敗workflowの完全なtoken / 費用集計を残件とする。実行中futureの強制停止は保証しない。ローカルhookはlefthook未導入で実行されず、上記チェックを手動実施した。
+
+- 2026-09-07 CI追記: PR #910のServer Tests / Analysis Core Pytest / Ruff / CodeQLがすべて成功。CodeRabbitも完了（inline指摘なし）。未merge。
