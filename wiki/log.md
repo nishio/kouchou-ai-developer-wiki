@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 05:16] filing-back | #912 / #913を人間による検証として明記
+
+- Issue本文と[[issues-response-plan-2026-09-07]] / [[meeting-report-draft]]を更新。
+- Codexへの認証情報確認依頼を取り下げ、未検証フラグを維持。
+
 ## [2026-09-08 04:11] filing-back | #905の残件を#915へ分離
 
 - [[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に#905のcloseと#915の作成を記録。
