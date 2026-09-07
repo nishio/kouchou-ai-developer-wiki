@@ -87,3 +87,10 @@ sources:
 - [#906のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906#issuecomment-5572595880) に公式モデル情報とOpenAI固定payloadの確認点を追記。[#907のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907#issuecomment-5572596134) にschema変換・思考token・旧モデル設定の検証条件を追記。公式仕様と実API検証を区別し、実API試験は未実施。
 - [#909のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909#issuecomment-5572596374) にcatalog・価格不明・動的一覧・Azureの責務分割を提案。current mainの価格関数で、Gemini名のprefixを正規化する前に存在確認しているためprefix付きが0ドルになる不整合を再現（API呼び出しなし）。
 - #906 / #907 / #909は実装未着手。前進の成果は仕様照合・再現・公開Issueでの受け入れ条件と実装分割案であり、解決済みとは扱わない。
+
+## Updates — 2026-09-08 01:19 #909の判断確定とPR #914
+
+- [#909の確定コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909#issuecomment-5573140968) より、サーバーカタログを正本とする。verifiedとavailableを分離し、未検証も選択可能（「動作未検証」）。料金不明と無料を区別し、提供終了設定は無言で置換しない。Azureは別の実モデル・料金対応を持つ。以前の検証済み限定案は不採用。
+- [PR #914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、未merge、#911に依存。新規作成・複製の一覧と説明をAPIへ統一し、#906 / #907の4モデルを「動作未確認」で追加。既存モデルも検証記録を移入していないためverified=falseから開始。
+- 実API検証は [#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913) に分離。API34件、管理画面116件、core関連54件、型検査・lint成功。ローカル実画面でモデル選択と旧Gemini無効化を確認。
+- 更新手順はPR内 `docs/development/model-catalog.md`。価格不明はnull、期限付き価格は期限後不明へ戻す。動的一覧の取得失敗はcatalog fallbackと警告を返す。有料LLM生成試験は未実施。

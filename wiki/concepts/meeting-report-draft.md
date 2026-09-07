@@ -344,3 +344,8 @@ sources:
 
 - #905 / #908はPR #910 / #911（未merge）。#906 / #907 / #909には公式仕様照合と実装分割・検証条件をIssueコメントとして投稿。[[issues-response-plan-2026-09-07]]より
 - Gemini料金検索のprefix付きIDが0ドルになる不整合をローカル再現。新モデル実API試験・catalog実装は残件。
+
+### 2026-09-08 01:19 モデル管理の判断確定と実装（進行中）
+
+- [PR #914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、#911依存・未merge。モデル情報をサーバーへ集約し、新規作成・複製画面で共有。未検証も選択可能とする判断を実装。
+- #906 / #907の4モデルは「動作未確認」で追加。実API検証は#912 / #913へ分離。API34・admin116・core関連54テスト成功。[[issues-response-plan-2026-09-07]]より
