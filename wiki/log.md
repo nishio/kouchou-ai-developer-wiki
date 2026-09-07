@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-07 22:07] filing-back | #905以外のIssue候補を横断検討
+
+- [[other-issue-candidates-2026-09-07]] にopen128件の棚卸しと#908/#477の重複、#452のtimeout受け渡し欠落を記録。
+- [[meeting-report-draft]] に次候補と検証待ちの切り分けを追記。
+
 ## [2026-09-07 21:59] filing-back | Pages公開を止めた非公開artifactリンクを修正
 
 - [[labelling-prompt-few-shot-template-confound-2026-06-03]] のrawへのリンクがbase pathを抜けてPages検査を失敗させていたため、ローカル保存先表記へ修正。

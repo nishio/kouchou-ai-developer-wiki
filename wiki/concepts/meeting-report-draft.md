@@ -327,3 +327,8 @@ sources:
 
 - 検索/Explorerの元のURL脱落は確認した経路では再現せず。一方、非公開raw artifactへの相対リンクがPages検査を失敗させ、公開が6月5日分で止まっていたことを確認。
 - [[labelling-prompt-few-shot-template-confound-2026-06-03]] のリンクをローカル保存先表記へ修正。[[wiki-driven-workflow]] に確認範囲と原因を記録。
+
+### 2026-09-07 #905以外の次候補
+
+- [[other-issue-candidates-2026-09-07]] にopen128件からの候補を整理。#908は旧#477と同じ問題で、既存コメントもまず選択無効化を支持している。
+- #452はpluginがtimeout設定を引き継がない箇所を確認。#884 / #877は利用者向け改善、#898は追加実装より検証待ち。新規実装・assignは未実施。
