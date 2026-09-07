@@ -96,3 +96,5 @@ sources:
 - 更新手順はPR内 `docs/development/model-catalog.md`。価格不明はnull、期限付き価格は期限後不明へ戻す。動的一覧の取得失敗はcatalog fallbackと警告を返す。有料LLM生成試験は未実施。
 
 - PR #914はCIの対象branch制約に合わせbaseをmainへ変更。#911の変更を含むが、#911が先にmergeされると重複差分が消える。カタログJSONだけの変更でもAPI・管理画面・E2E検査が走るようworkflowのpathsを追加。
+
+- PR #914のGitHub CIはE2E・API・admin・core・build・CodeQLを含め成功。実LLM検証は#912 / #913の残件であり、未検証フラグを維持。未merge。

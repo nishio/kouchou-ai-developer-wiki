@@ -349,3 +349,5 @@ sources:
 
 - [PR #914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、#911依存・未merge。モデル情報をサーバーへ集約し、新規作成・複製画面で共有。未検証も選択可能とする判断を実装。
 - #906 / #907の4モデルは「動作未確認」で追加。実API検証は#912 / #913へ分離。API34・admin116・core関連54テスト成功。[[issues-response-plan-2026-09-07]]より
+
+- PR #914のGitHub CIはE2E・API・admin・core・build・CodeQLを含め成功。実LLM検証は#912 / #913の残件であり、未検証フラグを維持。未merge。
