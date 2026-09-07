@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 00:10] filing-back | #906 / #907 / #909へ仕様照合と実装条件を投稿
+
+- [[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に新規5件の前進を記録。2件はPR、3件は具体的議論。
+- Gemini価格検索のprefix不整合を再現し、catalog整理の受け入れ条件に追加。
+
 ## [2026-09-08 00:03] filing-back | #908 / #477のAzureモデル表示をPR #911へ
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] にAzureモデル欄の固定表示・無効化と進行中PRを記録。

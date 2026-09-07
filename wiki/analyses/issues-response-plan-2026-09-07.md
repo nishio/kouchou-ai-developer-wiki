@@ -80,3 +80,10 @@ sources:
 #905全体はcloseせず、ラベル生成の部分失敗、部分再実行、失敗workflowの完全なtoken / 費用集計を残件とする。実行中futureの強制停止は保証しない。ローカルhookはlefthook未導入で実行されず、上記チェックを手動実施した。
 
 - 2026-09-07 CI追記: PR #910のServer Tests / Analysis Core Pytest / Ruff / CodeQLがすべて成功。CodeRabbitも完了（inline指摘なし）。未merge。
+
+## Updates — 2026-09-08 #906 / #907 / #909へ議論を追記
+
+- 対象の新規IssueはJST 9月6日の#905〜#909。9月7日・8日の新規追加は観測されず。#905はPR #910、#908はPR #911で前進（ともに未merge）。
+- [#906のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906#issuecomment-5572595880) に公式モデル情報とOpenAI固定payloadの確認点を追記。[#907のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907#issuecomment-5572596134) にschema変換・思考token・旧モデル設定の検証条件を追記。公式仕様と実API検証を区別し、実API試験は未実施。
+- [#909のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909#issuecomment-5572596374) にcatalog・価格不明・動的一覧・Azureの責務分割を提案。current mainの価格関数で、Gemini名のprefixを正規化する前に存在確認しているためprefix付きが0ドルになる不整合を再現（API呼び出しなし）。
+- #906 / #907 / #909は実装未着手。前進の成果は仕様照合・再現・公開Issueでの受け入れ条件と実装分割案であり、解決済みとは扱わない。
