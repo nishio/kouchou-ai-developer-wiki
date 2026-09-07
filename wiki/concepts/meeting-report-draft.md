@@ -351,3 +351,8 @@ sources:
 - #906 / #907の4モデルは「動作未確認」で追加。実API検証は#912 / #913へ分離。API34・admin116・core関連54テスト成功。[[issues-response-plan-2026-09-07]]より
 
 - PR #914のGitHub CIはE2E・API・admin・core・build・CodeQLを含め成功。実LLM検証は#912 / #913の残件であり、未検証フラグを維持。未merge。
+
+### 2026-09-08 02:36 PR #910 / #911 / #914をmerge（main済み）
+
+- ユーザー指示でCI成功済みの3件をmerge。抽出失敗の検知、Azure UI修正、モデルカタログ統一・未確認モデル追加がmain `70c14c2` に入った。[[issues-response-plan-2026-09-07]]より
+- #906〜#909はclosed。#905の残件と#912 / #913の実API検証は引き続きopen。

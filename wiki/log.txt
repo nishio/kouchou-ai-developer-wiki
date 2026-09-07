@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-08 02:36	filing-back	CI成功済みのPR #910 / #911 / #914をmerge
 2026-09-08 01:19	filing-back	#909の確定判断を実装しPR #914を作成
 2026-09-08 00:10	filing-back	#906 / #907 / #909へ仕様照合と実装条件を投稿
 2026-09-08 00:03	filing-back	#908 / #477のAzureモデル表示をPR #911へ
