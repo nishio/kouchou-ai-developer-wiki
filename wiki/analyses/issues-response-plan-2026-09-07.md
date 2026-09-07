@@ -94,3 +94,5 @@ sources:
 - [PR #914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、未merge、#911に依存。新規作成・複製の一覧と説明をAPIへ統一し、#906 / #907の4モデルを「動作未確認」で追加。既存モデルも検証記録を移入していないためverified=falseから開始。
 - 実API検証は [#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913) に分離。API34件、管理画面116件、core関連54件、型検査・lint成功。ローカル実画面でモデル選択と旧Gemini無効化を確認。
 - 更新手順はPR内 `docs/development/model-catalog.md`。価格不明はnull、期限付き価格は期限後不明へ戻す。動的一覧の取得失敗はcatalog fallbackと警告を返す。有料LLM生成試験は未実施。
+
+- PR #914はCIの対象branch制約に合わせbaseをmainへ変更。#911の変更を含むが、#911が先にmergeされると重複差分が消える。カタログJSONだけの変更でもAPI・管理画面・E2E検査が走るようworkflowのpathsを追加。
