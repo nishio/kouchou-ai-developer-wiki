@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-07 21:59] filing-back | Pages公開を止めた非公開artifactリンクを修正
+
+- [[labelling-prompt-few-shot-template-confound-2026-06-03]] のrawへのリンクがbase pathを抜けてPages検査を失敗させていたため、ローカル保存先表記へ修正。
+- 検索/Explorerでの元の脱落は確認した経路では未再現。[[wiki-driven-workflow]] / [[meeting-report-draft]] に記録。
+
 ## [2026-09-07 21:46] filing-back | #905の抽出失敗修正をPR #910へ
 
 - [[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に進行中PRと検証結果を追記。core 210件・parser 19件成功。

@@ -112,7 +112,7 @@ direction 誤認の話とは別に、以下 2 つの一般則は今回の件全�
 
 優先順:
 
-1. **v2 bundle (24 件) を nishio が回答** — [raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/bundles/label_preference_ab.html](../../raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/bundles/label_preference_ab.html) を開いて answer。最低でも `label_only` 8 件、できれば全 24 件 (3 contexts × 8 clusters)
+1. **v2 bundle (24 件) を nishio が回答** — ローカル保存の `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/bundles/label_preference_ab.html`（公開サイトからはアクセス不可） を開いて answer。最低でも `label_only` 8 件、できれば全 24 件 (3 contexts × 8 clusters)
 2. **動線 A (MERGE_LABELLING_PROMPT few-shot 修正 PR)** — v2 と独立に進められる。`work/kouchou-ai/` の topic branch で `packages/analysis-core/src/analysis_core/prompts/__init__.py:91` 周辺の few-shot 例を topic-neutral + 短さ指示付きに差し替える。issue #881 (label 品質改善 tracking) の child として進めるか、独立 issue にするかは要相談
 3. **動線 D-3 (新 mode `refine_independent` 追加)** — sibling-awareness を単独 isolate するなら必要。各 label を sibling 文脈を見ず単独で refine する mode を追加し、setwise vs independent を比較する。コード追加 + 再 labelling が要るので、v2 結果を見てから判断
 4. **judge calibration** — v2 で集めた human preferences を再現する judge を作る (本来の [[label-quality-human-preference-improvement-plan-2026-06-03]] の step 4)。v2 回答数が揃ってから着手
@@ -122,3 +122,7 @@ direction 誤認の話とは別に、以下 2 つの一般則は今回の件全�
 - 2026-06-09: 大幅補正。`refine_none` と `refine_setwise` の verbose / concise direction を逆に取り違えていた誤りに気づき、framing を「verbosity confound」から「v1 は実は refinement on/off の効果を捉えていた」に修正。動線 B (setwise_refine に length 制約) は誤認に基づく提案だったので撤回、動線 C (none vs short で組み替え) も length gap が広がるだけなので棄却。代わりに動線 D (sibling-awareness 単独効果を測る、`refine_balanced` / `refine_contrast` の確認から) を追加。動線 A (MERGE_LABELLING_PROMPT few-shot 修正) は引き続き有効
 - 2026-06-04: (誤認に基づく補正、その後 2026-06-09 で撤回) refinement step を読み直し、verbosity confound の真の構造を 2 つの独立 issue の合成と整理。動線を 3 つに拡張
 - 2026-06-03: 初版。nishio による sibling_label_set 設計批判から始まり、3 文脈すべてに同じ prompt few-shot template 由来の冗長度 confound があると判明したため、現実験を仕切り直し決定として記録
+
+## Updates — 2026-09-07
+
+非公開raw artifactへの相対リンクがPagesのbase pathを抜けてリンク検査を失敗させていたため、ローカル保存先のコード表記へ修正した。artifactを公開したわけではない。

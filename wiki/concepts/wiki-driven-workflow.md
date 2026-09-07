@@ -189,3 +189,9 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 ## Updates — 2026-09-07 公開サイトのリンク生成疑い
 
 ユーザーから、`https://nishio.github.io/concepts/wiki-driven-workflow` にアクセスできず、検索結果またはExplorer由来のリンクが切れている可能性があるとの報告。正しい公開URLは `https://nishio.github.io/kouchou-ai-developer-wiki/concepts/wiki-driven-workflow` でHTTP 200を確認済み。検索 / Explorerのどちらが誤URLを生成したかは未再現・未特定であり、手入力の誤りと断定しない。次回は公開サイト上でリンク生成元とproject base pathの扱いを確認する。
+
+### 2026-09-07 公開リンクの再現確認と修正
+
+公開Chromeでトップ→Explorer concepts→wiki-driven-workflow、個別ページの検索→contributing→再検索を確認し、いずれもproject base pathを含む正しいURLとなった。元のbase path脱落はこの経路では再現しない。
+
+一方、Pagesの直近失敗ログでは [[labelling-prompt-few-shot-template-confound-2026-06-03]] の非公開raw artifactへの相対リンクがbase pathを抜け、生成リンク検査を失敗させていた。公開サイトは6月5日の内容で止まっていた。リンク検査を緩めず、対象をローカル保存先のコード表記へ修正して公開を復旧する。

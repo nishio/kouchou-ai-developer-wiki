@@ -322,3 +322,8 @@ sources:
 - analysis-core 210件、API parser 19件、変更ファイルRuff成功。標準workflowの後段未実行も確認。ラベル段階と失敗時費用集計は残件。[[issues-response-plan-2026-09-07]]より
 
 - PR #910のGitHub CIも全件成功。自動レビュー完了、未merge。
+
+### 2026-09-07 Wiki公開リンクの修正
+
+- 検索/Explorerの元のURL脱落は確認した経路では再現せず。一方、非公開raw artifactへの相対リンクがPages検査を失敗させ、公開が6月5日分で止まっていたことを確認。
+- [[labelling-prompt-few-shot-template-confound-2026-06-03]] のリンクをローカル保存先表記へ修正。[[wiki-driven-workflow]] に確認範囲と原因を記録。
