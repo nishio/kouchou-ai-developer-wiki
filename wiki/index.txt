@@ -136,6 +136,7 @@ slack-dev-kouchouai-2025-q4	source	sources/slack-dev-kouchouai-2025-q4.md	`oss_w
 slack-dev-kouchouai-2026-q1	source	sources/slack-dev-kouchouai-2026-q1.md	`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、LLM grouping 系分類の設計意図
 slack-devin-ops-and-recurring-web-updates-2026-06-30	source	sources/slack-devin-ops-and-recurring-web-updates-2026-06-30.md	2026-06-23〜06-30 の Slack で出た Devin / AI agent 運用メモ。使ってよい範囲・費用上限・繰り返し Web 更新候補は、Slack 記憶ではなく明文化された運用契約に落とす必要がある
 slack-flowchart-feedback-2026-05-30	source	sources/slack-flowchart-feedback-2026-05-30.md	2026-05-30 #2_開発_広聴ai Slack で decision flowchart 試作 (試作 A / 試作 B) に対する nishio / tokoroten の feedback。試作 A は最初の分岐が『データ量』であるべき + 『ラベル付きデータ』は jargon。試作 B はそもそも前提が違い、AI = wiki から把握できないほど platform 知識が抜けていた
+slack-issues-2026-09-07	source	sources/slack-issues-2026-09-07.md	2026-09-07確認のSlackとIssue。回答欠落、モデル選択・管理、serverless移管と戦略会議の論点
 slack-kouchouai-algorithm-dev	source	sources/slack-kouchouai-algorithm-dev.md	`oss_weekly_reporter` の `#2_開発_広聴ai_アルゴリズム開発` 抜粋（2025-04 〜 2026-03）— UMAP→k-means への批判、対立軸発見、LLM分類、可視化代替案
 slack-label-algorithm-improvement-2026-05-30	source	sources/slack-label-algorithm-improvement-2026-05-30.md	2026-05-29〜30 の Slack アルゴリズム改善ログ。ラベル欠落 vs 冗長、random sampling / 全件入力、rep args 選定、評価ユースケース分岐が議論された
 slack-local-llm-native-runtime-2026-05-31	source	sources/slack-local-llm-native-runtime-2026-05-31.md	2026-05-31 Slack で nishio と tokoroten が、API 契約不要の local LLM 実行可能性について、20B 級モデルの現実化と Chrome / Windows の native LLM support を使う方向を議論した
@@ -261,6 +262,7 @@ public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-r
 pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.md	`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
+recent-slack-issues-2026-09-07	analysis	analyses/recent-slack-issues-2026-09-07.md	最近のSlackとIssueを、処理の完全性・モデル選択の整合性・継続保守・serverless方針に分けて読む
 refactoring-status	analysis	analyses/refactoring-status.md	v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up
 remaining-bug-issues-2026-05-26	analysis	analyses/remaining-bug-issues-2026-05-26.md	2026-05-26 時点で open の `[BUG]` タイトル issue と周辺ラベルを current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で見直すと、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は上位検討 issue `#872` の参考課題として bug ラベルを外し、`#731` は stale 寄りで再観測または close 判断が必要
 remaining-issue-priority-2026-05-29	analysis	analyses/remaining-issue-priority-2026-05-29.md	2026-05-29 時点の open issue 121 件を全件メタデータ確認し、本文を古い high-priority / user-facing issue まで読み直すと、project-wide 優先は `#221` 試行錯誤負担削減と `#564` 活用事例公開であり、tactical next は進行中 PR 着地と Windows / cost / API 不安の解消である

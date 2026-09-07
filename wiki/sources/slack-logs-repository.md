@@ -109,3 +109,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 - 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
 - 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。
+
+## Updates
+
+- 2026-09-07: 最新mirrorは75日窓（6月24日〜9月7日）へ変わり、canonical rawは8月分まで存在する。上記の14日窓・2ヶ月遅延は過去観測として読む。今回の読解範囲・commit・固定snapshotは [[slack-issues-2026-09-07]] を参照。
