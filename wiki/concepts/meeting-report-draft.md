@@ -315,3 +315,8 @@ sources:
 - [[issues-response-plan-2026-09-07]] に#905〜#909 / #884の変更範囲・検証条件を整理。#905は例外・時間切れ・parserの不正応答がすべて正常0件と混ざる。
 - parserの人工入力で再現確認。既存retryはあるため、まず抽出失敗をerrorにする案。次にAzure選択の整合、最小catalog、個別モデル追加を検討する。
 - コード実装未着手。モデル提供元の仕様確認と、部分成功を許容する要件は未確認。
+
+### 2026-09-07 #905抽出失敗の修正（進行中）
+
+- [PR #910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910) / `codex/issue-905-extraction-failures`。正常0件とAPI例外・時間切れ・不正応答を分離し、errorで中断する。未merge。
+- analysis-core 210件、API parser 19件、変更ファイルRuff成功。標準workflowの後段未実行も確認。ラベル段階と失敗時費用集計は残件。[[issues-response-plan-2026-09-07]]より

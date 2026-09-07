@@ -185,3 +185,7 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 - 2026-06-02: 議事録 / Slack の情報鮮度は「いつ時点まで source を読んだか」を基準にし、source ページに freshness marker を明示する運用を追記
 - 2026-06-30: Slack raw の最新一次参照を `digitaldemocracy2030/slack-logs` の `mirror/` / `raw/` に更新し、`oss_weekly_reporter` は週次 AI report / GitHub report 補助線として位置づけ直した
 - 2026-06-30: Slack message の user id 解決は `mirror/users.json` / `state/users-YYYY-MM.json` を使うが、wiki へは発言者名より channel / 日付 / 論点 / freshness marker を優先して残す運用を追記
+
+## Updates — 2026-09-07 公開サイトのリンク生成疑い
+
+ユーザーから、`https://nishio.github.io/concepts/wiki-driven-workflow` にアクセスできず、検索結果またはExplorer由来のリンクが切れている可能性があるとの報告。正しい公開URLは `https://nishio.github.io/kouchou-ai-developer-wiki/concepts/wiki-driven-workflow` でHTTP 200を確認済み。検索 / Explorerのどちらが誤URLを生成したかは未再現・未特定であり、手入力の誤りと断定しない。次回は公開サイト上でリンク生成元とproject base pathの扱いを確認する。

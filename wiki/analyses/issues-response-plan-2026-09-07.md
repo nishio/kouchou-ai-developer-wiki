@@ -70,3 +70,11 @@ sources:
 ## Updates
 
 - 2026-09-07: current mainの静的調査とparser単体の再現確認からPR分割案を作成。全体テスト・実LLM再実行は未実施。
+
+### 2026-09-07 #905の最初の修正をPR化（進行中）
+
+ユーザーの実装・PR作成指示を受け、assignee確認後にnishioをassign。[PR #910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910)、branch `codex/issue-905-extraction-failures`、commit `5631a83`。未merge。
+
+抽出時のAPI例外・batch timeout・不正JSON / キー欠落 / 型不正を正常0件から分離し、失敗件数・回答ID・エラー種別を示してerror終了する。標準workflowとlegacyで後段未実行・部分CSV未出力を確認した。analysis-core 210件、API parser 19件、変更ファイルRuffが成功。実データLLM再実行は行っていない。
+
+#905全体はcloseせず、ラベル生成の部分失敗、部分再実行、失敗workflowの完全なtoken / 費用集計を残件とする。実行中futureの強制停止は保証しない。ローカルhookはlefthook未導入で実行されず、上記チェックを手動実施した。

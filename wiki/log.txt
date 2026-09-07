@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-07 21:46	filing-back	#905の抽出失敗修正をPR #910へ
 2026-09-07 20:49	filing-back	Issues対応案をcurrent mainと照合
 2026-09-07 20:37	filing-back	最近のSlackとIssueの読解を更新
 2026-06-30 19:39	filing-back	TTTC と広聴AIの公開 lineage source を追加

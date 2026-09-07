@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-07 21:46] filing-back | #905の抽出失敗修正をPR #910へ
+
+- [[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に進行中PRと検証結果を追記。core 210件・parser 19件成功。
+- [[wiki-driven-workflow]] に、ユーザー報告の検索/Explorerリンク生成疑いを未解決として記録。
+
 ## [2026-09-07 20:49] filing-back | Issues対応案をcurrent mainと照合
 
 - [[issues-response-plan-2026-09-07]] に#905〜#909 / #884のPR分割と検証条件を記録。
