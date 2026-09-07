@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 00:03] filing-back | #908 / #477のAzureモデル表示をPR #911へ
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] にAzureモデル欄の固定表示・無効化と進行中PRを記録。
+- 管理画面114テスト・型検査・Biome成功。Azure実APIによる生成は未実施。
+
 ## [2026-09-07 22:07] filing-back | #905以外のIssue候補を横断検討
 
 - [[other-issue-candidates-2026-09-07]] にopen128件の棚卸しと#908/#477の重複、#452のtimeout受け渡し欠落を記録。

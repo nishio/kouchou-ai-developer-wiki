@@ -332,3 +332,8 @@ sources:
 
 - [[other-issue-candidates-2026-09-07]] にopen128件からの候補を整理。#908は旧#477と同じ問題で、既存コメントもまず選択無効化を支持している。
 - #452はpluginがtimeout設定を引き継がない箇所を確認。#884 / #877は利用者向け改善、#898は追加実装より検証待ち。新規実装・assignは未実施。
+
+### 2026-09-08 00:03 #908 / #477 Azureモデル表示の修正（進行中）
+
+- [PR #911](https://github.com/digitaldemocracy2030/kouchou-ai/pull/911) / `codex/issue-908-azure-model-ui`。Azureではモデル選択を無効化し、サーバー設定の利用を明示。未merge。
+- 管理画面114テスト・型検査・Biome成功。保存済み設定とプロバイダー切替も検証。料金・カタログは別課題として維持。[[other-issue-candidates-2026-09-07]]より
