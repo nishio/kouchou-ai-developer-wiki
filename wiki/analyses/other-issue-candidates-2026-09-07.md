@@ -69,3 +69,5 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - 両Issueが未assignであることを確認し、nishioにassignして実装。[PR #911](https://github.com/digitaldemocracy2030/kouchou-ai/pull/911) / `codex/issue-908-azure-model-ui`（commit `6ddc4b9`）、未merge。
 - Azureではモデル欄を無効化して「サーバー設定を使用」と表示し、OpenAI向けモデル説明をサーバー設定の案内へ変更。保存済みモデル名を実際の利用モデルとして表示しない。既存の保存設定・API契約は維持し、カタログ・料金計算の再設計は対象外。
 - 管理画面18スイート114テスト、TypeScript、変更ファイルBiome成功。実画面でもAzureのdisabled属性とOpenAIへの切替を確認。Azure実APIでのレポート生成は未実施。
+
+- PR #911のGitHub CIはE2Eを含め全件成功。自動レビューも完了、未merge。

@@ -337,3 +337,5 @@ sources:
 
 - [PR #911](https://github.com/digitaldemocracy2030/kouchou-ai/pull/911) / `codex/issue-908-azure-model-ui`。Azureではモデル選択を無効化し、サーバー設定の利用を明示。未merge。
 - 管理画面114テスト・型検査・Biome成功。保存済み設定とプロバイダー切替も検証。料金・カタログは別課題として維持。[[other-issue-candidates-2026-09-07]]より
+
+- PR #911のGitHub CIはE2Eを含め全件成功。自動レビューも完了、未merge。
