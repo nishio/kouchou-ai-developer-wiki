@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-07 20:49] filing-back | Issues対応案をcurrent mainと照合
+
+- [[issues-response-plan-2026-09-07]] に#905〜#909 / #884のPR分割と検証条件を記録。
+- 不正JSON・項目欠落・型不正が正常な空配列と同じになることをローカル確認し、[[meeting-report-draft]] に追記。
+
 ## [2026-09-07 20:37] filing-back | 最近のSlackとIssueの読解を更新
 
 - [[slack-issues-2026-09-07]] にSlackの75日snapshotとIssue #884 / #905〜#909・open PRの観測を固定。

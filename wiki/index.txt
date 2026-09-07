@@ -211,6 +211,7 @@ issue-887-scattergl-csp-regression-2026-06-01	analysis	analyses/issue-887-scatte
 issue-898-close-readiness-2026-06-30	analysis	analyses/issue-898-close-readiness-2026-06-30.md	issue #898 aarch64 Docker / UMAP Illegal instruction は PR #899 merge 済みだが、close には Apple Silicon Docker での解消確認または確認不能時の明示判断が必要
 issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.md	2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
+issues-response-plan-2026-09-07	analysis	analyses/issues-response-plan-2026-09-07.md	#905〜#909と#884の対応案。抽出失敗を成功扱いしない最小修正を先行し、Azure選択整合・モデル管理整理・個別モデル追加へ分割する
 japan-broadlistening-use-case-map-2026-06-30	analysis	analyses/japan-broadlistening-use-case-map-2026-06-30.md	公開Web検索で確認した日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を、8/2 イベントと #564 公開事例整備へ接続する地図
 kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlistening-framing-2026-05-25.md	広聴AIを川喜田二郎の野外科学 / KJ法に接続すると、中心は要約ではなく `渾沌から公共的仮説を立ち上げる装置` になる。書籍 13.2.6 の `KJ法プロンプト` は prompt の話に留まらず product 設計原則として読み直せる
 kouchou-ai-docs-entry-restructure-2026-06-03	analysis	analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md	kouchou-ai 本体 docs の入口を「セットアップ」起点から「デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐」という spine に組み替える提案。`getting-started/` というネーミング自体がバイアスを産んでいたという指摘も含む

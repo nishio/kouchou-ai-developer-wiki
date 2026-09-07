@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-07 20:49	filing-back	Issues対応案をcurrent mainと照合
 2026-09-07 20:37	filing-back	最近のSlackとIssueの読解を更新
 2026-06-30 19:39	filing-back	TTTC と広聴AIの公開 lineage source を追加
 2026-06-30 19:30	filing-back	high priority issue の label query footgun を固定
