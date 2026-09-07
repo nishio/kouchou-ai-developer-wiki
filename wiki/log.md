@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 04:11] filing-back | #905の残件を#915へ分離
+
+- [[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に#905のcloseと#915の作成を記録。
+- 実API検証#912 / #913に必要な認証情報の読み込み先を確認中。
+
 ## [2026-09-08 02:36] filing-back | CI成功済みのPR #910 / #911 / #914をmerge
 
 - ユーザー指示で3件をmainへmergeし、[[issues-response-plan-2026-09-07]] / [[meeting-report-draft]] に反映。

@@ -105,3 +105,9 @@ sources:
 - [#911](https://github.com/digitaldemocracy2030/kouchou-ai/pull/911)（`6105ff0`）→ [#910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910)（`b5bfee5`）→ [#914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914)（`70c14c2`）の順にmerge。GitHubのMERGED状態とlocal mainの更新を確認。
 - #906 / #907 / #908 / #909はclosed。#905はラベル段階などの残件があるためopen、#912 / #913の実API検証もopen。過去の未merge表記は当時の状態。
 - #914の自動レビュー指摘は現コードと照合。Azureのモデル値はカタログ取得後に設定され、価格確認日は実際のJST日付。テストの待機時間余裕とdummyの追加metadataは非blockingの改善案として扱った。
+
+## Updates — 2026-09-08 04:11 #905の残件を#915へ分離
+
+- ユーザー指示で [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915) を作成。ラベル生成の部分失敗検知・正常完了防止・失敗時集計を移し、#905は抽出段階の修正完了としてclosed。
+- 元の49回答欠落の原因特定は未完了と#915に明記。警告付き部分完了・失敗分再実行は必須条件に含めない。
+- #912 / #913は実API試験の実行可否を確認中。現在のプロセスにOpenAI/Gemini用認証情報がなく、確認した作業設定でも実API用の設定を発見できていない。ユーザーへ読み込み先を確認し、秘密値のチャット投稿は求めていない。
