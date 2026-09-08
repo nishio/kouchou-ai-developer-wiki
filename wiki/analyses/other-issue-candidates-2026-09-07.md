@@ -133,3 +133,17 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - 小さく進める候補は [#878](https://github.com/digitaldemocracy2030/kouchou-ai/issues/878)。既存 `docs/development/ai-assistants.md` はskillsセットアップ中心。CONTRIBUTINGから着手前の担当確認、コード・テストの入口、PR作成までの読む順番を集約する。両repoに関係する変更では相互PRと対応テストを記録する導線も検討する。
 - 次点は [#473](https://github.com/digitaldemocracy2030/kouchou-ai/issues/473) のprovider別環境確認。#884の作成前確認に残る選択接続先の検証と関係するため、進行中PR #922との重複を整理してから着手する。実モデルの動作検証 #912 / #913は人間担当のまま。
 - [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の責任の所在は読み方説明とは別の判断を含むため、#696に混ぜて完了扱いにしない。候補4件はいずれも未assign。既存PR #918〜#920 / #922 / #923とserverless #22 / #23はopenを確認した。
+
+
+## Updates — 2026-09-08 22:10 #696 / #878 / #473を順次実装
+
+ユーザーの「順次やって」を受け、各Issueの未assignを再確認してnishioへassignし、別worktreeで実装した。いずれも未merge。
+
+- [本体 PR #924](https://github.com/digitaldemocracy2030/kouchou-ai/pull/924)（`codex/issue-696-reading-guide`, `779382a`） / [serverless PR #24](https://github.com/tokoroten/kouchou-ai-serverless/pull/24)（`codex/report-reading-guide`, `a586369`）: #696の読み方ガイド。件数は社会全体の支持率を表さないと常時表示し、収集の偏り・人数との違い・図の解釈・元コメント照合・追加調査は詳細を開いて読む。本体viewer・CLIの補助HTML、serverlessのアプリ内・単一HTMLに同じ内容を適用。
+- #696の検証は本体viewer94テスト・CLI HTML14テスト、serverless196テスト・lint・build成功。両版の実ブラウザ表示・開閉と、serverlessのビルド済みテンプレートにサンプルを注入したHTMLで確認。本体の全体tscには未変更mainでも再現する既存テストfixtureの型不整合4件がある。PR #924のGitHub Actionsは全成功。
+- [PR #925](https://github.com/digitaldemocracy2030/kouchou-ai/pull/925)（`codex/issue-878-contributor-guide`, `bc62696`）: #878。読む順番・タスク別skill・担当確認からPRまで・対人操作の境界を既存ai-assistantsページへ集約。CONTRIBUTING・CLAUDE・MkDocs導線とコピー時のリンク変換を更新。Codexの最小構成はファイルパス指定、任意の登録先は公式案内に基づく `.agents/skills`。厳密docs buildとGitHub Actions成功。
+- [PR #926](https://github.com/digitaldemocracy2030/kouchou-ai/pull/926)（`codex/issue-473-provider-check`, 固有commit `2319967`）: #473。PR #922の後続として、選択provider・モデル・ローカル接続先を検証APIへ渡す。Azureは既存のサーバー設定済みデプロイを使う。HTTP失敗・successなし・空応答は成功扱いにせず、成功範囲はチャット接続に限定。SDK呼出timeout30秒はリトライ込みの全体上限とは区別。
+- #473は管理画面136テスト・型検査・Biome、API関連19テスト・Ruff、docs厳密build成功。事前確認1件→作成E2E14件成功（既存skip1件）、1280px / 375pxの確認操作を含む。LocalLLMの設定を使うダミーAPI確認を実ブラウザで確認。serverlessには選択endpoint/modelの応答テストが既にあり、今回は本体の範囲を揃えた。
+- #926のmain向けPRは#922の差分を含むため、#922→#926の順でmergeする想定をPRに記載。新たなmerge・reviewer依頼はしていない。#912 / #913は人間の実モデル確認のまま、実LLM API未使用。
+
+- 22:10時点: serverless PR #24のActionsは外部forkの実行承認待ち（action_required）で未実行。本体PR #926は単体・API・docs等のCI成功、E2Eとbuildは実行中。

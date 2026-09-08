@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 22:10] filing-back | #696・#878・#473を順次実装してPR作成
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体PR #924〜#926とserverless #24を記録。未merge。
+- 読み方を両版とHTMLへ揃え、開発導線を集約し、選択モデル・接続先の検証を修正。実モデル確認は人間担当を維持する。
+
 ## [2026-09-08 18:30] filing-back | 次のIssue候補を読み方説明と開発導線に絞る
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に、未assignの #696 / #878を優先候補として記録。未着手。
