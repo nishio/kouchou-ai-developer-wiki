@@ -64,3 +64,8 @@ sources:
 ## Updates
 
 - 2026-05-18: `seed` 固定の経緯を「再現性要求の発生 → 限界認識 → 並列性との再評価」という流れで整理
+
+
+## Updates — 2026-09-09 01:00 current mainと旧Issueの整合
+
+[[issue-backlog-audit-2026-09-09]]より、current main `2dd5adc` ではUMAP/KMeansに固定random_stateがない。commit `8fa8ee7` の意図的変更と照合し、#513の「全箇所seed設定済み」という古いコメントを現在の完了根拠にしない。#809の並列性と、保存済み入力を使う比較時の再現性選択を別に追跡する。

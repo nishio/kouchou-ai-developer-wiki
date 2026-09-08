@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 01:00] filing-back | 過去Issueの解決・重複・未完了を現行実装で棚卸し
+
+- [[issue-backlog-audit-2026-09-09]]に根拠付きのclose8件・更新18件と次の重点を記録。元の本文・議論は保持。
+- #513の古いseed設定の前提を訂正。導入経路・費用時間・元の声への参照を次の利用者の行動に接続した。本体#927〜#933はCI成功・未merge。
+
 ## [2026-09-09 00:36] filing-back | 選定した10件を本体6PRとserverless対応PRへ実装
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体#928〜#933とserverless#26、検証範囲を記録。未merge。
