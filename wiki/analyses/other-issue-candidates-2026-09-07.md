@@ -182,3 +182,23 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - 本体#927の単体testとdocs buildはCI成功、残るbuild / CodeQLは実行中。serverless#25は外部forkの実行承認待ち（action_required）でActions未実行。両PR未merge、承認依頼はしていない。
 
 - 2026-09-08 23:53: 本体PR #927のbuildも成功し、GitHub Actions全成功。CodeRabbitはレビュー中。serverless #25は引き続き外部forkのActions承認待ち。両PR未merge。
+
+
+## Updates — 2026-09-09 00:01 次に解決する10件の選定
+
+GitHub liveのopen Issue / PRと候補の本文・コメント・担当を確認。本体mainはfetch / pull後も `2dd5adc`。以下は選定案であり、assign・実装着手はしていない。10件とも観測時点で未assign。UI不具合の現行版ブラウザ再現は着手時に行う。
+
+1. [#318](https://github.com/digitaldemocracy2030/kouchou-ai/issues/318) 抽出失敗の診断: 正常な0件・形式不正・通信失敗を区別し、回答IDから入力を確認できる診断出力を整備。原文を公開ログへ自動転記しない。
+2. [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows導入ガイド: キー要件と標準サポート範囲、起動前後の確認、失敗時の分岐を整理。serverlessを含む利用形態の選択へ接続する。
+3. [#478](https://github.com/digitaldemocracy2030/kouchou-ai/issues/478) 日本語の禁則処理: 固定文字数の改行を見直し、句読点・括弧・Unicode文字を両viewerで確認する。
+4. [#283](https://github.com/digitaldemocracy2030/kouchou-ai/issues/283) 全画面で要約が終了ボタンに隠れる問題: 狭い画面で再現条件を固定し、要約と操作領域の重なりを防ぐ。
+5. [#253](https://github.com/digitaldemocracy2030/kouchou-ai/issues/253) 静的出力を直接開いた際の案内: file URLで読み込み続ける状態を解消し、Web静的出力と単一HTMLを区別して開き方を案内する。
+6. [#838](https://github.com/digitaldemocracy2030/kouchou-ai/issues/838) 完成artifactの検査: 既存検査の不足を確認し、JSONの参照整合性等の保証と検査の配置・失敗時の扱いを決める。必須ゲート追加を前提にしない。
+7. [#872](https://github.com/digitaldemocracy2030/kouchou-ai/issues/872) スマホでの閲覧方針: 一覧・階層を中心とした表示案と散布図への切替を試作し、初期表示の判断材料を揃える。#121を関連症状として扱う。
+8. [#566](https://github.com/digitaldemocracy2030/kouchou-ai/issues/566) 状態別UIの確認環境: 空・通常・エラー・属性なし・絞り込み0件を既存fixtureで切り替えて確認できるようにする。Storybook導入は手段の比較後に判断。
+9. [#367](https://github.com/digitaldemocracy2030/kouchou-ai/issues/367) 入力特性に合う抽出プロンプトのガイド: 失敗例と入力・出力の対応を集め、短文・意見ではない入力等の調整例と評価手順を文書化する。
+10. [#690](https://github.com/digitaldemocracy2030/kouchou-ai/issues/690) static-site-builderの開発実行系: 残存するts-node-devの置換を検討し、ESM環境で起動・再読込・終了を確認する。本体の保守として範囲を限定。
+
+- #528はPR #927 / serverless #25で実装済みのため除外。#912 / #913はユーザー指定の人間確認、#916は他担当とdraft PR #917があるため除外。
+- #294 / #266は重複するラベル問題。既存のラベル非表示機能で緊急度が下がったというIssueコメントを踏まえ今回は下位。#514はcurrent extractionのresults[i]が入力順を保持しており、新規修正より回帰テストと完了判定の候補。#391 / #305も直近mergeとの残要件整理を先にする。
+- #838 / #872は設計判断を含む。#872のスマホ既定表示を決定済みとせず、#283の全画面の重なり修正とは別の完了条件にする。serverlessとの歩調は同じ入力・表示契約・確認例で揃え、#690の本体専用依存をserverlessへ持ち込まない。

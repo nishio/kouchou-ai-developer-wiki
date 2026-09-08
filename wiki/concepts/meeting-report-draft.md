@@ -444,3 +444,9 @@ sources:
 - 両PR未merge。本体CIは一部実行中、serverlessは外部forkのActions承認待ち。次はCI結果とレビューを確認する。
 
 - 2026-09-08 23:53: 本体PR #927のbuildも成功し、GitHub Actions全成功。CodeRabbitはレビュー中。serverless #25は引き続き外部forkのActions承認待ち。両PR未merge。
+
+
+## Updates — 2026-09-09 00:01 次の10件を選定
+
+- [[other-issue-candidates-2026-09-07]]より、優先順を #318 → #877 → #478 → #283 → #253 → #838 → #872 → #566 → #367 → #690 と提案。未assign・未着手。
+- 診断・導入・読みやすさ・成果物の整合性を改善し、両版で共通の確認例を使う。スマホの既定表示など判断を含むものは試作・比較から始める。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 00:01] filing-back | 次に解決すべきIssue 10件を選定
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に優先順と最初の完了範囲を記録。未着手。
+- 実装済み・他担当・人間確認・重複を除き、両版の診断と閲覧の改善を中心に選んだ。
+
 ## [2026-09-08 23:51] filing-back | #528の階層図と説明を両版で連動させてPR作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体#927・serverless#25と検証結果を記録。未merge。
