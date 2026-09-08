@@ -147,3 +147,5 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - #926のmain向けPRは#922の差分を含むため、#922→#926の順でmergeする想定をPRに記載。新たなmerge・reviewer依頼はしていない。#912 / #913は人間の実モデル確認のまま、実LLM API未使用。
 
 - 22:10時点: serverless PR #24のActionsは外部forkの実行承認待ち（action_required）で未実行。本体PR #926は単体・API・docs等のCI成功、E2Eとbuildは実行中。
+
+- 2026-09-08 22:13: PR #926のE2Eとbuildも成功し、本体PR #924 / #925 / #926のGitHub Actionsは全成功。CodeRabbitは#924 / #926でrate limitのため未レビュー、#925はレビュー完了。serverless #24は引き続き外部forkの実行承認待ち。全PR未merge。
