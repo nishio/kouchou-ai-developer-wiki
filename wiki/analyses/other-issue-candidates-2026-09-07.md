@@ -202,3 +202,26 @@ GitHub liveのopen Issue / PRと候補の本文・コメント・担当を確認
 - #528はPR #927 / serverless #25で実装済みのため除外。#912 / #913はユーザー指定の人間確認、#916は他担当とdraft PR #917があるため除外。
 - #294 / #266は重複するラベル問題。既存のラベル非表示機能で緊急度が下がったというIssueコメントを踏まえ今回は下位。#514はcurrent extractionのresults[i]が入力順を保持しており、新規修正より回帰テストと完了判定の候補。#391 / #305も直近mergeとの残要件整理を先にする。
 - #838 / #872は設計判断を含む。#872のスマホ既定表示を決定済みとせず、#283の全画面の重なり修正とは別の完了条件にする。serverlessとの歩調は同じ入力・表示契約・確認例で揃え、#690の本体専用依存をserverlessへ持ち込まない。
+
+
+## Updates — 2026-09-09 00:36 選定した10件を実装・PR化（進行中）
+
+ユーザーの「go」を受け、10件の未assignを確認してnishioへassignした。本体main `2dd5adc`、serverless main `4579cae` を基点にtopic worktreeで実装。以下はいずれも未merge。
+
+| Issue | 実装した範囲 | PR |
+| --- | --- | --- |
+| #318 | 抽出失敗と正常0件を区別し、回答ID・原文・エラー型を公開outputs外の診断JSONLへ保存 | [#928](https://github.com/digitaldemocracy2030/kouchou-ai/pull/928) |
+| #877 | Windows導入の適用環境・キー設定・起動前後の確認・失敗時の分岐を整理 | [#929](https://github.com/digitaldemocracy2030/kouchou-ai/pull/929) |
+| #367 | 入力特性ごとのプロンプト比較、失敗例の記録、単一要因の評価手順を文書化。例は動作未検証と明示 | [#930](https://github.com/digitaldemocracy2030/kouchou-ai/pull/930) |
+| #838 | 完成JSONのID・親参照・循環・階層パス・有限数値を任意の読み取り専用CLIで検査 | [#931](https://github.com/digitaldemocracy2030/kouchou-ai/pull/931) |
+| #690 | ts-node-devをtsxに置換し、存在しないserver.tsの参照をindex.tsへ修正 | [#932](https://github.com/digitaldemocracy2030/kouchou-ai/pull/932) |
+| #478 / #283 / #253 / #872 / #566 | 日本語の折り返し・全画面の重なり・file://の案内・スマホ初期表示・開発用状態カタログを共通の回帰試験で検証 | [#933](https://github.com/digitaldemocracy2030/kouchou-ai/pull/933) |
+
+- serverless [PR #26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)（`codex/next10-viewer-diagnostics`, `4376da6`）では、抽出診断・日本語折り返し・600px以下の階層リスト初期表示・共通12意見の状態カタログを揃えた。不正JSONを正常0件にしていた挙動も失敗として中断し、成功キャッシュと区別する。原文付き診断はブラウザ内に保持し公開レポートへ追加しない。
+- #872の実装判断: 600px以下はリスト、明示された本体visualizationConfigを優先し、リサイズで利用者の選択を上書きしない。serverlessには現状visualizationConfigによる初期タブ指定がないため、この差を文書化した。静的配布形式も、本体はHTTP配信、serverless単一HTMLはfile://で開けるという差を保つ。
+- #838は分析完了条件に新しいゲートを加えない任意診断。状態ファイル・ラベル品質・個人情報・全表示機能の検証までは含めない。#566はStorybookを追加せず既存開発サーバーで実コンポーネントを状態別に再現する。
+- 本体: 抽出診断9テスト、成果物検査12テスト、viewer102テスト、ブラウザ回帰4件、Next本番buildとdocs厳密build成功。全画面領域分離・390px初期表示と明示設定・file://案内を確認。本番で状態カタログはHTTP 404。static-site-builderはbuild・開発起動・変更後の再起動とhealthcheck成功。
+- serverless: 203テスト・lint・TypeScript・両build成功。ブラウザで状態切替、スマホ、リサイズ、ビルド済み単一HTMLのfile://表示を確認。本番bundleにカタログを含まない。実LLMとWindows実機の追加確認は行っていない。
+- GitHub CI: #928〜#932は成功。#933の追加回帰試験を含むClient Testsは成功、汎用E2E等は実行中。serverless #26は外部forkのActions状態を確認中。人への承認催促はしていない。
+
+- 2026-09-09 00:39 追加確認: serverless #26で旧版の空キャッシュを再検証する修正（`c53f77b`）を追加し、204テスト・型検査成功。Actionsは外部forkの承認待ち。#933は後続commit `64487c2` で、#927と競合しない位置にリスト時の説明抑止を移した。git merge-treeで両PRの自動統合成功を確認し、実際のmergeは行っていない。serverless #25 / #26も同様に自動統合可能。#933の先行commitはbuild・追加回帰試験を含むClient Tests成功、最新commitのCIと汎用E2Eは実行中。

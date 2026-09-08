@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 00:36] filing-back | 選定した10件を本体6PRとserverless対応PRへ実装
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体#928〜#933とserverless#26、検証範囲を記録。未merge。
+- 抽出診断・導入・JSON検査・開発起動・閲覧を改善。同じサンプルとスマホ表示方針で両版を揃え、公開出力と診断原文を分離した。
+
 ## [2026-09-09 00:01] filing-back | 次に解決すべきIssue 10件を選定
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に優先順と最初の完了範囲を記録。未着手。
