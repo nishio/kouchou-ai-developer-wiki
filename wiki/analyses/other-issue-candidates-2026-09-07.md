@@ -121,3 +121,5 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - 同一判定を両repoで独立実装した。今後は相互PRと同じ入力例を参照して差分を確認する。エラー位置は列数不一致についてヘッダーを除くデータ件数で表示し、引用符を含むCSVの物理行番号とは混同しない。
 
 - 2026-09-08 18:22: 本体#923の管理画面test/build、docs build、CodeQLが成功。E2Eは実行中。serverless #23のActionsは外部forkの実行承認待ち（action_required）で未実行、ローカル検証とは区別する。
+
+- 2026-09-08 18:24: 本体#923のE2Eも成功し、GitHub Actionsは全成功。CodeRabbitレビューは進行中。serverless #23は外部forkの実行承認待ち、両PR未merge。

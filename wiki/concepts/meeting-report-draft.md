@@ -405,3 +405,5 @@ sources:
 - 両PRは未merge。本体#97はmergeでcloseする構成。CIの結果と両版の検証条件の差分を追う。
 
 - serverless #23のGitHub Actionsは外部fork実行の承認待ち。ローカルの全テスト・lint・buildは成功済み。
+
+- 2026-09-08 18:24: 本体#923のE2Eを含むGitHub Actions全成功を確認。CodeRabbitレビュー進行中、未merge。
