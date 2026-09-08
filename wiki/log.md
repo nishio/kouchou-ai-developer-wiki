@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 02:31] filing-back | 残るdraft2件の目的と確認範囲を再読
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に#917のFlex対応と#891のWindows配布prototypeを整理。両方draftでCodeQL成功を通常テスト成功と区別した。
+- [[github-pr-891-live-2026-06-30]]へ同一HEADの再観測を追記。PR本文のadmin未同梱記述は古く、README上の残件とmainとの競合を確認した。
+
 ## [2026-09-09 02:21] filing-back | CI通過後の本体7 PRをmergeし日報を更新
 
 - [[other-issue-candidates-2026-09-07]] / [[daily-report-2026-09-09]] / [[meeting-report-draft]]へ#927〜#933のmergeを反映。#930 / #933は文書メニューの競合を解消し、最新HEADのCI成功後にmergeした。

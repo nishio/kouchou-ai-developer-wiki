@@ -482,3 +482,8 @@ sources:
 - [[other-issue-candidates-2026-09-07]] / [[daily-report-2026-09-09]]より、ユーザー指示で#927〜#933をmerge。#930 / #933の文書メニュー競合を解消し、最新HEADのCI成功を確認した。mainは `775e0f5`。
 - 統合後のviewer109テスト、抽出診断・成果物検査21テスト、厳密docs buildが成功。#933の総合E2E・buildもCI成功、最終mainと検証した内容の一致を確認した。
 - 対応11 Issueがclosed、本体open PRはdraft #917 / #891のみ。Serverlessは権限不足とActions承認待ちで未merge。#912 / #913は引き続き人間による確認を待つ。
+
+## Updates — 2026-09-09 02:31 残るdraftの内容
+
+- [[other-issue-candidates-2026-09-07]]より、#917はtokoroten / CopilotのOpenAI Flex対応、#891はtokorotenのWindowsローカル配布prototype。両方draftで、通常テスト・buildの成功確認は揃っていない。
+- #891はmainと競合し、PR本文も一部古い。HEADのREADMEではadmin同梱済みだが作成フロー全体・インストーラーが残る。今回は再確認のみ。

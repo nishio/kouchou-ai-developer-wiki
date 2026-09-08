@@ -63,3 +63,4 @@ PR head の README は、known limitations として admin の publish static si
 ## Updates
 
 - 2026-06-30: 初回作成。PR #891 の live state、head ref、packaging files、standalone viewer/admin design、PoC findings、known limitations、main との stale 差分を固定した。
+- 2026-09-09 02:31 JST: GitHubのPR本文・変更ファイル・チェック・merge状態と、head `2a27d572bb270ba7d5933b8a707ab77645c64ad8` の `packaging/windows-standalone/README.md` を再取得。headは同一、open / draft / CONFLICTING。本文の「adminはまだ含めていない」は引き続きREADMEのadmin同梱記述と不一致。READMEはレポート作成全体の未検証・インストーラー未実装を明記する。成功チェックはCodeQLで、CodeRabbitはdraftによるreview skip。新しいbuild・Windows実機・実モデル試験は実施していない。

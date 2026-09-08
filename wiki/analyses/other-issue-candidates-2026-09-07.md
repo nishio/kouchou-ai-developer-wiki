@@ -241,3 +241,8 @@ GitHub liveのopen Issue / PRと候補の本文・コメント・担当を確認
 - 統合後の内容でviewer全109テスト、抽出診断・成果物検査21テスト、両競合解消後の厳密docs buildが成功。最終mainのtreeがローカルで検証した#933のtreeと一致することを確認。実モデル・Windows実機の追加確認はしていない。
 - 対応する#528 / #318 / #877 / #367 / #838 / #690 / #478 / #283 / #253 / #872 / #566の11 Issueがclosed。open Issueは100件、本体のopen PRはdraft #917 / #891のみ。確認結果は `raw/merge-2026-09-09/verified-after.json` に保存。
 - Serverlessの#22〜#26は外部forkのActions承認待ちで、作業アカウントはread権限のみ。既存#16 / #17はbuild成功だがmerge権限なし、#21はbuild失敗。今回Serverlessのmergeや承認依頼は行っていない。#912 / #913の実モデル確認も人間担当のまま。
+
+## Updates — 2026-09-09 02:31 残るdraft #917 / #891の内容を再確認
+
+- [#917](https://github.com/digitaldemocracy2030/kouchou-ai/pull/917) / #916はtokoroten・Copilot担当のOpenAI Flex対応。PR本文はGPT-5/6系にFlexを自動指定し、明示的に無効化できる案。共通LLM helperとAPIテストの2ファイルを変更している。head `c2bfee9`、draft・mergeable、表示された成功チェックはCodeQLのみ。提供元の最新対応範囲や価格、実モデル動作は今回確認しておらず、通常テスト・buildが成功した完成PRとしては扱わない。
+- [#891](https://github.com/digitaldemocracy2030/kouchou-ai/pull/891) はtokoroten作のWindowsローカル配布prototype。Python・API・静的viewer/adminを同梱する。head `2a27d57` は6月1日から変わらずdraft・mainと競合。PR本文の「admin未同梱」は古く、同HEADのREADMEにはadmin同梱済み、作成フロー全体は未検証、インストーラー未実装とある。詳細は [[github-pr-891-live-2026-06-30]]。今回は説明のための読解で、両PRの変更・draft解除・mergeはしていない。
