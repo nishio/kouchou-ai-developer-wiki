@@ -80,3 +80,11 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - [#639](https://github.com/digitaldemocracy2030/kouchou-ai/issues/639) はCSV名（拡張子除去）で空のタイトル・概要だけを補完する、小さく完了条件の明確なUI改善。既存入力を保持するテストを付けられる。
 - [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は入力3経路の送信前確認の共通化。catalogのmain入りでprovider/model表示を共有しやすくなったが、上の候補より変更範囲は大きい。
 - 新規#916はtokoroten / Copilotが担当し、[PR #917](https://github.com/digitaldemocracy2030/kouchou-ai/pull/917)でOpenAI Flex対応が進行中。LLM共通helperを変更するため、#915 / #452では差分の重なりを確認し、独立して同じFlex対応を始めない。
+
+## Updates — 2026-09-08 16:40 #639 / #915を実装してPR作成
+
+- ユーザーの「both go」を受け、両Issueの未assignを再確認してnishioへassign。main `70c14c2` を基点に別worktreeで実装した。
+- [PR #918](https://github.com/digitaldemocracy2030/kouchou-ai/pull/918) / `codex/issue-639-csv-title`（`7874125`、未merge）：CSV選択時に拡張子を除いた名前で空のタイトル・概要だけを補完。各項目の既存入力、レポートID、削除・再選択時の入力を保持。管理画面121テスト、型検査、Biome成功。
+- [PR #919](https://github.com/digitaldemocracy2030/kouchou-ai/pull/919) / `codex/issue-915-label-failures`（`1d4afa1`、未merge）：初期・統合ラベルのエラー文字列への置換を廃止し、失敗件数・クラスタID・種別を報告して後続処理を停止。並列usage集計を排他制御し、エラー時はstatusの費用をnull、token_usage_completeをfalseにする。管理画面では集計不完全と表示。
+- #915はanalysis-core全体231テスト成功後、追加2ケースを含むラベル回帰22テスト成功。管理画面117テスト、型検査、Ruff/Biome成功。旧経路とworkflow経路の停止・出力非生成を確認。実APIは呼び出していない。
+- workflowの失敗工程のusageは成功工程の合計に含まれない。取得できない課金額を補完せず不完全と明示する。概要工程はAPI例外を既に伝播するため、既存テキスト応答互換は変更せず、#917のFlex対応とも差分を分離。GitHub CIは確認中。#912 / #913の実機検証は人間担当を維持。

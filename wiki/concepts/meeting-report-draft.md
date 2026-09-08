@@ -366,3 +366,9 @@ sources:
 
 - #912 / #913の実API検証は人間が実施する方針に確定。担当者は未定。Codexへの認証情報共有は不要。
 - 人間の検証結果が記録されるまで「動作未確認」の表示を維持する。[[issues-response-plan-2026-09-07]]より
+
+### 2026-09-08 16:40 — #639 / #915の実装（進行中）
+
+- [[other-issue-candidates-2026-09-07]]より。[PR #918](https://github.com/digitaldemocracy2030/kouchou-ai/pull/918)（`codex/issue-639-csv-title`）でCSV名から空のタイトル・概要を補完。既存入力は保持し、管理画面121テスト成功。
+- [PR #919](https://github.com/digitaldemocracy2030/kouchou-ai/pull/919)（`codex/issue-915-label-failures`）で初期・統合ラベル失敗時の後続停止と失敗クラスタ表示を実装。費用は集計不完全として表示。core全体231テストと追加ケースを含む回帰22テスト、管理画面117テスト成功。
+- 両PRとも未merge、CIを確認中。実API検証#912 / #913は引き続き人間が行う。

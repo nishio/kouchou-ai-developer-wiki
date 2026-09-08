@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 16:40] filing-back | #639と#915の実装PRを作成
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] にPR #918 / #919の変更とテスト結果を記録。
+- CSV名からの空欄補完、ラベル生成失敗時の後続停止・集計不完全表示を実装。両PRはCI確認中、未merge。
+
 ## [2026-09-08 12:39] filing-back | merge後の次Issue候補を再確認
 
 - [[other-issue-candidates-2026-09-07]] に#915 / #452 / #639 / #884の優先候補を追記。
