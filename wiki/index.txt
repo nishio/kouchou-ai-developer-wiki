@@ -22,7 +22,7 @@ plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を p
 testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
 thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
 usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理
-wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	developer-wiki repo で文脈整理し、`work/kouchou-ai/` で実装確認し、最終的に `digitaldemocracy2030/kouchou-ai` へ PR を出す二層運用
+wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	Wikiと本体の二層運用。現行実装によるIssue完了判定、検証範囲の区別、Serverlessとの共通確認例を作業へ還流する
 anno	entity	entities/anno.md	安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者
 broad-listening-book	entity	entities/broad-listening-book.md	DD2030 書籍「選挙を変えたブロードリスニング」（インプレス、CC BY-NC 4.0）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う
 dd2030	entity	entities/dd2030.md	デジタル民主主義2030 — kouchou-ai の親プロジェクト／組織

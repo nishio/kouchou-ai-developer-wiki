@@ -164,6 +164,8 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す。`txt` export はリンク URL を保持しないことがあるので、根拠に URL 自体が必要な時は `raw/meeting_minutes.html` を補助線として使う
 - Slack の発言を扱う時は、まず `digitaldemocracy2030/slack-logs` 由来の `mirror/` / `raw/` を一次参照とする。`oss_weekly_reporter` は週次 AI 要約や GitHub activity と合わせて見る時の補助線として扱う。Slack connector の直読みは repository snapshot で足りない時の補助確認に留める
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
+- Issueの完了・統合判断は、合意された要件を現行mainと必要な動作確認に照合して行う。古い完了コメント・類似機能・未merge PRのCI成功だけで完了としない。満たした範囲と残件を記録し、重複を閉じる時は残要件と統合先を存続Issueへ引き継ぐ（判断例: `wiki/analyses/issue-backlog-audit-2026-09-09.md`）。
+- Issue本文の一括更新は元の議論を保持し、日付付きで現状・残要件を追記する。書込直前に取得時の更新時刻と照合し、変更があれば再読解する。反映後は本文・状態を再取得して操作結果を確認する。
 - Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守対象として定期的に確認する。ただし公開 wiki には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す
 - Azure デモ環境などデプロイに関する詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は Google Drive **「広聴AI-Azureデモ環境」** で管理する。公開 wiki では、設計判断・公開可能な課題・対応 issue / PR の粒度に留める
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない

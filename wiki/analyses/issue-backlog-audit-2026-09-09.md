@@ -64,3 +64,4 @@ sources:
 ## Updates
 
 - 2026-09-09 01:01: GitHubへ反映後に再取得し、8件のclosedと18件の本文更新を照合した。open Issueは119→111件。実際の操作結果とcloseコメントURLは `raw/issue-audit-2026-09-09/results.json` に保存。
+- 2026-09-09 01:44: ユーザーのfile back指示を受け、完了根拠・検証範囲・両版の確認例を [[wiki-driven-workflow]] へ整理し、完了判定と本文更新の手順を `CLAUDE.md` へ反映した。上位目的との接続は [[serverless-product-direction-2026-09-08]] へ追記。今回は既存記録からの知見整理であり、GitHub状態の再観測や追加のIssue操作はしていない。

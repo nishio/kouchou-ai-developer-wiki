@@ -1,6 +1,6 @@
 ---
 type: concept
-summary: "developer-wiki repo で文脈整理し、`work/kouchou-ai/` で実装確認し、最終的に `digitaldemocracy2030/kouchou-ai` へ PR を出す二層運用"
+summary: "Wikiと本体の二層運用。現行実装によるIssue完了判定、検証範囲の区別、Serverlessとの共通確認例を作業へ還流する"
 sources:
   - source-code.md
   - github-dev-docs.md
@@ -10,6 +10,8 @@ sources:
   - nishio-source-freshness-criterion-2026-06-02.md
   - slack-codex-goal-speed-control-2026-06-30.md
   - slack-devin-ops-and-recurring-web-updates-2026-06-30.md
+  - issue-backlog-audit-2026-09-09.md
+  - other-issue-candidates-2026-09-07.md
 ---
 
 ## これは何か
@@ -195,3 +197,13 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 公開Chromeでトップ→Explorer concepts→wiki-driven-workflow、個別ページの検索→contributing→再検索を確認し、いずれもproject base pathを含む正しいURLとなった。元のbase path脱落はこの経路では再現しない。
 
 一方、Pagesの直近失敗ログでは [[labelling-prompt-few-shot-template-confound-2026-06-03]] の非公開raw artifactへの相対リンクがbase pathを抜け、生成リンク検査を失敗させていた。公開サイトは6月5日の内容で止まっていた。リンク検査を緩めず、対象をローカル保存先のコード表記へ修正して公開を復旧する。
+
+## Updates — 2026-09-09 01:44 実装とIssue整理を次の判断へ還流する
+
+[[other-issue-candidates-2026-09-07]] の両版への実装と [[issue-backlog-audit-2026-09-09]] の棚卸しから、次回にも使う判断を三点にまとめる。作業件数・各PR・テスト結果は各記録の観測時点に基づき、このfile backではGitHub・コード・実モデルの再観測はしていない。
+
+1. **Issueの完了は、合意した利用者の行動と現行mainで判断する。** 古いコメントや類似機能の存在は調査の入口にする。#513の「seed設定済み」は、その後の意図的な固定除去で現在の根拠ではなくなっていた。#79 / #11は作成前確認画面があっても見積もりが「目安なし」であり、#56は抽出意見を読めても元コメントへ戻る要件が残る。close時は満たした範囲・根拠commit / PR・確認方法を残す。重複は未解決の要件を存続Issueへ移し、統合先を示して閉じる。
+2. **確認できた性質を、より広い保証へ膨らませない。** #514では並列処理を意図的に逆順で完了させ、出力が入力順に戻ることを確認した。この試験はLLM出力やクラスタの再現性を保証しない。同様に、チャット接続成功、単体試験成功、ブラウザでの失敗後の復帰、実モデル確認、CI成功、main反映をそれぞれ区別する。#912 / #913の実モデル確認はユーザー指定の人間担当として残す。
+3. **Serverlessとは同じ入力・期待する振る舞い・復帰操作を照合する。** #528では両版の図と説明について、同じ属性条件で件数・割合・移動・全体への復帰を確認した。#566の合成12意見の状態カタログも両版の空・通常・エラー等を比較する材料になる。一方、本体の静的出力はHTTP配信、Serverlessの単一HTMLは直接開けるという配布上の差は保持する。共通化は利用者の仕事を成立させるために行い、本流化やrepo移管の決定を前提にしない。
+
+Issueをまとめて更新する際は、読み取った本文・更新時刻と操作案をlocal snapshotに残し、書込直前に変更の有無を照合する。変更されていれば再読解し、反映後には本文・状態・統合先を再取得して確認する。今回の記録先は `raw/issue-audit-2026-09-09/`。公開Wikiには判断と公開Issueへの参照を残す。[[issue-backlog-audit-2026-09-09]]より

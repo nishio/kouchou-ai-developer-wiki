@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 01:44] filing-back | 実装とIssue整理の判断基準を次の作業へ還流
+
+- [[wiki-driven-workflow]] と `CLAUDE.md` に、現行mainでの完了根拠・検証範囲・Issue更新前後の照合を反映。詳細記録は [[issue-backlog-audit-2026-09-09]] を参照。
+- [[serverless-product-direction-2026-09-08]] / [[meeting-report-draft]] に両版の共通確認例と入口→費用時間→原文照合の候補を接続。GitHub・実モデルは再観測していない。
+- `wiki.grasp/events.jsonl` と書込preflightが存在せずgrasp-write未準備のため、既存Markdownを直接更新した。保存方式の移行は行っていない。
+
 ## [2026-09-09 01:00] filing-back | 過去Issueの解決・重複・未完了を現行実装で棚卸し
 
 - [[issue-backlog-audit-2026-09-09]]に根拠付きのclose8件・更新18件と次の重点を記録。元の本文・議論は保持。
