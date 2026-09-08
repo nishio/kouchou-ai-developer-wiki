@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 18:30] filing-back | 次のIssue候補を読み方説明と開発導線に絞る
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に、未assignの #696 / #878を優先候補として記録。未着手。
+- #473は進行中PRとの重複整理、#542は責任の所在の判断を分離する。
+
 ## [2026-09-08 18:20] filing-back | #97のCSV形式エラーを本体とserverlessで修正
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体PR #923・serverless PR #23を記録。

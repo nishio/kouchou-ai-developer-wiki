@@ -407,3 +407,9 @@ sources:
 - serverless #23のGitHub Actionsは外部fork実行の承認待ち。ローカルの全テスト・lint・buildは成功済み。
 
 - 2026-09-08 18:24: 本体#923のE2Eを含むGitHub Actions全成功を確認。CodeRabbitレビュー進行中、未merge。
+
+
+## Updates — 2026-09-08 18:30 次のIssue候補
+
+- [[other-issue-candidates-2026-09-07]]より、次は #696 の読み方説明を両版で揃える案と、#878 のコントリビュータ向け作業導線集約を優先候補とした。未着手。
+- #473 のprovider別環境確認はPR #922との重複整理後の候補。#912 / #913の実動テストは引き続き人間担当。

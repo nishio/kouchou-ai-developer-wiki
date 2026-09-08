@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-08 18:30	filing-back	次のIssue候補を読み方説明と開発導線に絞る
 2026-09-08 18:20	filing-back	#97のCSV形式エラーを本体とserverlessで修正
 2026-09-08 17:53	filing-back	次goalを実装可能な不具合から選ぶ偏りを見直す
 2026-09-08 17:45	filing-back	serverless関係整理を今後の開発判断へ接続

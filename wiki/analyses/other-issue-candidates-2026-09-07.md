@@ -123,3 +123,13 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - 2026-09-08 18:22: 本体#923の管理画面test/build、docs build、CodeQLが成功。E2Eは実行中。serverless #23のActionsは外部forkの実行承認待ち（action_required）で未実行、ローカル検証とは区別する。
 
 - 2026-09-08 18:24: 本体#923のE2Eも成功し、GitHub Actionsは全成功。CodeRabbitレビューは進行中。serverless #23は外部forkの実行承認待ち、両PR未merge。
+
+
+## Updates — 2026-09-08 18:30 次の候補を再確認
+
+GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確認。本体mainはfetch / pull後も `70c14c2`。以下は優先順位の提案で、実装着手・assignはしていない。
+
+- 第一候補は [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696)。Issueが求める読み方の案内を、件数と支持率の区別、収集対象の偏り、AI要約と元コメントの照合、次の調査への接続に絞り、本体・serverlessの閲覧画面と共有出力で揃える案。詳細記事・活用事例の整備とは分けて実装範囲を定められる。
+- 小さく進める候補は [#878](https://github.com/digitaldemocracy2030/kouchou-ai/issues/878)。既存 `docs/development/ai-assistants.md` はskillsセットアップ中心。CONTRIBUTINGから着手前の担当確認、コード・テストの入口、PR作成までの読む順番を集約する。両repoに関係する変更では相互PRと対応テストを記録する導線も検討する。
+- 次点は [#473](https://github.com/digitaldemocracy2030/kouchou-ai/issues/473) のprovider別環境確認。#884の作成前確認に残る選択接続先の検証と関係するため、進行中PR #922との重複を整理してから着手する。実モデルの動作検証 #912 / #913は人間担当のまま。
+- [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の責任の所在は読み方説明とは別の判断を含むため、#696に混ぜて完了扱いにしない。候補4件はいずれも未assign。既存PR #918〜#920 / #922 / #923とserverless #22 / #23はopenを確認した。
