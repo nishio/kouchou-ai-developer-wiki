@@ -88,3 +88,5 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - [PR #919](https://github.com/digitaldemocracy2030/kouchou-ai/pull/919) / `codex/issue-915-label-failures`（`1d4afa1`、未merge）：初期・統合ラベルのエラー文字列への置換を廃止し、失敗件数・クラスタID・種別を報告して後続処理を停止。並列usage集計を排他制御し、エラー時はstatusの費用をnull、token_usage_completeをfalseにする。管理画面では集計不完全と表示。
 - #915はanalysis-core全体231テスト成功後、追加2ケースを含むラベル回帰22テスト成功。管理画面117テスト、型検査、Ruff/Biome成功。旧経路とworkflow経路の停止・出力非生成を確認。実APIは呼び出していない。
 - workflowの失敗工程のusageは成功工程の合計に含まれない。取得できない課金額を補完せず不完全と明示する。概要工程はAPI例外を既に伝播するため、既存テキスト応答互換は変更せず、#917のFlex対応とも差分を分離。GitHub CIは確認中。#912 / #913の実機検証は人間担当を維持。
+
+- 2026-09-08 16:44: PR #918 / #919ともGitHub ActionsのE2E・テスト・ビルド・静的検査が成功。#918の自動レビューは完了、#919のCodeRabbitは進行中。両PRは未merge。

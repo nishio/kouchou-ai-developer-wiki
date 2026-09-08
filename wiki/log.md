@@ -6,7 +6,7 @@
 ## [2026-09-08 16:40] filing-back | #639と#915の実装PRを作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] にPR #918 / #919の変更とテスト結果を記録。
-- CSV名からの空欄補完、ラベル生成失敗時の後続停止・集計不完全表示を実装。両PRはCI確認中、未merge。
+- CSV名からの空欄補完、ラベル生成失敗時の後続停止・集計不完全表示を実装。両PRのGitHub ActionsはE2Eを含め成功。#919の自動レビューは進行中、両PRは未merge。
 
 ## [2026-09-08 12:39] filing-back | merge後の次Issue候補を再確認
 

@@ -372,3 +372,5 @@ sources:
 - [[other-issue-candidates-2026-09-07]]より。[PR #918](https://github.com/digitaldemocracy2030/kouchou-ai/pull/918)（`codex/issue-639-csv-title`）でCSV名から空のタイトル・概要を補完。既存入力は保持し、管理画面121テスト成功。
 - [PR #919](https://github.com/digitaldemocracy2030/kouchou-ai/pull/919)（`codex/issue-915-label-failures`）で初期・統合ラベル失敗時の後続停止と失敗クラスタ表示を実装。費用は集計不完全として表示。core全体231テストと追加ケースを含む回帰22テスト、管理画面117テスト成功。
 - 両PRとも未merge、CIを確認中。実API検証#912 / #913は引き続き人間が行う。
+
+- 2026-09-08 16:44: 両PRのGitHub ActionsはE2Eを含め成功。#919の自動レビューのみ進行中、両PRは未merge。
