@@ -180,3 +180,5 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - 本体101テスト・変更ファイルBiome・本番build成功、serverless202テスト・全体lint・型検査を含むbuild成功。本体の全体tsc単独には既存validation.test.tsのfixture型不整合4件が残る。ローカル本体buildのNext.jsは既存インストールの16.2.6。
 - 実ブラウザで両版の説明・図クリック・親・パンくず・属性フィルター・ゼロ件からの復帰を確認。同じ仮想アンケートサンプルでは女性フィルターの3,013件中460件・15.27%が一致。serverlessのビルド済み単一HTMLでも説明からの移動・図クリック・全体復帰を確認した。確認用fixture差し替え・一時HTMLは除去済み。
 - 本体#927の単体testとdocs buildはCI成功、残るbuild / CodeQLは実行中。serverless#25は外部forkの実行承認待ち（action_required）でActions未実行。両PR未merge、承認依頼はしていない。
+
+- 2026-09-08 23:53: 本体PR #927のbuildも成功し、GitHub Actions全成功。CodeRabbitはレビュー中。serverless #25は引き続き外部forkのActions承認待ち。両PR未merge。

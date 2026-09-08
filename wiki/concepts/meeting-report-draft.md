@@ -442,3 +442,5 @@ sources:
 - [[other-issue-candidates-2026-09-07]]より、#528を本体[PR #927](https://github.com/digitaldemocracy2030/kouchou-ai/pull/927)（`codex/issue-528-treemap-context`） / serverless[PR #25](https://github.com/tokoroten/kouchou-ai-serverless/pull/25)（`codex/treemap-context`）へ。図と説明の現在位置・件数・割合・戻る操作を揃えた。
 - 本体101・serverless202テストと両build成功。同じ属性条件で件数・割合が一致し、両版のブラウザと単一HTMLの移動操作を確認した。
 - 両PR未merge。本体CIは一部実行中、serverlessは外部forkのActions承認待ち。次はCI結果とレビューを確認する。
+
+- 2026-09-08 23:53: 本体PR #927のbuildも成功し、GitHub Actions全成功。CodeRabbitはレビュー中。serverless #25は引き続き外部forkのActions承認待ち。両PR未merge。
