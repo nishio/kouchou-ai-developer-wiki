@@ -384,3 +384,11 @@ sources:
 - 数値見積もりなど下位Issueの残件を#884コメントに明記。実API動作を保証せず、#912 / #913は人間担当のまま。
 
 - 2026-09-08 17:13: PR #920 / #922のGitHub Actionsが成功。#922は最新commitのE2E・Docker buildも成功。CodeRabbitは両PRともrate limitでレビュー未実施。両PRは未merge。
+
+
+### 2026-09-08: dd2030の目的からserverlessとの関係を整理（進行中PRあり）
+
+- [[serverless-product-direction-2026-09-08]]より、ブラウザ版を初回利用の有力候補、既存版を組織運用、analysis-coreを分析交換・比較の候補として整理。本流化・移管の正式判断は#921で未決。
+- 両版の「互換JSON」は原文包含などに差がある。表示・根拠確認・再分析・公開の契約を分け、原文を無断で公開用JSONへ増やさない。
+- [serverless PR #22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)（`codex/preserve-comment-references`）で元コメントIDの先頭ゼロ・桁落ちによる誤対応を修正。198テストとbuild成功、未merge。
+- 次はserverlessの抽出部分失敗と、現行版の原文なしJSONを読み込む時の契約を検証する。利用入口の正式変更は初見利用の観測と#921の判断を根拠にする。

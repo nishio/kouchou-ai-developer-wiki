@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 17:24] filing-back | dd2030の目的からserverlessとの役割と開発goalを整理
+
+- [[serverless-product-direction-2026-09-08]] / [[serverless-relationship-2026-09-08]]に両版の位置づけ、互換範囲、未決事項、次の検証順序を記録。
+- serverless PR #22で結果JSONの元コメントID破損を修正。198テスト・build成功、未merge。[[meeting-report-draft]]にも追記。
+
 ## [2026-09-08 17:09] filing-back | #452と#884の実装PRを作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]にPR #920 / #922の内容・テスト・残件を記録。
