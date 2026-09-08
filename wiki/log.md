@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 17:45] filing-back | serverless関係整理を今後の開発判断へ接続
+
+- [[serverless-product-direction-2026-09-08]]に利用者の行動、データ経路での互換検証、短期goalと上位目的の区別を追記。
+- [[usage-modes]]・人間向けindex・[[meeting-report-draft]]へ接続。grasp監査ファイル未導入のため、既存Markdown運用で更新。
+
 ## [2026-09-08 17:24] filing-back | dd2030の目的からserverlessとの役割と開発goalを整理
 
 - [[serverless-product-direction-2026-09-08]] / [[serverless-relationship-2026-09-08]]に両版の位置づけ、互換範囲、未決事項、次の検証順序を記録。

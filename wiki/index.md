@@ -29,6 +29,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 **いま何を考えるか / 何が起きているか:**
 
+- [serverless-product-direction-2026-09-08](analyses/serverless-product-direction-2026-09-08.md) — dd2030の目的から見たブラウザ版・既存版の役割、互換範囲、次の開発順序（本流化は未決）
+
 - [thinking-targets](concepts/thinking-targets.md) — 今、人間の思考と判断が要る論点のハブ (ラベル品質仕切り直し / 次の view 方向 / pipeline 境界 / 公開運用摩擦)
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況、current main との同期
 - [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類 (全体棚卸し)

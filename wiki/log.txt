@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-08 17:45	filing-back	serverless関係整理を今後の開発判断へ接続
 2026-09-08 17:24	filing-back	dd2030の目的からserverlessとの役割と開発goalを整理
 2026-09-08 17:09	filing-back	#452と#884の実装PRを作成
 2026-09-08 16:48	filing-back	#918 / #919の次に進めるIssue候補

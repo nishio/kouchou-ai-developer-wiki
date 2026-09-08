@@ -10,6 +10,7 @@ sources:
   - pr-825-standalone-html-observation-2026-05-19.md
   - report-html-non-web-canonical-decision-2026-05-23.md
   - meeting-brand-compass-information-strategy-2026-06-30.md
+  - serverless-relationship-2026-09-08.md
 ---
 
 ## なぜ分けて考えるか
@@ -152,3 +153,12 @@ sources:
 - 2026-05-19: 会話中の整理を反映し、「研究者向けの CLI 改善」と「非エンジニア向け Web UI 完結導線」は別の最適化問題だと明記
 - 2026-05-23: この二分が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` は Web canonical にしないと明記
+
+
+### 2026-09-08 17:45: ブラウザ版を含めて入口を考える
+
+[[serverless-relationship-2026-09-08]] より、上記の「共通コアを使うWeb UIとCLI」は既存kouchou-ai本体の整理であり、独立したTypeScript再実装のkouchou-ai-serverlessにはそのまま適用しない。serverless版はPythonのanalysis-coreを呼ぶ第三のUIではなく、独自の分析処理と対話的再クラスタリングを持つ。
+
+初回利用・個人の試行にはブラウザ版、組織運用には既存Web UI、分析手法の交換・比較にはCLI / analysis-coreを候補とする作業方針を [[serverless-product-direction-2026-09-08]] に整理した。これは本流化の正式決定ではなく、既存の「Zip + setup.bat」という配布目標も、ブラウザ版との使い分けを踏まえて再評価する対象となる。
+
+新しい変更は「どの利用者の行動を改善するか」「別実装に既にあるか」「結果を持ち出した後も必要な情報が残るか」で分類する。配布方式と分析方式は別軸であり、共有すべきものは実行コードだけでなく、出力の意味・公開範囲・失敗ケースの検証条件でもある。

@@ -392,3 +392,5 @@ sources:
 - 両版の「互換JSON」は原文包含などに差がある。表示・根拠確認・再分析・公開の契約を分け、原文を無断で公開用JSONへ増やさない。
 - [serverless PR #22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)（`codex/preserve-comment-references`）で元コメントIDの先頭ゼロ・桁落ちによる誤対応を修正。198テストとbuild成功、未merge。
 - 次はserverlessの抽出部分失敗と、現行版の原文なしJSONを読み込む時の契約を検証する。利用入口の正式変更は初見利用の観測と#921の判断を根拠にする。
+
+- 2026-09-08 17:45: file backで[[usage-modes]]と人間向け索引から上記方針への導線を追加。短期goalの完了範囲と、初見利用・本流化・相互互換性の未検証事項を区別して記録した。
