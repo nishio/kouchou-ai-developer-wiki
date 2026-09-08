@@ -90,3 +90,11 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - workflowの失敗工程のusageは成功工程の合計に含まれない。取得できない課金額を補完せず不完全と明示する。概要工程はAPI例外を既に伝播するため、既存テキスト応答互換は変更せず、#917のFlex対応とも差分を分離。GitHub CIは確認中。#912 / #913の実機検証は人間担当を維持。
 
 - 2026-09-08 16:44: PR #918 / #919ともGitHub ActionsのE2E・テスト・ビルド・静的検査が成功。#918の自動レビューは完了、#919のCodeRabbitは進行中。両PRは未merge。
+
+## Updates — 2026-09-08 16:48 #918 / #919作成後の次候補
+
+- open Issue / PRとmain `70c14c2`を再確認。[#452](https://github.com/digitaldemocracy2030/kouchou-ai/issues/452)、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884)、[#878](https://github.com/digitaldemocracy2030/kouchou-ai/issues/878)はいずれも未assign。今回着手・assignはしていない。
+- #452は抽出pluginからtimeout_secondsが落ちる状態を再確認。最初は設定受け渡しと回帰テスト、次にUIまたは.envの設定導線。小修正だけでIssue全体を完了と扱わない。#917のLLM helper変更との整合を確認する。
+- #884はIssue本文に最初の実装単位が明記済み。入力3経路に共通の作成前確認を置き、件数・列・属性・クラスタ数・モデル・API確認状態を表示する。時間・費用は根拠がなければ「目安なし」で開始できる。
+- #878は既存 `docs/development/ai-assistants.md` がskills利用・セットアップ中心で、着手からPRまでの読む順番と役割分担が未集約。既存ページを拡張してCONTRIBUTING・各skill・E2Eへの導線をまとめる文書作業として進めやすい。
+- [#97](https://github.com/digitaldemocracy2030/kouchou-ai/issues/97)は既に文字コード変換・列推定があるため、2026-05-29のIssueコメントに従い#884内の選択列・非空件数表示を先行。一般的なCSVエラー対策を別に広げない。

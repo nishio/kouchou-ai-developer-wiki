@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 16:48] filing-back | #918 / #919の次に進めるIssue候補
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] に#452 / #884 / #878の着手範囲を記録。
+- open PRとmainを再確認。#97は#884内の入力確認を先行し、今回新たな実装・assignはしていない。
+
 ## [2026-09-08 16:40] filing-back | #639と#915の実装PRを作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]] にPR #918 / #919の変更とテスト結果を記録。
