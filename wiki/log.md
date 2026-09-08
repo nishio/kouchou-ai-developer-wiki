@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 03:06] filing-back | 日報を背景から成果と残課題へ読める流れに再編集
+
+- ユーザーの指示で [[daily-report-2026-09-09]] の追記を本文へ統合。冒頭で広聴AIと改善の目的を説明し、PR一覧は後半へ移した。
+- 最終マージ状態とdraft維持を本文へ反映し、途中の記録はGit履歴と実装記録に保持。[[meeting-report-draft]]とAI向け索引も更新した。
+
 ## [2026-09-09 02:57] filing-back | draft2件を残す判断を日報へ追記
 
 - ユーザー判断に基づき、#917 / #891をdraftのまま維持する方針を [[daily-report-2026-09-09]] / [[meeting-report-draft]] に記録。
