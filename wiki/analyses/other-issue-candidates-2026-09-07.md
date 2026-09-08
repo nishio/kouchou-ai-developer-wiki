@@ -71,3 +71,12 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - 管理画面18スイート114テスト、TypeScript、変更ファイルBiome成功。実画面でもAzureのdisabled属性とOpenAIへの切替を確認。Azure実APIでのレポート生成は未実施。
 
 - PR #911のGitHub CIはE2Eを含め全件成功。自動レビューも完了、未merge。
+
+## Updates — 2026-09-08 12:39 merge後の次候補
+
+- current main `70c14c2` とopen Issue / PRを再確認。#915 / #452 / #639 / #884はいずれも未assign。#912 / #913はユーザー指示で人間が実API検証するため、この実装候補から外す。
+- 優先候補は [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915)。初期・統合ラベリングに例外をエラー文字列へ置き換える経路が残り、#910で確立した失敗中断を拡張できる。異常応答をmockしたテストで進められる。
+- [#452](https://github.com/digitaldemocracy2030/kouchou-ai/issues/452) は抽出pluginがtimeout_secondsを引き継がない状態が残る。設定受け渡し修正と、元IssueのUIまたは.envからの指定導線を分けて設計する。
+- [#639](https://github.com/digitaldemocracy2030/kouchou-ai/issues/639) はCSV名（拡張子除去）で空のタイトル・概要だけを補完する、小さく完了条件の明確なUI改善。既存入力を保持するテストを付けられる。
+- [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は入力3経路の送信前確認の共通化。catalogのmain入りでprovider/model表示を共有しやすくなったが、上の候補より変更範囲は大きい。
+- 新規#916はtokoroten / Copilotが担当し、[PR #917](https://github.com/digitaldemocracy2030/kouchou-ai/pull/917)でOpenAI Flex対応が進行中。LLM共通helperを変更するため、#915 / #452では差分の重なりを確認し、独立して同じFlex対応を始めない。

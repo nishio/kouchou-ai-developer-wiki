@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 12:39] filing-back | merge後の次Issue候補を再確認
+
+- [[other-issue-candidates-2026-09-07]] に#915 / #452 / #639 / #884の優先候補を追記。
+- #916 / PR #917の並行作業と、人間が担当する#912 / #913を区別。実装・assignは未実施。
+
 ## [2026-09-08 05:16] filing-back | #912 / #913を人間による検証として明記
 
 - Issue本文と[[issues-response-plan-2026-09-07]] / [[meeting-report-draft]]を更新。
