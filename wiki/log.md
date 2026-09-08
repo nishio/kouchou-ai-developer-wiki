@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 23:21] filing-back | 検査成功の本体PR 10件をmainへmerge
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に10件のmergeとmain `2dd5adc`を記録。#925の競合を解消し再検証した。
+- 統合後の管理画面154テスト成功。本体はdraft2件のみ、serverlessは書込権限がなく未merge。
+
 ## [2026-09-08 22:10] filing-back | #696・#878・#473を順次実装してPR作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体PR #924〜#926とserverless #24を記録。未merge。

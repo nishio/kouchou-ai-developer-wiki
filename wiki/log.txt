@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-08 23:21	filing-back	検査成功の本体PR 10件をmainへmerge
 2026-09-08 22:10	filing-back	#696・#878・#473を順次実装してPR作成
 2026-09-08 18:30	filing-back	次のIssue候補を読み方説明と開発導線に絞る
 2026-09-08 18:20	filing-back	#97のCSV形式エラーを本体とserverlessで修正
