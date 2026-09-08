@@ -107,3 +107,5 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - [PR #922](https://github.com/digitaldemocracy2030/kouchou-ai/pull/922) / `codex/issue-884-preflight`（`5372637`、未merge）：CSV / Spreadsheet / plugin共通の作成前確認を追加。入力列・件数・非空件数・属性・クラスタ数・モデル・並列数、API確認状態と費用/時間「目安なし」を表示。確認を開くだけでは送信せず、確認後の明示操作でsnapshotを一度だけ送信する。
 - #884は管理画面128テスト・型検査・Biome成功。E2E事前確認4件、作成フロー13件（既存skip1件）成功後、確認画面1280px / 375pxの2ケースも成功。実ブラウザとスクリーンショットで表示を確認。検証用dummy APIにモデル一覧のCORSと接続成功fixtureを補修。最新commitのGitHub CIを確認中。
 - [#884コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884#issuecomment-5581535490)に初回実装範囲と下位Issueの残件を記録。#11 / #79の数値見積もり、#221のsample-first/reuse、#292の課金ガイド、#391の全provider/選択モデル検証、#97の詳細CSVエラーは未完了。ローカルLLMの選択接続先の検証は未対応と明示。実API検証#912 / #913は人間担当を維持し、今回は有料API未使用。
+
+- 2026-09-08 17:13: PR #920 / #922のGitHub Actionsが成功。#922は最新commitのE2E・Docker buildも成功。CodeRabbitは両PRともrate limitでレビュー未実施。両PRは未merge。

@@ -6,7 +6,7 @@
 ## [2026-09-08 17:09] filing-back | #452と#884の実装PRを作成
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]にPR #920 / #922の内容・テスト・残件を記録。
-- タイムアウト設定と作成前確認を実装。#920はCI成功、#922は最新CI確認中。両PRは未merge。
+- タイムアウト設定と作成前確認を実装。両PRともGitHub Actions成功。CodeRabbitは利用制限で未レビュー、両PRは未merge。
 
 ## [2026-09-08 16:48] filing-back | #918 / #919の次に進めるIssue候補
 

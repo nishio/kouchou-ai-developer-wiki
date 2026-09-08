@@ -382,3 +382,5 @@ sources:
 - [[other-issue-candidates-2026-09-07]]より。[PR #920](https://github.com/digitaldemocracy2030/kouchou-ai/pull/920)（`codex/issue-452-timeout`）でタイムアウトの環境変数設定とworkflowへの受け渡しを実装。core 221・API 40テストとCIが成功、未merge。
 - [PR #922](https://github.com/digitaldemocracy2030/kouchou-ai/pull/922)（`codex/issue-884-preflight`）で3入力経路に共通の作成前確認を追加。API確認・空行/件数警告・費用/時間の目安なしを表示。管理画面128テスト、作成フローE2Eとモバイル確認成功、最新CI確認中・未merge。
 - 数値見積もりなど下位Issueの残件を#884コメントに明記。実API動作を保証せず、#912 / #913は人間担当のまま。
+
+- 2026-09-08 17:13: PR #920 / #922のGitHub Actionsが成功。#922は最新commitのE2E・Docker buildも成功。CodeRabbitは両PRともrate limitでレビュー未実施。両PRは未merge。
