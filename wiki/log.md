@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 17:53] filing-back | 次goalを実装可能な不具合から選ぶ偏りを見直す
+
+- [[serverless-product-direction-2026-09-08]]にユーザーの指摘と次goal案の修正を追記。利用場面全体の障害から開発投資を選ぶ。
+- [[meeting-report-draft]]へ反映。既存Wikiの目的・論点を再読したもので、新しい現場検証やチーム判断ではない。
+
 ## [2026-09-08 17:45] filing-back | serverless関係整理を今後の開発判断へ接続
 
 - [[serverless-product-direction-2026-09-08]]に利用者の行動、データ経路での互換検証、短期goalと上位目的の区別を追記。
