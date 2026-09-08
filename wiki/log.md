@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 23:29] filing-back | 次候補を階層図と説明の連動#528とする
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に両版のコード確認と優先理由を記録。未着手。
+- 元コメント表示の公開境界と、既存mergeで対応済みのIssue整理を区別する。
+
 ## [2026-09-08 23:21] filing-back | 検査成功の本体PR 10件をmainへmerge
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に10件のmergeとmain `2dd5adc`を記録。#925の競合を解消し再検証した。

@@ -160,3 +160,11 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - 統合後main `fd0e6c9`で管理画面154テスト成功。最後の#925は文書・ナビゲーションの変更のみ。本体に残るopen PRはdraft #917 / #891の2件。
 - #903はNode runtime依存の棚卸し文書のmergeであり、serverlessとの統合方式やネットワーク設計の採用判断をしたものではない。#904はdummy-serverの依存更新。
 - serverlessは現在のアカウントがread権限のみ（push / maintain / adminなし）でmergeできない。#22 / #23 / #24はローカル検証済みだがActions承認待ち、#17 / #16はbuild成功、#21はbuild失敗のまま残す。権限変更・他者への承認依頼は行っていない。
+
+
+## Updates — 2026-09-08 23:29 次は#528の階層図と説明の連動を提案
+
+- open Issue / PR、#528 / #391 / #305 / #318 / #56の本文・コメント・担当を確認。本体main `2dd5adc`、serverless origin/main `4579cae`をfetch後に参照。今回は候補調査で未assign・未着手。
+- 第一候補は [#528](https://github.com/digitaldemocracy2030/kouchou-ai/issues/528)。本体ClientContainerのclustersToDisplayは階層図でも第1階層を返し、treemapLevelを参照しない。serverlessのReportViewerもclustersAtLevelが散布図の階層に依存し、treemapLevelと連動しない。同じ不一致を両版で直せる（コード確認。今回のブラウザ再現試験は未実施）。
+- 実装案は階層図の現在位置と説明対象を揃え、説明から図へ移動できるようにする。件数の割合を表示する場合は「表示対象内」か「全体」かを明示し、社会全体の支持率とは混同させない。#696の読み方説明を実際の閲覧挙動につなげる改善。
+- [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)の元コメント表示も価値があるが、Issueコメントが求める再頒布可否の扱い・公開境界を先に設計する必要がある。#305 / #391は直近mergeと重なるため、残件を確認して完了範囲を整理する候補。
