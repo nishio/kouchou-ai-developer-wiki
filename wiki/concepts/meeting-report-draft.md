@@ -396,3 +396,12 @@ sources:
 - 2026-09-08 17:45: file backで[[usage-modes]]と人間向け索引から上記方針への導線を追加。短期goalの完了範囲と、初見利用・本流化・相互互換性の未検証事項を区別して記録した。
 
 - 2026-09-08 17:53: 次goalを抽出失敗修正へ直結させた提案を再検討。[[serverless-product-direction-2026-09-08]]に、実践の収集→分析→議論→応答の障害を起点として開発対象を選ぶgoal案を追記。役割分担・相互交換の優先度も検証仮説として扱う。
+
+
+### 2026-09-08 18:20: CSV形式エラーを本体・serverlessで揃える（進行中）
+
+- [[other-issue-candidates-2026-09-07]]より、本体[PR #923](https://github.com/digitaldemocracy2030/kouchou-ai/pull/923)（`codex/issue-97-csv-errors`）とserverless[PR #23](https://github.com/tokoroten/kouchou-ai-serverless/pull/23)（`codex/csv-parse-errors`）を作成。形式エラーを黙って受け入れる問題と、失敗後の古い入力の残留を修正。
+- 同じCSV入力例・判定・日本語メッセージで歩調を揃えた。本体128テスト、serverless205テスト成功。正常CSVとエラーからの復帰も画面確認済み。
+- 両PRは未merge。本体#97はmergeでcloseする構成。CIの結果と両版の検証条件の差分を追う。
+
+- serverless #23のGitHub Actionsは外部fork実行の承認待ち。ローカルの全テスト・lint・buildは成功済み。

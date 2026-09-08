@@ -109,3 +109,15 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - [#884コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884#issuecomment-5581535490)に初回実装範囲と下位Issueの残件を記録。#11 / #79の数値見積もり、#221のsample-first/reuse、#292の課金ガイド、#391の全provider/選択モデル検証、#97の詳細CSVエラーは未完了。ローカルLLMの選択接続先の検証は未対応と明示。実API検証#912 / #913は人間担当を維持し、今回は有料API未使用。
 
 - 2026-09-08 17:13: PR #920 / #922のGitHub Actionsが成功。#922は最新commitのE2E・Docker buildも成功。CodeRabbitは両PRともrate limitでレビュー未実施。両PRは未merge。
+
+
+### 2026-09-08 18:20: #97を両版で修正（未merge）
+
+ユーザーの「修正できるIssueを解決し、serverlessとも歩調を揃える」指示により、open Issue / PRと両版のCSV読込実装を確認。#97は未assignだったためnishioへassignして着手。#921の戦略判断や#912/#913の人間による実API確認とは独立した保守として進めた。
+
+- [本体 PR #923](https://github.com/digitaldemocracy2030/kouchou-ai/pull/923)（`codex/issue-97-csv-errors`, `56435a7`）: #97のparse error残件を修正。Papa Parseのcomplete内エラー、空/重複ヘッダー、データなしを原因・修正方法付きで拒否。正常な1列、BOM、引用符内カンマ/改行、既存Shift_JIS変換は許容。失敗・削除後に古い読込が入力を復活させない。管理画面全128テスト・型検査・変更TSのBiome成功、CI進行中。
+- [serverless PR #23](https://github.com/tokoroten/kouchou-ai-serverless/pull/23)（`codex/csv-parse-errors`, `1c32847`）: 同じ入力判定・メッセージ・9つのCSVケースを適用。通常作成と賛否スペクトラム作成で古いプレビューを破棄。全205テスト・lint・build成功。PR #22のID保持修正とは独立したmainベース。
+- ローカルブラウザで本体のエラー表示→削除→正常CSV再選択、serverlessの正常CSV→不正CSVでプレビュー消去・次へ無効を確認。モデル/APIの実動は検証していない。
+- 同一判定を両repoで独立実装した。今後は相互PRと同じ入力例を参照して差分を確認する。エラー位置は列数不一致についてヘッダーを除くデータ件数で表示し、引用符を含むCSVの物理行番号とは混同しない。
+
+- 2026-09-08 18:22: 本体#923の管理画面test/build、docs build、CodeQLが成功。E2Eは実行中。serverless #23のActionsは外部forkの実行承認待ち（action_required）で未実行、ローカル検証とは区別する。

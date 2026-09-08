@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 18:20] filing-back | #97のCSV形式エラーを本体とserverlessで修正
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体PR #923・serverless PR #23を記録。
+- 同じ入力判定・修正案表示と、失敗後の古い入力を残さない処理を実装。本体128・serverless205テスト成功、未merge。
+
 ## [2026-09-08 17:53] filing-back | 次goalを実装可能な不具合から選ぶ偏りを見直す
 
 - [[serverless-product-direction-2026-09-08]]にユーザーの指摘と次goal案の修正を追記。利用場面全体の障害から開発投資を選ぶ。
