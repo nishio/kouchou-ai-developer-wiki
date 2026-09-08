@@ -98,3 +98,12 @@ current mainのWindowsガイドは前提条件でOpenAI / GeminiのAPIキーを�
 - #884はIssue本文に最初の実装単位が明記済み。入力3経路に共通の作成前確認を置き、件数・列・属性・クラスタ数・モデル・API確認状態を表示する。時間・費用は根拠がなければ「目安なし」で開始できる。
 - #878は既存 `docs/development/ai-assistants.md` がskills利用・セットアップ中心で、着手からPRまでの読む順番と役割分担が未集約。既存ページを拡張してCONTRIBUTING・各skill・E2Eへの導線をまとめる文書作業として進めやすい。
 - [#97](https://github.com/digitaldemocracy2030/kouchou-ai/issues/97)は既に文字コード変換・列推定があるため、2026-05-29のIssueコメントに従い#884内の選択列・非空件数表示を先行。一般的なCSVエラー対策を別に広げない。
+
+## Updates — 2026-09-08 17:09 #452 / #884を実装してPR作成
+
+- ユーザーの「both go」を受け、両Issueの未assignを再確認してnishioへassign。main `70c14c2` から別worktreeで実装した。
+- [PR #920](https://github.com/digitaldemocracy2030/kouchou-ai/pull/920) / `codex/issue-452-timeout`（`167727c`、未merge）：環境変数 `LLM_REQUEST_TIMEOUT_SECONDS` を追加。既定300秒、正の整数を検証。各providerのチャット・抽出・概要に適用し、workflowで落ちていた `extraction.timeout_seconds` の受け渡しも修正。UI追加はせず、環境変数の導線・優先順位・API再起動をdocsに記載。
+- #452はanalysis-core 221テスト、API LLMサービス40テスト成功。GitHub Actionsも成功。SDKリトライ込みの全体制限時間やembeddingは対象外。抽出の既存バッチ期限はキュー待機も含み、同じ設定値を使うことを明記した。
+- [PR #922](https://github.com/digitaldemocracy2030/kouchou-ai/pull/922) / `codex/issue-884-preflight`（`5372637`、未merge）：CSV / Spreadsheet / plugin共通の作成前確認を追加。入力列・件数・非空件数・属性・クラスタ数・モデル・並列数、API確認状態と費用/時間「目安なし」を表示。確認を開くだけでは送信せず、確認後の明示操作でsnapshotを一度だけ送信する。
+- #884は管理画面128テスト・型検査・Biome成功。E2E事前確認4件、作成フロー13件（既存skip1件）成功後、確認画面1280px / 375pxの2ケースも成功。実ブラウザとスクリーンショットで表示を確認。検証用dummy APIにモデル一覧のCORSと接続成功fixtureを補修。最新commitのGitHub CIを確認中。
+- [#884コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884#issuecomment-5581535490)に初回実装範囲と下位Issueの残件を記録。#11 / #79の数値見積もり、#221のsample-first/reuse、#292の課金ガイド、#391の全provider/選択モデル検証、#97の詳細CSVエラーは未完了。ローカルLLMの選択接続先の検証は未対応と明示。実API検証#912 / #913は人間担当を維持し、今回は有料API未使用。
