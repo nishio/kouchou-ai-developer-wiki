@@ -56,6 +56,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 ## プロジェクト自体について
 
+- [開発日報 — 2026年9月8日〜9日未明](analyses/daily-report-2026-09-09.md) — 本体とServerlessの実装・merge・Issue整理を、利用者に起きる変化と残課題から振り返る
 - [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用。議事録 / Slack の鮮度基準もここを見る
 - [deploy-success-but-nothing-changed-story-2026-06-01](analyses/deploy-success-but-nothing-changed-story-2026-06-01.md) — wiki-driven-workflow が実際にどう動くかの一日エピソード (前提知識ゼロ向け narrative)
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
