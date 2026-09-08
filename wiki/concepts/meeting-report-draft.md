@@ -487,3 +487,8 @@ sources:
 
 - [[other-issue-candidates-2026-09-07]]より、#917はtokoroten / CopilotのOpenAI Flex対応、#891はtokorotenのWindowsローカル配布prototype。両方draftで、通常テスト・buildの成功確認は揃っていない。
 - #891はmainと競合し、PR本文も一部古い。HEADのREADMEではadmin同梱済みだが作成フロー全体・インストーラーが残る。今回は再確認のみ。
+
+## Updates — 2026-09-09 02:57 draft2件を残す判断
+
+- 西尾が#917のFlex対応と#891のWindows配布試作を確認し、両方をdraftのまま残すと判断。[[daily-report-2026-09-09]]へ内容・残件とともに追記した。
+- 今回の一括mergeは本体#927〜#933まで。残る2 PRの追加操作は行っていない。

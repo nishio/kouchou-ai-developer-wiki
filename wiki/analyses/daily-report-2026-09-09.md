@@ -126,3 +126,12 @@ open 119件の一覧・本文・コメントを取得し、現行実装と関係
 最終mainは `775e0f5`。統合後のviewer109テスト、抽出診断・成果物検査21テストと、競合解消後の厳密docs buildが成功し、最終mainと検証したtreeの一致も確認した。11 Issueがmergeによりclosedとなり、openは100件。本体のopen PRはdraft #917 / #891の2件のみ。冒頭で進行中としていた本体7 PRはこの追記でmain反映済みとなる。
 
 Serverlessはread権限のみのため未mergeで、#22〜#26のActionsは承認待ち。実モデル確認#912 / #913は人間担当のまま。この追記はGitHub・コード統合の再確認であり、実モデルや現場利用の追加検証ではない。
+
+### 2026-09-09 02:57 残る2 PRはdraftのまま維持する
+
+西尾が内容を確認し、「それは残そう」と判断したため、[#917](https://github.com/digitaldemocracy2030/kouchou-ai/pull/917) と [#891](https://github.com/digitaldemocracy2030/kouchou-ai/pull/891) は当面draftのまま残す。
+
+- **#917：OpenAI Flex対応**。tokoroten / Copilotが担当するAPI費用削減の変更。02:31の観測ではCodeQL成功のみで、通常テスト・buildの成功確認は揃っていない。
+- **#891：Windowsスタンドアロン版**。tokoroten作のPython・API・閲覧／管理画面を同梱する試作。6月1日から同じHEADのままで、02:31の観測ではmainと競合。作成フロー全体の検証とインストーラーが残り、Serverlessとの役割も検討事項となる。
+
+技術的な状態は [[other-issue-candidates-2026-09-07]] / [[github-pr-891-live-2026-06-30]] の02:31の確認に基づく。今回はdraftを維持するユーザー判断を記録したもので、追加のPR操作や動作検証は行っていない。

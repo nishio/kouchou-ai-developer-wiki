@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-09 02:57	filing-back	draft2件を残す判断を日報へ追記
 2026-09-09 02:31	filing-back	残るdraft2件の目的と確認範囲を再読
 2026-09-09 02:21	filing-back	CI通過後の本体7 PRをmergeし日報を更新
 2026-09-09 02:06	filing-back	9月8日から9日未明の開発日報を作成
