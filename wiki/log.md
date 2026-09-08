@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 02:21] filing-back | CI通過後の本体7 PRをmergeし日報を更新
+
+- [[other-issue-candidates-2026-09-07]] / [[daily-report-2026-09-09]] / [[meeting-report-draft]]へ#927〜#933のmergeを反映。#930 / #933は文書メニューの競合を解消し、最新HEADのCI成功後にmergeした。
+- main `775e0f5`、対応11 Issueのcloseを確認。統合後viewer109・core関連21テストと文書buildが成功。本体はdraft2 PRのみ、Serverlessは権限不足で未merge。
+
 ## [2026-09-09 02:06] filing-back | 9月8日から9日未明の開発日報を作成
 
 - [[daily-report-2026-09-09]] に13 PRのmain反映、両版の進行中実装、Issue整理、方針を見直した経緯を集約。詳細記録への入口として人間向け索引と [[meeting-report-draft]] へ接続した。

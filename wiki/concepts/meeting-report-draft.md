@@ -476,3 +476,9 @@ sources:
 
 - [[daily-report-2026-09-09]] に9月8日から9日未明の一連の活動を集約。13 PRのmain反映、本体7 PR・Serverless5 PRの進行中作業、Issue8件の整理・18件の更新を区別した。
 - 個々の修正の効果と、利用者の行動を起点に方針を見直した経緯を記録。PR・CI状態は作業時の観測に基づく。
+
+## Updates — 2026-09-09 02:21 CI待ちだった本体7 PRをmainへ反映
+
+- [[other-issue-candidates-2026-09-07]] / [[daily-report-2026-09-09]]より、ユーザー指示で#927〜#933をmerge。#930 / #933の文書メニュー競合を解消し、最新HEADのCI成功を確認した。mainは `775e0f5`。
+- 統合後のviewer109テスト、抽出診断・成果物検査21テスト、厳密docs buildが成功。#933の総合E2E・buildもCI成功、最終mainと検証した内容の一致を確認した。
+- 対応11 Issueがclosed、本体open PRはdraft #917 / #891のみ。Serverlessは権限不足とActions承認待ちで未merge。#912 / #913は引き続き人間による確認を待つ。
