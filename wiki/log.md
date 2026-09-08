@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-08 23:51] filing-back | #528の階層図と説明を両版で連動させてPR作成
+
+- [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に本体#927・serverless#25と検証結果を記録。未merge。
+- 本体101・serverless202テスト、両buildと実ブラウザ操作を確認。同じ属性条件の件数・割合を揃え、ゼロ件からも復帰できる。
+
 ## [2026-09-08 23:29] filing-back | 次候補を階層図と説明の連動#528とする
 
 - [[other-issue-candidates-2026-09-07]] / [[meeting-report-draft]]に両版のコード確認と優先理由を記録。未着手。

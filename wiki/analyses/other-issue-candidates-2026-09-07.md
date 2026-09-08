@@ -168,3 +168,15 @@ GitHubのopen Issue・PR、#696 / #878 / #473 / #542の本文・担当を再確�
 - 第一候補は [#528](https://github.com/digitaldemocracy2030/kouchou-ai/issues/528)。本体ClientContainerのclustersToDisplayは階層図でも第1階層を返し、treemapLevelを参照しない。serverlessのReportViewerもclustersAtLevelが散布図の階層に依存し、treemapLevelと連動しない。同じ不一致を両版で直せる（コード確認。今回のブラウザ再現試験は未実施）。
 - 実装案は階層図の現在位置と説明対象を揃え、説明から図へ移動できるようにする。件数の割合を表示する場合は「表示対象内」か「全体」かを明示し、社会全体の支持率とは混同させない。#696の読み方説明を実際の閲覧挙動につなげる改善。
 - [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)の元コメント表示も価値があるが、Issueコメントが求める再頒布可否の扱い・公開境界を先に設計する必要がある。#305 / #391は直近mergeと重なるため、残件を確認して完了範囲を整理する候補。
+
+
+## Updates — 2026-09-08 23:51 #528を本体・serverlessへ実装（未merge）
+
+ユーザーの「解決して」を受け、#528をnishioへassignして両版を実装した。
+
+- [本体 PR #927](https://github.com/digitaldemocracy2030/kouchou-ai/pull/927)（`codex/issue-528-treemap-context`, `eb77755`） / [serverless PR #25](https://github.com/tokoroten/kouchou-ai-serverless/pull/25)（`codex/treemap-context`, `b30abb3`）より、階層図の現在位置と説明を連動。現在のグループと直下の説明・件数・全意見に対する割合を表示し、説明からの移動、個別意見、親・パンくずによる復帰を同期した。
+- Plotlyの通常clickに含まれるクリック対象IDと、実際の移動先は一致しない場合がある。`plotly_treemapclick.nextLevel`をReact stateへ反映し、Plotlyの独立した遷移をキャンセルして二重管理を避けた。本体の意見ノードの親も固定の第2階層ではなくcluster_idsの末尾へ揃えた。
+- 割合の分母は図も説明も全意見に統一。属性フィルター中は絞り込み後の全意見とし、説明文はフィルター前に生成されたものと明示する。ゼロ件では割合を「—」にし、現在位置と戻る操作を保持する。
+- 本体101テスト・変更ファイルBiome・本番build成功、serverless202テスト・全体lint・型検査を含むbuild成功。本体の全体tsc単独には既存validation.test.tsのfixture型不整合4件が残る。ローカル本体buildのNext.jsは既存インストールの16.2.6。
+- 実ブラウザで両版の説明・図クリック・親・パンくず・属性フィルター・ゼロ件からの復帰を確認。同じ仮想アンケートサンプルでは女性フィルターの3,013件中460件・15.27%が一致。serverlessのビルド済み単一HTMLでも説明からの移動・図クリック・全体復帰を確認した。確認用fixture差し替え・一時HTMLは除去済み。
+- 本体#927の単体testとdocs buildはCI成功、残るbuild / CodeQLは実行中。serverless#25は外部forkの実行承認待ち（action_required）でActions未実行。両PR未merge、承認依頼はしていない。
