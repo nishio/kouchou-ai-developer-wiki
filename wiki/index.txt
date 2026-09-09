@@ -285,6 +285,7 @@ slack-design-intents-2025-q4	analysis	analyses/slack-design-intents-2025-q4.md	2
 slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、LLM grouping 系分類、可視化分離
 spherical-kmeans-experiment-scope-2026-06-30	analysis	analyses/spherical-kmeans-experiment-scope-2026-06-30.md	Slack で出た Spherical K-means / Faiss K-means は、current main の 2D UMAP + KMeans を即置換する判断ではなく、clustering 空間・clustering objective・実装 backend を分けた clean experiment 候補として扱うべき
 strategic-development-order-2026-05-23	analysis	analyses/strategic-development-order-2026-05-23.md	Issue 消化順ではなく、CLI / workflow / plugin / Web 配布を 3 層のプラットフォームとして見ると、先に固めるべきなのは `analysis-core` の共通基盤と plugin 実験の本番導線である
+three-issues-progress-2026-09-09	analysis	analyses/three-issues-progress-2026-09-09.md	未担当の#130・#518・#395を選び、貢献ガイド#941・静的artifact#942・エラー復帰E2E#943を作成。未マージ、残件を区別して記録
 tokoroten-algorithm-discussion-retrospective	analysis	analyses/tokoroten-algorithm-discussion-retrospective.md	tokoroten とのアルゴリズム議論は、クラスタリング手法の優劣ではなく、散布図プロダクト・深い分析・説明責務・運用ワークフローを分け直す議論だった
 tokoroten-spectral-clustering-reading	analysis	analyses/tokoroten-spectral-clustering-reading.md	tokoroten の spectral clustering メモは、TTTC を『高次元で正しく切る手法』ではなく『UMAP が作る 2D 形状を前提に切る散布図寄りの手法』として理解していた点が重要
 trial-and-error-burden-reduction-2026-05-29	analysis	analyses/trial-and-error-burden-reduction-2026-05-29.md	`#221` 系は単一機能ではなく、作成前確認、API/billing preflight、入力検証、進捗可視化、再利用の5面で「怖くて試せない」「失敗理由が分からない」「やり直しが高い」を減らすテーマである
