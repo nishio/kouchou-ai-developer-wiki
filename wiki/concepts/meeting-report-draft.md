@@ -527,3 +527,9 @@ sources:
 
 - #935のshellビルド、単体テスト123件、ブラウザでの一覧・詳細・戻る・欠落表示、サブディレクトリ配信の動作を確認。オプトイン基盤としてマージ可と判断（未merge）。[[pr-935-936-overview-2026-09-09]]より
 - 実配布接続時のtitle / noindexとE2E追加を残課題として保持。ルート配信でReact #418を1件観測したが操作は成功、原因は未特定。
+
+
+## Updates — 2026-09-09 16:14 shell基盤マージとhydration修正（進行中）
+
+- #935 / #936をマージ。React #418を一覧初回表示で5/5再現し、shellのWebpackビルドで5/5解消を確認。
+- 回帰テスト付き#938（`codex/shell-hydration-fix`）を作成、CI待ち。title / noindexは修正マージ後に#935由来のIssueへ切り出す。[[pr-935-shell-hydration-fix-2026-09-09]]より

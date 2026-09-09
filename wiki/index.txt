@@ -259,6 +259,7 @@ pr-903-node-runtime-doc-review-2026-06-30	analysis	analyses/pr-903-node-runtime-
 pr-903-review-comment-draft-2026-06-30	analysis	analyses/pr-903-review-comment-draft-2026-06-30.md	PR #903 に直接投稿せず Wiki 側に固定したレビューコメント案。CodeRabbit 3 点に加え、CSV / JSON download server actions の inventory 漏れを短く伝え、human-authored docs PR への安全な next action にする
 pr-934-flex-review-2026-09-09	analysis	analyses/pr-934-flex-review-2026-09-09.md	PR #934 の最新HEADをレビュー。既存指摘は修正済みだが、OpenAI SDKの再試行とTenacityが重なり最大4回の説明に対して12回のHTTP送信を再現
 pr-935-936-overview-2026-09-09	analysis	analyses/pr-935-936-overview-2026-09-09.md	PR #935はデータ非依存の静的viewer基盤、#936はexportのOGP説明訂正。通常PR2件とdraft #891を区別し、未対応範囲を整理
+pr-935-shell-hydration-fix-2026-09-09	analysis	analyses/pr-935-shell-hydration-fix-2026-09-09.md	PR #935のshell一覧でReact #418を5/5再現。EmotionとTurbopackの不整合をWebpackで回避し、回帰E2E付きPR #938を作成
 problem-list-from-open-issues-2026-05-19	analysis	analyses/problem-list-from-open-issues-2026-05-19.md	open issue 145 件から抽出すると、未解決なのは大量の個別要望ではなく、実行入口・失敗診断・公開運用・可視化・アルゴリズム・運用基盤など十数個の根本問題である
 public-case-page-skeleton-2026-06-30	analysis	analyses/public-case-page-skeleton-2026-06-30.md	Issue #564 の活用事例公開を、導入検討者向けの公開ページへ落とすためのページ構成案
 public-tool-catalog-draft-2026-06-30	analysis	analyses/public-tool-catalog-draft-2026-06-30.md	広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を外向けに混同なく説明するための tool catalog draft。#564 公開事例ページと 8/2 技術・ツール資料へ転用する

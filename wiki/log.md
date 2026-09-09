@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 16:14] filing-back | shellエラー原因を特定し#935・#936をマージ
+
+- [[pr-935-shell-hydration-fix-2026-09-09]]に再現・回避策と回帰テストを記録。
+- #938を作成しCI待ち。[[meeting-report-draft]]にmain反映と進行中の修正を区別して追記。
+
 ## [2026-09-09 15:51] filing-back | PR #935を実ブラウザで検証しマージ可と判断
 
 - [[pr-935-936-overview-2026-09-09]]に123テスト成功とルート・配下パス配信の操作結果を追記。
