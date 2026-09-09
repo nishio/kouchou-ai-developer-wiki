@@ -533,3 +533,9 @@ sources:
 
 - #935 / #936をマージ。React #418を一覧初回表示で5/5再現し、shellのWebpackビルドで5/5解消を確認。
 - 回帰テスト付き#938（`codex/shell-hydration-fix`）を作成、CI待ち。title / noindexは修正マージ後に#935由来のIssueへ切り出す。[[pr-935-shell-hydration-fix-2026-09-09]]より
+
+
+## Updates — 2026-09-09 16:24 #938のCI対応（進行中）
+
+- shell回帰テストはCI成功。通常staticのモバイル2件は折りたたみリストを展開せず子クラスタを探していたため、操作を補正。
+- ローカル2件成功、#938へpushしてCI再実行中。[[pr-935-shell-hydration-fix-2026-09-09]]より

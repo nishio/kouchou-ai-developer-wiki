@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 16:24] filing-back | #938のCIで見つかったモバイルテスト前提を修正
+
+- [[pr-935-shell-hydration-fix-2026-09-09]]にCI失敗の切り分けと、階層リスト展開後に検証する修正を追記。
+- [[meeting-report-draft]]へ再検証とCI待ちの状態を反映。
+
 ## [2026-09-09 16:14] filing-back | shellエラー原因を特定し#935・#936をマージ
 
 - [[pr-935-shell-hydration-fix-2026-09-09]]に再現・回避策と回帰テストを記録。
