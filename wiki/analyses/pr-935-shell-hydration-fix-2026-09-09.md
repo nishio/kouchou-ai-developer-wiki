@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "PR #935のshell一覧でReact #418を5/5再現。EmotionとTurbopackの不整合をWebpackで回避し、回帰E2E付きPR #938を作成"
+summary: "PR #935のshell一覧のReact #418をWebpackで解消。#935・#936・修正#938をマージ、E2E78件成功、title/noindexは#939へ切り出し"
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/935
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/936
@@ -47,3 +47,11 @@ sources:
 初回CIはshellの回帰テストを含む76件成功、通常静的exportのモバイル2件失敗。artifactの画面・DOMから、初期表示が折りたたまれた階層リストであり、テストが子クラスタ名の初期表示を前提としていると分かった。画面側の当該ロジックは#935時点から変更されていない。
 
 root / subdirのテストでリスト選択を確認し、全体を展開して子要素を表示する操作を加えた（`c8488a7`）。dummy-server事前検証4件と、通常static buildを使ったモバイル2件がローカル成功。dummy-server指定のNext版はローカルキャッシュになく、検証時だけworkspaceの16.2.6を使用した。変更対象のBiome検査も成功。CIを再実行中で、PRはまだ未merge。
+
+### 2026-09-09 16:31 JST — 全手順完了
+
+更新HEAD `c8488a7`のCIは全チェック成功、全体E2Eは78 passed（4.3分）。[PR #938](https://github.com/digitaldemocracy2030/kouchou-ai/pull/938)をマージし、GitHubのMERGEDとmerge commit `679ee9e13d6e671a82a0978fb1d92c67cc1e669b`を再取得確認。local mainもfetch / fast-forwardで一致した。
+
+[Issue #939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)「shell配布物にレポート別title・noindexを反映する（#935由来）」を作成し、本文とOPEN状態を再取得確認。#935作者が挙げた制約由来と明記し、実配布への接続時のHTML metadata、Node再ビルド不要の維持、ブラウザ遷移の整合を完了条件にした。
+
+今回解消したのはshell一覧のhydrationエラー。全体E2Eログには通常dev経路のhydrationログが残るが、その経路のビルド方式は本修正では変更していない。全viewer経路で同種エラーがなくなったという意味ではない。
