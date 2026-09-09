@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 18:08] filing-back | #937・#940をマージ
+
+- [[pr-937-940-review-2026-09-09]]と[[issue-939-shell-metadata-2026-09-09]]へMERGED・#939 CLOSEDの確認結果を追記。
+- [[meeting-report-draft]]をmain反映済みに更新。残るopen PRはDraft #891のみ。
+
 ## [2026-09-09 17:58] filing-back | open PR #937・#940を確認
 
 - [[pr-937-940-review-2026-09-09]]にCI・レビュー状態と#937のダミーAPI7ケースの確認結果を記録。

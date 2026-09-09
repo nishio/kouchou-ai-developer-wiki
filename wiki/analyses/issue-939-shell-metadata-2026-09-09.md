@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "#939のshell配布HTMLにtitle/noindexを反映するPython組立処理と画面遷移更新を#940で実装。CI・E2E81件成功、未マージ"
+summary: "#939のshell配布HTMLにtitle/noindexを反映するPython組立処理と画面遷移更新を#940で実装。CI・E2E81件成功、#940マージ済み"
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/939
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/940
@@ -37,3 +37,7 @@ sources:
 ## Updates — 2026-09-09 17:40 CI結果
 
 #940のHEAD `adbb6cc`で全体E2E81 passed / 3 skipped、通常・shellビルド、API / viewer単体テスト、Ruff、CodeQL、ドキュメントbuildが成功。上記Open QuestionsのCI確認は解消した。CodeRabbitの自動レビューはこの時点では実行中で、PRはOPENのまま。
+
+## Updates — 2026-09-09 18:08 main反映
+
+ユーザー指示で#940を`751e2c8`としてマージ、#939のCLOSEDを確認。[[pr-937-940-review-2026-09-09]]より。配布経路への接続は引き続き#885の後続作業。
