@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 15:51] filing-back | PR #935を実ブラウザで検証しマージ可と判断
+
+- [[pr-935-936-overview-2026-09-09]]に123テスト成功とルート・配下パス配信の操作結果を追記。
+- オプトイン基盤としての判断と実配布前の残課題を[[meeting-report-draft]]へ記録。PR操作は未実施。
+
 ## [2026-09-09 15:45] filing-back | PR #935と#936の内容と残範囲を整理
 
 - [[pr-935-936-overview-2026-09-09]]に通常PR2件の目的とCIを記録し、draft #891と区別。
