@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 15:45] filing-back | PR #935と#936の内容と残範囲を整理
+
+- [[pr-935-936-overview-2026-09-09]]に通常PR2件の目的とCIを記録し、draft #891と区別。
+- [[meeting-report-draft]]へ、静的viewer基盤とOGP説明訂正の要点を追記。
+
 ## [2026-09-09 15:41] filing-back | PR #934を承認済み管理者マージで反映
 
 - #934のMERGED状態とmerge commitを確認し、[[pr-934-flex-review-2026-09-09]] / [[meeting-report-draft]]に記録。
