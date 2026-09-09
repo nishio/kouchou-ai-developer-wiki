@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 14:51] filing-back | PR #934のFlex再試行をレビュー
+
+- [[pr-934-flex-review-2026-09-09]] に最新HEADの観測とSDKを通した12回送信の再現を記録。
+- [[meeting-report-draft]]に未mergeのレビュー結果と次の確認点を追記。
+
 ## [2026-09-09 03:06] filing-back | 日報を背景から成果と残課題へ読める流れに再編集
 
 - ユーザーの指示で [[daily-report-2026-09-09]] の追記を本文へ統合。冒頭で広聴AIと改善の目的を説明し、PR一覧は後半へ移した。
