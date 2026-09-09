@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 15:41] filing-back | PR #934を承認済み管理者マージで反映
+
+- #934のMERGED状態とmerge commitを確認し、[[pr-934-flex-review-2026-09-09]] / [[meeting-report-draft]]に記録。
+- 通常料金への自動切替は、マージ後の未決論点として保持。
+
 ## [2026-09-09 15:35] filing-back | PR #934のマージ方針と保護ルールによる停止
 
 - [[pr-934-flex-review-2026-09-09]]にユーザー判断を追記。再試行はマージ条件とせず、通常料金への切替は後で議論する。
