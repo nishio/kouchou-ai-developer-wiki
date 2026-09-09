@@ -550,3 +550,7 @@ sources:
 
 - #935由来の制約を#940（`codex/issue-939-shell-metadata`）で実装。Pythonで配布HTMLにtitle/検索除外を挿入し、画面遷移でも整合を保つ。
 - Python10件・shell E2E8件・viewer Jest123件成功、CI待ち・未merge。既存ダウンロード経路への接続は#885の後続作業。[[issue-939-shell-metadata-2026-09-09]]より
+
+## Updates — 2026-09-09 17:40 #940のCI成功
+
+- 全体E2E81件成功（3 skipped）、ビルド・単体テスト・静的解析も成功。#940は未mergeで、実装はレビュー可能。[[issue-939-shell-metadata-2026-09-09]]より

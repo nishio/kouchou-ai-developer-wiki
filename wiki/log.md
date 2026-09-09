@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 17:40] filing-back | #940の全体E2E・CI成功を確認
+
+- [[issue-939-shell-metadata-2026-09-09]]と[[meeting-report-draft]]に81 passed / 3 skippedとCI成功を追記。
+- PRはOPEN、マージ操作は行っていない。
+
 ## [2026-09-09 17:33] filing-back | #939のshellタイトル・検索除外を#940で実装
 
 - [[issue-939-shell-metadata-2026-09-09]]へPython組立処理、画面遷移、ローカル検証結果を記録。
