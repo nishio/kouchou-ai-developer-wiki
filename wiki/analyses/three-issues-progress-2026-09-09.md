@@ -33,3 +33,7 @@ sources:
 - #943のCI結果と3PRのマージ判断。今回はマージ指示を受けていない。
 - #518の常設公開と、通常staticで観測したReact #418の追加調査。
 - #395のSpreadsheetの取得・列選択、AI設定の最終送信内容の検証。
+
+## Updates — 2026-09-09 18:26 CI完了
+
+#943の全体E2Eは86 passed / 2 skipped。3PRとも実行されたCIは成功。#941のCodeRabbitはレビュー完了、#942・#943はrate limited表示であり、レビュー済みとは扱わない。3件ともOPEN・未merge。通常staticのReact #418は#942と#518に観測として記録した。

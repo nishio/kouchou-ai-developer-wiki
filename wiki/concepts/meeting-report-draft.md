@@ -570,3 +570,7 @@ sources:
 - #130の貢献ガイドを#941、#518の静的成果物ダウンロードを#942、#395のエラー復帰E2Eを#943にした。独立branchで実装、すべて未merge。
 - docs・静的buildのCIとartifact閲覧を確認。新規エラーE2E5件＋既存15件はローカル成功、#943のCI待ち。
 - 常設公開、Spreadsheet・詳細設定テスト、通常staticのReact #418は残件として記録。[[three-issues-progress-2026-09-09]]より
+
+## Updates — 2026-09-09 18:26 3PRのCI完了
+
+- #943の全体E2E86件成功（2 skipped）。#941・#942・#943の実行CIは成功、3件とも未merge。[[three-issues-progress-2026-09-09]]より

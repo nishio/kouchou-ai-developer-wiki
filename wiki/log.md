@@ -3,10 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
-## [2026-09-09 18:17] file-back | zipf-broadlistening デモの entity 化
+## [2026-09-09 18:26] filing-back | #943の全体E2E86件成功
 
-- [[zipf-broadlistening]] を新規作成: 「なぜサンプリングでなく全件AI処理か」を体験させる nishio のデモサイト（https://nishio.github.io/zipf-broadlistening/ 、P_miss ≈ exp(-K·p)、体験→解説→実験室の2ページ構成）。URL パラメータ `g` の意味が Claude の解釈のままである点を Open Questions に記録。
-- [[broadlistening]] の「なぜ重要か」（少数意見の項）にデモへのリンクと数理の一行を追記。index.md「開発者が共通して知るべきこと」に1行追加。
+- [[three-issues-progress-2026-09-09]]へ3PRのCI完了と自動レビューの実施範囲を追記。
+- [[meeting-report-draft]]に全体E2E結果と未mergeを反映。
 
 ## [2026-09-09 18:23] filing-back | 3件のIssueを#941・#942・#943で前進
 
