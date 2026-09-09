@@ -52,7 +52,7 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 ## なぜ重要か
 
 - **パブコメ攻撃 / パブコメ DDoS** — AI による大量コメント投稿への対策が現代的な行政課題（[[meeting-minutes]] 2025-03-26）。重複検出・低品質コメント除去・統計的世論との区別が必要。文化庁公開コメントデータ (`nishio/aipubcom-data` 8000→25000 件) などが研究対象
-- **既存の世論調査では拾えない少数意見** の可視化
+- **既存の世論調査では拾えない少数意見** の可視化 — ランダムK件抽出では割合pの意見を `exp(-K·p)` の確率で丸ごと見落とす（1%・K=100で36.4%）。この数理を体験できるデモが [[zipf-broadlistening]]
 - **自治体・政党の意見集約コスト** を下げる（パブコメ職員の手作業を AI で代替）
 
 ## 関連用語
@@ -76,3 +76,4 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 - 2026-05-21: 書籍 13.5 由来の散布図 vs Long Context 二アーキ整理を追加（[[broad-listening-book-source]]）
 - 2026-06-03: 「遊園地の地図」比喩で reader の探索パターン（俯瞰 → ゾーン選択 → drill in）を言語化し、ラベル品質が機能要件である理由を追記（[[nishio-amusement-park-map-metaphor-2026-06-03]]）
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、狭義の分析・可視化と広義の収集・深掘りを分ける tool catalog の必要性を追記。
+- 2026-09-09: 「なぜサンプリングでなく全件か」の数理デモ [[zipf-broadlistening]]（nishio、https://nishio.github.io/zipf-broadlistening/ ）へのリンクを「なぜ重要か」に追加。

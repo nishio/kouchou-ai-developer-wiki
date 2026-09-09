@@ -36,6 +36,7 @@ other-contributors	entity	entities/other-contributors.md	その他の主要コ�
 polimoney	entity	entities/polimoney.md	政治資金可視化 OSS。kouchou-ai と兄弟プロジェクト
 talk-to-the-city	entity	entities/talk-to-the-city.md	TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived
 tokoroten	entity	entities/tokoroten.md	中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当
+zipf-broadlistening	entity	entities/zipf-broadlistening.md	「なぜサンプリングでなく全件AI処理か」を1枚で体験させる nishio の静的デモサイト。ランダムK件では割合pの意見を exp(-Kp) で丸ごと見落とす（1%・K=100で36.4%、0.1%なら9割）。体験→解説→実験室の2ページ構成
 analysis-core-web-ui-separation-decision-2026-05-23	source	sources/analysis-core-web-ui-separation-decision-2026-05-23.md	CLI は一般利用者に重く、WebUI は研究用途に重かったため core を切り出し、Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ
 azure-container-apps-docs-2026-06-01	source	sources/azure-container-apps-docs-2026-06-01.md	Azure Container Apps 公式 docs の apps / jobs / Consumption billing 周辺の要点。public-viewer の build/serve 分離と固定費判断の補助線
 azure-demo-visibility-thread-resolution-2026-06-05	source	sources/azure-demo-visibility-thread-resolution-2026-06-05.md	2026-06-05 11:36 大木さんの返答と 12:18 nishio の決定。Azure デモ動線化 4 問について「Q1, Q2 賛成 / Q3 アイデアとしてはあり優先度低 / Q4 継続利用環境はあるとよいが提供主体・責任範囲の整理必要」、デモ環境の価値の再フレーム、dd2030 提供 API キーの container 設定除去という prerequisite が明示された

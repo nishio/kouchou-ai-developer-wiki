@@ -13,6 +13,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ## 開発者が共通して知るべきこと
 
 - [broadlistening](concepts/broadlistening.md) — ブロードリスニング手法の定義と用語
+- [zipf-broadlistening](entities/zipf-broadlistening.md) — 「なぜサンプリングでなく全件か」を1枚で体験させる nishio のデモサイト（ランダムK件は割合pの意見を exp(-Kp) で丸ごと見落とす）
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
 - [analysis-stance](concepts/analysis-stance.md) — 広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない、という core stance
 - [usage-modes](concepts/usage-modes.md) — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core の使い分け

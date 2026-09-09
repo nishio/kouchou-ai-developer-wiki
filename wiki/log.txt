@@ -5,6 +5,7 @@
 
 2026-09-09 18:26	filing-back	#943の全体E2E86件成功
 2026-09-09 18:23	filing-back	3件のIssueを#941・#942・#943で前進
+2026-09-09 18:17	file-back	zipf-broadlistening デモの entity 化
 2026-09-09 18:08	filing-back	#937・#940をマージ
 2026-09-09 17:58	filing-back	open PR #937・#940を確認
 2026-09-09 17:40	filing-back	#940の全体E2E・CI成功を確認
