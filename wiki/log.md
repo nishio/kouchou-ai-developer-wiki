@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 17:33] filing-back | #939のshellタイトル・検索除外を#940で実装
+
+- [[issue-939-shell-metadata-2026-09-09]]へPython組立処理、画面遷移、ローカル検証結果を記録。
+- [[meeting-report-draft]]へ未mergeとCI待ちを明示。#885の配布経路への接続は後続作業。
+
 ## [2026-09-09 16:31] filing-back | #938をマージし#935由来の細部を#939へ切り出し
 
 - [[pr-935-shell-hydration-fix-2026-09-09]]にE2E78件成功、修正マージとIssue作成の確認結果を記録。

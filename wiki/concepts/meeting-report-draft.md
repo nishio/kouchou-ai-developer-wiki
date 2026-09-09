@@ -545,3 +545,8 @@ sources:
 
 - #938をmainへ反映（`679ee9e`）。shell一覧のエラーを解消し、CIの全体E2E78件成功を確認。直前のCI待ちは解消。
 - レポート別title / noindexは#935作者の制約由来として#939に切り出した。#935・#936マージから後続まで完了。[[pr-935-shell-hydration-fix-2026-09-09]]より
+
+## Updates — 2026-09-09 17:33 #939のtitle/noindex対応（進行中）
+
+- #935由来の制約を#940（`codex/issue-939-shell-metadata`）で実装。Pythonで配布HTMLにtitle/検索除外を挿入し、画面遷移でも整合を保つ。
+- Python10件・shell E2E8件・viewer Jest123件成功、CI待ち・未merge。既存ダウンロード経路への接続は#885の後続作業。[[issue-939-shell-metadata-2026-09-09]]より

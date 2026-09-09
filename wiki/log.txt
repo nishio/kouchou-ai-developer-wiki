@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-09 17:33	filing-back	#939のshellタイトル・検索除外を#940で実装
 2026-09-09 16:31	filing-back	#938をマージし#935由来の細部を#939へ切り出し
 2026-09-09 16:24	filing-back	#938のCIで見つかったモバイルテスト前提を修正
 2026-09-09 16:14	filing-back	shellエラー原因を特定し#935・#936をマージ
