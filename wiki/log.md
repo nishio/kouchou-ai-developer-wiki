@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 18:56] filing-back | #946の全体E2E81件成功
+
+- [[next-three-issues-progress-2026-09-09]]と[[meeting-report-draft]]へ3PRのCI完了を追記。
+- すべて未merge、自動レビューの未実施範囲も区別して記録。
+
 ## [2026-09-09 18:52] filing-back | 追加3件を#944・#945・#946で前進
 
 - [[next-three-issues-progress-2026-09-09]]へ選定、実装、検証と残件を記録。
