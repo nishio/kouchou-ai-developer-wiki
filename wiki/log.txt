@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-09 15:35	filing-back	PR #934のマージ方針と保護ルールによる停止
 2026-09-09 14:51	filing-back	PR #934のFlex再試行をレビュー
 2026-09-09 03:06	filing-back	日報を背景から成果と残課題へ読める流れに再編集
 2026-09-09 02:57	filing-back	draft2件を残す判断を日報へ追記

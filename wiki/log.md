@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-09-09 15:35] filing-back | PR #934のマージ方針と保護ルールによる停止
+
+- [[pr-934-flex-review-2026-09-09]]にユーザー判断を追記。再試行はマージ条件とせず、通常料金への切替は後で議論する。
+- 通常マージは必須レビューの保護で拒否。[[meeting-report-draft]]にも未merge状態を記録。
+
 ## [2026-09-09 14:51] filing-back | PR #934のFlex再試行をレビュー
 
 - [[pr-934-flex-review-2026-09-09]] に最新HEADの観測とSDKを通した12回送信の再現を記録。
