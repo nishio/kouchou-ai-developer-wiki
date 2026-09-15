@@ -168,7 +168,7 @@ analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
 azure-demo-public-visibility-proposal-2026-06-04	analysis	analyses/azure-demo-public-visibility-proposal-2026-06-04.md	Azure デモサイトを docs から動線化する 4 問と、2026-06-05 の大木さん返答 + nishio 決定。viewer 公開 / admin 共用 + 秘密情報禁止明示は進行、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化、で着地。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレームしている
 book-release-development-plan-2026-09	analysis	analyses/book-release-development-plan-2026-09.md	2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する
-broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理
+broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理。**「書籍に書いてある」は「検証されている」ではない**ため、各項目を検証済みの効果 / 経験値 / 未検証の仮説に仕分けて明示している。特に「KJ法プロンプトでラベル品質が上がる」は未検証（比較実験 issue #882 は OPEN・実験未実施）で、根拠として引用しないこと
 broadlistening-tool-ecosystem-vision	analysis	analyses/broadlistening-tool-ecosystem-vision.md	広聴AI Web UI を simple な default モードに絞り、CLI に多様な実験機能を追加し、新しい分析手法が試行錯誤され共有されるコミュニティを育てる、という二段構造のエコシステムビジョン。analysis-stance で『別ツールで補完』とした空き地に対する nishio の答え
 bug-issue-triage-2026-05-25	analysis	analyses/bug-issue-triage-2026-05-25.md	2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った
 chart-scroll-ux-decision	analysis	analyses/chart-scroll-ux-decision.md	ScatterChart のスクロール誤操作対策では、click-to-enable より「短い遅延付きの自動ロック解除」と視覚フィードバックが好まれ、preview 環境不足が実装収束を妨げた
@@ -218,7 +218,7 @@ issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
 issues-response-plan-2026-09-07	analysis	analyses/issues-response-plan-2026-09-07.md	#905〜#909と#884の対応案。抽出失敗を成功扱いしない最小修正を先行し、Azure選択整合・モデル管理整理・個別モデル追加へ分割する
 japan-broadlistening-use-case-map-2026-06-30	analysis	analyses/japan-broadlistening-use-case-map-2026-06-30.md	公開Web検索で確認した日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を、8/2 イベントと #564 公開事例整備へ接続する地図
-kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlistening-framing-2026-05-25.md	広聴AIを川喜田二郎の野外科学 / KJ法に接続すると、中心は要約ではなく `渾沌から公共的仮説を立ち上げる装置` になる。書籍 13.2.6 の `KJ法プロンプト` は prompt の話に留まらず product 設計原則として読み直せる
+kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlistening-framing-2026-05-25.md	広聴AIを川喜田二郎の野外科学 / KJ法に接続すると、中心は要約ではなく `渾沌から公共的仮説を立ち上げる装置` になる。書籍 13.2.6 の `KJ法プロンプト` は prompt の話に留まらず product 設計原則として読み直せる。ただし前提の「KJ法プロンプトで品質が上がる」自体が未検証（issue #882 OPEN・実験未実施）＝未検証の仮説をどう位置づけるかの話であって、効果が確認された技法の意味づけを変える話ではない
 kouchou-ai-docs-entry-restructure-2026-06-03	analysis	analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md	kouchou-ai 本体 docs の入口を「セットアップ」起点から「デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐」という spine に組み替える提案。`getting-started/` というネーミング自体がバイアスを産んでいたという指摘も含む
 kouchou-ai-paper-draft-ja	analysis	analyses/kouchou-ai-paper-draft-ja.md	広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く
 kouchou-ai-paper-draft-strategy	analysis	analyses/kouchou-ai-paper-draft-strategy.md	広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較

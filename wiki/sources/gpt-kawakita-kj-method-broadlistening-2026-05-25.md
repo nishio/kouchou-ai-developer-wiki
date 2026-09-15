@@ -95,7 +95,7 @@ AI:
 
 ## Compared to existing wiki claims
 
-- [[broad-listening-book-extractions]] が記録した「KJ法 / 表札 という日本語専門用語をプロンプトに載せると label 品質が上がる」（書籍 13.2.6）は、本ブレストの理論的裏付けと読める。「単に KJ法 prompt を使う」ことと「KJ法的設計原則を product に通す」ことは別問題だと整理できる。
+- [[broad-listening-book-extractions]] が記録した「KJ法 / 表札 という日本語専門用語をプロンプトに載せると label 品質が上がる」（書籍 13.2.6）は、本ブレストと**方向が揃っている**。ただし **これを「理論的裏付け」と呼んではならない**。当該主張は未検証の仮説であり（比較実験 issue `#882` は 2026-09-15 時点で OPEN・実験未実施）、本ブレストも GPT 出力であって実証ではない。未検証の仮説2つが方向を同じくしているだけである。「単に KJ法 prompt を使う」ことと「KJ法的設計原則を product に通す」ことは別問題だと整理できる。
 - [[broadlistening]] の「散布図タイプ vs Long Context タイプ」二分類に対し、本ブレストは **どちらの系統であれ KJ法的な原則（原文復帰、既存カテゴリ非適用、表札は人間、少数残存、現場返却）が要る** と主張する。
 - [[public-ui-requirements-for-broadlistening]] が ohki-shingo の整理として書いた公開UI 7 要件と、本ブレストの設計原則（特に「原文に戻れる」「少数・矛盾を残す」）は重なる部分がある。
 - [[llm-grouping-experiment]] の `analysis_mode=llm_grouping` 設計判断は、本ブレストの「`LLMにKJ法やらせて` は避けるべき」と整合的（LLM 直分類だけで終わらせず、人間が混沌と向き合う足場として位置づける）。

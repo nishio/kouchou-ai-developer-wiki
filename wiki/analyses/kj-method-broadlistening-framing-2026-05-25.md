@@ -17,6 +17,8 @@ sources:
 
 [[broad-listening-book-extractions]] は書籍 13.2.6 を引いて「KJ法 / 表札 という日本語専門用語をプロンプトに載せると labeling 品質が上がる」と整理していた。これは **prompt engineering tips** として読まれてきた。
 
+**前提の訂正（2026-09-15）**: そもそもこの「品質が上がる」自体が未検証である。比較実験 issue [`#882`](https://github.com/digitaldemocracy2030/kouchou-ai/issues/882) が「KJ法的な言葉を prompt に入れることが本当にラベル品質を改善しているのかは、まだ比較実験として切り分けられていない」と明記しており、2026-09-15 時点で OPEN・実験未実施。以下の「読み直し」は、効果が確認された技法の意味づけを変える話ではなく、**未検証の仮説をどう位置づけるか**の話である。
+
 しかし [[gpt-kawakita-kj-method-broadlistening-2026-05-25]] が示すのは、KJ法は単なるラベリング技法ではなく **混沌から公共的仮説を立ち上げる方法論** であり、prompt に「KJ法」と書くだけでは KJ法的 product にはならないということだ。  
 つまり「KJ法 prompt を使う」ことと「KJ法的設計原則を product に通す」ことは別問題である。
 
