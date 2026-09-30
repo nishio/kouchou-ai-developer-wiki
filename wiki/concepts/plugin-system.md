@@ -56,9 +56,9 @@ sources:
 
 つまりレポート再利用は単独の便利機能ではなく、**analysis plugin を比較可能にする基盤** として要請された。2026-02-04 週の「同一データ、同一抽出、同一埋め込み」で比較できる、という説明も同じ意図。
 
-## drastic refactor は別リポジトリで
+## drastic refactor を別リポジトリで、という提案（2025-10-08）
 
-[[meeting-minutes]] 2025-10-08 で [[nishio]]：「今のコードがあちこち動かなくなるので、リポジトリを複製して必要なコードだけ残して開発するといい」。[[talk-to-the-city|TTTC]] からの kouchou-ai フォーク自体が同じパターン。
+[[meeting-minutes]] 2025-10-08 で [[nishio]]：「今のコードがあちこち動かなくなるので、リポジトリを複製して必要なコードだけ残して開発するといい」。[[talk-to-the-city|TTTC]] からの kouchou-ai フォーク自体が同じパターン。→ 実際には採用されず、main 上の段階移行になった（[[refactoring-status]]）。
 
 ## production パスとの繋がり：現状 dormant
 

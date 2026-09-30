@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-09-30 23:59	filing-back	別リポジトリでの drastic refactor は提案だったと明記
 2026-09-15 19:01	filing-back	未検証の「KJ法プロンプト効果」が3ページで根拠に昇格していたのを訂正
 2026-09-09 18:56	filing-back	#946の全体E2E81件成功
 2026-09-09 18:52	filing-back	追加3件を#944・#945・#946で前進
