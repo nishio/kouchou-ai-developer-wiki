@@ -144,6 +144,10 @@ sources:
 - **main反映済み**: #945を修正後レビュー・CI成功後に `fedf67a` でマージ。#592は解析パイプライン全体の例外処理等を残してopen維持。[[catchup-2026-10-05]]より。
 - **進行中**: 残る#946のCodeRabbitレビューを00:06に再要求した。
 
+### Updates — 2026-10-06 00:26 旧密度設定の互換性
+
+- **進行中**: #946のレビュー指摘を `ec3f98b` で修正。旧設定の不正な密度値だけを補い、他の表示設定とファイルを保持する。関連API51テスト・lint成功、最新CIと再レビュー待ち。[[catchup-2026-10-05]]より。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
