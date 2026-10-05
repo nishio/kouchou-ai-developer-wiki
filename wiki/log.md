@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 20:14] filing-back | #947の非公開報告機能と文書整備の範囲を確認
+
+- [[catchup-2026-10-05]]へmain・Issue・open PR・非公開報告設定の再観測を追記。SECURITY.mdなし、非公開報告機能は無効だった。
+- [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、文書追加と受付窓口・通知確認を一組にする対応案を記録。調査のみでassign・PR作成・設定変更は行っていない。
+
 ## [2026-10-05 11:08] filing-back | lint孤立ページ13件の導線を復旧
 
 - `python3 scripts/lint_wiki.py` で incoming wikilink のないページ13件を検出し、過去の issue / PR 判断、Windows実機メモ、ラベル評価依頼、行政RAG調査を既存ハブへ接続した。
