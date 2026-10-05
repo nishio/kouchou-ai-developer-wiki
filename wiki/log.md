@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-06 00:06] filing-back | #945をマージし残るレビュー対象を#946へ集約
+
+- 関数説明の警告解消と最新HEADのレビュー・CI成功を確認し、#945をmainへ反映。[[catchup-2026-10-05]]より。
+- #592の残件を維持し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と最後の#946を記録した。
+
 ## [2026-10-05 23:19] filing-back | #945の関数説明警告を修正し再レビューへ
 
 - CodeRabbitの記載率警告を `4c2d3c1` で修正。動作変更なし、ローカルlint成功、CIと再レビューは確認中。[[catchup-2026-10-05]]より。
