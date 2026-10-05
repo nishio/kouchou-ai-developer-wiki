@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 22:18] filing-back | #941の再レビュー成功とmain反映を確認
+
+- #941の最新HEADの指摘なし・CI成功を確認してadmin mergeし、#130 CLOSEDを確認。[[catchup-2026-10-05]]へ証拠を記録した。
+- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と残る3PRを追記した。
+
 ## [2026-10-05 22:06] filing-back | #942をマージし#518の残要件を維持
 
 - 最新HEADの実レビュー・CI成功を確認して#942をmainへ反映。[[catchup-2026-10-05]]に根拠を記録した。

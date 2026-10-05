@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-05 22:18	filing-back	#941の再レビュー成功とmain反映を確認
 2026-10-05 22:06	filing-back	#942をマージし#518の残要件を維持
 2026-10-05 21:45	filing-back	#950・#944をマージし他PRのレビュー未実行と競合に対応
 2026-10-05 21:30	filing-back	#950のCodeRabbit再レビュー成功と必須承認待ちを記録

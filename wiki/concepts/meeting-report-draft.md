@@ -125,6 +125,11 @@ sources:
 - **main反映済み**: #942は最新HEADのCodeRabbit指摘なし・CI成功を確認し、`d504147` でマージ。#518には常設URL公開などの残件を残してopen維持。[[catchup-2026-10-05]]より。
 - **進行中**: #941は再レビュー中。#943・#945・#946は利用枠回復後に再要求する。古いSUCCESS表示だけではマージしない。
 
+### Updates — 2026-10-05 22:18 非コード貢献案内
+
+- **main反映済み**: #941を最新HEADの再レビュー・CI成功後に `dd17964` でマージ。#130もCLOSED。感想・質問・事例共有などの入口が反映された。[[catchup-2026-10-05]]より。
+- **進行中**: 残る#943・#945・#946は利用枠回復後のレビュー待ち。22:48以降に順次確認する。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
