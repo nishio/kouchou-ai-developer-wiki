@@ -120,6 +120,11 @@ sources:
 - **main反映済み**: 明示されたadmin merge許可に基づき、レビュー・CI成功の#950（依存保守）と#944（公開前リンク案内）をマージ。#948（非公開報告案内）もMERGEDを確認。残件は#949で継続。[[catchup-2026-10-05]]より。
 - **進行中**: #941・#942の競合を解消し、#943・#945・#946も最新mainへ追従。CodeRabbitのSUCCESSに利用上限による未実行が混ざっていたため、本文と対象commitを確認して再レビュー中。更新後CIは成功し、15分間隔でレビュー・修正・許可済みadmin mergeを継続確認する。#891はDraft・競合ありで対象外。
 
+### Updates — 2026-10-05 22:06 静的viewer成果物
+
+- **main反映済み**: #942は最新HEADのCodeRabbit指摘なし・CI成功を確認し、`d504147` でマージ。#518には常設URL公開などの残件を残してopen維持。[[catchup-2026-10-05]]より。
+- **進行中**: #941は再レビュー中。#943・#945・#946は利用枠回復後に再要求する。古いSUCCESS表示だけではマージしない。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
