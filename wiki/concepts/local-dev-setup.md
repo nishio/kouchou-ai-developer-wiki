@@ -7,6 +7,7 @@ sources:
   - meeting-minutes.md
   - slack-logs-repository.md
   - windows-powershell-default-installation.md
+  - codex-windows-environment-memo.md
 ---
 
 ## 必要なもの
@@ -111,6 +112,8 @@ rye run uvicorn src.main:app --reload --port 8000
 
 また、`setup_win.bat` を ASCII の薄いランチャーにし、日本語案内を `setup_win.ps1` へ逃がす判断は、単なる文言好みではなく `cmd.exe` の日本語パース破綻を避けるためのものだった。判断理由の詳細は [[windows-setup-encoding-decision]] を参照。[[issue-731-windows-setup-mojibake]]より
 
+Codex で Windows setup 系の修正を扱う時の実機確認・lint・Unicode 出力まわりの作業メモは [[codex-windows-environment-memo]] に残している。Windows での再現確認は、Unix 環境で通ったことと同一視しない。[[codex-windows-environment-memo]]より
+
 ## テスト・lint
 
 [[testing]] 参照。
@@ -129,3 +132,4 @@ AI コーディングエージェントの長期運用では、host machine full
 - 2026-05-19: clone 後に揃えるべき local data と最小オンボーディング手順を追記
 - 2026-05-25: 議事録のリンク URL を追えるよう、`raw/meeting_minutes.html` 取得を任意の補助手順として追加
 - 2026-06-30: Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` clone を追加し、`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線として位置づけ直した
+- 2026-10-05: Windows setup 系作業で参照する Codex 実機確認メモへの導線を追加した

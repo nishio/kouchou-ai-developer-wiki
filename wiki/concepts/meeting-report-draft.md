@@ -63,6 +63,10 @@ sources:
   - website-kouchou-ai-case-live-2026-06-30.md
   - public-web-kouchouai-tttc-lineage-2026-06-30.md
   - codex-session-recall-broadlistening-lineage-2026-10-05.md
+  - current-open-issue-triage-2026-06-01.md
+  - codex-windows-environment-memo.md
+  - cli-pipeline-experiment-roadmap-2026-06-02.md
+  - digital-agency-legal-rag.md
   - slack-codex-goal-speed-control-2026-06-30.md
   - slack-devin-ops-and-recurring-web-updates-2026-06-30.md
   - thinking-targets.md
@@ -103,7 +107,7 @@ sources:
 - **保守**: 新規#947はSECURITY.mdと非公開報告方法の整備提案、未担当。窓口・受け手の確認と依存保守の優先順位を整理する。
 - **製品判断**: #921のブラウザ版本流化、Flexの標準処理への自動切替は未決。北見の高校授業の報告など、分析から対話へつなぐ利用観測を判断材料にする。high priorityは#564 / #221。
 - **情報鮮度**: Slackは10月5日06:10 JST同期まで、議事録は今日txt/htmlを再取得しても先頭7月27日。今回の確認範囲と固定snapshotは [[catchup-2026-10-05]] に記録した。
-- **復帰文脈**: 直前にやっていたのは実装ではなく、国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back。次に自然なのは #564 公開事例ページへ移す最小 schema / 掲載候補 / 読み方ガイドの整理だが、6月30日のopen PR/issue観測は古いので [[current-status-2026-10-05]] を先に読む。[[codex-session-recall-broadlistening-lineage-2026-10-05]]より。
+- **復帰文脈 / Wiki保守**: 直前にやっていたのは実装ではなく、国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back。次は #564 公開事例ページの schema / 掲載候補 / 読み方ガイド整理が自然だが、6月30日のopen PR/issue観測は古いので [[current-status-2026-10-05]] を先に読む。加えて wiki lint の孤立13件を、過去の issue/PR判断、Windows実機メモ、ラベル評価依頼、行政RAG調査へ接続して復旧した。[[codex-session-recall-broadlistening-lineage-2026-10-05]]より [[current-open-issue-triage-2026-06-01]]より [[codex-windows-environment-memo]]より [[cli-pipeline-experiment-roadmap-2026-06-02]]より [[digital-agency-legal-rag]]より。
 
 ## そのまま読む用 (2026-06-30 更新)
 

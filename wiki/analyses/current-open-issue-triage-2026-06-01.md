@@ -23,6 +23,13 @@ sources:
 
 2026-06-01 17:50 JST 追記: `#887` は merge 済みで、open PR は `#863` の 1 本になった。ただし Azure Deployment success 後、デプロイ成功判定とユーザに見える反映状態が一時的にズレたため、deploy confirmation が new revision readiness を十分に確認していない可能性があると判断した。詳細は公開可能な粒度で [[issue-887-scattergl-csp-regression-2026-06-01]] に整理した。[[pr-887-production-deploy-observation-2026-06-01]]より
 
+## Related Point-in-Time Assessments
+
+この triage は 2026-06-01 時点の全体棚卸しなので、直前までに切り出した個別の issue / PR 判断もここから辿れるようにする。
+
+- Issue / bug status: [[bug-issue-triage-2026-05-25]]、[[issue-530-current-state]]、[[issue-707-current-state]]、[[report-slug-config-behavior]]
+- Stale / merge assessment: [[pr-722-merge-assessment]]、[[pr-727-merge-assessment]]、[[pr-735-merge-assessment]]、[[pr-801-merge-assessment]]、[[pr-802-merge-assessment]]、[[pr-814-merge-assessment]]
+
 ## 結論
 
 前回 2026-05-29 の優先順位は大筋で有効だが、新規 issue と open PR を反映すると短期の扱いは次の順に見るのがよい。[[remaining-issue-priority-2026-05-29]]より
@@ -194,4 +201,5 @@ sources:
 
 ## Updates
 
+- 2026-10-05: lint で孤立していた 2026-05 時点の個別 issue / PR 判断ページを、2026-06-01 の全体 triage から辿れるようにした。
 - 2026-06-01: 初版作成。subagent 5 分割で open issue 124 件の本文・コメントを読み、current main、open PR、既存 wiki へ照合した。

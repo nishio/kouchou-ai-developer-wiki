@@ -182,6 +182,8 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 
 2026-06-03 時点では、この次の実務計画を [[label-quality-human-preference-improvement-plan-2026-06-03]] に切り出した。さらに first implementation slice として、既存 corpus の `hierarchical_8_40` を使い、algorithm / process 由来を隠した A/B bundle と `human_preferences` 系 JSONL / schema を生成した。[[codex-log-label-preference-bundle-2026-06-03]]より
 
+この first slice は、nishio からのラベル評価改善計画リクエストを、比較可能な A/B preference bundle と保存形式へ落とす作業として始まった。元の依頼内容は [[nishio-label-evaluation-improvement-plan-request-2026-06-03]] に固定している。[[nishio-label-evaluation-improvement-plan-request-2026-06-03]]より
+
 ## Open Questions
 
 - comparison corpus は既存 LLM grouping 400 件実験だけで始めて足りるか。別 dataset も同時に入れるべきか。
@@ -198,6 +200,7 @@ CLI は「上級者向けの同じ product」ではなく、分析者 / 研究�
 
 ## Updates
 
+- 2026-10-05: lint で孤立していた nishio のラベル評価改善依頼 source への本文リンクを追加し、2026-06-03 の first slice の発端として辿れるようにした。
 - 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。`scripts/build_label_preference_bundle.py` で 24 件の blind A/B questions と Markdown / HTML bundle を生成したことを反映した。
 - 2026-06-03: [[label-quality-human-preference-improvement-plan-2026-06-03]] を追加。次の implementation slice を、`hierarchical_8_40` 固定の blind A/B bundle と `human_preferences.jsonl` schema 作成として明確化した。
 - 2026-06-02: [[nishio-blind-human-label-presentation-context-2026-06-02]] を追加。A/B evaluation では algorithm / process 由来を人間に隠し、提示文脈を label 単体 / 隣接 label 集合 / label + 代表例に分ける方針を追記した。

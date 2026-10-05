@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 11:08] filing-back | lint孤立ページ13件の導線を復旧
+
+- `python3 scripts/lint_wiki.py` で incoming wikilink のないページ13件を検出し、過去の issue / PR 判断、Windows実機メモ、ラベル評価依頼、行政RAG調査を既存ハブへ接続した。
+- 再実行で孤立ページ、壊れたwikilink、index未登録、frontmatter不備はいずれも0件になった。ページ追加やsummary変更はしていないため `index.txt` は再生成していない。
+
 ## [2026-10-05 11:00] filing-back | 直前セッションの広聴AI事例整理文脈を保存
 
 - 「これ何してたんだっけ」への復元として、直前作業が国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back だったことを [[codex-session-recall-broadlistening-lineage-2026-10-05]] に記録した。
