@@ -3,6 +3,7 @@ name: meeting-report-draft
 type: concept
 summary: "次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる"
 sources:
+  - interview-analysis-request-2026-10-05.md
   - source-code.md
   - github-dev-docs.md
   - meeting-minutes.md
@@ -90,6 +91,8 @@ sources:
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
 
 ## Updates — 2026-10-05 そのまま読む用
+
+- **取材対応**: 韓国からの取材に向けてデータ分析を試す。公開共有はこの概要までとし、詳細は非公開で管理する。[[interview-analysis-request-2026-10-05]]より。
 
 以下が今回再確認した現在地。下の6月30日版と9月の逐次記録は過去の観測であり、未merge / CI待ちをそのまま現在へ持ち越さない。[[current-status-2026-10-05]]より。
 

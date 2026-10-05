@@ -65,6 +65,7 @@ gpt-kawakita-kj-method-broadlistening-2026-05-25	source	sources/gpt-kawakita-kj-
 gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25	source	sources/gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。データ量が数十件規模の時、LLM に N:N 類似度を出させて spectral clustering する案を検討。LLM-as-pairwise-oracle + 対称化・校正・疎化した affinity graph + spectral/agglomerative の設計を推奨
 gpt-mst-bridge-visualization-brainstorm-2026-05-25	source	sources/gpt-mst-bridge-visualization-brainstorm-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。意味クラスタリングと 2D 散布図の衝突を、`クラスタ内 MST + クラスタ間 bridge edge + 2 段階 cluster-separated layout` という graph-drawing 系の設計で解く案を整理
 gpt-umap-clustering-bertopic-deep-research-2026-05-25	source	sources/gpt-umap-clustering-bertopic-deep-research-2026-05-25.md	2026-05-25 の nishio ↔ 外部 GPT 対話。`UMAP -> clustering` の妥当性、可視化用 2D と clustering 用 15D〜25D の分離、`n_neighbors` の解釈、BERTopic の現代的位置づけを既存研究を引きながら整理
+interview-analysis-request-2026-10-05	source	sources/interview-analysis-request-2026-10-05.md	韓国からの取材対応に向けてデータ分析を試す依頼の公開可能な概要
 issue-493-pr-597-discussion	source	sources/issue-493-pr-597-discussion.md	`Issue #493` と `PR #597` で行われた ScatterChart スクロール誤操作対策の議論メモ
 issue-731-windows-setup-mojibake	source	sources/issue-731-windows-setup-mojibake.md	GitHub issue #731 の再現ログ。Windows で `setup_win.bat` 実行時に日本語が文字化けするだけでなく、一部行が別コマンドとして解釈されてセットアップが停止することを示す
 issue-830-pr-832-auto-cluster-defaults-2026-05-18	source	sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md	`Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ
