@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 11:00] filing-back | 直前セッションの広聴AI事例整理文脈を保存
+
+- 「これ何してたんだっけ」への復元として、直前作業が国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back だったことを [[codex-session-recall-broadlistening-lineage-2026-10-05]] に記録した。
+- 次の自然な一手は #564 公開事例ページの schema / 掲載候補 / 読み方ガイド整理だが、6月30日の観測は古いので [[current-status-2026-10-05]] を先に読む注意を [[meeting-report-draft]] へ接続した。
+
 ## [2026-10-05 10:58] filing-back | 3件のIssue実装から検証境界と設定保護の知見を整理
 
 - [[next-three-issues-progress-2026-09-09]]へ再利用できる3点と観測時点を追記し、[[testing]]へ反映。
