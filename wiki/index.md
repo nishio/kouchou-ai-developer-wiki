@@ -4,6 +4,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 > **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（282 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
+直近の状態: [2026-10-05 キャッチアップ](analyses/current-status-2026-10-05.md) — 本体6PRのレビュー待ち、Serverless改善の反映済み確認、次の保守・利用観測。
+
 ## 最初に読むべき (推奨順)
 
 [[kouchou-ai]] → [[usage-modes]] → [[analysis-core-and-web-ui]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]]

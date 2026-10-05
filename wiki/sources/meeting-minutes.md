@@ -1,10 +1,10 @@
 ---
 name: meeting-minutes
-summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7700 lines, JP)"
+summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-07, ~7700 lines, JP)"
 type: source
 url: https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit
-last_checked: 2026-06-30
-coverage: "2025-03-26頃〜2026-06-22 先頭見出し"
+last_checked: 2026-10-05
+coverage: "2025-03-26頃〜2026-07-27 先頭見出し（txt/html再取得、直近追加分を読解）"
 sources:
   - meeting_minutes.txt
   - nishio-source-freshness-criterion-2026-06-02.md
@@ -12,7 +12,7 @@ sources:
 
 ## What it is
 
-[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。最新取得時点の先頭見出しは **2026/06/22**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
+[[kouchou-ai]] の週次開発会議「議事メモ」。Google Doc 1 本に reverse-chronological で全週分が追記され続けている。2026-06-30取得時点の先頭見出しは **2026/06/22**、最古は 2025/03/26 付近。各週のフォーマットは概ね統一されている：
 
 ```
 YYYY/MM/DD（次回分）
@@ -82,3 +82,9 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-06-30 16:33 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 551 件と再確認。8/2 イベントと優先軸の該当箇所は [[meeting-2026-06-22-event-priority]] に切り出した
 - 2026-06-30 18:30 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 550 件と再確認。内容面では 16:33 観測から新しい議事録見出しは増えていない
 - 2026-06-30 19:04 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` / `2026/06/30` 見出しは未検出、txt は 7703 行、URL unique 551 件と再確認。内容面では 18:30 観測から新しい議事録見出しは増えていない
+
+## Updates — 2026-10-05 source再取得
+
+- Google Doc exportのtxt / htmlを両方再取得。先頭見出しは2026/07/27、その次は2026/06/22。txtは7743改行。上の6月30日時点の鮮度記録は過去観測として読む。
+- 7月27日分は「集合はなし、最近の状況を記録しておく」と明記。書籍の当時の10〜11月発売目処を、現在の確定発売日とは扱わない。9〜10月の状況はGitHub / Slackを補助にする。
+- 固定snapshot・読解範囲は [[catchup-2026-10-05]]、横断した現状は [[current-status-2026-10-05]] を参照。

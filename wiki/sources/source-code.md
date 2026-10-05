@@ -126,3 +126,7 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 - 2026-05-17: local clone を一次参照、DeepWiki を補助ソースとする refresh protocol を追記
 - 2026-05-17: `embeddings.pkl` は元 embedding 保存、UMAP 2D 化は後段というコード上の事実を追記
 - 2026-05-20: `work/kouchou-ai/main@b4d4bcf` と open PR `#840` を見比べ、Phase 3b は main では dormant だが branch 上では blocker 解消が進行中と追記
+
+## Updates — 2026-10-05
+
+本体をfetch / pull --ff-onlyしてmain `751e2c88be26c7a73f2d3e059a53ab4e2497493a`を確認。9月9日の#940以後にmainの変更はない。open PRは#941〜#946とdraft #891。Serverlessのorigin/main `f4bb032`では#22〜#26が反映済み。詳細は [[catchup-2026-10-05]] / [[current-status-2026-10-05]]。

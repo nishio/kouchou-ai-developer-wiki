@@ -1,6 +1,6 @@
 ---
 name: broad-listening-book-extractions
-summary: "書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理"
+summary: "書籍から今後の開発判断に効く知見を整理。設計意図・経験値・検証結果を分け、KJ法プロンプトの品質向上は未検証の仮説として扱う"
 type: analysis
 sources:
   - broad-listening-book-source.md
@@ -93,3 +93,7 @@ sources:
 - 2026-05-25: 13.2.6 の「KJ法 / 表札 プロンプト」言及は prompt engineering tips としてだけでなく、product 設計原則として読み直せる。詳細は [[kj-method-broadlistening-framing-2026-05-25]]。原文復帰・既存カテゴリ非適用・表札の人間吟味・少数残存・対立/因果構造・現場返却の 6 原則のうち、current `kouchou-ai` は前 2 つを達成、後ろ 4 つは未達という棚分け
 - 2026-05-25: 13.2.4 の「UMAP 2D でクラスタリングしているのは標準作法と異なる妥協」自認は、外部 deep-research でも裏付けられた。同時に「clustering 用 UMAP は 15D〜25D」「BERTopic は backbone へ位置がずれた」など、書籍時点になかった現代的な落としどころが整理された。詳細は [[clustering-deep-research-findings-2026-05-25]]
 - 2026-09-15: 「KJ法プロンプトでラベル品質が上がる」を **未検証の仮説** として明示し直した。検証 issue `#882` は起票から約3.5か月 OPEN のまま実験未実施であることを一次ソース（issue 状態・PR 検索・commit grep）で確認。あわせて第1節の枠組みを「書籍＝確定版の裏付け」から「書籍＝設計意図の公開形。検証済みか否かは別に明示する」に改めた
+
+## Updates — 2026-10-05 索引再生成時の注意書き保持
+
+9月15日に本文とindex.txtへ加えられた「効果は未検証」という留保が、索引再生成で消えないようfrontmatter summaryにも反映した。今回新たに効果検証を行ったものではない。

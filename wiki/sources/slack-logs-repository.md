@@ -113,3 +113,8 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 ## Updates
 
 - 2026-09-07: 最新mirrorは75日窓（6月24日〜9月7日）へ変わり、canonical rawは8月分まで存在する。上記の14日窓・2ヶ月遅延は過去観測として読む。今回の読解範囲・commit・固定snapshotは [[slack-issues-2026-09-07]] を参照。
+
+## Updates — 2026-10-05
+
+- repo `77439607`、同期は2026-10-05 06:10 JST、75日窓。開発・アルゴリズムchannelと関連channelの9月以後の論点を確認し、選んだchannelの本文を `raw/catchup-2026-10-05/` に固定した。
+- 読解範囲・Flex切替・利用事例・戦略議論の観測は [[catchup-2026-10-05]]、現在地は [[current-status-2026-10-05]] を参照。全channel精読ではない。

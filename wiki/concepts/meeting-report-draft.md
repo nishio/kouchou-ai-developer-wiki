@@ -89,6 +89,17 @@ sources:
 - [[meeting-report-2026-06-01]] — ラベル品質仕切り直し、構造把握スタンス、open issue 全件棚卸し、PR #887 deploy false positive / runtime build risk、PR #883 撤回後の quickstart 再設計、Windows / local LLM route など
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
 
+## Updates — 2026-10-05 そのまま読む用
+
+以下が今回再確認した現在地。下の6月30日版と9月の逐次記録は過去の観測であり、未merge / CI待ちをそのまま現在へ持ち越さない。[[current-status-2026-10-05]]より。
+
+- **本体**: mainは9月9日の`751e2c8`から変更なし。shell基盤・hydration修正・title/noindexとFlex対応はmain済み。次は残る変更と通常staticのReact #418を区別して確認する。
+- **進行中**: #941〜#946（`codex/issue-130-contributing` / `codex/issue-518-static-artifact` / `codex/issue-395-error-e2e` / `codex/issue-393-publication-links` / `codex/issue-592-azure-errors` / `codex/issue-55-density-settings`）はCI成功・未merge・必須レビュー待ち。draft #891は競合あり。既存6PRのレビューと反映判断が残る。
+- **Serverless**: #22〜#26は9月9日にmain済み。過去の承認待ち記録を更新した。現在は依存更新#29 / #30 / #31 / #33がbuild失敗で、原因調査が次の候補。
+- **保守**: 新規#947はSECURITY.mdと非公開報告方法の整備提案、未担当。窓口・受け手の確認と依存保守の優先順位を整理する。
+- **製品判断**: #921のブラウザ版本流化、Flexの標準処理への自動切替は未決。北見の高校授業の報告など、分析から対話へつなぐ利用観測を判断材料にする。high priorityは#564 / #221。
+- **情報鮮度**: Slackは10月5日06:10 JST同期まで、議事録は今日txt/htmlを再取得しても先頭7月27日。今回の確認範囲と固定snapshotは [[catchup-2026-10-05]] に記録した。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より

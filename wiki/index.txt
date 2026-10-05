@@ -42,6 +42,7 @@ azure-container-apps-docs-2026-06-01	source	sources/azure-container-apps-docs-20
 azure-demo-visibility-thread-resolution-2026-06-05	source	sources/azure-demo-visibility-thread-resolution-2026-06-05.md	2026-06-05 11:36 大木さんの返答と 12:18 nishio の決定。Azure デモ動線化 4 問について「Q1, Q2 賛成 / Q3 アイデアとしてはあり優先度低 / Q4 継続利用環境はあるとよいが提供主体・責任範囲の整理必要」、デモ環境の価値の再フレーム、dd2030 提供 API キーの container 設定除去という prerequisite が明示された
 broad-listening-book-public-case-appendix-2026-06-30	source	sources/broad-listening-book-public-case-appendix-2026-06-30.md	Web 公開版「選挙を変えたブロードリスニング」の公開事例一覧を、広聴AI / Talk to the City / その他 broad listening 事例の追加候補カタログとして要約
 broad-listening-book-source	source	sources/broad-listening-book-source.md	DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む
+catchup-2026-10-05	source	sources/catchup-2026-10-05.md	2026-10-05再確認の本体・Serverless・Slack・議事録。main据え置き、6PRレビュー待ち、#947追加、Serverless改善5PRはマージ済み
 chrome-built-in-ai-docs-2026-05-31	source	sources/chrome-built-in-ai-docs-2026-05-31.md	Chrome Prompt API / built-in AI 公式 docs の要点。Gemini Nano を Chrome 内で使い、初回 model download 後は外部送信なしで動く一方、Chrome desktop・storage・RAM/CPU/GPU 条件と browser/API lifecycle への依存がある
 clustering-research-survey-seeds-2026-05-25	source	sources/clustering-research-survey-seeds-2026-05-25.md	TTTC / 広聴AI の clustering 議論を外部研究で検証するための survey seed 集。UMAP 後 clustering、spectral clustering、BERTopic、可視化と分析の分離、評価軸
 codeql-docs	source	sources/codeql-docs.md	GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ
@@ -82,7 +83,7 @@ meeting-2026-06-22-event-priority	source	sources/meeting-2026-06-22-event-priori
 meeting-brand-compass-information-strategy-2026-06-30	source	sources/meeting-brand-compass-information-strategy-2026-06-30.md	議事録から見た Brand Compass / 情報発信 / stable v4 / 利用者課題調査の接続。Brand Compass 本体ではなく、議事録上の判断フィルタを要約する
 meeting-cartographer-idobata-boundary-2026-06-30	source	sources/meeting-cartographer-idobata-boundary-2026-06-30.md	議事録から見た Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界。収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を混ぜないための整理
 meeting-minutes-url-extraction-2026-05-25	source	sources/meeting-minutes-url-extraction-2026-05-25.md	議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し
-meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-06, ~7700 lines, JP)
+meeting-minutes	source	sources/meeting-minutes.md	Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-07, ~7700 lines, JP)
 meeting-municipality-user-research-scope-2026-06-30	source	sources/meeting-municipality-user-research-scope-2026-06-30.md	議事録から見た自治体利用者課題調査の scope。広聴活動一般の探索と、広聴AIが活きるケースの探索を分ける必要がある
 nextjs-dynamic-build-docs-2026-06-01	source	sources/nextjs-dynamic-build-docs-2026-06-01.md	Next.js 公式 docs の generateStaticParams / connection / route segment config 周辺の要点。public-viewer dynamic build を API なしで通す設計の補助線
 nextjs-static-export-docs-2026-05-31	source	sources/nextjs-static-export-docs-2026-05-31.md	Next.js 公式 docs の static export / route handler 周辺の要点。静的 export は HTML/CSS/JS assets として配信できる一方、request-time server runtime に依存する機能は使えないため、Server Actions・request 依存 route・ISR/cache revalidate を使う current admin/public-viewer はそのままでは runtime Node なしにできない
@@ -168,7 +169,7 @@ analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
 azure-demo-public-visibility-proposal-2026-06-04	analysis	analyses/azure-demo-public-visibility-proposal-2026-06-04.md	Azure デモサイトを docs から動線化する 4 問と、2026-06-05 の大木さん返答 + nishio 決定。viewer 公開 / admin 共用 + 秘密情報禁止明示は進行、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化、で着地。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレームしている
 book-release-development-plan-2026-09	analysis	analyses/book-release-development-plan-2026-09.md	2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する
-broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍「選挙を変えたブロードリスニング」から抽出した、今後の kouchou-ai 開発判断に効く知見の整理。**「書籍に書いてある」は「検証されている」ではない**ため、各項目を検証済みの効果 / 経験値 / 未検証の仮説に仕分けて明示している。特に「KJ法プロンプトでラベル品質が上がる」は未検証（比較実験 issue #882 は OPEN・実験未実施）で、根拠として引用しないこと
+broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍から今後の開発判断に効く知見を整理。設計意図・経験値・検証結果を分け、KJ法プロンプトの品質向上は未検証の仮説として扱う
 broadlistening-tool-ecosystem-vision	analysis	analyses/broadlistening-tool-ecosystem-vision.md	広聴AI Web UI を simple な default モードに絞り、CLI に多様な実験機能を追加し、新しい分析手法が試行錯誤され共有されるコミュニティを育てる、という二段構造のエコシステムビジョン。analysis-stance で『別ツールで補完』とした空き地に対する nishio の答え
 bug-issue-triage-2026-05-25	analysis	analyses/bug-issue-triage-2026-05-25.md	2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った
 chart-scroll-ux-decision	analysis	analyses/chart-scroll-ux-decision.md	ScatterChart のスクロール誤操作対策では、click-to-enable より「短い遅延付きの自動ロック解除」と視覚フィードバックが好まれ、preview 環境不足が実装収束を妨げた
@@ -180,6 +181,7 @@ codeql-introduction-context	analysis	analyses/codeql-introduction-context.md	`PR
 codex-windows-environment-memo	analysis	analyses/codex-windows-environment-memo.md	Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
 current-open-issue-triage-2026-06-01	analysis	analyses/current-open-issue-triage-2026-06-01.md	2026-06-01 時点の open issue 124 件を subagent 5 分割で本文・コメントまで読み、current main と既存 wiki に照合した triage。短期優先は `#884` 作成前確認、`#885` Node runtime 排除、`#564/#696/#542` trust layer、`#877` Windows guide、`#881/#882/#869` ラベル品質実験で、`#871/#573/#558/#516/#513/#417/#379` などは close 候補
 current-status-2026-06-30	analysis	analyses/current-status-2026-06-30.md	2026-06-30 時点の広聴AI開発状況スナップショット。コード main、open PR / issue、議事録、Slack log の鮮度を合わせて読む
+current-status-2026-10-05	analysis	analyses/current-status-2026-10-05.md	10月5日時点の現在地。本体6PRはレビュー待ち、Serverless5PRは反映済み。非公開報告導線・依存CI・利用観測が次の確認候補
 daily-report-2026-09-09	analysis	analyses/daily-report-2026-09-09.md	分析の失敗を見えるようにし、導入から結果閲覧までを改善した開発日報。本体20 PRの反映、Serverlessとの役割整理、検証結果と残課題をまとめる
 decision-flowchart-prototype-2026-05-30	analysis	analyses/decision-flowchart-prototype-2026-05-30.md	scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。試作後に team feedback で初版の前提誤り (ラベル付きデータ jargon、Mac=Docker Desktop OK 飛躍など) を修正。ノードの意味区分は背景色ではなく明示的な文字ラベルで表現する
 deploy-success-but-nothing-changed-story-2026-06-01	analysis	analyses/deploy-success-but-nothing-changed-story-2026-06-01.md	「デプロイ成功なのに画面が変わらない」という小さな違和感から、誰も触れずにいた古い設計の沼まで一日で遡って直してしまった出来事を、PR 番号や技術用語を出さずに前提知識ゼロの読者向けにストーリー化したもの。Wiki つき Coding Agent がなぜそういう動き方を続けられるのかをエピソードとして残す
@@ -218,7 +220,7 @@ issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
 issues-response-plan-2026-09-07	analysis	analyses/issues-response-plan-2026-09-07.md	#905〜#909と#884の対応案。抽出失敗を成功扱いしない最小修正を先行し、Azure選択整合・モデル管理整理・個別モデル追加へ分割する
 japan-broadlistening-use-case-map-2026-06-30	analysis	analyses/japan-broadlistening-use-case-map-2026-06-30.md	公開Web検索で確認した日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を、8/2 イベントと #564 公開事例整備へ接続する地図
-kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlistening-framing-2026-05-25.md	広聴AIを川喜田二郎の野外科学 / KJ法に接続すると、中心は要約ではなく `渾沌から公共的仮説を立ち上げる装置` になる。書籍 13.2.6 の `KJ法プロンプト` は prompt の話に留まらず product 設計原則として読み直せる。ただし前提の「KJ法プロンプトで品質が上がる」自体が未検証（issue #882 OPEN・実験未実施）＝未検証の仮説をどう位置づけるかの話であって、効果が確認された技法の意味づけを変える話ではない
+kj-method-broadlistening-framing-2026-05-25	analysis	analyses/kj-method-broadlistening-framing-2026-05-25.md	広聴AIをKJ法の公共的仮説形成へ接続する目的論。KJ法プロンプトの品質向上を検証済みとはせず、未検証の仮説と製品設計原則を分ける
 kouchou-ai-docs-entry-restructure-2026-06-03	analysis	analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md	kouchou-ai 本体 docs の入口を「セットアップ」起点から「デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐」という spine に組み替える提案。`getting-started/` というネーミング自体がバイアスを産んでいたという指摘も含む
 kouchou-ai-paper-draft-ja	analysis	analyses/kouchou-ai-paper-draft-ja.md	広聴AI紹介論文の日本語下書き。まずは問題設定、システム、事例、評価、限界の骨組みを置く
 kouchou-ai-paper-draft-strategy	analysis	analyses/kouchou-ai-paper-draft-strategy.md	広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較

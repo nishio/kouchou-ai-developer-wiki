@@ -1,6 +1,6 @@
 ---
 name: kj-method-broadlistening-framing-2026-05-25
-summary: "広聴AIを川喜田二郎の野外科学 / KJ法に接続すると、中心は要約ではなく `渾沌から公共的仮説を立ち上げる装置` になる。書籍 13.2.6 の `KJ法プロンプト` は prompt の話に留まらず product 設計原則として読み直せる"
+summary: "広聴AIをKJ法の公共的仮説形成へ接続する目的論。KJ法プロンプトの品質向上を検証済みとはせず、未検証の仮説と製品設計原則を分ける"
 type: analysis
 sources:
   - gpt-kawakita-kj-method-broadlistening-2026-05-25.md
@@ -112,3 +112,7 @@ current `kouchou-ai` の implementation backlog に対しては、本ブレス�
 ## Updates
 
 - 2026-05-25: 川喜田二郎 / KJ法 に接続するブレストを、product 設計原則の棚として整理。既存の「KJ法 prompt」言及（書籍 13.2.6）からは方法論側に展開され、ohki-shingo の公開UI要件、LLM grouping、graph visualization 提案と複数地点で接続する
+
+## Updates — 2026-10-05 索引再生成時の注意書き保持
+
+9月15日に本文とindex.txtへ加えられた「効果は未検証」という留保が、索引再生成で消えないようfrontmatter summaryにも反映した。今回新たに効果検証を行ったものではない。
