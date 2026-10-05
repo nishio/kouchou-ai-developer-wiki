@@ -140,16 +140,22 @@ def main() -> int:
                 continue
             if resolved.netloc != parsed_base.netloc:
                 continue
-            checked += 1
             base_without_slash = base_path.rstrip("/")
             if (
                 not resolved.path.startswith(base_without_slash + "/")
                 and resolved.path != base_without_slash
             ):
+                # One GitHub Pages origin can host several independent projects.
+                # Explicit absolute hyperlinks may point to those other sites;
+                # relative escapes and asset URLs still indicate broken output.
+                raw_parsed = urlsplit(raw_url)
+                if tag == "a" and attr == "href" and raw_parsed.netloc:
+                    continue
                 failures.append(
                     f"{rel_html}: {tag}[{attr}] {raw_url!r} escapes GitHub Pages base path -> {resolved.path}"
                 )
                 continue
+            checked += 1
             if not path_exists_for_url(resolved.path, base_path):
                 failures.append(
                     f"{rel_html}: {tag}[{attr}] {raw_url!r} resolves to missing public path {resolved.path}"

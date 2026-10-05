@@ -44,6 +44,9 @@ jobs:
       - name: Build site
         run: pnpm build
 
+      - name: Test link checker
+        run: python3 -m unittest discover -s scripts -p 'test_check_pages_links.py'
+
       - name: Check generated links
         run: pnpm check:pages-links
 

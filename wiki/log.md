@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 10:05] filing-back | 同一GitHub Pages origin上の別サイトへのリンク誤検出を修正
+
+- 今回と直前の公開CIで、別プロジェクトへの絶対リンクがbase path逸脱とされる原因を確認。`check_pages_links.py`を修正した。
+- 絶対hyperlinkを外部参照とし、相対逸脱・内部リンク切れ・asset逸脱は維持。回帰テスト5件をCIへ追加し、[[current-status-2026-10-05]]と定例メモへ記録。
+
 ## [2026-10-05 10:02] filing-back | 10月5日のコード・GitHub・Slack・議事録へキャッチアップ
 
 - [[catchup-2026-10-05]] / [[current-status-2026-10-05]] にsource鮮度と現在地を固定。本体mainは据え置き、#941〜#946はCI成功・必須レビュー待ち、#947は新規未担当。
