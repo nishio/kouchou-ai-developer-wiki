@@ -69,3 +69,9 @@ Flexの標準処理への自動切替も未決論点として残る。#934の実
 [[catchup-2026-10-05]]の続報より、#947をnishioが担当し、非公開脆弱性報告機能を有効化した。報告ボタンの公開表示と担当者のリポジトリ購読を確認済み。SECURITY.mdに報告先・対象範囲・必要情報・非公開でのやりとりを記載し、貢献ガイドからリンクする[PR #948](https://github.com/digitaldemocracy2030/kouchou-ai/pull/948)を提出した（`codex/issue-947-security-policy`）。
 
 設定は反映済み、文書は未merge。ローカルstrict build、CIの文書buildとCodeQLは成功。CodeRabbitの自動レビューは確認時点で進行中。必須レビューとCLA本人確認、通知の実運用確認が残る。20:14の「未担当・報告機能無効・調査のみ」は着手前の観測として扱う。
+
+### 2026-10-05 20:50 JST — 依存保守の実装へ着手
+
+[[catchup-2026-10-05]]の続報より、nishio担当の#949に依存保守を集約し、更新・互換性対応を[PR #950](https://github.com/digitaldemocracy2030/kouchou-ai/pull/950)へ提出した（`codex/issue-949-dependency-updates`、未merge）。ローカルの単体テスト・本番build・ブラウザ回帰は成功。まず修正版のある範囲を反映可能な状態にし、上流修正版待ちの残件は#949で追跡する。
+
+更新ブランチの監査結果と、mainのDependabot画面は別の状態である。main反映後の再評価までアラート解消済みとは扱わず、#949を閉じない。公開Wikiには具体的な脆弱性詳細を載せず、対応PR・優先度判断・担当確認を残す。

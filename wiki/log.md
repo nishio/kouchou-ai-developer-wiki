@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 20:50] filing-back | 依存保守を#949で担当し更新PR #950を提出
+
+- [[catchup-2026-10-05]]へ依存更新と互換性検証、未mergeの#950を記録。具体的な脆弱性詳細は非公開のrawに固定した。
+- [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、修正版のある範囲を先行し、残件を#949で追跡する判断を追記。main反映後の再評価とレビューが残る。
+
 ## [2026-10-05 20:21] filing-back | #947の非公開報告を有効化しSECURITY.md追加PR #948を提出
 
 - #947を担当し、GitHubの非公開報告機能を有効化。公開報告ボタンと通知購読を確認した。[[catchup-2026-10-05]]より。
