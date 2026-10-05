@@ -104,7 +104,7 @@ sources:
 - **本体**: mainは9月9日の`751e2c8`から変更なし。shell基盤・hydration修正・title/noindexとFlex対応はmain済み。次は残る変更と通常staticのReact #418を区別して確認する。
 - **進行中**: #941〜#946（`codex/issue-130-contributing` / `codex/issue-518-static-artifact` / `codex/issue-395-error-e2e` / `codex/issue-393-publication-links` / `codex/issue-592-azure-errors` / `codex/issue-55-density-settings`）はCI成功・未merge・必須レビュー待ち。draft #891は競合あり。既存6PRのレビューと反映判断が残る。
 - **Serverless**: #22〜#26は9月9日にmain済み。過去の承認待ち記録を更新した。現在は依存更新#29 / #30 / #31 / #33がbuild失敗で、原因調査が次の候補。
-- **保守**: #947は未担当・対応PRなし。20:14 JSTの追加確認でmainにSECURITY.mdがなく、GitHubの非公開報告機能も無効だった。受け手・通知と報告窓口の有効化を文書追加と合わせて整理する。今回は調査のみ。[[catchup-2026-10-05]]より。
+- **保守（進行中）**: #947をnishioが担当し、GitHubの非公開脆弱性報告機能を有効化。報告ボタンと通知購読を確認した。SECURITY.md・貢献ガイドの案内は#948（`codex/issue-947-security-policy`）で未merge、ローカルstrict build・CI文書build・CodeQL成功。次はPRレビュー・CLA本人確認と通知の実運用確認。[[catchup-2026-10-05]]より。
 - **製品判断**: #921のブラウザ版本流化、Flexの標準処理への自動切替は未決。北見の高校授業の報告など、分析から対話へつなぐ利用観測を判断材料にする。high priorityは#564 / #221。
 - **情報鮮度**: Slackは10月5日06:10 JST同期まで、議事録は今日txt/htmlを再取得しても先頭7月27日。今回の確認範囲と固定snapshotは [[catchup-2026-10-05]] に記録した。
 - **復帰文脈 / Wiki保守**: 直前にやっていたのは実装ではなく、国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back。次は #564 公開事例ページの schema / 掲載候補 / 読み方ガイド整理が自然だが、6月30日のopen PR/issue観測は古いので [[current-status-2026-10-05]] を先に読む。加えて wiki lint の孤立13件を、過去の issue/PR判断、Windows実機メモ、ラベル評価依頼、行政RAG調査へ接続して復旧した。[[codex-session-recall-broadlistening-lineage-2026-10-05]]より [[current-open-issue-triage-2026-06-01]]より [[codex-windows-environment-memo]]より [[cli-pipeline-experiment-roadmap-2026-06-02]]より [[digital-agency-legal-rag]]より。

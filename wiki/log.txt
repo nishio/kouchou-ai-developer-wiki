@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-05 20:21	filing-back	#947の非公開報告を有効化しSECURITY.md追加PR #948を提出
 2026-10-05 20:14	filing-back	#947の非公開報告機能と文書整備の範囲を確認
 2026-10-05 11:08	filing-back	lint孤立ページ13件の導線を復旧
 2026-10-05 11:00	filing-back	直前セッションの広聴AI事例整理文脈を保存

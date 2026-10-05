@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 20:21] filing-back | #947の非公開報告を有効化しSECURITY.md追加PR #948を提出
+
+- #947を担当し、GitHubの非公開報告機能を有効化。公開報告ボタンと通知購読を確認した。[[catchup-2026-10-05]]より。
+- SECURITY.mdと貢献ガイドの導線を#948へ提出。strict build成功、文書は未merge。[[current-status-2026-10-05]]と[[meeting-report-draft]]へ設定反映済み・レビュー待ちの区別を記録した。
+
 ## [2026-10-05 20:14] filing-back | #947の非公開報告機能と文書整備の範囲を確認
 
 - [[catchup-2026-10-05]]へmain・Issue・open PR・非公開報告設定の再観測を追記。SECURITY.mdなし、非公開報告機能は無効だった。
