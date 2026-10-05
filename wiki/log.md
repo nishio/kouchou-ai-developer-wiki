@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 21:45] filing-back | #950・#944をマージし他PRのレビュー未実行と競合に対応
+
+- 明示許可に基づくadmin mergeと#949の残件追跡を[[catchup-2026-10-05]]へ記録。#948のマージ済み状態も確認した。
+- #941・#942の競合を解消し、5PRを最新mainと統合。CodeRabbitの成功表示と実レビューを区別し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ進行中の残条件を反映した。
+
 ## [2026-10-05 21:30] filing-back | #950のCodeRabbit再レビュー成功と必須承認待ちを記録
 
 - 関数説明の警告を修正し、最新commitの再レビュー・CI成功を確認。[[catchup-2026-10-05]]に追記した。
