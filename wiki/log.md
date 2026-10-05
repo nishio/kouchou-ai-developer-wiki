@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 10:58] filing-back | 3件のIssue実装から検証境界と設定保護の知見を整理
+
+- [[next-three-issues-progress-2026-09-09]]へ再利用できる3点と観測時点を追記し、[[testing]]へ反映。
+- [[meeting-report-draft]]を更新。実装結果の再検証はしていない。
+- grasp書込基盤（wiki.grasp/events.jsonl）が未導入のため、既存のMarkdown運用で更新。
+
 ## [2026-10-05 10:44] filing-back | 韓国からの取材に向けたデータ分析の公開範囲を記録
 
 - [[interview-analysis-request-2026-10-05]] に、韓国からの取材対応のためデータ分析を試す依頼の概要を記録した。

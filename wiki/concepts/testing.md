@@ -5,6 +5,8 @@ type: concept
 sources:
   - github-dev-docs.md
   - source-code.md
+  - three-issues-progress-2026-09-09.md
+  - next-three-issues-progress-2026-09-09.md
 ---
 
 ## テスト層
@@ -78,3 +80,13 @@ sources:
 - 2026-05-18: v5 移行期における「v4 回帰保証」のテスト責務を追記
 - 2026-05-23: API の `report_launcher` が `analysis_core` を subprocess で起動する継ぎ目を、mock ではなく実 subprocess で踏む手元 smoke test (`tests/manual/report_launcher_subprocess_smoke.py`) を追加
 - 2026-05-23: `launch_report_generation()` から通常フロー全体を踏む manual smoke を追加し、その実行で workflow plugin が `--input-dir` / `--output-dir` を legacy step に渡していなかったバグを発見・修正
+
+## Updates — 2026-10-05 検証結果の保証範囲を分ける
+
+9月9日の#943・#945・#946の記録をもとに、テスト結果の読み方を整理した。今回のコード再検証ではない。[[three-issues-progress-2026-09-09]] / [[next-three-issues-progress-2026-09-09]]より。
+
+- Server ActionからAPIへの通信はブラウザのpage.routeでは捕捉できないため、HTTP dummyで失敗応答・切断を作る。画面側の復帰動作の確認と、実プロバイダーの認証・接続確認は区別する。
+- fixtureによるブラウザ試験は操作と値の受け渡し、実routerと一時ファイルの統合試験は保存・再取得を担う。設定画面では他項目の保持、不正値の拒否、取得失敗時に既定値で上書きしないことも確認する。
+- Jest成功だけでは型検査成功を保証しない。#946ではChakra Textのlabel属性がビルド時に失敗し、asChildとnative labelで修正した。CI成功・自動レビュー完了・実サービス接続成功・ブラウザエラー不存在も、それぞれ別の確認結果として報告する。
+
+上のOpen Questionsにある「E2EはCI非実行」は、ブラウザE2E全般の現在の説明としては使わない。9月9日の#943では全体86件、#946では81件のブラウザE2EがCIで成功している。実LLMを使うanalysis-core E2Eとは対象を区別する。
