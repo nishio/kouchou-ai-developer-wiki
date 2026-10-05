@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-05 21:30] filing-back | #950のCodeRabbit再レビュー成功と必須承認待ちを記録
+
+- 関数説明の警告を修正し、最新commitの再レビュー・CI成功を確認。[[catchup-2026-10-05]]に追記した。
+- 通常マージはGitHubの必須承認未充足で拒否。継続確認を設定し、[[current-status-2026-10-05]]と[[meeting-report-draft]]へ未mergeの残条件を記録した。
+
 ## [2026-10-05 20:50] filing-back | 依存保守を#949で担当し更新PR #950を提出
 
 - [[catchup-2026-10-05]]へ依存更新と互換性検証、未mergeの#950を記録。具体的な脆弱性詳細は非公開のrawに固定した。
