@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-06 00:37	filing-back	#946の割合表示の丸め誤差を修正
 2026-10-06 00:26	filing-back	#946の旧密度設定互換性の指摘を修正
 2026-10-06 00:06	filing-back	#945をマージし残るレビュー対象を#946へ集約
 2026-10-05 23:19	filing-back	#945の関数説明警告を修正し再レビューへ

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-06 00:37] filing-back | #946の割合表示の丸め誤差を修正
+
+- 追加レビュー指摘を修正し、UI12テスト成功。指摘解消の返信と再レビューの利用上限を区別して記録した。[[catchup-2026-10-05]]より。
+- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ未mergeの残条件を追記し、01:08以降の再確認へ引き継ぐ。
+
 ## [2026-10-06 00:26] filing-back | #946の旧密度設定互換性の指摘を修正
 
 - 保存済み設定の不正な密度項目だけを補い、他の設定とファイルを保持する修正をpush。関連API51テスト成功。[[catchup-2026-10-05]]より。
