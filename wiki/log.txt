@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-06 22:40	filing-back	自治体PCでのWSL2起動報告とWindows入口の推奨案
 2026-10-06 21:45	filing-back	PR #952 レビュー判断を analyses に記録
 2026-10-06 21:30	filing-back	外部PR #952のマージを記録
 2026-10-06 00:37	filing-back	#946の割合表示の丸め誤差を修正

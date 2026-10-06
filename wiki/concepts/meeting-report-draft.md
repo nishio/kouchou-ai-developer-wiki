@@ -158,6 +158,11 @@ sources:
 - 初参加の外部コントリビュータによる #952 を main `73ce8df` へ反映し、#951 はCLOSED。`compose.yaml` のollamaホスト側ポートを `OLLAMA_HOST_PORT`（既定11434）で変えられるようにした。アプリはコンテナ間の `ollama:11434` で接続するため設定変更は不要。
 - `docs/index.md` のポート表への追記は main `a12d68e` へ直接反映済み。初回コントリビュータのPRはワークフロー承認まで CodeQL が走らない点もレビュー時に要確認。
 
+### Updates — 2026-10-06 自治体PCでのWSL2起動報告
+
+- 大木さんが自治体内で流用可能な Windows 11 PC で、Docker Desktop を使わず WSL2 + `./start_linux.sh` で広聴AIを動かせたと Slack で報告。自治体は Docker Desktop の規約上、規模に関係なく有料になる。
+- 推奨案（Windows ガイド冒頭で個人・小規模はDocker Desktop / 自治体・大組織はWSL2+Docker Engineへ分岐、政府機関は有料と明記）を大木さんに伝えた。進行中（未起票）。大木さんの手順共有と反応を待って issue / docs PR 化する。詳細は [[windows-distribution-options]]。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より

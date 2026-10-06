@@ -13,6 +13,7 @@ sources:
   - node-runtime-free-windows-exe-2026-05-31.md
   - github-pr-891-live-2026-06-30.md
   - pr-891-standalone-packaging-scope-2026-06-30.md
+  - slack-municipal-pc-wsl2-2026-10-05.md
 ---
 
 ## 問い
@@ -134,10 +135,19 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 - 段階 2 に進む場合の言語スタック (Go / Tauri / Electron / .NET) の選定。kouchou-ai 本体の保守者層と乖離しすぎないこと
 - Docker Desktop ライセンス前提のままで自治体・行政展開を続けられる範囲。回避策が必要になる場面の見極め
 - ルート B（WSL2 Ubuntu + Docker Engine）を「上級者向け補助ルート」に留めるか、主要利用者層のライセンス事情を踏まえて「主要ルート」へ昇格させるか
+  - 2026-10-06 時点の推奨案: Docker Desktop を推奨から外すのではなく、`windows-setup.md` の冒頭で「個人・小規模団体 → ルート A / 自治体・大組織 → ルート B」と入口を分け、政府機関は有料であることを規約リンクつきで明記する。ルート B の手順は大木の実機手順をもとに書く。大木の反応待ち（下の Updates 参照）
+- WSL 3.0 の WSL コンテナー（`wslc`）が compose に対応した時点で、Docker Engine すら入れない第 3 ルートになり得るか
 - Mac の非専門家向け配布をどう扱うか。Windows と同等の `setup_mac.*` 整備、または別物として扱うか
 
 ## Updates
 
+- 2026-10-06: [[slack-municipal-pc-wsl2-2026-10-05]] を反映。自治体内で流用可能な Windows 11 PC で、ルート B（WSL2 + `./start_linux.sh`、Docker Desktop なし）が動いたという大木の報告が出た。5 月時点では GPT のブレストしか根拠がなかったルート B に、初めて実機の成功例がついた。あわせて次を確認した
+  - Docker Desktop の規約では、政府機関は組織規模に関係なく有料サブスクリプションが必須（無料は従業員 250 人未満かつ年間売上 1000 万ドル未満の組織などに限られる）。広聴AIの主要利用者である自治体は、そのまま有料の条件に当たる。「大企業 / 政府機関では有料になる場合がある」という上の書き方より強い
+  - current main（`a12d68e`）の `docs/getting-started/windows-setup.md` は「組織利用の場合は管理者へ確認」とだけ書き、WSL 内の手動構築は扱わない。自治体の利用者には、有料のルート A か IT 管理者へ回すかの二択しか示していない
+  - #877（2026-09-08 CLOSED）の「Docker Desktop / WSL2 が塞がれた組織 PC は初心者向けガイドの対象外」という判断は、技術的に塞がれている前提だった。実際の障害はライセンス費用で、ルート B という回避経路もあるので、前提の見直しが要る
+  - ルート B でも `wsl --install` には Windows の管理者権限と仮想化の有効化が要る。これは Docker Desktop と同じなので、権限の問題までなくなるわけではない。手順化では、WSL 側の filesystem への clone（Windows 側に clone すると CRLF で `.sh` が壊れる）、systemd、`.wslconfig` のメモリ設定、庁内プロキシが詰まりどころになりそう
+  - WSL 3.0（2026-09-29 発表）で WSL コンテナーが正式版になったが、`wslc compose` はこれから実装される段階。現行の `compose.yaml` 前提の構成はそのままでは乗らないので、当面は様子見
+  - 方針: nishio が大木に推奨案（入口を利用者の組織で分ける / 政府機関は有料と明記 / ルート B の手順を大木の実機手順から作る）を伝えた。issue 起票・docs PR は大木の反応を待ってから
 - 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として整理し、embeddable Python + static viewer/admin の prototype だが current supported path ではないと追記
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
 - 2026-06-01: 定例議事録を反映し、非エンジニア橋渡し役の短期導線は Azure デモ環境を優先し、Windows standalone は中長期の privacy / offline / local LLM route として探索する位置づけへ補正

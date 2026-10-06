@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-06 22:40] filing-back | 自治体PCでのWSL2起動報告とWindows入口の推奨案
+
+- 大木の Slack 報告（WSL2 + `start_linux.sh` で自治体 PC 上で動作）を [[slack-municipal-pc-wsl2-2026-10-05]] として source 化。
+- [[windows-distribution-options]] にルート B 初の実機成功例、政府機関は Docker Desktop が有料という規約、#877 前提の見直し、WSL 3 は様子見、を追記。推奨案は大木の反応待ち。
+
 ## [2026-10-06 21:45] filing-back | PR #952 レビュー判断を analyses に記録
 
 - ホスト公開ポートとコンテナ間接続先を分ける観点、初回コントリビュータPRでCodeQLが承認待ちになる点、軽微なdocs追随のmain直接修正を [[pr-952-ollama-host-port-review-2026-10-06]] に記録。
