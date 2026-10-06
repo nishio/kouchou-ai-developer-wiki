@@ -29,7 +29,7 @@ docker compose up
 # api:           http://localhost:8000
 ```
 
-ローカル LLM を使うなら `WITH_GPU=true` を `.env` に書いてから `docker compose --profile ollama up -d`。
+ローカル LLM を使うなら `WITH_GPU=true` を `.env` に書いてから `docker compose --profile ollama up -d`。ホストで既に 11434 が使われている場合は `.env` の `OLLAMA_HOST_PORT` でホスト側ポートだけ変える（アプリの接続先 `ollama:11434` は不変。[[pr-952-ollama-host-port-review-2026-10-06]]）。
 
 ## この Wiki と並走して読む場合
 
@@ -133,3 +133,4 @@ AI コーディングエージェントの長期運用では、host machine full
 - 2026-05-25: 議事録のリンク URL を追えるよう、`raw/meeting_minutes.html` 取得を任意の補助手順として追加
 - 2026-06-30: Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` clone を追加し、`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線として位置づけ直した
 - 2026-10-05: Windows setup 系作業で参照する Codex 実機確認メモへの導線を追加した
+- 2026-10-06: #952 で入った `OLLAMA_HOST_PORT`（ホスト側 ollama ポート変更）を追記

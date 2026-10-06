@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-06 21:45] filing-back | PR #952 レビュー判断を analyses に記録
+
+- ホスト公開ポートとコンテナ間接続先を分ける観点、初回コントリビュータPRでCodeQLが承認待ちになる点、軽微なdocs追随のmain直接修正を [[pr-952-ollama-host-port-review-2026-10-06]] に記録。
+- [[local-dev-setup]] に `OLLAMA_HOST_PORT` を追記。Open Question: api の `localhost:11434` 既定値の追随要否。
+
 ## [2026-10-06 21:30] filing-back | 外部PR #952のマージを記録
 
 - Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能にする#952がmain `73ce8df` へ反映、#951 CLOSED。
