@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-06 21:30] filing-back | 外部PR #952のマージを記録
+
+- Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能にする#952がmain `73ce8df` へ反映、#951 CLOSED。
+- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記。`docs/index.md` のポート表更新が小さな残件。
+
 ## [2026-10-06 00:37] filing-back | #946の割合表示の丸め誤差を修正
 
 - 追加レビュー指摘を修正し、UI12テスト成功。指摘解消の返信と再レビューの利用上限を区別して記録した。[[catchup-2026-10-05]]より。

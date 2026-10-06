@@ -153,6 +153,11 @@ sources:
 - [[catchup-2026-10-05]]より、#946の追加レビュー指摘を受け、割合表示の丸め誤差を修正。UI12テストが成功し、指摘スレッドも解消確認済み。
 - `codex/issue-55-density-settings` の `2a90f9e` は未merge。利用枠回復後の最新HEAD全体の再レビューとCI完了を確認する。
 
+### Updates — 2026-10-06 21:30 外部PR #952 Ollamaポート変更
+
+- 初参加の外部コントリビュータによる #952 を main `73ce8df` へ反映し、#951 はCLOSED。`compose.yaml` のollamaホスト側ポートを `OLLAMA_HOST_PORT`（既定11434）で変えられるようにした。アプリはコンテナ間の `ollama:11434` で接続するため設定変更は不要。
+- 残る小さな点: `docs/index.md` のポート表は11434固定の記載のまま。初回コントリビュータのPRはワークフロー承認まで CodeQL が走らない点もレビュー時に要確認。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
