@@ -6,7 +6,7 @@
 ## [2026-10-06 21:30] filing-back | 外部PR #952のマージを記録
 
 - Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能にする#952がmain `73ce8df` へ反映、#951 CLOSED。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記。`docs/index.md` のポート表更新が小さな残件。
+- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記。`docs/index.md` のポート表は main `a12d68e` へ直接修正済み。
 
 ## [2026-10-06 00:37] filing-back | #946の割合表示の丸め誤差を修正
 
