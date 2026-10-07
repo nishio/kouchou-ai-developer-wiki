@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-07 18:50	filing-back	CLIのHTML出力がreport_dir未定義で失敗する不具合を再現・修正
 2026-10-07 10:00	filing-back	小型ローカルLLMの意見抽出で起きた意味の書き換えを記録
 2026-10-06 22:40	filing-back	自治体PCでのWSL2起動報告とWindows入口の推奨案
 2026-10-06 21:45	filing-back	PR #952 レビュー判断を analyses に記録
