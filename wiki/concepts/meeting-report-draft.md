@@ -163,10 +163,10 @@ sources:
 - 大木さんが自治体内で流用可能な Windows 11 PC で、Docker Desktop を使わず WSL2 + `./start_linux.sh` で広聴AIを動かせたと Slack で報告。自治体は Docker Desktop の規約上、規模に関係なく有料になる。
 - 推奨案（Windows ガイド冒頭で個人・小規模はDocker Desktop / 自治体・大組織はWSL2+Docker Engineへ分岐、政府機関は有料と明記）を大木さんに伝えた。進行中（未起票）。大木さんの手順共有と反応を待って issue / docs PR 化する。詳細は [[windows-distribution-options]]。
 
-### Updates — 2026-10-07 CLIのHTML出力が最後で失敗する不具合
+### Updates — 2026-10-07 CLIのHTML出力が最後で失敗する不具合（#953 / PR #955）
 
-- **進行中（未push・Issue/PR未作成）**: 既定のCLI実行（HTML出力あり）が、可視化の段階で `report_dir` 未定義となり失敗する。main `a12d68e` で再現。npmビルド時代の参照が残っていたのが原因。Web UIは常に `--without-html` なので影響なし。
-- 参照を削除し回帰テストを追加（branch `fix/cli-visualization-report-dir`、analysis-core 257テスト成功）。別件として、CLIクイックスタートが案内するトップレベル `report_url_pattern` が設定検証で弾かれ、タイトル・原文リンクの設定もワークフロー経由では届かない。次はIssue起票とPR化の判断。
+- **進行中（PR #955、未merge・CI/レビュー待ち）**: 既定のCLI実行（HTML出力あり）が、可視化の段階で `report_dir` 未定義となり失敗する（#953）。main `a12d68e` で再現。npmビルド時代の参照が残っていたのが原因。Web UIは常に `--without-html` なので影響なし。参照を削除し回帰テストを追加（branch `fix/cli-visualization-report-dir`、analysis-core 257テスト成功）。
+- **別Issue #954（未着手・方針未決）**: CLIクイックスタートが案内する `report_url_pattern` / `report_html_title` が、設定検証で弾かれ、ワークフロー経由でもプラグインに届かない。トップレベルに置くか、`hierarchical_visualization` の中に置くかの判断が要る。
 
 ## そのまま読む用 (2026-06-30 更新)
 

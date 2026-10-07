@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-07 19:10] filing-back | report_dir不具合を#953・PR #955に、原文リンク設定の件を#954に分離
+
+- #953を起票しPR #955を作成（CI・レビュー待ち）。設定の置き場所の判断が要る原文リンク・タイトル設定の件は#954に分けた。[[meeting-report-draft]]を更新。
+
 ## [2026-10-07 18:50] filing-back | CLIのHTML出力がreport_dir未定義で失敗する不具合を再現・修正
 
 - 既定のCLI実行が可視化の段階で失敗する不具合をmain `a12d68e` で再現し、topic branchで修正と回帰テストを用意（未push）。[[meeting-report-draft]]に進行中として記録。
