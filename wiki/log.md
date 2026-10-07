@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-07 23:30] filing-back | セットアップスクリプトの .env 欠落バグを起票し修正 PR
+
+- 全セットアップスクリプトの `.env` に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` がなく、静的版ダウンロードの失敗と表示更新の 401 が起きることを Docker で再現。#956 を起票し、PR #957（CI 通過、未merge）を作成。
+- [[meeting-report-draft]] と [[windows-distribution-options]] に追記。次は CodeRabbit のレビューと、大木が見た症状が同じかの確認。
+
 ## [2026-10-07 19:40] filing-back | CLIのreport.html経路がWeb経路で通らず不具合が残った構造を記録
 
 - [[gotchas]] に、Web UI が常に `--without-html` で起動するため CLI の可視化経路が日常的に通らず、#953（report_dir 未定義）と #954（原文リンク設定が効かない）が気づかれずに残った構造を追記。プラグイン単体テストがワークフロー経由の設定の形を検証しない点も。

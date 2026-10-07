@@ -168,6 +168,11 @@ sources:
 - **進行中（PR #955、未merge・CI/レビュー待ち）**: 既定のCLI実行（HTML出力あり）が、可視化の段階で `report_dir` 未定義となり失敗する（#953）。main `a12d68e` で再現。npmビルド時代の参照が残っていたのが原因。Web UIは常に `--without-html` なので影響なし。参照を削除し回帰テストを追加（branch `fix/cli-visualization-report-dir`、analysis-core 257テスト成功）。
 - **別Issue #954（未着手・方針未決）**: CLIクイックスタートが案内する `report_url_pattern` / `report_html_title` が、設定検証で弾かれ、ワークフロー経由でもプラグインに届かない。トップレベルに置くか、`hierarchical_visualization` の中に置くかの判断が要る。
 
+### Updates — 2026-10-07 セットアップスクリプトの .env 欠落（#956 / PR #957）
+
+- WSL2 の件の調査中に見つかったバグ。`setup_linux.sh` / `setup_mac.sh` / `setup_win.ps1` が作る `.env` に `CLIENT_STATIC_BUILD_BASEPATH` と `REVALIDATE_SECRET` がなく、スクリプトで入れた環境では静的版ダウンロードが必ず HTTP 500 になり、表示更新の依頼が 401 で拒否されていた（反映が最大 5 分遅れる）。開発者は `cp .env.example .env` を使うので気づかれていなかった。Docker で修正前後を再現して確認した。
+- 進行中: PR #957（`fix/issue-956-setup-env`、未merge）。3 スクリプトに 3 行を追加し、`.env.example` との抜けを CI で検出するチェックを付けた。CI は全て通過、CodeRabbit のレビュー待ち。既存の利用者は `.env` への追記かスクリプトの再実行が必要。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
