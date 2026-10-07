@@ -289,6 +289,7 @@ report-reading-guide-minimum-wording-2026-06-30	analysis	analyses/report-reading
 report-slug-config-behavior	analysis	analyses/report-slug-config-behavior.md	`reports/:slug` は current 通常生成物なら `config` を返すが、router に validation が無いため壊れた成果物から `config` 欠損 payload を公開しうる
 semantic-island-map-prototype-2026-05-26	analysis	analyses/semantic-island-map-prototype-2026-05-26.md	`LLM grouping` された 422 argument の 2D 可視化を `UMAP` / supervised UMAP / LDA / centroid-MDS で試した結果、embedding 由来散布図を主図にするより、cluster-first な semantic island map の方が要件に合うと分かった
 serverless-product-direction-2026-09-08	analysis	analyses/serverless-product-direction-2026-09-08.md	ブラウザ版を利用入口の有力候補とし、運用・分析実験と結果データの接続を分けて進める開発方針案
+setup-script-env-drift-2026-10-07	analysis	analyses/setup-script-env-drift-2026-10-07.md	セットアップスクリプト（setup_linux.sh / setup_mac.sh / setup_win.ps1）が `.env.example` の一部だけを書き出していたため、スクリプトで入れた環境では静的版ダウンロードが失敗し、表示更新の依頼が 401 になっていた。開発者は `cp .env.example .env` を使うので気づかれなかった。#956 / PR #957 で 3 行を追加し、抜けを CI で検出するチェックを付けた
 slack-algorithm-themes	analysis	analyses/slack-algorithm-themes.md	`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類
 slack-design-intents-2025-q4	analysis	analyses/slack-design-intents-2025-q4.md	2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、long-context LLM 直接分類志向、JSON/YAML カスタマイズ、v4/v5 分離
 slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、LLM grouping 系分類、可視化分離

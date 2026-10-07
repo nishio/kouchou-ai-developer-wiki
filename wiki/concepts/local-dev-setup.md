@@ -92,6 +92,8 @@ rye run uvicorn src.main:app --reload --port 8000
 - 静的書き出し時のサブパス：`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH`（[[deployment]]）
 - plugin 有効化：`ENABLE_YOUTUBE_INPUT_PLUGIN`, `YOUTUBE_API_KEY` 等
 
+一般利用者向けのセットアップスクリプト（`setup_*.sh` / `setup_win.ps1`）は `.env` を一から書き出すので、`.env.example` との間でずれが起きやすい。2026-10 に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` の欠落が見つかった（#956 / PR #957、[[setup-script-env-drift-2026-10-07]]）。`.env.example` に変数を足す時は、スクリプトにも書き出すか、`scripts/check_setup_env.py` の `OPTIONAL_KEYS` に理由つきで入れる（PR #957 の merge 後）。
+
 ## `.env` 変更時の build 再実行
 
 `Makefile` は `.env` / `.env.azure` のハッシュを `.env-hashes/` に保存し、変更を検知すると `docker compose build --no-cache` を強制する。これは **「一部 env var が build 時にイメージへ焼き込まれる」** 仕様の救済策（README に注意書きあり）。

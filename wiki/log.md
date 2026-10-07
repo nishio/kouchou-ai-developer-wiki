@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-08 00:50] filing-back | セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
+
+- [[setup-script-env-drift-2026-10-07]] を新規作成。開発者は `cp .env.example .env` なので気づかれなかった構造、丸ごとコピーを避けた理由（Azure ダミー値）、`OPTIONAL_KEYS` による分類の強制、再現の方法を記録。
+- 修正前は revalidate の受け口が未定義どうしの比較で開いていたことと、CodeRabbit の秘密固定値の指摘を Open Question 化。[[local-dev-setup]] に注意を追記。
+
 ## [2026-10-07 23:30] filing-back | セットアップスクリプトの .env 欠落バグを起票し修正 PR
 
 - 全セットアップスクリプトの `.env` に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` がなく、静的版ダウンロードの失敗と表示更新の 401 が起きることを Docker で再現。#956 を起票し、PR #957（CI 通過、未merge）を作成。
@@ -134,8 +139,3 @@
 - Serverless #22〜#26のmain反映を確認し、製品方針ページの未merge記録へ補足。依存更新4PRのbuild失敗は未調査として残した。
 - 議事録txt/htmlとSlack snapshotを更新し、定例下書きの先頭側に今回の読み上げメモを追記。grasp書き込み未導入のため既存Markdown方式で保存した。
 - 索引再生成で過去の未検証留保が消える不整合を検出し、KJ法関連2ページのfrontmatterへ反映して再生成した。
-
-## [2026-09-30 23:59] filing-back | 別リポジトリでの drastic refactor は提案だったと明記
-
-- wiki森の public wiki 12個を grasp `cross-project-spreads` で同名 handle ごとに束ね、Gemini（3.8 Flash medium / 3.1 Pro）に wiki をまたぐ食い違いを挙げさせ、Claude が原文と照らして判定した（2026-09-30、galleria の taskF）。Gemini の修正案はそのまま当てていない。
-- [[plugin-system]] の節「drastic refactor は別リポジトリで」が現在の方針に読めた。見出しを「という提案（2025-10-08）」に変え、実際は main 上の段階移行になったこと（[[refactoring-status]]）を追記。

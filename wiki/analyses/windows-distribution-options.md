@@ -147,7 +147,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
   - #877（2026-09-08 CLOSED）の「Docker Desktop / WSL2 が塞がれた組織 PC は初心者向けガイドの対象外」という判断は、技術的に塞がれている前提だった。実際の障害はライセンス費用で、ルート B という回避経路もあるので、前提の見直しが要る
   - ルート B でも `wsl --install` には Windows の管理者権限と仮想化の有効化が要る。これは Docker Desktop と同じなので、権限の問題までなくなるわけではない。手順化では、WSL 側の filesystem への clone（Windows 側に clone すると CRLF で `.sh` が壊れる）、systemd、`.wslconfig` のメモリ設定、庁内プロキシが詰まりどころになりそう
   - WSL 3.0（2026-09-29 発表）で WSL コンテナーが正式版になったが、`wslc compose` はこれから実装される段階。現行の `compose.yaml` 前提の構成はそのままでは乗らないので、当面は様子見
-  - 2026-10-07 追記: 大木が手順書のたたき台（WSL2 + Docker Engine、`main` を clone）を Slack に共有した。たたき台にある「`cp .env.example .env` が必須」の原因を調べたところ、WSL2 とは関係なく、全セットアップスクリプトが作る `.env` に変数が足りないバグだった（#956、修正 PR #957）。大木が見た症状がこれと同じかは未確認
+  - 2026-10-07 追記: 大木が手順書のたたき台（WSL2 + Docker Engine、`main` を clone）を Slack に共有した。たたき台にある「`cp .env.example .env` が必須」の原因を調べたところ、WSL2 とは関係なく、全セットアップスクリプトが作る `.env` に変数が足りないバグだった（#956、修正 PR #957、詳細は [[setup-script-env-drift-2026-10-07]]）。大木が見た症状がこれと同じかは未確認
   - 方針: nishio が大木に推奨案（入口を利用者の組織で分ける / 政府機関は有料と明記 / ルート B の手順を大木の実機手順から作る）を伝えた。issue 起票・docs PR は大木の反応を待ってから
 - 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として整理し、embeddable Python + static viewer/admin の prototype だが current supported path ではないと追記
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
