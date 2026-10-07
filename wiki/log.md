@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-07 12:30] lint | 初回の意味的lint: workflow既定経路の矛盾・10/5現在地の陳腐化・人物の役割の出典を訂正
+
+- 機械的lintは孤立・壊れたリンク・未登録とも0件。index.md / CLAUDE.md のページ数（302→305）を実数に合わせた。
+- [[plugin-system]] の「production パスは dormant、`run_workflow()` は呼ばれていない」が [[refactoring-status]]（Phase 3b 完了）と矛盾。本体 main `a12d68e` で `run_default()` → `run_workflow()` が CLI の既定経路と確認し、見出しと注記で作成時の観測と明示。index.md の「production 未配線」、[[book-release-development-plan-2026-09]] / [[slack-design-intents-2026-q1]] / [[phase3b-exit-criteria]] / [[cli]] の同趣旨の記述に Updates 注記。
+- [[current-status-2026-10-05]] の summary と index.md の「本体6PRのレビュー待ち」を、`gh pr list` で確認した現状（未mergeは#946のみ、他に draft #891）へ更新。[[thinking-targets]] / [[open-decisions]] に、#884（PR #922）・#877 が 2026-09-08 に CLOSED、8/2 event は日付経過済みと注記。[[contributing]] の open PR #734 / #597 が CLOSED であることを注記。
+- 人物: [[dd2030]] の「ボード: 鈴木健（法人化リード）・関治之・安野」を、2026-05 告知の原文「ボード(鈴木・中室・関)」に置換。[[anno]] / [[other-contributors]] の「ボード／戦略」を削除・弱化。[[nasuka]] の「元会議ファシリテーター」（出典なし）を削除し、「2025-12 以降 2026 衆院選候補」を議事録 2025/06/04 の本人発言「次回参院選の公認候補予定者」へ訂正。
+- 未修正の判断待ち: `scripts/refresh_logs.py` が lint entry を除外するため、この entry も次回 refresh で消え、wiki森の lint キューから「未lint」に見え続ける。[[meeting-report-draft]] は 2026-06-01 以降 rotate されていない。
+
 ## [2026-10-07 10:00] filing-back | 小型ローカルLLMの意見抽出で起きた意味の書き換えを記録
 
 - 非公開の試行から、Qwen3 4B の抽出で見えた失敗の型（主張の主体の逆転・関係の捏造・感情の言い換え・要求の脱落・反復の水増し）を [[local-llm-extraction-faithfulness-2026-10-05]] に一般化して記録。原文・データ詳細は載せていない。

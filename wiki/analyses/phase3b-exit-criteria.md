@@ -104,3 +104,4 @@ Phase 3b 完了は「workflow を標準にした」段階であって、「legac
 ## Updates
 
 - 2026-05-21: 初回作成。Phase 3b の完了条件を、必須条件・許容差分・merge 後 follow-up に分けて整理
+- 2026-10-07: lint 注記。PR #840 は 2026-05-21 に merge され、[[refactoring-status]] で Phase 3b は完了扱いになった。本ページの open PR 前提の記述は当時の判断材料として読む

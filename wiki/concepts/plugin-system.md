@@ -60,9 +60,11 @@ sources:
 
 [[meeting-minutes]] 2025-10-08 で [[nishio]]：「今のコードがあちこち動かなくなるので、リポジトリを複製して必要なコードだけ残して開発するといい」。[[talk-to-the-city|TTTC]] からの kouchou-ai フォーク自体が同じパターン。→ 実際には採用されず、main 上の段階移行になった（[[refactoring-status]]）。
 
-## production パスとの繋がり：現状 dormant
+## production パスとの繋がり：作成時（2026-05-17）は dormant、2026-05-21 以降は default 経路
 
-実装は存在するが **default 実行パスは plugin dispatch を通らない**：
+> **2026-10-07 lint 注記**: 以下の「dormant」「呼ばれていない」は作成時の観測。PR #840（2026-05-21 merge）以降、current `main`（`a12d68e`）では `PipelineOrchestrator.run_default()` が `run_workflow()` を呼び、CLI（`analysis_core/__main__.py`）もこれを使う。`run()` は deprecated 警告つきの legacy 経路。現状は [[refactoring-status]]（Phase 3b 完了）と [[workflow-defaultization-blockers]] を正とする。[[source-code]]より
+
+作成時の観測: 実装は存在するが **default 実行パスは plugin dispatch を通らない**：
 
 - `PipelineOrchestrator.run()` — レガシーの `run_step()` ループを直接呼ぶ。[[cli|CLI]] と API サーバはこちら
 - `PipelineOrchestrator.run_workflow()` — plugin dispatch 経由。**呼ばれていない**
@@ -116,3 +118,4 @@ sources:
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正
 - 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と LLM grouping 系 analysis plugin の結びつきを追記
+- 2026-10-07: lint。「production パスとの繋がり：現状 dormant」が [[refactoring-status]]（Phase 3b 完了）と矛盾していたため、current main `a12d68e` で `run_default()` → `run_workflow()` が CLI の既定経路であることを確認し、見出しと注記で作成時の観測と明示した

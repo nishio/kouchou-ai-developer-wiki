@@ -64,3 +64,4 @@ sources:
 ## Updates
 
 - 2026-05-17: `#2_開発_広聴ai` の 2026-Q1 ログから初回整理
+- 2026-10-07: lint 注記。「`run_workflow()` が production で dormant」は 2026-05-17 時点の観測。PR #840（2026-05-21 merge）以降は `run_default()` 経由で既定経路になった（[[refactoring-status]]）

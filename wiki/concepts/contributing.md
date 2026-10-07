@@ -155,3 +155,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-18: draft PR は merge せず、ready for review にしてから merge 判断へ進む運用メモを追記
 - 2026-05-20: [[usage-modes]] に合わせ、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追記
 - 2026-05-21: reviewer request や approval 催促は AI が独断で行わず、人間の明示指示でのみ進める運用メモを追記
+- 2026-10-07: lint 注記。2026-05-18 snapshot の nishio 以外の人間 authored open PR `#734` / `#597` は、その後いずれも CLOSED（未 merge）。2026-10-06 には外部コントリビュータの #952 が merge された（[[pr-952-ollama-host-port-review-2026-10-06]]）

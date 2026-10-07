@@ -1,6 +1,6 @@
 ---
 name: anno
-summary: "安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者"
+summary: "安野たかひろ — kouchou-ai 開発で使う Devin の契約者。TTTC を非エンジニア向けにアプリ化した「チームあんの」の文脈"
 type: entity
 sources:
   - meeting-minutes.md
@@ -8,7 +8,7 @@ sources:
 
 ## Who
 
-**安野たかひろ (anno)**。[[dd2030]] のボード／戦略担当の一人。
+**安野たかひろ (anno)**。[[dd2030]] 周辺の人物。
 
 ## kouchou-ai に関係する活動
 
@@ -19,3 +19,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-10-07: lint。「DD2030 ボード／戦略担当」は出典が確認できず、2026-05 の法人名称投票告知のボード表記（鈴木・中室・関）にも含まれないため削除。Devin については議事録に「安野さんのDevinに招待してもらう」とあり（[[meeting-minutes]]）、契約者という記述は維持

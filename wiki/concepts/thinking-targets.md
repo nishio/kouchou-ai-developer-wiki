@@ -35,6 +35,8 @@ sources:
 
 ## 0. 2026-06-30 immediate thinking queue
 
+> 2026-10-07 lint 注記: この queue は 6/30 時点。#884・#877 は 2026-09-08 に CLOSED、8/2 event は日付を過ぎた。現在地は [[current-status-2026-10-05]] を先に読む（詳細は末尾 Updates）。
+
 6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか / 誰が実践 lane を担うか**、**公開事例と trust layer をどこに置くか**、**#884 を次の code-safe slice にするか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
 
 Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、#564/#696/#542、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
@@ -218,3 +220,4 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 2026-05-30: 「広聴AI = 構造把握スタンス」を [[analysis-stance]] として概念ページ化。全体傾向把握ユースケースは構造把握スタンスで実現、定量分析スタンスではない、を core stance に明示
 - 2026-05-30: 1-1 ユースケース契約が確定 (全体傾向把握ユースケース一本)。Web UI 非露出、少数重要論点系は CLI 分析者責務、minority residual artifact なし。下流 1-2〜1-5 を全体傾向把握前提で書き換え。詳細判断は [[label-quality-redesign-reset-2026-05-30]] に
 - 2026-05-30: 初版。「考えることをやりたい」という方針を受け、思考と判断が要る論点だけを 1 ページに集めるハブとして新設。ラベル品質仕切り直し 5 レイヤ、次の view 方向、pipeline 境界、公開・運用摩擦の 4 ブロックで構成
+- 2026-10-07: lint 注記。0 章の immediate queue は 2026-06-30 時点のもの。0-4 の #884 は 2026-09-08 に PR #922 で CLOSED、0-3 の #877 も 2026-09-08 に CLOSED（#876 / #885 は open）。0-1 の 8/2 event は日付を過ぎたが結果はこの wiki に未記録。現在地は [[current-status-2026-10-05]] を先に読む

@@ -23,13 +23,13 @@ testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwrig
 thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
 usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理
 wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	Wikiと本体の二層運用。現行実装によるIssue完了判定、検証範囲の区別、Serverlessとの共通確認例を作業へ還流する
-anno	entity	entities/anno.md	安野たかひろ — DD2030 ボード、Devin の ACU credits 提供者
+anno	entity	entities/anno.md	安野たかひろ — kouchou-ai 開発で使う Devin の契約者。TTTC を非エンジニア向けにアプリ化した「チームあんの」の文脈
 broad-listening-book	entity	entities/broad-listening-book.md	DD2030 書籍「選挙を変えたブロードリスニング」（インプレス、CC BY-NC 4.0）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う
 dd2030	entity	entities/dd2030.md	デジタル民主主義2030 — kouchou-ai の親プロジェクト／組織
 idobata	entity	entities/idobata.md	AI による 1-on-1 深掘り interview OSS。広聴AIとは収集・深掘りと分析・可視化の役割を分け、theme discovery や提案 / PR データで接続する
 jigsaw-sensemaker	entity	entities/jigsaw-sensemaker.md	Jigsaw Sensemaker は、広義には LLM grouping に属する外部ツール / 分析アプローチとして扱う。LLM grouping 全体を Jigsaw と呼ぶと、一般カテゴリと固有名詞が混ざって混乱する
 kuboon	entity	entities/kuboon.md	Ohkubo KOHEI — Outline self-host とドキュメント基盤運用
-nasuka	entity	entities/nasuka.md	Nasuka Sumino (角野) — 元会議ファシリ、抽出プロンプト・limited-publish 等を実装
+nasuka	entity	entities/nasuka.md	Nasuka Sumino (角野) — 抽出プロンプト・limited-publish・クラスタタイトル手動編集等を実装したコントリビュータ
 nishio	entity	entities/nishio.md	西尾泰和 — kouchou-ai のリファクタ／研究主導、本 Wiki のオーナー
 ohki-shingo	entity	entities/ohki-shingo.md	大木真吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当
 other-contributors	entity	entities/other-contributors.md	その他の主要コントリビュータ — kitaro, tanenobu, shirouchi, sasano ほか
@@ -184,7 +184,7 @@ codeql-introduction-context	analysis	analyses/codeql-introduction-context.md	`PR
 codex-windows-environment-memo	analysis	analyses/codex-windows-environment-memo.md	Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ
 current-open-issue-triage-2026-06-01	analysis	analyses/current-open-issue-triage-2026-06-01.md	2026-06-01 時点の open issue 124 件を subagent 5 分割で本文・コメントまで読み、current main と既存 wiki に照合した triage。短期優先は `#884` 作成前確認、`#885` Node runtime 排除、`#564/#696/#542` trust layer、`#877` Windows guide、`#881/#882/#869` ラベル品質実験で、`#871/#573/#558/#516/#513/#417/#379` などは close 候補
 current-status-2026-06-30	analysis	analyses/current-status-2026-06-30.md	2026-06-30 時点の広聴AI開発状況スナップショット。コード main、open PR / issue、議事録、Slack log の鮮度を合わせて読む
-current-status-2026-10-05	analysis	analyses/current-status-2026-10-05.md	10月5日時点の現在地。本体6PRはレビュー待ち、Serverless5PRは反映済み。非公開報告導線・依存CI・利用観測が次の確認候補
+current-status-2026-10-05	analysis	analyses/current-status-2026-10-05.md	10月5日時点の現在地と10月6日までの続報。本体6PRのうち5件と#948・#950・#952はmain反映、未mergeは#946。非公開報告は有効化済み、依存保守は#949で継続
 daily-report-2026-09-09	analysis	analyses/daily-report-2026-09-09.md	分析の失敗を見えるようにし、導入から結果閲覧までを改善した開発日報。本体20 PRの反映、Serverlessとの役割整理、検証結果と残課題をまとめる
 decision-flowchart-prototype-2026-05-30	analysis	analyses/decision-flowchart-prototype-2026-05-30.md	scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。試作後に team feedback で初版の前提誤り (ラベル付きデータ jargon、Mac=Docker Desktop OK 飛躍など) を修正。ノードの意味区分は背景色ではなく明示的な文字ラベルで表現する
 deploy-success-but-nothing-changed-story-2026-06-01	analysis	analyses/deploy-success-but-nothing-changed-story-2026-06-01.md	「デプロイ成功なのに画面が変わらない」という小さな違和感から、誰も触れずにいた古い設計の沼まで一日で遡って直してしまった出来事を、PR 番号や技術用語を出さずに前提知識ゼロの読者向けにストーリー化したもの。Wiki つき Coding Agent がなぜそういう動き方を続けられるのかをエピソードとして残す

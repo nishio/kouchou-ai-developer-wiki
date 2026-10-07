@@ -263,3 +263,4 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-25: A1 の [[nishio]] スタンスを訂正。「チームみらい等の宣伝用途」という外部顧客像に紐づけた表現は不適切で、実際は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替も可」という時間軸のある立場である
 - 2026-06-04: A2 に [[azure-demo-public-visibility-proposal-2026-06-04]] への接続を追記。nishio が Ohki さん宛に Slack で 4 問 ((Q1) viewer 公開 / (Q2) admin 共用 + 秘密情報禁止明示 / (Q3) Github admin ワンクリックの 1 ヶ月専用試用環境 / (Q4) 365 日 SaaS 不参加確認) として decompose した
 - 2026-06-05: A2 に [[azure-demo-visibility-thread-resolution-2026-06-05]] による着地を追記。viewer 公開と admin 共用は進める (前提: container の dd2030 フォールバックキー除去、3 点明示文言)、1 ヶ月専用試用環境は優先度低 + 公開事例導線が代替方向、365 日 SaaS は提供主体・責任範囲の整理項目化、デモ環境の価値は「参照環境」へ再フレーム
+- 2026-10-07: lint 注記。短期未決 4 の #884 は 2026-09-08 に PR #922（作成前に入力とAPI接続状態を確認する画面）で CLOSED（nishio 担当）。#221 は open のまま。2026-06-30 overlay の他項目（8/2 event 等）は日付を過ぎており、現在の判断待ちは [[current-status-2026-10-05]] を先に見る

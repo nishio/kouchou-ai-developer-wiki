@@ -2,9 +2,9 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（302 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（305 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態: [2026-10-05 キャッチアップ](analyses/current-status-2026-10-05.md) — 本体6PRのレビュー待ち、Serverless改善の反映済み確認、次の保守・利用観測。
+直近の状態: [2026-10-05 キャッチアップ](analyses/current-status-2026-10-05.md) — 10/5時点の本体6PRのうち5件は10/5〜6にmain反映、未mergeは#946のみ（2026-10-07確認）。外部PR #952もmain反映。次は保守・利用観測。
 
 ## 最初に読むべき (推奨順)
 
@@ -45,7 +45,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ## CLI / analysis-core 開発者向け
 
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI
-- [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核、production 未配線）
+- [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核。analysis 側は workflow engine が CLI の既定経路、外部 plugin の同梱はまだ無い）
 - [llm-grouping-implementation-plan](analyses/llm-grouping-implementation-plan.md) — `analysis_mode=llm_grouping` 第2分析モードの実装方針
 - [jigsaw-sensemaker](entities/jigsaw-sensemaker.md) — Jigsaw Sensemaker は LLM grouping の一例であり、LLM grouping 全体を Jigsaw と呼ぶと混乱する、という用語整理
 - [clustering-deep-research-findings-2026-05-25](analyses/clustering-deep-research-findings-2026-05-25.md) — UMAP / clustering / BERTopic の deep-research 整理

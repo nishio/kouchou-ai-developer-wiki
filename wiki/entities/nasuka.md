@@ -1,6 +1,6 @@
 ---
 name: nasuka
-summary: "Nasuka Sumino (角野) — 元会議ファシリ、抽出プロンプト・limited-publish 等を実装"
+summary: "Nasuka Sumino (角野) — 抽出プロンプト・limited-publish・クラスタタイトル手動編集等を実装したコントリビュータ"
 type: entity
 sources:
   - meeting-minutes.md
@@ -8,7 +8,7 @@ sources:
 
 ## Who
 
-**nasuka (Nasuka Sumino, 角野)**。週次会議の元ファシリテーター。2025-12 以降は **チームみらい 2026 衆院選候補** として活動軸が移行。
+**nasuka (Nasuka Sumino, 角野)**。2025-06-04 の定例で、本人が「（開発とは関係ないトピックですが）チームみらいの次回参院選の公認候補予定者になりました」と共有している（[[meeting-minutes]] 2025/06/04 見出しより）。
 
 [[kouchou-ai]] の中核コントリビュータの一人。詳細は [[meeting-minutes]] 各所に散在。
 
@@ -33,3 +33,4 @@ sources:
 
 - 2026-05-17: 初回作成
 - 2026-05-25: 過去発言の振り返り [[nasuka-statements-retrospective-2026-05-25]] への導線を追加
+- 2026-10-07: lint。初回作成時の「週次会議の元ファシリテーター」は議事録・oss_weekly_reporter に出典が見つからず削除。「2025-12 以降はチームみらい 2026 衆院選候補」は、議事録 2025/06/04 の本人発言「チームみらいの次回参院選の公認候補予定者」と時期・選挙の種類が食い違っていたため、原文どおりに訂正。PR #500 / #545 / #582 の author が nasuka であることは GitHub で確認済み
