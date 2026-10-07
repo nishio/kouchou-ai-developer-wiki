@@ -65,6 +65,7 @@ Issue #660（2025-07-30 マージ）— OpenAI / OpenRouter のキーを管理�
 
 ## Updates
 
+- 2026-10-07: 小型ローカルモデル（Qwen3 4B）で他言語の短文から意見抽出すると、処理は終わっても主張の主体の逆転などの意味の書き換えが起きた観察を [[local-llm-extraction-faithfulness-2026-10-05]] に記録
 - 2026-05-31: Windows local 完結 route の候補として Foundry Local / Chrome Prompt API / Phi Silica を追記。Foundry Local は現行 OpenAI-compatible local endpoint に接続しやすいが未実装
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を確認し、LOCAL LLM の HTTPS 対応は「議事メモ上の報告あり・main 反映は要再確認」という書き方に修正

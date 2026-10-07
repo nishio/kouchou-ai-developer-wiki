@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-07 10:00] filing-back | 小型ローカルLLMの意見抽出で起きた意味の書き換えを記録
+
+- 非公開の試行から、Qwen3 4B の抽出で見えた失敗の型（主張の主体の逆転・関係の捏造・感情の言い換え・要求の脱落・反復の水増し）を [[local-llm-extraction-faithfulness-2026-10-05]] に一般化して記録。原文・データ詳細は載せていない。
+- [[llm-providers]] から参照。Open Question: 日本語の入力でも同じ失敗が起きるか。
+
 ## [2026-10-06 22:40] filing-back | 自治体PCでのWSL2起動報告とWindows入口の推奨案
 
 - 大木の Slack 報告（WSL2 + `start_linux.sh` で自治体 PC 上で動作）を [[slack-municipal-pc-wsl2-2026-10-05]] として source 化。
