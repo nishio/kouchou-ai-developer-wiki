@@ -123,3 +123,4 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 - 2026-05-20: open PR `#840` により、`run_workflow()` default 化へ向けた下回り実装が branch 上で進んでいることを追記
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` は Web canonical にしないと明記
 - 2026-10-07: lint 注記。本文の「open PR `#840`」は 2026-05-21 に merge 済み。current main `a12d68e` では CLI が `run_default()` → `run_workflow()` を呼ぶ（[[refactoring-status]]）
+- 2026-10-07: main `a12d68e` で、既定の CLI 実行（HTML あり）が可視化の段階で `report_dir` 未定義により失敗することを確認（#953 / PR #955）。クイックスタートが案内する `report_url_pattern` も効かない（#954）。経緯は [[gotchas]] の「CLI の `report.html` 経路は Web UI の実行では通らない」

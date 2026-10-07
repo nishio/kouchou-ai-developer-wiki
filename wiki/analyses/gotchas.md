@@ -128,6 +128,17 @@ Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL
 
 current `main` では `--without-html` は `default=False` に直ったが、`--skip-interaction` はなお `action="store_true"` + `default=True` のため、**コマンドラインから False に戻せない**。対話確認をさせたい用途ではライブラリ API 側の扱いまで見る必要がある（[[cli]]）。
 
+### CLI の `report.html` 経路は Web UI の実行では通らないので、壊れても気づきにくい
+
+Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を起動する。これは「CLI の観察用 HTML と Web の JSON viewer は artifact 契約が別」という意図どおりの設計だが、裏返すと **日常的に最も多く回っている Web 経路は、CLI の可視化ステップを一度も実行しない**。2026-10-07 時点の main `a12d68e` では、この経路に次の 2 つの不具合が気づかれずに残っていた。
+
+- **既定の CLI 実行が最後で落ちる（#953 / PR #955）**: ワークフロー定義が、npm ビルド時代の名残の `${config.report_dir}` を参照していた。今の実装はこの値を読まないのに、エンジンは未定義キーをエラーにするので、`report_dir` を書かない普通の設定では可視化の段階で必ず失敗する。クイックスタートの手順どおりでも `report.html` が出ない
+- **原文リンク・タイトル設定が効かない（#954、方針未決）**: クイックスタートが案内するトップレベルの `report_url_pattern` は設定検証で弾かれる。`hierarchical_visualization` の中に書いても弾かれる。仮に通っても、エンジンはステップ定義に書かれた設定しかプラグインに渡さないので届かない
+
+テストがすり抜けた理由も同じ形をしている。プラグインの単体テストは、プラグインが期待する形の設定を**直接**渡しているので通る。しかし実際にワークフローエンジンから渡る設定の形とは違う。プラグイン単体のテストだけでは「ワークフロー経由で設定が届くか」は検証されない。PR #955 では、オーケストレーターから HTML 出力ありで可視化ステップを回す統合テストを足した。
+
+教訓: 利用モードごとに経路を分けたら、**Web が通らない側の経路にも、端から端まで通す最小のテストを置く**。どちらか片方の経路だけが日常的に回っていると、もう片方は静かに腐る（[[cli]]、[[usage-modes]]、[[analysis-core-and-web-ui]]）。
+
 ### PyPI パッケージ名 `kouchou-ai-analysis-core` と import 名 `analysis_core`
 
 ハイフン／アンダースコアの食い違い。`pip install` と `import` で違う。
@@ -245,3 +256,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI 向け観察用HTMLだと補正
 - 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、削除済みの legacy LLM path / `hierarchical_main.py` を current gotcha として語らないよう補正
+- 2026-10-07: CLI の `report.html` 経路が Web 経路では通らないために、`report_dir` 未定義（#953 / PR #955）と原文リンク設定が効かない件（#954）が残っていたことを追記

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-07 19:40] filing-back | CLIのreport.html経路がWeb経路で通らず不具合が残った構造を記録
+
+- [[gotchas]] に、Web UI が常に `--without-html` で起動するため CLI の可視化経路が日常的に通らず、#953（report_dir 未定義）と #954（原文リンク設定が効かない）が気づかれずに残った構造を追記。プラグイン単体テストがワークフロー経由の設定の形を検証しない点も。
+- [[cli]] の Updates から参照。教訓: 経路を分けたら、Web が通らない側にも端から端までの最小テストを置く。
+
 ## [2026-10-07 19:10] filing-back | report_dir不具合を#953・PR #955に、原文リンク設定の件を#954に分離
 
 - #953を起票しPR #955を作成（CI・レビュー待ち）。設定の置き場所の判断が要る原文リンク・タイトル設定の件は#954に分けた。[[meeting-report-draft]]を更新。
