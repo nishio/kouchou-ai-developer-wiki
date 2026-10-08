@@ -1,0 +1,67 @@
+---
+type: analysis
+summary: 取材対応の中で受けた機能要望 4 件（ヘイト表現の比率、政策提案に絞った地図、全画面のままの粒度切替、全画面のままの日英韓切替）を 3 つの topic branch で実装した設計判断と検証状況。分類は既存の属性フィルタに乗せ、翻訳は結果 JSON の `translations` に載せる。すべて未push
+sources:
+  - interview-analysis-request-2026-10-05.md
+  - 2026-10-09 の実装記録（raw/2026-10-09-interview-requests-implementation.md、非公開）
+---
+
+# 取材で受けた機能要望 4 件の実装（2026-10-08〜09）
+
+[[interview-analysis-request-2026-10-05]] の取材対応の中で、相手から 4 件の機能要望が出た。2026-10-08 夜から 10-09 未明にかけて、`work/kouchou-ai` の 3 つの worktree で並行して実装した。取材の内容・提供データ・そのデータでの数値は非公開のまま（raw に保管）で、このページには設計判断と検証状況だけを残す。
+
+| 要望 | branch（main `a12d68e` 起点、未push） | 状態 |
+|---|---|---|
+| ヘイト表現の比率を出す / 政策提案に絞った地図 | `feat/opinion-speech-classification` | 実装・テスト済み。非公開データで全件試行済み |
+| 全画面表示のまま大きい群と細かい群を切り替える | `feat/fullscreen-cluster-level` | 実装・テスト済み。実ブラウザ未確認 |
+| 全画面表示のまま日本語・英語・韓国語を切り替える | `feat/fullscreen-language-switch` | 実装・テスト済み。翻訳は一部デモのみ |
+
+## 1. 意見分類: 比率と絞り込みは同じ仕組みで足りる
+
+「ヘイトの比率」と「政策提案だけの地図」は別機能に見えるが、どちらも**意見 1 件ごとにラベルを付け、属性として結果に載せる**ことで同時に満たせる。属性にしておけば公開ビューアの既存の属性フィルタがそのまま効き、ビューア側のコード変更が要らない。
+
+- ラベルは独立した yes/no を 2 つ: `hate_or_insult`（侮辱・罵倒・蔑称、属性に基づく差別・排除・敵意、危害を望む表現）と `policy_proposal`（公共の政策・制度への具体的な対応・方向性、特定政策への明示的な賛否）。「生産的な政策議論」は「政策提案かつ非侮辱」と定義した。
+- 強い批判・辞任や処罰の要求・皮肉は侮辱に含めない。人事だけを求めるもの・番組への要望は政策提案に含めない。定義はプロンプトに明記し、`steps/opinion_labels.py` を正本にした。
+- `hate_or_insult` は法的・学術的な「ヘイトスピーチ」の定義ではなく作業定義である。比率はこの定義に相対的な数字で、分母は抽出された意見数（投稿数でも人数でもない）。
+- workflow の任意ステップとして追加し（[[plugin-system]] の builtin plugin、[[cli]] から有効化）、`hierarchical_aggregation` で属性に載せる。fake LLM でのテストを含め pytest 282 件、ruff clean。
+- 非公開データ 2,914 意見でローカル LLM（Qwen3.8 27B）を使って全件試行した。サンプル 100 件の目視では誤検出より見落としが多く、数字は下限寄りに読むべきと分かった。[[local-llm-extraction-faithfulness-2026-10-05]] と同じく、韓国語から日本語への抽出段階で表現が和らいでいる可能性もある。
+- 既存のクラスタ名（「侮辱的言説の集積」のような見出し）とこのラベルは別の仕組みで、件数は一致しない。試行では侮辱判定された意見が level 1 の全群に散っていた。見出しだけで比率を語れない、という [[interview-analysis-request-2026-10-05]] 以来の注意が裏付けられた。
+
+## 2. 全画面の粒度切替: 新しい状態を増やさない
+
+全画面中は「全体 / 詳細クラスタ」の選択が画面外にあり、切り替えるには全画面を抜ける必要があった。
+
+- 新しい state は増やさず、ClientContainer が持つ表示選択（`selectedChart`）を全画面内から切り替える。「全体」= level 1、「詳細クラスタ」= 最深 level、「濃い意見」= 最深 level + 密度フィルタ、という既存の対応をそのまま使うので、全画面を抜けても選択が引き継がれ、密度設定とも整合する。Plotly の `uirevision` でズームは保持される。
+- `FullscreenToolbar`（右端に全画面終了を固定し、左側を children スロットにした容器）と `ScatterLevelSwitch`（`aria-pressed` 付きのボタン群）を追加。通常のセレクタと同じ無効判定を `resolveChartModes()` に切り出して共有した。
+- issue #283 は「モードバーが全画面終了ボタンに被る」バグ（クローズ済み）で、ツールバーの設計提案ではなかった。その退避処理が参照する `#fullScreenButtons` の id は維持した。#306、#933 にも粒度切替の既存設計は無い。
+- Jest 132 件、tsc、通常 build と shell build が通る。静的 shell 配布物でも動く純クライアント処理。
+
+## 3. 日英韓切替: 訳は結果 JSON に載せ、ビューアは差し替えるだけ
+
+open issue #323「レポートの多言語対応」に沿う設計にした。UI の文言と、レポート本文（群名・説明・概要）の 2 層を分けて扱う。
+
+- UI 文言は i18n フレームワークを入れず、`lib/i18n/messages.ts` に ja を正本として en/ko を型で欠落検出する最小の辞書にした。Plotly の韓国語ロケールを追加。
+- レポート本文の訳は `hierarchical_result.json` の既存フィールド `translations`（TTTC 由来で今まで常に空だった）に、言語ごとに群 id → {label, takeaway}、overview、question、intro、任意で意見本文、を入れる。全フィールド省略可で、訳が無い部分は元の言語のまま表示し「元の言語で表示しています」と注記する。
+- 選択は URL の `?lang=` と localStorage の両方に保存し、`history.replaceState` だけで Next のルーターに触れないので静的 shell でも動く。
+- analysis-core に後処理 CLI `kouchou-translate` を追加（`--languages en,ko`、`--include-arguments`、`--dry-run`）。意見本文の翻訳は既定でしない（群名の数倍の費用）。
+- 全画面では既存の `#fullScreenButtons` に言語トグルを 1 行足しただけなので、2 の `FullscreenToolbar` に並べられる。統合時の競合候補はこの 1 ブロックだけ。
+- Jest 153 件、build、shell build、pytest 270 件、ruff clean。ローカル LLM でのデモ翻訳は速度が遅く（約 2 tok/s）、上位の群と概要だけで止めた。韓国語は自然だが文体が混在し、英語の群名は正確だが長い。
+
+## 検証で分かった環境の制約
+
+- 実ブラウザでの表示確認は 3 ブランチとも未実施。WSL 内の dev サーバーに Windows 側のブラウザから到達できず、WSL に Playwright ブラウザも無い。特に幅 390px でツールバーが折り返さないかは目視が要る。
+- Ollama は Windows 側の loopback にしか listen しないため、WSL から直接は呼べない。分類と翻訳の試行は、analysis-core の定義ファイルを直接読み込む stdlib-only のランナーを Windows 側の Python で走らせた。本体のステップは OpenAI 互換 API 経由で、同じプロンプトとパーサを使う。
+- main に Biome のエラーが 6〜7 件元から残っている（`faq/Contact.tsx`、`shell-data.test.ts` の `noDelete`、format 数件）。今回の変更ファイルはすべて clean だが、全体 lint は通らない。
+
+## Open Questions
+
+- `hate_or_insult` の作業定義を外部にどう説明するか。見落とし寄りの数字を「下限」として出してよいか。
+- 粒度切替に「濃い意見」を残すか。ボタン文言を要望どおり「大きい / 細かい」に寄せるか。言語トグルがあるなら `aria-label="クラスタの粒度"` も翻訳対象。
+- 意見本文まで翻訳するか。外部に見せるなら OpenAI で全件翻訳し、固有名詞の訳語を人手確認する必要がある。
+- 翻訳ステップを workflow に組み込むか（今は後処理 CLI のみ。API / admin からの導線も無い）。
+- 既存の Biome エラーを別途直すか。
+- 3 branch の統合順序と、push 認証の設定後に PR を課題ごとに分けるか。
+
+## Updates
+
+- 2026-10-09: 初版。3 branch とも未push、ローカルコミットのみ。

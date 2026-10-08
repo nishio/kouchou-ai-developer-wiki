@@ -28,6 +28,10 @@
 - PR #961 の「既知」注記を調査。[[biome-lint-main-drift-2026-10-09]] を新規作成し、viewer 7 件の持ち込み PR と、歴代 main への Biome 実行で求めた時系列（最後に clean だったのは 2026-01-19）を記録。
 - 放置の構造: lefthook は導入初日から `skip: true`、CI に Biome workflow は皆無、CI 化の #264 は実装なしで close、以後「触ったファイルだけ clean」が慣行化。[[gotchas]] / [[testing]] / [[meeting-report-draft]] を更新。
 - 次: 一括修正 → `biome ci` を build workflow へ、の順序で入れるかの判断。#700 の整理も。
+## [2026-10-09 06:25] filing-back | 取材で受けた機能要望 4 件の実装と設計判断を記録
+
+- [[interview-feature-requests-2026-10-08]] を新規作成。ヘイト表現の比率と政策提案の地図は意見ごとのラベルを属性に載せて既存フィルタで絞る、全画面の粒度切替は既存の表示選択 state を全画面内から動かす、日英韓切替は結果 JSON の `translations` と最小辞書で差し替える、の 3 判断。3 branch とも main `a12d68e` 起点で未push。
+- [[meeting-report-draft]] に進行中として追記、[[interview-analysis-request-2026-10-05]] から参照。提供データでの数値と環境の詳細は raw/2026-10-09-interview-requests-implementation.md（非公開）。次は実ブラウザ確認、3 branch の統合、push 認証の設定。
 
 ## [2026-10-08 00:50] filing-back | セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
 

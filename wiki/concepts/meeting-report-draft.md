@@ -180,6 +180,10 @@ sources:
 - **次に見るか**: 一括修正（tsconfig.json は Next.js が書き換えるので ignore）→ build workflow に `biome ci` を足す順序で入れるか。#700（Devesh36 assign のまま open）の扱いも要判断。
 - **進行中（同日追記）**: 上記の順序で実施することにし、#962 を起票、[PR #963](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、未merge）を作成。3 ディレクトリとも Biome 0 件、CI 全成功・CodeRabbit 指摘なし。必須承認待ち。マージ後は以後の PR で全体 lint が gate になる。
 - **整理済み（同日追記）**: #700「Biome 設定の調整」は、要件が pnpm workspace 移行で解消済みか #962 に引き継ぎ済みのため、理由を書いて close した。
+### Updates — 2026-10-09 取材で受けた機能要望 4 件を実装（未push）
+
+- 取材の中で出た 4 件の要望（ヘイト表現の比率 / 政策提案だけの地図 / 全画面のまま粒度切替 / 全画面のまま日英韓切替）を 3 つの topic branch で実装した。`feat/opinion-speech-classification`（意見ごとの侮辱・政策提案ラベルを属性に載せ、既存の属性フィルタで絞る。pytest 282）、`feat/fullscreen-cluster-level`（全画面ツールバーに全体⇄詳細の切替。Jest 132）、`feat/fullscreen-language-switch`（結果 JSON の `translations` と最小辞書で ja/en/ko 切替、翻訳 CLI 追加。#323 に沿う。Jest 153 / pytest 270）。
+- 進行中: 3 branch とも main `a12d68e` 起点のローカルコミットのみ。作業機（galleria）に push 認証が無い。実ブラウザ確認と統合が残る。判断待ちはヘイトの作業定義の説明、意見本文まで翻訳するか、既存 Biome エラー 6〜7 件の扱い。詳細は [[interview-feature-requests-2026-10-08]]。
 
 ## そのまま読む用 (2026-06-30 更新)
 
