@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 21:56] filing-back | 送付前確認資料を非公開で集約
+
+- [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に確認用資料の集約を記録。画像・地図・同一項目の日英韓照合を一つの入口から辿れるようにした。
+- [[interview-feature-requests-2026-10-08]] に確認用branchの画面補正と検証を追記し、公開範囲外の具体件数を除いた。外部送付はしていない。grasp書き込み未導入のためMarkdownを直接編集した。
+
 ## [2026-10-09 20:59] filing-back | 取材関連成果物の所在を再確認
 
 - [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に所在確認を記録。実ファイルと引き継ぎ記録に基づく対応表は非公開領域へ保存した。

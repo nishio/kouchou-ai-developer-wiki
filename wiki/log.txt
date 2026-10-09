@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-09 21:56	filing-back	送付前確認資料を非公開で集約
 2026-10-09 20:59	filing-back	取材関連成果物の所在を再確認
 2026-10-09 20:47	filing-back	エージェント利用者向け解説を指示と結果の流れへ絞る
 2026-10-09 20:34	filing-back	分析から開発への経緯を作業ログで振り返る
