@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 15:45] filing-back | 意見抽出の忠実性を公開モデルで追試し、抽出プロンプトの改善を実測
+
+- [[extraction-faithfulness-public-models-2026-10-08]] を新設。[[local-llm-extraction-faithfulness-2026-10-05]] の Open Questions を、公開データと合成の挑戦セット（dev/test 分割）で 31B / 27B / 2B を同じ足場で比べた結果。
+- 要点: 皮肉の極性の逆転は 27B・31B でも起きる。「〜すべき」への強めの一部は既定の入出力例が教えている。規則と「先に真意を確かめる」1 行で未使用 test の書き換えは 31B 0・27B 2 件。小型モデルは JSON の文法制約が要る。judge は先に真意を書かせると皮肉も拾える。
+- 上流への Issue / PR は草稿のまま（出すかは内容確認の後）。
+
 ## [2026-10-09 12:30] filing-back | Biome 全体 lint が main で落ちている由来と放置の構造を記録
 
 - PR #961 の「既知」注記を調査。[[biome-lint-main-drift-2026-10-09]] を新規作成し、viewer 7 件の持ち込み PR と、歴代 main への Biome 実行で求めた時系列（最後に clean だったのは 2026-01-19）を記録。

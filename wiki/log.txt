@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-09 15:45	filing-back	意見抽出の忠実性を公開モデルで追試し、抽出プロンプトの改善を実測
 2026-10-09 12:30	filing-back	Biome 全体 lint が main で落ちている由来と放置の構造を記録
 2026-10-08 00:50	filing-back	セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
 2026-10-07 23:30	filing-back	セットアップスクリプトの .env 欠落バグを起票し修正 PR
