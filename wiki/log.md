@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 16:10] filing-back | Biome を 0 件にして CI で強制する PR #963 を作成
+
+- #962 を起票し PR #963 を作成（未merge、CI 全成功、CodeRabbit 指摘なし、必須承認待ち）。viewer / admin / dummy-server の Biome エラーを 0 にし、両 build workflow に `biome ci` を追加。
+- [[biome-lint-main-drift-2026-10-09]] の Updates と [[meeting-report-draft]] に記録。残件は lefthook の `skip: true` と #700 の整理。
+
 ## [2026-10-09 15:45] filing-back | 意見抽出の忠実性を公開モデルで追試し、抽出プロンプトの改善を実測
 
 - [[extraction-faithfulness-public-models-2026-10-08]] を新設。[[local-llm-extraction-faithfulness-2026-10-05]] の Open Questions を、公開データと合成の挑戦セット（dev/test 分割）で 31B / 27B / 2B を同じ足場で比べた結果。

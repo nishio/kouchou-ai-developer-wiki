@@ -10,6 +10,8 @@ sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues/701
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/734
   - source-code.md
+  - https://github.com/digitaldemocracy2030/kouchou-ai/issues/962
+  - https://github.com/digitaldemocracy2030/kouchou-ai/pull/963
 ---
 
 ## 問い
@@ -92,3 +94,12 @@ Issue #700「Biome 設定の調整」（nishio、2025-09-09）は本来 Devin �
 - #264 を close した判断の根拠は issue 上に残っていない。Slack の 2025-04-19 前後の記録は `work/slack-logs/` の snapshot に無く、未確認
 - lefthook-local.yml で Biome を有効にしているコントリビュータが実在するか
 - CodeRabbit は設定無しでも Biome を走らせることがある。PR #961 等で Biome 由来の指摘が出ていないかは未確認
+
+## Updates
+
+- 2026-10-09: nishio の判断で「一括修正で 0 → build workflow に `biome ci`」を 1 PR で実施。#962 を起票して nishio に assign し、[PR #963](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、`07287a6`、未merge）を作成した。
+  - viewer / admin / dummy-server とも `biome ci` 0 件。`tsconfig.json` は `files.ignore` へ。`noDelete` は `Reflect.deleteProperty` で置き換え。dummy-server は `node:` import と `let data: unknown`
+  - `client-build.yml`（viewer + dummy-server）と `client-admin-build.yml`（admin）に `biome ci --reporter=github` を追加し、`biome.json` 変更でも走るようにした。CONTRIBUTING.md に追記
+  - CI 全成功、両 build job で Biome step が実際に success したことを job の step 結果で確認。CodeRabbit は指摘なし。マージには必須承認 1 件が必要
+  - lefthook の `skip: true` と #700 の整理は範囲外として残した
+
