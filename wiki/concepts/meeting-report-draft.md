@@ -179,6 +179,7 @@ sources:
 - **なぜ**: lefthook の Biome は導入初日から `skip: true`、CI に Biome workflow は一度も無く、CI 化の #264 は実装なしで close。以後は「触ったファイルだけ clean」で PR が通る慣行になった。
 - **次に見るか**: 一括修正（tsconfig.json は Next.js が書き換えるので ignore）→ build workflow に `biome ci` を足す順序で入れるか。#700（Devesh36 assign のまま open）の扱いも要判断。
 - **進行中（同日追記）**: 上記の順序で実施することにし、#962 を起票、[PR #963](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、未merge）を作成。3 ディレクトリとも Biome 0 件、CI 全成功・CodeRabbit 指摘なし。必須承認待ち。マージ後は以後の PR で全体 lint が gate になる。
+- **整理済み（同日追記）**: #700「Biome 設定の調整」は、要件が pnpm workspace 移行で解消済みか #962 に引き継ぎ済みのため、理由を書いて close した。
 
 ## そのまま読む用 (2026-06-30 更新)
 

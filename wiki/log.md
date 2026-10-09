@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 16:40] filing-back | #700 を要件照合のうえ close
+
+- #700 の要件を main と照合。Biome が起動しない問題などは pnpm workspace 移行で解消済みで、残件は #962 / PR #963 に引き継ぎ済みのため not planned で close。[[biome-lint-main-drift-2026-10-09]] と [[meeting-report-draft]] に記録。
+
 ## [2026-10-09 16:10] filing-back | Biome を 0 件にして CI で強制する PR #963 を作成
 
 - #962 を起票し PR #963 を作成（未merge、CI 全成功、CodeRabbit 指摘なし、必須承認待ち）。viewer / admin / dummy-server の Biome エラーを 0 にし、両 build workflow に `biome ci` を追加。
