@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 12:30] filing-back | Biome 全体 lint が main で落ちている由来と放置の構造を記録
+
+- PR #961 の「既知」注記を調査。[[biome-lint-main-drift-2026-10-09]] を新規作成し、viewer 7 件の持ち込み PR と、歴代 main への Biome 実行で求めた時系列（最後に clean だったのは 2026-01-19）を記録。
+- 放置の構造: lefthook は導入初日から `skip: true`、CI に Biome workflow は皆無、CI 化の #264 は実装なしで close、以後「触ったファイルだけ clean」が慣行化。[[gotchas]] / [[testing]] / [[meeting-report-draft]] を更新。
+- 次: 一括修正 → `biome ci` を build workflow へ、の順序で入れるかの判断。#700 の整理も。
+
 ## [2026-10-08 00:50] filing-back | セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
 
 - [[setup-script-env-drift-2026-10-07]] を新規作成。開発者は `cp .env.example .env` なので気づかれなかった構造、丸ごとコピーを避けた理由（Azure ダミー値）、`OPTIONAL_KEYS` による分類の強制、再現の方法を記録。

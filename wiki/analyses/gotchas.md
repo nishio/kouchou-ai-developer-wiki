@@ -191,9 +191,9 @@ PR #862 では docs deploy や repo checkout 上の client build が success で
 
 `kouchou-ai` の Git hook は worktree root から `node_modules/lefthook...` を探す。main worktree に `node_modules` があっても dedicated worktree には共有されないので、commit / push 時に `Can't find lefthook in PATH` が出たら、その worktree root で `pnpm install --frozen-lockfile` を実行する。詳細は [[worktree-hygiene]]。[[source-code]]より
 
-### Biome の CI 強制が弱い
+### Biome は一度も強制されていない（main の全体 lint は落ちている）
 
-`lefthook.yml` で Biome 系は `skip: true`、`docs/testing.md` の CI ワークフロー列挙にも Biome 系がない。フロントエンドの lint 強制力はバックエンド（ruff）より緩い可能性。
+`lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入初日から `skip: true`、CI に Biome の workflow は一度も存在せず、CI 化の Issue #264 は実装なしで close された。結果、`pnpm --filter @kouchou-ai/public-viewer lint` は 2026-02 以降 main で常に失敗しており（2026-10-09 時点 7 件、admin 7 件、dummy-server 9 件）、PR は「触ったファイルだけ clean」で通す慣行になっている。`tsconfig.json` は Next.js 16 が自動書き換えするので手で整形しても戻る（ignore に入れる）。`noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない。由来と時系列は [[biome-lint-main-drift-2026-10-09]]。
 
 ### import-order チェックでの Devin 無限ループ
 

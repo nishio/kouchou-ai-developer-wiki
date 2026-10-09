@@ -173,6 +173,12 @@ sources:
 - WSL2 の件の調査中に見つかったバグ。`setup_linux.sh` / `setup_mac.sh` / `setup_win.ps1` が作る `.env` に `CLIENT_STATIC_BUILD_BASEPATH` と `REVALIDATE_SECRET` がなく、スクリプトで入れた環境では静的版ダウンロードが必ず HTTP 500 になり、表示更新の依頼が 401 で拒否されていた（反映が最大 5 分遅れる）。開発者は `cp .env.example .env` を使うので気づかれていなかった。Docker で修正前後を再現して確認した。
 - 進行中: PR #957（`fix/issue-956-setup-env`、未merge）。3 スクリプトに 3 行を追加し、`.env.example` との抜けを CI で検出するチェックを付けた。CI は全て通過、CodeRabbit のレビュー待ち。既存の利用者は `.env` への追記かスクリプトの再実行が必要。
 
+### Updates — 2026-10-09 Biome lint が main で落ちている件（調査のみ）
+
+- **何をしたか**: PR #961 の「全体 lint は main 時点から落ちている」注記を調査。viewer 7 件 / admin 7 件 / dummy-server 9 件が main に残り、viewer は 2026-02 の #769 / #798 / #811 と 9 月の #935 が持ち込んだ。[[biome-lint-main-drift-2026-10-09]]より。
+- **なぜ**: lefthook の Biome は導入初日から `skip: true`、CI に Biome workflow は一度も無く、CI 化の #264 は実装なしで close。以後は「触ったファイルだけ clean」で PR が通る慣行になった。
+- **次に見るか**: 一括修正（tsconfig.json は Next.js が書き換えるので ignore）→ build workflow に `biome ci` を足す順序で入れるか。#700（Devesh36 assign のまま open）の扱いも要判断。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より

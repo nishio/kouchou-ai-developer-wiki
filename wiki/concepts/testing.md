@@ -7,6 +7,7 @@ sources:
   - source-code.md
   - three-issues-progress-2026-09-09.md
   - next-three-issues-progress-2026-09-09.md
+  - biome-lint-main-drift-2026-10-09.md
 ---
 
 ## テスト層
@@ -25,6 +26,7 @@ sources:
 - **Python**: `ruff` — `rye run ruff check .`、または `make lint/api-check` / `make lint/api-format`
 - **TS/JS**: **Biome**（ESLint + Prettier の代替）— 各 app で `pnpm run lint` / `pnpm run format`
 - **lefthook** が `pre-push` で `ruff check` + `ruff format --check` を実行。**Biome は `skip: true`** で gating されていない
+- CI にも Biome の workflow は無く、main の全体 lint は 2026-02 以降落ちたまま。PR では「変更ファイルだけ Biome 成功」を確認する慣行。経緯は [[biome-lint-main-drift-2026-10-09]]
 
 ## CI ワークフロー
 
@@ -71,10 +73,11 @@ sources:
 ## Open Questions
 
 - E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認
-- Biome の CI ゲーティング有無
+- Biome の CI ゲーティングは「無い」と確定（2026-10-09、[[biome-lint-main-drift-2026-10-09]]）。入れるなら一括修正で 0 にしてから `biome ci` を build workflow に足す順序
 
 ## Updates
 
+- 2026-10-09: Biome が hook / CI のどこでも強制されておらず main の全体 lint が落ちている事実と、その由来を [[biome-lint-main-drift-2026-10-09]] に記録
 - 2026-05-17: UMAP の `random_state` 由来 warning は既知で、現時点では許容する判断を追記
 - 2026-05-17: 初回作成
 - 2026-05-18: v5 移行期における「v4 回帰保証」のテスト責務を追記
