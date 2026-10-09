@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "public-viewer の Biome 全体 lint が main で落ちている 7 件の由来と、2025-04 の導入初日から一度も CI / hook で強制されず、PR ごとに「触ったファイルだけ clean」で積み上がった構造"
+summary: "Biome 全体 lint が main で落ち続けた由来と放置の構造（導入初日から未強制、PR は触ったファイルだけ clean）。0 件化と CI gate を同時に入れる PR #963 と #700 close まで"
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/961
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/270
@@ -95,6 +95,21 @@ Issue #700「Biome 設定の調整」（nishio、2025-09-09）は本来 Devin �
 - lefthook-local.yml で Biome を有効にしているコントリビュータが実在するか
 - CodeRabbit は設定無しでも Biome を走らせることがある。PR #961 等で Biome 由来の指摘が出ていないかは未確認
 
+## 教訓（他の lint / 検査にも使える）
+
+- **強制されない検査は、PR 単位の合理性で必ず腐る。** 全体検査が 1 件でも落ちていると、後続の作者には「無関係なファイルを直す」か「触ったファイルだけ通す」しか選択肢がなく、後者が合理的になる。個人の怠慢ではなく構造の問題として扱う
+- **一括修正と gate は同じ PR で入れる。** 一括修正だけ（#508/#511、#706、monorepo 移行の 3 回）はすべて数か月で戻った。gate だけ先に入れると全 PR が落ちる。0 件化と gate の追加は分けられない 1 単位
+- **自動生成されるファイルは検査対象から外す。** ツールが書き換えるファイル（ここでは Next.js の tsconfig.json）を検査に含めると「直しても戻る」エラーが残り、「全体は通らないもの」という空気をつくる
+- **linter の unsafe fix は意味を変えうる。** `delete process.env.X` → `= undefined` は Node では文字列 `"undefined"` になる。FIXABLE 表示を信じて `--unsafe` を一括適用しない
+- **完了報告の定型が劣化を隠す。** 「変更ファイルの Biome 成功」という報告は正しいが、全体が落ちていることを毎回見えなくする。全体 lint が落ちていると気づいたら、PR の「既知」注記で終わらせず残件として起票する
+- **open のまま古くなった Issue は、要件ごとに現行 main と照合して閉じる。** #700 は「Biome 設定の調整」という題から関連がありそうに見え、誰かが対応中だという印象を 1 年近く残した。中身は別問題（Devin のセットアップ失敗）で、大半は移行で解消済みだった
+
+## 調べ方（再利用できる手順）
+
+- **劣化の時系列は、歴代 main の snapshot に現行の linter をかけて求める。** `git worktree add --detach` で日付ごとの main を取り出し、同じ版の Biome（1.9.4）で `biome check` を実行してエラー数とファイルを並べる。どの PR から崩れ始めたか、過去の一括修正がいつ戻ったかが一度に分かる
+- **崩れた行は `git blame` から PR まで辿る。** `gh api repos/<repo>/commits/<sha>/pulls` で commit から PR を引ける
+- **clone が shallow だと履歴が途中で切れる。** `git rev-parse --is-shallow-repository` が true なら `git fetch --unshallow` してから調べる。今回は最初に lefthook.yml が 2026-04 の dependabot merge で「新規作成」されたように見え、誤った起点を掴みかけた
+
 ## Updates
 
 - 2026-10-09: nishio の判断で「一括修正で 0 → build workflow に `biome ci`」を 1 PR で実施。#962 を起票して nishio に assign し、[PR #963](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、`07287a6`、未merge）を作成した。
@@ -103,3 +118,4 @@ Issue #700「Biome 設定の調整」（nishio、2025-09-09）は本来 Devin �
   - CI 全成功、両 build job で Biome step が実際に success したことを job の step 結果で確認。CodeRabbit は指摘なし。マージには必須承認 1 件が必要
   - lefthook の `skip: true` と #700 の整理は範囲外として残した
 - 2026-10-09: nishio の指示で #700 を not planned で close。要件を main `a12d68e` と照合した結果、Biome が起動しない問題・個別インストール・環境変数の案内は 2026-01 の pnpm workspace 移行で解消済みで、残っていた「全体 lint が通らない・CI で強制されない」は #962 / PR #963 に引き継いだ。close コメントに経緯を記録した。
+- 2026-10-09 file back: 「教訓」「調べ方」節を追加し、summary を PR #963 と #700 close まで反映。「現状」節見出しの「5 ファイル、すべて機械的に直せる」は不正確だった。実際は 6 ファイルで、noDelete 2 件は手直しが必要だった。#700 の close コメントで外部コントリビュータを @mention して通知を飛ばした。AI エージェントの close コメントでは、指示がない限りメンションしない方がよい

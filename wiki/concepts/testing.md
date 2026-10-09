@@ -27,6 +27,7 @@ sources:
 - **TS/JS**: **Biome**（ESLint + Prettier の代替）— 各 app で `pnpm run lint` / `pnpm run format`
 - **lefthook** が `pre-push` で `ruff check` + `ruff format --check` を実行。**Biome は `skip: true`** で gating されていない
 - CI にも Biome の workflow は無く、main の全体 lint は 2026-02 以降落ちたまま。PR では「変更ファイルだけ Biome 成功」を確認する慣行。経緯は [[biome-lint-main-drift-2026-10-09]]
+- PR #963（未merge）で 3 ディレクトリを 0 件にし、client build / client-admin build に `biome ci` を追加。マージ後は全体 lint が PR の gate になる。lint gate は 0 件化と同じ PR で入れないと戻る（[[biome-lint-main-drift-2026-10-09]] の教訓）
 
 ## CI ワークフロー
 
