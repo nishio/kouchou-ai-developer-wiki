@@ -3,7 +3,12 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-09 17:00	filing-back	Biome 放置の教訓と劣化時系列の調べ方を追記
+2026-10-09 16:40	filing-back	#700 を要件照合のうえ close
+2026-10-09 16:10	filing-back	Biome を 0 件にして CI で強制する PR #963 を作成
+2026-10-09 15:45	filing-back	意見抽出の忠実性を公開モデルで追試し、抽出プロンプトの改善を実測
 2026-10-09 13:10	filing-back	全画面の粒度切替を観察し Issue #960 / PR #961 として提出
+2026-10-09 12:30	filing-back	Biome 全体 lint が main で落ちている由来と放置の構造を記録
 2026-10-09 06:25	filing-back	取材で受けた機能要望 4 件の実装と設計判断を記録
 2026-10-08 00:50	filing-back	セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
 2026-10-07 23:30	filing-back	セットアップスクリプトの .env 欠落バグを起票し修正 PR
