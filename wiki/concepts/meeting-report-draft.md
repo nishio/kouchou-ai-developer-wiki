@@ -183,7 +183,7 @@ sources:
 ### Updates — 2026-10-09 取材で受けた機能要望 4 件を実装（未push）
 
 - 取材の中で出た 4 件の要望（ヘイト表現の比率 / 政策提案だけの地図 / 全画面のまま粒度切替 / 全画面のまま日英韓切替）を 3 つの topic branch で実装した。`feat/opinion-speech-classification`（意見ごとの侮辱・政策提案ラベルを属性に載せ、既存の属性フィルタで絞る。pytest 282）、`feat/fullscreen-cluster-level`（全画面ツールバーに全体⇄詳細の切替。Jest 132）、`feat/fullscreen-language-switch`（結果 JSON の `translations` と最小辞書で ja/en/ko 切替、翻訳 CLI 追加。#323 に沿う。Jest 153 / pytest 270）。
-- 進行中: 3 branch とも main `a12d68e` 起点のローカルコミットのみ。作業機（galleria）に push 認証が無い。実ブラウザ確認と統合が残る。判断待ちはヘイトの作業定義の説明、意見本文まで翻訳するか、既存 Biome エラー 6〜7 件の扱い。詳細は [[interview-feature-requests-2026-10-08]]。
+- 進行中: 粒度切替は実ブラウザ確認と E2E 追加のうえ Issue #960 / PR #961 として提出済み（CI・レビュー待ち。全画面での切替は PC 前提とし、スマホ幅は対象外）。残る 2 branch（分類、言語切替）は main `a12d68e` 起点のローカルコミットのみで、観察してから順に PR 化する。判断待ちはヘイトの作業定義の説明、意見本文まで翻訳するか、既存 Biome エラー 6〜7 件の扱い。詳細は [[interview-feature-requests-2026-10-08]]。
 
 ## そのまま読む用 (2026-06-30 更新)
 

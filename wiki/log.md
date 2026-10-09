@@ -28,6 +28,11 @@
 - PR #961 の「既知」注記を調査。[[biome-lint-main-drift-2026-10-09]] を新規作成し、viewer 7 件の持ち込み PR と、歴代 main への Biome 実行で求めた時系列（最後に clean だったのは 2026-01-19）を記録。
 - 放置の構造: lefthook は導入初日から `skip: true`、CI に Biome workflow は皆無、CI 化の #264 は実装なしで close、以後「触ったファイルだけ clean」が慣行化。[[gotchas]] / [[testing]] / [[meeting-report-draft]] を更新。
 - 次: 一括修正 → `biome ci` を build workflow へ、の順序で入れるかの判断。#700 の整理も。
+## [2026-10-09 13:10] filing-back | 全画面の粒度切替を観察し Issue #960 / PR #961 として提出
+
+- `feat/fullscreen-cluster-level` を Chromium で 3 幅観察。PC では要望どおり、390px 以下は横スクロール（西尾の判断で対象外）。状態カタログの E2E を 1 件追加（6 件成功）。WSL の `next dev -H 0.0.0.0` は Windows の localhost から届く。
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] を更新。次は分類 branch の観察。CLA チェックとスクリーンショットは西尾。
+
 ## [2026-10-09 06:25] filing-back | 取材で受けた機能要望 4 件の実装と設計判断を記録
 
 - [[interview-feature-requests-2026-10-08]] を新規作成。ヘイト表現の比率と政策提案の地図は意見ごとのラベルを属性に載せて既存フィルタで絞る、全画面の粒度切替は既存の表示選択 state を全画面内から動かす、日英韓切替は結果 JSON の `translations` と最小辞書で差し替える、の 3 判断。3 branch とも main `a12d68e` 起点で未push。
