@@ -11,6 +11,8 @@ sources:
   - broad-listening-book-source.md
 ---
 
+# 解析パイプライン（抽出 → 埋め込み → 階層クラスタリング → ラベリング → 可視化）
+
 ## 配置（重要：canonical な場所は移動済み）
 
 **2026 時点での canonical 実装は `packages/analysis-core/src/analysis_core/steps/`**。8 ステップすべてここ。

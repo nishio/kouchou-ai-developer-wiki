@@ -10,6 +10,8 @@ sources:
   - source-code.md
 ---
 
+# ラベル品質の判定は 1〜5 点でなく、二値の基準と重みに分解する
+
 ここで扱う「ラベル品質」は、GitHub issue label ではなく、広聴AIの analysis output に出る **cluster label / description の品質**を指す。
 
 結論: 現状のラベル judge を改善するなら、抽象的な 1-5 点採点を増やすより、Ubie 記事型の **binary criteria + points** に分解するのがよい。`一貫性 / 具体性 / 網羅性 / 区別性` は上位カテゴリとして残しつつ、実際の judge は「criterion を満たすか」を `true/false` で返す。[[zenn-llm-as-a-judge-rubric-evaluation-2026-05-29]]より [[label-judge-mechanism-2026-05-25]]より

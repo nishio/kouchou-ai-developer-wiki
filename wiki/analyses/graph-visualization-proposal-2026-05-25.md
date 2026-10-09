@@ -10,6 +10,8 @@ sources:
   - weekly-log-2026-05-20.md
 ---
 
+# 意見の地図をグラフ描画として描く — クラスタ内の最小全域木とクラスタ間の橋
+
 [[gpt-mst-bridge-visualization-brainstorm-2026-05-25]] は、nishio 発案の「クラスタ内 MST + クラスタまたぎ edge を明瞭分離を壊さない範囲で追加」という可視化案を、既存研究と突き合わせて改良した提案である。  
 この案の価値は、UMAP 2D を巡る議論を、UMAP のパラメータ調整・clustering アルゴリズム選択ではなく、**graph drawing 系の設計問題に置き換える** ところにある。
 

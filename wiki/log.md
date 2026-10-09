@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 23:26] filing-back | 方法論の 17 ページに題（H1）を付けた
+
+- nhiro.org/broadlistening/lessons/ の英訳で、題の無いページは slug や summary から題を作るしかなかった。原文に題を置き、英訳と日本語の一覧の題の正本にする。
+- 対象: [[analysis-stance]]、[[broadlistening]]、[[pipeline]] ほかラベル・クラスタリング・可視化・公開 UI・範囲の 14 analyses。本文は変えていない。
+
 ## [2026-10-09 21:56] filing-back | 送付前確認資料を非公開で集約
 
 - [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に確認用資料の集約を記録。画像・地図・同一項目の日英韓照合を一つの入口から辿れるようにした。

@@ -11,6 +11,8 @@ sources:
   - label-quality-redesign-reset-2026-05-30.md
 ---
 
+# ラベル品質は単独で批評させず、出どころを隠した A/B で選んでもらう
+
 ## 結論
 
 ラベル品質実験の人間評価は、単独 label の批評から始めない。まず同じ tree / evidence / 表示文脈から複数の label 案を作り、人間には **A と B のどちらがよいか** を聞く。人間の役割は詳細な rubric judge になることではなく、比較可能な候補の中から選好を返すことである。[[nishio-human-pairwise-label-preference-before-judge-2026-06-02]]より

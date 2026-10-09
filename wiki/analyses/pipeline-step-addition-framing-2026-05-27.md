@@ -15,6 +15,8 @@ sources:
   - pipeline-step-default-policy-decision-2026-05-28.md
 ---
 
+# パイプラインに段を足すかは、新しい成果物の責務で決める
+
 直近の研究メモでは、「pipeline に step を追加する」方向の提案が複数回出ている。表面上は step 数を増やす話に見えるが、実際には次の 2 系統を分けて考えるべきである。
 
 1. `hierarchical_label_refinement` 的な **top-level label set の後処理**。`merge_labelling` の後で、既存 cluster 構造を変えずに見出しの短さ・粒度・差分を整える実験である。[[llm-grouping-experiment-output-2026-05-25]]より

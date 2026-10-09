@@ -8,6 +8,8 @@ sources:
   - source-code.md
 ---
 
+# LLM グルーピングの最初の実験 — 散布図の見え方はどこまで耐えるか
+
 LLM groupingの最初の実験については、**専用の記録ページを持った方がよい**。理由は、この実験が単なる bugfix ではなく、`analysis_mode=llm_grouping` の product 価値、scatter 互換の限界、次の view 設計、という複数の論点を同時に含むからである。[[llm-grouping-implementation-plan]]より
 
 2026-05-25 時点の最初の実験データとしては、`work/kouchou-ai/apps/admin/public/sample_comments.csv` を使うのがよい。このファイルは **400 行の日本語コメント** を持ち、現在の `analysis-core` 実装に対して「少なすぎず、多すぎず、最初の LLM grouping 実験として扱いやすい」サイズである。[[source-code]]より

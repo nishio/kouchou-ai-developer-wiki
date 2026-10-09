@@ -10,6 +10,8 @@ sources:
   - pipeline.md
 ---
 
+# 広聴結果の公開 UI に求められるのは「散布図かどうか」ではない
+
 [[llm-grouping-background-history]] は「embedding を前提としない分析様式と散布図中心 product の緊張関係」を時系列で整理したものだが、そこで残っていた **「散布図が担っていた役割を別 view でどう代替するか」** は概念のままだった。  
 2026-05-23 の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] がこの問いを明示的に分解し、`公開UIに求められる要件` を 7 項目で言語化している。本ページはこの整理を、`analysis_mode` / `view` を独立化する設計判断に紐付けて記録するものである。
 

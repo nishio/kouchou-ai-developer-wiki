@@ -15,6 +15,8 @@ sources:
   - website-kouchou-ai-case-live-2026-06-30.md
 ---
 
+# ブロードリスニングの道具の見取り図（下書き）
+
 ## Conclusion
 
 #564 の公開事例ページや 8/2 の技術・ツール資料では、`ブロードリスニング` を一語で説明しきろうとせず、**collect / deepen / analyze / show / classify / read-and-act** の 6 層に分けるのが安全である。議事録上でも、広聴AI、いどばた、Cartographer、Jigsaw Sensemaker、tttc-light-js は同じ ecosystem に見えるが、主入力・成果物・読者の期待が違う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より

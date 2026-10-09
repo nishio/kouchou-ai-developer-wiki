@@ -11,6 +11,8 @@ sources:
   - public-ui-requirements-for-broadlistening.md
 ---
 
+# 広聴AI は全体の構造をつかむ道具で、定量分析の道具ではない
+
 広聴AI 本体の設計判断を貫く core stance を 1 ページで明示する。2026-05-30 の対話で nishio が `広聴AI は定量分析のためのツールではない` と整理した時点で確定。以後、設計判断はこのスタンスを起点に絞ること。
 
 ## 2 つの設計スタンス

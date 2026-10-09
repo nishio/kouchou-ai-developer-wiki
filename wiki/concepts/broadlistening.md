@@ -12,6 +12,8 @@ sources:
   - digital-agency-legal-rag.md
 ---
 
+# ブロードリスニング
+
 ## 定義
 
 **ブロードリスニング (broad listening)** は、放送 (broad**casting**) の対義として、多数の市民・利用者・参加者から自由記述意見を集めて LLM で集約・整理・可視化する手法。**広く「聴く」** ことに重点がある。

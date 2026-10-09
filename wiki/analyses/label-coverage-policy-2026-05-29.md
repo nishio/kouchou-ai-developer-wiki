@@ -7,6 +7,8 @@ sources:
   - label-refinement-judge-bundle-2026-05-25.md
 ---
 
+# ラベルは目次でなく要約 — ラベル設計の人間判断
+
 [[label-refinement-input-scope-2026-05-29]] で Claude judge が「人間に当てるべき論点」として 3 件出した結果に対して、2026-05-29〜30 の Slack 議論で複数人から人間判断が返ってきた。あわせて、tokoroten が上流の sampling 制約を指摘し、ohki-shingo がユースケースによって評価軸が変わることを指摘し、コード確認で「ラベルから軸が落ちる根本原因」が refinement 以前にもあることが分かった。本ページはその判断と方針を product 文脈で整理する。[[label-refinement-judge-bundle-2026-05-25]]より [[slack-label-algorithm-improvement-2026-05-30]]より
 
 ## 論点 1: 「短いが欠落」vs「長いが冗長」

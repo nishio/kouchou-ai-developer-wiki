@@ -7,6 +7,8 @@ sources:
   - slack-kouchouai-algorithm-dev.md
 ---
 
+# UMAP / k-means の seed 固定は、再現性の仕組みではなかった
+
 `seed` 固定の経緯を読むと、これは「厳密な deterministic pipeline を設計した結果」ではなく、**出力の揺れに対する実務的不満に押されて入った安定化策** と見るのが適切である。[[seed-reproducibility-history]]より
 
 ## 1. 固定の出発点は、統計的厳密性より「同じものがもう一度出てほしい」

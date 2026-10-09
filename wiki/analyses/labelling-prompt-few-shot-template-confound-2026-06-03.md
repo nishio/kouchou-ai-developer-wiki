@@ -8,6 +8,8 @@ sources:
   - llm-grouping-400-tree-label-corpus-2026-06-02.md
 ---
 
+# 上位ラベルの見直しの A/B 実験と、長さの向きの取り違え
+
 > **2026-06-09 大幅補正**: 本ページの 2026-06-03 初版と 2026-06-04 補正は、`refine_none` と `refine_setwise` の verbose / concise の direction を**逆に取り違えていた**。再調査で実際は `refine_none` (refinement なし = merge_labels そのまま) が verbose、`refine_setwise` (sibling-aware refinement) が shorter であり、user の "短い候補が勝つ 7/7" は実際は "refine_setwise が勝つ 7/7" だった。したがって "verbosity confound" の framing 自体が誤りで、v1 結果は実は「refinement on > refinement off」という意味のある signal を捉えていた。詳細は下の「2026-06-09 補正」セクションを参照。本ページの旧版本文は履歴のため残す
 
 ## 2026-06-09 補正

@@ -9,6 +9,8 @@ sources:
   - public-ui-requirements-for-broadlistening.md
 ---
 
+# 広聴AI を KJ法の公共的な仮説形成につなぐ
+
 [[gpt-kawakita-kj-method-broadlistening-2026-05-25]] は、広聴AIを川喜田二郎 / KJ法に接続するブレストである。  
 要約すると、広聴AI を **「行政のための要約ツール」ではなく「公共圏のための KJ 的な意味生成装置」** として再定義する論考になる。  
 これは技術論ではなく **目的論** であり、current `kouchou-ai` の設計判断にどう効くかをここで整理する。

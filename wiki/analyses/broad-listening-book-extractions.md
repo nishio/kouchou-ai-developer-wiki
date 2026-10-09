@@ -6,6 +6,8 @@ sources:
   - broad-listening-book-source.md
 ---
 
+# 書籍『選挙を変えたブロードリスニング』から開発判断に効く知見
+
 [[broad-listening-book-source|book source]] を読み、**今後の開発に効く** 知見だけを抽出する。書籍そのものの目的（広い読者層への解説）から外れて、コードに触れる人間が知るべき項目を選んでいる。
 
 ## 1. すでに本 wiki にあった主張の「出版可能形」での裏付け
