@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 17:29] filing-back | PR #957 の秘密固定値の指摘を見送り
+
+- CodeRabbit の `REVALIDATE_SECRET` ランダム生成の指摘（Minor）は、PR #957 では対応しないと nishio が判断。理由を PR のレビュースレッドに返信し、[[setup-script-env-drift-2026-10-07]] の Open Question を更新。
+
 ## [2026-10-09 17:00] filing-back | Biome 放置の教訓と劣化時系列の調べ方を追記
 
 - [[biome-lint-main-drift-2026-10-09]] に「教訓」（強制されない検査は PR 単位で腐る、0 件化と gate は同じ PR で、自動生成ファイルは検査から外す、unsafe fix の罠、古い Issue は要件照合で閉じる）と「調べ方」（歴代 main に現行 linter、shallow clone の罠）を追加。[[testing]] に PR #963 を反映。
