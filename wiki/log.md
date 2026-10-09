@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 20:47] filing-back | エージェント利用者向け解説を指示と結果の流れへ絞る
+
+- [[coding-agents]] にモデル・人間の指示・結果を区別する編集方針を追記し、[[meeting-report-draft]] に反映。
+- 作業ログでモデルを確認し、詳細な経緯とは別に非公開の解説下書きと根拠を保存した。障害調査などの脇道は本文から省いた。
+
 ## [2026-10-09 20:34] filing-back | 分析から開発への経緯を作業ログで振り返る
 
 - [[local-llm-extraction-faithfulness-2026-10-05]] に既存の公開知見への導線を追記し、[[meeting-report-draft]] に要点を反映。詳細と根拠抜粋は非公開領域に保存した。
