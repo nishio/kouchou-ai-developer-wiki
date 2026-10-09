@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 20:34] filing-back | 分析から開発への経緯を作業ログで振り返る
+
+- [[local-llm-extraction-faithfulness-2026-10-05]] に既存の公開知見への導線を追記し、[[meeting-report-draft]] に要点を反映。詳細と根拠抜粋は非公開領域に保存した。
+- 過去の観測と現在状態、実験・実装・PR提出・main反映を区別。grasp書き込み未導入のためMarkdownを直接編集した。
+
 ## [2026-10-09 20:07] filing-back | PR #967 の承認待ちと未解決レビューを確認
 
 - [[extraction-faithfulness-public-models-2026-10-08]] に #967 の CI成功・必須承認待ち・Minor 2件未解決、#965 / #964 も OPEN という現在状態を追記。[[meeting-report-draft]] も更新。

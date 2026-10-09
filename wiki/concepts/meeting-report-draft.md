@@ -696,3 +696,8 @@ sources:
 
 - **進行中**: #967（`docs/extraction-prompts-measured-example`）は実測付きの調整例を docs に追加する PR。CI成功・競合なしだが、必須承認待ちで未merge。[[extraction-faithfulness-public-models-2026-10-08]]より。
 - CodeRabbit の軽微な未解決指摘は、事実だけの文の抽出方針と機械合格基準の説明の2件。既定の入出力例を直す #965 も未merge。次は指摘対応と、Wiki / PR 間の実測値の照合。
+
+## Updates — 2026-10-09 20:34 分析から開発への経緯の振り返り
+
+- 実験記録と作業ログを照合し、既存の公開ページに、抽出品質の発見・追試・機能要望の実装への導線を追記した。[[local-llm-extraction-faithfulness-2026-10-05]]より。
+- 詳細は非公開で保存。今回は経緯の整理であり、新しい実装・再実験・merge確認ではない。次は追試の集計値の照合と、個別の成果物・PRの到達点を分けて確認する。
