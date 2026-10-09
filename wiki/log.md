@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 20:59] filing-back | 取材関連成果物の所在を再確認
+
+- [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に所在確認を記録。実ファイルと引き継ぎ記録に基づく対応表は非公開領域へ保存した。
+- コピーと開発の継続先を区別し、記録の鮮度差を明示。grasp書き込み未導入のためMarkdownを直接編集した。
+
 ## [2026-10-09 20:47] filing-back | エージェント利用者向け解説を指示と結果の流れへ絞る
 
 - [[coding-agents]] にモデル・人間の指示・結果を区別する編集方針を追記し、[[meeting-report-draft]] に反映。
