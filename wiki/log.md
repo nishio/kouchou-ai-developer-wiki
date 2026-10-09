@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-09 20:07] filing-back | PR #967 の承認待ちと未解決レビューを確認
+
+- [[extraction-faithfulness-public-models-2026-10-08]] に #967 の CI成功・必須承認待ち・Minor 2件未解決、#965 / #964 も OPEN という現在状態を追記。[[meeting-report-draft]] も更新。
+- Wiki と PR の実測値の不一致は、artifact 未再検証のため上書きせず Open Questions に残した。grasp 書き込み未導入のため Markdown 直接編集。
+
 ## [2026-10-09 17:29] filing-back | PR #957 の秘密固定値の指摘を見送り
 
 - CodeRabbit の `REVALIDATE_SECRET` ランダム生成の指摘（Minor）は、PR #957 では対応しないと nishio が判断。理由を PR のレビュースレッドに返信し、[[setup-script-env-drift-2026-10-07]] の Open Question を更新。

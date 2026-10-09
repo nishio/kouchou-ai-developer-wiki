@@ -2,6 +2,8 @@
 type: analysis
 summary: 広聴AI の意見抽出段は、処理が完走しても原文の意味を書き換えることがある。日本語の挑戦セット・公開データで、31B / 27B / 2B の公開モデルを同じ足場で比べた。皮肉の極性の逆転は 27B・31B でも起き、可能性や提案は既定プロンプトの入出力例の影響で「〜すべき」に強まる。規則と「先に真意を確かめる」1 行を足した抽出プロンプトで、未使用の test の書き換えは 31B 0 件・27B 2 件まで減るが、出力が原文の写しに寄る。小型モデルは JSON の文法制約が無いと抽出にならない
 sources:
+  - https://github.com/digitaldemocracy2030/kouchou-ai/pull/967
+  - https://github.com/digitaldemocracy2030/kouchou-ai/pull/965
   - local-llm-extraction-faithfulness-2026-10-05.md
   - raw/experiments/2026-10-08-extraction-faithfulness/（非公開。manifest に実験 repo の commit と草稿の hash）
 ---
@@ -121,3 +123,17 @@ judge のプロンプトに「まず原文が皮肉・反語かを判定し、�
 ## Updates
 
 - 2026-10-09: 初回作成。実験 repo の草稿（commit df0a3aa）を西尾の承認で公開 wiki に書き戻した。上流への Issue / PR（提案 1 の入出力例 4 行、docs 追記）は草稿のまま、出すかは内容を確認してから決める
+
+
+### 2026-10-09 20:07 JST — 上流 PR の現在状態
+
+[PR #967](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967) の本文・差分・check・reviewThreads と open PR 一覧を GitHub API で確認（HEAD `d001c399d2652de28068d3a273400546c86f3b1c`）。従来の「草稿のまま」という記録から進み、上流へ提出済み。
+
+- #967 は OPEN、非 Draft、未merge。`docs/development/extraction-prompts.md` だけの追記で、既定プロンプトは変更しない。build と CodeRabbit check は成功、deploy は SKIPPED。競合なし（MERGEABLE）だが、必須承認待ち（REVIEW_REQUIRED / BLOCKED）。人間の承認レビューはなく、レビュー依頼先も未指定。
+- CodeRabbit は COMMENTED、Minor の未解決スレッドが2件。[事実だけの文の抽出方針の整合](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967#discussion_r4228784282) と、[機械の合格基準・117件×3回の集計説明](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967#discussion_r4228784309) が残る。check の SUCCESS は指摘なしや承認済みを意味しない。
+- 入出力例の既定値を修正する [PR #965](https://github.com/digitaldemocracy2030/kouchou-ai/pull/965) も OPEN・未merge。[Issue #964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964) も OPEN。#967 の本文の「#964 / #965 で直した」を main 反映済みと読まない。
+- 次は2指摘への対応判断と、修正後の確認・必須承認。今回の作業は状態確認と Wiki 記録のみ。
+
+#### Open Questions — 実測値の出典照合
+
+- #967 の既定の合格数は31Bが258、27Bが240（各351試行）。本ページの旧表は264・243で一致せず、testの記述も120件と117件で異なる。今回の状態確認では実験 artifact を再検証していないため、旧表は上書きせず、採点基準・対象集合・集計元を照合する課題として残す。

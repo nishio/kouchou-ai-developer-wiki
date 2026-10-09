@@ -690,3 +690,9 @@ sources:
 
 - #944〜#946の実績記録に、設定取得失敗時の保護とテストごとの保証範囲、CI成功とレビュー完了の区別を追記した。[[next-three-issues-progress-2026-09-09]] / [[testing]]より。
 - 今回は記録整理のみ。実装・マージ・再テストは行っておらず、次の判断では対象PRの最新状態を確認する。
+
+
+## Updates — 2026-10-09 20:07 抽出プロンプトの上流 PR 状態
+
+- **進行中**: #967（`docs/extraction-prompts-measured-example`）は実測付きの調整例を docs に追加する PR。CI成功・競合なしだが、必須承認待ちで未merge。[[extraction-faithfulness-public-models-2026-10-08]]より。
+- CodeRabbit の軽微な未解決指摘は、事実だけの文の抽出方針と機械合格基準の説明の2件。既定の入出力例を直す #965 も未merge。次は指摘対応と、Wiki / PR 間の実測値の照合。
