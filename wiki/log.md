@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 17:28] filing-back | 紅茶の散布図を注目する2点から全体へ広げる
+
+- [[tea-latte-public-demo-analysis-2026-10-10]]に3段階の強調表示と座標・出典・遷移の確認を追記。
+- [[tea-latte-public-demo-lessons-2026-10-10]]に同じ地図から観点を変えて読む導線を記録し、[[meeting-report-draft]]を更新。
+
 ## [2026-10-10 17:10] filing-back | 取材メモと参照資料を文字起こしに対応づけ
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、参照資料による読解補助を記録。
