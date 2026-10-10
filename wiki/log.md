@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 15:46] filing-back | 個別の抽出意見を3言語照合へ追加
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、抽出意見の翻訳・投稿原文を区別した非公開確認資料の更新を記録。
+- 既存の翻訳用データ構造を使い、同じ意見IDで地図・照合表・原文ページを対応させた。訳は人手未校正で、次は内容確認。
+
 ## [2026-10-10 15:35] filing-back | 紅茶の違いと共通点から広聴AIの活動へ案内
 
 - [[tea-latte-public-demo-analysis-2026-10-10]]に追加4件の本文照合と公式紹介の確認を追記。
