@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 16:41] filing-back | 取材資料を地図画像と多言語一覧中心に変更
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、地図画像を主に見せ、全文確認を任意にする導線を記録。
+- 既存レポートの言語別一覧も目次に追加。非公開の確認資料として保持。
+
 ## [2026-10-10 16:28] filing-back | 取材資料の読者向け目次を作成
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、確認用入口と読者向け目次の分離を記録。
