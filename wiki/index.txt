@@ -71,6 +71,7 @@ issue-493-pr-597-discussion	source	sources/issue-493-pr-597-discussion.md	`Issue
 issue-731-windows-setup-mojibake	source	sources/issue-731-windows-setup-mojibake.md	GitHub issue #731 の再現ログ。Windows で `setup_win.bat` 実行時に日本語が文字化けするだけでなく、一部行が別コマンドとして解釈されてセットアップが停止することを示す
 issue-830-pr-832-auto-cluster-defaults-2026-05-18	source	sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md	`Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ
 issue-877-windows-setup-guide-scope-2026-05-29	source	sources/issue-877-windows-setup-guide-scope-2026-05-29.md	GitHub issue #877 とコメントの観測。Windows setup guide の API key / Docker Desktop / WSL2 / メモリ不足分岐を整理する issue だが、コメントにより Docker Desktop ライセンス・組織管理端末・生 Windows サポート境界の論点へ広がっている
+issue-audit-2026-10-11-batch1	source	sources/issue-audit-2026-10-11-batch1.md	古い順 open Issue 先頭10件 (#11/#44/#52/#55/#56/#60/#79/#104/#121/#143) の 2026-10-11 live state と work/kouchou-ai main@c297bc97 への照合。作成前確認パネルの費用/時間は『目安なし』固定、#52 階層図連動は PR #927 merge 済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、など要件別に確認
 kensuzuki-broad-listening-insight-types-2025-11-29	source	sources/kensuzuki-broad-listening-insight-types-2025-11-29.md	鈴木健 2025-11-29 ブログ。ブロードリスニングは用途ごとに欲しいインサイトが違い、TTTC / 広聴AI は主にアジェンダ発見向きだという整理
 kouchou-ai-direction-2-2025-12-13	source	sources/kouchou-ai-direction-2-2025-12-13.md	2025-12-13 の『広聴AIの方向性について2』メモ。選択肢比較のうえで、書籍まで現行系を stable v4 として保ち、次世代化は別軸で進める判断が固まった
 kouchou-ai-direction-2025-12-06	source	sources/kouchou-ai-direction-2025-12-06.md	2025-12-06 の『広聴AIの方向性について』メモ。現行散布図方式の限界、用途別のツール使い分け、GUI より設定ファイル、書籍に合わせた安定版という問題設定が明示された
@@ -224,6 +225,7 @@ issue-887-scattergl-csp-regression-2026-06-01	analysis	analyses/issue-887-scatte
 issue-898-close-readiness-2026-06-30	analysis	analyses/issue-898-close-readiness-2026-06-30.md	issue #898 aarch64 Docker / UMAP Illegal instruction は PR #899 merge 済みだが、close には Apple Silicon Docker での解消確認または確認不能時の明示判断が必要
 issue-939-shell-metadata-2026-09-09	analysis	analyses/issue-939-shell-metadata-2026-09-09.md	#939のshell配布HTMLにtitle/noindexを反映するPython組立処理と画面遷移更新を#940で実装。CI・E2E81件成功、#940マージ済み
 issue-backlog-audit-2026-09-09	analysis	analyses/issue-backlog-audit-2026-09-09.md	119件のopen Issueを観測し、解決済み・重複8件をclose、18件の残要件を更新。導入経路・費用時間・元の声への参照を次の重点にする
+issue-backlog-audit-2026-10-11	analysis	analyses/issue-backlog-audit-2026-10-11.md	古い順 open Issue 先頭10件を current main@c297bc97 に照合した棚卸し。未解決5 (#11/#44/#60/#79/#121)、一部解決3 (#52/#55/#143)、要件再確認1 (#104)。#52 は階層図連動が PR #927 で main 反映済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、#11/#79 は作成前確認パネルに費用/時間欄枠はあるが『目安なし』固定
 issue-priority-through-2026-09	analysis	analyses/issue-priority-through-2026-09.md	2026-05-19 時点の open issue を 9 月までの開発計画に引き直すと、最優先は `analysis-core` CLI の canonical path 固定と Web/静的公開の事故回避であり、純粋な新機能は後ろ倒しが妥当
 issue-triage-open-remnants-2026-05-25	analysis	analyses/issue-triage-open-remnants-2026-05-25.md	2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない
 issues-response-plan-2026-09-07	analysis	analyses/issues-response-plan-2026-09-07.md	#905〜#909と#884の対応案。抽出失敗を成功扱いしない最小修正を先行し、Azure選択整合・モデル管理整理・個別モデル追加へ分割する

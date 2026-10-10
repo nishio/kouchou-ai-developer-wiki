@@ -187,6 +187,12 @@ sources:
 - 取材の中で出た 4 件の要望（ヘイト表現の比率 / 政策提案だけの地図 / 全画面のまま粒度切替 / 全画面のまま日英韓切替）を 3 つの topic branch で実装した。`feat/opinion-speech-classification`（意見ごとの侮辱・政策提案ラベルを属性に載せ、既存の属性フィルタで絞る。pytest 282）、`feat/fullscreen-cluster-level`（全画面ツールバーに全体⇄詳細の切替。Jest 132）、`feat/fullscreen-language-switch`（結果 JSON の `translations` と最小辞書で ja/en/ko 切替、翻訳 CLI 追加。#323 に沿う。Jest 153 / pytest 270）。
 - 進行中: 粒度切替は実ブラウザ確認と E2E 追加のうえ Issue #960 / PR #961 として提出済み（CI・レビュー待ち。全画面での切替は PC 前提とし、スマホ幅は対象外）。残る 2 branch（分類、言語切替）は会社側の Claude Code へ渡して観察中（PR 化は西尾が中身を見てから）。判断待ちはヘイトの作業定義の説明と、意見本文まで翻訳するか。既存 Biome エラーは #962 / PR #963 で別途対応中。詳細は [[interview-feature-requests-2026-10-08]]。
 
+### Updates — 2026-10-11 古いIssue先頭10件の棚卸し（調査のみ）
+
+- 古い順 open Issue の先頭 10 件（#11/#44/#52/#55/#56/#60/#79/#104/#121/#143）を current main `c297bc97` にコード照合した。判定: 未解決 5（#11/#44/#60/#79/#121）、一部解決 3（#52/#55/#143）、要件再確認 1（#104）。GitHub の更新・close・実装はしていない。
+- 要点: #52 は階層図の説明連動が PR #927 で main 反映済み（散布図側の選択連動は未）。#55 は viewer 読込済みだが admin の閾値編集 UI が無い（PR #946 は未 merge）。#11/#79 は作成前確認パネルに費用/時間欄の枠はあるが `目安なし` 固定で、#79 は価格 infra が既にあるため小さい。
+- 次に見る: #79/#11 を #884 の first PR で「粗い帯」として入れるか。次 batch 候補は #170/#172/#173/#176/#186（自動着手しない）。詳細は [[issue-backlog-audit-2026-10-11]] / [[issue-audit-2026-10-11-batch1]]。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より

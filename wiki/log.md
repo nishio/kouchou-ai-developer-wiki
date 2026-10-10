@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-11 00:55] ingest | 古いIssue先頭10件をcurrent mainに照合
+
+- 依頼 I1 で #11/#44/#52/#55/#56/#60/#79/#104/#121/#143 を main `c297bc97` にコード照合。判定: 未解決5・一部解決3・要件再確認1。[[issue-backlog-audit-2026-10-11]] と根拠 source [[issue-audit-2026-10-11-batch1]] を新規作成。
+- 2026-09-09 から変化: #52 の階層図連動 PR #927 が merge 済み。#55 は viewer 読込済みだが admin 閾値編集UIが欠落（PR #946 未merge）。[[issue-backlog-audit-2026-09-09]] に日付付き Update を追記。
+- 次に見る: #79/#11 を #884 first PR の「粗い帯」に入れるか。次batch候補 #170/#172/#173/#176/#186（自動着手しない）。snapshot/更新案/checkpoint は private キューへ。
+
 ## [2026-10-10 22:02] filing-back | Issue調査のキュー投入漏れを修正し受信確認
 
 - [[issue-backlog-audit-2026-09-09]]の依頼を送信し、受信側でcommit・指示文・台帳表示を照合。状態は投入済み・起動待ち。

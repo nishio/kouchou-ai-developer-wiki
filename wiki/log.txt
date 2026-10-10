@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-11 00:55	ingest	古いIssue先頭10件をcurrent mainに照合
 2026-10-10 22:02	filing-back	Issue調査のキュー投入漏れを修正し受信確認
 2026-10-10 21:46	filing-back	委譲先の作業起点と成果の正本をdeveloper-wikiへ統一
 2026-10-10 21:41	filing-back	古いIssueの棚卸しをClaude Codeへ引き継ぐ準備
