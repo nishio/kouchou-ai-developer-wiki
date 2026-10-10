@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 23:54] filing-back | 取材追加分析のマップと検証用資料を作成
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、出典別色分け・除外比較・暫定主題整理の確認資料作成を記録。
+- データ対応・三言語・表示を検証し、成果物は非公開snapshotへ保存。既存送付版を保持し、新規資料の送付・公開は行っていない。
+
 ## [2026-10-10 22:02] filing-back | Issue調査のキュー投入漏れを修正し受信確認
 
 - [[issue-backlog-audit-2026-09-09]]の依頼を送信し、受信側でcommit・指示文・台帳表示を照合。状態は投入済み・起動待ち。
