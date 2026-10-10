@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 17:36] filing-back | 取材資料の送付報告と追加依頼を整理
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、送付報告と追加要件の切り分けを記録。
+- 元チャンネルとの対応を予備確認し、検証・掲載条件・こちらの公開許諾を別に扱う方針を非公開の受付記録へ保存。
+
 ## [2026-10-10 17:28] filing-back | 紅茶の散布図を注目する2点から全体へ広げる
 
 - [[tea-latte-public-demo-analysis-2026-10-10]]に3段階の強調表示と座標・出典・遷移の確認を追記。

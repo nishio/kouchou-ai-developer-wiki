@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-10 17:36	filing-back	取材資料の送付報告と追加依頼を整理
 2026-10-10 17:28	filing-back	紅茶の散布図を注目する2点から全体へ広げる
 2026-10-10 17:10	filing-back	取材メモと参照資料を文字起こしに対応づけ
 2026-10-10 16:41	filing-back	取材資料を地図画像と多言語一覧中心に変更
