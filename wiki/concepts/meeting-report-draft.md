@@ -3,6 +3,7 @@ name: meeting-report-draft
 type: concept
 summary: "次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる"
 sources:
+  - tea-latte-public-demo-analysis-2026-10-10.md
   - tea-latte-opinion-pilot-2026-10-10.md
   - interview-analysis-request-2026-10-05.md
   - source-code.md
@@ -727,3 +728,8 @@ sources:
 
 - 前回195件を公開検索の追加読み込み・表記揺れ14クエリで1,485件に拡張し、二商品の比較・両方への評価も49件から98件に増やした。[[tea-latte-opinion-pilot-2026-10-10]]より。
 - 味・好みの語がある候補550件は未精査として区別。次は98件での構造分析、または単品意見候補の選別。原文の外部公開やpipeline実行はしていない。
+
+### Updates — 2026-10-10 紅茶の意見を公開デモ化
+
+- [[tea-latte-public-demo-analysis-2026-10-10]]より、公開投稿候補548件を広聴AIで処理し、15要約修正・8意見除外後の377意見で紹介ページと標準ビューアを作成した。コード本体の変更はない。
+- [[tea-latte-public-demo-lessons-2026-10-10]]に、人数比より好みの理由を見せる判断と、旧商品・未飲用・種類補完の誤抽出を記録。次は人間による精度確認と読者の探索体験を見る。X紹介文・画像を準備したが投稿は未送信。

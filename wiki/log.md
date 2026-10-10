@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 15:06] filing-back | 紅茶の377意見を広聴AIの公開デモへ
+
+- [[tea-latte-public-demo-analysis-2026-10-10]]に実分析・原文照合・公開データ境界を記録。一次artifactはrawに固定した。
+- [[tea-latte-public-demo-lessons-2026-10-10]]に二択から理由へ進む導線と監査の限界を整理し、[[meeting-report-draft]]を更新。grasp未導入のためMarkdown直接編集。
+
 ## [2026-10-10 14:39] filing-back | 紅茶の公開投稿を1485件・比較98件に拡張
 
 - [[tea-latte-opinion-pilot-2026-10-10]]に追加収集条件・件数・hashを追記。初回snapshotを保持し、新規1,290投稿を追加した。
