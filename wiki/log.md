@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 17:10] filing-back | 取材メモと参照資料を文字起こしに対応づけ
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、参照資料による読解補助を記録。
+- 表記候補と録音確認待ちを区別し、文字起こし原本は保持。詳細は非公開の補助記録に保存。
+
 ## [2026-10-10 16:41] filing-back | 取材資料を地図画像と多言語一覧中心に変更
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、地図画像を主に見せ、全文確認を任意にする導線を記録。
