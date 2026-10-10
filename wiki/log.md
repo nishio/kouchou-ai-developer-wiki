@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 21:41] filing-back | 古いIssueの棚卸しをClaude Codeへ引き継ぐ準備
+
+- 未解決Issueとopen PRの一覧を再確認し、古い順10件の調査指示とsnapshotをローカルに準備。
+- [[issue-backlog-audit-2026-09-09]]と[[meeting-report-draft]]に対象・判断基準を追記。調査の実行依頼送信やGitHub更新は行っていない。
+
 ## [2026-10-10 17:36] filing-back | 取材資料の送付報告と追加依頼を整理
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、送付報告と追加要件の切り分けを記録。
