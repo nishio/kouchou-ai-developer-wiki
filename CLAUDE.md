@@ -157,6 +157,8 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 ## 運用方針
 
 - ソースは「参考」であり無批判に採用しない
+- 別環境のエージェントに調査・開発を委譲する時も、`kouchou-ai-developer-wiki` を clone して作業の起点にし、`work/kouchou-ai/` で本体を参照する。既存 Wiki の判断を読み、成果を source / analysis / concept と定例報告・作業ログへ還流し、Wiki の commit / push までを完了条件に含める。
+- タスクキューは依頼・進捗・判断待ち・成果への pointer の通信路とし、調査知見の正本は developer-wiki に置く。`raw/` / `work/` は gitignored なので、別環境で必要な一次ソースを再取得し、長期保存・共有が必要な証跡には公開境界に合う保存先を用意する。
 - **二分原則**: 「コード実験は `work/kouchou-ai/` 配下で topic branch / worktree を切る、developer-wiki repo 自体は常に main で作業する」。developer-wiki に topic branch を作って commit を溜めると、main に届かないまま wiki サイト (Quartz / GitHub Pages 公開先) に反映されない事故が起きる。実際 2026-05 にこの形で 9 commits 分の wiki 更新が main 不在のまま積まれていた
 - developer-wiki 更新は PR 経由ではなく **`main` 直接 push を基本** にする。CI が必要な変更 (Quartz build / 内部リンク検査) は CI 失敗が出てから fix push する流れで十分
 - コード本体については `work/kouchou-ai/` の local clone を一次参照とし、docs / DeepWiki / meeting minutes は補助線として使う

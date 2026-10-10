@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 21:46] filing-back | 委譲先の作業起点と成果の正本をdeveloper-wikiへ統一
+
+- [[issue-backlog-audit-2026-09-09]]の引き継ぎ指示をWiki clone・書き戻し必須へ訂正し、[[wiki-driven-workflow]]とCLAUDE.mdに反映。
+- [[meeting-report-draft]]を更新。キューは通信路、Wikiを知見の正本とする。grasp書き込み未導入のため既存Markdownを直接更新した。
+
 ## [2026-10-10 21:41] filing-back | 古いIssueの棚卸しをClaude Codeへ引き継ぐ準備
 
 - 未解決Issueとopen PRの一覧を再確認し、古い順10件の調査指示とsnapshotをローカルに準備。

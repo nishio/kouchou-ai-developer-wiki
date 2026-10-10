@@ -769,3 +769,8 @@ sources:
 
 - [[issue-backlog-audit-2026-09-09]]に、未解決103件・うち2025年以前作成83件の一覧再確認を追記。Claude Codeで古い順10件から再開する調査指示を準備した。
 - 完了候補・残件・統合候補を現行コードとPRで照合し、更新案と再開キューを返す範囲。個別の再判定やGitHub更新は未実施で、次は受け手の調査結果を確認する。
+
+### Updates — 2026-10-10 別環境のIssue調査もWiki起点へ統一
+
+- [[wiki-driven-workflow]]より、委譲先でもdeveloper-wikiをcloneし、`work/kouchou-ai/`で実装を確認する形へ調査指示を修正。Wikiを任意の参考資料にしていた点を訂正した。
+- source/analysis・定例報告・作業ログとWikiへのcommit/pushを完了条件に追加。次はキュー投入時に、この作業起点と成果参照を引き継ぐ。
