@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 14:28] filing-back | 午後の紅茶二商品の意見データを試験収集
+
+- [[tea-latte-opinion-pilot-2026-10-10]]に公開検索195投稿・比較49件の保存条件とhashを記録。原文はlocal/privateに保持。
+- [[tea-latte-opinion-dataset-feasibility-2026-10-10]]で教材としての可能性と検索偏りを整理し、[[meeting-report-draft]]に追記。grasp未導入のためMarkdown直接編集。
+
 ## [2026-10-09 23:26] filing-back | 方法論の 17 ページに題（H1）を付けた
 
 - nhiro.org/broadlistening/lessons/ の英訳で、題の無いページは slug や summary から題を作るしかなかった。原文に題を置き、英訳と日本語の一覧の題の正本にする。

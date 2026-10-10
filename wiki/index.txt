@@ -156,6 +156,7 @@ slack-tokoroten-spectral-clustering-notes-2026-q1	source	sources/slack-tokoroten
 slack-windows-single-exe-2026-05-31	source	sources/slack-windows-single-exe-2026-05-31.md	2026-05-31 Slack で tokoroten と nishio が、Windows ユーザー向けには単一実行バイナリが望ましく、Node runtime を同梱する代わりに Web UI を SPA/static assets 化してサーバ側 wrapper を Python に寄せる案を議論した
 slack-yokohama-hack-2026-06-26	source	sources/slack-yokohama-hack-2026-06-26.md	2026-06-26 Slack で共有された Yokohama Hack! / 横浜型ブロードリスニングの観測。市民の声の収集手法を中心にした AI 実証募集として読む
 source-code	source	sources/source-code.md	kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照
+tea-latte-opinion-pilot-2026-10-10	source	sources/tea-latte-opinion-pilot-2026-10-10.md	午後の紅茶TEA LATTE二商品の公開検索投稿を195件保存し、比較・両方への評価49件を試験データにした2026-10-10の収集記録
 tttc-spectral-clustering-code-observation-2026-05-25	source	sources/tttc-spectral-clustering-code-observation-2026-05-25.md	TTTC commit `5e0a439` と広聴AI commit `53f1209` の clustering 実装比較。TTTC は embedding を UMAP 2D に落としてから SpectralClustering を掛け、`n_neighbors` は `min(n_samples - 1, 10)`
 website-kouchou-ai-case-live-2026-06-30	source	sources/website-kouchou-ai-case-live-2026-06-30.md	DD2030 website 側の広聴AI活用事例ページ live state。`src/kouchou-ai/case.vto` が直接更新先で、#208/#216/#125/#123 が #564 の外部正本候補と分類リスクに関係する
 weekly-log-2026-05-06	source	sources/weekly-log-2026-05-06.md	nishio/oss_weekly_reporter の週次ダンプ (2026-05-06 〜 2026-05-13) — Slack/GitHub の生ログ
@@ -298,6 +299,7 @@ slack-design-intents-2025-q4	analysis	analyses/slack-design-intents-2025-q4.md	2
 slack-design-intents-2026-q1	analysis	analyses/slack-design-intents-2026-q1.md	2026-Q1 の `#2_開発_広聴ai` から読める実装意図の整理 — 再利用、plugin UX、LLM grouping 系分類、可視化分離
 spherical-kmeans-experiment-scope-2026-06-30	analysis	analyses/spherical-kmeans-experiment-scope-2026-06-30.md	Slack で出た Spherical K-means / Faiss K-means は、current main の 2D UMAP + KMeans を即置換する判断ではなく、clustering 空間・clustering objective・実装 backend を分けた clean experiment 候補として扱うべき
 strategic-development-order-2026-05-23	analysis	analyses/strategic-development-order-2026-05-23.md	Issue 消化順ではなく、CLI / workflow / plugin / Web 配布を 3 層のプラットフォームとして見ると、先に固めるべきなのは `analysis-core` の共通基盤と plugin 実験の本番導線である
+tea-latte-opinion-dataset-feasibility-2026-10-10	analysis	analyses/tea-latte-opinion-dataset-feasibility-2026-10-10.md	午後の紅茶二商品の好みは日常的な意見分岐の教材候補だが、二派の比率ではなく評価軸・両方への評価・比較条件を読む探索データとして扱う
 three-issues-progress-2026-09-09	analysis	analyses/three-issues-progress-2026-09-09.md	未担当の#130・#518・#395を選び、貢献ガイド#941・静的artifact#942・エラー復帰E2E#943を作成。未マージ、残件を区別して記録
 tokoroten-algorithm-discussion-retrospective	analysis	analyses/tokoroten-algorithm-discussion-retrospective.md	tokoroten とのアルゴリズム議論は、クラスタリング手法の優劣ではなく、散布図プロダクト・深い分析・説明責務・運用ワークフローを分け直す議論だった
 tokoroten-spectral-clustering-reading	analysis	analyses/tokoroten-spectral-clustering-reading.md	tokoroten の spectral clustering メモは、TTTC を『高次元で正しく切る手法』ではなく『UMAP が作る 2D 形状を前提に切る散布図寄りの手法』として理解していた点が重要

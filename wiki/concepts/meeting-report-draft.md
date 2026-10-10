@@ -3,6 +3,7 @@ name: meeting-report-draft
 type: concept
 summary: "次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる"
 sources:
+  - tea-latte-opinion-pilot-2026-10-10.md
   - interview-analysis-request-2026-10-05.md
   - source-code.md
   - github-dev-docs.md
@@ -716,3 +717,8 @@ sources:
 
 - **取材対応**: 人間が確認する非公開の資料を一つの入口に集約し、画像・地図・言語照合を辿れるようにした。送付・公開とは区別している。[[interview-analysis-request-2026-10-05]]より。
 - **画面の補正（進行中・未PR）**: `codex/korea-review-preview` で全画面の翻訳漏れと英語ラベルの改行を修正。関連Jest 6件とbuildが成功。次は人間による内容確認と、補正を上流へ戻す範囲の判断。[[interview-feature-requests-2026-10-08]]より。
+
+## Updates — 2026-10-10 紅茶の好みを題材にした意見収集
+
+- 公開検索から195投稿をlocal/privateに保存し、二商品の比較・両方への評価49件を抽出。[[tea-latte-opinion-pilot-2026-10-10]]より。
+- 政治的立場を扱わない教材候補として、甘さ・濃さ・後味などの評価軸を観察できた。分析は未実施。次は曖昧な比較の確認と、[[tea-latte-opinion-dataset-feasibility-2026-10-10]]の条件で小規模な構造分析。
