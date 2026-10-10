@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 16:28] filing-back | 取材資料の読者向け目次を作成
+
+- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、確認用入口と読者向け目次の分離を記録。
+- 日英韓で分類意見・原文・地図へ案内し、単純な比率は文章表示へ変更。非公開資料の内容確認を待つ。
+
 ## [2026-10-10 15:46] filing-back | 個別の抽出意見を3言語照合へ追加
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、抽出意見の翻訳・投稿原文を区別した非公開確認資料の更新を記録。
