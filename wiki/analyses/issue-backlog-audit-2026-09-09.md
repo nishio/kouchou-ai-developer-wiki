@@ -77,3 +77,9 @@ sources:
 - 西尾から、本体だけでなくdeveloper-wikiをcloneして作業し、作業記録をWikiへ残すべきとの指摘を受けた（本セッション）。前の指示文の「必要ならWikiをclone」「独立したreportsに成果を置く」は、既存の二層運用を必須にできていなかった。
 - 指示文を、developer-wikiで文脈を読む → `work/kouchou-ai/`で現行実装を確認 → source/analysisと定例報告・ログへ記録 → Wikiのmainにcommit/push、までを完了条件とする形に修正した。
 - キューは通信路とし、Wikiページ・commit・判断待ちを参照させる。rawの証跡はgitignoredなので共有先を別に持ち、別環境のローカル保存だけで完了扱いしない。調査ワーカーへの投入・起動はこの訂正では行っていない。
+
+### Updates — 2026-10-10 委譲依頼の投入漏れを修正
+
+- 本セッションで西尾から受け手が依頼を把握していないと指摘を受けた。前回は指示文のローカル準備とWikiへのpushまでで、調査キューへの投入が漏れていた。
+- 専用の非公開キューへ指示文をpushし、受信側で同じcommitと指示文hashを確認。受信側の台帳登録と一覧への表示、developer-wikiのcloneも確認した。受信確認の証跡は非公開の `raw/issue-audit-handoff-2026-10-10/delivery-receipt.json` に保存。
+- この時点では投入済み・起動待ち。調査開始・完了とは区別する。[[wiki-driven-workflow]]へ、依頼準備・送信・受信確認・ワーカー起動・成果共有を分けて報告する基準を追記した。

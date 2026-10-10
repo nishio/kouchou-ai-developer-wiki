@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-10 22:02] filing-back | Issue調査のキュー投入漏れを修正し受信確認
+
+- [[issue-backlog-audit-2026-09-09]]の依頼を送信し、受信側でcommit・指示文・台帳表示を照合。状態は投入済み・起動待ち。
+- [[wiki-driven-workflow]]と[[meeting-report-draft]]へ、依頼の準備・受信・実行を区別する基準を追記。
+
 ## [2026-10-10 21:46] filing-back | 委譲先の作業起点と成果の正本をdeveloper-wikiへ統一
 
 - [[issue-backlog-audit-2026-09-09]]の引き継ぎ指示をWiki clone・書き戻し必須へ訂正し、[[wiki-driven-workflow]]とCLAUDE.mdに反映。

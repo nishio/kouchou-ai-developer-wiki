@@ -774,3 +774,8 @@ sources:
 
 - [[wiki-driven-workflow]]より、委譲先でもdeveloper-wikiをcloneし、`work/kouchou-ai/`で実装を確認する形へ調査指示を修正。Wikiを任意の参考資料にしていた点を訂正した。
 - source/analysis・定例報告・作業ログとWikiへのcommit/pushを完了条件に追加。次はキュー投入時に、この作業起点と成果参照を引き継ぐ。
+
+### Updates — 2026-10-10 古いIssue調査の依頼を受信側へ届けた
+
+- [[issue-backlog-audit-2026-09-09]]より、前回はWikiへの記録のみで調査キューに届いていなかった点を修正。依頼のpush、受信側の台帳・一覧表示、同一指示文とdeveloper-wikiの取得を確認した。
+- 状態は投入済み・起動待ち。次に確認するのは実際の調査開始と、10件分の根拠・判断・更新案がWikiへ共有されること。
