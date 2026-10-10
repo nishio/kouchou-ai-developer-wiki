@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-10 15:35	filing-back	紅茶の違いと共通点から広聴AIの活動へ案内
 2026-10-10 15:30	filing-back	紅茶デモを感想から段階的に探索する導線へ
 2026-10-10 15:06	filing-back	紅茶の377意見を広聴AIの公開デモへ
 2026-10-10 14:39	filing-back	紅茶の公開投稿を1485件・比較98件に拡張
