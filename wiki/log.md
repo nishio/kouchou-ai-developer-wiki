@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:28] filing-back | AGPLの生成データ公開とプラグインの境界を整理
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]でAGPL条文・FSF解説と現行実装を照合。生成データだけの公開と、コード入りHTML・同一プロセスの拡張を分けた。
+- [[plugin-system]]と[[meeting-report-draft]]へ追記。互換ライセンスと結合物の義務を区別し、個別判断・例外許諾は未決として残した。
+
 ## [2026-10-12 09:23] filing-back | analysis-coreのMIT誤記をAGPLへ訂正するPR #970を作成
 
 - 西尾さんの明示指示を[[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に追記。README・metadata・LICENSE同梱を修正し、sdist/wheelの内容とtwine checkを検証。

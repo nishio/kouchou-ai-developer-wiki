@@ -800,3 +800,8 @@ sources:
 
 - 西尾さんがAGPLを正と確認。[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`）でMIT表記を訂正し、LICENSE本文の配布物同梱と旧表記の訂正説明を追加。[[analysis-core-license-history-2026-10-12]]より。
 - sdistからwheelをビルドし、両方のAGPL metadata・LICENSE一致・twine check成功を確認。未merge・PyPI未更新で、次はPRのmergeと新版リリース。
+
+### Updates — 2026-10-12 生成データとプラグインのライセンス境界
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]より、データだけの掲示は原則としてAGPLによるソース提供義務を生まない。一方、コード入りHTML・結合プラグイン・改造版サービスは別に判断する。
+- 条文と現行loader/HTML生成を確認。プラグインの独立性や互換ライセンスの選択を整理したが、例外許諾や新方針は未決。次は利用者向けFAQの範囲を検討する。

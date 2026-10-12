@@ -1,0 +1,51 @@
+---
+type: analysis
+summary: "AGPLの生成データ公開は原則としてソース提供義務を生まないが、コード入りHTMLと結合プラグインは別判断。独立プラグインや互換ライセンスの選択と、結合物としての義務を分ける"
+sources:
+  - analysis-core-license-history-2026-10-12.md
+  - source-code.md
+  - https://opensource.org/license/agpl-3-0
+  - https://www.gnu.org/licenses/gpl-faq.en.html
+---
+
+## 問いと位置づけ
+
+2026-10-12、ユーザーから「AGPLツールで生成したデータのWeb掲示にはソース公開義務がないか」「他の人が作るプラグインをAGPLにする義務はないか」と質問。AGPLを正とする確認は [[analysis-core-license-history-2026-10-12]]より。本ページは条文・FSF解説と現行コードを突き合わせた一般的整理で、個別の法的結論や新しいライセンス例外の承認ではない。
+
+2026-10-12に本体をfetch/pullしmain `c297bc97bb2bbce42964a90d7501c2d3592aeaf0` を確認。open PR一覧ではライセンス訂正PR #970は未merge。AGPL本文はOSI掲載の全文とrepoのLICENSEを参照。GNU FAQの直接取得はtimeoutしたが、公式ページの検索結果から `GPLOutput` / `GPLPlugins` / `GPLAndPlugins` の本文抜粋を確認した。
+
+## Q1: 生成データだけの公開なら原則その理解でよい
+
+[AGPL第2条](https://opensource.org/license/agpl-3-0)は、出力がその内容上AGPL対象著作物となる場合に限り、出力にも適用されると定める。単に解析にAGPLソフトウェアを使っただけで、結果データや独自の掲示サイトがAGPLになるわけではない。[GNU FAQ: GPLOutput](https://www.gnu.org/licenses/gpl-faq.en.html#GPLOutput)も、入力の変換結果とプログラムの実質的な部分をコピーした出力を区別する。
+
+例として、手元でCSVを分析し、生成したJSONを自作サイトで表示するだけなら、その事実だけを理由に分析ツールの改造ソースやサイトのソースを提供する義務は生じない。入力データ・第三者素材などの権利は別問題。
+
+ただし広聴AIの `report.html` はデータだけではない。`packages/analysis-core/src/analysis_core/steps/hierarchical_visualization.py` は `_TEMPLATE.format(...)` でHTMLを生成し、表示・操作用JavaScriptも埋め込む。公開する物がこのHTMLやpublic-viewerの配布物なら、含まれるプログラム部分のライセンス条件を確認する必要がある。これはコード内容からの注意点であり、出力データ自体を一律AGPLとする判断ではない。[[source-code]]より。
+
+改造したAGPLプログラム自体をネットワーク越しに利用させる場合は[第13条](https://opensource.org/license/agpl-3-0)の別の論点。条件を満たす利用者にCorresponding Sourceを取得できるようにする義務であり、結果の静的掲示とは区別する。対象は対応するプログラムのソースで、あらゆる周辺システム・入力データを一律に公開するという意味ではない。
+
+## Q2: 一律AGPL必須ではないが、一律に制約なしでもない
+
+[GNU FAQ: GPLPlugins / GPLAndPlugins](https://www.gnu.org/licenses/gpl-faq.en.html#GPLPlugins)は、独立したプログラムか、共有アドレス空間の関数呼び出し・データ構造の共有等を通じた一体のプログラムかで扱いを分ける。これはFSFのGPL解釈であり、AGPLでも第5条の結合物の条件と第13条を合わせて検討する材料になる。
+
+- **独立プログラム**: 生成JSONを読む独自viewerなど、本体コードを取り込まず独立して動くものには、本体AGPLであることだけを理由にAGPLを要求しない。
+- **一体となる拡張**: 配布時には結合物全体としてAGPLの条件を満たす必要がある。プラグインのオリジナルな部分をMIT等の互換ライセンスで提供する余地はあるが、それにより結合物のソース提供義務を消せるわけではない。本体のAGPLコードをコピーした部分を勝手にMIT化する意味でもない。
+- **作成・手元での私的実行**: それだけで全世界公開の義務にはならない。配布や、改造版のネットワーク利用を提供する時の条件を別に判断する。
+
+現行analysis pluginは `plugin/loader.py` がimportlibで同一プロセスに読み込み、`AnalysisStepPlugin` を要求する。`plugin/decorator.py` のrunは `StepContext` / `StepInputs` / configを渡して関数を直接呼ぶ。したがって、この実装を「プラグインという名前だから独立」と説明するのは適切でなく、FSFの整理では一体の拡張に近いと考えられる。これは実装からの推論で、法的境界の確定ではない。[[source-code]]より。
+
+## 今後の説明・設計の候補（未決）
+
+- データの利用、コード入り成果物の配布、AGPLソフトウェアのサービス提供をFAQで分ける。
+- 第三者拡張を促す際は「AGPLまたは互換ライセンスで提供できる拡張」と「独立した外部ツール」を分け、非公開の結合プラグインが無条件で許されるとは案内しない。
+- 非公開拡張まで許す方針を採りたい場合は、独立した外部ツールとしての境界設計や、権利者が許諾できる範囲での例外条項を別途検討する。単にHTTP / subprocessに変更しただけで独立性が確定するわけではない。
+
+## Open Questions
+
+- コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。
+- プラグインの結合度・コード由来に応じた実際の配布条件と、プロジェクトとして案内するライセンス方針。
+- 例外条項を設けたい場合の必要性と権利範囲。AGPL訂正指示は例外許諾を意味しない。
+
+## Updates
+
+- 2026-10-12: 初版。条文、FSF解説、mainのplugin loaderとHTML生成を確認して質問への回答を記録。本体やPR #970の内容は変更していない。

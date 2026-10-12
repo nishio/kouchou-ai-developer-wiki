@@ -119,3 +119,4 @@ sources:
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正
 - 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と LLM grouping 系 analysis plugin の結びつきを追記
 - 2026-10-07: lint。「production パスとの繋がり：現状 dormant」が [[refactoring-status]]（Phase 3b 完了）と矛盾していたため、current main `a12d68e` で `run_default()` → `run_workflow()` が CLI の既定経路であることを確認し、見出しと注記で作成時の観測と明示した
+- 2026-10-12: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、生成データの利用とコードの結合・配布を分ける。現行analysis pluginは同一プロセスでinterfaceを共有し、「別プラグインだからAGPLの制約なし」とは案内できない。互換ライセンスでの提供と結合物の義務も区別する。
