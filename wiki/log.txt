@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 00:15	filing-back	独立 PR #982/#985 を admin merge
 2026-10-13 00:05	filing-back	#988(UMAP 使い回し CLI) を admin merge→#515 close→WebUI 残件を #989 切り出し
 2026-10-12 23:39	filing-back	#987 を admin merge（#176 LLM grouping 統合）
 2026-10-12 23:10	filing-back	#515（UMAP 使い回し）を CLI 先行で実装→review→PR #988

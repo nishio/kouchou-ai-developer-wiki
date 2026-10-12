@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 00:15] filing-back | 独立 PR #982/#985 を admin merge
+
+- nishio 指示で第1波（独立 PR）を admin squash merge：**#982（#143 評価ハーネス再現化, `9410636`）/ #985（#537 OpenRouter fallback, `490a0bd3`）**。MERGEABLE・CI green 確認後。
+- 関連 **#143 / #537 は OPEN のまま**（closing keyword なし＝一部解決）。残 open PR = **#983 / #984 / #986**。
+- [[pr-982-987-review-round-2026-10-12]] に Updates 追記、meeting-report-draft も更新。
+
 ## [2026-10-13 00:05] filing-back | #988(UMAP 使い回し CLI) を admin merge→#515 close→WebUI 残件を #989 切り出し
 
 - **#988（CLI 先行の UMAP 平面使い回し）を admin override で squash merge**（main `8990fa2e`）。**#515 を close**（CLI で解決＝config `hierarchical_clustering.reuse_umap_model`）。
@@ -417,8 +423,3 @@
 
 - 保存済み設定の不正な密度項目だけを補い、他の設定とファイルを保持する修正をpush。関連API51テスト成功。[[catchup-2026-10-05]]より。
 - [[current-status-2026-10-05]]・[[meeting-report-draft]]へ、最新CI・再レビュー待ちの状態を追記した。
-
-## [2026-10-06 00:06] filing-back | #945をマージし残るレビュー対象を#946へ集約
-
-- 関数説明の警告解消と最新HEADのレビュー・CI成功を確認し、#945をmainへ反映。[[catchup-2026-10-05]]より。
-- #592の残件を維持し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と最後の#946を記録した。
