@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 03:09] filing-back | #983 を admin merge・#984 を rebase
+
+- nishio 指示で **#983（#52 散布図選択連動）を admin squash merge**（`88c592a1`）。
+- **#984 を main（#987 込み）へ rebase**（`28dd78f1` force-push・MERGEABLE・CI 待ち）。衝突は useAISettings.ts / test_report_launcher.py の both-added 2 箇所のみ両採用。**embedding が共通枝に残り llm_grouping+embedding 併用でも温存**を実 `validate_config` で実証（API 56 tests pass）。admin tsc/jest は CI 確認。
+- 残 open PR = **#984（CI 待ち）/ #986**。詳細 [[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 00:15] filing-back | 独立 PR #982/#985 を admin merge
 
 - nishio 指示で第1波（独立 PR）を admin squash merge：**#982（#143 評価ハーネス再現化, `9410636`）/ #985（#537 OpenRouter fallback, `490a0bd3`）**。MERGEABLE・CI green 確認後。
@@ -413,13 +419,3 @@
 
 - Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能にする#952がmain `73ce8df` へ反映、#951 CLOSED。
 - [[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記。`docs/index.md` のポート表は main `a12d68e` へ直接修正済み。
-
-## [2026-10-06 00:37] filing-back | #946の割合表示の丸め誤差を修正
-
-- 追加レビュー指摘を修正し、UI12テスト成功。指摘解消の返信と再レビューの利用上限を区別して記録した。[[catchup-2026-10-05]]より。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ未mergeの残条件を追記し、01:08以降の再確認へ引き継ぐ。
-
-## [2026-10-06 00:26] filing-back | #946の旧密度設定互換性の指摘を修正
-
-- 保存済み設定の不正な密度項目だけを補い、他の設定とファイルを保持する修正をpush。関連API51テスト成功。[[catchup-2026-10-05]]より。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ、最新CI・再レビュー待ちの状態を追記した。
