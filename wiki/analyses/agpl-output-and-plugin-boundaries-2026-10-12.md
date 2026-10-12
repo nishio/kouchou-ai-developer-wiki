@@ -42,7 +42,7 @@ sources:
 
 ## Open Questions
 
-- コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。
+- コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。堅牢性の既知の残件は Issue #978（後述の Updates 参照）。
 - プラグインの結合度・コード由来に応じた実際の配布条件と、プロジェクトとして案内するライセンス方針。
 - 例外条項を設けたい場合の必要性と権利範囲。AGPL訂正指示は例外許諾を意味しない。
 
@@ -80,6 +80,11 @@ sources:
 
 - [利用者向けガイド](https://github.com/digitaldemocracy2030/kouchou-ai/blob/d09976e/docs/user-guide/license.md)を追加し、README・利用ガイド・プラグインガイド・ドキュメント目次から案内。手元利用、結果データ、HTML、拡張、配布・ネットワーク利用をケース別に説明する。
 - `report.html` の末尾に「ライセンス・表示プログラムのソース」を自動付与。AGPL全文・無保証の説明・元プロジェクトへのリンクと、生成に使った表示ソースをZIPでHTML内へ埋め込む。通常利用者は案内とダウンロード機能を残して公開する運用とする。
+
+## Updates — 2026-10-12 PR #970 の HTML 案内に対するフォローアップ Issue
+
+- [Issue #978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（open・低優先）: 上記 PR #970 の `report.html` ライセンス案内実装（`hierarchical_visualization.py` の `_report_license_notice`）は、ライセンス資源（wheel 同梱の `AGPL-3.0.txt`、または editable/source 実行時の repo `LICENSE` フォールバック）が見つからないと `FileNotFoundError` を raise し、**`report.html` 生成全体がライセンス資源の存在に hard-fail で依存**する。現行 wheel 構成では顕在化しないが、将来 packaging から force-include が落ちた場合や旧 wheel をクリーン環境へ入れた場合に壊れうる。方針は「資源欠如時は案内を link-only へ degrade し hard-fail を回避」。
+- 位置づけ: PR #970（repo 側 AGPL 訂正＋案内同梱）とは別の堅牢性 Issue で、上の Open Questions「現在の license notice・対応ソース導線が適切か」に対応する具体的な残件。本 wiki はこの issue の存在を記録するのみで、本体コードは変更していない。別途の PyPI 訂正版公開（version bump ＋ tag）と旧 0.1.0/0.1.2 の扱いは [[analysis-core-license-history-2026-10-12]] / [[analysis-core-license-intent-2026-10-12]] で追跡。
 - ZIPは実際の `hierarchical_visualization.py`（HTML/CSS/JSテンプレートを含む）、AGPL本文、実行方法の3ファイル。結果データ・入力CSVをZIPには含めず、更新されるmainへのリンクや、改造前のタグとの不一致を避ける。生成済みHTMLのJS直接編集はZIPと不一致になるため、表示ソースから再生成するよう案内する。
 - 16件の生成テスト、追加パッケージなしの隔離PythonでZIPから同一HTMLを再生成、改造ソース保存、wheel資源とsdistの同梱、twine、Ruff、docs strict buildを確認。ブラウザー目視はローカルURLがクライアント側でブロックされ未確認。
 

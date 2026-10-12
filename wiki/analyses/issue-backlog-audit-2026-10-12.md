@@ -188,3 +188,4 @@ sources:
 ## Updates
 
 - 2026-10-12: 初版。10 シャード並列の read-only 調査で 95 件を current main `c297bc97` にコード照合し、2026-10-11 調査済み 10 件と統合して全 105 件を一覧化。今回の close 実行は 0 件。close 候補未 close は #417/#519/#573/#871。生データは `raw/issue-audit/2026-10-12-full/shard-*/`、private キュー `kouchou-issue-audit-queue/drafts/issue-audit/2026-10-12-full/` に日本語更新案・close ログ・checkpoint を保存。
+- この棚卸しを含む 2026-10-12 当日の作業全体（close 実行・要件再確認の対話判断・未解決 53 件の潰し込み再検証・PR merge）のログは [[daily-report-2026-10-12]]。本ページはその判定の正本。

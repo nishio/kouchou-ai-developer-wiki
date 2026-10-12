@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 19:10] filing-back | meeting-report-draft を rotate、#978 反映、孤立リンク回収
+
+- **draft rotation**: rotate が 2026-06-01 以降途絶し、draft が 861 行（06-08〜10-12 の複数回分が堆積）になっていた。堆積分を [[meeting-report-2026-10-10]] へ退避し、draft を 115 行にスリム化（header＋過去回＋次回向け「そのまま読む用」「議題候補」を live 項目で seed）。内容欠落なし・git で可逆。
+- **#978 反映**: PR #970 の report.html 案内の堅牢性 follow-up（資源欠如時に link-only へ degrade）を [[agpl-output-and-plugin-boundaries-2026-10-12]] の Updates / Open Questions に追記。
+- **孤立回収**: [[issue-backlog-audit-2026-10-12]] から [[daily-report-2026-10-12]] へ相互リンクを張り orphan を解消。lint クリーン（孤立0・壊れリンク0・未登録0）。index.txt 再生成（+1 page）。
+
 ## [2026-10-12 19:00] filing-back | #970 の README 競合を解消して merge（AGPL訂正完了）
 
 - #970（AGPL訂正 + report.html ライセンス同梱）の README 競合（先の #968 再編と衝突）を別 worktree で解消: README.ja.md 削除（#968 追従）、日本語ライセンス行を README.md へ、英語行を README.en.md へ載せ替え。正味差分は #970 本来の 14ファイル・+900/-5 で他 PR の巻き戻しなしを検証。

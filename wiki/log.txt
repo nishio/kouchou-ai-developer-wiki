@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 19:10	filing-back	meeting-report-draft を rotate、#978 反映、孤立リンク回収
 2026-10-12 19:00	filing-back	#970 の README 競合を解消して merge（AGPL訂正完了）
 2026-10-12 18:50	filing-back	大きめ PR 4件を並列レビュー、3件 merge・#970 は競合で保留
 2026-10-12 18:45	filing-back	棚卸し後の判断・close 5件と未解決53件の潰し込み
