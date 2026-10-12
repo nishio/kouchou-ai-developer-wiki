@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 22:10] filing-back | 6 PR(#982–987) code-review ラウンドと #987 BLOCKER 追修正
+
+- 6 PR を 6 並列 subagent で correctness レビュー。**5/6 は nits のみで merge 可、blocker は #987 のみ**。
+- #987(#176): 既存 `prune_config_for_mode`(73756f21) では塞ぎ切れていない **active mode の `None` セクション残留** を発見。llm_grouping レポート編集→再集計で analysis-core `validate_config` が `for key in None` → TypeError crash。prune で active mode の null/空も落とす修正＋回帰テスト（`update_json` round-trip）を追加し **commit `8a09108e`** を PR ブランチへ push（隔離 venv で before/after 確認・CI 再実行中）。
+- 正本は [[pr-982-987-review-round-2026-10-12]]。merge 順（①#982/#985→②#983→#986→③#984→#987）と衝突2点も記録。meeting-report-draft も更新。
+
 ## [2026-10-12 22:05] filing-back | 定例下書きの議題候補に SIWC を追記
 
 - meeting-report-draft の「議題候補」に **SIWC（Sign in with ChatGPT）を API キー不要ルート候補**として 1 項目追加。nishio の「未消化 weekly quota 転用＝実質無料」仮説と、embedding 対象外/preview/hosted 不適合/quota 未確認の caveat を 2〜4 行粒度で記載。[[openai-siwc-token-sharing-docs-2026-10-12]]へリンク。
@@ -407,8 +413,3 @@
 
 - #941の最新HEADの指摘なし・CI成功を確認してadmin mergeし、#130 CLOSEDを確認。[[catchup-2026-10-05]]へ証拠を記録した。
 - [[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と残る3PRを追記した。
-
-## [2026-10-05 22:06] filing-back | #942をマージし#518の残要件を維持
-
-- 最新HEADの実レビュー・CI成功を確認して#942をmainへ反映。[[catchup-2026-10-05]]に根拠を記録した。
-- #518は常設URL等が残るためopenを維持。残る4PRのレビュー状況を[[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記した。
