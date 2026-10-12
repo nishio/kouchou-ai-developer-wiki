@@ -93,3 +93,10 @@ sources:
 ## Updates — 2026-10-12 全文表示を短い案内とリンクへ変更
 
 西尾さんの「AGPL全文は長すぎるのでリンクでよい」という指摘を受け、PR #970のHTML末尾を「表示プログラム: 広聴AI · AGPL-3.0 · ソース（ZIP）」と短い無保証・利用条件の注記に変更。ライセンス全文の折りたたみ表示は削除し、GNUの本文へのリンクにした。配布用のライセンス本文は対応ソースZIP内の `AGPL-3.0.txt` として維持する。[AGPL第0条・第4条](https://opensource.org/license/agpl-3-0)の閲覧導線・ライセンス写しと、レポート画面への長文表示を区別した。利用者向けガイドも合わせて更新し、生成16テストとRuffに成功。未merge・未リリース。
+
+## Updates — 2026-10-12 #978 に link-only degrade の PR #980（open）
+
+- 上記 #978 の方針（資源欠如時は link-only へ degrade し hard-fail を回避）を実装した [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を作成（nishio、別セッション a8、`fix/978-license-notice-link-only-degrade`、**open・未merge**）。
+- 変更内容: `_report_license_notice` はライセンス資源（sibling `AGPL-3.0.txt` も repo `LICENSE` フォールバックも）を解決できない場合、`FileNotFoundError` を raise せず、GNU 本文へのリンクのみ（ソース ZIP なし）の `_report_license_notice_link_only()` へ早期 return する。happy path（資源あり＝ZIP 同梱）の挙動・文言は不変。degrade path の回帰テストを追加。
+- 検証: `pytest tests/test_hierarchical_visualization.py` → 17 passed（新テスト含む、Python 3.12）、変更ファイルの `ruff check` パス。`clustering` optional extra 未導入環境のため `tests/` 全体では当該 extra 依存の 4 件が落ちるが、本変更（stdlib のみの可視化ステップ）とは無関係の環境起因。
+- merge されれば #978 は close。ZIP 同梱の本流（資源あり時）は変えていないので、[[analysis-core-license-intent-2026-10-12]] の運用判断には影響しない。
