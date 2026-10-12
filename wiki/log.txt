@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 09:37	filing-back	出力HTML公開の利用者向け説明を具体化
 2026-10-12 09:34	filing-back	利用者向けAGPL解説の所在と不足を確認
 2026-10-12 09:30	filing-back	AGPLのソース提供義務が生じる条件を補足
 2026-10-12 09:28	filing-back	AGPLの生成データ公開とプラグインの境界を整理

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:37] filing-back | 出力HTML公開の利用者向け説明を具体化
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]へ「分析結果＋表示プログラム」と捉える説明案を追記。表示コードの条件と、元CSV等を一律公開する話ではないことを分けた。
+- [[meeting-report-draft]]にライセンス案内・対応ソース導線の自動付与案を記録。現行HTMLの適合確認や実装は未実施。
+
 ## [2026-10-12 09:34] filing-back | 利用者向けAGPL解説の所在と不足を確認
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]にmainの文書検索結果とGNU日本語FAQの参照先を追記。現行FAQは接続エラー対処のみで、今回のケース別説明は見当たらない。
