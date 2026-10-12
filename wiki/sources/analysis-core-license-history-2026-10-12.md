@@ -5,6 +5,8 @@ sources:
   - slack-logs-repository.md
   - meeting-minutes.md
   - source-code.md
+  - ユーザー（西尾）の2026-10-12の明示指示
+  - https://github.com/digitaldemocracy2030/kouchou-ai/pull/970
   - https://github.com/digitaldemocracy2030/kouchou-ai/commit/48cf3c1d67c1936c88fc437700d2b2f1c587a3b9
   - https://github.com/digitaldemocracy2030/kouchou-ai/pull/746
   - https://pypi.org/project/kouchou-ai-analysis-core/0.1.2/
@@ -41,3 +43,10 @@ sources:
 ## Updates
 
 - 2026-10-12: 初回調査。判断と返答の材料は [[analysis-core-license-intent-2026-10-12]] に分離。コード・GitHub issue/PR・Slackは変更していない。
+
+## Updates — 2026-10-12 AGPLが正しいとの確認と修正PR
+
+- 上記調査後、西尾さんから「AGPLが正しい、修正して」と明示指示を受領。独立パッケージのMIT表記を誤記として訂正する方針が確定した。上のOpen Questionsにある今後のライセンス方針は、この指示により解決。表記が入った際のAI/人間の具体的な指示履歴は引き続き未確認。
+- 本体main `c297bc9` を起点に `fix/analysis-core-agpl-license` / commit `5513855` / [PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)を作成。README、pyproject.tomlのlicense/classifierをAGPL-3.0に訂正し、rootと同一のLICENSE本文をpackageに追加。READMEに旧PyPI 0.1.0 / 0.1.2のMIT表記の訂正を明記し、配布チェックリストにも同梱確認を追加した。
+- `python -m build`でsdistを生成し、そのsdistからwheelをビルド（hatchling 1.32.4）。両配布物のAGPL metadata/classifier、LICENSE全文のrootとのバイト一致、`twine check`成功を確認。Python実装変更はなく、ローカルで解析処理・実APIテストは行っていない。
+- 状態はPR作成済み・未merge。公開済みPyPIファイルは未更新で、新版リリースが残る。Slack返信は未実施。

@@ -54,3 +54,4 @@ Web UI 側の canonical な表示経路は `hierarchical_result.json` + `public-
 - 2026-05-23: 初版作成。歴史ページ [[tttc-to-analysis-core-history]] とは別に、現在の入口設計と `report.html` の位置づけを設計判断として整理
 
 - 2026-10-12: [[analysis-core-license-intent-2026-10-12]]より、独立したCLI / importライブラリとして配布する設計意図と、MIT化の意思決定は区別する。packageにはMIT表記があるが、調査した計画・PR・Slack・議事録ではMIT変更の合意は確認できない。
+- 2026-10-12（追記）: 西尾さんの「AGPLが正しい、修正して」との指示で、MIT表記を誤記として訂正する方針が確定。[[analysis-core-license-intent-2026-10-12]] / PR #970を参照。独立配布の設計は維持し、AGPL-3.0表記と本文同梱を修正中（未merge、PyPI未更新）。

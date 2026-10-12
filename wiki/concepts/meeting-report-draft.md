@@ -795,3 +795,8 @@ sources:
 
 - 大木さんの10月11日の質問を調査。MIT表記は1月19日の雛形作成で入り、既存コード移植・PR #746・PyPI 0.1.0 / 0.1.2に継承された。[[analysis-core-license-history-2026-10-12]]より。
 - 独立配布の意図は明確だがMIT化の合意は未確認。[[analysis-core-license-intent-2026-10-12]]より、次は当時の意図と表記・配布物の扱いを整理する。調査のみで、本体変更やSlackへの回答は未実施。
+
+### Updates — 2026-10-12 analysis-coreのAGPL訂正PR（進行中）
+
+- 西尾さんがAGPLを正と確認。[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`）でMIT表記を訂正し、LICENSE本文の配布物同梱と旧表記の訂正説明を追加。[[analysis-core-license-history-2026-10-12]]より。
+- sdistからwheelをビルドし、両方のAGPL metadata・LICENSE一致・twine check成功を確認。未merge・PyPI未更新で、次はPRのmergeと新版リリース。

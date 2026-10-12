@@ -1,10 +1,16 @@
 ---
 type: analysis
-summary: "analysis-coreの独立配布は明確な設計意図だがMIT化の合意は確認できず、1月のパッケージ雛形から残った表記と意図を切り分けて回答する必要がある"
+summary: "西尾さんがAGPLを正と確認。analysis-coreのMIT表記を誤記として訂正するPR #970を作成し、独立配布の設計とライセンス表記を整理"
 sources:
   - analysis-core-license-history-2026-10-12.md
   - analysis-core-and-web-ui.md
 ---
+
+## Updates — 2026-10-12 調査後に方針確定
+
+**西尾さんから「AGPLが正しい、修正して」と明示されたため、MIT表記を誤記として訂正する。** [PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)でREADME・パッケージmetadata・LICENSE同梱を修正し、配布物ビルドと内容を検証した。未merge・PyPI未更新で、新版の公開が残る。[[analysis-core-license-history-2026-10-12]]より。
+
+以下はこの指示を受ける前の調査記録。「MIT化の意図・方針は未確認」という当時の留保は、今後の訂正方針については解消された。
 
 ## 結論
 

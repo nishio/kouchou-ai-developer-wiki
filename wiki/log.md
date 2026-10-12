@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:23] filing-back | analysis-coreのMIT誤記をAGPLへ訂正するPR #970を作成
+
+- 西尾さんの明示指示を[[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に追記。README・metadata・LICENSE同梱を修正し、sdist/wheelの内容とtwine checkを検証。
+- [[analysis-core-and-web-ui]]と[[meeting-report-draft]]を更新。PR #970は未merge、公開済みPyPIは未更新。次はmergeと新版リリース。
+
 ## [2026-10-12 09:19] filing-back | analysis-coreのMIT表記を初回commitとPyPIまで遡って調査
 
 - [[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に、大木さんの質問・1月の雛形作成と既存コード移植・PR #746・PyPIの表示を記録。独立配布の意図とMIT化の未確認事項を区別した。

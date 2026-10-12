@@ -173,7 +173,7 @@ worktree-hygiene-observation-2026-05-20	source	sources/worktree-hygiene-observat
 zenn-llm-as-a-judge-rubric-evaluation-2026-05-29	source	sources/zenn-llm-as-a-judge-rubric-evaluation-2026-05-29.md	Ubie Tech Blog の LLM-as-a-Judge / ルーブリック評価記事。抽象的な 1-5 点採点ではなく、true/false 可能な criteria に分解し、重要度ごとの points と negative criteria を持たせると、再現性と改善点の特定が上がるという実務向け整理
 agent-sandboxing-strategy	analysis	analyses/agent-sandboxing-strategy.md	AI コーディングエージェント向けの開発環境分離方針 — host full access を標準にしない
 analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md	`analysis-core` の extras 分割は独立 PR で切り出せるが、依存定義だけでなく eager import・CI・インストール導線を同時に整える必要がある
-analysis-core-license-intent-2026-10-12	analysis	analyses/analysis-core-license-intent-2026-10-12.md	analysis-coreの独立配布は明確な設計意図だがMIT化の合意は確認できず、1月のパッケージ雛形から残った表記と意図を切り分けて回答する必要がある
+analysis-core-license-intent-2026-10-12	analysis	analyses/analysis-core-license-intent-2026-10-12.md	西尾さんがAGPLを正と確認。analysis-coreのMIT表記を誤記として訂正するPR #970を作成し、独立配布の設計とライセンス表記を整理
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
 azure-demo-public-visibility-proposal-2026-06-04	analysis	analyses/azure-demo-public-visibility-proposal-2026-06-04.md	Azure デモサイトを docs から動線化する 4 問と、2026-06-05 の大木さん返答 + nishio 決定。viewer 公開 / admin 共用 + 秘密情報禁止明示は進行、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化、で着地。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレームしている
 biome-lint-main-drift-2026-10-09	analysis	analyses/biome-lint-main-drift-2026-10-09.md	Biome 全体 lint が main で落ち続けた由来と放置の構造（導入初日から未強制、PR は触ったファイルだけ clean）。0 件化と CI gate を同時に入れる PR #963 と #700 close まで
