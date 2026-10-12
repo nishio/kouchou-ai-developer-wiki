@@ -101,7 +101,7 @@ sources:
 
 下は 2026-10-10 定例以降の live な現在地。詳細は各 analysis / daily-report へ送る。merge 済みか進行中かを明記する。
 
-- **ライセンス**: analysis-core の MIT 表記は誤記（TTC 由来で AGPL が正）と確定。[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（AGPL 訂正＋利用者向け `license.md`＋CLI 出力 HTML へ案内/表示ソース同梱）は **2026-10-12 に main merge 済み**。残る live 残件は **PyPI の訂正版公開**（`pyproject.toml` は version 0.1.2 据え置き＝再公開には bump＋`analysis-core-vX.Y.Z` tag push が必要）と、公開済み 0.1.0/0.1.2（MIT 表記）を **yank するか注記で残すか**の判断。これらは **Issue #979** に tracking 済み。堅牢性 follow-up の Issue #978（資源欠如時に `report.html` 生成が hard-fail する件）は、link-only degrade を実装した [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を作成（**open・未merge**、merge で #978 close）。[[analysis-core-license-intent-2026-10-12]]より [[agpl-output-and-plugin-boundaries-2026-10-12]]より。
+- **ライセンス**: analysis-core の MIT 表記は誤記（TTC 由来で AGPL が正）と確定。[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（AGPL 訂正＋利用者向け `license.md`＋CLI 出力 HTML へ案内/表示ソース同梱）は **2026-10-12 に main merge 済み**。残る live 残件は **PyPI の訂正版公開**（`pyproject.toml` は version 0.1.2 据え置き＝再公開には bump＋`analysis-core-vX.Y.Z` tag push が必要）と、公開済み 0.1.0/0.1.2（MIT 表記）の扱い（**nishio 判断で yank に決定**＝誤情報の撤回を優先）。**Issue #979** で tracking、実行順序は ①bump → ②AGPL 訂正版 publish → ③旧版 yank（yank 先行だと `pip install` が壊れるため順序固定）。残るは bump＋tag push と yank の実行（PyPI 権限が必要）。堅牢性 follow-up の Issue #978（資源欠如時に `report.html` 生成が hard-fail する件）は、link-only degrade を実装した [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を作成（**open・未merge**、merge で #978 close）。[[analysis-core-license-intent-2026-10-12]]より [[agpl-output-and-plugin-boundaries-2026-10-12]]より。
 - **Issue 棚卸し（完了・判断待ち）**: open Issue 全 105 件を current main に照合済み。偽陰性 #953/#956 は現行 main で解決、#577 は close 相当だが**人間の `gh issue close` 実行待ち**。方針会議に載せる候補 = #104（集約 visibility のプライバシー方針）/ #255（政治利用 FAQ・法務）/ #471（推奨スペックのスコープ）/ #464（API キー PO 確定）/ #921（ブラウザ版本流化・戦略会議）/ #474（bonsai のゴール定義）。[[daily-report-2026-10-12]]より [[issue-backlog-audit-2026-10-12]]より。
 - **PR 状況（2026-10-12）**: #961（全画面粒度）/ #963（Biome gate）/ #970（license）は **main merge 済み**。残る open は **#975（#971）** と、新規作成の **#980（#978 の link-only degrade）**。#976（#972）は **CLOSED**（未 merge・別対応かを要確認）。本日は open PR を一斉処理し 10 件 merge・3 件 issue 化。[[daily-report-2026-10-12]]より。
 - **切り出し済み残件 Issue**: #974（Docker Hub 429 の認証 pull 恒久化・他ビルド横展開）/ #977（README 見出しアンカー直リンクの root cause＝安定リンク/リンク切れ CI）/ #973（#871 の read-back 確認・docs 明記）。
@@ -110,6 +110,6 @@ sources:
 
 ## 議題候補（次回定例向け）
 
-- 公開済み PyPI 0.1.0/0.1.2（MIT 表記）を yank するか注記で残すか（MIT を信頼して使った利用者への配慮）。#970 merge・訂正版リリースの後続判断。**Issue #979** で tracking 中（方針決定→bump＋tag→必要なら yank の順）。
+- 公開済み PyPI 0.1.0/0.1.2（MIT 表記）の扱いは **yank に決定済み**（nishio・2026-10-12、誤情報の撤回を優先）。残るは実行＝①version bump ②AGPL 訂正版を tag push で publish ③旧版 yank の順（PyPI 権限が必要）。**Issue #979**。
 - Issue 棚卸しで「方針会議に載せる」とした #104/#255/#471/#464/#921/#474 の決定。
 - #921 ブラウザ版本流化は戦略会議（Polimoney は 10/24 確定、広聴AI/いどばたは 10/17-25 調整中）の意思決定事項。

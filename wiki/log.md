@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 19:55] filing-back | #979 の yank 方針を nishio 判断として記録
+
+- nishio 判断「誤情報（MIT 表記）の撤回を優先」で、**旧 PyPI 版 0.1.0/0.1.2 は yank に決定**。[#979 コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979#issuecomment-6122010532)に実行順序（①bump ②AGPL 訂正版 publish ③旧版 yank）と、yank 先行だと `pip install` が壊れる点を明記。
+- [[analysis-core-license-intent-2026-10-12]] と meeting-report-draft（そのまま読む用・議題候補）を「yank 決定済み・残りは実行（PyPI 権限要）」に更新。実行（tag push・yank）は未了。
+
 ## [2026-10-12 19:45] filing-back | #978 の link-only degrade を実装し PR #980 を作成
 
 - 別セッション(9f)と棲み分け合意（9f=wiki/license・会議draft、a8=GitHub live state・未assign issue）。着手可能な未assign issue を調査し、自己完結的で人間判断不要の **#978**（report.html のライセンス案内が資源欠如時に `FileNotFoundError` で生成全体を hard-fail させる件）を選定。self-assign 済み。
