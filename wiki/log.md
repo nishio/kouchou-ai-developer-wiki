@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 21:30] filing-back | 一部解決 Issue の残件を並列実装→code-review→6 PR 投入（全CI green）
+
+- 棚卸し [[issue-backlog-audit-2026-10-12]] の「一部解決」A群（engine 済→統合 #176/#450/#515/#537）・C群（局所 UI #52/#306/#364/#143、#310 は assignee=nasuka で除外）を 8 並列 subagent で実装。**#55 は PR #946 merge で残件解消済み**を確認。6 件を並列 code-review 後に PR 化し全 CI green（self-assign・未 merge）: #982→#143 / #983→#52 / #984→#450 / #985→#537 / #986→#306 / #987→#176。
+- code-review で #537 の CI breaker（test の `import httpx2`）・#306 の凡例とフィルタ除外の色不整合・**#176 の config 書き戻し破損（`ReportConfig` 拡張の副作用、`prune_config_for_mode` 共通ヘルパ＋実 `validate_config` 回帰テストで修正）** を発見・修正。
+- **保留（未 PR）**= #364（per-report パスワード＝セキュリティ残件）/ #515（frontend 未検証・別データ投影 UI 未）。次に見る＝人間レビュー→merge 判断、保留2件の扱い。
+
 ## [2026-10-12 21:25] filing-back | #979 の②完了＝PyPI に 0.1.3（AGPL）を公開
 
 - nishio がタグ `analysis-core-v0.1.3` を push → `publish-analysis-core.yml` success、**PyPI に 0.1.3/AGPL-3.0 を公開**（版固有エンドポイントで確認、`/json` latest 表示は index キャッシュ遅延）。公開前に main `055b8824` からローカルビルドで検証（`twine check` PASSED・metadata AGPL・AGPL 全文 LICENSE 同梱が root と sha256 一致）。
