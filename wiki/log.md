@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 17:45] filing-back | PR #968（日本語README復帰）を merge
+
+- #968（外部・shingo-ohki、#966 英語化で切れた `README.md#見出し` 直リンクを日本語デフォルト復帰で当座復旧）を nishio が admin squash merge（merge commit `e1c1de4`、fork PR）。CI green・MERGEABLE を確認して反映。
+- root cause（README 見出し直リンク依存）の恒久対応は別途 [[meeting-report-draft]] 記載の Issue #977 で追跡。
+
 ## [2026-10-12 17:40] filing-back | README 直リンク依存の root cause を Issue #977 に（PR #968 レビュー）
 
 - open PR 10件を順に解説。#968（外部・shingo-ohki、#966 英語化で切れた `README.md#見出し` 直リンクを日本語復帰で当座復旧）について nishio が「README 見出しへの外部直リンク依存が構造的におかしい（見出し変更でも静かに切れる）」と指摘。
