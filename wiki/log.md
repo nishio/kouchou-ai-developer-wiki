@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 17:40] filing-back | README 直リンク依存の root cause を Issue #977 に（PR #968 レビュー）
+
+- open PR 10件を順に解説。#968（外部・shingo-ohki、#966 英語化で切れた `README.md#見出し` 直リンクを日本語復帰で当座復旧）について nishio が「README 見出しへの外部直リンク依存が構造的におかしい（見出し変更でも静かに切れる）」と指摘。
+- root cause 対応（安定リンクを docs 固定 URL へ／リンク切れ検出 CI）を **Issue #977** に切り出し、#968 にコメント。#968 自体は #966 作者との意図合意のうえ当座 merge 可。
+- [[meeting-report-draft]] に反映。次は他 open PR のレビュー/merge 判断。
+
 ## [2026-10-12 17:10] filing-back | CI の Docker Hub 429 対策 PR #969 を merge、残件を #974 へ
 
 - Copilot bot の PR #969（client-build のベースイメージ取得 429 を ECR Public フォールバックで回避）を nishio の明示許可で admin squash merge（merge commit `4faaf256`）。CI 全 green 確認。

@@ -199,6 +199,12 @@ sources:
 - **評価**: 有効な火消しだが対症療法。429 は匿名 pull 制限で、根本は認証 pull。ECR Public も匿名制限を持つため保証ではない。対象も client-build のみで、同じ `node:22-alpine` を Docker Hub 直取得する `apps/admin` / `apps/static-site-builder` の Dockerfile と `azure-deploy.yml` / `api-docker-dependency-smoke.yml` が未対応。
 - **次に見る**: 残件を **Issue #974** に切り出し済み（①認証 pull の恒久化 ②他ビルドへの横展開 ③リトライ設計の見直し）。着手は自動では進めない。
 
+### Updates — 2026-10-12 README 直リンク依存の root cause を Issue #977 に（PR #968 レビュー）
+
+- **PR #968（外部: shingo-ohki）**: #966 で英語化された `README.md` を日本語に戻し、切れた `README.md#<日本語見出し>` 直リンクを復旧する当座対応。未 merge・CI green・承認待ち。
+- **nishio 判断**: そもそも README の見出しアンカーに外部資料・UI から直リンクするのが構造的におかしい。見出しの言い回し変更・絵文字・並べ替えでも静かに切れ（404 にならず README トップ着地で気づきにくい）、#968 を merge しても再発し得る。
+- **次に見る**: root cause 対応（安定リンクを docs の固定 URL へ寄せる／リンク切れ検出の CI 導入）を **Issue #977** に切り出し、#968 にもコメント済み。#968 自体は #966 作者との意図合意を確認のうえ当座 merge 可。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より
