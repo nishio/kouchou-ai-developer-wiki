@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 20:10] filing-back | #980（#978 link-only degrade）を merge、#978 close
+
+- nishio の明示指示（admin merge 承認）を受け、CI 全 pass の [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を admin bypass で squash merge（`478cd1a0`）。必須レビュー承認が無く通常 merge は BLOCKED だったため、確認のうえ admin merge を実行。これにより **Issue #978 は自動 close**。
+- 後片付け: remote/local topic branch 削除、worktree `work/kouchou-ai-issue978` 撤去、`work/kouchou-ai` main を 478cd1a0 に更新。wiki は [[agpl-output-and-plugin-boundaries-2026-10-12]] Updates / meeting-report-draft の #978・PR状況行を「merge 済み・close」へ更新。
+- happy path（資源あり＝ZIP 同梱）は不変なので #979（yank 方針）の運用判断には非干渉。
+
 ## [2026-10-12 20:00] filing-back | 要件再確認の人間判断処理・#471 ベンチハーネス実装
 
 - 棚卸しの「要件再確認」を nishio と対話処理。回答に沿って #474（bonsai=純粋調査、検証メモ link 添付で close）/ #104（中央集約テレメトリは当面見送り・GA4 のみ、not planned close）を close、#255（政治利用 FAQ）は公開規約の事実整理をもとに `docs/user-guide/faq.md` 追記案（Q&A＋免責）を Issue に投稿、#471 は scoping コメント（普通PC前提に再定義＋GPU補助・NPU初期スコープ外）を投稿。
