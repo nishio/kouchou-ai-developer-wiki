@@ -1,5 +1,7 @@
 ---
 type: analysis
+status: superseded
+superseded_by: issue-backlog-audit-2026-10-12
 summary: "古い順 open Issue 先頭10件を current main@c297bc97 に照合した棚卸し。未解決5 (#11/#44/#60/#79/#121)、一部解決3 (#52/#55/#143)、要件再確認1 (#104)。#52 は階層図連動が PR #927 で main 反映済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、#11/#79 は作成前確認パネルに費用/時間欄枠はあるが『目安なし』固定"
 sources:
   - issue-audit-2026-10-11-batch1.md

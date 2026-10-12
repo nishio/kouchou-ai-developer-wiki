@@ -56,6 +56,17 @@ sources:
 ---
 ```
 
+### スナップショットのライフサイクル
+
+日付つき snapshot ページ（`daily-report-*` / `*-audit-*` / `current-status-*` / `*-observation-*` 等）は後続のスナップショットに置き換わる。削除はしない（git が履歴を保持）。後続版が出たら、frontmatter に **opt-in の目印**だけ足して「より新しい版がある」ことを示す。
+
+- `status: superseded` — 後続スナップショットに置き換わった。省略時は current（有効）扱い
+- `superseded_by: <後続ページの stem>` — 後継ページ（実在する wiki ページ）
+
+**`status: superseded` の意味は「より新しい wiki snapshot が存在する」であって、「live state と照合して current と確認した」ではない**（情報鮮度の明示と整合）。本文・`## Updates` は上書きせず、目印は frontmatter の追加だけにとどめる。
+
+運用: 同じ series の新しい snapshot を filing back する時、同じ編集で直前の sibling の frontmatter に 2 行を足す。`build_index_txt.py` は superseded 行の summary を `[superseded→<stem>] ` で前置し AI カタログ上で自己 deprioritize する。`lint_wiki.py` は `superseded_by:` の参照先が実在するかを検査する。zero migration（未マークのページは従来どおり有効）。
+
 ## 操作
 
 ### Ingest（ソース取り込み）

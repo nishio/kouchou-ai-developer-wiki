@@ -1,5 +1,7 @@
 ---
 type: analysis
+status: superseded
+superseded_by: issue-backlog-audit-2026-10-12
 summary: "119件のopen Issueを観測し、解決済み・重複8件をclose、18件の残要件を更新。導入経路・費用時間・元の声への参照を次の重点にする"
 sources:
   - other-issue-candidates-2026-09-07.md

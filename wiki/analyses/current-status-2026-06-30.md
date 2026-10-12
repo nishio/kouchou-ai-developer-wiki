@@ -1,5 +1,7 @@
 ---
 type: analysis
+status: superseded
+superseded_by: current-status-2026-10-05
 summary: "2026-06-30 時点の広聴AI開発状況スナップショット。コード main、open PR / issue、議事録、Slack log の鮮度を合わせて読む"
 sources:
   - source-code.md

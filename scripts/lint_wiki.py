@@ -237,6 +237,17 @@ for name, fm in frontmatter.items():
 print(f"  sources: 未解決の wiki ページ参照: {len(unresolved_sources)}")
 for name, s in sorted(unresolved_sources):
     print(f"    - {name} → {s}")
+
+# (d) status: superseded pages must name a superseded_by target that resolves to a page.
+bad_superseded = []
+for name, fm in frontmatter.items():
+    if str(fm.get("status", "")).strip().lower() == "superseded":
+        sb = str(fm.get("superseded_by", "")).strip()
+        if not sb or Path(sb).stem not in pages:
+            bad_superseded.append((name, sb or "(未設定)"))
+print(f"  superseded_by 未解決/未設定: {len(bad_superseded)}")
+for name, sb in sorted(bad_superseded):
+    print(f"    - {name} → {sb}")
 print()
 
 # 5. Frequently referenced concepts that don't have a page

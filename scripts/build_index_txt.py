@@ -50,6 +50,11 @@ def main() -> int:
             .replace("\t", " ")
             .replace("\r", " ")
         )
+        # Superseded snapshot pages (opt-in status/superseded_by frontmatter) get a
+        # summary prefix so the AI catalog self-deprioritizes them toward the live one.
+        if str(fm.get("status", "")).strip().lower() == "superseded":
+            sb = str(fm.get("superseded_by", "")).strip()
+            summary = f"[superseded→{sb}] {summary}" if sb else f"[superseded] {summary}"
         order = TYPE_ORDER.get(typ, 99)
         entries.append((order, typ, rel, path.stem, summary))
 

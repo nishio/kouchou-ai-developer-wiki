@@ -64,3 +64,4 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 ## Updates
 
 - 2026-10-12: 初版作成。6 レンズ監査 → 敵対的検証 → 修正適用の filing-back。[[wiki-driven-workflow]] の運用下で developer-wiki を自己点検した記録。
+- 2026-10-12: 残課題①「dated-page lifecycle policy」を nishio 判断で**採用**。CLAUDE.md に「スナップショットのライフサイクル」節（opt-in の `status: superseded` + `superseded_by:`、意味は「より新しい snapshot が存在」で live 照合済みではない）、`build_index_txt.py` の superseded prefix、`lint_wiki.py` の `superseded_by` 実在チェックを追加。demo として [[issue-backlog-audit-2026-09-09]] / [[issue-backlog-audit-2026-10-11]] → [[issue-backlog-audit-2026-10-12]]、[[current-status-2026-06-30]] → [[current-status-2026-10-05]] を superseded マーク（zero migration、残りは今後 incremental）。残課題②PR-887 verbatim の Drive 移送、③`work/` worktree 棚卸しは保留（③は open PR 処理後）。
