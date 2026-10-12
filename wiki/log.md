@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 23:10] filing-back | #515（UMAP 使い回し）を CLI 先行で実装→review→PR #988
+
+- 方針（nishio）＝高度/実験的機能は WebUI 直行でなく **core/CLI を一次手段**に。保留中の旧ブランチ（admin checkbox＋API 複製）は **end-to-end で壊れていた**＝`reuse_umap_model` が analysis-core spec の options 未登録で `validate_config`（CLI・API 起動で必ず通る）が "Unknown option" で全経路を落としていた（step 直呼びテストが素通りで見逃し）。
+- 新ブランチ `codex/issue-515-umap-reuse-cli`（**analysis-core のみ**）＝spec 登録＋`transform` 投影＋CLI パス解決（レポート名/相対/絶対、未発見は silent fit せず error）＋docs(cli-quickstart §9)。adversarial review で HIGH なし・LOW 3（reuse 変更時の再実行を `dependencies.params` 追加で解決 等）修正。全テスト 282 passed・実 CLI `--validate-config` 受理。**PR #988（未 merge）**。WebUI 導線は保留継続。
+- audit Updates / meeting-report-draft も更新。memory に設計方針（CLI-first）と #515 状態を記録。
+
 ## [2026-10-12 22:10] filing-back | 6 PR(#982–987) code-review ラウンドと #987 BLOCKER 追修正
 
 - 6 PR を 6 並列 subagent で correctness レビュー。**5/6 は nits のみで merge 可、blocker は #987 のみ**。
@@ -403,13 +409,3 @@
 
 - CodeRabbitの記載率警告を `4c2d3c1` で修正。動作変更なし、ローカルlint成功、CIと再レビューは確認中。[[catchup-2026-10-05]]より。
 - [[current-status-2026-10-05]]・[[meeting-report-draft]]に未mergeの残条件を追記した。
-
-## [2026-10-05 23:04] filing-back | #943をマージし#395の残件を維持
-
-- 最新HEADの実レビュー・CI成功を確認して#943をmainへ反映。[[catchup-2026-10-05]]に証拠を記録した。
-- #395にSpreadsheet等の残件を維持し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と残る2PRを追記した。
-
-## [2026-10-05 22:18] filing-back | #941の再レビュー成功とmain反映を確認
-
-- #941の最新HEADの指摘なし・CI成功を確認してadmin mergeし、#130 CLOSEDを確認。[[catchup-2026-10-05]]へ証拠を記録した。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と残る3PRを追記した。
