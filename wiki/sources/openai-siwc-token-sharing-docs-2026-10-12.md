@@ -1,6 +1,6 @@
 ---
 type: source
-summary: "OpenAI 'Sign in with ChatGPT' (SIWC) の plan 共有（token sharing）公式 docs の要点。OSS / local-hosted アプリが、サインインしたユーザの ChatGPT プランで Responses API 推論を実行できる OAuth 機能。API キー不要ルートの候補だが preview・Responses API 限定・embedding 対象外が未確認で、広聴AIの『自治体がキー契約困難』問題への適用には制約が多い"
+summary: "OpenAI 'Sign in with ChatGPT' (SIWC) の plan 共有（token sharing）公式 docs の要点。OSS / local-hosted アプリが、サインインしたユーザの ChatGPT プランで Responses API 推論を実行できる OAuth 機能。API キー不要ルートの候補だが、対応 endpoint は Responses API に明示限定で embedding は docs 範囲外（2026-10-12 確認）。embedding が広聴AI pipeline の中核のため、SIWC 単独ではキー不要ルートとして不完全"
 sources:
   - https://developers.openai.com/siwc/token-sharing-open-source
 ---
@@ -31,17 +31,27 @@ OAuth 2.0 authorization code flow + PKCE + state + nonce を前提とする。�
 
 ### 無批判採用を避ける論点
 
-- **Responses API 限定**: plan 共有は "eligible Responses API requests" が対象。広聴AIの pipeline は chat completion / embedding を analysis-core 経由で呼ぶ（[[llm-providers]] / [[pipeline]]）。**embedding が plan 共有の対象かは docs から読めず未確認**。embedding はクラスタリングの中核コストなので、ここが対象外だと「キー不要」が pipeline 全体には効かない。
+- **Responses API 限定（embedding は docs 範囲外）**: plan 共有は "eligible Responses API requests" が対象。リンク先 docs（models-and-inference / preview-limitations）を確認したところ、plan 共有の推論 endpoint は **`POST /v1/responses` に明示限定**（"Supported endpoint: Use the public Responses API endpoint… for this ChatGPT plan usage flow"）。文書化されているのは他に `GET /v1/models`（model picker 用）のみで、**Embeddings API は supported にも blocked にも挙げられず docs の対象外**。preview-limitations も supported endpoint を Responses API とし、未対応 input として audio/video・Files upload・transcription を挙げるが embedding には触れない。広聴AIの pipeline は embedding を analysis-core 経由で呼ぶ（[[llm-providers]] / [[pipeline]]）クラスタリングの中核コストなので、**SIWC 単独ではキー不要ルートとして不完全**で、embedding は別途 OpenAI キーか別プロバイダが必要になる。(2026-10-12 確認)
 - **preview**: docs 自身が preview limitations ページを持つ。production 依存の判断には早い。
 - **hosted デモとの不整合**: 有料・リモートホスト型は別 interest form。広聴AIの Azure デモ環境のような **hosted 提供には素直に使えず**、価値が出るのは「ユーザが自分の端末で local に広聴AIを動かす」配布形態に限られる。
 - **統合コスト**: OAuth loopback flow、PKCE、host ID の永続管理、token refresh を実装する必要があり、単純な env var 1 本の API キー入力より重い。
 - **ロックイン**: OpenAI 固有。[[llm-providers]] が多プロバイダ対応で自治体制約を回避してきた方針（OpenRouter / LocalLLM）とは逆に、OpenAI プランへの依存を強める。
 
+## Responses API 側の制約（preview-limitations より）
+
+plan 共有ルートでは Responses API でも一部 field / tool が使えない。広聴AIが OpenAI 呼び出しで前提にしがちなものが含まれる点に注意。[[openai-siwc-token-sharing-docs-2026-10-12]]より
+
+- **未対応 field（HTTP）**: `max_output_tokens`, `temperature`, `top_p`, `user`, `metadata`, `previous_response_id`。→ 温度や最大出力トークンを明示指定する分析コードはそのままでは通らない。
+- **未対応 tool**: image generation, file search, Code Interpreter, native computer use, hosted MCP/connectors, Responses `tool_search`、top-level `tools` の `programmatic_tool_calling`。
+- **対応 tool**: function / custom tools（namespace か `additional_tools` 経由）。
+- **未対応 input**: audio/video input, Files upload API, transcription API。
+- model 固定リストは無く、catalog はサインインしたアカウント依存（例示は `gpt-6.1-sol`）。
+
 ## Open Questions
 
-- SIWC の plan 共有は **embedding API を含むか**。含まないなら広聴AIの「キー不要 local 実行」には不十分。
+- ~~SIWC の plan 共有は embedding API を含むか~~ → **2026-10-12 確認: docs は Responses API 限定で embedding は対象外**。SIWC 単独ではキー不要にならず、embedding は別キー/別プロバイダが要る。
 - OSS 配布版（ユーザ端末で動かす形態）を広聴AIが正式サポートする計画と噛み合うか。現状の一次配布は hosted デモ寄り。
-- preview の rate / quota / 商用利用条件が自治体スケールの分析（数千〜数万コメント）に耐えるか。
+- preview の rate / quota / 商用利用条件が自治体スケールの分析（数千〜数万コメント）に耐えるか（docs は rate/quota に言及なし）。
 
 ## Updates
 

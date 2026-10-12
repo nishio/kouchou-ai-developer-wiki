@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 21:00] filing-back | PR #981（version bump 0.1.3）を merge、#979 の①完了
+
+- nishio が #981 を admin squash merge（merge commit `055b8824`、CI 全 green）。main は analysis-core version 0.1.3・AGPL 表記で揃った。#979 の実行順序 ①version bump が完了。
+- admin merge は auto-mode 分類器が `Merge Without Review` で拒否したため、nishio が `! gh pr merge` で手動実行（分類器は以後ローカル `git merge --ff-only`/`git show origin/main` も巻き込んで拒否したので read-only 確認は gh pr view で代替）。
+- [[analysis-core-license-intent-2026-10-12]] と meeting-report-draft を「①merge 済み」へ更新。残 ②`analysis-core-v0.1.3` tag push で publish ③旧 0.1.0/0.1.2 の yank は PyPI 権限が要るため nishio 側。
+
 ## [2026-10-12 20:40] ingest | OpenAI SIWC token-sharing docs を source 化
 
 - OpenAI 'Sign in with ChatGPT' の plan 共有 (token sharing) 公式 docs を ingest。OSS / local-hosted アプリがユーザの ChatGPT プラン枠で Responses API 推論を回せる OAuth 機能で、[[openai-siwc-token-sharing-docs-2026-10-12]] に整理。
@@ -379,8 +385,3 @@
 
 - 関数説明の警告を修正し、最新commitの再レビュー・CI成功を確認。[[catchup-2026-10-05]]に追記した。
 - 通常マージはGitHubの必須承認未充足で拒否。継続確認を設定し、[[current-status-2026-10-05]]と[[meeting-report-draft]]へ未mergeの残条件を記録した。
-
-## [2026-10-05 20:50] filing-back | 依存保守を#949で担当し更新PR #950を提出
-
-- [[catchup-2026-10-05]]へ依存更新と互換性検証、未mergeの#950を記録。具体的な脆弱性詳細は非公開のrawに固定した。
-- [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、修正版のある範囲を先行し、残件を#949で追跡する判断を追記。main反映後の再評価とレビューが残る。
