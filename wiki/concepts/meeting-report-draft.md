@@ -816,3 +816,5 @@ sources:
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]より、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`、`d09976e`）で利用者向けガイドと、出力HTMLへのAGPL全文・対応表示ソースZIPの自動同梱を実装。通常利用者は案内を残して公開する形にした。
 - 16テスト、ZIPからの同一HTML再生成、wheel/sdistのライセンス・実行確認、docs buildに成功。未merge・未リリースで、次はレビューと新版リリース。Web版静的出力は今回の対象外。
+
+- 2026-10-12（案内を簡潔化）: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、PR #970のレポート画面へのライセンス全文表示を削除。短い表記とAGPL本文・表示ソースへのリンクに変更し、全文のコピーはZIP内に維持。生成16テスト・Ruffに成功、未merge。

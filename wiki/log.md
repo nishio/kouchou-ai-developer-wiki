@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 12:10] filing-back | CLIレポートのライセンス案内を短い表記とリンクに変更
+
+- ユーザーの指摘を受け、PR #970の全文表示を削除し、GNU本文へのリンクと短い注記に変更。本文のコピーはソースZIP内に維持。
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]と[[meeting-report-draft]]へ反映。生成16テスト・Ruff成功、未merge。
+
 ## [2026-10-12 09:48] filing-back | CLI出力HTMLにライセンスと表示ソースを自動同梱
 
 - PR #970へ利用者向けガイドとCLI出力へのAGPL全文・表示ソースZIPを追加。[[agpl-output-and-plugin-boundaries-2026-10-12]]と[[analysis-core-license-history-2026-10-12]]に実装・検証と制限を記録。
@@ -292,36 +297,3 @@
 
 - [[catchup-2026-10-05]]へmain・Issue・open PR・非公開報告設定の再観測を追記。SECURITY.mdなし、非公開報告機能は無効だった。
 - [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、文書追加と受付窓口・通知確認を一組にする対応案を記録。調査のみでassign・PR作成・設定変更は行っていない。
-
-## [2026-10-05 11:08] filing-back | lint孤立ページ13件の導線を復旧
-
-- `python3 scripts/lint_wiki.py` で incoming wikilink のないページ13件を検出し、過去の issue / PR 判断、Windows実機メモ、ラベル評価依頼、行政RAG調査を既存ハブへ接続した。
-- 再実行で孤立ページ、壊れたwikilink、index未登録、frontmatter不備はいずれも0件になった。ページ追加やsummary変更はしていないため `index.txt` は再生成していない。
-
-## [2026-10-05 11:00] filing-back | 直前セッションの広聴AI事例整理文脈を保存
-
-- 「これ何してたんだっけ」への復元として、直前作業が国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back だったことを [[codex-session-recall-broadlistening-lineage-2026-10-05]] に記録した。
-- 次の自然な一手は #564 公開事例ページの schema / 掲載候補 / 読み方ガイド整理だが、6月30日の観測は古いので [[current-status-2026-10-05]] を先に読む注意を [[meeting-report-draft]] へ接続した。
-
-## [2026-10-05 10:58] filing-back | 3件のIssue実装から検証境界と設定保護の知見を整理
-
-- [[next-three-issues-progress-2026-09-09]]へ再利用できる3点と観測時点を追記し、[[testing]]へ反映。
-- [[meeting-report-draft]]を更新。実装結果の再検証はしていない。
-- grasp書込基盤（wiki.grasp/events.jsonl）が未導入のため、既存のMarkdown運用で更新。
-
-## [2026-10-05 10:44] filing-back | 韓国からの取材に向けたデータ分析の公開範囲を記録
-
-- [[interview-analysis-request-2026-10-05]] に、韓国からの取材対応のためデータ分析を試す依頼の概要を記録した。
-- 定例下書きへ同じ概要を追記。公開記録はユーザーが許可した範囲に限定し、詳細を非公開で管理する。
-
-## [2026-10-05 10:05] filing-back | 同一GitHub Pages origin上の別サイトへのリンク誤検出を修正
-
-- 今回と直前の公開CIで、別プロジェクトへの絶対リンクがbase path逸脱とされる原因を確認。`check_pages_links.py`を修正した。
-- 絶対hyperlinkを外部参照とし、相対逸脱・内部リンク切れ・asset逸脱は維持。回帰テスト5件をCIへ追加し、[[current-status-2026-10-05]]と定例メモへ記録。
-
-## [2026-10-05 10:02] filing-back | 10月5日のコード・GitHub・Slack・議事録へキャッチアップ
-
-- [[catchup-2026-10-05]] / [[current-status-2026-10-05]] にsource鮮度と現在地を固定。本体mainは据え置き、#941〜#946はCI成功・必須レビュー待ち、#947は新規未担当。
-- Serverless #22〜#26のmain反映を確認し、製品方針ページの未merge記録へ補足。依存更新4PRのbuild失敗は未調査として残した。
-- 議事録txt/htmlとSlack snapshotを更新し、定例下書きの先頭側に今回の読み上げメモを追記。grasp書き込み未導入のため既存Markdown方式で保存した。
-- 索引再生成で過去の未検証留保が消える不整合を検出し、KJ法関連2ページのfrontmatterへ反映して再生成した。
