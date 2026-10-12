@@ -38,4 +38,5 @@ sources:
 ## Updates
 
 - 2026-10-12: Slackの質問を起点に調査。独立配布の設計判断とMIT化の判断を区別して記録した。
+- 2026-10-12: PR #970 は main merge 済み（repo 側の AGPL 訂正完了）。ただし `pyproject.toml` は version 0.1.2 据え置きで、PyPI 公開版 0.1.0 / 0.1.2 は依然 MIT metadata のまま。この後続（version bump＋`analysis-core-v*` タグで訂正版公開、旧 MIT 版を yank するか注記で残すかの判断）を [Issue #979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) に tracking として切り出した。yank 可否は MIT を信頼した利用者への影響を含む人間判断。
 - 2026-10-12: `#2_開発_広聴ai` の西尾さんの判定根拠を補記。質問を受けた西尾さんは当日朝、まず「そうなっている記憶がない」と述べ、履歴を洗った結果「特に議論なく最初からMITになっていた」ため **うっかりミス** と判定した。明示した法的根拠は「**大元のTalk to the CityがAGPLなので、それに依拠したものをMITに変えるのは無理なはず**」で、これが誤記判定と訂正方針（[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)）の直接の理由。あわせて「ライセンスのやさしい解説ドキュメントが必要」との発言があり、PR #970の `docs/user-guide/license.md` 追加に対応する。本調査の「移植元や許諾根拠の確認が論点」という留保は、この由来（TTC → kouchou-ai → analysis-core がいずれもAGPL系）の確認で整合する。[[analysis-core-license-history-2026-10-12]]より。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 19:30] filing-back | PyPI 訂正版公開・旧 MIT 版 yank 判断を Issue #979 に起票
+
+- #970（AGPL 訂正）は main merge 済みだが、`pyproject.toml` は version 0.1.2 据え置きで PyPI 公開版 0.1.0/0.1.2 は MIT metadata のまま。リリースは `analysis-core-v*` タグ push 発火＝同一版再アップロード不可なので bump が必要、という裏取りのうえ [Issue #979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) を tracking として作成（日本語本文・未assign）。
+- やること = ①version bump ②訂正版公開 ③旧 MIT 版の yank/注記判断（人間）。wiki は [[analysis-core-license-intent-2026-10-12]] と meeting-report-draft の議題候補に #979 を反映。以前「issue 化されていない唯一の残件」と指摘した loop を閉じた。
+
 ## [2026-10-12 19:10] filing-back | meeting-report-draft を rotate、#978 反映、孤立リンク回収
 
 - **draft rotation**: rotate が 2026-06-01 以降途絶し、draft が 861 行（06-08〜10-12 の複数回分が堆積）になっていた。堆積分を [[meeting-report-2026-10-10]] へ退避し、draft を 115 行にスリム化（header＋過去回＋次回向け「そのまま読む用」「議題候補」を live 項目で seed）。内容欠落なし・git で可逆。
