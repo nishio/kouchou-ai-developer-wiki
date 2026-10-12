@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 20:20] filing-back | #979 の version bump を PR #981 で作成
+
+- #979 の実行順序 ①version bump を [PR #981](https://github.com/digitaldemocracy2030/kouchou-ai/pull/981)（`chore/analysis-core-bump-0.1.3`、open）で作成。`pyproject.toml` と `__init__.py` の `__version__` を 0.1.2→0.1.3 に揃える 2 行のみ。version テストは動的参照/regex なので影響なし。work/kouchou-ai は二分原則どおり別 worktree で作業し、作業後 HEAD は main のまま・worktree 撤去済み。#979 に self-assign。
+- 残る ②`analysis-core-v0.1.3` tag push で訂正版 publish ③旧 0.1.0/0.1.2 の yank は PyPI 権限が要るため PR 外（#979 で追跡）。[[analysis-core-license-intent-2026-10-12]] と meeting-report-draft に #981 を反映。
+
 ## [2026-10-12 20:10] filing-back | #980（#978 link-only degrade）を merge、#978 close
 
 - nishio の明示指示（admin merge 承認）を受け、CI 全 pass の [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を admin bypass で squash merge（`478cd1a0`）。必須レビュー承認が無く通常 merge は BLOCKED だったため、確認のうえ admin merge を実行。これにより **Issue #978 は自動 close**。
@@ -378,8 +383,3 @@
 
 - #947を担当し、GitHubの非公開報告機能を有効化。公開報告ボタンと通知購読を確認した。[[catchup-2026-10-05]]より。
 - SECURITY.mdと貢献ガイドの導線を#948へ提出。strict build成功、文書は未merge。[[current-status-2026-10-05]]と[[meeting-report-draft]]へ設定反映済み・レビュー待ちの区別を記録した。
-
-## [2026-10-05 20:14] filing-back | #947の非公開報告機能と文書整備の範囲を確認
-
-- [[catchup-2026-10-05]]へmain・Issue・open PR・非公開報告設定の再観測を追記。SECURITY.mdなし、非公開報告機能は無効だった。
-- [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、文書追加と受付窓口・通知確認を一組にする対応案を記録。調査のみでassign・PR作成・設定変更は行っていない。
