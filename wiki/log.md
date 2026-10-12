@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 17:10] filing-back | CI の Docker Hub 429 対策 PR #969 を merge、残件を #974 へ
+
+- Copilot bot の PR #969（client-build のベースイメージ取得 429 を ECR Public フォールバックで回避）を nishio の明示許可で admin squash merge（merge commit `4faaf256`）。CI 全 green 確認。
+- 対症療法のため残件を **Issue #974** に切り出し（認証 pull の恒久化 / 他ビルド（admin・static-site-builder、azure-deploy.yml・api-docker-dependency-smoke.yml）への横展開 / リトライ設計見直し）。横展開対象は `work/kouchou-ai`@`c297bc97` で grep 確認。
+- [[daily-report-2026-10-12]] と [[meeting-report-draft]] に反映。次は #974 の着手判断（自動では進めない）。
+
 ## [2026-10-12 15:50] filing-back | open Issue 全105件の棚卸し（close実行0、close候補4件）
 
 - open Issue 全105件を current main `c297bc97` に照合する全棚卸しを実施。今回95件を10シャード並列調査、残10件は2026-10-11分を再利用。今回分内訳は未解決47/一部解決31/要件再確認13/解決済3/不明1。

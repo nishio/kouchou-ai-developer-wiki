@@ -193,6 +193,12 @@ sources:
 - 要点: #52 は階層図の説明連動が PR #927 で main 反映済み（散布図側の選択連動は未）。#55 は viewer 読込済みだが admin の閾値編集 UI が無い（PR #946 は未 merge）。#11/#79 は作成前確認パネルに費用/時間欄の枠はあるが `目安なし` 固定で、#79 は価格 infra が既にあるため小さい。
 - 次に見る: #79/#11 を #884 の first PR で「粗い帯」として入れるか。次 batch 候補は #170/#172/#173/#176/#186（自動着手しない）。詳細は [[issue-backlog-audit-2026-10-11]] / [[issue-audit-2026-10-11-batch1]]。
 
+### Updates — 2026-10-12 CI の Docker Hub 429 対策 PR #969 を merge（残件 #974）
+
+- **main 反映済み**: Copilot bot 作成の PR #969 を admin merge（squash, merge commit `4faaf256`）。client-build（public-viewer）のベースイメージ `node:22-alpine` 取得が Docker Hub の匿名 pull レート制限（HTTP 429）で落ちる件に、ECR Public へのフォールバック（1回目 Docker Hub→失敗で ECR Public を待機付き再試行）で対処。Dockerfile に `ARG REGISTRY=""` を追加し後方互換。CI 全 green を確認して反映。
+- **評価**: 有効な火消しだが対症療法。429 は匿名 pull 制限で、根本は認証 pull。ECR Public も匿名制限を持つため保証ではない。対象も client-build のみで、同じ `node:22-alpine` を Docker Hub 直取得する `apps/admin` / `apps/static-site-builder` の Dockerfile と `azure-deploy.yml` / `api-docker-dependency-smoke.yml` が未対応。
+- **次に見る**: 残件を **Issue #974** に切り出し済み（①認証 pull の恒久化 ②他ビルドへの横展開 ③リトライ設計の見直し）。着手は自動では進めない。
+
 ## そのまま読む用 (2026-06-30 更新)
 
 - 現状確認: 2026-06-30 19:30 JST 時点で `work/kouchou-ai` は `main@d5c9ece`、open PR は #903 と #891 の 2 本、high priority issue は #884 / #564 / #221 の 3 件、nishio assigned issue は #898 / #876 / #519 / #370 / #255 / #11 の 6 件で変化なし。#903 は docs inventory PR で review required / blocked、#891 は Windows standalone prototype で draft / dirty のまま。#696 / #542 / #564 も open / unassigned のまま。high priority issue の GitHub label は `high priority` が正で、`priority: high` では 0 件に見える。[[current-status-2026-06-30]]より

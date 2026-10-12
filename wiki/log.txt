@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 17:10	filing-back	CI の Docker Hub 429 対策 PR #969 を merge、残件を #974 へ
 2026-10-12 15:50	filing-back	open Issue 全105件の棚卸し（close実行0、close候補4件）
 2026-10-12 12:10	filing-back	CLIレポートのライセンス案内を短い表記とリンクに変更
 2026-10-12 09:48	filing-back	CLI出力HTMLにライセンスと表示ソースを自動同梱

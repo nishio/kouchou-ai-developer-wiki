@@ -43,6 +43,13 @@ sources:
 - 確認1つで片付く系: #898(Apple Silicon実機) / #227(新UI実表示) / #577(silhouette→cube-root置換合意) / #474(bonsai目的) / #517(スライド反映) / #529(デザイン更新案待ち)
 - 方針・スコープ決定系: #104(利用把握のプライバシー方針) / #255(Azure政治利用FAQ) / #471(推奨スペックのスコープ) / #464(APIキー・PO待ち) / #921(ブラウザ版本流化・戦略会議)
 
+## 4. PR レビュー・merge（issue 棚卸しとは別系統）
+
+- **PR #969（CI: Docker Hub 429 対策）を admin merge**（squash, merge commit `4faaf256`）。Copilot bot 作成。client-build（public-viewer）のベースイメージ `node:22-alpine` 取得が Docker Hub の匿名 pull レート制限（HTTP 429）で落ちる件に、**ECR Public へのフォールバック**で対処（1回目 Docker Hub→失敗で待機付き ECR Public 再試行、`ARG REGISTRY=""` で後方互換）。CI 全 green を確認して反映。
+- 評価: 有効な火消しだが**対症療法**。根本は認証 pull（匿名制限の回避）。ECR Public も匿名制限あり。対象も client-build のみで、`apps/admin` / `apps/static-site-builder` の Dockerfile と `azure-deploy.yml` / `api-docker-dependency-smoke.yml` が未対応（`work/kouchou-ai`@`c297bc97` で grep 確認）。
+- **残件は Issue #974 に切り出し**: ①認証 pull の恒久化 ②他ビルドへの横展開 ③リトライ設計の見直し。
+- 当日の他 open PR（全12件）は CI ほぼ green・レビュー承認待ちで BLOCKED。#891 のみ Draft。
+
 ## Open Questions / 次の一手
 
 - 残り「未着手」10件の処理方針（実機確認で閉じる系を先に潰すか、方針決定系を会議に回すか）。
