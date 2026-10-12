@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 21:55] filing-back | Slack 直近を再読、SIWC の「weekly limit 余り＝実質無料」仮説を追記
+
+- `work/slack-logs` を最新化（mirror 2026-10-12 05:33 UTC）。2026-10-11 以降の新規は dev チャンネル 7 件のみで、6 件は既 filing back 済みの license 議論。
+- 唯一の未反映＝nishio の SIWC 経済動機の仮説（`#2_開発_広聴ai` 10-12 09:14、「Codex の weekly limit 余りを切り替え間際に使えば実質無料」）を [[openai-siwc-token-sharing-docs-2026-10-12]] に Update 追記。embedding は SIWC 対象外のため「pipeline 全体が実質無料」にはならない caveat も明記。次に見る＝plan の weekly quota が自治体スケールに耐えるか。
+
 ## [2026-10-12 21:45] filing-back | #979 の③完了（旧 MIT 版 yank）→ #979 クローズ
 
 - nishio が PyPI Web UI で **旧 MIT 版 0.1.0 / 0.1.2 を yank**（理由「ライセンス表記が誤り（MIT）。AGPL-3.0 の 0.1.3 を使う」）。`simple` index・per-version JSON で 0.1.0/0.1.2=yanked:true、0.1.3=yanked:false を確認し、**Issue #979 を close**（完了コメント付き）。
@@ -403,8 +408,3 @@
 
 - 最新HEADの実レビュー・CI成功を確認して#942をmainへ反映。[[catchup-2026-10-05]]に根拠を記録した。
 - #518は常設URL等が残るためopenを維持。残る4PRのレビュー状況を[[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記した。
-
-## [2026-10-05 21:45] filing-back | #950・#944をマージし他PRのレビュー未実行と競合に対応
-
-- 明示許可に基づくadmin mergeと#949の残件追跡を[[catchup-2026-10-05]]へ記録。#948のマージ済み状態も確認した。
-- #941・#942の競合を解消し、5PRを最新mainと統合。CodeRabbitの成功表示と実レビューを区別し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ進行中の残条件を反映した。
