@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 19:00] filing-back | #970 の README 競合を解消して merge（AGPL訂正完了）
+
+- #970（AGPL訂正 + report.html ライセンス同梱）の README 競合（先の #968 再編と衝突）を別 worktree で解消: README.ja.md 削除（#968 追従）、日本語ライセンス行を README.md へ、英語行を README.en.md へ載せ替え。正味差分は #970 本来の 14ファイル・+900/-5 で他 PR の巻き戻しなしを検証。
+- 再 push 後 CI 全 pass（Biome gate 含む）を確認し nishio が admin squash merge（merge commit `bbc10c94`）。ブランチ削除済み。
+- 残件 F1（ライセンス資源欠如時の hard-fail→link-only degrade）は [[meeting-report-draft]] 記載の Issue #978 で追跡。これで open PR の AGPL 系は解消。
+
 ## [2026-10-12 18:50] filing-back | 大きめ PR 4件を並列レビュー、3件 merge・#970 は競合で保留
 
 - #970/#963/#961/#946 を4並列サブエージェントで diff + main `c297bc97` 照合レビュー。全件 correctness 重大欠陥なしと判断。推奨順（Biome gate 先行）で nishio が admin squash merge: #963 `2b0079a1`（Biome lint 0化 + CI gate）/ #961 `952ebe23`（全画面クラスタ粒度切替、`resolveChartModes()`等価）/ #946 `46013563`（濃いクラスタ初期値保存、main 乖離なし実測）。
