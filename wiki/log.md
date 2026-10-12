@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 00:05] filing-back | #988(UMAP 使い回し CLI) を admin merge→#515 close→WebUI 残件を #989 切り出し
+
+- **#988（CLI 先行の UMAP 平面使い回し）を admin override で squash merge**（main `8990fa2e`）。**#515 を close**（CLI で解決＝config `hierarchical_clustering.reuse_umap_model`）。
+- **WebUI 残件（admin の「新規/既存使い回し＋元レポート選択」＝別データ投影の本丸）を #989 に切り出し**。試作は旧ブランチ `codex/issue-515-reuse-umap`（同一 CSV 複製どまり・#988 以前で spec 欠落のため要り直し）。
+- admin merge が一度ブロックされたのは PR 固有でなく**必須チェック（CodeRabbit/Pytest）pending 中に叩いたため**。`main` 保護は legacy でなく **ruleset**（必須承認1）。[[issue-backlog-audit-2026-10-12]]。
+
 ## [2026-10-12 23:39] filing-back | #987 を admin merge（#176 LLM grouping 統合）
 
 - nishio 指示で **PR #987 を admin squash merge**（merge commit `c33d264a`、CI 10 green 確認後）。追修正 `8a09108e`（prune の None セクション残留 blocker）込みで main 反映。
