@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 23:39] filing-back | #987 を admin merge（#176 LLM grouping 統合）
+
+- nishio 指示で **PR #987 を admin squash merge**（merge commit `c33d264a`、CI 10 green 確認後）。追修正 `8a09108e`（prune の None セクション残留 blocker）込みで main 反映。
+- **Issue #176 は OPEN のまま**（closing keyword なし＝一部解決）。**#984 が rebase 必要化**（embedding は共通枝維持）。
+- [[pr-982-987-review-round-2026-10-12]] に Updates 追記、meeting-report-draft も merge 済みへ更新。
+
 ## [2026-10-12 23:10] filing-back | #515（UMAP 使い回し）を CLI 先行で実装→review→PR #988
 
 - 方針（nishio）＝高度/実験的機能は WebUI 直行でなく **core/CLI を一次手段**に。保留中の旧ブランチ（admin checkbox＋API 複製）は **end-to-end で壊れていた**＝`reuse_umap_model` が analysis-core spec の options 未登録で `validate_config`（CLI・API 起動で必ず通る）が "Unknown option" で全経路を落としていた（step 直呼びテストが素通りで見逃し）。
@@ -410,8 +416,3 @@
 
 - 関数説明の警告解消と最新HEADのレビュー・CI成功を確認し、#945をmainへ反映。[[catchup-2026-10-05]]より。
 - #592の残件を維持し、[[current-status-2026-10-05]]・[[meeting-report-draft]]へ反映済み範囲と最後の#946を記録した。
-
-## [2026-10-05 23:19] filing-back | #945の関数説明警告を修正し再レビューへ
-
-- CodeRabbitの記載率警告を `4c2d3c1` で修正。動作変更なし、ローカルlint成功、CIと再レビューは確認中。[[catchup-2026-10-05]]より。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]に未mergeの残条件を追記した。
