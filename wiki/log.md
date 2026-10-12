@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:34] filing-back | 利用者向けAGPL解説の所在と不足を確認
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]にmainの文書検索結果とGNU日本語FAQの参照先を追記。現行FAQは接続エラー対処のみで、今回のケース別説明は見当たらない。
+- [[meeting-report-draft]]にも不足を記録。本体FAQへの追加は未実施。
+
 ## [2026-10-12 09:30] filing-back | AGPLのソース提供義務が生じる条件を補足
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]へ、ユーザーの指摘を受けて私的実行と配布・改造版のネットワーク提供の区別を追記。前の回答表で条件を省略していた点を訂正した。
