@@ -3,6 +3,18 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 18:50] filing-back | 大きめ PR 4件を並列レビュー、3件 merge・#970 は競合で保留
+
+- #970/#963/#961/#946 を4並列サブエージェントで diff + main `c297bc97` 照合レビュー。全件 correctness 重大欠陥なしと判断。推奨順（Biome gate 先行）で nishio が admin squash merge: #963 `2b0079a1`（Biome lint 0化 + CI gate）/ #961 `952ebe23`（全画面クラスタ粒度切替、`resolveChartModes()`等価）/ #946 `46013563`（濃いクラスタ初期値保存、main 乖離なし実測）。
+- #970（AGPL訂正 + report.html ライセンス同梱）は approve 相当だが、先の #968 README 再編と **README.md / README.ja.md が競合**し CONFLICTING で保留。レビュー所見 F1（ライセンス資源欠如時に report 生成が hard-fail）を follow-up **Issue #978**（link-only degrade）へ切り出し。
+- 次に見る: #970 の README 競合解消（#968 の新 README 構成に license 文言を載せ直す）。[[meeting-report-draft]] に反映。
+
+## [2026-10-12 18:45] filing-back | 棚卸し後の判断・close 5件と未解決53件の潰し込み
+
+- [[daily-report-2026-10-12]] / [[issue-backlog-audit-2026-10-12]] の棚卸しを受け、nishio 判断で #573/#519/#417/#871 を close し #871 残件を #973 へ切り出し。要件再確認は #213（矢印廃止=案3・good first issue 再募集）/ #308（`wontfix`→`question`・需要と配布戦略 #885/#921 待ちで blocked）/ #289（`wontfix` 除去・exe は選択肢、実装は #885 に集約）を決定。#104/#227/#255/#471/#898 に事実整理コメント、#577（シルエット方式は本番撤去・既定 cube-root で obsolete）を close。計 close 5件・新規 2件（#973/#974）。
+- 未解決53件を逆視点で潰し込み再検証（9シャード並列、[[issue-audit-2026-10-12-sweep]]）: still-unresolved 44 / human-required 7（#324/#346/#556/#564/#882/#912/#913＝実API課金・外部成果物・組織判断）/ 偽陰性2（#953/#956 は本日 PR #955/#957 マージで既に自動 close＝監査の固定 checkout `c297bc97` が本日マージより古かっただけ）。新規手動 close は 0。
+- 次に見るべきは、人間・チーム判断が要る残件（[[meeting-report-draft]] に列挙）と、一部解決34件への更新案反映。
+
 ## [2026-10-12 18:40] filing-back | ライセンス議論の filing back を点検、西尾さんの判定根拠を補記
 
 - 最新 Slack（mirror 同期 2026-10-12 05:33 UTC）を読解。ライセンスの話は既に `sources/analysis-core-license-history-2026-10-12` / `analyses/analysis-core-license-intent-2026-10-12` / `analyses/agpl-output-and-plugin-boundaries-2026-10-12` の3ページで網羅・コミット済み、lint もクリーン（壊れリンク0・未登録0）だった。
