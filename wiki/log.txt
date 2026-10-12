@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 20:40	ingest	OpenAI SIWC token-sharing docs を source 化
 2026-10-12 20:20	filing-back	#979 の version bump を PR #981 で作成
 2026-10-12 20:10	filing-back	#980（#978 link-only degrade）を merge、#978 close
 2026-10-12 20:00	filing-back	要件再確認の人間判断処理・#471 ベンチハーネス実装

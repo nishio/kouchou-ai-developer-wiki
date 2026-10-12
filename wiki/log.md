@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 20:40] ingest | OpenAI SIWC token-sharing docs を source 化
+
+- OpenAI 'Sign in with ChatGPT' の plan 共有 (token sharing) 公式 docs を ingest。OSS / local-hosted アプリがユーザの ChatGPT プラン枠で Responses API 推論を回せる OAuth 機能で、[[openai-siwc-token-sharing-docs-2026-10-12]] に整理。
+- 広聴AIの「自治体がキー契約困難 / ユーザ自身のキーを入れさせる（#660）」問題への別ルート候補として [[llm-providers]] に「API キー不要ルートの候補」節を追記。ただし **Responses API 限定・embedding 対象未確認・preview・hosted 不適合・OpenAI ロックイン** を caveat に未実装観測。
+- 次に見る: SIWC の plan 共有が embedding API を含むか（含まないと pipeline 全体ではキー不要にならない）、OSS 配布形態サポート計画との整合。
+
 ## [2026-10-12 20:20] filing-back | #979 の version bump を PR #981 で作成
 
 - #979 の実行順序 ①version bump を [PR #981](https://github.com/digitaldemocracy2030/kouchou-ai/pull/981)（`chore/analysis-core-bump-0.1.3`、open）で作成。`pyproject.toml` と `__init__.py` の `__version__` を 0.1.2→0.1.3 に揃える 2 行のみ。version テストは動的参照/regex なので影響なし。work/kouchou-ai は二分原則どおり別 worktree で作業し、作業後 HEAD は main のまま・worktree 撤去済み。#979 に self-assign。
@@ -378,8 +384,3 @@
 
 - [[catchup-2026-10-05]]へ依存更新と互換性検証、未mergeの#950を記録。具体的な脆弱性詳細は非公開のrawに固定した。
 - [[current-status-2026-10-05]]と[[meeting-report-draft]]へ、修正版のある範囲を先行し、残件を#949で追跡する判断を追記。main反映後の再評価とレビューが残る。
-
-## [2026-10-05 20:21] filing-back | #947の非公開報告を有効化しSECURITY.md追加PR #948を提出
-
-- #947を担当し、GitHubの非公開報告機能を有効化。公開報告ボタンと通知購読を確認した。[[catchup-2026-10-05]]より。
-- SECURITY.mdと貢献ガイドの導線を#948へ提出。strict build成功、文書は未merge。[[current-status-2026-10-05]]と[[meeting-report-draft]]へ設定反映済み・レビュー待ちの区別を記録した。
