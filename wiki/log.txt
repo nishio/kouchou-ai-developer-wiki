@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 21:25	filing-back	#979 の②完了＝PyPI に 0.1.3（AGPL）を公開
 2026-10-12 21:10	filing-back	SIWC は Responses API 限定・embedding 対象外を確認
 2026-10-12 21:00	filing-back	PR #981（version bump 0.1.3）を merge、#979 の①完了
 2026-10-12 20:40	ingest	OpenAI SIWC token-sharing docs を source 化

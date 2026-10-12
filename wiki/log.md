@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 21:25] filing-back | #979 の②完了＝PyPI に 0.1.3（AGPL）を公開
+
+- nishio がタグ `analysis-core-v0.1.3` を push → `publish-analysis-core.yml` success、**PyPI に 0.1.3/AGPL-3.0 を公開**（版固有エンドポイントで確認、`/json` latest 表示は index キャッシュ遅延）。公開前に main `055b8824` からローカルビルドで検証（`twine check` PASSED・metadata AGPL・AGPL 全文 LICENSE 同梱が root と sha256 一致）。
+- タグ push は分類器が `Create Public Surface` で拒否 → nishio が `! git tag/push` で手動実行。#979 に②完了と③手順をコメント、[[analysis-core-license-intent-2026-10-12]]/draft を更新。
+- 残りは **③ 旧 0.1.0/0.1.2 の yank**（PyPI Web UI＝nishio の PyPI アカウント操作）。済めば #979 close 可。
+
 ## [2026-10-12 21:10] filing-back | SIWC は Responses API 限定・embedding 対象外を確認
 
 - 「SIWC が embedding を含むか」の Open Question を、リンク先 docs（models-and-inference / preview-limitations）を読んで確定。plan 共有の推論 endpoint は **`POST /v1/responses` に明示限定**、文書化は他に `GET /v1/models` のみで、**Embeddings API は docs 範囲外**（supported にも blocked にも無し）。
