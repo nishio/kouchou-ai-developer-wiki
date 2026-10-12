@@ -23,7 +23,7 @@ sources:
 >
 > 確認したところ、PR #887 は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。
 >
-> 原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName` は `public-viewer--0000166` まで進んでいる一方、`latestReadyRevisionName` は旧 `public-viewer--0000163` のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
+> 原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName`（最新 revision）は進んでいる一方、`latestReadyRevisionName`（Ready な revision）は旧版のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
 
 ## Turn 2: 19:33
 
@@ -35,45 +35,21 @@ sources:
 
 > はい、見れるようになりました。結論はかなり明確です。
 >
-> `public-viewer--0000166` は Ready になっていません。
+> 新 revision が Ready になっていません。最新 revision は deploy されているのに、Ready なのは旧 revision のままでした。
 >
-> ```
-> latest: public-viewer--0000166
-> ready:  public-viewer--0000163
-> ```
+> revision health は Unhealthy / Degraded で、replica が起動完了していない状態（progress deadline 超過）でした。
 >
-> revision 状態:
+> 原因も判明しました。startup 時の `pnpm run build`（`next build`）が TypeScript チェックの途中でメモリ不足により Killed され、コンテナは exit 137（SIGKILL）で終了していました。
 >
-> ```json
-> {
->   "health": "Unhealthy",
->   "running": "Degraded",
->   "details": "Deployment Progress Deadline Exceeded. 0/1 replicas ready."
-> }
-> ```
->
-> 原因もログで見えました。console log では startup 時の `pnpm run build` がここで落ちています。
->
-> ```
-> next build
-> ✓ Compiled successfully in 11.5s
-> Running TypeScript ...
-> Killed
-> ```
->
-> system log では startup probe failure が連続し、最後は:
->
-> ```
-> Container 'public-viewer' was terminated with exit code '137'
-> ```
->
-> 137 は SIGKILL なので、かなり高い確度で **起動時 `next build` が ACA の public-viewer resource、つまり `cpu: 0.5, memory: 1Gi` でメモリ不足 kill されています**。そのため `next start` まで到達せず、HTTP listen しないので Ready になりません。
+> つまり **起動時 `next build` が ACA の public-viewer コンテナのメモリ上限で OOM kill されています**。そのため `next start` まで到達せず、HTTP listen しないので Ready になりません。
+
+<!-- 公開境界 sanitize（2026-10-12, [[wiki-self-audit-2026-10-12]]）: 具体的な revision ID・replica health JSON・コンテナログ・resource サイズは公開 wiki から除去。sanitize 前 verbatim は Google Drive「広聴AI-Azureデモ環境」で管理（local 退避: raw/deploy-detail-preservation/）。 -->
 
 ## この 2 ターンが示しているもの
 
 - 起点は常に人間側の観察と短い問い ("直ってなくないですか？" / "az login したけど見れるようになった？") で、Codex はそれを受けて裏取りと細部を返している
 - Turn 1 (9m18s) では `latestRevisionName` と `latestReadyRevisionName` の食い違い + Playwright で `.no-webgl` overlay 残存 + 旧 CSP header 残存、の 3 点を独立に確認して「false positive」と整理
-- Turn 2 (2m52s) では Azure access 権限が通った直後、revision health (`Unhealthy / Degraded / 0/1 replicas ready`) → console log の `next build → Compiled → Killed` → system log の exit 137、を順に並べて「起動時 build が OOM で SIGKILL されている」と特定。ここで初めて「画面が変わらない」の真の原因 (新 revision が Ready にならない) が判明
+- Turn 2 (2m52s) では Azure access 権限が通った直後、revision health（Unhealthy / Degraded、replica 未起動）→ 起動時 `next build` の OOM Killed → exit 137（SIGKILL）、を順に並べて「起動時 build が OOM で SIGKILL されている」と特定。ここで初めて「画面が変わらない」の真の原因 (新 revision が Ready にならない) が判明
 - 2 ターン合計 12 分で、「success と表示された理由」と「画面が変わらない理由」がそれぞれ別の根拠で接続された。前者は deploy confirmation の judging criteria、後者は startup build の OOM
 
 ## どこで使われたか
@@ -90,3 +66,4 @@ sources:
 ## Updates
 
 - 2026-06-02: 初版作成。runtime build 撤去エピソードの起点として、1 ターン会話ログを source ページ化。
+- 2026-10-12: 公開境界（CLAUDE.md）に合わせ、具体的な revision ID・replica health JSON・console/system コンテナログ・resource サイズを除去し、設計の教訓（deploy 判定基準の誤り／起動時 build の OOM SIGKILL）を残す形へ sanitize。verbatim は `raw/deploy-detail-preservation/`（local）に退避し一次置き場は Google Drive「広聴AI-Azureデモ環境」。[[wiki-self-audit-2026-10-12]]

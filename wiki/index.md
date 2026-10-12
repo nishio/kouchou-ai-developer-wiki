@@ -2,9 +2,9 @@
 
 kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログ（305 ページ）は [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態: [2026-10-05 キャッチアップ](analyses/current-status-2026-10-05.md) — 10/5時点の本体6PRのうち5件は10/5〜6にmain反映、未mergeは#946のみ（2026-10-07確認）。外部PR #952もmain反映。次は保守・利用観測。
+直近の状態: [開発日報 2026-10-12](analyses/daily-report-2026-10-12.md) / [定例レポート 2026-10-10](concepts/meeting-report-2026-10-10.md) — analysis-core の AGPL 再ライセンス（0.1.3 公開・旧 MIT 版 0.1.0/0.1.2 yank、#970/#978/#979）と、一部解決 Issue の残件 6 件を PR 化（#982–#987、未 merge）。次は人間レビュー→merge 判断と利用観測。
 
 ## 最初に読むべき (推奨順)
 
@@ -66,7 +66,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
 - [slack-logs-repository](sources/slack-logs-repository.md) — dd2030 Slack public channel log の新しい一次置き場。最新14日は mirror、古い月は raw canonical を読む
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
-- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)、前回: [meeting-report-2026-05-25](concepts/meeting-report-2026-05-25.md)）
+- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-10-10](concepts/meeting-report-2026-10-10.md)、その前: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)）
 
 ## 全件カタログ / 人物・組織
 

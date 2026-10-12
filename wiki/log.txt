@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-10-12 23:10	filing-back	#515（UMAP 使い回し）を CLI 先行で実装→review→PR #988
+2026-10-12 22:58	filing-back	developer-wiki 自己監査（6レンズ→敵対的検証）の指摘を main 直 push で修正
 2026-10-12 22:10	filing-back	6 PR(#982–987) code-review ラウンドと #987 BLOCKER 追修正
 2026-10-12 22:05	filing-back	定例下書きの議題候補に SIWC を追記
 2026-10-12 21:55	filing-back	Slack 直近を再読、SIWC の「weekly limit 余り＝実質無料」仮説を追記

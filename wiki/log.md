@@ -9,6 +9,12 @@
 - 新ブランチ `codex/issue-515-umap-reuse-cli`（**analysis-core のみ**）＝spec 登録＋`transform` 投影＋CLI パス解決（レポート名/相対/絶対、未発見は silent fit せず error）＋docs(cli-quickstart §9)。adversarial review で HIGH なし・LOW 3（reuse 変更時の再実行を `dependencies.params` 追加で解決 等）修正。全テスト 282 passed・実 CLI `--validate-config` 受理。**PR #988（未 merge）**。WebUI 導線は保留継続。
 - audit Updates / meeting-report-draft も更新。memory に設計方針（CLI-first）と #515 状態を記録。
 
+## [2026-10-12 22:58] filing-back | developer-wiki 自己監査（6レンズ→敵対的検証）の指摘を main 直 push で修正
+
+- nishio 依頼で developer-wiki 自身を 6 レンズ並列 finder→敵対的 verifier（12 subagent）で監査。lint は 0 件なので判断レベルの drift を対象に [[wiki-self-audit-2026-10-12]] へ filing back。4 batch を適用: ①入口/文書の整合（index.md の「305 ページ」除去・meeting-report pointer を 2026-10-10 へ・直近状態更新、CLAUDE.md/README の stale 数字と文言）②first-read 内容訂正（Next.js 15→16・[[cli]] の `run_default`・`analysis_mode=llm_grouping` は engine 出荷済みだが admin/api 未到達・[[refactoring-status]] 0.1.3）③スクリプト堅牢化（`refresh_logs.py` の data-loss 2 bug・`lint_wiki.py` にドキュメント整合3種＋anchor WIKILINK・`build_index_txt.py` tab escape）④PR-887 の公開境界 sanitize（revision ID/ログ/resource 値を除去、verbatim は `raw/deploy-detail-preservation/` 退避）。
+- 副作用修正: 監査 subagent が #52 を checkout して detached にした `work/kouchou-ai` を main に復帰。
+- 次に見る: dated-page lifecycle policy の採用是非と PR-887 verbatim の Google Drive 移送は人間判断。`work/kouchou-ai` の残存 worktree 棚卸しは別セッション分。
+
 ## [2026-10-12 22:10] filing-back | 6 PR(#982–987) code-review ラウンドと #987 BLOCKER 追修正
 
 - 6 PR を 6 並列 subagent で correctness レビュー。**5/6 は nits のみで merge 可、blocker は #987 のみ**。

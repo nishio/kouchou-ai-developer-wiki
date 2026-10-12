@@ -32,7 +32,7 @@ sources:
 
 Codex は 9m 18s 作業して次を返した。
 
-> はい、直ってないです。確認したところ、PR #887 は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName` は `public-viewer--0000166` まで進んでいる一方、`latestReadyRevisionName` は旧 `public-viewer--0000163` のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
+> はい、直ってないです。確認したところ、PR #887 は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName`（最新 revision）は進んでいる一方、`latestReadyRevisionName`（Ready な revision）は旧版のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
 
 この時点で、(1) 本番 CSP は旧版のまま、(2) Playwright で WebGL overlay が visible、(3) deploy confirmation は stable root の 200 だけ見ていて新 revision の readiness を見ていない、の 3 点が裏取り済みで返ってきた。raw artifact は [[codex-log-pr-887-deploy-investigation-2026-06-01]] に保存。
 
@@ -56,11 +56,11 @@ Wiki 価値: 「`#821` も SIGKILL の証拠か？」と一旦書きかけたあ
 
 Codex は 2m 52s で次を返した。
 
-> `public-viewer--0000166` は Ready になっていません。revision health は `Unhealthy / Degraded / 0/1 replicas ready`。console log の `pnpm run build` は `next build` → `Compiled successfully in 11.5s` → `Running TypeScript ...` → `Killed`。system log の最後は `Container 'public-viewer' was terminated with exit code '137'`。137 は SIGKILL なので、起動時 `next build` が ACA の `cpu: 0.5, memory: 1Gi` でメモリ不足 kill されている。そのため `next start` まで到達せず、HTTP listen しないので Ready にならない。
+> 新 revision が Ready になっていません。revision health は Unhealthy / Degraded で replica が起動完了していない（progress deadline 超過）。起動時の `pnpm run build`（`next build`）が TypeScript チェック中にメモリ不足で Killed され、コンテナは exit 137（SIGKILL）で終了。起動時 `next build` が ACA の public-viewer コンテナのメモリ上限で OOM kill されている。そのため `next start` まで到達せず、HTTP listen しないので Ready にならない。
 
 ここで初めて「画面が変わらない」の真の原因が確定する。新 revision はそもそも Ready になっていない、なぜなら起動時 build が OOM で殺されるから。raw artifact は [[codex-log-pr-887-deploy-investigation-2026-06-01]] Turn 2。
 
-その後、約 2 時間後に `public-viewer--0000166` は self-recover して Ready になった。「OOM」と「container 起動時に build」の組み合わせが原因と判明。
+その後、約 2 時間後に当該 revision は self-recover して Ready になった。「OOM」と「container 起動時に build」の組み合わせが原因と判明。
 
 ### 6. なぜ container 起動時に build しているのか、git history を archeology
 
@@ -128,7 +128,7 @@ Wiki 価値: 「main / open PR / issue だけでは security alert を拾えな�
 
 ## Wiki つき Coding Agent 視点での総括
 
-- **live state 観測と公開境界の同時運用**: Azure revision を直接見て切り分けつつ、公開 wiki にはサニタイズ版だけを残せる
+- **live state 観測と公開境界の同時運用**: Azure revision を直接見て切り分けつつ、公開 wiki には設計の教訓だけを残し、具体的な revision ID・コンテナログ・resource 値は載せない（この原則自体は、当初このページが守れておらず 2026-10-12 の sanitize で遡及適用した。[[wiki-self-audit-2026-10-12]]）
 - **「今回固有か / もっと前からか」の遡及検証**: 過去 Actions logs を遡って「`#887` 固有の regression ではない」と確定させ、無駄な focus を防いだ
 - **沼の archeology の固定化**: 2 時間の git history 調査を Wiki ページに 1 回固定化したので、次の人は読み返すだけで済む
 - **計画 → 実装 → review 反映を 1 日で**: 計画ページが先にあるので、実装中の妥協 (`[slug]` に `connection()` を採用しないなど) や review 反映 (`/` の metadata 復元) も「計画への追記」として一貫した記録になる
@@ -152,3 +152,4 @@ Wiki 価値: 「main / open PR / issue だけでは security alert を拾えな�
 
 - 2026-06-01: 初版作成。PR #887 deploy success false positive 観測から、runtime build archeology、計画作成、PR #888 実装と CodeRabbit 反映、deploy 再観測、PR #889 draft 着手までを Wiki つき Coding Agent 視点で記録。
 - 2026-06-01: ストーリー版を [[deploy-success-but-nothing-changed-story-2026-06-01]] に分離。こちらは PR 番号・検証コマンド込みの資料寄りページとして維持。
+- 2026-10-12: 公開境界 sanitize。本文に残っていた具体的 revision ID・replica health JSON・コンテナログ・resource サイズを除去し、設計の教訓を残す形へ訂正。総括の「公開 wiki にはサニタイズ版だけを残せる」という事実に反する記述も訂正。verbatim は `raw/deploy-detail-preservation/`（local）に退避、一次置き場は Google Drive「広聴AI-Azureデモ環境」。[[wiki-self-audit-2026-10-12]]

@@ -45,11 +45,11 @@ pip install pyyaml   # lint / index 再生成スクリプト用
 
 このリポジトリで `claude` や `codex` を起動すれば、自動的に [CLAUDE.md](CLAUDE.md) がコンテキストに入り、wiki の構造とメンテルールを理解する。具体的な操作 (ingest / query / lint) は CLAUDE.md の `## 操作` セクションに記載。
 
-オフライン理解だけしたい場合は、AI 向けの全件カタログ [wiki/index.txt](wiki/index.txt) を読むと 302 ページの stem / type / path / summary が一覧できる。
+オフライン理解だけしたい場合は、AI 向けの全件カタログ [wiki/index.txt](wiki/index.txt) を読むと全ページの stem / type / path / summary が一覧できる。
 
 ### 人間が読む
 
-入り口は [wiki/index.md](wiki/index.md)。新規コントリビュータ向けの 5 ページ導線が冒頭に書いてある。詳細な議論は `wiki/sources/` (一次ソースの要約) と `wiki/analyses/` (考察) にあるが、これらは全件カタログ ([wiki/index.txt](wiki/index.txt)) または公開サイトの検索から辿るのが現実的。
+入り口は [wiki/index.md](wiki/index.md)。新規コントリビュータ向けの onboarding 導線が冒頭に書いてある。詳細な議論は `wiki/sources/` (一次ソースの要約) と `wiki/analyses/` (考察) にあるが、これらは全件カタログ ([wiki/index.txt](wiki/index.txt)) または公開サイトの検索から辿るのが現実的。
 
 ## メンテナンス用スクリプト
 

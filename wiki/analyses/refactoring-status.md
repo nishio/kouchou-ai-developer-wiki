@@ -45,7 +45,7 @@ sources:
 
 利用モード: **CLI / analysis-core**
 
-- `kouchou-ai-analysis-core` (version `0.1.2`) として PyPI 公開
+- `kouchou-ai-analysis-core` を PyPI 公開（現行 `0.1.3` / AGPL-3.0。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み。[[analysis-core-license-intent-2026-10-12]]）
 - `[project.scripts] kouchou-analyze = "analysis_core.__main__:main"` で CLI 配信
 - API サーバはこの CLI を **subprocess** で呼ぶ ([[cli]])
 - `analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` があり、`ruff` / `pytest` / `build` 通過後に PyPI publish する自動 release 経路も入った
@@ -176,3 +176,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: CLI の `report.html` 既定出力と API の `--without-html` 固定は「未整合」より「利用モード別の意図的分岐」と読めるよう表現を補正し、[[usage-modes]] / [[cli]] への導線を強めた
 - 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外
 - 2026-05-21: `main@5d591ef` で PR #844 merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記
+- 2026-10-12: Phase 2.5 の PyPI 公開版記述を `0.1.2` → 現行 `0.1.3`（AGPL-3.0）に更新。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み（#979 完結、[[analysis-core-license-intent-2026-10-12]]）。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。[[wiki-self-audit-2026-10-12]]

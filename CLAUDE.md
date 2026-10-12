@@ -21,16 +21,17 @@ kouchou-ai-developer-wiki/
 │   ├── entities/      # 人物・ツール・プロジェクト
 │   ├── sources/       # ソースの要約
 │   └── analyses/      # 問いから生まれた考察
-└── scripts/
-    ├── lint_wiki.py        # wikiの健全性チェック
-    ├── build_index_txt.py  # index.txt を frontmatter から regenerate
-    └── refresh_logs.py     # log.txt と log.md（直近 7 日）を再生成
+└── scripts/           # 主要スクリプトのみ（他に実験バンドル系あり）
+    ├── lint_wiki.py         # wikiの健全性チェック
+    ├── build_index_txt.py   # index.txt を frontmatter から regenerate
+    ├── refresh_logs.py      # log.txt と log.md（直近 7 日）を再生成
+    └── check_pages_links.py # 公開サイトの内部リンク検査（deploy-pages.yml の CI gate）
 ```
 
 ## ページルール
 
 ### 全ページ共通
-- 冒頭にYAMLフロントマター：type, summary, sources
+- 冒頭にYAMLフロントマター：type, summary（`sources` は source / concept で必須、他 type は任意。lint もこの基準で検査する）
 - 主張には出典を明記：`[[source名]]より`
 - 矛盾・未解決の論点は「## Open Questions」セクションで明示
 - 更新は上書きせず「## Updates」で追記
@@ -116,13 +117,13 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 `wiki/index.md` と `wiki/index.txt` は読者を分けた 2 ファイルで、メンテのルールも別になっている。
 
 - **`wiki/index.md` — 人間向け curated navigation**
-  - 内容: 新規コントリビュータの onboarding 5 ステップ、Concepts 全件、Entities 全件、Sources / Analyses は curated 入口ページだけ
+  - 内容: 新規コントリビュータの onboarding 導線、Concepts の主要ページ、Entities は curated 入口のみ（全件は index.txt）、Sources / Analyses も curated 入口ページだけ
   - **入れないもの**: Sources (`sources/`) と Analyses (`analyses/`) のフラットな全件カタログ。これらは `index.txt` に集約し、人間が圧倒されない量に絞る
   - 編集タイミング: Concept / Entity を新規追加した時、onboarding 導線を見直したい時、Sources / Analyses から特に重要なものを curated 入口に昇格させたい時。それ以外では触らない
   - 編集方法: 手作業
 
 - **`wiki/index.txt` — AI 向けフルカタログ**
-  - 内容: `wiki/` 配下の全ページ（`index.md` / `log.md` を除く 305 ページ（2026-10-07 時点））の `<stem>\t<type>\t<path>\t<summary>` を type 別 → path 順で並べた TSV
+  - 内容: `wiki/` 配下の全ページ（`index.md` / `log.md` を除く。現在のページ数は `build_index_txt.py` の出力と lint の `Total page files` で確認する）の `<stem>\t<type>\t<path>\t<summary>` を type 別 → path 順で並べた TSV
   - **手で編集しない**。各ページの frontmatter `summary` が source of truth で、`scripts/build_index_txt.py` がそこから生成する
   - 編集タイミング: ページの追加・rename・削除、または既存ページの `summary` 変更があった時。コマンドは `python3 scripts/build_index_txt.py`
   - `scripts/lint_wiki.py` は `index.txt` の完全性をチェックする。未登録ページがあれば regenerate 忘れのサイン

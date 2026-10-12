@@ -12,8 +12,8 @@ sources:
 | Service | Path | Port | Stack | 役割 |
 |---|---|---|---|---|
 | `api` | `apps/api/` | 8000 | Python 3.12 / FastAPI / Rye | REST API、[[pipeline]] 実行、admin endpoints |
-| `public-viewer` | `apps/public-viewer/` | 3000 | Next.js 15 / TS / Chakra UI / Plotly.js | 一般ユーザ向けレポートビューア |
-| `admin` | `apps/admin/` | 4000 | Next.js 15 | レポート作成・編集・plugin 設定 |
+| `public-viewer` | `apps/public-viewer/` | 3000 | Next.js 16 / TS / Chakra UI / Plotly.js | 一般ユーザ向けレポートビューア |
+| `admin` | `apps/admin/` | 4000 | Next.js 16 | レポート作成・編集・plugin 設定 |
 | `static-site-builder` | `apps/static-site-builder/` | 3200 | Next.js | レポートを静的 HTML に書き出し |
 | `ollama` (opt-in) | — | 11434 | Ollama | ローカル LLM 推論。GPU 推奨 (8GB+ VRAM) |
 | `dummy-server` (dev) | `utils/dummy-server/` | dev only | Node | FE 開発と E2E 用のモック API |
@@ -41,7 +41,7 @@ CSV アップロード (admin UI)        ┐
                                         │
                                         ▼
                   packages/analysis-core/src/analysis_core/
-                          orchestrator.PipelineOrchestrator.run()
+                          orchestrator.PipelineOrchestrator.run_default()
                           順に: extraction → embedding
                               → hierarchical_clustering
                               → hierarchical_initial_labelling
@@ -77,7 +77,7 @@ CSV アップロード (admin UI)        ┐
 ## 主要ライブラリ・依存
 
 - バックエンド: FastAPI、sentence-transformers、pandas/numpy/scipy、各 LLM プロバイダクライアント（[[llm-providers]]）
-- フロント: Next.js 15、Chakra UI、Plotly.js、Biome (lint/format)
+- フロント: Next.js 16、Chakra UI、Plotly.js、Biome (lint/format)
 - ツールチェイン: Python は **Rye**、JS は **pnpm 9.15.4 (corepack)**。npm は明示的非対応（[[npm-vs-pnpm]]）
 - Git hook: **lefthook**（pre-push で `ruff check` + `ruff format --check`。Biome 系は `skip: true`）
 
@@ -94,3 +94,4 @@ CSV アップロード (admin UI)        ┐
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-10-12: current main（`055b8824`）に合わせ `public-viewer` / `admin` の Next.js を 15→16 に訂正（`apps/*/package.json` は `^16.3.8`。bump 履歴 `7557e22d`→`45d13a0b`→`9cc70ae8`）。データフロー図の `PipelineOrchestrator.run()` も canonical な `run_default()` に修正（`run()` は deprecated、[[pipeline]] / [[cli]]）。[[wiki-self-audit-2026-10-12]]

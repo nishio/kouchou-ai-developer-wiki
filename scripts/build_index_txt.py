@@ -41,7 +41,15 @@ def main() -> int:
         rel = path.relative_to(WIKI).as_posix()
         fm = load_frontmatter(path)
         typ = str(fm.get("type", "?")).strip() or "?"
-        summary = str(fm.get("summary", "")).strip().replace("\n", " ")
+        # Collapse any tab/newline/CR in the summary: index.txt is a 4-column TSV and a
+        # stray tab in a summary would silently desync the columns (lint splits on \t).
+        summary = (
+            str(fm.get("summary", ""))
+            .strip()
+            .replace("\n", " ")
+            .replace("\t", " ")
+            .replace("\r", " ")
+        )
         order = TYPE_ORDER.get(typ, 99)
         entries.append((order, typ, rel, path.stem, summary))
 

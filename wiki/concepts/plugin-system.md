@@ -23,7 +23,7 @@ sources:
 ## 3 つの plugin 軸（docs 上の整理）
 
 1. **入力 (input) plugin** — `apps/api/src/plugins/`。サンプルとして YouTube plugin (`youtube.py`) が同梱。`ENABLE_{ID}_INPUT_PLUGIN=true` env で有効化。`pkgutil.iter_modules` で auto-import → `@PluginRegistry.register` で class-level 登録
-2. **解析 (analysis) plugin** — `packages/analysis-core/src/analysis_core/plugins/builtin/` に **8 つの builtin** （extraction, embedding, hierarchical_*）。既存ステップ関数を `legacy_config` を再構築して呼び出す薄いラッパー
+2. **解析 (analysis) plugin** — `packages/analysis-core/src/analysis_core/plugins/builtin/` の `register_all` が **9 つの builtin**（extraction, embedding, hierarchical_clustering, llm_grouping, hierarchical_initial_labelling / merge_labelling / overview / aggregation / visualization）を登録。既存ステップ関数を `legacy_config` を再構築して呼び出す薄いラッパー。なお `hierarchical_layout_generation.py` は 10 個目のモジュールとして存在するが `register_all` は登録しない（実験用の dormant。判断は [[pipeline-step-default-policy-decision-2026-05-28]]）
 3. **可視化 (visualization) plugin** — `why-plugin-system.md` で第 3 軸として語られるが、**バックエンド側に Python plugin システムは無い**。一方でフロント側には `apps/public-viewer/components/charts/plugins/` があり、`registry.ts`, `types.ts`, `validation.ts` と built-in の `scatter` / `treemap` / `hierarchy-list` plugin が実装済み
 
 ## 採用理由
@@ -100,6 +100,8 @@ sources:
 - LLM grouping 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
 - したがって LLM 直接グルーピングの第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
 
+> **Update（2026-10-12）**: 上記 **LLM grouping analysis plugin** は engine レベルでは出荷済み。builtin に `llm_grouping` plugin が登録され、`analysis_mode=llm_grouping` で `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW` を選ぶ（#866 / `4f893ab5`、2026-05-25 main 入り）。ただし「散布図を自然に出せない mode を first-class にする visualization / capability 契約」と **admin / `apps/api` からの `analysis_mode` 受け渡し** は未着手で、ユーザ到達は未（#176 / 未 merge PR #987）。詳細は [[pipeline]]。[[wiki-self-audit-2026-10-12]]
+
 ## 関連ドキュメント
 
 - `docs/development/plugin-guide.md` — plugin 作成手順
@@ -120,3 +122,4 @@ sources:
 - 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と LLM grouping 系 analysis plugin の結びつきを追記
 - 2026-10-07: lint。「production パスとの繋がり：現状 dormant」が [[refactoring-status]]（Phase 3b 完了）と矛盾していたため、current main `a12d68e` で `run_default()` → `run_workflow()` が CLI の既定経路であることを確認し、見出しと注記で作成時の観測と明示した
 - 2026-10-12: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、生成データの利用とコードの結合・配布を分ける。現行analysis pluginは同一プロセスでinterfaceを共有し、「別プラグインだからAGPLの制約なし」とは案内できない。互換ライセンスでの提供と結合物の義務も区別する。
+- 2026-10-12: builtin plugin 数を「8 つ」→「9 つ」に訂正（`register_all` が `llm_grouping` を含む 9 個を登録、`hierarchical_layout_generation` は未登録モジュール）。`analysis_mode=llm_grouping` が engine レベルで出荷済み（プロダクト到達は未）である旨を v5.0 plugin 構想節に追記。[[wiki-self-audit-2026-10-12]]

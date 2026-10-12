@@ -32,8 +32,10 @@ def page_ref(path):
         return path.stem
     return path.relative_to(WIKI).with_suffix("").as_posix()
 
-# Parse each page: extract frontmatter + outgoing wikilinks
-WIKILINK = re.compile(r"\[\[([^\]\|#]+?)(?:\|[^\]]*)?\]\]")
+# Parse each page: extract frontmatter + outgoing wikilinks.
+# Anchor (#...) and display-text (|...) are both optional and stripped to the bare stem,
+# so [[page]], [[page|disp]], [[page#anchor]], [[page#anchor|disp]] all resolve to "page".
+WIKILINK = re.compile(r"\[\[([^\]\|#]+?)(?:#[^\]\|]*)?(?:\|[^\]]*)?\]\]")
 FRONTMATTER = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 
 outgoing = defaultdict(set)   # page -> set of pages it links to
@@ -180,6 +182,61 @@ print(f"  sources欠落 (source/concept type): {len(missing_sources_required)}")
 for n in missing_sources_required:
     typ = str(frontmatter[n].get("type", "?")).strip()
     print(f"    - [{typ}] {n}")
+print()
+
+# 4b. Document-integrity checks — drift that is invisible to the link/frontmatter checks:
+#     stale hardcoded page counts, a stale index.md "最新 meeting-report" pointer, and
+#     sources: entries that name a wiki page which no longer exists.
+print("## ドキュメント整合")
+ROOT = WIKI.parent
+real_page_count = len(page_paths)
+
+# (a) Hardcoded "N ページ" claims in the two reader-facing files must match reality.
+PAGE_COUNT = re.compile(r"(\d+)\s*ページ")
+count_mismatches = []
+for label, fp in (("CLAUDE.md", ROOT / "CLAUDE.md"), ("index.md", WIKI / "index.md")):
+    if not fp.exists():
+        continue
+    for m in PAGE_COUNT.finditer(fp.read_text(encoding="utf-8")):
+        if int(m.group(1)) != real_page_count:
+            count_mismatches.append((label, m.group(0)))
+print(f"  ページ数クレーム不一致 (実 {real_page_count} ページ): {len(count_mismatches)}")
+for label, claim in count_mismatches:
+    print(f"    - {label}: 「{claim}」")
+
+# (b) index.md's newest referenced meeting-report must be the newest one on disk.
+MR = re.compile(r"meeting-report-(\d{4}-\d{2}-\d{2})")
+disk_mr = sorted(
+    m.group(1)
+    for p in (WIKI / "concepts").glob("meeting-report-*.md")
+    if (m := MR.search(p.name))
+)
+idx_mr = sorted(MR.findall(index_md_text))
+stale_mr = bool(disk_mr) and (not idx_mr or idx_mr[-1] < disk_mr[-1])
+print(f"  index.md の meeting-report pointer stale: {int(stale_mr)}")
+if stale_mr:
+    print(f"    - index.md 最新参照 {idx_mr[-1] if idx_mr else '(なし)'} < disk 最新 {disk_mr[-1]}")
+
+# (c) sources: entries that look like a bare wiki filename (foo.md, no space/slash/URL)
+#     must resolve to an existing page. Free-text pointers and URLs are excluded.
+unresolved_sources = []
+for name, fm in frontmatter.items():
+    sv = fm.get("sources") or fm.get("raw_sources")
+    if not isinstance(sv, list):
+        continue
+    for s in sv:
+        s = str(s).strip()
+        if (
+            s.endswith(".md")
+            and " " not in s
+            and "/" not in s
+            and not s.startswith(("http://", "https://"))
+            and Path(s).stem not in pages
+        ):
+            unresolved_sources.append((name, s))
+print(f"  sources: 未解決の wiki ページ参照: {len(unresolved_sources)}")
+for name, s in sorted(unresolved_sources):
+    print(f"    - {name} → {s}")
 print()
 
 # 5. Frequently referenced concepts that don't have a page

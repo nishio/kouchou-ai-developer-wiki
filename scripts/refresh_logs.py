@@ -26,6 +26,11 @@ HEADER = re.compile(
     r"^## \[(\d{4}-\d{2}-\d{2})(?: (\d{2}:\d{2}))?\] ([a-z-]+) \| (.+)$"
 )
 
+# Loose matcher: any line that *looks* like a log header. Used to hard-fail when a header
+# fails the strict HEADER regex (e.g. a mistyped type like "Ingest"), which would
+# otherwise be silently dropped from both logs.
+LOOSE_HEADER = re.compile(r"^## \[")
+
 
 def parse_md(path: Path) -> list[tuple[str, str, str, str]]:
     """Return list of (ts, type, title, body) tuples in document order.
@@ -73,6 +78,26 @@ def parse_txt(path: Path) -> list[tuple[str, str, str]]:
 
 def main() -> int:
     md_entries = parse_md(LOG_MD)
+
+    # Guard: a header line that fails the strict HEADER regex would be silently dropped
+    # (first entry) or smeared onto the previous entry (mid-document). Hard-fail BEFORE
+    # any rewrite so a typo in a just-written log.md header can never destroy an entry —
+    # log.txt is append-only history and cannot be rebuilt once an entry is lost.
+    if LOG_MD.exists():
+        bad_headers = [
+            ln
+            for ln in LOG_MD.read_text(encoding="utf-8").splitlines()
+            if LOOSE_HEADER.match(ln) and not HEADER.match(ln)
+        ]
+        if bad_headers:
+            print(
+                "ERROR: log.md に HEADER 形式へ合致しないヘッダ行があり、"
+                "このまま実行すると entry が失われます。修正してから再実行してください:",
+                *bad_headers,
+                sep="\n",
+            )
+            return 1
+
     txt_entries = parse_txt(LOG_TXT)
 
     # Filter lint entries — 無検出 lint は記録対象外、検出ありの場合は filing-back で書く運用
@@ -80,11 +105,32 @@ def main() -> int:
     lint_dropped_md = len(md_entries) - len(md_kept)
     txt_kept = [e for e in txt_entries if e[1] != "lint"]
 
-    # Merge for log.txt: dedup by (ts, type, title), prefer md (latest authoritative source)
+    # Compute 7-day cutoff (relative to newest entry, not now — keeps reproducible on
+    # quiet days). Needed before the merge so in-window log.txt ghosts can be reconciled.
+    if md_kept:
+        newest_ts = max(e[0] for e in md_kept)
+        newest_dt = datetime.strptime(newest_ts, "%Y-%m-%d %H:%M")
+        cutoff_dt = newest_dt - timedelta(days=RECENT_DAYS)
+    else:
+        cutoff_dt = datetime.min
+
+    def _in_window(ts: str) -> bool:
+        try:
+            return datetime.strptime(ts, "%Y-%m-%d %H:%M") >= cutoff_dt
+        except ValueError:
+            return False  # unparseable ts → treat as aged-out, keep unconditionally
+
+    # Merge for log.txt. log.md is authoritative for the 7-day window: keep an existing
+    # log.txt entry only if it aged out of the window (preserved unconditionally) or it
+    # still matches an md entry exactly. This stops a reworded in-window entry from
+    # leaving an orphan duplicate in the append-only log.txt.
+    md_keys = {(ts, typ, title) for ts, typ, title, _body in md_kept}
     keyset: dict[tuple[str, str, str], None] = {}
     for ts, typ, title, _body in md_kept:
         keyset[(ts, typ, title)] = None
     for ts, typ, title in txt_kept:
+        if _in_window(ts) and (ts, typ, title) not in md_keys:
+            continue  # in-window ghost that no longer matches log.md — drop
         keyset.setdefault((ts, typ, title), None)
 
     all_keys = sorted(keyset.keys(), key=lambda k: k[0], reverse=True)
@@ -100,15 +146,6 @@ def main() -> int:
     for ts, typ, title in all_keys:
         txt_lines.append(f"{ts}\t{typ}\t{title}")
     LOG_TXT.write_text("\n".join(txt_lines) + "\n", encoding="utf-8")
-
-    # Compute 7-day cutoff (relative to newest entry, not now — keeps reproducible on
-    # quiet days)
-    if md_kept:
-        newest_ts = max(e[0] for e in md_kept)
-        newest_dt = datetime.strptime(newest_ts, "%Y-%m-%d %H:%M")
-        cutoff_dt = newest_dt - timedelta(days=RECENT_DAYS)
-    else:
-        cutoff_dt = datetime.min
 
     # log.md keeps entries with ts >= cutoff, newest first
     recent = [

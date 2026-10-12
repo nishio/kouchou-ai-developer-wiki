@@ -40,8 +40,8 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 | Service | Port | Stack |
 |---|---|---|
 | `api` | 8000 | Python 3.12 / FastAPI / Rye |
-| `public-viewer` | 3000 | Next.js 15 / Chakra UI / Plotly.js |
-| `admin` | 4000 | Next.js 15 |
+| `public-viewer` | 3000 | Next.js 16 / Chakra UI / Plotly.js |
+| `admin` | 4000 | Next.js 16 |
 | `static-site-builder` | 3200 | Next.js (静的書き出し) |
 | `ollama` (opt-in) | 11434 | Local LLM |
 
@@ -79,3 +79,4 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 - 2026-05-30: 設計判断の core stance として [[analysis-stance]] (広聴AI = 構造把握スタンス、定量分析スタンスではない) への導線を追加
 - 2026-05-17: 初回作成
 - 2026-05-23: 4 つの配布形態が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加
+- 2026-10-12: サービス要約表の Next.js 15→16 を current main に合わせて訂正（[[architecture-overview]] と同期）。[[wiki-self-audit-2026-10-12]]

@@ -60,7 +60,7 @@ parser.add_argument("--skip-interaction", action="store_true", default=True,
 ```python
 from analysis_core import PipelineOrchestrator
 orchestrator = PipelineOrchestrator.from_config(config_path=Path("config.json"))
-result = orchestrator.run()
+result = orchestrator.run_default()
 ```
 
 公開 export（`analysis_core/__init__.py`）：
@@ -71,8 +71,8 @@ result = orchestrator.run()
 
 実行モードは 2 系統（[[pipeline]] 参照）：
 
-- `orchestrator.run()` — 既定。レガシーの `run_step` ループ
-- `orchestrator.run_workflow()` — [[plugin-system]] 経由の workflow 実行。**実装はあるが CLI からは呼ばれない**
+- `orchestrator.run_default()` → `run_workflow()` — canonical な実行経路。CLI（`__main__.py`）はこれを呼ぶ（[[plugin-system]] 経由の workflow 実行）
+- `orchestrator.run()` — レガシーの `run_step` ループ。`DeprecationWarning` つきの互換用で、新規は `run_default()` を使う
 
 ただし 2026-05-20 時点の open PR `#840` では、`run_workflow()` 側に初期 `comments` artifact、status 永続化、rerun artifact 再利用まで段階的に持ち込み中であり、CLI default 化に向けた地ならしは進んでいる。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
 
@@ -113,7 +113,6 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 ## Open Questions
 
 - `--skip-interaction` を CLI から False に戻せない問題の解決
-- `kouchou-analyze` PyPI 公開と GitHub Actions 自動リリース（[[refactoring-status]] 参照）
 
 ## Updates
 
@@ -124,3 +123,4 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` は Web canonical にしないと明記
 - 2026-10-07: lint 注記。本文の「open PR `#840`」は 2026-05-21 に merge 済み。current main `a12d68e` では CLI が `run_default()` → `run_workflow()` を呼ぶ（[[refactoring-status]]）
 - 2026-10-07: main `a12d68e` で、既定の CLI 実行（HTML あり）が可視化の段階で `report_dir` 未定義により失敗することを確認（#953 / PR #955）。クイックスタートが案内する `report_url_pattern` も効かない（#954）。経緯は [[gotchas]] の「CLI の `report.html` 経路は Web UI の実行では通らない」
+- 2026-10-12: 本文のライブラリ利用例（L63）と実行モード説明を current main に合わせて訂正（`run()` → `run_default()`→`run_workflow()` が canonical、`run()` は `DeprecationWarning` つき deprecated）。2026-10-07 の lint 注記は履歴として残置。`kouchou-analyze` の PyPI 公開＋GHA 自動リリースは完了済みのため Open Questions から除去（[[refactoring-status]] Phase 2.5。残件 Trusted Publishing / release gate hardening は [[open-decisions]] follow-up）。[[wiki-self-audit-2026-10-12]]
