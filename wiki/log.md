@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:19] filing-back | analysis-coreのMIT表記を初回commitとPyPIまで遡って調査
+
+- [[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に、大木さんの質問・1月の雛形作成と既存コード移植・PR #746・PyPIの表示を記録。独立配布の意図とMIT化の未確認事項を区別した。
+- [[analysis-core-and-web-ui]]・[[meeting-minutes]]・[[meeting-report-draft]]へ追記。次は当時の意図と表記整理の判断。本体・Slackは変更していない。grasp書き込み未導入につきMarkdownを直接更新。
+
 ## [2026-10-11 00:55] ingest | 古いIssue先頭10件をcurrent mainに照合
 
 - 依頼 I1 で #11/#44/#52/#55/#56/#60/#79/#104/#121/#143 を main `c297bc97` にコード照合。判定: 未解決5・一部解決3・要件再確認1。[[issue-backlog-audit-2026-10-11]] と根拠 source [[issue-audit-2026-10-11-batch1]] を新規作成。

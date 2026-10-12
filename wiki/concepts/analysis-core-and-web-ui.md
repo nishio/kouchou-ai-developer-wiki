@@ -52,3 +52,5 @@ Web UI 側の canonical な表示経路は `hierarchical_result.json` + `public-
 ## Updates
 
 - 2026-05-23: 初版作成。歴史ページ [[tttc-to-analysis-core-history]] とは別に、現在の入口設計と `report.html` の位置づけを設計判断として整理
+
+- 2026-10-12: [[analysis-core-license-intent-2026-10-12]]より、独立したCLI / importライブラリとして配布する設計意図と、MIT化の意思決定は区別する。packageにはMIT表記があるが、調査した計画・PR・Slack・議事録ではMIT変更の合意は確認できない。
