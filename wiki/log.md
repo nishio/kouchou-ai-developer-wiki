@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 20:00] filing-back | 要件再確認の人間判断処理・#471 ベンチハーネス実装
+
+- 棚卸しの「要件再確認」を nishio と対話処理。回答に沿って #474（bonsai=純粋調査、検証メモ link 添付で close）/ #104（中央集約テレメトリは当面見送り・GA4 のみ、not planned close）を close、#255（政治利用 FAQ）は公開規約の事実整理をもとに `docs/user-guide/faq.md` 追記案（Q&A＋免責）を Issue に投稿、#471 は scoping コメント（普通PC前提に再定義＋GPU補助・NPU初期スコープ外）を投稿。
+- #471 の成果物として**再利用可能なローカルLLMベンチハーネスを実装**し本機で参照測定（private キュー `drafts/issue-audit/local-llm-benchmark/`、commit a59cedd）。本機は AWS Graviton2/ARM・8コア・30.9GB・GPUなし・aarch64。100件 total 50.8s/300件 59.1s、支配項は embedding(~18s)・clustering(~25s JIT 固定費)、ピークRAM ~1.5GB、全ステップ完走。LLM 推論実時間はスタブのため未測定（backend 依存）。実機 x86 測定・モデル選定・閾値決定はチーム。
+- 本日の Issue close 累計 7 件（#573/#519/#417/#871/#577/#104/#474、＋PRマージ自動 #953/#956）。残る人間待ちは #227/#255(文面)/#464/#471(実機)/#517/#529/#898/#921。詳細は [[daily-report-2026-10-12]] / [[meeting-report-draft]]。
+
 ## [2026-10-12 19:55] filing-back | #979 の yank 方針を nishio 判断として記録
 
 - nishio 判断「誤情報（MIT 表記）の撤回を優先」で、**旧 PyPI 版 0.1.0/0.1.2 は yank に決定**。[#979 コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979#issuecomment-6122010532)に実行順序（①bump ②AGPL 訂正版 publish ③旧版 yank）と、yank 先行だと `pip install` が壊れる点を明記。

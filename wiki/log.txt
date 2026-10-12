@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 20:00	filing-back	要件再確認の人間判断処理・#471 ベンチハーネス実装
 2026-10-12 19:55	filing-back	#979 の yank 方針を nishio 判断として記録
 2026-10-12 19:45	filing-back	#978 の link-only degrade を実装し PR #980 を作成
 2026-10-12 19:30	filing-back	PyPI 訂正版公開・旧 MIT 版 yank 判断を Issue #979 に起票
