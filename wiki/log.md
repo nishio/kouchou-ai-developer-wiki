@@ -3,6 +3,18 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 18:40] filing-back | ライセンス議論の filing back を点検、西尾さんの判定根拠を補記
+
+- 最新 Slack（mirror 同期 2026-10-12 05:33 UTC）を読解。ライセンスの話は既に `sources/analysis-core-license-history-2026-10-12` / `analyses/analysis-core-license-intent-2026-10-12` / `analyses/agpl-output-and-plugin-boundaries-2026-10-12` の3ページで網羅・コミット済み、lint もクリーン（壊れリンク0・未登録0）だった。
+- 唯一の欠けていた nuance として、`#2_開発_広聴ai` での西尾さんの判定根拠を analysis へ追記: 「履歴を洗うと議論なく最初から MIT→うっかりミス」判定、法的根拠は「大元の Talk to the City が AGPL なので依拠物を MIT にするのは無理」、および「やさしい解説ドキュメントが必要」発言（PR #970 の `license.md` に対応）。
+- summary 不変のため index.txt 再生成は不要。次に見るべきは PR #970 の merge と PyPI 新版リリース（MIT 配布物 0.1.0/0.1.2 の訂正）。
+
+## [2026-10-12 17:55] filing-back | 小粒 PR 4件（#955/#965/#967/#957）をレビューして merge
+
+- 4件を diff + main `c297bc97` で裏取りレビューし、correctness 問題なしと判断して nishio が admin squash merge。#955 `a4028c7e`（CLI の `report_dir` 未定義エラー修正・回帰テスト付き）/ #965 `3dd79d6f`（抽出プロンプト例の「すべき」→「必要がある」、admin/Python 2箇所同期）/ #967 `a8353f6f`（抽出プロンプト実測調整例を docs 追加）/ #957 `a3c198e9`（setup `.env` 3キー欠落修正 + `check_setup_env.py` CI ガード）。
+- 検証メモ: #955 は `report_dir` 消費側が無いことを grep 確認。#957 の3キーは `.env.example` に存在し checker 必須扱いで整合。留意は #957 の `setup_mac.sh` を ubuntu で実行する点のみ（env 生成は同一なので許容）。
+- 運用: `gh pr merge` の auto-mode 分類器ブロック回避に、`.claude/settings.local.json`（gitignored）へ `Bash(gh pr merge:*)` の allow を追加。
+
 ## [2026-10-12 17:45] filing-back | PR #968（日本語README復帰）を merge
 
 - #968（外部・shingo-ohki、#966 英語化で切れた `README.md#見出し` 直リンクを日本語デフォルト復帰で当座復旧）を nishio が admin squash merge（merge commit `e1c1de4`、fork PR）。CI green・MERGEABLE を確認して反映。

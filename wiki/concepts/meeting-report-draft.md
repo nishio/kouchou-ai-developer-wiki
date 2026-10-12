@@ -199,6 +199,12 @@ sources:
 - **評価**: 有効な火消しだが対症療法。429 は匿名 pull 制限で、根本は認証 pull。ECR Public も匿名制限を持つため保証ではない。対象も client-build のみで、同じ `node:22-alpine` を Docker Hub 直取得する `apps/admin` / `apps/static-site-builder` の Dockerfile と `azure-deploy.yml` / `api-docker-dependency-smoke.yml` が未対応。
 - **次に見る**: 残件を **Issue #974** に切り出し済み（①認証 pull の恒久化 ②他ビルドへの横展開 ③リトライ設計の見直し）。着手は自動では進めない。
 
+### Updates — 2026-10-12 小粒 PR 4件を main 反映（#955/#965/#967/#957）
+
+- **main 反映済み**（diff + main 照合レビュー後に admin squash merge）: #955 CLI の `report_dir` 未定義エラー修正（回帰テスト付き）/ #965 抽出プロンプト例の「すべき」→「必要がある」（意味の強め過ぎを抑制、admin/Python 同期）/ #967 抽出プロンプトの実測調整例を docs 追加（既定は不変）/ #957 setup `.env` の3キー欠落修正 + `check_setup_env.py` の CI ガード。
+- いずれも correctness 問題なし。#957 のみ留意として `setup_mac.sh` を ubuntu CI で実行（env 生成は同一なので許容）。
+- 次に見る: 残 open の #970（AGPL・規模大）/ #963（Biome gate）/ #961（全画面切替）/ #946（濃いクラスタ初期値・滞留）/ #891（Draft）。
+
 ### Updates — 2026-10-12 README 直リンク依存の root cause を Issue #977 に（PR #968 レビュー）
 
 - **PR #968（外部: shingo-ohki）**: #966 で英語化された `README.md` を日本語に戻し、切れた `README.md#<日本語見出し>` 直リンクを復旧する当座対応。未 merge・CI green・承認待ち。

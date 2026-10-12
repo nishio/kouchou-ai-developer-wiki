@@ -3,6 +3,8 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 18:40	filing-back	ライセンス議論の filing back を点検、西尾さんの判定根拠を補記
+2026-10-12 17:55	filing-back	小粒 PR 4件（#955/#965/#967/#957）をレビューして merge
 2026-10-12 17:45	filing-back	PR #968（日本語README復帰）を merge
 2026-10-12 17:40	filing-back	README 直リンク依存の root cause を Issue #977 に（PR #968 レビュー）
 2026-10-12 17:10	filing-back	CI の Docker Hub 429 対策 PR #969 を merge、残件を #974 へ
