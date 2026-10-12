@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 19:45] filing-back | #978 の link-only degrade を実装し PR #980 を作成
+
+- 別セッション(9f)と棲み分け合意（9f=wiki/license・会議draft、a8=GitHub live state・未assign issue）。着手可能な未assign issue を調査し、自己完結的で人間判断不要の **#978**（report.html のライセンス案内が資源欠如時に `FileNotFoundError` で生成全体を hard-fail させる件）を選定。self-assign 済み。
+- 実装: `_report_license_notice` を資源欠如時に raise せず link-only 案内（GNU 本文リンクのみ・ソース ZIP なし）へ degrade する `_report_license_notice_link_only()` を追加。topic worktree `work/kouchou-ai-issue978`、[PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980)（open・未merge、merge で #978 close）。degrade テスト追加、`pytest`（可視化17件）・`ruff` パス。
+- 次に見る: #980 の CI 結果（pending）。merge 後に #978 close 確認。happy path（資源あり＝ZIP 同梱）は不変なので [[analysis-core-license-intent-2026-10-12]] の運用判断には影響しない。[[agpl-output-and-plugin-boundaries-2026-10-12]]より。
+
 ## [2026-10-12 19:30] filing-back | PyPI 訂正版公開・旧 MIT 版 yank 判断を Issue #979 に起票
 
 - #970（AGPL 訂正）は main merge 済みだが、`pyproject.toml` は version 0.1.2 据え置きで PyPI 公開版 0.1.0/0.1.2 は MIT metadata のまま。リリースは `analysis-core-v*` タグ push 発火＝同一版再アップロード不可なので bump が必要、という裏取りのうえ [Issue #979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) を tracking として作成（日本語本文・未assign）。
