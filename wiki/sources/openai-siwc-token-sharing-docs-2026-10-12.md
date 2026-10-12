@@ -56,3 +56,4 @@ plan 共有ルートでは Responses API でも一部 field / tool が使えな�
 ## Updates
 
 - 2026-10-12: 初版作成。OpenAI SIWC token-sharing docs を「API キー不要ルート」の feasibility 判断材料として整理。Responses API 限定・embedding 対象未確認・preview・hosted 不適合を caveat として明記
+- 2026-10-12: リンク先 docs（models-and-inference / preview-limitations）を確認し、embedding の扱いを「未確認」→「**Responses API に明示限定で embedding は docs 範囲外**」に確定。あわせて Responses API 側の未対応 field（`temperature` / `max_output_tokens` 等）・未対応 tool / 未対応 input を追記

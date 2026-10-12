@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 21:10] filing-back | SIWC は Responses API 限定・embedding 対象外を確認
+
+- 「SIWC が embedding を含むか」の Open Question を、リンク先 docs（models-and-inference / preview-limitations）を読んで確定。plan 共有の推論 endpoint は **`POST /v1/responses` に明示限定**、文書化は他に `GET /v1/models` のみで、**Embeddings API は docs 範囲外**（supported にも blocked にも無し）。
+- 含意: embedding は広聴AI クラスタリングの中核コストなので、**SIWC 単独ではキー不要ルートとして不完全**。embedding は別 OpenAI キー/別プロバイダが必要。あわせて Responses API 側の未対応 field（`temperature`/`max_output_tokens` 等）・未対応 tool/input を [[openai-siwc-token-sharing-docs-2026-10-12]] に追記し、[[llm-providers]] の caveat を「未確認」→確定に更新。
+- 次に見る: OSS 配布形態サポート計画との整合、preview の rate/quota（docs 言及なし）。
+
 ## [2026-10-12 21:00] filing-back | PR #981（version bump 0.1.3）を merge、#979 の①完了
 
 - nishio が #981 を admin squash merge（merge commit `055b8824`、CI 全 green）。main は analysis-core version 0.1.3・AGPL 表記で揃った。#979 の実行順序 ①version bump が完了。
