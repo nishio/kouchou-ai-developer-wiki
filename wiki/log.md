@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 22:05] filing-back | 定例下書きの議題候補に SIWC を追記
+
+- meeting-report-draft の「議題候補」に **SIWC（Sign in with ChatGPT）を API キー不要ルート候補**として 1 項目追加。nishio の「未消化 weekly quota 転用＝実質無料」仮説と、embedding 対象外/preview/hosted 不適合/quota 未確認の caveat を 2〜4 行粒度で記載。[[openai-siwc-token-sharing-docs-2026-10-12]]へリンク。
+
 ## [2026-10-12 21:55] filing-back | Slack 直近を再読、SIWC の「weekly limit 余り＝実質無料」仮説を追記
 
 - `work/slack-logs` を最新化（mirror 2026-10-12 05:33 UTC）。2026-10-11 以降の新規は dev チャンネル 7 件のみで、6 件は既 filing back 済みの license 議論。

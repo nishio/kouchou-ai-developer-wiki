@@ -114,6 +114,7 @@ sources:
 - 公開済み PyPI 0.1.0/0.1.2（MIT 表記）は **yank 完了**（nishio・2026-10-12、誤情報の撤回を優先）。①version bump（PR #981 merge `055b8824`）→ ②公開（タグ `analysis-core-v0.1.3` → **PyPI 0.1.3/AGPL 公開**）→ ③**旧 0.1.0/0.1.2 を yank**（確認済み）が全完了し、**Issue #979 は close 済み**。PyPI の公開配布物のライセンス情報は AGPL-3.0 に揃い、MIT 誤表記版はデフォルト解決から外れた。
 - Issue 棚卸しの残り方針会議候補 #255（FAQ 文面・法務）/ #464（API キー PO）/ #921（ブラウザ版本流化）/ #227（濃いグループ設定の粒度）の決定（#104/#474/#577 は 2026-10-12 に close 済み、#471 は scoping＋ベンチハーネス用意で実機測定待ち）。
 - #921 ブラウザ版本流化は戦略会議（Polimoney は 10/24 確定、広聴AI/いどばたは 10/17-25 調整中）の意思決定事項。
+- **Sign in with ChatGPT (SIWC) を API キー不要ルートの候補として観測**（nishio 発案・Slack `#2_開発_広聴ai` 2026-10-12）。ユーザが自分の ChatGPT プランでサインインし、その plan 枠（Codex の weekly limit）で推論を回す OAuth 機能。nishio の仮説＝「定額プランの**未消化 weekly quota を切り替え間際に転用すれば実質無料**で分析できる」。自治体の決済制約（[[llm-providers]]）を緩める候補になりうるが、現時点は **feasibility アイデアとして観測**。要注意 caveat＝① **embedding は SIWC 対象外（Responses API 限定）** なのでクラスタリング中核は別キー/別プロバイダが必要で「pipeline 全体が無料」にはならない、② preview 機能・OpenAI ロックイン、③ hosted デモには不適合でユーザ端末 local 配布向け、④ weekly quota が自治体スケール（数千〜数万コメント）に耐えるか未確認。[[openai-siwc-token-sharing-docs-2026-10-12]]より。
 
 ## Updates — 2026-10-12 ライセンス案内の設計判断をfile back
 

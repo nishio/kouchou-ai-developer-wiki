@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 22:05	filing-back	定例下書きの議題候補に SIWC を追記
 2026-10-12 21:55	filing-back	Slack 直近を再読、SIWC の「weekly limit 余り＝実質無料」仮説を追記
 2026-10-12 21:45	filing-back	#979 の③完了（旧 MIT 版 yank）→ #979 クローズ
 2026-10-12 21:30	filing-back	一部解決 Issue の残件を並列実装→code-review→6 PR 投入（全CI green）
