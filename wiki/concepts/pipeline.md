@@ -107,7 +107,7 @@ sources:
 
 これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **LLM 直接グルーピングのもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。LLM grouping 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
-> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR #866、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 9 個を登録する。ただし **admin 作成 UI / `apps/api` はまだ `analysis_mode` を渡しておらず、ユーザからは到達不可**（`apps/api/src` / `apps/admin` に `analysis_mode` 参照なしを確認。プロダクト統合は #176 / 未 merge PR #987 で追跡）。よって current の正確な状態は「engine は出荷済み・プロダクト到達は未」。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR #866、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 9 個を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**#176 の統合 PR #987 が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
 
 ## Open Questions
 
@@ -126,3 +126,4 @@ sources:
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、旧 `apps/api/broadlistening/pipeline/` 実装削除後の current path に合わせて配置と実行モードの説明を更新
 - 2026-05-25: 散布図維持側の [[nishio]] スタンスを「顧客がいる」から「2026-09 書籍版までは温存、より良い可視化があれば併用→切替も可」という時間軸ベースの表現に訂正
 - 2026-10-12: `analysis_mode=llm_grouping` engine が 2026-05-25（#866 / `4f893ab5`）に main 入りした事実を LLM grouping 節の Update として追記（本文 L108 は「2026-05-18 時点」の dated 観測として残置）。到達はまだ admin/api 未対応（#176 / PR #987）。あわせて Open Questions の「レポート再利用（Issue #19）現状確認が必要」を解決として除去（`apps/api/src/services/report_duplicate.py` 実装済み、[[open-decisions]] 2026-05-17 確認）。[[wiki-self-audit-2026-10-12]]
+- 2026-10-12: 上記の数時間後に #176 統合 PR #987 が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが `apps/admin` / `apps/api` に入りプロダクト到達も main 入りしたため、LLM grouping 節の Update を「到達は未」→「到達も main 入り」に訂正。[[wiki-self-audit-2026-10-12]]

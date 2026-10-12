@@ -100,7 +100,7 @@ sources:
 - LLM grouping 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
 - したがって LLM 直接グルーピングの第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
 
-> **Update（2026-10-12）**: 上記 **LLM grouping analysis plugin** は engine レベルでは出荷済み。builtin に `llm_grouping` plugin が登録され、`analysis_mode=llm_grouping` で `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW` を選ぶ（#866 / `4f893ab5`、2026-05-25 main 入り）。ただし「散布図を自然に出せない mode を first-class にする visualization / capability 契約」と **admin / `apps/api` からの `analysis_mode` 受け渡し** は未着手で、ユーザ到達は未（#176 / 未 merge PR #987）。詳細は [[pipeline]]。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: 上記 **LLM grouping analysis plugin** は engine レベルでは出荷済み。builtin に `llm_grouping` plugin が登録され、`analysis_mode=llm_grouping` で `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW` を選ぶ（#866 / `4f893ab5`、2026-05-25 main 入り）。**admin / `apps/api` からの `analysis_mode` 受け渡し**も #176 の PR #987 が 2026-10-12 に merge され main 入り（kouchou-ai `c33d264a`）。残るは「散布図を自然に出せない mode を first-class にする visualization / capability 契約」の設計。詳細は [[pipeline]]。[[wiki-self-audit-2026-10-12]]
 
 ## 関連ドキュメント
 
@@ -123,3 +123,4 @@ sources:
 - 2026-10-07: lint。「production パスとの繋がり：現状 dormant」が [[refactoring-status]]（Phase 3b 完了）と矛盾していたため、current main `a12d68e` で `run_default()` → `run_workflow()` が CLI の既定経路であることを確認し、見出しと注記で作成時の観測と明示した
 - 2026-10-12: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、生成データの利用とコードの結合・配布を分ける。現行analysis pluginは同一プロセスでinterfaceを共有し、「別プラグインだからAGPLの制約なし」とは案内できない。互換ライセンスでの提供と結合物の義務も区別する。
 - 2026-10-12: builtin plugin 数を「8 つ」→「9 つ」に訂正（`register_all` が `llm_grouping` を含む 9 個を登録、`hierarchical_layout_generation` は未登録モジュール）。`analysis_mode=llm_grouping` が engine レベルで出荷済み（プロダクト到達は未）である旨を v5.0 plugin 構想節に追記。[[wiki-self-audit-2026-10-12]]
+- 2026-10-12: 上記の数時間後に #176 統合 PR #987 が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが admin/api に入ったため、構想節 Update の「受け渡しは未着手・到達は未」を「merge 済み・main 入り」に訂正。[[wiki-self-audit-2026-10-12]]
