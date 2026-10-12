@@ -1,8 +1,9 @@
 ---
 type: analysis
-summary: "2026-10-12 の作業まとめ（draft・後で nishio が1ページに仕上げる）。広聴AI open Issue 全105件の棚卸しを並列ワークフローで実施→現行 main@c297bc97 基準で分類。nishio 判断で4件 close(#573/#519/#417/#871)＋残件を#973へ切り出し。要件再確認14件を処理: #308/#213/#289 を対話で判断、残り11件(#104/#227/#255/#464/#471/#474/#517/#529/#577/#898/#921)を機械処理バッチで整理→6件に事実整理コメント投稿・5件は人間必須で方針待ち。#577 は close 相当だが権限制約で自動close未実行。"
+summary: "2026-10-12 の作業まとめ（draft・後で nishio が1ページに仕上げる）。広聴AI open Issue 全105件の棚卸しを並列ワークフローで実施→現行 main@c297bc97 基準で分類。nishio 判断で4件 close(#573/#519/#417/#871)＋残件を#973へ切り出し。要件再確認14件を処理: #308/#213/#289 を対話で判断、残り11件(#104/#227/#255/#464/#471/#474/#517/#529/#577/#898/#921)を機械処理バッチで整理→6件に事実整理コメント投稿・5件は人間必須で方針待ち。#577 は close 相当だが権限制約で自動close未実行。さらに未解決53件を再検証し偽陰性2件(#953/#956=現行main a3c198e9で解決済み)を検出、残51件は前回判定妥当・close確定は#953/#956のみ。"
 sources:
   - issue-audit-2026-10-12-full.md
+  - issue-audit-2026-10-12-sweep.md
 ---
 
 > **draft**: 2026-10-12 の作業ログ。後で nishio が1ページにまとめ直す前提の下書き。判定の正本は [[issue-backlog-audit-2026-10-12]]、各 Issue の更新案・close ログ・判断ログは private キュー `drafts/issue-audit/2026-10-12-full/`。
@@ -76,3 +77,38 @@ sources:
 - **repo 外成果物待ち**: #517(ウェルカムMTGスライド反映) / #529(デザイナーの修正後画像)。
 - #213 の併記デザインの具体（design と調整）。
 - #519 の公開 URL が確定したら Issue に追記。
+
+## 5. 未解決53件の潰し込み（再検証）
+
+棚卸しで「未解決」とした53件を、別エージェント9シャードで現行 main に file:line 再照合し、偽陰性（実は解決済み）を洗い直した。基準は固定 checkout `c297bc97`（観測日 2026-10-12）だが、now-resolved 2件は固定版が本日マージの修正より古かっただけで、**現行 remote main `a3c198e9`** では解決済みと確認。根拠 source は [[issue-audit-2026-10-12-sweep]]。
+
+**内訳（53件）**: still-unresolved **44** / human-required **7** / now-resolved **2** / partial **0** / duplicate **0**。
+
+→ 偽陰性は 2件（#953 #956）のみ。残り51件は前回判定（未解決 or 人間必須）が妥当と再確認、偽陰性なし。
+
+### close 確定（偽陰性＝現行 main で解決済み・メインが別途 close）
+
+| # | 題名 | 根拠（現行 main `a3c198e9`） |
+|---|---|---|
+| #953 | CLI の HTML 出力で可視化が `report_dir` 未定義で失敗 | PR #955（merge `a4028c7e`）が `hierarchical_default.py:98-106` から `${config.report_dir}` 参照を削除、`hierarchical_visualization.py:53-56` は `ctx.output_dir` 使用、回帰テスト `test_pipeline_paths_integration.py:474-525` 追加。固定 checkout `c297bc97` はこの merge 前の版。 |
+| #956 | セットアップ生成 .env に必須環境変数が欠落し静的版DL/キャッシュ更新が失敗 | PR #957（merge = 現 HEAD `a3c198e9`）が `setup_linux.sh` / `setup_mac.sh` / `setup_win.ps1` 3スクリプト全てに `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` / `REVALIDATE_URL` を追加＋CI検出(`scripts/check_setup_env.py` ほか)。.env.example 丸コピー方式は不採用。 |
+
+※ close コメント本文（file:line 根拠・reopen 手順つき）は再検証結果 JSON に保持。公開 Issue への close/comment は**このステップでは実施せず**メインが別途実行する。
+
+### partial / duplicate 再分類で注目すべきもの
+
+今回の再分類で partial・duplicate カテゴリへ移したものは**0件**（still-unresolved は中核要件が未充足のため格下げせず）。ただし上流更新時に「隣接要件が既に解決済み」と注記すべきものがある:
+
+- **#366 複数の公開リスト**: 中核（リストを複数作成しレポート登録）は未実装で未解決のまま。ただし隣接の**限定公開/unlisted は `ReportVisibility` enum＋PR #500(MERGED) で実装済み**。別利用経路なので混同しないが、上流更新案に「限定公開は別要件として解決済み」と注記すべき。
+- **#953 / #956**: still-unresolved と見えていたのは固定 checkout が本日マージより古かっただけの偽陰性。now-resolved に是正。
+- **#507 互換コード削除**: 互換コードは**意図的に残存中**。削除は `ver2.0→ver3.0` という未到来マイルストーン待ちで、現時点では着手不可（未解決だが前進不能）。
+- **#869 label refinement 残作業整理**: トラッキング issue。前提 PR #866/#867/#868 は merged だが label refinement 本体は未 merge。merge 済み前提 PR との混同に注意。
+- **#954 CLI の report_url_pattern / report_html_title**: #953 の PR #955 は 954 を**未カバー**（`orchestration.py` の `valid_fields`・specs 未変更）。設定仕様(案A/案B)の決定が残り未解決。
+
+### 修正が in-flight（OPEN 未 merge PR あり）
+
+実装着手済みで merge 待ちのため「未解決」だが、close は PR merge 次第: **#960**(PR #961) / **#962**(PR #963) / **#964**(PR #965, docs #967) / **#971**(PR #975) / **#972**(PR #976)。
+
+### human-required 7件（実 API 課金・外部成果物・組織判断が必須）
+
+#324(ファクトチェック実験) / #346(大量投稿対処の実験) / #556(アクセシビリティ継続デザイン) / #564(活用事例の渉外収集) / #882(KJ法プロンプト比較実験) / #912(GPT-5.6 実 API 検証) / #913(Gemini 3.8/3.5 実 API 検証)。いずれも現行 main のコード状態では充足されない種類（偽陰性ではない）。
