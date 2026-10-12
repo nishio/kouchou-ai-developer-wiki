@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:30] filing-back | AGPLのソース提供義務が生じる条件を補足
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]へ、ユーザーの指摘を受けて私的実行と配布・改造版のネットワーク提供の区別を追記。前の回答表で条件を省略していた点を訂正した。
+- [[meeting-report-draft]]にも反映。サービス提供だけでなくプログラムの配布も対象であり、全世界公開を常に要求する意味ではないと明示。
+
 ## [2026-10-12 09:28] filing-back | AGPLの生成データ公開とプラグインの境界を整理
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]でAGPL条文・FSF解説と現行実装を照合。生成データだけの公開と、コード入りHTML・同一プロセスの拡張を分けた。
