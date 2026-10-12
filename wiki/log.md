@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 09:48] filing-back | CLI出力HTMLにライセンスと表示ソースを自動同梱
+
+- PR #970へ利用者向けガイドとCLI出力へのAGPL全文・表示ソースZIPを追加。[[agpl-output-and-plugin-boundaries-2026-10-12]]と[[analysis-core-license-history-2026-10-12]]に実装・検証と制限を記録。
+- 生成16テスト・同一HTML再生成・配布物検証・docs buildを確認し、[[meeting-report-draft]]へ反映。未merge・PyPI未更新で、次はレビューと新版リリース。
+
 ## [2026-10-12 09:37] filing-back | 出力HTML公開の利用者向け説明を具体化
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]へ「分析結果＋表示プログラム」と捉える説明案を追記。表示コードの条件と、元CSV等を一律公開する話ではないことを分けた。

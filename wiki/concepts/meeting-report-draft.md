@@ -811,3 +811,8 @@ sources:
 - 2026-10-12（利用者向け文書の調査）: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、mainのREADME/利用ガイド/プラグインガイドにケース別のライセンス解説は見当たらない。GNU日本語FAQは参考になるが、広聴AI固有の利用例を示す案内は未整備。
 
 - 2026-10-12（HTML公開の説明案）: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、HTMLを「分析結果＋表示プログラム」と説明する。利用者負担を減らすため、ライセンス案内と対応ソース導線を生成HTMLへ自動付与する案を記録（未実装）。
+
+### Updates — 2026-10-12 CLIレポートの案内自動付与とやさしい解説（進行中）
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]より、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`、`d09976e`）で利用者向けガイドと、出力HTMLへのAGPL全文・対応表示ソースZIPの自動同梱を実装。通常利用者は案内を残して公開する形にした。
+- 16テスト、ZIPからの同一HTML再生成、wheel/sdistのライセンス・実行確認、docs buildに成功。未merge・未リリースで、次はレビューと新版リリース。Web版静的出力は今回の対象外。

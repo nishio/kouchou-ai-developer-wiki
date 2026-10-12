@@ -50,3 +50,9 @@ sources:
 - 本体main `c297bc9` を起点に `fix/analysis-core-agpl-license` / commit `5513855` / [PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)を作成。README、pyproject.tomlのlicense/classifierをAGPL-3.0に訂正し、rootと同一のLICENSE本文をpackageに追加。READMEに旧PyPI 0.1.0 / 0.1.2のMIT表記の訂正を明記し、配布チェックリストにも同梱確認を追加した。
 - `python -m build`でsdistを生成し、そのsdistからwheelをビルド（hatchling 1.32.4）。両配布物のAGPL metadata/classifier、LICENSE全文のrootとのバイト一致、`twine check`成功を確認。Python実装変更はなく、ローカルで解析処理・実APIテストは行っていない。
 - 状態はPR作成済み・未merge。公開済みPyPIファイルは未更新で、新版リリースが残る。Slack返信は未実施。
+
+## Updates — 2026-10-12 利用者向け解説とCLI出力へ修正範囲を拡張
+
+- 西尾さんの追加指示で、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)にcommit `d09976e`を追加。`docs/user-guide/license.md`と各入口へのリンク、CLI出力HTMLのライセンス全文・表示ソースZIP自動同梱を実装した。先の「Python実装変更はない」は `5513855` 時点の説明で、今回から生成処理の変更を含む。
+- HTML生成16テスト、ZIPから隔離Pythonで同一HTMLを再生成、ローカル改造ソース保存、wheel単体の生成、sdist/wheelライセンス一致、twine・Ruff・docs strict buildを確認。案内を利用者が手で作らずに済む方針と制限は [[agpl-output-and-plugin-boundaries-2026-10-12]]より。
+- 未merge・PyPI未更新。リリースチェックリストではライセンス検証をタグpushより前へ移した。
