@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "AGPLの生成データ公開は原則としてソース提供義務を生まないが、コード入りHTMLと結合プラグインは別判断。独立プラグインや互換ライセンスの選択と、結合物としての義務を分ける"
+summary: "AGPLのデータ・HTML・拡張の境界と、CLIが短い案内・本文リンク・対応ソースを自動付与して公開時の利用者負担を減らす方針"
 sources:
   - analysis-core-license-history-2026-10-12.md
   - source-code.md
@@ -100,3 +100,15 @@ sources:
 - 変更内容: `_report_license_notice` はライセンス資源（sibling `AGPL-3.0.txt` も repo `LICENSE` フォールバックも）を解決できない場合、`FileNotFoundError` を raise せず、GNU 本文へのリンクのみ（ソース ZIP なし）の `_report_license_notice_link_only()` へ早期 return する。happy path（資源あり＝ZIP 同梱）の挙動・文言は不変。degrade path の回帰テストを追加。
 - 検証: `pytest tests/test_hierarchical_visualization.py` → 17 passed（新テスト含む、Python 3.12）、変更ファイルの `ruff check` パス。`clustering` optional extra 未導入環境のため `tests/` 全体では当該 extra 依存の 4 件が落ちるが、本変更（stdlib のみの可視化ステップ）とは無関係の環境起因。
 - ZIP 同梱の本流（資源あり時）は変えていないので、[[analysis-core-license-intent-2026-10-12]] の運用判断（#979 の yank 方針含む）には影響しない。
+
+## Updates — 2026-10-12 会話から残す設計原則とmain反映確認
+
+今回の会話で西尾さんが示した「利用者が悩むことを減らす」「案内はCLI出力側に入れる」「全文は長いのでリンクにする」という判断を、次の3点に集約する。
+
+1. **利用者への説明は、何を公開するかから始める。** 結果データ、表示プログラムを含むHTML、拡張プログラムの配布・ネットワーク利用を分ける。「AGPLを使ったので何でもソース公開」「サービス提供時だけ条件が生じる」といった省略をしない。
+2. **通常の公開に必要な案内と取得導線は、出力する側が用意する。** 利用者向けには「自動付与された案内を残して、そのまま公開できます」を基本の操作説明にする。版の一致や対応ソースの準備を毎回利用者に調べさせない。
+3. **短い画面表示と、本文・ソースを入手できることを両立させる。** レポート末尾は「広聴AI · AGPL-3.0 · ソース（ZIP）」と短い注記。長文の全文表示はしない。本文リンクとZIP内のライセンス写し、生成時の表示ソースを保持する。単なるリポジトリ先頭へのリンクと、生成版に対応するソース提供は同じではない。
+
+2026-10-12 20:14 JSTにGitHubを再確認し、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)は同日18:38 JSTにmerge済み（`bbc10c947ca1d3216a16efda3b806e781aeee0d6`）。本体mainをfetch/pullし、`055b8824ab5a20546c0e1e01a29d84155880d351` の `hierarchical_visualization.py` と[利用者向けガイド](https://github.com/digitaldemocracy2030/kouchou-ai/blob/055b8824ab5a20546c0e1e01a29d84155880d351/docs/user-guide/license.md)で短い表示・本文リンク・ZIP同梱を確認した。先の「未merge」は当時の観測で、現在はmainに反映済み。PyPIの公開完了までは今回確認していない。リリース追跡は [[analysis-core-license-intent-2026-10-12]] を参照。
+
+適用範囲は通常のライセンス資源を備えたCLI出力。既存の古いHTML、生成後に表示コードを直接改変したHTML、Web版静的出力は別に扱う。後続PR #980の資源欠如時フォールバックではソースZIPが付かないため、「案内を残せばよい」という通常経路の説明を、その例外へ無条件に適用しない。

@@ -44,6 +44,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 ## CLI / analysis-core 開発者向け
 
+- [ライセンスと結果公開](analyses/agpl-output-and-plugin-boundaries-2026-10-12.md) — データ・HTML・拡張の境界、CLIの案内自動付与と短いリンク表示の方針
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI
 - [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核。analysis 側は workflow engine が CLI の既定経路、外部 plugin の同梱はまだ無い）
 - [llm-grouping-implementation-plan](analyses/llm-grouping-implementation-plan.md) — `analysis_mode=llm_grouping` 第2分析モードの実装方針

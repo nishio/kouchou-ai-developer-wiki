@@ -9,6 +9,7 @@ sources:
   - analysis-core-web-ui-separation-decision-2026-05-23.md
   - pr-825-standalone-html-observation-2026-05-19.md
   - report-html-non-web-canonical-decision-2026-05-23.md
+  - agpl-output-and-plugin-boundaries-2026-10-12.md
 ---
 
 ## 結論
@@ -55,3 +56,7 @@ Web UI 側の canonical な表示経路は `hierarchical_result.json` + `public-
 
 - 2026-10-12: [[analysis-core-license-intent-2026-10-12]]より、独立したCLI / importライブラリとして配布する設計意図と、MIT化の意思決定は区別する。packageにはMIT表記があるが、調査した計画・PR・Slack・議事録ではMIT変更の合意は確認できない。
 - 2026-10-12（追記）: 西尾さんの「AGPLが正しい、修正して」との指示で、MIT表記を誤記として訂正する方針が確定。[[analysis-core-license-intent-2026-10-12]] / PR #970を参照。独立配布の設計は維持し、AGPL-3.0表記と本文同梱を修正中（未merge、PyPI未更新）。
+
+### Updates — 2026-10-12 CLI出力の公開を簡単にする方針
+
+[[agpl-output-and-plugin-boundaries-2026-10-12]]より、CLIの `report.html` をそのまま公開する利用者に、毎回ライセンス表示や対応ソースを用意させない。CLI側で短い案内・AGPL本文リンク・表示ソースZIPを自動付与し、利用者は案内を残して公開する。長いライセンス全文は画面へ表示せず、本文リンクとZIP内の写しで提供する。PR #970は2026-10-12にmain反映済み。これはCLI出力の公開負担を減らす判断であり、Webの正規表示経路を変更するものではない。通常の同梱資源が欠けるフォールバックや、生成後のコード直接改変は別確認が必要。

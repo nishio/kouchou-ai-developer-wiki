@@ -26,6 +26,11 @@
 - #979 の実行順序 ①version bump を [PR #981](https://github.com/digitaldemocracy2030/kouchou-ai/pull/981)（`chore/analysis-core-bump-0.1.3`、open）で作成。`pyproject.toml` と `__init__.py` の `__version__` を 0.1.2→0.1.3 に揃える 2 行のみ。version テストは動的参照/regex なので影響なし。work/kouchou-ai は二分原則どおり別 worktree で作業し、作業後 HEAD は main のまま・worktree 撤去済み。#979 に self-assign。
 - 残る ②`analysis-core-v0.1.3` tag push で訂正版 publish ③旧 0.1.0/0.1.2 の yank は PyPI 権限が要るため PR 外（#979 で追跡）。[[analysis-core-license-intent-2026-10-12]] と meeting-report-draft に #981 を反映。
 
+## [2026-10-12 20:16] filing-back | ライセンス案内はCLIが自動付与し画面は短く保つ方針を集約
+
+- [[agpl-output-and-plugin-boundaries-2026-10-12]]へ会話の判断を3点に集約し、PR #970のmain反映を再確認。通常の公開手順と資源欠如時などの例外を区別した。
+- [[analysis-core-and-web-ui]]・人間向けindex・[[meeting-report-draft]]に入口を追加。grasp未導入のため既存Markdownを直接更新。PyPI公開状況は今回未確認で既存の追跡先へ委ねる。
+
 ## [2026-10-12 20:10] filing-back | #980（#978 link-only degrade）を merge、#978 close
 
 - nishio の明示指示（admin merge 承認）を受け、CI 全 pass の [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を admin bypass で squash merge（`478cd1a0`）。必須レビュー承認が無く通常 merge は BLOCKED だったため、確認のうえ admin merge を実行。これにより **Issue #978 は自動 close**。

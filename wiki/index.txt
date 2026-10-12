@@ -176,7 +176,7 @@ windows-powershell-default-installation	source	sources/windows-powershell-defaul
 worktree-hygiene-observation-2026-05-20	source	sources/worktree-hygiene-observation-2026-05-20.md	`work/kouchou-ai/` の dirty は `issue-830` 本筋ではなく、別件 2 系統と local 生成物が混ざった状態で、`apps/api/uv.lock` ignore を `PR #839` で main に反映して整理した観測メモ
 zenn-llm-as-a-judge-rubric-evaluation-2026-05-29	source	sources/zenn-llm-as-a-judge-rubric-evaluation-2026-05-29.md	Ubie Tech Blog の LLM-as-a-Judge / ルーブリック評価記事。抽象的な 1-5 点採点ではなく、true/false 可能な criteria に分解し、重要度ごとの points と negative criteria を持たせると、再現性と改善点の特定が上がるという実務向け整理
 agent-sandboxing-strategy	analysis	analyses/agent-sandboxing-strategy.md	AI コーディングエージェント向けの開発環境分離方針 — host full access を標準にしない
-agpl-output-and-plugin-boundaries-2026-10-12	analysis	analyses/agpl-output-and-plugin-boundaries-2026-10-12.md	AGPLの生成データ公開は原則としてソース提供義務を生まないが、コード入りHTMLと結合プラグインは別判断。独立プラグインや互換ライセンスの選択と、結合物としての義務を分ける
+agpl-output-and-plugin-boundaries-2026-10-12	analysis	analyses/agpl-output-and-plugin-boundaries-2026-10-12.md	AGPLのデータ・HTML・拡張の境界と、CLIが短い案内・本文リンク・対応ソースを自動付与して公開時の利用者負担を減らす方針
 analysis-core-extras-pr-scope	analysis	analyses/analysis-core-extras-pr-scope.md	`analysis-core` の extras 分割は独立 PR で切り出せるが、依存定義だけでなく eager import・CI・インストール導線を同時に整える必要がある
 analysis-core-license-intent-2026-10-12	analysis	analyses/analysis-core-license-intent-2026-10-12.md	西尾さんがAGPLを正と確認。analysis-coreのMIT表記を誤記として訂正するPR #970を作成し、独立配布の設計とライセンス表記を整理
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
