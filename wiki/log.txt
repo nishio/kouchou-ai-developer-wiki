@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-12 15:50	filing-back	open Issue 全105件の棚卸し（close実行0、close候補4件）
 2026-10-12 12:10	filing-back	CLIレポートのライセンス案内を短い表記とリンクに変更
 2026-10-12 09:48	filing-back	CLI出力HTMLにライセンスと表示ソースを自動同梱
 2026-10-12 09:37	filing-back	出力HTML公開の利用者向け説明を具体化

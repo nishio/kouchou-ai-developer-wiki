@@ -72,3 +72,8 @@ sources:
 ## Updates
 
 - 2026-10-11 00:55 JST: 初版。5 つの read-only subagent で 10 件をコード照合し、分類に効く主張（費用/時間 placeholder、`comments: {}` のコメントアウト、散布図の scaleanchor 不在）を spot-grep で再確認。snapshot は `raw/issue-audit/2026-10-11-batch1/` と private キュー `drafts/issue-audit/2026-10-11-batch1/`。日本語 Issue 更新案と checkpoint も同キューに保存。
+
+### Updates — 2026-10-12 全棚卸しへ統合（本ページ10件を再利用）
+
+- 本ページの10件（#11 #44 #52 #55 #56 #60 #79 #104 #121 #143）の判定を、同一 main `c297bc97` での open Issue 全棚卸し [[issue-backlog-audit-2026-10-12]] に再利用した（再調査はせず当時の判定を踏襲）。当時も解決済みゼロのため close は無い。
+- 全105件の統合結果では、今回新たに調査した95件に解決済(close候補)3件(#417/#573/#871)＋不明1件(#519)が出たが、いずれも close に人間の確認が要るため未 close。本ページの10件に close 候補は無いという判断は維持。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-12 15:50] filing-back | open Issue 全105件の棚卸し（close実行0、close候補4件）
+
+- open Issue 全105件を current main `c297bc97` に照合する全棚卸しを実施。今回95件を10シャード並列調査、残10件は2026-10-11分を再利用。今回分内訳は未解決47/一部解決31/要件再確認13/解決済3/不明1。
+- 今回のclose実行は0件。close候補だが未close=#417/#519/#573/#871（実験型・外部成果・プロセス系で人間確認要）。[[issue-backlog-audit-2026-10-12]]・[[issue-audit-2026-10-12-full]]を新規作成し、10-11/09-09の棚卸しとmeeting-report-draftへ日付付き追記。
+
 ## [2026-10-12 12:10] filing-back | CLIレポートのライセンス案内を短い表記とリンクに変更
 
 - ユーザーの指摘を受け、PR #970の全文表示を削除し、GNU本文へのリンクと短い注記に変更。本文のコピーはソースZIP内に維持。
