@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 09:20	filing-back	wiki 全ページに日本語1行タイトル付与＋Explorer フォルダ名の日本語化
 2026-10-14 09:15	filing-back	wiki 全体の #NNN を GitHub リンク化（Quartz タグ化回避）
 2026-10-14 08:45	filing-back	v4.1.0 記事を訂正（tokoroten は既存）＋ v5.0.0 後見者申し送り
 2026-10-14 08:30	filing-back	v4.1.0 リリーススプリントの retrospective 記事を新設

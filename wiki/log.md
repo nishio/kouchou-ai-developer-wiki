@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 09:20] filing-back | wiki 全ページに日本語1行タイトル付与＋Explorer フォルダ名の日本語化
+
+- nishio 指示: 英語 slug のタイトルは分かりにくい。URL は英語 slug のまま、日本人に読みやすい日本語1行タイトルを表示（Explorer も同様）。
+- 対応: Quartz はページ見出し(ArticleTitle) と Explorer 表示名に frontmatter `title` を使うので、342 ページに日本語 `title` を dynamic workflow(18 バッチ・summary 基点) で起草・付与（残 1 は sibling commit に取り込み済み）。Explorer のフォルダ見出し(概念 / 人物・ツール / ソース要約 / 考察・分析) は `quartz.layout.ts` の Explorer `mapFn` で日本語化。CLAUDE.md の frontmatter schema にも `title` を明記。
+- 検証: `pnpm build` / `check:pages-links` 共に green。commit 09aeabc / 0810d10 / 79767bf。次に見る: deploy 後の実レンダリング（見出し・Explorer・フォルダ名）。
+
 ## [2026-10-14 09:15] filing-back | wiki 全体の #NNN を GitHub リンク化（Quartz タグ化回避）
 
 - nishio 指示: 公開 wiki の `#NNN`（PR/issue）は GitHub リンクにすべき（Quartz OFM が `#992/#993` 等をタグ /tags/... にしてしまう）。再利用スクリプト `scripts/linkify_github_refs.py` を作成し、**wiki 全体 344 ファイル・3489 参照を一括リンク化**（`[#NNN](...issues/NNN)`、/issues は PR にも自動 redirect）。
