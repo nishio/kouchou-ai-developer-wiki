@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-10-13 11:30	filing-back	「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
+2026-10-13 10:30	filing-back	#986 を main へ rebase（CONFLICTING 解消・CI 待ち）
 2026-10-13 10:10	filing-back	Yandex DC 攻撃後の『bot 急減』を日本語 SNS(X) で検証可能か→X 単体では非現実的と判断し断念
 2026-10-13 09:45	filing-back	マージ可能な #975 / #984 を admin merge（残 open は #986 のみ）
 2026-10-13 03:09	filing-back	#983 を admin merge・#984 を rebase

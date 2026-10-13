@@ -9,6 +9,12 @@
 - 核心: OJPP BroadListening の `ai-participate` は **AI が合成意見を意見プールへ注入**＝ [[kouchou-ai]] broadlistening の「人間を聴く」と極性が逆。人間/AI 信号の分離が設計論点。DD2030 が転用しやすいのは (A) agent-ready API / MCP。
 - 新規: source [[ojpp-repo-source-2026-10-13]] / entity [[ojpp]] / analysis [[ojpp-agent-first-design-read-2026-10-13]]。[[dd2030]] に外部参照を追記。
 
+## [2026-10-13 10:30] filing-back | #986 を main へ rebase（CONFLICTING 解消・CI 待ち）
+
+- nishio 指示で **#986（#306 散布図）を現 main へ rebase**。専用 worktree `work/kouchou-ai-986`（`rebase/986-scatter`）、本体 HEAD は main 維持（二分原則）。
+- 衝突は both-added プロップ 2 箇所のみ＝`ScatterChart.tsx`/`scatter.tsx` の `onSelectCluster`〈#983 由来〉と `showParentAttribution`〈#306〉で**両採用**（両方とも本体で参照確認）。
+- ローカル green（biome / tsc --noEmit / jest ScatterChartLegend 3 pass）→ `65c2a264` force-with-lease push → **MERGEABLE 回復**。残 open = #986（CI 待ち）/ #891（Draft）。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 10:10] filing-back | Yandex DC 攻撃後の『bot 急減』を日本語 SNS(X) で検証可能か→X 単体では非現実的と判断し断念
 
 - [[nishio]] の問い:Yandex DC 攻撃（Sasovo 10/8 等）後の「AfD/MAGA bot 急減」を、日本語 SNS の概念キーワード（排外主義/反移民/反ウクライナ）で前後比較できるか。固有名詞（参政党）は名指しせず概念で測る方針。
