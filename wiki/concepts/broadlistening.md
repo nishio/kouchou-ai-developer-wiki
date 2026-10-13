@@ -52,6 +52,8 @@ sources:
 
 kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_grouping` ([[pr-827-llm-grouping-capabilities-plan-2026-05-18]]) は Long Context 系統の枝を内包しようとしている。両者は技術的に急発展しており、長短は今後変動する。
 
+この「散布図 vs Long Context」とは直交する別軸として、ツールの重心を **「忠実な集約」と「熟議の演出(dynamics)」** で棲み分けるレンズもある（kouchou-ai は前者、[[ojpp]] BroadListening は後者寄り）。[[faithful-aggregation-vs-deliberation-dynamics]]
+
 ## なぜ重要か
 
 - **パブコメ攻撃 / パブコメ DDoS** — AI による大量コメント投稿への対策が現代的な行政課題（[[meeting-minutes]] 2025-03-26）。重複検出・低品質コメント除去・統計的世論との区別が必要。文化庁公開コメントデータ (`nishio/aipubcom-data` 8000→25000 件) などが研究対象
