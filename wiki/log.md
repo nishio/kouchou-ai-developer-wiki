@@ -7,7 +7,7 @@
 
 - nishio 指示: 公開 wiki の `#NNN`（PR/issue）は GitHub リンクにすべき（Quartz OFM が `#992/#993` 等をタグ /tags/... にしてしまう）。再利用スクリプト `scripts/linkify_github_refs.py` を作成し、**wiki 全体 344 ファイル・3489 参照を一括リンク化**（`[#NNN](...issues/NNN)`、/issues は PR にも自動 redirect）。
 - 安全設計: frontmatter（summary＝AI カタログ）/ コードフェンス / インラインコード / 既存リンク / 16進カラー / 見出し をスキップ、スラッシュ連結も各々変換、冪等。**log.md は除外**（refresh_logs が log.txt を生成するため）。CI link-checker は外部ホストをスキップ＝deploy 無害。
-- 原則を memory 化（[[wiki-github-refs-as-links]]）。次に見る: deploy 後のレンダリング確認（タグでなくリンク）。
+- 原則を memory 化（wiki-github-refs-as-links）。次に見る: deploy 後のレンダリング確認（タグでなくリンク）。
 
 ## [2026-10-14 08:45] filing-back | v4.1.0 記事を訂正（tokoroten は既存）＋ v5.0.0 後見者申し送り
 
