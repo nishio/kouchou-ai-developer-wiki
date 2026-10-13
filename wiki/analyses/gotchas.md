@@ -203,6 +203,10 @@ PR #862 では docs deploy や repo checkout 上の client build が success で
 
 `kouchou-ai` の Git hook は worktree root から `node_modules/lefthook...` を探す。main worktree に `node_modules` があっても dedicated worktree には共有されないので、commit / push 時に `Can't find lefthook in PATH` が出たら、その worktree root で `pnpm install --frozen-lockfile` を実行する。詳細は [[worktree-hygiene]]。[[source-code]]より
 
+### `.claude/worktrees/agent-*` の掃除は「lock pid の生死」と「branch の控え」を先に見る
+
+並列実装セッションが残す `.claude/worktrees/agent-*` を片付ける時の落とし穴が3つ。(1) **lock されている worktree は `git worktree list --porcelain` の `locked ... (pid …)` を見て pid の生死を確認する**。pid が生きていれば**別の稼働中セッションが所有**しているので force remove しない（壊すと相手が想定外 state にぶつかる）。(2) **squash merge 済み PR のブランチは origin から消える**が、個々の commit は main の ancestor ではない（squash のため）。ローカルブランチの削除は `git branch -d` が「not fully merged」と拒むので `-D`。変更は main に入っているので安全。(3) **origin に無い local only の held ブランチ**（例: 試作・保留案件）は、その clone が唯一の控え。`git worktree remove` は branch ref を残すので worktree だけ外して作業は保全できるが、`-D` すると失われる。消す前に `git ls-remote --heads origin <branch>` で origin の有無を確認する。詳細は [[worktree-hygiene]]。
+
 ### Biome は一度も強制されていない（main の全体 lint は落ちている）
 
 `lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入初日から `skip: true`、CI に Biome の workflow は一度も存在せず、CI 化の Issue #264 は実装なしで close された。結果、`pnpm --filter @kouchou-ai/public-viewer lint` は 2026-02 以降 main で常に失敗しており（2026-10-09 時点 7 件、admin 7 件、dummy-server 9 件）、PR は「触ったファイルだけ clean」で通す慣行になっている。`tsconfig.json` は Next.js 16 が自動書き換えするので手で整形しても戻る（ignore に入れる）。`noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない。由来と時系列は [[biome-lint-main-drift-2026-10-09]]。

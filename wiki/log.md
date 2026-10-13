@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:30] filing-back | 仕掛かり PR 消化後に work/kouchou-ai の worktree を整理
+
+- #982–987 ラウンド＋独立 #975＋Windows 移植性 #995 まで全 merge し、**当方の仕掛かり PR はゼロ**（open PR は #891=tokoroten の Draft のみ、worktree 無し）。
+- `work/kouchou-ai` の agent worktree 13 個のうち 12 個を解消。**merged PR 由来 6 本は origin から削除済み（変更は main に squash 済み）なのでローカルブランチも `-D`**、detached leftover 4 本は削除、**保留 2 本（#364 per-report-password / #515-reuse-umap=#989 WebUI 残件）は local only のため worktree だけ外しブランチ ref は保全**。
+- **locked worktree 1 個は稼働中の別 Claude セッション（pid 生存）所有のため非干渉**。本体 HEAD は main。worktree 衛生の要点として [[gotchas]] に 1 項追加。
+
 ## [2026-10-13 23:15] filing-back | #877 / #885 / PR #903 の live state を確認
 
 - nishio 依頼で docs 系の残り 3 件を live 確認。6/30 観測から変化あり。

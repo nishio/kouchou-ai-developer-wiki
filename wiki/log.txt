@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 23:30	filing-back	仕掛かり PR 消化後に work/kouchou-ai の worktree を整理
 2026-10-13 23:15	filing-back	#877 / #885 / PR #903 の live state を確認
 2026-10-13 23:00	filing-back	PR-887 sanitize の粒度を nishio レビューで確定
 2026-10-13 22:15	filing-back	#876 / #977 の live state を確認
