@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 06:20] ingest | #542 close・docs 改善スプリント完了
+
+- **#1008 merge（`bf1ffb1b`）→ #542 CLOSED**（JA footer+README=#1004、en/ko README=#1008）。当方の open PR はゼロ。
+- **docs 改善スプリント一巡完了**: v4.1.0（Tier 0: nav+rot-gate+#450）→ T1（demo-first 入口・how-to-use 追従・保守 reminder）→ content gap（読み方/導入検討/信頼性・責任/FAQ 刷新）→ #542（責任3レイヤー免責, closed）→ Tier 3（self-hosting rename+redirects #876 / README アンカー脱却 #977）。投入 PR = #998〜#1006, #1008。
+- 残 OPEN（任意・急がない）: **#876**（umbrella: canonical「どの起動モードか」統合が残）/ **#977**（in-repo link は #1006 で対応済、残は CI markdown link-check 提案）。次に見る: nishio の次指示（#876/#977 の扱い or 別テーマ）。
+
 ## [2026-10-14 06:00] ingest | #542 の免責を README.en/ko にも反映（PR #1008, closes #542）
 
 - #1004（日本語 README/footer）の責任3レイヤー免責を **README.en.md / README.ko.md にも反映**（PR #1008, closes #542）。2 agent workflow で翻訳→**日本語逆翻訳で内容一致を検証**、既存 LLM バイアス段落は各言語の既存訳を維持。docs 参照は日本語のみのため (Japanese)/（일본어）付記。

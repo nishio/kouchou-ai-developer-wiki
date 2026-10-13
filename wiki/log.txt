@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 06:20	ingest	#542 close・docs 改善スプリント完了
 2026-10-14 06:00	ingest	#542 の免責を README.en/ko にも反映（PR #1008, closes #542）
 2026-10-14 05:30	ingest	Tier 3 完了（#977 PR #1006 merge・metadata-setup live）
 2026-10-14 05:00	ingest	Tier 3 完了見込み：#876 rename merge・live 確認、#977 を PR #1006
