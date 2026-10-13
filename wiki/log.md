@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 04:20] ingest | Tier 3 の #876 rename を PR #1005（getting-started → self-hosting + redirects）
+
+- Tier 3 着手（nishio 指示）。#876 本丸の **`docs/getting-started/` → `docs/self-hosting/` 改称**を PR #1005 で起票。旧 URL は **mkdocs-redirects** で救済（`getting-started/*` → `self-hosting/*` の redirect_maps、nishio 承認方針）。
+- CI 依存を `pip install -r docs/requirements.txt` に切替え `mkdocs-redirects` を追加。nav「はじめに」→「セルフホスト（自分で環境を建てる）」。README×3 / index.md / adoption-guide.md の参照を更新。`mkdocs build --strict` は **CI の build job でも green**（redirect/新ページ生成・旧 URL の clean-URL 救済をローカル検証済み）。
+- 残る Tier 3 = **#977 anchor 移行**（`ReporterContent.tsx` → README#メタデータ を安定 docs URL へ）。mkdocs.yml nav が #1005 と隣接するため **#1005 merge 後に起票**予定。次に見る: #1005 のレビュー/merge。
+
 ## [2026-10-14 03:40] ingest | content gap 3 PR を merge・docs サイト反映
 
 - #1002/#1003/#1004 を nishio が admin squash merge（`9b9349ae`/`8fab0ab9`/`45f989bd`）。docs サイト再デプロイ green を確認。新ページ（レポートの読み方／導入を検討する方へ／信頼性と責任の所在）・刷新 FAQ・目的別ガイド拡充・責任3レイヤー免責（footer 2コピー＋README）が反映。
