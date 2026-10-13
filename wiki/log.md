@@ -10,6 +10,12 @@
 - **#993**: `open`/`os.fdopen` の encoding 未指定 10 ファイルに `encoding="utf-8"` を明示（読み書き両方）。日本語 Windows cp932 クラッシュ/文字化け対策。
 - 検証: API pytest 318 pass・analysis-core 321 pass・ruff clean。**PR #995**（Closes #992/#993）。CI 待ち。
 
+## [2026-10-13 19:40] filing-back | #994（#176方向性2）を CLI 実装・PR #996 作成
+
+- #994 に self-assign し実装。analysis-core の LLM grouping に supervised モード追加（`predefined_groups` で枠の自動発見をスキップ、割当のみ LLM）。
+- **「その他」受け皿を必ず自動付与**（非該当→その他、先頭枠 fallback を廃し other へ）。specs/plugin/docs も対応。
+- analysis-core 325 passed（新規4）・ruff clean・CLI validate-config/dry-run 受理。PR #996 CI 待ち、WebUI は別 Issue。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 19:30] filing-back | PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
 
 - 停滞 Draft **#891（Windows スタンドアロン・tokoroten）** の検証記録 `tmp-embeddable-poc/FINDINGS.md` を評価。embeddable Python 方針成立（numba/UMAP/FastAPI 単一ランタイム完走・torch を LM Studio 委譲で ~650MB）など再利用価値の高い知見を確認。
