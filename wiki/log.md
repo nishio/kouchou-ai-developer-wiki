@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 09:45] filing-back | マージ可能な #975 / #984 を admin merge（残 open は #986 のみ）
+
+- nishio 指示で CI 全 green の2件を admin squash merge：**#975（侮辱・ヘイト/政策提案ラベルの任意ステップ, `1e7fdae5`）/ #984（#450 埋め込みモデル独立選択, `8f402d2e`）**。通常 merge は ruleset（必須承認1）で拒否のため admin override（人間が `!` 実行）。
+- #984 は前日 rebase 済み（`28dd78f1`）のまま green 維持で merge。embedding 共通枝温存は維持。
+- 残 open PR = **#986（#306 散布図・`DIRTY/CONFLICTING`＝要 rebase, ScatterChart.tsx 等5ファイル競合）/ #891（Windows スタンドアロン・Draft）**。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 03:09] filing-back | #983 を admin merge・#984 を rebase
 
 - nishio 指示で **#983（#52 散布図選択連動）を admin squash merge**（`88c592a1`）。
