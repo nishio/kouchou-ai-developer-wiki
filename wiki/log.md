@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 01:10] ingest | T1 wave を 3 PR 投入（#999/#1000/#1001）、docs 大掃除は 4 PR 出揃い
+
+- nishio go（T1-b から順に・pull_request_target OK）を受け本体 repo に投入：**#999**（T1-b how-to-use に #176 分析方式 + #961/#52/#306 の「散布図の操作」節 + 詳細クラスタ追記）、**#1000**（T1-a index.md に demo-first 目的別ガイド、managed=現状なしを正直表示、#876 additive first slice・#876 は close せず参照）、**#1001**（T1-c WebUI PR が how-to-use を触らない時の非ブロッキング reminder workflow + PR テンプレ 1 行、pull_request_target で head 非 checkout）。
+- 各 worktree（docs-t1a/b/c）で作業し strict build green を確認（#999/#1000）、#1001 は YAML 検証。worktree は掃除済み、work/kouchou-ai は main。
+- **docs 大掃除は #998〜#1001 の 4 PR で出揃い**。#998/#999/#1000 は CI green、#1001 は CodeQL 実行中。merge は nishio 判断、merge 後に `v4.1.0` tag。次＝#542（org signoff）/ Tier 3（#876 rename・#977）。
+
 ## [2026-10-14 00:50] ingest | Tier 0 docs cleanup を PR #998 で投入（本体 repo）
 
 - 本体 `digitaldemocracy2030/kouchou-ai` に [PR #998](https://github.com/digitaldemocracy2030/kouchou-ai/pull/998)（`codex/docs-nav-validation-embedding`, +13/-0）を作成。nav 未登録 6 ページ登録 + `validation.nav.omitted_files: warn`（CI rot-gate）+ cli-quickstart の `embedding.model` 行（#450 docs 追従）。
