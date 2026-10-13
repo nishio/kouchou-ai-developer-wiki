@@ -118,6 +118,7 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 ## 関連
 
+- [[kouchou-ai-docs-overhaul-2026-10]]: 本原則を実装した 2026-10 改善スプリントの retrospective（総括の読み物）
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]: 本ページの原則と現在地監査を踏まえ「何がどうなると良いか / どの順で」を 4 層 roadmap（write-and-done+rot-gate → additive reader-facing → signed content → policy-gated 本丸）に落とした direction
 - [[docs-reader-coverage-audit-2026-10-13]]: 本ページの原則（5 読者像）に照らした current main の実カバレッジ監査。直近 feature wave 後に A/C(WebUI 利用者)が未追従・D/運用が nav 未登録で未到達、という偏りと 1-PR 粒度の修正候補
 - [[docs-issue-map-2026-06-30]]: 2026-06-30 時点の docs issue 依存マップ（本ページの点断面）

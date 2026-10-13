@@ -126,6 +126,7 @@ sources:
 
 ## 関連
 
+- [[kouchou-ai-docs-overhaul-2026-10]]: 本スプリントの retrospective（総括の読み物。本ページは計画・実行ログの詳細版）
 - [[kouchou-ai-docs-policy-history]]: 方針系譜と横断原則（本ページはその「で、どうする」）
 - [[docs-reader-coverage-audit-2026-10-13]]: 5 読者像の現在地ギャップ（本ページの道筋の素材）
 - [[kouchou-ai-docs-entry-restructure-2026-06-03]]: demo-first spine の原案（Tier 1/3 の入口設計）
