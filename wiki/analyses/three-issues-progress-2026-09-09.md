@@ -13,7 +13,7 @@ sources:
 
 ## 選定
 
-2026-09-09、ユーザーの「他のIssuesを読んで、3件ほど選んで前進させて」指示による。open IssueとDraft #891を観測し、[#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)・[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)・[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)・[#507](https://github.com/digitaldemocracy2030/kouchou-ai/issues/507)・[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・#592の本文等を読んだ。明確な前進が可能な未担当3件を選び、nishioへassignしてmain `751e2c8`から独立branchで作業した。#507はメジャー更新時の削除という条件があるため選ばなかった。
+2026-09-09 の open Issue 棚卸しとして実施。open Issue と Draft [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) を観測し、[#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)・[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)・[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)・[#507](https://github.com/digitaldemocracy2030/kouchou-ai/issues/507)・[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・#592の本文等を読んだ。明確な前進が可能な未担当3件を選び、nishioへassignしてmain `751e2c8`から独立branchで作業した。#507はメジャー更新時の削除という条件があるため選ばなかった。
 
 ## 進めた3件
 
@@ -31,7 +31,7 @@ sources:
 
 ## Open Questions
 
-- #943のCI結果と3PRのマージ判断。今回はマージ指示を受けていない。
+- #943 の CI 結果と 3 PR のマージ判断（マージはレビュー後の判断として保留）。
 - #518の常設公開と、通常staticで観測したReact #418の追加調査。
 - #395のSpreadsheetの取得・列選択、AI設定の最終送信内容の検証。
 

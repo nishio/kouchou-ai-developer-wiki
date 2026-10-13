@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 11:45] filing-back | Q4（編集整理）完了 — transcript 圧縮・指示フレームの事象化
+
+- ヘルスチェック Q4 の substance 判断分を完了。label-coverage-policy-2026-05-29 の「今回の流れ」逐語 transcript を、再利用可能な分業ループ（実験→LLM judge で論点→人間が方針→コード裏取りで政策化）＋事実に圧縮し、会話ログ的記述（「Claude Code に judge させた」等）を一般化。
+- three-issues-progress-2026-09-09 / book-release-development-plan-2026-09 / wiki-driven-workflow の「ユーザーの『…』指示による / ユーザから与えられた / ユーザーから報告」フレームを事象ベースへ（named-person の provenance は保持、AI セッション的フレームのみ除去）。substance は温存。
+- log.md 追記後に [[...]] 解決を commit 前チェック（先の deploy fail の再発防止）。lint clean。次に見る: deploy green 確認。これで wiki ヘルスチェックの承認分（Q2/Q3/Q4）＋ concept hub 4本が一巡。
+
 ## [2026-10-14 11:15] filing-back | ヘルスチェックの coverage gap を埋める concept hub 4 本を新設
 
 - nishio「all」。カバレッジの穴（言及多数だが durable 正本なし）に対し concept hub 4 本を新設し、散在する dated analysis を リンクで束ねた：

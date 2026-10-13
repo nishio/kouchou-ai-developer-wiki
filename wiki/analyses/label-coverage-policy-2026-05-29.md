@@ -106,16 +106,7 @@ UI 上は「代表例 3 件」だけより、`典型例 2 + 幅 2 + 境界 1` �
 
 ## 実験運用上の lesson
 
-今回の流れ:
-
-1. GPT judge が信頼できないと感じた
-2. 判断対象を Markdown に固定形式で吐き出した ([[label-refinement-judge-bundle-2026-05-25]])
-3. Claude Code に judge させた
-4. Claude に「人間に確認すべきことはある？」と聞き、論点 3 件を引き出した
-5. Slack で人間判断を集め、tokoroten から上流 sampling の仮説まで出た
-6. 仮説をコードで確認し、本ページに政策として固定
-
-このループは「Codex が experiment を実行 → Claude が judge して論点を切る → 人間が方針を決める」という分業として機能した。今後 sampling 戦略や title 選択アルゴリズムの実験を回す時にも同じ形が使える。
+このラベル品質の仕切り直しは、**実験を実行 → LLM judge で候補を絞り論点を切り出す → 人間（Slack）が方針を決める → 仮説をコードで裏取りして政策化** という分業ループで固まった。GPT 系 judge が信頼できないと分かった後、判断対象を固定形式で書き出し（[[label-refinement-judge-bundle-2026-05-25]]）別系統の judge にかけ、人間に「確認すべき論点」を問うて 3 件を引き出し、上流 sampling の仮説（tokoroten）をコードで裏取りして本ページに政策として固定した。sampling 戦略や title 選択アルゴリズムの実験でも同じ分業が使える。
 
 ## Open Questions
 
