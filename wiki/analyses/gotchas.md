@@ -209,6 +209,10 @@ Issue #724：静的ファイル出力時のクロスデバイスリンクエラ�
 
 `docs/user-guide/cli-quickstart.md` の `[3, 6]` が示す通り、**ドキュメント中の具体例は AI の de facto デフォルト** になる。例を書くときは「真似されたら困らないか」を意識する必要がある。
 
+### mkdocs のアイコンショートコードは `pymdownx.emoji` が無いと生テキストになる
+
+Material for MkDocs の本文中アイコン `:fontawesome-...:` / `:material-...:` は `pymdownx.emoji`（material の `twemoji` index + `to_svg`）で初めて SVG 化される。`mkdocs.yml` の `markdown_extensions` に無いと、ショートコードがコロン記法のまま公開サイトに出る。**テーマ側のアイコン（`extra.social` の `icon:`、palette の `toggle.icon`）はテンプレート直描画で拡張不要のため正常に出る**ので、「テーマアイコンは出るのに本文アイコンだけ出ない」という食い違いになり気づきにくい。2026-10-13 に docs サイトのホーム OS カードで実際に発生、PR #990 で 3 行追加して解消。詳細と検証は [[docs-site-icon-shortcode-bug-2026-10-13]]。
+
 ### `kouchou-ai` 向け PR は、作業元 repo に関係なく CLA 節が必要
 
 `digitaldemocracy2030/kouchou-ai` の PR テンプレートには `## CLAへの同意` があり、**最終的な提出先が `kouchou-ai` 本体なら CLA チェックが必要**。Wiki repo や scratch repo で下書きしていても免除されない。特に AI が PR 本文を独自生成すると、この節を落としても本文自体は自然に見えてしまうため見逃しやすい。[[contributing]]より

@@ -57,6 +57,7 @@ codex-session-recall-broadlistening-lineage-2026-10-05	source	sources/codex-sess
 deepwiki-kouchou-ai	source	sources/deepwiki-kouchou-ai.md	DeepWiki が生成した kouchou-ai コードベース要約。構造把握には有用だが、最新実装との差分確認が必要
 docker-desktop-license-2026-05-29	source	sources/docker-desktop-license-2026-05-29.md	2026-05-29 時点の Docker 公式文書確認。Docker Desktop は大規模 enterprise の商用利用や政府系 entity では paid subscription が必要になり得るため、自治体・大企業向け Windows 導線ではライセンス確認を前提にする必要がある
 docker-engine-wsl2-alternative-2026-05-23	source	sources/docker-engine-wsl2-alternative-2026-05-23.md	nishio と外部 GPT の対話。Docker Desktop を避ける選択肢として、WSL2 Ubuntu の中に Docker Engine + Docker Compose plugin を直接入れる構成と、その UX コストおよび 2 本立て docs 案を整理したブレスト
+docs-site-icon-shortcode-bug-2026-10-13	source	sources/docs-site-icon-shortcode-bug-2026-10-13.md	2026-10-13 に kouchou-ai ドキュメントサイト（mkdocs-material）のホームを確認したところ、`docs/index.md` のアイコンショートコード `:fontawesome-brands-windows:` 等が変換されず生テキストで表示されていた。原因は `mkdocs.yml` の `markdown_extensions` に `pymdownx.emoji` が無いこと。3行追加する PR #990 を作成し、ローカル build で描画を確認した
 github-actions-timeout-docs-2026-06-01	source	sources/github-actions-timeout-docs-2026-06-01.md	GitHub Actions 公式 docs の timeout-minutes / Actions limits 周辺の要点。Azure Deployment readiness poll の timeout 設計用
 github-dev-docs	source	sources/github-dev-docs.md	kouchou-ai リポジトリと docs/development/ の開発者ドキュメント
 github-high-priority-label-query-footgun-2026-06-30	source	sources/github-high-priority-label-query-footgun-2026-06-30.md	GitHub issue の高優先度 label は `high priority` が正で、`priority: high` ではない。label 名を間違えると open high priority issue が 0 件に見える

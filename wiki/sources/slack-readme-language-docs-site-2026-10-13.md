@@ -48,7 +48,8 @@ sources:
 
 - nishio が「記憶の彼方」と言うドキュメントサイトは**実在する**。`mkdocs.yml` の `site_name: 広聴AI Documentation` / `site_url: https://digitaldemocracy2030.github.io/kouchou-ai/`。README からも各種 setup / user-guide ページがこの GitHub Pages サイトへリンクしている
 - したがって論点は「ドキュメントサイトが無い」ではなく、「非開発者・非英語話者が最初にドキュメントサイトへ着地する導線になっていない（README / GitHub が入口になっている）」ことにある。これは [[nishio-docs-entry-restructure-discussion-2026-06-03]] / [[kouchou-ai-docs-entry-restructure-2026-06-03]] の『docs 入口がセットアップ起点』問題の延長線上
-- nishio の「section 名リンクで README を凍結するな」は、README への外部ディープリンク（`#アンカー`）と README 改訂の間にできる結合を footgun として指摘したもの。distill した設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]
+- nishio の「section 名リンクで README を凍結するな」は、README への外部ディープリンク（`#アンカー`）と README 改訂の間にできる結合を footgun として指摘したもの。distill した設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]。これは GitHub issue **#977**（open / nishio 起票 / 2026-10-12「README 見出しアンカーへの外部直リンク依存をやめ、安定URL(docs)へ寄せる（PR #968 残件）」）として実トラッキングされている
+- この source をきっかけに docs サイトを読み直したところ、ホームの OS カードで mkdocs のアイコンショートコードが生テキスト表示されている別バグが見つかった（[[docs-site-icon-shortcode-bug-2026-10-13]]、PR #990 で修正）
 - 同じ Slack 窓（2026-10-11〜12）では analysis-core のライセンス表記（MIT→AGPL）も別スレッドで走っていたが、それは [[analysis-core-license-history-2026-10-12]] / [[analysis-core-license-intent-2026-10-12]] 側の話題で、本スレッド（README 言語・ドキュメント導線）とは別
 
 ## Updates

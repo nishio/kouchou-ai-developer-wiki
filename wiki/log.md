@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 16:30] filing-back | docs サイトのアイコン表示バグを特定し PR #990 で修正
+
+- 依頼を受け docs サイト（mkdocs-material）を読み直したところ、ホームの OS カードで `:fontawesome-brands-windows:` 等が生テキスト表示。原因は `mkdocs.yml` に `pymdownx.emoji` が無いこと（テーマ側アイコンは出るので気づきにくい食い違い）。
+- 本体に修正 PR #990（`pymdownx.emoji` 3 行追加）。`fix/mkdocs-icon-shortcodes` worktree で作業、mkdocs-material 9.7.7 でローカル build し、生テキスト 0 件・twemoji SVG 3 件描画を確認。
+- 新規 source [[docs-site-icon-shortcode-bug-2026-10-13]]、[[gotchas]]「ドキュメント・運用」に footgun 登録。
+- 併せて、昨日 ingest した README アンカー論点が GitHub issue **#977** として実在することを確認し、[[readme-anchor-freeze-and-docs-entry-2026-10-13]] / [[slack-readme-language-docs-site-2026-10-13]] に反映。
+
 ## [2026-10-13 15:30] ingest | README 言語差し戻しと docs 導線の Slack スレッド
 
 - 貼られた #2_開発_広聴ai スレッド（2026-10-12 17:58 / 20:25、2026-10-13 11:15）を ingest。README をデフォルト英語化（PR #966）→日本語へ差し戻し（PR #968、緊急避難）した事件が背景。docs サイトは実在（`digitaldemocracy2030.github.io/kouchou-ai/`）。
