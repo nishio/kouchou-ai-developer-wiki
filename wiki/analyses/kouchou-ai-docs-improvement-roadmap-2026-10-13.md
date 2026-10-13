@@ -61,7 +61,7 @@ sources:
 ### Tier 3 — policy-gated な構造の本丸（破壊的・product 判断待ち）
 
 - **demo-first spine 完成 + `getting-started/` rename（#876）**、**README アンカー移行（#977）**。#876 は 2026-09-08 に body 再スコープされ PR #925 / #877・#929・#496・#921 を束ねる umbrella 化している。ここは「書けば済む」ではなく、破壊的な rename と外部リンク切れを伴う。**着手前に要る判断**：
-  - (a) rename/old URL の redirect/alias 方針。検証済み：現 `mkdocs.yml` の plugins に redirect 系は無い。`mkdocs-redirects` 導入か旧 path stub かを決めてから rename する。
+  - (a) rename/old URL の redirect/alias 方針。検証済み：現 `mkdocs.yml` の plugins に redirect 系は無い。→ **2026-10-14 nishio 決定：`mkdocs-redirects` を導入する方向で OK**。rename 時は同 plugin で旧 path→新 path の redirect_maps を用意する。
   - (b) README 外部アンカーの棚卸し（どこから何件）と移行先 docs ページ（#977）。GitHub Markdown はカスタム anchor を固定できないので、安定化は docs 側へ移すしかない。
   - (c) spine tier 2-a「managed service」の実在と、仲介者経路の maintainer/責任分界。managed が不在なら研究者の主入口は CLI + カタログ経由になり、実験機能カタログの重みが上がる。
 - **#977 はアンカー衛生の CI 化とセットで**：mkdocs の link/anchor validation（`validation` ブロックの `not_found`/`unrecognized_links: warn` 等）を Tier 0 のゲートに足してから移行する。でないと移行作業自体が #977 の防ぎたいアンカー腐敗を再生産する。

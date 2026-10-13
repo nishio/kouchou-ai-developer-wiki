@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 01:30	filing-back	mkdocs-redirects 導入を決定（Tier 3 #876 rename の前提）
 2026-10-14 01:10	ingest	T1 wave を 3 PR 投入（#999/#1000/#1001）、docs 大掃除は 4 PR 出揃い
 2026-10-14 00:50	ingest	Tier 0 docs cleanup を PR #998 で投入（本体 repo）
 2026-10-14 00:35	filing-back	nishio が ①-⑤ に go、解決内容と version 方針を確定
