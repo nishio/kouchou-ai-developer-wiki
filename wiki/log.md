@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 18:30] filing-back | #52 / #306 を本文追記つき close（#982–987 棚卸し収束）
+
+- nishio 指示で #52 / #306 を `completed` close。updatedAt 照合（不変）→ 元本文保持で「2026-10-13 完了判断」追記 → close。
+- これで #982–987 対応 6 Issue は **close 5（#176/#450/#143/#52/#306）／ OPEN 維持 1（#537）** に収束。#537 は無料モデル実動作が #912/#913 依存で未完。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 18:10] filing-back | #52 / #306 の小残件を現 main で確認 → 両件 close 可
 
 - 保留 2 件の小残件を実コード照合。**両件とも完了基準充足・material 残件なし**（棚卸しの残件懸念は PR 前 main 基準で、#983/#986 が既に充足）。
