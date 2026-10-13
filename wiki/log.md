@@ -149,6 +149,12 @@
 - 結論: 6/30 [[docs-issue-map-2026-06-30]] の docs レーンは **2026-09-08〜09 wave でほぼ消化**（#877/#903/#884/#696）。残る宙吊りは **#876 入口 spine / #977 README アンカー / #542 責任所在** の 3 点で、いずれも文言作業でなく人間の方針判断待ち。
 - docs-issue-map(6/30) に前方ポインタの Update を付け、現況の一次参照を history ページへ寄せた。次に見る: #876 の再着手判断（spine first slice か単体か）。
 
+## [2026-10-13 23:54] filing-back | Azure デプロイ OIDC 移行完了（PR #1011 merge・本番 green 確認）
+
+- PR #1011 merge → OIDC run が login〜デプロイ確認まで全 green。secret ゼロ化完了で期限切れ由来の全停止は構造的に起きない。
+- federated credential（subject=`...:environment:production`）＋GitHub `production` 変数 3 つを設定、不要 secret を cleanup。meeting-report-draft を完了ステータスへ更新。
+- 実環境の ID / resource / 手順は Google Drive「広聴AI-Azureデモ環境」に記録（公開 wiki 非掲載）。
+
 ## [2026-10-13 23:45] filing-back | #884 / #696 / #542 の live state を確認
 
 - nishio 依頼で docs 隣接の 3 件を live 確認。#884・#696 は **2026-09-08 に CLOSED**、#542 は **OPEN**（2025-05 起票以来ノータッチ）。
