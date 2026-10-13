@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 01:50] ingest | docs 大掃除 4 PR を merge・v4.1.0 発行
+
+- nishio が `!` 実行で #998/#999/#1000/#1001 を admin squash merge（`ec9b1fef`/`9602d6b7`/`129f486f`/`6ad727ee`）。AI 側の `gh pr merge` は harness classifier（Merge Without Review）でブロックされるため nishio 実行。
+- merge 後 docs サイト再デプロイ green を確認（nav 6 ページ到達・validation gate 稼働・index demo-first・how-to-use 追従・reminder workflow 有効）。**[`v4.1.0`](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.1.0) release 発行**（main `6ad727ee`、`--generate-notes` で v4.0.0 以降を集約）。`v*` タグは publish workflow を発火しないことを確認済み。
+- **docs 大掃除（Tier 0 + T1）完了**。残り: #542（org signoff）/ Tier 3（#876 rename=mkdocs-redirects / #977 anchor 移行）。次に見る: #876 への残スコープ・コメント追記の要否。
+
 ## [2026-10-14 01:30] filing-back | mkdocs-redirects 導入を決定（Tier 3 #876 rename の前提）
 
 - nishio 決定：`getting-started/` rename（#876 本丸）の redirect 方針は **`mkdocs-redirects` 導入**で進める。rename 時に旧 path→新 path の redirect_maps を用意。[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] Tier 3 (a) を解決に更新。
