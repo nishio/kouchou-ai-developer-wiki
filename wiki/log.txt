@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 08:30	filing-back	v4.1.0 リリーススプリントの retrospective 記事を新設
 2026-10-14 08:00	filing-back	docs 改善スプリントの retrospective 記事を新設
 2026-10-14 07:45	filing-back	#876 を close（canonical 入口達成）、残細目を #1012 に引き継ぎ・#496/#921 de-bundle
 2026-10-14 07:20	ingest	任意残り merge 完了・docs 改善スプリント完全クローズ

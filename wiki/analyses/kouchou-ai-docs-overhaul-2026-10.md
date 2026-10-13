@@ -74,6 +74,7 @@ sources:
 
 ## 関連
 
+- [[kouchou-ai-v4-1-0-release-2026-10]]：本 docs 改善を含む v4.1.0 リリース全体の総括（feature/fix/基盤も含む）
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]：計画と各 Tier の意思決定・実行ログ（本ページの詳細版）
 - [[docs-persona-review-2026-10-13]]：7 ペルソナによる読者体験監査（content gap の出所）
 - [[kouchou-ai-docs-policy-history]]：docs 方針の系譜と横断原則

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 08:30] filing-back | v4.1.0 リリーススプリントの retrospective 記事を新設
+
+- nishio 依頼で、v4.1.0（v4.0.0 以降 ~10 か月・~160 PR・8 コントリビュータ/新規3名）の総括を [[kouchou-ai-v4-1-0-release-2026-10]] に新設。release notes（generate-notes の全 PR）をテーマ別に整理：基盤（コア/実験分離・pandas→polars・Docker 34GB→2.7GB）/ CLI&core（UMAP使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立・自動クラスタ数・PyPI）/ WebUI（散布図連動・操作ヒント・全画面粒度・分析方式選択）/ プラットフォーム（Windows 移植・Azure・ECR fallback）/ ライセンス（AGPL 訂正）/ docs&多言語。
+- docs 面は [[kouchou-ai-docs-overhaul-2026-10]] に委譲し相互リンク。コミュニティ（新規3名・多人数化）も記載。次に見る: 別テーマ or 仕上げ #1012。
+
 ## [2026-10-14 08:00] filing-back | docs 改善スプリントの retrospective 記事を新設
 
 - nishio 依頼で、2026-10 docs 改善スプリントの読み物を [[kouchou-ai-docs-overhaul-2026-10]] に新設。何を・なぜ・どうなったか＋**再利用できる進め方**（live 検証前提 / ペルソナ監査 / discover-fix-gate / content はコード裏取り / 破壊変更は redirect とセット / 法務文面は逆翻訳検証 / umbrella は de-bundle）を 1 枚に。
