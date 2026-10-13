@@ -89,13 +89,13 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 ## 現在の状態（wiki 観測ベース）
 
-- **#876**（developer quickstart / docs entry 再構成）: 最終観測 2026-06-30 で open / nishio assigned。developer-quickstart.md はまだ本体 main に未実装。
-- **#877**（Windows setup guide scope）: 最終観測 2026-06-30 で open / unassigned。
-- **#885 / PR #903**（Node runtime inventory）: 最終観測 2026-06-30 で open。docs-first slice。
-- **#977**（README アンカー依存の脱却）: 2026-10-12 nishio 起票 / open。判断 1 の root-cause 対応。
+- **#876**（developer quickstart / docs entry 再構成）: **2026-10-13 live 確認で open / nishio assigned / label `documentation`**。コメントは 2026-05-31 の 1 件（PR #883 撤回 + 新方針）のみで、6/30 以降の新しい議論なし。developer-quickstart.md はまだ本体 main に未実装の見込み。
+- **#877**（Windows setup guide scope）: 最終観測 2026-06-30 で open / unassigned（今回未再取得）。
+- **#885 / PR #903**（Node runtime inventory）: 最終観測 2026-06-30 で open（今回未再取得）。docs-first slice。
+- **#977**（README アンカー依存の脱却）: **2026-10-13 live 確認で open / unassigned / 起票（2026-10-12）以来コメント 0・ノータッチ**。判断 1 の root-cause 対応。
 - **README**: current main は日本語デフォルト + 言語リンク（#968 差し戻し後）。
 
-> freshness: 上記 issue / PR 状態は wiki に filed された最終観測時点（#876 系は 2026-06-30、README / #977 系は 2026-10-13）のもの。現在の live state は未再取得なので、再着手判断の前に `gh issue view` 等で確認する。
+> freshness: #876 / #977 は 2026-10-13 に `gh issue view` で live 確認し、いずれも wiki 記録から変化なし（ともに open）。#877 / #885 / PR #903 は 2026-06-30 観測のままで未再取得。再着手判断の前にこれらは `gh issue view` で確認する。
 
 ## Open Questions
 
@@ -117,3 +117,4 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 ## Updates
 
 - 2026-10-13: 初版作成。2026-05〜10 に散っていた本体 docs 方針議論（auto-cluster-defaults / PR #883 / 6 月 spine 再設計 / Azure デモ動線化 / docs-issue-map / README 多言語化）を時系列の弧と横断原則で一本化した。
+- 2026-10-13: #876 / #977 を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致（#876 nishio assigned・新規議論なし、#977 起票以来ノータッチ）。freshness 注記を更新。

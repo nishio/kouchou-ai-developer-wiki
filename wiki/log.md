@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 22:15] filing-back | #876 / #977 の live state を確認
+
+- nishio 依頼で docs 系 2 issue を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致。
+- #876: open / nishio assigned / label documentation。新規議論なし（コメントは 2026-05-31 の PR #883 撤回メモ 1 件）。#977: open / unassigned / 起票 2026-10-12 以来コメント 0。
+- [[kouchou-ai-docs-policy-history]] の freshness 注記を「2026-10-13 live 確認・変化なし」へ更新。
+
 ## [2026-10-13 22:00] filing-back | 本体 docs 方針議論の系譜を一本化
 
 - 「過去のドキュメント方針議論を発掘してまとめて」依頼に対し、2026-05〜10 に散っていた本体 docs（mkdocs + README）方針議論を [[kouchou-ai-docs-policy-history]] に統合。

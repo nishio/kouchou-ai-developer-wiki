@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 22:15	filing-back	#876 / #977 の live state を確認
 2026-10-13 22:00	filing-back	本体 docs 方針議論の系譜を一本化
 2026-10-13 21:00	filing-back	PR #995 を admin merge（#992/#993 自動 close）
 2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
