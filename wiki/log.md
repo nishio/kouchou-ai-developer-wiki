@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 19:30] filing-back | PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
+
+- 停滞 Draft **#891（Windows スタンドアロン・tokoroten）** の検証記録 `tmp-embeddable-poc/FINDINGS.md` を評価。embeddable Python 方針成立（numba/UMAP/FastAPI 単一ランタイム完走・torch を LM Studio 委譲で ~650MB）など再利用価値の高い知見を確認。
+- マージ可否と独立に救出: 新 source [[windows-standalone-embeddable-poc-2026-06-01]] を作成、[[gotchas]] に cp932 IO・`sys.executable`・embeddable 分岐の footgun を登録。
+- 現 main に残存の2バグを issue 化：**#992**（`report_launcher.py:92` の `"python"` ハードコード）/ **#993**（`open`/`json.load` の encoding 未指定→日本語 Windows cp932 クラッシュ）。PR 本体は 130 遅れ・4 競合・CLA 未同意で放置、継続は作者判断。
+
 ## [2026-10-13 18:50] filing-back | #537 残件を新 [TEST] #991 へ移管して close（6 Issue 全消化）
 
 - 移管先確認で #912/#913 は GPT/Gemini 専用の実 API 検証で OpenRouter と無関係と判明（audit の「#537 は #912/#913 依存」を訂正）。

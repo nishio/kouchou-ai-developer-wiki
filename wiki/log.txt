@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 19:30	filing-back	PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
 2026-10-13 18:50	filing-back	#537 残件を新 [TEST] #991 へ移管して close（6 Issue 全消化）
 2026-10-13 18:30	filing-back	#52 / #306 を本文追記つき close（#982–987 棚卸し収束）
 2026-10-13 18:10	filing-back	#52 / #306 の小残件を現 main で確認 → 両件 close 可

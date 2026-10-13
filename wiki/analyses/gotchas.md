@@ -169,6 +169,18 @@ Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を
 
 対策が幾度も積まれている（PR #314、setup script、kitaro のバッチ、#524 ネイティブ環境）が継続課題。
 
+### 日本語 Windows の cp932 でテキスト IO がクラッシュする
+
+`open()` / `json.load()` に `encoding` を指定しないと、Python は OS 既定エンコーディングを使う。**日本語 Windows の既定は cp932 (Shift-JIS)** なので、UTF-8 で書かれた JSON を読む段階で `UnicodeDecodeError` でクラッシュする。Linux / Docker は既定 UTF-8 なので **顕在化せず、Windows 実機でだけ壊れる**。書き込み側も未指定だと cp932 で書き出し、別環境で読めない JSON を生む。対策は各所に `encoding="utf-8"` を明示する（根本）か、起動時に `PYTHONUTF8=1`（UTF-8 モード）を立てる（1 行で一括回避・スタンドアロン配布では必須）。[[windows-standalone-embeddable-poc-2026-06-01]] の検証で発掘、現 main でも `report_status.py` / `meta.py` / `admin_report.py` 等に残存（issue #993）。
+
+### subprocess 起動は `"python"` でなく `sys.executable`
+
+パイプラインを別プロセスで起動する時にインタプリタを `"python"` とハードコードすると、**いま動いているのと同じ Python ではなく PATH 上で最初に見つかる `python`** を拾う。venv・embeddable Python・`python3` しか無い環境では別 Python（`analysis_core` 未導入）や不在で壊れる。Docker 標準イメージでは `python` が PATH にあるため気づけない。`sys.executable` を使えば同一インタプリタで起動できる。[[windows-standalone-embeddable-poc-2026-06-01]] で発掘、`report_launcher.py:92` に残存（issue #992）。
+
+### Windows スタンドアロン（embeddable Python）の設計分岐と footgun
+
+embeddable Python に FastAPI＋パイプライン＋静的 viewer を同梱する方針は PoC で成立（numba/UMAP/FastAPI が単一ランタイムで完走、torch を LM Studio 委譲で回避し ~650MB）。ただし **admin は Server Actions のため純静的化できず Node.js 必須**（public-viewer は `output:export` で静的配信可）＝「単一 Python 完結」を阻む最大の分岐点。他に、`pip install ./packages/analysis-core` が embeddable の `_pth` でビルド分離に失敗（wheel 事前ビルドで回避）、`output:export` の空 `generateStaticParams` エラー（sentinel で回避）、`.env.local` の `NEXT_PUBLIC_API_BASEPATH` 上書き、PowerShell 5.1 の `next build` stderr 致命化、`Copy-Item -Recurse` のネスト事故 等。詳細は [[windows-standalone-embeddable-poc-2026-06-01]]。
+
 ### Windows 実機 E2E は runner 設定と app 実装の問題が混ざる
 
 Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。さらに、公開 repo の workflow が個人マシン runner を使う場合は、PR trigger や schedule から動かさず、許可された手動実行だけに絞るべき。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
@@ -261,3 +273,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、削除済みの legacy LLM path / `hierarchical_main.py` を current gotcha として語らないよう補正
 - 2026-10-07: CLI の `report.html` 経路が Web 経路では通らないために、`report_dir` 未定義（#953 / PR #955）と原文リンク設定が効かない件（#954）が残っていたことを追記
+- 2026-10-13: PR #891 の PoC 検証（[[windows-standalone-embeddable-poc-2026-06-01]]）から、日本語 Windows の cp932 でのテキスト IO クラッシュ（#993）・subprocess の `"python"` ハードコード（#992）・embeddable スタンドアロンの設計分岐と footgun を追記
