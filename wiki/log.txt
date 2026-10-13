@@ -24,6 +24,7 @@
 2026-10-14 00:10	filing-back	docs roadmap に実行チェックリストを grounding
 2026-10-13 23:59	filing-back	docs 改善の direction を 4 層 roadmap に固定し、検証で 3 訂正
 2026-10-13 23:55	filing-back	docs 方針 sweep の結論を固定
+2026-10-13 23:45	filing-back	Yandex 攻撃→工作減少説を深掘り検証し unsupported で終了
 2026-10-13 23:45	filing-back	#884 / #696 / #542 の live state を確認
 2026-10-13 23:30	filing-back	仕掛かり PR 消化後に work/kouchou-ai の worktree を整理
 2026-10-13 23:15	filing-back	#877 / #885 / PR #903 の live state を確認

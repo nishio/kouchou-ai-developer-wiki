@@ -133,6 +133,12 @@
 - 結論: 6/30 [[docs-issue-map-2026-06-30]] の docs レーンは **2026-09-08〜09 wave でほぼ消化**（#877/#903/#884/#696）。残る宙吊りは **#876 入口 spine / #977 README アンカー / #542 責任所在** の 3 点で、いずれも文言作業でなく人間の方針判断待ち。
 - docs-issue-map(6/30) に前方ポインタの Update を付け、現況の一次参照を history ページへ寄せた。次に見る: #876 の再着手判断（spine first slice か単体か）。
 
+## [2026-10-13 23:45] filing-back | Yandex 攻撃→工作減少説を深掘り検証し unsupported で終了
+
+- 先行の「X 検証断念」ページ（`yandex-strike-jp-sns-bot-claim-verification-2026-10-13`）に `## Updates` で結論を追記し stale を解消。
+- 結論: 「Yandex DC 攻撃でロシア SNS 工作が減った」は **unsupported**（9/9 の敵対的検証）。バズったグラフは AS13238 ＝ YandexBot 検索クローラで social posts ではない。背景（工作実在）は確立。
+- 深掘り本体は本件テーマ外のため別途まとめ、本公開 wiki には結論・含意のみ。この問題の分析は終了。
+
 ## [2026-10-13 23:45] filing-back | #884 / #696 / #542 の live state を確認
 
 - nishio 依頼で docs 隣接の 3 件を live 確認。#884・#696 は **2026-09-08 に CLOSED**、#542 は **OPEN**（2025-05 起票以来ノータッチ）。
