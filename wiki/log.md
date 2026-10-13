@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 15:30] ingest | README 言語差し戻しと docs 導線の Slack スレッド
+
+- 貼られた #2_開発_広聴ai スレッド（2026-10-12 17:58 / 20:25、2026-10-13 11:15）を ingest。README をデフォルト英語化（PR #966）→日本語へ差し戻し（PR #968、緊急避難）した事件が背景。docs サイトは実在（`digitaldemocracy2030.github.io/kouchou-ai/`）。
+- nishio の 2 判断を distill: ①README を外部アンカーリンクで凍結するな（外部リンクは個別 docs ページへ張らせる）②非英語話者・非開発者の入口は英語UIの GitHub ではなくドキュメントサイトへ。[[kouchou-ai-docs-entry-restructure-2026-06-03]] の延長。
+- 新規: source [[slack-readme-language-docs-site-2026-10-13]] / analysis [[readme-anchor-freeze-and-docs-entry-2026-10-13]]。restructure analysis に forward-pointer を Update 追記。
+
 ## [2026-10-13 12:45] filing-back | 「忠実な集約 vs 熟議の演出」の棲み分けを concept 化
 
 - 意見集約ツールの重心を **忠実な集約(kouchou-ai)** と **熟議の演出/dynamics(OJPP)** の2スタンスに分けるレンズを concept 新設。どちらが上でなく目的が違う、という置き方。[[broadlistening]] の「散布図 vs Long Context」とは直交する別軸。
