@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 18:10] filing-back | #52 / #306 の小残件を現 main で確認 → 両件 close 可
+
+- 保留 2 件の小残件を実コード照合。**両件とも完了基準充足・material 残件なし**（棚卸しの残件懸念は PR 前 main 基準で、#983/#986 が既に充足）。
+- #52: 属性絞込件数（`clusterCounts`→`ClusterOverview` の「N件（フィルター後）」）・説明連動・階層ナビ・0件復帰すべて確認。残は UX nit（再クリック no-op / mode 切替 auto-scroll）のみ、Serverless(#25)・元コメント(#56/#250)は対象外。
+- #306: wishlist 5 項目（ヒント/ズーム/パン/状態保持/帰属可視化）すべて現 main で対応。
+- 両件とも close 推奨へ格上げ可（close は nishio 判断待ち）。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 17:50] filing-back | close 推奨 3 Issue（#176/#450/#143）を本文追記つき close
 
 - nishio 指示で #176 / #450 / #143 を `completed` close。updatedAt 照合（不変）→ 元本文保持のまま「2026-10-13 完了判断（満たした範囲／残件）」を追記 → close。

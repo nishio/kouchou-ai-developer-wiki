@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 18:10	filing-back	#52 / #306 の小残件を現 main で確認 → 両件 close 可
 2026-10-13 17:50	filing-back	close 推奨 3 Issue（#176/#450/#143）を本文追記つき close
 2026-10-13 17:30	filing-back	#982–987 対応 6 Issue の完了・close 判断を棚卸し
 2026-10-13 16:30	filing-back	docs サイトのアイコン表示バグを特定し PR #990 で修正
