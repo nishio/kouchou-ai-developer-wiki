@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 00:35] filing-back | nishio が ①-⑤ に go、解決内容と version 方針を確定
+
+- **① #876 分割:可**（additive index.md router=T1-a を子 slice で今出す / rename は Tier 3）。**② managed service:現状なし**（提供者が現れる余地は残す）→ spine tier2 = managed なし/仲介者=現route/self-host に確定、長年の Open Question 解決。**③ 保守ゲート:可**（非ブロッキング）。**⑤ rot-gate を拡張前:OK**。
+- **④ #977 anchor 棚卸し実施**: repo 内 fragile deep-link は実質 1 本（`ReporterContent.tsx:15` → `README.md#メタデータファイルのセットアップ`）。他は page 内 TOC で対象外。言語別 README で anchor が異なるのが本質。fix は「安定 docs URL + その 1 本張替」で足りる。
+- **version 方針**: 本体は v4.x release tag 運用（最新 v4.0.0）。今回の docs 大掃除 + feature wave を **v4.1.0** として、Tier 0 docs PR merge 後に tag。
+- [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] / [[kouchou-ai-docs-entry-restructure-2026-06-03]] に反映。次: Tier 0 PR を本体 repo に作成（worktree `work/kouchou-ai-docs-tier0`）。
+
 ## [2026-10-14 00:20] filing-back | docs roadmap にクリティカルパス（先に解決すべき順）を追加
 
 - 「最短で最良に至るため先に解決すべきことは」への回答。核心は**最短路を塞ぐのは労力でなく決定**。Tier 0 / T1-b は純実行でブロッカーではない（即・並行）。

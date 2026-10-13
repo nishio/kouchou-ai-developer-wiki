@@ -131,3 +131,14 @@ sources:
 - [[kouchou-ai-docs-entry-restructure-2026-06-03]]: demo-first spine の原案（Tier 1/3 の入口設計）
 - [[readme-anchor-freeze-and-docs-entry-2026-10-13]]: #977 アンカー凍結回避（Tier 3 の前提）
 - [[issue-876-developer-docs-gap-audit-2026-06-30]]: #876 の 6/30 gap audit（本ページは直近 wave 後の再設計）
+
+## Updates
+
+- 2026-10-14: **nishio がクリティカルパス ①-⑤ に go**。解決内容を確定：
+  - **① #876 の分割：可**。additive な index.md demo-first intro + 読者像 router（T1-a）を #876 の子 slice として今出す。破壊的な `getting-started/` rename は Tier 3 に隔離。
+  - **② managed service（spine tier 2-a）：現状なし**。ただし nishio「そういうのを提供するサービスを行う人がいてもいい」。→ spine tier 2 は **(a) managed=現状なし（将来提供者が現れる余地を残す文言）/ (b) 仲介者=現route / (c) self-host** に確定。研究者の主入口は CLI + 実験機能カタログ側に寄る（カタログの重みが上がる）。B（自治体担当）へは「managed は未提供・仲介者/self-host が現実の経路」と正直に案内する。長年の Open Question（[[kouchou-ai-docs-entry-restructure-2026-06-03]]）がここで解決。
+  - **③ 保守プロセスゲート（T1-c）：可**（非ブロッキング前提）。PR テンプレ 1 行 + `apps/public-viewer`/`apps/admin` を触って how-to-use を触らない PR への非ブロッキング reminder。
+  - **④ #977 anchor 棚卸し：実施済み**。repo 内の fragile な README-anchor 外部 deep-link は実質 **1 本**＝`apps/public-viewer/components/reporter/ReporterContent.tsx:15` → `README.md#メタデータファイルのセットアップ`（URL-encoded）。他の `](#...)` は各ページ内 TOC で #977 対象外。言語別 README（md/en/ko）で heading anchor が異なるため、デフォルト言語切替（#966→#968 事件）で静かに切れるのが本質。→ #977 の fix は「メタデータ設定に安定 docs URL を与え、この 1 本の `<a>` を張り替える」で足りる（想定より小さい）。真の外部リンク（他 repo/blog）は repo からは不可知。
+  - **⑤ rot-gate を拡張前に：OK**。Tier 0（T0-b validation gate）を spine 拡張より先に入れる。
+- 2026-10-14: **バージョン方針**（nishio「今回の大掃除にマイナーリビジョンを振ってもいい」）。本体は `vMAJOR.MINOR.PATCH` の GitHub release tag 運用（最新 **v4.0.0**=2025-12-27、以降 ~10 か月で #176/#961/#52/#306/#975/#996/#515/#450/#992・#993 Windows 移植性など多数 merge 済み）。**今回の docs 大掃除 + feature wave を `v4.1.0` として release tag** を切る。タイミングは Tier 0（+ できれば T1-b）docs PR が merge されてから、cleanup を含める形で。analysis-core は別系統（`analysis-core-vX.Y.Z`, 現 0.1.3）なので対象外。
+- 2026-10-14: 実行着手。Tier 0（nav 6 登録 + validation gate + #450）を本体 repo に直接 PR 化（判断ゼロ）。work/kouchou-ai は main 固定なので `work/kouchou-ai-docs-tier0` worktree で作業。

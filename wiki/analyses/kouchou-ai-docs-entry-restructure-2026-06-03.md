@@ -87,6 +87,7 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 
 ## Updates
 
+- 2026-10-14: **managed service 経路の実在性（Open Question）が nishio 回答で解決**：spine tier 2-a の managed service は**現状なし**。ただし「そういうのを提供する人がいてもいい」として将来提供者の余地は残す。→ tier 2 は (a) managed=現状なし / (b) 仲介者=現 route / (c) self-host に確定し、研究者の主入口は CLI + 実験機能カタログ寄りになる。実行方針は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] の Updates を参照。
 - 2026-10-13: 本ページを含む本体 docs 方針議論（2026-05〜10）の系譜と横断原則を [[kouchou-ai-docs-policy-history]] に一本化した。本ページは spine 再設計そのもの、history ページはその前後（docs = AI の default / README 多言語化・アンカー凍結回避まで）を含む全体の弧。
 - 2026-10-13: README をデフォルト英語化（PR #966）→日本語へ差し戻し（PR #968）した事件をめぐる Slack 議論で、nishio が「英語で怯む層が見るべきは英語UIの GitHub ではなくドキュメントサイト」と改めて整理。本 analysis の「docs 入口を spine から組み替える」問題がここへ戻ってきた。導線設計・README とのアンカー結合の話は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]（一次ソース [[slack-readme-language-docs-site-2026-10-13]]）
 - 2026-06-04: tier 2 を「(a) managed / (b) self-host」の 2 択から「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択へ refinement ([[nishio-slack-azure-demo-visibility-proposal-2026-06-04]])。Azure デモを docs から動線化するための具体 4 問は [[azure-demo-public-visibility-proposal-2026-06-04]] へ切り出した
