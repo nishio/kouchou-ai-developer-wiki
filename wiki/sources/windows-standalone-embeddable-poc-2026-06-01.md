@@ -21,7 +21,7 @@ kouchou-ai の PR **#891**（作者 tokoroten・**Draft**・2026-06-01 作成、
 
 ## 発掘された、現 main にも残るバグ（PR と独立に価値）
 
-2026-10-13 時点の main で残存を確認し、issue 化のうえ **PR #995 で両方を修正**した（API 318 / analysis-core 321 tests pass・ruff clean）：
+2026-10-13 時点の main で残存を確認し、issue 化のうえ **PR #995 で両方を修正・main へ merge 済み**（merge commit `a570d689`、#992/#993 とも自動 close、API 318 / analysis-core 321 tests pass・ruff clean）：
 
 - **`report_launcher.py:92` が `"python"` をハードコード** → PATH 上の別 Python を拾う。`sys.executable` にすべき。analysis-core は Docker/推奨ローカル開発で API と同一環境に入る（`apps/api/pyproject.toml` のコメント）ため `sys.executable` が正しい。→ **issue #992 / PR #995**。
 - **`open()`/`json.load` の多くが `encoding` 未指定** → 日本語 Windows の既定 cp932 で UTF-8 JSON を読み `UnicodeDecodeError` でクラッシュ（Linux/Docker は UTF-8 既定で顕在化しない）。`report_status.py` / `meta.py` / `admin_report.py` 等の API 起動・実行時読み取り経路が該当。PR #995 は `apps/api` と `analysis-core` の読み書き両方に `encoding="utf-8"` を明示（起動時 `PYTHONUTF8=1` でも一括回避可）。→ **issue #993 / PR #995**。

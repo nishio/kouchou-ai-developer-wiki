@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 21:00] filing-back | PR #995 を admin merge（#992/#993 自動 close）
+
+- CI 全 10 green 後、nishio 指示で **PR #995（Windows 移植性）を admin squash merge**（`a570d689`）。**#992/#993 とも自動 CLOSED**（Closes キーワード）。
+- 後片付け: worktree `work/kouchou-ai-992993` 削除、本体 HEAD は main。[[windows-standalone-embeddable-poc-2026-06-01]] の該当記述も merge 済みへ更新。
+
 ## [2026-10-13 20:30] filing-back | #992/#993（Windows 移植性）を実装し PR #995
 
 - nishio 指示で [[windows-standalone-embeddable-poc-2026-06-01]] 由来の2バグを実装。worktree `work/kouchou-ai-992993`（`fix/windows-portability-992-993`）、本体 HEAD は main。両 issue に self-assign 済み。

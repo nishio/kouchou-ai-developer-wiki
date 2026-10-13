@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 21:00	filing-back	PR #995 を admin merge（#992/#993 自動 close）
 2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
 2026-10-13 20:10	filing-back	PR #996（#994 指定カテゴリ分類 CLI）を admin merge
 2026-10-13 19:40	filing-back	#994（#176方向性2）を CLI 実装・PR #996 作成
