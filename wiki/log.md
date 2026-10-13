@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 17:30] filing-back | #982–987 対応 6 Issue の完了・close 判断を棚卸し
+
+- 6 PR 全 merge 後、対応 Issue（#176/#450/#143/#52/#306/#537）を audit baseline（合意要件・残件）× 本ラウンドのレビュー結果 × 現 main `c1c9e917` 再確認で照合。
+- 判定: **close 推奨 3（#176/#450/#143）**・**close 候補 2（#52/#306、小残件の要否確認後）**・**OPEN 維持 1（#537＝無料モデル実動作が #912/#913 依存で未完）**。
+- **close 実行・Issue 本文編集はせず**（人間 attention 判断として nishio 確認待ち）。close 時は本文に満たした範囲/残件/統合先を日付つき追記 → 残件を存続 Issue へ引継ぎ。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 16:30] filing-back | docs サイトのアイコン表示バグを特定し PR #990 で修正
 
 - 依頼を受け docs サイト（mkdocs-material）を読み直したところ、ホームの OS カードで `:fontawesome-brands-windows:` 等が生テキスト表示。原因は `mkdocs.yml` に `pymdownx.emoji` が無いこと（テーマ側アイコンは出るので気づきにくい食い違い）。

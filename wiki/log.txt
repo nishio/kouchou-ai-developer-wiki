@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 17:30	filing-back	#982–987 対応 6 Issue の完了・close 判断を棚卸し
 2026-10-13 16:30	filing-back	docs サイトのアイコン表示バグを特定し PR #990 で修正
 2026-10-13 15:30	ingest	README 言語差し戻しと docs 導線の Slack スレッド
 2026-10-13 12:45	filing-back	「忠実な集約 vs 熟議の演出」の棲み分けを concept 化
