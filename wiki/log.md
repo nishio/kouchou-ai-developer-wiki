@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 22:00] filing-back | 本体 docs 方針議論の系譜を一本化
+
+- 「過去のドキュメント方針議論を発掘してまとめて」依頼に対し、2026-05〜10 に散っていた本体 docs（mkdocs + README）方針議論を [[kouchou-ai-docs-policy-history]] に統合。
+- 弧: docs=AI の default（[[auto-cluster-defaults]]）→ 利用モード別導線（[[pr-883-restructuring-2026-05-31]]）→ demo-first spine 再設計（[[kouchou-ai-docs-entry-restructure-2026-06-03]]）→ Azure デモ動線化 → docs issue 地図化（[[docs-issue-map-2026-06-30]]）→ README 多言語化・アンカー凍結回避（[[readme-anchor-freeze-and-docs-entry-2026-10-13]]）。横断原則 7 点と未決論点を整理。
+- 次に見る: issue #876 / #877 / #977 の live state（wiki 観測は 6/30・10/13 止まり、再着手前に `gh issue view` で確認）。
+
 ## [2026-10-13 21:00] filing-back | PR #995 を admin merge（#992/#993 自動 close）
 
 - CI 全 10 green 後、nishio 指示で **PR #995（Windows 移植性）を admin squash merge**（`a570d689`）。**#992/#993 とも自動 CLOSED**（Closes キーワード）。
@@ -535,13 +541,3 @@
 
 - 大木の Slack 報告（WSL2 + `start_linux.sh` で自治体 PC 上で動作）を [[slack-municipal-pc-wsl2-2026-10-05]] として source 化。
 - [[windows-distribution-options]] にルート B 初の実機成功例、政府機関は Docker Desktop が有料という規約、#877 前提の見直し、WSL 3 は様子見、を追記。推奨案は大木の反応待ち。
-
-## [2026-10-06 21:45] filing-back | PR #952 レビュー判断を analyses に記録
-
-- ホスト公開ポートとコンテナ間接続先を分ける観点、初回コントリビュータPRでCodeQLが承認待ちになる点、軽微なdocs追随のmain直接修正を [[pr-952-ollama-host-port-review-2026-10-06]] に記録。
-- [[local-dev-setup]] に `OLLAMA_HOST_PORT` を追記。Open Question: api の `localhost:11434` 既定値の追随要否。
-
-## [2026-10-06 21:30] filing-back | 外部PR #952のマージを記録
-
-- Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能にする#952がmain `73ce8df` へ反映、#951 CLOSED。
-- [[current-status-2026-10-05]]・[[meeting-report-draft]]へ追記。`docs/index.md` のポート表は main `a12d68e` へ直接修正済み。

@@ -87,6 +87,7 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 
 ## Updates
 
+- 2026-10-13: 本ページを含む本体 docs 方針議論（2026-05〜10）の系譜と横断原則を [[kouchou-ai-docs-policy-history]] に一本化した。本ページは spine 再設計そのもの、history ページはその前後（docs = AI の default / README 多言語化・アンカー凍結回避まで）を含む全体の弧。
 - 2026-10-13: README をデフォルト英語化（PR #966）→日本語へ差し戻し（PR #968）した事件をめぐる Slack 議論で、nishio が「英語で怯む層が見るべきは英語UIの GitHub ではなくドキュメントサイト」と改めて整理。本 analysis の「docs 入口を spine から組み替える」問題がここへ戻ってきた。導線設計・README とのアンカー結合の話は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]（一次ソース [[slack-readme-language-docs-site-2026-10-13]]）
 - 2026-06-04: tier 2 を「(a) managed / (b) self-host」の 2 択から「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択へ refinement ([[nishio-slack-azure-demo-visibility-proposal-2026-06-04]])。Azure デモを docs から動線化するための具体 4 問は [[azure-demo-public-visibility-proposal-2026-06-04]] へ切り出した
 - 2026-06-05: Azure デモ動線化 4 問が [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地。viewer 公開 + admin 共用は進める方向で、spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。tier 1 のコンテンツ目的は「データ投入の予行演習」ではなく「使い方や準備すべきデータを理解するための参照環境」、と再フレーム
