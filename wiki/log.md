@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 07:20] ingest | 任意残り merge 完了・docs 改善スプリント完全クローズ
+
+- **#1009 merge（`f8356704`）→ #977 CLOSED**（CI link-check: validation.links + GitHub 互換 slugify が本番稼働、docs deploy で全サイトの内部リンク検証が strict に通ることを確認）。**#1010 merge（`4b2d08f9`）**で canonical「始め方の選び方」ページが live（200）。当方 open PR ゼロ。
+- **docs 改善スプリント完全クローズ**: v4.1.0（Tier 0）→ T1 → content gap → #542（closed）→ Tier 3 → 任意仕上げ（#977 closed / #876 canonical）。投入 PR = #998〜#1006, #1008, #1009, #1010。
+- 残（任意・小）: #876 umbrella の close 判断（canonical ページ提供済み）/ README への「始め方」統合（任意）。次に見る: nishio の次テーマ。
+
 ## [2026-10-14 07:00] ingest | 任意残り（#977 CI link-check / #876 canonical ページ）を PR 化（#1009/#1010）
 
 - **#977 CI link-check = PR #1009（closes #977）**: mkdocs.yml に `validation.links`（not_found/anchors/absolute_links/unrecognized_links: warn）を追加し、既存 `mkdocs build --strict` が内部リンク/アンカー切れで失敗するように。あわせて `toc.slugify` を GitHub 互換 unicode（`pymdownx.slugs.slugify(case=lower)`）にし、日本語見出しアンカー（従来 `_1` 潰れ）を解決。broken link でゲート発火を実証。
