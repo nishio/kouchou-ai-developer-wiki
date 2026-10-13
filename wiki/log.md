@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 05:30] ingest | Tier 3 完了（#977 PR #1006 merge・metadata-setup live）
+
+- **#1006 merge 済み（main `d759df7c`）**、docs deploy success、`user-guide/metadata-setup` が公開サイトで 200。`ReporterContent.tsx` の README アンカー直リンクは安定 docs ページへ張替え完了。
+- **Tier 3 完了**（#876 rename＋redirects=live / #977 anchor 移行=live）。これで docs 改善ロードマップは **Tier 0→content gap→#542→Tier 3 まで一巡**。当方の open PR はゼロ。
+- 残（小物・急がない）: #977 の CI markdown link-check 追加（#977 body の残提案）/ #542 の README.en・ko 反映＋#542・#977 の close 判断 / #876 umbrella の canonical startup ページ統合。次に見る: nishio の close 判断と en/ko 着手可否。
+
 ## [2026-10-14 05:00] ingest | Tier 3 完了見込み：#876 rename merge・live 確認、#977 を PR #1006
 
 - **#876 rename merge 済み（#1005 → main `41e91010`）・live 確認**：旧 `getting-started/windows-setup` が 200 を返し `self-hosting/windows-setup` へ redirect することを公開サイトで確認。getting-started/ は self-hosting/ に、nav は「セルフホスト」に。
