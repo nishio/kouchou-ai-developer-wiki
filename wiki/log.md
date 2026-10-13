@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 20:30] filing-back | #992/#993（Windows 移植性）を実装し PR #995
+
+- nishio 指示で [[windows-standalone-embeddable-poc-2026-06-01]] 由来の2バグを実装。worktree `work/kouchou-ai-992993`（`fix/windows-portability-992-993`）、本体 HEAD は main。両 issue に self-assign 済み。
+- **#992**: `report_launcher` の subprocess 起動を `"python"`→`sys.executable`。analysis-core は API と同一環境（`apps/api/pyproject.toml` のコメントで確認）なので安全かつ堅牢。既存テストの argv[0] 期待値も5箇所更新。
+- **#993**: `open`/`os.fdopen` の encoding 未指定 10 ファイルに `encoding="utf-8"` を明示（読み書き両方）。日本語 Windows cp932 クラッシュ/文字化け対策。
+- 検証: API pytest 318 pass・analysis-core 321 pass・ruff clean。**PR #995**（Closes #992/#993）。CI 待ち。
+
 ## [2026-10-13 19:30] filing-back | PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
 
 - 停滞 Draft **#891（Windows スタンドアロン・tokoroten）** の検証記録 `tmp-embeddable-poc/FINDINGS.md` を評価。embeddable Python 方針成立（numba/UMAP/FastAPI 単一ランタイム完走・torch を LM Studio 委譲で ~650MB）など再利用価値の高い知見を確認。
