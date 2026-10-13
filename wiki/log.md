@@ -9,6 +9,12 @@
 - マージ可否と独立に救出: 新 source [[windows-standalone-embeddable-poc-2026-06-01]] を作成、[[gotchas]] に cp932 IO・`sys.executable`・embeddable 分岐の footgun を登録。
 - 現 main に残存の2バグを issue 化：**#992**（`report_launcher.py:92` の `"python"` ハードコード）/ **#993**（`open`/`json.load` の encoding 未指定→日本語 Windows cp932 クラッシュ）。PR 本体は 130 遅れ・4 競合・CLA 未同意で放置、継続は作者判断。
 
+## [2026-10-13 19:10] filing-back | #176 方向性(2) を #994 として起票（CLI-first・「その他」必須）
+
+- #176 残件の「人間が付与した所与トピックへの意見分類（supervised 分類）」を新 Issue #994 化。#176 に breadcrumb コメント。
+- 設計要点: engine は `_discover_groups` スキップ＋固定枠を `_assign_groups` へ／**「その他」カテゴリ必須自動付与**（押し込み防止・枠過不足シグナル、シン東京2050 事例）／CLI・core 先行で WebUI は別 Issue。
+- 「その他」必須を memory 化（supervised-classification-other-bucket）。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 18:50] filing-back | #537 残件を新 [TEST] #991 へ移管して close（6 Issue 全消化）
 
 - 移管先確認で #912/#913 は GPT/Gemini 専用の実 API 検証で OpenRouter と無関係と判明（audit の「#537 は #912/#913 依存」を訂正）。
