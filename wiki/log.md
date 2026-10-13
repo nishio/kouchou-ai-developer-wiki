@@ -20,6 +20,11 @@
 - CI 全 10 green 後、nishio 指示で **PR #995（Windows 移植性）を admin squash merge**（`a570d689`）。**#992/#993 とも自動 CLOSED**（Closes キーワード）。
 - 後片付け: worktree `work/kouchou-ai-992993` 削除、本体 HEAD は main。[[windows-standalone-embeddable-poc-2026-06-01]] の該当記述も merge 済みへ更新。
 
+## [2026-10-13 20:50] filing-back | #994 の WebUI 統合を #997 として起票
+
+- #994（CLI 済）の残件＝WebUI 統合を新 Issue #997 化。作成 UI の指定カテゴリ分類・カテゴリ入力フォーム・「その他」固定表示・**config round-trip 整合（#987 の prune/update_json BLOCKER の轍を踏まない）**を論点として明記。接続点（admin AISettingsSection/useAISettings、api analysis_config/report_launcher）も記載。
+- #994 に #997 への breadcrumb、concept [[llm-grouping-supervised-classification]] の「WebUI 未対応」に #997 を紐付け。
+
 ## [2026-10-13 20:30] filing-back | #992/#993（Windows 移植性）を実装し PR #995
 
 - nishio 指示で [[windows-standalone-embeddable-poc-2026-06-01]] 由来の2バグを実装。worktree `work/kouchou-ai-992993`（`fix/windows-portability-992-993`）、本体 HEAD は main。両 issue に self-assign 済み。
@@ -84,6 +89,13 @@
 - 6 PR 全 merge 後、対応 Issue（#176/#450/#143/#52/#306/#537）を audit baseline（合意要件・残件）× 本ラウンドのレビュー結果 × 現 main `c1c9e917` 再確認で照合。
 - 判定: **close 推奨 3（#176/#450/#143）**・**close 候補 2（#52/#306、小残件の要否確認後）**・**OPEN 維持 1（#537＝無料モデル実動作が #912/#913 依存で未完）**。
 - **close 実行・Issue 本文編集はせず**（人間 attention 判断として nishio 確認待ち）。close 時は本文に満たした範囲/残件/統合先を日付つき追記 → 残件を存続 Issue へ引継ぎ。[[pr-982-987-review-round-2026-10-12]]。
+
+## [2026-10-13 17:30] filing-back | 本体 docs の読者別カバレッジ監査（直近 feature wave 後）
+
+- 「docs を各読者にどうあるべきか」= 5 読者像（[[pr-883-developer-quickstart-draft-2026-05-31]]）に照らし、current main@a570d689 の実カバレッジを照合。
+- 偏り: E(CLI 研究者)は cli-quickstart で追従、A/C(WebUI 利用者)は #176/#961/#52/#306 が how-to-use.md に未記載、D/運用は 7 ページが nav 未登録で到達不能、入口は今も setup 起点。
+- 修正候補を 1-PR 粒度で 1→2→3（nav 登録→how-to-use 追記→5 読者像の入口分岐）に整理。#977 は 3 に吸収。
+- 新規 [[docs-reader-coverage-audit-2026-10-13]]。別セッション作の系譜ページ [[kouchou-ai-docs-policy-history]] と相互リンク。
 
 ## [2026-10-13 16:30] filing-back | docs サイトのアイコン表示バグを特定し PR #990 で修正
 

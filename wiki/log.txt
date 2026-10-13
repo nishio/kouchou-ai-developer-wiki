@@ -6,6 +6,7 @@
 2026-10-13 22:15	filing-back	#876 / #977 の live state を確認
 2026-10-13 22:00	filing-back	本体 docs 方針議論の系譜を一本化
 2026-10-13 21:00	filing-back	PR #995 を admin merge（#992/#993 自動 close）
+2026-10-13 20:50	filing-back	#994 の WebUI 統合を #997 として起票
 2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
 2026-10-13 20:30	filing-back	指定カテゴリ分類（#994）の正本を concept 化
 2026-10-13 20:10	filing-back	PR #996（#994 指定カテゴリ分類 CLI）を admin merge
@@ -17,6 +18,7 @@
 2026-10-13 18:10	filing-back	#52 / #306 の小残件を現 main で確認 → 両件 close 可
 2026-10-13 17:50	filing-back	close 推奨 3 Issue（#176/#450/#143）を本文追記つき close
 2026-10-13 17:30	filing-back	#982–987 対応 6 Issue の完了・close 判断を棚卸し
+2026-10-13 17:30	filing-back	本体 docs の読者別カバレッジ監査（直近 feature wave 後）
 2026-10-13 16:30	filing-back	docs サイトのアイコン表示バグを特定し PR #990 で修正
 2026-10-13 15:30	ingest	README 言語差し戻しと docs 導線の Slack スレッド
 2026-10-13 12:45	filing-back	「忠実な集約 vs 熟議の演出」の棲み分けを concept 化

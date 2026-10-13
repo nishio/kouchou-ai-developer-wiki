@@ -90,12 +90,13 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 ## 現在の状態（wiki 観測ベース）
 
 - **#876**（developer quickstart / docs entry 再構成）: **2026-10-13 live 確認で open / nishio assigned / label `documentation`**。コメントは 2026-05-31 の 1 件（PR #883 撤回 + 新方針）のみで、6/30 以降の新しい議論なし。developer-quickstart.md はまだ本体 main に未実装の見込み。
-- **#877**（Windows setup guide scope）: 最終観測 2026-06-30 で open / unassigned（今回未再取得）。
-- **#885 / PR #903**（Node runtime inventory）: 最終観測 2026-06-30 で open（今回未再取得）。docs-first slice。
+- **#877**（Windows setup guide scope）: **2026-10-13 live 確認で CLOSED（2026-09-08、nishio assigned / label `documentation`）**。**PR #929「docs: Windows導入の対象環境と失敗時の確認順を明確化」（nishio, branch `codex/issue-877-windows-guide`, merged 2026-09-08）で close**。6 月に wiki で整理した [[windows-setup-guide-outline-2026-06-30]]（対象環境 / 対象外環境 / 失敗時の確認順）がほぼこの形で landing した。
+- **PR #903**（Node runtime inventory docs, #885 第1完了条件）: **2026-10-13 live 確認で MERGED（2026-09-08, yasumorishima）**。6/30 は open / review required / blocked だったが、その後 merge 済み。
+- **#885**（Windows 単一 exe 向け Node runtime 依存排除）: **2026-10-13 live 確認で open / unassigned / label enhancement・Client・Admin・API**。2026-09-09 に yasumorishima が shell-build 方式（`NEXT_PUBLIC_STATIC_SHELL=1` でレポート非依存 HTML を 1 ルート出力し slug へ複製）の実装計画を提示し、9 月の shell viewer PR 群（[[pr-935-936-overview-2026-09-09]] / [[issue-939-shell-metadata-2026-09-09]]）へ具体化。full な Node-runtime-free 配布はまだ未完。
 - **#977**（README アンカー依存の脱却）: **2026-10-13 live 確認で open / unassigned / 起票（2026-10-12）以来コメント 0・ノータッチ**。判断 1 の root-cause 対応。
 - **README**: current main は日本語デフォルト + 言語リンク（#968 差し戻し後）。
 
-> freshness: #876 / #977 は 2026-10-13 に `gh issue view` で live 確認し、いずれも wiki 記録から変化なし（ともに open）。#877 / #885 / PR #903 は 2026-06-30 観測のままで未再取得。再着手判断の前にこれらは `gh issue view` で確認する。
+> freshness: #876 / #877 / #885 / #903 / #977 は 2026-10-13 に `gh issue view` / `gh pr view` で live 確認。6/30 からの変化は **#877 CLOSED（PR #929）/ PR #903 MERGED / #885 が shell-build で前進** の 3 点。#876（open・新規議論なし）と #977（open・ノータッチ）は変化なし。
 
 ## Open Questions
 
@@ -108,6 +109,7 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 ## 関連
 
+- [[docs-reader-coverage-audit-2026-10-13]]: 本ページの原則（5 読者像）に照らした current main の実カバレッジ監査。直近 feature wave 後に A/C(WebUI 利用者)が未追従・D/運用が nav 未登録で未到達、という偏りと 1-PR 粒度の修正候補
 - [[docs-issue-map-2026-06-30]]: 2026-06-30 時点の docs issue 依存マップ（本ページの点断面）
 - [[kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03]]: docs 読者像の背後にあるプロダクト・スコープ線
 - [[broadlistening-tool-ecosystem-vision]]: Web UI = simple / CLI = 実験機能、という二段構造（docs 分岐の根拠）

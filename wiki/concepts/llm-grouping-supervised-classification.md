@@ -51,7 +51,7 @@ LLM grouping には枠の決め方で2つのモードがある。
 ## 実装とスコープ
 
 - engine は `packages/analysis-core/src/analysis_core/steps/llm_grouping.py`。内部は「枠の発見（`_discover_groups`）→ 各意見の割り当て（`_assign_groups`）」の2段で、指定カテゴリ分類は発見段をスキップして固定枠を割り当て段へ渡す。非該当・無効応答は先頭枠ではなく「その他」へ寄せる。
-- 現状は **CLI 専用**（`kouchou-analyze --config config.json`）。作成 UI（管理画面）からの指定カテゴリ分類は未対応で、今後別途対応する。
+- 現状は **CLI 専用**（`kouchou-analyze --config config.json`）。作成 UI（管理画面）からの指定カテゴリ分類は未対応で、WebUI 統合は Issue #997 で扱う（カテゴリ入力フォーム・「その他」固定表示・config の prune/round-trip 整合が論点）。
 - 由来は Issue #176（LLM ベース分類の2方向）。自動グルーピングの作成 UI + API + engine は #987、指定カテゴリ分類の CLI 実装は #994 / PR #996 で main 入り。
 
 ## Open Questions
