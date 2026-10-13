@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 17:50] filing-back | close 推奨 3 Issue（#176/#450/#143）を本文追記つき close
+
+- nishio 指示で #176 / #450 / #143 を `completed` close。updatedAt 照合（不変）→ 元本文保持のまま「2026-10-13 完了判断（満たした範囲／残件）」を追記 → close。
+- **スコープ補正**: #176 は提案 2 方向のうち #987 が満たすのは (1) 自動トピック構築のみで、(2) 所与トピック分類は未実装 → 残件明記（新 Issue 化は保留）。#450 の Serverless/実モデル確認、#143 の製品統合は元本文どおり別スコープ。
+- #52 / #306 は close 候補のまま保留、#537 は OPEN 維持。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 17:30] filing-back | #982–987 対応 6 Issue の完了・close 判断を棚卸し
 
 - 6 PR 全 merge 後、対応 Issue（#176/#450/#143/#52/#306/#537）を audit baseline（合意要件・残件）× 本ラウンドのレビュー結果 × 現 main `c1c9e917` 再確認で照合。
