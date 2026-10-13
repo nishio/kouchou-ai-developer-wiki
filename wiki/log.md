@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 11:30] filing-back | 「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
+
+- nishio から外部 repo `ochyai/open-japan-politech-platform` 参照依頼。README + `ai-participate` route を読み、語を **(A)agent-as-consumer / (B)agent-as-participant / (C)agent-as-co-developer** の3義に分解。実装の大半は標準的な API-first で、agent 専用項目は `v0.2` 未実装（repo は 2026-03 以降 dormant）。
+- 核心: OJPP BroadListening の `ai-participate` は **AI が合成意見を意見プールへ注入**＝ [[kouchou-ai]] broadlistening の「人間を聴く」と極性が逆。人間/AI 信号の分離が設計論点。DD2030 が転用しやすいのは (A) agent-ready API / MCP。
+- 新規: source [[ojpp-repo-source-2026-10-13]] / entity [[ojpp]] / analysis [[ojpp-agent-first-design-read-2026-10-13]]。[[dd2030]] に外部参照を追記。
+
 ## [2026-10-13 09:45] filing-back | マージ可能な #975 / #984 を admin merge（残 open は #986 のみ）
 
 - nishio 指示で CI 全 green の2件を admin squash merge：**#975（侮辱・ヘイト/政策提案ラベルの任意ステップ, `1e7fdae5`）/ #984（#450 埋め込みモデル独立選択, `8f402d2e`）**。通常 merge は ruleset（必須承認1）で拒否のため admin override（人間が `!` 実行）。

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 11:30	filing-back	「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
 2026-10-13 09:45	filing-back	マージ可能な #975 / #984 を admin merge（残 open は #986 のみ）
 2026-10-13 03:09	filing-back	#983 を admin merge・#984 を rebase
 2026-10-13 00:15	filing-back	独立 PR #982/#985 を admin merge

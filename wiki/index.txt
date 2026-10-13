@@ -33,6 +33,7 @@ kuboon	entity	entities/kuboon.md	Ohkubo KOHEI — Outline self-host とドキュ
 nasuka	entity	entities/nasuka.md	Nasuka Sumino (角野) — 抽出プロンプト・limited-publish・クラスタタイトル手動編集等を実装したコントリビュータ
 nishio	entity	entities/nishio.md	西尾泰和 — kouchou-ai のリファクタ／研究主導、本 Wiki のオーナー
 ohki-shingo	entity	entities/ohki-shingo.md	大木真吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当
+ojpp	entity	entities/ojpp.md	Open Japan PoliTech Platform（ochyai）。DD2030 を参照しつつ『エージェントファースト設計を追加』を掲げる外部の政治テック基盤。BroadListening を再実装
 other-contributors	entity	entities/other-contributors.md	その他の主要コントリビュータ — kitaro, tanenobu, shirouchi, sasano ほか
 polimoney	entity	entities/polimoney.md	政治資金可視化 OSS。kouchou-ai と兄弟プロジェクト
 talk-to-the-city	entity	entities/talk-to-the-city.md	TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived
@@ -107,6 +108,7 @@ nishio-one-factor-experiment-principle-2026-06-02	source	sources/nishio-one-fact
 nishio-slack-azure-demo-visibility-proposal-2026-06-04	source	sources/nishio-slack-azure-demo-visibility-proposal-2026-06-04.md	2026-06-04 22:00 / 22:29 nishio の dd2030 Slack 投稿。docs entry 3 段階 spine の改訂版と、Azure デモサイトを docs から動線化する具体案 4 問を Ohki さんに投げかけている
 nishio-source-freshness-criterion-2026-06-02	source	sources/nishio-source-freshness-criterion-2026-06-02.md	2026-06-02 に nishio が、Wiki の情報鮮度は議事録をいつ時点まで読んだか、Slack をいつ時点まで読んだかを基準として明示すべきだと指摘したメモ
 note-annotakahiro-broadlistening-resources-2025-02-05	source	sources/note-annotakahiro-broadlistening-resources-2025-02-05.md	安野たかひろ公式 note 2025-02-05。TTTC でブロードリスニングを実施するのに必要なヒト/モノ/カネを整理した実務ガイド。M-1 2024 分析 (NSK) の実コスト $230 も含む
+ojpp-repo-source-2026-10-13	source	sources/ojpp-repo-source-2026-10-13.md	ochyai/open-japan-politech-platform（OJPP）README 読解。PoliTech / 7アプリ / 「エージェントファースト設計」表 / BroadListening の ai-participate を記録
 open-issue-backlog-2026-05-19	source	sources/open-issue-backlog-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue 145 件を本文付きで読み、recent issue だけでなく古い backlog も含めて未解決問題の全体像を取るための source
 open-issues-snapshot-2026-05-19	source	sources/open-issues-snapshot-2026-05-19.md	2026-05-19 時点の `digitaldemocracy2030/kouchou-ai` open issue を新しい順に読み、`analysis-core` CLI 整備と Web/静的公開まわりの事故修正に論点が集中していることを記録した snapshot
 open-pr-observation-2026-05-18	source	sources/open-pr-observation-2026-05-18.md	2026-05-18 の open PR / review triage 実験で観測した head branch 更新挙動
@@ -264,6 +266,7 @@ node-runtime-free-windows-exe-2026-05-31	analysis	analyses/node-runtime-free-win
 non-nishio-human-pr-status	analysis	analyses/non-nishio-human-pr-status.md	2026-05-18 の stale cleanup 後、nishio 以外の人間 authored open PR は `shingo-ohki` の `#817` だけで、古い draft `#734` と `#597` は close 済み
 npm-vs-pnpm	analysis	analyses/npm-vs-pnpm.md	なぜ pnpm 必須で npm 非対応か — plugin システムが要求する node_modules 分離
 ohki-discussion-reflection-2026-05-25	analysis	analyses/ohki-discussion-reflection-2026-05-25.md	ohki-shingo との議論は、散布図互換の技術判断を、自治体利用で公開UIが担うべき説明責務へ引き戻したものとして読める
+ojpp-agent-first-design-read-2026-10-13	analysis	analyses/ojpp-agent-first-design-read-2026-10-13.md	『エージェントファースト設計』の批判的読解。agent-as-consumer / participant / co-developer の3義に分解し、kouchou-ai broadlistening との緊張（ai-participate）と転用可能な部分を整理
 one-factor-experiment-principle-2026-06-02	analysis	analyses/one-factor-experiment-principle-2026-06-02.md	pipeline 実験は探索 corpus と採用判断用の clean experiment を分け、採用判断では current main baseline から `factor_under_test` を 1 つだけ変えるべきという実験設計原則。ラベル品質は単独批評ではなく A/B preference で人間評価し、複数要素変更 run は単独で winner 判定しない
 open-decisions	analysis	analyses/open-decisions.md	未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類
 other-issue-candidates-2026-09-07	analysis	analyses/other-issue-candidates-2026-09-07.md	open Issue 128件から#905以外の次候補を検討。#908/#477の重複、#452のtimeout受け渡し欠落、#884・#877の実装単位と#898の検証待ちを整理
