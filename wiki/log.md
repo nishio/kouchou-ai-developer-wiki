@@ -5,7 +5,7 @@
 
 ## [2026-10-14 11:15] filing-back | ヘルスチェックの coverage gap を埋める concept hub 4 本を新設
 
-- nishio「all」。カバレッジの穴（言及多数だが durable 正本なし）に対し concept hub 4 本を新設し、散在する dated analysis を [[リンク]]で束ねた：
+- nishio「all」。カバレッジの穴（言及多数だが durable 正本なし）に対し concept hub 4 本を新設し、散在する dated analysis を リンクで束ねた：
   - [[label-quality]]（クラスタラベルの契約＝全体傾向を歪めず少数軸保持／品質評価5レイヤ／judge の self-eval 罠）
   - [[experiment-methodology]]（exploratory/clean・1要素・blind A/B・judge 較正・presentation_context 分解・3層保存。CLAUDE.md にしかなかった原則を言語化）
   - [[extraction-faithfulness]]（step1 の忠実性＝完走≠意味保持・モデル別書換・受け入れ条件）
