@@ -120,3 +120,4 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 - 2026-10-13: 初版作成。2026-05〜10 に散っていた本体 docs 方針議論（auto-cluster-defaults / PR #883 / 6 月 spine 再設計 / Azure デモ動線化 / docs-issue-map / README 多言語化）を時系列の弧と横断原則で一本化した。
 - 2026-10-13: #876 / #977 を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致（#876 nishio assigned・新規議論なし、#977 起票以来ノータッチ）。freshness 注記を更新。
+- 2026-10-13: #877 / #885 / PR #903 も live 確認し、6/30 からの差分を反映。**#877 は PR #929 で CLOSED（2026-09-08）**、**PR #903 は MERGED（2026-09-08）**、**#885 は shell-build 方式で前進**（いずれも wiki 記録では未反映だった）。

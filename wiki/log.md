@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:15] filing-back | #877 / #885 / PR #903 の live state を確認
+
+- nishio 依頼で docs 系の残り 3 件を live 確認。6/30 観測から変化あり。
+- **#877 は CLOSED**（PR #929「Windows導入の対象環境と失敗時の確認順」で 2026-09-08 close、6 月の [[windows-setup-guide-outline-2026-06-30]] がほぼ landing）。**PR #903（Node runtime inventory）は MERGED**（2026-09-08）。**#885 は open のまま shell-build 方式で前進**（yasumorishima, 9 月、[[pr-935-936-overview-2026-09-09]] 系へ具体化）。
+- [[kouchou-ai-docs-policy-history]] の「現在の状態」と freshness 注記を実測へ更新。
+
 ## [2026-10-13 23:00] filing-back | PR-887 sanitize の粒度を nishio レビューで確定
 
 - 「これ削る必要あったかな？」の問いに Batch 4 sanitize の実状を再確認。除去したのは生テレメトリ（health JSON・console/system ログ逐語）＋ revision 実 ID・resource サイズ実値行のみで、教訓（`exit 137`=OOM SIGKILL、latest≠latestReady の false-positive 機序）と物語の肝になる数字（1Gi→2Gi）は残置済みと判明。
