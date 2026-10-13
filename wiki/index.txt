@@ -332,3 +332,4 @@ windows-setup-encoding-decision	analysis	analyses/windows-setup-encoding-decisio
 windows-setup-guide-outline-2026-06-30	analysis	analyses/windows-setup-guide-outline-2026-06-30.md	Issue #877 の Windows setup guide を current main に落とすための具体アウトライン。対象環境 / 対象外環境を冒頭で切り、Docker Desktop supported path 内だけをトラブルシュートする
 workflow-defaultization-blockers	analysis	analyses/workflow-defaultization-blockers.md	`run_workflow()` default 化を止めていた主 blocker は main で解消され、Phase 8 cleanup 後はいま何が follow-up だけ残っているかを切り分ける履歴ページ
 worktree-hygiene	analysis	analyses/worktree-hygiene.md	`work/kouchou-ai/` は current issue の作業場として保ち、別件試作は dedicated worktree に逃がし、canonical でない local 生成物は ignore まで含めて早めに掃除した方が混乱が少ない
+yandex-strike-jp-sns-bot-claim-verification-2026-10-13	analysis	analyses/yandex-strike-jp-sns-bot-claim-verification-2026-10-13.md	Yandex DC 攻撃後の『AfD/MAGA bot 急減』を日本語 SNS(X)で検証しようとしたが、X の full-archive が実質 Enterprise only で retrospective 検証は非現実的と判断して断念。元主張自体も crawler traffic の誤読で未証明

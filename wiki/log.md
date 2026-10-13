@@ -9,6 +9,12 @@
 - 核心: OJPP BroadListening の `ai-participate` は **AI が合成意見を意見プールへ注入**＝ [[kouchou-ai]] broadlistening の「人間を聴く」と極性が逆。人間/AI 信号の分離が設計論点。DD2030 が転用しやすいのは (A) agent-ready API / MCP。
 - 新規: source [[ojpp-repo-source-2026-10-13]] / entity [[ojpp]] / analysis [[ojpp-agent-first-design-read-2026-10-13]]。[[dd2030]] に外部参照を追記。
 
+## [2026-10-13 10:10] filing-back | Yandex DC 攻撃後の『bot 急減』を日本語 SNS(X) で検証可能か→X 単体では非現実的と判断し断念
+
+- [[nishio]] の問い:Yandex DC 攻撃（Sasovo 10/8 等）後の「AfD/MAGA bot 急減」を、日本語 SNS の概念キーワード（排外主義/反移民/反ウクライナ）で前後比較できるか。固有名詞（参政党）は名指しせず概念で測る方針。
+- 律速は X のデータ取得:2026 の X API は full-archive が実質 Enterprise（月 $42k〜の情報源）、安い recent search は直近 7 日のみで pre 2 日/post 5 日しか取れず baseline 不能 → **断念**。元主張も「bot 急減」グラフが Yandex web クローラ trafficの誤読で未証明。
+- negative result として [[yandex-strike-jp-sns-bot-claim-verification-2026-10-13]] に filing back（将来やるなら volume 有意検定でなく account-level 協調クラスタ検定 + Bluesky/業者データ、を再開メモとして併記）。
+
 ## [2026-10-13 09:45] filing-back | マージ可能な #975 / #984 を admin merge（残 open は #986 のみ）
 
 - nishio 指示で CI 全 green の2件を admin squash merge：**#975（侮辱・ヘイト/政策提案ラベルの任意ステップ, `1e7fdae5`）/ #984（#450 埋め込みモデル独立選択, `8f402d2e`）**。通常 merge は ruleset（必須承認1）で拒否のため admin override（人間が `!` 実行）。
