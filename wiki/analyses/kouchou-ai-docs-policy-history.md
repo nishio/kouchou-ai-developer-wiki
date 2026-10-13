@@ -91,21 +91,21 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 **2026-09 wave 後の棚卸し（2026-10-13 live 確認で判明）**: 6/30 の [[docs-issue-map-2026-06-30]] が並べた docs レーンは、**2026-09-08〜09 の merge / close wave でほぼ消化された**（#877 Windows guide → PR #929、PR #903 Node inventory → merge、#884 作成前確認 → PR #922、#696 誤読防止 → PR #924・#24）。残る docs 方針の宙吊りは次の 3 点に絞られる：
 
-1. **入口 spine の本丸 #876**（nishio assigned だが 2026-05-31 以降の議論なし）— demo-first spine / `getting-started/` rename という「書けば済む」より大きい docs product design
+1. **入口 spine の本丸 #876**（nishio assigned。last comment は 2026-05-31 だが **body は 2026-09-08 に再スコープされ umbrella 化**）— demo-first spine / `getting-started/` rename という「書けば済む」より大きい docs product design
 2. **README アンカー衛生 #977**（2026-10-12 起票・ノータッチ）— 安定 URL を docs 側へ寄せる判断 1 の root-cause
 3. **レポート責任所在 #542**（2025-05-19 起票・ノータッチ）— reading-guide レーンの片割れ。「読み方」(#696) は landing したが「責任所在」は未着手
 
 3 点とも **実装レーン（#885 shell-build 等）より人間の方針判断待ち** が残っている部分であり、文言を書く作業ではなく入口設計・安定 URL 設計・責任分界の意思決定が律速。
 
-- **#876**（developer quickstart / docs entry 再構成）: **2026-10-13 live 確認で open / nishio assigned / label `documentation`**。コメントは 2026-05-31 の 1 件（PR #883 撤回 + 新方針）のみで、6/30 以降の新しい議論なし。developer-quickstart.md はまだ本体 main に未実装の見込み。
+- **#876**（developer quickstart / docs entry 再構成）: **2026-10-13 live 確認で open / nishio assigned / label `documentation`**。コメントは 2026-05-31 の 1 件（PR #883 撤回 + 新方針）のみだが、**body が 2026-09-08（updatedAt）に再スコープ**され「現状と残作業」節で PR #925 / #877・#929・#496・#921 を束ねる umbrella になっている。したがって「2026-05-31 以降ノータッチ」ではなく「last comment は 5/31・body 再スコープは 9/08」が正確。developer-quickstart.md（PR #883 は CLOSED）は本体 main 未着。
 - **#877**（Windows setup guide scope）: **2026-10-13 live 確認で CLOSED（2026-09-08、nishio assigned / label `documentation`）**。**PR #929「docs: Windows導入の対象環境と失敗時の確認順を明確化」（nishio, branch `codex/issue-877-windows-guide`, merged 2026-09-08）で close**。6 月に wiki で整理した [[windows-setup-guide-outline-2026-06-30]]（対象環境 / 対象外環境 / 失敗時の確認順）がほぼこの形で landing した。
 - **PR #903**（Node runtime inventory docs, #885 第1完了条件）: **2026-10-13 live 確認で MERGED（2026-09-08, yasumorishima）**。6/30 は open / review required / blocked だったが、その後 merge 済み。
 - **#885**（Windows 単一 exe 向け Node runtime 依存排除）: **2026-10-13 live 確認で open / unassigned / label enhancement・Client・Admin・API**。2026-09-09 に yasumorishima が shell-build 方式（`NEXT_PUBLIC_STATIC_SHELL=1` でレポート非依存 HTML を 1 ルート出力し slug へ複製）の実装計画を提示し、9 月の shell viewer PR 群（[[pr-935-936-overview-2026-09-09]] / [[issue-939-shell-metadata-2026-09-09]]）へ具体化。full な Node-runtime-free 配布はまだ未完。
 - **#977**（README アンカー依存の脱却）: **2026-10-13 live 確認で open / unassigned / 起票（2026-10-12）以来コメント 0・ノータッチ**。判断 1 の root-cause 対応。
-- **#696 / #542**（レポート誤読防止 + 責任所在 = reading-guide / trust-layer docs レーン）: **2026-10-13 live 確認で #696 CLOSED（2026-09-08, nishio）/ #542 なお OPEN**。#696 は **PR #924「レポートに読み方ガイドを表示し、件数の誤解釈を防ぐ」+ PR #24（本体と揃えた読み方ガイドをレポート・単一HTMLに追加）** で close。一方 **#542「レポートに関する責任の所在を明記」（label `documentation`・`API`）は unassigned で 2025-05-19 起票以来ノータッチ**。[[report-reading-guide-minimum-wording-2026-06-30]] の「読み方」側は landing、「責任所在」側は未着手、と非対称に進んだ。
+- **#696 / #542**（レポート誤読防止 + 責任所在 = reading-guide / trust-layer docs レーン）: **2026-10-13 live 確認で #696 CLOSED（2026-09-08, nishio）/ #542 なお OPEN**。#696 は **PR #924「レポートに読み方ガイドを表示し、件数の誤解釈を防ぐ」（kouchou-ai, 2026-09-08 merge）** で close。あわせて cross-repo の **`tokoroten/kouchou-ai-serverless#24`（本体と揃えた読み方ガイドを単一HTMLに追加, 2026-09-09 merge）** が serverless 側で landing（`kouchou-ai#24` は無関係な別 issue なので混同しない）。一方 **#542「レポートに関する責任の所在を明記」（label `documentation`・`API`）は unassigned で 2025-05-19 起票以来ノータッチ**。[[report-reading-guide-minimum-wording-2026-06-30]] の「読み方」側は landing、「責任所在」側は未着手、と非対称に進んだ。
 - **README**: current main は日本語デフォルト + 言語リンク（#968 差し戻し後）。
 
-> freshness: #876 / #877 / #885 / #903 / #977 / #696 / #542 は 2026-10-13 に `gh issue view` / `gh pr view` で live 確認。6/30 からの変化は **#877 CLOSED（PR #929）/ PR #903 MERGED / #885 が shell-build で前進 / #696 CLOSED（PR #924・#24）** の 4 点。残る OPEN は #876（新規議論なし）/ #885（前進中）/ #977（ノータッチ）/ #542（ノータッチ）。
+> freshness: #876 / #877 / #885 / #903 / #977 / #696 / #542 は 2026-10-13 に `gh issue view` / `gh pr view` で live 確認。6/30 からの変化は **#877 CLOSED（PR #929）/ PR #903 MERGED / #885 が shell-build で前進 / #696 CLOSED（PR #924 + serverless#24）** の 4 点。残る OPEN は #876（body 2026-09-08 再スコープ=umbrella）/ #885（前進中・no-assignee）/ #977（ノータッチ）/ #542（ノータッチ）。
 
 ## Open Questions
 
@@ -118,6 +118,7 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 ## 関連
 
+- [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]: 本ページの原則と現在地監査を踏まえ「何がどうなると良いか / どの順で」を 4 層 roadmap（write-and-done+rot-gate → additive reader-facing → signed content → policy-gated 本丸）に落とした direction
 - [[docs-reader-coverage-audit-2026-10-13]]: 本ページの原則（5 読者像）に照らした current main の実カバレッジ監査。直近 feature wave 後に A/C(WebUI 利用者)が未追従・D/運用が nav 未登録で未到達、という偏りと 1-PR 粒度の修正候補
 - [[docs-issue-map-2026-06-30]]: 2026-06-30 時点の docs issue 依存マップ（本ページの点断面）
 - [[kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03]]: docs 読者像の背後にあるプロダクト・スコープ線
@@ -131,3 +132,4 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 - 2026-10-13: #876 / #977 を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致（#876 nishio assigned・新規議論なし、#977 起票以来ノータッチ）。freshness 注記を更新。
 - 2026-10-13: #877 / #885 / PR #903 も live 確認し、6/30 からの差分を反映。**#877 は PR #929 で CLOSED（2026-09-08）**、**PR #903 は MERGED（2026-09-08）**、**#885 は shell-build 方式で前進**（いずれも wiki 記録では未反映だった）。
 - 2026-10-13: reading-guide / trust-layer レーンの #696 / #542 を live 確認。**#696（誤読防止）は PR #924・#24 で CLOSED（2026-09-08）/ #542（責任所在）はなお OPEN・ノータッチ**。「読み方」は landing・「責任所在」は未着手の非対称を記録。なお #884（作成前確認パネル）は docs-policy というより試行錯誤負担（#221）レーンの UX 機能で、PR #922 の first slice で CLOSED 済み（下位 #11/#79/#292/#391 等は残置）。詳細は [[issue-884-pre-create-review-contract-2026-06-30]] / [[trial-and-error-burden-reduction-2026-05-29]]。
+- 2026-10-13: 独立 live 再検証（9 agent workflow）で 2 箇所を訂正。(1) **#876 は「2026-05-31 以降議論なし」でなく、body が 2026-09-08 に再スコープされた umbrella**（last comment と updatedAt を区別）。(2) **#696 を閉じた「#24」は cross-repo の `tokoroten/kouchou-ai-serverless#24`** であって `kouchou-ai#24` ではない。あわせて本ページの原則を道筋化した [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] を新設。

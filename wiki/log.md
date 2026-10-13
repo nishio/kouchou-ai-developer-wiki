@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:59] filing-back | docs 改善の direction を 4 層 roadmap に固定し、検証で 3 訂正
+
+- nishio 依頼「docs 改善で何がどうなると良いか」に対し、9 agent workflow で既存 2 ページ（[[kouchou-ai-docs-policy-history]] / [[docs-reader-coverage-audit-2026-10-13]]）の live claim を独立再検証 + 理想像を 3 レンズで起案し収束を取り、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] を新設。
+- 道筋: **Tier 0 今すぐ出せる write-and-done+rot-gate**（nav 6 ページ登録 + `validation.nav.omitted_files: warn` で CI ゲート化 + #450 fix）→ **Tier 1 additive reader-facing**（index.md demo-first intro + how-to-use catch-up + WebUI PR の how-to-use touch check）→ **Tier 2 signed content**（#542）→ **Tier 3 policy-gated 本丸**（#876 spine rename + #977 anchor 移行）。律速は文言でなく人間の product 判断。
+- 検証で 3 訂正を filing back: audit は **#450 を「記載あり」と誤記**（実質未記載）、history は **#876「議論なし」→ 2026-09-08 body 再スコープ=umbrella**・**#696 の「#24」は cross-repo `serverless#24`**。
+- 根因: **CLI/WebUI 保守非対称**（CLI docs は feature PR が触るが how-to-use/nav は腐る）→ one-time catch-up でなく CI/process ゲートで塞ぐ。次に見る: nishio の #876 切り方判断（additive first slice を umbrella の子で切るか）。
+
 ## [2026-10-13 23:55] filing-back | docs 方針 sweep の結論を固定
 
 - 一連の live 確認（#876/#877/#885/#903/#977/#696/#542/#884）の so-what を [[kouchou-ai-docs-policy-history]] の「現在の状態」冒頭に synthesis として明記。
