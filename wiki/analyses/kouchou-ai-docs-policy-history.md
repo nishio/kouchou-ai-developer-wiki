@@ -94,9 +94,10 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 - **PR #903**（Node runtime inventory docs, #885 第1完了条件）: **2026-10-13 live 確認で MERGED（2026-09-08, yasumorishima）**。6/30 は open / review required / blocked だったが、その後 merge 済み。
 - **#885**（Windows 単一 exe 向け Node runtime 依存排除）: **2026-10-13 live 確認で open / unassigned / label enhancement・Client・Admin・API**。2026-09-09 に yasumorishima が shell-build 方式（`NEXT_PUBLIC_STATIC_SHELL=1` でレポート非依存 HTML を 1 ルート出力し slug へ複製）の実装計画を提示し、9 月の shell viewer PR 群（[[pr-935-936-overview-2026-09-09]] / [[issue-939-shell-metadata-2026-09-09]]）へ具体化。full な Node-runtime-free 配布はまだ未完。
 - **#977**（README アンカー依存の脱却）: **2026-10-13 live 確認で open / unassigned / 起票（2026-10-12）以来コメント 0・ノータッチ**。判断 1 の root-cause 対応。
+- **#696 / #542**（レポート誤読防止 + 責任所在 = reading-guide / trust-layer docs レーン）: **2026-10-13 live 確認で #696 CLOSED（2026-09-08, nishio）/ #542 なお OPEN**。#696 は **PR #924「レポートに読み方ガイドを表示し、件数の誤解釈を防ぐ」+ PR #24（本体と揃えた読み方ガイドをレポート・単一HTMLに追加）** で close。一方 **#542「レポートに関する責任の所在を明記」（label `documentation`・`API`）は unassigned で 2025-05-19 起票以来ノータッチ**。[[report-reading-guide-minimum-wording-2026-06-30]] の「読み方」側は landing、「責任所在」側は未着手、と非対称に進んだ。
 - **README**: current main は日本語デフォルト + 言語リンク（#968 差し戻し後）。
 
-> freshness: #876 / #877 / #885 / #903 / #977 は 2026-10-13 に `gh issue view` / `gh pr view` で live 確認。6/30 からの変化は **#877 CLOSED（PR #929）/ PR #903 MERGED / #885 が shell-build で前進** の 3 点。#876（open・新規議論なし）と #977（open・ノータッチ）は変化なし。
+> freshness: #876 / #877 / #885 / #903 / #977 / #696 / #542 は 2026-10-13 に `gh issue view` / `gh pr view` で live 確認。6/30 からの変化は **#877 CLOSED（PR #929）/ PR #903 MERGED / #885 が shell-build で前進 / #696 CLOSED（PR #924・#24）** の 4 点。残る OPEN は #876（新規議論なし）/ #885（前進中）/ #977（ノータッチ）/ #542（ノータッチ）。
 
 ## Open Questions
 
@@ -121,3 +122,4 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 - 2026-10-13: 初版作成。2026-05〜10 に散っていた本体 docs 方針議論（auto-cluster-defaults / PR #883 / 6 月 spine 再設計 / Azure デモ動線化 / docs-issue-map / README 多言語化）を時系列の弧と横断原則で一本化した。
 - 2026-10-13: #876 / #977 を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致（#876 nishio assigned・新規議論なし、#977 起票以来ノータッチ）。freshness 注記を更新。
 - 2026-10-13: #877 / #885 / PR #903 も live 確認し、6/30 からの差分を反映。**#877 は PR #929 で CLOSED（2026-09-08）**、**PR #903 は MERGED（2026-09-08）**、**#885 は shell-build 方式で前進**（いずれも wiki 記録では未反映だった）。
+- 2026-10-13: reading-guide / trust-layer レーンの #696 / #542 を live 確認。**#696（誤読防止）は PR #924・#24 で CLOSED（2026-09-08）/ #542（責任所在）はなお OPEN・ノータッチ**。「読み方」は landing・「責任所在」は未着手の非対称を記録。なお #884（作成前確認パネル）は docs-policy というより試行錯誤負担（#221）レーンの UX 機能で、PR #922 の first slice で CLOSED 済み（下位 #11/#79/#292/#391 等は残置）。詳細は [[issue-884-pre-create-review-contract-2026-06-30]] / [[trial-and-error-burden-reduction-2026-05-29]]。

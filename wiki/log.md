@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:45] filing-back | #884 / #696 / #542 の live state を確認
+
+- nishio 依頼で docs 隣接の 3 件を live 確認。#884・#696 は **2026-09-08 に CLOSED**、#542 は **OPEN**（2025-05 起票以来ノータッチ）。
+- **#696（誤読防止）**: PR #924「読み方ガイド表示」+ PR #24 で close。**#542（責任所在）**: unassigned・未着手 → reading-guide レーンは「読み方 landing・責任所在 未着手」の非対称。**#884（作成前確認パネル, high priority）**: PR #922 の first slice で close（下位 #11/#79/#292/#391 は残置）。
+- [[kouchou-ai-docs-policy-history]] に #696/#542 レーンを追加、freshness を 7 件 live 確認へ更新。
+
 ## [2026-10-13 23:30] filing-back | 仕掛かり PR 消化後に work/kouchou-ai の worktree を整理
 
 - #982–987 ラウンド＋独立 #975＋Windows 移植性 #995 まで全 merge し、**当方の仕掛かり PR はゼロ**（open PR は #891=tokoroten の Draft のみ、worktree 無し）。
