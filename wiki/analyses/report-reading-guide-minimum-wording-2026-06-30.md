@@ -10,11 +10,11 @@ sources:
 
 ## Conclusion
 
-#696 と #542 は別々に閉じるより、公開事例ページ・public-viewer・README/docs にまたがる **レポートの読み方** として扱う方がよい。#696 は、広聴AIレポートが「なんとなく説得力を産むツール」として誤読される問題を扱い、#542 はレポートに関する責任所在の明記を扱う。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) と [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は別々に閉じるより、公開事例ページ・public-viewer・README/docs にまたがる **レポートの読み方** として扱う方がよい。[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) は、広聴AIレポートが「なんとなく説得力を産むツール」として誤読される問題を扱い、[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) はレポートに関する責任所在の明記を扱う。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-current main では、public-viewer footer に「レポート内容はレポーターに帰属します」と、免責 dialog 内の「質問や意見はレポート発行責任者へ」という趣旨の文言が既にある。一方 README と docs index の免責は LLM バイアス・保証なし・重要判断時の検証に寄っており、#542 は「footer に何もない」問題ではなく、**責任所在・読み方・保証しない範囲を、docs / 事例ページ / viewer で揃える問題**として読むのが正確である。[[source-code]]より
+current main では、public-viewer footer に「レポート内容はレポーターに帰属します」と、免責 dialog 内の「質問や意見はレポート発行責任者へ」という趣旨の文言が既にある。一方 README と docs index の免責は LLM バイアス・保証なし・重要判断時の検証に寄っており、[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は「footer に何もない」問題ではなく、**責任所在・読み方・保証しない範囲を、docs / 事例ページ / viewer で揃える問題**として読むのが正確である。[[source-code]]より
 
-#696 を再読すると、誤読防止の核心は「広聴AIを課題発見ツールとして説明し、内部利用の分析と有権者・外部向けアピールを混同しない」ことである。#542 の参照元 #539 では、利用規約はレポート出力者側が書くもの、判断結果の責任所在は免責事項へ入れるものと切り分けられている。したがって、reading guide は `LLM は間違うことがあります` だけでは足りず、**何を得るための道具か / 何を保証しないか / 誰が説明責任を持つか / 外部向け利用時の注意**をセットにする必要がある。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) を再読すると、誤読防止の核心は「広聴AIを課題発見ツールとして説明し、内部利用の分析と有権者・外部向けアピールを混同しない」ことである。[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の参照元 [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) では、利用規約はレポート出力者側が書くもの、判断結果の責任所在は免責事項へ入れるものと切り分けられている。したがって、reading guide は `LLM は間違うことがあります` だけでは足りず、**何を得るための道具か / 何を保証しないか / 誰が説明責任を持つか / 外部向け利用時の注意**をセットにする必要がある。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
 ## Minimum Copy
 
@@ -48,7 +48,7 @@ current main では、public-viewer footer に「レポート内容はレポー�
 
 ## Implementation Reading
 
-#542 の issue body だけを読むと、footer に責任所在がないように見える。しかし 2026-06-30 の current main では、footer には既にレポーター帰属と発行責任者への問い合わせ文言がある。[[source-code]]より
+[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の issue body だけを読むと、footer に責任所在がないように見える。しかし 2026-06-30 の current main では、footer には既にレポーター帰属と発行責任者への問い合わせ文言がある。[[source-code]]より
 
 したがって次の実装 slice は、footer の単純追加ではない。
 
@@ -58,7 +58,7 @@ current main では、public-viewer footer に「レポート内容はレポー�
 4. report metadata に責任主体をどう表すかは、既存 `reporter` を運用で使うか、schema を増やすかを別判断にする。
 5. termsLink / 利用規約はレポート発行主体側が書くものとして、OSS 側の免責・reading guide と混同しない。
 
-この順序なら、#564 の公開事例公開と #696 / #542 の trust layer を同じ読者体験にまとめられる。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
+この順序なら、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例公開と [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の trust layer を同じ読者体験にまとめられる。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
 
 ## Non-goals
 
@@ -76,5 +76,5 @@ current main では、public-viewer footer に「レポート内容はレポー�
 
 ## Updates
 
-- 2026-06-30: #696 / #542 / #539 を再読し、課題発見ツールとしての説明、内部分析と外部アピールの分離、termsLink は発行主体側という責任境界を最小文言案へ反映。
-- 2026-06-30: 初回作成。Issue #696 / #542 と current main の footer / README / docs を照合し、最小文言案と配置方針を固定した。
+- 2026-06-30: [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) を再読し、課題発見ツールとしての説明、内部分析と外部アピールの分離、termsLink は発行主体側という責任境界を最小文言案へ反映。
+- 2026-06-30: 初回作成。Issue [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) と current main の footer / README / docs を照合し、最小文言案と配置方針を固定した。

@@ -25,7 +25,7 @@ sources:
 
 表示更新が失敗しても、ページは `revalidate = 300` で自分から取り直すので、症状は「公開切り替えなどの反映が最大 5 分遅れる」にとどまる。エラーは api のログに出るだけで、利用者からは見えない。
 
-## 修正の判断（PR #957）
+## 修正の判断（PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)）
 
 - **`.env.example` を丸ごとコピーする方式は採らなかった。** `.env.example` には Azure のダミー値（`AZURE_CHATCOMPLETION_API_KEY=*****` など）がある。analysis-core は Azure の変数が「未設定か」でエラー案内を出し分けている。ダミー値が入ると、Azure を選んだ時の「変数が未設定です」という案内が認証エラーに変わる
 - そのため、3 スクリプトに 3 行（`CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` / `REVALIDATE_URL`）を足した。そのうえで `scripts/check_setup_env.py` で、`.env.example` の全キーを「スクリプトが書き出す」か「`OPTIONAL_KEYS` として理由つきで省略する」かに分類させた。`.env.example` に変数を足した人は、どちらかを選ばないと CI が落ちる。つまり、ずれを防ぐ仕組みを「コピー」ではなく「分類の強制」にした
@@ -39,12 +39,12 @@ sources:
 
 ## Open Questions
 
-- `REVALIDATE_SECRET` を CodeRabbit の指摘どおりスクリプトでランダム生成するか（2026-10-09: nishio の判断で PR #957 では見送り、別途検討。理由を PR のレビュースレッドに返信済み）。生成すると、Mac / Linux では `openssl` の有無、Windows では PowerShell での乱数生成と、3 スクリプトそれぞれの実装と CI チェックが要る。固定値でも修正前よりは閉じている
+- `REVALIDATE_SECRET` を CodeRabbit の指摘どおりスクリプトでランダム生成するか（2026-10-09: nishio の判断で PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) では見送り、別途検討。理由を PR のレビュースレッドに返信済み）。生成すると、Mac / Linux では `openssl` の有無、Windows では PowerShell での乱数生成と、3 スクリプトそれぞれの実装と CI チェックが要る。固定値でも修正前よりは閉じている
 - すでにスクリプトで入れた環境で、`.env` に 3 行を追記して `start_*` を実行するだけで直るか。`CLIENT_STATIC_BUILD_BASEPATH` は admin の build ARG でもある。実行時の `env_file` が image の ENV を上書きするはずだが、未確認（検証はイメージの再ビルドで行った）
 - 大木が実機で見た「うまく動かなかった」症状が、このバグと同じか
 - 古い形式のレポートを静的版に出力できない問題を issue にするか
 
 ## Updates
 
-- 2026-10-09: CodeRabbit の秘密固定値の指摘は Minor として PR #957 では対応しない判断。修正前より閉じていること、影響がキャッシュ無効化に限られることを PR に返信した
-- 2026-10-07: 初版。#956 起票、PR #957 作成（CI 全通過、未 merge）。CodeRabbit の Minor 指摘（秘密の固定値）を受け、修正前は受け口が開いていた点とあわせて Open Question 化した
+- 2026-10-09: CodeRabbit の秘密固定値の指摘は Minor として PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) では対応しない判断。修正前より閉じていること、影響がキャッシュ無効化に限られることを PR に返信した
+- 2026-10-07: 初版。[#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) 起票、PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) 作成（CI 全通過、未 merge）。CodeRabbit の Minor 指摘（秘密の固定値）を受け、修正前は受け口が開いていた点とあわせて Open Question 化した

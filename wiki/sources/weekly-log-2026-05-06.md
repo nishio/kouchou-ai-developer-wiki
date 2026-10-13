@@ -24,7 +24,7 @@ sources:
 
 [[kouchou-ai]] 本体の活動はこの週は **非常に薄い**：
 
-- GitHub `digitaldemocracy2030/kouchou-ai`: **Dependabot の PR 2 本のみ** (#822, #823 — dependency update)。人間が書いた PR / Issue / Discussion はゼロ。公開 wiki では alert / advisory の具体的な脆弱性詳細は扱わない
+- GitHub `digitaldemocracy2030/kouchou-ai`: **Dependabot の PR 2 本のみ** ([#822](https://github.com/digitaldemocracy2030/kouchou-ai/issues/822), [#823](https://github.com/digitaldemocracy2030/kouchou-ai/issues/823) — dependency update)。人間が書いた PR / Issue / Discussion はゼロ。公開 wiki では alert / advisory の具体的な脆弱性詳細は扱わない
 - Slack `#2_開発_広聴ai`: メッセージ 1 通（[[nishio]] が Karpathy 風 LLM Wiki を kouchou-ai に適用したい旨）
 
 代わりに **周辺チャンネル** に新規コントリビュータが知っておくべきコンテキストが多い：
@@ -33,8 +33,8 @@ sources:
 - **Outline self-host + MCP 連携**（`1_outline_ドキュメント管理`, `7_雑談`）: [[kuboon]] が `dd2030-docs.kbn.one` を運用。`[[X]]` wikilink syntax は Outline 側のパーサがエスケープしてしまうため kuboon がパッチ予定
 - **Discord 移行論争**（`7_雑談`）: [[ohki-shingo]] が「1500 人規模の Slack 参加者を失うリスク」を提起、[[nishio]] は並行運用を主張
 - **法人化と新名称投票**（`0_全体お知らせ`）: 5/12–5/15 投票期間。`デジタル民主主義2030` はフラッグシップ名称として残る方針
-- **[[polimoney]] 開発**: PR #248 で 岩永淳志ページ公開、Azure 障害（probe port 変更）対応
-- **DD2030 website PR #212**: [[nishio]] が「広聴 AI 本」を独立プロジェクトとしてサイトに追加、[[ohki-shingo]] がマージ
+- **[[polimoney]] 開発**: PR [#248](https://github.com/digitaldemocracy2030/kouchou-ai/issues/248) で 岩永淳志ページ公開、Azure 障害（probe port 変更）対応
+- **DD2030 website PR [#212](https://github.com/digitaldemocracy2030/kouchou-ai/issues/212)**: [[nishio]] が「広聴 AI 本」を独立プロジェクトとしてサイトに追加、[[ohki-shingo]] がマージ
 
 ## Why this matters for kouchou-ai devs
 

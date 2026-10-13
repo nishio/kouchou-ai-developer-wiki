@@ -348,7 +348,7 @@ kouchou-analyze --config config.json
 
 ---
 
-## 草案からの変更点 (PR #883 現行版との差分)
+## 草案からの変更点 (PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 現行版との差分)
 
 新規追加:
 

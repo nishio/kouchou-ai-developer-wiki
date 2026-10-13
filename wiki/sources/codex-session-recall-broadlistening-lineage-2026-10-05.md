@@ -33,15 +33,15 @@ sources:
 
 ## Next Natural Action
 
-当時の自然な次の一手は、#564 の公開事例ページに移すための **最小 schema / 掲載候補リスト / 読み方ガイド** を固めることだった。これは単なるリンク集ではなく、`source_strength`、`tool_lineage`、`public risk`、`レポートの読み方`、`何を保証しないか` を同じ first slice に入れる話である。[[public-case-page-skeleton-2026-06-30]]より
+当時の自然な次の一手は、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページに移すための **最小 schema / 掲載候補リスト / 読み方ガイド** を固めることだった。これは単なるリンク集ではなく、`source_strength`、`tool_lineage`、`public risk`、`レポートの読み方`、`何を保証しないか` を同じ first slice に入れる話である。[[public-case-page-skeleton-2026-06-30]]より
 
-ただし、2026-10-05 時点では current state が更新されている。現在地は [[current-status-2026-10-05]] を先に読み、6/30 の open PR / issue 観測や 8/2 向けの表現をそのまま現在へ持ち越さない。10/5 時点の high priority は #564 / #221、本体は6PRレビュー待ち、Serverless改善5PRはmain済みである。[[current-status-2026-10-05]]より
+ただし、2026-10-05 時点では current state が更新されている。現在地は [[current-status-2026-10-05]] を先に読み、6/30 の open PR / issue 観測や 8/2 向けの表現をそのまま現在へ持ち越さない。10/5 時点の high priority は [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221)、本体は6PRレビュー待ち、Serverless改善5PRはmain済みである。[[current-status-2026-10-05]]より
 
 ## Open Questions
 
-- #564 の公開事例ページは DD2030 website の `kouchou-ai/case` に first slice として入れるか、別の tagged / cross-product case-news list を待つか。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページは DD2030 website の `kouchou-ai/case` に first slice として入れるか、別の tagged / cross-product case-news list を待つか。
 - TTTC direct / pre-kouchou lineage を公開ページに載せる場合、広聴AI confirmed case と同じ一覧に置くか、history / adjacent section に分けるか。
-- 10/5 時点の #564 / #221 / #921 の優先順位に、この 6/30 事例整理をどう接続するか。
+- 10/5 時点の [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) / [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の優先順位に、この 6/30 事例整理をどう接続するか。
 
 ## Updates
 

@@ -4,7 +4,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 > **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態: [開発日報 2026-10-12](analyses/daily-report-2026-10-12.md) / [定例レポート 2026-10-10](concepts/meeting-report-2026-10-10.md) — analysis-core の AGPL 再ライセンス（0.1.3 公開・旧 MIT 版 0.1.0/0.1.2 yank、#970/#978/#979）と、一部解決 Issue の残件を PR 化（#982–#988、#987 など順次 merge 中）。次は残りの merge 判断と利用観測。
+直近の状態: [開発日報 2026-10-12](analyses/daily-report-2026-10-12.md) / [定例レポート 2026-10-10](concepts/meeting-report-2026-10-10.md) — analysis-core の AGPL 再ライセンス（0.1.3 公開・旧 MIT 版 0.1.0/0.1.2 yank、[#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)/[#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)/[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979)）と、一部解決 Issue の残件を PR 化（[#982](https://github.com/digitaldemocracy2030/kouchou-ai/issues/982)–[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988)、[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) など順次 merge 中）。次は残りの merge 判断と利用観測。
 
 ## 最初に読むべき (推奨順)
 

@@ -31,7 +31,7 @@ sources:
 
 利用者課題調査の文脈では、DD2030 が接触できている自治体関係者は、広聴AIを入口に接点ができた広報・広聴課やデジタル推進部署に偏っている可能性が示されている。そのため「自治体の広聴活動における課題」を分かったつもりにならず、広聴AIが活きそうなケースと、広聴活動一般の課題を分けて聞く必要がある。[[meeting-minutes]]より
 
-この利用者課題調査は [[meeting-municipality-user-research-scope-2026-06-30]] に切り出した。#564 の public case page / case intake は導入検討者向け説明と事例候補収集であり、自治体 user research は roadmap の前提を検証するための探索として分ける。[[meeting-municipality-user-research-scope-2026-06-30]]より
+この利用者課題調査は [[meeting-municipality-user-research-scope-2026-06-30]] に切り出した。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public case page / case intake は導入検討者向け説明と事例候補収集であり、自治体 user research は roadmap の前提を検証するための探索として分ける。[[meeting-municipality-user-research-scope-2026-06-30]]より
 
 配布形態 A/B/C/D は、単なる実装構成ではなく、対外説明の切り口でもある。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial を分けることで、誰に何を提供しているのかを説明しやすくなる。[[kouchou-ai]]より [[usage-modes]]より
 
@@ -44,7 +44,7 @@ Brand Compass に沿った開発は、個別 issue の優先順位表をその�
 3. 「聞く能力」を民主主義の物語として説明できる外部発信。
 4. 実利用者の課題を、既存接点の偏りを意識して取りに行くこと。
 
-この読み方だと、短期の docs / wiki 作業は単なる周辺作業ではない。8/2 や #564 に向けて、公開事例、レポートの読み方、利用モード、何を保証しないかを揃えることが、Brand Compass / 情報発信 / stable v4 の共通土台になる。
+この読み方だと、短期の docs / wiki 作業は単なる周辺作業ではない。8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) に向けて、公開事例、レポートの読み方、利用モード、何を保証しないかを揃えることが、Brand Compass / 情報発信 / stable v4 の共通土台になる。
 
 ## Open Questions
 

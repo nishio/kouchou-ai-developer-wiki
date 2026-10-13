@@ -13,7 +13,7 @@ sources:
 
 ## Summary
 
-Issue #860 では、Windows 実機で `setup_win.bat` と Docker Desktop を検証する手順を docs に書くだけでなく、PR #862 として self-hosted Windows runner 上の E2E workflow まで作った。結果として、単なるドキュメント確認では見落としやすい Docker image の欠落、runner service の PATH 差分、PowerShell HTTP client の挙動差分を検出できた。[[source-code]]より [[github-dev-docs]]より
+Issue [#860](https://github.com/digitaldemocracy2030/kouchou-ai/issues/860) では、Windows 実機で `setup_win.bat` と Docker Desktop を検証する手順を docs に書くだけでなく、PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) として self-hosted Windows runner 上の E2E workflow まで作った。結果として、単なるドキュメント確認では見落としやすい Docker image の欠落、runner service の PATH 差分、PowerShell HTTP client の挙動差分を検出できた。[[source-code]]より [[github-dev-docs]]より
 
 個人情報を残さないため、このページではローカルユーザー名、メールアドレス、端末固有名、絶対パスは扱わない。公開されている Issue / PR 番号、branch / commit、workflow 上の一般化できる症状だけを記録する。
 
@@ -29,13 +29,13 @@ runner を動かすと、まず workflow 環境の前提差分が順に出た。
 
 実機 E2E が初めて app stack まで進むと、`public-viewer` の runtime build が `Cannot find module '../shared/csp'` で落ちた。原因は `apps/public-viewer` と `apps/static-site-builder` の Docker image runtime stage に `apps/shared` が入っていないことだった。Docker Desktop 実機で image build を再現し、両 Dockerfile に `apps/shared` の copy を追加して解消した。[[source-code]]より
 
-最後に、container は起動し `curl.exe -I` では各 URL が 200 を返すのに、workflow の `Invoke-WebRequest` は同じ URL で timeout した。E2E の readiness check は本文を読む必要がないため、PowerShell HTTP client ではなく `curl.exe --fail --head --silent --show-error --max-time 5` に寄せた。これで PR #862 の checks は、実機 E2E を含めて success になった。[[source-code]]より [[github-dev-docs]]より
+最後に、container は起動し `curl.exe -I` では各 URL が 200 を返すのに、workflow の `Invoke-WebRequest` は同じ URL で timeout した。E2E の readiness check は本文を読む必要がないため、PowerShell HTTP client ではなく `curl.exe --fail --head --silent --show-error --max-time 5` に寄せた。これで PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) の checks は、実機 E2E を含めて success になった。[[source-code]]より [[github-dev-docs]]より
 
 ## Why Existing Success Did Not Catch It
 
 今回の重要な教訓は、GitHub Actions 上の `success` が「何を観測した success か」を分けて読む必要があること。`Deploy Documentation` の success は docs build / GitHub Pages deploy の成功であり、production app の Docker runtime build 成功を意味しない。`client build` は checkout された repo 全体で `pnpm --filter @kouchou-ai/public-viewer build` を実行するため、`apps/shared` は普通に見える。どちらも、Docker image の runner stage に `apps/shared` が copy されているかまでは保証しない。[[testing]]より [[source-code]]より
 
-Azure deployment workflow は `apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` を build / push し、Container Apps 更新後に HTTP status を見る構成を持つ。ただし今回 PR 上で見えていた success 群をそのまま「この PR head の production runtime が完全に検査された」と読むのは危険だった。少なくとも PR #862 の失敗時点で問題になったのは、`public-viewer` container の起動後に `entrypoint.sh` が実行する runtime `pnpm run build` であり、そこでは Dockerfile runner stage に明示 copy されたファイルだけが存在する。[[source-code]]より [[github-dev-docs]]より
+Azure deployment workflow は `apps/public-viewer/Dockerfile` と `apps/static-site-builder/Dockerfile` を build / push し、Container Apps 更新後に HTTP status を見る構成を持つ。ただし今回 PR 上で見えていた success 群をそのまま「この PR head の production runtime が完全に検査された」と読むのは危険だった。少なくとも PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) の失敗時点で問題になったのは、`public-viewer` container の起動後に `entrypoint.sh` が実行する runtime `pnpm run build` であり、そこでは Dockerfile runner stage に明示 copy されたファイルだけが存在する。[[source-code]]より [[github-dev-docs]]より
 
 つまり、同じ `public-viewer build` でも観測面が違う。repo checkout 上の build は「source tree 全体がある状態で Next.js build が通るか」を見る。Docker build は「image を作れるか」を見る。container 起動後の runtime build は「runner stage に入れたファイルだけで build / start できるか」を見る。実機 E2E は最後の層まで踏んだため、`apps/shared/csp` 欠落を検出できた。[[source-code]]より
 
@@ -66,6 +66,6 @@ E2E が失敗した時は、すぐに workflow を直すより、まず「runner
 
 ## Updates
 
-- 2026-05-22: 初回作成。Issue #860 / PR #862 の Windows 実機 E2E 構築で得た runner、Docker Desktop、readiness check の学びを整理。
+- 2026-05-22: 初回作成。Issue [#860](https://github.com/digitaldemocracy2030/kouchou-ai/issues/860) / PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) の Windows 実機 E2E 構築で得た runner、Docker Desktop、readiness check の学びを整理。
 - 2026-05-22: production / docs / client build の success と、実機 E2E が検出した runtime Docker image 欠落の観測面の違いを追記。
 - 2026-05-22: 個人マシン runner を公開 repo の PR / schedule から動かす危険を反映し、許可された手動実行だけに寄せる判断を追記。

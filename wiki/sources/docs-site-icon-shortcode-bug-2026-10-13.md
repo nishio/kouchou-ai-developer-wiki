@@ -33,7 +33,7 @@ sources:
 - テーマ側の `extra.social` `icon:` や palette `toggle.icon` はテンプレートが直接 SVG を埋め込むので拡張不要。**だからテーマアイコンは出るのに本文アイコンだけ出ない**という症状の食い違いになり、気づきにくい
 - Material for MkDocs はアイコンをバンドル済み inline SVG で描くため、FontAwesome の webfont / CDN は使わない。CDN 読み込みの問題ではない
 
-## 修正（PR #990）
+## 修正（PR [#990](https://github.com/digitaldemocracy2030/kouchou-ai/issues/990)）
 
 `markdown_extensions` に 3 行追加:
 
@@ -54,4 +54,4 @@ sources:
 
 ## Updates
 
-- 2026-10-13: 初版作成。ライブサイトで症状を確認、原因を特定し PR #990（`pymdownx.emoji` 追加）を作成・ローカル build で検証。footgun は [[gotchas]] の「ドキュメント・運用」に登録
+- 2026-10-13: 初版作成。ライブサイトで症状を確認、原因を特定し PR [#990](https://github.com/digitaldemocracy2030/kouchou-ai/issues/990)（`pymdownx.emoji` 追加）を作成・ローカル build で検証。footgun は [[gotchas]] の「ドキュメント・運用」に登録

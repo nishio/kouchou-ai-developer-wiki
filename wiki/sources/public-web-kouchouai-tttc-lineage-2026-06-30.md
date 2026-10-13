@@ -40,7 +40,7 @@ DD2030 公式の広聴AIページは、広聴AIを「Talk to the City の実用�
 | broad listening adjacent | 大阪府、いどばた系 platform、政党 AI、AI 支援住民対話など。広聴AI単体ではなく広義の実践として扱う |
 | critique / scope guardrail | 事例数や可視化そのものではなく、どの insight type を得たいのか、政策反映までの end-to-end を見て評価する |
 
-8/2 event material や #564 public case page では、DD2030 公式ページを「広聴AIの公開 lineage source」、西尾 note を「開発者向け lineage source」、鈴木健ブログを「万能視を避ける scope guardrail」として分けるのが安全である。
+8/2 event material や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) public case page では、DD2030 公式ページを「広聴AIの公開 lineage source」、西尾 note を「開発者向け lineage source」、鈴木健ブログを「万能視を避ける scope guardrail」として分けるのが安全である。
 
 ## Open Questions
 

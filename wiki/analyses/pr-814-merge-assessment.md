@@ -20,7 +20,7 @@ sources:
 
 ### 3. ただし `BUILD_SLUGS` の不整合も同じ文言に吸い込むので、運用上は誤診断になりうる
 
-current code は `BUILD_SLUGS` filter を先にかけ、その結果 `slugs.length === 0` なら「公開状態のレポートが見つかりません」で終了する。一方 `apps/static-site-builder/src/index.ts` は API request の `slugs` をそのまま `BUILD_SLUGS` に流しているため、公開レポート自体は存在しても、指定 slug が typo / 未公開 / 削除済みなら同じ文言で落ちる。これは issue #726 の想定ケースとは別原因なので、message を分けるか、少なくとも `BUILD_SLUGS` 指定時は別補足を出した方がよい。[[pr-814-static-export-error-observation-2026-05-19]]より
+current code は `BUILD_SLUGS` filter を先にかけ、その結果 `slugs.length === 0` なら「公開状態のレポートが見つかりません」で終了する。一方 `apps/static-site-builder/src/index.ts` は API request の `slugs` をそのまま `BUILD_SLUGS` に流しているため、公開レポート自体は存在しても、指定 slug が typo / 未公開 / 削除済みなら同じ文言で落ちる。これは issue [#726](https://github.com/digitaldemocracy2030/kouchou-ai/issues/726) の想定ケースとは別原因なので、message を分けるか、少なくとも `BUILD_SLUGS` 指定時は別補足を出した方がよい。[[pr-814-static-export-error-observation-2026-05-19]]より
 
 ### 4. `process.exit(1)` 採用自体は repo 内で前例ゼロではないが、app code に持ち込む判断は review したい
 

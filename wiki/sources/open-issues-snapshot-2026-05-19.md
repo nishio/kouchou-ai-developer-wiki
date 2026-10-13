@@ -21,7 +21,7 @@ sources:
 - `#836` Document filesystem-based usage for analysis-core CLI
 - `#837` Add config and input preflight validation to analysis-core CLI
 - `#838` Evaluate output artifact validation for analysis-core CLI
-- `#833` Issue #685 follow-up: reimplement remote HTTP/CSP/UUID fixes on current apps/* tree
+- `#833` Issue [#685](https://github.com/digitaldemocracy2030/kouchou-ai/issues/685) follow-up: reimplement remote HTTP/CSP/UUID fixes on current apps/* tree
 
 このうち `#836` `#837` `#838` は、旧 `server/broadlistening/...` 前提だった `#721` を current `packages/analysis-core/` 向けに分解した子 issue である。[[github-dev-docs]]より
 

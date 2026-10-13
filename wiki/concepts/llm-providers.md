@@ -19,7 +19,7 @@ sources:
 | Gemini | `GEMINI_API_KEY` | AkioPonkotu さんの PR 由来、継続改善 |
 | OpenRouter | `OPENROUTER_API_KEY` | 他社モデルへのルーティング |
 | LocalLLM (Ollama) | `--profile ollama` | 既定モデル `hf.co/elyza/Llama-3-ELYZA-JP-8B-GGUF` |
-| LM Studio 等 | "LOCAL LLM" 扱い | PR #422 で [[tokoroten]] が一般化 |
+| LM Studio 等 | "LOCAL LLM" 扱い | PR [#422](https://github.com/digitaldemocracy2030/kouchou-ai/issues/422) で [[tokoroten]] が一般化 |
 
 ## Local provider の次候補 (未実装)
 
@@ -36,11 +36,11 @@ Phi Silica / Windows AI APIs は Copilot+ PC / NPU 向けの Windows native loca
 - 日本の自治体は **クレジットカード／$ 決済／海外 API 利用ルール** で OpenAI 直契約が困難
 - 郡山市など LGWAN 環境では外部 API そのものが使えない（→ 結局非対応）
 - OpenRouter / LocalLLM はその回避策
-- API キー入力フォーム（Issue #660）も同文脈
+- API キー入力フォーム（Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)）も同文脈
 
 ## LOCAL LLM の HTTPS 問題（2026-05）
 
-[[meeting-minutes]] 2026-05-18 見出し / PR #824：
+[[meeting-minutes]] 2026-05-18 見出し / PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824)：
 
 > OpenAI や Azure AI Service ではないモデルを叩くとき「LOCAL LLM」という扱いになっているが、これが HTTP を暗黙に仮定してたので **HTTPS の別サービスを叩くことができない**。
 
@@ -49,17 +49,17 @@ Phi Silica / Windows AI APIs は Copilot+ PC / NPU 向けの Windows native loca
 
 ## 埋め込みモデル
 
-- 既定の `small` は精度に不満あり（Issue #450）
+- 既定の `small` は精度に不満あり（Issue [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450)）
 - `large` への切り替えや SentenceTransformer ベースの代替が希望されている
 - `WITH_GPU=true` 時は GPU 推論
 
 ## API キーフォーム入力
 
-Issue #660（2025-07-30 マージ）— OpenAI / OpenRouter のキーを管理者画面のフォームから渡せる。デモ環境の「公開のためにはユーザ自身のキーを入れさせる」要件（2025-06-23 board）に対応。
+Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)（2025-07-30 マージ）— OpenAI / OpenRouter のキーを管理者画面のフォームから渡せる。デモ環境の「公開のためにはユーザ自身のキーを入れさせる」要件（2025-06-23 board）に対応。
 
 ## API キー不要ルートの候補（未実装・観測中）
 
-OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリがサインインしたユーザの ChatGPT プラン枠で推論を回せる OAuth 機能で、「API キーを配らず、ユーザ自身のプランでサインインさせる」という Issue #660 とは別の回避ルートになりうる。広聴AIは OSS なので概念上は対象カテゴリに合致する。ただし **(1) plan 共有は Responses API に明示限定で embedding は docs 範囲外（2026-10-12 確認）＝embedding はクラスタリングの中核なので SIWC 単独ではキー不要にならず別キー/別プロバイダが要る、(2) preview、(3) 有料・リモートホスト型は別申請で Azure デモのような hosted には素直に使えない、(4) OAuth loopback flow の統合コスト、(5) OpenAI ロックイン、(6) Responses API でも `temperature` / `max_output_tokens` 等の field が未対応**という制約があり、多プロバイダで自治体制約を回避してきた本方針とは逆向き。現時点は future option として観測に留める。[[openai-siwc-token-sharing-docs-2026-10-12]]より
+OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリがサインインしたユーザの ChatGPT プラン枠で推論を回せる OAuth 機能で、「API キーを配らず、ユーザ自身のプランでサインインさせる」という Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) とは別の回避ルートになりうる。広聴AIは OSS なので概念上は対象カテゴリに合致する。ただし **(1) plan 共有は Responses API に明示限定で embedding は docs 範囲外（2026-10-12 確認）＝embedding はクラスタリングの中核なので SIWC 単独ではキー不要にならず別キー/別プロバイダが要る、(2) preview、(3) 有料・リモートホスト型は別申請で Azure デモのような hosted には素直に使えない、(4) OAuth loopback flow の統合コスト、(5) OpenAI ロックイン、(6) Responses API でも `temperature` / `max_output_tokens` 等の field が未対応**という制約があり、多プロバイダで自治体制約を回避してきた本方針とは逆向き。現時点は future option として観測に留める。[[openai-siwc-token-sharing-docs-2026-10-12]]より
 
 ## Open Questions
 

@@ -78,7 +78,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 - `#2_開発_広聴ai`: 2026-06-26 に Hal Seki が「横浜型ブロードリスニング」/ Yokohama Hack! の募集を共有。市民意見の収集・分析・検討のうち「収集」手法の課題解決を目的にしたソリューション募集として読める。詳細は [[slack-yokohama-hack-2026-06-26]]。2026-06-30 には nishio が Codex `/goal` を広聴AIで試す案と、全力で走らせず状況把握と LLM Wiki / Doc 更新を中心にする運用案を共有。
 - `#2_開発_広聴ai_アルゴリズム開発`: 2026-06-29 に tokoroten が embedding アルゴリズム見直しの文脈で、ベクトル検索 / embedding 最前線の資料、Spherical K-means、Faiss K-means に言及。
-- `#8_開発_広聴ai_github`: 2026-06-27 に GitHub bot message が 1 件。PR #903 の docs inventory と同時期。
+- `#8_開発_広聴ai_github`: 2026-06-27 に GitHub bot message が 1 件。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の docs inventory と同時期。
 - 全 channel keyword pass では、`#dd_prance_event2026` に 8/2 イベントの国会 / 地方自治 broad listening 実践セッション計画があり、奈良 / 舞鶴2040 を含む実践 lane の候補・注意点として読めた。詳細は [[slack-prance-event-broadlistening-session-2026-06-30]]。
 
 つまり 2026-06-16〜06-30 の Slack では、広聴AI本体の新しい実装論点は大きく増えておらず、現在進行形の code 状態は GitHub open PR / issue と議事録で補う必要がある。一方で、AI エージェント運用は「先に状況把握と wiki / docs 更新」という速度制御の方針が Slack 上でも明示され、8/2 実践 lane は public case map の優先順位を調整する lead として追加で読める。

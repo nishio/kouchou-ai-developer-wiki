@@ -24,13 +24,13 @@ sources:
 
 ## Conclusion
 
-Issue #564 は「事例を並べる」だけでは閉じない。自治体や導入検討者が知りたいのは、成果物の URL だけでなく、導入検討、体制づくり、テーマ決定、実施内容、やってみた結果、公開 report までの流れである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) は「事例を並べる」だけでは閉じない。自治体や導入検討者が知りたいのは、成果物の URL だけでなく、導入検討、体制づくり、テーマ決定、実施内容、やってみた結果、公開 report までの流れである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-同時に、#696 の誤読防止と #542 の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意** のセットである。[[current-open-issue-triage-2026-06-01]]より
+同時に、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) の誤読防止と [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の責任所在を外すと、公開事例は「広聴AIが正しい民意を保証した」ように読まれかねない。したがって、8/2 イベントや public docs に移す最小単位は **公開事例リスト + レポートの読み方 + 何を保証しないか + 外部向けに使う時の注意** のセットである。[[current-open-issue-triage-2026-06-01]]より
 
-2026-06-30 16:12 JST に #564 を再読すると、要求は事例 detail だけではなく、初回説明の反復コスト削減にも向いている。`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` へ事前に答える説明 block、一枚絵、自治体向け説明資料 / 動画への導線も #564 の scope に入る。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+2026-06-30 16:12 JST に [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を再読すると、要求は事例 detail だけではなく、初回説明の反復コスト削減にも向いている。`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` へ事前に答える説明 block、一枚絵、自治体向け説明資料 / 動画への導線も [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の scope に入る。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-公開Web検索で確認できた事例は、自治体公式 trial、public viewer、政党・国会での broad listening 利用、Talk to the City の系譜、検索 snippet だけの候補に分かれる。#564 のページ設計では、事例数を増やす前に `classification` / `source_strength` / `tool lineage` を明示する必要がある。[[japan-broadlistening-use-case-map-2026-06-30]]より
+公開Web検索で確認できた事例は、自治体公式 trial、public viewer、政党・国会での broad listening 利用、Talk to the City の系譜、検索 snippet だけの候補に分かれる。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) のページ設計では、事例数を増やす前に `classification` / `source_strength` / `tool lineage` を明示する必要がある。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
 ## Why this matters for 8/2
 
@@ -43,11 +43,11 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 - **八代市**: 実践 lane と技術 lane をつなぐ deep case。ただし政策・選挙文脈があるため、「そのニーズが見つかった」に表現を寄せる。
 - **synthetic sample**: 操作説明・fallback。実事例の代替にはしない。
 
-この分担なら、#564 の「導入ハードルを下げる」と、#696 / #542 の「誤読させない」を同時に満たしやすい。[[public-broadlistening-artifacts-2026-06-30]]より
+この分担なら、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の「導入ハードルを下げる」と、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の「誤読させない」を同時に満たしやすい。[[public-broadlistening-artifacts-2026-06-30]]より
 
 ## Minimum Public Case Schema
 
-公開事例ページまたは 8/2 用スライドに落とす場合、1 事例を次の項目で揃えると、#564 のコメントに出ている自治体側の疑問に答えやすい。
+公開事例ページまたは 8/2 用スライドに落とす場合、1 事例を次の項目で揃えると、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) のコメントに出ている自治体側の疑問に答えやすい。
 
 | field | purpose |
 |---|---|
@@ -76,62 +76,62 @@ Issue #564 は「事例を並べる」だけでは閉じない。自治体や導
 
 短期の wiki / docs-safe action としては、developer wiki にこの scope を残すだけで十分に価値がある。外部公開へ移す場合は、1 PR / 1 page で全部を解こうとせず、次の順序に分ける。
 
-1. **dd2030 website / event page**: 事例を見せる外部向け正本。#564 の本来の出口に近い。
+1. **dd2030 website / event page**: 事例を見せる外部向け正本。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の本来の出口に近い。
 2. **kouchou-ai docs**: 「レポートを見る」「public-viewer を読む」「自分のデータを準備する」ための技術寄り導線。current docs は setup-first なので、事例リンク集を入口に置くなら docs spine 変更と一緒に扱う。[[kouchou-ai-docs-entry-restructure-2026-06-03]]より
-3. **kouchou-ai README / footer / public-viewer**: #696 / #542 の注意書き・責任所在を支える場所。事例ページと同時に最低限の reading guide へリンクする。
+3. **kouchou-ai README / footer / public-viewer**: [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の注意書き・責任所在を支える場所。事例ページと同時に最低限の reading guide へリンクする。
 
 Azure デモ環境は「自分のデータを投入する場所」ではなく「使い方や準備データを理解する参照環境」と再フレームされているため、公開事例 / sample report / sample CSV の導線は、専用試用環境より先に整える価値が高い。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
 公開ページへ落とす具体 skeleton は [[public-case-page-skeleton-2026-06-30]] に固定した。最初に見る 3 事例、事例一覧の分類軸、詳細テンプレート、レポートの読み方、first slice、載せない情報を分け、DD2030 website の `kouchou-ai/case` 拡張を想定した。
 
-#696 / #542 の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の public-viewer footer には責任所在の短い文言が既にあるため、次の実装は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える scope として切るのがよい。[[source-code]]より
+[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の最小文言は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。current main の public-viewer footer には責任所在の短い文言が既にあるため、次の実装は footer 単純追加ではなく、README / docs / viewer dialog / 公開事例ページで「読み方」「保証しない範囲」「個別レポート発行主体」を揃える scope として切るのがよい。[[source-code]]より
 
-#696 / #542 / #539 を再読すると、この reading guide は LLM 免責だけでは足りない。広聴AIを課題発見ツールとして説明すること、内部分析と有権者・外部向けアピールを分けること、termsLink / 利用規約はレポート発行主体側の設定であり OSS 側の免責とは別であることを、公開事例ページと viewer / docs で揃える必要がある。[[report-reading-guide-minimum-wording-2026-06-30]]より
+[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) を再読すると、この reading guide は LLM 免責だけでは足りない。広聴AIを課題発見ツールとして説明すること、内部分析と有権者・外部向けアピールを分けること、termsLink / 利用規約はレポート発行主体側の設定であり OSS 側の免責とは別であることを、公開事例ページと viewer / docs で揃える必要がある。[[report-reading-guide-minimum-wording-2026-06-30]]より
 
-広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の tool catalog は、#564 の first slice に入れる価値がある。事例ページの冒頭で `collect / deepen / analyze / classify / read-and-act` を分けておくと、事例一覧の `tool_lineage` が `広聴AI confirmed` なのか、TTTC lineage なのか、広義 broad listening adjacent なのかを説明しやすい。[[public-tool-catalog-draft-2026-06-30]]より
+広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js の tool catalog は、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の first slice に入れる価値がある。事例ページの冒頭で `collect / deepen / analyze / classify / read-and-act` を分けておくと、事例一覧の `tool_lineage` が `広聴AI confirmed` なのか、TTTC lineage なのか、広義 broad listening adjacent なのかを説明しやすい。[[public-tool-catalog-draft-2026-06-30]]より
 
 Slack `#1_事例紹介_全体` は candidate intake として有用だが、public case list とは分ける。舞鶴2040のように Slack lead から primary public URL へ昇格できるものもある一方、AI assistant、いどばた、broad listening の意向表明、内部リンクも混ざるためである。[[slack-case-introduction-channel-2026-03-04]]より
 
-Slack `#2_広報_pr` の 2026-03/04 raw では、website FAQ の読者分離、HP に導入事例マップを載せる案、掲載してほしいという声を受ける導線、他自治体の使い方を知るユーザー会の発想が出ていた。これは #564 を「公開事例一覧」だけで閉じず、`FAQ / reading guide`、`confirmed case list`、`case intake`、`future user group` に分けるべき根拠になる。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+Slack `#2_広報_pr` の 2026-03/04 raw では、website FAQ の読者分離、HP に導入事例マップを載せる案、掲載してほしいという声を受ける導線、他自治体の使い方を知るユーザー会の発想が出ていた。これは [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を「公開事例一覧」だけで閉じず、`FAQ / reading guide`、`confirmed case list`、`case intake`、`future user group` に分けるべき根拠になる。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
-一方で、自治体 user research は #564 の case intake と分ける。#564 の導線は、導入検討者への説明と公開事例候補の受け皿である。自治体 user research は、既存接点に偏らず「広聴活動一般の課題」と「広聴AIが活きるケース」を切り分けて聞く product discovery である。[[meeting-municipality-user-research-scope-2026-06-30]]より
+一方で、自治体 user research は [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の case intake と分ける。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の導線は、導入検討者への説明と公開事例候補の受け皿である。自治体 user research は、既存接点に偏らず「広聴活動一般の課題」と「広聴AIが活きるケース」を切り分けて聞く product discovery である。[[meeting-municipality-user-research-scope-2026-06-30]]より
 
 ## What Not To Do
 
-- #564 のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
-- 事例公開だけを先に出して、#696 / #542 の「どう読むべきか」「誰が責任を持つか」を後回しにしない。
-- 8/2 の技術資料に、#876 developer quickstart、#877 Windows setup、#885 Node runtime 排除を混ぜない。これらは裏側の docs / packaging 整備で、導入検討者に見せる public case layer とは別の読者である。[[issue-876-developer-docs-gap-audit-2026-06-30]]より
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) のために、Slack / Drive の非公開情報をそのまま公開 wiki や public docs に転記しない。
+- 事例公開だけを先に出して、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の「どう読むべきか」「誰が責任を持つか」を後回しにしない。
+- 8/2 の技術資料に、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) developer quickstart、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows setup、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Node runtime 排除を混ぜない。これらは裏側の docs / packaging 整備で、導入検討者に見せる public case layer とは別の読者である。[[issue-876-developer-docs-gap-audit-2026-06-30]]より
 - AI agent が独断で GitHub issue の assign、review request、close、website 公開をしない。
 
 ## Next Wiki-Safe Actions
 
 - `#564/#696/#542` を合わせた public case page の skeleton を developer wiki に置く。
-- #564 の public page first slice には、事例一覧の前に basic explainer / FAQ を置く。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public page first slice には、事例一覧の前に basic explainer / FAQ を置く。
 - basic explainer / FAQ には、[[public-tool-catalog-draft-2026-06-30]] の短縮版を入れ、広聴AI本体の promise と周辺 tool / adjacent case を分ける。
 - 8/2 用に、奈良 / 渋谷区 / 八代市 / 舞鶴2040 / 宇多津町のどれを first demo / official context にするかを人間が選べる判断表へ落とす。
 - 事例ごとの公開可能 / 要許諾 / 不使用を `public-broadlistening-artifacts` の freshness marker で管理する。
 - `#1_事例紹介_全体` の lead を、confirmed / broad listening mention / adjacent civic AI / internal pointer に triage する表へ落とす。
 - `#2_広報_pr` 由来の FAQ 読者分離と case intake を、public case page の skeleton に反映する。
-- 本体 docs に移すなら、#876 の developer quickstart とは別に、docs spine first slice として「事例を見る / レポートを読む」入口を切る。
+- 本体 docs に移すなら、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の developer quickstart とは別に、docs spine first slice として「事例を見る / レポートを読む」入口を切る。
 
 ## Open Questions
 
-- #564 の正本は dd2030 website か、kouchou-ai docs か、8/2 event material か。
-- #696 / #542 の minimum wording は誰が承認するか。技術的正確性だけでなく、法務・運営・渉外の判断が要る。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の正本は dd2030 website か、kouchou-ai docs か、8/2 event material か。
+- [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の minimum wording は誰が承認するか。技術的正確性だけでなく、法務・運営・渉外の判断が要る。
 - 事例 schema の field を全部埋められない public artifact を、事例として出すか、リンク集に留めるか。
 - #1_事例紹介_全体 channel や Drive にある素材を、誰が公開可否で scrub するか。
-- 事例 map / case intake / user group は #564 first slice に含めるか、future section に留めるか。
-- 自治体 user research を #564 の public case page と同じ入口で扱うか、別の調査 instrument として切るか。
+- 事例 map / case intake / user group は [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) first slice に含めるか、future section に留めるか。
+- 自治体 user research を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public case page と同じ入口で扱うか、別の調査 instrument として切るか。
 
 ## Updates
 
-- 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、#564 の case intake と自治体 user research は目的が違うため分けると整理。
-- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、#564 の basic explainer には tool catalog を入れ、広聴AI confirmed case と周辺 tool / adjacent case を分ける方針を追記。
-- 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、#564 を confirmed case list だけでなく FAQ / case intake / user group の情報設計として読む補助線を追加。
-- 2026-06-30: #696 / #542 / #539 の再読を反映し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正。
-- 2026-06-30: #564 を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。
-- 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#696 / #542 の最小文言と placement を #564 trust layer の実装前 draft として接続。
+- 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の case intake と自治体 user research は目的が違うため分けると整理。
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の basic explainer には tool catalog を入れ、広聴AI confirmed case と周辺 tool / adjacent case を分ける方針を追記。
+- 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を confirmed case list だけでなく FAQ / case intake / user group の情報設計として読む補助線を追加。
+- 2026-06-30: [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) の再読を反映し、reading guide は LLM 免責だけでなく、課題発見ツール説明、外部向け利用の注意、termsLink と OSS 免責の分離を含むと補正。
+- 2026-06-30: [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を再読し、公開事例ページは事例 detail だけでなく basic explainer / FAQ / 一枚絵の入口も必要だと追記。
+- 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の最小文言と placement を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) trust layer の実装前 draft として接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake として扱い、public case list には primary URL 確認済み case だけを載せると整理。
-- 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、#564 の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。
-- 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、#564 の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
-- 2026-06-30: 初回作成。Issue #564 を 8/2 公開事例棚卸しと接続し、#696 / #542 を含む trust layer として次 scope を整理した。
+- 2026-06-30: [[public-case-page-skeleton-2026-06-30]] を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページを「最初に見る 3 事例 / 事例一覧 / 詳細テンプレート / レポートの読み方 / first slice」に分解した。
+- 2026-06-30: [[public-web-broadlistening-japan-use-cases-2026-06-30]] / [[japan-broadlistening-use-case-map-2026-06-30]] を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の事例 schema に classification / source strength / tool lineage を加える必要があると整理。
+- 2026-06-30: 初回作成。Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を 8/2 公開事例棚卸しと接続し、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) を含む trust layer として次 scope を整理した。

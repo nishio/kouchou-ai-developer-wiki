@@ -42,7 +42,7 @@ sources:
 
 ## Open Questions
 
-- コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。堅牢性の既知の残件は Issue #978（後述の Updates 参照）。
+- コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。堅牢性の既知の残件は Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（後述の Updates 参照）。
 - プラグインの結合度・コード由来に応じた実際の配布条件と、プロジェクトとして案内するライセンス方針。
 - 例外条項を設けたい場合の必要性と権利範囲。AGPL訂正指示は例外許諾を意味しない。
 
@@ -76,15 +76,15 @@ sources:
 
 ## Updates — 2026-10-12 CLI側で案内・対応ソースを自動同梱（PR進行中）
 
-西尾さんの「やさしい解説ドキュメントを作って」「CLI出力HTMLにライセンス案内が入るべき」という指示を受け、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`、`d09976e`）に実装した。上記の未実装・文書未整備という観測はmainについては引き続き該当するが、PRには以下の変更がある。[[analysis-core-license-history-2026-10-12]]より。
+西尾さんの「やさしい解説ドキュメントを作って」「CLI出力HTMLにライセンス案内が入るべき」という指示を受け、[PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)（`fix/analysis-core-agpl-license`、`d09976e`）に実装した。上記の未実装・文書未整備という観測はmainについては引き続き該当するが、PRには以下の変更がある。[[analysis-core-license-history-2026-10-12]]より。
 
 - [利用者向けガイド](https://github.com/digitaldemocracy2030/kouchou-ai/blob/d09976e/docs/user-guide/license.md)を追加し、README・利用ガイド・プラグインガイド・ドキュメント目次から案内。手元利用、結果データ、HTML、拡張、配布・ネットワーク利用をケース別に説明する。
 - `report.html` の末尾に「ライセンス・表示プログラムのソース」を自動付与。AGPL全文・無保証の説明・元プロジェクトへのリンクと、生成に使った表示ソースをZIPでHTML内へ埋め込む。通常利用者は案内とダウンロード機能を残して公開する運用とする。
 
-## Updates — 2026-10-12 PR #970 の HTML 案内に対するフォローアップ Issue
+## Updates — 2026-10-12 PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970) の HTML 案内に対するフォローアップ Issue
 
-- [Issue #978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（open・低優先）: 上記 PR #970 の `report.html` ライセンス案内実装（`hierarchical_visualization.py` の `_report_license_notice`）は、ライセンス資源（wheel 同梱の `AGPL-3.0.txt`、または editable/source 実行時の repo `LICENSE` フォールバック）が見つからないと `FileNotFoundError` を raise し、**`report.html` 生成全体がライセンス資源の存在に hard-fail で依存**する。現行 wheel 構成では顕在化しないが、将来 packaging から force-include が落ちた場合や旧 wheel をクリーン環境へ入れた場合に壊れうる。方針は「資源欠如時は案内を link-only へ degrade し hard-fail を回避」。
-- 位置づけ: PR #970（repo 側 AGPL 訂正＋案内同梱）とは別の堅牢性 Issue で、上の Open Questions「現在の license notice・対応ソース導線が適切か」に対応する具体的な残件。本 wiki はこの issue の存在を記録するのみで、本体コードは変更していない。別途の PyPI 訂正版公開（version bump ＋ tag）と旧 0.1.0/0.1.2 の扱いは [[analysis-core-license-history-2026-10-12]] / [[analysis-core-license-intent-2026-10-12]] で追跡。
+- [Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（open・低優先）: 上記 PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970) の `report.html` ライセンス案内実装（`hierarchical_visualization.py` の `_report_license_notice`）は、ライセンス資源（wheel 同梱の `AGPL-3.0.txt`、または editable/source 実行時の repo `LICENSE` フォールバック）が見つからないと `FileNotFoundError` を raise し、**`report.html` 生成全体がライセンス資源の存在に hard-fail で依存**する。現行 wheel 構成では顕在化しないが、将来 packaging から force-include が落ちた場合や旧 wheel をクリーン環境へ入れた場合に壊れうる。方針は「資源欠如時は案内を link-only へ degrade し hard-fail を回避」。
+- 位置づけ: PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)（repo 側 AGPL 訂正＋案内同梱）とは別の堅牢性 Issue で、上の Open Questions「現在の license notice・対応ソース導線が適切か」に対応する具体的な残件。本 wiki はこの issue の存在を記録するのみで、本体コードは変更していない。別途の PyPI 訂正版公開（version bump ＋ tag）と旧 0.1.0/0.1.2 の扱いは [[analysis-core-license-history-2026-10-12]] / [[analysis-core-license-intent-2026-10-12]] で追跡。
 - ZIPは実際の `hierarchical_visualization.py`（HTML/CSS/JSテンプレートを含む）、AGPL本文、実行方法の3ファイル。結果データ・入力CSVをZIPには含めず、更新されるmainへのリンクや、改造前のタグとの不一致を避ける。生成済みHTMLのJS直接編集はZIPと不一致になるため、表示ソースから再生成するよう案内する。
 - 16件の生成テスト、追加パッケージなしの隔離PythonでZIPから同一HTMLを再生成、改造ソース保存、wheel資源とsdistの同梱、twine、Ruff、docs strict buildを確認。ブラウザー目視はローカルURLがクライアント側でブロックされ未確認。
 
@@ -94,12 +94,12 @@ sources:
 
 西尾さんの「AGPL全文は長すぎるのでリンクでよい」という指摘を受け、PR #970のHTML末尾を「表示プログラム: 広聴AI · AGPL-3.0 · ソース（ZIP）」と短い無保証・利用条件の注記に変更。ライセンス全文の折りたたみ表示は削除し、GNUの本文へのリンクにした。配布用のライセンス本文は対応ソースZIP内の `AGPL-3.0.txt` として維持する。[AGPL第0条・第4条](https://opensource.org/license/agpl-3-0)の閲覧導線・ライセンス写しと、レポート画面への長文表示を区別した。利用者向けガイドも合わせて更新し、生成16テストとRuffに成功。未merge・未リリース。
 
-## Updates — 2026-10-12 #978 に link-only degrade の PR #980（merge 済み・#978 close）
+## Updates — 2026-10-12 [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) に link-only degrade の PR [#980](https://github.com/digitaldemocracy2030/kouchou-ai/issues/980)（merge 済み・[#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) close）
 
-- 上記 #978 の方針（資源欠如時は link-only へ degrade し hard-fail を回避）を実装した [PR #980](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を **2026-10-12 に main merge 済み**（squash `478cd1a0`、CI 全 pass、nishio 判断で admin merge）。これにより **Issue #978 は自動 close**。
+- 上記 [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) の方針（資源欠如時は link-only へ degrade し hard-fail を回避）を実装した [PR [#980](https://github.com/digitaldemocracy2030/kouchou-ai/issues/980)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/980) を **2026-10-12 に main merge 済み**（squash `478cd1a0`、CI 全 pass、nishio 判断で admin merge）。これにより **Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) は自動 close**。
 - 変更内容: `_report_license_notice` はライセンス資源（sibling `AGPL-3.0.txt` も repo `LICENSE` フォールバックも）を解決できない場合、`FileNotFoundError` を raise せず、GNU 本文へのリンクのみ（ソース ZIP なし）の `_report_license_notice_link_only()` へ早期 return する。happy path（資源あり＝ZIP 同梱）の挙動・文言は不変。degrade path の回帰テストを追加。
 - 検証: `pytest tests/test_hierarchical_visualization.py` → 17 passed（新テスト含む、Python 3.12）、変更ファイルの `ruff check` パス。`clustering` optional extra 未導入環境のため `tests/` 全体では当該 extra 依存の 4 件が落ちるが、本変更（stdlib のみの可視化ステップ）とは無関係の環境起因。
-- ZIP 同梱の本流（資源あり時）は変えていないので、[[analysis-core-license-intent-2026-10-12]] の運用判断（#979 の yank 方針含む）には影響しない。
+- ZIP 同梱の本流（資源あり時）は変えていないので、[[analysis-core-license-intent-2026-10-12]] の運用判断（[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) の yank 方針含む）には影響しない。
 
 ## Updates — 2026-10-12 会話から残す設計原則とmain反映確認
 
@@ -109,6 +109,6 @@ sources:
 2. **通常の公開に必要な案内と取得導線は、出力する側が用意する。** 利用者向けには「自動付与された案内を残して、そのまま公開できます」を基本の操作説明にする。版の一致や対応ソースの準備を毎回利用者に調べさせない。
 3. **短い画面表示と、本文・ソースを入手できることを両立させる。** レポート末尾は「広聴AI · AGPL-3.0 · ソース（ZIP）」と短い注記。長文の全文表示はしない。本文リンクとZIP内のライセンス写し、生成時の表示ソースを保持する。単なるリポジトリ先頭へのリンクと、生成版に対応するソース提供は同じではない。
 
-2026-10-12 20:14 JSTにGitHubを再確認し、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)は同日18:38 JSTにmerge済み（`bbc10c947ca1d3216a16efda3b806e781aeee0d6`）。本体mainをfetch/pullし、`055b8824ab5a20546c0e1e01a29d84155880d351` の `hierarchical_visualization.py` と[利用者向けガイド](https://github.com/digitaldemocracy2030/kouchou-ai/blob/055b8824ab5a20546c0e1e01a29d84155880d351/docs/user-guide/license.md)で短い表示・本文リンク・ZIP同梱を確認した。先の「未merge」は当時の観測で、現在はmainに反映済み。PyPIの公開完了までは今回確認していない。リリース追跡は [[analysis-core-license-intent-2026-10-12]] を参照。
+2026-10-12 20:14 JSTにGitHubを再確認し、[PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)は同日18:38 JSTにmerge済み（`bbc10c947ca1d3216a16efda3b806e781aeee0d6`）。本体mainをfetch/pullし、`055b8824ab5a20546c0e1e01a29d84155880d351` の `hierarchical_visualization.py` と[利用者向けガイド](https://github.com/digitaldemocracy2030/kouchou-ai/blob/055b8824ab5a20546c0e1e01a29d84155880d351/docs/user-guide/license.md)で短い表示・本文リンク・ZIP同梱を確認した。先の「未merge」は当時の観測で、現在はmainに反映済み。PyPIの公開完了までは今回確認していない。リリース追跡は [[analysis-core-license-intent-2026-10-12]] を参照。
 
 適用範囲は通常のライセンス資源を備えたCLI出力。既存の古いHTML、生成後に表示コードを直接改変したHTML、Web版静的出力は別に扱う。後続PR #980の資源欠如時フォールバックではソースZIPが付かないため、「案内を残せばよい」という通常経路の説明を、その例外へ無条件に適用しない。

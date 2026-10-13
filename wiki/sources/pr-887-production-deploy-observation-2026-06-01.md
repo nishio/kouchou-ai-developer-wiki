@@ -42,6 +42,6 @@ sources:
 
 ## Updates
 
-- 2026-06-01: 初版作成。PR #887 merge 後の deployment success 表示と実反映状態のズレを観測。
+- 2026-06-01: 初版作成。PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) merge 後の deployment success 表示と実反映状態のズレを観測。
 - 2026-06-01: 定例議事録で、この問題が deploy check 欠陥と public-viewer 起動時 build の二層として共有され、deploy CI / readiness check 改善が示されたことを追記。
 - 2026-06-01: 公開 wiki にはデプロイ詳細を書かない方針に合わせ、実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順を削除。詳細の置き場を Google Drive「広聴AI-Azureデモ環境」に寄せた。

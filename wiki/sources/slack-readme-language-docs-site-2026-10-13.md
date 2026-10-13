@@ -16,9 +16,9 @@ sources:
 
 このスレッドは、直前に起きた [[kouchou-ai]] README の言語差し替えと差し戻しを受けたもの。`work/kouchou-ai/` の main コミット履歴で裏が取れる。
 
-- **PR #959**（merged 2026-10-09, by katsushi2441）: 韓国語版 `README.ko.md` を追加
-- **PR #966**（merged 2026-10-09, by nishio）: `README.md` を英語版にし、日本語版を `README.ja.md` へ移す（= トップの README をデフォルト英語化）
-- **PR #968**（merged 2026-10-12, by shingo-ohki）: 日本語 README をデフォルトに戻す（本スレッドで言う「緊急避難的」な差し戻し）
+- **PR [#959](https://github.com/digitaldemocracy2030/kouchou-ai/issues/959)**（merged 2026-10-09, by katsushi2441）: 韓国語版 `README.ko.md` を追加
+- **PR [#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966)**（merged 2026-10-09, by nishio）: `README.md` を英語版にし、日本語版を `README.ja.md` へ移す（= トップの README をデフォルト英語化）
+- **PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)**（merged 2026-10-12, by shingo-ohki）: 日本語 README をデフォルトに戻す（本スレッドで言う「緊急避難的」な差し戻し）
 
 差し戻し後の current main の `README.md` は日本語がデフォルトで、先頭行に `[English](./README.en.md) | 日本語 | [한국어](./README.ko.md)` という言語リンクを持つ形。英語版は `README.en.md`、韓国語版は `README.ko.md` として併存する。
 
@@ -48,10 +48,10 @@ sources:
 
 - nishio が「記憶の彼方」と言うドキュメントサイトは**実在する**。`mkdocs.yml` の `site_name: 広聴AI Documentation` / `site_url: https://digitaldemocracy2030.github.io/kouchou-ai/`。README からも各種 setup / user-guide ページがこの GitHub Pages サイトへリンクしている
 - したがって論点は「ドキュメントサイトが無い」ではなく、「非開発者・非英語話者が最初にドキュメントサイトへ着地する導線になっていない（README / GitHub が入口になっている）」ことにある。これは [[nishio-docs-entry-restructure-discussion-2026-06-03]] / [[kouchou-ai-docs-entry-restructure-2026-06-03]] の『docs 入口がセットアップ起点』問題の延長線上
-- nishio の「section 名リンクで README を凍結するな」は、README への外部ディープリンク（`#アンカー`）と README 改訂の間にできる結合を footgun として指摘したもの。distill した設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]。これは GitHub issue **#977**（open / nishio 起票 / 2026-10-12「README 見出しアンカーへの外部直リンク依存をやめ、安定URL(docs)へ寄せる（PR #968 残件）」）として実トラッキングされている
-- この source をきっかけに docs サイトを読み直したところ、ホームの OS カードで mkdocs のアイコンショートコードが生テキスト表示されている別バグが見つかった（[[docs-site-icon-shortcode-bug-2026-10-13]]、PR #990 で修正）
+- nishio の「section 名リンクで README を凍結するな」は、README への外部ディープリンク（`#アンカー`）と README 改訂の間にできる結合を footgun として指摘したもの。distill した設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]。これは GitHub issue **[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)**（open / nishio 起票 / 2026-10-12「README 見出しアンカーへの外部直リンク依存をやめ、安定URL(docs)へ寄せる（PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968) 残件）」）として実トラッキングされている
+- この source をきっかけに docs サイトを読み直したところ、ホームの OS カードで mkdocs のアイコンショートコードが生テキスト表示されている別バグが見つかった（[[docs-site-icon-shortcode-bug-2026-10-13]]、PR [#990](https://github.com/digitaldemocracy2030/kouchou-ai/issues/990) で修正）
 - 同じ Slack 窓（2026-10-11〜12）では analysis-core のライセンス表記（MIT→AGPL）も別スレッドで走っていたが、それは [[analysis-core-license-history-2026-10-12]] / [[analysis-core-license-intent-2026-10-12]] 側の話題で、本スレッド（README 言語・ドキュメント導線）とは別
 
 ## Updates
 
-- 2026-10-13: 初版作成。README 言語差し戻し（#966→#968）と docs 導線の Slack スレッドを source 化。設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]] へ filing back
+- 2026-10-13: 初版作成。README 言語差し戻し（[#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966)→[#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)）と docs 導線の Slack スレッドを source 化。設計判断は [[readme-anchor-freeze-and-docs-entry-2026-10-13]] へ filing back

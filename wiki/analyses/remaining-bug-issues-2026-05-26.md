@@ -36,7 +36,7 @@ current `.github/workflows/azure-deploy.yml` は、今も `docker build` 4 本�
 
 issue 本文の症状は、`setup_win.bat` 内の日本語行が文字化けし、その崩れた文字列が別コマンドとして解釈されて停止するものだった。しかし current `origin/main:setup_win.bat` は `chcp 65001` を入れた上でメッセージを英語に寄せており、問題の日本語バッチ行は残っていない。少なくとも、issue に貼られた failure と同じ壊れ方は current main の静的読解からは見えない。[[source-code]]より
 
-一方で GitHub 上では `Fixes #731` を含む open PR `#863` が残っており、方針としては `setup_win.bat` を ASCII ランチャーにして本体を `setup_win.ps1` へ分離する案が提案されている。つまり `#731` は「現 main の英語化で実害がもう消えているなら close 候補」「日本語 UX を戻したいなら PR #863 を merge」という二段構えで考えるのがよい。[[github-dev-docs]]より [[source-code]]より
+一方で GitHub 上では `Fixes #731` を含む open PR `#863` が残っており、方針としては `setup_win.bat` を ASCII ランチャーにして本体を `setup_win.ps1` へ分離する案が提案されている。つまり `#731` は「現 main の英語化で実害がもう消えているなら close 候補」「日本語 UX を戻したいなら PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) を merge」という二段構えで考えるのがよい。[[github-dev-docs]]より [[source-code]]より
 
 ### `#478` は原因コードは残るが、扱いとしては改善 feature 寄り
 

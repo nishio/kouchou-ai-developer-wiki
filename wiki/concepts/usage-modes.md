@@ -104,7 +104,7 @@ sources:
 - 研究者・データサイエンティスト向けには、カスタマイズ性の高い CLI パイプラインがあればよい
 - 非エンジニアの試行錯誤ユースケースでは、CLI 作業は最小限にし、レポート作成から確認まで Web UI で閉じる必要がある
 - したがって「CLI をきれいにする」と「非エンジニア向け入口を良くする」は別問題として優先度を付けた方がよい
-- A/B/C/D の分類は、実装の配布形態だけでなく対外説明にも使える。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial は、8/2 や #564 の説明で混ぜずに出すと、誰に何を提供しているかが伝わりやすい。[[meeting-brand-compass-information-strategy-2026-06-30]]より
+- A/B/C/D の分類は、実装の配布形態だけでなく対外説明にも使える。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial は、8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の説明で混ぜずに出すと、誰に何を提供しているかが伝わりやすい。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
 ## 共有コアと分岐点
 

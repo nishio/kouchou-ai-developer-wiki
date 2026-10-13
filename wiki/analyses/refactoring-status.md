@@ -107,7 +107,7 @@ sources:
 - `docs/refactoring/phase0_investigation.md` / `phase2_5_plan.md` / `phase3_plan.md` — current source tree には存在しない。履歴として読むなら wiki 側の観測ページや本ページの `## Updates` を参照
 - `apps/api` からの subprocess 起動は current `main` でも `--without-html` を固定しており、CLI の `report.html` 既定出力とは役割分担が分かれている。この差分は現状では docs で明示して読ませるべきで、直ちに統一すべき未整合とは限らない
 
-## PR #825「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
+## PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825)「Python 直接 静的 HTML 出力」(議事メモ 2026-05-18 見出し)
 
 利用モード: **CLI / analysis-core**（ただし Web UI との境界論点を持つ）
 
@@ -172,8 +172,8 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: 「branch 上では実装的にかなり切り替わっているが、main の canonical state と運用宣言はまだ別」という読み分けを追記
 - 2026-05-21: `hierarchical_status.json` の項目別 semantics 棚卸しページ [[hierarchical-status-semantics]] への導線を追加
 - 2026-05-21: Phase 3b の完了条件を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
-- 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
+- 2026-05-21: `main@0e1552d` を再確認し、PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) 相当が merged された前提で Phase 3b を「完了」へ更新。残課題を Phase 8 / extras 分割 / status semantics 許容差分へ寄せ直した
 - 2026-05-21: CLI の `report.html` 既定出力と API の `--without-html` 固定は「未整合」より「利用モード別の意図的分岐」と読めるよう表現を補正し、[[usage-modes]] / [[cli]] への導線を強めた
-- 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外
-- 2026-05-21: `main@5d591ef` で PR #844 merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記
-- 2026-10-12: Phase 2.5 の PyPI 公開版記述を `0.1.2` → 現行 `0.1.3`（AGPL-3.0）に更新。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み（#979 完結、[[analysis-core-license-intent-2026-10-12]]）。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。[[wiki-self-audit-2026-10-12]]
+- 2026-05-21: `main@42d2afb` で PR [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外
+- 2026-05-21: `main@5d591ef` で PR [#844](https://github.com/digitaldemocracy2030/kouchou-ai/issues/844) merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記
+- 2026-10-12: Phase 2.5 の PyPI 公開版記述を `0.1.2` → 現行 `0.1.3`（AGPL-3.0）に更新。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み（[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) 完結、[[analysis-core-license-intent-2026-10-12]]）。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。[[wiki-self-audit-2026-10-12]]

@@ -38,7 +38,7 @@ sources:
 
 ## Open Questions
 
-- `#817` の本文中にある「#815 での議論」の詳細は、この観測メモ単体では追えていない
+- `#817` の本文中にある「[#815](https://github.com/digitaldemocracy2030/kouchou-ai/issues/815) での議論」の詳細は、この観測メモ単体では追えていない
 - 実際に `#817` が merge されたか、あるいは後続コミットでどの部分だけ `main` に入ったかは別観測が必要
 
 ## Updates

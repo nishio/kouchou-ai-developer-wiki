@@ -23,7 +23,7 @@ sources:
 ## Interpretation
 
 - つまり PR の問題意識は理解できるが、current `main` に対しては「古い `package.json` を前提にした patch」が drift しており、**今そのまま merge すると別用途の override を落とす回帰になる**
-- merge 判断としては、PR #801 をそのまま通すより `current main` 上で `minimatch` を保持したまま React override を併記する形へ作り直すべき
+- merge 判断としては、PR [#801](https://github.com/digitaldemocracy2030/kouchou-ai/issues/801) をそのまま通すより `current main` 上で `minimatch` を保持したまま React override を併記する形へ作り直すべき
 
 ## Open Questions
 

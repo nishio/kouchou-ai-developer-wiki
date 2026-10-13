@@ -11,15 +11,15 @@ sources:
 
 ## 結論
 
-PR #903 は human-authored の docs-only PR なので、AI が branch へ直接 push するより、レビューコメント案を Wiki 側に固定して、人間が投稿 / 修正判断できる状態にするのがよい。[[pr-903-node-runtime-doc-review-2026-06-30]]より
+PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) は human-authored の docs-only PR なので、AI が branch へ直接 push するより、レビューコメント案を Wiki 側に固定して、人間が投稿 / 修正判断できる状態にするのがよい。[[pr-903-node-runtime-doc-review-2026-06-30]]より
 
-2026-06-30 14:01 JST に PR #903 を再確認した時点で、状態は open / non-draft / review required / merge state blocked、差分は `docs/development/web-ui-node-runtime-dependencies.md` 1 ファイル追加のままだった。CodeRabbit の指摘も、static-site-builder dev entrypoint、last verified note、Server Actions difficulty map の 3 点で前回から変化なし。[[github-dev-docs]]より
+2026-06-30 14:01 JST に PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) を再確認した時点で、状態は open / non-draft / review required / merge state blocked、差分は `docs/development/web-ui-node-runtime-dependencies.md` 1 ファイル追加のままだった。CodeRabbit の指摘も、static-site-builder dev entrypoint、last verified note、Server Actions difficulty map の 3 点で前回から変化なし。[[github-dev-docs]]より
 
-current main `d5c9ece` では、`apps/admin` の `"use server"` は 11 ファイルで、export 関数数としては PR #903 docs に載っている 15 action に加え、`csvDownloadCommon` と `jsonDownload` の 2 action がある。これらは `ActionMenu` から CSV / JSON download に使われ、`Buffer.from(...).toString("base64")` を返すため、Node runtime inventory に入れるか、対象外理由を書くのが自然である。[[source-code]]より
+current main `d5c9ece` では、`apps/admin` の `"use server"` は 11 ファイルで、export 関数数としては PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) docs に載っている 15 action に加え、`csvDownloadCommon` と `jsonDownload` の 2 action がある。これらは `ActionMenu` から CSV / JSON download に使われ、`Buffer.from(...).toString("base64")` を返すため、Node runtime inventory に入れるか、対象外理由を書くのが自然である。[[source-code]]より
 
 ## Comment Draft
 
-以下は、PR #903 に人間が投稿する場合の短いコメント案。
+以下は、PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) に人間が投稿する場合の短いコメント案。
 
 ```markdown
 docs-only の棚卸しとしてかなり有用だと思います。merge 前に、精度を上げるなら次の 4 点だけ見ればよさそうです。
@@ -41,25 +41,25 @@ docs-only の棚卸しとしてかなり有用だと思います。merge 前に�
 
 ## Why This Shape
 
-このコメント案は、PR #903 を「完璧な移行設計」に引き上げるのではなく、inventory docs としての信頼性だけを締める。具体的には、次の 4 類型に絞っている。
+このコメント案は、PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) を「完璧な移行設計」に引き上げるのではなく、inventory docs としての信頼性だけを締める。具体的には、次の 4 類型に絞っている。
 
 - freshness: last verified commit / date
 - internal consistency: Server Actions count と difficulty map
 - obvious stale fact: static-site-builder dev script
 - inventory completeness: CSV / JSON download server actions
 
-`#885` の本丸は、admin の proxy 置換より static-site-builder の runtime build をどう外すかである。PR #903 はその前段の inventory なので、コメントも移行方針の拡張ではなく、後続 prototype の判断に効く docs 精度へ絞るのがよい。[[node-runtime-free-windows-exe-2026-05-31]]より
+`#885` の本丸は、admin の proxy 置換より static-site-builder の runtime build をどう外すかである。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) はその前段の inventory なので、コメントも移行方針の拡張ではなく、後続 prototype の判断に効く docs 精度へ絞るのがよい。[[node-runtime-free-windows-exe-2026-05-31]]より
 
 ## Posting Boundary
 
-AI はこのコメントをまだ GitHub に投稿しない。理由は、PR #903 は human authored であり、CLAUDE.md の運用方針では reviewer request、対人 escalation、human attention を使う操作は人間の明示指示がある時だけ実行するため。[[docs-issue-map-2026-06-30]]より
+AI はこのコメントをまだ GitHub に投稿しない。理由は、PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) は human authored であり、CLAUDE.md の運用方針では reviewer request、対人 escalation、human attention を使う操作は人間の明示指示がある時だけ実行するため。[[docs-issue-map-2026-06-30]]より
 
 ## Open Questions
 
 - CSV / JSON download の `Buffer` 使用は Node runtime inventory の blocker として扱うか、client-side Blob download に自然に置き換わる軽微項目として扱うか。
-- PR #903 にコメントだけ出すか、作者が望むなら docs-only follow-up PR に分けるか。
-- static-site-builder `dev` script は docs PR #903 内で直すべきか、別 issue / PR の掃除として分けるべきか。
+- PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) にコメントだけ出すか、作者が望むなら docs-only follow-up PR に分けるか。
+- static-site-builder `dev` script は docs PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) 内で直すべきか、別 issue / PR の掃除として分けるべきか。
 
 ## Updates
 
-- 2026-06-30: 初回作成。PR #903 live state、CodeRabbit 指摘、current main `d5c9ece` の `"use server"` ファイルと CSV / JSON download actions を再確認し、投稿前のレビューコメント案として固定した。
+- 2026-06-30: 初回作成。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) live state、CodeRabbit 指摘、current main `d5c9ece` の `"use server"` ファイルと CSV / JSON download actions を再確認し、投稿前のレビューコメント案として固定した。

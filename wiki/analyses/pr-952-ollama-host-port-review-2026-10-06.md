@@ -5,9 +5,9 @@ sources:
   - source-code.md
 ---
 
-# PR #952 Ollama ホスト側ポート変更のレビュー（2026-10-06）
+# PR [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952) Ollama ホスト側ポート変更のレビュー（2026-10-06）
 
-外部コントリビュータが立てた Issue #951 と PR #952 を、変更の正しさ・残件・CI の 3 点から見てマージ可能と判断した。2026-10-06 21:30 JST に main `73ce8df` へ反映され、残件の docs 追随は main `a12d68e` へ直接修正した。[[source-code]] より（work clone `fedf67a` 時点で grep）。
+外部コントリビュータが立てた Issue [#951](https://github.com/digitaldemocracy2030/kouchou-ai/issues/951) と PR [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952) を、変更の正しさ・残件・CI の 3 点から見てマージ可能と判断した。2026-10-06 21:30 JST に main `73ce8df` へ反映され、残件の docs 追随は main `a12d68e` へ直接修正した。[[source-code]] より（work clone `fedf67a` 時点で grep）。
 
 ## 変更内容
 

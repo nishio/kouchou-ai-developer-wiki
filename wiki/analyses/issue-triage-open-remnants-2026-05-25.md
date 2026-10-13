@@ -17,37 +17,37 @@ sources:
 
 ## Issue 別判断
 
-### #79 CSV アップロード時の事前コスト表示
+### [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) CSV アップロード時の事前コスト表示
 
 実装済みの関連部分として、生成完了後の token usage / estimated cost 表示は admin 一覧側にある。`TokenUsage` は `estimatedCost` を表示し、API 側には provider / model / token usage から USD cost を計算する `LLMPricing` がある。[[source-code]]より
 
 ただし `#79` の主要求は、CSV アップロード後、解析を始める前に「このデータを処理した場合の概算コスト」をユーザーに示すことである。current `apps/admin/app/create/page.tsx` の作成フローで出る確認は、CSV 行数が意見グループ数を下回る場合の警告であり、コスト見積もりではない。したがって、実行後の実績表示は入っていても、事前見積もり issue としては未解決である。[[github-dev-docs]]より [[source-code]]より
 
-### #253 ローカル file system で静的 HTML を開いた時の詳細エラー
+### [#253](https://github.com/digitaldemocracy2030/kouchou-ai/issues/253) ローカル file system で静的 HTML を開いた時の詳細エラー
 
 関連実装として、API 接続失敗を表示する `ApiConnectionError` や、static build 時の fetch 失敗を分かりやすくする helper はある。また CLI の `report.html` は自己完結型 HTML として `file://` でも閲覧できるよう整理されている。[[source-code]]より
 
 ただし `#253` は、Web 側の静的 HTML 出力をローカルファイルシステムで開いた時に読み込み中のままになる問題について、ユーザーに原因と解決策ページへのリンクを出す、という要求である。CLI 用 `report.html` が `file://` で動くことは別経路の改善であり、静的 export 物での file URL 検出と専用エラー案内が current main に入ったとは言えない。よって open のまま残した。[[github-dev-docs]]より [[source-code]]より
 
-### #391 レポート作成時に API 異常を分かりやすく出す
+### [#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) レポート作成時に API 異常を分かりやすく出す
 
 関連実装として、admin 作成画面には手動の「API接続チェック」ダイアログがあり、認証エラー、残高不足、レート制限、不明エラーを日本語メッセージへ変換する。生成失敗後も `ProgressSteps` で `error_message` や log excerpt を見せる実装がある。[[source-code]]より
 
 しかし `#391` の提案は「レポート作成開始時に API の健全性チェックを行う」ことである。current の作成ボタンは `/admin/reports` を呼んで subprocess 生成を開始し、事前に `/admin/environment/verify` を自動実行してから進む構造ではない。手動チェックと失敗後ログ表示は前進だが、Issue 本文の自動 preflight 要件までは満たしていない。[[github-dev-docs]]より [[source-code]]より
 
-### #477 Azure のモデル選択不整合
+### [#477](https://github.com/digitaldemocracy2030/kouchou-ai/issues/477) Azure のモデル選択不整合
 
 Azure provider 自体は analysis-core に実装されており、実際の Azure ChatCompletion / embedding は `AZURE_CHATCOMPLETION_DEPLOYMENT_NAME` と `AZURE_EMBEDDING_DEPLOYMENT_NAME` を使う。つまり実行経路は Azure deployment 前提になっている。[[source-code]]より
 
 一方で admin UI は Azure 選択時にも OpenAI と同じ固定モデルリストを表示し、`apps/admin/app/create/components/AISettingsSection.tsx` には Azure は別対応が必要という TODO も残っている。Issue 本文の「Azure 利用時はモデル選択を無効化して環境変数の deployment を使う旨を表示する」または「deployment 一覧を取得して選べるようにする」という要求は未達である。したがって `#477` は現役 issue として残る。[[github-dev-docs]]より [[source-code]]より
 
-### #537 OpenRouter の無料モデル追加
+### [#537](https://github.com/digitaldemocracy2030/kouchou-ai/issues/537) OpenRouter の無料モデル追加
 
 OpenRouter provider の基本経路は current main にある。admin UI でも OpenRouter を選べ、analysis-core には OpenRouter 向け chat completion 呼び出しがある。[[source-code]]より
 
 ただし `#537` は「無料モデルを使えるようにする」ことと、OpenRouter でうまく動かない原因の深掘りを要求している。current admin の固定候補は有料系の GPT / Gemini preview に寄っており、無料モデルを明示的に選べる状態ではない。また OpenRouter embedding は `NotImplementedError` のままで、Issue 本文が懸念していた `client.beta.chat.completions.parse` 経路も OpenRouter の Pydantic schema path に残っている。OpenRouter provider の存在だけでは `#537` の要件を満たさない。[[github-dev-docs]]より [[source-code]]より
 
-### #690 ts-node-dev の置き換え
+### [#690](https://github.com/digitaldemocracy2030/kouchou-ai/issues/690) ts-node-dev の置き換え
 
 `#690` は `ts-node-dev` がメンテナンスされていないため、`nodemon` や `tsx` へ置き換えるべきではないかという保守 issue である。current `apps/static-site-builder/package.json` では、`dev` script がまだ `ts-node-dev --respawn --transpile-only src/server.ts` で、`devDependencies` にも `ts-node-dev` が残っている。したがってこの issue は単純に未実装である。[[github-dev-docs]]より [[source-code]]より
 

@@ -21,7 +21,7 @@ issue 本文だけを見ると、`OpenAI または Gemini のどちらか一方�
 
 この分離をしないと、初心者向け docs が「あり得る全失敗を救う巨大な FAQ」になってしまう。特に Docker Desktop が契約・端末管理ポリシーで使えないケースは、kouchou-ai の setup script だけでは解けない。ここは技術的 troubleshooting ではなく、利用環境の調達・権限・サポート体制の問題として扱うべきである。[[docker-desktop-license-2026-05-29]]より
 
-## #877 でやるべき範囲
+## [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) でやるべき範囲
 
 `#877` の最小修正は、current main の `docs/getting-started/windows-setup.md` に次の境界を入れることだと考える。
 
@@ -32,7 +32,7 @@ issue 本文だけを見ると、`OpenAI または Gemini のどちらか一方�
 
 この範囲なら `#877` は docs issue として閉じやすい。逆に、Docker Desktop を使わない WSL2 + Docker Engine 手順まで入れると、systemd、Docker daemon、Windows / WSL path、port forwarding、組織 VPN / セキュリティソフトまで扱う必要が出て、初心者向けガイドのスコープを超える。[[docker-engine-wsl2-alternative-2026-05-23]]より
 
-## #863 との関係
+## [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) との関係
 
 `#863` が merge されると、ユーザーが直接見る入力 UI は `cmd.exe` の `set /p` ではなく `setup_win.ps1` の GUI dialog になる。したがって `#877` の docs 修正は、`#863` の merge 前にやるなら current main 向けの `.bat` 文言、merge 後にやるなら `.bat` launcher + `.ps1` dialog 文言に合わせる必要がある。[[issue-877-windows-setup-guide-scope-2026-05-29]]より
 
@@ -60,4 +60,4 @@ Windows guide の冒頭を、手順から始めず、次のような環境判定
 
 ## Updates
 
-- 2026-05-29: 初回作成。Issue #877 とコメント、Docker Desktop ライセンス公式確認、current main docs、関連 PR #863 を踏まえ、Windows guide のサポート境界を整理した。
+- 2026-05-29: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) とコメント、Docker Desktop ライセンス公式確認、current main docs、関連 PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) を踏まえ、Windows guide のサポート境界を整理した。

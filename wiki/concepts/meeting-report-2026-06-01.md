@@ -12,7 +12,7 @@ sources:
 
 このページは、2026-06-01 月曜定例の時点で [[meeting-report-draft]] にあった「月曜にそのまま読む用」「議題候補」「詳細メモ」を保存した snapshot である。会議後に rotate して、draft 本体は次回 (2026-06-08) 向けに空に戻した。[[meeting-minutes]]より
 
-この回では、`#887` の本番 deploy false positive / runtime build risk、open issue 全件棚卸し、PR #883 撤回後の developer-quickstart 再設計、組織内デモ役と SaaS/Azure 体験環境の扱い、Windows/ローカルLLM route が主な共有・相談事項だった。[[meeting-minutes]]より
+この回では、`#887` の本番 deploy false positive / runtime build risk、open issue 全件棚卸し、PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 撤回後の developer-quickstart 再設計、組織内デモ役と SaaS/Azure 体験環境の扱い、Windows/ローカルLLM route が主な共有・相談事項だった。[[meeting-minutes]]より
 
 ## 過去回
 
@@ -20,7 +20,7 @@ sources:
 
 ## 議題候補 (2026-06-01 定例)
 
-### 議題 1: PR #883 撤回後の developer-quickstart 再設計をどう進めるか
+### 議題 1: PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 撤回後の developer-quickstart 再設計をどう進めるか
 
 **経緯**: `PR #883` (Issue `#876` 対応の developer-quickstart 4 モード整理) を作成・CodeRabbit 対応まで進めたあと、直近 1 週間の整理 (構造把握スタンス確定、3 サブ役割化、利用主体先行分岐、Docker Desktop license の決定フロー上の重み、Mode 1 default 廃止) が反映できていないことに気付き、2026-05-31 に **撤回 (close)** した。Issue `#876` 本体には `## 2026-05-31 更新: 新方針` セクションを追記し、全文草案 [[pr-883-developer-quickstart-draft-2026-05-31]] も用意済み。
 
@@ -50,7 +50,7 @@ Codex (= 私) が今回初めて「status 報告」と分けて「議題候補�
 ## 月曜にそのまま読む用 (2026-06-01 向け)
 
 1. ラベル品質改善は **仕切り直し方向** に寄せました。今の refinement 実装は polish-only で rep args を見ておらず、上流 sampling もランダム、UI の代表例表示も配列先頭、rubric judge も過去のズレを十分に検出できていない、と複数の層に同時に課題が見つかりました。次は prompt を磨くのではなく、ユースケース契約 → sampling 全件入力 → rep args artifact → judge 較正、の順で小さく検証します。[[label-quality-redesign-reset-2026-05-30]]より
-2. 上のユースケース契約について nishio との対話で **「全体傾向把握ユースケース」 1 本に確定** し、tokoroten が Slack で **「デカい見落とし / デカい違和感を見つける」** と operational に言い換えました。合わせて **広聴AI の core stance** を **「構造把握スタンスのツールであって、定量分析スタンスのツールではない」** と明文化しています ([[analysis-stance]])。Web UI に契約選択は露出せず、少数重要論点系は CLI 分析者の prompt 責務、minority residual artifact なし。KJ #3/#4/#5 と公開UI 7 要件の #5/#7 は別ツール側に倒れ、本体は 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理です。
+2. 上のユースケース契約について nishio との対話で **「全体傾向把握ユースケース」 1 本に確定** し、tokoroten が Slack で **「デカい見落とし / デカい違和感を見つける」** と operational に言い換えました。合わせて **広聴AI の core stance** を **「構造把握スタンスのツールであって、定量分析スタンスのツールではない」** と明文化しています ([[analysis-stance]])。Web UI に契約選択は露出せず、少数重要論点系は CLI 分析者の prompt 責務、minority residual artifact なし。KJ [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) と公開UI 7 要件の [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5)/[#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) は別ツール側に倒れ、本体は 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理です。
 3. 構造把握装置の構造的限界として **「インサイト見つけられず止まる」現象** が ohki-shingo から提示され、reader 側に prior mental model がない / 一致している場合は突合素材があっても差異が生まれない、と説明されました。「すでにある総合計画に意見がどうマッピングされるか」のような明示的な prior model を持つ運用が構造把握装置が最も活きる場面、という整理です。UX 指針としては、ユーザは自分のしたいことを区別できない解像度で持つので **デフォルトモード提供 → 反応見て別 view を案内** する事後誘導型に倒し、選択強制は避ける。「ざっくり / 詳細」モード切替 + サンプル分析カタログを補助として用意する方向。[[slack-stance-discussion-2026-05-30]]より
 4. 「別ツール」エコシステムの空き地に対する nishio の答えとして **CLI に多様な実験機能を積み、それが共有・比較・継承されるコミュニティを育てる** という二段構造のビジョンを [[broadlistening-tool-ecosystem-vision]] として整理しました。tokoroten の DivCon や Long Context 再分類のような少数意見救出系は CLI 拡張として位置づけ。Web UI に複雑機能を載せて DivCon 方向の発展が抑制された反省を踏まえます。
 5. 現在の open PR は `#863` の 1 本です。`#887` は merge されましたが、デプロイ成功判定とユーザに見える反映状態が一時的にズレるケースがあり、今回だけの regression ではなく readiness 確認不足として扱うべきです。workflow には latest revision readiness と report smoke が必要です。実環境 URL、revision / run details、ログ、resource 値は公開 wiki に残さず、Google Drive「広聴AI-Azureデモ環境」側で扱います。`#863` は `#731` Windows setup 文字化け対応で実機確認と review 判断待ち。`PR #883` は 2026-05-31 に撤回済みで、新方針による全文草案を [[pr-883-developer-quickstart-draft-2026-05-31]] に置き、Issue `#876` 本体にも追加要件と完了条件を反映済み。
@@ -76,7 +76,7 @@ Codex (= 私) が今回初めて「status 報告」と分けて「議題候補�
 ### 2. 進行中 PR の着地と Azure deploy safety
 
 - `PR #887` / Issue `#886`: 2026-06-01 に merge され Azure Deployment workflow も success になったが、デプロイ成功判定とユーザに見える反映状態が一時的にズレた。これは `#887` 固有ではなく、new revision readiness を十分に待たず公開 URL の 200 を success と読む設計 risk として扱うべき。workflow 側は latest revision readiness と representative report smoke を見るように直す必要がある。runtime build risk は残るため、resource 調整または image build 時 `.next` 化も検討。実環境 URL、revision / run details、ログ、resource 値は公開 wiki に残さない。詳細は公開可能な粒度で [[issue-887-scattergl-csp-regression-2026-06-01]]。
-- `PR #883` (`codex/issue-876-developer-quickstart`): 2026-05-29 に作成、2026-05-31 に撤回 (close)。理由は本文の月曜読み上げ用 #5 参照。Issue `#876` 本体に新方針 (3 サブ役割 / 5 読者像 / Mode 1 default 廃止 / 環境構築前提 / 構造把握スタンス / Mode 4 データ量前提 / 代替ルート) を `## 2026-05-31 更新` セクションとして追記済み。全文草案は [[pr-883-developer-quickstart-draft-2026-05-31]]、再構成方針は [[pr-883-restructuring-2026-05-31]]。新 PR は草案レビュー後に切り直す。
+- `PR #883` (`codex/issue-876-developer-quickstart`): 2026-05-29 に作成、2026-05-31 に撤回 (close)。理由は本文の月曜読み上げ用 [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) 参照。Issue `#876` 本体に新方針 (3 サブ役割 / 5 読者像 / Mode 1 default 廃止 / 環境構築前提 / 構造把握スタンス / Mode 4 データ量前提 / 代替ルート) を `## 2026-05-31 更新` セクションとして追記済み。全文草案は [[pr-883-developer-quickstart-draft-2026-05-31]]、再構成方針は [[pr-883-restructuring-2026-05-31]]。新 PR は草案レビュー後に切り直す。
 - `#741` Azure deploy flaky は `PR #873` で `azure-deploy.yml` に workflow-level `concurrency` を追加して merge 済みで close。根本は npm flaky ではなく近接 main push による deploy 更新競合だったので、serialization で一旦閉じた。[[issue-741-current-state-2026-05-26]]より
 - deploy safety の残課題は `fetch_reports.py` 依存。current main の storage sync / restore 本線とずれており、`PUBLIC_API_KEY` 経由のため非公開レポートも救えない。旧 `#629` は close し、`#870`(script 降格) と `#871`(Blob Storage health check 置換) に分解した。実装順は `#871` を先、`#870` で docs / script 整理を後、が筋。[[fetch-reports-deprecation-and-storage-health-2026-05-26]]より
 - `#870` 着手中: branch `codex/issue-870-fetch-reports-cleanup` で `azure-update-deployment` から `tools/scripts/fetch_reports.py` を外し、script 自体を削除。read/write 確認は既存 `apps/api/scripts/test_storage.py` を使う docs へ寄せた。PR はこれから作成。
@@ -87,7 +87,7 @@ Codex (= 私) が今回初めて「status 報告」と分けて「議題候補�
 - `#221` 系は「作成前確認 / API・billing preflight / 入力検証 / 実行中見通し / 再利用」の 5 面に分け、最初の slice は `apps/admin/app/create/page.tsx` の既存 `window.confirm` を作成前確認パネルへ置き換える。具体 issue として `#884` を起票し、`#11` `#79` `#97` `#292` `#391` へ整理コメントを追加した。[[trial-and-error-burden-reduction-2026-05-29]]より
 - 残存 `[BUG]` title issue は `#741` close を反映済み。現在の `bug` ラベル open は `#731`(PR `#863` 対応中) / `#700`(他 contributor assigned) / `#477`(Azure model UI 不整合、直近最優先ではない)。
 
-### 4. Windows setup guide のサポート境界 (#877)
+### 4. Windows setup guide のサポート境界 ([#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877))
 
 - `#877` の本質は文言整理ではなく **サポート境界の問題**。Docker Desktop が入れられる Windows 10/11 を標準入口にし、組織ポリシーやライセンス制約で Docker Desktop / WSL2 が使えない貸与 PC は beginner guide の対象外、または別ルートとして明示する。[[issue-877-windows-setup-guide-scope]]より [[docker-desktop-license-2026-05-29]]より
 - `PR #863`(`codex/issue-731-windows-setup-powershell`) も並行進行中で、`#731` 日本語 UX 戻しを担当。CodeRabbit 対応として API key 改行エラーの日本語化、`docker compose` を `$PSScriptRoot` で実行する修正、非対話失敗時の compose exit code 保持を追加済み。
@@ -124,7 +124,7 @@ Codex (= 私) が今回初めて「status 報告」と分けて「議題候補�
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス、`β 装置` → 構造把握装置 など)。略号は時間が経つと読めなくなるため、内容で読める表現にした
 - 2026-05-30: 構造把握装置の構造的限界「止まる現象」を [[slack-stance-discussion-2026-05-30]] / [[analysis-stance]] で整理。reader 側に prior model がない場合は突合素材があっても差異が生まれない。UX 指針としてデフォルトモード + 反応事後誘導型に倒し、「ざっくり / 詳細」モード切替とサンプル分析カタログを補助に
 - 2026-05-30: tokoroten が全体傾向把握ユースケースを **「デカい見落とし / デカい違和感を見つける」** と operational に言い換え。「全体傾向把握」より具体的で判断軸として使いやすい
-- 2026-05-30: core stance **「広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない」** を [[analysis-stance]] として明文化。KJ #3/#4/#5 と公開UI 7 要件 #5/#7 は別ツール側に倒れ、本体は構造把握装置 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理に
+- 2026-05-30: core stance **「広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない」** を [[analysis-stance]] として明文化。KJ [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) と公開UI 7 要件 [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5)/[#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) は別ツール側に倒れ、本体は構造把握装置 5 件 + 構造把握の評価軸 2 件 (解説素材性 / 突合素材性) を担う整理に
 - 2026-05-30: nishio との対話でユースケース契約を **「全体傾向把握ユースケース」 1 本に確定**。Web UI 非露出、少数重要論点系は CLI 分析者責務、minority residual artifact なし。下流 4 レイヤ (sampling / rep args / judge / refinement) を全体傾向把握最適化で揃える方向に [[label-quality-redesign-reset-2026-05-30]]
 - 2026-05-30: ラベル品質改善は仕切り直し方向に確定。sampling / rep args / judge / UI 表示責務を別々に検証する [[label-quality-redesign-reset-2026-05-30]]
 - 2026-06-01: open issue 124 件を 5 subagent で本文・コメントまで読み、current main と既存 wiki に照合した [[current-open-issue-triage-2026-06-01]] を作成。open PR は `#887` / `#863` の 2 本、短期優先と close 候補を更新

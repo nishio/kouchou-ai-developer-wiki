@@ -12,7 +12,7 @@ sources:
 
 ### 1. `pnpm.overrides` のマージではなく置換になっており、current main の既存設定を消す
 
-current `main` の root `package.json` には `pnpm.overrides.minimatch = "^10.2.1"` があるが、PR #801 の差分はそこへ `react` / `react-dom` を足す形ではなく `overrides` オブジェクト全体を差し替えている。したがって merge すると React 固定と引き換えに `minimatch` override を失う。これは current tree への forward patch ではなく stale patch の典型。[[pr-801-react-override-observation-2026-05-19]]より
+current `main` の root `package.json` には `pnpm.overrides.minimatch = "^10.2.1"` があるが、PR [#801](https://github.com/digitaldemocracy2030/kouchou-ai/issues/801) の差分はそこへ `react` / `react-dom` を足す形ではなく `overrides` オブジェクト全体を差し替えている。したがって merge すると React 固定と引き換えに `minimatch` override を失う。これは current tree への forward patch ではなく stale patch の典型。[[pr-801-react-override-observation-2026-05-19]]より
 
 ### 2. GitHub 上でも merge-ready 状態ではなく、branch status も弱い
 

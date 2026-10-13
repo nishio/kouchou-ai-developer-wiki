@@ -17,7 +17,7 @@ sources:
 
 `#dd_prance_event2026` では、8/2 イベントのブロードリスニング実践セッションとして、国会 / 国政選挙側の文脈と、地方自治・地方政治側の文脈が並んで議論されていた。[[slack-logs-repository]]より
 
-国会側の session title は注意が必要である。国政選挙や政党・政策形成で broad listening が使われた public case はあるが、「国会で積極的に使われた」と言い切ると過剰な claim になり得る。したがって 8/2 や #564 では、国会 / 国政 / 政党 / 選挙報道を同じ箱に入れず、どこで使われ、どの public artifact があるかを分ける。[[japan-broadlistening-use-case-map-2026-06-30]]より
+国会側の session title は注意が必要である。国政選挙や政党・政策形成で broad listening が使われた public case はあるが、「国会で積極的に使われた」と言い切ると過剰な claim になり得る。したがって 8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) では、国会 / 国政 / 政党 / 選挙報道を同じ箱に入れず、どこで使われ、どの public artifact があるかを分ける。[[japan-broadlistening-use-case-map-2026-06-30]]より
 
 地方自治側では、書籍に登場した自治体をそのまま集める発想だけではなく、8/2 の session として説得力のある候補をゼロベースで考える必要がある、という方向が見えた。候補 lead として奈良市 / 奈良 #全員市長と舞鶴2040が再浮上するが、Slack-only の言及だけでは外部 proof にならない。既に確認済みの奈良市 official PDF、奈良 #全員市長 viewer、舞鶴2040 public viewer / FAQ / 舞鶴市公式 project page を primary source として使う。[[event-2026-08-02-public-example-inventory-2026-06-30]]より
 

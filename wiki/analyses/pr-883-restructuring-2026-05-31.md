@@ -13,9 +13,9 @@ sources:
 
 ## 状況
 
-PR #883 (`[codex] 開発者向け導線を利用モード別に整理する`, closes `#876`) は 2026-05-29 に作成し、CodeRabbit 2 件 address 済みで人間 reviewer 承認待ち。nishio が 2026-05-31 に「もうちょっと何が語られるべきかを整理してから作るべきだな」と判断。直近 1 週間 (2026-05-26〜30) に固まった整理が docs に反映されていないため、merge を急がず再構成してから land する方針に倒す。
+PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) (`[codex] 開発者向け導線を利用モード別に整理する`, closes `#876`) は 2026-05-29 に作成し、CodeRabbit 2 件 address 済みで人間 reviewer 承認待ち。nishio が 2026-05-31 に「もうちょっと何が語られるべきかを整理してから作るべきだな」と判断。直近 1 週間 (2026-05-26〜30) に固まった整理が docs に反映されていないため、merge を急がず再構成してから land する方針に倒す。
 
-## 現状 PR #883 の構成 (developer-quickstart.md)
+## 現状 PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) の構成 (developer-quickstart.md)
 
 1. 冒頭: 「自分はどの起動モードを使うべきか」を判断してから進むよう案内
 2. 一般ユーザは別ページ (OS 別 setup) へ誘導
@@ -34,7 +34,7 @@ PR #883 (`[codex] 開発者向け導線を利用モード別に整理する`, cl
 | [[broadlistening-tool-ecosystem-vision]] | Web UI = simple、CLI = 実験機能、コミュニティ共有、の二段構造ビジョン |
 | `#876` 本文 | 「Mode 4 (CLI / analysis-core) でデータが少なすぎると意味がない」のような前提条件 (数百件以上) は明記されていない |
 
-## 現状 PR #883 で詰まる読者シナリオ
+## 現状 PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) で詰まる読者シナリオ
 
 1. **大組織所属 / Docker Desktop ライセンスなし**: 「迷ったら Mode 1」と書かれているが、そもそも Mode 1 を使えない (license)。代替ルートは現状記載なし → **詰む**
 2. **Windows ユーザ**: 「Mode 1 を Docker Desktop で」と書かれているが、Windows での実機検証が薄いことは明記されていない → 期待値ずれ
@@ -59,7 +59,7 @@ PR #883 (`[codex] 開発者向け導線を利用モード別に整理する`, cl
 - (b) **ベンダー所属の橋渡し役**: 個人 PC で Mode 1 可、組織 PC では license 確認要
 - (c) **NPO / 推進団体の評価役**: (b) と類似
 
-(a) は「一般ユーザと開発者の中間」で、PR #883 の盲点。
+(a) は「一般ユーザと開発者の中間」で、PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) の盲点。
 
 「Mode 1 が default」を維持する根拠は、これらサブ役割を分けたあとでは弱い。それぞれのサブ役割に対して最適な Mode を直接推す形に再構成すべき。
 
@@ -130,9 +130,9 @@ scikit-learn 図の「使える人を探せ」のような率直さで、「自�
 
 ## 次の一手の選択肢
 
-- (a) **本ページの再構成提案を PR #883 に追記コメントとして渡し、nishio が書き直す**: 人間 attention を使う操作なので AI 独断はしない (CLAUDE.md 運用方針)。nishio が判断してコメントするか、本ページを直接 docs 草案として使うか
+- (a) **本ページの再構成提案を PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) に追記コメントとして渡し、nishio が書き直す**: 人間 attention を使う操作なので AI 独断はしない (CLAUDE.md 運用方針)。nishio が判断してコメントするか、本ページを直接 docs 草案として使うか
 - (b) **本ページを input に nishio が新しい developer-quickstart 草案を書く**: 既存 PR を draft に戻すか、別 PR として切り出すか
-- (c) **PR #883 の現状 docs を fix の上ベースとして merge し、追加 PR で再構成を入れる**: 段階的に進める。ただし「不十分な docs を一旦 main に入れる」リスク
+- (c) **PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) の現状 docs を fix の上ベースとして merge し、追加 PR で再構成を入れる**: 段階的に進める。ただし「不十分な docs を一旦 main に入れる」リスク
 
 私の推奨は **(b)**。PR は draft に戻し、本ページの再構成案を基に書き直してから land する方が、内容の整合性が取れる。
 

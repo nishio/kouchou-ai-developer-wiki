@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 09:15] filing-back | wiki 全体の #NNN を GitHub リンク化（Quartz タグ化回避）
+
+- nishio 指示: 公開 wiki の `#NNN`（PR/issue）は GitHub リンクにすべき（Quartz OFM が `#992/#993` 等をタグ /tags/... にしてしまう）。再利用スクリプト `scripts/linkify_github_refs.py` を作成し、**wiki 全体 344 ファイル・3489 参照を一括リンク化**（`[#NNN](...issues/NNN)`、/issues は PR にも自動 redirect）。
+- 安全設計: frontmatter（summary＝AI カタログ）/ コードフェンス / インラインコード / 既存リンク / 16進カラー / 見出し をスキップ、スラッシュ連結も各々変換、冪等。**log.md は除外**（refresh_logs が log.txt を生成するため）。CI link-checker は外部ホストをスキップ＝deploy 無害。
+- 原則を memory 化（[[wiki-github-refs-as-links]]）。次に見る: deploy 後のレンダリング確認（タグでなくリンク）。
+
 ## [2026-10-14 08:45] filing-back | v4.1.0 記事を訂正（tokoroten は既存）＋ v5.0.0 後見者申し送り
 
 - nishio 訂正: **tokoroten は新規でなく既存の中心コントリビュータ**（serverless 版・技術解説資料の作者。GitHub New Contributors は Copilot 併用 PR 初回の誤判定）。[[kouchou-ai-v4-1-0-release-2026-10]] の新規を 3→**2 名（yasumorishima・katsushi2441）**に訂正。
@@ -142,12 +148,6 @@
 - 一連の live 確認（#876/#877/#885/#903/#977/#696/#542/#884）の so-what を [[kouchou-ai-docs-policy-history]] の「現在の状態」冒頭に synthesis として明記。
 - 結論: 6/30 [[docs-issue-map-2026-06-30]] の docs レーンは **2026-09-08〜09 wave でほぼ消化**（#877/#903/#884/#696）。残る宙吊りは **#876 入口 spine / #977 README アンカー / #542 責任所在** の 3 点で、いずれも文言作業でなく人間の方針判断待ち。
 - docs-issue-map(6/30) に前方ポインタの Update を付け、現況の一次参照を history ページへ寄せた。次に見る: #876 の再着手判断（spine first slice か単体か）。
-
-## [2026-10-13 23:45] filing-back | Yandex 攻撃→工作減少説を深掘り検証し unsupported で終了
-
-- 先行の「X 検証断念」ページ（`yandex-strike-jp-sns-bot-claim-verification-2026-10-13`）に `## Updates` で結論を追記し stale を解消。
-- 結論: 「Yandex DC 攻撃でロシア SNS 工作が減った」は **unsupported**（9/9 の敵対的検証）。バズったグラフは AS13238 ＝ YandexBot 検索クローラで social posts ではない。背景（工作実在）は確立。
-- 深掘り本体は本件テーマ外のため別途まとめ、本公開 wiki には結論・含意のみ。この問題の分析は終了。
 
 ## [2026-10-13 23:45] filing-back | #884 / #696 / #542 の live state を確認
 

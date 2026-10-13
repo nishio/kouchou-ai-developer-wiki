@@ -9,9 +9,9 @@ sources:
 
 ## 対応と出典
 
-2026-09-09 17:33 JST観測。[Issue #939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)より、#935作者が挙げた共通shellのレポート別title・unlisted noindexの制約への対応。[[pr-935-shell-hydration-fix-2026-09-09]]でIssue化した後、ユーザーの実装指示を受け、assigneeなしを確認してnishioへassignした。
+2026-09-09 17:33 JST観測。[Issue [#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)より、#935作者が挙げた共通shellのレポート別title・unlisted noindexの制約への対応。[[pr-935-shell-hydration-fix-2026-09-09]]でIssue化した後、ユーザーの実装指示を受け、assigneeなしを確認してnishioへassignした。
 
-[PR #940](https://github.com/digitaldemocracy2030/kouchou-ai/pull/940)、branch `codex/issue-939-shell-metadata`、commit `adbb6cc`。main `679ee9e`から実装し、未マージ。今回の指示は実装であり、マージは行っていない。
+[PR [#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/940)、branch `codex/issue-939-shell-metadata`、commit `adbb6cc`。main `679ee9e`から実装し、未マージ。今回の指示は実装であり、マージは行っていない。
 
 ## 設計判断
 

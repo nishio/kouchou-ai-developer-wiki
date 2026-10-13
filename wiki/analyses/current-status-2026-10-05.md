@@ -10,19 +10,19 @@ sources:
 
 ## 現在地
 
-> 2026-10-07 lint 注記: 下の表と「次の作業候補」は 10月5日朝の観測。続報（末尾 Updates）で #941〜#945・#948・#950 と外部PR #952 は main（`a12d68e`）へ反映、#947 は CLOSED、継続レビュー対象の未mergeは #946 のみ（2026-10-07 に `gh pr list` で確認、他に draft の #891）。
+> 2026-10-07 lint 注記: 下の表と「次の作業候補」は 10月5日朝の観測。続報（末尾 Updates）で [#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)〜[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・[#948](https://github.com/digitaldemocracy2030/kouchou-ai/issues/948)・[#950](https://github.com/digitaldemocracy2030/kouchou-ai/issues/950) と外部PR [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952) は main（`a12d68e`）へ反映、[#947](https://github.com/digitaldemocracy2030/kouchou-ai/issues/947) は CLOSED、継続レビュー対象の未mergeは [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946) のみ（2026-10-07 に `gh pr list` で確認、他に draft の [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)）。
 
 **本体は9月9日のmainから変化なし。実装済みの6PRがレビュー待ちで残る一方、Serverlessの5件の改善はmain済みだった。** 10月5日の再確認で新しく見えた保守課題は、非公開の脆弱性報告導線を整える#947と、Serverless依存更新PRのbuild失敗である。[[catchup-2026-10-05]]より。
 
 | 対象 | 10月5日に確認した状態 | 次に見ること |
 | --- | --- | --- |
 | 本体main | `751e2c8`。shell基盤・hydration修正・title/noindex、Flex対応は反映済み | 通常staticのReact #418はshell修正と別の残件 |
-| 本体#941 / #942 / #943 | 貢献ガイド・静的artifact・エラー復帰E2E。CI成功、必須レビュー待ち | #518の常設公開、#395のSpreadsheet・設定送信は別に残る |
-| 本体#944 / #945 / #946 | 公開前ガイド・Azure接続エラー案内・密度初期値設定。CI成功、必須レビュー待ち | Azureの解析全体と実接続は検証範囲外 |
+| 本体#941 / [#942](https://github.com/digitaldemocracy2030/kouchou-ai/issues/942) / [#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943) | 貢献ガイド・静的artifact・エラー復帰E2E。CI成功、必須レビュー待ち | #518の常設公開、#395のSpreadsheet・設定送信は別に残る |
+| 本体#944 / [#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945) / [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946) | 公開前ガイド・Azure接続エラー案内・密度初期値設定。CI成功、必須レビュー待ち | Azureの解析全体と実接続は検証範囲外 |
 | 本体#891 | Windows standalone、draft / conflict | 配布範囲と#885の後続を整理 |
 | 本体#947 | SECURITY.mdと非公開報告方法の提案。open / 未担当 | 報告を受ける窓口・対象範囲・責任者の確認 |
-| Serverless#22〜#26 | 9月9日にマージ済み | 元ID保持・CSV検証・読み方・表示連動・診断を現在のbaselineとして扱う |
-| Serverless#29 / #30 / #31 / #33 | 依存更新4PR、build失敗 | 原因を読んでから修正範囲を決める |
+| Serverless#22〜[#26](https://github.com/digitaldemocracy2030/kouchou-ai/issues/26) | 9月9日にマージ済み | 元ID保持・CSV検証・読み方・表示連動・診断を現在のbaselineとして扱う |
+| Serverless#29 / [#30](https://github.com/digitaldemocracy2030/kouchou-ai/issues/30) / [#31](https://github.com/digitaldemocracy2030/kouchou-ai/issues/31) / [#33](https://github.com/digitaldemocracy2030/kouchou-ai/issues/33) | 依存更新4PR、build失敗 | 原因を読んでから修正範囲を決める |
 
 上表のlive stateは [[catchup-2026-10-05]]、本体6PRの検証範囲・残件は [[three-issues-progress-2026-09-09]] / [[next-three-issues-progress-2026-09-09]] より。今回は実APIやE2Eを再実行しておらず、GitHubへの投稿・assign・mergeも行っていない。
 
@@ -36,7 +36,7 @@ Flexの標準処理への自動切替も未決論点として残る。#934の実
 
 1. **既存6PRのレビューと判断**。追加実装の前に残っている変更を確認可能な単位で進める。CIは通っているが必須レビューは未充足。対人のレビュー依頼・催促や管理者マージは自動実行しない。
 2. **保守の入口を整える**。#947の窓口・受け手を確認し、Serverlessのbuild失敗を調査する。Dependabotの優先順位と担当も確認対象にする。これは新しい実装への着手・担当引受を意味しない。
-3. **利用観測を判断材料へ変える**。#564 / #221 / #921を、導入→分析→原文確認→持ち出し→対話のどこが詰まるかで結ぶ。機能数やIssue数だけで進捗を評価しない。
+3. **利用観測を判断材料へ変える**。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) / #921を、導入→分析→原文確認→持ち出し→対話のどこが詰まるかで結ぶ。機能数やIssue数だけで進捗を評価しない。
 
 以上は今回の観測からの作業順序案であり、チームの優先順位決定ではない。
 
@@ -54,7 +54,7 @@ Flexの標準処理への自動切替も未決論点として残る。#934の実
 
 - 2026-10-05: 最新状態と過去記録の差を整理。定例下書きには今回の短い読み上げメモを先頭側へ追加した。
 
-### 2026-10-05 20:14 JST — #947 の対応範囲
+### 2026-10-05 20:14 JST — [#947](https://github.com/digitaldemocracy2030/kouchou-ai/issues/947) の対応範囲
 
 [[catchup-2026-10-05]]の追加確認より、SECURITY.mdはmainに存在せず、GitHubの非公開脆弱性報告機能も無効だった。Issueは未担当で、対応PRは見当たらない。
 
@@ -66,41 +66,41 @@ Flexの標準処理への自動切替も未決論点として残る。#934の実
 
 ローカルのQuartz buildと内部リンク検査が成功（44,216参照）。回帰テストは5件成功。
 
-### 2026-10-05 20:21 JST — #947 の設定反映・文書PR
+### 2026-10-05 20:21 JST — [#947](https://github.com/digitaldemocracy2030/kouchou-ai/issues/947) の設定反映・文書PR
 
-[[catchup-2026-10-05]]の続報より、#947をnishioが担当し、非公開脆弱性報告機能を有効化した。報告ボタンの公開表示と担当者のリポジトリ購読を確認済み。SECURITY.mdに報告先・対象範囲・必要情報・非公開でのやりとりを記載し、貢献ガイドからリンクする[PR #948](https://github.com/digitaldemocracy2030/kouchou-ai/pull/948)を提出した（`codex/issue-947-security-policy`）。
+[[catchup-2026-10-05]]の続報より、#947をnishioが担当し、非公開脆弱性報告機能を有効化した。報告ボタンの公開表示と担当者のリポジトリ購読を確認済み。SECURITY.mdに報告先・対象範囲・必要情報・非公開でのやりとりを記載し、貢献ガイドからリンクする[PR [#948](https://github.com/digitaldemocracy2030/kouchou-ai/issues/948)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/948)を提出した（`codex/issue-947-security-policy`）。
 
 設定は反映済み、文書は未merge。ローカルstrict build、CIの文書buildとCodeQLは成功。CodeRabbitの自動レビューは確認時点で進行中。必須レビューとCLA本人確認、通知の実運用確認が残る。20:14の「未担当・報告機能無効・調査のみ」は着手前の観測として扱う。
 
 ### 2026-10-05 20:50 JST — 依存保守の実装へ着手
 
-[[catchup-2026-10-05]]の続報より、nishio担当の#949に依存保守を集約し、更新・互換性対応を[PR #950](https://github.com/digitaldemocracy2030/kouchou-ai/pull/950)へ提出した（`codex/issue-949-dependency-updates`、未merge）。ローカルの単体テスト・本番build・ブラウザ回帰は成功。まず修正版のある範囲を反映可能な状態にし、上流修正版待ちの残件は#949で追跡する。
+[[catchup-2026-10-05]]の続報より、nishio担当の#949に依存保守を集約し、更新・互換性対応を[PR [#950](https://github.com/digitaldemocracy2030/kouchou-ai/issues/950)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/950)へ提出した（`codex/issue-949-dependency-updates`、未merge）。ローカルの単体テスト・本番build・ブラウザ回帰は成功。まず修正版のある範囲を反映可能な状態にし、上流修正版待ちの残件は#949で追跡する。
 
 更新ブランチの監査結果と、mainのDependabot画面は別の状態である。main反映後の再評価までアラート解消済みとは扱わず、#949を閉じない。公開Wikiには具体的な脆弱性詳細を載せず、対応PR・優先度判断・担当確認を残す。
 
 続報ではCIの単体テスト・全build・CodeQL・全体E2E（81件成功、3件skip）も成功した。#950は必須レビュー・main反映待ちであり、依存保守そのものの完了とは区別する。[[catchup-2026-10-05]]より。
 
-### 2026-10-05 21:30 JST — #950 の残条件
+### 2026-10-05 21:30 JST — [#950](https://github.com/digitaldemocracy2030/kouchou-ai/issues/950) の残条件
 
 [[catchup-2026-10-05]]より、関数説明の警告を修正した `5fd6e50` はCodeRabbitの再レビューで追加指摘なし、CIも成功した。ただしbotのcheck成功とGitHubの必須承認は別であり、通常マージは承認レビュー1件未充足で拒否された。#950は未mergeのまま継続確認し、承認条件が揃った時点で通常マージする。#949の残件追跡とmain反映後の再評価は引き続き必要。
 
-### 2026-10-05 21:45 JST — #950・#944のmain反映とレビュー実行の確認
+### 2026-10-05 21:45 JST — [#950](https://github.com/digitaldemocracy2030/kouchou-ai/issues/950)・#944のmain反映とレビュー実行の確認
 
 [[catchup-2026-10-05]]より、ユーザーの明示許可後に#950と#944をadmin mergeした。#948もMERGEDを確認し、以前の必須承認待ち記録とは区別する。依存保守の残件は#949で継続する。
 
-他のPRを点検すると、CodeRabbitのSUCCESS表示には利用上限によるレビュー未実行も含まれていた。本文の実行結果と対象HEADを確認し、#941〜#943・#945・#946は最新main統合後のレビュー・CI確認を続ける。#891はDraft・競合・レビュー未実行のためマージ対象外。
+他のPRを点検すると、CodeRabbitのSUCCESS表示には利用上限によるレビュー未実行も含まれていた。本文の実行結果と対象HEADを確認し、[#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)〜[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)・[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・#946は最新main統合後のレビュー・CI確認を続ける。#891はDraft・競合・レビュー未実行のためマージ対象外。
 
 ### 2026-10-05 22:06 JST — #942の反映範囲
 
-[[catchup-2026-10-05]]より、#942の静的viewer確認用artifactをmainへ反映した。#518の自動build・成果物取得は前進したが、常設URL公開と以前の実行時警告の確認は残るためIssueを閉じていない。#941は再レビュー中、#943・#945・#946はCodeRabbitの利用枠待ちで未merge。
+[[catchup-2026-10-05]]より、#942の静的viewer確認用artifactをmainへ反映した。#518の自動build・成果物取得は前進したが、常設URL公開と以前の実行時警告の確認は残るためIssueを閉じていない。#941は再レビュー中、[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)・[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・#946はCodeRabbitの利用枠待ちで未merge。
 
 ### 2026-10-05 22:18 JST — 非コード貢献の入口を反映
 
-[[catchup-2026-10-05]]より、#941をmain `dd17964` へ反映し、#130のCLOSEDを確認した。競合解消後の最新HEADもCodeRabbit指摘なし・CI成功を確認済み。今回の継続レビュー対象で未mergeなのは#943・#945・#946の3件となった。
+[[catchup-2026-10-05]]より、#941をmain `dd17964` へ反映し、#130のCLOSEDを確認した。競合解消後の最新HEADもCodeRabbit指摘なし・CI成功を確認済み。今回の継続レビュー対象で未mergeなのは#943・[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・#946の3件となった。
 
 ### 2026-10-05 23:04 JST — エラー復帰E2Eを反映
 
-[[catchup-2026-10-05]]より、#943をmain `a0a5bb4` へ反映した。#395の優先ケースである認証・quota等のエラーから設定へ戻るブラウザ経路が入ったが、SpreadsheetとAI詳細設定の残件があるためIssue全体はopenを維持する。継続レビュー対象の未mergeは#945・#946。
+[[catchup-2026-10-05]]より、#943をmain `a0a5bb4` へ反映した。#395の優先ケースである認証・quota等のエラーから設定へ戻るブラウザ経路が入ったが、SpreadsheetとAI詳細設定の残件があるためIssue全体はopenを維持する。継続レビュー対象の未mergeは#945・[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)。
 
 ### 2026-10-05 23:19 JST — #945は警告修正後の再確認へ
 
@@ -120,7 +120,7 @@ Flexの標準処理への自動切替も未決論点として残る。#934の実
 
 ### 2026-10-06 21:30 JST — 外部PR #952をマージ
 
-GitHub上で、外部コントリビュータの #952（Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能に）がmain `73ce8df` へ反映され、#951はCLOSED。既定値11434とアプリのコンテナ間接続 `ollama:11434` は不変。`docs/index.md` のポート表への追記は main `a12d68e` へ直接反映済み。継続レビュー対象の未mergeは#946のまま。
+GitHub上で、外部コントリビュータの [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952)（Ollamaのホスト側ポートを `OLLAMA_HOST_PORT` で変更可能に）がmain `73ce8df` へ反映され、#951はCLOSED。既定値11434とアプリのコンテナ間接続 `ollama:11434` は不変。`docs/index.md` のポート表への追記は main `a12d68e` へ直接反映済み。継続レビュー対象の未mergeは#946のまま。
 
 ### 2026-10-07 — lint
 

@@ -33,12 +33,12 @@ sources:
 
 - 新しい state は増やさず、ClientContainer が持つ表示選択（`selectedChart`）を全画面内から切り替える。「全体」= level 1、「詳細クラスタ」= 最深 level、「濃い意見」= 最深 level + 密度フィルタ、という既存の対応をそのまま使うので、全画面を抜けても選択が引き継がれ、密度設定とも整合する。Plotly の `uirevision` でズームは保持される。
 - `FullscreenToolbar`（右端に全画面終了を固定し、左側を children スロットにした容器）と `ScatterLevelSwitch`（`aria-pressed` 付きのボタン群）を追加。通常のセレクタと同じ無効判定を `resolveChartModes()` に切り出して共有した。
-- issue #283 は「モードバーが全画面終了ボタンに被る」バグ（クローズ済み）で、ツールバーの設計提案ではなかった。その退避処理が参照する `#fullScreenButtons` の id は維持した。#306、#933 にも粒度切替の既存設計は無い。
+- issue [#283](https://github.com/digitaldemocracy2030/kouchou-ai/issues/283) は「モードバーが全画面終了ボタンに被る」バグ（クローズ済み）で、ツールバーの設計提案ではなかった。その退避処理が参照する `#fullScreenButtons` の id は維持した。[#306](https://github.com/digitaldemocracy2030/kouchou-ai/issues/306)、[#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933) にも粒度切替の既存設計は無い。
 - Jest 132 件、tsc、通常 build と shell build が通る。静的 shell 配布物でも動く純クライアント処理。
 
 ## 3. 日英韓切替: 訳は結果 JSON に載せ、ビューアは差し替えるだけ
 
-open issue #323「レポートの多言語対応」に沿う設計にした。UI の文言と、レポート本文（群名・説明・概要）の 2 層を分けて扱う。
+open issue [#323](https://github.com/digitaldemocracy2030/kouchou-ai/issues/323)「レポートの多言語対応」に沿う設計にした。UI の文言と、レポート本文（群名・説明・概要）の 2 層を分けて扱う。
 
 - UI 文言は i18n フレームワークを入れず、`lib/i18n/messages.ts` に ja を正本として en/ko を型で欠落検出する最小の辞書にした。Plotly の韓国語ロケールを追加。
 - レポート本文の訳は `hierarchical_result.json` の既存フィールド `translations`（TTTC 由来で今まで常に空だった）に、言語ごとに群 id → {label, takeaway}、overview、question、intro、任意で意見本文、を入れる。全フィールド省略可で、訳が無い部分は元の言語のまま表示し「元の言語で表示しています」と注記する。
@@ -59,14 +59,14 @@ open issue #323「レポートの多言語対応」に沿う設計にした。UI
 - 粒度切替に「濃い意見」を残すか。ボタン文言を要望どおり「大きい / 細かい」に寄せるか。言語トグルがあるなら `aria-label="クラスタの粒度"` も翻訳対象。
 - 意見本文まで翻訳するか。外部に見せるなら OpenAI で全件翻訳し、固有名詞の訳語を人手確認する必要がある。
 - 翻訳ステップを workflow に組み込むか（今は後処理 CLI のみ。API / admin からの導線も無い）。
-- ~~既存の Biome エラーを別途直すか。~~ 2026-10-09: #962 / PR #963 で 0 件化と CI での強制を進めることになった（[[biome-lint-main-drift-2026-10-09]]）。
+- ~~既存の Biome エラーを別途直すか。~~ 2026-10-09: [#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) / PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で 0 件化と CI での強制を進めることになった（[[biome-lint-main-drift-2026-10-09]]）。
 - 3 branch の統合順序と、push 認証の設定後に PR を課題ごとに分けるか。
 
 ## Updates
 
 - 2026-10-09: 初版。3 branch とも未push、ローカルコミットのみ。
-- 2026-10-09 午後: 粒度切替を実ブラウザ（Chromium、1280 / 390 / 320px）で観察。PC 幅では要望どおり動き、390px 以下では 3 ボタンが横スクロールになる。西尾の判断は「全画面で切り替えるのは PC でやること」で、スマホ幅は直さない。状態カタログの E2E に 1 件追加して 6 件成功。Issue #960 を起票し、PR #961（`feat/fullscreen-cluster-level`、3 commit）を提出した。CLA チェックとスクリーンショット貼付は西尾が行う。残り 2 branch は未push。
-- 2026-10-09 夕方: PR #961 は CodeRabbit の指摘（密度フィルタで最深 level が全て落ちると全画面側だけ「詳細クラスタ」が無効になる）を `modeResult` の追加で直し、CI 全通過・CodeRabbit 了承。比較用スクリーンショットは状態カタログの 12 件では差が見えず、dummy-server の example レポート（約 9,500 件）で 16 倍に拡大して撮り直した。残る分類 branch と言語切替 branch は会社側の Claude Code で続ける方針（西尾）。git bundle と引き継ぎ書を渡した。言語切替 branch は #961 と `Chart.tsx` などで衝突するので、#961 マージ後に rebase する。渡し方は「GALLERIA で用意 → Mac が吸い取って会社側へ送る」で、公開 repo への branch push は使わない（西尾の方針）。同日、会社側へ送信済み。PR 化は会社側で文面まで作り、出すかは西尾が中身を見てから決める。
+- 2026-10-09 午後: 粒度切替を実ブラウザ（Chromium、1280 / 390 / 320px）で観察。PC 幅では要望どおり動き、390px 以下では 3 ボタンが横スクロールになる。西尾の判断は「全画面で切り替えるのは PC でやること」で、スマホ幅は直さない。状態カタログの E2E に 1 件追加して 6 件成功。Issue [#960](https://github.com/digitaldemocracy2030/kouchou-ai/issues/960) を起票し、PR [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)（`feat/fullscreen-cluster-level`、3 commit）を提出した。CLA チェックとスクリーンショット貼付は西尾が行う。残り 2 branch は未push。
+- 2026-10-09 夕方: PR [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) は CodeRabbit の指摘（密度フィルタで最深 level が全て落ちると全画面側だけ「詳細クラスタ」が無効になる）を `modeResult` の追加で直し、CI 全通過・CodeRabbit 了承。比較用スクリーンショットは状態カタログの 12 件では差が見えず、dummy-server の example レポート（約 9,500 件）で 16 倍に拡大して撮り直した。残る分類 branch と言語切替 branch は会社側の Claude Code で続ける方針（西尾）。git bundle と引き継ぎ書を渡した。言語切替 branch は [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) と `Chart.tsx` などで衝突するので、[#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) マージ後に rebase する。渡し方は「GALLERIA で用意 → Mac が吸い取って会社側へ送る」で、公開 repo への branch push は使わない（西尾の方針）。同日、会社側へ送信済み。PR 化は会社側で文面まで作り、出すかは西尾が中身を見てから決める。
 
 - 2026-10-09 夜: 非公開の確認用資料を一つの入口に集約し、比率画像、絞り込み条件が分かる地図、同じ群IDで日英韓を横に並べる照合表を作成。分類の作業定義、分母、翻訳対象と人手未検証の範囲を表示する。提供データの具体的な数値・内容は公開範囲外。
 - 同日: 確認用branch `codex/korea-review-preview`（ローカル、未PR）で、全画面の粒度切替の辞書適用漏れと英語ラベルの単語途中の改行を補正。関連Jest 6件とTypeScript検査・shell build成功、実画面でja/en/ko切替を確認。元の座標を維持した絞り込みでは、元の群名・説明が絞り込み後だけの要約にはならないことも明示した。

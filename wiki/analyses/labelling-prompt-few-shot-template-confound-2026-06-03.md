@@ -115,7 +115,7 @@ direction 誤認の話とは別に、以下 2 つの一般則は今回の件全�
 優先順:
 
 1. **v2 bundle (24 件) を nishio が回答** — ローカル保存の `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/bundles/label_preference_ab.html`（公開サイトからはアクセス不可） を開いて answer。最低でも `label_only` 8 件、できれば全 24 件 (3 contexts × 8 clusters)
-2. **動線 A (MERGE_LABELLING_PROMPT few-shot 修正 PR)** — v2 と独立に進められる。`work/kouchou-ai/` の topic branch で `packages/analysis-core/src/analysis_core/prompts/__init__.py:91` 周辺の few-shot 例を topic-neutral + 短さ指示付きに差し替える。issue #881 (label 品質改善 tracking) の child として進めるか、独立 issue にするかは要相談
+2. **動線 A (MERGE_LABELLING_PROMPT few-shot 修正 PR)** — v2 と独立に進められる。`work/kouchou-ai/` の topic branch で `packages/analysis-core/src/analysis_core/prompts/__init__.py:91` 周辺の few-shot 例を topic-neutral + 短さ指示付きに差し替える。issue [#881](https://github.com/digitaldemocracy2030/kouchou-ai/issues/881) (label 品質改善 tracking) の child として進めるか、独立 issue にするかは要相談
 3. **動線 D-3 (新 mode `refine_independent` 追加)** — sibling-awareness を単独 isolate するなら必要。各 label を sibling 文脈を見ず単独で refine する mode を追加し、setwise vs independent を比較する。コード追加 + 再 labelling が要るので、v2 結果を見てから判断
 4. **judge calibration** — v2 で集めた human preferences を再現する judge を作る (本来の [[label-quality-human-preference-improvement-plan-2026-06-03]] の step 4)。v2 回答数が揃ってから着手
 

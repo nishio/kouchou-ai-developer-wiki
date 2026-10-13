@@ -5,7 +5,7 @@ sources:
   - codex-log-pr-887-deploy-investigation-2026-06-01.txt
 ---
 
-# Codex ログ: PR #887 デプロイ確認 2026-06-01
+# Codex ログ: PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) デプロイ確認 2026-06-01
 
 ## このソースについて
 
@@ -21,7 +21,7 @@ sources:
 
 > はい、直ってないです。
 >
-> 確認したところ、PR #887 は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。
+> 確認したところ、PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。
 >
 > 原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName`（最新 revision）は進んでいる一方、`latestReadyRevisionName`（Ready な revision）は旧版のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
 

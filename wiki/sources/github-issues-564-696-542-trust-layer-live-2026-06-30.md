@@ -17,7 +17,7 @@ sources:
 
 広聴AIの公開事例・導入説明・レポートの読み方に関係する GitHub issue の live state。
 
-2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。16:12 JST に #564、16:19 JST に #696 / #542 / #539 を確認し、17:50 JST に #564 / #696 / #542 を再確認したが、state / assignee / comments は変わっていない。GitHub への comment / assign / close は行っていない。
+2026-06-30 に `gh issue view -R digitaldemocracy2030/kouchou-ai` で確認した。16:12 JST に [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)、16:19 JST に [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) を確認し、17:50 JST に [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) を再確認したが、state / assignee / comments は変わっていない。GitHub への comment / assign / close は行っていない。
 
 ## Freshness marker
 
@@ -29,7 +29,7 @@ sources:
 
 その後 `#1_事例紹介_全体` の 2026-03/04 raw を確認し、北見、舞鶴2040、相模原、宮崎、和歌山など少数の事例 lead があることを [[slack-case-introduction-channel-2026-03-04]] に固定した。これは public case list の一次根拠ではなく、primary URL 確認へ進める lead intake として扱う。
 
-## Issue #564: 活用事例を集めて公開する
+## Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564): 活用事例を集めて公開する
 
 目的は、広聴AIを利用しようとするユーザーにとって、様々な活用事例があると導入ハードルが下がるため、事例を集めて公開すること。
 
@@ -43,7 +43,7 @@ sources:
 - 利用状況一覧の一枚絵、プロダクト x 政党・行政・議員・その他組織のグリッド、有賀さんの自治体向け説明資料 / 動画の再利用など、事例 detail とは別の「最初に渡す武器」も求められている。
 - 既にコンタクトのあった国政政党・政治団体は引き継ぎ待ちという運用メモがある。公開ページは渉外情報そのものではなく、公開可能な説明・事例・導入 FAQ に絞る必要がある。
 
-## Issue #696: 誤読防止
+## Issue [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696): 誤読防止
 
 背景は、広聴AIレポートが「なんとなく説得力を産むツール」として誤読されるリスク。issue 本文では、ブロードリスニングは質的調査・定性分析に近く、一般に広がる過程で暗黙の前提知識が失われることを問題にしている。
 
@@ -57,32 +57,32 @@ sources:
 - `課題発見ツール` と言い切る案が出ている。これは、見栄えのよい可視化が「良い分析」や「多数派の証明」に見えてしまうことへの対策である。
 - 注意書きは、単なる footer 免責ではなく、プロダクト内・website・README/docs・解説記事など複数 surface にまたがる。
 
-## Issue #542: レポート責任所在
+## Issue [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542): レポート責任所在
 
 問題は、レポートの footer には dd2030 の免責事項があるが、レポートに関する責任の所在が明記されていないこと。
 
-提案は、README / footer の免責事項に、レポートに関する責任の所在を明記すること。これは #696 の「誤読防止」と #564 の「事例公開」を支える trust layer として読むべきである。
+提案は、README / footer の免責事項に、レポートに関する責任の所在を明記すること。これは [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) の「誤読防止」と [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の「事例公開」を支える trust layer として読むべきである。
 
-参照元 #539 では、footer の利用規約リンクは、広聴AI側の規約ではなく「広聴AIを使ってレポートを出力した人・組織」が記載するものだと確認されている。悪用禁止、二次利用、サービス変更・停止はユーザー側が各自で設定すべきものとされ、広聴AI側の免責事項に入れるべきものとして「サービスを利用して判断した結果の責任の所在」が issue 化された。したがって #542 は、`termsLink` の有無ではなく、レポート発行主体と OSS / DD2030 の責任境界を読者に誤解させない問題として読む。
+参照元 [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) では、footer の利用規約リンクは、広聴AI側の規約ではなく「広聴AIを使ってレポートを出力した人・組織」が記載するものだと確認されている。悪用禁止、二次利用、サービス変更・停止はユーザー側が各自で設定すべきものとされ、広聴AI側の免責事項に入れるべきものとして「サービスを利用して判断した結果の責任の所在」が issue 化された。したがって [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は、`termsLink` の有無ではなく、レポート発行主体と OSS / DD2030 の責任境界を読者に誤解させない問題として読む。
 
 ## Current code cross-check
 
 2026-06-30 に `work/kouchou-ai/main@d5c9ece6e3b3` を確認したところ、public-viewer footer には既にレポーター帰属と発行責任者への問い合わせ文言が入っている。一方 README / docs index の免責は LLM バイアスと保証なしが中心で、個別レポートの発行主体と OSS / DD2030 の責任境界は揃っていない。[[source-code]]より
 
-したがって #542 は、current main では「footer 文言が完全に欠けている」というより、README / docs / public-viewer / 事例ページの文言統一問題として読む方がよい。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。
+したがって [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は、current main では「footer 文言が完全に欠けている」というより、README / docs / public-viewer / 事例ページの文言統一問題として読む方がよい。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。
 
 ## Open Questions
 
-- #564 の正本は kouchou-ai issue のままでよいか、それとも website repo / dd2030 website 側へ移管するか。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の正本は kouchou-ai issue のままでよいか、それとも website repo / dd2030 website 側へ移管するか。
 - 事例ページの minimum schema は、公開 artifact だけでよいか、導入検討 / 体制 / テーマ決定 / 実施内容 / 結果まで含めるか。
-- #696 / #542 の注意書きは、公開事例ページ、public-viewer footer、本体 docs、README のどれを canonical にするか。
+- [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の注意書きは、公開事例ページ、public-viewer footer、本体 docs、README のどれを canonical にするか。
 - Slack / Drive にある事例情報を、どの owner が公開可能 / 非公開に scrub するか。
 
 ## Updates
 
-- 2026-06-30: 16:19 JST に #696 / #542 / #539 を再読し、内部分析と対外アピールの混同、課題発見ツールとしての説明、termsLink はレポート出力者側のものという責任境界を追記。
-- 2026-06-30: 17:50 JST に #564 / #696 / #542 の live state を再確認し、open / unassigned のままであることを freshness marker に反映。
-- 2026-06-30: 16:12 JST に #564 を再読し、活用事例公開は事例 detail だけでなく、初回説明 FAQ / 一枚絵 / 説明資料導線も求められていると追記。
-- 2026-06-30: [[source-code]] と [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、#542 は current main では footer 単純追加ではなく、README / docs / viewer / 事例ページの責任境界統一として読むと補正。
+- 2026-06-30: 16:19 JST に [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#539](https://github.com/digitaldemocracy2030/kouchou-ai/issues/539) を再読し、内部分析と対外アピールの混同、課題発見ツールとしての説明、termsLink はレポート出力者側のものという責任境界を追記。
+- 2026-06-30: 17:50 JST に [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の live state を再確認し、open / unassigned のままであることを freshness marker に反映。
+- 2026-06-30: 16:12 JST に [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を再読し、活用事例公開は事例 detail だけでなく、初回説明 FAQ / 一枚絵 / 説明資料導線も求められていると追記。
+- 2026-06-30: [[source-code]] と [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は current main では footer 単純追加ではなく、README / docs / viewer / 事例ページの責任境界統一として読むと補正。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、`#1_事例紹介_全体` は lead intake として使い、外部公開では primary URL 確認済み case だけを載せる方針を追記。
-- 2026-06-30: 初回作成。Issue #564 / #696 / #542 を live state として確認し、活用事例公開を trust layer として扱う必要を固定した。
+- 2026-06-30: 初回作成。Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) を live state として確認し、活用事例公開を trust layer として扱う必要を固定した。

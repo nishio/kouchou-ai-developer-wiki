@@ -46,14 +46,14 @@ sources:
 
 このページ本体は 2026-05 の棚卸しを含むため、下の件数や分類だけで現在地を判断しない。2026-06-30 19:15 JST の `work/kouchou-ai/main@d5c9ece`、GitHub live state、議事録、`work/slack-logs/main@7c17dd3` を合わせた最新の短期未決は次の 6 つである。[[current-status-2026-06-30]]より
 
-1. **公開事例と trust layer の placement**: #564 の公開事例ページ、basic explainer / FAQ、#696 の誤読防止、#542 の責任所在は、別々の docs issue ではなく「初回説明 + 公開事例リスト + レポートの読み方 + 何を保証しないか」のセットとして扱う必要がある。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] にあり、未決なのは canonical copy の置き場所と承認者。
-2. **tool catalog の canonical placement**: 広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を `collect / deepen / analyze / show / classify / read-and-act` に分ける draft はできたが、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどこを正本にするかは未決。website は自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、長期は cross-product case-news list 化の issue もある。[[public-tool-catalog-draft-2026-06-30]]より [[website-kouchou-ai-case-live-2026-06-30]]より
+1. **公開事例と trust layer の placement**: [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページ、basic explainer / FAQ、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) の誤読防止、[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の責任所在は、別々の docs issue ではなく「初回説明 + 公開事例リスト + レポートの読み方 + 何を保証しないか」のセットとして扱う必要がある。最小文言案は [[report-reading-guide-minimum-wording-2026-06-30]] にあり、未決なのは canonical copy の置き場所と承認者。
+2. **tool catalog の canonical placement**: 広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を `collect / deepen / analyze / show / classify / read-and-act` に分ける draft はできたが、DD2030 website、kouchou-ai docs、8/2 event material、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) case page のどこを正本にするかは未決。website は自然な外部正本候補だが、現状は `src/kouchou-ai/case.vto` 直書きで、長期は cross-product case-news list 化の issue もある。[[public-tool-catalog-draft-2026-06-30]]より [[website-kouchou-ai-case-live-2026-06-30]]より
 3. **8/2 first demo と実践 lane framing**: 公式性、viewer demo、deep case のどれを主 artifact にするかが未決。候補は渋谷区 / 宇多津町 / 岩手県 / 東京都 / 舞鶴2040 / 北見 / 奈良 / 八代などに広がった。`#dd_prance_event2026` では奈良 / 舞鶴2040 が地方自治側の planning lead として再浮上したが、Slack-only lead では外部 proof にせず、primary public source、source strength、政治文脈、話者・許諾確認を分ける必要がある。[[slack-prance-event-broadlistening-session-2026-06-30]]より
-4. **#884 作成前確認パネルを次 code-safe slice にするか**: #884 / #221 は 19:15 JST 時点でも open / high priority / unassigned で、current main には未実装。first PR の契約は [[issue-884-pre-create-review-contract-2026-06-30]] に切り出し済みだが、AI が着手するなら issue assign と human decision が必要。[[development-next-actions-live-2026-06-30]]より
-5. **docs-safe PR 順序**: #876 developer docs、#877 Windows setup、#885 Node runtime 排除、#696/#542 reading guide は、同じ docs 群でも reader contract が違う。次に本体 repo へ出す PR を 1 本選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
+4. **[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) 作成前確認パネルを次 code-safe slice にするか**: [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) は 19:15 JST 時点でも open / high priority / unassigned で、current main には未実装。first PR の契約は [[issue-884-pre-create-review-contract-2026-06-30]] に切り出し済みだが、AI が着手するなら issue assign と human decision が必要。[[development-next-actions-live-2026-06-30]]より
+5. **docs-safe PR 順序**: [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) developer docs、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows setup、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Node runtime 排除、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696)/[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) reading guide は、同じ docs 群でも reader contract が違う。次に本体 repo へ出す PR を 1 本選ぶ必要がある。[[docs-issue-map-2026-06-30]]より
 6. **Azure demo / SaaS 境界**: 6/5 に viewer 公開と admin 共用は進める方向へ倒れ、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目として残った。したがって A2 は「全部未定」ではなく、公開事例 / サンプルレポート / reading guide で参照環境の価値を補う段階に移っている。[[azure-demo-visibility-thread-resolution-2026-06-05]]より
 
-この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。公開事例ページには事例 detail だけでなく初回説明 FAQ / 一枚絵 / 説明資料導線も必要であり、tool catalog draft は #564 / 8/2 へ転用できる形になった。19:15 JST の live check で GitHub 状態は 18:44 JST から変わっていない。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より [[public-tool-catalog-draft-2026-06-30]]より [[development-next-actions-live-2026-06-30]]より
+この overlay は下の A/B/C 棚卸しを置き換えるものではなく、2026-06-30 時点で人間の判断を使うと次の作業が動く場所を示す。思考ハブは [[thinking-targets]]。公開事例ページには事例 detail だけでなく初回説明 FAQ / 一枚絵 / 説明資料導線も必要であり、tool catalog draft は [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / 8/2 へ転用できる形になった。19:15 JST の live check で GitHub 状態は 18:44 JST から変わっていない。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より [[public-tool-catalog-draft-2026-06-30]]より [[development-next-actions-live-2026-06-30]]より
 
 ## A. 未定（合意なし／対立あり）
 
@@ -88,11 +88,11 @@ sources:
 
 ### A3. DB 導入のタイミング
 
-[[meeting-minutes]] 2025-05-21, 2025-06-25 で毎回「v4.0 のあたり」と言いつつ毎回先送り。**ファイルストレージ継続が暗黙の現状維持**。SQLite 候補が [[nasuka]] の cluster-title 編集 (PR #545) で検討されたが採用されず。
+[[meeting-minutes]] 2025-05-21, 2025-06-25 で毎回「v4.0 のあたり」と言いつつ毎回先送り。**ファイルストレージ継続が暗黙の現状維持**。SQLite 候補が [[nasuka]] の cluster-title 編集 (PR [#545](https://github.com/digitaldemocracy2030/kouchou-ai/issues/545)) で検討されたが採用されず。
 
 ### A4. private-by-default にすべきか
 
-[[meeting-minutes]] 2025-04-23 / Issue #341：YouTube 風 unlisted は PR #500 で実装済み。ただし **「unlisted default」と「private default + unlisted opt-in」のどちらが正しいか** は議論残存。
+[[meeting-minutes]] 2025-04-23 / Issue [#341](https://github.com/digitaldemocracy2030/kouchou-ai/issues/341)：YouTube 風 unlisted は PR [#500](https://github.com/digitaldemocracy2030/kouchou-ai/issues/500) で実装済み。ただし **「unlisted default」と「private default + unlisted opt-in」のどちらが正しいか** は議論残存。
 
 ### A5. 多言語 i18n の扱い
 
@@ -166,7 +166,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### B9. `packages/ui-shared/` 共有 UI パッケージ
 
-歴史的には refactoring phase docs と `naming_convention.md` に計画記載があったが、current source tree に残るのは `naming_convention.md` のみで、**ディレクトリ自体は未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue #586）と紐づくはずだが進んでいない。
+歴史的には refactoring phase docs と `naming_convention.md` に計画記載があったが、current source tree に残るのは `naming_convention.md` のみで、**ディレクトリ自体は未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)）と紐づくはずだが進んでいない。
 
 ### B-共通運用
 
@@ -203,7 +203,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### C-Web UI
 
-### C1. PR #824 — LOCAL LLM の HTTPS 対応
+### C1. PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) — LOCAL LLM の HTTPS 対応
 
 `PR #824` は 2026-05-18 に merge 済みで、current `packages/analysis-core/src/analysis_core/services/llm.py` は `local_llm_address` に full URL を受け取れる helper と `LOCAL_LLM_API_KEY` 対応を持つ。`apps/api/src/services/report_launcher.py` も analysis 実行自体はこの `analysis-core` を subprocess 起動するため、**実際の分析経路は current `main` で HTTPS/full-URL 対応済み** と読める。[[pr-824-local-llm-https-observation-2026-05-19]]より
 
@@ -239,10 +239,10 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ## Updates
 
-- 2026-06-30: 19:15 JST の live check と `#dd_prance_event2026` source を反映し、current overlay を 5 件から 6 件へ補正。8/2 は first demo と実践 lane framing を分け、#884 は次 code-safe slice の人間判断項目として追加した。
-- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を #564 / 8/2 / docs の人間判断項目として明示。
+- 2026-06-30: 19:15 JST の live check と `#dd_prance_event2026` source を反映し、current overlay を 5 件から 6 件へ補正。8/2 は first demo と実践 lane framing を分け、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は次 code-safe slice の人間判断項目として追加した。
+- 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / 8/2 / docs の人間判断項目として明示。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期外部正本候補だが、現行は `case.vto` 直書き、長期は横断 case-news list 未決として overlay を補強。
-- 2026-06-30: [[current-status-2026-06-30]] をもとに current overlay を追加し、#564/#696/#542 trust layer、8/2 first demo、docs-safe PR 順序、Azure demo / SaaS 境界を短期未決として明示。
+- 2026-06-30: [[current-status-2026-06-30]] をもとに current overlay を追加し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)/[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696)/[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) trust layer、8/2 first demo、docs-safe PR 順序、Azure demo / SaaS 境界を短期未決として明示。
 - 2026-05-17: 初回作成 — 議事メモ＋コードリーディング結果を 3 分類で整理
 - 2026-05-17: `main@3809a7a` を再確認し、CodeRabbit は「未配線」ではなく最小導入済みへ修正
 - 2026-05-17: `apps/api/src/services/report_duplicate.py` / `docs/user-guide/reuse-report.md` / admin UI を確認し、レポート再利用機能は C から除外
@@ -255,12 +255,12 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-19: [[usage-modes]] に合わせ、各状態の中を Web UI / CLI / 共通コア の読み筋でグルーピング
 - 2026-05-21: Phase 3b の完了判定を議論しやすくするため、[[phase3b-exit-criteria]] への導線を追加
 - 2026-06-01: A2 に、自治体担当本人 / 組織内デモ役向けの Azure 体験環境 priority、秘密情報を扱う SaaS 本番運用との切り分け、ユーザ単位環境複製 vs viewer-only デモ vs admin 試行錯誤体験の未決論点を追記
-- 2026-05-21: `main@0e1552d` を確認し、PR #840 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
-- 2026-05-21: `main@42d2afb` で PR #843 merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加
-- 2026-05-21: `main@5d591ef` で PR #844 merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外
+- 2026-05-21: `main@0e1552d` を確認し、PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) 相当 merge 後は Phase 3b を B から除外。残課題は Phase 8 / extras 分割 / status semantics follow-up 側へ移ったと整理
+- 2026-05-21: `main@42d2afb` で PR [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) merge を確認し、B4 の extras 分割を除外。あわせて open PR `#844` の analysis-core CLI preflight を C4 として追加
+- 2026-05-21: `main@5d591ef` で PR [#844](https://github.com/digitaldemocracy2030/kouchou-ai/issues/844) merge と Issue `#836` / `#837` close を確認し、C4 の analysis-core CLI preflight 項目を除外
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` の Web canonical 化を open decision から外した
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後は Phase 8 が open decision ではなくなったため B5 を除外。current tree から消えた phase docs への参照も補正
 - 2026-05-25: A1 の [[nishio]] スタンスを訂正。「チームみらい等の宣伝用途」という外部顧客像に紐づけた表現は不適切で、実際は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替も可」という時間軸のある立場である
 - 2026-06-04: A2 に [[azure-demo-public-visibility-proposal-2026-06-04]] への接続を追記。nishio が Ohki さん宛に Slack で 4 問 ((Q1) viewer 公開 / (Q2) admin 共用 + 秘密情報禁止明示 / (Q3) Github admin ワンクリックの 1 ヶ月専用試用環境 / (Q4) 365 日 SaaS 不参加確認) として decompose した
 - 2026-06-05: A2 に [[azure-demo-visibility-thread-resolution-2026-06-05]] による着地を追記。viewer 公開と admin 共用は進める (前提: container の dd2030 フォールバックキー除去、3 点明示文言)、1 ヶ月専用試用環境は優先度低 + 公開事例導線が代替方向、365 日 SaaS は提供主体・責任範囲の整理項目化、デモ環境の価値は「参照環境」へ再フレーム
-- 2026-10-07: lint 注記。短期未決 4 の #884 は 2026-09-08 に PR #922（作成前に入力とAPI接続状態を確認する画面）で CLOSED（nishio 担当）。#221 は open のまま。2026-06-30 overlay の他項目（8/2 event 等）は日付を過ぎており、現在の判断待ちは [[current-status-2026-10-05]] を先に見る
+- 2026-10-07: lint 注記。短期未決 4 の [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は 2026-09-08 に PR [#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922)（作成前に入力とAPI接続状態を確認する画面）で CLOSED（nishio 担当）。[#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) は open のまま。2026-06-30 overlay の他項目（8/2 event 等）は日付を過ぎており、現在の判断待ちは [[current-status-2026-10-05]] を先に見る

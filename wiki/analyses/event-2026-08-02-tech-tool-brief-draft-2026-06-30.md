@@ -54,7 +54,7 @@ sources:
 - 広聴AIは統計的世論調査ではない。自由記述を構造把握する道具であり、代表性や政策判断を自動保証するものではない。[[kouchou-ai]]より
 - 横浜型ブロードリスニングの「収集」課題を、広聴AIがすでに full solution として解いているとは言わない。input plugin や data collection docs へ接続できる可能性はあるが、current claim は収集後の分析・可視化に寄せる。[[slack-yokohama-hack-2026-06-26]]より
 - いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を、広聴AIの current product capability として列挙しない。周辺 tool / adjacent route として分けて説明する。[[public-tool-catalog-draft-2026-06-30]]より
-- #876 developer quickstart、#877 Windows setup、#885 Node runtime 排除のような開発者向け issue を、イベント向けの利用者説明に混ぜない。これらは裏側の整備であり、イベント資料では必要に応じて「今後の配布改善」としてだけ触れる。[[docs-issue-map-2026-06-30]]より
+- [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) developer quickstart、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows setup、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Node runtime 排除のような開発者向け issue を、イベント向けの利用者説明に混ぜない。これらは裏側の整備であり、イベント資料では必要に応じて「今後の配布改善」としてだけ触れる。[[docs-issue-map-2026-06-30]]より
 - デプロイ詳細、実環境 URL、resource 名、revision、ログ、secret / access 周辺情報は公開 wiki / イベント draft に書かない。
 
 ## Missing Before Public Use

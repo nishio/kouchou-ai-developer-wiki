@@ -26,7 +26,7 @@ Issue `#886` の報告 URL を確認すると、実際の `Content-Security-Poli
 
 「以前の version で作成したレポート」と見えたのは、報告対象が過去に作られた公開レポートだったためで、artifact schema の新旧差分が主因とは言いにくい。current viewer は report data を受け取って同じ `ScatterChart` を描くため、`scattergl` を使うレポートなら新旧を問わず同じ CSP 条件で壊れる。[[source-code]]より [[github-dev-docs]]より
 
-## PR #848 は何をした PR だったか
+## PR [#848](https://github.com/digitaldemocracy2030/kouchou-ai/issues/848) は何をした PR だったか
 
 `PR #848` の主目的は、public IP + HTTP の self-host 環境で、Admin / Public Viewer が現在の環境変数から必要な外部 origin だけを許可できるようにすることだった。`apps/shared/csp.ts` に共通 helper を作り、`API_BASEPATH` / `NEXT_PUBLIC_API_BASEPATH` / `NEXT_PUBLIC_SITE_URL` から `http:` / `https:` origin を抽出し、重複排除した上で `Content-Security-Policy` を組み立てる。`ws:` や壊れた URL は許可しない。[[github-dev-docs]]より [[source-code]]より
 

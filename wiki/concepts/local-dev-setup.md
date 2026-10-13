@@ -92,7 +92,7 @@ rye run uvicorn src.main:app --reload --port 8000
 - 静的書き出し時のサブパス：`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH`（[[deployment]]）
 - plugin 有効化：`ENABLE_YOUTUBE_INPUT_PLUGIN`, `YOUTUBE_API_KEY` 等
 
-一般利用者向けのセットアップスクリプト（`setup_*.sh` / `setup_win.ps1`）は `.env` を一から書き出すので、`.env.example` との間でずれが起きやすい。2026-10 に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` の欠落が見つかった（#956 / PR #957、[[setup-script-env-drift-2026-10-07]]）。`.env.example` に変数を足す時は、スクリプトにも書き出すか、`scripts/check_setup_env.py` の `OPTIONAL_KEYS` に理由つきで入れる（PR #957 の merge 後）。
+一般利用者向けのセットアップスクリプト（`setup_*.sh` / `setup_win.ps1`）は `.env` を一から書き出すので、`.env.example` との間でずれが起きやすい。2026-10 に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` の欠落が見つかった（[#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) / PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)、[[setup-script-env-drift-2026-10-07]]）。`.env.example` に変数を足す時は、スクリプトにも書き出すか、`scripts/check_setup_env.py` の `OPTIONAL_KEYS` に理由つきで入れる（PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) の merge 後）。
 
 ## `.env` 変更時の build 再実行
 
@@ -106,7 +106,7 @@ rye run uvicorn src.main:app --reload --port 8000
 - `entrypoint.sh` の CRLF 改行で起動失敗（Git の `core.autocrlf` 起因）
 - 「使いたいだけで開発はしない」ユーザは Git も入っていない
 
-対策として、[[nishio]] の setup script、[[other-contributors|kitaro]] のバッチファイル、PR #314、#509、#524（ネイティブ環境）が積み重なってきた。それでもなお実地報告が続いており、Windows サポートは継続課題。
+対策として、[[nishio]] の setup script、[[other-contributors|kitaro]] のバッチファイル、PR [#314](https://github.com/digitaldemocracy2030/kouchou-ai/issues/314)、[#509](https://github.com/digitaldemocracy2030/kouchou-ai/issues/509)、[#524](https://github.com/digitaldemocracy2030/kouchou-ai/issues/524)（ネイティブ環境）が積み重なってきた。それでもなお実地報告が続いており、Windows サポートは継続課題。
 
 非専門家向け Windows 配布をどこまでやるか（`setup_win.*` で打ち止めるか、ランチャー exe や単体 exe へ踏み込むか）と、ランタイム基盤を Docker Desktop に置くか WSL2 Ubuntu + Docker Engine に置くかは [[windows-distribution-options]] に段階整理。
 
@@ -135,4 +135,4 @@ AI コーディングエージェントの長期運用では、host machine full
 - 2026-05-25: 議事録のリンク URL を追えるよう、`raw/meeting_minutes.html` 取得を任意の補助手順として追加
 - 2026-06-30: Slack raw の一次参照先として `digitaldemocracy2030/slack-logs` clone を追加し、`oss_weekly_reporter` は週次 AI 要約 / GitHub activity 補助線として位置づけ直した
 - 2026-10-05: Windows setup 系作業で参照する Codex 実機確認メモへの導線を追加した
-- 2026-10-06: #952 で入った `OLLAMA_HOST_PORT`（ホスト側 ollama ポート変更）を追記
+- 2026-10-06: [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952) で入った `OLLAMA_HOST_PORT`（ホスト側 ollama ポート変更）を追記

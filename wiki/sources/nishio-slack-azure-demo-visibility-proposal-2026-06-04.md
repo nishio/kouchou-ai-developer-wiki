@@ -54,7 +54,7 @@ coverage: 2026-06-04 22:00 と 22:29 の 2 投稿のみ
 
 ### 関連事実
 
-- Q2 の「ユーザが API キーを入力するコードが main に入っている」は既存実装と整合する。Issue #660 (2025-07-30 merge) で admin form 入力経路、PR #868 (2026-05-29 までに merge) で `USER_API_KEY` plumbing が main に入っている。[[llm-providers]] / [[meeting-report-2026-05-25]] より
+- Q2 の「ユーザが API キーを入力するコードが main に入っている」は既存実装と整合する。Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) (2025-07-30 merge) で admin form 入力経路、PR [#868](https://github.com/digitaldemocracy2030/kouchou-ai/issues/868) (2026-05-29 までに merge) で `USER_API_KEY` plumbing が main に入っている。[[llm-providers]] / [[meeting-report-2026-05-25]] より
 - Q3 の「1 ヶ月専用試用環境」は、[[open-decisions]] A2 で「やるならユーザごとに現 Azure デモ環境相当を丸ごと複製する方向」と書かれていたものを、Github admin による on-demand provisioning として具体化している。誰が provisioning をトリガーするかを Github admin (大木さん他) と名指ししている点が新しい
 - Q4 は確認質問。365 日稼働 SaaS は dd2030 体制不足で先送り中（[[deployment]] / [[open-decisions]] A2）という現状認識を、Ohki さんから明示確認したい意図と読める
 

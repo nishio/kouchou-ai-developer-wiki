@@ -60,11 +60,11 @@ current `analysis-core` CLI は `--without-html` の default が `False` にな�
 
 ### GitHub Pages サブパスで画像 404
 
-PR #709：ハードコードされた `/images/foo.png` 形式のパスがサブパス配信で 404 に。`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH` で配信パスを設定する運用。
+PR [#709](https://github.com/digitaldemocracy2030/kouchou-ai/issues/709)：ハードコードされた `/images/foo.png` 形式のパスがサブパス配信で 404 に。`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH` で配信パスを設定する運用。
 
 ### Plotly 散布図 click 不発
 
-Issue #710：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
+Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
 
 ### UI の細かい操作感は shared preview がないと議論が止まりやすい
 
@@ -132,10 +132,10 @@ current `main` では `--without-html` は `default=False` に直ったが、`--
 
 Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を起動する。これは「CLI の観察用 HTML と Web の JSON viewer は artifact 契約が別」という意図どおりの設計だが、裏返すと **日常的に最も多く回っている Web 経路は、CLI の可視化ステップを一度も実行しない**。2026-10-07 時点の main `a12d68e` では、この経路に次の 2 つの不具合が気づかれずに残っていた。
 
-- **既定の CLI 実行が最後で落ちる（#953 / PR #955）**: ワークフロー定義が、npm ビルド時代の名残の `${config.report_dir}` を参照していた。今の実装はこの値を読まないのに、エンジンは未定義キーをエラーにするので、`report_dir` を書かない普通の設定では可視化の段階で必ず失敗する。クイックスタートの手順どおりでも `report.html` が出ない
-- **原文リンク・タイトル設定が効かない（#954、方針未決）**: クイックスタートが案内するトップレベルの `report_url_pattern` は設定検証で弾かれる。`hierarchical_visualization` の中に書いても弾かれる。仮に通っても、エンジンはステップ定義に書かれた設定しかプラグインに渡さないので届かない
+- **既定の CLI 実行が最後で落ちる（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / PR [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955)）**: ワークフロー定義が、npm ビルド時代の名残の `${config.report_dir}` を参照していた。今の実装はこの値を読まないのに、エンジンは未定義キーをエラーにするので、`report_dir` を書かない普通の設定では可視化の段階で必ず失敗する。クイックスタートの手順どおりでも `report.html` が出ない
+- **原文リンク・タイトル設定が効かない（[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954)、方針未決）**: クイックスタートが案内するトップレベルの `report_url_pattern` は設定検証で弾かれる。`hierarchical_visualization` の中に書いても弾かれる。仮に通っても、エンジンはステップ定義に書かれた設定しかプラグインに渡さないので届かない
 
-テストがすり抜けた理由も同じ形をしている。プラグインの単体テストは、プラグインが期待する形の設定を**直接**渡しているので通る。しかし実際にワークフローエンジンから渡る設定の形とは違う。プラグイン単体のテストだけでは「ワークフロー経由で設定が届くか」は検証されない。PR #955 では、オーケストレーターから HTML 出力ありで可視化ステップを回す統合テストを足した。
+テストがすり抜けた理由も同じ形をしている。プラグインの単体テストは、プラグインが期待する形の設定を**直接**渡しているので通る。しかし実際にワークフローエンジンから渡る設定の形とは違う。プラグイン単体のテストだけでは「ワークフロー経由で設定が届くか」は検証されない。PR [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955) では、オーケストレーターから HTML 出力ありで可視化ステップを回す統合テストを足した。
 
 教訓: 利用モードごとに経路を分けたら、**Web が通らない側の経路にも、端から端まで通す最小のテストを置く**。どちらか片方の経路だけが日常的に回っていると、もう片方は静かに腐る（[[cli]]、[[usage-modes]]、[[analysis-core-and-web-ui]]）。
 
@@ -167,15 +167,15 @@ Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を
 - `entrypoint.sh` の **CRLF 改行**（Git の `core.autocrlf` 起因）で起動失敗
 - 「使いたいだけで開発はしない」非エンジニアユーザは Git も未導入
 
-対策が幾度も積まれている（PR #314、setup script、kitaro のバッチ、#524 ネイティブ環境）が継続課題。
+対策が幾度も積まれている（PR [#314](https://github.com/digitaldemocracy2030/kouchou-ai/issues/314)、setup script、kitaro のバッチ、[#524](https://github.com/digitaldemocracy2030/kouchou-ai/issues/524) ネイティブ環境）が継続課題。
 
 ### 日本語 Windows の cp932 でテキスト IO がクラッシュする
 
-`open()` / `json.load()` に `encoding` を指定しないと、Python は OS 既定エンコーディングを使う。**日本語 Windows の既定は cp932 (Shift-JIS)** なので、UTF-8 で書かれた JSON を読む段階で `UnicodeDecodeError` でクラッシュする。Linux / Docker は既定 UTF-8 なので **顕在化せず、Windows 実機でだけ壊れる**。書き込み側も未指定だと cp932 で書き出し、別環境で読めない JSON を生む。対策は各所に `encoding="utf-8"` を明示する（根本）か、起動時に `PYTHONUTF8=1`（UTF-8 モード）を立てる（1 行で一括回避・スタンドアロン配布では必須）。[[windows-standalone-embeddable-poc-2026-06-01]] の検証で発掘、現 main でも `report_status.py` / `meta.py` / `admin_report.py` 等に残存（issue #993）。
+`open()` / `json.load()` に `encoding` を指定しないと、Python は OS 既定エンコーディングを使う。**日本語 Windows の既定は cp932 (Shift-JIS)** なので、UTF-8 で書かれた JSON を読む段階で `UnicodeDecodeError` でクラッシュする。Linux / Docker は既定 UTF-8 なので **顕在化せず、Windows 実機でだけ壊れる**。書き込み側も未指定だと cp932 で書き出し、別環境で読めない JSON を生む。対策は各所に `encoding="utf-8"` を明示する（根本）か、起動時に `PYTHONUTF8=1`（UTF-8 モード）を立てる（1 行で一括回避・スタンドアロン配布では必須）。[[windows-standalone-embeddable-poc-2026-06-01]] の検証で発掘、現 main でも `report_status.py` / `meta.py` / `admin_report.py` 等に残存（issue [#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993)）。
 
 ### subprocess 起動は `"python"` でなく `sys.executable`
 
-パイプラインを別プロセスで起動する時にインタプリタを `"python"` とハードコードすると、**いま動いているのと同じ Python ではなく PATH 上で最初に見つかる `python`** を拾う。venv・embeddable Python・`python3` しか無い環境では別 Python（`analysis_core` 未導入）や不在で壊れる。Docker 標準イメージでは `python` が PATH にあるため気づけない。`sys.executable` を使えば同一インタプリタで起動できる。[[windows-standalone-embeddable-poc-2026-06-01]] で発掘、`report_launcher.py:92` に残存（issue #992）。
+パイプラインを別プロセスで起動する時にインタプリタを `"python"` とハードコードすると、**いま動いているのと同じ Python ではなく PATH 上で最初に見つかる `python`** を拾う。venv・embeddable Python・`python3` しか無い環境では別 Python（`analysis_core` 未導入）や不在で壊れる。Docker 標準イメージでは `python` が PATH にあるため気づけない。`sys.executable` を使えば同一インタプリタで起動できる。[[windows-standalone-embeddable-poc-2026-06-01]] で発掘、`report_launcher.py:92` に残存（issue [#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)）。
 
 ### Windows スタンドアロン（embeddable Python）の設計分岐と footgun
 
@@ -183,11 +183,11 @@ embeddable Python に FastAPI＋パイプライン＋静的 viewer を同梱す�
 
 ### Windows 実機 E2E は runner 設定と app 実装の問題が混ざる
 
-Issue #860 / PR #862 の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。さらに、公開 repo の workflow が個人マシン runner を使う場合は、PR trigger や schedule から動かさず、許可された手動実行だけに絞るべき。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
+Issue [#860](https://github.com/digitaldemocracy2030/kouchou-ai/issues/860) / PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) の実機 E2E 構築では、self-hosted runner の `pwsh` 不在、execution policy、Docker CLI の PATH 不足、古い run の runner 占有、`public-viewer` Docker image の `apps/shared` 欠落、PowerShell `Invoke-WebRequest` の timeout が順に出た。**「runner が拾わない」と「拾った先で app が壊れている」と「到達確認の道具が壊れている」は別層** として見る必要がある。さらに、公開 repo の workflow が個人マシン runner を使う場合は、PR trigger や schedule から動かさず、許可された手動実行だけに絞るべき。詳細は [[windows-real-machine-e2e-lessons]]。[[source-code]]より [[github-dev-docs]]より
 
 ### CI の success は「どの層の success か」を確認する
 
-PR #862 では docs deploy や repo checkout 上の client build が success でも、Docker image の runner stage に `apps/shared` が入っていないため、container 起動後の `public-viewer` runtime build が失敗した。**docs build success、source tree 上の build success、Docker image build success、container 起動後の runtime build success は別物**。特に Dockerfile が builder stage / runner stage を分けている場合、repo には存在するファイルでも runtime image には無いことがある。[[windows-real-machine-e2e-lessons]]より [[source-code]]より
+PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) では docs deploy や repo checkout 上の client build が success でも、Docker image の runner stage に `apps/shared` が入っていないため、container 起動後の `public-viewer` runtime build が失敗した。**docs build success、source tree 上の build success、Docker image build success、container 起動後の runtime build success は別物**。特に Dockerfile が builder stage / runner stage を分けている場合、repo には存在するファイルでも runtime image には無いことがある。[[windows-real-machine-e2e-lessons]]より [[source-code]]より
 
 ### `docker compose up` だけだとデータが消える
 
@@ -209,15 +209,15 @@ PR #862 では docs deploy や repo checkout 上の client build が success で
 
 ### Biome は一度も強制されていない（main の全体 lint は落ちている）
 
-`lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入初日から `skip: true`、CI に Biome の workflow は一度も存在せず、CI 化の Issue #264 は実装なしで close された。結果、`pnpm --filter @kouchou-ai/public-viewer lint` は 2026-02 以降 main で常に失敗しており（2026-10-09 時点 7 件、admin 7 件、dummy-server 9 件）、PR は「触ったファイルだけ clean」で通す慣行になっている。`tsconfig.json` は Next.js 16 が自動書き換えするので手で整形しても戻る（ignore に入れる）。`noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない。由来と時系列は [[biome-lint-main-drift-2026-10-09]]。
+`lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入初日から `skip: true`、CI に Biome の workflow は一度も存在せず、CI 化の Issue [#264](https://github.com/digitaldemocracy2030/kouchou-ai/issues/264) は実装なしで close された。結果、`pnpm --filter @kouchou-ai/public-viewer lint` は 2026-02 以降 main で常に失敗しており（2026-10-09 時点 7 件、admin 7 件、dummy-server 9 件）、PR は「触ったファイルだけ clean」で通す慣行になっている。`tsconfig.json` は Next.js 16 が自動書き換えするので手で整形しても戻る（ignore に入れる）。`noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない。由来と時系列は [[biome-lint-main-drift-2026-10-09]]。
 
 ### import-order チェックでの Devin 無限ループ
 
-[[meeting-minutes]] 2025-10-01：Devin がリント自動修正できないものを `ruff format` 連打してループ。PR #708 で **ruff の import-order チェック自体を無効化** + 既存違反を一括修正して打開。
+[[meeting-minutes]] 2025-10-01：Devin がリント自動修正できないものを `ruff format` 連打してループ。PR [#708](https://github.com/digitaldemocracy2030/kouchou-ai/issues/708) で **ruff の import-order チェック自体を無効化** + 既存違反を一括修正して打開。
 
 ### `EXDEV: cross-device link not permitted`
 
-Issue #724：静的ファイル出力時のクロスデバイスリンクエラー。Devin が 30 分で緊急修正した（2025-10-29）。
+Issue [#724](https://github.com/digitaldemocracy2030/kouchou-ai/issues/724)：静的ファイル出力時のクロスデバイスリンクエラー。Devin が 30 分で緊急修正した（2025-10-29）。
 
 ### ドキュメント・運用
 
@@ -227,7 +227,7 @@ Issue #724：静的ファイル出力時のクロスデバイスリンクエラ�
 
 ### mkdocs のアイコンショートコードは `pymdownx.emoji` が無いと生テキストになる
 
-Material for MkDocs の本文中アイコン `:fontawesome-...:` / `:material-...:` は `pymdownx.emoji`（material の `twemoji` index + `to_svg`）で初めて SVG 化される。`mkdocs.yml` の `markdown_extensions` に無いと、ショートコードがコロン記法のまま公開サイトに出る。**テーマ側のアイコン（`extra.social` の `icon:`、palette の `toggle.icon`）はテンプレート直描画で拡張不要のため正常に出る**ので、「テーマアイコンは出るのに本文アイコンだけ出ない」という食い違いになり気づきにくい。2026-10-13 に docs サイトのホーム OS カードで実際に発生、PR #990 で 3 行追加して解消。詳細と検証は [[docs-site-icon-shortcode-bug-2026-10-13]]。
+Material for MkDocs の本文中アイコン `:fontawesome-...:` / `:material-...:` は `pymdownx.emoji`（material の `twemoji` index + `to_svg`）で初めて SVG 化される。`mkdocs.yml` の `markdown_extensions` に無いと、ショートコードがコロン記法のまま公開サイトに出る。**テーマ側のアイコン（`extra.social` の `icon:`、palette の `toggle.icon`）はテンプレート直描画で拡張不要のため正常に出る**ので、「テーマアイコンは出るのに本文アイコンだけ出ない」という食い違いになり気づきにくい。2026-10-13 に docs サイトのホーム OS カードで実際に発生、PR [#990](https://github.com/digitaldemocracy2030/kouchou-ai/issues/990) で 3 行追加して解消。詳細と検証は [[docs-site-icon-shortcode-bug-2026-10-13]]。
 
 ### `kouchou-ai` 向け PR は、作業元 repo に関係なく CLA 節が必要
 
@@ -276,5 +276,5 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-19: `PR #824` / `PR #825` merge 後の current `main` を確認し、LOCAL LLM HTTPS 対応は analysis 実行と admin model list で非対称、`report.html` は Web 主経路でなく CLI 向け観察用HTMLだと補正
 - 2026-05-19: [[usage-modes]] に合わせ、gotcha を Web UI / CLI / 共通運用 の章立てへ再編
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、削除済みの legacy LLM path / `hierarchical_main.py` を current gotcha として語らないよう補正
-- 2026-10-07: CLI の `report.html` 経路が Web 経路では通らないために、`report_dir` 未定義（#953 / PR #955）と原文リンク設定が効かない件（#954）が残っていたことを追記
-- 2026-10-13: PR #891 の PoC 検証（[[windows-standalone-embeddable-poc-2026-06-01]]）から、日本語 Windows の cp932 でのテキスト IO クラッシュ（#993）・subprocess の `"python"` ハードコード（#992）・embeddable スタンドアロンの設計分岐と footgun を追記
+- 2026-10-07: CLI の `report.html` 経路が Web 経路では通らないために、`report_dir` 未定義（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / PR [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955)）と原文リンク設定が効かない件（[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954)）が残っていたことを追記
+- 2026-10-13: PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の PoC 検証（[[windows-standalone-embeddable-poc-2026-06-01]]）から、日本語 Windows の cp932 でのテキスト IO クラッシュ（[#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993)）・subprocess の `"python"` ハードコード（[#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)）・embeddable スタンドアロンの設計分岐と footgun を追記

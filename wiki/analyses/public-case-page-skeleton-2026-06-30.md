@@ -19,11 +19,11 @@ sources:
 
 ## Conclusion
 
-Issue #564 の公開事例ページは、単なる「使われました」一覧ではなく、導入検討者が次に質問する内容へ先回りするページにする必要がある。#564 のコメントでは、自治体側の関心が、意見収集方法、X からの収集、費用、手書き意見 / OCR、使える話題、体制づくり、実施内容、結果まで広がっていた。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページは、単なる「使われました」一覧ではなく、導入検討者が次に質問する内容へ先回りするページにする必要がある。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) のコメントでは、自治体側の関心が、意見収集方法、X からの収集、費用、手書き意見 / OCR、使える話題、体制づくり、実施内容、結果まで広がっていた。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-さらに #564 では、`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` という初回説明を、毎回個別対応しなくてよい形にしたいという要求も出ている。したがって外部ページは、事例 detail だけでなく、**初回説明 FAQ / 一枚絵 / 説明資料導線** を持つべきである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+さらに [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) では、`広聴AIって何？` / `何ができる？` / `どう使える？` / `使うにはどうしたらいい？` という初回説明を、毎回個別対応しなくてよい形にしたいという要求も出ている。したがって外部ページは、事例 detail だけでなく、**初回説明 FAQ / 一枚絵 / 説明資料導線** を持つべきである。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
-したがって、最小公開ページは **事例リスト + レポートの読み方 + 何を保証しないか** の 3 点セットにする。これは #696 の誤読防止と #542 の責任所在を外すと、事例が「広聴AIが正しい民意を保証した」ように読まれかねないためである。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
+したがって、最小公開ページは **事例リスト + レポートの読み方 + 何を保証しないか** の 3 点セットにする。これは [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) の誤読防止と [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の責任所在を外すと、事例が「広聴AIが正しい民意を保証した」ように読まれかねないためである。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
 
 ## Page skeleton
 
@@ -42,7 +42,7 @@ Issue #564 の公開事例ページは、単なる「使われました」一覧
 
 この block には、利用状況一覧の一枚絵や、自治体向け説明資料 / 動画へのリンクを置ける。ただし、Drive 内資料や未許諾動画をそのまま公開リンクにしない。公開可能になったものだけを載せる。
 
-FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では、メンバー向け QA と外向け QA が混ざる問題、参加検討者と既存参加者では読む FAQ が違う問題が出ていた。website PR #192 は 2026-06-19 に merge 済みだが、カテゴリ分けは別途考える扱いになった。#564 の公開事例ページでは、少なくとも `導入検討者向け` / `レポート閲覧者向け` / `既に関わっている人向け` を混ぜない方がよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+FAQ は読者別に分ける。Slack `#2_広報_pr` の 2026-03/04 議論では、メンバー向け QA と外向け QA が混ざる問題、参加検討者と既存参加者では読む FAQ が違う問題が出ていた。website PR [#192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/192) は 2026-06-19 に merge 済みだが、カテゴリ分けは別途考える扱いになった。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページでは、少なくとも `導入検討者向け` / `レポート閲覧者向け` / `既に関わっている人向け` を混ぜない方がよい。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
 この block には、広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を混同しないための短い tool catalog も入れる。`collect / deepen / analyze / show / classify / read-and-act` を分け、広聴AI本体の promise は収集済み自由記述の分析・可視化に置く。[[public-tool-catalog-draft-2026-06-30]]より
 
@@ -86,7 +86,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 ### 3. 事例詳細テンプレート
 
-1 事例を深く紹介する時は、#564 のコメントにある自治体側の質問へ答える順序にする。
+1 事例を深く紹介する時は、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) のコメントにある自治体側の質問へ答える順序にする。
 
 | section | question it answers |
 |---|---|
@@ -110,7 +110,7 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 - 重要な意思決定では、元データ、収集方法、対象者、公開条件、人間の検証と合わせて読む。
 - レポート内容に関する責任主体を明示し、DD2030 / 広聴AI OSS が各レポート内容を保証しているように見せない。
 
-この section は #696 / #542 の最小版であり、事例ページと別に実装するとリンク切れや説明抜けが起きやすい。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
+この section は [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の最小版であり、事例ページと別に実装するとリンク切れや説明抜けが起きやすい。[[github-issues-564-696-542-trust-layer-live-2026-06-30]]より
 
 実際に外へ出す文言 draft は [[report-reading-guide-minimum-wording-2026-06-30]] に固定した。事例ページ上部は短い説明、viewer footer / dialog は常設注意、README / docs は OSS と個別レポートの責任境界、metadata は発行主体表示という役割分担にする。
 
@@ -133,11 +133,11 @@ Slack `#1_事例紹介_全体` のような channel は、一覧に入れる候�
 
 2026-06-30 17:59 JST に `digitaldemocracy2030/website` を確認したところ、`src/kouchou-ai/case.vto` が広聴AI活用事例ページの直接更新先で、現行掲載は選挙報道、東京都 2050 戦略案、宇多津町の 3 件だった。選挙報道と東京都は説明文のみでリンクがなく、宇多津町だけ official page へのリンクがある。[[website-kouchou-ai-case-live-2026-06-30]]より
 
-website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに投稿された事例をもとにウェブサイト更新PRを作成する`、#125 `[活用事例]リンク追加/UI改善` が open で存在する。#125 には「広聴AIの活用事例ではないかも？」という候補分類の不安が明記されているため、developer wiki 側の `tool_lineage` / `source_strength` は、そのまま website PR 前の guardrail として使える。[[website-kouchou-ai-case-live-2026-06-30]]より
+website 側には [#208](https://github.com/digitaldemocracy2030/kouchou-ai/issues/208) `広聴AIの利用事例を更新する`、[#216](https://github.com/digitaldemocracy2030/kouchou-ai/issues/216) `Slackに投稿された事例をもとにウェブサイト更新PRを作成する`、[#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) `[活用事例]リンク追加/UI改善` が open で存在する。[#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) には「広聴AIの活用事例ではないかも？」という候補分類の不安が明記されているため、developer wiki 側の `tool_lineage` / `source_strength` は、そのまま website PR 前の guardrail として使える。[[website-kouchou-ai-case-live-2026-06-30]]より
 
-#125 のコメントには hosted viewer URL も候補として出ているが、これは公開事例ページへそのまま載せる根拠にしない。GitHub issue や Slack に貼られた viewer URL は、canonical な public artifact、発行主体、掲載許諾、source strength、tool lineage を確認できるまで `candidate` として扱う。[[website-kouchou-ai-case-live-2026-06-30]]より
+[#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) のコメントには hosted viewer URL も候補として出ているが、これは公開事例ページへそのまま載せる根拠にしない。GitHub issue や Slack に貼られた viewer URL は、canonical な public artifact、発行主体、掲載許諾、source strength、tool lineage を確認できるまで `candidate` として扱う。[[website-kouchou-ai-case-live-2026-06-30]]より
 
-一方で、#123 `プロダクト別の事例ページから、プロダクト横断のニュース一覧に変える` も open のままで、長期的には product-specific `case.vto` 直書きではなく、tagged / cross-product case-news list へ移る可能性がある。したがって first slice は `src/kouchou-ai/case.vto` に載せる最小改修、長期情報設計は #123 側、と分けた方がよい。
+一方で、[#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) `プロダクト別の事例ページから、プロダクト横断のニュース一覧に変える` も open のままで、長期的には product-specific `case.vto` 直書きではなく、tagged / cross-product case-news list へ移る可能性がある。したがって first slice は `src/kouchou-ai/case.vto` に載せる最小改修、長期情報設計は [#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) 側、と分けた方がよい。
 
 ## Do not include
 
@@ -154,22 +154,22 @@ website 側には #208 `広聴AIの利用事例を更新する`、#216 `Slackに
 - 奈良市 official document case と奈良 #全員市長 viewer demo は、同じ地域名で混同されやすいので、公開ページ上でどう分けるか。
 - 大阪府のような広義 broad listening 公式 case、サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の `kouchou-ai/case` に入れるか、ブロードリスニング全体 / 応用領域の別 section に分けるか。
 - 初回説明 block は DD2030 website に置くか、自治体向け説明資料 / 動画を別 artifact として置くか。
-- #696 / #542 の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
+- [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の wording を誰が承認するか。技術・法務・渉外の責任境界が要る。
 - 公開事例の候補管理を GitHub issue、Drive、website repo、developer wiki のどこで canonical にするか。
 - 事例掲載 intake を外部ページに置く場合、問い合わせ先・確認担当・掲載可否の判断基準をどこで管理するか。
 - 自治体 user research を public case page の case intake と同居させるか、別 instrument として設計するか。
 
 ## Updates
 
-- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の #125 再確認を反映し、GitHub issue / Slack に貼られた hosted viewer URL は canonical public artifact と掲載許諾確認まで公開実績リンクにしない方針を追記。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] の [#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) 再確認を反映し、GitHub issue / Slack に貼られた hosted viewer URL は canonical public artifact と掲載許諾確認まで公開実績リンクにしない方針を追記。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通を公開ページへ載せる場合は implementation partner / adjacent practice として分類する方針を追記。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府、チームみらい、DirectVote、サイボウズ、アルティウスリンク、与謝野町を公開ページへ載せる場合は source strength と tool lineage で分けると追記。
-- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 `src/kouchou-ai/case.vto`、#208/#216/#125/#123 を確認。first slice は `case.vto` 直更新、長期は横断 case-news list と分ける方針を追記。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を追加し、DD2030 website の現行 `src/kouchou-ai/case.vto`、[#208](https://github.com/digitaldemocracy2030/kouchou-ai/issues/208)/[#216](https://github.com/digitaldemocracy2030/kouchou-ai/issues/216)/[#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125)/[#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) を確認。first slice は `case.vto` 直更新、長期は横断 case-news list と分ける方針を追記。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を追加し、事例ページ冒頭に tool catalog を置き、`tool_lineage` を `kouchou-ai` / `TTTC lineage` / `broad listening adjacent` / `idobata` / `enterprise` / `candidate` で分ける方針を追記。
 - 2026-06-30: [[meeting-municipality-user-research-scope-2026-06-30]] を追加し、case intake と自治体 user research は目的が違うため、同じフォームに混ぜない方がよいと追記。
 - 2026-06-30: 16:48 JST 追加Web検索を反映し、自治体公式 proof に奈良市 official PDF 群を追加し、奈良市 document case と奈良 #全員市長 viewer demo を分ける必要を Open Questions に追記。
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、FAQ の読者分離と case intake 導線を public case page skeleton に反映。
-- 2026-06-30: #564 を再読し、公開事例ページに初回説明 FAQ / 一枚絵 / 説明資料導線を置く必要を追記。
+- 2026-06-30: [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) を再読し、公開事例ページに初回説明 FAQ / 一枚絵 / 説明資料導線を置く必要を追記。
 - 2026-06-30: [[report-reading-guide-minimum-wording-2026-06-30]] を追加し、公開事例ページに置く「レポートの読み方」の実文言 draft へ接続。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack case channel は lead intake、外部ページは primary URL 確認済み case list として分ける方針を追記。
-- 2026-06-30: 初回作成。#564 の issue コメント、公開Web検索、#696 / #542 の trust layer をもとに、公開事例ページの構成案を固定した。
+- 2026-06-30: 初回作成。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の issue コメント、公開Web検索、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の trust layer をもとに、公開事例ページの構成案を固定した。

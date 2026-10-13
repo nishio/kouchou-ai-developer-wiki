@@ -19,7 +19,7 @@ sources:
 
 ## Conclusion
 
-#564 の公開事例ページや 8/2 の技術・ツール資料では、`ブロードリスニング` を一語で説明しきろうとせず、**collect / deepen / analyze / show / classify / read-and-act** の 6 層に分けるのが安全である。議事録上でも、広聴AI、いどばた、Cartographer、Jigsaw Sensemaker、tttc-light-js は同じ ecosystem に見えるが、主入力・成果物・読者の期待が違う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
+[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページや 8/2 の技術・ツール資料では、`ブロードリスニング` を一語で説明しきろうとせず、**collect / deepen / analyze / show / classify / read-and-act** の 6 層に分けるのが安全である。議事録上でも、広聴AI、いどばた、Cartographer、Jigsaw Sensemaker、tttc-light-js は同じ ecosystem に見えるが、主入力・成果物・読者の期待が違う。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 
 外向けの最短説明は、広聴AIを「集まった自由記述を整理し、論点を見つけやすくする OSS」と置き、いどばた / Cartographer は収集・深掘り側、Jigsaw Sensemaker / tttc-light-js は LLM 直接分類や TTTC lineage の別 route として添える形がよい。これにより、広聴AIが収集・対話・対立調停・政策判断まで全て自動で行うような誤読を避けられる。[[report-reading-guide-minimum-wording-2026-06-30]]より
 
@@ -52,16 +52,16 @@ Jigsaw Sensemaker や tttc-light-js のような LLM 直接分類 / TTTC 系の 
 
 | surface | recommended role | note |
 |---|---|---|
-| DD2030 website / #564 public case page | 外向け canonical。事例一覧の前に tool catalog と reading guide を置く | #564 の「広聴AIって何？ / 何ができる？」への初回回答に使う |
+| DD2030 website / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) public case page | 外向け canonical。事例一覧の前に tool catalog と reading guide を置く | [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の「広聴AIって何？ / 何ができる？」への初回回答に使う |
 | 8/2 event material | 1 枚の tool ecosystem 図。collect / deepen / analyze / show / classify / read-and-act を分ける | 技術・ツール lane と実践 lane の橋渡しに使う |
 | kouchou-ai docs | 「レポートを見る」「データを準備する」「読み方」の技術寄り補足 | developer quickstart や Windows setup とは読者を分ける |
-| public-viewer / README | 誤読防止、責任所在、図とラベルの読み方 | #696 / #542 の trust layer として扱う |
+| public-viewer / README | 誤読防止、責任所在、図とラベルの読み方 | [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の trust layer として扱う |
 
-DD2030 website は外向け canonical として自然だが、2026-06-30 時点では `src/kouchou-ai/case.vto` への直書き page で、事例 schema や `tool_lineage` field はない。website issue #208 / #216 / #125 は case 更新の受け皿であり、#123 は将来の cross-product case-news list 化を示している。したがって、短期は `case.vto` first slice、長期は tagged list / CMS 可能性、と分けて考える。[[website-kouchou-ai-case-live-2026-06-30]]より
+DD2030 website は外向け canonical として自然だが、2026-06-30 時点では `src/kouchou-ai/case.vto` への直書き page で、事例 schema や `tool_lineage` field はない。website issue [#208](https://github.com/digitaldemocracy2030/kouchou-ai/issues/208) / [#216](https://github.com/digitaldemocracy2030/kouchou-ai/issues/216) / [#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) は case 更新の受け皿であり、[#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) は将来の cross-product case-news list 化を示している。したがって、短期は `case.vto` first slice、長期は tagged list / CMS 可能性、と分けて考える。[[website-kouchou-ai-case-live-2026-06-30]]より
 
-## How this changes #564
+## How this changes [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)
 
-#564 の first slice では、事例数を増やす前に、事例ページ冒頭へこの tool catalog を短く入れる。導入検討者は「どんな事例があるか」だけでなく、「自分たちが必要としているのは収集なのか、深掘りなのか、分析・可視化なのか、公開 viewer なのか」を知りたいからである。[[public-case-page-skeleton-2026-06-30]]より
+[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の first slice では、事例数を増やす前に、事例ページ冒頭へこの tool catalog を短く入れる。導入検討者は「どんな事例があるか」だけでなく、「自分たちが必要としているのは収集なのか、深掘りなのか、分析・可視化なのか、公開 viewer なのか」を知りたいからである。[[public-case-page-skeleton-2026-06-30]]より
 
 事例一覧の `tool_lineage` は、少なくとも次の値を分ける。
 
@@ -91,5 +91,5 @@ DD2030 website は外向け canonical として自然だが、2026-06-30 時点�
 
 ## Updates
 
-- 2026-06-30: 初回作成。[[meeting-cartographer-idobata-boundary-2026-06-30]] を #564 公開事例ページと 8/2 技術・ツール資料に転用するため、外向け tool catalog draft と drop-in copy に落とした。
-- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期 canonical 候補だが、現状は `case.vto` 直書きで、長期は #123 の横断 case-news list と分けると追記。
+- 2026-06-30: 初回作成。[[meeting-cartographer-idobata-boundary-2026-06-30]] を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) 公開事例ページと 8/2 技術・ツール資料に転用するため、外向け tool catalog draft と drop-in copy に落とした。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期 canonical 候補だが、現状は `case.vto` 直書きで、長期は [#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) の横断 case-news list と分けると追記。

@@ -18,7 +18,7 @@ sources:
 - **Claude Code** — [[nishio]] が分析実務・リファクタ計画・本 Wiki のような周辺ツール構築で多用
 - **Codex (GPT-5.2)** — [[nishio]] が 2025-12-29 にリファクタプラン作成に使用（[gist](https://gist.github.com/nishio/0a1812750627620ff6ede948f13c993b)）
 - **GitHub Copilot Agent** — 2026-03-02 以降、issue にアサイン可能な並行選択肢
-- **CodeRabbit** — team-mirai/marumie の AI レビュアー設定を参考に kouchou-ai でも導入検討（Issue #417）
+- **CodeRabbit** — team-mirai/marumie の AI レビュアー設定を参考に kouchou-ai でも導入検討（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)）
 
 ## Devin 運用ルール
 
@@ -35,7 +35,7 @@ sources:
 
 ## 既知の Devin 失敗モード
 
-- **無限ループ** ([[meeting-minutes]] 2025-09-17, 2025-10-01): import-order のような自動修正不能な ruff lint エラーで `ruff format` を繰り返した。PR #708 で import-order lint 自体を無効化＋既存違反を一括修正して打開
+- **無限ループ** ([[meeting-minutes]] 2025-09-17, 2025-10-01): import-order のような自動修正不能な ruff lint エラーで `ruff format` を繰り返した。PR [#708](https://github.com/digitaldemocracy2030/kouchou-ai/issues/708) で import-order lint 自体を無効化＋既存違反を一括修正して打開
 - **自動 PR クローズ** ([[meeting-minutes]] 2025-11-12): Devin は 1 週間放置 PR を自分で閉じてしまう → クローズ無効化の workaround を適用
 - **OOM** ([[meeting-minutes]] 2025-10-01): 大きすぎる diff での失敗
 

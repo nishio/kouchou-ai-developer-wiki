@@ -129,5 +129,5 @@ workflow path は main で production 入口へ入ったが、なお follow-up �
 - 2026-05-21: 「実装上かなり切り替わっている」と「main で標準経路化が完了した」は別だ、という読み分けを含意に追記
 - 2026-05-21: `hierarchical_status.json` の項目別 semantics 棚卸しを [[hierarchical-status-semantics]] に分離し、status file blocker の中身を参照可能にした
 - 2026-05-21: `04a8e97` により refactoring docs と deprecated README の主要 drift も branch 上で更新済みになったため、docs blocker を「大半更新済み、残差確認フェーズ」へ寄せた
-- 2026-05-21: `main@0e1552d` を再確認し、PR #840 相当 merge 後の current state に合わせて、本ページを「未解決 blocker 一覧」から「解消された blocker と follow-up の整理」へ更新
+- 2026-05-21: `main@0e1552d` を再確認し、PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) 相当 merge 後の current state に合わせて、本ページを「未解決 blocker 一覧」から「解消された blocker と follow-up の整理」へ更新
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、Phase 8 cleanup も main に入った前提へ更新。残課題の優先順から legacy 削除を外し、status semantics / plugin wrapper / release hardening 側へ寄せ直した

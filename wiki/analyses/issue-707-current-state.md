@@ -11,7 +11,7 @@ sources:
 
 ## Findings
 
-### GitHub current state では #707 は close 済み
+### GitHub current state では [#707](https://github.com/digitaldemocracy2030/kouchou-ai/issues/707) は close 済み
 
 `gh issue view` では `#707 [BUG]APIが利用可能であってもAPI接続チェックが失敗する` は 2026-05-21 に close 済みで、close コメントには current `main@14e9772987b95af816d33e9fe09315715ac200b9` で `/admin/environment/verify?provider=azure` が内部で `provider="azure"` を渡していること、少なくとも当初の原因は非再現であることが書かれている。[[github-dev-docs]]より
 

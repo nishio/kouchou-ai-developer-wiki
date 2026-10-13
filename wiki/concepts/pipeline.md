@@ -73,7 +73,7 @@ sources:
 [[meeting-minutes]] 2026-05-18 見出しで再浮上：`docs/user-guide/cli-quickstart.md` の例が `[3, 6]`。これを Claude Code がそのまま使い、300 件規模のデータでも `3 → 6 → 12 → 24` のような粗いまとめになる。  
 2026-05-18 の `Issue #830` / `PR #832` では、`cluster_nums` を optional にし、未指定時は extraction 後の `argument` 数から cube-root rule で自動算出する方向が具体化し、その後 merge された。`argument_count=1000` なら `[10, 100]` を返し、small dataset 側も `2 -> [2]`, `3 -> [2, 3]` へ補修されている。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
-過去にも [[other-contributors|kitaro]] が silhouette-score ベースの自動選択を PR #567 で実装したが embedding エラーの誘発で #579 で revert。今回の変更はその再試行ではなく、**Admin 側に既にある単純な推奨値ルールを CLI / `analysis-core` に揃える修正** と理解する方が正確。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
+過去にも [[other-contributors|kitaro]] が silhouette-score ベースの自動選択を PR [#567](https://github.com/digitaldemocracy2030/kouchou-ai/issues/567) で実装したが embedding エラーの誘発で [#579](https://github.com/digitaldemocracy2030/kouchou-ai/issues/579) で revert。今回の変更はその再試行ではなく、**Admin 側に既にある単純な推奨値ルールを CLI / `analysis-core` に揃える修正** と理解する方が正確。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
 ## なぜ UMAP→クラスタリングなのか（既知の理論的弱点）
 
@@ -91,14 +91,14 @@ sources:
 
 ## 軽量化と CLI 静的出力（2026-05）
 
-[[meeting-minutes]] 2026-05-18 見出し / PR #825：
+[[meeting-minutes]] 2026-05-18 見出し / PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825)：
 
 - 従来は「サーバを立てて `npm run build`」する必要があったが、AI コーディングエージェントは「サーバ無しで HTML を出して静的ホスト」したい
 - Python から直接静的 HTML を吐く実装を追加。デフォルトをこちらにする方針
 - 旧サーバ経路との見た目は 100% 同一ではない — 「実験的ビューを試しやすい」副産物がある
 - ただし current プロダクトの主経路はなお `hierarchical_result.json` を `public-viewer` で描画する形で、`report.html` は CLI 向け観察用HTMLとして理解する方が正確
 
-## PR #827 が何を具体化したか
+## PR [#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827) が何を具体化したか
 
 [[pr-827-llm-grouping-capabilities-plan-2026-05-18]] では、Slack 上で構想されていた **「`embedding` 後に LLM 分類を差し込む互換枝」** を、より具体的な移行計画として言語化している。
 
@@ -107,7 +107,7 @@ sources:
 
 これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **LLM 直接グルーピングのもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。LLM grouping 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
-> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR #866、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 9 個を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**#176 の統合 PR #987 が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 9 個を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
 
 ## Open Questions
 
@@ -125,5 +125,5 @@ sources:
 - 2026-05-21: 書籍 13 章を [[broad-listening-book-source]] / [[broad-listening-book-extractions]] として ingest し、設計判断の出版可能形を相互リンク
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、旧 `apps/api/broadlistening/pipeline/` 実装削除後の current path に合わせて配置と実行モードの説明を更新
 - 2026-05-25: 散布図維持側の [[nishio]] スタンスを「顧客がいる」から「2026-09 書籍版までは温存、より良い可視化があれば併用→切替も可」という時間軸ベースの表現に訂正
-- 2026-10-12: `analysis_mode=llm_grouping` engine が 2026-05-25（#866 / `4f893ab5`）に main 入りした事実を LLM grouping 節の Update として追記（本文 L108 は「2026-05-18 時点」の dated 観測として残置）。到達はまだ admin/api 未対応（#176 / PR #987）。あわせて Open Questions の「レポート再利用（Issue #19）現状確認が必要」を解決として除去（`apps/api/src/services/report_duplicate.py` 実装済み、[[open-decisions]] 2026-05-17 確認）。[[wiki-self-audit-2026-10-12]]
-- 2026-10-12: 上記の数時間後に #176 統合 PR #987 が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが `apps/admin` / `apps/api` に入りプロダクト到達も main 入りしたため、LLM grouping 節の Update を「到達は未」→「到達も main 入り」に訂正。[[wiki-self-audit-2026-10-12]]
+- 2026-10-12: `analysis_mode=llm_grouping` engine が 2026-05-25（[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) / `4f893ab5`）に main 入りした事実を LLM grouping 節の Update として追記（本文 L108 は「2026-05-18 時点」の dated 観測として残置）。到達はまだ admin/api 未対応（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) / PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987)）。あわせて Open Questions の「レポート再利用（Issue [#19](https://github.com/digitaldemocracy2030/kouchou-ai/issues/19)）現状確認が必要」を解決として除去（`apps/api/src/services/report_duplicate.py` 実装済み、[[open-decisions]] 2026-05-17 確認）。[[wiki-self-audit-2026-10-12]]
+- 2026-10-12: 上記の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが `apps/admin` / `apps/api` に入りプロダクト到達も main 入りしたため、LLM grouping 節の Update を「到達は未」→「到達も main 入り」に訂正。[[wiki-self-audit-2026-10-12]]

@@ -27,7 +27,7 @@ sources:
 - **TS/JS**: **Biome**（ESLint + Prettier の代替）— 各 app で `pnpm run lint` / `pnpm run format`
 - **lefthook** が `pre-push` で `ruff check` + `ruff format --check` を実行。**Biome は `skip: true`** で gating されていない
 - CI にも Biome の workflow は無く、main の全体 lint は 2026-02 以降落ちたまま。PR では「変更ファイルだけ Biome 成功」を確認する慣行。経緯は [[biome-lint-main-drift-2026-10-09]]
-- PR #963（未merge）で 3 ディレクトリを 0 件にし、client build / client-admin build に `biome ci` を追加。マージ後は全体 lint が PR の gate になる。lint gate は 0 件化と同じ PR で入れないと戻る（[[biome-lint-main-drift-2026-10-09]] の教訓）
+- PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（未merge）で 3 ディレクトリを 0 件にし、client build / client-admin build に `biome ci` を追加。マージ後は全体 lint が PR の gate になる。lint gate は 0 件化と同じ PR で入れないと戻る（[[biome-lint-main-drift-2026-10-09]] の教訓）
 
 ## CI ワークフロー
 
@@ -51,8 +51,8 @@ sources:
 
 ## 既知の歴史的事故
 
-- [[meeting-minutes]] 2025-10: import-order を ruff の lint がエラーにし続け、無関係 PR が全部ブロックされた → PR #708 で **import-order チェックを無効化**してすべての既存違反を一括修正
-- [[meeting-minutes]] 2025-09 / PR #553: テストデータ汚染インシデント
+- [[meeting-minutes]] 2025-10: import-order を ruff の lint がエラーにし続け、無関係 PR が全部ブロックされた → PR [#708](https://github.com/digitaldemocracy2030/kouchou-ai/issues/708) で **import-order チェックを無効化**してすべての既存違反を一括修正
+- [[meeting-minutes]] 2025-09 / PR [#553](https://github.com/digitaldemocracy2030/kouchou-ai/issues/553): テストデータ汚染インシデント
 - Devin がリント自動修正できないものを無限ループした事例も同時期（→ [[coding-agents]]）
 
 ## 現在の運用判断
@@ -87,7 +87,7 @@ sources:
 
 ## Updates — 2026-10-05 検証結果の保証範囲を分ける
 
-9月9日の#943・#945・#946の記録をもとに、テスト結果の読み方を整理した。今回のコード再検証ではない。[[three-issues-progress-2026-09-09]] / [[next-three-issues-progress-2026-09-09]]より。
+9月9日の#943・[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・#946の記録をもとに、テスト結果の読み方を整理した。今回のコード再検証ではない。[[three-issues-progress-2026-09-09]] / [[next-three-issues-progress-2026-09-09]]より。
 
 - Server ActionからAPIへの通信はブラウザのpage.routeでは捕捉できないため、HTTP dummyで失敗応答・切断を作る。画面側の復帰動作の確認と、実プロバイダーの認証・接続確認は区別する。
 - fixtureによるブラウザ試験は操作と値の受け渡し、実routerと一時ファイルの統合試験は保存・再取得を担う。設定画面では他項目の保持、不正値の拒否、取得失敗時に既定値で上書きしないことも確認する。

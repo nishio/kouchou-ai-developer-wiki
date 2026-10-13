@@ -115,7 +115,7 @@ workflow defaultization branch の push を止めていた legacy `apps/api/broa
 
 ## Updates
 
-- 2026-05-20: 初回作成。draft PR #840 の 3 commit と review 状態を観測
+- 2026-05-20: 初回作成。draft PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) の 3 commit と review 状態を観測
 - 2026-05-20: 追加 3 commit (`cc17509`, `24e02cc`, `ec694b7`) を反映し、CLI default path 切替と API launcher 共通化まで進んだと追記
 - 2026-05-20: 追加 7 commit (`bfda3dd`, `7167cf4`, `b6310cd`, `fe5eda5`, `2c8632b`, `b869324`, `142a63f`) を反映し、CLI/API の service-level 証拠が増えたことと、hook blocker が PR `#841` に切り出されたことを追記
 - 2026-05-20: 追加 5 commit (`3737642`, `1e3ec9e`, `6f940fc`, `d43a07b`, `b163ba2`) を反映し、failure semantics と duplicate/reuse rerun plan の確認がさらに進んだことを追記

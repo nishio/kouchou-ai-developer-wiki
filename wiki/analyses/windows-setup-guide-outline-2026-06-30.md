@@ -16,7 +16,7 @@ sources:
 
 2026-06-30 の current main `d5c9ece` では、`setup_win.bat` は `setup_win.ps1` の GUI 入力へ進む形になっており、一般ユーザー向け guide から開発者・AI エージェント向け検証手順への note も入っている。一方で、前提条件は OpenAI API key と Gemini API key の両方が必要に見え、組織管理端末 / Docker Desktop ライセンス / Docker Desktop 不可環境の分岐はまだ冒頭で切れていない。[[source-code]]より
 
-したがって次の docs PR は、Windows セットアップを広げる PR ではなく、**現行 supported path を誤解なく読めるようにする PR** として切るのが安全である。`#877` に単一 exe、offline local LLM、WSL2 Ubuntu + Docker Engine の詳細を混ぜると、#885 や将来配布 route と読者像が混ざる。[[docs-issue-map-2026-06-30]]より
+したがって次の docs PR は、Windows セットアップを広げる PR ではなく、**現行 supported path を誤解なく読めるようにする PR** として切るのが安全である。`#877` に単一 exe、offline local LLM、WSL2 Ubuntu + Docker Engine の詳細を混ぜると、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) や将来配布 route と読者像が混ざる。[[docs-issue-map-2026-06-30]]より
 
 ## 対象外にするもの
 
@@ -136,4 +136,4 @@ API key の前提条件は次のように変える。
 
 ## Updates
 
-- 2026-06-30: 初回作成。Issue #877 の既存 scope 整理と current main `d5c9ece` の Windows docs を突き合わせ、docs PR に変換しやすい章立て・対象外範囲・troubleshoot 表へ具体化した。
+- 2026-06-30: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の既存 scope 整理と current main `d5c9ece` の Windows docs を突き合わせ、docs PR に変換しやすい章立て・対象外範囲・troubleshoot 表へ具体化した。

@@ -12,15 +12,15 @@ sources:
 
 ## 選定
 
-2026-09-09、ユーザーの「他のIssuesを読んで、3件ほど選んで前進させて」指示による。open IssueとDraft #891を観測し、#130・#518・#395・#507・#393・#592の本文等を読んだ。明確な前進が可能な未担当3件を選び、nishioへassignしてmain `751e2c8`から独立branchで作業した。#507はメジャー更新時の削除という条件があるため選ばなかった。
+2026-09-09、ユーザーの「他のIssuesを読んで、3件ほど選んで前進させて」指示による。open IssueとDraft #891を観測し、[#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)・[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)・[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)・[#507](https://github.com/digitaldemocracy2030/kouchou-ai/issues/507)・[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・#592の本文等を読んだ。明確な前進が可能な未担当3件を選び、nishioへassignしてmain `751e2c8`から独立branchで作業した。#507はメジャー更新時の削除という条件があるため選ばなかった。
 
 ## 進めた3件
 
-- [#941](https://github.com/digitaldemocracy2030/kouchou-ai/pull/941)（#130、`codex/issue-130-contributing`、`1b4e827`）: 感想・質問・事例共有・動作確認・A/B比較等の「やること／残す場所」、記入例、READMEとdocsトップの入口を追加。公開contributingは既存docs_hooksでCONTRIBUTING.mdから生成される。ドキュメントCI成功、未merge。
-- [#942](https://github.com/digitaldemocracy2030/kouchou-ai/pull/942)（#518、`codex/issue-518-static-artifact`、`bd09e6f`）: 既存static buildの成果物を7日間保存し、BUILD_COMMIT.txtと取得・閲覧手順を追加。CI成功、実artifact取得→一覧→詳細の表示・タイトルをChromiumで確認した。常設URLへの公開は未実施で、Issueは閉じない。
-- [#943](https://github.com/digitaldemocracy2030/kouchou-ai/pull/943)（#395、`codex/issue-395-error-e2e`、`076b070`）: 認証・quota・rate limit・HTTP 503・通信切断の5ケースで、作成前確認→設定へ戻る→キー変更→再確認のE2Eを実装。dummy APIはテスト専用キーでリクエストごとに応答する。事前検証4件、新規5件、既存作成・複製15件がローカル成功。Spreadsheetと最終送信設定は残すためIssueは閉じない。
+- [#941](https://github.com/digitaldemocracy2030/kouchou-ai/pull/941)（[#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)、`codex/issue-130-contributing`、`1b4e827`）: 感想・質問・事例共有・動作確認・A/B比較等の「やること／残す場所」、記入例、READMEとdocsトップの入口を追加。公開contributingは既存docs_hooksでCONTRIBUTING.mdから生成される。ドキュメントCI成功、未merge。
+- [#942](https://github.com/digitaldemocracy2030/kouchou-ai/pull/942)（[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)、`codex/issue-518-static-artifact`、`bd09e6f`）: 既存static buildの成果物を7日間保存し、BUILD_COMMIT.txtと取得・閲覧手順を追加。CI成功、実artifact取得→一覧→詳細の表示・タイトルをChromiumで確認した。常設URLへの公開は未実施で、Issueは閉じない。
+- [#943](https://github.com/digitaldemocracy2030/kouchou-ai/pull/943)（[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)、`codex/issue-395-error-e2e`、`076b070`）: 認証・quota・rate limit・HTTP 503・通信切断の5ケースで、作成前確認→設定へ戻る→キー変更→再確認のE2Eを実装。dummy APIはテスト専用キーでリクエストごとに応答する。事前検証4件、新規5件、既存作成・複製15件がローカル成功。Spreadsheetと最終送信設定は残すためIssueは閉じない。
 
-上記各PRの実装・検証より。#395 / #518の本文には、書込前の更新有無を照合して日付付き進捗を追記し、元の要件と議論を保持した。
+上記各PRの実装・検証より。[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395) / #518の本文には、書込前の更新有無を照合して日付付き進捗を追記し、元の要件と議論を保持した。
 
 ## 検証で得た知見
 
@@ -36,4 +36,4 @@ sources:
 
 ## Updates — 2026-09-09 18:26 CI完了
 
-#943の全体E2Eは86 passed / 2 skipped。3PRとも実行されたCIは成功。#941のCodeRabbitはレビュー完了、#942・#943はrate limited表示であり、レビュー済みとは扱わない。3件ともOPEN・未merge。通常staticのReact #418は#942と#518に観測として記録した。
+#943の全体E2Eは86 passed / 2 skipped。3PRとも実行されたCIは成功。#941のCodeRabbitはレビュー完了、[#942](https://github.com/digitaldemocracy2030/kouchou-ai/issues/942)・#943はrate limited表示であり、レビュー済みとは扱わない。3件ともOPEN・未merge。通常staticのReact #418は#942と#518に観測として記録した。

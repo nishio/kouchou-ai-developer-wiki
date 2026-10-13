@@ -7,7 +7,7 @@ sources:
 
 ## 何のソースか
 
-kouchou-ai の PR **#891**（作者 tokoroten・**Draft**・2026-06-01 作成、以降停滞）に含まれる検証記録 `tmp-embeddable-poc/FINDINGS.md` の要約。広聴AI を **Windows スタンドアロン**（システム Python 不要、embeddable CPython に FastAPI バックエンド + 分析パイプライン + 静的 viewer を同梱）で動かす PoC の結果をまとめたもの。PR 本体のマージ可否とは独立に、知見と発掘されたバグを救出するために記録する。最終読解日 2026-10-13（`work/kouchou-ai` の `origin/feat/windows-standalone-embeddable` から読解）。
+kouchou-ai の PR **[#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)**（作者 tokoroten・**Draft**・2026-06-01 作成、以降停滞）に含まれる検証記録 `tmp-embeddable-poc/FINDINGS.md` の要約。広聴AI を **Windows スタンドアロン**（システム Python 不要、embeddable CPython に FastAPI バックエンド + 分析パイプライン + 静的 viewer を同梱）で動かす PoC の結果をまとめたもの。PR 本体のマージ可否とは独立に、知見と発掘されたバグを救出するために記録する。最終読解日 2026-10-13（`work/kouchou-ai` の `origin/feat/windows-standalone-embeddable` から読解）。
 
 ## 結論：embeddable Python 方針は成立する
 
@@ -21,10 +21,10 @@ kouchou-ai の PR **#891**（作者 tokoroten・**Draft**・2026-06-01 作成、
 
 ## 発掘された、現 main にも残るバグ（PR と独立に価値）
 
-2026-10-13 時点の main で残存を確認し、issue 化のうえ **PR #995 で両方を修正・main へ merge 済み**（merge commit `a570d689`、#992/#993 とも自動 close、API 318 / analysis-core 321 tests pass・ruff clean）：
+2026-10-13 時点の main で残存を確認し、issue 化のうえ **PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995) で両方を修正・main へ merge 済み**（merge commit `a570d689`、[#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)/[#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993) とも自動 close、API 318 / analysis-core 321 tests pass・ruff clean）：
 
-- **`report_launcher.py:92` が `"python"` をハードコード** → PATH 上の別 Python を拾う。`sys.executable` にすべき。analysis-core は Docker/推奨ローカル開発で API と同一環境に入る（`apps/api/pyproject.toml` のコメント）ため `sys.executable` が正しい。→ **issue #992 / PR #995**。
-- **`open()`/`json.load` の多くが `encoding` 未指定** → 日本語 Windows の既定 cp932 で UTF-8 JSON を読み `UnicodeDecodeError` でクラッシュ（Linux/Docker は UTF-8 既定で顕在化しない）。`report_status.py` / `meta.py` / `admin_report.py` 等の API 起動・実行時読み取り経路が該当。PR #995 は `apps/api` と `analysis-core` の読み書き両方に `encoding="utf-8"` を明示（起動時 `PYTHONUTF8=1` でも一括回避可）。→ **issue #993 / PR #995**。
+- **`report_launcher.py:92` が `"python"` をハードコード** → PATH 上の別 Python を拾う。`sys.executable` にすべき。analysis-core は Docker/推奨ローカル開発で API と同一環境に入る（`apps/api/pyproject.toml` のコメント）ため `sys.executable` が正しい。→ **issue [#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992) / PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)**。
+- **`open()`/`json.load` の多くが `encoding` 未指定** → 日本語 Windows の既定 cp932 で UTF-8 JSON を読み `UnicodeDecodeError` でクラッシュ（Linux/Docker は UTF-8 既定で顕在化しない）。`report_status.py` / `meta.py` / `admin_report.py` 等の API 起動・実行時読み取り経路が該当。PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995) は `apps/api` と `analysis-core` の読み書き両方に `encoding="utf-8"` を明示（起動時 `PYTHONUTF8=1` でも一括回避可）。→ **issue [#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993) / PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)**。
 
 ## 設計分岐：admin は純静的化できない
 
@@ -43,7 +43,7 @@ kouchou-ai の PR **#891**（作者 tokoroten・**Draft**・2026-06-01 作成、
 ## embeddable 特有のハマりどころ（FINDINGS より）
 
 - `pip install ./packages/analysis-core` がビルド分離で `hatchling.build` を import できず失敗（embeddable の `_pth` がサブプロセスの sys.path を絞るため）。回避＝先に `pip install hatchling` ＋ `--no-build-isolation`、本番では **wheel 事前ビルド**して embeddable に入れる。
-- フロント静的化の footgun: React **#482**（async サーバコンポーネント `Reporter` をクライアントツリーで描画すると落ちる→`ReporterClient` 差し替え）／ #418 ハイドレーション警告（`dynamic(ssr:false)` で実害回避）／ `output:export` の動的ルートは空 `generateStaticParams` がエラー（sentinel 1 件返しで回避）／ `apps/public-viewer/.env.local` が `NEXT_PUBLIC_API_BASEPATH` を上書きし別ポートを叩いて CORS 失敗。
+- フロント静的化の footgun: React **[#482](https://github.com/digitaldemocracy2030/kouchou-ai/issues/482)**（async サーバコンポーネント `Reporter` をクライアントツリーで描画すると落ちる→`ReporterClient` 差し替え）／ [#418](https://github.com/digitaldemocracy2030/kouchou-ai/issues/418) ハイドレーション警告（`dynamic(ssr:false)` で実害回避）／ `output:export` の動的ルートは空 `generateStaticParams` がエラー（sentinel 1 件返しで回避）／ `apps/public-viewer/.env.local` が `NEXT_PUBLIC_API_BASEPATH` を上書きし別ポートを叩いて CORS 失敗。
 - ビルドスクリプトの footgun: PowerShell 5.1 は `next build` の stderr 警告が `$ErrorActionPreference=Stop` で致命化（当該区間だけ `Continue`＋`$LASTEXITCODE` 判定）／ `Copy-Item -Recurse` が既存同名ディレクトリへネスト（コピー前に削除）／ git-bash の MSYS パス変換で `/viewer` が化ける（`MSYS_NO_PATHCONV=1`、build.ps1=PowerShell では非発生）。
 
 ## 残タスク / 要判断（FINDINGS より）
@@ -55,5 +55,5 @@ kouchou-ai の PR **#891**（作者 tokoroten・**Draft**・2026-06-01 作成、
 
 ## Open Questions
 
-- PR #891 自体は 130 commits 遅れ・現 main と 4 競合（`EnvironmentCheckDialog.tsx` / public-viewer `[slug]/page.tsx` / `page.tsx` / `ReportView.tsx`）・CLA 未同意・CI は 2026-06 の古い結果のみ・`tmp-embeddable-poc/` を同梱したまま。作者の継続意思を確認して rebase 再挑戦するか、一旦 close して知見だけ本ページに残すかは要判断（人間 attention 領域）。
-- Windows スタンドアロン需要と、既存の Windows 対応施策（[[gotchas]] の「Windows インストール地獄」、#524 ネイティブ環境等）との優先度関係。
+- PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) 自体は 130 commits 遅れ・現 main と 4 競合（`EnvironmentCheckDialog.tsx` / public-viewer `[slug]/page.tsx` / `page.tsx` / `ReportView.tsx`）・CLA 未同意・CI は 2026-06 の古い結果のみ・`tmp-embeddable-poc/` を同梱したまま。作者の継続意思を確認して rebase 再挑戦するか、一旦 close して知見だけ本ページに残すかは要判断（人間 attention 領域）。
+- Windows スタンドアロン需要と、既存の Windows 対応施策（[[gotchas]] の「Windows インストール地獄」、[#524](https://github.com/digitaldemocracy2030/kouchou-ai/issues/524) ネイティブ環境等）との優先度関係。

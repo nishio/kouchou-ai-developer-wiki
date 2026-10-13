@@ -26,7 +26,7 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - **CLI は `kouchou-analyze` ／ `python -m analysis_core`**（[[cli]] 参照）。API サーバは subprocess でこれを呼ぶ
 - **`PipelineOrchestrator.run_default()` が canonical** — current `main` では `run_default()` が `run_workflow()` を呼び、`run()` は deprecated direct-step fallback
 - **`--skip-interaction` はなお argparse 上で False に戻せない**。一方 `--without-html` は `PR #825` で default `False` へ修正済み
-- **PR #825 は main に merge 済み**。ただし得られる `report.html` は CLI 向け観察用HTMLであり、Web の主経路は依然 `hierarchical_result.json` + `public-viewer`
+- **PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) は main に merge 済み**。ただし得られる `report.html` は CLI 向け観察用HTMLであり、Web の主経路は依然 `hierarchical_result.json` + `public-viewer`
 - **source tree 上の refactoring phase docs は整理済み** — `docs/refactoring/phase0_investigation.md` / `phase2_5_plan.md` / `phase3_plan.md` は current tree から除去され、履歴は wiki 側で管理する前提になった
 - **`embeddings.pkl` は元の埋め込みベクトルを保存**。UMAP による 2D 化は `hierarchical_clustering` ステップ側で行う
 
@@ -76,17 +76,17 @@ Windows setup の current main は、`setup_win.bat` が ASCII-only launcher、`
 
 Windows CI は 2 層に分かれている。`.github/workflows/windows-setup-script.yml` は hosted `windows-latest` 上で `.bat` の ASCII-only check、Docker 未起動時 path、非対話 `.env` 生成を確認する。一方、`.github/workflows/windows-real-machine-e2e.yml` は `workflow_dispatch`、`github.actor == 'nishio'`、self-hosted Windows runner で、Docker Desktop + `setup_win.bat` + localhost 到達まで見る重い手動 E2E である。
 
-この構成に対し、`docs/getting-started/windows-setup.md` は `setup_win.ps1` dialog 前提を一部反映済みだが、API key 前提が OpenAI / Gemini 両方必須に見え、Docker Desktop を使えない組織端末や WSL2 禁止端末の対象外分岐はまだ弱い。#877 の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
+この構成に対し、`docs/getting-started/windows-setup.md` は `setup_win.ps1` dialog 前提を一部反映済みだが、API key 前提が OpenAI / Gemini 両方必須に見え、Docker Desktop を使えない組織端末や WSL2 禁止端末の対象外分岐はまだ弱い。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
 
 ## Web UI Node runtime current facts (2026-06-30, main tip `d5c9ece6e3b3`)
 
 `apps/admin` は `next.config.ts` で `output: "standalone"`、`serverActions.bodySizeLimit: "100mb"`、`async headers()` による CSP 付与を持つ。`app/page.tsx` は Server Component で `/admin/reports` を `cache: "no-store"` 付きで fetch しており、static export の阻害点として読める。
 
-admin の `"use server"` は 11 ファイルにある。create/report/edit/delete/visibility/config/plugin/environment check 系に加え、`apps/admin/app/_components/ReportCard/ActionMenu/csvDownloadCommon.ts` と `jsonDownload.ts` も `"use server"` で、API から取得した CSV / JSON を `Buffer.from(...).toString("base64")` で返している。PR #903 の inventory docs では、この download 系 server actions を含めるか、対象外理由を書くと後続の admin export 化で迷いにくい。
+admin の `"use server"` は 11 ファイルにある。create/report/edit/delete/visibility/config/plugin/environment check 系に加え、`apps/admin/app/_components/ReportCard/ActionMenu/csvDownloadCommon.ts` と `jsonDownload.ts` も `"use server"` で、API から取得した CSV / JSON を `Buffer.from(...).toString("base64")` で返している。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の inventory docs では、この download 系 server actions を含めるか、対象外理由を書くと後続の admin export 化で迷いにくい。
 
 `apps/public-viewer` は `NEXT_PUBLIC_OUTPUT_MODE=export` で `output: "export"`、`basePath`、`assetPrefix`、`distDir` を切り替える。export build 時は server fetch が build-time fetch へ倒れる一方、通常 runtime では `connection()`、ISR / `revalidateTag` route、OGP route など Next server 機能が残る。
 
-`apps/static-site-builder/src/index.ts` は Express の `POST /build` で `pnpm run build:static` を子プロセス実行し、`apps/public-viewer/out` を zip 化して返す。`package.json` の `dev` script は存在しない `src/server.ts` を指し、実体は `src/index.ts` である。この runtime build が残る限り、public-viewer が export mode を持っていても単一 exe には Node / pnpm / Next build 環境が戻る。#885 の次 scope は [[issue-885-node-runtime-next-scope-2026-06-30]]。
+`apps/static-site-builder/src/index.ts` は Express の `POST /build` で `pnpm run build:static` を子プロセス実行し、`apps/public-viewer/out` を zip 化して返す。`package.json` の `dev` script は存在しない `src/server.ts` を指し、実体は `src/index.ts` である。この runtime build が残る限り、public-viewer が export mode を持っていても単一 exe には Node / pnpm / Next build 環境が戻る。[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) の次 scope は [[issue-885-node-runtime-next-scope-2026-06-30]]。
 
 ## Current docs public-entry facts (2026-06-30, main tip `d5c9ece6e3b3`)
 
@@ -106,11 +106,11 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 `apps/api/public/meta/default/metadata.json` は `reporter`、`message`、`webLink`、`privacyLink`、`termsLink`、`brandColor` を持つ。`termsLink` は `null` で、report schema の `Meta` 型も `reporter` / `message` / links / brand color までで、責任主体や問い合わせ先を分けた専用 field はまだない。
 
-このため #542 は、current main では「footer に責任所在を単純追加する」より、「README / docs / public-viewer / 公開事例ページで、個別レポートの発行主体、OSS の保証範囲、図とラベルの読み方を揃える」問題として扱うのが正確である。文言案は [[report-reading-guide-minimum-wording-2026-06-30]]。
+このため [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) は、current main では「footer に責任所在を単純追加する」より、「README / docs / public-viewer / 公開事例ページで、個別レポートの発行主体、OSS の保証範囲、図とラベルの読み方を揃える」問題として扱うのが正確である。文言案は [[report-reading-guide-minimum-wording-2026-06-30]]。
 
 ## Updates
 
-- 2026-06-30 19:15 JST: `work/kouchou-ai/main@d5c9ece` が origin と一致し、19:15 JST 時点でも main tip は PR #899 merge のままと確認
+- 2026-06-30 19:15 JST: `work/kouchou-ai/main@d5c9ece` が origin と一致し、19:15 JST 時点でも main tip は PR [#899](https://github.com/digitaldemocracy2030/kouchou-ai/issues/899) merge のままと確認
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `README.md` / `docs/index.md` / `apps/public-viewer/components/Footer.tsx` / `apps/api/public/meta/default/metadata.json` / `packages/report-schema/src/index.ts` を確認し、レポート責任所在と免責文言の current facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `docs/index.md` / `docs/user-guide/how-to-use.md` / `docs/user-guide/cli-quickstart.md` / `docs/development/plugin-guide.md` を確認し、8/2 イベント向け技術・ツール入口 draft の根拠になる current docs public-entry facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` を確認し、Web UI Node runtime facts として admin の server fetch / server actions / CSP、public-viewer export mode、static-site-builder runtime `pnpm run build:static` と dev script mismatch を追記
@@ -129,4 +129,4 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 ## Updates — 2026-10-05
 
-本体をfetch / pull --ff-onlyしてmain `751e2c88be26c7a73f2d3e059a53ab4e2497493a`を確認。9月9日の#940以後にmainの変更はない。open PRは#941〜#946とdraft #891。Serverlessのorigin/main `f4bb032`では#22〜#26が反映済み。詳細は [[catchup-2026-10-05]] / [[current-status-2026-10-05]]。
+本体をfetch / pull --ff-onlyしてmain `751e2c88be26c7a73f2d3e059a53ab4e2497493a`を確認。9月9日の#940以後にmainの変更はない。open PRは#941〜#946とdraft [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)。Serverlessのorigin/main `f4bb032`では#22〜#26が反映済み。詳細は [[catchup-2026-10-05]] / [[current-status-2026-10-05]]。

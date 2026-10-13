@@ -10,26 +10,26 @@ sources:
 
 ### kitaro / take365（山岡木太郎）
 
-- Windows ネイティブ環境対応（#509, #524）
-- silhouette-score ベースのクラスタ数自動選択（#516, #448, #567 → #579 で revert）
+- Windows ネイティブ環境対応（[#509](https://github.com/digitaldemocracy2030/kouchou-ai/issues/509), [#524](https://github.com/digitaldemocracy2030/kouchou-ai/issues/524)）
+- silhouette-score ベースのクラスタ数自動選択（[#516](https://github.com/digitaldemocracy2030/kouchou-ai/issues/516), [#448](https://github.com/digitaldemocracy2030/kouchou-ai/issues/448), [#567](https://github.com/digitaldemocracy2030/kouchou-ai/issues/567) → [#579](https://github.com/digitaldemocracy2030/kouchou-ai/issues/579) で revert）
 - `arg.csv` extraction skip 提案
 
 ### tanenobu / mtane0412
 
 - メンテナ（2025-04-23 〜）
 - 小規模自治体（人口 3 万人クラス）視点での field testing
-- token 使用量表示（#536）、推定コスト表示（#549）
+- token 使用量表示（[#536](https://github.com/digitaldemocracy2030/kouchou-ai/issues/536)）、推定コスト表示（[#549](https://github.com/digitaldemocracy2030/kouchou-ai/issues/549)）
 - 静的 export の basePath 周り修正
 
 ### shirouchi（しろうち）
 
-- admin redesign リード（PR #637, #668、Issues #460, #604, #586）
+- admin redesign リード（PR [#637](https://github.com/digitaldemocracy2030/kouchou-ai/issues/637), [#668](https://github.com/digitaldemocracy2030/kouchou-ai/issues/668)、Issues [#460](https://github.com/digitaldemocracy2030/kouchou-ai/issues/460), [#604](https://github.com/digitaldemocracy2030/kouchou-ai/issues/604), [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)）
 - デザイナと連携した Figma ベースのデザインシステム構築
 
 ### shgtkshruch
 
 - Biome formatter 統合
-- 用語集ページ、global nav、クラスタ見出しの anchor link（PR #224, #270）
+- 用語集ページ、global nav、クラスタ見出しの anchor link（PR [#224](https://github.com/digitaldemocracy2030/kouchou-ai/issues/224), [#270](https://github.com/digitaldemocracy2030/kouchou-ai/issues/270)）
 
 ### sasano（Masato Sasano）
 
@@ -38,7 +38,7 @@ sources:
 
 ### imai（Tatsuya Imai）
 
-- レポート進行 UI（PR #217）
+- レポート進行 UI（PR [#217](https://github.com/digitaldemocracy2030/kouchou-ai/issues/217)）
 
 ### moai / 小野翔太
 

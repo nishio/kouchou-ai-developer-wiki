@@ -28,8 +28,8 @@ admin 画面まで公開し、ユーザが自分の API キーを入力して試
 
 実装上の前提:
 
-- Issue #660 (2025-07-30 merge) で admin form からの API key 入力経路が main にある [[llm-providers]]より
-- PR #868 (2026-05-29 までに merge) で `USER_API_KEY` plumbing が main にある [[meeting-report-2026-05-25]]より
+- Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) (2025-07-30 merge) で admin form からの API key 入力経路が main にある [[llm-providers]]より
+- PR [#868](https://github.com/digitaldemocracy2030/kouchou-ai/issues/868) (2026-05-29 までに merge) で `USER_API_KEY` plumbing が main にある [[meeting-report-2026-05-25]]より
 
 したがって「ユーザが自分のキーで分析を回す」コード自体は問題ない。コストもユーザのキー側に乗るので dd2030 持ち出しは増えない。残るのは運用方針として「共用環境で全員に共有されるから秘密情報を入れないで」を明示すれば OK か、という判断。
 

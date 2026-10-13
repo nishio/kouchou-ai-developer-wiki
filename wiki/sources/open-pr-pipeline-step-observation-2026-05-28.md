@@ -24,7 +24,7 @@ sources:
 | `#866` | `[codex] LLM grouping 分析モードを追加` | `analysis_mode=llm_grouping` と workflow branch の具体化 |
 | `#863` | `[codex] Windows setup の日本語案内を PowerShell に分離` | Windows setup。step 追加論点とは直接関係しない |
 
-## PR #866: LLM grouping
+## PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866): LLM grouping
 
 `#866` は `analysis_mode=llm_grouping` を追加し、`analysis.llm_grouping` plugin / step / spec / workflow を追加する。出力は既存 viewer 互換の `hierarchical_clusters.csv` と `hierarchical_merge_labels.csv`。PR 本文では、散布図互換を保ったまま raw argument を LLM で top-level group に割り当てる **実験用の入口** と明記され、label refinement は含めていない。[[github-dev-docs]]より
 
@@ -36,7 +36,7 @@ sources:
 
 設計上は、これは「既存 step へ押し込む」のではなく、別 `analysis_mode` / workflow として切る方向であり、[[strategic-development-order-2026-05-23]] の短期互換案と一致する。
 
-## PR #867: reuse-from
+## PR [#867](https://github.com/digitaldemocracy2030/kouchou-ai/issues/867): reuse-from
 
 `#867` は CLI に `--reuse-from` を追加し、既存 output から中間成果物を seed して、対応する step を `nothing changed` として skip できるようにする。スコープは reuse-from のみで、LLM grouping と label refinement は含めていない。[[github-dev-docs]]より
 
@@ -48,7 +48,7 @@ sources:
 
 設計上は、step 数が増える時の実務的複雑性（rerun / skip / status）を下げる基盤である。`label_refinement` や `layout_generation` のような downstream 実験を安全に回すには、この PR の価値が高い。
 
-## PR #874: semantic island layout generation
+## PR [#874](https://github.com/digitaldemocracy2030/kouchou-ai/issues/874): semantic island layout generation
 
 `#874` は aggregation と visualization の間に `hierarchical_layout_generation` step を追加する。PR 本文によると、`arguments[].x/y` は既存 embedding 由来座標のまま残し、`hierarchical_result.json.layouts` に名前付き layout を追加する。全 run で `embedding_umap` を生成し、`llm_grouping` 出力では既定で `semantic_island_map` も生成する。[[github-dev-docs]]より
 

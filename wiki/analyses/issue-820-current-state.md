@@ -11,7 +11,7 @@ sources:
 
 ## Findings
 
-### GitHub current state では #820 は open、`#848` は merge 済み
+### GitHub current state では [#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は open、`#848` は merge 済み
 
 `gh issue view 820` では、`#820` は 2026-03-29 作成の open issue のままで、本文は「Plotly の PNG download が `img-src` の `blob:` 不足でブロックされうる」「`output: 'export'` では `next.config.ts` の `headers()` が no-op なので、静的配信先での CSP 設定ガイドが必要」という整理になっている。いっぽう `PR #848 web apps に env-aware CSP header を追加` は 2026-05-21 に merge 済みで、PR 本文でも `#820` は scope 外として明記されていた。[[github-dev-docs]]より
 
@@ -19,7 +19,7 @@ sources:
 
 `work/kouchou-ai/` から見える current `origin/main@dca43694f2a00c6f7c6360cb97b9af7f2869063a` には `apps/shared/csp.ts` と `apps/admin` / `apps/public-viewer` の `next.config.ts` 変更が入っている一方、`docs/` や `README.md`、`apps/` 配下を `CSP` / `staticwebapp.config` / `blob:` で検索しても、静的 export を Azure Static Web Apps や Nginx、Cloudflare 等へ載せる際の CSP 設定例は見つからなかった。したがって `#820` の「ガイドを docs に追加する」という要求は、2026-05-21 時点でも未充足と見てよい。[[source-code]]より
 
-### `#848` は dynamic hosting の CSP header 整備として merge 済みだが、#820 を直接は閉じない
+### `#848` は dynamic hosting の CSP header 整備として merge 済みだが、[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) を直接は閉じない
 
 `PR #848` は `apps/admin` と `apps/public-viewer` に env-aware な `Content-Security-Policy` header を追加する変更で、`apps/shared/csp.ts` も新設した。ただし PR 本文には、`public-viewer` の `output: export` では header を配れないためその経路では `headers()` を空にすること、そして `static export 配信先での CSP 設定ガイド: #820` は scope 外であることが書かれている。したがって `#848` が merge 済みでも、**static export の運用者が配信基盤側で何を設定すべきか** は依然として別途説明が必要である。[[github-dev-docs]]より
 

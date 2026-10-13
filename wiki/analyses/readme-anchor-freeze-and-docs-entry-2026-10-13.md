@@ -7,7 +7,7 @@ sources:
 
 ## 何の判断か
 
-2026-10 に [[kouchou-ai]] の README をデフォルト英語化（PR #966）→日本語へ差し戻し（PR #968）した事件をきっかけに、nishio が Slack で 2 つの設計判断を示した（[[slack-readme-language-docs-site-2026-10-13]]より）。
+2026-10 に [[kouchou-ai]] の README をデフォルト英語化（PR [#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966)）→日本語へ差し戻し（PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)）した事件をきっかけに、nishio が Slack で 2 つの設計判断を示した（[[slack-readme-language-docs-site-2026-10-13]]より）。
 
 1. **README を外部アンカーリンクで凍結してはいけない**
 2. **非英語話者・非開発者の入口は GitHub ではなくドキュメントサイトにする**
@@ -58,14 +58,14 @@ nishio が 2026-10-09 に提案したのは「README.md を英語にして日本
 
 ## 関連
 
-- **GitHub issue #977**（open / nishio 起票 / 2026-10-12）「docs: README 見出しアンカーへの外部直リンク依存をやめ、安定URL(docs)へ寄せる（PR #968 残件）」が、本判断 1 の root-cause 対応として実在する。issue 本文は、見出しアンカーは言語切替だけでなく**見出しの言い回し変更・絵文字追加・章の並べ替え**でも静かに切れること、切れても 404 でなく README トップに着地して気づきにくいこと、GitHub Markdown ではカスタム anchor id を固定できないことを挙げ、(1) 安定リンク宛先を docs の固定 URL に寄せる（例: `apps/public-viewer/components/reporter/ReporterContent.tsx` のリンク）、(2) README はトップ案内に留める運用、(3) README 内リンクは 1 箇所集約 + **Markdown リンク切れ検出を CI に入れる**、を提案している
+- **GitHub issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)**（open / nishio 起票 / 2026-10-12）「docs: README 見出しアンカーへの外部直リンク依存をやめ、安定URL(docs)へ寄せる（PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968) 残件）」が、本判断 1 の root-cause 対応として実在する。issue 本文は、見出しアンカーは言語切替だけでなく**見出しの言い回し変更・絵文字追加・章の並べ替え**でも静かに切れること、切れても 404 でなく README トップに着地して気づきにくいこと、GitHub Markdown ではカスタム anchor id を固定できないことを挙げ、(1) 安定リンク宛先を docs の固定 URL に寄せる（例: `apps/public-viewer/components/reporter/ReporterContent.tsx` のリンク）、(2) README はトップ案内に留める運用、(3) README 内リンクは 1 箇所集約 + **Markdown リンク切れ検出を CI に入れる**、を提案している
 - [[slack-readme-language-docs-site-2026-10-13]]: 一次ソース（Slack スレッド + PR 事件）
 - [[kouchou-ai-docs-entry-restructure-2026-06-03]] / [[nishio-docs-entry-restructure-discussion-2026-06-03]]: docs 入口の spine 再設計。今回の「入口を docs サイトへ」はこの延長
-- [[issue-876-developer-docs-gap-audit-2026-06-30]] / [[docs-issue-map-2026-06-30]]: README と docs の役割分担を整理する #876 系。アンカー凍結回避と「README は改訂可能に保つ」はこの役割分担の前提
+- [[issue-876-developer-docs-gap-audit-2026-06-30]] / [[docs-issue-map-2026-06-30]]: README と docs の役割分担を整理する [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) 系。アンカー凍結回避と「README は改訂可能に保つ」はこの役割分担の前提
 - [[interview-feature-requests-2026-10-08]]: 全画面マップの日英韓切替（翻訳）。多言語化は README だけでなく成果物 viewer でも進んでいる
 
 ## Open Questions
 
-- README アンカーへの既存外部リンクの実態（どこから何件張られているか）は未調査。issue #977 は少なくとも `apps/public-viewer/components/reporter/ReporterContent.tsx` を宛先候補に挙げるが、全量の棚卸しと移行先ページ・redirect 方針は未定。GitHub Markdown はカスタム anchor id を固定できないので README 内では安定化できず、宛先を docs 側へ移すしかない
-- 非開発者を GitHub を経由させずドキュメントサイトへ着地させる具体導線（配布物・事例サイト・検索からの流入をどこへ向けるか）は未設計。docs 入口 spine 再設計（#876 系）と合流させる必要がある
+- README アンカーへの既存外部リンクの実態（どこから何件張られているか）は未調査。issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は少なくとも `apps/public-viewer/components/reporter/ReporterContent.tsx` を宛先候補に挙げるが、全量の棚卸しと移行先ページ・redirect 方針は未定。GitHub Markdown はカスタム anchor id を固定できないので README 内では安定化できず、宛先を docs 側へ移すしかない
+- 非開発者を GitHub を経由させずドキュメントサイトへ着地させる具体導線（配布物・事例サイト・検索からの流入をどこへ向けるか）は未設計。docs 入口 spine 再設計（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) 系）と合流させる必要がある
 - デフォルト言語を日本語に戻した現状を、国外注目増（nishio の英語化動機）とどう両立させるか。言語自動判定や docs サイト側の多言語化は未検討

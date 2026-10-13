@@ -69,7 +69,7 @@ current main の確認では、`apps/admin` の Node runtime 責務は server-si
 
 ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。MVP も外部 API route だけでなく、軽量モデル同梱や Foundry Local のような native local AI runtime で **API 契約不要で local 完結**する offline route を比較すべき、という整理に更新した。[[node-runtime-free-windows-exe-2026-05-31]]より
 
-PR #891 は、この段階 4a の探索を実コードで先取りした draft と読める。embeddable Python + FastAPI + static public-viewer/admin assets を bundle に入れ、`/viewer` / `/admin-ui` を FastAPI から配信するため、Node runtime を bundle runtime から外す方向に沿っている。一方で 2026-06-30 時点では draft / dirty / stale で、`report_launcher` の subprocess interpreter、admin static export の build-time source mutation、baked API keys、installer 未実装などが残るため、current supported path ではなく prototype lane として扱う。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より
+PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は、この段階 4a の探索を実コードで先取りした draft と読める。embeddable Python + FastAPI + static public-viewer/admin assets を bundle に入れ、`/viewer` / `/admin-ui` を FastAPI から配信するため、Node runtime を bundle runtime から外す方向に沿っている。一方で 2026-06-30 時点では draft / dirty / stale で、`report_launcher` の subprocess interpreter、admin static export の build-time source mutation、baked API keys、installer 未実装などが残るため、current supported path ではなく prototype lane として扱う。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より
 
 ## 正規入口を Docker Desktop に置く前提
 
@@ -144,12 +144,12 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 - 2026-10-06: [[slack-municipal-pc-wsl2-2026-10-05]] を反映。自治体内で流用可能な Windows 11 PC で、ルート B（WSL2 + `./start_linux.sh`、Docker Desktop なし）が動いたという大木の報告が出た。5 月時点では GPT のブレストしか根拠がなかったルート B に、初めて実機の成功例がついた。あわせて次を確認した
   - Docker Desktop の規約では、政府機関は組織規模に関係なく有料サブスクリプションが必須（無料は従業員 250 人未満かつ年間売上 1000 万ドル未満の組織などに限られる）。広聴AIの主要利用者である自治体は、そのまま有料の条件に当たる。「大企業 / 政府機関では有料になる場合がある」という上の書き方より強い
   - current main（`a12d68e`）の `docs/getting-started/windows-setup.md` は「組織利用の場合は管理者へ確認」とだけ書き、WSL 内の手動構築は扱わない。自治体の利用者には、有料のルート A か IT 管理者へ回すかの二択しか示していない
-  - #877（2026-09-08 CLOSED）の「Docker Desktop / WSL2 が塞がれた組織 PC は初心者向けガイドの対象外」という判断は、技術的に塞がれている前提だった。実際の障害はライセンス費用で、ルート B という回避経路もあるので、前提の見直しが要る
+  - [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877)（2026-09-08 CLOSED）の「Docker Desktop / WSL2 が塞がれた組織 PC は初心者向けガイドの対象外」という判断は、技術的に塞がれている前提だった。実際の障害はライセンス費用で、ルート B という回避経路もあるので、前提の見直しが要る
   - ルート B でも `wsl --install` には Windows の管理者権限と仮想化の有効化が要る。これは Docker Desktop と同じなので、権限の問題までなくなるわけではない。手順化では、WSL 側の filesystem への clone（Windows 側に clone すると CRLF で `.sh` が壊れる）、systemd、`.wslconfig` のメモリ設定、庁内プロキシが詰まりどころになりそう
   - WSL 3.0（2026-09-29 発表）で WSL コンテナーが正式版になったが、`wslc compose` はこれから実装される段階。現行の `compose.yaml` 前提の構成はそのままでは乗らないので、当面は様子見
-  - 2026-10-07 追記: 大木が手順書のたたき台（WSL2 + Docker Engine、`main` を clone）を Slack に共有した。たたき台にある「`cp .env.example .env` が必須」の原因を調べたところ、WSL2 とは関係なく、全セットアップスクリプトが作る `.env` に変数が足りないバグだった（#956、修正 PR #957、詳細は [[setup-script-env-drift-2026-10-07]]）。大木が見た症状がこれと同じかは未確認
+  - 2026-10-07 追記: 大木が手順書のたたき台（WSL2 + Docker Engine、`main` を clone）を Slack に共有した。たたき台にある「`cp .env.example .env` が必須」の原因を調べたところ、WSL2 とは関係なく、全セットアップスクリプトが作る `.env` に変数が足りないバグだった（[#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956)、修正 PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)、詳細は [[setup-script-env-drift-2026-10-07]]）。大木が見た症状がこれと同じかは未確認
   - 方針: nishio が大木に推奨案（入口を利用者の組織で分ける / 政府機関は有料と明記 / ルート B の手順を大木の実機手順から作る）を伝えた。issue 起票・docs PR は大木の反応を待ってから
-- 2026-06-30: PR #891 を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として整理し、embeddable Python + static viewer/admin の prototype だが current supported path ではないと追記
+- 2026-06-30: PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) を [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] として整理し、embeddable Python + static viewer/admin の prototype だが current supported path ではないと追記
 - 2026-05-31: tokoroten / nishio の Slack 議論を受け、完全単体 exe の前提 refactor として Node runtime を build-time assets に閉じ込める route を追加。`#885` を起票し、詳細は [[node-runtime-free-windows-exe-2026-05-31]] に分離
 - 2026-06-01: 定例議事録を反映し、非エンジニア橋渡し役の短期導線は Azure デモ環境を優先し、Windows standalone は中長期の privacy / offline / local LLM route として探索する位置づけへ補正
 - 2026-05-31: `#885` の MVP を external API route / offline bundled-model route の 2 本比較に修正。単一バイナリの価値は Docker なしだけでなく API 契約不要にもある

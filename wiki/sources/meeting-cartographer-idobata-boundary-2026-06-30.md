@@ -25,7 +25,7 @@ Slack は `work/slack-logs/` の `main@341cf80` を検索したが、`idobata` /
 
 議事録では、首長やトップ層には `広聴AI` がブロードリスニングとして認識される一方、広報・広聴の現場部署には `いどばた` のような interactive な聴取ツールがブロードリスニングとして認識される可能性がある、と整理されている。既に集まった大量意見を地図化する狭義のブロードリスニングと、対話を通じて深く聴く広義のブロードリスニングを混ぜると、自治体向けの説明が曖昧になる。[[meeting-minutes]]より
 
-このため、公開 docs / 8/2 向け資料 / #564 公開事例ページでは、「広聴AI = 収集済み自由記述の分析・可視化」と「いどばた / Cartographer = 収集・深掘り・追加質問」を分ける tool catalog が必要になる。[[meeting-municipality-user-research-scope-2026-06-30]]より
+このため、公開 docs / 8/2 向け資料 / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) 公開事例ページでは、「広聴AI = 収集済み自由記述の分析・可視化」と「いどばた / Cartographer = 収集・深掘り・追加質問」を分ける tool catalog が必要になる。[[meeting-municipality-user-research-scope-2026-06-30]]より
 
 ### 2. kouchou-ai の主 lane は「集まった自由記述を地図化する」
 
@@ -64,7 +64,7 @@ idobata は、AI を介した 1-on-1 の深掘り interview / dialogue に近い
 
 ## Implications
 
-- #564 / #696 / #542 の public trust layer では、「集める / 深掘る / 分析する / 可視化する / 読み解く」を分けて説明する。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の public trust layer では、「集める / 深掘る / 分析する / 可視化する / 読み解く」を分けて説明する。
 - 8/2 event では、広聴AIを「ブロードリスニング全体の総称」として使わず、国内事例のうち tool lineage と data shape を分ける。
 - 自治体 user research では、広聴活動一般の探索と広聴AI適合ケースの探索を分ける。Cartographer / idobata / 広聴AIのどれで解く課題かを調査票上で混ぜない。
 - 対立軸発見は魅力的な next theme だが、現行広聴AIの default capability ではなく、LLM grouping / long-context route の設計論点として扱う。

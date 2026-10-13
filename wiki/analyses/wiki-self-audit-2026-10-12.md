@@ -28,7 +28,7 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 ### 2. first-read ページの内容訂正（`## Updates` 方式で履歴を残す）
 - [[architecture-overview]] / [[kouchou-ai]]: Next.js 15→16（main は `^16.3.8`）。自wiki内で gotchas 等は既に 16 で矛盾していた。データフロー図の `PipelineOrchestrator.run()` も `run_default()` に修正。
 - [[cli]]: ライブラリ利用例 `run()`→`run_default()`、実行モード説明を「`run_default()`→`run_workflow()` が canonical、`run()` は `DeprecationWarning` つき deprecated」に統一（本文が同ページの L125 lint 注記・[[pipeline]] と矛盾していた）。解決済みの Open Question「PyPI 公開＋GHA 自動リリース」を除去。
-- [[pipeline]] / [[plugin-system]]: `analysis_mode=llm_grouping` は engine レベルで出荷済み（#866 / `4f893ab5`、2026-05-25 main 入り。`register_all` が `llm_grouping` を含む 9 plugin を登録）だが、**admin / `apps/api` は `analysis_mode` 未受け渡しでユーザ到達は未**（#176 / 未 merge PR #987）、という「engine 出荷済み・プロダクト到達未」の状態を追記。plugin-system の builtin 数を「8」→「9」に訂正。[[pipeline]] の解決済み Open Question「レポート再利用（#19）」を除去（`report_duplicate.py` 実装済み）。
+- [[pipeline]] / [[plugin-system]]: `analysis_mode=llm_grouping` は engine レベルで出荷済み（[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) / `4f893ab5`、2026-05-25 main 入り。`register_all` が `llm_grouping` を含む 9 plugin を登録）だが、**admin / `apps/api` は `analysis_mode` 未受け渡しでユーザ到達は未**（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) / 未 merge PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987)）、という「engine 出荷済み・プロダクト到達未」の状態を追記。plugin-system の builtin 数を「8」→「9」に訂正。[[pipeline]] の解決済み Open Question「レポート再利用（[#19](https://github.com/digitaldemocracy2030/kouchou-ai/issues/19)）」を除去（`report_duplicate.py` 実装済み）。
 - [[refactoring-status]]: Phase 2.5 の PyPI 版を `0.1.2`→現行 `0.1.3`（AGPL-3.0、旧 MIT 版 yank 済み）に訂正。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。
 
 ### 3. スクリプト堅牢化 & lint 強化
@@ -41,13 +41,13 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 
 ## 作業の副作用として検出・修正
 
-- `work/kouchou-ai` の HEAD が `main` ではなく feature ブランチ `codex/issue-52-scatter-linked-text` に detached していた。reflog から、本監査の code-coverage finder が #52 を調べる際に（「git を触るな」の指示に反して）`git checkout` し HEAD を動かしたのが原因と判明。CLAUDE.md「HEAD は常に main」原則違反なので `main` に復帰済み。
+- `work/kouchou-ai` の HEAD が `main` ではなく feature ブランチ `codex/issue-52-scatter-linked-text` に detached していた。reflog から、本監査の code-coverage finder が [#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) を調べる際に（「git を触るな」の指示に反して）`git checkout` し HEAD を動かしたのが原因と判明。CLAUDE.md「HEAD は常に main」原則違反なので `main` に復帰済み。
 
 ## 残課題（人間判断が要る）
 
 - **dated snapshot のライフサイクル**: ~211 の dated page に supersession/archive policy も machine-readable status も無い。唯一の archive 規律＝meeting-report rotation は 4 ヶ月 silent に途絶していた（10-10 で一括退避済み）。additive な `status: superseded` + `superseded_by:` frontmatter 層（削除なし・git がアーカイブ、build_index_txt が prefix、lint が参照先チェック）を CLAUDE.md 節として入れるかは要判断。**`status` の意味は「より新しい wiki snapshot が存在」であって「live に対し検証済み current」ではない**と定義すること（情報鮮度の明示と整合）。
 - **PR-887 の raw verbatim**: 現在 `raw/deploy-detail-preservation/`（local, gitignored）に退避済み。デプロイ詳細の一次置き場は Google Drive「広聴AI-Azureデモ環境」なので、そちらへ移す判断は権限保持者（大木・西尾・小野）。
-- **work/kouchou-ai の残渣**: 別セッション（#982–#988 を進めた session）の agent worktree が約 13 個、`.env.example.bak` の untracked が 1 個。別セッションの作業なので未処理。棚卸しは要判断。
+- **work/kouchou-ai の残渣**: 別セッション（[#982](https://github.com/digitaldemocracy2030/kouchou-ai/issues/982)–[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) を進めた session）の agent worktree が約 13 個、`.env.example.bak` の untracked が 1 個。別セッションの作業なので未処理。棚卸しは要判断。
 - **CLAUDE.md の冗長性**: public-boundary / work freshness / 二分原則などが 操作 と 運用方針 で 3–6 回ずつ再掲される。ただし prose は未 drift（drift したのは数字だけ）で、一部は locality-of-reference として意図的。gut せず verbatim ペア（deploy 境界の L40/L172 等）のみ保守的に統合、が安全。
 
 ## 健全と確認できた軸（やらなくてよい）
@@ -65,5 +65,5 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 
 - 2026-10-12: 初版作成。6 レンズ監査 → 敵対的検証 → 修正適用の filing-back。[[wiki-driven-workflow]] の運用下で developer-wiki を自己点検した記録。
 - 2026-10-12: 残課題①「dated-page lifecycle policy」を nishio 判断で**採用**。CLAUDE.md に「スナップショットのライフサイクル」節（opt-in の `status: superseded` + `superseded_by:`、意味は「より新しい snapshot が存在」で live 照合済みではない）、`build_index_txt.py` の superseded prefix、`lint_wiki.py` の `superseded_by` 実在チェックを追加。demo として [[issue-backlog-audit-2026-09-09]] / [[issue-backlog-audit-2026-10-11]] → [[issue-backlog-audit-2026-10-12]]、[[current-status-2026-06-30]] → [[current-status-2026-10-05]] を superseded マーク（zero migration、残りは今後 incremental）。残課題②PR-887 verbatim の Drive 移送、③`work/` worktree 棚卸しは保留（③は open PR 処理後）。
-- 2026-10-12: 本監査の数時間後に #176 統合 PR #987 が kouchou-ai main に merge（`c33d264a`）。Batch 2 で「engine 出荷済み・プロダクト到達未」と書いた [[pipeline]] / [[plugin-system]] を「到達も main 入り」に追補訂正、index.md の「#982–#987 未 merge」も softening。**同一セッション内で concurrency により freshness が動いた実例**（別セッションが PR を land → 自分の記述が数時間で stale 化）。freshness marker は「ページ更新日」でなく「その時点の観測」である、という原則を地で行った。
+- 2026-10-12: 本監査の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が kouchou-ai main に merge（`c33d264a`）。Batch 2 で「engine 出荷済み・プロダクト到達未」と書いた [[pipeline]] / [[plugin-system]] を「到達も main 入り」に追補訂正、index.md の「[#982](https://github.com/digitaldemocracy2030/kouchou-ai/issues/982)–[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) 未 merge」も softening。**同一セッション内で concurrency により freshness が動いた実例**（別セッションが PR を land → 自分の記述が数時間で stale 化）。freshness marker は「ページ更新日」でなく「その時点の観測」である、という原則を地で行った。
 - 2026-10-13: Batch 4（PR-887 sanitize）の粒度を nishio がレビューし**現状維持で確定**。確認すると、実際に除去したのは生テレメトリ（health JSON・console/system ログ逐語）と実環境の個体識別子（revision 実 ID・resource サイズ実値行）だけで、portable な教訓（`exit 137`=OOM SIGKILL、`latestRevisionName ≠ latestReadyRevisionName` の false-positive 機序、Unhealthy/Degraded・progress deadline 超過の状態語）と、**narrative の中でそれ自体が教訓になっている resource 数字**（[[deploy-success-but-nothing-changed-story-2026-06-01]] L70 の「1Gi→2Gi」= build のためだけに 24h 分メモリを固定費で払うトレードオフの肝）は意図的に残置済み。方針として明文化: sanitize の目的は secret 防衛ではなく**境界衛生＋兄弟ページ整合**で、生データ/個体識別子だけ落とし教育価値は削らない。verbatim は `raw/deploy-detail-preservation/`（gitignored）退避で**可逆**。残課題②の sanitize 面はこれで close（verbatim の Drive「広聴AI-Azureデモ環境」移送は引き続き権限保持者の手作業）。

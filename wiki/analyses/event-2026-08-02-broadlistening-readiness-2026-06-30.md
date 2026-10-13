@@ -47,8 +47,8 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 
 - 8/2 イベント向けに、公開可能な「ブロードリスニング技術・ツール入口」1 枚を draft 化する。初稿は [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] に固定した。最初の骨子は、ブロードリスニングとは何か、広聴AIが扱う入力、analysis / viewer が出すもの、現時点の配布形態、公開できる事例、未対応範囲。
 - 公開可能事例の棚卸しは [[event-2026-08-02-public-example-inventory-2026-06-30]] に固定した。現時点では、渋谷区 official page / PDF を trust context、奈良 #全員市長 public viewer を primary viewer demo、八代市を political / policy context に注意する deep case、synthetic CSV を fallback として扱う。[[public-broadlistening-artifacts-2026-06-30]]より
-- 公開事例は #564 単独ではなく、#696 誤読防止 / #542 責任所在と合わせて扱う。8/2 では「公開事例リスト + レポートの読み方 + 何を保証しないか」を最小単位にする。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
-- [[docs-issue-map-2026-06-30]] の docs 群と接続し、#876 developer quickstart、#877 Windows setup、#885 Node runtime 排除をイベント説明に混ぜない。イベント向けには「利用者に見せる説明」と「開発者が整える前提」を分ける。
+- 公開事例は [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) 単独ではなく、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) 誤読防止 / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) 責任所在と合わせて扱う。8/2 では「公開事例リスト + レポートの読み方 + 何を保証しないか」を最小単位にする。[[issue-564-public-case-trust-layer-scope-2026-06-30]]より
+- [[docs-issue-map-2026-06-30]] の docs 群と接続し、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) developer quickstart、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows setup、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Node runtime 排除をイベント説明に混ぜない。イベント向けには「利用者に見せる説明」と「開発者が整える前提」を分ける。
 - Yokohama Hack! 文脈では、収集手法そのものを kouchou-ai 本体に取り込む判断を急がない。input plugin / data collection docs の候補として論点化し、owner と issue が見えたら実装 lane に移す。
 - public examples / demo は公開境界を守る。実環境 URL、resource 名、revision、ログ、secret / access 周辺は developer wiki に書かず、公開 wiki では設計判断と公開可能な課題に留める。
 - Brand Compass / 情報発信の観点では、A/B/C/D 配布形態を「誰に何を提供しているか」の説明として使う。8/2 の技術 / ツール lane では、研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial を混ぜずに説明する。[[meeting-brand-compass-information-strategy-2026-06-30]]より
@@ -65,7 +65,7 @@ developer wiki と docs が短期で支援しやすいのは、後ろ 2 つの�
 
 - 2026-06-30 19:04 JST: `#dd_prance_event2026` の 8/2 実践 lane 計画を反映し、技術・ツール lane と国会 / 地方自治の実践 lane を接続しつつ、Slack-only lead を外部 proof にしない方針を追記。
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、8/2 readiness は first demo 選定だけでなく stable v4 / 情報発信 / A/B/C/D 配布形態の説明を揃える作業だと補正。
-- 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo を #564 / #696 / #542 の trust layer と接続。
+- 2026-06-30: [[issue-564-public-case-trust-layer-scope-2026-06-30]] を追加し、公開事例 demo を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の trust layer と接続。
 - 2026-06-30: [[event-2026-08-02-public-example-inventory-2026-06-30]] を追加し、8/2 で使える公開事例 / demo 素材を public-ready、確認待ち、fallback に分けた。
 - 2026-06-30: [[event-2026-08-02-tech-tool-brief-draft-2026-06-30]] を追加し、技術・ツール入口の 1 枚 draft を固定。
 - 2026-06-30: 初回作成。2026-06-22 議事録の 8/2 イベント lane と、2026-06-26 Slack の横浜型ブロードリスニング共有を合わせ、次の docs-safe action を整理。

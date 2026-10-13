@@ -14,13 +14,13 @@ sources:
 
 ## Summary
 
-今回の Windows 作業では、`work/kouchou-ai/` を一次参照として Issue #731 の `setup_win.bat` 文字化け問題を修正し、draft PR #858 まで作成した。あわせて developer-wiki 側では Python が未導入だったため、Python 3.14.5 と PyYAML を入れて `scripts/lint_wiki.py` を実行できる状態にした。[[source-code]]より [[github-dev-docs]]より
+今回の Windows 作業では、`work/kouchou-ai/` を一次参照として Issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) の `setup_win.bat` 文字化け問題を修正し、draft PR [#858](https://github.com/digitaldemocracy2030/kouchou-ai/issues/858) まで作成した。あわせて developer-wiki 側では Python が未導入だったため、Python 3.14.5 と PyYAML を入れて `scripts/lint_wiki.py` を実行できる状態にした。[[source-code]]より [[github-dev-docs]]より
 
 個人情報を残さないため、ローカルユーザー名、メールアドレス、絶対パス、端末固有の詳細はこのメモでは扱わない。公開される Issue / PR 番号、ブランチ名、ツール名、一般化した環境差分だけを記録する。
 
 ## What Happened
 
-Windows 関連 Issue の中では、初回セットアップを直接塞ぐ #731 を優先した。`setup_win.bat` は Git 上では読める日本語を含んでいたが、Windows の実行環境ではコードページ差分により mojibake し、一部の行がコマンドとして解釈されるリスクがあった。そこでバッチファイルの実行時メッセージを ASCII に寄せ、詳しい日本語説明は docs 側へ任せる形にした。[[source-code]]より [[gotchas]]より
+Windows 関連 Issue の中では、初回セットアップを直接塞ぐ [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) を優先した。`setup_win.bat` は Git 上では読める日本語を含んでいたが、Windows の実行環境ではコードページ差分により mojibake し、一部の行がコマンドとして解釈されるリスクがあった。そこでバッチファイルの実行時メッセージを ASCII に寄せ、詳しい日本語説明は docs 側へ任せる形にした。[[source-code]]より [[gotchas]]より
 
 修正では API キー形式チェックの重複も整理した。`findstr` にパイプするより、バッチ内の prefix 比較へ寄せる方が今回の目的には単純だった。Docker が無い環境でも `cmd.exe` 経由で Docker 未起動/未インストール時の停止パスを確認できた。[[source-code]]より
 
@@ -50,4 +50,4 @@ wiki 側の管理では、Python 導入後に `scripts/lint_wiki.py` を走ら�
 
 ## Updates
 
-- 2026-05-22: 初回作成。Issue #731 / draft PR #858 と、Windows 上で Python を導入して wiki lint を復旧した体験を、個人情報を除いて整理。
+- 2026-05-22: 初回作成。Issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) / draft PR [#858](https://github.com/digitaldemocracy2030/kouchou-ai/issues/858) と、Windows 上で Python を導入して wiki lint を復旧した体験を、個人情報を除いて整理。

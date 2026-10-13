@@ -40,14 +40,3 @@ type: analysis
 
 - そもそも日本語圏に Yandex インフラ依存の協調投稿層が実在するのか（事前確率は低い）。業者データか Bluesky dry-run で、まず「協調クラスタが検出できるか」から確かめるのが先で、Yandex 攻撃との紐付けはその後。
 - X API の full-archive 条件・価格は変動する。再挑戦時はアクセス階層と費用を要再確認（本ページの数値は 2026-10-13 時点の観測）。
-
-## Updates
-
-### [2026-10-13] 続報: 多言語・多プラットフォーム調査で結論確定 → 主張は unsupported
-本ページは「X 単体での retrospective 有意検定」を断念した記録。その後、問いを「有意検定」から「各種 SNS・各種言語・SNS 以外の報道を横断した情報収集と、時系列 + 検証可能データによる検証」に組み替えて深掘りした（別途まとめ、本公開 wiki には結論と含意のみ残す）。
-
-- **「Yandex 攻撃でロシア SNS 工作が減った」は unsupported**（3 主張 × 3 観点 = 9 件の敵対的検証すべてで不支持）。
-- バズったグラフの正体は Cloudflare Radar の **AS13238 ＝ YandexBot 検索クローラ**の HTTP トラフィックで、ソーシャル投稿ではない（category error）。seed の「49%」は量でなくシェアで、攻撃前（10/1–2）から低下していた。
-- 機構面でも、既知作戦（Doppelganger / Matryoshka / Storm-1516 等）のホスティングは Aeza / Stark / 西側クラウドで **Yandex Cloud 非依存**。投稿 egress は residential proxy / device farm 経由で DC 障害では止まらない（Olejnik ほか）。
-- 実際に投稿を測った系列（CAT-UA / 独 rohtext 等）はいずれも攻撃起因の減少なし（rohtext は全党一律の週末 dip）。debunk は親ウクライナ OSINT・ロシア反体制派・西側/独 fact-checker と陣営横断で収束。
-- **背景（ロシア SNS 工作は実在・帰属済み）は確立**。疑うべきは因果であって背景ではない。**この問題の分析はここで終了**。

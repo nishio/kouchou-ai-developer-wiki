@@ -6,7 +6,7 @@ sources:
   - source-code.md
 ---
 
-2026-05-19 時点では、`PR #735` を **そのまま merge すべきではない**。理由は単に checks が落ちているからではなく、変更対象が current `main` の frontend 構成より古い `client/` / `client-admin/` tree を前提にしており、今の repo に対しては「古い patch を revive する」より「Issue #685 を現行 `apps/*` 配下で再実装する」方が筋がよいから。[[pr-735-issue-685-observation-2026-05-19]]より
+2026-05-19 時点では、`PR #735` を **そのまま merge すべきではない**。理由は単に checks が落ちているからではなく、変更対象が current `main` の frontend 構成より古い `client/` / `client-admin/` tree を前提にしており、今の repo に対しては「古い patch を revive する」より「Issue [#685](https://github.com/digitaldemocracy2030/kouchou-ai/issues/685) を現行 `apps/*` 配下で再実装する」方が筋がよいから。[[pr-735-issue-685-observation-2026-05-19]]より
 
 ## Findings
 
@@ -18,13 +18,13 @@ sources:
 
 GitHub 上では `build` 2 本と `e2e-tests` が fail、`reviewDecision` も `REVIEW_REQUIRED` のまま。しかも AGENTS 上の運用でも draft PR は merge 判断の対象に入れる前に ready 化して扱う前提になっている。よって「まず conflict を直して checks を通し、ready for review にする」が最低ライン。[[pr-735-issue-685-observation-2026-05-19]]より
 
-### 3. ただし Issue #685 の論点自体は current main にまだ残っている
+### 3. ただし Issue [#685](https://github.com/digitaldemocracy2030/kouchou-ai/issues/685) の論点自体は current main にまだ残っている
 
-current `apps/admin/app/create/hooks/useAISettings.ts` には LocalLLM 自動フェッチがなく、`apps/admin/app/create/components/EnvironmentCheckDialog.tsx` と `apps/admin/app/create/hooks/useBasicInfo.ts` では今も `crypto.randomUUID()` を直接呼んでいる。また `apps/public-viewer/next.config.ts` / `apps/admin/next.config.ts` に CSP header の追加はまだ無い。したがって「PR #735 を閉じれば問題も消える」わけではなく、issue の再切り出しないし branch 作り直しは妥当。[[source-code]]より
+current `apps/admin/app/create/hooks/useAISettings.ts` には LocalLLM 自動フェッチがなく、`apps/admin/app/create/components/EnvironmentCheckDialog.tsx` と `apps/admin/app/create/hooks/useBasicInfo.ts` では今も `crypto.randomUUID()` を直接呼んでいる。また `apps/public-viewer/next.config.ts` / `apps/admin/next.config.ts` に CSP header の追加はまだ無い。したがって「PR [#735](https://github.com/digitaldemocracy2030/kouchou-ai/issues/735) を閉じれば問題も消える」わけではなく、issue の再切り出しないし branch 作り直しは妥当。[[source-code]]より
 
 ### 4. PR の提案内容は丸ごと採用ではなく、現行設計に合わせて分割した方がレビューしやすい
 
-PR #735 は CSP、UUID polyfill、画像 URL、LocalLLM UX を 1 本に束ねている。current tree に移植するなら、少なくとも
+PR [#735](https://github.com/digitaldemocracy2030/kouchou-ai/issues/735) は CSP、UUID polyfill、画像 URL、LocalLLM UX を 1 本に束ねている。current tree に移植するなら、少なくとも
 
 - `Issue #685` の再現条件確認
 - `crypto.randomUUID` 対応

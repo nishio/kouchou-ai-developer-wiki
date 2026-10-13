@@ -14,7 +14,7 @@ sources:
 
 ## What it is
 
-Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確認メモ。Issue #564 の「活用事例を集めて公開する」に直結する channel だが、公開 wiki / 外部サイトに載せる根拠としては **Slack lead ではなく primary public URL を確認する** 必要がある。
+Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確認メモ。Issue [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の「活用事例を集めて公開する」に直結する channel だが、公開 wiki / 外部サイトに載せる根拠としては **Slack lead ではなく primary public URL を確認する** 必要がある。
 
 この source は、Slack 発言の全文保存ではない。公開事例管理のために、lead の分類、鮮度、公開根拠への昇格条件だけを残す。
 
@@ -28,7 +28,7 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 
 `#1_事例紹介_全体` は、公開可能な実績リストそのものではなく、事例 candidate を投げ込む lead intake として読むのが安全である。2026-03/04 の raw には、広聴AI / いどばたの地域 lead、広聴AIの confirmed case、隣接する AI assistant、政治家の broad listening 言及、他 channel への内部リンクが混ざっていた。[[slack-logs-repository]]より
 
-したがって、#564 の公開事例ページへ移す時は、Slack channel から直接「実績」として転記せず、各 lead を次の分類へ落とす必要がある。
+したがって、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページへ移す時は、Slack channel から直接「実績」として転記せず、各 lead を次の分類へ落とす必要がある。
 
 | classification | meaning |
 |---|---|
@@ -63,7 +63,7 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 
 ## Implication
 
-#564 の事例管理では、`lead intake` と `public case list` を分ける必要がある。
+[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の事例管理では、`lead intake` と `public case list` を分ける必要がある。
 
 - Slack channel: 事例候補を拾う場所。
 - developer wiki source: lead の分類、primary URL 確認状況、公開リスクを記録する場所。
@@ -77,7 +77,7 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 - 北見の体験会を public case へ昇格する場合、北海道新聞記事以外に、主催者資料や公開 viewer があるか。
 - 宮崎の broad listening 言及は、実施済み case になったのか、意向表明で止まったのか。
 - 事例 candidate は GitHub issue、Slack channel、Drive、website repo のどこを canonical intake にするか。
-- 舞鶴2040を #564 の first public detailed case に昇格する場合、誰が実施主体・掲載許諾・スクリーンショット利用を確認するか。
+- 舞鶴2040を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の first public detailed case に昇格する場合、誰が実施主体・掲載許諾・スクリーンショット利用を確認するか。
 
 ## Updates
 

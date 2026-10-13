@@ -13,14 +13,14 @@ sources:
 広聴AI のツール戦略は **二段構造のエコシステム** として設計する。
 
 - **Web UI**: 全体傾向把握ユースケース一本の simple モード。デフォルトで「デカい見落とし / デカい違和感を見つける」ビューを提供し、設計判断は反応事後誘導型に倒す
-- **CLI / analysis-core**: 実験機能の追加場所。tokoroten の DivCon、Long Context 再分類によるマッピング不能抽出、ユーザカスタム prompt 経路、KJ #3/#4/#5 系の補完 artifact など、多様な手法を実験できる空間
+- **CLI / analysis-core**: 実験機能の追加場所。tokoroten の DivCon、Long Context 再分類によるマッピング不能抽出、ユーザカスタム prompt 経路、KJ [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) 系の補完 artifact など、多様な手法を実験できる空間
 - **コミュニティ**: CLI で試行錯誤された新しい分析が共有・比較・継承されるコミュニティを育てる
 
 これが [[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] で「別ツールで補完」「少数重要論点系は CLI 分析者責務」と整理した空き地に対する設計上の答えになる。[[slack-stance-discussion-2026-05-30]]より
 
 ## 読者像 3 像 (2026-05-31 追記)
 
-このエコシステムには、技術背景の違う 3 種類の読者が並ぶ。[[pr-883-restructuring-2026-05-31]] が PR #883 の盲点として整理した区分と整合する。
+このエコシステムには、技術背景の違う 3 種類の読者が並ぶ。[[pr-883-restructuring-2026-05-31]] が PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) の盲点として整理した区分と整合する。
 
 | 像 | 動機 | 技術背景 | 接点 |
 |---|---|---|---|
@@ -44,7 +44,7 @@ sources:
 
 データサイエンティスト的な素養を持つ分析者は、ユーザのデータを直接観察し、「重要とは何か」を言語化し、適切な手法を選べる。Web UI に複雑機能を載せると、(1) 一般ユーザの simple さを壊し、(2) 分析者の自由度も逆に下げる。両立しない。
 
-CLI は分析者向けなので、複雑機能を載せても simple さは壊れない。tokoroten が提案した Long Context 再分類による少数意見救出、DivCon 由来の自治体カテゴリ突合、ユーザカスタム prompt による「重要」定義の言語化、ohki-shingo 公開UI 7 要件のうち #5 #7 を担う実験 artifact、などすべて CLI 機能として実装できる。[[slack-stance-discussion-2026-05-30]]より
+CLI は分析者向けなので、複雑機能を載せても simple さは壊れない。tokoroten が提案した Long Context 再分類による少数意見救出、DivCon 由来の自治体カテゴリ突合、ユーザカスタム prompt による「重要」定義の言語化、ohki-shingo 公開UI 7 要件のうち [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) [#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) を担う実験 artifact、などすべて CLI 機能として実装できる。[[slack-stance-discussion-2026-05-30]]より
 
 ### コミュニティを育てる理由
 

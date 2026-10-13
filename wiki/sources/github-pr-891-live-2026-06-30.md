@@ -14,9 +14,9 @@ sources:
 
 ## GitHub State
 
-PR #891 (`feat(packaging): Windows スタンドアロン（embeddable Python + 静的 viewer）`) は open / draft / review required / merge state dirty。author は `tokoroten`、head branch は `feat/windows-standalone-embeddable`、head commit は `2a27d572bb270ba7d5933b8a707ab77645c64ad8`。CodeRabbit は draft のため review を skip している。[[github-dev-docs]]より
+PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) (`feat(packaging): Windows スタンドアロン（embeddable Python + 静的 viewer）`) は open / draft / review required / merge state dirty。author は `tokoroten`、head branch は `feat/windows-standalone-embeddable`、head commit は `2a27d572bb270ba7d5933b8a707ab77645c64ad8`。CodeRabbit は draft のため review を skip している。[[github-dev-docs]]より
 
-2026-06-30 時点の open PR は #903 と #891 の 2 本だけで、#891 は #903 より古い 2026-06-01 の draft のまま更新が止まっている。`main...origin/pr-891` を見ると、PR branch 側の 6 commit に対し、main 側には public-viewer build/serve 分離、setup_win PowerShell 分離、security / dependency / CodeQL / aarch64 Numba など複数 commit が進んでいる。したがって、PR #891 は内容評価の前に rebase / conflict 解消が必要な stale branch と読むべきである。[[source-code]]より
+2026-06-30 時点の open PR は [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) と [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の 2 本だけで、[#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) より古い 2026-06-01 の draft のまま更新が止まっている。`main...origin/pr-891` を見ると、PR branch 側の 6 commit に対し、main 側には public-viewer build/serve 分離、setup_win PowerShell 分離、security / dependency / CodeQL / aarch64 Numba など複数 commit が進んでいる。したがって、PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は内容評価の前に rebase / conflict 解消が必要な stale branch と読むべきである。[[source-code]]より
 
 ## PR Scope
 
@@ -38,7 +38,7 @@ frontend bundle では public-viewer を `NEXT_PUBLIC_OUTPUT_MODE=export` / `NEX
 
 ## Standalone Viewer And Admin
 
-public-viewer は `NEXT_PUBLIC_STANDALONE=1` を `isStandaloneBuild()` として `isStaticExportBuild()` から分ける。standalone は output としては static export だが、static-site-builder のように report slug を build 時に焼き込むのではなく、`/report?slug=...` の client page が runtime に API から取得して描画する。これは #885 の「runtime Node なし」と相性がよい一方、既存 static-site-builder の frozen HTML export とは別物である。[[source-code]]より
+public-viewer は `NEXT_PUBLIC_STANDALONE=1` を `isStandaloneBuild()` として `isStaticExportBuild()` から分ける。standalone は output としては static export だが、static-site-builder のように report slug を build 時に焼き込むのではなく、`/report?slug=...` の client page が runtime に API から取得して描画する。これは [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) の「runtime Node なし」と相性がよい一方、既存 static-site-builder の frozen HTML export とは別物である。[[source-code]]より
 
 admin は hosted app の Server Actions / SSR root / route handlers / middleware を直接書き換えず、`apps/admin/scripts/standalone-prep.mjs` が standalone build の直前だけ `"use server"` を strip し、`ADMIN_API_KEY` 参照を `NEXT_PUBLIC_ADMIN_API_KEY` に向け、`app/page.tsx` と Footer を standalone client variants に差し替え、`app/api` / `middleware.ts` / `app/reuse` を一時的に退避する。build 後に restore するため、hosted build は untouched という建て付けである。[[source-code]]より
 
@@ -54,7 +54,7 @@ PR head の README は、known limitations として admin の publish static si
 
 ## Open Questions
 
-- PR #891 は #885 の prototype / child issue として再位置づけるべきか、探索的 draft のまま扱うべきか。
+- PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) の prototype / child issue として再位置づけるべきか、探索的 draft のまま扱うべきか。
 - `standalone-prep.mjs` の build-time source mutation は prototype としては速いが、main に入れる運用として許容できるか。
 - `ADMIN_API_KEY` / `PUBLIC_API_KEY` の static UI bake は local desktop threat model として許容するか、runtime config injection が必要か。
 - `report_launcher.py` の subprocess interpreter は standalone merge 前に `sys.executable` へ変えるべきか。
@@ -62,5 +62,5 @@ PR head の README は、known limitations として admin の publish static si
 
 ## Updates
 
-- 2026-06-30: 初回作成。PR #891 の live state、head ref、packaging files、standalone viewer/admin design、PoC findings、known limitations、main との stale 差分を固定した。
+- 2026-06-30: 初回作成。PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の live state、head ref、packaging files、standalone viewer/admin design、PoC findings、known limitations、main との stale 差分を固定した。
 - 2026-09-09 02:31 JST: GitHubのPR本文・変更ファイル・チェック・merge状態と、head `2a27d572bb270ba7d5933b8a707ab77645c64ad8` の `packaging/windows-standalone/README.md` を再取得。headは同一、open / draft / CONFLICTING。本文の「adminはまだ含めていない」は引き続きREADMEのadmin同梱記述と不一致。READMEはレポート作成全体の未検証・インストーラー未実装を明記する。成功チェックはCodeQLで、CodeRabbitはdraftによるreview skip。新しいbuild・Windows実機・実モデル試験は実施していない。

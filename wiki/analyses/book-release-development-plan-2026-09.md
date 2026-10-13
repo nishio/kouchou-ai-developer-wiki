@@ -213,7 +213,7 @@ main に未反映の open PR 群を、「9 月前に必要」「9 月後でよ�
 ## Open Questions
 
 - 出版時点の stable を `main` tag で切るのか、branch を分けるのか
-- open PR #825 / #824 / #827 のうち、どこまでを 9 月前の対象に含めるか
+- open PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) / [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) / [#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827) のうち、どこまでを 9 月前の対象に含めるか
 - `run_workflow()` / plugin system / capability 判定のどこまでを 9 月前に default 化できるか
 - v4 互換として最低限どこまでを保証対象にするか
 - legacy path をいつまで残すか
@@ -226,4 +226,4 @@ main に未反映の open PR 群を、「9 月前に必要」「9 月後でよ�
 - 2026-05-18: 「v5 は間に合う範囲なら入れる」前提を反映し、default 化と限定投入を分けて整理
 - 2026-05-18: 「v5 を主戦場として入れ切ってから安定化したい」前提を反映し、v5 完成と安定化を中心に全面修正
 - 2026-05-18: 「v4 の既存機能が壊れていないことをテストで保証しつつ v5 へ移行する」前提を反映し、回帰検知帯の整備を主タスクとして追加
-- 2026-10-07: lint 注記。本文の「`run_workflow()` は dormant」は 2026-05-18 時点の観測。PR #840（2026-05-21 merge）以降は `run_default()` → `run_workflow()` が CLI の既定経路（current main `a12d68e` で確認）。現状は [[refactoring-status]] を正とする
+- 2026-10-07: lint 注記。本文の「`run_workflow()` は dormant」は 2026-05-18 時点の観測。PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)（2026-05-21 merge）以降は `run_default()` → `run_workflow()` が CLI の既定経路（current main `a12d68e` で確認）。現状は [[refactoring-status]] を正とする

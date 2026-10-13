@@ -27,7 +27,7 @@ OAuth 2.0 authorization code flow + PKCE + state + nonce を前提とする。�
 
 ## 広聴AIへの含意
 
-[[llm-providers]] の根本課題――日本の自治体は **クレカ / \$ 決済 / 海外 API 利用ルール**で OpenAI 直契約が難しく、[[meeting-minutes]] でも「公開のためにはユーザ自身のキーを入れさせる」（Issue #660 の API キーフォーム）で回避してきた――に対し、SIWC は「**API キーを配らず、ユーザが自分の ChatGPT プランでサインインして推論を回す**」という別ルートを提示する。広聴AIは OSS なので SIWC の対象カテゴリには概念上合致する。ただし以下の制約から、現時点では **未実装・将来 option として観測**に留めるのが妥当。[[openai-siwc-token-sharing-docs-2026-10-12]]より
+[[llm-providers]] の根本課題――日本の自治体は **クレカ / \$ 決済 / 海外 API 利用ルール**で OpenAI 直契約が難しく、[[meeting-minutes]] でも「公開のためにはユーザ自身のキーを入れさせる」（Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) の API キーフォーム）で回避してきた――に対し、SIWC は「**API キーを配らず、ユーザが自分の ChatGPT プランでサインインして推論を回す**」という別ルートを提示する。広聴AIは OSS なので SIWC の対象カテゴリには概念上合致する。ただし以下の制約から、現時点では **未実装・将来 option として観測**に留めるのが妥当。[[openai-siwc-token-sharing-docs-2026-10-12]]より
 
 ### 無批判採用を避ける論点
 

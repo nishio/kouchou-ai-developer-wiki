@@ -9,12 +9,12 @@ sources:
 
 ## Who
 
-**大木真吾 (Shingo Ohki, `truego`, GitHub `shingo-ohki`)**。[[kouchou-ai]] メンテナ（2025-04-23 〜）。[[dd2030]] website への書き込み権限あり（[[weekly-log-2026-05-06]] で [[nishio]] の PR #212 をマージ）。
+**大木真吾 (Shingo Ohki, `truego`, GitHub `shingo-ohki`)**。[[kouchou-ai]] メンテナ（2025-04-23 〜）。[[dd2030]] website への書き込み権限あり（[[weekly-log-2026-05-06]] で [[nishio]] の PR [#212](https://github.com/digitaldemocracy2030/kouchou-ai/issues/212) をマージ）。
 
 ## kouchou-ai での主な貢献
 
-- **Azure 環境の整備** — Azure account 作成（2025-07-09）、自動デプロイ CI（Issue #642、2025-07-30）、デモ環境 (Issue #622)
-- **公開フォームからの API キー入力** — Issue #660（2025-07-30 マージ）。自治体／個人が自分のキーを入れて使える形を実現
+- **Azure 環境の整備** — Azure account 作成（2025-07-09）、自動デプロイ CI（Issue [#642](https://github.com/digitaldemocracy2030/kouchou-ai/issues/642)、2025-07-30）、デモ環境 (Issue [#622](https://github.com/digitaldemocracy2030/kouchou-ai/issues/622))
+- **公開フォームからの API キー入力** — Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)（2025-07-30 マージ）。自治体／個人が自分のキーを入れて使える形を実現
 - **v4.0.0 リリース**（2025-12-29）
 - **PR レビューのマトリクス整理** — A: スキルセット / B: 工数 / C: 環境 / D: 基準なし、というレビュー困難度の分類（[[meeting-minutes]] 2025-05〜2025-07）
 

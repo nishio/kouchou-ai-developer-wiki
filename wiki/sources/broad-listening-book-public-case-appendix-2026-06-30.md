@@ -58,7 +58,7 @@ Docswell の広聴AI技術解説は、Talk to the City から広聴AIへ至る�
 
 ## Implication
 
-#564 の公開事例ページや 8/2 event material では、この付録を「事例数を増やす根拠」に使うだけでは危ない。むしろ、次の 4 分類を public page schema に入れる根拠として使う。
+[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページや 8/2 event material では、この付録を「事例数を増やす根拠」に使うだけでは危ない。むしろ、次の 4 分類を public page schema に入れる根拠として使う。
 
 | category | examples | handling |
 |---|---|---|
@@ -74,7 +74,7 @@ Docswell の広聴AI技術解説は、Talk to the City から広聴AIへ至る�
 ## Open Questions
 
 - 付録由来の候補のうち、次に direct verification する 3 件はどれか。自治体 official を増やすなら東大阪市 / 太田市 / 田原本町 / 富岡市、政党・選挙文脈を増やすなら長崎県知事選、実装支援者文脈を増やすなら Code for Japan / Democracy X / litela / 富士通の個別 primary page が候補。
-- Web book / GitHub 付録を #564 の外部公開ページで source として出すか、内部の candidate intake に留めるか。
+- Web book / GitHub 付録を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の外部公開ページで source として出すか、内部の candidate intake に留めるか。
 - Docswell の技術解説を 8/2 の「技術 / ツール」入口に使う場合、広聴AI本体 docs、dd2030.org、broadlisteningbook.com のどこを canonical にするか。
 - 大阪府のような広義 broad listening / Liqlid 系の自治体公式 case を、広聴AIページに置くか、ブロードリスニング全体のページに分けるか。
 

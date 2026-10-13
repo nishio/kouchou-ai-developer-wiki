@@ -16,7 +16,7 @@ sources:
 
 ## Conclusion
 
-2026-06-30 の公開Web検索で、8/2 と #564 に使える公開事例は既存の 3 件より広がった。ただし、すべてを同列の「広聴AI活用事例」と呼ぶと、公式自治体 trial、public viewer、政党・国会利用、Talk to the City の系譜、検索 snippet だけの候補が混ざる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
+2026-06-30 の公開Web検索で、8/2 と [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) に使える公開事例は既存の 3 件より広がった。ただし、すべてを同列の「広聴AI活用事例」と呼ぶと、公式自治体 trial、public viewer、政党・国会利用、Talk to the City の系譜、検索 snippet だけの候補が混ざる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より
 
 短期の使い分けは次が安全である。
 
@@ -44,11 +44,11 @@ viewer demo は、奈良と八代に加えて舞鶴2040と北見が候補にな�
 
 東京都AI戦略いどばた会議、すぎなみブロードリスニング、中央区みんなでアップデート会議は、8/2 の first demo を置き換える素材ではなく、`collect / deepen / deliberate` 側の public practice として tool ecosystem slide に置くのが自然である。広聴AIの viewer 操作を見せる素材にすると、分析・可視化 tool と収集・熟議 platform の役割が混ざる。
 
-Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / 舞鶴2040を地方自治側の優先確認候補として押し上げる。ただし、Slack-only の計画メモは external proof ではない。公開資料や #564 では、奈良市 official PDF / 奈良 #全員市長 viewer / 舞鶴2040 public viewer・FAQ・舞鶴市公式 page という primary source へ戻して説明する。国会側も同様に、国会・国政選挙・政党・選挙報道を source strength と tool lineage で分ける。[[slack-prance-event-broadlistening-session-2026-06-30]]より
+Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / 舞鶴2040を地方自治側の優先確認候補として押し上げる。ただし、Slack-only の計画メモは external proof ではない。公開資料や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) では、奈良市 official PDF / 奈良 #全員市長 viewer / 舞鶴2040 public viewer・FAQ・舞鶴市公式 page という primary source へ戻して説明する。国会側も同様に、国会・国政選挙・政党・選挙報道を source strength と tool lineage で分ける。[[slack-prance-event-broadlistening-session-2026-06-30]]より
 
-## Implication for #564
+## Implication for [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)
 
-#564 の public case page は、単なるリンク集ではなく、事例の source strength を明示するべきである。最小 schema は [[issue-564-public-case-trust-layer-scope-2026-06-30]] にある通りだが、今回の検索で `source_strength` と `classification` を追加した方がよいと分かった。
+[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public case page は、単なるリンク集ではなく、事例の source strength を明示するべきである。最小 schema は [[issue-564-public-case-trust-layer-scope-2026-06-30]] にある通りだが、今回の検索で `source_strength` と `classification` を追加した方がよいと分かった。
 
 | field | why it matters |
 |---|---|
@@ -57,11 +57,11 @@ Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / �
 | tool lineage | 広聴AIそのものか、Talk to the City か、広義の broad listening / AI analysis かを分ける |
 | public risk | 政治・選挙文脈、代表性、権利、個人情報、誤読可能性を分ける |
 
-この分類を入れないと、「広聴AIが民意を保証した」「同じ技術で全事例が作られた」と誤読される。#696 / #542 と接続した trust layer は、事例数が増えるほど重要になる。
+この分類を入れないと、「広聴AIが民意を保証した」「同じ技術で全事例が作られた」と誤読される。[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) と接続した trust layer は、事例数が増えるほど重要になる。
 
 事例管理の運用では、`lead intake` と `public page` を分ける。Slack / Drive / issue comment は lead の発見に使い、外部ページは primary URL と許諾・文脈確認を通ったものだけを載せる。[[slack-case-introduction-channel-2026-03-04]]より
 
-`lead intake` は、単に内部で候補を拾うだけでは足りない。Slack `#2_広報_pr` の 2026-04 議論では、DD2030 から見えない活用に気づくには、HP 上で導入事例マップや掲載希望の受け皿を見せる必要がある、という発想が出ていた。#564 の public page は、確認済み事例一覧と候補 intake を明確に分けたうえで、外部から候補が入る導線を持つ方が自然である。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
+`lead intake` は、単に内部で候補を拾うだけでは足りない。Slack `#2_広報_pr` の 2026-04 議論では、DD2030 から見えない活用に気づくには、HP 上で導入事例マップや掲載希望の受け皿を見せる必要がある、という発想が出ていた。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public page は、確認済み事例一覧と候補 intake を明確に分けたうえで、外部から候補が入る導線を持つ方が自然である。[[slack-pr-channel-website-faq-case-map-2026-03-04]]より
 
 ## Recommended next page shape
 
@@ -79,12 +79,12 @@ Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / �
 ## Open Questions
 
 - 8/2 で政治色を下げるなら、奈良の代わりに舞鶴2040を viewer demo 第一候補にするか。
-- 奈良市 official document case と `奈良 #全員市長` viewer demo を、8/2 や #564 で同じ「奈良」枠にまとめるか、source strength が違う別事例として出すか。
-- DD2030 website の `kouchou-ai/case` は外部正本として十分か、それとも #564 の schema に沿って拡張する必要があるか。
+- 奈良市 official document case と `奈良 #全員市長` viewer demo を、8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) で同じ「奈良」枠にまとめるか、source strength が違う別事例として出すか。
+- DD2030 website の `kouchou-ai/case` は外部正本として十分か、それとも [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の schema に沿って拡張する必要があるか。
 - 広島県のように `広聴AI` と明記しない broad listening / DD2030 cooperation 事例を、広聴AI事例ページに載せるか、別カテゴリに分けるか。
 - 検索で見えたが 404 だった viewer / PDF の現行 URL を誰が確認するか。
 - Web book 付録由来の候補は、どの順で primary URL direct verification するか。
-- JINS や M-1 のような TTTC / broad listening adjacent cases を #564 の公開事例ページに載せるか、技術・歴史 reference に分けるか。
+- JINS や M-1 のような TTTC / broad listening adjacent cases を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページに載せるか、技術・歴史 reference に分けるか。
 - サイボウズ / アルティウスリンクのような企業・VOC case を、DD2030 website の公開事例ページに入れるか、自治体向けページとは別の応用領域 section に分けるか。
 - Code for Japan / 加古川市・品川区、litela Recogra、富士通パブリックコメント AI のような public source あり adjacent case を、公開事例ページではどこまで載せるか。
 - Democracy X / 長崎県知事選は、どの public report URL を source of truth として確認するか。
@@ -104,4 +104,4 @@ Slack `#dd_prance_event2026` の 8/2 実践セッション計画は、奈良 / �
 - 2026-06-30: [[slack-pr-channel-website-faq-case-map-2026-03-04]] を追加し、公開事例ページには確認済み事例一覧だけでなく事例候補 intake 導線も必要だと追記。
 - 2026-06-30: 16:05 JST の追加Web検索を反映し、岩手県・日本維新の会を candidate から昇格、東京都 / GovTech東京・北見・日本テレビ衆院選・M-1・JINS を分類へ追加。
 - 2026-06-30: [[slack-case-introduction-channel-2026-03-04]] を追加し、Slack 事例紹介 channel は lead intake であり public case list とは分ける必要があると追記。
-- 2026-06-30: 初回作成。公開Web検索をもとに、8/2 と #564 へ接続する日本国内 broad listening use case map を作成した。
+- 2026-06-30: 初回作成。公開Web検索をもとに、8/2 と [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) へ接続する日本国内 broad listening use case map を作成した。

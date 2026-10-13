@@ -13,7 +13,7 @@ sources:
 
 ## Conclusion
 
-#884 の first PR は、`window.confirm` の見た目改善ではなく、CSV / Spreadsheet / plugin の 3 入力経路を同じ `pre-create review model` に通す実装として切るべきである。2026-06-30 18:55 JST 時点で GitHub #884 / #221 は open / unassigned のまま、`work/kouchou-ai/main@d5c9ece` でも #884 は未実装である。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
+[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) の first PR は、`window.confirm` の見た目改善ではなく、CSV / Spreadsheet / plugin の 3 入力経路を同じ `pre-create review model` に通す実装として切るべきである。2026-06-30 18:55 JST 時点で GitHub [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) は open / unassigned のまま、`work/kouchou-ai/main@d5c9ece` でも [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は未実装である。[[github-issues-221-884-trial-burden-live-2026-06-30]]より
 
 既存部品はすでに多い。`apps/admin/app/create/page.tsx` は送信直前に comments を組み立て、CSV / plugin だけ `comments.length < clusterLv2` を `window.confirm` で警告する。Spreadsheet は comments を組み立てるが同じ警告を通らない。`EnvironmentCheckDialog` は `/admin/environment/verify` を呼べるが、送信前 flow とは分離した手動 dialog である。再利用は `docs/user-guide/reuse-report.md`、`/reuse/:slug`、`DuplicateReportDialog`、analysis-core `reuse_from` に既に存在する。[[source-code]]より
 
@@ -50,7 +50,7 @@ first PR の warning は増やしすぎない。
 
 ## Cost / Time Scope
 
-作成後の `TokenUsage` は、実行済み report の `tokenUsageInput` / `tokenUsageOutput` / `estimatedCost` を表示する部品である。これは #884 の作成前見積もりとは違う。[[source-code]]より
+作成後の `TokenUsage` は、実行済み report の `tokenUsageInput` / `tokenUsageOutput` / `estimatedCost` を表示する部品である。これは [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) の作成前見積もりとは違う。[[source-code]]より
 
 first PR で cost / time を入れるなら、精密な金額ではなく `目安なし`、または `小 / 中 / 大` の粗い帯にする。価格表や provider 差分を正確に追う実装は、first PR の scope 外に置く。
 
@@ -80,4 +80,4 @@ first PR の最低 test / QA は次を見ればよい。
 
 ## Updates
 
-- 2026-06-30: 初回作成。GitHub #884 / #221 と `work/kouchou-ai/main@d5c9ece` の create flow / EnvironmentCheckDialog / reuse / TokenUsage を照合し、first PR の実装契約として整理した。
+- 2026-06-30: 初回作成。GitHub [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) と `work/kouchou-ai/main@d5c9ece` の create flow / EnvironmentCheckDialog / reuse / TokenUsage を照合し、first PR の実装契約として整理した。

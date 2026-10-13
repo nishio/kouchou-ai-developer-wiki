@@ -73,7 +73,7 @@ sources:
 
 ## 構造把握スタンス / 全体傾向把握ユースケース / 別ツール分業との照合 (2026-05-30 追記)
 
-2026-05-30 に確定した [[analysis-stance]] と [[label-quality-redesign-reset-2026-05-30]] の整理 (構造把握スタンス、全体傾向把握ユースケース一本、KJ 原則 #3/#4/#5 は別ツール補完) を 7 要件に重ねると、責務が次のように分かれる。
+2026-05-30 に確定した [[analysis-stance]] と [[label-quality-redesign-reset-2026-05-30]] の整理 (構造把握スタンス、全体傾向把握ユースケース一本、KJ 原則 [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) は別ツール補完) を 7 要件に重ねると、責務が次のように分かれる。
 
 | # | 要件 | 担当 |
 |---|---|---|

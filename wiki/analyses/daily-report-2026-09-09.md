@@ -84,13 +84,13 @@ sources:
 - **[#917：OpenAI Flex対応](https://github.com/digitaldemocracy2030/kouchou-ai/pull/917)**。tokoroten / Copilotが担当するAPI費用削減の変更。通常テスト・ビルドの成功確認はまだ揃っていない。
 - **[#891：Windowsスタンドアロン版](https://github.com/digitaldemocracy2030/kouchou-ai/pull/891)**。Python・API・閲覧／管理画面を同梱するtokorotenの試作。現在のmainと競合し、作成フロー全体の検証やインストーラーが残る。Serverlessとの役割も検討事項となる。
 
-[[other-issue-candidates-2026-09-07|実装とマージの記録]] / [[github-pr-891-live-2026-06-30|Windows配布試作の確認記録]]より。新モデルの実動確認も、#912 / #913で人間が担当する課題として残している。
+[[other-issue-candidates-2026-09-07|実装とマージの記録]] / [[github-pr-891-live-2026-06-30|Windows配布試作の確認記録]]より。新モデルの実動確認も、[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / #913で人間が担当する課題として残している。
 
 次の開発候補は、利用者の流れに沿って三つに整理した。
 
-1. **自分に合う入口を選べるようにする**。今回整えたWindows導入ガイドを土台に、閲覧・CSV分析・組織運用・開発・分析実験を分け、制約に合う経路へ案内する（#876 / #496）。
-2. **分析を始める前に判断材料を持てるようにする**。費用・時間について推定・不明・実測を区別し、両版で比較できる条件を残す（#79 / #11）。
-3. **元の声を確かめ、次の対話へ渡せるようにする**。原文の公開範囲を守り、活用事例には問い・収集の偏り・根拠照合・その後の行動・失敗も残す（#56 / #250 / #564 / #130）。
+1. **自分に合う入口を選べるようにする**。今回整えたWindows導入ガイドを土台に、閲覧・CSV分析・組織運用・開発・分析実験を分け、制約に合う経路へ案内する（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)）。
+2. **分析を始める前に判断材料を持てるようにする**。費用・時間について推定・不明・実測を区別し、両版で比較できる条件を残す（[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)）。
+3. **元の声を確かめ、次の対話へ渡せるようにする**。原文の公開範囲を守り、活用事例には問い・収集の偏り・根拠照合・その後の行動・失敗も残す（[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)）。
 
 [[issue-backlog-audit-2026-09-09|過去Issueの棚卸し]] / [[serverless-product-direction-2026-09-08|Serverlessとの関係と開発方針]]より。
 
@@ -107,7 +107,7 @@ sources:
 | 開発導線・プロンプト比較・Node依存の棚卸し文書 | [#925](https://github.com/digitaldemocracy2030/kouchou-ai/pull/925)、[#930](https://github.com/digitaldemocracy2030/kouchou-ai/pull/930)、[#903](https://github.com/digitaldemocracy2030/kouchou-ai/pull/903) |
 | 開発起動と依存更新 | [#932](https://github.com/digitaldemocracy2030/kouchou-ai/pull/932)、[#904](https://github.com/digitaldemocracy2030/kouchou-ai/pull/904) |
 
-Serverless側は、[元コメントIDの保持 #22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)、[CSV入力 #23](https://github.com/tokoroten/kouchou-ai-serverless/pull/23)、[読み方ガイド #24](https://github.com/tokoroten/kouchou-ai-serverless/pull/24)、[階層図と説明の連動 #25](https://github.com/tokoroten/kouchou-ai-serverless/pull/25)、[抽出診断・日本語・スマホ表示 #26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26) の5件。いずれも未マージ。
+Serverless側は、[元コメントIDの保持 [#22](https://github.com/digitaldemocracy2030/kouchou-ai/issues/22)](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)、[CSV入力 [#23](https://github.com/digitaldemocracy2030/kouchou-ai/issues/23)](https://github.com/tokoroten/kouchou-ai-serverless/pull/23)、[読み方ガイド [#24](https://github.com/digitaldemocracy2030/kouchou-ai/issues/24)](https://github.com/tokoroten/kouchou-ai-serverless/pull/24)、[階層図と説明の連動 [#25](https://github.com/digitaldemocracy2030/kouchou-ai/issues/25)](https://github.com/tokoroten/kouchou-ai-serverless/pull/25)、[抽出診断・日本語・スマホ表示 [#26](https://github.com/digitaldemocracy2030/kouchou-ai/issues/26)](https://github.com/tokoroten/kouchou-ai-serverless/pull/26) の5件。いずれも未マージ。
 
 ## Open Questions
 
@@ -123,5 +123,5 @@ Serverless側は、[元コメントIDの保持 #22](https://github.com/tokoroten
 
 - 2026-09-09 02:06: 日報を作成。
 - 2026-09-09 02:21: CI待ちだった本体7 PRのマージと統合検証を反映。
-- 2026-09-09 02:57: #917 / #891をdraftのまま残すユーザー判断を反映。
+- 2026-09-09 02:57: [#917](https://github.com/digitaldemocracy2030/kouchou-ai/issues/917) / #891をdraftのまま残すユーザー判断を反映。
 - 2026-09-09 03:06: 初見の読者が読みやすいよう、背景・改善・Serverlessとの関係・検証・残課題の流れへ再構成。追記の内容を本文へ統合し、PR一覧を後半へ移した。初稿と途中経過はGit履歴と上記の実装記録に保持。

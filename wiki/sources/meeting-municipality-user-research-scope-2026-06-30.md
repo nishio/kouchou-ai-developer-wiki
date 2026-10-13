@@ -32,9 +32,9 @@ DD2030 が現時点で接点を持てている自治体関係者は、広聴AI�
 
 ## Reading
 
-自治体利用者課題調査は、#564 の公開事例ページとは目的が違う。
+自治体利用者課題調査は、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページとは目的が違う。
 
-- #564 / public case page は、導入検討者の既存質問に先回りして答え、実績・読み方・責任境界を示す入口である。[[public-case-page-skeleton-2026-06-30]]より
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / public case page は、導入検討者の既存質問に先回りして答え、実績・読み方・責任境界を示す入口である。[[public-case-page-skeleton-2026-06-30]]より
 - 自治体利用者課題調査は、広聴AIのロードマップが既存接点や既存想定に偏っていないかを確かめる探索である。
 
 したがって、調査を設計する時は、少なくとも次の 2 層を分けるのがよい。

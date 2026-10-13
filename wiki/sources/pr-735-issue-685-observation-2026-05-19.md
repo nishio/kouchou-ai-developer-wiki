@@ -18,7 +18,7 @@ sources:
 ## Current Main Gaps
 
 - current `apps/admin/app/create/hooks/useAISettings.ts` には `provider === "local"` 時の自動フェッチはまだ入っておらず、手動 `fetchLocalLLMModels()` 呼び出し前提
-- current `apps/public-viewer/next.config.ts` と `apps/admin/next.config.ts` には PR #735 相当の CSP header 設定は入っていない
+- current `apps/public-viewer/next.config.ts` と `apps/admin/next.config.ts` には PR [#735](https://github.com/digitaldemocracy2030/kouchou-ai/issues/735) 相当の CSP header 設定は入っていない
 - current `apps/admin/app/create/components/EnvironmentCheckDialog.tsx` と `apps/admin/app/create/hooks/useBasicInfo.ts` では今も `crypto.randomUUID()` を直接呼んでいる
 
 ## Interpretation

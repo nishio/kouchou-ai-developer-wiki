@@ -29,8 +29,8 @@ sources:
 |---|---|
 | 濃いクラスタ / 濃い意見グループ | 意見密度の高いクラスタを抽出する UI 要素。1 万件以上のデータ向け |
 | 一層目 / 二層目 | 階層クラスタリングのレイヤ。`∛n` 個程度を推奨 |
-| 属性フィルタ | 年齢・地域などのメタデータでクラスタを絞る（PR #531） |
-| 限定公開 / unlisted | YouTube 風の URL を知っている人だけ閲覧可能（Issue #341, PR #500） |
+| 属性フィルタ | 年齢・地域などのメタデータでクラスタを絞る（PR [#531](https://github.com/digitaldemocracy2030/kouchou-ai/issues/531)） |
+| 限定公開 / unlisted | YouTube 風の URL を知っている人だけ閲覧可能（Issue [#341](https://github.com/digitaldemocracy2030/kouchou-ai/issues/341), PR [#500](https://github.com/digitaldemocracy2030/kouchou-ai/issues/500)） |
 | 静的 HTML 出力 / static export | `next export` または Python 直書きで static site を吐く（[[deployment]]） |
 | extraction / 抽出 | パイプラインの最初の LLM ステップ。コスト最大 |
 | パブコメ / 公けコメ | パブリックコメント（行政手続）。`config.is_pubcom=true` で専用 CSV を出す |
@@ -70,7 +70,7 @@ sources:
 | Claude Code | Anthropic の coding CLI。[[nishio]] と polimoney が多用 |
 | Codex / GPT-5.2 | OpenAI コーディング AI |
 | GitHub Copilot Agent | issue にアサイン可能な並行選択肢 |
-| CodeRabbit | AI PR レビュアー。kouchou-ai でも導入検討（Issue #417） |
+| CodeRabbit | AI PR レビュアー。kouchou-ai でも導入検討（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)） |
 | #devin部屋 | Slack 内 Devin 指示用チャンネル |
 
 ## 自治体・行政まわり

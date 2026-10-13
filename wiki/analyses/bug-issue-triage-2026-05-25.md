@@ -34,11 +34,11 @@ current `Makefile` の Azure 設定更新経路では、環境変数を shell �
 
 ### `#477` は Azure provider UX / model selection 不整合としてなお現役
 
-`apps/admin/app/create/components/AISettingsSection.tsx` には今でも `TODO: azure の場合は別の方法が必要そうなので別途対応する` が残り、Azure では user API key 入力欄も出していない。さらに `apps/admin/app/create/hooks/useAISettings.ts` と `apps/api/src/services/llm_models.py` は Azure に OpenAI と同一の model list を返すだけで、実際の deployment 選択とは結びついていない。issue #477 の「Azure のモデル選択 UI が実利用とずれている」という問題設定は current tree でも有効である。[[source-code]]より
+`apps/admin/app/create/components/AISettingsSection.tsx` には今でも `TODO: azure の場合は別の方法が必要そうなので別途対応する` が残り、Azure では user API key 入力欄も出していない。さらに `apps/admin/app/create/hooks/useAISettings.ts` と `apps/api/src/services/llm_models.py` は Azure に OpenAI と同一の model list を返すだけで、実際の deployment 選択とは結びついていない。issue [#477](https://github.com/digitaldemocracy2030/kouchou-ai/issues/477) の「Azure のモデル選択 UI が実利用とずれている」という問題設定は current tree でも有効である。[[source-code]]より
 
 ### `#741` は current CI/workflow を実行しないと stale 判定できない
 
-issue #741 は main push 時の Azure deploy が flaky に失敗するという運用問題であり、現行 `.github/workflows/azure-deploy.yml` でも 4 イメージの並列 build / push を行っている。ネットワーク起因の一過性 failure か、既に別の修正で落ち着いたかは current code の静的読解だけでは断定できないため、この回では残した。[[source-code]]より
+issue [#741](https://github.com/digitaldemocracy2030/kouchou-ai/issues/741) は main push 時の Azure deploy が flaky に失敗するという運用問題であり、現行 `.github/workflows/azure-deploy.yml` でも 4 イメージの並列 build / push を行っている。ネットワーク起因の一過性 failure か、既に別の修正で落ち着いたかは current code の静的読解だけでは断定できないため、この回では残した。[[source-code]]より
 
 ### `#478` `#283` `#121` はいずれも UI 観測系で、コードだけでは stale 判定しづらい
 

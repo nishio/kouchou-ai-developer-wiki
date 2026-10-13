@@ -12,8 +12,8 @@ sources:
 
 ## kouchou-ai での主な貢献
 
-- **LocalLLM (Ollama / LM Studio) 統合** — PR #422 (2025-05-07)。「OpenAI API key が無くても使える」ことを目的化
-- **属性フィルタ** — PR #531。年齢・地域などのメタデータでクラスタを絞る
+- **LocalLLM (Ollama / LM Studio) 統合** — PR [#422](https://github.com/digitaldemocracy2030/kouchou-ai/issues/422) (2025-05-07)。「OpenAI API key が無くても使える」ことを目的化
+- **属性フィルタ** — PR [#531](https://github.com/digitaldemocracy2030/kouchou-ai/issues/531)。年齢・地域などのメタデータでクラスタを絞る
 - **技術解説スライド／動画** — `docs.docswell.com` の 1h40min プレゼン、YouTube `SpOI-JuJv5o`。新規コントリビュータが kouchou-ai のアルゴリズム全体像を掴むのに有用
 - **sentiment-weighted UMAP 実験** — 賛否を埋め込みに重み付けして反対派／賛成派を分離する prototype（メインリポジトリ外）
 - **farbrain** (`tokoroten/farbrain`) — UMAP+k-means+ラベリングを使ったゲーミフィケーション派生

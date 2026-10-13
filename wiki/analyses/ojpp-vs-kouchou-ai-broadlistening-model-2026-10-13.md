@@ -27,8 +27,8 @@ sources:
 | メタファ / 目的 | 意見の**生態系**。`OPEN→DELIBERATION→CONVERGENCE→CLOSED` へ自動フェーズ遷移＝自己組織化的合意形成 | 意見の**地図**。俯瞰→drill-in の探索。合意・収束判断はしない |
 | 入力単位 | ユーザ投稿 1 opinion（100–200字） | raw コメント(CSV)→ LLM で複数「意見単位」に抽出 |
 | 抽出 | **Argument mining**: claims/premises/evidence/rebuttals + relations(ATTACK/SUPPORT/UNDERCUT)。confidence は固定 `0.7` | `extraction.py`: コメント→意見単位（**flat**、議論構造なし） |
-| 埋め込み | **TF-IDF 128次元**。語彙を alphabetical sort して**先頭128語だけ**に truncate。tokenize は**空白分割で日本語形態素解析なし** (`lib/llm/embeddings.ts`) | 実埋め込みモデル（`request_to_embed`, OpenAI 等、provider/model は config。#450/#984 で embedding モデルを chat モデルと独立選択可）。batch 1000 (`steps/embedding.py`) |
-| 次元削減 | **なし**。TF-IDF 128次元で直接 k-means | **UMAP**（`compute_umap_embeddings`、model を `umap_model.pkl` に永続化し #515 で再利用可） |
+| 埋め込み | **TF-IDF 128次元**。語彙を alphabetical sort して**先頭128語だけ**に truncate。tokenize は**空白分割で日本語形態素解析なし** (`lib/llm/embeddings.ts`) | 実埋め込みモデル（`request_to_embed`, OpenAI 等、provider/model は config。[#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450)/[#984](https://github.com/digitaldemocracy2030/kouchou-ai/issues/984) で embedding モデルを chat モデルと独立選択可）。batch 1000 (`steps/embedding.py`) |
+| 次元削減 | **なし**。TF-IDF 128次元で直接 k-means | **UMAP**（`compute_umap_embeddings`、model を `umap_model.pkl` に永続化し [#515](https://github.com/digitaldemocracy2030/kouchou-ai/issues/515) で再利用可） |
 | クラスタリング | k-means++、auto-k は elbow（inertia の2階差分最大、`k ≤ min(10, n/2)`）、**flat** (`lib/algorithms/kmeans.ts`) | UMAP 後に KMeans（最細 `cluster_nums[-1]`）→ **Ward linkage で centroid を階層マージ**（`scipy...linkage(method="ward")` + `fcluster`）＝**多階層** (`steps/hierarchical_clustering.py`) |
 | ラベリング | LLM、max20字、代表5件 (`lib/llm/label-generator.ts`) | LLM、initial + merge の各層ラベル + **overview** (`hierarchical_*_labelling.py`, `hierarchical_overview.py`) |
 | 階層 | **なし**（flat clusters） | **あり**（複数レベル＝地図の「ゾーン」） |

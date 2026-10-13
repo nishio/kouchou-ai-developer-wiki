@@ -35,13 +35,13 @@ sources:
 
 ## 0. 2026-06-30 immediate thinking queue
 
-> 2026-10-07 lint 注記: この queue は 6/30 時点。#884・#877 は 2026-09-08 に CLOSED、8/2 event は日付を過ぎた。現在地は [[current-status-2026-10-05]] を先に読む（詳細は末尾 Updates）。
+> 2026-10-07 lint 注記: この queue は 6/30 時点。[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884)・[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) は 2026-09-08 に CLOSED、8/2 event は日付を過ぎた。現在地は [[current-status-2026-10-05]] を先に読む（詳細は末尾 Updates）。
 
-6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか / 誰が実践 lane を担うか**、**公開事例と trust layer をどこに置くか**、**#884 を次の code-safe slice にするか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
+6/30 の source refresh で、直近の「考えると進むもの」は 5/30 時点のラベル品質だけではなくなった。Slack / 議事録 / GitHub live state を合わせると、今は **8/2 に何を見せるか / 誰が実践 lane を担うか**、**公開事例と trust layer をどこに置くか**、**[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) を次の code-safe slice にするか**、**docs-safe PR をどの順で切るか** が人間判断待ちである。[[current-status-2026-06-30]]より
 
-Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、#564/#696/#542、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
+Brand Compass は、この queue の外に別途置く議題というより、8/2 first demo、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)/[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696)/[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542)、docs-safe PR の選び方をふるいにかける上位フィルタとして扱う。議事録上では、stable v4 / M2、情報発信、外部向けの「聞く能力」ストーリー、自治体利用者課題調査、A/B/C/D 配布形態が同じ方向に接続している。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
-さらに、議事録からは「広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js」を全部 `ブロードリスニング` と呼ぶと、収集・深掘り・分析・可視化・LLM直接分類が混ざることが見えている。8/2 や #564 では tool ecosystem を出す前に、どの lane を広聴AI本体の約束とするかを決める必要がある。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
+さらに、議事録からは「広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js」を全部 `ブロードリスニング` と呼ぶと、収集・深掘り・分析・可視化・LLM直接分類が混ざることが見えている。8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) では tool ecosystem を出す前に、どの lane を広聴AI本体の約束とするかを決める必要がある。[[meeting-cartographer-idobata-boundary-2026-06-30]]より
 
 ### 0-1. 8/2 の first demo を何にするか
 
@@ -50,25 +50,25 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 決まれば動けること: 8/2 向けの公開スライド / docs / event page で、何を安全に見せるかが決まる
 - 関連: [[event-2026-08-02-broadlistening-readiness-2026-06-30]], [[event-2026-08-02-public-example-inventory-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[slack-prance-event-broadlistening-session-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
-### 0-2. #564 / #696 / #542 の canonical placement
+### 0-2. [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の canonical placement
 
 - 問い: 公開事例リスト、basic explainer / FAQ、レポートの読み方、責任所在を DD2030 website、kouchou-ai docs、public-viewer、README のどこに置くか。1 箇所だけに置くと、事例ページと viewer の間で説明が抜ける
 - 思考の最小単位: canonical copy を 1 つ決め、他の surface は短い導線にする。`広聴AIとは何か / 何ができるか / どう使えるか / 使うには何が必要か` への初回説明と、レポート誤読防止の文言承認者も決める。A/B/C/D 配布形態を public page に出す場合、D hosted trial は現状未提供 / 要責任整理として表現する
-- 決まれば動けること: #564 の case page first slice と、#696 / #542 の README/docs/viewer 反映 PR を分けて切れる
+- 決まれば動けること: [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の case page first slice と、[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の README/docs/viewer 反映 PR を分けて切れる
 - 関連: [[public-case-page-skeleton-2026-06-30]], [[report-reading-guide-minimum-wording-2026-06-30]], [[issue-564-public-case-trust-layer-scope-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]]
 
-### 0-3. docs-safe PR の順序 (#876 / #877 / #885)
+### 0-3. docs-safe PR の順序 ([#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) / [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885))
 
-- 問い: developer docs、Windows setup、Node runtime 排除の docs / prototype をどの順で本体 repo に出すか。同じ docs 群でも、#876 は読者像、#877 は current supported Windows path、#885 は将来の単体 exe / static export 前提で、混ぜると reader contract が崩れる
+- 問い: developer docs、Windows setup、Node runtime 排除の docs / prototype をどの順で本体 repo に出すか。同じ docs 群でも、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) は読者像、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) は current supported Windows path、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) は将来の単体 exe / static export 前提で、混ぜると reader contract が崩れる
 - 思考の最小単位: 次の PR を 1 本だけ選ぶ。選択肢は `#876 docs spine`、`#877 Windows supported path`、`#885/#903 inventory correction`、`#696/#542 reading guide docs` の 4 つ
 - 決まれば動けること: 人間の作業 branch と衝突しにくい file-by-file PR slice が切れる
 - 関連: [[docs-issue-map-2026-06-30]], [[issue-876-docs-pr-slice-2026-06-30]], [[issue-877-docs-pr-slice-2026-06-30]], [[issue-885-node-runtime-next-scope-2026-06-30]]
 
-### 0-4. #221 / #884 の作成前確認パネルを次 code-safe slice にするか
+### 0-4. [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) / [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) の作成前確認パネルを次 code-safe slice にするか
 
-- 問い: high priority の #221 / #884 を、次の本体 PR として進めるか。#884 は current main で未実装で、CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している
-- 思考の最小単位: first slice を「CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review を出す」に絞るかを決める。費用/時間は placeholder または粗い帯、API check は status 表示、sample-first / reuse は導線に留める。2026-06-30 18:44 JST の live check でも #884 は open / high priority / unassigned で、開発 next action 第一候補として残っている。[[development-next-actions-live-2026-06-30]]より
-- 決まれば動けること: `apps/admin/app/create/page.tsx` 周辺に閉じた実装 PR を切れる。#11/#79/#292/#391/#97 をどこまで close 可能かは PR 後に個別判定する
+- 問い: high priority の [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) / [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) を、次の本体 PR として進めるか。[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は current main で未実装で、CSV / plugin の `window.confirm`、spreadsheet の同警告抜け、手動 API check、別導線 reuse が分散している
+- 思考の最小単位: first slice を「CSV / Spreadsheet / plugin の全入力経路で同じ pre-create review を出す」に絞るかを決める。費用/時間は placeholder または粗い帯、API check は status 表示、sample-first / reuse は導線に留める。2026-06-30 18:44 JST の live check でも [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は open / high priority / unassigned で、開発 next action 第一候補として残っている。[[development-next-actions-live-2026-06-30]]より
+- 決まれば動けること: `apps/admin/app/create/page.tsx` 周辺に閉じた実装 PR を切れる。[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)/[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79)/[#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292)/[#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391)/[#97](https://github.com/digitaldemocracy2030/kouchou-ai/issues/97) をどこまで close 可能かは PR 後に個別判定する
 - 関連: [[trial-and-error-burden-reduction-2026-05-29]], [[github-issues-221-884-trial-burden-live-2026-06-30]], [[development-next-actions-live-2026-06-30]]
 
 ### 0-5. Slack / 議事録 source 運用の次の固定
@@ -82,21 +82,21 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 - 問い: 自治体向けアンケート / user research を、広聴活動一般の実態調査として広く聞くのか、広聴AIが活きるケース発見に絞るのか、2 つの instrument に分けるのか。既存接点は広聴AIを入口にした広報・広聴課 / デジタル推進部署に偏っている可能性がある
 - 思考の最小単位: `広聴活動一般の探索` と `広聴AI適合ケースの探索` のどちらを先に聞くか決める。対象部署、役割、人数規模、sampling route、Cartographer / いどばた / 広聴AI のどれに解くべき課題かを 1 枚に分ける
-- 決まれば動けること: user research instrument を public case intake と混ぜずに作れる。#564 の case intake は public artifact / 掲載許諾 / source strength、user research は roadmap 前提検証として分けられる
+- 決まれば動けること: user research instrument を public case intake と混ぜずに作れる。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の case intake は public artifact / 掲載許諾 / source strength、user research は roadmap 前提検証として分けられる
 - 関連: [[meeting-municipality-user-research-scope-2026-06-30]], [[meeting-brand-compass-information-strategy-2026-06-30]], [[public-case-page-skeleton-2026-06-30]]
 
 ### 0-7. 企業 / VOC / 広義 broad listening を公開事例ページに入れるか
 
 - 問い: サイボウズ / アルティウスリンクのような企業・VOC case、大阪府のような広義 broad listening case、DirectVote / チームみらいのような政党・TTTC lineage case、Code for Japan / 公明党 / litela / 富士通のような implementation partner / adjacent AI case を、DD2030 website の `kouchou-ai/case` に同居させるか、ブロードリスニング全体 / 応用領域 / 系譜ページへ分けるか
 - 思考の最小単位: first page の読者を `自治体導入検討者` に固定するか、`国内 broad listening の広がりを知りたい人` まで広げるかを決める。前者なら first 3 は自治体公式 + viewer + deep case に絞り、企業/VOC、TTTC lineage、政党 AI、implementation partner verified、LLM直接分類 adjacent は後段または別ページに送る
-- 決まれば動けること: #564 public page の章立てと、Web book 付録由来候補の掲載基準を固定できる
+- 決まれば動けること: [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) public page の章立てと、Web book 付録由来候補の掲載基準を固定できる
 - 関連: [[public-web-broadlistening-japan-use-cases-2026-06-30]], [[japan-broadlistening-use-case-map-2026-06-30]], [[public-case-page-skeleton-2026-06-30]], [[broad-listening-book-public-case-appendix-2026-06-30]]
 
 ### 0-8. 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog をどこに置くか
 
-- 問い: `広聴AI = 分析・可視化`、`いどばた / Cartographer = 収集・深掘り`、`Jigsaw Sensemaker / tttc-light-js = LLM直接分類 / TTTC lineage` という役割境界を、DD2030 website、kouchou-ai docs、8/2 event material、#564 case page のどこに置くか
+- 問い: `広聴AI = 分析・可視化`、`いどばた / Cartographer = 収集・深掘り`、`Jigsaw Sensemaker / tttc-light-js = LLM直接分類 / TTTC lineage` という役割境界を、DD2030 website、kouchou-ai docs、8/2 event material、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) case page のどこに置くか
 - 思考の最小単位: [[public-tool-catalog-draft-2026-06-30]] の `collect / deepen / analyze / show / classify / read-and-act` を、外部正本へ置くかどうか決める。対立軸発見は魅力的だが、現行 default ではなく LLM grouping / long-context route の未決論点として表現する
-- 決まれば動けること: 8/2 のツール比較、#564 の初回説明 FAQ、自治体 user research の質問項目、idobata bridge の owner 論点を同じ language で扱える
+- 決まれば動けること: 8/2 のツール比較、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の初回説明 FAQ、自治体 user research の質問項目、idobata bridge の owner 論点を同じ language で扱える
 - 関連: [[public-tool-catalog-draft-2026-06-30]], [[meeting-cartographer-idobata-boundary-2026-06-30]], [[broadlistening]], [[idobata]], [[jigsaw-sensemaker]], [[talk-to-the-city]], [[meeting-municipality-user-research-scope-2026-06-30]]
 
 ## 1. ラベル品質改善の仕切り直し: 5 レイヤ
@@ -158,9 +158,9 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 - 決まれば動けること: pipeline に `interpretation_artifacts` を切るかの判断材料になる
 - 関連: [[kj-method-broadlistening-framing-2026-05-25]], [[pipeline-step-addition-framing-2026-05-27]]
 
-### 2-4. スマホ別ビュー方針 (#872)
+### 2-4. スマホ別ビュー方針 ([#872](https://github.com/digitaldemocracy2030/kouchou-ai/issues/872))
 
-- 問い: スマホでは散布図を別ビューに置き換えるとして、静的画像 / クラスタ一覧 / 簡略図 / マンダラート (#880) のどれを既定にするか
+- 問い: スマホでは散布図を別ビューに置き換えるとして、静的画像 / クラスタ一覧 / 簡略図 / マンダラート ([#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880)) のどれを既定にするか
 - 思考の最小単位: 1 つを選び、共有 URL 設計とアクセシビリティ / 画像生成コストを 1 段落で書く
 - 決まれば動けること: `#872` 配下の最初の PR slice が切れる
 - 関連: [[remaining-bug-issues-2026-05-26]], [[chart-scroll-ux-decision]]
@@ -171,13 +171,13 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 
 ### 3-1. `interpretation_artifacts` を切るか (2026-05-30 暫定: 広聴AI 本体には入れず別ツール)
 
-- 暫定判断 (2026-05-30): KJ 原則 #3 #4 #5 を「広聴AI 本体には入れず別ツールで補完」とした構造把握スタンス採用判断 ([[analysis-stance]]) により、`interpretation_artifacts` 系 (境界 / 反例 / bridge / 未解決カード) は **広聴AI 本体に常時組み込まない** 方向に倒れた。実験経路としては残せる
+- 暫定判断 (2026-05-30): KJ 原則 [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3) [#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4) [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) を「広聴AI 本体には入れず別ツールで補完」とした構造把握スタンス採用判断 ([[analysis-stance]]) により、`interpretation_artifacts` 系 (境界 / 反例 / bridge / 未解決カード) は **広聴AI 本体に常時組み込まない** 方向に倒れた。実験経路としては残せる
 - 残る問い: 「別ツール」のエコシステムが具体化していない。何ツールがどこで担い、広聴AI とどう接続するかは未整理。これは思考というより **意思決定責任 / 体制** の問題 (block 4 系)
-- 関連: [[pipeline-step-default-policy-decision-2026-05-28]], [[public-ui-requirements-for-broadlistening]] の 7 要件のうち #5 #7 が別ツール担当に倒れた
+- 関連: [[pipeline-step-default-policy-decision-2026-05-28]], [[public-ui-requirements-for-broadlistening]] の 7 要件のうち [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) [#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) が別ツール担当に倒れた
 
 ### 3-2. `analysis_mode` の分岐構造
 
-- 問い: `llm_grouping` (#866 で merge) の後、`label refinement` / `interpretation_artifacts` / 次の view 用 layout 生成などをどう mode と直交させるか
+- 問い: `llm_grouping` ([#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で merge) の後、`label refinement` / `interpretation_artifacts` / 次の view 用 layout 生成などをどう mode と直交させるか
 - 思考の最小単位: mode と option の二軸で、現在の `hierarchical_default` と将来 mode 候補 3 つを表にする
 - 決まれば動けること: 次の analysis_mode を追加する時の workflow / spec 切り出し方が決まる
 - 関連: [[llm-grouping-implementation-plan]], [[plugin-system]]
@@ -209,15 +209,15 @@ Brand Compass は、この queue の外に別途置く議題というより、8/
 ## Updates
 
 - 2026-06-30: `#dd_prance_event2026` source と 19:15 JST GitHub live check を反映し、0-1 を first demo だけでなく実践 lane の話者・文脈選定まで含む問いに補正。
-- 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action は #884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 / #898 を次点として見ると 0-4 に追記。
+- 2026-06-30: [[development-next-actions-live-2026-06-30]] を追加し、開発 next action は [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) 作成前確認パネルを第一候補、[#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) review comment を低リスク補助、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) / [#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) を次点として見ると 0-4 に追記。
 - 2026-06-30: 18:13 JST の book 章確認を反映し、Code for Japan / 公明党 / litela / 富士通は first demo ではなく implementation partner / adjacent practice として 0-1 と 0-7 に追加。
 - 2026-06-30: 17:30 JST の direct verification を反映し、大阪府 / チームみらい / DirectVote / サイボウズ / アルティウスリンク / 与謝野町を first demo ではなく source strength / tool lineage で分ける判断を 0-1 と 0-7 に追加。
-- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、#221/#884 作成前確認パネルを次 code-safe slice 候補として immediate queue に追加。
+- 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、[#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221)/[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) 作成前確認パネルを次 code-safe slice 候補として immediate queue に追加。
 - 2026-06-30: 追加Web検索で奈良市 official PDF 群を自治体公式 proof に昇格し、奈良市 document case と奈良 #全員市長 viewer demo を 8/2 first demo 判断で分ける必要を追記。
-- 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、#564/#696/#542 trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。
+- 2026-06-30: 6/30 の source refresh と wiki 更新を反映し、8/2 first demo、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)/[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696)/[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) trust layer placement、docs-safe PR 順序、Slack / 議事録 source 運用を immediate thinking queue として先頭に追加。
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β / α` → 構造把握スタンス / 定量分析スタンス など)
-- 2026-05-30: 構造把握スタンス / 全体傾向把握ユースケース / 別ツール 分業の含意を関連ページに伝播。[[public-ui-requirements-for-broadlistening]] に 7 要件のうち #5/#7 は別ツール側、本体 5 件 + 構造把握の評価軸 2 件で評価する、を追記。[[semantic-island-map-prototype-2026-05-26]] に構造把握用主図候補としての評価視点を追記。[[kouchou-ai]] に core stance リンクを追加。3-1 を別ツール側に倒れた旨で更新、2-2 を構造把握の評価軸を含む合否基準に補正
+- 2026-05-30: 構造把握スタンス / 全体傾向把握ユースケース / 別ツール 分業の含意を関連ページに伝播。[[public-ui-requirements-for-broadlistening]] に 7 要件のうち [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5)/[#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) は別ツール側、本体 5 件 + 構造把握の評価軸 2 件で評価する、を追記。[[semantic-island-map-prototype-2026-05-26]] に構造把握用主図候補としての評価視点を追記。[[kouchou-ai]] に core stance リンクを追加。3-1 を別ツール側に倒れた旨で更新、2-2 を構造把握の評価軸を含む合否基準に補正
 - 2026-05-30: 「広聴AI = 構造把握スタンス」を [[analysis-stance]] として概念ページ化。全体傾向把握ユースケースは構造把握スタンスで実現、定量分析スタンスではない、を core stance に明示
 - 2026-05-30: 1-1 ユースケース契約が確定 (全体傾向把握ユースケース一本)。Web UI 非露出、少数重要論点系は CLI 分析者責務、minority residual artifact なし。下流 1-2〜1-5 を全体傾向把握前提で書き換え。詳細判断は [[label-quality-redesign-reset-2026-05-30]] に
 - 2026-05-30: 初版。「考えることをやりたい」という方針を受け、思考と判断が要る論点だけを 1 ページに集めるハブとして新設。ラベル品質仕切り直し 5 レイヤ、次の view 方向、pipeline 境界、公開・運用摩擦の 4 ブロックで構成
-- 2026-10-07: lint 注記。0 章の immediate queue は 2026-06-30 時点のもの。0-4 の #884 は 2026-09-08 に PR #922 で CLOSED、0-3 の #877 も 2026-09-08 に CLOSED（#876 / #885 は open）。0-1 の 8/2 event は日付を過ぎたが結果はこの wiki に未記録。現在地は [[current-status-2026-10-05]] を先に読む
+- 2026-10-07: lint 注記。0 章の immediate queue は 2026-06-30 時点のもの。0-4 の [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は 2026-09-08 に PR [#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922) で CLOSED、0-3 の [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) も 2026-09-08 に CLOSED（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) は open）。0-1 の 8/2 event は日付を過ぎたが結果はこの wiki に未記録。現在地は [[current-status-2026-10-05]] を先に読む

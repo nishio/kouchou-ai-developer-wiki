@@ -53,7 +53,7 @@ development/opinion-classification.md
 development/web-ui-node-runtime-dependencies.md
 ```
 
-`opinion-classification.md`（E 向け #975 の解説）と `model-catalog.md`（provider/model、OpenRouter 含む）が nav 外なのは、E・D 読者にとって実質「無い」のと同じ。書く労力は払われているのに読者へ届いていない典型。
+`opinion-classification.md`（E 向け [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975) の解説）と `model-catalog.md`（provider/model、OpenRouter 含む）が nav 外なのは、E・D 読者にとって実質「無い」のと同じ。書く労力は払われているのに読者へ届いていない典型。
 
 ### B 自治体担当本人（非技術者）← 従来どおり接点が薄い
 
@@ -61,7 +61,7 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 
 ### 入口構造（全読者に影響）
 
-5 読者像を冒頭に置く developer-quickstart 草案（PR #883）は撤回のまま未 merge、#876 は open。`docs/index.md` / `getting-started/` 起点の setup-first 構造は維持されている。
+5 読者像を冒頭に置く developer-quickstart 草案（PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883)）は撤回のまま未 merge、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) は open。`docs/index.md` / `getting-started/` 起点の setup-first 構造は維持されている。
 
 ## 偏りの要約
 
@@ -71,17 +71,17 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 | B 自治体担当本人 | － | SaaS 接点なし（従来どおり） |
 | C 組織内デモ役 | ✗ | 同上（見せる体験の説明が古い） |
 | D WebUI 開発者 | △ | 書かれた運用/開発ページが nav 未登録で未到達 |
-| E 分析者・研究者 | ○ | cli-quickstart は追従（ただし #450 embedding 独立選択は未記載）。周辺ページが nav 外 |
+| E 分析者・研究者 | ○ | cli-quickstart は追従（ただし [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) embedding 独立選択は未記載）。周辺ページが nav 外 |
 
 **構造的な非対称**: CLI(E) の docs は feature と一緒に更新される運用が効いているが、WebUI(A/C) の利用説明は feature PR が触らず取り残される。D・運用は「書くが nav に載せない」ために到達率が落ちる。
 
 ## 修正候補（1-PR 粒度、効果/労力順）
 
 1. **nav 未登録 6 ページを `mkdocs.yml` nav へ登録** — 既存コンテンツを「届く」状態にするだけ。最小労力・即効。読者像を混ぜないため、`deployment/*` は「デプロイ」、`development/model-catalog.md`・`opinion-classification.md` は E/D 向けセクションへ配置
-2. **`how-to-use.md` に WebUI 新機能（#176/#961/#52/#306）を追記** — A/C の最大ギャップ。操作スクショ/手順を最新 UI に合わせる
-3. **docs 入口に 5 読者像の分岐を置く**（#876 / PR #883 草案の再生、demo-first spine の first slice）— 構造側の本丸。[[kouchou-ai-docs-policy-history]] の原則「セットアップ起点をやめ読者像で分岐」を実装に落とす段
+2. **`how-to-use.md` に WebUI 新機能（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176)/[#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)/[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52)/[#306](https://github.com/digitaldemocracy2030/kouchou-ai/issues/306)）を追記** — A/C の最大ギャップ。操作スクショ/手順を最新 UI に合わせる
+3. **docs 入口に 5 読者像の分岐を置く**（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 草案の再生、demo-first spine の first slice）— 構造側の本丸。[[kouchou-ai-docs-policy-history]] の原則「セットアップ起点をやめ読者像で分岐」を実装に落とす段
 
-1・2 は読者に直接効く catch-up、3 は構造改善。#977（README アンカー移行）は 3 の「安定 URL は docs 個別ページへ」の一部として吸収できる。
+1・2 は読者に直接効く catch-up、3 は構造改善。[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)（README アンカー移行）は 3 の「安定 URL は docs 個別ページへ」の一部として吸収できる。
 
 ## Open Questions
 
@@ -92,13 +92,13 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 ## 関連
 
 - [[kouchou-ai-docs-policy-history]]: docs 方針議論の系譜と横断原則（本ページはその原則に対する現在地の実測）
-- [[issue-876-developer-docs-gap-audit-2026-06-30]]: 2026-06-30 時点の #876 gap audit（本ページは直近 feature wave 後の再監査にあたる）
+- [[issue-876-developer-docs-gap-audit-2026-06-30]]: 2026-06-30 時点の [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) gap audit（本ページは直近 feature wave 後の再監査にあたる）
 - [[pr-883-developer-quickstart-draft-2026-05-31]]: 5 読者像の定義と developer-quickstart 草案本体
-- [[readme-anchor-freeze-and-docs-entry-2026-10-13]]: #977 アンカー凍結回避（修正候補 3 に吸収）
+- [[readme-anchor-freeze-and-docs-entry-2026-10-13]]: [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) アンカー凍結回避（修正候補 3 に吸収）
 - [[docs-site-icon-shortcode-bug-2026-10-13]] / [[setup-script-env-drift-2026-10-07]]: docs/setup の実装側の落とし穴
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]: 本監査のギャップを「何がどうなると良いか」の 4 層 roadmap に落とした direction
 
 ## Updates
 
-- 2026-10-13: 独立 live 再検証（origin/main@a570d689）で **#450 の記載を訂正**。初版は #450（埋め込みモデル独立選択）を cli-quickstart「記載あり」に列挙していたが、実際は UMAP 使い回し節の incidental な caveat のみで設定テーブルに embedding ブロックが無く、**実質未記載**だった。E の「比較的追従」には #450 の穴がある。詳細は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]。
-- 2026-10-13: grep 精度の軽微な補足。初版の「散布図 → #52 は 0 ヒット」は、`散布図` 自体は 1 回出現する（全体図=最上層クラスタの scatter plot 定義という旧文脈）。#52（散布図クラスタ選択の連動）の機能自体が未記載という結論は不変で、トークン単位の 0 が不正確だっただけ。
+- 2026-10-13: 独立 live 再検証（origin/main@a570d689）で **[#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) の記載を訂正**。初版は [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450)（埋め込みモデル独立選択）を cli-quickstart「記載あり」に列挙していたが、実際は UMAP 使い回し節の incidental な caveat のみで設定テーブルに embedding ブロックが無く、**実質未記載**だった。E の「比較的追従」には [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) の穴がある。詳細は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]。
+- 2026-10-13: grep 精度の軽微な補足。初版の「散布図 → [#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) は 0 ヒット」は、`散布図` 自体は 1 回出現する（全体図=最上層クラスタの scatter plot 定義という旧文脈）。[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52)（散布図クラスタ選択の連動）の機能自体が未記載という結論は不変で、トークン単位の 0 が不正確だっただけ。

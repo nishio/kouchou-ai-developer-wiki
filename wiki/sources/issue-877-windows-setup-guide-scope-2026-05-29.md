@@ -11,7 +11,7 @@ sources:
 
 2026-05-29 13:31 JST に `gh issue view 877`、GitHub connector の issue comment fetch、`gh pr list` / `gh pr view 863`、および `work/kouchou-ai/` の current main `6955202` を確認した観測メモ。対象は GitHub issue `#877`「[DOCUMENT] Windows セットアップガイドの前提条件と失敗時の分岐を current main に合わせて整理する」。
 
-## Issue #877 の本文
+## Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の本文
 
 `#877` は open の documentation issue で、assignee はまだいない。本文の中心は、`docs/getting-started/windows-setup.md` が一般ユーザー向け入口として重要な一方で、前提条件と手順の表現がずれていること。具体的には、前提条件では OpenAI API key と Gemini API key が並列に必須のように見えるが、手順ではどちらか一方でよいと書いている。[[github-dev-docs]]より
 
@@ -43,4 +43,4 @@ Windows setup の関連 open PR として `#863`「Windows setup の日本語案
 
 ## Updates
 
-- 2026-05-29: 初回作成。Issue #877 本文、コメント、current main docs、関連 issue / PR の状態を観測して整理した。
+- 2026-05-29: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) 本文、コメント、current main docs、関連 issue / PR の状態を観測して整理した。

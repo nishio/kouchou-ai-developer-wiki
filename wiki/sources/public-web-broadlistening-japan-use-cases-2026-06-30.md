@@ -110,7 +110,7 @@ sources:
 | DD2030 official case page | DD2030 official | 広聴AIの活用事例として、選挙報道、東京都 2050 戦略案、宇多津町の 3 類型が紹介されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 事例名の入口として使えるが、個別の詳しい根拠は各 primary page を併読する。 |
 | 東京都 / GovTech東京 `シン東京2050` | government official + GovTech article | 東京都は 2050 東京戦略の意見募集を、安野氏の技術サポートを受けたブロードリスニング手法として公開し、最終ページでは AI 分析により戦略の政策体系を見直したと説明している。GovTech東京 note は、同 project を内製開発事例として説明している。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | TTTC / 広聴AIの系譜説明で重要。広聴AI post-OSS の自治体導入とは分ける。 |
 | 大阪府 万博効果のブロードリスニング | prefecture official | 府公式ページで、大阪・関西万博開催による影響をテーマに broad listening 実証実験を行い、結果概要・中間レポート・最終レポートを公開していることを確認。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式 broad listening case として扱う。ページ上の主要 tool / 実施体制は広聴AI confirmed ではなく、広義の broad listening / Liqlid 等の協力 case として分ける。 |
-| 宇多津町 | municipality official | 第2次宇多津町総合計画の町民アンケート自由記述 396 件を、広聴AIで整理するブロードリスニング trial として公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式かつ件数・用途が明確。#564 の public case schema に最も載せやすい。 |
+| 宇多津町 | municipality official | 第2次宇多津町総合計画の町民アンケート自由記述 396 件を、広聴AIで整理するブロードリスニング trial として公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 自治体公式かつ件数・用途が明確。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の public case schema に最も載せやすい。 |
 | 渋谷区 | municipality official | 令和6年度区民意識調査の自由回答 6,037 件を対象に、デジタル民主主義2030の広聴AIでブロードリスニング trial を実施。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 既存の 8/2 棚卸しにも入っている trust context。PDF は HTTP 200 を確認。 |
 | 奈良市総合計画関連資料 | municipality official PDF | 奈良市の総合計画関連 official PDF 群で、広聴AIを用いて市民意見 1,361 件を整理した資料が確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | `奈良 #全員市長` public viewer とは別の自治体公式 document case。viewer demo ではなく official proof として扱う。 |
 | 広島県 | prefecture official | 「デジタル化で描く未来の広島」で、意見をブロードリスニング（AI技術）で整理・見える化・公表し、デジタル民主主義2030の協力を得て実施すると公開。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | ページ上では `広聴AI` の語は確認できないため、広義の broad listening / DD2030 cooperation として扱う。 |
@@ -132,7 +132,7 @@ sources:
 
 | case | source strength | what was confirmed | notes |
 |---|---|---|---|
-| サイボウズ `白黒つけない会議` | company official + public reports | サイボウズ official project page と report page で、投稿された意見を DD2030 の OSS `kouchou-ai` で可視化・分類した report が公開されていることを確認。Cybozu Labs の plurality 研究ページからも関連 project として辿れる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体公式 case ではないが、広聴AI confirmed public artifact として強い。#564 の自治体向け first 3 ではなく、活用領域の広がりとして出す。 |
+| サイボウズ `白黒つけない会議` | company official + public reports | サイボウズ official project page と report page で、投稿された意見を DD2030 の OSS `kouchou-ai` で可視化・分類した report が公開されていることを確認。Cybozu Labs の plurality 研究ページからも関連 project として辿れる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / civic discussion case。自治体公式 case ではないが、広聴AI confirmed public artifact として強い。[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の自治体向け first 3 ではなく、活用領域の広がりとして出す。 |
 | アルティウスリンク VOC / Broad Listening Service | company official press release | 2026-05-11 の official release で、広聴AIを活用したコンタクトセンター VOC 分析と `Broad Listening Service` 強化が公開されている。2025-05-22 release では、先行して LLM による問合せ理由分類アプリの導入が説明されている。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 企業 / VOC case。公共 sector の広聴AI事例とは別に、顧客の声分析への応用として分類する。 |
 | DirectVote | campaign official | 安野氏の campaign official page で、DirectVote と Talk to the City / ブロードリスニング系の参加導線を確認できる。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AI confirmed case ではなく、政治参加 / TTTC lineage / broad listening 前史として扱う。 |
 | 中央区みんなでアップデート会議 | local politician note + public platform | 中央区議会議員の note で、区民が中央区の課題について議論できる platform として紹介され、public site も確認できた。[[public-web-broadlistening-japan-use-cases-2026-06-30]]より | 広聴AIではなく、いどばた / civic discussion platform の local practice。自治体公式 proof ではなく、政治家個人が作った実践として扱う。 |
@@ -155,7 +155,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 
 与謝野未来会議は、与謝野町 official PDF で AI / デジタルを使った住民提案の public artifact を確認できる。ただし今回の direct verification では、広聴AIで自由記述を分析・可視化した confirmed artifact までは確認していない。したがって `広聴AI confirmed` ではなく、いどばた / AI 支援型住民対話 / civic deliberation adjacent として扱う。
 
-東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニングは、いずれも `収集・深掘り・政策共創` 側の public practice として有用である。ただし、広聴AIの `analyze / show` 実績ではないため、#564 の広聴AI活用事例ページへ入れるなら「周辺ツール / broad listening の広がり」枠に分ける。
+東京都AI戦略いどばた会議、中央区みんなでアップデート会議、すぎなみブロードリスニングは、いずれも `収集・深掘り・政策共創` 側の public practice として有用である。ただし、広聴AIの `analyze / show` 実績ではないため、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の広聴AI活用事例ページへ入れるなら「周辺ツール / broad listening の広がり」枠に分ける。
 
 ## Candidate leads not yet confirmed enough
 
@@ -168,7 +168,7 @@ M-1 グランプリ 2024 の分析記事は、Talk-to-the-City から派生し�
 ## Open Questions
 
 - 8/2 の public viewer demo は、奈良、八代、舞鶴2040のどれを第一候補にするか。
-- #564 の外部公開ページに載せる case は、自治体公式 source に限るか、政党・国会・選挙報道・viewer-only case も含めるか。
+- [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の外部公開ページに載せる case は、自治体公式 source に限るか、政党・国会・選挙報道・viewer-only case も含めるか。
 - Talk to the City 由来の日本事例は、広聴AIページに入れるか、ブロードリスニングの歴史 / 系譜ページへ分けるか。
 - 奈良市 official documents と `奈良 #全員市長` viewer は、同じ奈良県内の事例としてまとめるか、自治体公式 document case と政治 / viewer demo case に分けるか。
 - 404 になっている viewer / PDF は、単なる URL 移動か、公開停止か。

@@ -8,9 +8,9 @@ sources:
 
 ## 観測範囲
 
-2026-09-07、`work/kouchou-ai/` をfetch / pullし、main `d5c9ece6e3b3dc654d4bf47e1caf9d7a012d5ead` のコードを一次参照した。#884 / #905〜#909はopen・assigneeなし。open PR #904 / #903 / #891に対象修正は見当たらない。Issueの背景は [[slack-issues-2026-09-07]] より。以下は対応案であり、実装・assign・対人連絡は行っていない。
+2026-09-07、`work/kouchou-ai/` をfetch / pullし、main `d5c9ece6e3b3dc654d4bf47e1caf9d7a012d5ead` のコードを一次参照した。[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)〜#909はopen・assigneeなし。open PR [#904](https://github.com/digitaldemocracy2030/kouchou-ai/issues/904) / [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) / #891に対象修正は見当たらない。Issueの背景は [[slack-issues-2026-09-07]] より。以下は対応案であり、実装・assign・対人連絡は行っていない。
 
-## #905: 最初のPRで抽出の失敗を成功扱いしない
+## [#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905): 最初のPRで抽出の失敗を成功扱いしない
 
 参照commitの `packages/analysis-core/src/analysis_core/steps/extraction.py` では、`extract_batch()` がfuture例外を空配列へ変換し、待機期限までに完了しなかったfutureも初期値の空配列になる。`services/parse_json_list.py` の `parse_extraction_response()` 自体も不正JSON・キー欠落・型不正を空配列にする。上位のcatchだけを直しても後者は残る。
 
@@ -30,7 +30,7 @@ sources:
 
 ラベル生成でも `hierarchical_initial_labelling.py` / `hierarchical_merge_labelling.py` が例外やキー欠落をエラー文ラベルへ変える。この修正は後続スライスとして追跡し、抽出だけ直したPRで#905全体の対応完了を自動宣言しない。警告付き完了・失敗分だけ再実行は状態モデルと成果物保存の追加設計が必要。
 
-## #908: UIの選択と実行を一致させる
+## [#908](https://github.com/digitaldemocracy2030/kouchou-ai/issues/908): UIの選択と実行を一致させる
 
 `apps/api/src/services/llm_models.py` はAzureにOpenAIと同じ一覧を返し、`apps/admin/app/create/hooks/useAISettings.ts` も同じ固定一覧を使う。一方coreのAzure経路はUIのmodel引数を使用しない（上記参照commitより）。
 
@@ -40,7 +40,7 @@ sources:
 
 検証: provider切替、localStorageの古いmodel、設定復元、実際の呼び出しとの一致、設定未完了、モデル不明時の表示・費用扱い。
 
-## #909を小さく先行し、#906 / #907をprovider別に追加
+## #909を小さく先行し、[#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / #907をprovider別に追加
 
 参照commitでは管理画面hook、APIモデル一覧、`apps/api/src/services/llm_pricing.py` に定義が分散し、説明文もhook内の条件分岐。Gemini 2.5 Flashの説明が1.5 Flashとなっている。未知モデルの料金は0を返すため、情報なしと無料の区別も必要。
 
@@ -53,19 +53,19 @@ sources:
 
 検証: UI/API/catalog一致、既存設定の読み込み、未知価格、廃止モデル、provider別payload、必要機能の最小応答確認。料金を使う試験はモデル・件数・費用上限を具体化してから行う。
 
-## #884: 別のPRで進められる
+## [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884): 別のPRで進められる
 
 作成前パネルは入力件数・設定・API確認をまずまとめ、精密な費用/時間推定は後続に分ける。#905の実行中失敗はpreflight成功でも起きるため独立して直す。catalogを読む部分だけ#909のAPI契約と揃える。CSV / Spreadsheet / pluginで同じ確認を通ること、取消・設定修正・未確認API状態を検証する。
 
 ## 対応順の提案
 
-**#905抽出の完全性 → #908選択の整合 → #909最小catalog → #906 / #907個別追加。** #884は独立して進められる。#905ラベル段階と再実行UXは追跡を残す。この順序はチーム決定ではなく本調査の提案。
+**#905抽出の完全性 → #908選択の整合 → #909最小catalog → [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / #907個別追加。** #884は独立して進められる。#905ラベル段階と再実行UXは追跡を残す。この順序はチーム決定ではなく本調査の提案。
 
 ## Open Questions
 
 - #905の最初の動作をerror終了にするか、部分成功を明示して継続する要件があるか。
 - #908で複数選択を必要とするユースケースがあるか。
-- #906 / #907の指定モデルが必要機能・APIに対応するか。
+- [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / #907の指定モデルが必要機能・APIに対応するか。
 
 ## Updates
 
@@ -73,7 +73,7 @@ sources:
 
 ### 2026-09-07 #905の最初の修正をPR化（進行中）
 
-ユーザーの実装・PR作成指示を受け、assignee確認後にnishioをassign。[PR #910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910)、branch `codex/issue-905-extraction-failures`、commit `5631a83`。未merge。
+ユーザーの実装・PR作成指示を受け、assignee確認後にnishioをassign。[PR [#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910)、branch `codex/issue-905-extraction-failures`、commit `5631a83`。未merge。
 
 抽出時のAPI例外・batch timeout・不正JSON / キー欠落 / 型不正を正常0件から分離し、失敗件数・回答ID・エラー種別を示してerror終了する。標準workflowとlegacyで後段未実行・部分CSV未出力を確認した。analysis-core 210件、API parser 19件、変更ファイルRuffが成功。実データLLM再実行は行っていない。
 
@@ -81,17 +81,17 @@ sources:
 
 - 2026-09-07 CI追記: PR #910のServer Tests / Analysis Core Pytest / Ruff / CodeQLがすべて成功。CodeRabbitも完了（inline指摘なし）。未merge。
 
-## Updates — 2026-09-08 #906 / #907 / #909へ議論を追記
+## Updates — 2026-09-08 [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / [#907](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907) / #909へ議論を追記
 
-- 対象の新規IssueはJST 9月6日の#905〜#909。9月7日・8日の新規追加は観測されず。#905はPR #910、#908はPR #911で前進（ともに未merge）。
+- 対象の新規IssueはJST 9月6日の#905〜[#909](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909)。9月7日・8日の新規追加は観測されず。#905はPR [#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910)、#908はPR #911で前進（ともに未merge）。
 - [#906のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906#issuecomment-5572595880) に公式モデル情報とOpenAI固定payloadの確認点を追記。[#907のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907#issuecomment-5572596134) にschema変換・思考token・旧モデル設定の検証条件を追記。公式仕様と実API検証を区別し、実API試験は未実施。
 - [#909のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909#issuecomment-5572596374) にcatalog・価格不明・動的一覧・Azureの責務分割を提案。current mainの価格関数で、Gemini名のprefixを正規化する前に存在確認しているためprefix付きが0ドルになる不整合を再現（API呼び出しなし）。
-- #906 / #907 / #909は実装未着手。前進の成果は仕様照合・再現・公開Issueでの受け入れ条件と実装分割案であり、解決済みとは扱わない。
+- [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / [#907](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907) / #909は実装未着手。前進の成果は仕様照合・再現・公開Issueでの受け入れ条件と実装分割案であり、解決済みとは扱わない。
 
-## Updates — 2026-09-08 01:19 #909の判断確定とPR #914
+## Updates — 2026-09-08 01:19 #909の判断確定とPR [#914](https://github.com/digitaldemocracy2030/kouchou-ai/issues/914)
 
 - [#909の確定コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909#issuecomment-5573140968) より、サーバーカタログを正本とする。verifiedとavailableを分離し、未検証も選択可能（「動作未検証」）。料金不明と無料を区別し、提供終了設定は無言で置換しない。Azureは別の実モデル・料金対応を持つ。以前の検証済み限定案は不採用。
-- [PR #914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、未merge、#911に依存。新規作成・複製の一覧と説明をAPIへ統一し、#906 / #907の4モデルを「動作未確認」で追加。既存モデルも検証記録を移入していないためverified=falseから開始。
+- [PR [#914](https://github.com/digitaldemocracy2030/kouchou-ai/issues/914)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914) / `codex/issue-909-model-catalog`、未merge、#911に依存。新規作成・複製の一覧と説明をAPIへ統一し、[#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / #907の4モデルを「動作未確認」で追加。既存モデルも検証記録を移入していないためverified=falseから開始。
 - 実API検証は [#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913) に分離。API34件、管理画面116件、core関連54件、型検査・lint成功。ローカル実画面でモデル選択と旧Gemini無効化を確認。
 - 更新手順はPR内 `docs/development/model-catalog.md`。価格不明はnull、期限付き価格は期限後不明へ戻す。動的一覧の取得失敗はcatalog fallbackと警告を返す。有料LLM生成試験は未実施。
 
@@ -99,18 +99,18 @@ sources:
 
 - PR #914のGitHub CIはE2E・API・admin・core・build・CodeQLを含め成功。実LLM検証は#912 / #913の残件であり、未検証フラグを維持。未merge。
 
-## Updates — 2026-09-08 02:36 PR #910 / #911 / #914をmainへmerge
+## Updates — 2026-09-08 02:36 PR [#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910) / [#911](https://github.com/digitaldemocracy2030/kouchou-ai/issues/911) / #914をmainへmerge
 
 - ユーザーの「テストとおってるPRはmergeして」という明示指示に基づき、各HEADのCI成功を確認して管理者merge。通常mergeは必須レビューのbranch保護で拒否されたため、指示されたマージを管理者権限で実行した。
 - [#911](https://github.com/digitaldemocracy2030/kouchou-ai/pull/911)（`6105ff0`）→ [#910](https://github.com/digitaldemocracy2030/kouchou-ai/pull/910)（`b5bfee5`）→ [#914](https://github.com/digitaldemocracy2030/kouchou-ai/pull/914)（`70c14c2`）の順にmerge。GitHubのMERGED状態とlocal mainの更新を確認。
-- #906 / #907 / #908 / #909はclosed。#905はラベル段階などの残件があるためopen、#912 / #913の実API検証もopen。過去の未merge表記は当時の状態。
+- [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / [#907](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907) / [#908](https://github.com/digitaldemocracy2030/kouchou-ai/issues/908) / #909はclosed。#905はラベル段階などの残件があるためopen、[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / #913の実API検証もopen。過去の未merge表記は当時の状態。
 - #914の自動レビュー指摘は現コードと照合。Azureのモデル値はカタログ取得後に設定され、価格確認日は実際のJST日付。テストの待機時間余裕とdummyの追加metadataは非blockingの改善案として扱った。
 
 ## Updates — 2026-09-08 04:11 #905の残件を#915へ分離
 
 - ユーザー指示で [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915) を作成。ラベル生成の部分失敗検知・正常完了防止・失敗時集計を移し、#905は抽出段階の修正完了としてclosed。
 - 元の49回答欠落の原因特定は未完了と#915に明記。警告付き部分完了・失敗分再実行は必須条件に含めない。
-- #912 / #913は実API試験の実行可否を確認中。現在のプロセスにOpenAI/Gemini用認証情報がなく、確認した作業設定でも実API用の設定を発見できていない。ユーザーへ読み込み先を確認し、秘密値のチャット投稿は求めていない。
+- [#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / #913は実API試験の実行可否を確認中。現在のプロセスにOpenAI/Gemini用認証情報がなく、確認した作業設定でも実API用の設定を発見できていない。ユーザーへ読み込み先を確認し、秘密値のチャット投稿は求めていない。
 
 ## Updates — 2026-09-08 05:16 実API検証は人間が担当
 

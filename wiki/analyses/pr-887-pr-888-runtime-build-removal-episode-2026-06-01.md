@@ -14,7 +14,7 @@ sources:
 
 ## このページの目的
 
-2026-06-01 の一日で起きた「PR #887 を merge したのに画面が変わらない」から、`public-viewer` の runtime build 撤去 (PR #888) と Dependabot 対応 (PR #889 draft) まで連続実行された一連の流れを、PR 番号と検証ステップ込みの技術資料として時系列に固定化する。
+2026-06-01 の一日で起きた「PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) を merge したのに画面が変わらない」から、`public-viewer` の runtime build 撤去 (PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)) と Dependabot 対応 (PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) draft) まで連続実行された一連の流れを、PR 番号と検証ステップ込みの技術資料として時系列に固定化する。
 
 このページは資料寄りの記録であり、前提知識ゼロの読者向けに同じ出来事をストーリーで読みたい場合は [[deploy-success-but-nothing-changed-story-2026-06-01]] を参照する。個別の技術詳細は [[pr-887-production-deploy-observation-2026-06-01]] / [[public-viewer-runtime-build-history-2026-06-01]] / [[public-viewer-build-serve-split-refactor-plan-2026-06-01]] / [[issue-887-scattergl-csp-regression-2026-06-01]] に分けて固定化済みで、このページはそれらをつなぐメタ視点を残す。
 
@@ -22,7 +22,7 @@ sources:
 
 ### 1. 観測のズレ
 
-環境のバグ報告 → 修正 PR #887 (Plotly `scattergl` のための CSP `unsafe-eval` 追加) → nishio が merge → GitHub Actions が deploy success → 画面更新 → 変わっていない。
+環境のバグ報告 → 修正 PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) (Plotly `scattergl` のための CSP `unsafe-eval` 追加) → nishio が merge → GitHub Actions が deploy success → 画面更新 → 変わっていない。
 
 ### 2. Codex への問いかけと初動の Azure live state 観測
 
@@ -32,7 +32,7 @@ sources:
 
 Codex は 9m 18s 作業して次を返した。
 
-> はい、直ってないです。確認したところ、PR #887 は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName`（最新 revision）は進んでいる一方、`latestReadyRevisionName`（Ready な revision）は旧版のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
+> はい、直ってないです。確認したところ、PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) は merge 済みで Azure Deployment も success ですが、本番 stable URL はまだ旧 CSP を返しています。`script-src` に `'unsafe-eval'` が入っておらず、Playwright でも `.no-webgl` overlay が visible のままでした。原因はデプロイ確認の false positive っぽいです。Actions log では `latestRevisionName`（最新 revision）は進んでいる一方、`latestReadyRevisionName`（Ready な revision）は旧版のまま。deploy confirmation が stable root の 200 を見て成功扱いにしていて、新 revision が Ready になったことは確認していません。
 
 この時点で、(1) 本番 CSP は旧版のまま、(2) Playwright で WebGL overlay が visible、(3) deploy confirmation は stable root の 200 だけ見ていて新 revision の readiness を見ていない、の 3 点が裏取り済みで返ってきた。raw artifact は [[codex-log-pr-887-deploy-investigation-2026-06-01]] に保存。
 
@@ -90,9 +90,9 @@ Wiki 価値: いきなり実装に入らず、Wiki に計画ページを残し�
 
 API なし `pnpm --filter @kouchou-ai/public-viewer build` が `/` / `/faq` の static generation timeout で止まることを実測。失敗 mode を記録。
 
-### 12. PR #888 として実装
+### 12. PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) として実装
 
-`codex/public-viewer-build-serve-split` branch / PR #888 で、dynamic build API-less 化、static export build を fixture API ありで分離、Dockerfile に build stage、entrypoint を `next start` のみに。
+`codex/public-viewer-build-serve-split` branch / PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で、dynamic build API-less 化、static export build を fixture API ありで分離、Dockerfile に build stage、entrypoint を `next start` のみに。
 
 ### 13. 実装中の判断: `[slug]` には `connection()` を採用しない
 
@@ -106,23 +106,23 @@ Jest 94 件、API-less dynamic build、static export build、runtime smoke (`/`,
 
 ### 15. CI green
 
-PR #888 CI で API-less dynamic build、static export build、Docker build がすべて green。
+PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) CI で API-less dynamic build、static export build、Docker build がすべて green。
 
 ### 16. CodeRabbit review への対応
 
-CodeRabbit が `/` の dynamic metadata fallback を指摘 (「fallback だと reporter-specific title が失われる」)。指摘の妥当性を独立検証し、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認、reporter-specific title を復元。`[slug]` は #13 の理由で fallback metadata 維持と決定し、その判断も計画ページに追記。CodeRabbit thread は resolved。
+CodeRabbit が `/` の dynamic metadata fallback を指摘 (「fallback だと reporter-specific title が失われる」)。指摘の妥当性を独立検証し、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認、reporter-specific title を復元。`[slug]` は [#13](https://github.com/digitaldemocracy2030/kouchou-ai/issues/13) の理由で fallback metadata 維持と決定し、その判断も計画ページに追記。CodeRabbit thread は resolved。
 
-### 17. PR #888 merge 後の deploy 再観測
+### 17. PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) merge 後の deploy 再観測
 
 Azure Deployment は 7m41s で success、今回は `/example` を実際に開いて scattergl が描画されることまで確認して deploy 完了。`#887` 直後の「success と言うけど直っていない」状態は再現せず、起動時 build 撤去の効果として観測。
 
 ### 18. Dependabot alerts へ着手
 
-GitHub Security の Dependabot alerts (`security/dependabot`) を live state として観測し、npm transitive dependency 群を patched version に寄せる draft PR #889 `[codex] Dependabot npm alerts に対応する` を作成中。
+GitHub Security の Dependabot alerts (`security/dependabot`) を live state として観測し、npm transitive dependency 群を patched version に寄せる draft PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) `[codex] Dependabot npm alerts に対応する` を作成中。
 
 Wiki 価値: 「main / open PR / issue だけでは security alert を拾えない」「公開 wiki / PR 本文には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけ残す」という運用方針を CLAUDE.md / [[wiki-driven-workflow]] / [[codeql-introduction-context]] に同日 filing-back していたので、PR 本文も「公開 PR 本文には alert の詳細内容は転記せず、依存更新の範囲だけを記載」と境界を明示する形で書けた。
 
-### 19. PR #889 の検証範囲
+### 19. PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) の検証範囲
 
 `pnpm audit --json` → vulnerabilities 0、`public-viewer` Jest 94 件、`admin` Jest 111 件、`static-site-builder` build、`git diff --check` をすべて通した上で draft 維持。`pnpm lint` は差分外の既存指摘で落ちるため、この PR では触らないと明示。
 
@@ -133,13 +133,13 @@ Wiki 価値: 「main / open PR / issue だけでは security alert を拾えな�
 - **沼の archeology の固定化**: 2 時間の git history 調査を Wiki ページに 1 回固定化したので、次の人は読み返すだけで済む
 - **計画 → 実装 → review 反映を 1 日で**: 計画ページが先にあるので、実装中の妥協 (`[slug]` に `connection()` を採用しないなど) や review 反映 (`/` の metadata 復元) も「計画への追記」として一貫した記録になる
 - **人間側の議論との合流確認**: 独立に調査した結論と、同日定例で共有された方針が一致したことを Wiki で照合し、議論の重複や乖離を避けられた
-- **同日内の方針 filing-back の即時再利用**: 公開境界 (デプロイ詳細・脆弱性詳細を公開 wiki に書かない) は同じ日の中で運用ルールとして filing-back され、即 PR #889 の本文方針として再利用された
+- **同日内の方針 filing-back の即時再利用**: 公開境界 (デプロイ詳細・脆弱性詳細を公開 wiki に書かない) は同じ日の中で運用ルールとして filing-back され、即 PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) の本文方針として再利用された
 
 ## なぜこれが Wiki なしだと難しいか
 
 - 「runtime build がいつから入っているか」「以降の PR がそれをどう延命してきたか」は、`git log` だけで集めることはできるが、毎回 2 時間かけて再現する作業になる。Wiki に固定化して初めて、次のセッションが「読み返すだけ」で済む
 - 「`#821` も SIGKILL の証拠か？」のような途中の誤読は、log がなければ翌日に同じ誤読が再発する。filing-back の log entry は「いったん書いて訂正した」過程ごと残せる
-- 「公開 wiki に何を書かないか」のような運用ルールは、コード側には encode できない。CLAUDE.md と log.md の 7 日窓に置いて初めて、同日に新しい PR (#889) の本文方針として再利用できる
+- 「公開 wiki に何を書かないか」のような運用ルールは、コード側には encode できない。CLAUDE.md と log.md の 7 日窓に置いて初めて、同日に新しい PR ([#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889)) の本文方針として再利用できる
 - 「定例で共有された方針」と「Agent の独立調査」が同じ結論に収束したかどうかは、議事録 wiki ([[meeting-report-2026-06-01]]) と analysis ページの両方を持っていないと突き合わせられない
 
 ## Open Questions
@@ -150,6 +150,6 @@ Wiki 価値: 「main / open PR / issue だけでは security alert を拾えな�
 
 ## Updates
 
-- 2026-06-01: 初版作成。PR #887 deploy success false positive 観測から、runtime build archeology、計画作成、PR #888 実装と CodeRabbit 反映、deploy 再観測、PR #889 draft 着手までを Wiki つき Coding Agent 視点で記録。
+- 2026-06-01: 初版作成。PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) deploy success false positive 観測から、runtime build archeology、計画作成、PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) 実装と CodeRabbit 反映、deploy 再観測、PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) draft 着手までを Wiki つき Coding Agent 視点で記録。
 - 2026-06-01: ストーリー版を [[deploy-success-but-nothing-changed-story-2026-06-01]] に分離。こちらは PR 番号・検証コマンド込みの資料寄りページとして維持。
 - 2026-10-12: 公開境界 sanitize。本文に残っていた具体的 revision ID・replica health JSON・コンテナログ・resource サイズを除去し、設計の教訓を残す形へ訂正。総括の「公開 wiki にはサニタイズ版だけを残せる」という事実に反する記述も訂正。verbatim は `raw/deploy-detail-preservation/`（local）に退避、一次置き場は Google Drive「広聴AI-Azureデモ環境」。[[wiki-self-audit-2026-10-12]]

@@ -28,7 +28,7 @@ sources:
 
 ## Observed thread
 
-2026-06-29 01:56 JST に、SpeakerDeck `【2026年版】 ベクトル検索とEmbedding最前線` へのリンクが共有され、「そろそろ、エンベディングのアルゴリズムを変えてもいいのかもなぁ」という趣旨のコメントがあった。Slack attachment 上では、Encraft #25 生成AI時代の検索設計の登壇資料として表示されていた。[[slack-logs-repository]]より
+2026-06-29 01:56 JST に、SpeakerDeck `【2026年版】 ベクトル検索とEmbedding最前線` へのリンクが共有され、「そろそろ、エンベディングのアルゴリズムを変えてもいいのかもなぁ」という趣旨のコメントがあった。Slack attachment 上では、Encraft [#25](https://github.com/digitaldemocracy2030/kouchou-ai/issues/25) 生成AI時代の検索設計の登壇資料として表示されていた。[[slack-logs-repository]]より
 
 その後、同じ短い連投で次の語が出た。
 

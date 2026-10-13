@@ -12,7 +12,7 @@ sources:
 
 ## Conclusion
 
-#877 の次 PR は、Windows の可能な全 route を広げる PR ではなく、**current main の Docker Desktop supported path を誤解なく読めるようにする PR** として切るのがよい。[[windows-setup-guide-outline-2026-06-30]]より
+[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の次 PR は、Windows の可能な全 route を広げる PR ではなく、**current main の Docker Desktop supported path を誤解なく読めるようにする PR** として切るのがよい。[[windows-setup-guide-outline-2026-06-30]]より
 
 current main `d5c9ece6e3b3` では、`setup_win.bat` は ASCII-only launcher、`setup_win.ps1` は GUI dialog / non-interactive mode を持つ本体、`windows-setup-script.yml` は hosted `windows-latest` で軽量 script test、`windows-real-machine-e2e.yml` は nishio actor かつ self-hosted Windows runner の手動 E2E になっている。[[source-code]]より
 
@@ -30,7 +30,7 @@ current main `d5c9ece6e3b3` では、`setup_win.bat` は ASCII-only launcher、`
 | `.github/workflows/windows-setup-script.yml` / `.github/workflows/windows-real-machine-e2e.yml` | 原則触らない。docs PR なので既存 workflow の説明に合わせるだけ | CI 設計変更や self-hosted runner 条件変更を混ぜない |
 | `setup_win.bat` / `setup_win.ps1` | 原則触らない。docs が current behavior に追従する PR とする | API key validation や Docker 起動処理の実装修正を混ぜない |
 
-この scope なら、#877 の完了条件である「最低条件の誤解防止」「実行前後の確認」「Docker Desktop / WSL2 / メモリ不足 / API key 入力ミスの切り分け」「開発者向け検証手順との住み分け」を満たしやすい。[[github-issue-877-live-2026-06-30]]より
+この scope なら、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の完了条件である「最低条件の誤解防止」「実行前後の確認」「Docker Desktop / WSL2 / メモリ不足 / API key 入力ミスの切り分け」「開発者向け検証手順との住み分け」を満たしやすい。[[github-issue-877-live-2026-06-30]]より
 
 ## Supported Boundary
 
@@ -59,13 +59,13 @@ Windows guide の troubleshooting は、箇条書きより表に寄せる。
 | メモリ不足 | Docker Desktop Resources で Memory 4GB 以上、CPU 2 cores 以上を目安にする |
 | `localhost:3000` / `localhost:4000` が開かない | Docker Desktop が running か、setup が最後まで完了したかを見る。深いログ調査は developer verification docs へ送る |
 
-current `windows-setup.md` では API key troubleshooting の箇条書きが崩れており、貼り付け不能と prefix 確認が同じ list level に見えにくい。#877 PR では、内容追加と同時にこの読みづらさも直せる。[[source-code]]より
+current `windows-setup.md` では API key troubleshooting の箇条書きが崩れており、貼り付け不能と prefix 確認が同じ list level に見えにくい。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) PR では、内容追加と同時にこの読みづらさも直せる。[[source-code]]より
 
 ## Close Strategy
 
 この docs PR は `Closes #877` にできる可能性が高い。理由は、issue body の完了条件が user guide の前提条件、実行前後確認、troubleshooting、developer verification との住み分けに集中しており、上記 file-by-file scope で直接満たせるためである。[[github-issue-877-live-2026-06-30]]より
 
-ただし、Windows 実機 E2E 成功そのものを close 条件に含めるなら、PR description では「docs boundary PR」と明記し、実機 E2E は別 validation / 別 issue として扱う方がよい。#877 を実機 E2E issue に広げると、docs PR が重くなる。
+ただし、Windows 実機 E2E 成功そのものを close 条件に含めるなら、PR description では「docs boundary PR」と明記し、実機 E2E は別 validation / 別 issue として扱う方がよい。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) を実機 E2E issue に広げると、docs PR が重くなる。
 
 ## Suggested PR Shape
 
@@ -100,8 +100,8 @@ mkdocs build --strict
 
 - Docker Desktop license 注意は Docker 公式への link 付きで書くか、所属組織の IT 管理者へ確認する一般表現に留めるか。
 - 組織貸与 PC 利用者には、local Windows setup より hosted demo / Azure 体験環境を優先案内するか。
-- Windows 実機 E2E を #877 close 条件に含めるか、それとも docs boundary 明確化で close とするか。
+- Windows 実機 E2E を [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) close 条件に含めるか、それとも docs boundary 明確化で close とするか。
 
 ## Updates
 
-- 2026-06-30: 初回作成。issue #877 live state、current main の `windows-setup.md` / `windows-real-machine-setup-verification.md` / `setup_win.*` / Windows workflows を照合し、次の本体 docs PR の file-by-file slice に落とした。
+- 2026-06-30: 初回作成。issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) live state、current main の `windows-setup.md` / `windows-real-machine-setup-verification.md` / `setup_win.*` / Windows workflows を照合し、次の本体 docs PR の file-by-file slice に落とした。

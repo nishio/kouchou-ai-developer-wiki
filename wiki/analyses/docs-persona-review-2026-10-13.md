@@ -28,7 +28,7 @@ docs 大掃除（Tier 0 + T1、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]
    - `プロジェクト一覧`（misc/projects）→ 実体は「GitHub Projects ボード運用ポリシー」。`開発ボード運用ポリシー` に（活用事例ではない）
    - experiments `direct_win` → 「Windows 非 Docker セットアップ」と分かる名に（分析実験と誤認される）
    - `model-catalog.md` 冒頭に「本ページは WebUI 管理カタログ保守。CLI の model 指定は cli-quickstart 参照」の読者切り分け注記
-   - `web-ui-node-runtime-dependencies` タイトルに「(監査スナップショット/#885)」
+   - `web-ui-node-runtime-dependencies` タイトルに「(監査スナップショット/[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885))」
 3. **`faq.md` は実体が「開発者向けトラブル 1 件」**。4 ペルソナが「ユーザーガイド > FAQ」をクリックして空振り。→ 開発者セクションへ移設（タイトルと中身は一致しているので移動だけ）。
 
 ## 高インパクト（構造的・新規ページ）
@@ -36,7 +36,7 @@ docs 大掃除（Tier 0 + T1、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]
 4. **閲覧者向け『渡されたレポートの読み方』独立ページ**: 現 `how-to-use.md` は冒頭「アプリを立ち上げた後」前提で、閲覧者本文の前に admin/CSV/AI詳細設定（L17-43）、後半に metadata.json/TSX（L84-121）が同居し、非技術者が難語と無関係情報に埋もれる。閲覧者専用ページを作り、「1 点/1 クラスタとは何か・近さと数字（件数/割合）の意味・結果を鵜呑みにしない」を専門用語抜きで。作成者・発行者向けは別ページへ分離。
 5. **閲覧者・実務者向け FAQ 新設**（用語の意味 / 信頼性 / 数字の読み方 / 費用 / 個人情報 / 元発言への遡及 / 責任者）。公開ビューアの「よくあるご質問」メニュー（how-to-use が存在を約束）とユーザーガイド双方から導線。
 6. **導入検討者（自治体・非技術者）向けページ新設**＋目的別ガイドに行追加。3 点に平易回答: (1) データの扱い＝既定で外部 LLM API 送信 / ollama で手元完結 / PII は庁内規程確認、(2) 費用＝無料 OSS＋API 従量課金の概算目安 / local は追加課金なし（OS ガイド間の課金注記不統一も是正）、(3) 相談先＝serverless 版・非技術者歓迎の窓口・支援者の探し方。`license.md` 冒頭に「利用自体にライセンス料は不要、発生し得るのは API 利用料・インフラ費のみ」の調達向け一文。
-7. **信頼性・限界・倫理・責任所在ページ新設**（＝ [[kouchou-ai-docs-policy-history]] の #542 レーンの正統な拡張）。開発者タブ奥に死蔵された優れた注意書き（`opinion-classification` の「読み方の注意」＝サンプリングは代表でない・人手未検証・モデル間比較禁止、`extraction-prompts` の抽出失敗様式）を実務者語で昇格。トレーサビリティ（元発言遡及・原文不改変・全件保持）を信頼の根拠として明示。責任所在は **3 レイヤー**（OSS 開発者 / サービス運営者 / レポート作成者）で記述（#542 の nishio 整理）。「濃い（密度）」の定義と閾値トレードオフも注記。
+7. **信頼性・限界・倫理・責任所在ページ新設**（＝ [[kouchou-ai-docs-policy-history]] の [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) レーンの正統な拡張）。開発者タブ奥に死蔵された優れた注意書き（`opinion-classification` の「読み方の注意」＝サンプリングは代表でない・人手未検証・モデル間比較禁止、`extraction-prompts` の抽出失敗様式）を実務者語で昇格。トレーサビリティ（元発言遡及・原文不改変・全件保持）を信頼の根拠として明示。責任所在は **3 レイヤー**（OSS 開発者 / サービス運営者 / レポート作成者）で記述（[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の nishio 整理）。「濃い（密度）」の定義と閾値トレードオフも注記。
 
 ## 中インパクト
 
@@ -58,7 +58,7 @@ docs 大掃除（Tier 0 + T1、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]
 
 ## ロードマップへの含意（重要）
 
-persona レビューは **Tier 3 の優先順位を揺さぶる**。[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] は Tier 3 本丸を #876 の `getting-started/` rename としていたが、**読者が実際に詰まるのは rename ではなく上記の content gap**（ラベル詐称・閲覧者/実務者 FAQ・読み方ページ・導入検討ページ・信頼性/責任ページ・CLI バグ）。rename は構造美化として価値はあるが reader impact は相対的に低い。→ **次フェーズは「rename を急ぐ」より「テーマ 1-7 の content を埋める」を優先すべき**。テーマ 7 は #542 の拡張として統合できる。
+persona レビューは **Tier 3 の優先順位を揺さぶる**。[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] は Tier 3 本丸を [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の `getting-started/` rename としていたが、**読者が実際に詰まるのは rename ではなく上記の content gap**（ラベル詐称・閲覧者/実務者 FAQ・読み方ページ・導入検討ページ・信頼性/責任ページ・CLI バグ）。rename は構造美化として価値はあるが reader impact は相対的に低い。→ **次フェーズは「rename を急ぐ」より「テーマ 1-7 の content を埋める」を優先すべき**。テーマ 7 は [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の拡張として統合できる。
 
 ## Open Questions
 
@@ -70,4 +70,4 @@ persona レビューは **Tier 3 の優先順位を揺さぶる**。[[kouchou-ai
 
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]: 本レビューは roadmap の Tier 3 優先順位を再考させる現在地フィードバック
 - [[docs-reader-coverage-audit-2026-10-13]]: 5 読者像 × 機能の静的カバレッジ（本ページは体験ベースの動的レビュー）
-- [[kouchou-ai-docs-policy-history]]: #542 責任所在レーン（テーマ 7 がその拡張）
+- [[kouchou-ai-docs-policy-history]]: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) 責任所在レーン（テーマ 7 がその拡張）

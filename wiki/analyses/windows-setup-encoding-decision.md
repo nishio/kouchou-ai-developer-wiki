@@ -20,7 +20,7 @@ sources:
 
 ### 1. 問題は「表示崩れ」ではなく「パース破綻」
 
-issue #731 のログでは、日本語 `echo` が読めないだけでなく、日本語行そのものが **別コマンドとして解釈されて失敗** している。これは「見た目が悪い」ではなく、`.bat` の実行継続そのものを壊す。したがって対策は文言の見栄えではなく、**`cmd.exe` が日本語リテラルを安全に読めるか** を基準に考える必要がある。[[issue-731-windows-setup-mojibake]]より
+issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) のログでは、日本語 `echo` が読めないだけでなく、日本語行そのものが **別コマンドとして解釈されて失敗** している。これは「見た目が悪い」ではなく、`.bat` の実行継続そのものを壊す。したがって対策は文言の見栄えではなく、**`cmd.exe` が日本語リテラルを安全に読めるか** を基準に考える必要がある。[[issue-731-windows-setup-mojibake]]より
 
 ### 2. `.bat` は `cmd.exe` の codepage 依存を強く受ける
 
@@ -52,4 +52,4 @@ PowerShell 側へ寄せると、日本語ダイアログ、入力検証、エラ
 
 ## Updates
 
-- 2026-05-22: 初回作成。issue #731 の再現ログ、PowerShell 既定インストール範囲、`setup_win.*` の current 方針をつないで判断理由を整理
+- 2026-05-22: 初回作成。issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) の再現ログ、PowerShell 既定インストール範囲、`setup_win.*` の current 方針をつないで判断理由を整理

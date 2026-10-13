@@ -14,7 +14,7 @@ sources:
 
 ## Conclusion
 
-#876 の次 PR は、`docs/development/developer-quickstart.md` を 1 枚追加するだけでは弱い。current main では `README.md`、`docs/index.md`、`docs/getting-started/quickstart.md`、`mkdocs.yml` がまだ Docker Compose / setup-first 入口を維持しており、これを残したままだと新規読者は developer quickstart に辿り着かない。[[issue-876-developer-docs-gap-audit-2026-06-30]]より
+[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の次 PR は、`docs/development/developer-quickstart.md` を 1 枚追加するだけでは弱い。current main では `README.md`、`docs/index.md`、`docs/getting-started/quickstart.md`、`mkdocs.yml` がまだ Docker Compose / setup-first 入口を維持しており、これを残したままだと新規読者は developer quickstart に辿り着かない。[[issue-876-developer-docs-gap-audit-2026-06-30]]より
 
 ただし 6/3 以降の docs spine 全面刷新、つまり demo viewer first、`getting-started/` rename、公開事例リンク集、サーバを建ててくれる人を探す経路まで一気に入れると PR が大きくなる。[[kouchou-ai-docs-entry-restructure-2026-06-03]]より
 
@@ -31,11 +31,11 @@ sources:
 | `docs/getting-started/quickstart.md` | 冒頭に「この page は self-host / Docker Compose の quickstart」と明示し、開発目的なら `developer-quickstart` へ送る。native 起動の詳細が developer quickstart と重複するなら短縮候補にする | この PR では `getting-started/` directory rename をしない |
 | `docs/user-guide/cli-quickstart.md` | developer quickstart から Mode 4 の詳細としてリンクする。必要なら小修正のみ | CLI docs の全面再設計や実験機能 catalog 追加は別 PR |
 
-この scope なら、#876 の「README と docs の役割分担」「起動 mode の判断」「重要注意の見落とし防止」を前進させつつ、#877 Windows troubleshooting や #885 Windows standalone 技術前提とは混ぜずに済む。[[docs-issue-map-2026-06-30]]より
+この scope なら、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の「README と docs の役割分担」「起動 mode の判断」「重要注意の見落とし防止」を前進させつつ、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows troubleshooting や [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Windows standalone 技術前提とは混ぜずに済む。[[docs-issue-map-2026-06-30]]より
 
 ## Close Strategy
 
-PR が上記 5 ファイル以上を触り、`developer-quickstart` が issue #876 の追加要件を満たすなら、PR description で `Closes #876` とする候補になる。
+PR が上記 5 ファイル以上を触り、`developer-quickstart` が issue [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の追加要件を満たすなら、PR description で `Closes #876` とする候補になる。
 
 逆に、`docs/development/developer-quickstart.md` の追加と nav 追加だけに狭めるなら、`Refs #876` に留める方が正確である。単体ページだけでは README / docs index / quickstart から旧 setup-first 導線が残り、issue の完了条件を満たしたとは言いにくい。[[github-issue-876-live-2026-06-30]]より
 
@@ -49,10 +49,10 @@ docs: 開発者向けスタートガイドの導線を再構成する (#876)
 
 PR body の要点:
 
-- PR #883 撤回後の 5 読者像 / Mode 1 default 廃止方針を反映
+- PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 撤回後の 5 読者像 / Mode 1 default 廃止方針を反映
 - README / docs top / quickstart の役割を整理し、詳細手順は developer quickstart へ寄せる
 - `getting-started/` rename や demo-first spine 全面刷新は別 PR に分ける
-- #877 Windows guide と #885 Node runtime / standalone exe は別 issue として混ぜない
+- [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) Windows guide と [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) Node runtime / standalone exe は別 issue として混ぜない
 
 ## Validation
 
@@ -70,15 +70,15 @@ README のリンクは GitHub 表示と MkDocs 表示で相対 path の解釈が
 - `developer quickstart` には Hosted demo / Azure 体験環境の存在を抽象的に書けるが、公開境界に注意する。実環境 URL、resource 名、revision / run details、ログ、secret / access 周辺は書かない。
 - Mode 4 は「CLI を使えば少量データでもすごい分析になる」と読ませない。数百件以上が向く、数十件未満は手作業 KJ 法などが現実的、という期待値を残す。
 - Mode 1 は「迷ったらこれ」ではなく、全体動作確認 / 組織内デモ役が手元で動かす時の option とする。
-- Windows の細かい問題は #877 に送る。#876 では Windows が検証薄めであることと Windows setup guide への導線に留める。
-- Node runtime 排除や standalone exe は #885 / PR #903 の領域。#876 に future packaging の説明を混ぜない。
+- Windows の細かい問題は [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) に送る。[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) では Windows が検証薄めであることと Windows setup guide への導線に留める。
+- Node runtime 排除や standalone exe は [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) / PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の領域。[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) に future packaging の説明を混ぜない。
 
 ## Open Questions
 
 - README をどこまで短くするか。根本的には README は project overview + docs entrance に絞る方がよいが、既存ユーザーが README だけで起動している可能性を考えると、一段階目は summary + link にするのが現実的か。
 - `docs/getting-started/quickstart.md` の native 起動 section は developer quickstart と重複する。first slice で削るか、deprecated notice に留めるか。
-- `mkdocs build --strict` が existing docs warning を出す場合、#876 PR 内で直すか、別修正に分けるか。
+- `mkdocs build --strict` が existing docs warning を出す場合、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) PR 内で直すか、別修正に分けるか。
 
 ## Updates
 
-- 2026-06-30: 初回作成。issue #876 live state、current main docs、既存 developer quickstart 草案、docs spine 議論を照合し、次の本体 docs PR の file-by-file first slice に落とした。
+- 2026-06-30: 初回作成。issue [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) live state、current main docs、既存 developer quickstart 草案、docs spine 議論を照合し、次の本体 docs PR の file-by-file first slice に落とした。

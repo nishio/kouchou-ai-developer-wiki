@@ -21,7 +21,7 @@ sources:
 
 1. 原因調査と修正見通しを確立。
 2. #935を`472b607`、#936を`23c7821`でマージ。GitHubのMERGEDを再取得確認。
-3. mainから`codex/shell-hydration-fix`を作り、[PR #938](https://github.com/digitaldemocracy2030/kouchou-ai/pull/938)を作成（`c90cae4`、CI待ち、未merge）。
+3. mainから`codex/shell-hydration-fix`を作り、[PR [#938](https://github.com/digitaldemocracy2030/kouchou-ai/issues/938)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/938)を作成（`c90cae4`、CI待ち、未merge）。
 4. #935作者が明記していたtitle / unlisted noindexは、修正PRのマージ後に後続Issueとして切り出す。
 
 ## 検証
@@ -50,8 +50,8 @@ root / subdirのテストでリスト選択を確認し、全体を展開して�
 
 ### 2026-09-09 16:31 JST — 全手順完了
 
-更新HEAD `c8488a7`のCIは全チェック成功、全体E2Eは78 passed（4.3分）。[PR #938](https://github.com/digitaldemocracy2030/kouchou-ai/pull/938)をマージし、GitHubのMERGEDとmerge commit `679ee9e13d6e671a82a0978fb1d92c67cc1e669b`を再取得確認。local mainもfetch / fast-forwardで一致した。
+更新HEAD `c8488a7`のCIは全チェック成功、全体E2Eは78 passed（4.3分）。[PR [#938](https://github.com/digitaldemocracy2030/kouchou-ai/issues/938)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/938)をマージし、GitHubのMERGEDとmerge commit `679ee9e13d6e671a82a0978fb1d92c67cc1e669b`を再取得確認。local mainもfetch / fast-forwardで一致した。
 
-[Issue #939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)「shell配布物にレポート別title・noindexを反映する（#935由来）」を作成し、本文とOPEN状態を再取得確認。#935作者が挙げた制約由来と明記し、実配布への接続時のHTML metadata、Node再ビルド不要の維持、ブラウザ遷移の整合を完了条件にした。
+[Issue [#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)「shell配布物にレポート別title・noindexを反映する（#935由来）」を作成し、本文とOPEN状態を再取得確認。#935作者が挙げた制約由来と明記し、実配布への接続時のHTML metadata、Node再ビルド不要の維持、ブラウザ遷移の整合を完了条件にした。
 
 今回解消したのはshell一覧のhydrationエラー。全体E2Eログには通常dev経路のhydrationログが残るが、その経路のビルド方式は本修正では変更していない。全viewer経路で同種エラーがなくなったという意味ではない。

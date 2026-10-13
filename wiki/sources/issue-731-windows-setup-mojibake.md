@@ -8,7 +8,7 @@ sources:
 
 ## 何のソースか
 
-`digitaldemocracy2030/kouchou-ai` の issue #731「[BUG] Windows環境でインストールしようとすると文字化けが発生して中断する」を要約した source。`setup_win.bat` の日本語メッセージをどう扱うか、また `.bat` のまま押し切るか `PowerShell` などへ分離するか、という判断の一次根拠に使う。[[github-dev-docs]]より
+`digitaldemocracy2030/kouchou-ai` の issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731)「[BUG] Windows環境でインストールしようとすると文字化けが発生して中断する」を要約した source。`setup_win.bat` の日本語メッセージをどう扱うか、また `.bat` のまま押し切るか `PowerShell` などへ分離するか、という判断の一次根拠に使う。[[github-dev-docs]]より
 
 ## 観測できること
 
@@ -30,4 +30,4 @@ sources:
 
 ## Updates
 
-- 2026-05-22: 初回作成。issue #731 のログから、「文字化け」ではなく `cmd.exe` のパース破綻が本質である点を抽出
+- 2026-05-22: 初回作成。issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) のログから、「文字化け」ではなく `cmd.exe` のパース破綻が本質である点を抽出
