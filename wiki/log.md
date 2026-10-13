@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 08:00] filing-back | docs 改善スプリントの retrospective 記事を新設
+
+- nishio 依頼で、2026-10 docs 改善スプリントの読み物を [[kouchou-ai-docs-overhaul-2026-10]] に新設。何を・なぜ・どうなったか＋**再利用できる進め方**（live 検証前提 / ペルソナ監査 / discover-fix-gate / content はコード裏取り / 破壊変更は redirect とセット / 法務文面は逆翻訳検証 / umbrella は de-bundle）を 1 枚に。
+- roadmap（計画詳細）・persona レビュー（監査）・policy-history（系譜）とは別の「総括」レイヤーとして位置づけ、相互リンク。
+- 次に見る: #1012（任意の仕上げ）か別テーマ。
+
 ## [2026-10-14 07:45] filing-back | #876 を close（canonical 入口達成）、残細目を #1012 に引き継ぎ・#496/#921 de-bundle
 
 - nishio go。#876（docs 入口の再構成 umbrella）を **close**。headline「どの起動モードかを1ページで判断」を canonical #1010・demo-first #1000・self-hosting rename #1005・導入ガイド #1003 で達成。達成範囲＋残要件を日付付きコメントで記録。
