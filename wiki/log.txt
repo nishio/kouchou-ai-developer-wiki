@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 11:15	filing-back	ヘルスチェックの coverage gap を埋める concept hub 4 本を新設
 2026-10-14 10:30	filing-back	ヘルスチェック承認分を実施（supersession / index.md curation / メタ除去）
 2026-10-14 10:05	filing-back	公開サイトの表示規約を concept ページ化（quartz-site-presentation）
 2026-10-14 10:00	filing-back	wiki 全体ヘルスチェック（dynamic workflow）→ 安全な修正を適用

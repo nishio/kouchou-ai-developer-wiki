@@ -3,6 +3,16 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 11:15] filing-back | ヘルスチェックの coverage gap を埋める concept hub 4 本を新設
+
+- nishio「all」。カバレッジの穴（言及多数だが durable 正本なし）に対し concept hub 4 本を新設し、散在する dated analysis を [[リンク]]で束ねた：
+  - [[label-quality]]（クラスタラベルの契約＝全体傾向を歪めず少数軸保持／品質評価5レイヤ／judge の self-eval 罠）
+  - [[experiment-methodology]]（exploratory/clean・1要素・blind A/B・judge 較正・presentation_context 分解・3層保存。CLAUDE.md にしかなかった原則を言語化）
+  - [[extraction-faithfulness]]（step1 の忠実性＝完走≠意味保持・モデル別書換・受け入れ条件）
+  - [[security-maintenance]]（CodeQL/Dependabot 保守＋「脆弱性詳細は公開 wiki に書かない」ポリシー明文化・dependabot-alerts の孤立解消）
+- 各 hub は #NNN を GitHub リンク・編集メタなし・公開境界遵守で作成。primary dated source から back-link、index.md curated nav に入口追加。lint clean（孤立=既存 yandex のみ・壊れリンク0・sources 解決）。
+- 残: Q4 の深い transcript 圧縮（label-coverage の『今回の流れ』・wiki-driven-workflow trigger 等）を慎重に継続。次に見る: deploy 後の表示確認。
+
 ## [2026-10-14 10:30] filing-back | ヘルスチェック承認分を実施（supersession / index.md curation / メタ除去）
 
 - nishio 承認（Q2/Q3/Q4）。**supersession**: 全件 triage の明確な旧版 2 枚（remaining-issue-priority-2026-05-29 / current-open-issue-triage-2026-06-01）に `superseded_by: issue-backlog-audit-2026-10-12`（frontmatter 目印のみ、本文温存。bug/候補系は scope 別で温存）。

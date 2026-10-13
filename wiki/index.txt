@@ -11,8 +11,11 @@ cli	concept	concepts/cli.md	kouchou-analyze CLI と python -m analysis_core — 
 coding-agents	concept	concepts/coding-agents.md	Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態
 contributing	concept	concepts/contributing.md	コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
 deployment	concept	concepts/deployment.md	デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する
+experiment-methodology	concept	concepts/experiment-methodology.md	CLI / analysis-core で pipeline を試すときの durable な実験設計方法論。探索 corpus と採用判断用 clean experiment を分け、1 要素だけ変え、ラベル品質は blind A/B preference で測って judge を較正し、結果は scratch / raw/experiments / 公開 wiki の 3 層で保存する。
+extraction-faithfulness	concept	concepts/extraction-faithfulness.md	意見抽出（pipeline step1）は処理が完走しても原文の意味を書き換えうる。モデルサイズ別の典型書き換え・既定 few-shot の漏れ・規則＋真意確認プロンプトの副作用・小型モデルの JSON 文法制約・受け入れ条件への忠実性組み込みを束ねる hub
 faithful-aggregation-vs-deliberation-dynamics	concept	concepts/faithful-aggregation-vs-deliberation-dynamics.md	意見集約ツールの重心を『忠実な集約(どんな意見がどれくらいあるかを正確に写す)』と『熟議の演出(議論の構造・動き・欠落を見せる)』の2つに分けて理解するレンズ。kouchou-ai は前者、OJPP BroadListening は後者寄り
 kouchou-ai	concept	concepts/kouchou-ai.md	広聴AI — DD2030 配下の OSS ブロードリスニング実装。CSV → 抽出 → 埋め込み → 階層クラスタリング → 可視化
+label-quality	concept	concepts/label-quality.md	広聴AI のクラスタラベル品質の durable hub。pipeline step4-6 でのラベルの位置づけ、「全体傾向を歪めず少数軸も保持する」ラベル契約、品質評価を5レイヤ(入力sampling・代表例選び・judge較正・UI表示文脈・人手pairwise)に分解する枠組み、judge を生成と同系統モデルで採点する罠を束ねる。
 llm-grouping-supervised-classification	concept	concepts/llm-grouping-supervised-classification.md	LLM grouping には枠を自動発見するモードと、人間が与えた所与カテゴリへ割り当てる指定カテゴリ分類（supervised）モードがある。後者は必ず「その他」受け皿を自動付与し、非該当意見を押し込めない。現状 CLI 専用
 llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装
 local-dev-setup	concept	concepts/local-dev-setup.md	ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
@@ -23,6 +26,7 @@ meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議
 pipeline	concept	concepts/pipeline.md	解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
 plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を plugin 化する設計。v5.0 の中核
 quartz-site-presentation	concept	concepts/quartz-site-presentation.md	公開 Quartz サイトの表示規約。URL は英語 slug（ファイル名）のまま、ページ見出しと Explorer の表示名は frontmatter title（日本語）で与える。Explorer のフォルダ見出しは quartz.layout.ts の mapFn で日本語化し、mapFn/sortFn は client 側で再評価されるため制約がある
+security-maintenance	concept	concepts/security-maintenance.md	CodeQL（コードの静的解析）と Dependabot（依存の既知脆弱性 alert）の役割・確認導線・対応の粒度と、脆弱性の具体詳細を公開 wiki に書かない公開境界ポリシーをまとめた durable hub。
 testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
 thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
 usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理

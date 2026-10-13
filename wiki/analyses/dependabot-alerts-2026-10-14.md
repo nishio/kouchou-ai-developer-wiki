@@ -46,3 +46,5 @@ sources:
 ### 2026-10-14 続報 — [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI 全 green
 
 - [PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) の CI は全て pass（CodeQL / CodeRabbit / build ×2 / e2e-tests / test ×2 / Analyze ×4）、`MERGEABLE`。残るは **required human review**（AI からの催促・merge はしない）。merge 判断は人間側。
+
+> **セキュリティ保守の durable 正本**: [[security-maintenance]]（本ページはその dated な実測/議論の一つ）

@@ -14,6 +14,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 ## 開発者が共通して知るべきこと
 
+- [security-maintenance](concepts/security-maintenance.md) — CodeQL/Dependabot 保守の durable hub と公開境界ポリシー
+
 - [broadlistening](concepts/broadlistening.md) — ブロードリスニング手法の定義と用語
 - [zipf-broadlistening](entities/zipf-broadlistening.md) — 「なぜサンプリングでなく全件か」を1枚で体験させる nishio のデモサイト（ランダムK件は割合pの意見を exp(-Kp) で丸ごと見落とす）
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
@@ -47,6 +49,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [fetch-reports-deprecation-and-storage-health-2026-05-26](analyses/fetch-reports-deprecation-and-storage-health-2026-05-26.md) — `fetch_reports.py` を migration 手段に降格し、storage health check を deploy safety に据える整理
 
 ## CLI / analysis-core 開発者向け
+
+- [label-quality](concepts/label-quality.md) — クラスタラベルの契約と品質評価 5 レイヤの durable hub
+- [experiment-methodology](concepts/experiment-methodology.md) — 実験設計の方法論（exploratory/clean・1 要素・blind A/B・judge 較正・3 層保存）
+- [extraction-faithfulness](concepts/extraction-faithfulness.md) — 意見抽出(step1)の忠実性（完走≠意味保持・モデル別書換・受け入れ条件）
 
 - [ライセンスと結果公開](analyses/agpl-output-and-plugin-boundaries-2026-10-12.md) — データ・HTML・拡張の境界、CLIの案内自動付与と短いリンク表示の方針
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI

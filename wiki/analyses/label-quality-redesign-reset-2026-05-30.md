@@ -94,3 +94,5 @@ label refinement 実験から始まった一連の調査は、現行 `hierarchic
 - 2026-05-30: nishio との対話でユースケース契約を確定。**「全体傾向把握ユースケース」一本** を Web UI / 標準 run の唯一の契約とし、「少数重要論点ユースケース」は契約として並列に置かず CLI 分析者の prompt 責務に寄せる。「重要を言語化する責務」は product として educate しない (Web UI 完全非露出、CLI docs も priority 低)。全体傾向把握 run の副産物として minority residual artifact も作らない (約束しない)。これにより下流 4 レイヤは全体傾向把握最適化で揃い、`仕切り直しレイヤ` 節を全体傾向把握前提で書き換えた
 - 2026-05-30: ohki-shingo の「全体傾向把握か、少数重要論点発見かで処理・評価が変わる」という Slack 指摘を受け、仕切り直しレイヤの先頭に `ユースケース契約` を追加。sampling / rep args / judge の前に成功条件を固定する方針へ補正
 - 2026-05-30: 初版作成。今回の label refinement 実験はそのまま採用せず、上流 sampling、rep args artifact、judge 較正、UI 表示責務を分けて仕切り直す方針として整理
+
+> **ラベル品質戦略の durable 正本**: [[label-quality]]（本ページはその dated な実測/議論の一つ）

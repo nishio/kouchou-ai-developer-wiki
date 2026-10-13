@@ -117,3 +117,5 @@ clustering method 比較では、tree が変わるため label output も従属�
 
 - 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。ラベル品質の人間評価は単独批評ではなく、同じ tree / evidence から作った label variants の A/B preference として集める方針に補正した。
 - 2026-06-02: 初版作成。nishio の「やってみるのは大事だが、main から一度にいろいろ変えると解釈が難しい。1 要素ずつ変えた実験にすべき」という指摘を、探索 corpus と clean experiment の区別として整理した。
+
+> **実験設計方法論の durable 正本**: [[experiment-methodology]]（本ページはその dated な実測/議論の一つ）
