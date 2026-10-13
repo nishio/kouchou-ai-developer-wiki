@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 00:20] filing-back | docs roadmap にクリティカルパス（先に解決すべき順）を追加
+
+- 「最短で最良に至るため先に解決すべきことは」への回答。核心は**最短路を塞ぐのは労力でなく決定**。Tier 0 / T1-b は純実行でブロッカーではない（即・並行）。
+- 先に解くべき順: ①#876 の additive/破壊 分割可否（最大 unlock）→ ②managed service(tier 2-a)の実在（最上流 unknown）→ ③保守ゲート(T1-c)合意。並行で ④#977 anchor 棚卸し（調査）/ ⑤rot-gate を拡張前に。
+- [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] に「最短で最良へ」節を追記。次に見る: nishio の ①②③ 即決。
+
 ## [2026-10-14 00:10] filing-back | docs roadmap に実行チェックリストを grounding
 
 - 「最適化にやるべきこと」を問われ、5 agent workflow で Tier 0/1 の**実行可能な mechanics を実読確定**（nav YAML + `validation.nav.omitted_files: warn` の正確な挿入位置、cli-quickstart の embedding 行、how-to-use の #176/#961/#52/#306 節割り、PR テンプレ行 + 非ブロッキング CI sketch、#542 の設置先）。[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] に「実行チェックリスト」節を追加。

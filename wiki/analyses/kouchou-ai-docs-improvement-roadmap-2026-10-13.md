@@ -96,6 +96,21 @@ sources:
 - **#542 責任所在の文面**（org signoff）。
 - **how-to-use touch check を CI/contributing に入れてよいか**（非ブロッキング前提）。
 
+## 最短で最良へ：先に解決すべき順（クリティカルパス）
+
+核心は **最短路を塞いでいるのは労力でなく「決定」** であること。Tier 0（nav 登録+gate / #450）と T1-b（how-to-use catch-up, docs-only）は誰の決定も待たない純実行なので「先に解決」対象ではなく、**即・並行で流す**（ブロッカーではない）。本当に先に解くべきは次の少数：
+
+1. **#876 を「additive slice／破壊的 rename」に分割してよいか**（決定・最大 unlock）。Yes なら index.md の demo-first routing=最高レバレッジの reader-facing が「大きな blocked 本丸」から「今出せる T1-a」へ変わり、roadmap の大半が blocked→flowing。残る gated は rename だけ。
+2. **managed service（spine tier 2-a）は実在するか**（product-reality, nishio/ohki）。spine の枝構造・B（自治体担当）への正直な案内・#542 の前提を決める**最上流の unknown**。答えるのは速いが、不明のまま完全な spine は設計しきれない。不在なら tier 2-a を「coming soon／仲介者」に畳んで即設計へ分岐できる。
+3. **保守プロセスゲート（T1-c）を非ブロッキングで入れる合意**。根因=CLI/WebUI 非対称を塞がないと how-to-use を直しても再び腐る。content work を durable にする前提なので「先に」。
+
+並行で片付く前提（決定でなく作業・順序）：
+
+4. **README 外部 anchor の棚卸し（#977）** — anchor 移行設計の前提の*調査*。repo 内参照（例 `ReporterContent.tsx`）は read-only で今洗い出せる（完全な外部リンクは不可知だが候補と移行先 docs ページは出せる）。
+5. **順序ルール：nav rot-gate（T0-b）を spine 拡張の前に**入れる（決定不要）。拡張後だと orphan を再累積する。
+
+→ **最短路 = ①②③ を即決（労力でなく判断）＋ ④ を調査着手、これと並行で Tier 0 PR＋T1-b を流す**。
+
 ## 検証で見つかった訂正（既存 2 ページへ filing back 済み）
 
 - **[[docs-reader-coverage-audit-2026-10-13]]**: #450（埋め込みモデル独立選択）を「cli-quickstart に記載あり」と列挙していたが、実際は UMAP 節の incidental な caveat のみで**実質未記載**。E の「比較的追従」には #450 の穴がある（→ Tier 0 で塞ぐ）。
