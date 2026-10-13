@@ -33,3 +33,11 @@ sources:
 
 - lockfile bump で上流パッケージ（express 系 / postcss 系）が patched 版を実際に受け入れるかは、`pnpm update` + test で要検証。本ページ時点では未実施（live state 観測と優先度判断まで）。
 - 人間 attention を使う操作（reviewer request・approval 催促・admin merge）は明示指示がある時のみ。本ページは観測と filing-back に留め、PR 作成・assign・merge は行っていない。
+
+## Updates
+
+### 2026-10-14 — 解消見込み 2 件を PR 化（[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)）
+
+- nishio 指示で、解消見込みの 2 件を **`pnpm.overrides` の範囲ベース pin** で patched 版へ固定する [PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) を作成（`work/kouchou-ai` の topic branch）。proxy-addr 2.0.7→2.0.8 / source-map-js 1.2.1→1.2.2。既存 security pin と同形式で、**lockfile diff は対象 2 件のみ**（`pnpm install --lockfile-only` 前に pure heal が無変更であることを確認し、巻き込み更新を回避）。変更は `package.json` と `pnpm-lock.yaml` のみ。
+- ローカル検証: admin jest 170 passed / public-viewer jest 142 passed、admin・public-viewer（next build）・static-site-builder（tsc）build 成功、biome 問題なし。
+- 上の Open Questions の「lockfile bump が受理されるか」は本 PR で解消見込み（CI でも確認予定）。sprintf-js は upstream 修正版未公開のため本 PR 対象外で、[#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で継続追跡。reviewer request・merge は未実施（CI / 人間レビュー待ち）。

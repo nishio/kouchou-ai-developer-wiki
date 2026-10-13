@@ -129,6 +129,12 @@
 - **version 方針**: 本体は v4.x release tag 運用（最新 v4.0.0）。今回の docs 大掃除 + feature wave を **v4.1.0** として、Tier 0 docs PR merge 後に tag。
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] / [[kouchou-ai-docs-entry-restructure-2026-06-03]] に反映。次: Tier 0 PR を本体 repo に作成（worktree `work/kouchou-ai-docs-tier0`）。
 
+## [2026-10-14 00:27] filing-back | Dependabot 解消見込み2件を PR 化（#1013）
+
+- nishio 指示で、解消見込みの 2 件（proxy-addr 2.0.7→2.0.8 / source-map-js 1.2.1→1.2.2）を `pnpm.overrides` 範囲 pin で固定する [PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) を作成（`work/kouchou-ai` topic branch・base main）。既存 security pin と同形式、lockfile diff は対象 2 件のみ（pure heal 無変更を事前確認し巻き込み更新を回避）。
+- ローカル検証 green: admin jest 170 / public-viewer jest 142、admin・public-viewer（next build）・static-site-builder（tsc）build、biome。未 merge・CI/レビュー待ちで reviewer request・merge は未実施。
+- sprintf-js は upstream 修正版未公開で [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) 継続追跡。filing-back: [[dependabot-alerts-2026-10-14]] に ## Updates、meeting-report-draft を更新。
+
 ## [2026-10-14 00:20] filing-back | docs roadmap にクリティカルパス（先に解決すべき順）を追加
 
 - 「最短で最良に至るため先に解決すべきことは」への回答。核心は**最短路を塞ぐのは労力でなく決定**。Tier 0 / T1-b は純実行でブロッカーではない（即・並行）。
