@@ -37,6 +37,10 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [thinking-targets](concepts/thinking-targets.md) — 今、人間の思考と判断が要る論点のハブ (ラベル品質仕切り直し / 次の view 方向 / pipeline 境界 / 公開運用摩擦)
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況、current main との同期
 - [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類 (全体棚卸し)
+- [issue-backlog-audit-2026-10-12](analyses/issue-backlog-audit-2026-10-12.md) — **現行の全件 issue 棚卸し**（最新。2026-05〜06 の triage はこれに置換済み）
+- [kouchou-ai-docs-policy-history](analyses/kouchou-ai-docs-policy-history.md) / [kouchou-ai-docs-overhaul-2026-10](analyses/kouchou-ai-docs-overhaul-2026-10.md) — 本体 docs 方針の系譜と 2026-10 改善スプリントの総括
+- [faithful-aggregation-vs-deliberation-dynamics](concepts/faithful-aggregation-vs-deliberation-dynamics.md) — 忠実な集約 vs 熟議ダイナミクス（分析スタンスの核）
+- [dependabot-alerts-2026-10-14](analyses/dependabot-alerts-2026-10-14.md) — security / dependency 保守の観測（脆弱性の具体詳細は公開 wiki に書かない方針）
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — 3 層 platform として見た時の長期順序
 - [issue-priority-through-2026-09](analyses/issue-priority-through-2026-09.md) — 2026-09 書籍リリースを前提にした優先度整理
 - [bug-issue-triage-2026-05-25](analyses/bug-issue-triage-2026-05-25.md) — `bug` ラベル open issue の current main 基準での再点検

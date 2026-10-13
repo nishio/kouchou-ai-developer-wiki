@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 10:30] filing-back | ヘルスチェック承認分を実施（supersession / index.md curation / メタ除去）
+
+- nishio 承認（Q2/Q3/Q4）。**supersession**: 全件 triage の明確な旧版 2 枚（remaining-issue-priority-2026-05-29 / current-open-issue-triage-2026-06-01）に `superseded_by: issue-backlog-audit-2026-10-12`（frontmatter 目印のみ、本文温存。bug/候補系は scope 別で温存）。
+- **index.md curation**: 「いま何を考えるか」に現行 audit(issue-backlog-audit-2026-10-12) を昇格、docs-policy-history / docs-overhaul / faithful-aggregation-vs-deliberation-dynamics / dependabot-alerts を入口追加。
+- **メタ除去**: agpl-output の会話ログ的言い回しを客観記述へ（codex-session-recall は coverage 行で既に snapshot 明示のため据え置き）。
+- 残 Q4（label-coverage の『今回の流れ』圧縮・wiki-driven-workflow の trigger 言換等）は substance 判断を伴うので慎重に継続。concept hub(Q1) は nishio が候補を選べるよう別途解説。
+
 ## [2026-10-14 10:05] filing-back | 公開サイトの表示規約を concept ページ化（quartz-site-presentation）
 
 - 直前の日本語タイトル付与／Explorer フォルダ名日本語化を踏まえ、公開サイトの表示規約を [[quartz-site-presentation]] に新規 filing back（URL=英語 slug 不変／表示タイトル=frontmatter `title`／Explorer のフォルダ見出しは `quartz.layout.ts` の `mapFn`／`mapFn`・`sortFn` は client 側で `.toString()`→再評価されるため自己完結必須、という落とし穴まで）。
@@ -134,6 +141,12 @@
 - 本体 `digitaldemocracy2030/kouchou-ai` に [PR #998](https://github.com/digitaldemocracy2030/kouchou-ai/pull/998)（`codex/docs-nav-validation-embedding`, +13/-0）を作成。nav 未登録 6 ページ登録 + `validation.nav.omitted_files: warn`（CI rot-gate）+ cli-quickstart の `embedding.model` 行（#450 docs 追従）。
 - `work/kouchou-ai-docs-tier0` worktree で作業（二分原則: work/kouchou-ai は main 固定）。検証＝mkdocs 1.6.1+material で strict build green、一時 orphan で strict が `Aborted with 1 warnings`（gate 発火）を確認。
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] / [[meeting-report-draft]] に反映。次＝PR #998 の CI/レビュー→merge→`v4.1.0` tag、T1-a/b/c。
+
+## [2026-10-14 00:42] filing-back | Explorer を更新新しい順に変更（ABC→recency）＋ client 再評価の落とし穴を記録
+
+- 公開 wiki の Explorer を ABC 順 → **更新新しい順**へ。`quartz.layout.ts` に `sortByRecency`（フォルダは配下の最新更新日で代表・同点辞書順）、`contentIndex.tsx` で client 用 index の `date` を保持（削除をやめた）。日付は `defaultDateType=modified`≒git 最終コミット時刻。
+- **既知の落とし穴を発見・記録**: Explorer の sort/map/filter は client で `.toString()`→`new Function` 再評価されるため、inner named 関数は esbuild の `--keep-names` が注入する `__name` 参照で `ReferenceError` を起こす（build は Node 側に `__name` があり通るので気づけない）。反復（明示スタック）で回避し、client 相当で再評価検証。[[quartz-explorer-sort-and-client-fn-gotcha]] に filing。
+- 別セッションの日本語 title・フォルダ名日本語化と合わせサイドバーの閲覧性が改善。次に見る: 公開サイトで新順序の見え方。
 
 ## [2026-10-14 00:39] filing-back | Dependabot 技術ノウハウを gotchas へ＋[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI green 追記
 

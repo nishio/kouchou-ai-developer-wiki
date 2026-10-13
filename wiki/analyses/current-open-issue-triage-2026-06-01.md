@@ -14,6 +14,8 @@ sources:
   - public-ui-requirements-for-broadlistening.md
   - umap-seed-history.md
   - pr-887-production-deploy-observation-2026-06-01.md
+status: superseded
+superseded_by: issue-backlog-audit-2026-10-12
 ---
 
 # Current Open Issue Triage 2026-06-01

@@ -12,6 +12,8 @@ sources:
   - fetch-reports-deprecation-and-storage-health-2026-05-26.md
   - remaining-bug-issues-2026-05-26.md
   - chart-scroll-ux-decision.md
+status: superseded
+superseded_by: issue-backlog-audit-2026-10-12
 ---
 
 ## 結論

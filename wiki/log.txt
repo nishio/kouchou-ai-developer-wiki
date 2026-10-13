@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 10:30	filing-back	ヘルスチェック承認分を実施（supersession / index.md curation / メタ除去）
 2026-10-14 10:05	filing-back	公開サイトの表示規約を concept ページ化（quartz-site-presentation）
 2026-10-14 10:00	filing-back	wiki 全体ヘルスチェック（dynamic workflow）→ 安全な修正を適用
 2026-10-14 09:20	filing-back	wiki 全ページに日本語1行タイトル付与＋Explorer フォルダ名の日本語化
@@ -25,6 +26,7 @@
 2026-10-14 01:30	filing-back	mkdocs-redirects 導入を決定（Tier 3 #876 rename の前提）
 2026-10-14 01:10	ingest	T1 wave を 3 PR 投入（#999/#1000/#1001）、docs 大掃除は 4 PR 出揃い
 2026-10-14 00:50	ingest	Tier 0 docs cleanup を PR #998 で投入（本体 repo）
+2026-10-14 00:42	filing-back	Explorer を更新新しい順に変更（ABC→recency）＋ client 再評価の落とし穴を記録
 2026-10-14 00:39	filing-back	Dependabot 技術ノウハウを gotchas へ＋[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI green 追記
 2026-10-14 00:35	filing-back	nishio が ①-⑤ に go、解決内容と version 方針を確定
 2026-10-14 00:27	filing-back	Dependabot 解消見込み2件を PR 化（#1013）
