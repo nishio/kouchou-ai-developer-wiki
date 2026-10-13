@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 07:00] ingest | 任意残り（#977 CI link-check / #876 canonical ページ）を PR 化（#1009/#1010）
+
+- **#977 CI link-check = PR #1009（closes #977）**: mkdocs.yml に `validation.links`（not_found/anchors/absolute_links/unrecognized_links: warn）を追加し、既存 `mkdocs build --strict` が内部リンク/アンカー切れで失敗するように。あわせて `toc.slugify` を GitHub 互換 unicode（`pymdownx.slugs.slugify(case=lower)`）にし、日本語見出しアンカー（従来 `_1` 潰れ）を解決。broken link でゲート発火を実証。
+- **#876 canonical = PR #1010**: `docs/user-guide/choosing-how-to-start.md`（決定表＋構成比較＋環境構築の決定フロー＝最初の分岐は OS でなく利用主体）を新設、index 目的別ガイドから誘導・nav 登録。#876 umbrella の close 判断は nishio。
+- 両 PR とも mkdocs.yml を触るが領域が別（validation/toc vs nav）。マージ順は #1009→#1010 推奨（conflict 時はこちらで rebase）。次に見る: #1009/#1010 merge・#876 close 判断。
+
 ## [2026-10-14 06:20] ingest | #542 close・docs 改善スプリント完了
 
 - **#1008 merge（`bf1ffb1b`）→ #542 CLOSED**（JA footer+README=#1004、en/ko README=#1008）。当方の open PR はゼロ。
