@@ -48,6 +48,8 @@ sources:
 
 つまり、**「何が論点で、なぜそう判断されたか」** を残す作業はこの repo の責務。[[source-code]]より
 
+公開 Quartz サイトでの見え方（URL と表示タイトルの分離・Explorer のラベル）の規約は [[quartz-site-presentation]] にまとめている。
+
 ### 2. 実装確認は `work/kouchou-ai/` を一次参照にする
 
 `work/kouchou-ai/` はこの repo 配下に置いた local clone で、コード由来の判断はここを一次参照にする。  

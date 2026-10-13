@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 10:05] filing-back | 公開サイトの表示規約を concept ページ化（quartz-site-presentation）
+
+- 直前の日本語タイトル付与／Explorer フォルダ名日本語化を踏まえ、公開サイトの表示規約を [[quartz-site-presentation]] に新規 filing back（URL=英語 slug 不変／表示タイトル=frontmatter `title`／Explorer のフォルダ見出しは `quartz.layout.ts` の `mapFn`／`mapFn`・`sortFn` は client 側で `.toString()`→再評価されるため自己完結必須、という落とし穴まで）。
+- [[wiki-driven-workflow]] から backlink、`index.txt` 再生成（345 ページ）、lint green。次に見る: deploy 後の実レンダリング確認。
+
 ## [2026-10-14 10:00] filing-back | wiki 全体ヘルスチェック（dynamic workflow）→ 安全な修正を適用
 
 - 7 agent workflow で意味的スイープ（stale/矛盾/カバレッジ/公開境界/読者適合/構造）。検出→**AI が安全に直せるものを修正**。
@@ -761,8 +766,3 @@
 
 - 既定のCLI実行が可視化の段階で失敗する不具合をmain `a12d68e` で再現し、topic branchで修正と回帰テストを用意（未push）。[[meeting-report-draft]]に進行中として記録。
 - 関連: クイックスタートが案内する `report_url_pattern` が設定検証で弾かれる別件あり。Issue化はこれから。
-
-## [2026-10-07 10:00] filing-back | 小型ローカルLLMの意見抽出で起きた意味の書き換えを記録
-
-- 非公開の試行から、Qwen3 4B の抽出で見えた失敗の型（主張の主体の逆転・関係の捏造・感情の言い換え・要求の脱落・反復の水増し）を [[local-llm-extraction-faithfulness-2026-10-05]] に一般化して記録。原文・データ詳細は載せていない。
-- [[llm-providers]] から参照。Open Question: 日本語の入力でも同じ失敗が起きるか。

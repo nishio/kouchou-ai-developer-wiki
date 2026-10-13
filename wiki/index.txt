@@ -22,6 +22,7 @@ meeting-report-2026-10-10	concept	concepts/meeting-report-2026-10-10.md	2026-06-
 meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる
 pipeline	concept	concepts/pipeline.md	解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
 plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を plugin 化する設計。v5.0 の中核
+quartz-site-presentation	concept	concepts/quartz-site-presentation.md	公開 Quartz サイトの表示規約。URL は英語 slug（ファイル名）のまま、ページ見出しと Explorer の表示名は frontmatter title（日本語）で与える。Explorer のフォルダ見出しは quartz.layout.ts の mapFn で日本語化し、mapFn/sortFn は client 側で再評価されるため制約がある
 testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
 thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
 usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理
