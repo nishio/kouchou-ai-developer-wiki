@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:00] filing-back | PR-887 sanitize の粒度を nishio レビューで確定
+
+- 「これ削る必要あったかな？」の問いに Batch 4 sanitize の実状を再確認。除去したのは生テレメトリ（health JSON・console/system ログ逐語）＋ revision 実 ID・resource サイズ実値行のみで、教訓（`exit 137`=OOM SIGKILL、latest≠latestReady の false-positive 機序）と物語の肝になる数字（1Gi→2Gi）は残置済みと判明。
+- nishio が**現状維持（option A）で確定**。方針「生データ/個体識別子は除去・portable な教訓と物語の肝になる数字は残す／目的は secret 防衛でなく境界衛生＋整合／verbatim は raw/ 退避で可逆」を [[wiki-self-audit-2026-10-12]] の Updates に明文化。残課題②の sanitize 面を close。
+
 ## [2026-10-13 22:15] filing-back | #876 / #977 の live state を確認
 
 - nishio 依頼で docs 系 2 issue を `gh issue view` で live 確認。両者 open のまま wiki 記録と一致。
@@ -554,8 +559,3 @@
 
 - 非公開の試行から、Qwen3 4B の抽出で見えた失敗の型（主張の主体の逆転・関係の捏造・感情の言い換え・要求の脱落・反復の水増し）を [[local-llm-extraction-faithfulness-2026-10-05]] に一般化して記録。原文・データ詳細は載せていない。
 - [[llm-providers]] から参照。Open Question: 日本語の入力でも同じ失敗が起きるか。
-
-## [2026-10-06 22:40] filing-back | 自治体PCでのWSL2起動報告とWindows入口の推奨案
-
-- 大木の Slack 報告（WSL2 + `start_linux.sh` で自治体 PC 上で動作）を [[slack-municipal-pc-wsl2-2026-10-05]] として source 化。
-- [[windows-distribution-options]] にルート B 初の実機成功例、政府機関は Docker Desktop が有料という規約、#877 前提の見直し、WSL 3 は様子見、を追記。推奨案は大木の反応待ち。
