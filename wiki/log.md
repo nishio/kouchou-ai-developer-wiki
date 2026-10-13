@@ -145,7 +145,7 @@
 ## [2026-10-14 00:42] filing-back | Explorer を更新新しい順に変更（ABC→recency）＋ client 再評価の落とし穴を記録
 
 - 公開 wiki の Explorer を ABC 順 → **更新新しい順**へ。`quartz.layout.ts` に `sortByRecency`（フォルダは配下の最新更新日で代表・同点辞書順）、`contentIndex.tsx` で client 用 index の `date` を保持（削除をやめた）。日付は `defaultDateType=modified`≒git 最終コミット時刻。
-- **既知の落とし穴を発見・記録**: Explorer の sort/map/filter は client で `.toString()`→`new Function` 再評価されるため、inner named 関数は esbuild の `--keep-names` が注入する `__name` 参照で `ReferenceError` を起こす（build は Node 側に `__name` があり通るので気づけない）。反復（明示スタック）で回避し、client 相当で再評価検証。[[quartz-explorer-sort-and-client-fn-gotcha]] に filing。
+- **既知の落とし穴を発見・記録**: Explorer の sort/map/filter は client で `.toString()`→`new Function` 再評価されるため、inner named 関数は esbuild の `--keep-names` が注入する `__name` 参照で `ReferenceError` を起こす（build は Node 側に `__name` があり通るので気づけない）。反復（明示スタック）で回避し、client 相当で再評価検証。knowledge は既存の [[quartz-site-presentation]] に統合（別セッションが同主題の concept を新設していたため重複ページは作らず、date 保持と build≠client 検証の 2 点を Updates 追記）。
 - 別セッションの日本語 title・フォルダ名日本語化と合わせサイドバーの閲覧性が改善。次に見る: 公開サイトで新順序の見え方。
 
 ## [2026-10-14 00:39] filing-back | Dependabot 技術ノウハウを gotchas へ＋[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI green 追記

@@ -49,3 +49,9 @@ Explorer に渡した `mapFn` / `sortFn` は、サーバで `.toString()` によ
 - `scripts/build_index_txt.py` — frontmatter `summary` から AI 向けカタログ `index.txt` を生成（`title` は使わない。表示用と AI カタログ用は別物）。
 
 二層運用の全体像は [[wiki-driven-workflow]]、コントリビュート手順は [[contributing]] を参照。[[source-code]]より
+
+## Updates
+
+- 2026-10-14: `sortByRecency`（Explorer を更新新しい順）の前提を 2 点補足。
+  - **client 側ソートには `contentIndex.tsx` で date を残す必要がある**。emitter はデフォルトで client 用 index（`static/contentIndex.json`）から `date` を削除する（`delete content.date`、RSS 用途だけ残す設計）。これを外さないと client の `FileTrieNode.data.date` が undefined になり、全ページが同点＝実質アルファベット順に戻る。今回この削除をやめて date を保持した。「更新日」は `defaultDateType=modified`≒git 最終コミット時刻で、一括コミットは多数ページを同日に揃えるため同点は辞書順にフォールバックする。
+  - **「`pnpm build` が通れば OK」では検証不十分**。`__name` の落とし穴は client 再評価時の `ReferenceError` で、build（Node 側に `__name` がある）は通ってしまう。確実な確認は、生成 HTML の `data-data-fns` から `sortFn`/`mapFn` 文字列を取り出し、`new Function("return "+s)()` で**グローバルスコープ再評価して throw しないこと**を見る（Node でそのまま呼ぶと素通りする）。[[source-code]]より

@@ -315,7 +315,6 @@ public-viewer-runtime-build-history-2026-06-01	analysis	analyses/public-viewer-r
 pypi-auto-release-requirements	analysis	analyses/pypi-auto-release-requirements.md	`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線
 pypi-release-timing-automation	analysis	analyses/pypi-release-timing-automation.md	PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先
 pypi-release-trigger	analysis	analyses/pypi-release-trigger.md	`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない
-quartz-explorer-sort-and-client-fn-gotcha	analysis	analyses/quartz-explorer-sort-and-client-fn-gotcha.md	developer-wiki の Explorer を ABC 順から更新新しい順へ。sortFn/mapFn/filterFn は client で再評価されるため date を index に残す必要があり、inner named 関数は esbuild の __name 注入で壊れる
 readme-anchor-freeze-and-docs-entry-2026-10-13	analysis	analyses/readme-anchor-freeze-and-docs-entry-2026-10-13.md	README への外部アンカーリンクを理由に README 改訂を止めるのは、README を永久凍結する footgun。外部リンクは安定した個別ドキュメントページに張らせ、README は改訂可能に保つ。非英語話者・非開発者の入口は英語UIの GitHub ではなく実在するドキュメントサイトに寄せる、という nishio の整理
 recent-slack-issues-2026-09-07	analysis	analyses/recent-slack-issues-2026-09-07.md	最近のSlackとIssueを、処理の完全性・モデル選択の整合性・継続保守・serverless方針に分けて読む
 refactoring-status	analysis	analyses/refactoring-status.md	v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up
