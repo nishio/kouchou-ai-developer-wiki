@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 00:50] ingest | Tier 0 docs cleanup を PR #998 で投入（本体 repo）
+
+- 本体 `digitaldemocracy2030/kouchou-ai` に [PR #998](https://github.com/digitaldemocracy2030/kouchou-ai/pull/998)（`codex/docs-nav-validation-embedding`, +13/-0）を作成。nav 未登録 6 ページ登録 + `validation.nav.omitted_files: warn`（CI rot-gate）+ cli-quickstart の `embedding.model` 行（#450 docs 追従）。
+- `work/kouchou-ai-docs-tier0` worktree で作業（二分原則: work/kouchou-ai は main 固定）。検証＝mkdocs 1.6.1+material で strict build green、一時 orphan で strict が `Aborted with 1 warnings`（gate 発火）を確認。
+- [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] / [[meeting-report-draft]] に反映。次＝PR #998 の CI/レビュー→merge→`v4.1.0` tag、T1-a/b/c。
+
 ## [2026-10-14 00:35] filing-back | nishio が ①-⑤ に go、解決内容と version 方針を確定
 
 - **① #876 分割:可**（additive index.md router=T1-a を子 slice で今出す / rename は Tier 3）。**② managed service:現状なし**（提供者が現れる余地は残す）→ spine tier2 = managed なし/仲介者=現route/self-host に確定、長年の Open Question 解決。**③ 保守ゲート:可**（非ブロッキング）。**⑤ rot-gate を拡張前:OK**。

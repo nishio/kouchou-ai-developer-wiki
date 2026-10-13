@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 00:50	ingest	Tier 0 docs cleanup を PR #998 で投入（本体 repo）
 2026-10-14 00:35	filing-back	nishio が ①-⑤ に go、解決内容と version 方針を確定
 2026-10-14 00:20	filing-back	docs roadmap にクリティカルパス（先に解決すべき順）を追加
 2026-10-14 00:10	filing-back	docs roadmap に実行チェックリストを grounding
