@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 11:52] filing-back | ヘルスチェック残項目: analysis-stance↔faithful-aggregation 橋渡し + ecosystem-vision 発見性
+
+- 「go」。needs_human の安全分のみ対応。analysis-stance と faithful-aggregation-vs-deliberation-dynamics に相互リンクと橋渡し文を追加（「忠実な集約」は定量分析倒れではなく、歪めず写した地図を構造として読ませる設計＝構造把握スタンスと矛盾しない、を両ページで明示）。
+- concept-grade hub のうち index.md 未掲載だった broadlistening-tool-ecosystem-vision を curated nav（analysis-stance 直後）に並置。type 変更（concept 化＝sources 必須・Explorer 再分類）はリスクなので採らず、発見性は index.md 並置で担保。
+- current-status 系列は within-series supersede 済み（06-30→10-05）、daily-report 系列は各日の記録で相互置換しない性質と確認し無編集。2系列の統合/改名は構造判断として nishio に委ねる。lint clean。次: deploy green 確認。
+
 ## [2026-10-14 11:45] filing-back | Q4（編集整理）完了 — transcript 圧縮・指示フレームの事象化
 
 - ヘルスチェック Q4 の substance 判断分を完了。label-coverage-policy-2026-05-29 の「今回の流れ」逐語 transcript を、再利用可能な分業ループ（実験→LLM judge で論点→人間が方針→コード裏取りで政策化）＋事実に圧縮し、会話ログ的記述（「Claude Code に judge させた」等）を一般化。
