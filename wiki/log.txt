@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 05:00	ingest	Tier 3 完了見込み：#876 rename merge・live 確認、#977 を PR #1006
 2026-10-14 04:20	ingest	Tier 3 の #876 rename を PR #1005（getting-started → self-hosting + redirects）
 2026-10-14 03:40	ingest	content gap 3 PR を merge・docs サイト反映
 2026-10-14 03:10	ingest	persona レビューの content gap を 3 PR で起票（#1002/#1003/#1004）

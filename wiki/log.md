@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 05:00] ingest | Tier 3 完了見込み：#876 rename merge・live 確認、#977 を PR #1006
+
+- **#876 rename merge 済み（#1005 → main `41e91010`）・live 確認**：旧 `getting-started/windows-setup` が 200 を返し `self-hosting/windows-setup` へ redirect することを公開サイトで確認。getting-started/ は self-hosting/ に、nav は「セルフホスト」に。
+- **#977 を PR #1006**：`ReporterContent.tsx` の README#メタデータ 直リンクを安定 docs ページ `user-guide/metadata-setup` へ張替え、how-to-use に明示アンカー `{#pre-publish-check}` 付与、新 docs ページ新設・nav 登録・self-assign。docs build green。
+- 副次確認: #1006 で **T1-c の how-to-use reminder workflow が実発火し pass**（how-to-use を触っているので nag なし）＝保守ゲートが本番で機能。
+- **Tier 3 は #1006 merge で完了**。残: #1006 merge / #542 の README.en・ko follow-up / #542・#977 の close 判断。
+
 ## [2026-10-14 04:20] ingest | Tier 3 の #876 rename を PR #1005（getting-started → self-hosting + redirects）
 
 - Tier 3 着手（nishio 指示）。#876 本丸の **`docs/getting-started/` → `docs/self-hosting/` 改称**を PR #1005 で起票。旧 URL は **mkdocs-redirects** で救済（`getting-started/*` → `self-hosting/*` の redirect_maps、nishio 承認方針）。
