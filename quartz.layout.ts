@@ -36,6 +36,25 @@ const sortByRecency = (a: FileTrieNode, b: FileTrieNode): number => {
   })
 }
 
+// Explorer のフォルダ見出しを日本語化する。ページ(ファイル)の表示名は各
+// frontmatter の title が使われるが、フォルダ名は slug (concepts 等) のままに
+// なるので、ここで node.displayName を上書きする。
+// sortByRecency と同様この関数も .toString() で直列化され client 側で再評価
+// されるため、inner named 関数・外部参照を置かない（object literal と built-in のみ）。
+const mapFolderLabels = (node: FileTrieNode): void => {
+  if (!node.isFolder) return
+  const labels: Record<string, string> = {
+    concepts: "概念",
+    entities: "人物・ツール",
+    sources: "ソース要約",
+    analyses: "考察・分析",
+  }
+  const label = labels[node.slugSegment]
+  if (label) {
+    node.displayName = label
+  }
+}
+
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
@@ -70,7 +89,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() }
       ]
     }),
-    Component.Explorer({ sortFn: sortByRecency })
+    Component.Explorer({ sortFn: sortByRecency, mapFn: mapFolderLabels })
   ],
   right: [
     Component.Graph({
@@ -96,7 +115,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() }
       ]
     }),
-    Component.Explorer({ sortFn: sortByRecency })
+    Component.Explorer({ sortFn: sortByRecency, mapFn: mapFolderLabels })
   ],
   right: []
 }
