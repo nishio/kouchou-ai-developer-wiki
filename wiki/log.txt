@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
+2026-10-13 20:10	filing-back	PR #996（#994 指定カテゴリ分類 CLI）を admin merge
 2026-10-13 19:40	filing-back	#994（#176方向性2）を CLI 実装・PR #996 作成
 2026-10-13 19:30	filing-back	PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
 2026-10-13 19:10	filing-back	#176 方向性(2) を #994 として起票（CLI-first・「その他」必須）

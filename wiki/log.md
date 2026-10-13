@@ -10,6 +10,11 @@
 - **#993**: `open`/`os.fdopen` の encoding 未指定 10 ファイルに `encoding="utf-8"` を明示（読み書き両方）。日本語 Windows cp932 クラッシュ/文字化け対策。
 - 検証: API pytest 318 pass・analysis-core 321 pass・ruff clean。**PR #995**（Closes #992/#993）。CI 待ち。
 
+## [2026-10-13 20:10] filing-back | PR #996（#994 指定カテゴリ分類 CLI）を admin merge
+
+- nishio 指示で #996 を admin squash merge（`42bba8ea`・single-parent）。必要 CI 全 green 後に承認待ちを admin override。worktree/branch 撤去、HEAD は main。
+- #994 に満たした範囲／残件（WebUI 統合・実 LLM フル検証）を記録。**Issue #994 は OPEN 維持**（CLI スコープ達成・WebUI 別 Issue 化は判断待ち）。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 19:40] filing-back | #994（#176方向性2）を CLI 実装・PR #996 作成
 
 - #994 に self-assign し実装。analysis-core の LLM grouping に supervised モード追加（`predefined_groups` で枠の自動発見をスキップ、割当のみ LLM）。
