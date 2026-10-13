@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 02:20] filing-back | 7 persona docs レビュー完了、wiki に整理
+
+- v4.1.0 直後の docs を 7 ペルソナ subagent で top page から読ませた usability レビュー（workflow）。[[docs-persona-review-2026-10-13]] に synthesis を整理。
+- 最大の発見: nav/タイトルのラベル詐称・閲覧者/実務者 FAQ 不在・閲覧者の読み方ページ不在・導入検討(費用/PII/相談先)不在・信頼性/責任ページ不在、＋ import-quickstart L265 の致命バグ（`cluster-id-lv1`→`cluster-level-1-id`、verified）。
+- 含意: **Tier 3 の getting-started rename より content gap の方が読者に効く**。次フェーズの優先順位を再考。テーマ7は #542 の拡張に統合可。
+
 ## [2026-10-14 01:50] ingest | docs 大掃除 4 PR を merge・v4.1.0 発行
 
 - nishio が `!` 実行で #998/#999/#1000/#1001 を admin squash merge（`ec9b1fef`/`9602d6b7`/`129f486f`/`6ad727ee`）。AI 側の `gh pr merge` は harness classifier（Merge Without Review）でブロックされるため nishio 実行。

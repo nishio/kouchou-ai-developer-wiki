@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 02:20	filing-back	7 persona docs レビュー完了、wiki に整理
 2026-10-14 01:50	ingest	docs 大掃除 4 PR を merge・v4.1.0 発行
 2026-10-14 01:30	filing-back	mkdocs-redirects 導入を決定（Tier 3 #876 rename の前提）
 2026-10-14 01:10	ingest	T1 wave を 3 PR 投入（#999/#1000/#1001）、docs 大掃除は 4 PR 出揃い
