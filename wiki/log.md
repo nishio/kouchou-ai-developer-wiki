@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 07:45] filing-back | #876 を close（canonical 入口達成）、残細目を #1012 に引き継ぎ・#496/#921 de-bundle
+
+- nishio go。#876（docs 入口の再構成 umbrella）を **close**。headline「どの起動モードかを1ページで判断」を canonical #1010・demo-first #1000・self-hosting rename #1005・導入ガイド #1003 で達成。達成範囲＋残要件を日付付きコメントで記録。
+- 残細目（README スリム化／起動モード別の落とし穴集約／Docker Desktop 代替・構造把握スタンス・Mode4 データ量）は **follow-up #1012** に引き継ぎ（任意・小）。
+- umbrella 解体: #496（Docker なし＝エンジニアリング）・#921（ブラウザ版本流化＝戦略）は docs 入口と独立のため **de-bundle して存続**。次に見る: #1012（任意）／別テーマ。
+
 ## [2026-10-14 07:20] ingest | 任意残り merge 完了・docs 改善スプリント完全クローズ
 
 - **#1009 merge（`f8356704`）→ #977 CLOSED**（CI link-check: validation.links + GitHub 互換 slugify が本番稼働、docs deploy で全サイトの内部リンク検証が strict に通ることを確認）。**#1010 merge（`4b2d08f9`）**で canonical「始め方の選び方」ページが live（200）。当方 open PR ゼロ。
