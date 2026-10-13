@@ -59,7 +59,19 @@ API に **`POST /api/topics/:id/ai-participate`（AIエージェント参加）*
 - 生成した各件を **`BLOpinion`（`authorId: "ai-agent"`, `fitness: 0`）** として DB に書き込み、`BLPheromone`（intensity/quality 0.5, decayRate 0.01）を紐付ける
 - 要するに **AI が合成意見を意見プールへ注入する**エンドポイント
 
+## 追加読解（2026-10-13、同日）
+
+BroadListening のモデル比較のため、README に加えて次の実コードを `@ d1a9c2b` で読んだ:
+
+- `apps/broadlistening-web/src/lib/llm/`: `embeddings.ts`（TF-IDF 128次元 truncate・空白 tokenize）, `argument-extractor.ts`, `label-generator.ts`, `gap-detector.ts`（analyze/ecosystem route から未使用）
+- `apps/broadlistening-web/src/lib/algorithms/`: `kmeans.ts`（k-means++ / elbow）, `fitness.ts`, `quorum.ts`, `pheromone.ts`
+- `apps/broadlistening-web/src/app/api/topics/[id]/`: `analyze/route.ts`（抽出→埋め込み→クラスタ→fitness→quorum→snapshot）, `ecosystem/route.ts`（2D は fitness 降順 grid、embedding は layout 未使用）
+- `packages/db/prisma/schema.prisma`（BL* モデル）
+
+要点: 埋め込みが非 semantic（TF-IDF を alphabetical 先頭128語に truncate）で日本語 tokenize も分かち書きなし、空間可視化は grid レイアウトで embedding を使っていない。詳細評価は [[ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13]]。
+
 ## このソースから判断すること
 
 - OJPP の「エージェントファースト設計」の具体像・批判的読解は [[ojpp-agent-first-design-read-2026-10-13]] に filing back
+- BroadListening モデルの kouchou-ai との突き合わせ評価は [[ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13]]
 - プロジェクト node は [[ojpp]]

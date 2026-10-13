@@ -14,7 +14,7 @@ sources:
 
 ## なぜ kouchou-ai 開発者に関係するか
 
-- **BroadListening を再実装**している。ただし Argument Mining + デジタルフェロモン(Stigmergy) + 適応度/Shannon 多様性という独自モデルで、[[kouchou-ai]] の抽出→埋め込み→階層クラスタリングとはパイプラインが異なる（[[broadlistening]] の広義/狭義の揺れの一例）
+- **BroadListening を再実装**している。ただし Argument Mining + デジタルフェロモン(Stigmergy) + 適応度/Shannon 多様性という独自モデルで、[[kouchou-ai]] の抽出→埋め込み→階層クラスタリングとはパイプラインが異なる（[[broadlistening]] の広義/狭義の揺れの一例）。コード単位の突き合わせ評価は [[ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13]]（結論: 埋め込み・空間可視化は実装破綻、argument mining / 生態系ダイナミクスは着想価値あり）
 - **MoneyGlass** は政治資金可視化で [[polimoney]] と機能が重なる
 - 開発プロセスが Claude Code / Entire 前提で、`agent/` ラベルの AI PR を歓迎。AI コーディング運用の比較対象になる（[[coding-agents]]）
 - 「**エージェントファースト設計**」という語の中身と、kouchou-ai/DD2030 への射程は [[ojpp-agent-first-design-read-2026-10-13]] で批判的に整理した

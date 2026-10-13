@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-13 12:10	filing-back	OJPP BroadListening モデルを kouchou-ai とコード単位で突き合わせ評価
 2026-10-13 11:30	filing-back	「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
 2026-10-13 10:30	filing-back	#986 を main へ rebase（CONFLICTING 解消・CI 待ち）
 2026-10-13 10:10	filing-back	Yandex DC 攻撃後の『bot 急減』を日本語 SNS(X) で検証可能か→X 単体では非現実的と判断し断念

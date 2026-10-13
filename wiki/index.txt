@@ -267,6 +267,7 @@ non-nishio-human-pr-status	analysis	analyses/non-nishio-human-pr-status.md	2026-
 npm-vs-pnpm	analysis	analyses/npm-vs-pnpm.md	なぜ pnpm 必須で npm 非対応か — plugin システムが要求する node_modules 分離
 ohki-discussion-reflection-2026-05-25	analysis	analyses/ohki-discussion-reflection-2026-05-25.md	ohki-shingo との議論は、散布図互換の技術判断を、自治体利用で公開UIが担うべき説明責務へ引き戻したものとして読める
 ojpp-agent-first-design-read-2026-10-13	analysis	analyses/ojpp-agent-first-design-read-2026-10-13.md	『エージェントファースト設計』の批判的読解。agent-as-consumer / participant / co-developer の3義に分解し、kouchou-ai broadlistening との緊張（ai-participate）と転用可能な部分を整理
+ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13	analysis	analyses/ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13.md	OJPP BroadListening と kouchou-ai のモデルをコード単位で突き合わせた評価。OJPP は埋め込み(TF-IDF truncate)と空間可視化(grid)が破綻、argument mining と生態系ダイナミクスは着想価値あり。kouchou-ai は忠実な地図化に一貫
 one-factor-experiment-principle-2026-06-02	analysis	analyses/one-factor-experiment-principle-2026-06-02.md	pipeline 実験は探索 corpus と採用判断用の clean experiment を分け、採用判断では current main baseline から `factor_under_test` を 1 つだけ変えるべきという実験設計原則。ラベル品質は単独批評ではなく A/B preference で人間評価し、複数要素変更 run は単独で winner 判定しない
 open-decisions	analysis	analyses/open-decisions.md	未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類
 other-issue-candidates-2026-09-07	analysis	analyses/other-issue-candidates-2026-09-07.md	open Issue 128件から#905以外の次候補を検討。#908/#477の重複、#452のtimeout受け渡し欠落、#884・#877の実装単位と#898の検証待ちを整理

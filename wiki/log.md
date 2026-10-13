@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 12:10] filing-back | OJPP BroadListening モデルを kouchou-ai とコード単位で突き合わせ評価
+
+- OJPP `@ d1a9c2b` の `broadlistening-web/src/lib/{algorithms,llm}` と analyze/ecosystem route を実読、kouchou-ai は `work/kouchou-ai main 8f402d2e` の `analysis-core/steps/` を一次参照。
+- 核心: OJPP の「埋め込み」は **TF-IDF を alphabetical 先頭128語に truncate + 空白 tokenize（日本語分かち書きなし）** でクラスタの土台が破綻、「生態系可視化」も **fitness 降順 grid で embedding 未使用**。`gap-detector` は route 未使用。一方 **argument mining / gap detection / 時間発展 snapshot** は kouchou-ai にない別軸の着想価値。
+- kouchou-ai は実埋め込み+UMAP+Ward 階層+LLM ラベルで「忠実な地図化」に一貫。採る候補=構造化抽出/gap/時系列、採らない=TF-IDF truncate・AI 意見注入・quorum 自動 CLOSE。新規 [[ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13]]。
+
 ## [2026-10-13 11:30] filing-back | 「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
 
 - nishio から外部 repo `ochyai/open-japan-politech-platform` 参照依頼。README + `ai-participate` route を読み、語を **(A)agent-as-consumer / (B)agent-as-participant / (C)agent-as-co-developer** の3義に分解。実装の大半は標準的な API-first で、agent 専用項目は `v0.2` 未実装（repo は 2026-03 以降 dormant）。

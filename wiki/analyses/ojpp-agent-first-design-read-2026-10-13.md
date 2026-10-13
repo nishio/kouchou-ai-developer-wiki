@@ -52,4 +52,4 @@ sources:
 
 - DD2030/kouchou-ai は (B) agent-as-participant を望むのか。望むなら人間信号との分離設計が要件（§4）
 - kouchou-ai のレポートを MCP / API で agent-consumable にする需要と優先度（(A) は低リスクで着手しやすい）
-- OJPP の BroadListening モデル（フェロモン/適応度/Shannon）は kouchou-ai の階層クラスタリングに対し、評価可能な別アプローチか、それとも demo 的演出か（repo が dormant なため後者寄りに見える）
+- OJPP の BroadListening モデル（フェロモン/適応度/Shannon）は kouchou-ai の階層クラスタリングに対し、評価可能な別アプローチか、それとも demo 的演出か → コード実読で検証した: [[ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13]]（埋め込み・空間可視化は破綻＝demo 的、argument mining / gap detection / 時間発展は別軸の着想として価値）
