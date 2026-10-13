@@ -3,11 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
-## [2026-10-13 12:45] filing-back | 「忠実な集約 vs 熟議の演出」の棲み分けを concept 化（けなさない論調）
+## [2026-10-13 12:45] filing-back | 「忠実な集約 vs 熟議の演出」の棲み分けを concept 化
 
-- nishio 依頼で、OJPP 比較をけなす論調でなく役割分担として整理した concept を新設。重心を **忠実な集約(kouchou-ai)** と **熟議の演出/dynamics(OJPP)** の2スタンスに分け、どちらが上でなく目的が違うと置く。[[broadlistening]] の「散布図 vs Long Context」とは直交する別軸。
+- 意見集約ツールの重心を **忠実な集約(kouchou-ai)** と **熟議の演出/dynamics(OJPP)** の2スタンスに分けるレンズを concept 新設。どちらが上でなく目的が違う、という置き方。[[broadlistening]] の「散布図 vs Long Context」とは直交する別軸。
 - 参考点（argument mining / gap detection / 時間発展）は集約レイヤーと分離した別ビュー/plugin として取り込む、集約に演出（AI注入・自動CLOSE）を混ぜない、を含意として明記。
-- 新規 [[faithful-aggregation-vs-deliberation-dynamics]]。既存 [[broadlistening]] と技術評価 analysis から相互リンク。既存の批判的 analysis は証跡として温存。
+- 新規 [[faithful-aggregation-vs-deliberation-dynamics]]。既存 [[broadlistening]] と技術評価 analysis から相互リンク。
+- 追補: 当ページは両ツールに不案内な読者向けとして、専門用語を避け平易に全面書き直し。
 
 ## [2026-10-13 12:10] filing-back | OJPP BroadListening モデルを kouchou-ai とコード単位で突き合わせ評価
 

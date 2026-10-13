@@ -18,7 +18,7 @@ sources:
 - **kouchou-ai は「忠実な意見の地図化」に一貫**。実埋め込み + UMAP + 階層クラスタリング + LLM ラベリング。合意形成・収束判断は人間に委ねる。目的に対し設計が揃っている。
 - 「どちらが上か」は目的次第だが、**「人間の意見分布を正確に把握する」目的では kouchou-ai が明確に上**。OJPP から kouchou-ai が採れるのは **argument mining / gap detection / 時間発展**という別軸の着想で、埋め込み・AI 注入・自動 CLOSE は採ってはいけない。
 
-> このページは実装の技術評価（証跡）。同じ比較を**けなす論調でなく「忠実な集約」と「熟議の演出」の役割分担**として読み解いた解説は [[faithful-aggregation-vs-deliberation-dynamics]] にまとめた。
+> このページは実装レベルの技術評価。前提知識のない読者向けに、両ツールの役割の違い（「忠実な集約」と「熟議の演出」）として平易に解説したページは [[faithful-aggregation-vs-deliberation-dynamics]]。
 
 ## パイプライン対応表
 

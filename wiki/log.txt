@@ -3,7 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
-2026-10-13 12:45	filing-back	「忠実な集約 vs 熟議の演出」の棲み分けを concept 化（けなさない論調）
+2026-10-13 12:45	filing-back	「忠実な集約 vs 熟議の演出」の棲み分けを concept 化
 2026-10-13 12:10	filing-back	OJPP BroadListening モデルを kouchou-ai とコード単位で突き合わせ評価
 2026-10-13 11:30	filing-back	「エージェントファースト設計」の意味を OJPP(ochyai) 読解で整理
 2026-10-13 10:30	filing-back	#986 を main へ rebase（CONFLICTING 解消・CI 待ち）

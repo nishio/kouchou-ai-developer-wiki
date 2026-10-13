@@ -11,7 +11,7 @@ cli	concept	concepts/cli.md	kouchou-analyze CLI と python -m analysis_core — 
 coding-agents	concept	concepts/coding-agents.md	Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態
 contributing	concept	concepts/contributing.md	コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
 deployment	concept	concepts/deployment.md	デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する
-faithful-aggregation-vs-deliberation-dynamics	concept	concepts/faithful-aggregation-vs-deliberation-dynamics.md	broadlistening 系ツールの重心を『忠実な集約』と『熟議の演出(dynamics)』の2スタンスで棲み分けるレンズ。kouchou-ai は前者、OJPP BroadListening は後者寄り。どちらが上ではなく目的が違う
+faithful-aggregation-vs-deliberation-dynamics	concept	concepts/faithful-aggregation-vs-deliberation-dynamics.md	意見集約ツールの重心を『忠実な集約(どんな意見がどれくらいあるかを正確に写す)』と『熟議の演出(議論の構造・動き・欠落を見せる)』の2つに分けて理解するレンズ。kouchou-ai は前者、OJPP BroadListening は後者寄り
 kouchou-ai	concept	concepts/kouchou-ai.md	広聴AI — DD2030 配下の OSS ブロードリスニング実装。CSV → 抽出 → 埋め込み → 階層クラスタリング → 可視化
 llm-providers	concept	concepts/llm-providers.md	対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装
 local-dev-setup	concept	concepts/local-dev-setup.md	ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで
