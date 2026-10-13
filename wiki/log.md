@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 03:40] ingest | content gap 3 PR を merge・docs サイト反映
+
+- #1002/#1003/#1004 を nishio が admin squash merge（`9b9349ae`/`8fab0ab9`/`45f989bd`）。docs サイト再デプロイ green を確認。新ページ（レポートの読み方／導入を検討する方へ／信頼性と責任の所在）・刷新 FAQ・目的別ガイド拡充・責任3レイヤー免責（footer 2コピー＋README）が反映。
+- **persona レビュー → content gap 解消が完了**。#542 は PR #1004 で対応（本文クローズ判断は nishio）。
+- 残り: #542 の README.en/ko 反映（follow-up）／Tier 3（#876 rename＝mkdocs-redirects・#977 anchor 移行）。次に見る: Tier 3 着手可否と #542 クローズ。
+
 ## [2026-10-14 03:10] ingest | persona レビューの content gap を 3 PR で起票（#1002/#1003/#1004）
 
 - content gap 優先（nishio 決定）を受け、persona レビューの指摘を本体 repo に投入：**#1002**（quick fix: import-quickstart の KeyError 修正＋保存済み UMAP 座標使用 / nav ラベル是正 / model-catalog 注記）、**#1003**（content: 閲覧者「レポートの読み方」・「導入を検討する方へ」〈費用/PII/相談先〉・「信頼性と責任の所在」〈責任3レイヤー〉新設、FAQ を閲覧者向けに刷新し旧 dev FAQ を development へ移設、index 目的別ガイド拡充）、**#1004**（#542: footer 2コピー＋README 免責に責任3レイヤー、#542 を self-assign）。
