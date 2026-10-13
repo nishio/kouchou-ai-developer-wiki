@@ -23,6 +23,12 @@
 - 新規 [[faithful-aggregation-vs-deliberation-dynamics]]。既存 [[broadlistening]] と技術評価 analysis から相互リンク。
 - 追補: 当ページは両ツールに不案内な読者向けとして、専門用語を避け平易に全面書き直し。
 
+## [2026-10-13 12:30] filing-back | #986 を admin merge（#982–987 ラウンド全消化）
+
+- rebase 後 **CI 全 9 green** を確認し nishio 指示で **#986（#306 散布図）を admin squash merge**（`c1c9e917`）。**Issue #306 は OPEN のまま**（サブ改善・closing keyword なし＝一部解決）。
+- 後片付け: rebase worktree `work/kouchou-ai-986` 削除、merge 済み #984 の stale worktree `work/kouchou-ai-984` も削除。本体 HEAD は main。
+- **#982–987 ラウンド＋独立 #975 は全 merge 完了**。残 open PR は **#891（Windows スタンドアロン・Draft）のみ**。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 12:10] filing-back | OJPP BroadListening モデルを kouchou-ai とコード単位で突き合わせ評価
 
 - OJPP `@ d1a9c2b` の `broadlistening-web/src/lib/{algorithms,llm}` と analyze/ecosystem route を実読、kouchou-ai は `work/kouchou-ai main 8f402d2e` の `analysis-core/steps/` を一次参照。
