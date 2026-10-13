@@ -61,7 +61,7 @@ WebUI を作り込む前に core/CLI で実行可能にする方針（[[broadlis
 
 ## コミュニティ
 
-v4.1.0 は **複数コントリビュータのリリース**になった点が v4.0.0 との大きな違い。新規 2 名（yasumorishima＝空白コメント除去・shell-build 計画、katsushi2441＝Ollama ポート・韓国語 README）に加え、既存の中心的コントリビュータ tokoroten（Docker 縮小・散布図・エラー改善）、shingo-ohki（CI/デプロイ/依存）、Copilot/Devin 併用の PR も。OSS として人が増える局面に入っている。
+v4.1.0 も従来どおり複数のコントリビュータによるリリース。nishio が大半の PR を主導しつつ、既存の中心的コントリビュータ tokoroten（Docker 縮小・散布図・エラー改善）・shingo-ohki（CI/デプロイ/依存）、新規コントリビュータ 2 名（yasumorishima＝空白コメント除去・shell-build 計画、katsushi2441＝Ollama ポート・韓国語 README）、Copilot/Devin 併用の PR などが含まれる。
 
 > **申し送り（nishio 指示 2026-10-14）**: **v5.0.0 のリリース時には、この v4.0.0~4.1.0 のコントリビュータも「後見者」として credits/謝辞に明示する**こと。v5.0.0 サイクルの新規貢献者だけで終わらせず、前サイクルで土台を築いた人への敬意を欠かさない。全量は `gh release view v4.1.0` / `compare/v4.0.0...v4.1.0` で再取得できる。
 
@@ -76,4 +76,4 @@ v4.1.0 は **複数コントリビュータのリリース**になった点が v
 ## Open Questions
 
 - v4.1.0 は v4.0.0 から ~10 か月・~160 PR と幅が広い。リリース頻度（もっと刻むか）と、マイナー/メジャーの切り方の基準は明文化されていない。
-- 新規コントリビュータ増に伴い、CONTRIBUTING / docs の開発者導線（[[kouchou-ai-docs-overhaul-2026-10]] で着手）と、レビュー・CI ゲートの運用負荷のバランスが今後の論点。
+- コントリビュータが継続的に参加する中で、CONTRIBUTING / docs の開発者導線（[[kouchou-ai-docs-overhaul-2026-10]] で着手）と、レビュー・CI ゲートの運用負荷のバランスが今後の論点。
