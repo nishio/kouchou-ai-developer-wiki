@@ -139,6 +139,12 @@
 - **#877 は CLOSED**（PR #929「Windows導入の対象環境と失敗時の確認順」で 2026-09-08 close、6 月の [[windows-setup-guide-outline-2026-06-30]] がほぼ landing）。**PR #903（Node runtime inventory）は MERGED**（2026-09-08）。**#885 は open のまま shell-build 方式で前進**（yasumorishima, 9 月、[[pr-935-936-overview-2026-09-09]] 系へ具体化）。
 - [[kouchou-ai-docs-policy-history]] の「現在の状態」と freshness 注記を実測へ更新。
 
+## [2026-10-13 23:09] filing-back | Azure デプロイを secret rotate で復旧・OIDC 移行 PR #1011 を draft 化
+
+- `Azure Deployment` が SP client secret 期限切れで login step で全失敗していた（約2か月・docs push でも赤）→ secret rotate（az CLI 生成）で復旧し全ステップ green を確認。
+- 恒久策として OIDC（federated credential）移行 PR #1011 を draft で用意（`creds:`→`client-id/tenant-id/subscription-id`、job に `id-token: write` 追加）。merge 前提＝Azure federated credential（Environment=production）＋GitHub 環境変数 3 つ。
+- meeting-report-draft に追記。デプロイ実環境詳細は公開境界に従い公開 wiki 非掲載（Google Drive 管理）。次に見る: Azure/GitHub 設定→#1011 merge→workflow_dispatch 検証→不要 secret 削除。
+
 ## [2026-10-13 23:00] filing-back | PR-887 sanitize の粒度を nishio レビューで確定
 
 - 「これ削る必要あったかな？」の問いに Batch 4 sanitize の実状を再確認。除去したのは生テレメトリ（health JSON・console/system ログ逐語）＋ revision 実 ID・resource サイズ実値行のみで、教訓（`exit 137`=OOM SIGKILL、latest≠latestReady の false-positive 機序）と物語の肝になる数字（1Gi→2Gi）は残置済みと判明。
