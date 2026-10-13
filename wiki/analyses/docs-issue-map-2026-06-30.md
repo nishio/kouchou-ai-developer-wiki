@@ -87,6 +87,7 @@ PR #903 は `#885` の第1完了条件を前進させる docs PR。人間 author
 
 ## Updates
 
+- 2026-10-13: 本マップの Safe Next Steps はその後の 2026-09-08〜09 wave でほぼ消化された（#877→PR #929 CLOSED / PR #903 MERGED / #884→PR #922 CLOSED / #696→PR #924・#24 CLOSED）。2026-10-13 live 確認で残る OPEN は #876（入口 spine、新規議論なし）/ #885（shell-build で前進）/ #977（README アンカー、新規）/ #542（責任所在、ノータッチ）。現在の棚卸しと方針系譜は [[kouchou-ai-docs-policy-history]] を一次参照とし、本ページは 2026-06-30 時点の依存関係スナップショットとして読む。
 - 2026-06-30: #696/#542 reading guide docs の scope に、課題発見ツール説明、外部向け利用時の注意、termsLink と OSS 免責の分離を追記。
 - 2026-06-30: #696/#542 reading guide docs を docs-safe lane に追加し、次 PR choice matrix を追記。
 - 2026-06-30: [[github-pr-891-live-2026-06-30]] / [[pr-891-standalone-packaging-scope-2026-06-30]] を追加し、PR #891 は docs issue ではないが #885 prototype lane として横断地図に接続。

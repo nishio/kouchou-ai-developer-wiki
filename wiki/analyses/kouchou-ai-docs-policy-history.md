@@ -89,6 +89,14 @@ README を英語デフォルト化（PR #966）→日本語へ差し戻し（PR 
 
 ## 現在の状態（wiki 観測ベース）
 
+**2026-09 wave 後の棚卸し（2026-10-13 live 確認で判明）**: 6/30 の [[docs-issue-map-2026-06-30]] が並べた docs レーンは、**2026-09-08〜09 の merge / close wave でほぼ消化された**（#877 Windows guide → PR #929、PR #903 Node inventory → merge、#884 作成前確認 → PR #922、#696 誤読防止 → PR #924・#24）。残る docs 方針の宙吊りは次の 3 点に絞られる：
+
+1. **入口 spine の本丸 #876**（nishio assigned だが 2026-05-31 以降の議論なし）— demo-first spine / `getting-started/` rename という「書けば済む」より大きい docs product design
+2. **README アンカー衛生 #977**（2026-10-12 起票・ノータッチ）— 安定 URL を docs 側へ寄せる判断 1 の root-cause
+3. **レポート責任所在 #542**（2025-05-19 起票・ノータッチ）— reading-guide レーンの片割れ。「読み方」(#696) は landing したが「責任所在」は未着手
+
+3 点とも **実装レーン（#885 shell-build 等）より人間の方針判断待ち** が残っている部分であり、文言を書く作業ではなく入口設計・安定 URL 設計・責任分界の意思決定が律速。
+
 - **#876**（developer quickstart / docs entry 再構成）: **2026-10-13 live 確認で open / nishio assigned / label `documentation`**。コメントは 2026-05-31 の 1 件（PR #883 撤回 + 新方針）のみで、6/30 以降の新しい議論なし。developer-quickstart.md はまだ本体 main に未実装の見込み。
 - **#877**（Windows setup guide scope）: **2026-10-13 live 確認で CLOSED（2026-09-08、nishio assigned / label `documentation`）**。**PR #929「docs: Windows導入の対象環境と失敗時の確認順を明確化」（nishio, branch `codex/issue-877-windows-guide`, merged 2026-09-08）で close**。6 月に wiki で整理した [[windows-setup-guide-outline-2026-06-30]]（対象環境 / 対象外環境 / 失敗時の確認順）がほぼこの形で landing した。
 - **PR #903**（Node runtime inventory docs, #885 第1完了条件）: **2026-10-13 live 確認で MERGED（2026-09-08, yasumorishima）**。6/30 は open / review required / blocked だったが、その後 merge 済み。

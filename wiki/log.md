@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 23:55] filing-back | docs 方針 sweep の結論を固定
+
+- 一連の live 確認（#876/#877/#885/#903/#977/#696/#542/#884）の so-what を [[kouchou-ai-docs-policy-history]] の「現在の状態」冒頭に synthesis として明記。
+- 結論: 6/30 [[docs-issue-map-2026-06-30]] の docs レーンは **2026-09-08〜09 wave でほぼ消化**（#877/#903/#884/#696）。残る宙吊りは **#876 入口 spine / #977 README アンカー / #542 責任所在** の 3 点で、いずれも文言作業でなく人間の方針判断待ち。
+- docs-issue-map(6/30) に前方ポインタの Update を付け、現況の一次参照を history ページへ寄せた。次に見る: #876 の再着手判断（spine first slice か単体か）。
+
 ## [2026-10-13 23:45] filing-back | #884 / #696 / #542 の live state を確認
 
 - nishio 依頼で docs 隣接の 3 件を live 確認。#884・#696 は **2026-09-08 に CLOSED**、#542 は **OPEN**（2025-05 起票以来ノータッチ）。
