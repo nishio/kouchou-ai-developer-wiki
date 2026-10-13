@@ -130,6 +130,11 @@
 - `work/kouchou-ai-docs-tier0` worktree で作業（二分原則: work/kouchou-ai は main 固定）。検証＝mkdocs 1.6.1+material で strict build green、一時 orphan で strict が `Aborted with 1 warnings`（gate 発火）を確認。
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] / [[meeting-report-draft]] に反映。次＝PR #998 の CI/レビュー→merge→`v4.1.0` tag、T1-a/b/c。
 
+## [2026-10-14 00:39] filing-back | Dependabot 技術ノウハウを gotchas へ＋[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI green 追記
+
+- 再利用可能な手順を [[gotchas]] に追加: 「Dependabot の transitive は `pnpm update -r`（巻き込み更新）でなく root package.json の範囲 `pnpm.overrides` + `--lockfile-only` で surgical に塞ぐ」。pure-heal-clean 確認で diff を対象だけに絞る。
+- [[dependabot-alerts-2026-10-14]] の ## Updates に [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) の CI 全 green（CodeQL / CodeRabbit / build / e2e / test / Analyze）・MERGEABLE・required human review を追記。merge 判断は人間側で催促はしない。
+
 ## [2026-10-14 00:35] filing-back | nishio が ①-⑤ に go、解決内容と version 方針を確定
 
 - **① #876 分割:可**（additive index.md router=T1-a を子 slice で今出す / rename は Tier 3）。**② managed service:現状なし**（提供者が現れる余地は残す）→ spine tier2 = managed なし/仲介者=現route/self-host に確定、長年の Open Question 解決。**③ 保守ゲート:可**（非ブロッキング）。**⑤ rot-gate を拡張前:OK**。

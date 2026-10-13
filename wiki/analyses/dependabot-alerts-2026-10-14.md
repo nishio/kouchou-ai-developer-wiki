@@ -41,3 +41,8 @@ sources:
 - nishio 指示で、解消見込みの 2 件を **`pnpm.overrides` の範囲ベース pin** で patched 版へ固定する [PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) を作成（`work/kouchou-ai` の topic branch）。proxy-addr 2.0.7→2.0.8 / source-map-js 1.2.1→1.2.2。既存 security pin と同形式で、**lockfile diff は対象 2 件のみ**（`pnpm install --lockfile-only` 前に pure heal が無変更であることを確認し、巻き込み更新を回避）。変更は `package.json` と `pnpm-lock.yaml` のみ。
 - ローカル検証: admin jest 170 passed / public-viewer jest 142 passed、admin・public-viewer（next build）・static-site-builder（tsc）build 成功、biome 問題なし。
 - 上の Open Questions の「lockfile bump が受理されるか」は本 PR で解消見込み（CI でも確認予定）。sprintf-js は upstream 修正版未公開のため本 PR 対象外で、[#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で継続追跡。reviewer request・merge は未実施（CI / 人間レビュー待ち）。
+- 再利用可能な手順は [[gotchas]] の「Dependabot の transitive 脆弱性は `pnpm update -r` でなく範囲 override で塞ぐ」に filing back。
+
+### 2026-10-14 続報 — [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) CI 全 green
+
+- [PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013) の CI は全て pass（CodeQL / CodeRabbit / build ×2 / e2e-tests / test ×2 / Analyze ×4）、`MERGEABLE`。残るは **required human review**（AI からの催促・merge はしない）。merge 判断は人間側。
