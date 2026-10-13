@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-14 00:10	filing-back	docs roadmap に実行チェックリストを grounding
 2026-10-13 23:59	filing-back	docs 改善の direction を 4 層 roadmap に固定し、検証で 3 訂正
 2026-10-13 23:55	filing-back	docs 方針 sweep の結論を固定
 2026-10-13 23:45	filing-back	#884 / #696 / #542 の live state を確認

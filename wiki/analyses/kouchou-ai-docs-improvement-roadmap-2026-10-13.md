@@ -66,6 +66,19 @@ sources:
   - (c) spine tier 2-a「managed service」の実在と、仲介者経路の maintainer/責任分界。managed が不在なら研究者の主入口は CLI + カタログ経由になり、実験機能カタログの重みが上がる。
 - **#977 はアンカー衛生の CI 化とセットで**：mkdocs の link/anchor validation（`validation` ブロックの `not_found`/`unrecognized_links: warn` 等）を Tier 0 のゲートに足してから移行する。でないと移行作業自体が #977 の防ぎたいアンカー腐敗を再生産する。
 
+## 実行チェックリスト（2026-10-13 grounding 済み）
+
+各アクションの file / 変更 / 「直接PR可 or 要判断」を、`origin/main@a570d689` 実読で確定した。dedup 確認済み：**Tier 0/1 をカバーする既存 open issue / PR は無い**（repo の open PR は #891 Windows packaging のみ）。
+
+- **T0-a｜nav 6 ページ登録** — `mkdocs.yml`。`デプロイ` 節に `static-hosting-csp` / `storage-snapshot-operations`、`開発者向け` 節に `model-catalog` / `openai-flex-processing` / `opinion-classification` / `web-ui-node-runtime-dependencies` を各ページ H1 由来のラベルで追加。**直接PR可**（判断ゼロ）。
+- **T0-b｜nav rot-gate** — 同 PR で top-level に `validation:\n  nav:\n    omitted_files: warn` を追加。CI は既に `mkdocs build --strict`、`validation:` ブロックが無く omitted-nav は info 止まりなのが orphan 発生の原因。**T0-a と必ず同一 PR**（gate 単独=main 赤、登録単独=また腐る）。**直接PR可**。
+- **T0-c｜#450 embedding 行追記** — `docs/user-guide/cli-quickstart.md` の「設定項目の説明」表に `embedding.model`（chat 用 `model` と独立・既定 `text-embedding-3-small`）行を追加。code 実在（`embedding.py:11`、他モデルと違い chat model を継承しない=独立が構造的に確定）。#450 は CLOSED なので docs 追従のみ、reopen しない。**直接PR可**。
+- **T1-a｜index.md demo-first intro + 読者像 router**（additive、rename なし） — **要判断**：nishio owns #876（umbrella）。additive slice を #876 の子として今出すか確認。
+- **T1-b｜how-to-use.md catch-up** — #176（AI詳細設定に「分析方式=LLM直接グルーピング」追記）/ #961・#52・#306（新 H2「散布図の操作」に粒度切替・クリック連動・操作ヒント/帰属凡例を集約）。全機能 CLOSED/MERGED。UI が landing 直後なので pixel スクショより behavior-level 記述。**docs-only は直接PR可**。既知の付随事項：可視化節に `詳細クラスタ` が未記載、doc 用語 `濃いクラスタ` と UI ラベル `濃い意見` の不一致を整理。
+- **T1-c｜WebUI docs 非 stale 化プロセス** — PR テンプレ（`.github/PULL_REQUEST_TEMPLATE.md`）のレビュアーチェックリストに how-to-use 更新確認を 1 行 + `apps/public-viewer`/`apps/admin` を触って how-to-use を触らない PR に**非ブロッキング**で comment する新 workflow（`actions/github-script@v7` は既存慣習、`pull_request_target` が要るかは fork 対応の判断）。**要判断**（CI ポリシー・非ブロッキング前提・path 粒度）。注：実フロントは `apps/client` でなく `apps/public-viewer` + `apps/admin`。
+- **T2｜#542 責任所在** — **新ページでなく** footer 免責ダイアログ（`apps/public-viewer/components/Footer.tsx` と `apps/admin/components/Footer/Dialog.tsx` の**2 コピー両方**）+ README 免責に「レポートから下した判断の責任は発行者/利用者に帰属し dd2030/広聴AI は免責」を追記。#539 スレッド由来。**要判断**（文面は org signoff 必須・AI 起案不可）。発行者作成の `利用規約`(meta.termsLink) とは別物なので混同しない。
+- **T3｜#876 spine rename + #977 anchor 移行** — **要判断**（redirect 方針 / anchor 棚卸し / managed 実在。上記 Tier 3 参照）。
+
 ## 構造的な根因と恒久対策
 
 個別ギャップの背後にある root cause は 2 つ。理想像の 2・5 がこれに対応する。

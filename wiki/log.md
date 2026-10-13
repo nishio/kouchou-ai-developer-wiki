@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 00:10] filing-back | docs roadmap に実行チェックリストを grounding
+
+- 「最適化にやるべきこと」を問われ、5 agent workflow で Tier 0/1 の**実行可能な mechanics を実読確定**（nav YAML + `validation.nav.omitted_files: warn` の正確な挿入位置、cli-quickstart の embedding 行、how-to-use の #176/#961/#52/#306 節割り、PR テンプレ行 + 非ブロッキング CI sketch、#542 の設置先）。[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] に「実行チェックリスト」節を追加。
+- dedup 確認: **Tier 0/1 をカバーする既存 open issue/PR は無い**（open PR は #891 のみ）。T0-a/b/c は判断ゼロで直接PR可、T1-a/#876子・T1-c・#542 は要判断。
+- grounding で判明: #542 は**新ページでなく footer 免責 2 コピー + README** の文面修正（org signoff 必須）。実フロントは `apps/public-viewer`+`apps/admin`（`apps/client` は無い）。可視化 docs に `詳細クラスタ` 未記載・`濃いクラスタ`↔`濃い意見` 用語不一致。
+- 次に見る: nishio の go（Tier 0 を直接 PR 化してよいか）と #876 slice 判断。
+
 ## [2026-10-13 23:59] filing-back | docs 改善の direction を 4 層 roadmap に固定し、検証で 3 訂正
 
 - nishio 依頼「docs 改善で何がどうなると良いか」に対し、9 agent workflow で既存 2 ページ（[[kouchou-ai-docs-policy-history]] / [[docs-reader-coverage-audit-2026-10-13]]）の live claim を独立再検証 + 理想像を 3 レンズで起案し収束を取り、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] を新設。
