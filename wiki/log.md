@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 06:00] ingest | #542 の免責を README.en/ko にも反映（PR #1008, closes #542）
+
+- #1004（日本語 README/footer）の責任3レイヤー免責を **README.en.md / README.ko.md にも反映**（PR #1008, closes #542）。2 agent workflow で翻訳→**日本語逆翻訳で内容一致を検証**、既存 LLM バイアス段落は各言語の既存訳を維持。docs 参照は日本語のみのため (Japanese)/（일본어）付記。
+- これで #542（README/footer の責任所在）は JA（#1004）+ en/ko（#1008）で完了見込み。
+- 残: #1008 merge（→ #542 close）/ #977 の CI link-check 追加（任意）/ #876 umbrella の canonical ページ統合（任意）。次に見る: #1008 merge。
+
 ## [2026-10-14 05:30] ingest | Tier 3 完了（#977 PR #1006 merge・metadata-setup live）
 
 - **#1006 merge 済み（main `d759df7c`）**、docs deploy success、`user-guide/metadata-setup` が公開サイトで 200。`ReporterContent.tsx` の README アンカー直リンクは安定 docs ページへ張替え完了。
