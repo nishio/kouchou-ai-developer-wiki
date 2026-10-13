@@ -3,6 +3,14 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 10:00] filing-back | wiki 全体ヘルスチェック（dynamic workflow）→ 安全な修正を適用
+
+- 7 agent workflow で意味的スイープ（stale/矛盾/カバレッジ/公開境界/読者適合/構造）。検出→**AI が安全に直せるものを修正**。
+- **公開境界 regression 修正（high）**: [[kouchou-ai-v4-1-0-release-2026-10]] に混入した CVE 具体 ID を「CVE 対応（依存更新, #808）」粒度へ sanitize（wiki-self-audit の CVE=0 宣言と整合）。
+- **事実訂正（コードで裏取り）**: builtin plugin 数 8/9→**10**（opinion_classification 追加・refactoring-status/plugin-system）、architecture-overview の pandas→**polars**、v4.0.0 日付を **2025-12-27**(UTC) に統一（release 記事/ohki-shingo）、thinking-targets の #876 を CLOSED に。
+- **stale 状態の Updates 追記**: #542/#876/#977 を OPEN/未完と書いた 8 ページ（policy-history / roadmap / meeting-report-draft / docs-reader-coverage / readme-anchor / docs-persona / issue-backlog-audit / open-decisions）に 2026-10-14 注記（CLOSED・managed=現状なし・canonical=[[kouchou-ai-docs-overhaul-2026-10]]）。open-decisions B14/A10（LLM grouping 出荷済み・backend plugin system 存在）も補正。
+- 残は needs_human（concept hub 新設 4 件・index.md curation・supersession 判断・transcript 圧縮等）として nishio へ。次に見る: それらの着手可否。
+
 ## [2026-10-14 09:20] filing-back | wiki 全ページに日本語1行タイトル付与＋Explorer フォルダ名の日本語化
 
 - nishio 指示: 英語 slug のタイトルは分かりにくい。URL は英語 slug のまま、日本人に読みやすい日本語1行タイトルを表示（Explorer も同様）。

@@ -68,7 +68,7 @@ sources:
 - `decorator.py`（`@step_plugin`）
 - `loader.py`（YAML manifest ベースの外部ロード）
 
-`packages/analysis-core/src/analysis_core/plugins/builtin/` に 8 つの builtin plugin が居り、既存ステップ関数を薄くラップしている。
+`packages/analysis-core/src/analysis_core/plugins/builtin/` に 10 個の builtin plugin が居り、既存ステップ関数を薄くラップしている。
 
 ### Phase 3b — workflow engine ✅ 完了
 

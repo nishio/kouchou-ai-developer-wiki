@@ -1,7 +1,7 @@
 ---
 title: "広聴AI v4.1.0 リリース振り返り 2026-10"
 type: analysis
-summary: "kouchou-ai v4.1.0（2026-10-13 発行）リリースの retrospective。v4.0.0（2025-12-26）以降 ~10 か月・約 160 PR・8 コントリビュータ（新規 2 名）を束ねた大型リリース。コア/実験拡張の分離、pandas→polars 移行、散布図まわりの WebUI 強化、CLI/analysis-core の大幅拡張（UMAP 使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立選択）、Docker イメージ縮小と Windows 移植性、AGPL 表記訂正、mkdocs docs サイト新設と多言語化、までをテーマ別にまとめる"
+summary: "kouchou-ai v4.1.0（2026-10-13 発行）リリースの retrospective。v4.0.0（2025-12-27）以降 ~10 か月・約 160 PR・8 コントリビュータ（新規 2 名）を束ねた大型リリース。コア/実験拡張の分離、pandas→polars 移行、散布図まわりの WebUI 強化、CLI/analysis-core の大幅拡張（UMAP 使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立選択）、Docker イメージ縮小と Windows 移植性、AGPL 表記訂正、mkdocs docs サイト新設と多言語化、までをテーマ別にまとめる"
 sources:
   - github-dev-docs.md
   - refactoring-status.md
@@ -11,7 +11,7 @@ sources:
 
 ## 何のリリースか
 
-[[kouchou-ai]] **v4.1.0**（2026-10-13 発行、[release](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.1.0)）は、v4.0.0（2025-12-26）以降に積み上がった **約 160 PR** を束ねたマイナーリリース。期間は ~10 か月、コントリビュータは 8 名（nishio 中心、tokoroten / shingo-ohki / yasumorishima / katsushi2441 / 101ta28 / Copilot・Devin / dependabot）で、**新規コントリビュータ 2 名**（yasumorishima・katsushi2441）を迎えた。tokoroten は既存の中心的コントリビュータ（serverless 版や技術解説資料の作者）で、GitHub の "New Contributors" 表示は `@tokoroten with @Copilot` という Copilot 併用 PR の初回を拾ったもの。
+[[kouchou-ai]] **v4.1.0**（2026-10-13 発行、[release](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.1.0)）は、v4.0.0（2025-12-27）以降に積み上がった **約 160 PR** を束ねたマイナーリリース。期間は ~10 か月、コントリビュータは 8 名（nishio 中心、tokoroten / shingo-ohki / yasumorishima / katsushi2441 / 101ta28 / Copilot・Devin / dependabot）で、**新規コントリビュータ 2 名**（yasumorishima・katsushi2441）を迎えた。tokoroten は既存の中心的コントリビュータ（serverless 版や技術解説資料の作者）で、GitHub の "New Contributors" 表示は `@tokoroten with @Copilot` という Copilot 併用 PR の初回を拾ったもの。
 
 「リリーススプリント」としての実像は、2026-09〜10 に集中した **棚卸し → 並列実装 → レビュー → 一斉 merge → タグ発行**の波（[[pr-982-987-review-round-2026-10-12]] / [[issue-backlog-audit-2026-10-12]]）に、それ以前の継続的な基盤整備（コア分離・polars 化・Docker 縮小・docs サイト）が合流したもの。本ページはテーマ別の総括。docs 面の詳細は [[kouchou-ai-docs-overhaul-2026-10]] に分けてある。
 
@@ -53,7 +53,7 @@ WebUI を作り込む前に core/CLI で実行可能にする方針（[[broadlis
 
 ### ライセンス・セキュリティ
 - **AGPL 表記の訂正**と CLI 出力 HTML へのライセンス案内・表示ソース同梱（[#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)）、資源欠如時の link-only degrade（[#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) → [#980](https://github.com/digitaldemocracy2030/kouchou-ai/issues/980)）、analysis-core 0.1.3 で AGPL 版を PyPI 公開（[#981](https://github.com/digitaldemocracy2030/kouchou-ai/issues/981)）。背景は [[analysis-core-license-intent-2026-10-12]] / [[agpl-output-and-plugin-boundaries-2026-10-12]]。
-- CVE 対応（minimatch ReDoS CVE-2026-26996、[#808](https://github.com/digitaldemocracy2030/kouchou-ai/issues/808)）、Dependabot による next 15→16 系ほか依存更新、CodeQL/CodeRabbit・Biome CI 強制（[#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817)/[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）
+- CVE 対応（依存更新, [#808](https://github.com/digitaldemocracy2030/kouchou-ai/issues/808)）、Dependabot による next 15→16 系ほか依存更新、CodeQL/CodeRabbit・Biome CI 強制（[#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817)/[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）
 
 ### ドキュメント・多言語
 - **mkdocs Material ドキュメントサイト新設**（[#754](https://github.com/digitaldemocracy2030/kouchou-ai/issues/754)）＋ repo README 埋め込み・AI assistant ガイド

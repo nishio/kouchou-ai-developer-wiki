@@ -16,7 +16,7 @@ sources:
 
 - **Azure 環境の整備** — Azure account 作成（2025-07-09）、自動デプロイ CI（Issue [#642](https://github.com/digitaldemocracy2030/kouchou-ai/issues/642)、2025-07-30）、デモ環境 (Issue [#622](https://github.com/digitaldemocracy2030/kouchou-ai/issues/622))
 - **公開フォームからの API キー入力** — Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)（2025-07-30 マージ）。自治体／個人が自分のキーを入れて使える形を実現
-- **v4.0.0 リリース**（2025-12-29）
+- **v4.0.0 リリース**（2025-12-27）
 - **PR レビューのマトリクス整理** — A: スキルセット / B: 工数 / C: 環境 / D: 基準なし、というレビュー困難度の分類（[[meeting-minutes]] 2025-05〜2025-07）
 
 ## 対外渉外

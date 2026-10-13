@@ -72,3 +72,7 @@ persona レビューは **Tier 3 の優先順位を揺さぶる**。[[kouchou-ai
 - [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]: 本レビューは roadmap の Tier 3 優先順位を再考させる現在地フィードバック
 - [[docs-reader-coverage-audit-2026-10-13]]: 5 読者像 × 機能の静的カバレッジ（本ページは体験ベースの動的レビュー）
 - [[kouchou-ai-docs-policy-history]]: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) 責任所在レーン（テーマ 7 がその拡張）
+
+## Updates
+
+- 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。

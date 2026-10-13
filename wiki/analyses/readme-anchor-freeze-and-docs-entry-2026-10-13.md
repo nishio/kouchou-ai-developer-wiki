@@ -70,3 +70,7 @@ nishio が 2026-10-09 に提案したのは「README.md を英語にして日本
 - README アンカーへの既存外部リンクの実態（どこから何件張られているか）は未調査。issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は少なくとも `apps/public-viewer/components/reporter/ReporterContent.tsx` を宛先候補に挙げるが、全量の棚卸しと移行先ページ・redirect 方針は未定。GitHub Markdown はカスタム anchor id を固定できないので README 内では安定化できず、宛先を docs 側へ移すしかない
 - 非開発者を GitHub を経由させずドキュメントサイトへ着地させる具体導線（配布物・事例サイト・検索からの流入をどこへ向けるか）は未設計。docs 入口 spine 再設計（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) 系）と合流させる必要がある
 - デフォルト言語を日本語に戻した現状を、国外注目増（nishio の英語化動機）とどう両立させるか。言語自動判定や docs サイト側の多言語化は未検討
+
+## Updates
+
+- 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。

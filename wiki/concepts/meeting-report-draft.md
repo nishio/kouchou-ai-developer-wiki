@@ -131,3 +131,7 @@ sources:
 
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]より、利用者に手作業を求めずCLIが案内と対応ソースを付ける方針、画面は短い表記とリンクにする方針を整理。PR #970のmain反映と最終ガイドを再確認した。
 - 開発者向け入口にも反映。次に見る公開版の状況は既存の#979で追跡し、資源欠如時フォールバックと通常公開の説明を混同しない。
+
+## Updates
+
+- 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。

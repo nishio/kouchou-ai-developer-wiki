@@ -77,7 +77,7 @@ CSV アップロード (admin UI)        ┐
 
 ## 主要ライブラリ・依存
 
-- バックエンド: FastAPI、sentence-transformers、pandas/numpy/scipy、各 LLM プロバイダクライアント（[[llm-providers]]）
+- バックエンド: FastAPI、sentence-transformers、polars/numpy/scipy、各 LLM プロバイダクライアント（[[llm-providers]]）
 - フロント: Next.js 16、Chakra UI、Plotly.js、Biome (lint/format)
 - ツールチェイン: Python は **Rye**、JS は **pnpm 9.15.4 (corepack)**。npm は明示的非対応（[[npm-vs-pnpm]]）
 - Git hook: **lefthook**（pre-push で `ruff check` + `ruff format --check`。Biome 系は `skip: true`）
