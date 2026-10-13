@@ -1,6 +1,6 @@
 ---
 type: analysis
-summary: "kouchou-ai v4.1.0（2026-10-13 発行）リリースの retrospective。v4.0.0（2025-12-26）以降 ~10 か月・約 160 PR・8 コントリビュータ（新規 3 名）を束ねた大型リリース。コア/実験拡張の分離、pandas→polars 移行、散布図まわりの WebUI 強化、CLI/analysis-core の大幅拡張（UMAP 使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立選択）、Docker イメージ縮小と Windows 移植性、AGPL 表記訂正、mkdocs docs サイト新設と多言語化、までをテーマ別にまとめる"
+summary: "kouchou-ai v4.1.0（2026-10-13 発行）リリースの retrospective。v4.0.0（2025-12-26）以降 ~10 か月・約 160 PR・8 コントリビュータ（新規 2 名）を束ねた大型リリース。コア/実験拡張の分離、pandas→polars 移行、散布図まわりの WebUI 強化、CLI/analysis-core の大幅拡張（UMAP 使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立選択）、Docker イメージ縮小と Windows 移植性、AGPL 表記訂正、mkdocs docs サイト新設と多言語化、までをテーマ別にまとめる"
 sources:
   - github-dev-docs.md
   - refactoring-status.md
@@ -10,7 +10,7 @@ sources:
 
 ## 何のリリースか
 
-[[kouchou-ai]] **v4.1.0**（2026-10-13 発行、[release](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.1.0)）は、v4.0.0（2025-12-26）以降に積み上がった **約 160 PR** を束ねたマイナーリリース。期間は ~10 か月、コントリビュータは 8 名（nishio 中心、tokoroten / shingo-ohki / yasumorishima / katsushi2441 / 101ta28 / Copilot・Devin / dependabot）で、**新規コントリビュータ 3 名**（tokoroten・yasumorishima・katsushi2441）を迎えた。
+[[kouchou-ai]] **v4.1.0**（2026-10-13 発行、[release](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.1.0)）は、v4.0.0（2025-12-26）以降に積み上がった **約 160 PR** を束ねたマイナーリリース。期間は ~10 か月、コントリビュータは 8 名（nishio 中心、tokoroten / shingo-ohki / yasumorishima / katsushi2441 / 101ta28 / Copilot・Devin / dependabot）で、**新規コントリビュータ 2 名**（yasumorishima・katsushi2441）を迎えた。tokoroten は既存の中心的コントリビュータ（serverless 版や技術解説資料の作者）で、GitHub の "New Contributors" 表示は `@tokoroten with @Copilot` という Copilot 併用 PR の初回を拾ったもの。
 
 「リリーススプリント」としての実像は、2026-09〜10 に集中した **棚卸し → 並列実装 → レビュー → 一斉 merge → タグ発行**の波（[[pr-982-987-review-round-2026-10-12]] / [[issue-backlog-audit-2026-10-12]]）に、それ以前の継続的な基盤整備（コア分離・polars 化・Docker 縮小・docs サイト）が合流したもの。本ページはテーマ別の総括。docs 面の詳細は [[kouchou-ai-docs-overhaul-2026-10]] に分けてある。
 
@@ -61,7 +61,9 @@ WebUI を作り込む前に core/CLI で実行可能にする方針（[[broadlis
 
 ## コミュニティ
 
-v4.1.0 は **複数コントリビュータのリリース**になった点が v4.0.0 との大きな違い。新規 3 名（tokoroten＝Docker 縮小・散布図・エラー改善、yasumorishima＝空白コメント除去・shell-build 計画、katsushi2441＝Ollama ポート・韓国語 README）に加え、shingo-ohki（CI/デプロイ/依存）・Copilot/Devin 併用の PR も。OSS として人が増える局面に入っている。
+v4.1.0 は **複数コントリビュータのリリース**になった点が v4.0.0 との大きな違い。新規 2 名（yasumorishima＝空白コメント除去・shell-build 計画、katsushi2441＝Ollama ポート・韓国語 README）に加え、既存の中心的コントリビュータ tokoroten（Docker 縮小・散布図・エラー改善）、shingo-ohki（CI/デプロイ/依存）、Copilot/Devin 併用の PR も。OSS として人が増える局面に入っている。
+
+> **申し送り（nishio 指示 2026-10-14）**: **v5.0.0 のリリース時には、この v4.0.0~4.1.0 のコントリビュータも「後見者」として credits/謝辞に明示する**こと。v5.0.0 サイクルの新規貢献者だけで終わらせず、前サイクルで土台を築いた人への敬意を欠かさない。全量は `gh release view v4.1.0` / `compare/v4.0.0...v4.1.0` で再取得できる。
 
 ## この wiki の関連深掘り
 

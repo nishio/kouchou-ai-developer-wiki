@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-14 08:45] filing-back | v4.1.0 記事を訂正（tokoroten は既存）＋ v5.0.0 後見者申し送り
+
+- nishio 訂正: **tokoroten は新規でなく既存の中心コントリビュータ**（serverless 版・技術解説資料の作者。GitHub New Contributors は Copilot 併用 PR 初回の誤判定）。[[kouchou-ai-v4-1-0-release-2026-10]] の新規を 3→**2 名（yasumorishima・katsushi2441）**に訂正。
+- nishio 指示: **v5.0.0 リリース時に v4.0.0~4.1.0 のコントリビュータも後見者として credits に明示**。記事コミュニティ節に申し送りを追記＋ memory 化。
+
 ## [2026-10-14 08:30] filing-back | v4.1.0 リリーススプリントの retrospective 記事を新設
 
 - nishio 依頼で、v4.1.0（v4.0.0 以降 ~10 か月・~160 PR・8 コントリビュータ/新規3名）の総括を [[kouchou-ai-v4-1-0-release-2026-10]] に新設。release notes（generate-notes の全 PR）をテーマ別に整理：基盤（コア/実験分離・pandas→polars・Docker 34GB→2.7GB）/ CLI&core（UMAP使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立・自動クラスタ数・PyPI）/ WebUI（散布図連動・操作ヒント・全画面粒度・分析方式選択）/ プラットフォーム（Windows 移植・Azure・ECR fallback）/ ライセンス（AGPL 訂正）/ docs&多言語。
