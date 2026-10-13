@@ -15,6 +15,11 @@
 - **#993**: `open`/`os.fdopen` の encoding 未指定 10 ファイルに `encoding="utf-8"` を明示（読み書き両方）。日本語 Windows cp932 クラッシュ/文字化け対策。
 - 検証: API pytest 318 pass・analysis-core 321 pass・ruff clean。**PR #995**（Closes #992/#993）。CI 待ち。
 
+## [2026-10-13 20:30] filing-back | 指定カテゴリ分類（#994）の正本を concept 化
+
+- #994 で main 入りした指定カテゴリ分類（supervised LLM grouping）の設計・使い方・「その他」必須の理由を、時系列 Update から独立した concept [[llm-grouping-supervised-classification]] に切り出し。
+- LLM grouping の2モード（自動発見 / 指定カテゴリ）を整理、用語ルール（Jigsaw は一例）に準拠。index.md の CLI/analysis-core 向けに追加、pr-982-987 analysis から incoming link。
+
 ## [2026-10-13 20:10] filing-back | PR #996（#994 指定カテゴリ分類 CLI）を admin merge
 
 - nishio 指示で #996 を admin squash merge（`42bba8ea`・single-parent）。必要 CI 全 green 後に承認待ちを admin override。worktree/branch 撤去、HEAD は main。

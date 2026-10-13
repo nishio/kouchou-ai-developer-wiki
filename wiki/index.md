@@ -48,6 +48,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI
 - [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核。analysis 側は workflow engine が CLI の既定経路、外部 plugin の同梱はまだ無い）
 - [llm-grouping-implementation-plan](analyses/llm-grouping-implementation-plan.md) — `analysis_mode=llm_grouping` 第2分析モードの実装方針
+- [llm-grouping-supervised-classification](concepts/llm-grouping-supervised-classification.md) — LLM grouping の自動／指定カテゴリ分類（supervised）の2モードと「その他」必須の設計
 - [jigsaw-sensemaker](entities/jigsaw-sensemaker.md) — Jigsaw Sensemaker は LLM grouping の一例であり、LLM grouping 全体を Jigsaw と呼ぶと混乱する、という用語整理
 - [clustering-deep-research-findings-2026-05-25](analyses/clustering-deep-research-findings-2026-05-25.md) — UMAP / clustering / BERTopic の deep-research 整理
 - [public-ui-requirements-for-broadlistening](analyses/public-ui-requirements-for-broadlistening.md) — 公開UI 7 要件、view plugin の上位契約
