@@ -1,4 +1,5 @@
 ---
+title: "PyPI リリースタイミング自動化の判断"
 type: analysis
 summary: "PyPI リリースの『タイミング自体』を自動化するか否かの判断。現状の tag 起点 semi-auto を維持し、自動化を進めるなら Trusted Publishing と TestPyPI 経路の方が先"
 sources:

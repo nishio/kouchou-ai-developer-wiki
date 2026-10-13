@@ -1,4 +1,5 @@
 ---
+title: "議事メモ HTML export の URL 棚卸し 2026-05-25"
 type: source
 summary: "議事メモ Google Doc の HTML export から、`txt` では落ちる URL を抽出して分類した棚卸し"
 sources:

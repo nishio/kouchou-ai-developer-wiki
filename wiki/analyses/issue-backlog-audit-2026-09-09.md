@@ -1,4 +1,5 @@
 ---
+title: "Issue バックログ棚卸し 2026-09-09"
 type: analysis
 status: superseded
 superseded_by: issue-backlog-audit-2026-10-12

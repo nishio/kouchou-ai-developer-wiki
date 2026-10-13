@@ -1,4 +1,5 @@
 ---
+title: "Slack 広報チャンネル FAQ・事例マップ議論 2026-03/04"
 type: source
 summary: "Slack #2_広報_pr の 2026-03/04 raw snapshot。website FAQ、導入事例マップ、事例掲載 intake、ユーザー会の議論を #564 public case page へ接続する"
 last_checked: 2026-06-30

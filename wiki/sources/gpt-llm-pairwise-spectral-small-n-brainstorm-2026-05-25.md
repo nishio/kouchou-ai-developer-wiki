@@ -1,4 +1,5 @@
 ---
+title: "GPT 対話: 少数データ向け LLM ペアワイズ spectral 2026-05-25"
 name: gpt-llm-pairwise-spectral-small-n-brainstorm-2026-05-25
 summary: "2026-05-25 の nishio ↔ 外部 GPT 対話。データ量が数十件規模の時、LLM に N:N 類似度を出させて spectral clustering する案を検討。LLM-as-pairwise-oracle + 対称化・校正・疎化した affinity graph + spectral/agglomerative の設計を推奨"
 type: source

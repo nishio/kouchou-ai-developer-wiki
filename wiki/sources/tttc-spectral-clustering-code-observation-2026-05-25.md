@@ -1,4 +1,5 @@
 ---
+title: "TTTC と広聴AI の clustering 実装比較 2026-05-25"
 type: source
 summary: "TTTC commit `5e0a439` と広聴AI commit `53f1209` の clustering 実装比較。TTTC は embedding を UMAP 2D に落としてから SpectralClustering を掛け、`n_neighbors` は `min(n_samples - 1, 10)`"
 sources:

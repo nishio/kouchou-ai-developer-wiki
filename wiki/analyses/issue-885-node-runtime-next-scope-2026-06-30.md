@@ -1,4 +1,5 @@
 ---
+title: "Issue #885 Node runtime の次の進め方 2026-06-30"
 type: analysis
 summary: "PR #903 の Node runtime inventory 後に issue #885 をどう分割して進めるかの整理。#903 は #885 の第1完了条件の一部であり、次は inventory 精度、admin export prototype、static-site-builder runtime build 判断を分ける"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "reports/:slug の config 返却挙動"
 type: analysis
 summary: "`reports/:slug` は current 通常生成物なら `config` を返すが、router に validation が無いため壊れた成果物から `config` 欠損 payload を公開しうる"
 sources:

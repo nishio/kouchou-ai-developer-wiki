@@ -1,4 +1,5 @@
 ---
+title: "グラフ描画による可視化案 2026-05-25"
 name: graph-visualization-proposal-2026-05-25
 summary: "UMAP 2D に意味クラスタも可視化品質も背負わせる設計から抜け、`クラスタ内 MST + mutual kNN、クラスタ間 bridge edge、2 段階 cluster-separated layout` で graph drawing として可視化する案。既存 niizuma 批判への visualization 側の答えになりうる"
 type: analysis

@@ -1,4 +1,5 @@
 ---
+title: "Issue #820 の現状: 静的配信の CSP ガイド不足"
 type: analysis
 summary: "Issue #820 は 2026-05-21 時点で open のままで、静的エクスポート配信先における CSP 設定ガイド不足を追う issue としてまだ有効であり、app 側の dynamic CSP header 整備は `PR #848` merge により別経路で先に前進した"
 sources:

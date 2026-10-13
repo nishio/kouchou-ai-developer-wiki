@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping と Jigsaw の用語整理の指摘 2026-06-02"
 type: source
 summary: "2026-06-02 に nishio が、Jigsaw Sensemaker は LLM grouping の一例として説明し、LLM grouping 全体を Jigsaw と呼ぶ混乱は避けるべきだと指摘したメモ"
 sources:

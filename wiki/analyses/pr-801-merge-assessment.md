@@ -1,4 +1,5 @@
 ---
+title: "PR #801 merge 可否の評価"
 type: analysis
 summary: "`PR #801` は React version 統一の狙いは妥当でも、current `main` では既存 `minimatch` override を消す stale patch になっているため、そのまま merge すべきではない"
 sources:

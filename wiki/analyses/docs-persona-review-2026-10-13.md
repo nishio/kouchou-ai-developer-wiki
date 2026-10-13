@@ -1,4 +1,5 @@
 ---
+title: "docs ペルソナ別 usability レビュー 2026-10-13"
 type: analysis
 summary: "7 読者ペルソナ（A 閲覧者 / B 自治体担当 / C デモ役 / D WebUI開発者 / E CLI研究者 / F 非日本語話者 / G 方法論・信頼性）を subagent にして、docs 大掃除（v4.1.0）直後の本体 docs をトップページから読ませた usability レビューの synthesis。横断テーマ・quick win・構造的対応を優先度付きで整理。最大の発見は『nav/タイトルのラベル詐称』『閲覧者・実務者向け FAQ/読み方ページ不在』『導入検討者向けの費用・PII・相談先不在』『信頼性・責任所在ページ不在』と、import-quickstart の致命バグ"
 sources:

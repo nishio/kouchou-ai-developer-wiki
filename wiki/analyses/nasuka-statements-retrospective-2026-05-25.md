@@ -1,4 +1,5 @@
 ---
+title: "nasuka 過去発言の振り返り 2026-05-25"
 type: analysis
 summary: "nasuka の過去発言は、広聴AIを実利用に耐える市民参加インフラへ移すための運用・信頼・反復改善の視点として読める"
 sources:

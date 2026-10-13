@@ -1,4 +1,5 @@
 ---
+title: "bugラベルissueの再点検 2026-05-25"
 type: analysis
 summary: "2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った"
 sources:

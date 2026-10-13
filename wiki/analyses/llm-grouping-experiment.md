@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 最初の実験計画(400件)"
 type: analysis
 summary: "LLM groupingの最初の実験は、`analysis_mode=llm_grouping` を 400 行の日本語コメントで回し、scatter 互換の見え方がどこまで耐えるかを観察するのがよい"
 sources:

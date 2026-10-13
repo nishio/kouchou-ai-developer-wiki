@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 400件実験の実行結果観測 2026-05-25"
 type: source
 summary: "2026-05-25 に `analysis_mode=llm_grouping` を 400 件の日本語コメントで実行した観測。422 argument を 8 群へ分類でき、`report.html` も生成できたが、embedding 由来 2D 散布図との相性は悪かった"
 sources:

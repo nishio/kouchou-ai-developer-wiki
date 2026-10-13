@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 実験 artifact の退避記録 2026-05-29"
 type: source
 summary: "`work/kouchou-ai/` に残っていた LLM grouping 系実験の入力・設定・出力 artifact と Next.js 生成差分を、branch `codex/remaining-experiment-artifacts-2026-05-29` commit `b56ac9b` として退避し、一次参照 clone は `main@6955202` へ戻した運用メモ"
 sources:

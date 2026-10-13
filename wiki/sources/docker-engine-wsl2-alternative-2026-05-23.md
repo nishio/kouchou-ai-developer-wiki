@@ -1,4 +1,5 @@
 ---
+title: "WSL2 上の Docker Engine 代替案ブレスト 2026-05-23"
 name: docker-engine-wsl2-alternative-2026-05-23
 type: source
 summary: "nishio と外部 GPT の対話。Docker Desktop を避ける選択肢として、WSL2 Ubuntu の中に Docker Engine + Docker Compose plugin を直接入れる構成と、その UX コストおよび 2 本立て docs 案を整理したブレスト"

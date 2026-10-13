@@ -136,6 +136,12 @@
 - grounding で判明: #542 は**新ページでなく footer 免責 2 コピー + README** の文面修正（org signoff 必須）。実フロントは `apps/public-viewer`+`apps/admin`（`apps/client` は無い）。可視化 docs に `詳細クラスタ` 未記載・`濃いクラスタ`↔`濃い意見` 用語不一致。
 - 次に見る: nishio の go（Tier 0 を直接 PR 化してよいか）と #876 slice 判断。
 
+## [2026-10-14 00:06] filing-back | Dependabot live state 観測（新規3件、#950 後に出現）
+
+- `gh api .../dependabot/alerts` で open alerts 3 件を観測（すべて 2026-10-12 新規、対応 open PR なし）。[#950](https://github.com/digitaldemocracy2030/kouchou-ai/pull/950) が 2026-10-05 に 0 件化した後の新規 advisory で、[#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) 本文の「0 件」記録は now stale。追跡は [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) 継続（nishio assign）。
+- 優先度: 2 件は upstream 修正版あり＝lockfile 更新で解消見込み（build/tooling 依存、実運用露出は限定的）、1 件は upstream 修正版未公開で [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) 追跡継続。
+- filing-back: [[dependabot-alerts-2026-10-14]]。脆弱性詳細（package / GHSA / CVSS / range）は GitHub Security 管理で非転記。次: 解消見込み 2 件の lockfile 更新 PR 可否を確認。
+
 ## [2026-10-13 23:59] filing-back | docs 改善の direction を 4 層 roadmap に固定し、検証で 3 訂正
 
 - nishio 依頼「docs 改善で何がどうなると良いか」に対し、9 agent workflow で既存 2 ページ（[[kouchou-ai-docs-policy-history]] / [[docs-reader-coverage-audit-2026-10-13]]）の live claim を独立再検証 + 理想像を 3 レンズで起案し収束を取り、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]] を新設。

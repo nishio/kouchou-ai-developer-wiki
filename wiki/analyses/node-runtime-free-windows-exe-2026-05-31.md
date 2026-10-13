@@ -1,4 +1,5 @@
 ---
+title: "Node runtime 不要の Windows 単一exe化 2026-05-31"
 type: analysis
 summary: "Windows 単一実行ファイル配布を再評価する前提として、Web UI の Node runtime を build-time の frontend assets に押し込み、runtime を Python/FastAPI + static assets に寄せる案は段階的には実現可能。MVP は外部 API route と API 契約不要の offline route を比較し、offline は自前 bundled-model だけでなく Chrome / Windows native local AI runtime も見るべき"
 sources:

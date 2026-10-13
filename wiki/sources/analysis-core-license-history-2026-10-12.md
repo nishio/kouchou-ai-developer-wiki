@@ -1,4 +1,5 @@
 ---
+title: "analysis-core の MIT 表記の経緯 2026-10-12"
 type: source
 summary: "大木さんの2026-10-11の質問を起点に、analysis-coreのMIT表記が2026-01-19の雛形作成で入り、既存コード移植・PR #746・PyPI配布へ継承された経緯を確認"
 sources:

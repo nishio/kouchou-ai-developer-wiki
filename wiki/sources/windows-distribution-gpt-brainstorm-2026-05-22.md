@@ -1,4 +1,5 @@
 ---
+title: "Windows 配布形態の GPT ブレスト 2026-05-22"
 name: windows-distribution-gpt-brainstorm-2026-05-22
 type: source
 summary: "nishio と外部 GPT の対話メモ。Windows ユーザー向け配布形態を `exe` 単体化か Docker Compose ランチャーか、また正規入口を Docker Desktop と WSL2 のどちらに据えるか、という 2 つの論点を整理したブレスト"

@@ -1,4 +1,5 @@
 ---
+title: "8/2 ブロードリスニング実践セッション計画 Slack メモ 2026-06-30"
 type: source
 summary: "2026-06-30 Slack `#dd_prance_event2026` の 8/2 ブロードリスニング実践セッション計画メモ。国会 / 地方自治の実践 lane は公開事例 map の優先順位を上げるが、Slack-only 言及だけでは外部 proof にしない"
 last_read: 2026-06-30 19:04 JST

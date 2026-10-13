@@ -1,4 +1,5 @@
 ---
+title: "ラベル refinement の入力範囲の問題 2026-05-29"
 type: analysis
 summary: "実験的に追加された hierarchical_label_refinement step は rep args を入力に取らず、上流ラベル + 子クラスタラベルだけを polish する設計になっている。これは『上流の merge_labelling が既に間違えたラベル』を refinement で救えない構造であり、polish が綺麗になるほど誤ラベルが固定化する危険を含む"
 sources:

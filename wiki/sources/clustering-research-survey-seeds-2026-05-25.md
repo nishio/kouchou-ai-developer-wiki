@@ -1,4 +1,5 @@
 ---
+title: "クラスタリング研究サーベイの種 2026-05-25"
 type: source
 summary: "TTTC / 広聴AI の clustering 議論を外部研究で検証するための survey seed 集。UMAP 後 clustering、spectral clustering、BERTopic、可視化と分析の分離、評価軸"
 sources:

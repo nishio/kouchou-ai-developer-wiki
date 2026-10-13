@@ -1,4 +1,5 @@
 ---
+title: "直近の Slack と Issue の論点整理 2026-09-07"
 type: analysis
 summary: "最近のSlackとIssueを、処理の完全性・モデル選択の整合性・継続保守・serverless方針に分けて読む"
 sources:

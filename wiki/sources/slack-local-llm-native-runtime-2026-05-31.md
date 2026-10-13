@@ -1,4 +1,5 @@
 ---
+title: "Slack: local LLM のネイティブ実行構想 2026-05-31"
 type: source
 summary: "2026-05-31 Slack で nishio と tokoroten が、API 契約不要の local LLM 実行可能性について、20B 級モデルの現実化と Chrome / Windows の native LLM support を使う方向を議論した"
 sources:

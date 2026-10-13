@@ -1,4 +1,5 @@
 ---
+title: "developer-wiki自己監査 2026-10-12"
 type: analysis
 summary: "developer-wiki 自身を 6 レンズ（内容健全性 / 構造ライフサイクル / コード乖離 / スキーマ / スクリプト / 公開境界）で監査し敵対的検証した結果と、2026-10-12 に適用した修正・残課題"
 sources:

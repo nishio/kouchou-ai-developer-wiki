@@ -1,4 +1,5 @@
 ---
+title: "ブロードリスニング本の公開事例一覧 2026-06-30"
 type: source
 summary: "Web 公開版「選挙を変えたブロードリスニング」の公開事例一覧を、広聴AI / Talk to the City / その他 broad listening 事例の追加候補カタログとして要約"
 last_checked: 2026-06-30

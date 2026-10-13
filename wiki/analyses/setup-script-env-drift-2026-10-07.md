@@ -1,4 +1,5 @@
 ---
+title: "セットアップスクリプトの .env 書き出し漏れ 2026-10-07"
 type: analysis
 summary: "セットアップスクリプト（setup_linux.sh / setup_mac.sh / setup_win.ps1）が `.env.example` の一部だけを書き出していたため、スクリプトで入れた環境では静的版ダウンロードが失敗し、表示更新の依頼が 401 になっていた。開発者は `cp .env.example .env` を使うので気づかれなかった。#956 / PR #957 で 3 行を追加し、抜けを CI で検出するチェックを付けた"
 sources:

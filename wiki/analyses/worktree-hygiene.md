@@ -1,4 +1,5 @@
 ---
+title: "作業用 worktree の整理方針"
 type: analysis
 summary: "`work/kouchou-ai/` は current issue の作業場として保ち、別件試作は dedicated worktree に逃がし、canonical でない local 生成物は ignore まで含めて早めに掃除した方が混乱が少ない"
 sources:

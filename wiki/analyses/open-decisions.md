@@ -1,4 +1,5 @@
 ---
+title: "未着地の論点・課題の整理"
 name: open-decisions
 summary: "未着地の論点・課題の整理 — 未定／方針決定済み未着手／着手済み未完了の三分類"
 type: analysis

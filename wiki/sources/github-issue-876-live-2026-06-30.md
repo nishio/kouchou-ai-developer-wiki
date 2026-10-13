@@ -1,4 +1,5 @@
 ---
+title: "Issue #876 README/docs 導線整理の現況 2026-06-30"
 type: source
 summary: "2026-06-30 に GitHub live state で確認した issue #876。README / docs の開発者向け導線整理 issue は open / nishio assigned のままで、PR #883 撤回後の 5 読者像・Mode 1 default 廃止方針が issue 本文に反映済み"
 sources:

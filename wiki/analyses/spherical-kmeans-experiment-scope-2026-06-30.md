@@ -1,4 +1,5 @@
 ---
+title: "Spherical K-means実験の位置づけ 2026-06-30"
 type: analysis
 summary: "Slack で出た Spherical K-means / Faiss K-means は、current main の 2D UMAP + KMeans を即置換する判断ではなく、clustering 空間・clustering objective・実装 backend を分けた clean experiment 候補として扱うべき"
 sources:

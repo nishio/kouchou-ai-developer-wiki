@@ -1,4 +1,5 @@
 ---
+title: "クラスタリング・ラベリング比較コーパスの構想 2026-06-02"
 type: analysis
 summary: "品質 judge を改善する前に、dataset × clustering tree × labelling process × label output を蓄積する比較コーパスを作るべきという整理。採用判断に使う実験は 1 要素ずつ変え、人間には単独批評ではなく label variants の A/B preference を聞く"
 sources:

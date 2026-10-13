@@ -1,4 +1,5 @@
 ---
+title: "開発定例の議事メモ (Google Doc)"
 name: meeting-minutes
 summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-07, ~7700 lines, JP)"
 type: source

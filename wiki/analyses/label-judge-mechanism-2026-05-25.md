@@ -1,4 +1,5 @@
 ---
+title: "ラベル品質 judge の仕組みと限界 2026-05-25"
 type: analysis
 summary: "2026-05-25 時点のラベル品質 judge は OpenAI/GPT ベースの補助評価であり、`cluster 単位 judge` と `label set 全体 judge` は見ているものが違う。設計判断に使う前に Claude / 人間 judge で較正すべきである"
 sources:

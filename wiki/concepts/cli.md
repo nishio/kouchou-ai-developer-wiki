@@ -1,4 +1,5 @@
 ---
+title: "CLI(kouchou-analyze / analysis_core)"
 name: cli
 summary: "kouchou-analyze CLI と python -m analysis_core — pip install で使える"
 type: concept

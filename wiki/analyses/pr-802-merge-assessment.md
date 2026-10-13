@@ -1,4 +1,5 @@
 ---
+title: "PR #802 merge 可否の評価"
 type: analysis
 summary: "`PR #802` は crash を消す狙い自体は理解できるが、`Overview` の1箇所だけでは `result.config` 欠損への対処として不十分なので、そのまま merge すべきではない"
 sources:

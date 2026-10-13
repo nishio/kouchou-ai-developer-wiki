@@ -1,4 +1,5 @@
 ---
+title: "Open Japan PoliTech Platform(OJPP)"
 name: ojpp
 summary: "Open Japan PoliTech Platform（ochyai）。DD2030 を参照しつつ『エージェントファースト設計を追加』を掲げる外部の政治テック基盤。BroadListening を再実装"
 type: entity

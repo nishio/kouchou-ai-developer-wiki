@@ -1,4 +1,5 @@
 ---
+title: "Issue #493/PR #597 散布図スクロール誤操作の議論"
 type: source
 summary: "`Issue #493` と `PR #597` で行われた ScatterChart スクロール誤操作対策の議論メモ"
 sources:

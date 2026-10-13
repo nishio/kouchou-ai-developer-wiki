@@ -1,4 +1,5 @@
 ---
+title: "本体 docs 方針をめぐる議論の系譜"
 type: analysis
 summary: kouchou-ai 本体ドキュメント（mkdocs サイト + README）の方針をめぐる議論の系譜。2026-05 の「docs は AI の default」発見から、利用モード別導線・demo-first spine 再設計・docs issue の地図化・README 多言語化とアンカー凍結回避まで、通底する設計原則と未決論点を一本化
 sources:

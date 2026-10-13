@@ -1,4 +1,5 @@
 ---
+title: "open PR の head branch 更新挙動の観測 2026-05-18"
 name: open-pr-observation-2026-05-18
 summary: "2026-05-18 の open PR / review triage 実験で観測した head branch 更新挙動"
 type: source

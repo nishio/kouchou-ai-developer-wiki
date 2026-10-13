@@ -1,4 +1,5 @@
 ---
+title: "Docker Desktop ライセンス確認 2026-05-29"
 type: source
 summary: "2026-05-29 時点の Docker 公式文書確認。Docker Desktop は大規模 enterprise の商用利用や政府系 entity では paid subscription が必要になり得るため、自治体・大企業向け Windows 導線ではライセンス確認を前提にする必要がある"
 sources:

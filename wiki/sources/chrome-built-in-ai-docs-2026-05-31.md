@@ -1,4 +1,5 @@
 ---
+title: "Chrome 組み込み AI 公式 docs 要点 2026-05-31"
 type: source
 summary: "Chrome Prompt API / built-in AI 公式 docs の要点。Gemini Nano を Chrome 内で使い、初回 model download 後は外部送信なしで動く一方、Chrome desktop・storage・RAM/CPU/GPU 条件と browser/API lifecycle への依存がある"
 sources:

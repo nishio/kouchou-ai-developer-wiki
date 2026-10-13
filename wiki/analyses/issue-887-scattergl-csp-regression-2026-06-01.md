@@ -1,4 +1,5 @@
 ---
+title: "Plotly scattergl の CSP リグレッション考察 2026-06-01"
 type: analysis
 summary: "PR #848 で入った env-aware CSP header と PR #887 の Plotly scattergl CSP 修正について、壊れた理由と早期検知できたテストを整理した考察"
 sources:

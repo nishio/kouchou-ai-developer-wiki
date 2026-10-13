@@ -1,4 +1,5 @@
 ---
+title: "Polimoney(政治資金可視化 OSS)"
 name: polimoney
 summary: "政治資金可視化 OSS。kouchou-ai と兄弟プロジェクト"
 type: entity

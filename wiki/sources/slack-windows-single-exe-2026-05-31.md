@@ -1,4 +1,5 @@
 ---
+title: "Slack: Windows 向け単一実行バイナリ案 2026-05-31"
 type: source
 summary: "2026-05-31 Slack で tokoroten と nishio が、Windows ユーザー向けには単一実行バイナリが望ましく、Node runtime を同梱する代わりに Web UI を SPA/static assets 化してサーバ側 wrapper を Python に寄せる案を議論した"
 sources:

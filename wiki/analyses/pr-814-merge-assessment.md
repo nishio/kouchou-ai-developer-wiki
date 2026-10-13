@@ -1,4 +1,5 @@
 ---
+title: "PR #814 merge 可否の評価"
 type: analysis
 summary: "`PR #814` は問題意識に沿った小さな修正だが、2026-05-19 時点では draft / review 未充足で即 merge ではなく、`BUILD_SLUGS` 経路の誤診断を先に詰めたい"
 sources:

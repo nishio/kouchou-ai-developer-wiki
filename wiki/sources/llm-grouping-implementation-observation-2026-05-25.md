@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 実装状況の main 観測 2026-05-25"
 type: source
 summary: "2026-05-25 時点の current `main` 観測では、LLM grouping 計画文書は main に入り、実行経路は workflow canonical だが、`analysis_mode` 分岐・`analysis_capabilities`・viewer `requirements` は未実装"
 sources:

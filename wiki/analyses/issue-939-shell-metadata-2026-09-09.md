@@ -1,4 +1,5 @@
 ---
+title: "Issue #939 shell HTML の title/noindex 対応 2026-09-09"
 type: analysis
 summary: "#939のshell配布HTMLにtitle/noindexを反映するPython組立処理と画面遷移更新を#940で実装。CI・E2E81件成功、#940マージ済み"
 sources:

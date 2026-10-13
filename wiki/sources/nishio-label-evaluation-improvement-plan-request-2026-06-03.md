@@ -1,4 +1,5 @@
 ---
+title: "ラベル品質評価の改善計画の記録確認 2026-06-03"
 type: source
 summary: "2026-06-03 に nishio が、blind A/B preference と presentation context 分解まで整理したラベル品質評価の改善計画を Wiki に書くべきか確認したメモ"
 sources:

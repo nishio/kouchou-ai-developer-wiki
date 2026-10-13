@@ -1,4 +1,5 @@
 ---
+title: "developer-wiki の graph 調整と main 直接 push 運用 2026-05-25"
 type: source
 summary: "developer-wiki の graph 表示調整と main 直接 push 運用を 2026-05-25 の実作業から整理した観測メモ"
 sources:

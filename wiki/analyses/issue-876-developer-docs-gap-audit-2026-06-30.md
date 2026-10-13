@@ -1,4 +1,5 @@
 ---
+title: "Issue #876 開発者 docs の gap 監査 2026-06-30"
 type: analysis
 summary: "Issue #876 の developer quickstart 草案を 2026-06-30 current main と 6月の docs spine 議論に照合した gap audit。草案は 5 読者像 / Mode 1 default 廃止を満たすが、README / docs index / quickstart / mkdocs nav はまだ setup 起点で、#876 を閉じるには周辺 docs の役割分担も触る必要がある"
 sources:

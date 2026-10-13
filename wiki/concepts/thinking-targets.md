@@ -1,4 +1,5 @@
 ---
+title: "今考えるべき論点の思考ハブ"
 name: thinking-targets
 type: concept
 summary: "今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る"

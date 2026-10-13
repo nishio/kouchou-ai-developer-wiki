@@ -1,4 +1,5 @@
 ---
+title: "Issue #530 の現状: API 依存管理の確認"
 type: analysis
 summary: "Issue #530 の『`server/requirements.txt` を追加すべき』という処方箋は、2026-05-25 時点の current main には合っておらず、現行 repo では API 依存は `apps/api/requirements.lock` と `pyproject.toml` で管理されている"
 sources:

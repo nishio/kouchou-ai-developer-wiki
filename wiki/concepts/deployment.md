@@ -1,4 +1,5 @@
 ---
+title: "デプロイの方針と公開境界"
 name: deployment
 summary: "デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する"
 type: concept

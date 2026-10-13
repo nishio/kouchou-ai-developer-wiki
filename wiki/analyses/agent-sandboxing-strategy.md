@@ -1,4 +1,5 @@
 ---
+title: "AIコーディングエージェントの開発環境分離方針"
 name: agent-sandboxing-strategy
 summary: "AI コーディングエージェント向けの開発環境分離方針 — host full access を標準にしない"
 type: analysis

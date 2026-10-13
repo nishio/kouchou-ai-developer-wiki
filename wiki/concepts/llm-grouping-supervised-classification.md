@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping の指定カテゴリ分類モード"
 type: concept
 summary: "LLM grouping には枠を自動発見するモードと、人間が与えた所与カテゴリへ割り当てる指定カテゴリ分類（supervised）モードがある。後者は必ず「その他」受け皿を自動付与し、非該当意見を押し込めない。現状 CLI 専用"
 sources:

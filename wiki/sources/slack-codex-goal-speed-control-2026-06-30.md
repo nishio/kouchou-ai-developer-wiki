@@ -1,4 +1,5 @@
 ---
+title: "Slack: Codex /goal の速度制御メモ 2026-06-30"
 type: source
 summary: "2026-06-30 の Slack `#2_開発_広聴ai` で共有された Codex `/goal` 運用メモ。長い goal は人間が追える速度に制御し、まず状況把握・LLM Wiki・docs 更新を中心に走らせる"
 last_read: 2026-06-30 19:04 JST

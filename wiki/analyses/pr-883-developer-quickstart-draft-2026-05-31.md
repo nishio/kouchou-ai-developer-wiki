@@ -1,4 +1,5 @@
 ---
+title: "PR #883 developer-quickstart 再構成草案 2026-05-31"
 type: analysis
 summary: "PR #883 の developer-quickstart.md 再構成草案。5 読者像 (一般ユーザ / 自治体担当本人 / 組織内デモ役 / WebUI 開発者 / 分析者・研究者) ごとの推奨パス、利用主体先行の環境構築フロー、Mode 1 default 廃止、構造把握スタンスの紹介、代替ルート、を反映した全文。kouchou-ai repo の docs/development/developer-quickstart.md にそのまま置ける形"
 sources:

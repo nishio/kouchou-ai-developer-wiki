@@ -1,4 +1,5 @@
 ---
+title: "選択フローチャート試作 2026-05-30"
 type: analysis
 summary: "scikit-learn の estimator 選択チャートに着想を得て、広聴AI のユーザ向け / 環境構築向けの decision flowchart を Mermaid で試作。試作後に team feedback で初版の前提誤り (ラベル付きデータ jargon、Mac=Docker Desktop OK 飛躍など) を修正。ノードの意味区分は背景色ではなく明示的な文字ラベルで表現する"
 sources:

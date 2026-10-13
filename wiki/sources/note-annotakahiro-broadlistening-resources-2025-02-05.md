@@ -1,4 +1,5 @@
 ---
+title: "安野たかひろ氏 note: ブロードリスニング実施の資源ガイド 2025-02-05"
 name: note-annotakahiro-broadlistening-resources-2025-02-05
 summary: "安野たかひろ公式 note 2025-02-05。TTTC でブロードリスニングを実施するのに必要なヒト/モノ/カネを整理した実務ガイド。M-1 2024 分析 (NSK) の実コスト $230 も含む"
 type: source

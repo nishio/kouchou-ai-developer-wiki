@@ -1,4 +1,5 @@
 ---
+title: "広聴AIのエコシステムビジョン(simple Web UIとCLI実験)"
 type: analysis
 summary: "広聴AI Web UI を simple な default モードに絞り、CLI に多様な実験機能を追加し、新しい分析手法が試行錯誤され共有されるコミュニティを育てる、という二段構造のエコシステムビジョン。analysis-stance で『別ツールで補完』とした空き地に対する nishio の答え"
 sources:

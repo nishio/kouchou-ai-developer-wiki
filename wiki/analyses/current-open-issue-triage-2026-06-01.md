@@ -1,4 +1,5 @@
 ---
+title: "open issue全件のtriage 2026-06-01"
 type: analysis
 summary: "2026-06-01 時点の open issue 124 件を subagent 5 分割で本文・コメントまで読み、current main と既存 wiki に照合した triage。短期優先は `#884` 作成前確認、`#885` Node runtime 排除、`#564/#696/#542` trust layer、`#877` Windows guide、`#881/#882/#869` ラベル品質実験で、`#871/#573/#558/#516/#513/#417/#379` などは close 候補"
 sources:

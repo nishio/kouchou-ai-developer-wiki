@@ -1,4 +1,5 @@
 ---
+title: "戦略的な開発順序と3層プラットフォーム 2026-05-23"
 type: analysis
 summary: "Issue 消化順ではなく、CLI / workflow / plugin / Web 配布を 3 層のプラットフォームとして見ると、先に固めるべきなのは `analysis-core` の共通基盤と plugin 実験の本番導線である"
 sources:

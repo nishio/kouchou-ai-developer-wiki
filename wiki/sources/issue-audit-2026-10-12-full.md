@@ -1,4 +1,5 @@
 ---
+title: "open Issue 全件のコード照合棚卸し 2026-10-12"
 type: source
 summary: "広聴AI open Issue 全105件のうち今回95件を 2026-10-12 に 10シャード並列で current main@c297bc97 へコード照合した全棚卸しの一次記録。観測日時・基準commit・実行検証・未確認範囲。判定一覧と次の一手は [[issue-backlog-audit-2026-10-12]]。"
 last_checked: 2026-10-12 JST

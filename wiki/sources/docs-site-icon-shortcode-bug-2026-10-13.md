@@ -1,4 +1,5 @@
 ---
+title: "docs サイトのアイコン表示バグ 2026-10-13"
 type: source
 summary: "2026-10-13 に kouchou-ai ドキュメントサイト（mkdocs-material）のホームを確認したところ、`docs/index.md` のアイコンショートコード `:fontawesome-brands-windows:` 等が変換されず生テキストで表示されていた。原因は `mkdocs.yml` の `markdown_extensions` に `pymdownx.emoji` が無いこと。3行追加する PR #990 を作成し、ローカル build で描画を確認した"
 sources:

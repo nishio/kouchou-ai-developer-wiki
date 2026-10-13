@@ -1,4 +1,5 @@
 ---
+title: "PR #883 quickstart 書き直し方針 2026-05-31"
 type: analysis
 summary: "PR #883 developer-quickstart は merge を急がず、直近 1 週間で固まった整理 (利用主体先行分岐、platform 安定性ティア、Docker Desktop license の決定フロー上の重み、データ量前提、構造把握スタンス) を docs に取り込んでから書き直すべき。現状の 4 モード分岐は読者像と Mode 選択前提が暗黙のため、Docker Desktop が使えない人や自治体担当が詰む構造になっている"
 sources:

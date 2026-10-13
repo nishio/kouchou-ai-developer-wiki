@@ -1,4 +1,5 @@
 ---
+title: "外向けツールカタログ草案 2026-06-30"
 type: analysis
 summary: "広聴AI / いどばた / Cartographer / Jigsaw Sensemaker / tttc-light-js を外向けに混同なく説明するための tool catalog draft。#564 公開事例ページと 8/2 技術・ツール資料へ転用する"
 sources:

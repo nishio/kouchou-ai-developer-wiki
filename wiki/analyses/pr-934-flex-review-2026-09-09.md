@@ -1,4 +1,5 @@
 ---
+title: "PR #934 Flex 処理レビューと再試行重複 2026-09-09"
 type: analysis
 summary: "PR #934 の最新HEADをレビュー。既存指摘は修正済みだが、OpenAI SDKの再試行とTenacityが重なり最大4回の説明に対して12回のHTTP送信を再現"
 sources:

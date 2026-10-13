@@ -1,4 +1,5 @@
 ---
+title: "PR #813・#817 CodeQL/CodeRabbit 設定の観測 2026-05-18"
 type: source
 summary: "`PR #813` と `PR #817` を観測し、CodeQL / CodeRabbit 設定がどう入って何が意図だったかを整理したメモ"
 sources:

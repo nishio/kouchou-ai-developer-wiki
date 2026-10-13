@@ -1,4 +1,5 @@
 ---
+title: "tokorotenとのアルゴリズム議論の振り返り"
 type: analysis
 summary: "tokoroten とのアルゴリズム議論は、クラスタリング手法の優劣ではなく、散布図プロダクト・深い分析・説明責務・運用ワークフローを分け直す議論だった"
 sources:

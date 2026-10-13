@@ -1,4 +1,5 @@
 ---
+title: "Zenn: LLM-as-a-Judge とルーブリック評価 2026-05-29"
 name: zenn-llm-as-a-judge-rubric-evaluation-2026-05-29
 type: source
 summary: "Ubie Tech Blog の LLM-as-a-Judge / ルーブリック評価記事。抽象的な 1-5 点採点ではなく、true/false 可能な criteria に分解し、重要度ごとの points と negative criteria を持たせると、再現性と改善点の特定が上がるという実務向け整理"

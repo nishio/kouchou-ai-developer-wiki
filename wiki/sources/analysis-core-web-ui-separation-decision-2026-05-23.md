@@ -1,4 +1,5 @@
 ---
+title: "analysis-core と Web UI の分離判断 2026-05-23"
 type: source
 summary: "CLI は一般利用者に重く、WebUI は研究用途に重かったため core を切り出し、Web は JSON、CLI は観察用HTMLを持つという maintainer 判断メモ"
 sources:

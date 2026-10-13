@@ -1,4 +1,5 @@
 ---
+title: "zipf-broadlistening(全件AI処理デモサイト)"
 name: zipf-broadlistening
 summary: "「なぜサンプリングでなく全件AI処理か」を1枚で体験させる nishio の静的デモサイト。ランダムK件では割合pの意見を exp(-Kp) で丸ごと見落とす（1%・K=100で36.4%、0.1%なら9割）。体験→解説→実験室の2ページ構成"
 type: entity

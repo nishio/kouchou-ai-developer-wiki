@@ -1,4 +1,5 @@
 ---
+title: "対応 LLM プロバイダ"
 name: llm-providers
 summary: "対応 LLM プロバイダ — OpenAI / Azure OpenAI / Gemini / OpenRouter / LocalLLM (Ollama/LM Studio 等)。Windows local 完結 route では Foundry Local / Chrome built-in AI / Windows AI APIs も候補だが、2026-05-31 時点では未実装"
 type: concept

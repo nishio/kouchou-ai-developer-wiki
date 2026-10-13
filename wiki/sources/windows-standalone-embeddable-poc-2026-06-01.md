@@ -1,4 +1,5 @@
 ---
+title: "Windows スタンドアロン化 embeddable Python PoC 検証 2026-06-01"
 type: source
 summary: "PR #891（tokoroten, Draft）の検証記録 tmp-embeddable-poc/FINDINGS.md の要約。広聴AI を Windows スタンドアロン化する embeddable Python 方針が成立すると実証（numba/UMAP/FastAPI が単一 embeddable Python 上で完走、torch は LM Studio 委譲で回避し ~650MB）。同時に、現 main にも残る2つの移植性バグ（report_launcher の python ハードコード=#992、open/json.load の encoding 未指定による cp932 クラッシュ=#993）と、admin が Server Actions のため純静的化できないという設計分岐を発掘した"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "公開事例成果物の棚卸し(8/2 イベント向け) 2026-06-30"
 type: source
 summary: "8/2 イベント向けの公開事例候補として、2026-06-30 に確認した public viewer / official page / public article の棚卸し"
 last_checked: 2026-06-30

@@ -1,4 +1,5 @@
 ---
+title: "slack-logs リポジトリ(Slack ログ一次置き場)"
 type: source
 summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical、mirror は直近14日の rolling snapshot"
 url: https://github.com/digitaldemocracy2030/slack-logs

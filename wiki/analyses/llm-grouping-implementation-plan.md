@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 実装方針(短期と長期)"
 type: analysis
 summary: "LLM groupingを実装するなら、short term は workflow canonical path に `analysis_mode=llm_grouping` を差し込み viewer 互換を保ち、long term は `analysis_capabilities` と plugin `requirements` へ収束させるのが筋がよい"
 sources:

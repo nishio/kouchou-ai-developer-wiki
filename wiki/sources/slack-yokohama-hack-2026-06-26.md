@@ -1,4 +1,5 @@
 ---
+title: "Yokohama Hack! 横浜型ブロードリスニング観測 2026-06-26"
 type: source
 summary: "2026-06-26 Slack で共有された Yokohama Hack! / 横浜型ブロードリスニングの観測。市民の声の収集手法を中心にした AI 実証募集として読む"
 url: https://hack.city.yokohama.lg.jp/news/10021

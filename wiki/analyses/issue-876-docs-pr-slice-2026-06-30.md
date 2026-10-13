@@ -1,4 +1,5 @@
 ---
+title: "Issue #876 docs PR の最初の切り出し範囲 2026-06-30"
 type: analysis
 summary: "Issue #876 を次に本体 docs PR へ戻す時の file-by-file first slice。developer-quickstart 単体追加ではなく、mkdocs nav、README、docs/index、getting-started/quickstart の役割を同時に下げ、setup-first 入口を最小限に緩和する"
 sources:

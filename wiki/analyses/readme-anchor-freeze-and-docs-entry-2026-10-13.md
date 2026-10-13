@@ -1,4 +1,5 @@
 ---
+title: "README 凍結問題とドキュメントサイト入口 2026-10-13"
 type: analysis
 summary: README への外部アンカーリンクを理由に README 改訂を止めるのは、README を永久凍結する footgun。外部リンクは安定した個別ドキュメントページに張らせ、README は改訂可能に保つ。非英語話者・非開発者の入口は英語UIの GitHub ではなく実在するドキュメントサイトに寄せる、という nishio の整理
 sources:

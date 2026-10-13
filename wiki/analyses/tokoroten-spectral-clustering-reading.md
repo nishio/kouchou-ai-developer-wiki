@@ -1,4 +1,5 @@
 ---
+title: "tokorotenのスペクトラルクラスタリング理解"
 type: analysis
 summary: "tokoroten の spectral clustering メモは、TTTC を『高次元で正しく切る手法』ではなく『UMAP が作る 2D 形状を前提に切る散布図寄りの手法』として理解していた点が重要"
 sources:

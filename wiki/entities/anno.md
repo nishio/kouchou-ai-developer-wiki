@@ -1,4 +1,5 @@
 ---
+title: "安野たかひろ(Devin 契約者・チームあんの)"
 name: anno
 summary: "安野たかひろ — kouchou-ai 開発で使う Devin の契約者。TTTC を非エンジニア向けにアプリ化した「チームあんの」の文脈"
 type: entity

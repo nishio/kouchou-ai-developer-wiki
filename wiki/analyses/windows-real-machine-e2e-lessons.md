@@ -1,4 +1,5 @@
 ---
+title: "Windows実機E2E構築の落とし穴"
 type: analysis
 summary: "Issue #860 / PR #862 の Windows 実機 E2E 構築で分かった self-hosted runner と Docker Desktop の落とし穴"
 sources:

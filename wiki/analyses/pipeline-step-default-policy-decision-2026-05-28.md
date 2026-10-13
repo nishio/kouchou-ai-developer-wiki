@@ -1,4 +1,5 @@
 ---
+title: "semantic island layout の標準化見送り判断 2026-05-28"
 type: analysis
 summary: "PR #874 の semantic island layout 生成は実験的機能なので、現時点では標準パイプラインに追加せず、明示的に有効化する実験用経路として扱うという判断"
 sources:

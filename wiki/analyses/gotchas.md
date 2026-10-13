@@ -1,4 +1,5 @@
 ---
+title: "落とし穴・ハマりどころ集"
 name: gotchas
 summary: "非自明な落とし穴・ハマりどころの一覧 — 経験的に繰り返し発生する footgun"
 type: analysis

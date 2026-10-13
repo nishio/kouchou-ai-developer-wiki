@@ -1,4 +1,5 @@
 ---
+title: "docs 系 issue / PR 依存マップ 2026-06-30"
 type: analysis
 summary: "2026-06-30 時点の docs 系 issue / PR (#876, #877, #885, #903, #696/#542) の依存関係。developer quickstart、Windows setup、Node runtime inventory、report reading guide を別々に進めつつ、読者像と配布方針を混ぜないための地図"
 sources:

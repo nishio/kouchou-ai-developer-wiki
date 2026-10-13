@@ -1,4 +1,5 @@
 ---
+title: "議事録に見る Brand Compass と情報発信の判断軸 2026-06-30"
 type: source
 summary: "議事録から見た Brand Compass / 情報発信 / stable v4 / 利用者課題調査の接続。Brand Compass 本体ではなく、議事録上の判断フィルタを要約する"
 last_checked: 2026-06-30

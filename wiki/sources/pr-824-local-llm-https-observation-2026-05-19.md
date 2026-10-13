@@ -1,4 +1,5 @@
 ---
+title: "PR #824 LOCAL LLM の HTTPS 対応の観測 2026-05-19"
 type: source
 summary: "`PR #824` merge 後の current `main` では analysis 実行経路は full URL な LOCAL LLM を受け取れるが、admin の model list probe はまだ `host:port` + `http://` 前提という観測メモ"
 sources:

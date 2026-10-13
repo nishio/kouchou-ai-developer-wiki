@@ -1,4 +1,5 @@
 ---
+title: "GPT 対話: 広聴AIと川喜田二郎の KJ 法 2026-05-25"
 name: gpt-kawakita-kj-method-broadlistening-2026-05-25
 summary: "2026-05-25 の nishio ↔ 外部 GPT 対話。広聴AIを川喜田二郎の野外科学・KJ法に接続し、`混沌から公共的仮説を立ち上げる装置` として再定義。AI支援KJ法は自動化ではなく人間が混沌と向き合うための足場、という設計原則"
 type: source

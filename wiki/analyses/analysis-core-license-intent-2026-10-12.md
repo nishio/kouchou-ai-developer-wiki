@@ -1,4 +1,5 @@
 ---
+title: "analysis-coreのライセンス意図とAGPL表記訂正 2026-10-12"
 type: analysis
 summary: "西尾さんがAGPLを正と確認。analysis-coreのMIT表記を誤記として訂正するPR #970を作成し、独立配布の設計とライセンス表記を整理"
 sources:

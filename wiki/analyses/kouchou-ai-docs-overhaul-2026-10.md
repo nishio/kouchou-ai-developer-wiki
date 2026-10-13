@@ -1,4 +1,5 @@
 ---
+title: "本体 docs 改善スプリント振り返り 2026-10"
 type: analysis
 summary: "2026-10 に実施した kouchou-ai 本体 docs（mkdocs サイト + README）の改善スプリントの retrospective。setup-first で読者を振り落としていた入口を demo-first に組み替え、閲覧者・自治体・実務者向けの空白ページを埋め、レポートの責任所在を 3 レイヤーで明文化し、入口ディレクトリ改称・README アンカー脱却・リンク切れ CI までを 13 PR で landing させた。通底する設計原則と、live 検証→ペルソナ監査→discover-fix-gate という再利用可能な進め方をまとめる"
 sources:

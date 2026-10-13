@@ -1,4 +1,5 @@
 ---
+title: "定例議事録: 8/2イベントと優先軸 2026-06-22"
 type: source
 summary: "2026-06-22 議事録から見た 8/2 イベント、Brand Compass、high priority issue、情報発信、運用ポリシーの優先軸"
 sources:

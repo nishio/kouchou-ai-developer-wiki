@@ -1,4 +1,5 @@
 ---
+title: "Codex ログ: ラベル選好 A/B バンドル生成 2026-06-03"
 type: source
 summary: "Codex が既存 LLM grouping 400 件 corpus から blind A/B label preference bundle を生成した作業ログ。`hierarchical_8_40` tree を固定し、`none` vs `setwise` の label variants を 24 questions にして `human_preference_questions.jsonl` と Markdown / HTML bundle を作った"
 sources:

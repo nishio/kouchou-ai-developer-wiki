@@ -1,4 +1,5 @@
 ---
+title: "未解決53件の再検証(偽陰性洗い出し) 2026-10-12"
 type: source
 summary: "広聴AI の棚卸しで『未解決』とした53件を 2026-10-12 に9シャード並列で再検証（偽陰性洗い出し）した一次記録。固定 checkout c297bc97 基準。結果は still-unresolved 44 / human-required 7 / now-resolved 2。偽陰性は #953/#956 の2件のみ（現行 remote main a3c198e9 で解決済み）。判定まとめは [[daily-report-2026-10-12]]。"
 last_checked: 2026-10-12 JST

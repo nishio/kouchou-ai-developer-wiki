@@ -1,4 +1,5 @@
 ---
+title: "高優先度 label 検索の落とし穴 2026-06-30"
 type: source
 summary: "GitHub issue の高優先度 label は `high priority` が正で、`priority: high` ではない。label 名を間違えると open high priority issue が 0 件に見える"
 last_checked: 2026-06-30 19:30 JST

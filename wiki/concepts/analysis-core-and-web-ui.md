@@ -1,4 +1,5 @@
 ---
+title: "analysis-core と Web UI の分離設計"
 name: analysis-core-and-web-ui
 type: concept
 summary: "Web UI が analysis-core を consumer として使い、Web は JSON、CLI は観察用HTMLを持つ理由"

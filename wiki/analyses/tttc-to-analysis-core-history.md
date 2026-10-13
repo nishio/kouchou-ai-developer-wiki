@@ -1,4 +1,5 @@
 ---
+title: "TTTCからanalysis-coreへの入口設計の変遷"
 name: tttc-to-analysis-core-history
 summary: "TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の analysis-core をサーバが呼ぶ現在形までの入口設計の変遷"
 type: analysis

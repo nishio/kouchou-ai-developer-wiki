@@ -1,4 +1,5 @@
 ---
+title: "ローカルAI向けハードウェア調達の市場メモ 2026-05-31"
 type: source
 summary: "2026-05-31 時点の local AI hardware 調達 route 検討用 source。RTX 5060 Ti 16GB / RTX 5070 Ti 16GB / RTX PRO 4000 Blackwell 24GB / Mac mini M4 Pro / Foundry Local 公式情報を、広聴AI local box 構想の判断材料として整理"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "ローカルAI runtime の利用者到達率推定 2026-05-31"
 type: analysis
 summary: "Chrome Prompt API / Foundry Local / Phi Silica などの local AI runtime を広聴AI Windows offline route に使う場合の到達率推定。Chrome Prompt API は一般 desktop では 45〜55% 程度の可能性があるが、自治体・組織貸与 PC では 20〜40% に落ちる見込み。Foundry Local は first spike 候補、Phi Silica / Copilot+ は当面 1〜5% 級の future option"
 sources:

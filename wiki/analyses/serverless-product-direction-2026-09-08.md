@@ -1,4 +1,5 @@
 ---
+title: "serverless 化のプロダクト方針案 2026-09-08"
 type: analysis
 summary: "ブラウザ版を利用入口の有力候補とし、運用・分析実験と結果データの接続を分けて進める開発方針案"
 sources:

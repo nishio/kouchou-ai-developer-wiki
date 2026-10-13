@@ -1,4 +1,5 @@
 ---
+title: "public-viewer の build 失敗の切り分け"
 type: analysis
 summary: "`apps/public-viewer` の build failure は Next.js bump 由来とは限らず、API 入力条件と `API_BASEPATH` 依存を切り分けて見る必要がある"
 sources:

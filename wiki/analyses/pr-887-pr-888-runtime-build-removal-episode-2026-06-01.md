@@ -1,4 +1,5 @@
 ---
+title: "runtime build 撤去の一日 (PR #887/#888) 2026-06-01"
 type: analysis
 summary: "PR #887 の deploy success false positive を起点に、public-viewer の runtime build 撤去 (PR #888) と Dependabot 対応 (PR #889) まで 1 日で連続実行した過程を、PR 番号と検証ステップ込みで時系列に並べた技術エピソード資料"
 sources:

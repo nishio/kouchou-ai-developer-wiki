@@ -1,4 +1,5 @@
 ---
+title: "日本国内のブロードリスニング活用事例マップ 2026-06-30"
 type: analysis
 summary: "公開Web検索で確認した日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例を、8/2 イベントと #564 公開事例整備へ接続する地図"
 sources:

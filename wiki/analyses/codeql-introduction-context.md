@@ -1,4 +1,5 @@
 ---
+title: "CodeQL導入の経緯と位置づけ"
 type: analysis
 summary: "`PR #817` 文脈では、CodeQL は accidental な混入をきっかけに常設の security scan として整理された"
 sources:

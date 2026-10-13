@@ -1,4 +1,5 @@
 ---
+title: "PR #849 AI による reviewer request の観測 2026-05-21"
 type: source
 summary: "`PR #849` では AI が人間 reviewer request を送れてしまったが、これは望ましい運用ではなく、review 依頼と承認要請は人間オーナーの明示判断に限るべきという観測メモ"
 sources:

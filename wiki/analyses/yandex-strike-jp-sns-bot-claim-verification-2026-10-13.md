@@ -1,4 +1,5 @@
 ---
+title: "Yandex 攻撃後 bot 急減説の日本語 SNS 検証 2026-10-13"
 name: yandex-strike-jp-sns-bot-claim-verification-2026-10-13
 summary: "Yandex DC 攻撃後の『AfD/MAGA bot 急減』を日本語 SNS(X)で検証しようとしたが、X の full-archive が実質 Enterprise only で retrospective 検証は非現実的と判断して断念。元主張自体も crawler traffic の誤読で未証明"
 type: analysis

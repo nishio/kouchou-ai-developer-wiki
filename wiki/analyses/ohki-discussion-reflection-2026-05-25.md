@@ -1,4 +1,5 @@
 ---
+title: "ohki-shingo 議論の振り返り 2026-05-25"
 type: analysis
 summary: "ohki-shingo との議論は、散布図互換の技術判断を、自治体利用で公開UIが担うべき説明責務へ引き戻したものとして読める"
 sources:

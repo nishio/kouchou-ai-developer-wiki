@@ -1,4 +1,5 @@
 ---
+title: "Slack 広聴AI開発チャンネル抜粋 2026年Q1"
 name: slack-dev-kouchouai-2026-q1
 summary: "`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2026-01-14 〜 2026-03-04）— plugin 化、再利用、LLM grouping 系分類の設計意図"
 type: source

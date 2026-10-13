@@ -1,4 +1,5 @@
 ---
+title: "Issue #221/#884 試行錯誤負担削減の現況 2026-06-30"
 type: source
 summary: "Issue #221 / #884 と下位 issue の 2026-06-30 live state。試行錯誤負担削減は #884 の作成前確認パネル first slice に具体化されているが、current main ではまだ window.confirm と手動 API check が分離している"
 last_checked: 2026-06-30 19:30 JST

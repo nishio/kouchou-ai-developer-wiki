@@ -1,4 +1,5 @@
 ---
+title: "Issue #731 Windows setup_win.bat 文字化けの再現ログ"
 name: issue-731-windows-setup-mojibake
 type: source
 summary: "GitHub issue #731 の再現ログ。Windows で `setup_win.bat` 実行時に日本語が文字化けするだけでなく、一部行が別コマンドとして解釈されてセットアップが停止することを示す"

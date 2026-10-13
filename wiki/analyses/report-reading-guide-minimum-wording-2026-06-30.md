@@ -1,4 +1,5 @@
 ---
+title: "レポート誤読防止の最小文言案 2026-06-30"
 type: analysis
 summary: "Issue #696 / #542 を踏まえ、公開事例ページ・public-viewer・README/docs に置く誤読防止と責任所在の最小文言案"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "public-viewer build/serve 分離リファクタ計画 2026-06-01"
 type: analysis
 summary: "public-viewer の build-time API 依存を dynamic hosting から外し、container 起動時 next build を撤去するための段階的リファクタ計画"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Next.js 公式docs: dynamic build 関連の要点 2026-06-01"
 type: source
 summary: "Next.js 公式 docs の generateStaticParams / connection / route segment config 周辺の要点。public-viewer dynamic build を API なしで通す設計の補助線"
 sources:

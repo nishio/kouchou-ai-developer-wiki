@@ -1,4 +1,5 @@
 ---
+title: "report.html は Web 正本にしない判断 2026-05-23"
 type: source
 summary: "`report.html` を Web canonical にせず、CLI / coding agent 向け観察用HTMLに留めると maintainer が 2026-05-23 に明示した判断メモ"
 sources:

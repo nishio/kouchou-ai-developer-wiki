@@ -1,4 +1,5 @@
 ---
+title: "PR #952 Ollama ホストポート変更のレビュー 2026-10-06"
 type: analysis
 summary: "外部PR #952（Ollamaのホスト側ポートを OLLAMA_HOST_PORT で変更可能に）のレビュー判断。ホスト公開ポートとコンテナ間接続先を分けて見る観点、初回コントリビュータPRではCodeQLが承認待ちで走らない点、軽微なdocs追随はmain直接修正で済ませた判断を記録"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Azure Container Apps 公式 docs 要点 2026-06-01"
 type: source
 summary: "Azure Container Apps 公式 docs の apps / jobs / Consumption billing 周辺の要点。public-viewer の build/serve 分離と固定費判断の補助線"
 url: https://learn.microsoft.com/en-us/azure/container-apps/

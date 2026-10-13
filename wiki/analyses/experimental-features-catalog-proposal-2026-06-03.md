@@ -1,4 +1,5 @@
 ---
+title: "実験的機能カタログの提案 2026-06-03"
 type: analysis
 summary: LLM grouping / DivCon / Farbrain / マンダラート可視化など、CLI 内や個人 repo の実験的機能をフラットに集めるカタログを kouchou-ai 本体 docs 内に置く提案。個人 repo の stale 対策として「最終確認日」をエントリ必須項目にする
 sources:

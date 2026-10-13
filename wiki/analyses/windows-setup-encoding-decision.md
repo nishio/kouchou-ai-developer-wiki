@@ -1,4 +1,5 @@
 ---
+title: "Windows setupの文字コード対応の判断"
 name: windows-setup-encoding-decision
 type: analysis
 summary: "Windows setup で日本語メッセージを扱う時、`.bat` 単体でコードページ差異を吸収するのは難しく、ASCII ランチャー + PowerShell 本体へ分離する判断が妥当、という理由整理"

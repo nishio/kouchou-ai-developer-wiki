@@ -1,4 +1,5 @@
 ---
+title: "8/2 イベント公開事例の棚卸し 2026-06-30"
 type: analysis
 summary: "8/2 イベントで使う公開可能事例・デモ素材を、public-ready / 確認待ち / fallback / 使用不可に分けた棚卸し"
 sources:

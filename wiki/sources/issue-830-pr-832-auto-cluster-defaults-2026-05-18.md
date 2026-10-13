@@ -1,4 +1,5 @@
 ---
+title: "Issue #830/PR #832 クラスタ数デフォルト見直し 2026-05-18"
 type: source
 summary: "`Issue #830` と `PR #832` で整理された、CLI / analysis-core のクラスタ数デフォルト見直しの観測メモ"
 sources:

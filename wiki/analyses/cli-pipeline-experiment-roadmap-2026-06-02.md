@@ -1,4 +1,5 @@
 ---
+title: "CLIでのpipeline実験ロードマップ 2026-06-02"
 type: analysis
 summary: "CLI を pipeline 実験の場として使い、まず clustering tree と labelling output の比較コーパスを作り、label variants の A/B human preference を集めてから judge / evidence artifact / ラベル改善 / マンダラート・付箋ビューを順に育てるロードマップ。Web UI は simple に保ち、CLI で比較可能な artifact を貯めてから昇格判断する"
 sources:

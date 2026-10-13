@@ -1,4 +1,5 @@
 ---
+title: "広聴AIのスコープ線: マーケ戦略から plugin 化へ 2026-06-03"
 name: kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03
 summary: "『広聴AI のスコープはキーインサイト発見まで、その先は伴走パートナー』というスコープ線の系譜。2025-07-16 マーケ戦略 mtg を起点として、2025-11-29 鈴木健ブログ・2025-12-06 方向性会議を経て現在の plugin 化方針まで一貫している"
 type: analysis

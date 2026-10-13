@@ -1,4 +1,5 @@
 ---
+title: "LLM grouping 400件実験の tree-label corpus 台帳 2026-06-02"
 type: source
 summary: "LLM grouping 400 件実験の既存 artifact を `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/` に台帳化した source。5 tree run、10 labelling run、5 judge run、4 observation を保存し、tree-label matrix bundle を作成した"
 sources:

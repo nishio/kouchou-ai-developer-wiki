@@ -1,4 +1,5 @@
 ---
+title: "Slack: 公開UIの要件と散布図の扱い 2026-05-23"
 name: slack-public-ui-requirements-2026-05-23
 type: source
 summary: "2026-05-23 ごろの Slack で、nishio が散布図互換／散布図必須撤廃の二段構えを述べたのに対し、ohki-shingo が『公開UIに求められる要件』と『embedding 距離精度の非本質性』を整理した thread"

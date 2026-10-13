@@ -1,4 +1,5 @@
 ---
+title: "Idobata(AI 1-on-1 深掘り interview OSS)"
 name: idobata
 summary: "AI による 1-on-1 深掘り interview OSS。広聴AIとは収集・深掘りと分析・可視化の役割を分け、theme discovery や提案 / PR データで接続する"
 type: entity

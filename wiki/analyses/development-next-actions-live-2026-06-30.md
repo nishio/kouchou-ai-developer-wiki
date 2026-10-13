@@ -1,4 +1,5 @@
 ---
+title: "開発の次アクション候補 2026-06-30"
 type: analysis
 summary: "2026-06-30 19:30 JST 時点の開発 next action 候補。open PR / high priority issue / nishio assigned issue を live 確認し、#884 作成前確認パネルを第一候補、#903 review comment を低リスク補助、#885 prototype と #898 validation を次点として整理する"
 last_checked: 2026-06-30 19:30 JST

@@ -1,4 +1,5 @@
 ---
+title: "残存 issue の優先度整理 2026-05-29"
 type: analysis
 summary: "2026-05-29 時点の open issue 121 件を全件メタデータ確認し、本文を古い high-priority / user-facing issue まで読み直すと、project-wide 優先は `#221` 試行錯誤負担削減と `#564` 活用事例公開であり、tactical next は進行中 PR 着地と Windows / cost / API 不安の解消である"
 sources:

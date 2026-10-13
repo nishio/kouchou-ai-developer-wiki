@@ -1,4 +1,5 @@
 ---
+title: "v5 リファクタの実装状況"
 name: refactoring-status
 summary: "v5 リファクタの実装状況 — Phase 0〜8 の主要移行は main で完了し、残るのは package 配布・status semantics・周辺 docs の follow-up"
 type: analysis

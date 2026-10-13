@@ -1,4 +1,5 @@
 ---
+title: "Slack: Devin 運用と定期 Web 更新の論点 2026-06-30"
 type: source
 summary: "2026-06-23〜06-30 の Slack で出た Devin / AI agent 運用メモ。使ってよい範囲・費用上限・繰り返し Web 更新候補は、Slack 記憶ではなく明文化された運用契約に落とす必要がある"
 last_read: 2026-06-30 19:23 JST

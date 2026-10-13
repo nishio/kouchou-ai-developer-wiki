@@ -1,4 +1,5 @@
 ---
+title: "書籍から抽出した開発判断への知見"
 name: broad-listening-book-extractions
 summary: "書籍から今後の開発判断に効く知見を整理。設計意図・経験値・検証結果を分け、KJ法プロンプトの品質向上は未検証の仮説として扱う"
 type: analysis

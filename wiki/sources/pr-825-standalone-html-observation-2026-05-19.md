@@ -1,4 +1,5 @@
 ---
+title: "PR #825 自己完結型 HTML レポートの観測 2026-05-19"
 type: source
 summary: "`PR #825` merge 後の current `main` では `analysis-core` CLI が自己完結型 `report.html` を生成するが、Web の主経路はなお `hierarchical_result.json` + `public-viewer` であり HTML は CLI 向け観察用に留まるという観測メモ"
 sources:

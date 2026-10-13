@@ -1,4 +1,5 @@
 ---
+title: "Talk to the City から広聴AI への系譜 2026-06-30"
 type: source
 summary: "2026-06-30 の追加公開Web検索で確認した、Talk to the City から広聴AIへの系譜と、国内事例分類に使う公開根拠"
 last_checked: 2026-06-30 19:39 JST

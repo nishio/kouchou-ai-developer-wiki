@@ -1,4 +1,5 @@
 ---
+title: "Slack開発chの設計意図 2025年4Q"
 name: slack-design-intents-2025-q4
 summary: "2025 4Q の `#2_開発_広聴ai` から読める設計意図の整理 — 現行方式の限界、long-context LLM 直接分類志向、JSON/YAML カスタマイズ、v4/v5 分離"
 type: analysis

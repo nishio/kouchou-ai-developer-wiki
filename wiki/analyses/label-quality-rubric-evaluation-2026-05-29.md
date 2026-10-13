@@ -1,4 +1,5 @@
 ---
+title: "ラベル品質のルーブリック評価 2026-05-29"
 type: analysis
 summary: "クラスタラベル品質の judge は、抽象的な 1-5 点ではなく、binary criteria + weights + fatal penalty のルーブリック評価に分解するのがよい。まず `[8,40]` の既存 judge bundle で人間判断に合わせて較正し、標準 pipeline には入れず experimental artifact として回す"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "ラベル改良候補の比較用 judge bundle 2026-05-25"
 type: source
 summary: "Claude Code や人間が同じ材料で top-level label set を比較できるよう、`[8,40]` の label refinement 候補 4 本を同一フォーマットで並べた judge bundle"
 sources:

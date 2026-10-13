@@ -1,4 +1,5 @@
 ---
+title: "散布図スクロール誤操作対策のUX判断"
 type: analysis
 summary: "ScatterChart のスクロール誤操作対策では、click-to-enable より「短い遅延付きの自動ロック解除」と視覚フィードバックが好まれ、preview 環境不足が実装収束を妨げた"
 sources:

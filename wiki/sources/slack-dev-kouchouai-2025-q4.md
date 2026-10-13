@@ -1,4 +1,5 @@
 ---
+title: "Slack 広聴AI開発チャンネル抜粋 2025年Q4"
 name: slack-dev-kouchouai-2025-q4
 summary: "`oss_weekly_reporter` の `#2_開発_広聴ai` 抜粋（2025-10-01 〜 2025-12-31）— 現行方式の限界認識、plugin 化、v4/v5 二段構え"
 type: source

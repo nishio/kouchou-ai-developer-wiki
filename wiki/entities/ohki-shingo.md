@@ -1,4 +1,5 @@
 ---
+title: "大木真吾(メンテナ・Azure 環境・渉外)"
 name: ohki-shingo
 summary: "大木真吾 — kouchou-ai メンテナ、Azure 環境・対外渉外の主担当"
 type: entity

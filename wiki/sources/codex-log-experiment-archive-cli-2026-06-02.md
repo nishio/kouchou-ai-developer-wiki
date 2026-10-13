@@ -1,4 +1,5 @@
 ---
+title: "Codex ログ: 実験アーカイブ CLI 実装 2026-06-02"
 type: source
 summary: "Codex が analysis-core CLI に実験結果アーカイブの first slice を実装した作業ログ。`--experiment-root` / `--experiment-id` で 1 回の pipeline output を `raw/experiments/<experiment_id>/` 形式へ保存する"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "wiki公開基盤はQuartzを第一候補に"
 type: analysis
 summary: "developer-wiki の GitHub Pages 配信は、現状の MkDocs adapter より Quartz を第一候補にした方が wiki の記法と公開体験が揃いやすい"
 sources:

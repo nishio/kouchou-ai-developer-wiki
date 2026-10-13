@@ -1,4 +1,5 @@
 ---
+title: "PR #801 React override 統一の観測メモ 2026-05-19"
 type: source
 summary: "`PR #801` は React version 統一の意図自体は妥当だが、2026-05-19 時点の current `main` に対しては `pnpm.overrides` を丸ごと置き換えて既存 `minimatch` override を消すため、そのままは merge 不可という観測メモ"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Issue #884 作成前確認パネルの実装契約 2026-06-30"
 type: analysis
 summary: "Issue #884 の作成前確認パネル first PR 向け実装契約。CSV / Spreadsheet / plugin を同じ review model に通し、既存 API check / reuse / token usage 表示を混同せず段階実装する"
 last_checked: 2026-06-30 18:55 JST

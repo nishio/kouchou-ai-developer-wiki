@@ -1,4 +1,5 @@
 ---
+title: "解析パイプライン(抽出から可視化まで)"
 name: pipeline
 summary: "解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化"
 type: concept

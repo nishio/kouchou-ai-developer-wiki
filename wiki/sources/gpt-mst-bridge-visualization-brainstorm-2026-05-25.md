@@ -1,4 +1,5 @@
 ---
+title: "GPT 対話: MST と bridge edge による可視化 2026-05-25"
 name: gpt-mst-bridge-visualization-brainstorm-2026-05-25
 summary: "2026-05-25 の nishio ↔ 外部 GPT 対話。意味クラスタリングと 2D 散布図の衝突を、`クラスタ内 MST + クラスタ間 bridge edge + 2 段階 cluster-separated layout` という graph-drawing 系の設計で解く案を整理"
 type: source

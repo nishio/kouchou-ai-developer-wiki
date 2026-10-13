@@ -1,4 +1,5 @@
 ---
+title: "local AI 完結に向けたハードウェア調達ルート 2026-05-31"
 type: analysis
 summary: "広聴AIの API 契約不要 local 完結を、既存業務 PC ではなく hardware 調達込みで実現する route の整理。担当者 PC を高性能化するより、認定済み local box / appliance を 1 台置いて browser から使わせる方が現実的。単一 exe とは別物だが、自治体・組織向け pilot には筋が良い"
 sources:

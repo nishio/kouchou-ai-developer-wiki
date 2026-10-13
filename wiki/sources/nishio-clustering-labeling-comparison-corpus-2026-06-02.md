@@ -1,4 +1,5 @@
 ---
+title: "clustering・labelling 比較コーパスの提案 2026-06-02"
 type: source
 summary: "2026-06-02 に nishio が、各種 clustering method が作る tree と、その tree を入力にした各種 summarization / labelling process のラベルを蓄積・比較できるようにすべき、judge 改善以前に現状が曖昧すぎると指摘したメモ"
 sources:

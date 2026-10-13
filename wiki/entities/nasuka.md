@@ -1,4 +1,5 @@
 ---
+title: "Nasuka Sumino(角野)"
 name: nasuka
 summary: "Nasuka Sumino (角野) — 抽出プロンプト・limited-publish・クラスタタイトル手動編集等を実装したコントリビュータ"
 type: entity

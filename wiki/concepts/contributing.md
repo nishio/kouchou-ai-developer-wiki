@@ -1,4 +1,5 @@
 ---
+title: "コントリビュート手順"
 name: contributing
 summary: "コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー"
 type: concept

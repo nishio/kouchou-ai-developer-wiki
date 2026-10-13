@@ -1,4 +1,5 @@
 ---
+title: "広聴結果の公開UIに求められる要件"
 name: public-ui-requirements-for-broadlistening
 type: analysis
 summary: "広聴結果の公開UIに求められる要件は『散布図かどうか』ではなく、量・観点・論点・個別意見への辿り、少数意見の埋没回避、恣意性の排除、次の問いの可視化。ohki-shingo の整理から導出"

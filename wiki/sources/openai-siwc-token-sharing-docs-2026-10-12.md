@@ -1,4 +1,5 @@
 ---
+title: "OpenAI Sign in with ChatGPT のトークン共有 docs 2026-10-12"
 type: source
 summary: "OpenAI 'Sign in with ChatGPT' (SIWC) の plan 共有（token sharing）公式 docs の要点。OSS / local-hosted アプリが、サインインしたユーザの ChatGPT プランで Responses API 推論を実行できる OAuth 機能。API キー不要ルートの候補だが、対応 endpoint は Responses API に明示限定で embedding は docs 範囲外（2026-10-12 確認）。embedding が広聴AI pipeline の中核のため、SIWC 単独ではキー不要ルートとして不完全"
 sources:

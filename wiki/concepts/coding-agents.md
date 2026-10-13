@@ -1,4 +1,5 @@
 ---
+title: "AI コーディングエージェントの協働運用"
 name: coding-agents
 summary: "Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態"
 type: concept

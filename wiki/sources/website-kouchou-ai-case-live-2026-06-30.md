@@ -1,4 +1,5 @@
 ---
+title: "DD2030 website の広聴AI活用事例ページ現状 2026-06-30"
 type: source
 summary: "DD2030 website 側の広聴AI活用事例ページ live state。`src/kouchou-ai/case.vto` が直接更新先で、#208/#216/#125/#123 が #564 の外部正本候補と分類リスクに関係する"
 last_checked: 2026-06-30

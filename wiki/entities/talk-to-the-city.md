@@ -1,4 +1,5 @@
 ---
+title: "Talk to the City(TTTC、広聴AIの上流)"
 name: talk-to-the-city
 summary: "TTTC — kouchou-ai の上流。AI Objectives Institute 発、現在 archived"
 type: entity

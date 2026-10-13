@@ -1,4 +1,5 @@
 ---
+title: "serverless 版との役割・データ互換性の差分 2026-09-08"
 type: source
 summary: "dd2030の横断戦略と#921、広聴AI両実装から確認した役割・結果データ互換性の差分"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Issue #885 と PR #903 の現況 2026-06-30"
 type: source
 summary: "2026-06-30 に issue #885 と PR #903 の GitHub live state を確認した記録。#885 は open / unassigned、PR #903 は #885 第1完了条件の docs-only inventory PR で open / review required / blocked"
 sources:

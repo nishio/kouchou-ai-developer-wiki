@@ -1,4 +1,5 @@
 ---
+title: "Windows native local AI の公式 docs 整理 2026-05-31"
 type: source
 summary: "Microsoft 公式 docs から見た Windows native local AI の要点。Phi Silica は Copilot+ PC / NPU 向け Windows AI APIs、Foundry Local は Python SDK・OpenAI-compatible endpoint・embeddings・model lifecycle 管理を持つ local runtime で、広聴AIには Foundry Local が特に接続しやすい"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Slack: 自治体 PC の WSL2 で広聴AI稼働 2026-10-05"
 type: source
 summary: "2026-10-05 Slack #2_開発_広聴ai で大木真吾が、自治体内で流用可能な Windows 11 PC に WSL2 + `./start_linux.sh`（Docker Desktop を使わず WSL2 内の Docker Engine）で広聴AIを動かせたと報告し、nishio も Docker Desktop を推奨から外す方向に同意した"
 sources:

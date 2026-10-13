@@ -1,4 +1,5 @@
 ---
+title: "Slack 事例紹介チャンネルの記録 2026-03/04"
 type: source
 summary: "Slack #1_事例紹介_全体 の 2026-03/04 raw snapshot。公開事例候補の lead intake として有用だが、外部公開の根拠には primary URL 確認が必要"
 last_checked: 2026-06-30

@@ -1,4 +1,5 @@
 ---
+title: "Issue #741 の現状: deploy 更新の競合課題 2026-05-26"
 type: analysis
 summary: "Issue `#741` は 2026-05-26 時点で完全に stale ではないが、主因は当初想定の npm registry flaky よりも `main` への近接 push で deploy 更新が競合することに寄っており、公開 wiki では詳細ログに踏み込まず concurrency 課題として整理する"
 sources:

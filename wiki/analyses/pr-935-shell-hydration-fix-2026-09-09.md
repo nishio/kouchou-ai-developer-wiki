@@ -1,4 +1,5 @@
 ---
+title: "PR #935 shell の hydration エラー修正 2026-09-09"
 type: analysis
 summary: "PR #935のshell一覧のReact #418をWebpackで解消。#935・#936・修正#938をマージ、E2E78件成功、title/noindexは#939へ切り出し"
 sources:

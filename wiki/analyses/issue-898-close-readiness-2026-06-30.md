@@ -1,4 +1,5 @@
 ---
+title: "Issue #898 aarch64 UMAP 問題の close 可否 2026-06-30"
 type: analysis
 summary: "issue #898 aarch64 Docker / UMAP Illegal instruction は PR #899 merge 済みだが、close には Apple Silicon Docker での解消確認または確認不能時の明示判断が必要"
 sources:

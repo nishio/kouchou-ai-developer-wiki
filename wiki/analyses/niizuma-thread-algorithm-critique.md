@@ -1,4 +1,5 @@
 ---
+title: "新妻 thread のアルゴリズム批判の整理"
 type: analysis
 summary: "新妻 thread は、UMAP後k-means批判そのものよりも『分析の筋の良さ』『散布図の見え方』『説明責務』が別問題だと露出させた点に価値がある"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "open-japan-politech-platform README 読解 2026-10-13"
 name: ojpp-repo-source-2026-10-13
 summary: "ochyai/open-japan-politech-platform（OJPP）README 読解。PoliTech / 7アプリ / 「エージェントファースト設計」表 / BroadListening の ai-participate を記録"
 type: source

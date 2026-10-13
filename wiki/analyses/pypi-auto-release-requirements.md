@@ -1,4 +1,5 @@
 ---
+title: "PyPI 自動リリースに必要な要件"
 type: analysis
 summary: "`kouchou-ai-analysis-core` の PyPI 自動更新に必要なのは tag 起点の GitHub Actions、PyPI 認証、package 専用の build/test 配線"
 sources:

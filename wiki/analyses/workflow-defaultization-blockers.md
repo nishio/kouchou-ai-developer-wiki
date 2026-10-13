@@ -1,4 +1,5 @@
 ---
+title: "run_workflow() デフォルト化の blocker と残課題"
 type: analysis
 summary: "`run_workflow()` default 化を止めていた主 blocker は main で解消され、Phase 8 cleanup 後はいま何が follow-up だけ残っているかを切り分ける履歴ページ"
 sources:

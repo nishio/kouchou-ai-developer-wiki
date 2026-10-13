@@ -1,4 +1,5 @@
 ---
+title: "次に着手する Issue 候補の検討 2026-09-07"
 type: analysis
 summary: "open Issue 128件から#905以外の次候補を検討。#908/#477の重複、#452のtimeout受け渡し欠落、#884・#877の実装単位と#898の検証待ちを整理"
 sources:

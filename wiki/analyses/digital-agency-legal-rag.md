@@ -1,4 +1,5 @@
 ---
+title: "デジタル庁の条文RAGに関する整理"
 type: analysis
 summary: "2026-05-25 時点の wiki / meeting minutes には『デジタル庁の条文RAG』を直接説明する整理はなく、デジタル庁・eGov・一般的な RAG 活用の断片的な言及があるに留まる"
 sources:

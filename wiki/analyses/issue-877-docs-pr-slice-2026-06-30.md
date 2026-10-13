@@ -1,4 +1,5 @@
 ---
+title: "Issue #877 Windows guide の docs PR 切り出し 2026-06-30"
 type: analysis
 summary: "Issue #877 を本体 docs PR に戻す時の file-by-file slice。Windows guide は Docker Desktop supported path に絞り、対象外環境・API key 前提・troubleshooting 表・developer verification への住み分けを明示する"
 sources:

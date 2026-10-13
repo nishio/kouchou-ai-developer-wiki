@@ -1,4 +1,5 @@
 ---
+title: "1要素ずつ変える実験設計の原則 2026-06-02"
 type: analysis
 summary: "pipeline 実験は探索 corpus と採用判断用の clean experiment を分け、採用判断では current main baseline から `factor_under_test` を 1 つだけ変えるべきという実験設計原則。ラベル品質は単独批評ではなく A/B preference で人間評価し、複数要素変更 run は単独で winner 判定しない"
 sources:

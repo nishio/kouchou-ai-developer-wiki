@@ -1,4 +1,5 @@
 ---
+title: "書籍リリースに向けた開発計画案 2026-09"
 name: book-release-development-plan-2026-09
 summary: "2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する"
 type: analysis

@@ -1,4 +1,5 @@
 ---
+title: "PR #903 Node runtime docs レビュー観点 2026-06-30"
 type: analysis
 summary: "PR #903 の Web UI Node runtime inventory docs を、current main と CodeRabbit 指摘から読むレビュー観点。人間 authored PR へ直接 push せず、docs 精度の確認材料として固定する"
 sources:

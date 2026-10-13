@@ -1,4 +1,5 @@
 ---
+title: "Slackアルゴリズム開発chの設計論点"
 type: analysis
 summary: "`#2_開発_広聴ai_アルゴリズム開発` から読めるアルゴリズム設計判断 — UMAP後クラスタリング批判、分析と可視化の分離、対立軸・taxonomy・LLM分類"
 sources:

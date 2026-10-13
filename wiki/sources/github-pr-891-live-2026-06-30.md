@@ -1,4 +1,5 @@
 ---
+title: "PR #891 Windows standalone draft の現況 2026-06-30"
 type: source
 summary: "2026-06-30 に GitHub live state と PR head ref で確認した PR #891。Windows standalone draft は embeddable Python + FastAPI + static viewer/admin を試すが、draft / dirty / stale で readiness risk が残る"
 sources:

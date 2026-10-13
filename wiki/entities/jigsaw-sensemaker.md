@@ -1,4 +1,5 @@
 ---
+title: "Jigsaw Sensemaker(LLM grouping の一例)"
 type: entity
 summary: "Jigsaw Sensemaker は、広義には LLM grouping に属する外部ツール / 分析アプローチとして扱う。LLM grouping 全体を Jigsaw と呼ぶと、一般カテゴリと固有名詞が混ざって混乱する"
 sources:

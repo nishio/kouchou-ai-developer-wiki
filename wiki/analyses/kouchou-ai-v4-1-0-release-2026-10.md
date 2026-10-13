@@ -1,4 +1,5 @@
 ---
+title: "広聴AI v4.1.0 リリース振り返り 2026-10"
 type: analysis
 summary: "kouchou-ai v4.1.0（2026-10-13 発行）リリースの retrospective。v4.0.0（2025-12-26）以降 ~10 か月・約 160 PR・8 コントリビュータ（新規 2 名）を束ねた大型リリース。コア/実験拡張の分離、pandas→polars 移行、散布図まわりの WebUI 強化、CLI/analysis-core の大幅拡張（UMAP 使い回し・指定カテゴリ分類・意見ラベル・埋め込み独立選択）、Docker イメージ縮小と Windows 移植性、AGPL 表記訂正、mkdocs docs サイト新設と多言語化、までをテーマ別にまとめる"
 sources:

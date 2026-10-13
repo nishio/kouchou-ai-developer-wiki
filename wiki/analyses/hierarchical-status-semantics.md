@@ -1,4 +1,5 @@
 ---
+title: "hierarchical_status.json の意味論差分"
 type: analysis
 summary: "`hierarchical_status.json` は branch 上で workflow path でもほぼ legacy 互換になったが、`current_job` の残し方や `duration` など一部に意味論差分が残る"
 sources:

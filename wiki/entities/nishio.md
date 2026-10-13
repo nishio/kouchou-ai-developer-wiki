@@ -1,4 +1,5 @@
 ---
+title: "西尾泰和(リファクタ・研究主導、Wiki オーナー)"
 name: nishio
 summary: "西尾泰和 — kouchou-ai のリファクタ／研究主導、本 Wiki のオーナー"
 type: entity

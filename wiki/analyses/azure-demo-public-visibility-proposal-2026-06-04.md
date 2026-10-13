@@ -1,4 +1,5 @@
 ---
+title: "Azureデモ公開動線の提案と決定 2026-06-04"
 name: azure-demo-public-visibility-proposal-2026-06-04
 type: analysis
 summary: Azure デモサイトを docs から動線化する 4 問と、2026-06-05 の大木さん返答 + nishio 決定。viewer 公開 / admin 共用 + 秘密情報禁止明示は進行、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化、で着地。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレームしている

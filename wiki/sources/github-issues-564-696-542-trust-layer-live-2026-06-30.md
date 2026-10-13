@@ -1,4 +1,5 @@
 ---
+title: "活用事例公開の trust layer 関連 issue 現況 2026-06-30"
 type: source
 summary: "Issue #564 / #696 / #542 の live state。活用事例公開は、誤読防止とレポート責任所在を含む trust layer として扱う必要がある"
 last_checked: 2026-06-30

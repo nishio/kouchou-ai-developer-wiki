@@ -1,4 +1,5 @@
 ---
+title: "その他の主要コントリビュータ"
 name: other-contributors
 summary: "その他の主要コントリビュータ — kitaro, tanenobu, shirouchi, sasano ほか"
 type: entity

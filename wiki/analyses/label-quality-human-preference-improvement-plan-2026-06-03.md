@@ -1,4 +1,5 @@
 ---
+title: "ラベル品質の人間選好に基づく改善計画 2026-06-03"
 type: analysis
 summary: "ラベル品質改善の次の実務計画。既存 LLM grouping 400 件 corpus を探索材料に、`hierarchical_8_40` tree などを固定して label variants を作り、algorithm 由来を隠した A/B bundle で human preference を集め、その preference を再現する judge を較正してから evidence / labelling / tree の clean experiment へ進む。2026-06-03 に 7 件回した時点で、prompt few-shot 由来のテンプレ冗長度が confound と判明し、prompt 修正からやり直しに reset"
 sources:

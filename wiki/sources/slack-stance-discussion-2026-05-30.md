@@ -1,4 +1,5 @@
 ---
+title: "Slack: analysis-stance とユースケース契約の議論 2026-05-30"
 type: source
 summary: "2026-05-30 #2_開発_広聴ai Slack で nishio / ohki-shingo / tokoroten が広聴AI のユースケース契約と analysis-stance を議論。全体傾向把握ユースケースの精密な言い換え (デカい見落とし / デカい違和感)、止まる現象の構造的説明、デフォルトモード UX 指針、CLI + コミュニティのエコシステムビジョンが出た"
 sources:

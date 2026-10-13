@@ -1,4 +1,5 @@
 ---
+title: "古い順 Issue 10 件の棚卸し 2026-10-11"
 type: analysis
 status: superseded
 superseded_by: issue-backlog-audit-2026-10-12

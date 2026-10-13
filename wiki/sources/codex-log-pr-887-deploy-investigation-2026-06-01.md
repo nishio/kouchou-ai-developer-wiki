@@ -1,4 +1,5 @@
 ---
+title: "Codex ログ: PR #887 デプロイ調査 2026-06-01"
 type: source
 summary: "2026-06-01 17:47 / 19:33 (月曜日) の Codex 2 ターン会話ログ。nishio の「直ってなくないですか？」「az login したけど見れるようになった？」というひと言の問いに対し、Codex が false positive の根拠 (Turn 1) と SIGKILL/OOM の根拠 (Turn 2) を順に返した、runtime build 撤去エピソードの起点ログ"
 sources:

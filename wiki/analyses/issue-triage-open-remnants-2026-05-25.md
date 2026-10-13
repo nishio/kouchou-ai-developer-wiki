@@ -1,4 +1,5 @@
 ---
+title: "open のまま残した Issue の理由 2026-05-25"
 type: analysis
 summary: "2026-05-25 時点の current main で #79 #253 #391 #477 #537 #690 を open のまま残した理由。関連実装はあるが、Issue 本文の主要要件がまだ満たされていない"
 sources:

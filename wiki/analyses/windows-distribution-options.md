@@ -1,4 +1,5 @@
 ---
+title: "Windows向け配布形態の4段階整理"
 name: windows-distribution-options
 type: analysis
 summary: "非専門家 Windows ユーザー向けの kouchou-ai 配布形態を、`setup_win.*` スクリプト / ランチャー exe / デスクトップアプリ / 完全単体 exe の 4 段階で整理。2026-06-01 定例では、短期は手元 Windows 起動より Azure 体験環境を優先しつつ、Windows standalone と local LLM route は探索を続ける位置づけになった"

@@ -1,4 +1,5 @@
 ---
+title: "KJ法と広聴AIの接続: 公共的仮説形成 2026-05-25"
 name: kj-method-broadlistening-framing-2026-05-25
 summary: "広聴AIをKJ法の公共的仮説形成へ接続する目的論。KJ法プロンプトの品質向上を検証済みとはせず、未検証の仮説と製品設計原則を分ける"
 type: analysis

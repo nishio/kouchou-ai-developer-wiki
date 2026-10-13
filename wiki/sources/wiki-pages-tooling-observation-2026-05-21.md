@@ -1,4 +1,5 @@
 ---
+title: "GitHub Pages と Quartz の構成観測 2026-05-21"
 type: source
 summary: "この developer-wiki repo の GitHub Pages 現状実装と Quartz 公式 docs を突き合わせた観測メモ"
 sources:

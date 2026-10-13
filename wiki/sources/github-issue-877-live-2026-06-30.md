@@ -1,4 +1,5 @@
 ---
+title: "Issue #877 Windows setup guide の現況 2026-06-30"
 type: source
 summary: "2026-06-30 に GitHub live state で確認した issue #877。Windows setup guide は open / unassigned のままで、Docker Desktop supported path と対象外環境を切る docs issue として扱うのが妥当"
 sources:

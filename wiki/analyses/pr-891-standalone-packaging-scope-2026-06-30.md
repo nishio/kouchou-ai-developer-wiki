@@ -1,4 +1,5 @@
 ---
+title: "PR #891 Windows standalone の位置づけ 2026-06-30"
 type: analysis
 summary: "PR #891 Windows standalone draft を #885 / #877 / Windows distribution docs の中でどう読むか。#891 は prebuilt viewer/admin assets + embeddable Python の prototype だが、draft / stale / readiness risk があり current supported path とは分けて扱う"
 sources:

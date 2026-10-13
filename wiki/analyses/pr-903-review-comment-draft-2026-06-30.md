@@ -1,4 +1,5 @@
 ---
+title: "PR #903 レビューコメント案 2026-06-30"
 type: analysis
 summary: "PR #903 に直接投稿せず Wiki 側に固定したレビューコメント案。CodeRabbit 3 点に加え、CSV / JSON download server actions の inventory 漏れを短く伝え、human-authored docs PR への安全な next action にする"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Issue #564 活用事例公開と信頼レイヤーの scope 2026-06-30"
 type: analysis
 summary: "Issue #564 活用事例公開を、8/2 イベント・公開事例棚卸し・#696 誤読防止・#542 責任所在と接続した次 scope"
 sources:

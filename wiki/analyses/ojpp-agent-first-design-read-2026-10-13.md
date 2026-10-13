@@ -1,4 +1,5 @@
 ---
+title: "エージェントファースト設計の批判的読解 2026-10-13"
 name: ojpp-agent-first-design-read-2026-10-13
 summary: "『エージェントファースト設計』の批判的読解。agent-as-consumer / participant / co-developer の3義に分解し、kouchou-ai broadlistening との緊張（ai-participate）と転用可能な部分を整理"
 type: analysis

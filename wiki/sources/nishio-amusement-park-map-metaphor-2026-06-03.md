@@ -1,4 +1,5 @@
 ---
+title: "nishioメモ: 意見の地図を遊園地の地図に例える 2026-06-03"
 type: source
 summary: "2026-06-03 に nishio が、広聴AI の出力（意見の地図）を読む体験を「遊園地の地図」に例えたメモ。俯瞰 → ゾーン選択 → drill in という reader の探索パターンを言語化"
 sources:

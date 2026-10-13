@@ -1,4 +1,5 @@
 ---
+title: "GPT 対話: UMAP クラスタリングと BERTopic 調査 2026-05-25"
 name: gpt-umap-clustering-bertopic-deep-research-2026-05-25
 summary: "2026-05-25 の nishio ↔ 外部 GPT 対話。`UMAP -> clustering` の妥当性、可視化用 2D と clustering 用 15D〜25D の分離、`n_neighbors` の解釈、BERTopic の現代的位置づけを既存研究を引きながら整理"
 type: source

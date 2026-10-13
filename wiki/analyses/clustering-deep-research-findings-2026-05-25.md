@@ -1,4 +1,5 @@
 ---
+title: "クラスタリングのdeep-research結果整理 2026-05-25"
 name: clustering-deep-research-findings-2026-05-25
 summary: "[[clustering-research-survey-plan]] が立てた survey bucket への 2026-05-25 時点の deep-research 応答。`UMAP -> clustering` は否定されないが 2D 用と clustering 用は分離（15D〜25D 推奨）、BERTopic は完成品から backbone へ、数十件規模は LLM pairwise + spectral が筋という整理"
 type: analysis

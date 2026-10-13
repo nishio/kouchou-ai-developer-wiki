@@ -1,4 +1,5 @@
 ---
+title: "ロールモデル論文 Polis と Birdwatch"
 name: role-model-papers-polis-birdwatch
 summary: "広聴AI紹介論文のロールモデルとして参照しやすい vTaiwan / Polis と Birdwatch / Community Notes 論文の要点"
 type: source

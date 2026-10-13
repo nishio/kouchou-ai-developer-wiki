@@ -1,4 +1,5 @@
 ---
+title: "tokoroten の spectral clustering メモ 2026-Q1"
 type: source
 summary: "2026-Q1 の tokoroten による spectral clustering メモ。TTTC は小さめ `n_neighbors` で紐状分離を作り、SpectralClustering で切っているのではないか、という読み"
 sources:

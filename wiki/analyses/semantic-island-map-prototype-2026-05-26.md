@@ -1,4 +1,5 @@
 ---
+title: "semantic island map の試作と可視化比較 2026-05-26"
 type: analysis
 summary: "`LLM grouping` された 422 argument の 2D 可視化を `UMAP` / supervised UMAP / LDA / centroid-MDS で試した結果、embedding 由来散布図を主図にするより、cluster-first な semantic island map の方が要件に合うと分かった"
 sources:

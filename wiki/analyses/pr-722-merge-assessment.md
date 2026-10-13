@@ -1,4 +1,5 @@
 ---
+title: "PR #722 merge 可否の評価"
 type: analysis
 summary: "`PR #722` は validation 強化の意図自体は理解できるが、2026-05-19 時点では deprecated shim を増築する stale patch なので、そのまま merge すべきではない"
 sources:

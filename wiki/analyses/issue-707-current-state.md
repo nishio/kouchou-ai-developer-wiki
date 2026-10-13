@@ -1,4 +1,5 @@
 ---
+title: "Issue #707 の現状: stale bug として close"
 type: analysis
 summary: "Issue #707 は 2026-05-21 に close され、backend の provider-aware verify 実装が current main で非再現だったことから、元報告は stale bug と判断された"
 sources:

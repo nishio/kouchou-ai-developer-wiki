@@ -1,4 +1,5 @@
 ---
+title: "Windows PowerShell 5.1 の既定インストール範囲"
 name: windows-powershell-default-installation
 type: source
 summary: "Microsoft Learn の PowerShell 公式ドキュメントより、Windows PowerShell 5.1 は Windows client 10 以降と Windows Server 2016 以降に既定でインストールされる、という事実確認"

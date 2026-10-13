@@ -1,4 +1,5 @@
 ---
+title: "Wiki と本体の二層運用ワークフロー"
 type: concept
 summary: "Wikiと本体の二層運用。現行実装によるIssue完了判定、検証範囲の区別、Serverlessとの共通確認例を作業へ還流する"
 sources:

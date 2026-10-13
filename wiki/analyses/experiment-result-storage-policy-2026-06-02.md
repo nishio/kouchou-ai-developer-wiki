@@ -1,4 +1,5 @@
 ---
+title: "実験結果の保存先 3 層方針 2026-06-02"
 type: analysis
 summary: "実験結果の保存先を 3 層に分ける方針。`work/kouchou-ai/.../outputs/` は一時実行物、`raw/experiments/<experiment_id>/` は gitignored な一次 artifact snapshot、公開 wiki は manifest / summary / 判断だけを持つ。採用判断用実験では `factor_under_test` も記録する"
 sources:

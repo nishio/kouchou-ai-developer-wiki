@@ -1,4 +1,5 @@
 ---
+title: "広聴AI論文下書きの方針と投稿言語比較"
 name: kouchou-ai-paper-draft-strategy
 summary: "広聴AI紹介論文の日本語下書きを wiki で育てる方針と、日本語先行か英語投稿かの比較"
 type: analysis

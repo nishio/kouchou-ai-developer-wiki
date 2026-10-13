@@ -1,4 +1,5 @@
 ---
+title: "AGPLの出力・拡張の境界と公開時の自動案内 2026-10-12"
 type: analysis
 summary: "AGPLのデータ・HTML・拡張の境界と、CLIが短い案内・本文リンク・対応ソースを自動付与して公開時の利用者負担を減らす方針"
 sources:

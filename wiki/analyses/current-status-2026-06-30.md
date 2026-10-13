@@ -1,4 +1,5 @@
 ---
+title: "開発状況スナップショット 2026-06-30"
 type: analysis
 status: superseded
 superseded_by: current-status-2026-10-05

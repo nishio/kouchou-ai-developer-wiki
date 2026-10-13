@@ -1,4 +1,5 @@
 ---
+title: "CodexのWindows環境構築メモ"
 type: analysis
 summary: "Codex が Windows 環境で kouchou-ai / developer-wiki 作業を進めた時の環境構築メモ"
 sources:

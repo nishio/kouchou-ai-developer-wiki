@@ -1,4 +1,5 @@
 ---
+title: "Slack と Issue の確認 回答欠落・モデル管理 2026-09-07"
 type: source
 summary: "2026-09-07確認のSlackとIssue。回答欠落、モデル選択・管理、serverless移管と戦略会議の論点"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "PR #840 run_workflow() default 化の観測 2026-05-20"
 type: source
 summary: "draft PR #840 は `run_workflow()` default 化に向けて、初期 artifact・status 永続化・rerun artifact 再利用に加え、CLI/API 入口と duplicate/reuse rerun plan の integration 確認まで段階的に進めている"
 sources:

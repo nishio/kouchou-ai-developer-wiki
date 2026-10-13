@@ -1,4 +1,5 @@
 ---
+title: "Next.js 公式docs: static export の制約と要点 2026-05-31"
 type: source
 summary: "Next.js 公式 docs の static export / route handler 周辺の要点。静的 export は HTML/CSS/JS assets として配信できる一方、request-time server runtime に依存する機能は使えないため、Server Actions・request 依存 route・ISR/cache revalidate を使う current admin/public-viewer はそのままでは runtime Node なしにできない"
 sources:

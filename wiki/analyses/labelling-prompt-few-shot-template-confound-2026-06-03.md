@@ -1,4 +1,5 @@
 ---
+title: "ラベル人間評価A/Bと few-shot 交絡の再調査 2026-06-03"
 type: analysis
 summary: "2026-06-02 LLM grouping 400 件 corpus の human preference A/B (none vs setwise_refine) を label_only で 7 件回した結果、7/7 で setwise_refine が winner。当初この結果を verbosity confound として整理したが、6/8 と 6/9 の再調査で『どちらが verbose か』を逆に誤認していたと判明。実際は refine_none (= top-level refinement なし = merge_labels そのまま) が verbose、refine_setwise (sibling-aware refinement) が shorter。よって v1 結果は『refinement on > refinement off』を捉えており、verbosity 削減効果と sibling-awareness 効果が refinement 内で混じっている、というのが正確な構造。MERGE_LABELLING_PROMPT few-shot の templating 問題は引き続き有効"
 sources:

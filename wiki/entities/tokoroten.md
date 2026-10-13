@@ -1,4 +1,5 @@
 ---
+title: "中山心太(メンテナ・LocalLLM・書籍担当)"
 name: tokoroten
 summary: "中山心太 — kouchou-ai メンテナ。LocalLLM、属性フィルタ、書籍主担当"
 type: entity

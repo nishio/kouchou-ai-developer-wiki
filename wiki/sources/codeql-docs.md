@@ -1,4 +1,5 @@
 ---
+title: "CodeQL 公式ドキュメント要点"
 type: source
 summary: "GitHub / CodeQL 公式ドキュメントから見た CodeQL の役割と GitHub code scanning での位置づけ"
 sources:

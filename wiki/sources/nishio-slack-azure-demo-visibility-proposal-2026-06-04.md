@@ -1,4 +1,5 @@
 ---
+title: "Azure デモ動線化と docs 3 段階 spine の Slack 提案 2026-06-04"
 name: nishio-slack-azure-demo-visibility-proposal-2026-06-04
 type: source
 summary: 2026-06-04 22:00 / 22:29 nishio の dd2030 Slack 投稿。docs entry 3 段階 spine の改訂版と、Azure デモサイトを docs から動線化する具体案 4 問を Ohki さんに投げかけている

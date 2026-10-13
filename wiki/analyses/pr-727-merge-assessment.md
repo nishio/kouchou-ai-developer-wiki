@@ -1,4 +1,5 @@
 ---
+title: "PR #727 merge 可否の評価"
 type: analysis
 summary: "`PR #727` は問題設定自体は妥当だが、2026-05-19 時点の patch は validation が実際には動かず、API URL 解決も現行実装とずれているため、そのまま merge すべきではない"
 sources:

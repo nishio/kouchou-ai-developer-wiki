@@ -1,4 +1,5 @@
 ---
+title: "クラスタリング外部研究サーベイ計画"
 type: analysis
 summary: "TTTC / 広聴AI の clustering 議論を外部研究で検証するには、`UMAP -> clustering`、spectral clustering、BERTopic、可視化と分析の分離、評価軸を別棚で読むべき"
 sources:

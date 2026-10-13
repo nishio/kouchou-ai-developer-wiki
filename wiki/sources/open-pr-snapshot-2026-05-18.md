@@ -1,4 +1,5 @@
 ---
+title: "open PR 一覧スナップショット 2026-05-18"
 type: source
 summary: "2026-05-18 時点の `digitaldemocracy2030/kouchou-ai` open PR 一覧を、作者種別と stale 度合いを見るために取得したスナップショット"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "oss_weekly_reporter 週次ダンプ 2026-05-20"
 name: weekly-log-2026-05-20
 summary: "nishio/oss_weekly_reporter の週次ダンプ (2026-05-20 〜 2026-05-27) — kouchou-ai の refactor / Windows / CSP / LLM grouping と、Slack の公開UI・MST可視化・実験保存方針"
 type: source

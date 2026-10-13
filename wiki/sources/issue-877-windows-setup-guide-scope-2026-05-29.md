@@ -1,4 +1,5 @@
 ---
+title: "Issue #877 Windows setup guide の論点整理 2026-05-29"
 type: source
 summary: "GitHub issue #877 とコメントの観測。Windows setup guide の API key / Docker Desktop / WSL2 / メモリ不足分岐を整理する issue だが、コメントにより Docker Desktop ライセンス・組織管理端末・生 Windows サポート境界の論点へ広がっている"
 sources:

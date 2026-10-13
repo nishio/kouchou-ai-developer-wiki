@@ -1,4 +1,5 @@
 ---
+title: "PR #823 レビュー時の build 挙動の観測 2026-05-18"
 type: source
 summary: "`PR #822` / `#823` の review 時に local worktree と mock API で観測した `public-viewer` build 挙動と PR 運用上の注意"
 sources:

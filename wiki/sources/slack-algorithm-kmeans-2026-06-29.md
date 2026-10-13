@@ -1,4 +1,5 @@
 ---
+title: "Slack: Embedding 見直しと K-means の議論 2026-06-29"
 type: source
 summary: "2026-06-29 の Slack #2_開発_広聴ai_アルゴリズム開発で、Embedding 最前線資料の共有をきっかけに、embedding algorithm の見直し、Spherical K-means、Faiss K-means が短く言及された thread"
 sources:

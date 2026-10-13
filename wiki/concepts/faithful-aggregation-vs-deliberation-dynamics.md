@@ -1,4 +1,5 @@
 ---
+title: "忠実な集約と熟議の演出という見方"
 type: concept
 summary: "意見集約ツールの重心を『忠実な集約(どんな意見がどれくらいあるかを正確に写す)』と『熟議の演出(議論の構造・動き・欠落を見せる)』の2つに分けて理解するレンズ。kouchou-ai は前者、OJPP BroadListening は後者寄り"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "Windows setupガイドのアウトライン 2026-06-30"
 type: analysis
 summary: "Issue #877 の Windows setup guide を current main に落とすための具体アウトライン。対象環境 / 対象外環境を冒頭で切り、Docker Desktop supported path 内だけをトラブルシュートする"
 sources:

@@ -1,4 +1,5 @@
 ---
+title: "docs 入口の再設計に関する議論 2026-06-03"
 type: source
 summary: 2026-06-03 nishio との対話。kouchou-ai 本体 docs が「セットアップから始まる」構造であることへの違和感と、デモ閲覧を入口にした spine 再設計、実験的機能カタログの提案
 sources:

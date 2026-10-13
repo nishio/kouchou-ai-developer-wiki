@@ -1,4 +1,5 @@
 ---
+title: "利用モード(Web UI と CLI / analysis-core)"
 name: usage-modes
 summary: "kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理"
 type: concept

@@ -1,4 +1,5 @@
 ---
+title: "PR #735 merge 可否の評価"
 type: analysis
 summary: "`PR #735` は `Issue #685` に触れる実問題を含むが、draft / conflicts / stale path 前提なので merge ではなく current tree への作り直しとして扱うべき"
 sources:

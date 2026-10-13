@@ -1,4 +1,5 @@
 ---
+title: "GitHub Actions timeout 公式 docs 要点 2026-06-01"
 type: source
 summary: "GitHub Actions 公式 docs の timeout-minutes / Actions limits 周辺の要点。Azure Deployment readiness poll の timeout 設計用"
 url: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax

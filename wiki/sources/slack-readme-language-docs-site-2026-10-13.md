@@ -1,4 +1,5 @@
 ---
+title: "Slack: README の言語とドキュメントサイト論議 2026-10-13"
 type: source
 summary: "2026-10-12〜13 Slack #2_開発_広聴ai で、README を一旦英語版にした後に日本語版へ戻した件をめぐる nishio / ohki-shingo のやりとり。nishio は『section 名アンカーリンクが存在することを理由に README 改訂を止めるのは筋が悪い、外部リンクは個別ドキュメントページへ張るべき』、ohki は『全面英語の README は日本語ユーザーを面食らわせて離脱させる懸念』、nishio は『英語で怯む層が見るべきは英語UIの GitHub ではなくドキュメントサイト』と整理した"
 sources:

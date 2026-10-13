@@ -1,4 +1,5 @@
 ---
+title: "ラベル品質改善の仕切り直し 2026-05-30"
 type: analysis
 summary: "label refinement 実験は現行実装のまま採用せず、ラベル品質改善をユースケース契約、上流入力 sampling、代表例 artifact、judge 較正、UI 表示責務に分けて仕切り直す。今回の refinement は polish-only で中身を見ず、全体傾向把握と少数重要論点発見のどちらを良くするかも未固定だった"
 sources:

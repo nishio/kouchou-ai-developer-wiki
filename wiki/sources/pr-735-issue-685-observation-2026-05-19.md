@@ -1,4 +1,5 @@
 ---
+title: "PR #735 と Issue #685 の観測メモ 2026-05-19"
 type: source
 summary: "`PR #735` は `Issue #685` の症状に触れているが、2026-05-19 時点では draft / conflicting / stale frontend path 前提で、そのままは merge 不可という観測メモ"
 sources:

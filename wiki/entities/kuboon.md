@@ -1,4 +1,5 @@
 ---
+title: "Ohkubo KOHEI(Outline 運用・ドキュメント基盤)"
 name: kuboon
 summary: "Ohkubo KOHEI — Outline self-host とドキュメント基盤運用"
 type: entity

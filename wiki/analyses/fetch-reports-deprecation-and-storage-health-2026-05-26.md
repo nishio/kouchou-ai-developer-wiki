@@ -1,4 +1,5 @@
 ---
+title: "fetch_reports 廃止とストレージ健全性確認 2026-05-26"
 type: analysis
 summary: "`fetch_reports.py` はストレージ機能が無かった時期の移行用バックアップとしては理解できるが、2026-05-26 時点の current main では Azure Blob sync/download が本線になっており、deploy 前バックアップの常設手段として残すより storage health check へ置き換える方が筋がよい"
 sources:

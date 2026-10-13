@@ -1,4 +1,5 @@
 ---
+title: "pipeline step 追加に関わる open PR 観測 2026-05-28"
 type: source
 summary: "2026-05-28 時点の open PR 観測。pipeline step 追加判断に直接関係するのは `#866` LLM grouping、`#874` semantic island layout、補助的に `#867` reuse-from で、`#874` は named layout artifact として筋がある一方 CI は未通過"
 sources:

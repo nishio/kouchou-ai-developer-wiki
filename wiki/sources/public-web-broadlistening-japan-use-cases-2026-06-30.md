@@ -1,4 +1,5 @@
 ---
+title: "国内ブロードリスニング活用事例の公開Web棚卸し 2026-06-30"
 type: source
 summary: "2026-06-30 に公開Web検索で確認した、日本国内の広聴AI / Talk to the City / ブロードリスニング活用事例の棚卸し"
 last_checked: 2026-06-30

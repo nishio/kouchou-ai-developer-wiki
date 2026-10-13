@@ -1,4 +1,5 @@
 ---
+title: "CLI pipeline 発展とラベル品質改善のメモ 2026-06-02"
 type: source
 summary: "2026-06-02 に nishio が、CLI で pipeline を試行錯誤して発展させる方向、マンダラート / 付箋ビュー、ラベル品質改善、その前段の品質 judge 改善をまとめたいと投げたメモ"
 sources:

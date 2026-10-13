@@ -1,4 +1,5 @@
 ---
+title: "会話復元メモ: 広聴AI の系譜整理 2026-10-05"
 type: source
 summary: "2026-10-05 の会話で、直前の作業が国内 broad listening 事例と TTTC→広聴AI lineage の wiki filing-back だったと復元したメモ"
 last_checked: 2026-10-05 11:00 JST

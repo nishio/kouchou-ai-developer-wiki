@@ -1,4 +1,5 @@
 ---
+title: "OJPP と広聴AI のモデル比較 2026-10-13"
 name: ojpp-vs-kouchou-ai-broadlistening-model-2026-10-13
 summary: "OJPP BroadListening と kouchou-ai のモデルをコード単位で突き合わせた評価。OJPP は埋め込み(TF-IDF truncate)と空間可視化(grid)が破綻、argument mining と生態系ダイナミクスは着想価値あり。kouchou-ai は忠実な地図化に一貫"
 type: analysis

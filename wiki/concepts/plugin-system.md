@@ -1,4 +1,5 @@
 ---
+title: "plugin システム設計(v5.0 の中核)"
 name: plugin-system
 summary: "入力／解析／可視化を plugin 化する設計。v5.0 の中核"
 type: concept

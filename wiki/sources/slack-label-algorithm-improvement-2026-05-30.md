@@ -1,4 +1,5 @@
 ---
+title: "Slack: ラベル生成アルゴリズム改善ログ 2026-05-30"
 type: source
 summary: "2026-05-29〜30 の Slack アルゴリズム改善ログ。ラベル欠落 vs 冗長、random sampling / 全件入力、rep args 選定、評価ユースケース分岐が議論された"
 sources:

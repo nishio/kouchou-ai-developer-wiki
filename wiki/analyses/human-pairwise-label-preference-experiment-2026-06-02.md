@@ -1,4 +1,5 @@
 ---
+title: "人間によるラベル blind A/B 比較実験 2026-06-02"
 type: analysis
 summary: "ラベル品質実験では、人間に単独ラベルを批判させるのではなく、同じ tree / evidence から生成した複数ラベル案を algorithm 由来を隠した blind A/B で比較してもらう。困難な full UI 評価は label 単体・隣接ラベル集合・label と代表例に分解し、その pairwise preference を judge 較正データにする"
 sources:

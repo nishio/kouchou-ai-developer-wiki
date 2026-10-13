@@ -1,4 +1,5 @@
 ---
+title: "本体 docs の入口再設計案 2026-06-03"
 type: analysis
 summary: kouchou-ai 本体 docs の入口を「セットアップ」起点から「デモ閲覧 → 自分で作りたい人向け分岐 → 研究者・開発者向け分岐」という spine に組み替える提案。`getting-started/` というネーミング自体がバイアスを産んでいたという指摘も含む
 sources:

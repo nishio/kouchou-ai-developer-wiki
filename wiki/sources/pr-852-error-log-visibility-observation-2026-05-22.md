@@ -1,4 +1,5 @@
 ---
+title: "PR #852 CodeRabbit 手動トリガーと CI 状況 2026-05-22"
 type: source
 summary: "PR #852 で CodeRabbit を手動トリガーしたところ、draft PR のため自動 review は skip され、`@coderabbitai review` 後に review in progress 状態へ移行した。同時点で client-admin build が failure、他の主要 checks は概ね success だった"
 sources:

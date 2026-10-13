@@ -1,4 +1,5 @@
 ---
+title: "議事録に見る Cartographer・いどばた・広聴AIの役割境界 2026-06-30"
 type: source
 summary: "議事録から見た Cartographer / いどばた / 広聴AI / Jigsaw Sensemaker / tttc-light-js の役割境界。収集・深掘り、分析・可視化、LLM直接分類、対立軸発見を混ぜないための整理"
 last_checked: 2026-06-30

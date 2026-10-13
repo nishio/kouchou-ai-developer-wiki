@@ -1,4 +1,5 @@
 ---
+title: "本体 docs 改善ロードマップ 2026-10-13"
 type: analysis
 summary: "本体 docs の方針系譜（docs-policy-history）と現在地監査（docs-reader-coverage-audit）を踏まえ、「何がどうなると良いか」を 2026-10-13 の live 検証付きで一本化した direction / roadmap。理想像は 3 レンズ（読者体験 / 保守持続性 / 最小介入）で収束し、道筋は『今すぐ出せる write-and-done + rot-gate』→『additive な reader-facing』→『小さな signed content』→『policy-gated な構造の本丸』の 4 層に、意思決定ゲートを明示して分ける"
 sources:

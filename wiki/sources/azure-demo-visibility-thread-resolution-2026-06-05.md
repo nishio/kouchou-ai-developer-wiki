@@ -1,4 +1,5 @@
 ---
+title: "Azure デモ動線化スレッドの決着 2026-06-05"
 name: azure-demo-visibility-thread-resolution-2026-06-05
 type: source
 summary: 2026-06-05 11:36 大木さんの返答と 12:18 nishio の決定。Azure デモ動線化 4 問について「Q1, Q2 賛成 / Q3 アイデアとしてはあり優先度低 / Q4 継続利用環境はあるとよいが提供主体・責任範囲の整理必要」、デモ環境の価値の再フレーム、dd2030 提供 API キーの container 設定除去という prerequisite が明示された

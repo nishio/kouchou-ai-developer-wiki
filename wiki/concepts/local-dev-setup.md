@@ -1,4 +1,5 @@
 ---
+title: "ローカル開発環境の構築"
 name: local-dev-setup
 summary: "ローカル開発環境構築 — docker compose 一発から、ネイティブ Rye/pnpm まで"
 type: concept

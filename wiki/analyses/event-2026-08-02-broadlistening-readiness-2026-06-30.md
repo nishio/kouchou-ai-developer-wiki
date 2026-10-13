@@ -1,4 +1,5 @@
 ---
+title: "8/2 イベント向け準備状況の整理 2026-06-30"
 type: analysis
 summary: "8/2 イベントと横浜型ブロードリスニングを踏まえ、人間と衝突しにくく進める docs / wiki / demo readiness の整理"
 sources:

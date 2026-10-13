@@ -1,4 +1,5 @@
 ---
+title: "定例会議 報告 2026-05-25"
 name: meeting-report-2026-05-25
 type: concept
 summary: 2026-05-25 定例で Codex が報告した内容のスナップショット

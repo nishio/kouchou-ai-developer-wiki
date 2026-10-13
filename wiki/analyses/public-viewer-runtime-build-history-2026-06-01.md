@@ -1,4 +1,5 @@
 ---
+title: "public-viewer の起動時 build 構成の経緯 2026-06-01"
 type: analysis
 summary: "public-viewer が container 起動後に next build する構成になった歴史的経緯と、deploy readiness 誤読リスクにつながった堆積を公開可能な粒度で整理"
 sources:

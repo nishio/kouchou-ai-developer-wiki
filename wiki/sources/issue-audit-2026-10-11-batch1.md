@@ -1,4 +1,5 @@
 ---
+title: "open Issue 古い順10件の棚卸し 2026-10-11"
 type: source
 summary: "古い順 open Issue 先頭10件 (#11/#44/#52/#55/#56/#60/#79/#104/#121/#143) の 2026-10-11 live state と work/kouchou-ai main@c297bc97 への照合。作成前確認パネルの費用/時間は『目安なし』固定、#52 階層図連動は PR #927 merge 済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、など要件別に確認"
 last_checked: 2026-10-11 00:30 JST

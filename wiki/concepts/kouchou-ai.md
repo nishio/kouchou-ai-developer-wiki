@@ -1,4 +1,5 @@
 ---
+title: "広聴AI の概要"
 name: kouchou-ai
 summary: "広聴AI — DD2030 配下の OSS ブロードリスニング実装。CSV → 抽出 → 埋め込み → 階層クラスタリング → 可視化"
 type: concept

@@ -1,4 +1,5 @@
 ---
+title: "PyPI リリースが発生する条件(tag push)"
 type: analysis
 summary: "`analysis-core` の PyPI リリースは `analysis-core-v*` tag push 時に発生し、merge や main push だけでは起きない"
 sources:

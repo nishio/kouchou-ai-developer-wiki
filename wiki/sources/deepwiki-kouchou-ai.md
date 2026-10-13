@@ -1,4 +1,5 @@
 ---
+title: "DeepWiki による広聴AI コードベース要約"
 name: deepwiki-kouchou-ai
 summary: "DeepWiki が生成した kouchou-ai コードベース要約。構造把握には有用だが、最新実装との差分確認が必要"
 type: source

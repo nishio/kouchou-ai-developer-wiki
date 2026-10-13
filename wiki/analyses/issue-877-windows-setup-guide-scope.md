@@ -1,4 +1,5 @@
 ---
+title: "Issue #877 Windows セットアップガイドの scope"
 type: analysis
 summary: "Issue #877 は Windows setup guide の文言修正だけでなく、Docker Desktop を標準入口にする範囲、組織管理端末で動かない場合の非サポート境界、WSL2 + Docker Engine を別ルートにするかを切り分ける issue として扱うのが妥当"
 sources:

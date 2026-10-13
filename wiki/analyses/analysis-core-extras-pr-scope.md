@@ -1,4 +1,5 @@
 ---
+title: "analysis-core extras 分割PRの範囲"
 type: analysis
 summary: "`analysis-core` の extras 分割は独立 PR で切り出せるが、依存定義だけでなく eager import・CI・インストール導線を同時に整える必要がある"
 sources:

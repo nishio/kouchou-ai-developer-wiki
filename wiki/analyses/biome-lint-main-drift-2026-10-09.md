@@ -1,4 +1,5 @@
 ---
+title: "Biome lintがmainで落ち続けた経緯とCI gate化 2026-10-09"
 type: analysis
 summary: "Biome 全体 lint が main で落ち続けた由来と放置の構造（導入初日から未強制、PR は触ったファイルだけ clean）。0 件化と CI gate を同時に入れる PR #963 と #700 close まで"
 sources:

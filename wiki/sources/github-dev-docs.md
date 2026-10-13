@@ -1,4 +1,5 @@
 ---
+title: "kouchou-ai リポジトリと開発者ドキュメント"
 name: github-dev-docs
 summary: "kouchou-ai リポジトリと docs/development/ の開発者ドキュメント"
 type: source

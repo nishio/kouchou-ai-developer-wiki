@@ -1,4 +1,5 @@
 ---
+title: "Phase 3b の完了基準"
 type: analysis
 summary: "Phase 3b を「完了」と書くには workflow path が production 入口として実用互換であることを示せば足り、status file の byte-level 完全互換までは必須ではない"
 sources:

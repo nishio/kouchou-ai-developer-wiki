@@ -1,4 +1,5 @@
 ---
+title: "残存 BUG issue の見直し 2026-05-26"
 type: analysis
 summary: "2026-05-26 時点で open の `[BUG]` タイトル issue と周辺ラベルを current `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` で見直すと、`#741` だけが `bug` ラベルを保ち、`#121` `#283` `#478` は上位検討 issue `#872` の参考課題として bug ラベルを外し、`#731` は stale 寄りで再観測または close 判断が必要"
 sources:

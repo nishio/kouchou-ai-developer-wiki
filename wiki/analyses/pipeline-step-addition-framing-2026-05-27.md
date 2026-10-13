@@ -1,4 +1,5 @@
 ---
+title: "pipeline step 追加の判断軸 2026-05-27"
 type: analysis
 summary: "直近研究で繰り返し出た pipeline step 追加案は、step 数ではなく「新しい成果物責務を first-class にするか」で判断するのが筋。境界・反例・bridge は独立成果物に、単なる label copy 改善は実験的 optional step に留める"
 sources:

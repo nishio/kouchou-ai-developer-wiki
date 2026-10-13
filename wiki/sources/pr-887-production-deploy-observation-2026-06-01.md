@@ -1,4 +1,5 @@
 ---
+title: "PR #887 本番デプロイ反映ズレの観測 2026-06-01"
 type: source
 summary: "PR #887 merge 後に、デプロイ成功判定と実反映状態がズレうることを公開可能な粒度で整理した観測メモ。実環境 URL・revision・ログ・resource 値などの詳細は公開しない"
 sources:

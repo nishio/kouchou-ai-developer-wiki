@@ -1,4 +1,5 @@
 ---
+title: "ローカルAI実行環境のユーザー到達率統計 2026-05-31"
 type: source
 summary: "2026-05-31 時点で local AI runtime のユーザー到達率を推定するための外部統計メモ。Chrome desktop share、Steam Hardware Survey の RAM/CPU/VRAM、Gartner PC shipment、Canalys AI-capable PC forecast、Chrome Prompt API / Foundry Local / Phi Silica 公式要件を整理"
 sources:

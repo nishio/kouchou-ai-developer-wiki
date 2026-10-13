@@ -1,4 +1,5 @@
 ---
+title: "kouchou-ai ソースコード本体(一次参照)"
 name: source-code
 summary: "kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照"
 type: source

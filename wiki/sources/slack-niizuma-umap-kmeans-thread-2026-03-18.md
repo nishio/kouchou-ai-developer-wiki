@@ -1,4 +1,5 @@
 ---
+title: "Slack: 新妻スレッド UMAP と k-means 批判 2026-03-18"
 type: source
 summary: "`#2_開発_広聴ai_アルゴリズム開発` 2026-03-18〜2026-03-21 の新妻スレッド。UMAP後k-means批判、前段クラスタリング案、supervised UMAP、LLM直分類と説明責務"
 sources:
