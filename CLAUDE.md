@@ -32,6 +32,7 @@ kouchou-ai-developer-wiki/
 
 ### 全ページ共通
 - 冒頭にYAMLフロントマター：type, summary（`sources` は source / concept で必須、他 type は任意。lint もこの基準で検査する）
+- `title`: 日本語の1行タイトルを全ページに付ける。Quartz はページ見出し(ArticleTitle) と Explorer 左の一覧の両方でこの `title` を表示するので、URL(= 英語 slug = ファイル名) は変えずに表示名だけ日本語化できる。未設定だと英語 slug がそのまま見出しに出るため、新規ページ作成・rename 時は必ず付ける。日付つき snapshot はタイトル末尾に日付(YYYY-MM-DD) を残し、用語ルールに従う。Explorer のフォルダ見出し(概念 / 人物・ツール / ソース要約 / 考察・分析) は `quartz.layout.ts` の Explorer `mapFn` 側で別途日本語化している
 - 主張には出典を明記：`[[source名]]より`
 - 矛盾・未解決の論点は「## Open Questions」セクションで明示
 - 更新は上書きせず「## Updates」で追記
@@ -49,6 +50,7 @@ kouchou-ai-developer-wiki/
 ### フロントマター例
 ```yaml
 ---
+title: 日本語の1行タイトル
 type: concept
 summary: 1文で説明
 sources:
