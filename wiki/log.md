@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-13 18:50] filing-back | #537 残件を新 [TEST] #991 へ移管して close（6 Issue 全消化）
+
+- 移管先確認で #912/#913 は GPT/Gemini 専用の実 API 検証で OpenRouter と無関係と判明（audit の「#537 は #912/#913 依存」を訂正）。
+- #912/#913 と同テンプレの新 [TEST] Issue **#991「OpenRouter無料モデルの実API動作を検証する」**を作成し、#537 残件（fallback 実動作確認・BadRequestError 絞り込み・temperature=0 guard・学習オプトアウト前提）を移管 → #537 を `completed` close（fallback 機構は #985 済）。
+- **#982–987 対応 6 Issue は全 close**（#176/#450/#143/#52/#306/#537）。派生 open = #991（人間実施の実 API 検証）。[[pr-982-987-review-round-2026-10-12]]。
+
 ## [2026-10-13 18:30] filing-back | #52 / #306 を本文追記つき close（#982–987 棚卸し収束）
 
 - nishio 指示で #52 / #306 を `completed` close。updatedAt 照合（不変）→ 元本文保持で「2026-10-13 完了判断」追記 → close。
