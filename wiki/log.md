@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-15 11:13] filing-back | analysis-core を APIキー無しでローカル・クラスタリングする経路を concept 化
+
+- 別調査（KAITO問題のブロードリスニング、約964件の多言語コメント）で analysis-core 0.1.3 を外部 LLM キー無しで回した知見を [[offline-local-clustering]] に還流。`analysis_core.steps.embedding.embedding` + `hierarchical_clustering.hierarchical_clustering` を直呼びし、ローカル埋め込み(paraphrase-multilingual-mpnet)＋UMAP＋Ward だけを実行する手順。
+- 落とし穴を明記: CLI の canonical `hierarchical_result.json` は labelling→overview→aggregation が LLM 生成物依存のため**キー無しでは作れない**。構造だけ得てラベルは後工程。step 関数は random_state 非対応で**乱数固定不可**（番号が再実行で揺れる）。
+- 既存の [[pipeline]]/[[cli]]/[[llm-providers]]（LocalLLM は別アプローチ）/[[experiment-methodology]] と相互リンク。KAITO問題そのものは別 wiki（公開レポートのみ pointer）。lint clean。
+
 ## [2026-10-14 11:52] filing-back | ヘルスチェック残項目: analysis-stance↔faithful-aggregation 橋渡し + ecosystem-vision 発見性
 
 - 「go」。needs_human の安全分のみ対応。analysis-stance と faithful-aggregation-vs-deliberation-dynamics に相互リンクと橋渡し文を追加（「忠実な集約」は定量分析倒れではなく、歪めず写した地図を構造として読ませる設計＝構造把握スタンスと矛盾しない、を両ページで明示）。
@@ -777,27 +783,3 @@
 
 - [[interview-feature-requests-2026-10-08]] を新規作成。ヘイト表現の比率と政策提案の地図は意見ごとのラベルを属性に載せて既存フィルタで絞る、全画面の粒度切替は既存の表示選択 state を全画面内から動かす、日英韓切替は結果 JSON の `translations` と最小辞書で差し替える、の 3 判断。3 branch とも main `a12d68e` 起点で未push。
 - [[meeting-report-draft]] に進行中として追記、[[interview-analysis-request-2026-10-05]] から参照。提供データでの数値と環境の詳細は raw/2026-10-09-interview-requests-implementation.md（非公開）。次は実ブラウザ確認、3 branch の統合、push 認証の設定。
-
-## [2026-10-08 00:50] filing-back | セットアップスクリプトの .env ずれの調査と修正判断を analysis 化
-
-- [[setup-script-env-drift-2026-10-07]] を新規作成。開発者は `cp .env.example .env` なので気づかれなかった構造、丸ごとコピーを避けた理由（Azure ダミー値）、`OPTIONAL_KEYS` による分類の強制、再現の方法を記録。
-- 修正前は revalidate の受け口が未定義どうしの比較で開いていたことと、CodeRabbit の秘密固定値の指摘を Open Question 化。[[local-dev-setup]] に注意を追記。
-
-## [2026-10-07 23:30] filing-back | セットアップスクリプトの .env 欠落バグを起票し修正 PR
-
-- 全セットアップスクリプトの `.env` に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` がなく、静的版ダウンロードの失敗と表示更新の 401 が起きることを Docker で再現。#956 を起票し、PR #957（CI 通過、未merge）を作成。
-- [[meeting-report-draft]] と [[windows-distribution-options]] に追記。次は CodeRabbit のレビューと、大木が見た症状が同じかの確認。
-
-## [2026-10-07 19:40] filing-back | CLIのreport.html経路がWeb経路で通らず不具合が残った構造を記録
-
-- [[gotchas]] に、Web UI が常に `--without-html` で起動するため CLI の可視化経路が日常的に通らず、#953（report_dir 未定義）と #954（原文リンク設定が効かない）が気づかれずに残った構造を追記。プラグイン単体テストがワークフロー経由の設定の形を検証しない点も。
-- [[cli]] の Updates から参照。教訓: 経路を分けたら、Web が通らない側にも端から端までの最小テストを置く。
-
-## [2026-10-07 19:10] filing-back | report_dir不具合を#953・PR #955に、原文リンク設定の件を#954に分離
-
-- #953を起票しPR #955を作成（CI・レビュー待ち）。設定の置き場所の判断が要る原文リンク・タイトル設定の件は#954に分けた。[[meeting-report-draft]]を更新。
-
-## [2026-10-07 18:50] filing-back | CLIのHTML出力がreport_dir未定義で失敗する不具合を再現・修正
-
-- 既定のCLI実行が可視化の段階で失敗する不具合をmain `a12d68e` で再現し、topic branchで修正と回帰テストを用意（未push）。[[meeting-report-draft]]に進行中として記録。
-- 関連: クイックスタートが案内する `report_url_pattern` が設定検証で弾かれる別件あり。Issue化はこれから。

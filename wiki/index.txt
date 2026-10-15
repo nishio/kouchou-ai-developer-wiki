@@ -23,6 +23,7 @@ meeting-report-2026-05-25	concept	concepts/meeting-report-2026-05-25.md	2026-05-
 meeting-report-2026-06-01	concept	concepts/meeting-report-2026-06-01.md	2026-06-01 定例で Codex が報告した内容と議題候補のスナップショット
 meeting-report-2026-10-10	concept	concepts/meeting-report-2026-10-10.md	2026-06-08〜2026-10-12 に meeting-report-draft へ堆積した Codex 報告ログの退避 snapshot（rotate が 2026-06-01 以降途絶していた分の一括 archive）
 meeting-report-draft	concept	concepts/meeting-report-draft.md	次の定例会議で Codex が報告する内容の下書きページ。会議ごとに過去回を snapshot として archive へ rotate し、本ページは次回向けの差分のみ積み上げる
+offline-local-clustering	concept	concepts/offline-local-clustering.md	analysis-core の LLM ステップ(extraction/labelling)を飛ばし、埋め込み＋階層クラスタリングだけをローカル(APIキー不要)で回す経路と、CLI 正規 JSON が作れない落とし穴
 pipeline	concept	concepts/pipeline.md	解析パイプライン — extraction → embedding → 階層クラスタリング → ラベリング → 可視化
 plugin-system	concept	concepts/plugin-system.md	入力／解析／可視化を plugin 化する設計。v5.0 の中核
 quartz-site-presentation	concept	concepts/quartz-site-presentation.md	公開 Quartz サイトの表示規約。URL は英語 slug（ファイル名）のまま、ページ見出しと Explorer の表示名は frontmatter title（日本語）で与える。Explorer のフォルダ見出しは quartz.layout.ts の mapFn で日本語化し、mapFn/sortFn は client 側で再評価されるため制約がある
