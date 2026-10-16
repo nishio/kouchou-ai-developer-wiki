@@ -3,7 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
-## [2026-10-16 20:52] filing-back | backlog H を両案 PR 化し Issue #1023 で挙動を質問（確定10件すべて着手）
+## [2026-10-16 21:32] filing-back | H の比較スクショを生成し Issue #1023 / PR #1024・#1025 に添付
+
+- nishio「artifact は見られないので PNG を Issue に貼る方向で」。実コードの注釈スタイル（白太字14px・borderpad10・背景 rgba・SOFT_COLORS・フィルタ点は半透明グレー）を再現した HTML を Playwright(headless Chromium, 2x) で PNG 化（a/b 並置＝h-ab.png、透明度サンプル 1.0〜0.3＝h-alpha.png）。
+- public な developer-wiki に `assets/review-2026-10-16/` として commit→ raw.githubusercontent URL で Issue #1023・PR #1024・#1025 に埋め込み（gh pr edit は projectCards の GraphQL deprecation で失敗するため `gh api -X PATCH .../pulls/N -F body=@file` で回避）。
+- 比較から所見: 0.4 は白文字がやや薄く **0.5〜0.6** がバランス良さそう、と #1023 に明記。採否は nishio 判断待ち（a は値調整可、採らない方の PR は close）。
 
 - nishio「両方作って Issue で質問」。H（全点フィルタ済みクラスタのラベル dimming が cc→cc の no-op で効かない＋隣接コメントが「元の色維持」と矛盾）は design 判断が要るため、両挙動を択一の候補 PR で用意: **#1024**（薄くする・末尾アルファ 0.8→0.4）/ **#1025**（元の色維持・死んだ分岐と @ts-ignore を削除）。
 - どちらを採るかを **Issue #1023** で質問（両 PR を相互リンク）。両案とも biome / tsc / chart jest 89 件 green を隔離 worktree で確認。これで確定 10 件すべてに対応着手（直接修正 9＝#1015–#1022、H は Issue+2候補PR）。[[source-review-findings-2026-10-16]] 更新。次＝全 PR のレビュー・merge と #1023 の採否（明示指示時のみ）。
@@ -750,8 +754,3 @@
 
 - [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に確認用資料の集約を記録。画像・地図・同一項目の日英韓照合を一つの入口から辿れるようにした。
 - [[interview-feature-requests-2026-10-08]] に確認用branchの画面補正と検証を追記し、公開範囲外の具体件数を除いた。外部送付はしていない。grasp書き込み未導入のためMarkdownを直接編集した。
-
-## [2026-10-09 20:59] filing-back | 取材関連成果物の所在を再確認
-
-- [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に所在確認を記録。実ファイルと引き継ぎ記録に基づく対応表は非公開領域へ保存した。
-- コピーと開発の継続先を区別し、記録の鮮度差を明示。grasp書き込み未導入のためMarkdownを直接編集した。
