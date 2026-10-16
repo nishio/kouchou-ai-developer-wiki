@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-16 20:52] filing-back | backlog H を両案 PR 化し Issue #1023 で挙動を質問（確定10件すべて着手）
+
+- nishio「両方作って Issue で質問」。H（全点フィルタ済みクラスタのラベル dimming が cc→cc の no-op で効かない＋隣接コメントが「元の色維持」と矛盾）は design 判断が要るため、両挙動を択一の候補 PR で用意: **#1024**（薄くする・末尾アルファ 0.8→0.4）/ **#1025**（元の色維持・死んだ分岐と @ts-ignore を削除）。
+- どちらを採るかを **Issue #1023** で質問（両 PR を相互リンク）。両案とも biome / tsc / chart jest 89 件 green を隔離 worktree で確認。これで確定 10 件すべてに対応着手（直接修正 9＝#1015–#1022、H は Issue+2候補PR）。[[source-review-findings-2026-10-16]] 更新。次＝全 PR のレビュー・merge と #1023 の採否（明示指示時のみ）。
+
 ## [2026-10-16 20:38] filing-back | backlog D を fail-fast 化で PR #1022（nishio 指摘を反映）
 
 - nishio「次元違いが発生したら後の解析で死ぬのでは」→ その通りと確認（#1022 前の事実訂正で裏取り済み）。`request_to_local_llm_embed` の silent fallback（失敗時に mpnet 768次元へ暗黙 swap）をやめ、失敗モデル名＋元エラー入りの `RuntimeError` で fail-fast に変更。mpnet を使いたい場合は is_embedded_at_local を明示有効化。
@@ -750,8 +755,3 @@
 
 - [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に所在確認を記録。実ファイルと引き継ぎ記録に基づく対応表は非公開領域へ保存した。
 - コピーと開発の継続先を区別し、記録の鮮度差を明示。grasp書き込み未導入のためMarkdownを直接編集した。
-
-## [2026-10-09 20:47] filing-back | エージェント利用者向け解説を指示と結果の流れへ絞る
-
-- [[coding-agents]] にモデル・人間の指示・結果を区別する編集方針を追記し、[[meeting-report-draft]] に反映。
-- 作業ログでモデルを確認し、詳細な経緯とは別に非公開の解説下書きと根拠を保存した。障害調査などの脇道は本文から省いた。

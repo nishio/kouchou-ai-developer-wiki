@@ -1,7 +1,7 @@
 ---
 title: "ソースコードレビュー棚卸し 2026-10-16"
 type: analysis
-summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件のうち 9 件を PR 化（#1015 Gemini全断/#1016 指定カテゴリ再実行/#1017 複製時埋め込み+作成検証/#1018 Azure temperature/#1019 cluster_nums/#1020 slug検証/#1021 status atomic/#1022 ローカル埋め込み fail-fast）。残り 1 件（H 散布図薄表示）は表示判断待ち"
+summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件のうち 9 件を PR 化（#1015 Gemini全断/#1016 指定カテゴリ再実行/#1017 複製時埋め込み+作成検証/#1018 Azure temperature/#1019 cluster_nums/#1020 slug検証/#1021 status atomic/#1022 ローカル埋め込み fail-fast）。H（散布図薄表示）は design 判断が要るため Issue #1023 で質問し両案を候補 PR #1024/#1025 で用意（択一）。確定 10 件すべてに対応着手済み"
 sources:
   - source-code.md
   - llm-grouping-supervised-classification.md
@@ -32,7 +32,7 @@ sources:
 
 ## 確定 10 件の対応状況
 
-いずれも 3/3 で確定済み。2026-10-16 に **7 件を追加 PR 化**（A・B・C・D・E・F・G、HIGH の #1015・#1016 と合わせ計 9 件）。残り **1 件（H）** は表示判断待ちの backlog。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge）は未実施（明示指示時のみ）。
+いずれも 3/3 で確定済み。2026-10-16 に **直接修正 9 件を PR 化**（A・B・C・D・E・F・G ＋ HIGH の #1015・#1016）。残る **H** は「ラベルを薄くするか」の design 判断が要るため **Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問**し、両挙動を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持）として用意（択一）。→ **確定 10 件すべてに対応着手済み**。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge・Issue の採否）は未実施（明示指示時のみ）。
 
 | finding | 対応 |
 |---|---|
@@ -45,7 +45,7 @@ sources:
 | F. create slug 未検証 | PR [#1020](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1020) |
 | G. status.json の lock/atomic | PR [#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021) |
 | D. ローカル埋め込み batch swap | PR [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)（fail-fast 化） |
-| H. 散布図の薄表示 no-op | backlog（要表示判断） |
+| H. 散布図の薄表示 no-op | Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) ＋ 候補 PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)(a 薄くする) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)(b 元の色維持)（択一・要 design 判断） |
 
 以下は各 finding の詳細（A–H）。D・H に着手する場合は assignee 確認 → self-assign → `work/kouchou-ai/` の worktree で作業、の手順を踏む。
 
@@ -61,10 +61,10 @@ sources:
 ## 次の作業
 
 1. PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)・[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)〜[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) のレビュー・merge 判断（人間 attention 操作＝reviewer 依頼・merge は明示指示時のみ、現状未実施）。
-2. backlog **H**（散布図の薄表示）の採否・方針を nishio が判断。
+2. **H**: Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で挙動（薄くする [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) / 元の色維持 [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)）を nishio が選択。採用しない候補 PR は close。
 3. 着手するものは着手前に assignee 確認 → self-assign。
 
 ## Open Questions
 
-- H（薄表示）は filtered ラベルの視認性をどこまで下げるかの表示判断が残る。D は nishio 指摘（部分失敗＝crash / 全失敗＝silent wrong-model）を受け、silent swap をやめ fail-fast 化する方針で [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) を出した。
+- H（薄表示）は「そもそもラベルを薄くすべきか」の design 判断が残るため、Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問し両案を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持, 択一）として用意した。D は nishio 指摘（部分失敗＝crash / 全失敗＝silent wrong-model）を受け、silent swap をやめ fail-fast 化する方針で [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) を出した。
 - PR 分割は #450 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。
