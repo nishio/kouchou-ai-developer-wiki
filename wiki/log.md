@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-16 19:35] filing-back | 事実訂正（コードで裏取り）: backlog D は「混在次元で silent 破損」ではなく crash
+
+- nishio 指摘「次元違いが発生したら後の解析で死ぬのでは」をコードで検証。`embedding.pkl` は `list[dict]` 保存なので書き込みは通るが、下流 `hierarchical_clustering.py` の `np.asarray([...])` が pinned `numpy>=1.26` で混在次元を `ValueError: inhomogeneous shape` で即死させる（実測 numpy 2.5.4）。
+- 実挙動は 2 分岐: (1) 一部バッチだけ fallback → clustering で opaque crash（真因の embedding fallback から遠い）、(2) 全バッチ fallback → 次元が揃い crash せず設定と違う mpnet で silent 完走（wrong model）。→ D を data-loss から correctness/robustness に訂正し [[source-review-findings-2026-10-16]] を更新。fix 方針は silent swap をやめ fail-fast か run 全体の明示判断。
+
 ## [2026-10-16 18:17] filing-back | レビュー backlog 6件を追加PR化（#1017〜#1021）— #450後始末/Azure temperature/cluster_nums/slug/status atomic
 
 - nishio go（1,2,3）。2026-10-16 レビュー確定 10 件のうち backlog 6 件を 6 worktree 並列で実装（各回帰テスト付き・隔離 venv で独立再実行・CI green）。各 agent の diff は手元で全て再レビュー＋テスト再実行して確認、push/PR は自分で統制（merge は未実施）。

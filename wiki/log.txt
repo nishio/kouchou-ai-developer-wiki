@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-16 19:35	filing-back	事実訂正（コードで裏取り）: backlog D は「混在次元で silent 破損」ではなく crash
 2026-10-16 18:17	filing-back	レビュー backlog 6件を追加PR化（#1017〜#1021）— #450後始末/Azure temperature/cluster_nums/slug/status atomic
 2026-10-16 17:41	filing-back	ソースコードレビュー棚卸し — 確定10件、Gemini埋め込み全断(#1015)と指定カテゴリ再実行漏れ(#1016)をPR
 2026-10-15 11:13	filing-back	analysis-core を APIキー無しでローカル・クラスタリングする経路を concept 化
