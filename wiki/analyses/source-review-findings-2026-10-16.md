@@ -1,7 +1,7 @@
 ---
 title: "ソースコードレビュー棚卸し 2026-10-16"
 type: analysis
-summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件のうち 8 件を PR 化（#1015 Gemini全断/#1016 指定カテゴリ再実行/#1017 複製時埋め込み+作成検証/#1018 Azure temperature/#1019 cluster_nums/#1020 slug検証/#1021 status atomic）。残り 2 件（D ローカル埋め込み fallback・H 散布図薄表示）は仕様/表示判断待ち"
+summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件のうち 9 件を PR 化（#1015 Gemini全断/#1016 指定カテゴリ再実行/#1017 複製時埋め込み+作成検証/#1018 Azure temperature/#1019 cluster_nums/#1020 slug検証/#1021 status atomic/#1022 ローカル埋め込み fail-fast）。残り 1 件（H 散布図薄表示）は表示判断待ち"
 sources:
   - source-code.md
   - llm-grouping-supervised-classification.md
@@ -32,7 +32,7 @@ sources:
 
 ## 確定 10 件の対応状況
 
-いずれも 3/3 で確定済み。2026-10-16 に **6 件を追加 PR 化**（A・B・C・E・F・G、HIGH の #1015・#1016 と合わせ計 8 件）。残り **2 件（D・H）** は仕様/表示判断待ちの backlog。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge）は未実施（明示指示時のみ）。
+いずれも 3/3 で確定済み。2026-10-16 に **7 件を追加 PR 化**（A・B・C・D・E・F・G、HIGH の #1015・#1016 と合わせ計 9 件）。残り **1 件（H）** は表示判断待ちの backlog。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge）は未実施（明示指示時のみ）。
 
 | finding | 対応 |
 |---|---|
@@ -44,7 +44,7 @@ sources:
 | E. from_dict の cluster_nums | PR [#1019](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1019) |
 | F. create slug 未検証 | PR [#1020](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1020) |
 | G. status.json の lock/atomic | PR [#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021) |
-| D. ローカル埋め込み batch swap | backlog（要仕様判断） |
+| D. ローカル埋め込み batch swap | PR [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)（fail-fast 化） |
 | H. 散布図の薄表示 no-op | backlog（要表示判断） |
 
 以下は各 finding の詳細（A–H）。D・H に着手する場合は assignee 確認 → self-assign → `work/kouchou-ai/` の worktree で作業、の手順を踏む。
@@ -60,11 +60,11 @@ sources:
 
 ## 次の作業
 
-1. PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)・[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)〜[#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021) のレビュー・merge 判断（人間 attention 操作＝reviewer 依頼・merge は明示指示時のみ、現状未実施）。
-2. backlog **D**（ローカル埋め込み fallback の silent swap）と **H**（散布図の薄表示）の採否・方針を nishio が判断。
+1. PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)・[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)〜[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) のレビュー・merge 判断（人間 attention 操作＝reviewer 依頼・merge は明示指示時のみ、現状未実施）。
+2. backlog **H**（散布図の薄表示）の採否・方針を nishio が判断。
 3. 着手するものは着手前に assignee 確認 → self-assign。
 
 ## Open Questions
 
-- D（ローカル埋め込み fallback）と H（薄表示）は「現状が意図的な挙動か」の仕様判断が残る。D は silent な別モデル代替が本当に望ましいか、H は filtered ラベルの視認性をどこまで下げるか。
+- H（薄表示）は filtered ラベルの視認性をどこまで下げるかの表示判断が残る。D は nishio 指摘（部分失敗＝crash / 全失敗＝silent wrong-model）を受け、silent swap をやめ fail-fast 化する方針で [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) を出した。
 - PR 分割は #450 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。

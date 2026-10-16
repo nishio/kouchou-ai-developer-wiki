@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-16 20:38] filing-back | backlog D を fail-fast 化で PR #1022（nishio 指摘を反映）
+
+- nishio「次元違いが発生したら後の解析で死ぬのでは」→ その通りと確認（#1022 前の事実訂正で裏取り済み）。`request_to_local_llm_embed` の silent fallback（失敗時に mpnet 768次元へ暗黙 swap）をやめ、失敗モデル名＋元エラー入りの `RuntimeError` で fail-fast に変更。mpnet を使いたい場合は is_embedded_at_local を明示有効化。
+- 回帰テスト新規 `tests/test_local_embed_failfast.py`（正常系＝埋め込み返却／失敗系＝swap を呼ばず RuntimeError）。修正前は失敗系が fail することを確認、test_llm.py 全 pass・ruff clean。[[source-review-findings-2026-10-16]] の D を backlog→PR 済みに更新（残 backlog は H のみ）。
+
 ## [2026-10-16 19:35] filing-back | 事実訂正（コードで裏取り）: backlog D は「混在次元で silent 破損」ではなく crash
 
 - nishio 指摘「次元違いが発生したら後の解析で死ぬのでは」をコードで検証。`embedding.pkl` は `list[dict]` 保存なので書き込みは通るが、下流 `hierarchical_clustering.py` の `np.asarray([...])` が pinned `numpy>=1.26` で混在次元を `ValueError: inhomogeneous shape` で即死させる（実測 numpy 2.5.4）。
@@ -750,13 +755,3 @@
 
 - [[coding-agents]] にモデル・人間の指示・結果を区別する編集方針を追記し、[[meeting-report-draft]] に反映。
 - 作業ログでモデルを確認し、詳細な経緯とは別に非公開の解説下書きと根拠を保存した。障害調査などの脇道は本文から省いた。
-
-## [2026-10-09 20:34] filing-back | 分析から開発への経緯を作業ログで振り返る
-
-- [[local-llm-extraction-faithfulness-2026-10-05]] に既存の公開知見への導線を追記し、[[meeting-report-draft]] に要点を反映。詳細と根拠抜粋は非公開領域に保存した。
-- 過去の観測と現在状態、実験・実装・PR提出・main反映を区別。grasp書き込み未導入のためMarkdownを直接編集した。
-
-## [2026-10-09 20:07] filing-back | PR #967 の承認待ちと未解決レビューを確認
-
-- [[extraction-faithfulness-public-models-2026-10-08]] に #967 の CI成功・必須承認待ち・Minor 2件未解決、#965 / #964 も OPEN という現在状態を追記。[[meeting-report-draft]] も更新。
-- Wiki と PR の実測値の不一致は、artifact 未再検証のため上書きせず Open Questions に残した。grasp 書き込み未導入のため Markdown 直接編集。
