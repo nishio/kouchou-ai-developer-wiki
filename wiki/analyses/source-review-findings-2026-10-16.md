@@ -68,3 +68,8 @@ sources:
 
 - H（薄表示）は「そもそもラベルを薄くすべきか」の design 判断が残るため、Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問し両案を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持, 択一）として用意した。D は nishio 指摘（部分失敗＝crash / 全失敗＝silent wrong-model）を受け、silent swap をやめ fail-fast 化する方針で [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) を出した。
 - PR 分割は #450 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。
+
+## Updates
+
+- **2026-10-17 — 独立 8 件を admin merge（nishio 明示指示）**: CI 全 green の独立 PR を squash で admin merge した（[#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)/[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)/[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)/[#1018](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1018)/[#1019](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1019)/[#1020](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1020)/[#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021)/[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)）。各 PR は branch protection の required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
+- **H（散布図ラベル薄表示）の候補 PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)/[#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) は merge せず OPEN 保留**: 択一で両案同時 merge は矛盾するため。Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) の a/b 決定は nishio「今は決めない」で継続（2026-10-17 時点）。

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-17 01:10] filing-back | レビュー backlog の独立 8 PR を admin merge（nishio 明示指示）
+
+- nishio「CI が通っている PR は admin merge」。CI 全 green の独立 8 件（#1015/#1016/#1017/#1018/#1019/#1020/#1021/#1022）を squash で admin merge。各 PR は required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
+- **#1024/#1025（散布図ラベル薄表示の択一候補）は merge せず OPEN 保留**: 両案同時 merge は矛盾するため。a/b は Issue #1023 で nishio「今は決めない」＝継続検討。
+- 反映先: [[meeting-report-draft]] に merge entry、[[source-review-findings-2026-10-16]] に ## Updates を追記。次＝#1023 の a/b 決定待ち。
+
 ## [2026-10-16 21:32] filing-back | H の比較スクショを生成し Issue #1023 / PR #1024・#1025 に添付
 
 - nishio「artifact は見られないので PNG を Issue に貼る方向で」。実コードの注釈スタイル（白太字14px・borderpad10・背景 rgba・SOFT_COLORS・フィルタ点は半透明グレー）を再現した HTML を Playwright(headless Chromium, 2x) で PNG 化（a/b 並置＝h-ab.png、透明度サンプル 1.0〜0.3＝h-alpha.png）。
@@ -744,13 +750,3 @@
 
 - [[tea-latte-opinion-pilot-2026-10-10]]に公開検索195投稿・比較49件の保存条件とhashを記録。原文はlocal/privateに保持。
 - [[tea-latte-opinion-dataset-feasibility-2026-10-10]]で教材としての可能性と検索偏りを整理し、[[meeting-report-draft]]に追記。grasp未導入のためMarkdown直接編集。
-
-## [2026-10-09 23:26] filing-back | 方法論の 17 ページに題（H1）を付けた
-
-- nhiro.org/broadlistening/lessons/ の英訳で、題の無いページは slug や summary から題を作るしかなかった。原文に題を置き、英訳と日本語の一覧の題の正本にする。
-- 対象: [[analysis-stance]]、[[broadlistening]]、[[pipeline]] ほかラベル・クラスタリング・可視化・公開 UI・範囲の 14 analyses。本文は変えていない。
-
-## [2026-10-09 21:56] filing-back | 送付前確認資料を非公開で集約
-
-- [[interview-analysis-request-2026-10-05]] と [[meeting-report-draft]] に確認用資料の集約を記録。画像・地図・同一項目の日英韓照合を一つの入口から辿れるようにした。
-- [[interview-feature-requests-2026-10-08]] に確認用branchの画面補正と検証を追記し、公開範囲外の具体件数を除いた。外部送付はしていない。grasp書き込み未導入のためMarkdownを直接編集した。
