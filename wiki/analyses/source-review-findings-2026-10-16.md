@@ -1,7 +1,7 @@
 ---
 title: "ソースコードレビュー棚卸し 2026-10-16"
 type: analysis
-summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件。Gemini 埋め込み全断（#450 由来, HIGH）を PR #1015、指定カテゴリ再実行漏れ（#996 由来）を PR #1016 で修正。残り 8 件は nishio 判断待ちの backlog として整理"
+summary: "main eb38328d の freshest コードを多エージェント+敵対的検証でレビュー。確定 10 件のうち 8 件を PR 化（#1015 Gemini全断/#1016 指定カテゴリ再実行/#1017 複製時埋め込み+作成検証/#1018 Azure temperature/#1019 cluster_nums/#1020 slug検証/#1021 status atomic）。残り 2 件（D ローカル埋め込み fallback・H 散布図薄表示）は仕様/表示判断待ち"
 sources:
   - source-code.md
   - llm-grouping-supervised-classification.md
@@ -30,9 +30,24 @@ sources:
 - 修正: 2 キーを `dependencies.params` に追加 + 既存ガードテストに倣った spec 契約テストを追加。
 - 関連概念: [[llm-grouping-supervised-classification]]。
 
-## backlog（nishio 判断待ち、未着手）
+## 確定 10 件の対応状況
 
-いずれも 3/3 で確定済み。優先度と採否は設計判断を含むため棚卸しのみ。着手時は assignee 確認 → self-assign → `work/kouchou-ai/` の worktree で作業、の手順を踏む。
+いずれも 3/3 で確定済み。2026-10-16 に **6 件を追加 PR 化**（A・B・C・E・F・G、HIGH の #1015・#1016 と合わせ計 8 件）。残り **2 件（D・H）** は仕様/表示判断待ちの backlog。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge）は未実施（明示指示時のみ）。
+
+| finding | 対応 |
+|---|---|
+| (HIGH) Gemini 埋め込み全断 | PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)（merge 済み判断は nishio） |
+| 指定カテゴリ再実行漏れ | PR [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) |
+| A. 複製時に埋め込みモデル欠落 | PR [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)（B と同梱） |
+| B. admin 埋め込み検証の非接続 | PR [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) |
+| C. Azure reasoning の temperature | PR [#1018](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1018) |
+| E. from_dict の cluster_nums | PR [#1019](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1019) |
+| F. create slug 未検証 | PR [#1020](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1020) |
+| G. status.json の lock/atomic | PR [#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021) |
+| D. ローカル埋め込み batch swap | backlog（要仕様判断） |
+| H. 散布図の薄表示 no-op | backlog（要表示判断） |
+
+以下は各 finding の詳細（A–H）。D・H に着手する場合は assignee 確認 → self-assign → `work/kouchou-ai/` の worktree で作業、の手順を踏む。
 
 - **A. report duplicate の embedded-config fallback が埋め込みモデルを落とす**（MEDIUM, data-loss, [#450](https://github.com/digitaldemocracy2030/kouchou-ai/pull/984) 由来）。`report_duplicate.py` の `_build_analysis_core_config_from_embedded_config` は `ReportConfig(**cfg).model_dump()` で再生成するが、`ReportConfig` に `embedding` フィールドが無く extra は ignore されるため、config ファイル不在時の fallback 経路で元レポートの埋め込みモデルが欠落し、複製が既定モデルで別ベクトル空間を作る。`enable_source_link` 同様に `embedding.model` を再付与するのが素直。
 - **B. admin create の埋め込み検証が効いていない**（MEDIUM, validation-gap, [#450](https://github.com/digitaldemocracy2030/kouchou-ai/pull/984) 由来）。`useAISettings` が算出する `embeddingModelError` が `page.tsx` の `validateFormValues` に渡されず、OpenRouter×非ローカル埋め込みのような必ず失敗する組合せがそのまま submit できる（抽出ステップの LLM コストを払った後に埋め込みステップで落ちる）。`modelError` と同様に検証ゲートへ接続すればよい。
@@ -45,11 +60,11 @@ sources:
 
 ## 次の作業
 
-1. PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015) / [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) の CI 確認とレビュー（人間 attention 操作＝reviewer 依頼・merge は明示指示時のみ）。
-2. backlog A–H の採否・優先度を nishio が判断。A・B は #450 の後始末として #1015 と同系統、C–E は analysis-core の堅牢化、F はセキュリティ、G は運用、H は UI 微調整。
-3. 着手するものは個別に issue/PR 化し、着手前に assignee 確認 → self-assign。
+1. PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)・[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)〜[#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021) のレビュー・merge 判断（人間 attention 操作＝reviewer 依頼・merge は明示指示時のみ、現状未実施）。
+2. backlog **D**（ローカル埋め込み fallback の silent swap）と **H**（散布図の薄表示）の採否・方針を nishio が判断。
+3. 着手するものは着手前に assignee 確認 → self-assign。
 
 ## Open Questions
 
 - D（ローカル埋め込み fallback）と H（薄表示）は「現状が意図的な挙動か」の仕様判断が残る。D は silent な別モデル代替が本当に望ましいか、H は filtered ラベルの視認性をどこまで下げるか。
-- backlog を 1 本の issue に束ねるか個別化するか。#450 系（A・B）は #1015 と合わせて「埋め込みモデル機能の後始末」として束ねる手もある。
+- PR 分割は #450 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。

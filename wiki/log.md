@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-16 18:17] filing-back | レビュー backlog 6件を追加PR化（#1017〜#1021）— #450後始末/Azure temperature/cluster_nums/slug/status atomic
+
+- nishio go（1,2,3）。2026-10-16 レビュー確定 10 件のうち backlog 6 件を 6 worktree 並列で実装（各回帰テスト付き・隔離 venv で独立再実行・CI green）。各 agent の diff は手元で全て再レビュー＋テスト再実行して確認、push/PR は自分で統制（merge は未実施）。
+- **#1017**=#450 後始末（複製時に埋め込みモデル引き継ぎ A＋admin 作成時の埋め込み検証ゲート接続 B を同梱）、**#1018**=Azure 推論モデルに temperature 不送（C）、**#1019**=from_dict の cluster_nums 既定を None に（E）、**#1020**=create_report の slug 検証でパストラバーサル防止（F）、**#1021**=report_status.json の lock＋atomic 保存（G）。F は broad except が 400 を 500 化するため validate_slug を try 外に配置、という agent の判断を検証して採用。
+- 残り 2 件 D（ローカル埋め込み fallback の silent swap・要仕様判断）・H（散布図の薄表示・要表示判断）は backlog 継続。棚卸しは [[source-review-findings-2026-10-16]] に反映。次＝全 PR のレビュー・merge 判断（明示指示時のみ）。
+
 ## [2026-10-16 17:41] filing-back | ソースコードレビュー棚卸し — 確定10件、Gemini埋め込み全断(#1015)と指定カテゴリ再実行漏れ(#1016)をPR
 
 - main `eb38328d` の freshest コード（#450/#996/#306 周辺）を多エージェント＋敵対的検証(8 finder×3 レンズ)でレビュー→確定 10 件を [[source-review-findings-2026-10-16]] に棚卸し。
