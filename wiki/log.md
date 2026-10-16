@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-16 17:41] filing-back | ソースコードレビュー棚卸し — 確定10件、Gemini埋め込み全断(#1015)と指定カテゴリ再実行漏れ(#1016)をPR
+
+- main `eb38328d` の freshest コード（#450/#996/#306 周辺）を多エージェント＋敵対的検証(8 finder×3 レンズ)でレビュー→確定 10 件を [[source-review-findings-2026-10-16]] に棚卸し。
+- **HIGH＝Gemini 埋め込み全断**: 統合 google-genai の `embed_content` は `.embeddings`(複数) を返すが `extract_embedding_values` が単数/`dict` しか解釈せず常に `RuntimeError`（#450 の Gemini 埋め込み選択が実質無効）。実 SDK 型 introspect で確定し **PR #1015** で修正（回帰テスト追加・CI green）。**#996 の指定カテゴリ再実行漏れ**（`predefined_groups`/`other_group_label` が `dependencies.params` 未登録）を **PR #1016** で修正。
+- 残り 8 件（report duplicate 埋め込み欠落／admin 埋め込み検証非接続／Azure temperature／ローカル埋め込み batch swap／from_dict cluster_nums／create slug 未検証／status.json race／散布図 薄表示 no-op）は nishio 判断待ち backlog。次＝#1015/#1016 の CI・レビュー・merge 判断（人間 attention 操作は明示指示時のみ）。
+
 ## [2026-10-15 11:13] filing-back | analysis-core を APIキー無しでローカル・クラスタリングする経路を concept 化
 
 - 別調査（KAITO問題のブロードリスニング、約964件の多言語コメント）で analysis-core 0.1.3 を外部 LLM キー無しで回した知見を [[offline-local-clustering]] に還流。`analysis_core.steps.embedding.embedding` + `hierarchical_clustering.hierarchical_clustering` を直呼びし、ローカル埋め込み(paraphrase-multilingual-mpnet)＋UMAP＋Ward だけを実行する手順。
@@ -743,43 +749,3 @@
 
 - [[extraction-faithfulness-public-models-2026-10-08]] に #967 の CI成功・必須承認待ち・Minor 2件未解決、#965 / #964 も OPEN という現在状態を追記。[[meeting-report-draft]] も更新。
 - Wiki と PR の実測値の不一致は、artifact 未再検証のため上書きせず Open Questions に残した。grasp 書き込み未導入のため Markdown 直接編集。
-
-## [2026-10-09 17:29] filing-back | PR #957 の秘密固定値の指摘を見送り
-
-- CodeRabbit の `REVALIDATE_SECRET` ランダム生成の指摘（Minor）は、PR #957 では対応しないと nishio が判断。理由を PR のレビュースレッドに返信し、[[setup-script-env-drift-2026-10-07]] の Open Question を更新。
-
-## [2026-10-09 17:00] filing-back | Biome 放置の教訓と劣化時系列の調べ方を追記
-
-- [[biome-lint-main-drift-2026-10-09]] に「教訓」（強制されない検査は PR 単位で腐る、0 件化と gate は同じ PR で、自動生成ファイルは検査から外す、unsafe fix の罠、古い Issue は要件照合で閉じる）と「調べ方」（歴代 main に現行 linter、shallow clone の罠）を追加。[[testing]] に PR #963 を反映。
-- #700 の close コメントで外部コントリビュータをメンションした反省も記録。
-
-## [2026-10-09 16:40] filing-back | #700 を要件照合のうえ close
-
-- #700 の要件を main と照合。Biome が起動しない問題などは pnpm workspace 移行で解消済みで、残件は #962 / PR #963 に引き継ぎ済みのため not planned で close。[[biome-lint-main-drift-2026-10-09]] と [[meeting-report-draft]] に記録。
-
-## [2026-10-09 16:10] filing-back | Biome を 0 件にして CI で強制する PR #963 を作成
-
-- #962 を起票し PR #963 を作成（未merge、CI 全成功、CodeRabbit 指摘なし、必須承認待ち）。viewer / admin / dummy-server の Biome エラーを 0 にし、両 build workflow に `biome ci` を追加。
-- [[biome-lint-main-drift-2026-10-09]] の Updates と [[meeting-report-draft]] に記録。残件は lefthook の `skip: true` と #700 の整理。
-
-## [2026-10-09 15:45] filing-back | 意見抽出の忠実性を公開モデルで追試し、抽出プロンプトの改善を実測
-
-- [[extraction-faithfulness-public-models-2026-10-08]] を新設。[[local-llm-extraction-faithfulness-2026-10-05]] の Open Questions を、公開データと合成の挑戦セット（dev/test 分割）で 31B / 27B / 2B を同じ足場で比べた結果。
-- 要点: 皮肉の極性の逆転は 27B・31B でも起きる。「〜すべき」への強めの一部は既定の入出力例が教えている。規則と「先に真意を確かめる」1 行で未使用 test の書き換えは 31B 0・27B 2 件。小型モデルは JSON の文法制約が要る。judge は先に真意を書かせると皮肉も拾える。
-- 上流への Issue / PR は草稿のまま（出すかは内容確認の後）。
-
-## [2026-10-09 13:10] filing-back | 全画面の粒度切替を観察し Issue #960 / PR #961 として提出
-
-- `feat/fullscreen-cluster-level` を Chromium で 3 幅観察。PC では要望どおり、390px 以下は横スクロール（西尾の判断で対象外）。状態カタログの E2E を 1 件追加（6 件成功）。WSL の `next dev -H 0.0.0.0` は Windows の localhost から届く。
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] を更新。次は分類 branch の観察。CLA チェックとスクリーンショットは西尾。
-
-## [2026-10-09 12:30] filing-back | Biome 全体 lint が main で落ちている由来と放置の構造を記録
-
-- PR #961 の「既知」注記を調査。[[biome-lint-main-drift-2026-10-09]] を新規作成し、viewer 7 件の持ち込み PR と、歴代 main への Biome 実行で求めた時系列（最後に clean だったのは 2026-01-19）を記録。
-- 放置の構造: lefthook は導入初日から `skip: true`、CI に Biome workflow は皆無、CI 化の #264 は実装なしで close、以後「触ったファイルだけ clean」が慣行化。[[gotchas]] / [[testing]] / [[meeting-report-draft]] を更新。
-- 次: 一括修正 → `biome ci` を build workflow へ、の順序で入れるかの判断。#700 の整理も。
-
-## [2026-10-09 06:25] filing-back | 取材で受けた機能要望 4 件の実装と設計判断を記録
-
-- [[interview-feature-requests-2026-10-08]] を新規作成。ヘイト表現の比率と政策提案の地図は意見ごとのラベルを属性に載せて既存フィルタで絞る、全画面の粒度切替は既存の表示選択 state を全画面内から動かす、日英韓切替は結果 JSON の `translations` と最小辞書で差し替える、の 3 判断。3 branch とも main `a12d68e` 起点で未push。
-- [[meeting-report-draft]] に進行中として追記、[[interview-analysis-request-2026-10-05]] から参照。提供データでの数値と環境の詳細は raw/2026-10-09-interview-requests-implementation.md（非公開）。次は実ブラウザ確認、3 branch の統合、push 認証の設定。
