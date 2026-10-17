@@ -62,6 +62,8 @@ Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)（20
 
 OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリがサインインしたユーザの ChatGPT プラン枠で推論を回せる OAuth 機能で、「API キーを配らず、ユーザ自身のプランでサインインさせる」という Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) とは別の回避ルートになりうる。広聴AIは OSS なので概念上は対象カテゴリに合致する。ただし **(1) plan 共有は Responses API に明示限定で embedding は docs 範囲外（2026-10-12 確認）＝embedding はクラスタリングの中核なので SIWC 単独ではキー不要にならず別キー/別プロバイダが要る、(2) preview、(3) 有料・リモートホスト型は別申請で Azure デモのような hosted には素直に使えない、(4) OAuth loopback flow の統合コスト、(5) OpenAI ロックイン、(6) Responses API でも `temperature` / `max_output_tokens` 等の field が未対応**という制約があり、多プロバイダで自治体制約を回避してきた本方針とは逆向き。現時点は future option として観測に留める。[[openai-siwc-token-sharing-docs-2026-10-12]]より
 
+**Claude / Anthropic** を同じ文脈で足す案も 2026-10 の Slack で出ている（Max プランの月次 API credit を labelling に充てる）。ただし chat 側は `gemini` 同型で追加できる一方、**Anthropic は自前の embedding モデルを持たず**（公式 docs は Voyage AI を薦める）、SIWC と同じく embedding の壁に当たる。current main (`083593ba`) に `anthropic` 分岐は chat / embed とも 0 件。詳細と経済性・切り分けは [[claude-provider-connection-proposal-2026-10-17]]。
+
 ## Open Questions
 
 - Embedding モデルのデフォルト変更（精度 vs コスト vs 一貫性）
@@ -70,6 +72,7 @@ OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリが
 
 ## Updates
 
+- 2026-10-17: Slack `#2_開発_広聴ai` の「Claude を接続する案」を考察し [[claude-provider-connection-proposal-2026-10-17]] を作成。「API キー不要ルートの候補」節に Claude/Anthropic の note を追記（chat は追加可・embedding は Anthropic 非提供で Voyage 依存、main に anthropic 分岐 0 件）
 - 2026-10-12: OpenAI SIWC (Sign in with ChatGPT) token-sharing docs を ingest し「API キー不要ルートの候補」節を追記。リンク先 docs 確認で **plan 共有は Responses API 限定・embedding は docs 範囲外**と確定（embedding 中核のため SIWC 単独ではキー不要にならない）。preview・hosted 不適合も caveat に未実装観測 → [[openai-siwc-token-sharing-docs-2026-10-12]]
 - 2026-10-07: 小型ローカルモデル（Qwen3 4B）で他言語の短文から意見抽出すると、処理は終わっても主張の主体の逆転などの意味の書き換えが起きた観察を [[local-llm-extraction-faithfulness-2026-10-05]] に記録
 - 2026-05-31: Windows local 完結 route の候補として Foundry Local / Chrome Prompt API / Phi Silica を追記。Foundry Local は現行 OpenAI-compatible local endpoint に接続しやすいが未実装

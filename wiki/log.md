@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-17 19:58] filing-back | 直近 Slack の「Claude Code を接続する案」を考察
+
+- Slack `#2_開発_広聴ai`（mirror 2026-10-17 同期）を一次参照。「Claude を繋ぐ」話は 3 層が混在＝(A) Claude Code をオーケストレータに（nishio 10-13、既に動く／[[offline-local-clustering]]+ラベリングを Claude が担う一般化）/(B) サブスク枠で LLM コスト（10-12 SIWC は embedding 範囲外で却下済み）/(C) pipeline に anthropic provider 追加（tokoroten 10-16）。
+- 核心は embedding: 公式 docs は「Anthropic は自前 embedding なし→Voyage AI」。tokoroten「Claudeはエンベディングもある」は誤読。Max API credit（$100/$200/月）は Messages API に効くが interactive Claude Code・Voyage には効かない。main 083593ba に anthropic 分岐 0 件。
+- 新規 [[claude-provider-connection-proposal-2026-10-17]] を作成し [[llm-providers]] に Claude note+リンクを追記（orphan 解消）。次＝#285/#255 のどちらで追跡するか、embedding 既定（ローカル無償 vs 他社キー）、Anthropic 政治用途ポリシーの確認。
+
 ## [2026-10-17 01:10] filing-back | レビュー backlog の独立 8 PR を admin merge（nishio 明示指示）
 
 - nishio「CI が通っている PR は admin merge」。CI 全 green の独立 8 件（#1015/#1016/#1017/#1018/#1019/#1020/#1021/#1022）を squash で admin merge。各 PR は required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
@@ -695,58 +701,3 @@
 
 - 未解決Issueとopen PRの一覧を再確認し、古い順10件の調査指示とsnapshotをローカルに準備。
 - [[issue-backlog-audit-2026-09-09]]と[[meeting-report-draft]]に対象・判断基準を追記。調査の実行依頼送信やGitHub更新は行っていない。
-
-## [2026-10-10 17:36] filing-back | 取材資料の送付報告と追加依頼を整理
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、送付報告と追加要件の切り分けを記録。
-- 元チャンネルとの対応を予備確認し、検証・掲載条件・こちらの公開許諾を別に扱う方針を非公開の受付記録へ保存。
-
-## [2026-10-10 17:28] filing-back | 紅茶の散布図を注目する2点から全体へ広げる
-
-- [[tea-latte-public-demo-analysis-2026-10-10]]に3段階の強調表示と座標・出典・遷移の確認を追記。
-- [[tea-latte-public-demo-lessons-2026-10-10]]に同じ地図から観点を変えて読む導線を記録し、[[meeting-report-draft]]を更新。
-
-## [2026-10-10 17:10] filing-back | 取材メモと参照資料を文字起こしに対応づけ
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、参照資料による読解補助を記録。
-- 表記候補と録音確認待ちを区別し、文字起こし原本は保持。詳細は非公開の補助記録に保存。
-
-## [2026-10-10 16:41] filing-back | 取材資料を地図画像と多言語一覧中心に変更
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、地図画像を主に見せ、全文確認を任意にする導線を記録。
-- 既存レポートの言語別一覧も目次に追加。非公開の確認資料として保持。
-
-## [2026-10-10 16:28] filing-back | 取材資料の読者向け目次を作成
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、確認用入口と読者向け目次の分離を記録。
-- 日英韓で分類意見・原文・地図へ案内し、単純な比率は文章表示へ変更。非公開資料の内容確認を待つ。
-
-## [2026-10-10 15:46] filing-back | 個別の抽出意見を3言語照合へ追加
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、抽出意見の翻訳・投稿原文を区別した非公開確認資料の更新を記録。
-- 既存の翻訳用データ構造を使い、同じ意見IDで地図・照合表・原文ページを対応させた。訳は人手未校正で、次は内容確認。
-
-## [2026-10-10 15:35] filing-back | 紅茶の違いと共通点から広聴AIの活動へ案内
-
-- [[tea-latte-public-demo-analysis-2026-10-10]]に追加4件の本文照合と公式紹介の確認を追記。
-- [[tea-latte-public-demo-lessons-2026-10-10]]に二項対立を越える見方への導入方針を記録し、[[meeting-report-draft]]を更新。
-
-## [2026-10-10 15:30] filing-back | 紅茶デモを感想から段階的に探索する導線へ
-
-- [[tea-latte-public-demo-analysis-2026-10-10]]に初見の操作がわからないという人間の指摘と表示修正を追記。
-- [[tea-latte-public-demo-lessons-2026-10-10]]に具体的な感想から地図へ進む改善仮説を記録し、[[meeting-report-draft]]も更新。効果の人間評価は未実施。
-
-## [2026-10-10 15:06] filing-back | 紅茶の377意見を広聴AIの公開デモへ
-
-- [[tea-latte-public-demo-analysis-2026-10-10]]に実分析・原文照合・公開データ境界を記録。一次artifactはrawに固定した。
-- [[tea-latte-public-demo-lessons-2026-10-10]]に二択から理由へ進む導線と監査の限界を整理し、[[meeting-report-draft]]を更新。grasp未導入のためMarkdown直接編集。
-
-## [2026-10-10 14:39] filing-back | 紅茶の公開投稿を1485件・比較98件に拡張
-
-- [[tea-latte-opinion-pilot-2026-10-10]]に追加収集条件・件数・hashを追記。初回snapshotを保持し、新規1,290投稿を追加した。
-- [[tea-latte-opinion-dataset-feasibility-2026-10-10]]に機械候補と本文確認済みの区別を追記し、[[meeting-report-draft]]も更新。原文はlocal/private、grasp未導入のためMarkdown直接編集。
-
-## [2026-10-10 14:28] filing-back | 午後の紅茶二商品の意見データを試験収集
-
-- [[tea-latte-opinion-pilot-2026-10-10]]に公開検索195投稿・比較49件の保存条件とhashを記録。原文はlocal/privateに保持。
-- [[tea-latte-opinion-dataset-feasibility-2026-10-10]]で教材としての可能性と検索偏りを整理し、[[meeting-report-draft]]に追記。grasp未導入のためMarkdown直接編集。
