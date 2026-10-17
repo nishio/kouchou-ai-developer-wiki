@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-17 22:13] filing-back | Claude provider 実験結果を専用 source ページ化
+
+- nishio「まずこの実験結果を Wiki にまとめて」。分析ページの Updates に押し込んでいた実験結果を、スキーマ（実験結果は raw/experiments snapshot＋対応 wiki source）に沿って専用 source [[claude-provider-experiment-output-2026-10-17]] に再構成。
+- 内容: 2 形式の実装結果、Anthropic 固有の確定事項（埋め込み非提供／temperature 不可／system top-level／response_format 無）、key 無しで測れた数値（997 件・silhouette≈0.06＋読み方 caveat・drill-down）、再現手順、示していないこと、次の clean experiment。raw comments は載せず構造/サイズのみ。
+- [[claude-provider-connection-proposal-2026-10-17]] の実装 Updates は要点＋新ページへの pointer に圧縮。index.txt 再生成（353 ページ）。
+
 ## [2026-10-17 20:31] filing-back | Claude 接続案の2形式を実装して検討
 
 - nishio「両方具体的に実装して検討して」。worktree `work/kouchou-ai-claude` branch `claude-provider-experiment`(98cf5677) に実装。(ii) in-pipeline `provider="anthropic"`（request_to_anthropic_chatcompletion＋catalog opus/sonnet/haiku-5-5）、(i) orchestrator harness（ローカル埋め込み上で Claude ラベリング＋drill-down）。
@@ -698,18 +704,3 @@
 
 - [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、出典別色分け・除外比較・暫定主題整理の確認資料作成を記録。
 - データ対応・三言語・表示を検証し、成果物は非公開snapshotへ保存。既存送付版を保持し、新規資料の送付・公開は行っていない。
-
-## [2026-10-10 22:02] filing-back | Issue調査のキュー投入漏れを修正し受信確認
-
-- [[issue-backlog-audit-2026-09-09]]の依頼を送信し、受信側でcommit・指示文・台帳表示を照合。状態は投入済み・起動待ち。
-- [[wiki-driven-workflow]]と[[meeting-report-draft]]へ、依頼の準備・受信・実行を区別する基準を追記。
-
-## [2026-10-10 21:46] filing-back | 委譲先の作業起点と成果の正本をdeveloper-wikiへ統一
-
-- [[issue-backlog-audit-2026-09-09]]の引き継ぎ指示をWiki clone・書き戻し必須へ訂正し、[[wiki-driven-workflow]]とCLAUDE.mdに反映。
-- [[meeting-report-draft]]を更新。キューは通信路、Wikiを知見の正本とする。grasp書き込み未導入のため既存Markdownを直接更新した。
-
-## [2026-10-10 21:41] filing-back | 古いIssueの棚卸しをClaude Codeへ引き継ぐ準備
-
-- 未解決Issueとopen PRの一覧を再確認し、古い順10件の調査指示とsnapshotをローカルに準備。
-- [[issue-backlog-audit-2026-09-09]]と[[meeting-report-draft]]に対象・判断基準を追記。調査の実行依頼送信やGitHub更新は行っていない。
