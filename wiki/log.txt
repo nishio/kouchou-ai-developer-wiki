@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-17 20:31	filing-back	Claude 接続案の2形式を実装して検討
 2026-10-17 20:08	filing-back	「embedding ローカル＋オーケストレーション Opus」形式を考察
 2026-10-17 19:58	filing-back	直近 Slack の「Claude Code を接続する案」を考察
 2026-10-17 01:10	filing-back	レビュー backlog の独立 8 PR を admin merge（nishio 明示指示）

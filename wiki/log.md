@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-17 20:31] filing-back | Claude 接続案の2形式を実装して検討
+
+- nishio「両方具体的に実装して検討して」。worktree `work/kouchou-ai-claude` branch `claude-provider-experiment`(98cf5677) に実装。(ii) in-pipeline `provider="anthropic"`（request_to_anthropic_chatcompletion＋catalog opus/sonnet/haiku-5-5）、(i) orchestrator harness（ローカル埋め込み上で Claude ラベリング＋drill-down）。
+- 実 anthropic.types mock test 3件＋既存47件 green、ruff clean。Anthropic 固有: system top-level 分離／JSON はスキーマ注入＋抽出（response_format 無）／temperature 非対応で決定化不可／embedding は NotImplementedError。
+- 共通基盤を実データ実行: kaito 997 args をローカル埋め込み(768d)+クラスタリングで key 無し完走（L1 silhouette≈0.06, 要同指標比較）。[[claude-provider-connection-proposal-2026-10-17]] ## Updates に結果、`raw/experiments/claude-local-embed-opus-2026-10-17/` に manifest+artifact。次＝embedding model 選択可能化と factor=embedding の clean experiment、key 入手後に live labelling 品質測定。
+
 ## [2026-10-17 20:08] filing-back | 「embedding ローカル＋オーケストレーション Opus」形式を考察
 
 - nishio が「embedding はローカルモデル、オーケストレーションを Opus 等が」を有力と表明。[[claude-provider-connection-proposal-2026-10-17]] に ## Updates で設計含意を追記。コスト/価値配分が合う（embedding=大量機械的→ローカル無償、判断=少量高価値→Opus）。
