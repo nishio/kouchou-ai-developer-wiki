@@ -102,3 +102,12 @@ tokoroten の「Max の無料トークンを突っ込む」案を support 記事
 - embedding の既定を「ローカル無償」にするか「別社キー」にするか。精度（[[local-llm-extraction-faithfulness-2026-10-05]]）× コスト × 一貫性のトレードオフ。
 - Max API credit の weekly/monthly 枠と rate が、自治体スケール（数千〜数万コメント）の labelling に耐えるか（docs に rate 記載なし。SIWC と同じ未確認点）。
 - Anthropic の政治用途ポリシーが広聴AI の売り込み先（政党・自治体）と整合するか。
+
+## Updates
+
+- 2026-10-17: [[nishio]] が「**embedding はローカルモデル、オーケストレーションを Opus 等がやる形式**」を有力と表明（本 repo チャット）。これは本ページ (A)＋ローカル embedding。設計上の含意を整理:
+  - **コストと価値の配分が合う**: embedding は大量・機械的（ローカル無償で可）、判断（抽出の是非・クラスタ解釈・命名・drill down）は少量・高価値（Opus）。OpenAI キー依存の痛点（[#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255)）はまさに embedding 側で、単なるコスト回避でなくフロンティア推論の投下先として正しい。
+  - **「オーケストレーション」は 2 解釈で productization が分岐**: (i) エージェントがアドホックに駆動（研究者/CLI 層・非決定的・課金は **Claude Code サブスク枠で Max API credit 対象外**）/ (ii) in-pipeline の Opus provider＋ローカル embedding（WebUI/API 層・決定的・配布可・**Messages API なので Max credit 対象**）。**tokoroten の無料枠狙いに合うのは (ii)**。基盤（ローカル embedding）は共有で、上に乗る層が違うだけ。nishio の言い回しは (i) 寄りだが、目的（無料枠 vs アドホック力）で選ぶ。
+  - **律速は embedding 品質（ラベリングではない）**: 出力構造は vector に乗るため、Opus を上に置いても壊れた構造は命名で救えない。現 main の `request_to_local_embed` は `paraphrase-multilingual-mpnet-base-v2`(768d) に**ハードコード（選択不可）**。[#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) は既定 embedding に不満、[#516](https://github.com/digitaldemocracy2030/kouchou-ai/issues/516) が embedding×次元圧縮の調査。→ この形式を良くする実体は (a) ローカル embedding model の選択可能化（e5-large / bge-m3 等）、(b) ローカル vs OpenAI embedding の同一 corpus クラスタ比較を 1 本（[[experiment-methodology]]）。
+  - **Opus はクラスタ単位に留めるのがコスト安全**: per-comment 抽出を Opus に投げると N に比例して credit を食う。per-comment は機械的/ローカルに寄せ、Opus は cluster-level の命名・overview・判断に充てる（小型 LLM の抽出不忠実（[[local-llm-extraction-faithfulness-2026-10-05]]）回避にもなる）。
+  - 上記により Open Question「embedding 既定（ローカル無償 vs 他社キー）」は **nishio lean = ローカル寄り（ただし品質検証を前提）**。

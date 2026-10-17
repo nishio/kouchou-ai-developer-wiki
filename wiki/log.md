@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-17 20:08] filing-back | 「embedding ローカル＋オーケストレーション Opus」形式を考察
+
+- nishio が「embedding はローカルモデル、オーケストレーションを Opus 等が」を有力と表明。[[claude-provider-connection-proposal-2026-10-17]] に ## Updates で設計含意を追記。コスト/価値配分が合う（embedding=大量機械的→ローカル無償、判断=少量高価値→Opus）。
+- 「オーケストレーション」は 2 解釈で分岐: (i) エージェント駆動＝研究者/CLI 層・Claude Code サブスク課金（Max credit 対象外）/(ii) in-pipeline Opus provider＝WebUI/API 層・Messages API なので Max credit 対象。無料枠狙いに合うのは (ii)。
+- 律速は embedding 品質（ラベリングでない）。現 main の `request_to_local_embed` は `paraphrase-multilingual-mpnet-base-v2`(768d) ハードコードで選択不可。次＝ローカル embedding model 選択可能化と、ローカル vs OpenAI embedding の同一 corpus 比較実験。
+
 ## [2026-10-17 19:58] filing-back | 直近 Slack の「Claude Code を接続する案」を考察
 
 - Slack `#2_開発_広聴ai`（mirror 2026-10-17 同期）を一次参照。「Claude を繋ぐ」話は 3 層が混在＝(A) Claude Code をオーケストレータに（nishio 10-13、既に動く／[[offline-local-clustering]]+ラベリングを Claude が担う一般化）/(B) サブスク枠で LLM コスト（10-12 SIWC は embedding 範囲外で却下済み）/(C) pipeline に anthropic provider 追加（tokoroten 10-16）。
