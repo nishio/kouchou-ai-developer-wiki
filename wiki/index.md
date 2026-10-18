@@ -4,7 +4,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 > **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態: [開発日報 2026-10-12](analyses/daily-report-2026-10-12.md) / [定例レポート 2026-10-10](concepts/meeting-report-2026-10-10.md) — analysis-core の AGPL 再ライセンス（0.1.3 公開・旧 MIT 版 0.1.0/0.1.2 yank、[#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)/[#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)/[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979)）と、一部解決 Issue の残件を PR 化（[#982](https://github.com/digitaldemocracy2030/kouchou-ai/issues/982)–[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988)、[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) など順次 merge 中）。次は残りの merge 判断と利用観測。
+直近の状態: [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — ソースコードレビュー確定 10 件のうち 9 件を main 反映（[#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)）。続く第 2 弾で公開レポート JSON の非公開キー除外など 6 PR（[#1026](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1026)–[#1031](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1031)）をレビュー待ち。Claude provider 接続実験は branch で検証中。次は PR のレビュー・merge 判断と、散布図ラベル a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)）の決定。
 
 ## 最初に読むべき (推奨順)
 
@@ -44,6 +44,11 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [kouchou-ai-docs-policy-history](analyses/kouchou-ai-docs-policy-history.md) / [kouchou-ai-docs-overhaul-2026-10](analyses/kouchou-ai-docs-overhaul-2026-10.md) — 本体 docs 方針の系譜と 2026-10 改善スプリントの総括
 - [faithful-aggregation-vs-deliberation-dynamics](concepts/faithful-aggregation-vs-deliberation-dynamics.md) — 忠実な集約 vs 熟議ダイナミクス（分析スタンスの核）
 - [dependabot-alerts-2026-10-14](analyses/dependabot-alerts-2026-10-14.md) — security / dependency 保守の観測（脆弱性の具体詳細は公開 wiki に書かない方針）
+- [code-health-review-2026-10-18](analyses/code-health-review-2026-10-18.md) — コード・wiki・Issue の健全性レビュー（新規改善点と 6 PR、未着手 backlog、Issue 整理提案）
+- [source-review-findings-2026-10-16](analyses/source-review-findings-2026-10-16.md) — ソースコードレビュー確定 10 件の棚卸し
+
+過去の優先度整理（歴史的文脈。現行判断は上の棚卸しを優先）:
+
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — 3 層 platform として見た時の長期順序
 - [issue-priority-through-2026-09](analyses/issue-priority-through-2026-09.md) — 2026-09 書籍リリースを前提にした優先度整理
 - [bug-issue-triage-2026-05-25](analyses/bug-issue-triage-2026-05-25.md) — `bug` ラベル open issue の current main 基準での再点検
@@ -53,6 +58,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 - [label-quality](concepts/label-quality.md) — クラスタラベルの契約と品質評価 5 レイヤの durable hub
 - [experiment-methodology](concepts/experiment-methodology.md) — 実験設計の方法論（exploratory/clean・1 要素・blind A/B・judge 較正・3 層保存）
+- [offline-local-clustering](concepts/offline-local-clustering.md) — 外部 LLM キー無しでローカル埋め込み＋クラスタリングだけを回す経路と落とし穴
 - [extraction-faithfulness](concepts/extraction-faithfulness.md) — 意見抽出(step1)の忠実性（完走≠意味保持・モデル別書換・受け入れ条件）
 
 - [ライセンスと結果公開](analyses/agpl-output-and-plugin-boundaries-2026-10-12.md) — データ・HTML・拡張の境界、CLIの案内自動付与と短いリンク表示の方針
@@ -78,7 +84,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
 - [slack-logs-repository](sources/slack-logs-repository.md) — dd2030 Slack public channel log の新しい一次置き場。最新14日は mirror、古い月は raw canonical を読む
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
-- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-10-10](concepts/meeting-report-2026-10-10.md)、その前: [meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)）
+- [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-10-18](concepts/meeting-report-2026-10-18.md)、その前: [meeting-report-2026-10-10](concepts/meeting-report-2026-10-10.md)、[meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)）
 
 ## 全件カタログ / 人物・組織
 

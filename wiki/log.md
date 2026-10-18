@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-18 22:40] filing-back | コード・Wiki・Issue の健全性レビューと改善の実施
+
+- nishio「改善すべきことがないか考えて」→「やると良いと思う順番で進めて」。main `083593ba` を 3 並列（コード / wiki 照合 / Issue 90 件）で調査し、[[code-health-review-2026-10-18]] に棚卸し。
+- コードは 6 PR を作成（#1026 公開 JSON の非公開キー除外、#1027 取込ファイル名の検証、#1028 async 内の同期 I/O、#1029 cluster_nums の順序、#1030 集約失敗の伝播、#1031 編集後のトークン数リセット）。各 PR で回帰テストを手元で再実行。merge は未実施。
+- wiki は公開境界違反（未修正 alert のパッケージ名）を除去し、concept の事実の古さを訂正。[[meeting-report-draft]] を [[meeting-report-2026-10-18]] へ rotate、index.md の直近状態を更新。次＝PR のレビュー・merge 判断、#1023 a/b、Issue 整理提案の判断。
+
 ## [2026-10-17 22:13] filing-back | Claude provider 実験結果を専用 source ページ化
 
 - nishio「まずこの実験結果を Wiki にまとめて」。分析ページの Updates に押し込んでいた実験結果を、スキーマ（実験結果は raw/experiments snapshot＋対応 wiki source）に沿って専用 source [[claude-provider-experiment-output-2026-10-17]] に再構成。
@@ -693,14 +699,3 @@
 
 - [[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に、大木さんの質問・1月の雛形作成と既存コード移植・PR #746・PyPIの表示を記録。独立配布の意図とMIT化の未確認事項を区別した。
 - [[analysis-core-and-web-ui]]・[[meeting-minutes]]・[[meeting-report-draft]]へ追記。次は当時の意図と表記整理の判断。本体・Slackは変更していない。grasp書き込み未導入につきMarkdownを直接更新。
-
-## [2026-10-11 00:55] ingest | 古いIssue先頭10件をcurrent mainに照合
-
-- 依頼 I1 で #11/#44/#52/#55/#56/#60/#79/#104/#121/#143 を main `c297bc97` にコード照合。判定: 未解決5・一部解決3・要件再確認1。[[issue-backlog-audit-2026-10-11]] と根拠 source [[issue-audit-2026-10-11-batch1]] を新規作成。
-- 2026-09-09 から変化: #52 の階層図連動 PR #927 が merge 済み。#55 は viewer 読込済みだが admin 閾値編集UIが欠落（PR #946 未merge）。[[issue-backlog-audit-2026-09-09]] に日付付き Update を追記。
-- 次に見る: #79/#11 を #884 first PR の「粗い帯」に入れるか。次batch候補 #170/#172/#173/#176/#186（自動着手しない）。snapshot/更新案/checkpoint は private キューへ。
-
-## [2026-10-10 23:54] filing-back | 取材追加分析のマップと検証用資料を作成
-
-- [[interview-feature-requests-2026-10-08]] と [[meeting-report-draft]] に、出典別色分け・除外比較・暫定主題整理の確認資料作成を記録。
-- データ対応・三言語・表示を検証し、成果物は非公開snapshotへ保存。既存送付版を保持し、新規資料の送付・公開は行っていない。
