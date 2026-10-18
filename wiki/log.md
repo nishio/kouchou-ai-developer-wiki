@@ -6,7 +6,7 @@
 ## [2026-10-18 22:40] filing-back | コード・Wiki・Issue の健全性レビューと改善の実施
 
 - nishio「改善すべきことがないか考えて」→「やると良いと思う順番で進めて」。main `083593ba` を 3 並列（コード / wiki 照合 / Issue 90 件）で調査し、[[code-health-review-2026-10-18]] に棚卸し。
-- コードは 6 PR を作成（#1026 公開 JSON の非公開キー除外、#1027 取込ファイル名の検証、#1028 async 内の同期 I/O、#1029 cluster_nums の順序、#1030 集約失敗の伝播、#1031 編集後のトークン数リセット）。各 PR で回帰テストを手元で再実行。merge は未実施。
+- コードは 5 PR を作成（#1027 取込ファイル名の検証、#1028 async 内の同期 I/O、#1029 cluster_nums の順序、#1030 集約失敗の伝播、#1031 編集後のトークン数リセット）。各 PR で回帰テストを手元で再実行。merge は未実施。
 - wiki は公開境界違反（未修正 alert のパッケージ名）を除去し、concept の事実の古さを訂正。[[meeting-report-draft]] を [[meeting-report-2026-10-18]] へ rotate、index.md の直近状態を更新。次＝PR のレビュー・merge 判断、#1023 a/b、Issue 整理提案の判断。
 
 ## [2026-10-17 22:13] filing-back | Claude provider 実験結果を専用 source ページ化

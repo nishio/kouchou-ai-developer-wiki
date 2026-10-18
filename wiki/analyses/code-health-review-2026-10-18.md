@@ -1,7 +1,7 @@
 ---
 title: "コード・Wiki・Issue の健全性レビュー 2026-10-18"
 type: analysis
-summary: "main 083593ba のコード健全性調査（新規の改善点と 6 PR）、wiki の事実照合、open Issue 90 件のトリアージをまとめた 2026-10-18 の棚卸し"
+summary: "main 083593ba のコード健全性調査（新規の改善点と 5 PR）、wiki の事実照合、open Issue 90 件のトリアージをまとめた 2026-10-18 の棚卸し"
 sources:
   - source-code.md
   - source-review-findings-2026-10-16.md
@@ -17,7 +17,6 @@ nishio「ソースコードと Wiki を読んで物事を把握して、改善�
 
 | PR | 内容 | 確認 |
 |---|---|---|
-| [#1026](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1026) | 公開される `hierarchical_result.json` の `config` から、非公開キー（ユーザー入力 API キー・`_` 始まりの内部パス・前回 status のスタックトレース）を再帰的に除外 | 修正前に fail する回帰テスト、analysis-core 332 passed |
 | [#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027) | プラグイン取込の `fileName` とスプレッドシート取得の `file_name` を `validate_slug` で検証（パストラバーサル。#1020 と同種）、`SLUG_PATTERN` を `fullmatch` に | api 348 passed |
 | [#1028](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1028) | async エンドポイント内の同期 I/O（接続確認の LLM 呼び出し、スプレッドシート取得、revalidate）を `run_in_threadpool` に。`requests.get` に timeout | api 338 passed |
 | [#1029](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1029) | `cluster_nums[-1]` を sort 前に取っていたため降順指定で最大階層が消える問題。正規化（昇順・重複除去・意見数で clamp・非破壊）してから使う | analysis-core 342 passed |
@@ -60,5 +59,4 @@ PR の作成は subagent に worktree で実装させ、diff の確認・テス�
 
 ## Open Questions
 
-- #1026 は生成済みレポートには遡及しない。既存レポートに API キーが残っていないかの確認と、該当した場合の利用者への案内は運用側の判断（デプロイ環境の詳細は公開 wiki に書かない）
 - #1031 の「合計」を、現在の成果物を作ったステップのコストとするか、再実行を含む累積支出とするか
