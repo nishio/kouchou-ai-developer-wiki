@@ -105,7 +105,7 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 2026-05-18 の `Issue #830` / `PR #832` では、CLI / `analysis-core` の `hierarchical_clustering.cluster_nums` を **省略可能** にし、未指定時は extraction 後の `argument` 数から cube-root rule で推奨値を自動計算する方向が整理された。  
 背景には、quickstart の `[3, 6]` 例が AI コーディングエージェントにそのまま転用され、300 件規模でも粗いまとめを生みやすかったという実務上の問題がある。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
-ただし source repo 全体では、README や `docs/getting-started/quickstart.md` が「コメント数ベース」の説明を残している一方、`analysis-core` 実装は「`argument` 数ベース」に寄っている。2026-05-18 時点では、**Web docs の語り口と CLI 実装の基準はまだ完全一致していない**。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
+ただし source repo 全体では、README や `docs/getting-started/quickstart.md`（現 `docs/self-hosting/quickstart.md`）が「コメント数ベース」の説明を残している一方、`analysis-core` 実装は「`argument` 数ベース」に寄っている。2026-05-18 時点では、**Web docs の語り口と CLI 実装の基準はまだ完全一致していない**。[[issue-830-pr-832-auto-cluster-defaults-2026-05-18]]より
 
 ## "vive 広聴AI" 用途
 
@@ -117,6 +117,7 @@ API は `analysis_core` を import しない。**`python -m analysis_core` が c
 
 ## Updates
 
+- 2026-10-18: docs の rename（`docs/getting-started/` → `docs/self-hosting/`）を注記
 - 2026-05-17: 初回作成（コードリーディング結果から）
 - 2026-05-18: `Issue #830` / `PR #832` により、`cluster_nums` 省略時は cube-root rule で推奨値を自動算出する方向が具体化したことを追記
 - 2026-05-19: `PR #825` merge 後の current `main` に合わせ、`--without-html` は既定 False へ直ったが、これは CLI 向け観察用HTMLの話であり Web の主経路は JSON + `public-viewer` のままだと補正

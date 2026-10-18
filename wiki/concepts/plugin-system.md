@@ -24,7 +24,7 @@ sources:
 ## 3 つの plugin 軸（docs 上の整理）
 
 1. **入力 (input) plugin** — `apps/api/src/plugins/`。サンプルとして YouTube plugin (`youtube.py`) が同梱。`ENABLE_{ID}_INPUT_PLUGIN=true` env で有効化。`pkgutil.iter_modules` で auto-import → `@PluginRegistry.register` で class-level 登録
-2. **解析 (analysis) plugin** — `packages/analysis-core/src/analysis_core/plugins/builtin/` の `register_all` が **10 個の builtin**（extraction, opinion_classification, embedding, hierarchical_clustering, llm_grouping, hierarchical_initial_labelling / merge_labelling / overview / aggregation / visualization）を登録。既存ステップ関数を `legacy_config` を再構築して呼び出す薄いラッパー。なお `hierarchical_layout_generation.py` は 10 個目のモジュールとして存在するが `register_all` は登録しない（実験用の dormant。判断は [[pipeline-step-default-policy-decision-2026-05-28]]）
+2. **解析 (analysis) plugin** — `packages/analysis-core/src/analysis_core/plugins/builtin/` の `register_all` が **10 個の builtin**（extraction, opinion_classification, embedding, hierarchical_clustering, llm_grouping, hierarchical_initial_labelling / merge_labelling / overview / aggregation / visualization）を登録。既存ステップ関数を `legacy_config` を再構築して呼び出す薄いラッパー。なお `hierarchical_layout_generation.py` は 11 個目のモジュールとして存在するが `register_all` は登録しない（実験用の dormant。判断は [[pipeline-step-default-policy-decision-2026-05-28]]）
 3. **可視化 (visualization) plugin** — `why-plugin-system.md` で第 3 軸として語られるが、**バックエンド側に Python plugin システムは無い**。一方でフロント側には `apps/public-viewer/components/charts/plugins/` があり、`registry.ts`, `types.ts`, `validation.ts` と built-in の `scatter` / `treemap` / `hierarchy-list` plugin が実装済み
 
 ## 採用理由
@@ -112,12 +112,13 @@ sources:
 
 ## Open Questions
 
-- v5.0 のリリース時期。2026-06 目標だが進捗未確認（[[versioning-strategy]]）
+- v5.0 のリリース時期。2026-06 目標だったが、2026-10-18 時点で最新タグは v4.1.0 のまま未リリース（[[versioning-strategy]]）
 - `pnpm-workspace.yaml` の `plugins/*` glob と実体ディレクトリ不在のギャップ
 - taxonomy-guided な LLM 分類を analysis plugin の設定として持たせるのか、別 workflow として切るのか
 
 ## Updates
 
+- 2026-10-18: `hierarchical_layout_generation` を 11 個目のモジュールに訂正（L27 の 10 個登録と整合）。v5.0 未リリースを明記
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正
 - 2026-05-17: `#2_開発_広聴ai` ログから、再利用機能と LLM grouping 系 analysis plugin の結びつきを追記

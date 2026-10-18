@@ -72,6 +72,7 @@ OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリが
 
 ## Updates
 
+- 2026-10-18: main `083593ba` で analysis-core の `_resolve_local_llm_base_url` は `scheme://host[:port]` 形式（HTTPS ゲートウェイ）を受け付ける。http 固定が残るのは `apps/api/src/services/llm_models.py` のモデル一覧取得だけ。OpenRouter は embedding 非対応（`NotImplementedError`）
 - 2026-10-17: Slack `#2_開発_広聴ai` の「Claude を接続する案」を考察し [[claude-provider-connection-proposal-2026-10-17]] を作成。「API キー不要ルートの候補」節に Claude/Anthropic の note を追記（chat は追加可・embedding は Anthropic 非提供で Voyage 依存、main に anthropic 分岐 0 件）
 - 2026-10-12: OpenAI SIWC (Sign in with ChatGPT) token-sharing docs を ingest し「API キー不要ルートの候補」節を追記。リンク先 docs 確認で **plan 共有は Responses API 限定・embedding は docs 範囲外**と確定（embedding 中核のため SIWC 単独ではキー不要にならない）。preview・hosted 不適合も caveat に未実装観測 → [[openai-siwc-token-sharing-docs-2026-10-12]]
 - 2026-10-07: 小型ローカルモデル（Qwen3 4B）で他言語の短文から意見抽出すると、処理は終わっても主張の主体の逆転などの意味の書き換えが起きた観察を [[local-llm-extraction-faithfulness-2026-10-05]] に記録

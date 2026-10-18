@@ -93,7 +93,7 @@ rye run uvicorn src.main:app --reload --port 8000
 - 静的書き出し時のサブパス：`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH`（[[deployment]]）
 - plugin 有効化：`ENABLE_YOUTUBE_INPUT_PLUGIN`, `YOUTUBE_API_KEY` 等
 
-一般利用者向けのセットアップスクリプト（`setup_*.sh` / `setup_win.ps1`）は `.env` を一から書き出すので、`.env.example` との間でずれが起きやすい。2026-10 に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` の欠落が見つかった（[#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) / PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)、[[setup-script-env-drift-2026-10-07]]）。`.env.example` に変数を足す時は、スクリプトにも書き出すか、`scripts/check_setup_env.py` の `OPTIONAL_KEYS` に理由つきで入れる（PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) の merge 後）。
+一般利用者向けのセットアップスクリプト（`setup_*.sh` / `setup_win.ps1`）は `.env` を一から書き出すので、`.env.example` との間でずれが起きやすい。2026-10 に `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` の欠落が見つかった（[#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) / PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)、[[setup-script-env-drift-2026-10-07]]）。`.env.example` に変数を足す時は、スクリプトにも書き出すか、`scripts/check_setup_env.py` の `OPTIONAL_KEYS` に理由つきで入れる（PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) で導入済み）。
 
 ## `.env` 変更時の build 再実行
 
@@ -111,7 +111,7 @@ rye run uvicorn src.main:app --reload --port 8000
 
 非専門家向け Windows 配布をどこまでやるか（`setup_win.*` で打ち止めるか、ランチャー exe や単体 exe へ踏み込むか）と、ランタイム基盤を Docker Desktop に置くか WSL2 Ubuntu + Docker Engine に置くかは [[windows-distribution-options]] に段階整理。
 
-加えて、`setup_win.bat` から `powershell.exe` を呼ぶ前提は、`docs/getting-started/windows-setup.md` の対象である **Windows 10/11** と整合する。Microsoft Learn では Windows PowerShell 5.1 は Windows client 10 以降で既定インストールとされているため、「通常の Windows 10/11 なら PowerShell は入っている」という説明は根拠を持って書ける。これは **PowerShell 7 (`pwsh`) が標準**という意味ではない。[[windows-powershell-default-installation]]より
+加えて、`setup_win.bat` から `powershell.exe` を呼ぶ前提は、`docs/self-hosting/windows-setup.md`（旧 `docs/getting-started/`）の対象である **Windows 10/11** と整合する。Microsoft Learn では Windows PowerShell 5.1 は Windows client 10 以降で既定インストールとされているため、「通常の Windows 10/11 なら PowerShell は入っている」という説明は根拠を持って書ける。これは **PowerShell 7 (`pwsh`) が標準**という意味ではない。[[windows-powershell-default-installation]]より
 
 また、`setup_win.bat` を ASCII の薄いランチャーにし、日本語案内を `setup_win.ps1` へ逃がす判断は、単なる文言好みではなく `cmd.exe` の日本語パース破綻を避けるためのものだった。判断理由の詳細は [[windows-setup-encoding-decision]] を参照。[[issue-731-windows-setup-mojibake]]より
 
@@ -129,6 +129,7 @@ AI コーディングエージェントの長期運用では、host machine full
 
 ## Updates
 
+- 2026-10-18: docs の rename（`docs/self-hosting/`）と PR #957 merge 済みを反映
 - 2026-05-17: 初回作成
 - 2026-05-17: Wiki 配下で実装確認するための clone 位置として `work/kouchou-ai/` を追記
 - 2026-05-18: AI エージェント向けには devcontainer と Compose を役割分離する方針への参照を追加

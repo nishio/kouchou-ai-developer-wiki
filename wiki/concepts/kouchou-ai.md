@@ -22,7 +22,7 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 [[nishio]] が整理した「同じコアを 4 つの形で提供する」分類：
 
 - **A: 研究者向け Jupyter Notebook** — ステップ単位の制御
-- **B: エンジニア向け CLI / `pip install kouchou-ai`** — AI コーディングエージェントから叩く想定（"vive 広聴AI"）
+- **B: エンジニア向け CLI / `pip install kouchou-ai-analysis-core`** — AI コーディングエージェントから叩く想定（"vive 広聴AI"）
 - **C: WebUI** — B をラップした現行プロダクト
 - **D: ホスト型デモ** — エンジニアのいない組織向け（未提供）
 
@@ -43,7 +43,7 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 | `api` | 8000 | Python 3.12 / FastAPI / Rye |
 | `public-viewer` | 3000 | Next.js 16 / Chakra UI / Plotly.js |
 | `admin` | 4000 | Next.js 16 |
-| `static-site-builder` | 3200 | Next.js (静的書き出し) |
+| `static-site-builder` | 3200 | Express 5 / TS（public-viewer の静的書き出しを ZIP 化） |
 | `ollama` (opt-in) | 11434 | Local LLM |
 
 ## コア機能
@@ -70,12 +70,13 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 
 ## Open Questions
 
-- v5.0 plugin 化のリリース時期（[[meeting-minutes]] で 2026 年 6 月目標、未着地）。詳細は [[versioning-strategy]]
+- v5.0 plugin 化のリリース時期（[[meeting-minutes]] で 2026 年 6 月目標。2026-10-18 時点で最新タグは v4.1.0 のままで未着地）。詳細は [[versioning-strategy]]
 - DB 導入は v4 以降の継続課題（毎回先送り）。今もファイルストレージ
 - SaaS ホスティング（`kouchou-ai.dd2030.org`）の本格運用は体制不足で 2025-07 時点で先送り、現状未解決
 
 ## Updates
 
+- 2026-10-18: static-site-builder を Express 5 に、CLI のパッケージ名を `kouchou-ai-analysis-core` に訂正。v5.0 未リリース（最新タグ v4.1.0）を明記
 - 2026-06-30: [[public-web-kouchouai-tttc-lineage-2026-06-30]] を反映し、DD2030 公式ページ上の TTTC 起源 / 国内前史 / 2025-03-16 OSS 公開の公開説明を追加。公開事例では前史と広聴AI confirmed case を混ぜない。
 - 2026-05-30: 設計判断の core stance として [[analysis-stance]] (広聴AI = 構造把握スタンス、定量分析スタンスではない) への導線を追加
 - 2026-05-17: 初回作成

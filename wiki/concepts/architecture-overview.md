@@ -15,7 +15,7 @@ sources:
 | `api` | `apps/api/` | 8000 | Python 3.12 / FastAPI / Rye | REST API、[[pipeline]] 実行、admin endpoints |
 | `public-viewer` | `apps/public-viewer/` | 3000 | Next.js 16 / TS / Chakra UI / Plotly.js | 一般ユーザ向けレポートビューア |
 | `admin` | `apps/admin/` | 4000 | Next.js 16 | レポート作成・編集・plugin 設定 |
-| `static-site-builder` | `apps/static-site-builder/` | 3200 | Next.js | レポートを静的 HTML に書き出し |
+| `static-site-builder` | `apps/static-site-builder/` | 3200 | Express 5 / TS（archiver） | public-viewer の静的書き出しを起動し ZIP で返す |
 | `ollama` (opt-in) | — | 11434 | Ollama | ローカル LLM 推論。GPU 推奨 (8GB+ VRAM) |
 | `dummy-server` (dev) | `utils/dummy-server/` | dev only | Node | FE 開発と E2E 用のモック API |
 
@@ -43,7 +43,8 @@ CSV アップロード (admin UI)        ┐
                                         ▼
                   packages/analysis-core/src/analysis_core/
                           orchestrator.PipelineOrchestrator.run_default()
-                          順に: extraction → embedding
+                          順に: extraction → (opinion_classification)
+                              → embedding
                               → hierarchical_clustering
                               → hierarchical_initial_labelling
                               → hierarchical_merge_labelling
@@ -61,7 +62,7 @@ CSV アップロード (admin UI)        ┐
                             public-viewer が fetch して描画
 ```
 
-旧 `apps/api/broadlistening/pipeline/` は deprecation shim として残るが新規開発で触らない（[[refactoring-status]]）。詳細は [[pipeline]]。
+旧 `apps/api/broadlistening/pipeline/` には Python 実装は残っておらず、sample の `configs/` / `inputs/` / `outputs/` だけがある（[[refactoring-status]]）。詳細は [[pipeline]]。
 
 ## 利用モードごとの見方
 
@@ -94,5 +95,6 @@ CSV アップロード (admin UI)        ┐
 
 ## Updates
 
+- 2026-10-18: main `083593ba` と照合し、static-site-builder の技術スタックを Next.js→Express 5 に、旧 `broadlistening/pipeline/` を「shim」→「sample のみ」に訂正。フロー図に `opinion_classification` を追加
 - 2026-05-17: 初回作成
 - 2026-10-12: current main（`055b8824`）に合わせ `public-viewer` / `admin` の Next.js を 15→16 に訂正（`apps/*/package.json` は `^16.3.8`。bump 履歴 `7557e22d`→`45d13a0b`→`9cc70ae8`）。データフロー図の `PipelineOrchestrator.run()` も canonical な `run_default()` に修正（`run()` は deprecated、[[pipeline]] / [[cli]]）。[[wiki-self-audit-2026-10-12]]

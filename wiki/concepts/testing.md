@@ -16,7 +16,7 @@ sources:
 | 層 | コマンド | 備考 |
 |---|---|---|
 | API unit | `cd apps/api && rye run pytest tests/`（または `make test/api`） | 既定 |
-| analysis-core unit | `cd packages/analysis-core && rye run pytest tests/` | `tests/test_pipeline_paths_integration.py` でパイプライン統合 |
+| analysis-core unit | `cd packages/analysis-core && pytest tests/`（hatchling パッケージで rye 管理外。CI は `pip install -e ".[dev,clustering]"` 相当の環境で素の `pytest`。UMAP 系テストは `[clustering]` extra が必要） | `tests/test_pipeline_paths_integration.py` でパイプライン統合 |
 | analysis-core E2E (実 LLM) | `OPENAI_API_KEY=… rye run pytest tests/e2e/ -v` | **約 $0.01/run（gpt-4o-mini）**。`pyproject.toml` の `norecursedirs` で既定除外、**CI 非実行** |
 | API -> subprocess -> analysis-core 手元 smoke | `cd apps/api && ADMIN_API_KEY=dummy PUBLIC_API_KEY=dummy OPENAI_API_KEY=dummy rye run pytest tests/manual/report_launcher_subprocess_smoke.py -q -s` | `tests/manual/report_launcher_subprocess_smoke.py`。`execute_aggregation()` の再集約 smoke に加えて、`launch_report_generation()` から **通常フロー全体** を本物の subprocess で起動し、`hierarchical_result.json` / `hierarchical_status.json` / `report_status.json` 更新まで確認する。full flow 側は local provider と OpenAI 互換の偽 LLM で extraction / embedding / clustering / overview まで踏む。既定収集の対象外で、明示実行専用。[[source-code]]より |
 | Frontend unit (Jest) | `apps/public-viewer/` と `apps/admin/` で `pnpm test` | |
@@ -27,20 +27,18 @@ sources:
 - **Python**: `ruff` — `rye run ruff check .`、または `make lint/api-check` / `make lint/api-format`
 - **TS/JS**: **Biome**（ESLint + Prettier の代替）— 各 app で `pnpm run lint` / `pnpm run format`
 - **lefthook** が `pre-push` で `ruff check` + `ruff format --check` を実行。**Biome は `skip: true`** で gating されていない
-- CI にも Biome の workflow は無く、main の全体 lint は 2026-02 以降落ちたまま。PR では「変更ファイルだけ Biome 成功」を確認する慣行。経緯は [[biome-lint-main-drift-2026-10-09]]
-- PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（未merge）で 3 ディレクトリを 0 件にし、client build / client-admin build に `biome ci` を追加。マージ後は全体 lint が PR の gate になる。lint gate は 0 件化と同じ PR で入れないと戻る（[[biome-lint-main-drift-2026-10-09]] の教訓）
+- CI では `client-build.yml`（public-viewer / utils/dummy-server）と `client-admin-build.yml`（admin）が `biome ci` を実行し、全体 lint が PR の gate になっている（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で 0 件化と同時に導入）。それ以前は 2026-02 以降 main の全体 lint が落ちたままだった。lint gate は 0 件化と同じ PR で入れないと戻る（[[biome-lint-main-drift-2026-10-09]] の教訓）
 
 ## CI ワークフロー
 
-`.github/workflows/` 配下（`docs/testing.md` で列挙）：
+`.github/workflows/` 配下は 2026-10-18 時点で 22 本。テスト・lint 系の主なもの:
 
-- `server-pytest.yml`
-- `client-jest.yml`
-- `client-admin-jest.yml`
-- `e2e-tests.yml`
-- `ruff-check.yml`
+- Python: `server-pytest.yml`（apps/api）、`analysis-core-ci.yml`（analysis-core の pytest + coverage）、`ruff-check.yml`、`api-docker-dependency-smoke.yml`
+- フロント: `client-jest.yml` / `client-admin-jest.yml`（Jest）、`client-build.yml` / `client-admin-build.yml`（build + `biome ci`）
+- E2E: `e2e-tests.yml`（Playwright）、`windows-setup-script.yml` / `windows-real-machine-e2e.yml`、`setup-scripts-env.yml`（setup スクリプトと `.env.example` の整合）
+- その他: `codeql.yml`、`docs.yml`、`publish-analysis-core.yml`、`azure-deploy.yml`、Issue/assign 系 bot
 
-**`docs/testing.md` には Biome 系 CI への明示的言及がない** — フロントエンドの lint enforcement はバックエンドより弱い可能性。
+本体の `docs/testing.md` は 2026-10-18 時点でも workflow 5 本・`rye run pytest` 前提の記述のままで、実態とずれている（docs PR 候補）。static-site-builder には build / 型検査の CI が無い。
 
 ## Playwright + Next.js のコツ
 
@@ -75,10 +73,11 @@ sources:
 ## Open Questions
 
 - E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認
-- Biome の CI ゲーティングは「無い」と確定（2026-10-09、[[biome-lint-main-drift-2026-10-09]]）。入れるなら一括修正で 0 にしてから `biome ci` を build workflow に足す順序
+- Biome の CI ゲーティングは PR #963 で導入済み（2026-10-09 時点の「無い」は解消）
 
 ## Updates
 
+- 2026-10-18: main `083593ba` と照合。Biome CI 導入済み（#963）、workflow 22 本、analysis-core は rye ではなく素の pytest、に訂正
 - 2026-10-09: Biome が hook / CI のどこでも強制されておらず main の全体 lint が落ちている事実と、その由来を [[biome-lint-main-drift-2026-10-09]] に記録
 - 2026-05-17: UMAP の `random_state` 由来 warning は既知で、現時点では許容する判断を追記
 - 2026-05-17: 初回作成

@@ -14,9 +14,9 @@ sources:
 ## 手順（step 関数の直呼び）
 
 - インストール: `pip install 'kouchou-ai-analysis-core[embeddings,clustering]'`（`torch` + `sentence-transformers` + `umap-learn` / `scikit-learn` / `scipy`）
-- `analysis_core.steps.embedding.embedding` と `analysis_core.steps.hierarchical_clustering.hierarchical_clustering` を import し、dict config を渡して実行する。`is_embedded_at_local=True` で**ローカル埋め込み**（`sentence-transformers`、例 `paraphrase-multilingual-mpnet-base-v2` = 768次元・多言語・CPU 可）。
+- `analysis_core.steps.embedding.embedding` と `analysis_core.steps.hierarchical_clustering.hierarchical_clustering` を import し、dict config を渡して実行する。`is_embedded_at_local=True` で**ローカル埋め込み**（`sentence-transformers`。モデルは `paraphrase-multilingual-mpnet-base-v2` = 768次元・多言語・CPU 可で、2026-10-18 時点の main ではコード内固定・選択不可）。
 - **extraction の省略**: 入力 `comment` が既に論点（argument）に要約されているなら、1 comment = 1 argument として扱い LLM 抽出を飛ばせる。
-- `cluster_nums=[L1,L2,L3]`（例 `[8,24,72]`）で多層クラスタリング。各コメントに階層クラスタ ID が付き、代表は centroid 近傍で取れる。
+- `cluster_nums=[L1,L2,L3]`（例 `[8,24,72]`）で多層クラスタリング。空なら意見数から推奨値を自動計算する。各コメントに階層クラスタ ID が付き、代表は centroid 近傍で取れる。
 
 ## 落とし穴
 
@@ -37,3 +37,7 @@ sources:
 
 - extraction を正式に skip する設定（1 コメント = 1 argument を CLI 経路で指定する手段）があるか。現状は step 関数直呼びで回避している。
 - 決定性（乱数固定）を step 関数側へ通す手段があるか。
+
+## Updates
+
+- 2026-10-18: ローカル埋め込みモデルは main でコード内固定（選択不可）であること、`cluster_nums` 空なら自動推奨されることを追記。ローカル埋め込みの失敗時は別モデルへ暗黙 fallback せず fail-fast する（PR [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)）

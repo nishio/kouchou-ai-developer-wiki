@@ -16,7 +16,7 @@ sources:
 
 ## 配置（重要：canonical な場所は移動済み）
 
-**2026 時点での canonical 実装は `packages/analysis-core/src/analysis_core/steps/`**。8 ステップすべてここ。
+**2026 時点での canonical 実装は `packages/analysis-core/src/analysis_core/steps/`**。全ステップがここにある（既定ワークフロー 9 ステップ＋`llm_grouping` / `hierarchical_layout_generation`）。
 
 2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` に旧 Python 実装は残っていない。current tree に残るのは sample `configs/` / `inputs/` だけで、実行コードとしての canonical path は `analysis-core` に一本化された。詳細は [[refactoring-status]]。
 
@@ -24,14 +24,19 @@ sources:
 
 ## ステップ列
 
+既定（`specs/hierarchical_specs.json`）:
+
 1. `extraction` — 生コメントから「意見」を LLM で抽出（コスト最大）
-2. `embedding` — 各意見を埋め込みベクトル化
-3. `hierarchical_clustering` — 階層クラスタリング（一層目／二層目）
-4. `hierarchical_initial_labelling` — 各クラスタに初期ラベル
-5. `hierarchical_merge_labelling` — 上位ラベル統合
-6. `hierarchical_overview` — 全体サマリ
-7. `hierarchical_aggregation` — 集約レポート生成
-8. `hierarchical_visualization` — 散布図・ツリーマップ・dense-scatter 出力
+2. `opinion_classification` — 各意見に独立した yes/no ラベル（誹謗中傷・政策提案など）を付与。`opinion_classification.enabled: true` の時だけ実行され、無効時は skip（aggregation は依存として扱う）
+3. `embedding` — 各意見を埋め込みベクトル化
+4. `hierarchical_clustering` — 階層クラスタリング（一層目／二層目）
+5. `hierarchical_initial_labelling` — 各クラスタに初期ラベル
+6. `hierarchical_merge_labelling` — 上位ラベル統合
+7. `hierarchical_overview` — 全体サマリ
+8. `hierarchical_aggregation` — 集約レポート生成（`hierarchical_result.json`）
+9. `hierarchical_visualization` — `report.html` 出力（`--without-html` で skip）
+
+`analysis_mode=llm_grouping`（`specs/llm_grouping_specs.json`）では `extraction → embedding → llm_grouping → hierarchical_overview → hierarchical_aggregation → hierarchical_visualization` の 6 ステップになる。`hierarchical_layout_generation`（散布図の追加レイアウト生成）は step / plugin として存在するが `register_all` の登録対象外。
 
 ## 実行モード
 
@@ -108,7 +113,7 @@ sources:
 
 これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **LLM 直接グルーピングのもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。LLM grouping 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
-> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 9 個を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 10 個（2026-10-18 時点。`opinion_classification` 追加後）を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
 
 ## Open Questions
 
@@ -118,6 +123,7 @@ sources:
 
 ## Updates
 
+- 2026-10-18: main `083593ba` と照合し、ステップ列を既定 9 ステップ（`opinion_classification` を含む）＋ `llm_grouping` モード 6 ステップに訂正。`register_all` は 10 個
 - 2026-05-17: 初回作成
 - 2026-05-17: `#2_開発_広聴ai` ログ由来の LLM grouping 系 LLM 分類導入意図を追記
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D とする記述を撤回し、Slack 発言と `main@3809a7a` のコード実装を分離
