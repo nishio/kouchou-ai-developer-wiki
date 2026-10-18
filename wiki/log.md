@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-19 12:00] filing-back | 本格コードレビューと修正 PR 10 本（#1032–#1041）
+
+- nishio「コードのチェックをもっと本格的にやろうか」→ 洗い出し 9 体（8 領域＋横断フロー追跡）→ 全件を反証・再現で検証 → 重要度の高いものは別の検証者が再現。[[deep-code-review-2026-10-19]] に記録。
+- 36 件を 10 グループで実装・独立レビュー・修正し、手元で全ブランチの差分確認とテスト再実行（まとめて merge してもテスト green）をしてから PR 化。merge は未実施。
+- 次＝PR のレビューと merge 判断。#1034 と #1041 は createReport.test.ts が衝突。
+
 ## [2026-10-18 22:40] filing-back | コード・Wiki・Issue の健全性レビューと改善の実施
 
 - nishio「改善すべきことがないか考えて」→「やると良いと思う順番で進めて」。main `083593ba` を 3 並列（コード / wiki 照合 / Issue 90 件）で調査し、[[code-health-review-2026-10-18]] に棚卸し。
@@ -664,38 +670,3 @@
 
 - ユーザーの指摘を受け、PR #970の全文表示を削除し、GNU本文へのリンクと短い注記に変更。本文のコピーはソースZIP内に維持。
 - [[agpl-output-and-plugin-boundaries-2026-10-12]]と[[meeting-report-draft]]へ反映。生成16テスト・Ruff成功、未merge。
-
-## [2026-10-12 09:48] filing-back | CLI出力HTMLにライセンスと表示ソースを自動同梱
-
-- PR #970へ利用者向けガイドとCLI出力へのAGPL全文・表示ソースZIPを追加。[[agpl-output-and-plugin-boundaries-2026-10-12]]と[[analysis-core-license-history-2026-10-12]]に実装・検証と制限を記録。
-- 生成16テスト・同一HTML再生成・配布物検証・docs buildを確認し、[[meeting-report-draft]]へ反映。未merge・PyPI未更新で、次はレビューと新版リリース。
-
-## [2026-10-12 09:37] filing-back | 出力HTML公開の利用者向け説明を具体化
-
-- [[agpl-output-and-plugin-boundaries-2026-10-12]]へ「分析結果＋表示プログラム」と捉える説明案を追記。表示コードの条件と、元CSV等を一律公開する話ではないことを分けた。
-- [[meeting-report-draft]]にライセンス案内・対応ソース導線の自動付与案を記録。現行HTMLの適合確認や実装は未実施。
-
-## [2026-10-12 09:34] filing-back | 利用者向けAGPL解説の所在と不足を確認
-
-- [[agpl-output-and-plugin-boundaries-2026-10-12]]にmainの文書検索結果とGNU日本語FAQの参照先を追記。現行FAQは接続エラー対処のみで、今回のケース別説明は見当たらない。
-- [[meeting-report-draft]]にも不足を記録。本体FAQへの追加は未実施。
-
-## [2026-10-12 09:30] filing-back | AGPLのソース提供義務が生じる条件を補足
-
-- [[agpl-output-and-plugin-boundaries-2026-10-12]]へ、ユーザーの指摘を受けて私的実行と配布・改造版のネットワーク提供の区別を追記。前の回答表で条件を省略していた点を訂正した。
-- [[meeting-report-draft]]にも反映。サービス提供だけでなくプログラムの配布も対象であり、全世界公開を常に要求する意味ではないと明示。
-
-## [2026-10-12 09:28] filing-back | AGPLの生成データ公開とプラグインの境界を整理
-
-- [[agpl-output-and-plugin-boundaries-2026-10-12]]でAGPL条文・FSF解説と現行実装を照合。生成データだけの公開と、コード入りHTML・同一プロセスの拡張を分けた。
-- [[plugin-system]]と[[meeting-report-draft]]へ追記。互換ライセンスと結合物の義務を区別し、個別判断・例外許諾は未決として残した。
-
-## [2026-10-12 09:23] filing-back | analysis-coreのMIT誤記をAGPLへ訂正するPR #970を作成
-
-- 西尾さんの明示指示を[[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に追記。README・metadata・LICENSE同梱を修正し、sdist/wheelの内容とtwine checkを検証。
-- [[analysis-core-and-web-ui]]と[[meeting-report-draft]]を更新。PR #970は未merge、公開済みPyPIは未更新。次はmergeと新版リリース。
-
-## [2026-10-12 09:19] filing-back | analysis-coreのMIT表記を初回commitとPyPIまで遡って調査
-
-- [[analysis-core-license-history-2026-10-12]]と[[analysis-core-license-intent-2026-10-12]]に、大木さんの質問・1月の雛形作成と既存コード移植・PR #746・PyPIの表示を記録。独立配布の意図とMIT化の未確認事項を区別した。
-- [[analysis-core-and-web-ui]]・[[meeting-minutes]]・[[meeting-report-draft]]へ追記。次は当時の意図と表記整理の判断。本体・Slackは変更していない。grasp書き込み未導入につきMarkdownを直接更新。
