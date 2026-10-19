@@ -94,3 +94,7 @@ nishio「コードのチェックをもっと本格的にやろうか」を受�
 
 - 10 本の PR のレビューと merge の判断（人間 attention を使う操作なので明示指示時のみ）
 - #1032 の意見数の数え方の変更をリリースノートでどう伝えるか
+
+## Updates
+
+- 2026-10-19: nishio「CI が通った PR は admin merge」の指示で #1032–#1041 を squash merge。#1033・#1036・#1041 は先行 PR との衝突を rebase で解消し、テスト再実行・CI 通過後に merge した。merge 後の main でも analysis-core / api のテストが通ることを確認

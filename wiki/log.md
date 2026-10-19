@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-19 15:30] filing-back | CI 通過 PR 15 本を admin merge（#1027–#1041、nishio 明示指示）
+
+- nishio「CI が通った PR は admin merge」「続けて全部マージ」。#1027–#1041 を番号順に squash merge。択一候補の #1024/#1025 は対象外（#1023 の a/b 判断待ち）。
+- #1033（#1031 と orchestrator.py の import）・#1036（#1028 とテストファイル）・#1041（#1034 と createReport.test.ts）は rebase で衝突を解消し、テスト再実行と CI 通過を確認してから merge。merge 後の main で analysis-core 406 / api 382 passed。
+- [[deep-code-review-2026-10-19]] / [[code-health-review-2026-10-18]] / [[meeting-report-draft]] を更新。
+
 ## [2026-10-19 12:00] filing-back | 本格コードレビューと修正 PR 10 本（#1032–#1041）
 
 - nishio「コードのチェックをもっと本格的にやろうか」→ 洗い出し 9 体（8 領域＋横断フロー追跡）→ 全件を反証・再現で検証 → 重要度の高いものは別の検証者が再現。[[deep-code-review-2026-10-19]] に記録。
@@ -665,8 +671,3 @@
 
 - open Issue 全105件を current main `c297bc97` に照合する全棚卸しを実施。今回95件を10シャード並列調査、残10件は2026-10-11分を再利用。今回分内訳は未解決47/一部解決31/要件再確認13/解決済3/不明1。
 - 今回のclose実行は0件。close候補だが未close=#417/#519/#573/#871（実験型・外部成果・プロセス系で人間確認要）。[[issue-backlog-audit-2026-10-12]]・[[issue-audit-2026-10-12-full]]を新規作成し、10-11/09-09の棚卸しとmeeting-report-draftへ日付付き追記。
-
-## [2026-10-12 12:10] filing-back | CLIレポートのライセンス案内を短い表記とリンクに変更
-
-- ユーザーの指摘を受け、PR #970の全文表示を削除し、GNU本文へのリンクと短い注記に変更。本文のコピーはソースZIP内に維持。
-- [[agpl-output-and-plugin-boundaries-2026-10-12]]と[[meeting-report-draft]]へ反映。生成16テスト・Ruff成功、未merge。

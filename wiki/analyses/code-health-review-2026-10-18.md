@@ -64,3 +64,4 @@ PR の作成は subagent に worktree で実装させ、diff の確認・テス�
 ## Updates
 
 - 2026-10-19: 範囲と検証を深くした本格レビューを実施し、修正 PR #1032–#1041 を作成。記録は [[deep-code-review-2026-10-19]]
+- 2026-10-19: #1027–#1031 を nishio の指示で admin merge（squash）

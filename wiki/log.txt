@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-19 15:30	filing-back	CI 通過 PR 15 本を admin merge（#1027–#1041、nishio 明示指示）
 2026-10-19 12:00	filing-back	本格コードレビューと修正 PR 10 本（#1032–#1041）
 2026-10-18 22:40	filing-back	コード・Wiki・Issue の健全性レビューと改善の実施
 2026-10-17 22:13	filing-back	Claude provider 実験結果を専用 source ページ化
