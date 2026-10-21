@@ -9,6 +9,12 @@
 - #211（OOM で処理中のまま固まる）と #295（rate limit）は、満たした範囲と残件を書いて close。#295 の Tier 周知は #292 に引き継いだ。#496 と #638 は閉じずに相互リンク。
 - cli-quickstart §9 の例から `cluster_nums` の固定値を外す PR #1059 を作成（未 merge）。gotchas に再発として記録。#976 の載せ替えは出す時期の判断待ち。
 
+## [2026-10-21 19:10] filing-back | 第 3 弾レビューの修正 PR 11 本を merge（#1048–#1058）
+
+- nishio が admin merge。merge 後の main（b675e032）で analysis-core 422 件・api 392 件のテストが通ることを手元で確認。
+- main の push CI は、連続 merge のため一部のコミットでしか起動しなかった（起動した分はすべて success）。
+- 定例会議向け下書き（meeting-report-draft）を merge 済みに更新。
+
 ## [2026-10-21 18:30] filing-back | 第 3 弾レビューの未報告候補の残り 8 件を修正 PR に（#1051–#1058）
 
 - 手順書の環境変数名、タイムアウトの空欄、OpenAI キー無しで API が起動しない件、OpenRouter のフェンス付き JSON、CI の対象パス、api のテストが手元のレポート一覧を消す件、Docker で GA が CSP に止められる件、何も確かめていなかった E2E。
