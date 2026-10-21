@@ -17,7 +17,7 @@ sources:
 
 ### 1. Gemini 埋め込みが常に失敗する（HIGH, [#450](https://github.com/digitaldemocracy2030/kouchou-ai/pull/984) 由来）→ PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)
 
-`services/llm.py` の `request_to_gemini_embed` は統合 `google-genai`(>=1.0) の `client.models.embed_content()` を呼ぶ。実レスポンス `EmbedContentResponse` は `.embedding`(単数) ではなく **`.embeddings`(複数, 各 `ContentEmbedding.values`)** を持つが、`extract_embedding_values` は単数 `.embedding` object と dict 系しか解釈せず、実 SDK object では常に `None` → `RuntimeError`。#450 で追加した Gemini 埋め込み選択は実質まったく機能しない状態だった。
+`services/llm.py` の `request_to_gemini_embed` は統合 `google-genai`(>=1.0) の `client.models.embed_content()` を呼ぶ。実レスポンス `EmbedContentResponse` は `.embedding`(単数) ではなく **`.embeddings`(複数, 各 `ContentEmbedding.values`)** を持つが、`extract_embedding_values` は単数 `.embedding` object と dict 系しか解釈せず、実 SDK object では常に `None` → `RuntimeError`。[#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) で追加した Gemini 埋め込み選択は実質まったく機能しない状態だった。
 
 - 根因の二次要因: 既存テストが `embed_content` を **dict** で mock しており実 SDK 形状と乖離、バグを検知できていなかった。
 - 検証: lock 固定の `google-genai==1.62.0` の実型を introspect して `.embeddings` 複数形を確認。実 object 形状で mock するようテストを更新 + 回帰ユニットテスト追加。修正前コードで当該テストが `RuntimeError` で fail することを確認。
@@ -32,7 +32,7 @@ sources:
 
 ## 確定 10 件の対応状況
 
-いずれも 3/3 で確定済み。2026-10-16 に **直接修正 9 件を PR 化**（A・B・C・D・E・F・G ＋ HIGH の #1015・#1016）。残る **H** は「ラベルを薄くするか」の design 判断が要るため **Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問**し、両挙動を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持）として用意（択一）。→ **確定 10 件すべてに対応着手済み**。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge・Issue の採否）は未実施（明示指示時のみ）。
+いずれも 3/3 で確定済み。2026-10-16 に **直接修正 9 件を PR 化**（A・B・C・D・E・F・G ＋ HIGH の [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1016)）。残る **H** は「ラベルを薄くするか」の design 判断が要るため **Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問**し、両挙動を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持）として用意（択一）。→ **確定 10 件すべてに対応着手済み**。各 PR は CI green を確認。人間 attention 操作（reviewer 依頼・merge・Issue の採否）は未実施（明示指示時のみ）。
 
 | finding | 対応 |
 |---|---|
@@ -67,9 +67,10 @@ sources:
 ## Open Questions
 
 - H（薄表示）は「そもそもラベルを薄くすべきか」の design 判断が残るため、Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で質問し両案を候補 PR（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) 薄くする / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) 元の色維持, 択一）として用意した。D は nishio 指摘（部分失敗＝crash / 全失敗＝silent wrong-model）を受け、silent swap をやめ fail-fast 化する方針で [#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022) を出した。
-- PR 分割は #450 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。
+- PR 分割は [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) 系（A・B）を [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017) に同梱、C/E/F/G を個別化して出した（レビュー面を小さく保つため）。merge 順の希望があれば nishio 判断。
 
 ## Updates
 
 - **2026-10-17 — 独立 8 件を admin merge（nishio 明示指示）**: CI 全 green の独立 PR を squash で admin merge した（[#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)/[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016)/[#1017](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1017)/[#1018](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1018)/[#1019](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1019)/[#1020](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1020)/[#1021](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1021)/[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)）。各 PR は branch protection の required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
 - **H（散布図ラベル薄表示）の候補 PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)/[#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) は merge せず OPEN 保留**: 択一で両案同時 merge は矛盾するため。Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) の a/b 決定は nishio「今は決めない」で継続（2026-10-17 時点）。
+- 2026-10-21: 上の「2026-10-17 — 独立 8 件を admin merge」の日付は記入日で、merge 自体は 2026-10-16（JST 21:26）。「A–G・D が main 反映」は、A〜G の 7 件と HIGH 2 件（[#1015](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1015)・[#1016](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1016)）の計 9 件という意味。H は 2026-10-21 時点で Issue [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) の a/b 判断待ち（[#1024](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1024) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1025) とも open）

@@ -1,13 +1,13 @@
 ---
 title: "開発日報 2026-10-12"
 type: analysis
-summary: "2026-10-12 の作業まとめ（draft・後で nishio が1ページに仕上げる）。広聴AI open Issue 全105件の棚卸しを並列ワークフローで実施→現行 main@c297bc97 基準で分類。nishio 判断で4件 close(#573/#519/#417/#871)＋残件を#973へ切り出し。要件再確認14件を処理: #308/#213/#289 を対話で判断、残り11件(#104/#227/#255/#464/#471/#474/#517/#529/#577/#898/#921)を機械処理バッチで整理→6件に事実整理コメント投稿・5件は人間必須で方針待ち。#577 は close 相当だが権限制約で自動close未実行。さらに未解決53件を再検証し偽陰性2件(#953/#956=現行main a3c198e9で解決済み)を検出、残51件は前回判定妥当・close確定は#953/#956のみ。"
+summary: "2026-10-12 の作業まとめ。広聴AI open Issue 全105件の棚卸しを並列ワークフローで実施→現行 main@c297bc97 基準で分類。nishio 判断で4件 close(#573/#519/#417/#871)＋残件を#973へ切り出し。要件再確認14件を処理: #308/#213/#289 を対話で判断、残り11件(#104/#227/#255/#464/#471/#474/#517/#529/#577/#898/#921)を機械処理バッチで整理→6件に事実整理コメント投稿・5件は人間必須で方針待ち。#577 は close 相当と判定（同日 close）。さらに未解決53件を再検証し偽陰性2件(#953/#956=現行main a3c198e9で解決済み)を検出、残51件は前回判定妥当・close確定は#953/#956のみ。"
 sources:
   - issue-audit-2026-10-12-full.md
   - issue-audit-2026-10-12-sweep.md
 ---
 
-> **draft**: 2026-10-12 の作業ログ。後で nishio が1ページにまとめ直す前提の下書き。判定の正本は [[issue-backlog-audit-2026-10-12]]、各 Issue の更新案・close ログ・判断ログは private キュー `drafts/issue-audit/2026-10-12-full/`。
+> 2026-10-12 の作業ログ。判定の正本は [[issue-backlog-audit-2026-10-12]]。
 
 ## 今日やったこと（概要）
 
@@ -42,7 +42,7 @@ sources:
 
 ### 残り11件を機械処理（2026-10-12 バッチ）
 
-残り11件（[#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104) [#227](https://github.com/digitaldemocracy2030/kouchou-ai/issues/227) [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) [#464](https://github.com/digitaldemocracy2030/kouchou-ai/issues/464) [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) [#474](https://github.com/digitaldemocracy2030/kouchou-ai/issues/474) [#517](https://github.com/digitaldemocracy2030/kouchou-ai/issues/517) [#529](https://github.com/digitaldemocracy2030/kouchou-ai/issues/529) [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) [#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）を現行 main `c297bc97` にコード照合し、機械でできる所まで詰めた。独立の反証検証（別エージェント）で close 相当を再確認してから実行する運用。
+残り11件（[#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104) [#227](https://github.com/digitaldemocracy2030/kouchou-ai/issues/227) [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) [#464](https://github.com/digitaldemocracy2030/kouchou-ai/issues/464) [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) [#474](https://github.com/digitaldemocracy2030/kouchou-ai/issues/474) [#517](https://github.com/digitaldemocracy2030/kouchou-ai/issues/517) [#529](https://github.com/digitaldemocracy2030/kouchou-ai/issues/529) [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) [#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）を現行 main `c297bc97` にコード照合し、機械でできる所まで詰めた。close 相当のものは、独立に反証を試みて再確認してから実行する運用。
 
 **機械で決着＝事実整理コメントを投稿（6件）**。各 Issue に file:line 根拠付きの棚卸しコメントを残した（上流本文は編集せず追記のみ）。
 
@@ -52,7 +52,7 @@ sources:
 | [#227](https://github.com/digitaldemocracy2030/kouchou-ai/issues/227) | 設定ダイアログは再設計済み。構造面2点（見出し/説明の縦並び・濃いグループ設定のセクション分離）はコード反映済み、粒度の選択式化(2/5/10/25/50/100)は未実装で線形スライダーのまま |
 | [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) | 技術的代替(Azure/Gemini/OpenRouter/local)は実装済みで [#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285) 追跡。本Issue固有の「政治利用FAQ」は未作成。公開規約の事実整理（OpenAI 許容例に「内部調査/世論調査要約」明記・MS CoC に世論分析禁止条項なし）をコメントで共有、FAQ化の判断は人間 |
 | [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) | 公式ベンチスクリプト・推奨スペック文書とも未作成。ローカルLLMは NVIDIA GPU＋VRAM8GB 前提で「自治体の普通PC」目標と不整合、NPU 未対応。問いの再定義（GPUサーバ→普通PC）はスコープ判断 |
-| [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) | 評価対象（PR#567 のシルエット方式自動クラスタ数決定）が本番経路から撤去済み。既定は cube-root へ置換済（PR#832）、ベータ表記も無し＝計画は obsolete/superseded。**close 相当だが権限制約で自動 close 未実行（人間が `gh issue close 577 --reason completed` を実行）** |
+| [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) | 評価対象（PR#567 のシルエット方式自動クラスタ数決定）が本番経路から撤去済み。既定は cube-root へ置換済（PR#832）、ベータ表記も無し＝計画は obsolete/superseded。**close 相当（2026-10-12 17:42 JST に close 済み）** |
 | [#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) | 修正方針（`NUMBA_CPU_NAME=generic` 固定＝JIT丸ごと無効化は回避）は PR#899 で main 反映済み。aarch64 実機での `import umap`/`Illegal instruction` 解消確認が残件 |
 
 **人間必須＝コメントせず方針待ち（5件）**。機械で前進できる新事実がない or repo 外成果物依存のため、ノイズ回避で公開コメントは出さず内部ドラフトのみ。
@@ -75,14 +75,13 @@ sources:
 
 - **小粒・低リスク（diff + main 照合レビュー）**: [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955)（CLI `report_dir` 未定義エラー・回帰テスト付き）/ [#965](https://github.com/digitaldemocracy2030/kouchou-ai/issues/965)（抽出プロンプト例「すべき」→「必要がある」）/ [#967](https://github.com/digitaldemocracy2030/kouchou-ai/issues/967)（抽出プロンプト実測調整例を docs 追加）/ [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)（setup `.env` 3キー欠落 + `check_setup_env.py` CI ガード）。
 - **外部 PR**: [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)（shingo-ohki、[#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966) 英語化で切れた README 直リンクを日本語デフォルト復帰で当座復旧）。root cause（README 見出し直リンク依存）は **Issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)** へ。
-- **規模大（4 並列サブエージェントでレビュー・全件 correctness 問題なし）**: [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（Biome lint 0化 + CI gate、`Reflect.deleteProperty` 等価）/ [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)（全画面クラスタ粒度切替、`resolveChartModes()` 等価）/ [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)（濃いクラスタ初期値保存、1ヶ月前 PR だが main 乖離なし実測）/ [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)（AGPL 訂正 + report.html ライセンス同梱）。
-- **[#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970) は README 競合あり**: [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968) の再編と衝突 → 別 worktree で解消（README.ja.md 削除・日本語行を README.md・英語行を README.en.md）して merge。F1（ライセンス資源欠如時の hard-fail）は **Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)**（link-only degrade）へ。
-- 運用: `gh pr merge` が auto-mode 分類器にブロックされるため、`.claude/settings.local.json`（gitignored）に `Bash(gh pr merge:*)` の allow を追加。
-- 詳細な時系列は `wiki/log.md`（2026-10-12 の filing-back 群）、定例向けは [[meeting-report-draft]]。
+- **規模大（4 本を並行して独立にレビュー・全件 correctness 問題なし）**: [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（Biome lint 0化 + CI gate、`Reflect.deleteProperty` 等価）/ [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)（全画面クラスタ粒度切替、`resolveChartModes()` 等価）/ [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)（濃いクラスタ初期値保存、1ヶ月前 PR だが main 乖離なし実測）/ [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)（AGPL 訂正 + report.html ライセンス同梱）。
+- **[#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970) は README 競合あり**: [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968) の再編と衝突 → 競合を解消（README.ja.md 削除・日本語行を README.md・英語行を README.en.md）して merge。F1（ライセンス資源欠如時の hard-fail）は **Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)**（link-only degrade）へ。
+- 詳細な時系列は wiki の作業履歴（`wiki/log.txt` の 2026-10-12 の filing-back 群）、定例向けのまとめは [[meeting-report-2026-10-10]]。
 
 ## Open Questions / 次の一手
 
-- **[#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) の close を人間が実行**: 評価対象が本番から撤去済みで close 相当（反証検証済み）だが、権限分類器が `gh issue close` を External System Writes として拒否。`gh issue close 577 -R digitaldemocracy2030/kouchou-ai --reason completed` を手動実行 or Bash 権限許可が必要。
+- **[#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) の close**: 評価対象が本番から撤去済みで close 相当（反証検証済み）。2026-10-12 17:42 JST に close 済みで、解消。
 - **[#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) の aarch64 実機確認**: `generic` 固定は main 反映済み。Apple Silicon 等で `docker compose up --build`→レポート生成完走まで確認できれば close 可。できなければ pending validation で残す。
 - **方針・スコープ決定を会議に**: [#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104)(集約 visibility のプライバシー方針) / [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255)(政治利用FAQ の明文化・法務確認) / [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471)(推奨スペックのスコープ再定義) / [#464](https://github.com/digitaldemocracy2030/kouchou-ai/issues/464)(APIキー PO 確定) / [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)(ブラウザ版本流化・戦略会議) / [#474](https://github.com/digitaldemocracy2030/kouchou-ai/issues/474)(bonsai のゴール定義)。
 - **repo 外成果物待ち**: [#517](https://github.com/digitaldemocracy2030/kouchou-ai/issues/517)(ウェルカムMTGスライド反映) / [#529](https://github.com/digitaldemocracy2030/kouchou-ai/issues/529)(デザイナーの修正後画像)。
@@ -91,20 +90,20 @@ sources:
 
 ## 5. 未解決53件の潰し込み（再検証）
 
-棚卸しで「未解決」とした53件を、別エージェント9シャードで現行 main に file:line 再照合し、偽陰性（実は解決済み）を洗い直した。基準は固定 checkout `c297bc97`（観測日 2026-10-12）だが、now-resolved 2件は固定版が本日マージの修正より古かっただけで、**現行 remote main `a3c198e9`** では解決済みと確認。根拠 source は [[issue-audit-2026-10-12-sweep]]。
+棚卸しで「未解決」とした53件を、9 つに分けて独立に現行 main と file:line で再照合し、偽陰性（実は解決済み）を洗い直した。基準は固定 checkout `c297bc97`（観測日 2026-10-12）だが、now-resolved 2件は固定版が本日マージの修正より古かっただけで、**現行 remote main `a3c198e9`** では解決済みと確認。根拠 source は [[issue-audit-2026-10-12-sweep]]。
 
 **内訳（53件）**: still-unresolved **44** / human-required **7** / now-resolved **2** / partial **0** / duplicate **0**。
 
 → 偽陰性は 2件（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956)）のみ。残り51件は前回判定（未解決 or 人間必須）が妥当と再確認、偽陰性なし。
 
-### close 確定（偽陰性＝現行 main で解決済み・メインが別途 close）
+### close 確定（偽陰性＝現行 main で解決済み）
 
 | # | 題名 | 根拠（現行 main `a3c198e9`） |
 |---|---|---|
 | [#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) | CLI の HTML 出力で可視化が `report_dir` 未定義で失敗 | PR [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955)（merge `a4028c7e`）が `hierarchical_default.py:98-106` から `${config.report_dir}` 参照を削除、`hierarchical_visualization.py:53-56` は `ctx.output_dir` 使用、回帰テスト `test_pipeline_paths_integration.py:474-525` 追加。固定 checkout `c297bc97` はこの merge 前の版。 |
 | [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) | セットアップ生成 .env に必須環境変数が欠落し静的版DL/キャッシュ更新が失敗 | PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957)（merge = 現 HEAD `a3c198e9`）が `setup_linux.sh` / `setup_mac.sh` / `setup_win.ps1` 3スクリプト全てに `CLIENT_STATIC_BUILD_BASEPATH` / `REVALIDATE_SECRET` / `REVALIDATE_URL` を追加＋CI検出(`scripts/check_setup_env.py` ほか)。.env.example 丸コピー方式は不採用。 |
 
-※ close コメント本文（file:line 根拠・reopen 手順つき）は再検証結果 JSON に保持。公開 Issue への close/comment は**このステップでは実施せず**メインが別途実行する。
+※ 2 件とも 2026-10-12 17:55 JST に close 済み。
 
 ### partial / duplicate 再分類で注目すべきもの
 
@@ -123,3 +122,7 @@ sources:
 ### human-required 7件（実 API 課金・外部成果物・組織判断が必須）
 
 [#324](https://github.com/digitaldemocracy2030/kouchou-ai/issues/324)(ファクトチェック実験) / [#346](https://github.com/digitaldemocracy2030/kouchou-ai/issues/346)(大量投稿対処の実験) / [#556](https://github.com/digitaldemocracy2030/kouchou-ai/issues/556)(アクセシビリティ継続デザイン) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)(活用事例の渉外収集) / [#882](https://github.com/digitaldemocracy2030/kouchou-ai/issues/882)(KJ法プロンプト比較実験) / [#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912)(GPT-5.6 実 API 検証) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913)(Gemini 3.8/3.5 実 API 検証)。いずれも現行 main のコード状態では充足されない種類（偽陰性ではない）。
+
+## Updates
+
+- 2026-10-21: 確定版とした。[#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) は 2026-10-12 17:42 JST に、[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) は同日 17:55 JST に close 済みで、Open Questions の [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) の項はこのページの最終編集より前に解消していた（本文もそれに合わせた）。時系列の参照先を、7 日分だけを残す log.md から log.txt に変えた

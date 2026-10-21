@@ -25,49 +25,50 @@ sources:
 | Issue | 判断と根拠 |
 | --- | --- |
 | [#514](https://github.com/digitaldemocracy2030/kouchou-ai/issues/514) | 並列完了順に依存せず入力indexへ結果を戻す実装がmainにある。モックの完了順2→1→0に対し返却順0→1→2を実行確認しcompleted。LLMの完全再現とは別。 |
-| [#305](https://github.com/digitaldemocracy2030/kouchou-ai/issues/305) | main済みPR #918がCSVファイル名から空のタイトル・概要を別々に補完する。既存入力を維持し、既存コメントの最小案を満たすためcompleted。内容からLLMで命名する機能ではない。 |
-| [#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) | main済みPR [#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922) / #926の作成前接続チェックと、認証・quota・rate limit・通信失敗の行動案内を根拠にcompleted。明示操作のチャット接続確認であり全pipeline保証ではない。 |
-| [#223](https://github.com/digitaldemocracy2030/kouchou-ai/issues/223) | mainの公開fixture・dummy-server・READMEの起動導線で、LLM課金なしにUI開発できるためcompleted。PR #933の状態カタログは追加改善。 |
-| [#379](https://github.com/digitaldemocracy2030/kouchou-ai/issues/379) | [#380](https://github.com/digitaldemocracy2030/kouchou-ai/issues/380)、Playwright基盤・CI・CSV/プロンプト再利用試験・実行ガイドが存在するため導入計画をcompleted。残ケースは#395。将来メモのDevin修正自動化まで完了したとは扱わない。 |
-| [#294](https://github.com/digitaldemocracy2030/kouchou-ai/issues/294) | 重複する#266へ統合してnot_planned。ラベル衝突そのものが直ったとは扱わない。 |
-| [#287](https://github.com/digitaldemocracy2030/kouchou-ai/issues/287) / [#254](https://github.com/digitaldemocracy2030/kouchou-ai/issues/254) | Windows案内の窓口を#877、経路選択を#876へ統合してnot_planned。旧コメントの環境依存の回避策や未mergeのPR #929を、全環境で確認済みの根拠にはしない。 |
+| [#305](https://github.com/digitaldemocracy2030/kouchou-ai/issues/305) | main済みPR [#918](https://github.com/digitaldemocracy2030/kouchou-ai/issues/918)がCSVファイル名から空のタイトル・概要を別々に補完する。既存入力を維持し、既存コメントの最小案を満たすためcompleted。内容からLLMで命名する機能ではない。 |
+| [#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) | main済みPR [#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922) / [#926](https://github.com/digitaldemocracy2030/kouchou-ai/issues/926)の作成前接続チェックと、認証・quota・rate limit・通信失敗の行動案内を根拠にcompleted。明示操作のチャット接続確認であり全pipeline保証ではない。 |
+| [#223](https://github.com/digitaldemocracy2030/kouchou-ai/issues/223) | mainの公開fixture・dummy-server・READMEの起動導線で、LLM課金なしにUI開発できるためcompleted。PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)の状態カタログは追加改善。 |
+| [#379](https://github.com/digitaldemocracy2030/kouchou-ai/issues/379) | [#380](https://github.com/digitaldemocracy2030/kouchou-ai/issues/380)、Playwright基盤・CI・CSV/プロンプト再利用試験・実行ガイドが存在するため導入計画をcompleted。残ケースは[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)。将来メモのDevin修正自動化まで完了したとは扱わない。 |
+| [#294](https://github.com/digitaldemocracy2030/kouchou-ai/issues/294) | 重複する[#266](https://github.com/digitaldemocracy2030/kouchou-ai/issues/266)へ統合してnot_planned。ラベル衝突そのものが直ったとは扱わない。 |
+| [#287](https://github.com/digitaldemocracy2030/kouchou-ai/issues/287) / [#254](https://github.com/digitaldemocracy2030/kouchou-ai/issues/254) | Windows案内の窓口を[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877)、経路選択を[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876)へ統合してnot_planned。旧コメントの環境依存の回避策や未mergeのPR [#929](https://github.com/digitaldemocracy2030/kouchou-ai/issues/929)を、全環境で確認済みの根拠にはしない。 |
 
 上記Issueの本文・コメント、および [[other-issue-candidates-2026-09-07]] に記録したmain済みPRより判断した。タイトル・API確認の関連27単体テストを再実行して成功。外部LLMは呼び出していない。
 
 ## 完了扱いを避けた論点
 
-- **#513の訂正**: 旧コメントに「seed設定済み」とあっても、current mainのUMAP・KMeansでは固定random_stateが外れている。commit `8fa8ee71358b0705859b02d0ab2064a6aac260de` は意図的な固定除去。[[umap-seed-history]]より、並列性との選択と比較可能性を分ける必要がある。Issueの題名を「再現性を選べる分析設定と比較条件を整理する」へ更新。担当がいる#809の作業を奪わず、既定値を無断で戻さない。
+- **[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)の訂正**: 旧コメントに「seed設定済み」とあっても、current mainのUMAP・KMeansでは固定random_stateが外れている。commit `8fa8ee71358b0705859b02d0ab2064a6aac260de` は意図的な固定除去。[[umap-seed-history]]より、並列性との選択と比較可能性を分ける必要がある。Issueの題名を「再現性を選べる分析設定と比較条件を整理する」へ更新。担当がいる[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)の作業を奪わず、既定値を無断で戻さない。
 - **[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)**: 作成前確認パネルはmain済みだが費用・時間は「目安なし」。Serverlessのモデル別費用見積もりと同じ入力・期待値を使い、推定・未知・実測を区別する残作業を記載した。
 - **[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55) / [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450)**: viewer側の閾値読込やローカル埋め込み切替はあるが、管理画面の閾値編集、provider別埋め込みモデル選択は未完成。チャットモデル選択と混同せず、保存→実行→表示までを完了条件にする。
-- **[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) / [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)**: 階層図と抽出意見はPR [#927](https://github.com/digitaldemocracy2030/kouchou-ai/issues/927) / Serverless #25で改善するが未merge。元コメントの公開可否・多対多ID参照・原文なしJSON・長文重複表示は別に残る。
+- **[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) / [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)**: 階層図と抽出意見はPR [#927](https://github.com/digitaldemocracy2030/kouchou-ai/issues/927) / Serverless [#25](https://github.com/tokoroten/kouchou-ai-serverless/pull/25)で改善するが未merge。元コメントの公開可否・多対多ID参照・原文なしJSON・長文重複表示は別に残る。
 - **[#493](https://github.com/digitaldemocracy2030/kouchou-ai/issues/493) / [#266](https://github.com/digitaldemocracy2030/kouchou-ai/issues/266)**: スマホのリスト初期表示・日本語禁則・ラベル非表示は、PCのwheel誤操作やラベル衝突そのものを解消しない。
 - **[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)**: APIエラーの単体試験はあるが、既存APIエラーE2Eはskip。残高等の実APIを呼ばず、ダミーAPIで修正・復帰を検査する残ケースを明示した。
-- **[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)**: OpenAIのみという前提を訂正し、OpenRouterの#537と実モデル確認#912 / #913を分離した。検証担当は人間のまま。
+- **[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)**: OpenAIのみという前提を訂正し、OpenRouterの[#537](https://github.com/digitaldemocracy2030/kouchou-ai/issues/537)と実モデル確認[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913)を分離した。検証担当は人間のまま。
 
 ## 次に前進させる利用者の行動
 
 [[serverless-product-direction-2026-09-08]]より、成果はIssue数よりも、初めての人が使い始め、集まった声を読み、次の対話や判断へ渡せることに置く。
 
-1. **自分に合う入口を選ぶ — [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) / [#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)**。既存レポート閲覧、CSV分析、組織運用、UI開発、分析実験を一つの入口から分岐させる。Serverlessを候補に含めつつ、#921の本流化・移管を既決としない。
+1. **自分に合う入口を選ぶ — [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) / [#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)**。既存レポート閲覧、CSV分析、組織運用、UI開発、分析実験を一つの入口から分岐させる。Serverlessを候補に含めつつ、[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)の本流化・移管を既決としない。
 2. **分析を始める判断ができる — [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)**。チャットと埋め込みの選択、既知/不明の費用、条件付きの時間目安を揃える。固定した合成サンプルと条件から比較を始め、未測定の値を断定しない。
 3. **元の声を確かめて対話へ渡す — [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)**。公開用と再分析用の情報契約を分ける。事例は「レポート生成成功」だけでなく問い・収集の偏り・根拠照合・その後の行動・失敗も記録し、コードを書かない人も観測・比較で参加できる入口を作る。
 
-#921へ現在の両版PRと次の利用観測を追記し、#564へ事例の記録単位、#130へ成果の残し先付きの貢献案を追加した。役割割当や対人の承認催促は行っていない。
+[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)へ現在の両版PRと次の利用観測を追記し、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)へ事例の記録単位、[#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)へ成果の残し先付きの貢献案を追加した。役割割当や対人の承認催促は行っていない。
 
 ## CIの状態
 
-2026-09-09の再確認で本体PR [#927](https://github.com/digitaldemocracy2030/kouchou-ai/issues/927)〜#933の登録済みCIはすべて成功。#933の総合E2Eも成功している。全PRは未mergeであり、CI成功をIssueのmain反映と混同しない。Serverless [#22](https://github.com/digitaldemocracy2030/kouchou-ai/issues/22)〜#26は外部forkのActions承認待ちのまま。
+2026-09-09の再確認で本体PR [#927](https://github.com/digitaldemocracy2030/kouchou-ai/issues/927)〜[#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)の登録済みCIはすべて成功。[#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)の総合E2Eも成功している。全PRは未mergeであり、CI成功をIssueのmain反映と混同しない。Serverless [#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)は外部forkのActions承認待ちのまま。
 
 ## Open Questions
 
-- #921の入口・重点投資・所有/移管をそれぞれどの利用観測で判断するか。今回のIssue整理は正式な方針決定ではない。
-- [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) / #809の再現性選択をどの比較実験で必要とするか。
+- [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)の入口・重点投資・所有/移管をそれぞれどの利用観測で判断するか。今回のIssue整理は正式な方針決定ではない。
+- [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) / [#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)の再現性選択をどの比較実験で必要とするか。
 - 見積もりと元コメント公開の共通契約を、両版のどこまで同じにするか。
 
 ## Updates
 
 - 2026-09-09 01:01: GitHubへ反映後に再取得し、8件のclosedと18件の本文更新を照合した。open Issueは119→111件。実際の操作結果とcloseコメントURLは `raw/issue-audit-2026-09-09/results.json` に保存。
 - 2026-09-09 01:44: ユーザーのfile back指示を受け、完了根拠・検証範囲・両版の確認例を [[wiki-driven-workflow]] へ整理し、完了判定と本文更新の手順を `CLAUDE.md` へ反映した。上位目的との接続は [[serverless-product-direction-2026-09-08]] へ追記。今回は既存記録からの知見整理であり、GitHub状態の再観測や追加のIssue操作はしていない。
+- 2026-10-21: Issue [#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) を completed とした根拠のうち、Gemini の認証エラー・レート制限の案内が実際に効くようになったのは PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）からで、それまでは `unknown_error` になっていた。今は満たしているので reopen は不要。[[source-code]] の Updates より
 
 ### Updates — 2026-10-10 別環境のClaude Codeへの棚卸し引き継ぎ
 
@@ -96,4 +97,4 @@ sources:
 ### Updates — 2026-10-12 open Issue 全棚卸しを実施（close実行0）
 
 - 本ページが2026-09-09にGitHub反映（8件close・18件本文更新）を伴って行った棚卸しに対し、2026-10-12は読み取り調査に限定した全棚卸し [[issue-backlog-audit-2026-10-12]] を行った。open Issue総数105件を current main `c297bc97` に照合（95件を今回並列調査、10件は2026-10-11分を再利用）。
-- 今回はGitHubのclose・本文更新・assign・mergeはしていない（上流操作は範囲外）。close候補だが未closeが#417/[#519](https://github.com/digitaldemocracy2030/kouchou-ai/issues/519)/[#573](https://github.com/digitaldemocracy2030/kouchou-ai/issues/573)/[#871](https://github.com/digitaldemocracy2030/kouchou-ai/issues/871)。本ページの2026-09-09時点の判断は上書きしない。
+- 今回はGitHubのclose・本文更新・assign・mergeはしていない（上流操作は範囲外）。close候補だが未closeが[#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)/[#519](https://github.com/digitaldemocracy2030/kouchou-ai/issues/519)/[#573](https://github.com/digitaldemocracy2030/kouchou-ai/issues/573)/[#871](https://github.com/digitaldemocracy2030/kouchou-ai/issues/871)。本ページの2026-09-09時点の判断は上書きしない。

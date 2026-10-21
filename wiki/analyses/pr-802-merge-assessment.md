@@ -37,3 +37,4 @@ current `apps/public-viewer/type.ts` では `Result.config` は必須型であ�
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-10-21: PR [#802](https://github.com/digitaldemocracy2030/kouchou-ai/issues/802) は 2026-05-19 01:11（JST。UTC では 2026-05-18）に merge されずに close された。PR [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834)（2026-05-19 merge）が API 側の検証で置き換え、Issue [#800](https://github.com/digitaldemocracy2030/kouchou-ai/issues/800) を close した。現在の挙動は [[report-slug-config-behavior]]

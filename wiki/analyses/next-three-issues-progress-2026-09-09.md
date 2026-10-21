@@ -13,39 +13,39 @@ sources:
 
 ## 選定と鮮度
 
-2026-09-09、ユーザーの「さらに3件選んで前進させて」指示による。[[three-issues-progress-2026-09-09]]に続く作業。open Issue / PRを再取得し、[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)・[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)・[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)・#250を読んだ。未担当の#393・[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)・#55をnishioへassignし、main `751e2c8`から独立worktreeで実装した。#513は意図的なseed削除と担当済み#809との関係、#250は公開要件の整理が必要なため選ばなかった。
+2026-09-09、ユーザーの「さらに3件選んで前進させて」指示による。[[three-issues-progress-2026-09-09]]に続く作業。open Issue / PRを再取得し、[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)・[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)・[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)・[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)を読んだ。未担当の[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)・[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)・[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)をnishioへassignし、main `751e2c8`から独立worktreeで実装した。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)は意図的なseed削除と担当済み[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)との関係、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)は公開要件の整理が必要なため選ばなかった。
 
 ## 進めた3件
 
-- [#944](https://github.com/digitaldemocracy2030/kouchou-ai/pull/944)（[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)、`codex/issue-393-publication-links`）: 公開前に確認すべき運営者名・利用規約・プライバシーポリシーの設定場所、JSON例、フッター・メニュー・静的配布物の確認手順を利用ガイドへ追加。現行mainのmetadata APIと表示箇所を照合した。マージ時に#393を閉じる。
+- [#944](https://github.com/digitaldemocracy2030/kouchou-ai/pull/944)（[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)、`codex/issue-393-publication-links`）: 公開前に確認すべき運営者名・利用規約・プライバシーポリシーの設定場所、JSON例、フッター・メニュー・静的配布物の確認手順を利用ガイドへ追加。現行mainのmetadata APIと表示箇所を照合した。マージ時に[#393](https://github.com/digitaldemocracy2030/kouchou-ai/issues/393)を閉じる。
 - [#945](https://github.com/digitaldemocracy2030/kouchou-ai/pull/945)（[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)、`codex/issue-592-azure-errors`）: Azureを選んだ管理画面の接続確認で不明エラーになった際、APIバージョンとモデルバージョンの違い・同じリソースの設定確認を案内する。確認APIと2つのダイアログを変更し、例外の内部詳細は返さない。解析パイプライン全体は対象外で、Issueを閉じない。
-- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/pull/946)（[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)、`codex/issue-55-density-settings`）: 可視化設定に「濃いクラスタ」の密度割合と最小サンプル数の初期値を追加。未設定は20%・5件、割合は0〜100%、件数は0以上の整数。APIでも検証し、他の可視化設定を保持する。取得失敗時の既定値による上書きを防ぎ、モバイルでダイアログ内部をスクロールできるようにした。ガイドも追加。マージ時に#55を閉じる。
+- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/pull/946)（[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)、`codex/issue-55-density-settings`）: 可視化設定に「濃いクラスタ」の密度割合と最小サンプル数の初期値を追加。未設定は20%・5件、割合は0〜100%、件数は0以上の整数。APIでも検証し、他の可視化設定を保持する。取得失敗時の既定値による上書きを防ぎ、モバイルでダイアログ内部をスクロールできるようにした。ガイドも追加。マージ時に[#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55)を閉じる。
 
-上記各PRの実装・検証より。全件未merge。#592本文は書込前の更新有無を照合して日付付き進捗を追記し、元の議論を保持した。
+上記各PRの実装・検証より。全件未merge。[#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)本文は書込前の更新有無を照合して日付付き進捗を追記し、元の議論を保持した。
 
 ## 検証
 
 - [#944](https://github.com/digitaldemocracy2030/kouchou-ai/issues/944): docs CI成功。CodeRabbitレビュー完了、インライン指摘なし。
 - [#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945): APIの既存・追加23件、関連UI27件成功。Azureの400/404/接続失敗等は例外モックで検証し、実際のAzureリソースへの接続試験は行っていない。ビルド・単体テスト・全体E2EのCI成功。CodeRabbitはrate limitedで、レビュー完了とは扱わない。
 - [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946): 管理画面全体のJest163件、API6件成功。APIテストは実routerと一時ファイルを使い、保存→管理API再取得→公開API反映、不正値による上書き防止を確認。
-- #946のブラウザ確認はローカルHTTP fixtureを使用。管理画面で35%・7件を保存して開き直し、公開viewerの初期値に反映されることを確認した。375px幅でも保存ボタンを操作できる。APIの保存処理そのものは別途上記routerテストで検証している。
-- #946の初回CIでChakra Textのlabel属性に型エラーを検出。`asChild`とnative labelで修正し、型チェックと関連9件の再テスト成功。CIを再実行中。
+- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)のブラウザ確認はローカルHTTP fixtureを使用。管理画面で35%・7件を保存して開き直し、公開viewerの初期値に反映されることを確認した。375px幅でも保存ボタンを操作できる。APIの保存処理そのものは別途上記routerテストで検証している。
+- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)の初回CIでChakra Textのlabel属性に型エラーを検出。`asChild`とnative labelで修正し、型チェックと関連9件の再テスト成功。CIを再実行中。
 
 ## Open Questions
 
-- #946再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。
-- #592の解析パイプライン全体の例外処理整理と実Azure接続による確認。
+- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。
+- [#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)の解析パイプライン全体の例外処理整理と実Azure接続による確認。
 
 ## Updates — 2026-09-09 18:56 CI完了
 
-#946の修正head `61d7ddf`でビルド・単体テスト・静的解析と全体E2E（81 passed / 3 skipped）が成功した。直前のCI待ちは解消。3件ともOPEN・未merge。[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・#946のCodeRabbitはrate limitedであり、自動レビュー完了とは扱わない。E2Eログには既知のhydrationエラー出力も含まれており、CI成功はブラウザエラーが皆無であることを意味しない。
+[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)の修正head `61d7ddf`でビルド・単体テスト・静的解析と全体E2E（81 passed / 3 skipped）が成功した。直前のCI待ちは解消。3件ともOPEN・未merge。[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)・[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)のCodeRabbitはrate limitedであり、自動レビュー完了とは扱わない。E2Eログには既知のhydrationエラー出力も含まれており、CI成功はブラウザエラーが皆無であることを意味しない。
 
 ## Updates — 2026-10-05 会話からの知見の整理
 
 ここでは9月9日の実装・検証記録を整理し直した。PRやコードを今回再取得・再検証したものではない。10月5日の別途観測は [[current-status-2026-10-05]] を参照し、上記の「未merge」やCI結果はそれぞれの観測時点の事実として読む。
 
-1. **設定編集は取得失敗時の挙動まで設計する。** #946では設定を読めないときに既定値を編集可能な状態にすると、保存によって既存の設定を消すおそれがあった。読込失敗時は保存させず、正常取得後も変更対象以外の値を保持する。入力欄だけのテストでなく、取得失敗・保存・再取得・公開APIへの反映を組にする。
-2. **検証結果には保証した境界を書く。** #946のHTTP fixtureによるブラウザ試験は画面操作と値の受け渡し、実router＋一時ファイルの試験は保存とAPIでの再取得を確認した。#945の例外モックはエラー案内を確認したもので、実Azureへの接続成功は保証しない。Jest成功後にも#946のビルド型検査でエラーが出たため、単体テストを型チェックの代用にはしない。
-3. **前進・完了・レビュー済みを分ける。** #592は管理画面の案内を改善しても解析全体の例外整理が残るため閉じない。CIが成功していてもCodeRabbitのrate limitedはレビュー完了ではなく、ブラウザログのエラー不存在も意味しない。PRの実装範囲と残件をIssueに引き継ぎ、マージ判断の材料を混同しない。
+1. **設定編集は取得失敗時の挙動まで設計する。** [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)では設定を読めないときに既定値を編集可能な状態にすると、保存によって既存の設定を消すおそれがあった。読込失敗時は保存させず、正常取得後も変更対象以外の値を保持する。入力欄だけのテストでなく、取得失敗・保存・再取得・公開APIへの反映を組にする。
+2. **検証結果には保証した境界を書く。** [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)のHTTP fixtureによるブラウザ試験は画面操作と値の受け渡し、実router＋一時ファイルの試験は保存とAPIでの再取得を確認した。[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)の例外モックはエラー案内を確認したもので、実Azureへの接続成功は保証しない。Jest成功後にも[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)のビルド型検査でエラーが出たため、単体テストを型チェックの代用にはしない。
+3. **前進・完了・レビュー済みを分ける。** [#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)は管理画面の案内を改善しても解析全体の例外整理が残るため閉じない。CIが成功していてもCodeRabbitのrate limitedはレビュー完了ではなく、ブラウザログのエラー不存在も意味しない。PRの実装範囲と残件をIssueに引き継ぎ、マージ判断の材料を混同しない。
 
 根拠は本ページの9月9日の実装・検証記録と [[three-issues-progress-2026-09-09]]。検証境界の知見は [[testing]] にも反映した。

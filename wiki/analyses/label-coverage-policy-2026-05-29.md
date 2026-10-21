@@ -1,7 +1,7 @@
 ---
 title: "ラベルのカバー範囲方針 2026-05-29"
 type: analysis
-summary: "label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。ただし評価基準はユースケース依存で、全体傾向把握と少数重要論点発見では sampling / rep args / judge の望ましい振る舞いが変わる。ラベルから dimension が落ちる根本原因の一つは、上流ラベリング入力が API 経由では最大30件、CLI/defaultでは10件のランダムサンプリングであることにもある"
+summary: "label 設計の人間判断: ラベルは『目次』ではなく『要約』として、上位 2〜3 軸まではカバーする方向で整える。ただし評価基準はユースケース依存で、全体傾向把握と少数重要論点発見では sampling / rep args / judge の望ましい振る舞いが変わる。ラベルから dimension が落ちる根本原因の一つは、上流ラベリング入力が API 経由では最大30件、CLI 既定では3件のランダムサンプリングであることにもある"
 sources:
   - slack-label-algorithm-improvement-2026-05-30.md
   - source-code.md
@@ -119,6 +119,7 @@ UI 上は「代表例 3 件」だけより、`典型例 2 + 幅 2 + 境界 1` �
 
 ## Updates
 
+- 2026-10-21: 訂正。本文の sampling の節と 2026-05-30・2026-05-29 の Updates にある「analysis-core CLI / config default / builtin plugin default は 10 件」は、当時（main `0c294da`）から CLI については誤りだった。CLI（`kouchou-analyze` / `python -m analysis_core`）は `from_config` → `initialization()` を通り、`specs/hierarchical_specs.json` の既定 `sampling_num: 3` が未指定のキーに入る。そのため CLI の既定は 3 件で、クラスタの意見が 4 件以上あると取りこぼしが起きる。10 件になるのは `PipelineOrchestrator.from_dict`（`normalize_config`）経由だけ。管理画面/API 経路の 30 件は正しい（[[label-quality]]）。summary の件数も 3 件に直した
 - 2026-05-30: ユーザー提供の Slack ログを source 化し、ohki-shingo の「全体傾向把握か、少数だが重要な論点発見かで処理・評価が変わる」という指摘を追記。次の実験では use-case contract を run metadata / judge prompt に明示する必要がある
 - 2026-05-30: nishio の指摘を受け、centroid 近傍や label embedding 類似度だけで rep args を選ぶと、クラスタ内の散らばりを過小に見せるリスクがあると追記。rep args は `典型例 / 幅を見せる例 / 境界例` を分けて設計する方針がよい
 - 2026-05-30: current main `0c294da` を再確認し、ラベル付け時の `sampling_num` は API 通常経路では 30、analysis-core default では 10 であると補正。どちらも Polars の seed なし random sample で、最大被覆ではない。UI の「個別データ」表示は representative selection ではなく deepest-level cluster の配列先頭 10 件であることも追記

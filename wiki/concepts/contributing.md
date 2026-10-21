@@ -19,7 +19,7 @@ sources:
 
 「先に PR」は強く非推奨。`CONTRIBUTING.md`：合意なしの新機能 PR は **マージされない傾向** がある。
 
-ただし、実際の作業は **この Wiki repo で調査・整理しつつ、`work/kouchou-ai/` で本体コードを触り、最終的に `digitaldemocracy2030/kouchou-ai` に PR を出す** 形になることがある。これは例外ではなく想定された運用。全体像は [[wiki-driven-workflow]] を参照。
+ただし、実際の作業は **この Wiki repo で調査・整理しつつ、`work/kouchou-ai/`（main のまま）で本体コードを読み、変更は同じ clone から作った別 worktree（`work/kouchou-ai-<topic>/`）で行い、最終的に `digitaldemocracy2030/kouchou-ai` に PR を出す** 形になることがある。これは例外ではなく想定された運用。全体像と worktree の作り方は [[wiki-driven-workflow]] を参照。
 
 ## まず利用モードを判定する
 
@@ -67,7 +67,7 @@ sources:
 
 ## PROJECTS.md
 
-ボード運用とその自動化（[[other-contributors|sasano さん]]）：assign / unassign / `/ready` / `/archive` などの bot 動作が定義されている。
+ボード運用とその自動化：`/assign`・`/unassign` で担当者を付け外しする bot（`assign-bot.yml`、[[nasuka]] が実装）と、それに連動した status 更新（PR [#512](https://github.com/digitaldemocracy2030/kouchou-ai/issues/512)）・`/ready`・`/archive` コマンド（PR [#570](https://github.com/digitaldemocracy2030/kouchou-ai/issues/570)、いずれも [[other-contributors|sasano さん]]）の動作が定義されている。
 
 ## Open PR の見方
 
@@ -107,7 +107,7 @@ Dependabot など bot PR の head を更新した後は、CI が全部 green で
 
 Codex など AI エージェントが review comment や approval comment を残す時は、後から人間が監査しやすいよう `by Codex` のような署名を付けた方がよい。PR 上で「誰がどう判断したか」を区別しやすくなる。[[pr-823-review-observation-2026-05-18]]より
 
-また、2026-05-18 の snapshot では **nishio 以外の人間 authored open PR は `#734` と `#597` の 2 本だけ** で、どちらも古い draft かつ `mergeable: false` だった。棚卸しの詳細は [[non-nishio-human-pr-status]]。[[open-pr-snapshot-2026-05-18]]より
+また、2026-05-18 の open PR 整理の前は、**nishio 以外の人間 authored の open PR が `#597` / `#734` / `#735` / `#817` の 4 本** あった。古い draft 3 本は close し、`#817` は同日 merge した。その後の状況（2026-10-21 時点で 5 人の 10 本が merge、open は 0 本）は [[non-nishio-human-pr-status]]。[[open-pr-snapshot-2026-05-18]]より
 
 ## メンテナ・コミッタ
 
@@ -157,3 +157,4 @@ Codex など AI エージェントが review comment や approval comment を残
 - 2026-05-20: [[usage-modes]] に合わせ、PR を読む前に `Web UI` / `CLI / analysis-core` / `共通基盤` を判定する入口を追記
 - 2026-05-21: reviewer request や approval 催促は AI が独断で行わず、人間の明示指示でのみ進める運用メモを追記
 - 2026-10-07: lint 注記。2026-05-18 snapshot の nishio 以外の人間 authored open PR `#734` / `#597` は、その後いずれも CLOSED（未 merge）。2026-10-06 には外部コントリビュータの [#952](https://github.com/digitaldemocracy2030/kouchou-ai/issues/952) が merge された（[[pr-952-ollama-host-port-review-2026-10-06]]）
+- 2026-10-21: 冒頭の作業場所の説明を、本体コードの変更は `work/kouchou-ai/` ではなく別 worktree で行う運用（[[wiki-driven-workflow]]）に合わせて訂正。あわせて、2026-05-18 の open PR の本数（`#735` と `#817` が抜けていた）を訂正してその後の状況への導線を追加し、PROJECTS.md の bot の実装者を書き分けた（`/assign`・`/unassign` は nasuka、status 連動と `/ready`・`/archive` は sasano）

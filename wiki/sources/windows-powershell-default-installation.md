@@ -20,7 +20,7 @@ Microsoft Learn の PowerShell 公式ドキュメントを使い、`setup_win.ba
 
 ## kouchou-ai への含意
 
-- `setup_win.bat` から `powershell.exe` を起動する設計は、`docs/getting-started/windows-setup.md` が前提にしている **Windows 10/11** という対象範囲とは整合する
+- `setup_win.bat` から `powershell.exe` を起動する設計は、`docs/self-hosting/windows-setup.md`（旧 `docs/getting-started/windows-setup.md`。2026-10-13 に PR [#1005](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1005) で改称）が前提にしている **Windows 10/11** という対象範囲とは整合する
 - ただし「Windows 標準に入っている」のは **Windows PowerShell 5.1** の話であり、PowerShell 7 (`pwsh`) ではない。`pwsh` 必須設計にすると前提が一段強くなる
 - また、管理ポリシーで PowerShell 実行が制限されている環境や、標準構成から削られた特殊環境までは保証しない。したがって docs では「通常の Windows 10/11 では標準搭載」と書くのが安全
 
@@ -31,4 +31,5 @@ Microsoft Learn の PowerShell 公式ドキュメントを使い、`setup_win.ba
 
 ## Updates
 
+- 2026-10-21: docs の改称（`docs/getting-started/` → `docs/self-hosting/`、PR [#1005](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1005) / Issue [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876)）に合わせてパスを更新。main `c57e0bfa` でも `docs/self-hosting/windows-setup.md` は Windows 10/11 前提で、`setup_win.bat` は PowerShell を起動している
 - 2026-05-22: 初回作成。Microsoft Learn を根拠に、Windows PowerShell 5.1 の既定インストール範囲と `pwsh` との違いを整理

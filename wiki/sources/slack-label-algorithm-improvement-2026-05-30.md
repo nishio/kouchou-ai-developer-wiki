@@ -47,3 +47,4 @@ sources:
 ## Updates
 
 - 2026-05-30: ユーザー提供の Slack ログを source 化。
+- 2026-10-21: 訂正。本文の「CLI / analysis-core default は `10`」と「random 10/30 件」は誤りで、CLI の既定は `specs/hierarchical_specs.json` の 3 件。10 件になるのは `PipelineOrchestrator.from_dict` 経由だけ。Slack での指摘の記録そのものは変わらない（[[label-quality]]）

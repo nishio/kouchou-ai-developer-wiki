@@ -1,7 +1,7 @@
 ---
 title: "ラベル品質戦略 — クラスタラベルの契約と評価レイヤ"
 type: concept
-summary: "広聴AI のクラスタラベル品質の durable hub。pipeline step4-6 でのラベルの位置づけ、「全体傾向を歪めず少数軸も保持する」ラベル契約、品質評価を5レイヤ(入力sampling・代表例選び・judge較正・UI表示文脈・人手pairwise)に分解する枠組み、judge を生成と同系統モデルで採点する罠を束ねる。"
+summary: "広聴AI のクラスタラベル品質の durable hub。pipeline のラベル生成ステップ（初期ラベル・統合ラベル・全体サマリ）でのラベルの位置づけ、「全体傾向を歪めず少数軸も保持する」ラベル契約、品質評価を5レイヤ(入力sampling・代表例選び・judge較正・UI表示文脈・人手pairwise)に分解する枠組み、judge を生成と同系統モデルで採点する罠を束ねる。"
 sources:
   - label-quality-redesign-reset-2026-05-30.md
   - label-coverage-policy-2026-05-29.md
@@ -20,18 +20,19 @@ sources:
 
 関連する核概念: 広聴AI = 構造把握スタンス ([[analysis-stance]])、パイプライン全体 ([[pipeline]])、思考の論点ハブ ([[thinking-targets]] の「ラベル品質改善の仕切り直し」節)。
 
-## パイプラインにおけるラベルの位置づけ (step 4-6)
+## パイプラインにおけるラベルの位置づけ
 
-[[pipeline]] の 8 ステップのうち、ラベルを作るのは step 4-6 である。
+[[pipeline]] の既定ワークフロー（9 ステップ。2 番目の `opinion_classification` は既定で無効）のうち、ラベルを作るのは次の 3 ステップである（同ページの番号では 5〜7）。
 
-4. `hierarchical_initial_labelling` — 各クラスタに初期ラベルを付ける。cluster 内の意見から `sampling_num` 件を取り出して LLM に見せる。
-5. `hierarchical_merge_labelling` — 子クラスタの label / description を束ねて上位ラベルへ統合する。
-6. `hierarchical_overview` — label set 全体から全体サマリを生成する。
+- `hierarchical_initial_labelling` — 各クラスタに初期ラベルを付ける。cluster 内の意見から `sampling_num` 件を取り出して LLM に見せる。
+- `hierarchical_merge_labelling` — 子クラスタの label / description を束ねて上位ラベルへ統合する。
+- `hierarchical_overview` — label set 全体から全体サマリを生成する。
 
 ここで durable に効く構造的事実がいくつかある。
 
 - **ラベルは下流の共通基盤**である。公開 UI の見出し、drill-down の入口、そして品質を測る judge 入力が、いずれもこの label / description を土台にする。したがってラベル品質の問題は「judge が弱い」だけでなく「ラベルを作る入力に実体が見えていない」ことからも起きる。
-- **ラベル生成入力は random sample**。step4/5 とも `cluster_data.sample(n=sampling_num)` で seed なしランダム抽出する。件数上限は実行経路で違い、管理画面/API 経路は 30 件、analysis-core / CLI default は 10 件。大規模クラスタほど、ラベルに反映される軸が「クラスタの実体」ではなく「ランダムに当たった 10/30 件」に引っ張られる。詳細なコード位置と経路差は [[label-coverage-policy-2026-05-29]]。
+- **ラベル生成入力は random sample**。初期ラベル（`hierarchical_initial_labelling`）と統合ラベル（`hierarchical_merge_labelling`）は、どちらもクラスタ内の意見から `sample(n=sampling_num)` で seed なしランダム抽出する。件数上限は config の `sampling_num` で決まり、実行経路で違う。管理画面/API 経路は 30 件を明示する（`apps/api/src/services/report_launcher.py`）。CLI（`kouchou-analyze` / `python -m analysis_core`）で `sampling_num` を書かない場合は、`specs/hierarchical_specs.json` の既定 3 件になる（`initialization()` が spec の options を未指定のキーに補う）。Python から `PipelineOrchestrator.from_dict` を使った場合だけ、`normalize_config` の既定 10 件になる。CLI の既定では意見が 4 件以上あるクラスタで取りこぼしが起き、大規模クラスタほど、ラベルに反映される軸が「クラスタの実体」ではなく「ランダムに当たった 3/30 件」に引っ張られる。コード位置と経路差の当初の調査は [[label-coverage-policy-2026-05-29]]（ただし同ページの「CLI/default 10 件」は誤りで、CLI の既定は 3 件）。
+- **LLM 直接グルーピングでは入力の取り方が違う**。`analysis_mode=llm_grouping` には初期・統合ラベリングが無く、`llm_grouping` ステップがグループの見出しと説明を作る。そのとき LLM が見るのはクラスタごとの sample ではなく、コーパス全体から seed=0 の固定 sample で取る最大 `discovery_sample_size`（既定 80）件で、見出しは全件の割り当てより前に決まる。指定カテゴリ分類（`predefined_groups`）では見出しを人が与えるので、この発見段自体を飛ばす（[[llm-grouping-supervised-classification]]）。
 - **UI の個別意見表示も「設計された代表例」ではない**。表示も judge 入力も配列先頭やランダム sample に依存しがちで、ラベル品質を測る材料とユーザが見る材料がどちらも非設計である。これを揃えるのが後述「代表例選び」レイヤの狙い。
 - **refinement step は current main には無い**。label を後段で polish する `hierarchical_label_refinement` は実験ブランチ上の step であり、しかも representative arguments を入力に取らず「既存ラベル + 子クラスタラベル」だけを書き換える polish-only 設計だった。そのため上流が間違えたラベルを中身と照らして直せず、磨くほど「整った嘘」を固定化しうる。この発見がラベル品質を仕切り直す起点になった。構造の詳細は [[label-refinement-input-scope-2026-05-29]]。
 
@@ -152,3 +153,7 @@ raw artifact と preference records は権限管理できる場所 (`raw/experim
 - 全体傾向把握用 rubric の具体形 (何を criteria にし、何を fatal にするか)。
 - 何件の pairwise preference があれば judge v1 の較正と呼べるか。複数 evaluator の disagreement を label ambiguity と扱うか rubric 不足と扱うか。
 - merge labelling の few-shot を topic-neutral にした時、refinement なしの出力だけ改善するのか、後段も追従するのか。
+
+## Updates
+
+- 2026-10-21: kouchou-ai main（b71e0b79）と照合し、CLI 既定のラベル生成サンプル数を 10 件から 3 件に訂正した（10 件になるのは `PipelineOrchestrator.from_dict` 経由の時だけ）。LLM 直接グルーピングでの見出しの入力の取り方を追記した。あわせて、8 ステップ前提の番号（step 4-6）を既定 9 ステップ（2 番目の `opinion_classification` は既定で無効）に合わせ、summary・見出し・本文をステップ名の表記に直した。

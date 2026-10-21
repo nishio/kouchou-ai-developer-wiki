@@ -21,9 +21,9 @@ sources:
 
 ここで議論されている誤操作は、主に wheel と hover を持つ desktop browser のもの。スマホでは hover も cursor も存在せず、誤操作の形は「縦スクロール中にチャートが奪う」「ピンチや drag と干渉する」など別の形をとる可能性がある。したがって、PC 向けに好まれた「500ms 前後のフェード付き自動解除ロック」は、モバイルでは再検証なしに採用しない方がよい。[[issue-493-pr-597-discussion]]より
 
-### スマホでは「最初は画像、必要なら全体ビューへ」が別解になりうる
+### スマホの入口は階層リストで決着した（画像案は採らない）
 
-モバイルでは、散布図を最初からインタラクティブ widget として出すより、**まず縮小画像や静的サムネイルとして見せ、タップ時だけインタラクティブ全体ビューへ遷移する** 方が筋が良い可能性がある。この方式なら、通常の縦スクロール中にチャートが gesture を奪いにくく、主ページでは閲覧を優先しつつ、詳細操作は意図の強いユーザーだけに分離できる。PC で嫌われた click-to-enable とは違い、**モバイルでは「別ビューに入る」こと自体が自然な情報階層化** として受け取られうる。[[issue-493-pr-597-discussion]]より
+2026-05 時点では、モバイルでは散布図を最初からインタラクティブ widget として出すより、まず縮小画像や静的サムネイルで見せ、タップ時だけ全体ビューへ遷移する案が検討された（[[issue-493-pr-597-discussion]]より）。その後 [#872](https://github.com/digitaldemocracy2030/kouchou-ai/issues/872) は PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-09-08 UTC merge）で決着した。初期表示を指定していないレポートは、幅 600px 以下で階層リストを入口にする（hover 不要で、グループを展開して意見を読める）。図は通常の表示切替から選べ、defaultChart などの明示設定を優先し、回転・リサイズで利用者の選択を戻さない。専用画像の生成や新しいレポート形式は導入しない（kouchou-ai `docs/development/mobile-reading.md`）。
 
 ### 暫定合意に最も近かったのは「ホワイト系オーバーレイ + 約500ms + カーソル切替」
 
@@ -39,17 +39,18 @@ design review 上は、終盤の `dentaro` 提案が最も通っていた。こ�
 - 再実装するなら、click-to-enable ではなく「自動解除される一時ロック」を第一候補に置くのが当時の文脈に合う
 - UI の操作感を詰める作業は、コードレビューだけで完結させず preview 導線を最初に確保した方がよい
 - ただし上の結論は PC 前提であり、スマホ UX は別トラックで考えた方がよい
-- モバイル向けには「静的画像で提示して、タップ時だけ全体インタラクティブビューへ」を第一候補にしてもよい
+- モバイルの既定は、幅 600px 以下で階層リストを入口にする形で決着した（PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)、専用画像は作らない）。散布図そのものの縦長表示・ラベル重なり（[#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) / [#266](https://github.com/digitaldemocracy2030/kouchou-ai/issues/266)）は別の課題
 
 ## Open Questions
 
 - 2026-05 の `public-viewer` / `ScatterChart` は、2025-06 当時と比べてこの UX を実装しやすい構造になっているか
 - 共有 preview が今も弱いなら、同種の UI PR はまた stale 化しやすいのではないか
 - モバイルではこの問題をどのイベント境界で捉えるべきか。scroll / drag / pinch のどれが主要衝突点なのか
-- モバイル専用に「静的散布図サムネイル → 全体ビュー遷移」という情報設計へ分けるべきか
+- 階層リストを入口にした後、利用者のフィードバックを受けて幅の閾値と既定表示をどう見直すか
 
 ## Updates
 
 - 2026-05-18: 初版作成
 - 2026-05-18: この議論は PC 前提で、スマホ UX にはそのまま一般化しない方がよいことを追記
 - 2026-05-18: スマホ代替案として「最初は画像、必要なら全体ビュー」を追記
+- 2026-10-21: スマホの既定表示が [#872](https://github.com/digitaldemocracy2030/kouchou-ai/issues/872) / PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933) で決着した（幅 600px 以下は階層リストを初期表示し、専用画像は作らない）ことを反映し、「最初は画像、必要なら全体ビュー」案の記述（Findings・Practical Read・Open Questions）を書き直した。PC のホイール誤操作（[#493](https://github.com/digitaldemocracy2030/kouchou-ai/issues/493)）は 2026-10-21 時点で open のまま

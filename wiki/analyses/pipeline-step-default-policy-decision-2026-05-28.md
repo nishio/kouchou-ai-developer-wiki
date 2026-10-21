@@ -115,3 +115,4 @@ semantic island layout 生成は有用な実験候補ではあるが、まだ実
 
 - 2026-05-28: 初回作成。以前の「メンテナー議論用 brief」を廃止し、西尾判断として `#874` の実験的 layout 生成は標準パイプラインに追加しない方針へ修正した。
 - 2026-05-28: `#874` の source code を確認し、標準 workflow / specs / orchestrator / tests を 9 step 前提へ変更していること、特に `without_html=True` でも `layout_generation` が run 対象になることを判断根拠として追記した。
+- 2026-10-21: その後の変化。PR [#874](https://github.com/digitaldemocracy2030/kouchou-ai/issues/874) は `hierarchical_layout_generation` を標準パイプラインに入れない形で 2026-05-28（UTC）に merge され、今も `register_all` の登録対象外。一方 PR [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975)（2026-10-13 merge）で、意見ごとのラベル（`opinion_classifications.csv`）を作る任意ステップ `opinion_classification` が既定ワークフローの 2 番目に入り、step 数の固定テストは 9 に更新された。このステップは既定で無効で、`opinion_classification.enabled: true` の時だけ実行される。現在のステップ列は [[pipeline]]

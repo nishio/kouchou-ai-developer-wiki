@@ -36,11 +36,11 @@ sources:
 
 ### Phase 1 — ディレクトリ再構成 ✅ 完了
 
-`server/`, `client/`, `client-admin/`, `client-static-build/` → `apps/api/`, `apps/public-viewer/`, `apps/admin/`, `apps/static-site-builder/` への移行は **済**。`naming_convention.md` 末尾 `2026-01-19` に「Migration: 完了」とある。
+`server/`, `client/`, `client-admin/`, `client-static-build/` → `apps/api/`, `apps/public-viewer/`, `apps/admin/`, `apps/static-site-builder/` への移行は **済**。`docs/refactoring/naming_convention.md` に「Docker Compose のサービス名とディレクトリ名は統一されています」とあり（更新履歴は 2026-01-19 の 2 行のみ）、改名は PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746)（2026-01-23 merge）で main に入った。
 
 ### Phase 2 — パイプラインを `packages/analysis-core` に移動 ✅ 完了
 
-8 ステップすべてが `packages/analysis-core/src/analysis_core/steps/` に存在する。2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` には Python 実装は残っておらず、`configs/` と `inputs/` の runtime data だけが残る。つまり **コードとしての canonical path 移行は完了** と読んでよい。[[source-code]]より
+旧パイプラインの 8 ステップはすべて `packages/analysis-core/src/analysis_core/steps/` に移った。その後に追加された `opinion_classification`（PR [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975)）・`llm_grouping`（PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)）・`hierarchical_layout_generation`（`register_all` には未登録）も同じ場所にあり、既定ワークフローは 9 ステップ（[[pipeline]]）。2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` には Python 実装は残っておらず、`configs/`・`inputs/`・`outputs/` が API の実行時データ置き場（`settings.CONFIG_DIR`・`INPUT_DIR`・`REPORT_DIR`。`apps/api/src/config.py`）として残る（git 管理されているのはサンプルだけ）。つまり **コードとしての canonical path 移行は完了** と読んでよい。[[source-code]]より
 
 ### Phase 2.5 — PyPI パッケージ化 ✅ ほぼ完了
 
@@ -91,7 +91,7 @@ sources:
 - `apps/api/broadlistening/pipeline/hierarchical_utils.py`
 - 旧 `services/` と、それに紐づく source tree 上の stale refactoring phase docs
 
-は current `main@e5ed743` で source tree から除去された。これにより、以前の未完根拠だった **「古い手順書どおり `python hierarchical_main.py` すると黙って旧パスが動く」** 状態は current tree から消えた。runtime data としての `configs/` / `inputs/`、後方互換としての `analysis_core.compat.*` は残るが、これは legacy 実行経路の存続とは別である。[[source-code]]より
+は current `main@e5ed743` で source tree から除去された。これにより、以前の未完根拠だった **「古い手順書どおり `python hierarchical_main.py` すると黙って旧パスが動く」** 状態は current tree から消えた。API の実行時データ置き場としての `configs/` / `inputs/` / `outputs/`、後方互換としての `analysis_core.compat.*` は残るが、これは legacy 実行経路の存続とは別である。[[source-code]]より
 
 ## docs / 議事メモにあるが実装に存在しないもの
 
@@ -178,3 +178,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: `main@42d2afb` で PR [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) merge を確認し、Task 2.5.6（extras 分割）を未完リストから除外
 - 2026-05-21: `main@5d591ef` で PR [#844](https://github.com/digitaldemocracy2030/kouchou-ai/issues/844) merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記
 - 2026-10-12: Phase 2.5 の PyPI 公開版記述を `0.1.2` → 現行 `0.1.3`（AGPL-3.0）に更新。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み（[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) 完結、[[analysis-core-license-intent-2026-10-12]]）。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。[[wiki-self-audit-2026-10-12]]
+- 2026-10-21: kouchou-ai main（`c57e0bfa`）と照合し、Phase 1 の存在しない引用「Migration: 完了」を `naming_convention.md` の実際の文言と PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) に差し替えた。Phase 2 の「8 ステップ」を、旧 8 ステップの移行と、その後に追加されたステップ（既定 9 ステップ・builtin 10 個）が分かる書き方に直した。Phase 2 / Phase 8 の残存物に `outputs/`（`REPORT_DIR`）を加え、API の実行時データ置き場だと明記した

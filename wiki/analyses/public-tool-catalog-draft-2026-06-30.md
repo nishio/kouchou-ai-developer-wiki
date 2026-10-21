@@ -58,7 +58,7 @@ Jigsaw Sensemaker や tttc-light-js のような LLM 直接分類 / TTTC 系の 
 | kouchou-ai docs | 「レポートを見る」「データを準備する」「読み方」の技術寄り補足 | developer quickstart や Windows setup とは読者を分ける |
 | public-viewer / README | 誤読防止、責任所在、図とラベルの読み方 | [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) / [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) の trust layer として扱う |
 
-DD2030 website は外向け canonical として自然だが、2026-06-30 時点では `src/kouchou-ai/case.vto` への直書き page で、事例 schema や `tool_lineage` field はない。website issue [#208](https://github.com/digitaldemocracy2030/kouchou-ai/issues/208) / [#216](https://github.com/digitaldemocracy2030/kouchou-ai/issues/216) / [#125](https://github.com/digitaldemocracy2030/kouchou-ai/issues/125) は case 更新の受け皿であり、[#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) は将来の cross-product case-news list 化を示している。したがって、短期は `case.vto` first slice、長期は tagged list / CMS 可能性、と分けて考える。[[website-kouchou-ai-case-live-2026-06-30]]より
+DD2030 website は外向け canonical として自然だが、2026-06-30 時点では `src/kouchou-ai/case.vto` への直書き page で、事例 schema や `tool_lineage` field はない。website issue [#208](https://github.com/digitaldemocracy2030/website/issues/208) / [#216](https://github.com/digitaldemocracy2030/website/issues/216) / [#125](https://github.com/digitaldemocracy2030/website/issues/125) は case 更新の受け皿であり、[#123](https://github.com/digitaldemocracy2030/website/issues/123) は将来の cross-product case-news list 化を示している。したがって、短期は `case.vto` first slice、長期は tagged list / CMS 可能性、と分けて考える。[[website-kouchou-ai-case-live-2026-06-30]]より
 
 ## How this changes [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)
 
@@ -93,4 +93,5 @@ DD2030 website は外向け canonical として自然だが、2026-06-30 時点�
 ## Updates
 
 - 2026-06-30: 初回作成。[[meeting-cartographer-idobata-boundary-2026-06-30]] を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) 公開事例ページと 8/2 技術・ツール資料に転用するため、外向け tool catalog draft と drop-in copy に落とした。
-- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期 canonical 候補だが、現状は `case.vto` 直書きで、長期は [#123](https://github.com/digitaldemocracy2030/kouchou-ai/issues/123) の横断 case-news list と分けると追記。
+- 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期 canonical 候補だが、現状は `case.vto` 直書きで、長期は [#123](https://github.com/digitaldemocracy2030/website/issues/123) の横断 case-news list と分けると追記。
+- 2026-10-21: 補足。classify 行の LLM grouping は方法のカテゴリで、外部ツール（Jigsaw Sensemaker・tttc-light-js）だけでなく広聴AI 自身も持つ。`analysis_mode=llm_grouping`（LLM 直接グルーピング）は PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)（2026-05-28 UTC merge）で analysis-core に入り、PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987)（2026-10-12 merge）から管理画面の作成フローで選べる

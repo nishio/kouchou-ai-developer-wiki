@@ -10,9 +10,9 @@ sources:
 
 ## 対応と出典
 
-2026-09-09 17:33 JST観測。[Issue [#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)より、#935作者が挙げた共通shellのレポート別title・unlisted noindexの制約への対応。[[pr-935-shell-hydration-fix-2026-09-09]]でIssue化した後、ユーザーの実装指示を受け、assigneeなしを確認してnishioへassignした。
+2026-09-09 17:33 JST観測。[Issue #939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)より、[#935](https://github.com/digitaldemocracy2030/kouchou-ai/issues/935)作者が挙げた共通shellのレポート別title・unlisted noindexの制約への対応。[[pr-935-shell-hydration-fix-2026-09-09]]でIssue化した後、ユーザーの実装指示を受け、assigneeなしを確認してnishioへassignした。
 
-[PR [#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/940)、branch `codex/issue-939-shell-metadata`、commit `adbb6cc`。main `679ee9e`から実装し、未マージ。今回の指示は実装であり、マージは行っていない。
+[PR #940](https://github.com/digitaldemocracy2030/kouchou-ai/pull/940)、branch `codex/issue-939-shell-metadata`、commit `adbb6cc`。main `679ee9e`から実装し、未マージ。今回の指示は実装であり、マージは行っていない。
 
 ## 設計判断
 
@@ -21,7 +21,7 @@ sources:
 - shellのgenerateMetadataからtitleの所有を外し、クライアントのhookが画面遷移時に同じtitle/robotsを更新する。読み込み中は配布時の値を保持し、公開ページへの遷移ではnoindexを解除する。
 - 出力は新規ディレクトリのみとし、private、不整合、slug衝突を拒否する。過去の配布データを再利用して削除済みのレポートを残すことを避ける。
 
-上記は#940の実装より。従来の`/build`は変更せず、FastAPIのダウンロード経路への接続は#885の後続作業。CLI利用手順でローカルHTTP閲覧とWeb配置を説明している。OGP生成は範囲外。
+上記は[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)の実装より。従来の`/build`は変更せず、FastAPIのダウンロード経路への接続は[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885)の後続作業。CLI利用手順でローカルHTTP閲覧とWeb配置を説明している。OGP生成は範囲外。
 
 ## 検証
 
@@ -32,13 +32,13 @@ sources:
 
 ## Open Questions
 
-- #940のCI結果とマージ判断。ローカルではshellに絞ったE2Eを実行し、通常の全体E2EはCIで確認する。
-- #885の配布経路に組立関数を接続するタイミング。
+- [#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)のCI結果とマージ判断。ローカルではshellに絞ったE2Eを実行し、通常の全体E2EはCIで確認する。
+- [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885)の配布経路に組立関数を接続するタイミング。
 
 ## Updates — 2026-09-09 17:40 CI結果
 
-#940のHEAD `adbb6cc`で全体E2E81 passed / 3 skipped、通常・shellビルド、API / viewer単体テスト、Ruff、CodeQL、ドキュメントbuildが成功。上記Open QuestionsのCI確認は解消した。CodeRabbitの自動レビューはこの時点では実行中で、PRはOPENのまま。
+[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)のHEAD `adbb6cc`で全体E2E81 passed / 3 skipped、通常・shellビルド、API / viewer単体テスト、Ruff、CodeQL、ドキュメントbuildが成功。上記Open QuestionsのCI確認は解消した。CodeRabbitの自動レビューはこの時点では実行中で、PRはOPENのまま。
 
 ## Updates — 2026-09-09 18:08 main反映
 
-ユーザー指示で#940を`751e2c8`としてマージ、#939のCLOSEDを確認。[[pr-937-940-review-2026-09-09]]より。配布経路への接続は引き続き#885の後続作業。
+ユーザー指示で[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)を`751e2c8`としてマージ、[#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)のCLOSEDを確認。[[pr-937-940-review-2026-09-09]]より。配布経路への接続は引き続き[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885)の後続作業。

@@ -1,7 +1,7 @@
 ---
 title: "hierarchical_status.json の意味論差分"
 type: analysis
-summary: "`hierarchical_status.json` は branch 上で workflow path でもほぼ legacy 互換になったが、`current_job` の残し方や `duration` など一部に意味論差分が残る"
+summary: "`hierarchical_status.json` は PR #840（2026-05-21 merge）以降、CLI でも API でも workflow path だけが書く。`completed_jobs[].duration` は常に 0.0、`estimated_cost` は成功時には書かれず（費用は API が token 数から計算）、`current_job` は終了後も残る。legacy `.run()` との項目別比較は merge 直前の記録"
 sources:
   - source-code.md
   - pr-840-workflow-defaultization-observation-2026-05-20.md
@@ -9,18 +9,25 @@ sources:
 
 # `hierarchical_status.json` の意味論
 
-`hierarchical_status.json` は CLI / API / rerun 判定の接点にある status file で、legacy `.run()` では `core/orchestration.py` が、workflow path では `orchestrator.run_workflow()` が書く。2026-05-21 時点の branch tip `04516af` では、workflow path もかなりこの file を維持するようになった。[[source-code]]より
+`hierarchical_status.json` は CLI / API / rerun 判定の接点にある status file である。PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)（2026-05-21 merge）以降は、CLI（`kouchou-analyze` / `python -m analysis_core`）も API も `run_default()` → `run_workflow()` だけを通るので、この file を書くのは workflow path である。API はレポート生成・config からの生成・集計だけの再実行の 3 経路とも、`python -m analysis_core` を subprocess で起動する。legacy の `PipelineOrchestrator.run()` は `DeprecationWarning` を出す形で残っているが、通常の経路からは呼ばれない。[[source-code]]より
 
-本ページの目的は、**legacy `.run()` と workflow path で何が同等で、何がまだ差分か** を棚卸しすることにある。open PR `#840` の review では「workflow default 化の blocker は status semantics に残るか」が論点の 1 つだったため、その判定材料をここへ寄せる。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
+本ページはもともと、この PR の review で論点だった「workflow default 化の blocker は status semantics に残るか」を判定するため、merge 直前の branch tip `04516af` で legacy `.run()`（`core/orchestration.py` が書く）と workflow path の差分を棚卸ししたものである。下の「項目別の比較」はその時点の記録として残し、今の main での性質は次の「結論」にまとめる。[[pr-840-workflow-defaultization-observation-2026-05-20]]より
 
-## 結論
+## 結論（2026-10-21 の main `b71e0b79` で確認）
 
-- API が日常的に読む `status`, `current_job`, token usage, `provider`, `model`, `error_stack_trace` は、branch 上ではほぼ workflow path でも維持される
-- rerun 判定に使う `completed_jobs` / `previously_completed_jobs` も branch 上では carry-forward される
-- ただし **`current_job` の終端時の扱い**, **`completed_jobs[].duration`**, **`estimated_cost`**, **progress 系 key** は legacy と完全同等ではない
-- したがって「production path に乗せる最低限」はかなり満たしたが、「完全互換」と書くのはまだ強すぎる
+- API が日常的に読む `status`, `current_job`, token usage, `provider`, `model`, `error` は workflow path が書く。予期しない例外で止まった時は `error_stack_trace` も書く
+- rerun 判定に使う `completed_jobs` / `previously_completed_jobs` も carry-forward される
+- `completed_jobs[].duration` は常に `0.0` で、実測値ではない
+- `estimated_cost` は、成功時には status file に書かれない。error で終わった時は `estimated_cost: null` と `token_usage_complete: false` が書かれる。費用は API が token 数から計算して自分のレポート状態に持つので、admin の `/status/step-json` が status file から返す `estimated_cost` は `None` になる
+- `current_job` は終了後も最後の step 名が残る。API は `status` を優先して読むので、実害は小さい
+- analysis-core が書く `error` の文面は 3 通りある。workflow の step が失敗した時は `"Step '<step>' failed: ..."`（入力検証で止まった時は `"Step '<step>' validation failed: ..."`）、予期しない例外の時は `str(e)`、中断された時は `"Interrupted: <例外の型名>"`。analysis-core のプロセスが異常終了した時や、起動・storage への同期に失敗した時は、API が `status: error` と `error_log_path` / `error_log_excerpt`（ログの末尾）を書き足す
+- analysis-core の `update_status()` は、一時ファイルに書いてから置き換える atomic な書き方をする（PR [#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033)、2026-10-19 merge）。admin の `/status/step-json` は JSON を読めなかった時も失敗扱いにせず、`loading` / `running` として次のポーリングに任せる
+- 別の出力から中間成果物を再利用して作った時（config の `reuse_from`、CLI の `--reuse-from`）は、再利用元を示す `reused_from` が入る
+- progress 系 key（`current_job_progress` / `current_jop_tasks`）は、workflow engine の正式な callback としては扱われていない（Open Questions）
 
-## 項目別の比較
+## 項目別の比較（2026-05-21 時点、merge 直前の記録）
+
+以下は branch tip `04516af` を基準にした当時の記録で、「workflow path」は当時 branch 上にあった実装を指す。今の main での性質は上の「結論」を見る。
 
 ### `status`
 
@@ -62,7 +69,7 @@ sources:
 ### `completed_jobs`
 
 - legacy `.run()`: 各 step 完了時に `step`, `completed`, `duration`, `params`, `token_usage` を append する。`duration` は実測秒数。[[source-code]]より
-- workflow path: 同じ shape の entry を append するが、`duration` は現在 `0.0` 固定で、実測時間ではない。[[source-code]]より
+- workflow path: 同じ shape の entry を append するが、`duration` は `0.0` 固定で、実測時間ではない。[[source-code]]より
 - 評価: **shape は同等、意味は差分あり**
 
 ### `previously_completed_jobs`
@@ -87,10 +94,10 @@ sources:
 
 ### `estimated_cost`
 
-- legacy `.run()`: token usage 更新時に保存されうる。[[source-code]]より
+- legacy `.run()`: `run_step()` が各 step の後に key を書くが、`run()` は `run_step()` に `pricing_calculator` を渡さないので、値は placeholder（当時は `0.0`）で計算値ではなかった。[[source-code]]より
 - workflow path: branch 上でも明示保存していない。[[source-code]]より
 - API reader: `/status/step-json` は値があれば返すが、無ければ `None` になる。[[source-code]]より
-- 評価: **差分あり**
+- 評価: **key の有無は違うが、どちらの経路でも status file に計算した費用は入っていなかった**
 
 ### `error`
 
@@ -110,38 +117,41 @@ sources:
 - workflow path: 同じ `update_status()` を通るので更新される。[[source-code]]より
 - 評価: **同等**
 
-## API / 運用から見て重要な差分
+## API / 運用から見て重要な性質
+
+以下は 2026-05-21 時点で legacy との差分として挙げたもので、今の main では workflow path の性質としてそのまま残っている。
 
 ### 1. `current_job` を終端時に消さない
 
-file 単体だけ読むと「completed なのに `current_job=embedding` が残っている」状態がありうる。もっとも API router は `status=completed` を優先して `"completed"` を返すため、現行の利用者には大きな破綻はない。[[source-code]]より
+file 単体だけ読むと「completed なのに `current_job=embedding` が残っている」状態がありうる。もっとも API router は `status=completed` を優先して `"completed"` を返すため、利用者には大きな破綻はない。[[source-code]]より
 
-### 2. `completed_jobs[].duration` が workflow path では実測値でない
+### 2. `completed_jobs[].duration` が実測値でない
 
-status file を進捗 UI や perf 分析の材料に再利用したくなると、この差分は無視できない。逆に rerun 判定や API の ready/error 表示にはほぼ効かない。[[source-code]]より
+status file を進捗 UI や perf 分析の材料に再利用したくなると、この性質は無視できない。逆に rerun 判定や API の ready/error 表示にはほぼ効かない。[[source-code]]より
 
-### 3. `estimated_cost` は workflow path で欠落しうる
+### 3. `estimated_cost` は status file に入らない
 
-現行 API は optional として読んでいるので致命傷ではないが、「legacy と同じ cost 見積りが status file に常に出る」と期待すると外れる。[[source-code]]より
+成功時は key が無く、error 時は `null` になる。費用は API が token 数から計算するので、status file の `estimated_cost` を費用の出どころとして読むと外れる。[[source-code]]より
 
 ### 4. `error` 文字列の形式は統一されていない
 
-機械処理向けに parse するなら危険だが、現状の API は表示用途が中心で、workflow path の方が step 名を含むぶん診断しやすい。[[source-code]]より
+機械処理向けに parse するなら危険だが、現状の API は表示用途が中心で、step 名を含む文面の方が診断しやすい。[[source-code]]より
 
 ## 含意
 
-- `hierarchical_status.json` は branch 上で既に **workflow default 化を支える最低限の互換** をかなり満たしている
-- 一方で、status file を「legacy と byte-for-byte 同じ意味」と見なすのはまだ早い
-- 残課題は status file の存在そのものではなく、**progress / duration / cost のような周辺意味論をどこまで legacy に寄せるか** に縮んでいる
-- したがって `Phase 3b` の完了宣言を出す前に見るべきなのは、「API と rerun が壊れないか」よりむしろ「差分を許容するか、さらに寄せるか」の設計判断である
+- PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) の merge で workflow path が canonical になり、Phase 3b は完了扱いになった（[[refactoring-status]] / [[phase3b-exit-criteria]]）。上の性質は merge の blocker ではなく、許容した差分として残っている
+- status file を「legacy と byte-for-byte 同じ意味」と見なさない
+- 残課題は status file の存在そのものではなく、**progress / duration / cost のような周辺意味論を、どこまで正式な契約にするか** である
 
 ## Open Questions
 
 - workflow path でも `completed_jobs[].duration` を実測値にするべきか
-- `estimated_cost` は status file の正式契約として維持するべきか
+- `estimated_cost` を status file の正式契約に戻すべきか、API 側の計算に一本化して key をやめるべきか
 - `error` を `ExceptionType: ...` に寄せるべきか、step 文脈付き文面を canonical にするべきか
-- `current_job_progress` / `current_jop_tasks` を workflow engine にも正式導入するべきか
+- `current_job` を終了時に消すべきか
+- `current_job_progress` / `current_jop_tasks` を workflow engine の正式な callback にするべきか
 
 ## Updates
 
 - 2026-05-21: 初回作成。branch tip `04516af` を基準に、legacy `.run()` と workflow path の `hierarchical_status.json` semantics を比較
+- 2026-10-21: main `b71e0b79` と照合し、PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)（2026-05-21 merge）後の現状（workflow path だけが書く、`duration` は 0.0 固定、`estimated_cost` は成功時に無い、PR [#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033) で atomic な書き込み）を冒頭と「結論」に書き直し、項目別の比較を merge 直前の記録として位置づけ直した。legacy `.run()` の `estimated_cost` が計算値ではなかったことも訂正

@@ -114,6 +114,7 @@ reuse は `docs/user-guide/reuse-report.md`、`/reuse/:slug`、`DuplicateReportD
 
 ## Updates
 
+- 2026-10-21: 「2. API / billing preflight」の「OpenAI / Gemini などに … `authentication_error`、`insufficient_quota`、`rate_limit_error` を返す」は、Gemini については 2026-05-29 時点で成り立っていなかった。Gemini のエラーを実際に投げられる型とは別の例外型で判定していたため、無効なキーもレート制限も `unknown_error` になっていた。PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で修正済み（Gemini には今も残高不足の区別は無い）。Issue [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292)（OpenAI の課金）の判断には影響しない。Issue [#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) の失敗の分かりにくさは、Gemini 利用者については 2026-10-19 まで残っていた。詳細は [[source-code]] の Updates
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) が open / high priority のまま current main でも未実装であること、spreadsheet path の警告抜け、API check / reuse の既存能力との接続を追記。
 - 2026-05-29: 方針に沿って GitHub issue `#884` を起票し、`#221`, `#11`, `#79`, `#292`, `#391`, `#97` へ相互リンクコメントを追加。`#391` には `enhancement`, `Admin`, `API` label を追加した。
 - 2026-05-29: 初版作成。open issue 再棚卸し後の `#221` 系について、current main の作成画面、API 接続チェック、token/cost 表示、再利用機能と照合して整理した。

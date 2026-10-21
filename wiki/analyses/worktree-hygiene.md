@@ -1,7 +1,7 @@
 ---
 title: "作業用 worktree の整理方針"
 type: analysis
-summary: "`work/kouchou-ai/` は current issue の作業場として保ち、別件試作は dedicated worktree に逃がし、canonical でない local 生成物は ignore まで含めて早めに掃除した方が混乱が少ない"
+summary: "`work/kouchou-ai/` は main のまま観察専用に保ち、issue 作業や別件の試作は別 worktree（`work/kouchou-ai-<topic>/`）で行い、canonical でない local 生成物は ignore まで含めて早めに掃除した方が混乱が少ない"
 sources:
   - source-code.md
   - github-dev-docs.md
@@ -36,7 +36,7 @@ sources:
 
 ## Practical Rule
 
-- `work/kouchou-ai/` は current `main` または current issue の最小差分だけを乗せる
+- `work/kouchou-ai/` は current `main` に保つ（観察専用）。issue 作業も含め、branch 作業は `work/kouchou-ai-<topic>/` の別 worktree で行う（`CLAUDE.md`、2026-05-29〜。手順は [[wiki-driven-workflow]]）
 - 別件に発展した試作は新しい worktree へ退避し、本流がそちらに移ったら元の worktree から外す
 - 新しい `work/kouchou-ai-<topic>/` を切ったら、その worktree root で `pnpm install --frozen-lockfile` を実行して Git hook 用の `lefthook` も入れる。`Can't find lefthook in PATH` はまずこの不足を疑う
 - local 生成物は「毎回消す」で済むか、「ignore しないと再発する」かを分けて扱う
@@ -44,10 +44,11 @@ sources:
 
 ## Open Questions
 
-- `work/kouchou-ai/` を常に `main` に戻す運用と、current issue branch を残す運用のどちらが onboarding には分かりやすいか
+- `work/kouchou-ai/` を常に `main` に戻す運用と、current issue branch を残す運用のどちらが onboarding には分かりやすいか — `CLAUDE.md`（2026-05-29）で「常に main に保つ」に決着
 - `apps/api` の Python dependency 管理を将来的に `uv.lock` へ寄せるなら、今回の ignore 方針をいつ見直すべきか
 
 ## Updates
 
+- 2026-10-21: `work/kouchou-ai/` を常に main に保つ `CLAUDE.md` の運用ルール（2026-05-29〜）に合わせて、summary・Practical Rule・Open Question を更新
 - 2026-06-05: 別 worktree では main worktree の `node_modules` は使われず、Git hook が `lefthook` を見つけるには各 worktree root で `pnpm install --frozen-lockfile` が必要、という運用メモを追記
 - 2026-05-20: 初版作成

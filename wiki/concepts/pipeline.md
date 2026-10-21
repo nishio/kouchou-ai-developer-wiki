@@ -10,6 +10,7 @@ sources:
   - slack-kouchouai-algorithm-dev.md
   - slack-dev-kouchouai-2026-q1.md
   - broad-listening-book-source.md
+  - source-code.md
 ---
 
 # 解析パイプライン（抽出 → 埋め込み → 階層クラスタリング → ラベリング → 可視化）
@@ -18,7 +19,9 @@ sources:
 
 **2026 時点での canonical 実装は `packages/analysis-core/src/analysis_core/steps/`**。全ステップがここにある（既定ワークフロー 9 ステップ＋`llm_grouping` / `hierarchical_layout_generation`）。
 
-2026-05-23 の legacy cleanup merge 後、`apps/api/broadlistening/pipeline/` に旧 Python 実装は残っていない。current tree に残るのは sample `configs/` / `inputs/` だけで、実行コードとしての canonical path は `analysis-core` に一本化された。詳細は [[refactoring-status]]。
+2026-05-23 の legacy cleanup merge（PR [#865](https://github.com/digitaldemocracy2030/kouchou-ai/issues/865)）後、`apps/api/broadlistening/pipeline/` に旧 Python 実装は残っておらず、実行コードの canonical path は `analysis-core` に一本化された。詳細は [[refactoring-status]]。
+
+ただしディレクトリ自体は今も使われている。`pipeline/configs/`・`inputs/`・`outputs/` は API サーバの `settings.CONFIG_DIR`・`INPUT_DIR`・`REPORT_DIR`（`apps/api/src/config.py`）で、レポート作成時の設定 JSON・入力 CSV・成果物の置き場になっている。git 管理下にあるのはサンプル（config 4 件・入力 CSV 2 件・出力例 `outputs/example-hierarchical-polis/`）だけで、実データは `apps/api/broadlistening/.gitignore` で除外される。docker compose は `./apps/api` をコンテナにマウントするので、ローカル Docker でも実データは checkout 内のこのディレクトリにたまる。不要な旧ディレクトリと誤解して消したり移したりしないこと。
 
 - エントリポイント（推奨）: `python -m analysis_core` または `kouchou-analyze`（[[cli]]）
 
@@ -56,13 +59,14 @@ sources:
 
 ## 出力物の場所とスキーマ
 
-`{output_base_dir}/{report_id}/` 配下（CLI の `--output-dir` で指定。API サーバは `settings.REPORT_DIR`）：
+`{output_base_dir}/{report_id}/` 配下（CLI の `--output-dir` で指定。API サーバは `settings.REPORT_DIR` = `apps/api/broadlistening/pipeline/outputs/`）：
 
-- `args.csv` — 抽出された意見一覧（kebab-case 列：`arg-id`, `comment-id` 等）
+- `args.csv` — 抽出された意見一覧（`arg-id`, `argument`。`arg-id` は `A{comment-id}_{連番}` 形式）
+- `relations.csv` — 意見と元コメントの対応（`arg-id`, `comment-id`）。1 コメントから複数の意見が出る。別のコメントから出た同じ文面は別の `arg-id` になる（PR [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032) 以降）。`hierarchical_aggregation` が必ず読む（`comment-id` は文字列として読む）ので、独自の抽出ステップを書くときも出力が要る
 - `embeddings.pkl` — **元の埋め込みベクトル**（UMAP 後 2D ではない）
 - `hierarchical_clusters.csv` — クラスタ階層
 - `hierarchical_result.json` — viewer が読む統合結果
-- `final_result_with_comments.csv` — `config.is_pubcom=true` のとき出力。**この CSV だけ snake_case** (`arg_id`, `category_id`) — 他は kebab-case ([[gotchas]])
+- `final_result_with_comments.csv` — `config.is_pubcom=true` のとき出力。`arg_id` / `category_id`（元は `cluster-level-1-id`）だけが snake_case に改名され、同じ CSV でも `comment-id` / `original-comment` は kebab-case のまま（混在）。他の CSV の ID 列（`arg-id`, `comment-id`, `cluster-level-*-id`）は kebab-case ([[gotchas]])
 
 詳細スキーマは `docs/development/plugin-output-data-structures.md`。
 
@@ -71,7 +75,7 @@ sources:
 - **Slack では `embeddings.pkl` が UMAP 後 2D と誤認された形跡がある** ([[slack-dev-kouchouai-2025-q4]]) が、`main@3809a7a` のコードでは `embedding` ステップが元の埋め込みベクトルを `embeddings.pkl` に保存し、`hierarchical_clustering` ステップがそれを読んでから UMAP で 2D に落としている（[[source-code]]）
 - **`comment-id` の自動採番が経路依存**: Web CSV アップロードとスプレッドシート取り込みは自動生成するが、CLI／プラグイン／直接 CSV ではプラグイン側で `comment-id` を出す責任がある
 - **`propertyMap`** (`hierarchical_result.json`): `args.csv` に対応する列がないと `hierarchical_aggregation` が落ちる
-- **CSV 列名の case 不一致**: `is_pubcom=true` 経路だけ snake_case
+- **CSV 列名の case 不一致**: `is_pubcom=true` 経路の `final_result_with_comments.csv` では `arg_id` / `category_id` だけが snake_case（`comment-id` / `original-comment` は kebab-case のまま）
 - **E2E パイプラインテストは課金**: gpt-4o-mini で約 $0.01/run。`pyproject.toml` の `norecursedirs = ["tests/e2e"]` で既定 `pytest` から除外、CI でも実行されない
 
 ## クラスタ数のデフォルト問題
@@ -113,7 +117,7 @@ sources:
 
 これは「まず既存のパイプラインや可視化と両立する形で分析切り替えを試す」という [[slack-dev-kouchouai-2026-q1]] の意図と整合する。一方で、この第 2 モードを **LLM 直接グルーピングのもの** と具体化して考えると、短期互換案そのものが「scatter-compatible な形へ一旦射影する暫定措置」にすぎないことも見えてくる。LLM grouping 系の本来の出力は tree / taxonomy / stance grouping であり、散布図は自然な主成果物ではない可能性が高い。したがって長期の本丸は mode 数を増やすことではなく、**散布図を前提にしない analysis mode でも product が成立する capability contract を作ること** である。2026-05-18 時点の `main` ではその production 実装は未着手と見るのが妥当。
 
-> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（commit `4f893ab5` / PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)、2026-05-25 に main 入り）。builtin plugin も `register_all` が `llm_grouping` を含む 10 個（2026-10-18 時点。`opinion_classification` 追加後）を登録する。engine 出荷当時（2026-05-25）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: その後、engine レベルでは出荷済み。`analysis_mode=llm_grouping` を指定すると `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW`（`extraction → embedding → llm_grouping → ...`）を選択する（PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)。merge commit `6e9e60ee` で 2026-05-29 JST ＝ 2026-05-28 UTC に main 入り。実装 commit `4f893ab5` は 2026-05-25 に作られた PR ブランチ上の commit）。builtin plugin も `register_all` が `llm_grouping` を含む 10 個（2026-10-18 時点。`opinion_classification` 追加後）を登録する。engine 出荷当時（2026-05-29）は admin / `apps/api` が `analysis_mode` を渡さずユーザ到達は未だったが、**[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され（kouchou-ai main `c33d264a`）、`apps/admin` の作成フローと `apps/api`（`admin_report` / `report_config` / `analysis_config`）に `analysis_mode` の受け渡しが入り、プロダクト到達も main 入り**。残るは「散布図を前提にしない mode を first-class にする visualization / capability 契約」の設計。[[wiki-self-audit-2026-10-12]]
 
 ## Open Questions
 
@@ -123,6 +127,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: main `b71e0b79` と照合し、次を訂正。`apps/api/broadlistening/pipeline/` は旧実装こそ無いが API の実行時データ置き場（CONFIG_DIR / INPUT_DIR / REPORT_DIR。git 管理はサンプルのみ）であること。出力物の列（`args.csv` は `arg-id` / `argument`、コメントとの対応は `relations.csv`、final CSV は snake_case と kebab-case の混在）。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) の main 入りは 2026-05-29 JST（merge commit `6e9e60ee`）で、2026-10-12 の項の「2026-05-25」は PR ブランチ上の commit `4f893ab5` の作成日との取り違え（[[meeting-report-2026-05-25]] では当日は draft PR、[[open-pr-pipeline-step-observation-2026-05-28]] では 5/28 時点で open）
 - 2026-10-18: main `083593ba` と照合し、ステップ列を既定 9 ステップ（`opinion_classification` を含む）＋ `llm_grouping` モード 6 ステップに訂正。`register_all` は 10 個
 - 2026-05-17: 初回作成
 - 2026-05-17: `#2_開発_広聴ai` ログ由来の LLM grouping 系 LLM 分類導入意図を追記

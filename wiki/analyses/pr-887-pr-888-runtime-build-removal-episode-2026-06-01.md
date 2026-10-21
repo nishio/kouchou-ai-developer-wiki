@@ -111,7 +111,7 @@ PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) CI で 
 
 ### 16. CodeRabbit review への対応
 
-CodeRabbit が `/` の dynamic metadata fallback を指摘 (「fallback だと reporter-specific title が失われる」)。指摘の妥当性を独立検証し、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認、reporter-specific title を復元。`[slug]` は [#13](https://github.com/digitaldemocracy2030/kouchou-ai/issues/13) の理由で fallback metadata 維持と決定し、その判断も計画ページに追記。CodeRabbit thread は resolved。
+CodeRabbit が `/` の dynamic metadata fallback を指摘 (「fallback だと reporter-specific title が失われる」)。指摘の妥当性を独立検証し、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認、reporter-specific title を復元。`[slug]` は 13 節の理由で fallback metadata 維持と決定し、その判断も計画ページに追記。CodeRabbit thread は resolved。
 
 ### 17. PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) merge 後の deploy 再観測
 

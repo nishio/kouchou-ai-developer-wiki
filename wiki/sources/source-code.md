@@ -39,7 +39,11 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 - `packages/analysis-core/src/analysis_core/__main__.py` — CLI
 - `packages/analysis-core/src/analysis_core/orchestrator.py` — `run_default()` / `run()` / `run_workflow()`
 - `packages/analysis-core/src/analysis_core/plugin/{interface,registry,decorator,loader}.py` — analysis plugin 機構
-- `packages/analysis-core/src/analysis_core/plugins/builtin/` — 8 つの builtin plugin
+- `packages/analysis-core/src/analysis_core/plugins/builtin/` — builtin plugin（`register_all` が 10 個を登録。`hierarchical_layout_generation` はモジュールだけで未登録）
+- `packages/analysis-core/src/analysis_core/core/orchestration.py` — 実行計画（`decide_what_to_run`）、status 更新（`update_status`）、`--reuse-from` での成果物の複製
+- `packages/analysis-core/src/analysis_core/workflow/{engine,definition,resolver}.py` — workflow engine
+- `packages/analysis-core/src/analysis_core/workflows/{hierarchical_default,llm_grouping_compatible}.py` — 既定と LLM 直接グルーピング（`analysis_mode=llm_grouping`）の workflow 定義
+- `packages/analysis-core/src/analysis_core/specs/` — ステップ列と各ステップの既定 options（`hierarchical_specs.json` / `llm_grouping_specs.json`）
 - `apps/api/src/plugins/{base,registry,youtube}.py` — input plugin 機構（別系統）
 - `apps/api/src/services/report_launcher.py` — subprocess で CLI を呼ぶ層
 - `docs/refactoring/naming_convention.md` — source tree に残る refactoring 由来ドキュメント
@@ -47,7 +51,9 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 ## `#221` 系で読んだ current facts (2026-05-29, main tip `0c294da`)
 
 - `apps/admin/app/create/page.tsx` は CSV / spreadsheet / plugin 入力を送信前に `comments` へ組み立て、`comments.length < clusterLv2` の時だけ `window.confirm` で続行確認している
-- `apps/admin/app/create/components/EnvironmentCheckDialog/` と `apps/api/src/routers/admin_report.py` の `/admin/environment/verify` で API 接続チェックは実装済み。OpenAI / Gemini などに軽い chat request を投げ、認証エラー、残高不足、rate limit を分類する
+- `apps/admin/app/create/components/EnvironmentCheckDialog/` と `apps/api/src/routers/admin_report.py` の `/admin/environment/verify` で API 接続チェックは実装済み。選んだプロバイダに軽い chat request を投げ、エラーを認証エラー、残高不足、rate limit に分類する
+  - ただし `0c294da` の時点でこの分類が働いていたのは、OpenAI SDK の例外を投げる経路（OpenAI / Azure / OpenRouter）だけだった。Gemini のエラーは `google.api_core.exceptions` の `Unauthenticated` / `ResourceExhausted` で判定していた。しかし Gemini の呼び出しは google-genai への移行（2026-02）以降、`google.genai.errors.ClientError` を投げる（429 の再試行を使い切ると `RuntimeError`）。さらに `google-api-core` は API の依存にも無かった。そのため Gemini では、無効なキーもレート制限も「不明なエラー」（`unknown_error`）になっていた
+  - PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で、`APIError.code` を見る分類（400 の `API_KEY_INVALID`・401・403 → 認証エラー、429 と再試行切れの `RuntimeError` → rate limit）に直った。Gemini には今も残高不足の区別は無い。[[deep-code-review-2026-10-19]]より
 - `apps/admin/app/create/parseCsv.ts` は `chardet` / `iconv-lite` / `papaparse` を使い、`apps/admin/app/create/utils/columnScorer.ts` はコメント列を推定する
 - `apps/admin/app/create/hooks/useClusterSettings.ts` はコメント数から推奨クラスタ数を自動設定する
 - `apps/api/src/services/llm_pricing.py` と ReportCard 側の `TokenUsage` は実行後の token usage / estimated cost 表示を支えているが、作成前見積もりにはまだ使われていない
@@ -56,7 +62,7 @@ snapshot は `raw/kouchou-ai-snapshot/` に保存（gitignored）。作業用 cl
 ## ラベル入力 sampling / UI 表示の current facts (2026-05-30, main tip `0c294da`)
 
 - 管理画面/API 経由の通常レポート作成では、`apps/api/src/services/report_launcher.py` が `hierarchical_initial_labelling.sampling_num = 30` と `hierarchical_merge_labelling.sampling_num = 30` を設定する
-- analysis-core の config 変換 / builtin plugin default では、initial / merge とも `sampling_num` default は `10`
+- analysis-core の config 変換（`normalize_config`。`PipelineOrchestrator.from_dict` 経由）と builtin plugin の fallback では、initial / merge とも `sampling_num` default は `10`。ただし CLI（`kouchou-analyze` / `python -m analysis_core`）は `from_config` → `initialization()` を通り、`specs/hierarchical_specs.json` の options（`sampling_num: 3`）が未指定のキーに先に入る。そのため CLI で `sampling_num` を書かない場合の実際の既定は `3` で、10 は使われない
 - 実際の抽出方法は、initial が `cluster_data.sample(n=sampling_num)`、merge が `current_cluster_data.sample(n=sampling_num)` で、どちらも seed なしの Polars random sample。最大被覆 / FPS / k-medoids / label coverage ではない
 - `hierarchical_aggregation` は `hierarchical_result.json` に全 arguments をそのまま入れる。ここで representative arguments は選んでいない
 - public-viewer の `HierarchyListChart` は deepest-level cluster だけ `argumentList.filter(arg.cluster_ids.includes(cluster.id))` で argument を持たせ、展開時に `maxDisplay=10` の default で `argumentsList.slice(0, maxDisplay)` を表示する。順序は `hierarchical_result.json` の `arguments` 配列順で、ラベル適合度やクラスタ中心性による代表例選定ではない
@@ -77,7 +83,7 @@ Windows setup の current main は、`setup_win.bat` が ASCII-only launcher、`
 
 Windows CI は 2 層に分かれている。`.github/workflows/windows-setup-script.yml` は hosted `windows-latest` 上で `.bat` の ASCII-only check、Docker 未起動時 path、非対話 `.env` 生成を確認する。一方、`.github/workflows/windows-real-machine-e2e.yml` は `workflow_dispatch`、`github.actor == 'nishio'`、self-hosted Windows runner で、Docker Desktop + `setup_win.bat` + localhost 到達まで見る重い手動 E2E である。
 
-この構成に対し、`docs/getting-started/windows-setup.md` は `setup_win.ps1` dialog 前提を一部反映済みだが、API key 前提が OpenAI / Gemini 両方必須に見え、Docker Desktop を使えない組織端末や WSL2 禁止端末の対象外分岐はまだ弱い。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
+この構成に対し、`docs/self-hosting/windows-setup.md`（2026-10-13 に `getting-started/` から改称）は、2026-09-08 の PR [#929](https://github.com/digitaldemocracy2030/kouchou-ai/issues/929) で、対象環境と失敗時の分岐（組織 PC は IT 管理者へ確認、Docker Desktop / WSL2 が使えなければ別環境や serverless 版）と「API キーはどちらか一方でよい」ことを示すようになった。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の PR scope は [[issue-877-docs-pr-slice-2026-06-30]]。
 
 ## Web UI Node runtime current facts (2026-06-30, main tip `d5c9ece6e3b3`)
 
@@ -111,6 +117,8 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 ## Updates
 
+- 2026-10-21: kouchou-ai main（`c57e0bfa`）と照合し、次の 3 点を訂正した。「読むべき key ファイル」の「8 つの builtin plugin」を `register_all` の 10 個に直し、`core/orchestration.py`・`workflow/`・`workflows/`・`specs/` を足した。ラベル入力 sampling の CLI 既定は spec の 3 件で、10 件になるのは `from_dict` と builtin plugin の fallback だけ（2026-05-30 と 2026-06-02 の行にある「CLI/default では 10 件」「built-in plugin と compat config は default 10」も、CLI については同じ誤り）。Windows setup docs の記述を、PR [#929](https://github.com/digitaldemocracy2030/kouchou-ai/issues/929) と `docs/self-hosting/` への改称の後の状態に直した
+- 2026-10-21: 「`#221` 系で読んだ current facts」の API 接続チェックの項を訂正。`0c294da` の時点でも Gemini の認証エラー・レート制限は分類できず「不明なエラー」になっていたこと（`0c294da` のコードで確認）と、PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) での修正（main `c57e0bfa` で確認）を追記
 - 2026-06-30 19:15 JST: `work/kouchou-ai/main@d5c9ece` が origin と一致し、19:15 JST 時点でも main tip は PR [#899](https://github.com/digitaldemocracy2030/kouchou-ai/issues/899) merge のままと確認
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `README.md` / `docs/index.md` / `apps/public-viewer/components/Footer.tsx` / `apps/api/public/meta/default/metadata.json` / `packages/report-schema/src/index.ts` を確認し、レポート責任所在と免責文言の current facts を追記
 - 2026-06-30: `work/kouchou-ai/main@d5c9ece6e3b3` の `docs/index.md` / `docs/user-guide/how-to-use.md` / `docs/user-guide/cli-quickstart.md` / `docs/development/plugin-guide.md` を確認し、8/2 イベント向け技術・ツール入口 draft の根拠になる current docs public-entry facts を追記
@@ -130,4 +138,4 @@ admin の `"use server"` は 11 ファイルにある。create/report/edit/delet
 
 ## Updates — 2026-10-05
 
-本体をfetch / pull --ff-onlyしてmain `751e2c88be26c7a73f2d3e059a53ab4e2497493a`を確認。9月9日の#940以後にmainの変更はない。open PRは#941〜#946とdraft [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)。Serverlessのorigin/main `f4bb032`では#22〜#26が反映済み。詳細は [[catchup-2026-10-05]] / [[current-status-2026-10-05]]。
+本体をfetch / pull --ff-onlyしてmain `751e2c88be26c7a73f2d3e059a53ab4e2497493a`を確認。9月9日の[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)以後にmainの変更はない。open PRは[#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)〜[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)とdraft [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)。Serverlessのorigin/main `f4bb032`では[#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)が反映済み。詳細は [[catchup-2026-10-05]] / [[current-status-2026-10-05]]。

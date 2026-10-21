@@ -34,3 +34,4 @@ current `apps/public-viewer/app/utils/api.ts` は server-side で `API_BASEPATH`
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-10-21: PR [#727](https://github.com/digitaldemocracy2030/kouchou-ai/issues/727) は 2026-05-19 に merge されずに close された

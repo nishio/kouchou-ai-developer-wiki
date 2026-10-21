@@ -4,9 +4,10 @@ name: coding-agents
 summary: "Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態"
 type: concept
 sources:
-  - 2026-10-09 のユーザー指示（エージェント利用者向け解説の編集方針）
   - github-dev-docs.md
   - meeting-minutes.md
+  - source-code.md
+  - pr-813-817-codeql-coderabbit-observation-2026-05-18.md
   - weekly-log-2026-05-06.md
   - pr-849-agent-review-request-observation-2026-05-21.md
   - slack-codex-goal-speed-control-2026-06-30.md
@@ -19,7 +20,26 @@ sources:
 - **Claude Code** — [[nishio]] が分析実務・リファクタ計画・本 Wiki のような周辺ツール構築で多用
 - **Codex (GPT-5.2)** — [[nishio]] が 2025-12-29 にリファクタプラン作成に使用（[gist](https://gist.github.com/nishio/0a1812750627620ff6ede948f13c993b)）
 - **GitHub Copilot Agent** — 2026-03-02 以降、issue にアサイン可能な並行選択肢
-- **CodeRabbit** — team-mirai/marumie の AI レビュアー設定を参考に kouchou-ai でも導入検討（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)）
+- **CodeRabbit** — AI の PR レビュアー。2025-05 から PR にサマリーとレビューを自動で付けている（下の「CodeRabbit（AI レビュアー）」）
+
+### CodeRabbit（AI レビュアー）
+
+2025-05-07 の定例で導入を決め（コードレビュー効率化の Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)。2026-10-12 に完了として close）、それ以降 PR にサマリーとレビューが自動で付く。[[meeting-minutes]]より PR のチェック欄に `CodeRabbit` が出るが、main の必須チェックではない。[[github-dev-docs]]より
+
+設定はリポジトリ直下の `.coderabbit.yaml` で、PR [#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817)（2026-05-18 merge）から `reviews.auto_review.drafts: false` になっている（ファイル自体は別件の PR [#813](https://github.com/digitaldemocracy2030/kouchou-ai/issues/813) に混ざって入った）。そのため次の PR には、自動ではレビューが付かない。[[source-code]]より [[pr-813-817-codeql-coderabbit-observation-2026-05-18]]より
+
+- draft の PR（「Draft detected」と表示される）。ready for review に切り替えるとレビューの対象になる
+- Devin（`devin-ai-integration[bot]`）や Copilot Agent のように、bot アカウントが作った PR（「Bot user detected」と表示される）。draft でなくても対象外
+
+どちらの場合も、PR に `@coderabbitai review` とコメントすれば 1 回レビューさせられる。AI エージェントの PR を draft で出す運用（下の「Devin 運用ルール」）では、CodeRabbit のレビューが付いていないことを「指摘なし」と読まないようにする。
+
+2025-12-29 の定例メモでは、[marumie](https://github.com/team-mirai-volunteer/marumie) のように「AI が書き、CodeRabbit がレビューする」体制を広聴AIでも目指す方針が挙がり、marumie の CodeRabbit 設定が参考として共有された。[[meeting-minutes]]より
+
+## Claude Code / Codex の作業導線（本体 docs）
+
+本体 repo には、Claude Code / Codex で Issue に着手してから PR を出すまでの入口ページ `docs/development/ai-assistants.md`（「AIエージェントを使ったコントリビュート」）がある。2026-09-08 に PR [#925](https://github.com/digitaldemocracy2030/kouchou-ai/issues/925) で、skills の使い方ガイドから作業導線のページに書き直された。`CONTRIBUTING.md` の冒頭と本体の `CLAUDE.md` から辿れる。[[github-dev-docs]]より
+
+本体での役割分担は、貢献ルールの正本が `CONTRIBUTING.md`、作業導線が `ai-assistants.md`、短い索引が `CLAUDE.md`、領域別の手順が `skills/`。読む順番、Issue から PR までの流れ、人間の判断を使う操作の扱いはそちらが正本で、このページはその背景になった観察や運用メモを集めている。
 
 ## Devin 運用ルール
 
@@ -54,6 +74,8 @@ sources:
 
 実務上は、**AI が PR 本文を独自生成すると `CLAへの同意` 節を落としやすい**。本体 repo `digitaldemocracy2030/kouchou-ai` に PR を出す限り、作業元が別 repo やローカル scratch でも CLA チェックは必要。AI エージェント運用では、ready for review にする前の人間チェック項目に **「CLA セクションが本文に入っているか」** を含めた方が安全。[[github-dev-docs]]より
 
+本体の `docs/development/ai-assistants.md` も、CLA への同意や人間の動作確認を AI が代わりに済ませたことにしない、と定めている。[[github-dev-docs]]より
+
 ## 権限分離
 
 AI エージェントの実務運用では、repo 編集・pytest・lint のための権限と、Azure / PyPI / host filesystem まで触れる権限を分けた方がよい。`kouchou-ai` では **devcontainer を標準の作業面、Docker Compose を実行面、高権限操作は CI / 人間のみ** に寄せるのが自然。[[agent-sandboxing-strategy]]より
@@ -70,6 +92,8 @@ AI エージェントの実務運用では、repo 編集・pytest・lint のた�
 - branch protection を飛ばす `admin merge`
 
 AI が自律でやるべきなのは、`REVIEW_REQUIRED` や `BLOCKED` を観測して **「いま何が blocker か」を報告するところまで** であり、誰の attention を取るかの決定は人間オーナーに返す方が安全。[[pr-849-agent-review-request-observation-2026-05-21]]より
+
+同じ境界（reviewer request、承認の催促、Slack 等への連絡、対人 escalation、admin merge を人間の明示指示なしに行わない）は、本体の `docs/development/ai-assistants.md` の「人間の判断・attentionを使う操作」節でも明文化されている（2026-09-08 の PR [#925](https://github.com/digitaldemocracy2030/kouchou-ai/issues/925) 以降）。この節は、その背景になった観察を残すためのもの。[[github-dev-docs]]より
 
 ## 定例会議向けの報告下書き
 
@@ -88,6 +112,14 @@ Codex `/goal` のような persistent goal では、次を基本ループにす�
 - GitHub comment、review request、approval 催促のような人間 attention を使う操作は明示指示まで避ける。
 - 本体 PR に進む候補は `thinking-targets` へ出し、人間が slice を選べる状態にする。
 
+## エージェントの作業を解説・報告するとき
+
+エージェントを使った作業を他のコントリビュータ向けに解説・報告する時は、人間がどのエージェント（どのモデル）に何を指示し、結果を見て次に何を指示したか、という流れを軸にすると読者が再現しやすい。そのうえで次の 3 点に気をつける。
+
+- エージェント名と、そのセッションで動いていたモデル名を区別して書く。分析処理が呼び出す LLM とも混同しない
+- 実際に人間が出した指示を引用する時は、解説用に作った指示例と区別する。中間結果を再利用するなど、人間が技術的な判断をしたところを省かない
+- エージェントが事前にコードや作業記録を参照できたことは書いておく。省くと、空の環境から一言で全部終わったように見えてしまう
+
 ## Open Questions
 
 - Devin / Copilot Agent / Codex の使い分け基準は明文化されていない
@@ -97,6 +129,8 @@ Codex `/goal` のような persistent goal では、次を基本ループにす�
 
 ## Updates
 
+- 2026-10-21: CodeRabbit を「導入検討」から「2025-05 から稼働」に訂正し（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417) は 2026-10-12 に完了として close）、draft の PR と bot アカウントの PR には自動レビューが付かないこと、`@coderabbitai review` で起動できることを追記。本体の作業導線 `docs/development/ai-assistants.md`（PR [#925](https://github.com/digitaldemocracy2030/kouchou-ai/issues/925)）への導線を追加（main `b71e0b79` で確認）
+- 2026-10-09: エージェントの作業を解説・報告するときの注意（エージェント名とモデル名の区別、実際の指示と例示の区別、事前に参照できた資料の明示）を追記
 - 2026-06-30: [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] を追加し、Devin の用途・費用上限・対象 repo の明文化、議事録から Web サイトを更新する繰り返しタスク候補、merge / billing / review owner は人間側に残す境界を追記
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、Codex `/goal` はまず状況把握・LLM Wiki・docs 更新を中心に走らせ、人間が追える速度に制御する運用を追記
 - 2026-05-17: 初回作成
@@ -104,11 +138,3 @@ Codex `/goal` のような persistent goal では、次を基本ループにす�
 - 2026-05-18: AI エージェント起点の draft PR は、ready for review にするまで merge しない運用メモを追記
 - 2026-05-21: reviewer request や approval 催促のような「人間 attention を使う操作」は AI の裁量外とする運用メモを追記
 - 2026-05-21: 次の定例会議で読むための報告下書きページ [[meeting-report-draft]] への導線を追加
-
-### 2026-10-09 — エージェント利用者向けの解説
-
-2026-10-09 のユーザー指示より、フロンティアモデルのコーディングエージェントを使える読者向けの解説は、「人間がどのモデルのエージェントに何を指示し、結果を見て次に何を指示したか」を中心にする。障害調査・環境移行・後日の実験など、本筋に不要な経緯は本文から省く。
-
-- エージェント名と、そのセッションのモデル名を区別して確認する。分析処理が呼び出すモデルとも混同しない。
-- 実際の人間の指示を引用する場合、解説用に作った指示例と区別する。人間が中間結果の再利用など技術的な判断をしたところを消さない。
-- 事前にコードや作業記録を参照できたという前提は残す。省略によって、空の環境から一言で全て完了したように見せない。

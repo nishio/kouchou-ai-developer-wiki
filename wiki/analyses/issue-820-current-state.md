@@ -1,40 +1,41 @@
 ---
-title: "Issue #820 の現状: 静的配信の CSP ガイド不足"
+title: "Issue #820 の現状: 解決済み（PR #849 で静的配信の CSP ガイドを追加）"
 type: analysis
-summary: "Issue #820 は 2026-05-21 時点で open のままで、静的エクスポート配信先における CSP 設定ガイド不足を追う issue としてまだ有効であり、app 側の dynamic CSP header 整備は `PR #848` merge により別経路で先に前進した"
+summary: "Issue #820（静的エクスポート配信先の CSP 設定ガイド）は 2026-05-21 に PR #849 で `docs/deployment/static-hosting-csp.md` が追加されて close 済み。動的 hosting 向けの app 側 CSP header は同日の PR #848 で別に入り、ガイドには 2026-06-01 の PR #887 で scattergl 用の `script-src 'unsafe-eval'` が追記された"
 sources:
   - github-dev-docs.md
   - source-code.md
   - open-issues-snapshot-2026-05-19.md
 ---
 
-`Issue #820` は 2026-05-21 時点で GitHub 上ではなお `OPEN` で、題名は「静的エクスポート環境向けのCSP設定ガイドをドキュメントに追加する」である。current `main` を一次参照すると、**静的 export 配信先でどの CSP を足すべきかを説明する docs はまだ見当たらない** 一方で、dynamic hosting 向けの app 側 CSP header 整備は `PR #848` merge によって別経路で前進した。したがって `#820` は stale ではなく、**`#818` と `#846/#848` の間に残る documentation gap を受け持つ issue** と読むのが妥当である。[[github-dev-docs]]より [[source-code]]より
+`Issue #820`（静的エクスポート環境向けのCSP設定ガイドをドキュメントに追加する）は、2026-05-21 に PR [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849)「Add static hosting CSP deployment guide」の merge と同時に close された（completed）。ガイドは `docs/deployment/static-hosting-csp.md` にある。動的 hosting 向けの app 側 CSP header は同じ日に PR [#848](https://github.com/digitaldemocracy2030/kouchou-ai/issues/848) で入っており、[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) はその PR の scope 外として残った「静的 export の配信先で何を設定すべきか」の説明を受け持っていた。[[github-dev-docs]]より [[source-code]]より
 
 ## Findings
 
-### GitHub current state では [#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は open、`#848` は merge 済み
+### `#848` は dynamic hosting の CSP header 整備で、`#820` は scope 外だった
 
-`gh issue view 820` では、`#820` は 2026-03-29 作成の open issue のままで、本文は「Plotly の PNG download が `img-src` の `blob:` 不足でブロックされうる」「`output: 'export'` では `next.config.ts` の `headers()` が no-op なので、静的配信先での CSP 設定ガイドが必要」という整理になっている。いっぽう `PR #848 web apps に env-aware CSP header を追加` は 2026-05-21 に merge 済みで、PR 本文でも `#820` は scope 外として明記されていた。[[github-dev-docs]]より
+`PR #848 web apps に env-aware CSP header を追加` は 2026-05-21 に merge され、Issue [#846](https://github.com/digitaldemocracy2030/kouchou-ai/issues/846) を close した。`apps/admin` と `apps/public-viewer` に env-aware な `Content-Security-Policy` header を追加し、共通の helper として `apps/shared/csp.ts` を新設している。ただし `public-viewer` の `output: export` では `next.config.ts` の `headers()` が no-op なので、その経路では header を空にし、`static export 配信先での CSP 設定ガイド: #820` は scope 外と PR 本文に明記していた。[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) の本文も「Plotly の PNG download が `img-src` の `blob:` 不足でブロックされうる」「`output: 'export'` では `headers()` が効かないので、静的配信先での CSP 設定ガイドが必要」という整理だった。[[github-dev-docs]]より
 
-### current main には動的 hosting 向け CSP helper は入ったが、静的 export 配信先の CSP ガイドはまだ見当たらない
+### 静的配信先の CSP ガイドは `PR #849` で追加された
 
-`work/kouchou-ai/` から見える current `origin/main@dca43694f2a00c6f7c6360cb97b9af7f2869063a` には `apps/shared/csp.ts` と `apps/admin` / `apps/public-viewer` の `next.config.ts` 変更が入っている一方、`docs/` や `README.md`、`apps/` 配下を `CSP` / `staticwebapp.config` / `blob:` で検索しても、静的 export を Azure Static Web Apps や Nginx、Cloudflare 等へ載せる際の CSP 設定例は見つからなかった。したがって `#820` の「ガイドを docs に追加する」という要求は、2026-05-21 時点でも未充足と見てよい。[[source-code]]より
+PR [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849)（2026-05-21 merge、`dca43694`）が `docs/deployment/static-hosting-csp.md`（静的ホスティング向け CSP 設定ガイド）を追加し、README・deployment 系の docs・docs の index からリンクした。ガイドには Azure Static Web Apps（`staticwebapp.config.json` の `globalHeaders`）・Cloudflare Pages（`_headers`）・Nginx（`add_header`）の設定例と、Plotly の PNG download に必要な `img-src blob:` が書かれている。GitHub Pages はレスポンスヘッダーを細かく制御できないため、この用途には向かないとしている。[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) の merge と同時に close された。[[github-dev-docs]]より [[source-code]]より
 
-### `#848` は dynamic hosting の CSP header 整備として merge 済みだが、[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) を直接は閉じない
+### 2026-06-01 に scattergl 用の `script-src 'unsafe-eval'` が追記された
 
-`PR #848` は `apps/admin` と `apps/public-viewer` に env-aware な `Content-Security-Policy` header を追加する変更で、`apps/shared/csp.ts` も新設した。ただし PR 本文には、`public-viewer` の `output: export` では header を配れないためその経路では `headers()` を空にすること、そして `static export 配信先での CSP 設定ガイド: #820` は scope 外であることが書かれている。したがって `#848` が merge 済みでも、**static export の運用者が配信基盤側で何を設定すべきか** は依然として別途説明が必要である。[[github-dev-docs]]より
+PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887)（2026-06-01 merge）で、Plotly の `scattergl`（内部の regl が runtime eval を使う）が CSP によって初期化に失敗する問題に合わせて、ガイドの最低限の設定に `script-src 'unsafe-eval'` が加わった。経緯は [[issue-887-scattergl-csp-regression-2026-06-01]]。[[source-code]]より
 
-### `#818` と `#820` は product fix と docs fix の分担としてまだ分けて考えるべき
+### `#818` と `#820` は product 側の症状と docs 側の回避策の分担だった
 
-既存 wiki でも `#818` と `#820` は並んで言及されてきた。`#818` は Plotly PNG download が CSP によって壊れる product-side symptom、`#820` はそれを static hosting 上でどう回避するかの documentation / operations issue と読むと整理しやすい。current state でもこの分担は崩れていない。[[open-issues-snapshot-2026-05-19]]より
+`#818`（PNG でダウンロードボタンが死んでいる可能性）は Plotly PNG download が CSP によって壊れる product-side の symptom、`#820` はそれを static hosting 上でどう回避するかの documentation / operations issue という分担だった。[#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818) も「dynamic hosting は [#848](https://github.com/digitaldemocracy2030/kouchou-ai/issues/848)、static hosting は [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) / [#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) で解決経路が揃った」として、2026-05-21 に symptom 報告として close された。[[open-issues-snapshot-2026-05-19]]より [[github-dev-docs]]より
 
 ## Open Questions
 
-- `#848` が merge された後、`apps/shared/csp.ts` を元に `staticwebapp.config.json` などの docs 例を半自動生成できるか
-- `img-src blob:` だけで十分なのか、Plotly や reporter image の挙動次第で `connect-src` / `media-src` なども静的配信先ガイドに含めるべきか
-- `#820` は docs issue のままでよいのか、それとも static export 用 sample config を repo に同梱する implementation issue へ広げるべきか
+- `apps/shared/csp.ts` を元に、ガイドの `staticwebapp.config.json` などの設定例を半自動生成できるか（2026-10-21 時点では、ガイドの例は docs に直接書かれていて `csp.ts` とは連動していない）
+- `img-src blob:` と `script-src 'unsafe-eval'` のほかに、Plotly や reporter image の挙動次第で `connect-src` / `media-src` なども静的配信先ガイドに含めるべきか
+- static export 用の sample config（`staticwebapp.config.json` など）を repo に同梱するか（[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は docs の追加で close した）
 
 ## Updates
 
 - 2026-05-21: 初版作成
 - 2026-05-21: `PR #848` merge と `Issue #846` close を反映し、dynamic hosting 向け fix が main に入った後も `#820` は docs gap として残ることを明記
+- 2026-10-21: GitHub と main を照合して訂正。[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は 2026-05-21 に PR [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) で close 済みで、初版が参照した `main@dca43694` は [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) の merge commit そのもの（ガイドは既にあった）。[#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818) の close と [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) の追記を反映し、title・summary・本文・Open Questions を書き直した

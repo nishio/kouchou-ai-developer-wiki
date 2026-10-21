@@ -23,7 +23,7 @@ Azure デモ環境の運用詳細は公開 wiki に書かない。実環境 URL�
 
 2026-06-01 の `PR #887` 本番反映では、デプロイ成功判定と実際の反映状態にズレが出うること、また `public-viewer` の起動時 build が運用リスクになることが共有された。公開 wiki では詳細ログや実環境値は扱わず、恒久策として build / serve の責務分離と deploy readiness smoke を検討する、という課題粒度だけ残す。[[pr-887-production-deploy-observation-2026-06-01]]より [[meeting-minutes]]より
 
-2026-06-05 に viewer 公開 + admin 共用への動線拡張方針が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地した。実施前提として、ユーザがキーを入れなかった場合に提供側のキーで動いてしまう構成をやめ、ユーザキー必須の構成へ寄せる必要がある（具体的な設定箇所や値は本ページではなく Google Drive「広聴 AI-Azure デモ環境」側で扱う）。公開時の明示文言は「共用環境」「個人情報・未公開情報・機微情報を入れない」「データ保存や継続稼働は保証しない」の 3 点。
+2026-06-05 に viewer 公開 + admin 共用への動線拡張方針が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地した。実施前提として、デモ環境の API キーの扱いを、利用者が自分のキーを入れて使う形にそろえる必要がある（現在のキー構成やその挙動は公開 wiki には書かず、Google Drive「広聴AI-Azureデモ環境」で扱う）。公開時の明示文言は「共用環境」「個人情報・未公開情報・機微情報を入れない」「データ保存や継続稼働は保証しない」の 3 点。
 
 `public-viewer` の起動時 `next build` は、初期 Docker 化で「API 起動後に build したい」という設計から入った。その後の monorepo / pnpm workspace / shared package 化で runtime build の依存が増えたため、container 起動時 build をやめる方向が改善軸になり、2026-06-01 の `73b28cbd` で起動時 build は廃止された（現在の `entrypoint.sh` は `pnpm run start` のみで、build は image build 時に行う）。詳細な実環境観測ではなく、設計上の経緯は [[public-viewer-runtime-build-history-2026-06-01]] に整理する。
 
@@ -74,6 +74,7 @@ PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) で Pyt
 
 ## Updates
 
+- 2026-10-21: 2026-06-05 の行に残っていたデモ環境のキー構成の具体（設定項目・設定場所）を外し、本文とあわせて「現在のキー構成は公開 wiki に書かない」抽象度にそろえた
 - 2026-10-18: public-viewer の起動時 build は 2026-06-01（`73b28cbd`）で廃止済みであることを本文に反映。デモ環境のキー構成の記述を公開境界に合わせて抽象化
 - 2026-05-17: 初回作成
 - 2026-05-18: PyPI 自動 publish の不足要件を整理した [[pypi-auto-release-requirements]] への導線を追加
@@ -82,4 +83,4 @@ PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) で Pyt
 - 2026-06-01: `PR #887` 本番反映で、デプロイ成功判定と実反映状態がズレうること、public-viewer startup build が運用リスクになることを公開可能な粒度で追記
 - 2026-06-01: `public-viewer` の runtime `next build` は初期 Docker 化からの API 起動待ち設計であり、以後の monorepo / Turbopack / runner stage copy 漏れ修正で温存されてきた経緯を [[public-viewer-runtime-build-history-2026-06-01]] に整理して導線を追加
 - 2026-06-01: Azure デモ環境などデプロイ詳細は公開 wiki に書かず、Google Drive「広聴AI-Azureデモ環境」を一次置き場にする方針へ更新
-- 2026-06-05: Azure デモ動線化が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地し、viewer 公開 + admin 共用を進める方向で合意。container env の dd2030 fallback `OPENAI_API_KEY` 除去と 3 点明示文言が前提として残る、と本文に反映
+- 2026-06-05: Azure デモ動線化が [[azure-demo-public-visibility-proposal-2026-06-04]] / [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地し、viewer 公開 + admin 共用を進める方向で合意。API キーの扱いを利用者のキー前提にそろえること（構成の詳細は Google Drive「広聴AI-Azureデモ環境」側）と 3 点明示文言が前提として残る、と本文に反映

@@ -50,3 +50,4 @@ sources:
 ## Updates
 
 - 2026-05-25: `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と open PR を確認し、Issue [#530](https://github.com/digitaldemocracy2030/kouchou-ai/issues/530) の current-state 判断として作成
+- 2026-10-21: Issue [#530](https://github.com/digitaldemocracy2030/kouchou-ai/issues/530) は 2026-05-25 に completed で close された

@@ -12,7 +12,7 @@ sources:
 
 初めての利用者が環境構築で脱落せず、制約に合う版を選び、意見の多様性を理解し、元の声を確認して次の対話・判断へ渡せるようにする。成果指標はIssue消化数や機能数ではなく、この一連の行動が成立することとする。
 
-[[serverless-relationship-2026-09-08]]より、dd2030の価値は単一コードベースの維持だけでなく、実践からの学びと参加の蓄積にある。以下はCodexが今回の開発に使う作業方針であり、チームの正式な製品方針決定ではない。#921は未決のまま保持する。
+[[serverless-relationship-2026-09-08]]より、dd2030の価値は単一コードベースの維持だけでなく、実践からの学びと参加の蓄積にある。以下はCodexが今回の開発に使う作業方針であり、チームの正式な製品方針決定ではない。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)は未決のまま保持する。
 
 ## 役割を配布・分析・データに分ける
 
@@ -29,11 +29,11 @@ sources:
 
 ## 本流という語を三つの判断に分ける
 
-1. **入口**: 初回利用はブラウザ版を第一に案内する案が有力。公開導線の正式変更は#921の判断と、初見利用の観測を根拠にする。
+1. **入口**: 初回利用はブラウザ版を第一に案内する案が有力。公開導線の正式変更は[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)の判断と、初見利用の観測を根拠にする。
 2. **開発の重点**: 当面、両版で繰り返し必要になる入力・失敗検知・元意見への参照・持ち出しを重視する。既存版への新しい便利機能は、ブラウザ版に既にあるか、固有の運用要件かを先に確認する。
 3. **所有・repo統合**: 移管、保守責任、名称、公開先の判断を別にする。今の実装を進めるための前提にしない。
 
-進行中の#918/[#919](https://github.com/digitaldemocracy2030/kouchou-ai/issues/919)/[#920](https://github.com/digitaldemocracy2030/kouchou-ai/issues/920)/#922は既存版向けの改善である。特に作成前確認はブラウザ版にも既存機能がある。今後の機能投資をどちらへ向けるかと、既存利用者の失敗・誤表示を直す保守は分けて扱う。
+進行中の[#918](https://github.com/digitaldemocracy2030/kouchou-ai/issues/918)/[#919](https://github.com/digitaldemocracy2030/kouchou-ai/issues/919)/[#920](https://github.com/digitaldemocracy2030/kouchou-ai/issues/920)/[#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922)は既存版向けの改善である。特に作成前確認はブラウザ版にも既存機能がある。今後の機能投資をどちらへ向けるかと、既存利用者の失敗・誤表示を直す保守は分けて扱う。
 
 ## 最初に共有するのは結果の契約
 
@@ -49,15 +49,15 @@ sources:
 ## 開発順序と観測する結果
 
 1. **今回**: ブラウザ版のID変換による元コメント参照破損を修正。先頭ゼロ・整数精度外・文字列IDについて、CSV正規化→集約→JSON保存/読込→再分析用復元で原文・属性対応が保たれる回帰テストを置く。
-2. **次の候補**: ブラウザ版の抽出部分失敗を正常な0件と分ける。既存版#910の判断を参照し、失敗した入力が黙って欠落しないことを確認する。単純なコードコピーにはしない。
+2. **次の候補**: ブラウザ版の抽出部分失敗を正常な0件と分ける。既存版[#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910)の判断を参照し、失敗した入力が黙って欠落しないことを確認する。単純なコードコピーにはしない。
 3. **相互運用の評価**: 現行版の実生成物を用い、表示・原文なし・再分析条件を別々に検証する。欠けたcomment_idを `undefined` というIDとして復元しない。公開用と再分析用の契約案に反映する。
 4. **初見利用の評価**: 同意を得た利用者にサンプル閲覧→CSV投入→結果保存→他者の端末で閲覧を試してもらう。止まった箇所、介助の有無、初回成功、原文確認の可否を記録する。観測前に「ブラウザ版なら誰でも成功」と決めない。
 
-これにより#921の次の判断材料は、抽象的な好みでなく「入口としてどこまで自力で使えるか」「どの制約で既存版へ案内するか」「持ち出して何が残るか」になる。
+これにより[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)の次の判断材料は、抽象的な好みでなく「入口としてどこまで自力で使えるか」「どの制約で既存版へ案内するか」「持ち出して何が残るか」になる。
 
 ## Open Questions
 
-- 入口変更・保守責任・repo移管のチーム判断。今回の修正PRは#921を閉じない。
+- 入口変更・保守責任・repo移管のチーム判断。今回の修正PRは[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)を閉じない。
 - 両版の公開ファイルと再分析データの区別、対応のない元コメント・多対多関係の表現。
 - 初見利用の観測協力者と継続的なフィードバックの受け口。人への依頼は今回送っていない。
 
@@ -65,7 +65,7 @@ sources:
 
 - 2026-09-08: 明示goalを設定し、役割整理と最初の参照保持修正に着手。
 
-- 2026-09-08 17:24: [serverless PR [#22](https://github.com/digitaldemocracy2030/kouchou-ai/issues/22)](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)を作成（`codex/preserve-comment-references`, `844f275`、未merge）。元IDが変わらない安全な整数だけ数値で出力する。回帰テストは修正前に失敗し、修正後は全198テスト・全93ファイルのlint・TypeScript検査・本番ビルド成功。GitHub上のcheckは作成後の観測時点で未登録。保存済みの破損データは自動復旧しない。
+- 2026-09-08 17:24: [serverless PR #22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)を作成（`codex/preserve-comment-references`, `844f275`、未merge）。元IDが変わらない安全な整数だけ数値で出力する。回帰テストは修正前に失敗し、修正後は全198テスト・全93ファイルのlint・TypeScript検査・本番ビルド成功。GitHub上のcheckは作成後の観測時点で未登録。保存済みの破損データは自動復旧しない。
 
 
 ### 2026-09-08 17:45: 今後の開発で再利用する判断（file back）
@@ -93,8 +93,8 @@ serverlessを主役にすることも、既存版を組織運用向けに維持�
 
 [[other-issue-candidates-2026-09-07]] / [[issue-backlog-audit-2026-09-09]]より、両版で同じCSVの失敗・復帰、階層図の件数・移動、合成データの状態別表示を確かめるところまで進めた。この経験から、共通資産として残す単位を「入力例、期待する挙動、失敗後の復帰、版ごとの差」とする。個々の実装・merge・CI状態は各記録の観測時点を参照する。
 
-次の候補は、入口選択（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) / [#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)）→分析前の費用・時間判断（[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)）→元の声の照合と次の行動（[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)）という利用の流れで評価する。見積もりの不明値を0円や確定時間にせず、原文を含まない公開データの境界を保つ。これらは開発候補と確認条件であり、今回のテストだけで初見利用や現場での成果を実証したとは扱わない。#921の入口・重点投資・所有の判断も未決として維持する。
+次の候補は、入口選択（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) / [#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)）→分析前の費用・時間判断（[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)）→元の声の照合と次の行動（[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / [#130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/130)）という利用の流れで評価する。見積もりの不明値を0円や確定時間にせず、原文を含まない公開データの境界を保つ。これらは開発候補と確認条件であり、今回のテストだけで初見利用や現場での成果を実証したとは扱わない。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)の入口・重点投資・所有の判断も未決として維持する。
 
 ## Updates — 2026-10-05 live state再確認
 
-[[catchup-2026-10-05]]より、Serverless [#22](https://github.com/digitaldemocracy2030/kouchou-ai/issues/22)〜#26は9月9日にMERGEDとなり、origin/main `f4bb032`の履歴にも存在する。上の未merge・Actions承認待ちは当時の記録で、現在は解消済み。元コメントID保持・CSV検証・読み方・ツリーマップ連動・抽出診断等を今後のbaselineに含める。#921はopen・コメントなしであり、本流化・所有/移管が決まったという意味ではない。依存更新#29 / [#30](https://github.com/digitaldemocracy2030/kouchou-ai/issues/30) / [#31](https://github.com/digitaldemocracy2030/kouchou-ai/issues/31) / #33のbuild失敗は別の保守課題。現在地は [[current-status-2026-10-05]] を参照。
+[[catchup-2026-10-05]]より、Serverless [#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)は9月9日にMERGEDとなり、origin/main `f4bb032`の履歴にも存在する。上の未merge・Actions承認待ちは当時の記録で、現在は解消済み。元コメントID保持・CSV検証・読み方・ツリーマップ連動・抽出診断等を今後のbaselineに含める。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)はopen・コメントなしであり、本流化・所有/移管が決まったという意味ではない。依存更新[#29](https://github.com/tokoroten/kouchou-ai-serverless/pull/29) / [#30](https://github.com/tokoroten/kouchou-ai-serverless/pull/30) / [#31](https://github.com/tokoroten/kouchou-ai-serverless/pull/31) / [#33](https://github.com/tokoroten/kouchou-ai-serverless/pull/33)のbuild失敗は別の保守課題。現在地は [[current-status-2026-10-05]] を参照。

@@ -34,8 +34,11 @@ GitHub Web から、または `gh api repos/digitaldemocracy2030/kouchou-ai/cont
 ## Notable observations
 
 - **`skills/` ディレクトリが侮れない**: Claude Code / Codex 向けに凝縮されたアーキテクチャ／開発／テストの SKILL.md がある。新規コントリビュータの onboarding には `docs/` より先に読むのが効率的
-- **`CLAUDE.md` は薄い**: 上記 `skills/` 3 本へのポインタのみ
-- **テスト関連 CI ワークフロー** (`docs/testing.md` で列挙): `server-pytest.yml`, `client-jest.yml`, `client-admin-jest.yml`, `e2e-tests.yml`, `ruff-check.yml`。フロントエンドの Biome は lefthook 上では `skip: true` で CI も明示されていない — バックエンドより強制力が弱い
+- **`CLAUDE.md` は短い索引**: `skills/` 3 本に加え、E2E 用の `test/e2e/CLAUDE.md` と、Claude Code / Codex の作業導線 `docs/development/ai-assistants.md`（2026-09-08 の PR [#925](https://github.com/digitaldemocracy2030/kouchou-ai/issues/925) 以降）を指す
+- **テスト関連 CI ワークフロー** (`docs/testing.md` で列挙): `server-pytest.yml`, `client-jest.yml`, `client-admin-jest.yml`, `e2e-tests.yml`, `ruff-check.yml`
+- **フロントエンドの Biome は push 時には止まらず、CI で検査される**: `lefthook.yml` の Biome 系 3 コマンドは既定で `skip: true` なので、ローカルの pre-push では走らない（`lefthook-local.sample.yml` を参考に `lefthook-local.yml` を置けば有効にできる）。2026-05-17 の初回 ingest 時点では CI にも Biome の step は無かったが、PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（2026-10-12 merge）以降は `client-build.yml`（`apps/public-viewer`・`utils/dummy-server`）と `client-admin-build.yml`（`apps/admin`）が `biome ci` を実行し、lint・format・import 順のエラーがあると PR の CI が落ちる。詳細は [[testing]] / [[gotchas]]
+  - push 前の確認は CI と同じ範囲に絞り、root から `pnpm exec biome ci apps/public-viewer utils/dummy-server apps/admin` を実行する。整形はアプリ単位（例: `pnpm --filter @kouchou-ai/public-viewer format`）で行う
+  - root の `pnpm run lint` / `pnpm run format`（= `biome check [--write] .`）はリポジトリ全体が対象になる。CI の対象外（`test/e2e/`・`tests/`・`apps/api` 配下の JSON など）には Biome のエラーが残っている（2026-10-21 の main `c57e0bfa` で 23 件）ので、root の lint は失敗し、format は無関係なファイルまで書き換える
 - **high priority issue の label 名は exact に `high priority`**: `priority: high` ではない。`gh issue list --label "priority: high"` は 0 件を返すため、live state 確認では `--label "high priority"` を使う。[[github-high-priority-label-query-footgun-2026-06-30]]より
 
 ## Open Questions
@@ -45,5 +48,6 @@ GitHub Web から、または `gh api repos/digitaldemocracy2030/kouchou-ai/cont
 
 ## Updates
 
+- 2026-10-21: main `c57e0bfa` と照合し、フロントエンドの Biome が PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（2026-10-12 merge）以降は CI の `biome ci` で検査されていることを反映。push 前の確認コマンドを CI と同じ範囲にそろえた。あわせて、本体 `CLAUDE.md` が `skills/` だけでなく `docs/development/ai-assistants.md`（PR [#925](https://github.com/digitaldemocracy2030/kouchou-ai/issues/925)）と `test/e2e/CLAUDE.md` も指すことを反映
 - 2026-06-30: high priority issue 確認時の label 名 footgun を追記。正しい query は `--label "high priority"`。
 - 2026-05-17: 初回 ingest（`init.txt` の指示に基づくリポジトリ全体把握）

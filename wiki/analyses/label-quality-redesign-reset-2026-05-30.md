@@ -88,6 +88,7 @@ label refinement 実験から始まった一連の調査は、現行 `hierarchic
 
 ## Updates
 
+- 2026-10-21: 訂正。本文の「analysis-core default で 10 件」は誤りで、CLI（`kouchou-analyze`）の既定は `specs/hierarchical_specs.json` の 3 件。10 件になるのは `PipelineOrchestrator.from_dict` 経由だけ（[[label-quality]]）
 - 2026-06-02: judge 改善の前段として、各 clustering method の tree と各 labelling process の label output を蓄積・比較する corpus が必要だと補正。[[clustering-labeling-comparison-corpus-2026-06-02]] を追加し、Issue / PR 戦略の順序も tree / labelling output 比較コーパス作成を先頭にした
 - 2026-05-30: 用語を descriptive な日本語に揃え直した。`contract A` を `全体傾向把握ユースケース`、`contract B / B 系` を `少数重要論点ユースケース系`、`β スタンス` を `構造把握スタンス`、`α 定量分析` を `定量分析スタンス` に置換。略号は時間が経つと文脈なしには読めなくなるため、内容で読める表現に統一
 - 2026-05-30: nishio との対話で「広聴AI は構造把握スタンスのツールであり定量分析ツールではない」が core stance として確定 ([[analysis-stance]] 新規)。全体傾向把握ユースケースも定量分析ではなく構造把握スタンスで実現することを明示。これにより sampling / rep args / judge は単なる頻度カバレッジ最適化ではなく「構造を読める材料」として設計する必要がある

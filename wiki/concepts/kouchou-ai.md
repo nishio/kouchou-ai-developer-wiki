@@ -60,13 +60,24 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 
 頻出するプロジェクト固有の用語は [[glossary]] にまとめてある。
 
-## 命名上の混乱
+## 命名の再編（2026-01）と旧名の名残
 
-[[meeting-minutes]] 2026-01-19 で `docs/refactoring/naming_convention.md` の整理が議論された。歴史的経緯で：
+2026-01-19 の定例では、リポジトリの再編で「混乱を招くネーミング」（path が `server` なのに Docker 名が `api`、`client` という名前のサーバを建てる、など）をまとめて修正したと報告された。[[meeting-minutes]] 2026-01-19 より。改名は refactoring ブランチで行われ、PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) で 2026-01-23 に main へ入った。対応は `docs/refactoring/naming_convention.md` にある。
 
-- ディレクトリ名 `apps/api/` ↔ Docker サービス名 `api` ↔ コード内 `server` という三重名
-- `client` という名前の Next.js プロセスが「サーバ」として動く
-- これらが新規コントリビュータの初動コストを上げる
+| 旧ディレクトリ | 現ディレクトリ | Docker サービス名 |
+|---|---|---|
+| `server/` | `apps/api/` | `api`（変更なし） |
+| `client/` | `apps/public-viewer/` | `client` → `public-viewer` |
+| `client-admin/` | `apps/admin/` | `client-admin` → `admin` |
+| `client-static-build/` | `apps/static-site-builder/` | `client-static-build` → `static-site-builder` |
+
+今はディレクトリ名と Docker サービス名が一致している。API の Python コードも `src.*` として import され（例: `uvicorn src.main:app`）、`server` というモジュール名は使っていない。旧名が残っているのは主に次の箇所。
+
+- `apps/api/pyproject.toml` の `name = "server"`、`apps/api/README.md` の見出し「kouchou-ai-server」と「`server` フォルダ」という記述
+- `Makefile` のターゲット `client-setup` / `client-dev` / `client-dev-server` / `client-admin-dev-server` / `client-build-static`
+- CI の `client-build.yml` / `client-jest.yml` / `client-admin-build.yml` / `client-admin-jest.yml` / `server-pytest.yml`
+
+README・`skills/kouchou-ai-development/SKILL.md`・`docs/deployment/github-pages.md` などは今も `make client-*` を手順として案内しているので、新規コントリビュータが名前で戸惑うとすればここ。`client` が歴史的な呼び名であることは [[glossary]]、再編の完了状況は [[refactoring-status]] の Phase 1 を参照。
 
 ## Open Questions
 
@@ -76,6 +87,7 @@ DD2030 公式ページは、TTTC を起源に置きつつ、2024 年の東京都
 
 ## Updates
 
+- 2026-10-21: 「命名上の混乱」節を「命名の再編（2026-01）と旧名の名残」に書き換え。出典の 2026-01-19 定例は改名済みの報告で、PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) で main に入っていた。main `b71e0b79` と照合し、旧名が残る箇所を列挙
 - 2026-10-18: static-site-builder を Express 5 に、CLI のパッケージ名を `kouchou-ai-analysis-core` に訂正。v5.0 未リリース（最新タグ v4.1.0）を明記
 - 2026-06-30: [[public-web-kouchouai-tttc-lineage-2026-06-30]] を反映し、DD2030 公式ページ上の TTTC 起源 / 国内前史 / 2025-03-16 OSS 公開の公開説明を追加。公開事例では前史と広聴AI confirmed case を混ぜない。
 - 2026-05-30: 設計判断の core stance として [[analysis-stance]] (広聴AI = 構造把握スタンス、定量分析スタンスではない) への導線を追加

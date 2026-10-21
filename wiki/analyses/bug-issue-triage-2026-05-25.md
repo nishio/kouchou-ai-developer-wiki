@@ -1,7 +1,7 @@
 ---
 title: "bugラベルissueの再点検 2026-05-25"
 type: analysis
-summary: "2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った"
+summary: "2026-05-25 に `bug` ラベルの open issue を current main で再点検したところ、`#666` `#584` `#177` は stale と判断でき、`#629` `#477` `#741` `#478` `#283` `#121` はなお現役論点として残った（うち `#584` の stale 判定は誤りで、症状は 2026-10-19 の PR #1031 / #1034 で修正）"
 sources:
   - source-code.md
   - github-dev-docs.md
@@ -60,3 +60,4 @@ issue [#741](https://github.com/digitaldemocracy2030/kouchou-ai/issues/741) は 
 
 - 2026-05-25: 初版作成。open `bug` issue を current `main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と open PR で棚卸しし、stale 3 件の close と active issue の残し方を整理
 - 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、Azure 設定更新経路の secret 名・具体 command details を削除
+- 2026-10-21: 訂正。[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584) を stale とした判定は誤りだった。根拠にした `test_execute_aggregation_runs_monitor_flow_and_preserves_existing_status` は `subprocess.Popen` を差し替えていて analysis-core を実行せず、手で書いた `hierarchical_status.json`（777 / 300 / 477）を読み戻しているだけだった。実際の analysis-core は `--only hierarchical_aggregation` の実行開始時にトークン数を 0 で初期化し、終了時に今回実行したステップ分の合計（集約だけなので 0）で上書きしていたため、`e5ed743` でも症状は残っていた。issue 本文にある「意見ごとの出典リンクも消える」症状も、レポート編集で config が `ReportConfig` 経由で書き戻されて `enable_source_link` が落ちる不具合として残っていた。どちらも 2026-10-19 に修正された（トークン数は PR [#1031](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1031)、設定編集での項目消失は PR [#1034](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1034)）。既に 0 と保存されたレポートの値は復元されない。[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584) はこの判定に基づいて 2026-05-25 に close されたままである。[[code-health-review-2026-10-18]] / [[deep-code-review-2026-10-19]]より

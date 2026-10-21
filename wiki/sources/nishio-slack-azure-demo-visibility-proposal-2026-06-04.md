@@ -3,6 +3,8 @@ title: "Azure デモ動線化と docs 3 段階 spine の Slack 提案 2026-06-04
 name: nishio-slack-azure-demo-visibility-proposal-2026-06-04
 type: source
 summary: 2026-06-04 22:00 / 22:29 nishio の dd2030 Slack 投稿。docs entry 3 段階 spine の改訂版と、Azure デモサイトを docs から動線化する具体案 4 問を Ohki さんに投げかけている
+last_read: 2026-06-04
+coverage: "2026-06-04 22:00 と 22:29 の 2 投稿のみ（#2_開発_広聴ai。slack-logs の raw/slack/C08F7JZPD63/2026-06.jsonl.gz に固定 snapshot あり）"
 sources:
   - dd2030-slack-2026-06-04
 ---
@@ -10,9 +12,6 @@ sources:
 ## 文脈
 
 [[kouchou-ai-docs-entry-restructure-2026-06-03]] と [[nishio-docs-entry-restructure-discussion-2026-06-03]] で出た「セットアップが docs の入口になっているのを改める」議論の翌日、nishio が dd2030 Slack で同テーマをさらに明確化した投稿を 2 本出した。前段は spine の refinement、後段は Azure デモサイトの動線について Ohki さんに 4 問の具体質問を投げている。
-
-last_read: 2026-06-04
-coverage: 2026-06-04 22:00 と 22:29 の 2 投稿のみ
 
 ## 22:00 投稿: docs spine の refinement
 
@@ -67,3 +66,7 @@ coverage: 2026-06-04 22:00 と 22:29 の 2 投稿のみ
 - [[open-decisions]] A2
 - [[deployment]]
 - [[broadlistening-tool-ecosystem-vision]]
+
+## Updates
+
+- 2026-10-21: 訂正。本文の [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) は Issue ではなく PR（Issue [#633](https://github.com/digitaldemocracy2030/kouchou-ai/issues/633) への対応）で、merge は 2025-07-30 ではなく 2025-08-13（現状は [[llm-providers]]）。本文にあった last_read / coverage を frontmatter に移し、対象 channel と raw の固定 snapshot の有無を coverage に書き足した

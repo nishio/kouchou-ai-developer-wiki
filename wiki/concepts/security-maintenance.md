@@ -51,7 +51,7 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 - **優先度判断**（なぜ急ぐ / 待つか、build-time 依存か runtime の公開露出かといった、具体値を伴わない判断）
 - **担当**（home issue の assignee）
 
-具体値を含む一次証跡は gitignored な `raw/` や権限管理された保存先に固定し、公開 wiki には pointer だけを残す。根拠は [[contributing]] の公開境界。
+具体値を含む一次証跡は gitignored な `raw/` や権限管理された保存先に固定し、公開 wiki には pointer だけを残す。根拠は、この wiki repo の `CLAUDE.md` の「公開境界」と、[[wiki-driven-workflow]] の「公開 wiki に書かない情報」。
 
 ## 関連ページ
 
@@ -59,9 +59,14 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 - [[codeql-docs]] — CodeQL 一般の役割（公式ドキュメント要約）
 - [[dependabot-alerts-2026-10-14]] — 直近の Dependabot live state 観測（dated）
 - [[gotchas]] — transitive 脆弱性を範囲 override で塞ぐ実務 recipe
-- [[contributing]] — 公開境界と PR / merge 手順
+- [[wiki-driven-workflow]] — 公開境界（公開 wiki に書かない情報）
+- [[contributing]] — PR / merge 手順
 
 ## Open Questions
 
 - Dependabot alerts の確認頻度と担当を、週次の定期確認として固定するか
 - CodeQL action runtime（node バージョン等）の deprecation 保守を、誰がいつ見るかの運用化
+
+## Updates
+
+- 2026-10-21: 公開境界の根拠の参照先を [[contributing]] から、この wiki repo の `CLAUDE.md` と [[wiki-driven-workflow]] に訂正（contributing には公開境界の節が無い）

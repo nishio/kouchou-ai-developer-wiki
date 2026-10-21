@@ -34,8 +34,8 @@ sources:
 - **Outline self-host + MCP 連携**（`1_outline_ドキュメント管理`, `7_雑談`）: [[kuboon]] が `dd2030-docs.kbn.one` を運用。`[[X]]` wikilink syntax は Outline 側のパーサがエスケープしてしまうため kuboon がパッチ予定
 - **Discord 移行論争**（`7_雑談`）: [[ohki-shingo]] が「1500 人規模の Slack 参加者を失うリスク」を提起、[[nishio]] は並行運用を主張
 - **法人化と新名称投票**（`0_全体お知らせ`）: 5/12–5/15 投票期間。`デジタル民主主義2030` はフラッグシップ名称として残る方針
-- **[[polimoney]] 開発**: PR [#248](https://github.com/digitaldemocracy2030/kouchou-ai/issues/248) で 岩永淳志ページ公開、Azure 障害（probe port 変更）対応
-- **DD2030 website PR [#212](https://github.com/digitaldemocracy2030/kouchou-ai/issues/212)**: [[nishio]] が「広聴 AI 本」を独立プロジェクトとしてサイトに追加、[[ohki-shingo]] がマージ
+- **[[polimoney]] 開発**: PR [#248](https://github.com/digitaldemocracy2030/polimoney/pull/248) で 岩永淳志ページ公開、Azure 障害（probe port 変更）対応
+- **DD2030 website PR [#212](https://github.com/digitaldemocracy2030/website/pull/212)**: [[nishio]] が「広聴 AI 本」を独立プロジェクトとしてサイトに追加、[[ohki-shingo]] がマージ
 
 ## Why this matters for kouchou-ai devs
 
@@ -51,3 +51,4 @@ sources:
 
 - 2026-05-17: 初回 ingest（init.txt 指定の週分）
 - 2026-06-02: source の鮮度基準として `last_read` / `coverage` と Freshness marker を明示
+- 2026-10-21: 一括リンク化で kouchou-ai に向いていた website の PR [website#212](https://github.com/digitaldemocracy2030/website/pull/212)・Polimoney の PR [polimoney#248](https://github.com/digitaldemocracy2030/polimoney/pull/248) のリンク先を、それぞれのリポジトリに直した

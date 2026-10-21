@@ -1,10 +1,10 @@
 ---
 title: "slack-logs リポジトリ(Slack ログ一次置き場)"
 type: source
-summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical、mirror は直近14日の rolling snapshot"
+summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical（約 2 か月遅れ）、mirror は raw の最新月と重なる rolling snapshot（2026-10 時点で直近 75 日）"
 url: https://github.com/digitaldemocracy2030/slack-logs
-last_checked: 2026-06-30
-coverage: "work/slack-logs main@7c17dd3, mirror synced_at=2026-06-30T09:54:03Z, window=2026-06-16T09:54:03Z〜2026-06-30T09:54:03Z; raw canonical は 2025-01〜2026-04; README / sync metadata / users snapshot / broad listening keyword pass を確認"
+last_checked: 2026-10-21
+coverage: "2026-10-21 に GitHub 上の main@189782de を読み取りで確認（構成とメタデータのみ。メッセージ本文は読んでいない）: mirror synced_at=2026-10-20T21:27:48Z, window_days=75, window=2026-08-06〜2026-10-20, 59 channel / 1297 message; raw canonical は C08F7JZPD63 で 2026-08 まで; README と workflow の既定値を確認。本文を読んだ最新の marker は 2026-10-05（Updates 参照）、初回の詳しい marker は 2026-06-30（work/slack-logs main@7c17dd3、14 日窓）"
 sources:
   - slack-logs README.md
   - slack-logs mirror/sync.json
@@ -18,15 +18,17 @@ sources:
 
 README 上の設計は二層：
 
-- `raw/`: 月次 canonical。`raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` に public channel のメッセージと thread を保存する。保全用で、2026-06-30 確認時点では 2025-01〜2026-04 が入っている。
-- `mirror/`: rolling snapshot。`mirror/slack/<channel_id>.jsonl.gz` に直近14日分を保存し、`mirror/sync.json` に最終同期時刻、window、channel 数、message 数が入る。現状確認用で、履歴保全ではなく上書きされる。
+- `raw/`: 月次 canonical。`raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` に public channel のメッセージと thread を保存する。保全用で、2026-06-30 確認時点では 2025-01〜2026-04、2026-10-21 確認時点では 2026-08 までが入っている。thread の後からの返信を取りこぼさないよう、毎月 1 日に実行月の 2 か月前の月を取得する（`slack-backup.yml` の既定）ので、最新月は常に約 2 か月遅れる。
+- `mirror/`: rolling snapshot。`mirror/slack/<channel_id>.jsonl.gz` に直近の一定期間（window）を保存し、`mirror/sync.json` に最終同期時刻、window、channel 数、message 数が入る。6 時間ごとに同期する現状確認用で、履歴保全ではなく上書きされる。window は 2026-06-30 時点では 14 日だったが、raw の末尾との間に、どちらにも無い期間（盲点）ができていた。そこで slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21 merge）が、raw の最新月と常に重なるよう 75 日に広げた（月次の取得が毎回成功している前提。失敗すると slack-logs に Issue が自動で立つ）。実際の範囲は `mirror/sync.json` の `window_days` / `window_oldest` で確かめる。
 - `state/` と `mirror/users.json`: Slack user id を表示名へ解決するための `users.list` snapshot。canonical を読む時は同月の `state/users-<YYYY-MM>.json`、mirror を読む時は `mirror/users.json` を使う。
 
 `nishio/oss_weekly_reporter` は週次 AI report / GitHub report 生成の系統として引き続き有用だが、Slack raw の最新一次確認は `slack-logs` の `mirror/` と `raw/` を優先する。
 
 ## Freshness marker
 
-この source の鮮度基準は、**2026-06-30 19:04 JST に `work/slack-logs` を re-pull し、`main@7c17dd3` まで fast-forward した時点**。`mirror/sync.json` は `synced_at=2026-06-30T09:54:03.075042+00:00`、`window_days=14`、`window_oldest=2026-06-16T09:54:03.075042+00:00`、`window_latest=2026-06-30T09:54:03.075042+00:00`、`channel_count=58`、`message_count=541` だった。
+次の値は 2026-06-30 の初回 marker（当時の mirror は 14 日窓）。その後の marker は `## Updates` にあり、メッセージ本文を読んだ最新の marker は 2026-10-05（[[catchup-2026-10-05]]）、構成とメタデータだけを確かめた最新の確認は 2026-10-21。
+
+この source の初回の鮮度基準は、**2026-06-30 19:04 JST に `work/slack-logs` を re-pull し、`main@7c17dd3` まで fast-forward した時点**。`mirror/sync.json` は `synced_at=2026-06-30T09:54:03.075042+00:00`、`window_days=14`、`window_oldest=2026-06-16T09:54:03.075042+00:00`、`window_latest=2026-06-30T09:54:03.075042+00:00`、`channel_count=58`、`message_count=541` だった。
 
 2026-06-30 確認時点の広聴AI関連 channel は次の ID で引ける：
 
@@ -50,7 +52,7 @@ git pull --ff-only
 jq 'del(.channels)' mirror/sync.json
 ```
 
-直近14日を見るなら `mirror/` を使う。例：
+直近（2026-10 時点で 75 日。範囲は `mirror/sync.json` で確かめる）を見るなら `mirror/` を使う。例：
 
 ```bash
 python3 - <<'PY'
@@ -71,7 +73,7 @@ PY
 
 JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の message / thread reply である。message の `user` は `U...` の user id なので、人名や handle が論点になる時は `mirror/users.json` または同月の `state/users-YYYY-MM.json` で解決する。ただし wiki に残す時は、発言者名そのものが判断に必要な場合だけ残し、通常は channel / 日付 / 論点の要約に落とす。
 
-`raw/` は保全層だが 2 ヶ月遅延が前提で、直近 2 ヶ月は入らない。直近論点は `mirror/`、古い確定議論は `raw/`、GitHub activity と合わせた週次流れは `oss_weekly_reporter` という三分法で読む。
+`raw/` は保全層だが 2 ヶ月遅延が前提で、直近 2 ヶ月は入らない。その期間は 75 日窓の `mirror/` が raw の最新月と重なって補うので、両方を見れば途切れない（mirror を直近 14 日分だけ読んで raw に移ると、その間の発言を「無い」と見落とす）。直近論点は `mirror/`、古い確定議論は `raw/`、GitHub activity と合わせた週次流れは `oss_weekly_reporter` という三分法で読む。
 
 ## 2026-06-30 Observation
 
@@ -105,17 +107,12 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 ## Updates
 
+- 2026-10-21: GitHub 上の slack-logs（main `189782de`。mirror は `synced_at=2026-10-20T21:27:48Z` の 75 日窓、raw は 2026-08 まで）と README・workflow を読み取りで確認し、14 日窓のままだった summary・本文を訂正。75 日への変更は slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21）。2026-09-07 の時点で raw に 2026-08 があったのは 2026-08-20 の先行取得のためで、約 2 か月遅れは今も設計どおり。Updates の見出しを 1 つにまとめた
+- 2026-10-05: repo `77439607`、同期は2026-10-05 06:10 JST、75日窓。開発・アルゴリズムchannelと関連channelの9月以後の論点を確認し、選んだchannelの本文を `raw/catchup-2026-10-05/` に固定した。
+- 2026-10-05: 読解範囲・Flex切替・利用事例・戦略議論の観測は [[catchup-2026-10-05]]、現在地は [[current-status-2026-10-05]] を参照。全channel精読ではない。
+- 2026-09-07: 最新mirrorは75日窓（6月24日〜9月7日）へ変わり、canonical rawは8月分まで存在する。上記の14日窓・2ヶ月遅延は過去観測として読む。今回の読解範囲・commit・固定snapshotは [[slack-issues-2026-09-07]] を参照。
 - 2026-06-30 19:04 JST: `work/slack-logs` を `main@7c17dd3` へ fast-forward し、`synced_at=2026-06-30T09:54:03Z` / message_count 541 まで確認。全 channel keyword pass で `#dd_prance_event2026` の 8/2 実践 lane を [[slack-prance-event-broadlistening-session-2026-06-30]] に切り出した。
 - 2026-06-30 18:29 JST: `work/slack-logs` を re-pull し、`main@341cf80` / `synced_at=2026-06-30T04:12:50Z` から変化がないことを再確認した。
 - 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
 - 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。
-
-## Updates
-
-- 2026-09-07: 最新mirrorは75日窓（6月24日〜9月7日）へ変わり、canonical rawは8月分まで存在する。上記の14日窓・2ヶ月遅延は過去観測として読む。今回の読解範囲・commit・固定snapshotは [[slack-issues-2026-09-07]] を参照。
-
-## Updates — 2026-10-05
-
-- repo `77439607`、同期は2026-10-05 06:10 JST、75日窓。開発・アルゴリズムchannelと関連channelの9月以後の論点を確認し、選んだchannelの本文を `raw/catchup-2026-10-05/` に固定した。
-- 読解範囲・Flex切替・利用事例・戦略議論の観測は [[catchup-2026-10-05]]、現在地は [[current-status-2026-10-05]] を参照。全channel精読ではない。

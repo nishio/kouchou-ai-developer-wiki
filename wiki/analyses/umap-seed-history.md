@@ -38,17 +38,19 @@ sources:
 
 したがって、この経緯を「再現性か並列化か」という二択だけで読むと少し浅い。裏には「レポートの比較可能性をどう作るか」という別の要求がある。
 
-## 4. `PR #810` は固定撤廃ではなく、再現性要求の位置づけ変更
+## 4. `PR #810` の opt-in 案は採られず、固定そのものを外した
 
 2025-07 以降は、「前段が非決定的なのに後段だけ seed 固定しても得るものが薄い」「そのわりに UMAP の並列性を失っている」という見方が強くなる。  
-`PR #810` の案は、この再評価を受けて **再現性を default から opt-in に落とす** ものだった。[[seed-reproducibility-history]]より
+PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の案は、この再評価を受けて **再現性を default から opt-in に落とす** ものだった。[[seed-reproducibility-history]]より
 
-ここで重要なのは、再現性要求そのものを消したわけではない点である。embedding 再利用など比較可能性が重要なケースでは、なお再現性フラグが必要だとされている。  
-つまり判断は「再現性は不要」ではなく、**一般ケースの default に置くほど強い要件ではない** へ変わった。
+ただし 2026-05-18 の定例では、opt-in の切り替えも要らないと判断された。seed 固定は研究者向けの機能で、WebUI に切り替えを入れる手間に見合わない、という理由である。この PR は merge されずに close され、UMAP / KMeans の `random_state=42` を外すだけの PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)（2026-05-19 merge）に置き換わった。現在は再現性を選ぶオプションも無く、常に seed なしで動く。[[seed-reproducibility-history]]より
+
+ここで重要なのは、再現性要求そのものを消したわけではない点である。比較のために何を固定・記録するかは Issue [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)（open）で扱い、別レポートの UMAP 平面を使い回す比較可能性は、PR [#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988)（2026-10-12 merge）の `reuse_umap_model`（CLI）で実現した。  
+つまり判断は「再現性は不要」ではなく、**seed 固定は既定の経路に置くほど強い要件ではなく、比較可能性は別の仕組みで満たす** へ変わった。
 
 ## 5. 新規コントリビュータ向けには、「seed 固定はアルゴリズムの正しさの証拠ではない」と理解した方がよい
 
-現行コードや歴史を読むと、`random_state=42` は「このパイプラインは再現性設計が完成している」という印ではない。  
+歴史を読むと、かつての `random_state=42` は「このパイプラインは再現性設計が完成している」という印ではなかった。  
 むしろ、
 
 - upstream の LLM / extraction は非決定的
@@ -57,18 +59,19 @@ sources:
 
 という **現実的な折衷の痕跡** である。[[source-code]] / [[seed-reproducibility-history]]より
 
-この理解を持つと、`gotchas` にある UMAP warning や、`PR #810` の方向転換も自然に読める。
+この理解を持つと、`PR #810` の方向転換と、最終的に固定そのものを外した PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) の判断も自然に読める。seed が無い現在の落とし穴（再実行でクラスタ番号・境界・散布図の配置が揺れること）は [[gotchas]] にある。
 
 ## Open Questions
 
-- 比較可能性を本当に欲しいなら、seed 固定より UMAP モデル再利用や別の座標安定化手法の方が本筋ではないか
-- 再現性オプションと並列性オプションを UI / API 上でどう表現するのが利用者に誤解を与えにくいか
+- 比較可能性を本当に欲しいなら、seed 固定より UMAP モデル再利用や別の座標安定化手法の方が本筋ではないか（UMAP モデル再利用は 2026-10-12 に CLI の `reuse_umap_model` で実装済み。WebUI 対応は Issue [#989](https://github.com/digitaldemocracy2030/kouchou-ai/issues/989)）
+- 再現性オプションと並列性オプションを UI / API 上でどう表現するのが利用者に誤解を与えにくいか（2026-05-18 の定例では、seed 固定の切り替えは WebUI に入れない判断。比較のために何を固定・記録するかは Issue [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) に残っている）
 
 ## Updates
 
+- 2026-10-21: 結末（2026-05-18 の定例で opt-in 案を採らず、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) で固定 seed を除去。比較可能性は PR [#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) の `reuse_umap_model` で実現）を 4・5 節と Open Questions に反映し、もう出ない UMAP warning への参照を、seed が無い現在の落とし穴への参照に訂正
 - 2026-05-18: `seed` 固定の経緯を「再現性要求の発生 → 限界認識 → 並列性との再評価」という流れで整理
 
 
 ## Updates — 2026-09-09 01:00 current mainと旧Issueの整合
 
-[[issue-backlog-audit-2026-09-09]]より、current main `2dd5adc` ではUMAP/KMeansに固定random_stateがない。commit `8fa8ee7` の意図的変更と照合し、#513の「全箇所seed設定済み」という古いコメントを現在の完了根拠にしない。#809の並列性と、保存済み入力を使う比較時の再現性選択を別に追跡する。
+[[issue-backlog-audit-2026-09-09]]より、current main `2dd5adc` ではUMAP/KMeansに固定random_stateがない。commit `8fa8ee7` の意図的変更と照合し、[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)の「全箇所seed設定済み」という古いコメントを現在の完了根拠にしない。[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)の並列性と、保存済み入力を使う比較時の再現性選択を別に追跡する。

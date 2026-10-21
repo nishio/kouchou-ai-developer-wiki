@@ -81,3 +81,4 @@ idobata は、AI を介した 1-on-1 の深掘り interview / dialogue に近い
 ## Updates
 
 - 2026-06-30: 初回作成。議事録から Cartographer / idobata / kouchou-ai / Sensemaker / tttc-light-js の役割境界を整理し、公開 docs では収集・深掘り・分析・LLM直接分類を混ぜない方針を固定。
+- 2026-10-21: 補足。役割表の「Jigsaw Sensemaker / LLM grouping」行の LLM grouping は方法のカテゴリで、広聴AI も `analysis_mode=llm_grouping`（LLM 直接グルーピング）を持つ。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で 2026-05-28 UTC に analysis-core へ入り、PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) で 2026-10-12 から作成画面でも選べる

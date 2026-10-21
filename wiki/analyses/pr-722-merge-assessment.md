@@ -38,3 +38,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-10-21: PR [#722](https://github.com/digitaldemocracy2030/kouchou-ai/issues/722) は 2026-05-19 に merge されずに close された

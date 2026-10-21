@@ -12,8 +12,8 @@ sources:
 
 1. **[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905): 分析対象が欠けていないことを分かるようにする。** 抽出意見数の違いをモデル品質差と解釈する前に、入力回答ごとの成功・正常な0件・失敗を区別する。workers削減は追試での回避策であり原因特定ではない。
 2. **[#908](https://github.com/digitaldemocracy2030/kouchou-ai/issues/908): UIの選択と実際の呼び出しを一致させる。** モデル比較の前提でもある。環境固有情報を公開せず、UIとproviderの契約として整理する。
-3. **[#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / #907と#909: 個別追加と継続保守を接続する。** 必要モデルを追加する作業とモデル管理全体の設計を切り分けつつ、一覧・料金・説明・対応機能の不整合を増やさない。モデル名とAPI互換性は実装時に別途確認する。
-4. **[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884): 作成前の確認と実行後の完全性を別々に扱う。** 事前APIチェックが成功しても、実行中の全呼び出し成功を保証しない。#905をpreflightだけで解決した扱いにしない。
+3. **[#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / [#907](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907)と[#909](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909): 個別追加と継続保守を接続する。** 必要モデルを追加する作業とモデル管理全体の設計を切り分けつつ、一覧・料金・説明・対応機能の不整合を増やさない。モデル名とAPI互換性は実装時に別途確認する。
+4. **[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884): 作成前の確認と実行後の完全性を別々に扱う。** 事前APIチェックが成功しても、実行中の全呼び出し成功を保証しない。[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)をpreflightだけで解決した扱いにしない。
 
 serverless版の移管・デモ簡素化・横断戦略会議は、中期の運用と製品方針として別途追う。観測したSlackから採用や移管完了は断定できない。
 

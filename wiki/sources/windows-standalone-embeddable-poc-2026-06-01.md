@@ -1,7 +1,7 @@
 ---
 title: "Windows スタンドアロン化 embeddable Python PoC 検証 2026-06-01"
 type: source
-summary: "PR #891（tokoroten, Draft）の検証記録 tmp-embeddable-poc/FINDINGS.md の要約。広聴AI を Windows スタンドアロン化する embeddable Python 方針が成立すると実証（numba/UMAP/FastAPI が単一 embeddable Python 上で完走、torch は LM Studio 委譲で回避し ~650MB）。同時に、現 main にも残る2つの移植性バグ（report_launcher の python ハードコード=#992、open/json.load の encoding 未指定による cp932 クラッシュ=#993）と、admin が Server Actions のため純静的化できないという設計分岐を発掘した"
+summary: "PR #891（tokoroten, Draft。2026-10-13 に merge されずに close）の検証記録 tmp-embeddable-poc/FINDINGS.md の要約。広聴AI を Windows スタンドアロン化する embeddable Python 方針が成立すると実証（numba/UMAP/FastAPI が単一 embeddable Python 上で完走、torch は LM Studio 委譲で回避し ~650MB）。同時に、当時の main にも残っていた 2 つの移植性バグ（report_launcher の python ハードコード=#992、open/json.load の encoding 未指定による cp932 クラッシュ=#993。2026-10-13 に PR #995 で修正済み）と、admin が Server Actions のため純静的化できないという設計分岐を発掘した"
 sources:
   - "github PR #891 (feat/windows-standalone-embeddable, tmp-embeddable-poc/FINDINGS.md)"
 ---
@@ -44,7 +44,7 @@ kouchou-ai の PR **[#891](https://github.com/digitaldemocracy2030/kouchou-ai/is
 ## embeddable 特有のハマりどころ（FINDINGS より）
 
 - `pip install ./packages/analysis-core` がビルド分離で `hatchling.build` を import できず失敗（embeddable の `_pth` がサブプロセスの sys.path を絞るため）。回避＝先に `pip install hatchling` ＋ `--no-build-isolation`、本番では **wheel 事前ビルド**して embeddable に入れる。
-- フロント静的化の footgun: React **[#482](https://github.com/digitaldemocracy2030/kouchou-ai/issues/482)**（async サーバコンポーネント `Reporter` をクライアントツリーで描画すると落ちる→`ReporterClient` 差し替え）／ [#418](https://github.com/digitaldemocracy2030/kouchou-ai/issues/418) ハイドレーション警告（`dynamic(ssr:false)` で実害回避）／ `output:export` の動的ルートは空 `generateStaticParams` がエラー（sentinel 1 件返しで回避）／ `apps/public-viewer/.env.local` が `NEXT_PUBLIC_API_BASEPATH` を上書きし別ポートを叩いて CORS 失敗。
+- フロント静的化の footgun: React **[#482](https://react.dev/errors/482)**（async サーバコンポーネント `Reporter` をクライアントツリーで描画すると落ちる→`ReporterClient` 差し替え）／ [#418](https://react.dev/errors/418) ハイドレーション警告（`dynamic(ssr:false)` で実害回避）／ `output:export` の動的ルートは空 `generateStaticParams` がエラー（sentinel 1 件返しで回避）／ `apps/public-viewer/.env.local` が `NEXT_PUBLIC_API_BASEPATH` を上書きし別ポートを叩いて CORS 失敗。
 - ビルドスクリプトの footgun: PowerShell 5.1 は `next build` の stderr 警告が `$ErrorActionPreference=Stop` で致命化（当該区間だけ `Continue`＋`$LASTEXITCODE` 判定）／ `Copy-Item -Recurse` が既存同名ディレクトリへネスト（コピー前に削除）／ git-bash の MSYS パス変換で `/viewer` が化ける（`MSYS_NO_PATHCONV=1`、build.ps1=PowerShell では非発生）。
 
 ## 残タスク / 要判断（FINDINGS より）
@@ -58,3 +58,7 @@ kouchou-ai の PR **[#891](https://github.com/digitaldemocracy2030/kouchou-ai/is
 
 - PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) 自体は 130 commits 遅れ・現 main と 4 競合（`EnvironmentCheckDialog.tsx` / public-viewer `[slug]/page.tsx` / `page.tsx` / `ReportView.tsx`）・CLA 未同意・CI は 2026-06 の古い結果のみ・`tmp-embeddable-poc/` を同梱したまま。作者の継続意思を確認して rebase 再挑戦するか、一旦 close して知見だけ本ページに残すかは要判断（人間 attention 領域）。
 - Windows スタンドアロン需要と、既存の Windows 対応施策（[[gotchas]] の「Windows インストール地獄」、[#524](https://github.com/digitaldemocracy2030/kouchou-ai/issues/524) ネイティブ環境等）との優先度関係。
+
+## Updates
+
+- 2026-10-21: summary を PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995) による修正後の表現に合わせた（見出し「発掘された、現 main にも残るバグ」は 2026-06-01 時点の記述）。PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は 2026-10-13 に作者 tokoroten が merge せずに close した（close 時のコメントは無い）。Open Questions の「rebase 再挑戦か close か」はこれで決着し、PoC の知見は本ページに残る

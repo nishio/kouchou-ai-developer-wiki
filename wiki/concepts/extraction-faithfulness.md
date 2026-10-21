@@ -17,7 +17,7 @@ sources:
 
 抽出には性質の違う 2 つの失敗がある。混同しない。
 
-1. **抽出が失敗して回答が欠落する** — 通信失敗・タイムアウト・不正 JSON・キー欠落など。これは *検出できる* ようにしてある。`extract_batch()` は失敗を回答 ID と理由に対応づけて `ExtractionBatchError` で分析を中断し（[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)、PR [#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910)、ラベル段の追跡は [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915)）、原文付きの診断を公開出力と分けた非公開ファイルに書く。正常な空リスト（その入力に対象の意見が無い）と失敗を取り違えないことが要点。[[issues-response-plan-2026-09-07]]
+1. **抽出が失敗して回答が欠落する** — 通信失敗・タイムアウト・不正 JSON・キー欠落など。これは *検出できる* ようにしてある。`extract_batch()` は失敗を回答 ID と理由（例外の種類）に対応づけて `ExtractionBatchError` で分析を中断する（[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)、PR [#910](https://github.com/digitaldemocracy2030/kouchou-ai/issues/910)）。同じ考え方で、ラベル生成段（初期・統合ラベル）も、失敗したクラスタ ID と種別（timeout / invalid_response など）をまとめて `LabellingBatchError` で止める（[#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915)、PR [#919](https://github.com/digitaldemocracy2030/kouchou-ai/issues/919)）。抽出段は、抽出が空・失敗になった回答を原文付きの診断として、公開出力と分けた非公開ファイルに書く（[#318](https://github.com/digitaldemocracy2030/kouchou-ai/issues/318)、PR [#928](https://github.com/digitaldemocracy2030/kouchou-ai/issues/928)。扱い方は後述の「原文照合の導線」）。正常な空リスト（その入力に対象の意見が無い）と失敗を取り違えないことが要点。[[issues-response-plan-2026-09-07]] / [[other-issue-candidates-2026-09-07]]
 2. **抽出は成功したように見えるのに意味が書き換わっている** — こちらが本ページの主題。出力は文法的に正しく流暢なので、**原文を読める人がいないと誰も気づけない**。パイプラインが最後まで動いて地図が出ても、ここが崩れていれば全体が誤る。「完走したから成功」とは判定しない。
 
 ## モデルサイズ別の典型的な書き換え
@@ -68,7 +68,7 @@ sources:
 
 - **完走を成功条件にしない。** 地図が出たことではなく、少量の原文照合を通ったことを受け入れ条件にする。
 - **ローカル完結ルートの品質保証。** API 契約なしでローカル LLM を使うルート（[[llm-providers]] / [[hardware-procurement-local-ai-route-2026-05-31]]）では、「動くか」だけでなく「意味を保つか」と「JSON 文法制約が効くか」を受け入れ条件に入れる。既定モデル（ELYZA 8B）での日本語入力の挙動は未検証。
-- **原文照合の導線。** 抽出意見から原文へ戻れる画面と、原文付き診断（公開出力と分離・非公開・実行後に削除）を使い、少量照合 → 全件へ広げる。
+- **原文照合の導線。** 抽出意見と元の回答は、意見 ID `A{回答ID}_{連番}` と出力の `relations.csv`（意見 ID と回答 ID の対応）でたどれる。パブコメモードでは管理画面の CSV ダウンロードに原文と抽出意見が並び、入力に URL 列があれば出典リンク（`enable_source_link`）で元の投稿を開ける（2026-10-21 時点で、公開レポート画面に元の回答を表示する機能は未実装。[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)）。これらで少量照合 → 全件へ広げる。抽出が空・失敗になった回答だけは、原文付き診断 `diagnostics/<レポートID>-extraction.jsonl` に記録される。置き場所は出力先ディレクトリと同じ階層の別ディレクトリ（標準構成では公開出力 `outputs/` の隣）で、ファイルは実行ユーザーだけが読める権限で作られる（PR [#928](https://github.com/digitaldemocracy2030/kouchou-ai/issues/928)）。診断は自動では消えない。抽出ステップを再実行したときに上書きされるだけで、管理画面でレポートを削除しても残る。調査が済んだら手で削除する（kouchou-ai の `docs/development/extraction-diagnostics.md`）。
 - **自動検査は「要確認」の印であって合否の門にしない。** 空・入出力例との一致・原文との重なりの機械検査と、LLM judge（judge にも「先に原文の真意を書かせる」形）で、まれな書き換えを人の確認に回す。judge 自体の較正が要る。
 - **言語をまたぐ抽出は条件が厳しい。** 他言語の原文 → 日本語の意見では俗語・固有名詞・文脈不足が重なる。翻訳を別段に分けるより、規則つきプロンプトで書き換えを減らす方が副作用が小さい場合がある（実測は [[extraction-faithfulness-public-models-2026-10-08]]）。
 
@@ -81,3 +81,7 @@ sources:
 - 実際の公聴データ（崩れた短文が多い）での書き換え発生率。公開データは整った文が多く発生率が低い
 - UMAP を通す本体のクラスタリングで、極性の逆転がどこまで反対側に数えられるか
 - 抽出直後の自動忠実性検査を製品の段として入れる価値（judge の較正コストを含む）
+
+## Updates
+
+- 2026-10-21: kouchou-ai main（b71e0b79）と照合し、原文付き診断を「実行後に削除」としていた誤りを訂正した（自動削除は無く、抽出ステップの再実行で上書きされるだけで、削除は手作業。記録されるのは空・失敗の回答だけ）。ラベル生成段の部分失敗は [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915) / PR [#919](https://github.com/digitaldemocracy2030/kouchou-ai/issues/919)（2026-09-08 merge）で `LabellingBatchError` により止まるようになっているので「追跡中」の記述を直し、診断の出典（[#318](https://github.com/digitaldemocracy2030/kouchou-ai/issues/318) / PR [#928](https://github.com/digitaldemocracy2030/kouchou-ai/issues/928)）と原文へたどる手段を追記した。

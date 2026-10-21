@@ -50,7 +50,7 @@ sources:
 | api / server | バックエンド FastAPI サービス（path は `apps/api/`） |
 | public-viewer / client | エンドユーザ向け Next.js（"client" は歴史的呼称） |
 | admin | 管理 UI Next.js |
-| static-site-builder | 静的書き出し用 Next.js（port 3200） |
+| static-site-builder | Express 5 / TS の小さなサーバー（port 3200）。`POST /build` で public-viewer の `pnpm run build:static` を実行し、`out/` を ZIP で返す（Next.js アプリそのものではない） |
 | analysis-core | PyPI 公開している解析パッケージ `kouchou-ai-analysis-core` |
 | dummy-server | dev / E2E 用モック API |
 | input plugin / analysis plugin / visualization plugin | [[plugin-system]] の 3 軸 |
@@ -71,7 +71,7 @@ sources:
 | Claude Code | Anthropic の coding CLI。[[nishio]] と polimoney が多用 |
 | Codex / GPT-5.2 | OpenAI コーディング AI |
 | GitHub Copilot Agent | issue にアサイン可能な並行選択肢 |
-| CodeRabbit | AI PR レビュアー。kouchou-ai でも導入検討（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)） |
+| CodeRabbit | AI PR レビュアー。2025-05 から kouchou-ai の PR を自動レビューしている（導入の経緯は Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)。2026-10-12 に完了として close）。設定は `.coderabbit.yaml` で、draft PR は自動レビューしない（`drafts: false`） |
 | #devin部屋 | Slack 内 Devin 指示用チャンネル |
 
 ## 自治体・行政まわり
@@ -95,3 +95,4 @@ sources:
 
 - 2026-05-17: 初回作成
 - 2026-05-21: 書籍を「Wiki スコープ外」から「開発向け source」表記へ更新
+- 2026-10-21: main `b71e0b79` と照合し、static-site-builder を「Next.js」から Express 5 のサーバーに、CodeRabbit を「導入検討」から 2025-05 以来の稼働中（Issue [#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417) は close 済み）に訂正

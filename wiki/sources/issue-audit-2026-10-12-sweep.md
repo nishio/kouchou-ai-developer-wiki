@@ -1,7 +1,7 @@
 ---
 title: "未解決53件の再検証(偽陰性洗い出し) 2026-10-12"
 type: source
-summary: "広聴AI の棚卸しで『未解決』とした53件を 2026-10-12 に9シャード並列で再検証（偽陰性洗い出し）した一次記録。固定 checkout c297bc97 基準。結果は still-unresolved 44 / human-required 7 / now-resolved 2。偽陰性は #953/#956 の2件のみ（現行 remote main a3c198e9 で解決済み）。判定まとめは [[daily-report-2026-10-12]]。"
+summary: "広聴AI の棚卸しで『未解決』とした53件を 2026-10-12 に9シャード並列で再検証（偽陰性洗い出し）した一次記録。固定 checkout c297bc97 基準。結果は still-unresolved 44 / human-required 7 / now-resolved 2。偽陰性は #953/#956 の2件のみ（現行 remote main a3c198e9 で解決済み）。判定まとめは daily-report-2026-10-12。"
 last_checked: 2026-10-12 JST
 sources:
   - https://github.com/digitaldemocracy2030/kouchou-ai/issues
@@ -11,7 +11,7 @@ sources:
 
 ## What it is
 
-digitaldemocracy2030/kouchou-ai の open Issue 棚卸し（[[issue-backlog-audit-2026-10-12]]）で **still-unresolved とした53件**を、別エージェント9シャードで現行 main に file:line 再照合し、**偽陰性（実は解決済み）を洗い直した再検証**の一次記録。公開 Issue への close/comment はこの記録ステップでは行わず、内部記録のみ（close はメインが別途実行）。
+digitaldemocracy2030/kouchou-ai の open Issue 棚卸し（[[issue-backlog-audit-2026-10-12]]）で **still-unresolved とした53件**を、9 つに分けて独立に現行 main と file:line で再照合し、**偽陰性（実は解決済み）を洗い直した再検証**の一次記録。この再照合では公開 Issue への close / comment は行っていない（偽陰性 2 件は同日に別途 close した）。日報としてのまとめは [[daily-report-2026-10-12]]。
 
 結論: 偽陰性は **2件（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956)）**。残り51件は前回の「未解決 / 人間必須」判定が妥当と再確認した。
 
@@ -103,4 +103,8 @@ digitaldemocracy2030/kouchou-ai の open Issue 棚卸し（[[issue-backlog-audit
 - **実機・実 API 未検証**: human-required 7件は実 API 課金・外部 repo 成果物・組織判断が前提で、コード静的照合では充足判定不能。偽陰性ではない。
 - **in-flight PR は未 merge**: [#960](https://github.com/digitaldemocracy2030/kouchou-ai/issues/960)/[#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962)/[#964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964)/[#971](https://github.com/digitaldemocracy2030/kouchou-ai/issues/971)/[#972](https://github.com/digitaldemocracy2030/kouchou-ai/issues/972) は OPEN PR（[#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)/[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)/[#965](https://github.com/digitaldemocracy2030/kouchou-ai/issues/965)/[#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975)/[#976](https://github.com/digitaldemocracy2030/kouchou-ai/issues/976)）が存在するが現行 main に未反映のため still-unresolved。merge されれば close 可。
 - **隣接要件の既解決は格下げ対象外**: [#366](https://github.com/digitaldemocracy2030/kouchou-ai/issues/366) の限定公開/unlisted のように隣接機能が解決済みでも、中核要件が未充足なら still-unresolved のまま（partial へ格下げせず）。上流更新案で注記する。
-- 公開 Issue への close/comment/本文編集/assign/merge はこのステップでは一切していない。close はメインが別途実行。
+- 公開 Issue への close/comment/本文編集/assign/merge は、この再照合では一切していない。偽陰性 2 件（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956)）は 2026-10-12 17:55 JST に別途 close した。
+
+## Updates
+
+- 2026-10-21: 偽陰性 2 件が 2026-10-12 17:55 JST に close 済みであることを追記

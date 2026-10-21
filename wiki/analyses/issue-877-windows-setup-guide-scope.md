@@ -62,3 +62,4 @@ Windows guide の冒頭を、手順から始めず、次のような環境判定
 ## Updates
 
 - 2026-05-29: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) とコメント、Docker Desktop ライセンス公式確認、current main docs、関連 PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) を踏まえ、Windows guide のサポート境界を整理した。
+- 2026-10-21: PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) は 2026-06-01（UTC）に merge された。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) は 2026-09-08 に PR [#929](https://github.com/digitaldemocracy2030/kouchou-ai/issues/929) で close された。内容は本ページの推奨どおりで、Docker Desktop（Linux containers）を標準経路にし、組織 PC は IT 管理者へ確認、使えない場合は別環境や serverless 版へ分岐する（API キーはどちらか一方でよいことも明記）。対象の docs は 2026-10-13 に `docs/self-hosting/windows-setup.md` へ移った。本文の旧パス、「`#863` が merge されると」の仮定、Open Questions の 1 つ目（実装順）は、これで決着した

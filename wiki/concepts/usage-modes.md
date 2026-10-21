@@ -130,7 +130,7 @@ sources:
   `analysis-core` の分析品質、provider 対応、出力スキーマ
 
 `PR #825` は、この分類では **CLI 側改善**。  
-`PR #824` は **共通コア改善だが、admin の model list UX は未追随** と読むのが自然。
+`PR #824` は **共通コア改善**（分析パイプラインが完全な URL・HTTPS ゲートウェイと `LOCAL_LLM_API_KEY` に対応）。ただし管理画面のモデル一覧取得（`/admin/models`）は当時 `http://host:port/v1` 固定で API キーも送らず、追随していなかった。PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で、analysis-core と同じ接続先解決と `LOCAL_LLM_API_KEY` を使う形に揃った（入力欄の例と説明は今も `host:port` 形式だけ）。共通コアの改善が Web UI の補助経路へ自動では届かない例として読む。詳細は [[llm-providers]]。
 
 ## この整理を使うページ
 
@@ -148,6 +148,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: main `b71e0b79` と照合し、`PR #824` の分類例を更新。管理画面のモデル一覧取得は PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) でパイプラインと同じ接続先解決・認証に揃った
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、A/B/C/D 分類は実装構成だけでなく Brand Compass / 情報発信上の説明軸でもあると追記。
 - 2026-05-19: 初版作成。Web UI と CLI / analysis-core を分ける軸を明文化
 - 2026-05-19: 研究者・データサイエンティスト向けは `Mac/Linux + CLI` を正規入口とし、`Windows` は `WSL2/Docker` 寄せでよい一方、非専門家向けは `Zip + setup.bat + Web UI` に近い入口を目標形として追う整理を追記

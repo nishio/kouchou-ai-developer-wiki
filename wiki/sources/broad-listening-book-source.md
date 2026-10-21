@@ -1,7 +1,7 @@
 ---
-title: "書籍「選挙を変えたブロードリスニング」要約"
+title: "書籍「政治・自治体・企業に広がるブロードリスニング」（旧仮題「選挙を変えたブロードリスニング」）要約"
 name: broad-listening-book-source
-summary: "DD2030 書籍「選挙を変えたブロードリスニング」原稿（CC BY-NC 4.0）を開発向け一次資料として要約。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む"
+summary: "DD2030 書籍「政治・自治体・企業に広がるブロードリスニング」（2026-07-21 に旧仮題「選挙を変えたブロードリスニング」から改題）の原稿（CC BY-NC 4.0）を開発向け一次資料として要約。章マップは 9c22db6（2026-06-30）時点。設計判断の出版時点の確定版・現場運用知見・将来開発の素材を含む"
 type: source
 sources:
   - work/broad-listening-book (digitaldemocracy2030/broad-listening-book)
@@ -56,7 +56,7 @@ sources:
 - `code/llm_opinion_analysis.py` — LLM 分類のリファレンス実装（Structured Output）
 - `code/political_wordcloud.py`, `code/rashomon_wordcloud.py` — wordcloud アンチパターンの参照実装
 - `code/test_mini_kouchou_ai.py` — 13.3.2 のミニ広聴AIの構造テスト
-- 13 章本文のプロンプト全文（抽出・初期ラベリング・統合ラベリング・要約）は kouchou-ai 本体の `apps/api/broadlistening/pipeline/prompts/` および `packages/analysis-core/.../prompts/` と突き合わせる際の参照になる
+- 13 章本文のプロンプト全文（抽出・初期ラベリング・統合ラベリング・要約）は、kouchou-ai 本体の `packages/analysis-core/src/analysis_core/prompts/__init__.py`（`EXTRACTION_PROMPT` / `INITIAL_LABELLING_PROMPT` / `MERGE_LABELLING_PROMPT` / `OVERVIEW_PROMPT`）と突き合わせる際の参照になる。管理画面が既定値として送るプロンプトは `apps/admin/app/create/*Prompt.ts` にある
 
 ## 書籍と本体実装の照合上の注意
 
@@ -66,6 +66,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: 書籍が 2026-07-21 に「政治・自治体・企業に広がるブロードリスニング」へ改題されたこと（book repo の PR [broad-listening-book#144](https://github.com/digitaldemocracy2030/broad-listening-book/pull/144)）を title / summary に反映した。章マップの本文は `9c22db6`（2026-06-30）時点のままで、改題後の原稿とは再照合していない。あわせてプロンプトの置き場所の誤記を訂正した（`apps/api/broadlistening/pipeline/prompts/` は存在したことがない。旧 `server/broadlistening/pipeline/prompts/` は 2025-05-17 に削除済み。main `c57e0bfa` で確認）
 - 2026-06-30: `work/broad-listening-book` を `9c22db6` で確認済みとし、Code for Japan / Democracy X / litela / 公明党 / 富士通章を [[broad-listening-book-public-case-appendix-2026-06-30]] と国内事例 map の source strength 補正に使ったことを追記した。
 - 2026-06-30: Web 公開版の `99_付録_公開事例一覧.md` を [[broad-listening-book-public-case-appendix-2026-06-30]] として切り出し、公開事例 catalog は primary URL 確認済みと付録由来候補を分ける運用に補正した。
 - 2026-05-21: 初回作成。`5826726` 時点で章マップを取得

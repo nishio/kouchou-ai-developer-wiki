@@ -113,10 +113,11 @@ Issue [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700)「Bi
 
 ## Updates
 
-- 2026-10-09: nishio の判断で「一括修正で 0 → build workflow に `biome ci`」を 1 PR で実施。[#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) を起票して nishio に assign し、[PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、`07287a6`、未merge）を作成した。
+- 2026-10-09: nishio の判断で「一括修正で 0 → build workflow に `biome ci`」を 1 PR で実施。[#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) を起票して nishio に assign し、[PR #963](https://github.com/digitaldemocracy2030/kouchou-ai/pull/963)（`fix/biome-lint-zero-and-ci`、`07287a6`、未merge）を作成した。
   - viewer / admin / dummy-server とも `biome ci` 0 件。`tsconfig.json` は `files.ignore` へ。`noDelete` は `Reflect.deleteProperty` で置き換え。dummy-server は `node:` import と `let data: unknown`
   - `client-build.yml`（viewer + dummy-server）と `client-admin-build.yml`（admin）に `biome ci --reporter=github` を追加し、`biome.json` 変更でも走るようにした。CONTRIBUTING.md に追記
   - CI 全成功、両 build job で Biome step が実際に success したことを job の step 結果で確認。CodeRabbit は指摘なし。マージには必須承認 1 件が必要
   - lefthook の `skip: true` と [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) の整理は範囲外として残した
 - 2026-10-09: nishio の指示で [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) を not planned で close。要件を main `a12d68e` と照合した結果、Biome が起動しない問題・個別インストール・環境変数の案内は 2026-01 の pnpm workspace 移行で解消済みで、残っていた「全体 lint が通らない・CI で強制されない」は [#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) / PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) に引き継いだ。close コメントに経緯を記録した。
 - 2026-10-09 file back: 「教訓」「調べ方」節を追加し、summary を PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) と [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) close まで反映。「現状」節見出しの「5 ファイル、すべて機械的に直せる」は不正確だった。実際は 6 ファイルで、noDelete 2 件は手直しが必要だった。[#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) の close コメントで外部コントリビュータを @mention して通知を飛ばした。AI エージェントの close コメントでは、指示がない限りメンションしない方がよい
+- 2026-10-21: PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) は 2026-10-12 に merge された（`2b0079a1`）。今の扱い（lefthook は skip のまま、CI で `biome ci`、root 全体の lint は対象外）は [[gotchas]]

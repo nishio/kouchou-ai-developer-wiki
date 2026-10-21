@@ -85,7 +85,7 @@ sources:
 
 2026-06-04 に nishio が dd2030 Slack で Ohki さん宛に 4 問の具体質問として整理した。(Q1) viewer 公開、(Q2) admin 画面共用 + 「共用環境なので秘密情報を入れないで」明示、(Q3) Github admin (大木さん他) がワンクリックで上げる 1 ヶ月専用試用環境、(Q4) 365 日稼働 SaaS は大木さん不参加の確認、の 4 層。Q3 は「ユーザごとに現 Azure デモ環境相当を丸ごと複製」案を on-demand provisioning + Github admin トリガー + 1 ヶ月期限つき、として具体化したもの。[[azure-demo-public-visibility-proposal-2026-06-04]] / [[nishio-slack-azure-demo-visibility-proposal-2026-06-04]]より
 
-2026-06-05 に大木さんから返答があり、nishio 決定として着地した。**viewer 公開と admin 共用は進める** (前提: container の dd2030 フォールバック `OPENAI_API_KEY` を外す。公開時に「共用 / 機微情報禁止 / データ保存・継続稼働非保証」の 3 点明示)。**1 ヶ月専用試用環境は優先度低**で保留し、代わりに「公開事例 / サンプルレポート / サンプル CSV を見せる導線の充実」が自治体ユーザ向けの優先方向となった。**365 日 SaaS は提供主体・責任範囲の整理項目化** とし、責任を持って継続運用・サポートできる主体を立てる方向で未着地のまま残す。あわせて、デモ環境の現時点の価値は「自分たちのデータを投入して試す場所」よりも「使い方や準備すべきデータを理解するための参照環境」として見直す再フレームが出ている。[[azure-demo-visibility-thread-resolution-2026-06-05]] / [[azure-demo-public-visibility-proposal-2026-06-04]]より
+2026-06-05 に大木さんから返答があり、nishio 決定として着地した。**viewer 公開と admin 共用は進める** (前提: デモ環境の API キーの扱いを、利用者が自分のキーを入れて使う形にそろえる。現在のキー構成は公開 wiki には書かず、Google Drive「広聴AI-Azureデモ環境」で扱う。公開時に「共用 / 機微情報禁止 / データ保存・継続稼働非保証」の 3 点明示)。**1 ヶ月専用試用環境は優先度低**で保留し、代わりに「公開事例 / サンプルレポート / サンプル CSV を見せる導線の充実」が自治体ユーザ向けの優先方向となった。**365 日 SaaS は提供主体・責任範囲の整理項目化** とし、責任を持って継続運用・サポートできる主体を立てる方向で未着地のまま残す。あわせて、デモ環境の現時点の価値は「自分たちのデータを投入して試す場所」よりも「使い方や準備すべきデータを理解するための参照環境」として見直す再フレームが出ている。[[azure-demo-visibility-thread-resolution-2026-06-05]] / [[azure-demo-public-visibility-proposal-2026-06-04]]より
 
 ### A3. DB 導入のタイミング
 
@@ -103,11 +103,11 @@ sources:
 
 [[meeting-minutes]] 2025-05-07 〜：「壊れても OK」スタンスは採用されたが、[[ohki-shingo]] のレビュー困難度マトリクス（A: スキルセット / B: 工数 / C: 環境 / D: 基準なし）は分類どまり。**具体的なマージ基準** は PR テンプレ以上には固まっていない（[[contributing]]）。
 
-### A7. モバイルでの散布図表示
+### A7. モバイルでの散布図表示（2026-09 に最小範囲を決定、A から除外）
 
-[[meeting-minutes]] 2025-07-30（チームみらい 61 レポート運用フィードバック）：30,000 点散布図のスマホ表示は構造的に難しい。「共有時にズーム済みビューを送る」の部分解決のみで根本未定。
+[[meeting-minutes]] 2025-07-30（チームみらい 61 レポート運用フィードバック）：30,000 点散布図のスマホ表示は構造的に難しい。当時は「共有時にズーム済みビューを送る」という部分的な解決だけだった。2026-05 には、スマホでは散布図を最初から interactive chart として出さず、静的画像やサムネイルで見せてタップ時だけ全体インタラクティブビューに移る案も出た。[[chart-scroll-ux-decision]]より
 
-2026-05 の追加論点として、**スマホでは散布図を最初から interative chart として出さず、静的画像やサムネイルで提示し、タップ時だけ全体インタラクティブビューに遷移させる** 案がある。これは PC 向けの wheel / hover 問題とは別設計にできる一方、画像生成コスト、遷移先 UI、アクセシビリティ、共有 URL 設計を伴うため未着手。[[chart-scroll-ux-decision]]より
+PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-09-09 JST merge、Issue [#872](https://github.com/digitaldemocracy2030/kouchou-ai/issues/872) を close）で、**初期表示を指定していないレポートは、幅 600px 以下では階層リストを入口にする** という最小範囲に決まった。本体 docs の `docs/development/mobile-reading.md` は「専用画像の生成や新しいレポート形式は導入しません」と書いており、静的画像の案は採らない。したがってこの項目は A（未定）から外れる。ただし散布図そのものの課題（縦長画面での表示 Issue [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121)、クラスタラベルの重なり Issue [#266](https://github.com/digitaldemocracy2030/kouchou-ai/issues/266)）は別の課題で、2026-10-21 時点で open のまま残っている。
 
 ### A8. パブコメ攻撃対策のステップ 3〜4
 
@@ -159,9 +159,9 @@ sources:
 
 loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALYSIS_PLUGINS_PATH` 環境変数を探す実装になっているが、リポジトリにこのディレクトリは無く、外部 analysis plugin の同梱もゼロ。**枠だけ用意して利用例なし**。
 
-### B8. `--without-html` / `--skip-interaction` argparse バグ修正
+### B8. `--skip-interaction` argparse バグ修正
 
-[[cli]]：`action="store_true"` + `default=True` で CLI から False に戻せない問題。**既知だが修正未着手**。修正方針自体は単純（`store_false` 化など）。
+[[cli]]：`--skip-interaction` は `action="store_true"` + `default=True` なので、CLI から False に戻せない。**既知だが修正未着手**（2026-10-21 の main で確認）。修正方針自体は単純（`store_false` 化など）。同じ形だった `--without-html` は PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825)（2026-05-18 merge）で `default=False` に直っている。
 
 ### B-Web UI
 
@@ -177,7 +177,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### B11. CodeRabbit 運用の深掘り
 
-`main@3809a7a` には既に **`.coderabbit.yaml`** があり、`reviews.auto_review.drafts: true` の最小設定は入っている。したがって「未配線」は古い。  
+CodeRabbit は 2025-05 から PR を自動レビューしており、設定は **`.coderabbit.yaml`** にある。当初（`main@3809a7a`）は `reviews.auto_review.drafts: true` だったが、PR [#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817)（2026-05-18 merge）以降は `drafts: false` の 3 行だけで、draft PR は自動レビューしない。したがって「未配線」は古い。  
 一方で、レビュー対象の絞り込み、除外ルール、コメント運用方針はまだ薄く、**導入後の運用設計** は詰め切れていない。
 
 ### B12. YAML ベース workflow 定義
@@ -204,11 +204,11 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### C-Web UI
 
-### C1. PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) — LOCAL LLM の HTTPS 対応
+### C1. PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) — LOCAL LLM の HTTPS 対応（2026-10-19 に着地、C から除外）
 
-`PR #824` は 2026-05-18 に merge 済みで、current `packages/analysis-core/src/analysis_core/services/llm.py` は `local_llm_address` に full URL を受け取れる helper と `LOCAL_LLM_API_KEY` 対応を持つ。`apps/api/src/services/report_launcher.py` も analysis 実行自体はこの `analysis-core` を subprocess 起動するため、**実際の分析経路は current `main` で HTTPS/full-URL 対応済み** と読める。[[pr-824-local-llm-https-observation-2026-05-19]]より
+この PR は 2026-05-18 に merge され、analysis-core の `services/llm.py` は `local_llm_address` に完全な URL を受け取る helper と `LOCAL_LLM_API_KEY` 対応を持った。API の分析実行（`apps/api/src/services/report_launcher.py`）も analysis-core を subprocess で起動するので、分析の経路はこの時点で HTTPS / 完全な URL に対応した。ただし admin の `/admin/models` 用のモデル一覧取得（`apps/api/src/services/llm_models.py`）は `host:port` を `http://.../v1` に組み立てる旧前提のまま残り、2026-05 時点では「基幹処理は完了、admin 補助経路は未統一」として C に置いていた。[[pr-824-local-llm-https-observation-2026-05-19]]より
 
-ただし current `apps/api/src/services/llm_models.py` の `/admin/models` 用 LocalLLM model list probe はなお `host:port` + `http://.../v1` 前提で、admin 画面のモデル取得 UX は full URL gateway に追随していない。したがって「基幹処理は完了、admin 補助経路は未統一」という意味で C に残すのが近い。[[pr-824-local-llm-https-observation-2026-05-19]]より
+PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で、モデル一覧取得もパイプラインと同じ `resolve_local_llm_base_url()` と `LOCAL_LLM_API_KEY` を使うようになった。admin の接続確認（`/admin/environment/verify`）も analysis-core の同じ LLM 呼び出しを経由する。したがってこの項目は C から外れる。残るのは使い方の案内だけで、2026-10-21 時点でも admin の入力欄の placeholder（`ollama:11434`）や API の説明文の例は `host:port` 形式しか示していない（完全な URL も受け付ける）。詳細は [[llm-providers]]。
 
 ### C-共通コア
 
@@ -223,11 +223,13 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 | カテゴリ | 件数 |
 |---|---|
-| A. 未定 | 11 |
+| A. 未定 | 12 |
 | B. 方針決定済み・未着手 | 11 |
 | C. 着手済み・未完了 | 2 |
 
-「決まったが手が無い」(B) が最多、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
+この表は 2026-05 時点の棚卸しの件数（A12 を足した 2026-05-19 以降の項目数）。その後、A7 は 2026-09 に決着し、C1 は 2026-10-19 に着地したので、2026-10-21 時点で C に残るのは C2 の 1 件である。A10 と B14 も前提や状態が変わった（2026-10-14 の追記を参照）。A・B のほかの項目は 2026-05 以降まとめて再確認していないので、件数だけで現在地を判断しない。
+
+「決まったが手が無い」(B) が A（未定）と並んで多い、というのは **コントリビュータ募集をかける際にここから候補を引くと効率的** であることを示唆する。ただし候補として拾う前に、その項目の現状を main と open PR で確かめる（着地済みの項目が混ざっている）。加えて [[usage-modes]] の軸で見ると、Web UI 専任の人は A-Web UI / B-Web UI / C-Web UI を、分析コア寄りの人は A-CLI / B-CLI / C-共通コア を優先的に追うと読みやすい。
 
 ## 観測手順
 
@@ -263,6 +265,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、legacy cleanup merge 後は Phase 8 が open decision ではなくなったため B5 を除外。current tree から消えた phase docs への参照も補正
 - 2026-05-25: A1 の [[nishio]] スタンスを訂正。「チームみらい等の宣伝用途」という外部顧客像に紐づけた表現は不適切で、実際は「少なくとも 2026-09 書籍版リリース時点までは温存」「より良い可視化が見つかれば併用→デフォルト切替も可」という時間軸のある立場である
 - 2026-06-04: A2 に [[azure-demo-public-visibility-proposal-2026-06-04]] への接続を追記。nishio が Ohki さん宛に Slack で 4 問 ((Q1) viewer 公開 / (Q2) admin 共用 + 秘密情報禁止明示 / (Q3) Github admin ワンクリックの 1 ヶ月専用試用環境 / (Q4) 365 日 SaaS 不参加確認) として decompose した
-- 2026-06-05: A2 に [[azure-demo-visibility-thread-resolution-2026-06-05]] による着地を追記。viewer 公開と admin 共用は進める (前提: container の dd2030 フォールバックキー除去、3 点明示文言)、1 ヶ月専用試用環境は優先度低 + 公開事例導線が代替方向、365 日 SaaS は提供主体・責任範囲の整理項目化、デモ環境の価値は「参照環境」へ再フレーム
+- 2026-06-05: A2 に [[azure-demo-visibility-thread-resolution-2026-06-05]] による着地を追記。viewer 公開と admin 共用は進める (前提: API キーの扱いを利用者のキー前提にそろえる、3 点明示文言)、1 ヶ月専用試用環境は優先度低 + 公開事例導線が代替方向、365 日 SaaS は提供主体・責任範囲の整理項目化、デモ環境の価値は「参照環境」へ再フレーム
 - 2026-10-07: lint 注記。短期未決 4 の [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は 2026-09-08 に PR [#922](https://github.com/digitaldemocracy2030/kouchou-ai/issues/922)（作成前に入力とAPI接続状態を確認する画面）で CLOSED（nishio 担当）。[#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) は open のまま。2026-06-30 overlay の他項目（8/2 event 等）は日付を過ぎており、現在の判断待ちは [[current-status-2026-10-05]] を先に見る
 - 2026-10-14（ヘルスチェック追記）: B14 の LLM grouping / LLM 直接分類は analysis-core に**出荷済み**（builtin plugin + workflow、[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) MERGED、admin/api 受け渡しは [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176)/[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) で main 入り）。A10 の backend Python plugin system は**存在する**（[#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) でコア/実験拡張を分離、`register_all` が 10 plugin を登録）。両項の未決は『scatter を持たない mode の visualization / capability 契約』に絞られる。詳細は [[plugin-system]]。また本ページ冒頭の『現在地は current-status-2026-10-05』案内は v4.1.0・docs 大掃除より前なので、現在地は [[meeting-report-draft]] / [[kouchou-ai-docs-overhaul-2026-10]] を参照。
+- 2026-10-21: main `b71e0b79` と照合し、A7（PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933) で最小範囲が決まり A から除外）、B8（`--without-html` は PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) で修正済みのため `--skip-interaction` に絞る）、B11（PR [#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817) 以降は `drafts: false`）、C1（PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) で着地し C から除外）を書き直し、件数表の A を 11 から 12 に訂正。あわせて公開境界に合わせ、A2 と 2026-06-05 の行からデモ環境の現在のキー構成についての記述を外した

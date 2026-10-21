@@ -7,6 +7,7 @@ sources:
   - windows-distribution-gpt-brainstorm-2026-05-22.md
   - meeting-minutes.md
   - source-code.md
+  - github-dev-docs.md
   - windows-powershell-default-installation.md
   - windows-setup-encoding-decision.md
   - docker-engine-wsl2-alternative-2026-05-23.md
@@ -29,9 +30,9 @@ sources:
 
 [[windows-distribution-gpt-brainstorm-2026-05-22]] の GPT 整理に、kouchou-ai 側の現状作業を 1 段階追加して 4 段階に並べると次のようになる。
 
-### 段階 1: `setup_win.*` スクリプト方式 (現状進行中)
+### 段階 1: `setup_win.*` スクリプト方式 (main に導入済み)
 
-- `setup_win.bat` を ASCII ランチャー、`setup_win.ps1` を日本語案内本体として分離する方針が `PR #863` で進行中（`Issue #731`）。`wiki/log.md` 2026-05-22 23:27 entry より
+- `setup_win.bat` を ASCII だけの薄いランチャーにし、日本語の案内と入力ダイアログを `setup_win.ps1` 側へ移した（`.ps1` も日本語の文字列を `\u` エスケープで持つので ASCII のまま）。PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) で 2026-06-01（UTC）に merge し、Issue [#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) を close した。[[github-dev-docs]]より [[source-code]]より
 - この分離判断の理由は [[windows-setup-encoding-decision]] に整理した。要点は「文字化け」ではなく `cmd.exe` による日本語行のパース破綻を避けることにある
 - この方針で依存する `powershell.exe` は、Microsoft Learn ベースでは Windows client 10 以降の既定インストール範囲に入る。したがって `Windows 10/11` 対象の配布導線としては比較的置きやすい前提である。一方で `pwsh` は標準前提にできない。[[windows-powershell-default-installation]]より
 - 配布物は zip 展開で済む shell script。Docker Desktop と Git の前提は残る
@@ -70,7 +71,7 @@ current main の確認では、`apps/admin` の Node runtime 責務は server-si
 
 ただしこれは段階 4 の難しさを消すものではない。`apps/public-viewer` の revalidate / OGP / live viewer、on-demand static zip 出力、`analysis-core` の `torch` / `numba` / `scipy` / `umap-learn` などを含む Python packaging は残る。MVP も外部 API route だけでなく、軽量モデル同梱や Foundry Local のような native local AI runtime で **API 契約不要で local 完結**する offline route を比較すべき、という整理に更新した。[[node-runtime-free-windows-exe-2026-05-31]]より
 
-PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は、この段階 4a の探索を実コードで先取りした draft と読める。embeddable Python + FastAPI + static public-viewer/admin assets を bundle に入れ、`/viewer` / `/admin-ui` を FastAPI から配信するため、Node runtime を bundle runtime から外す方向に沿っている。一方で 2026-06-30 時点では draft / dirty / stale で、`report_launcher` の subprocess interpreter、admin static export の build-time source mutation、baked API keys、installer 未実装などが残るため、current supported path ではなく prototype lane として扱う。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より
+PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は、この段階 4a の探索を実コードで先取りした draft と読める。embeddable Python + FastAPI + static public-viewer/admin assets を bundle に入れ、`/viewer` / `/admin-ui` を FastAPI から配信するため、Node runtime を bundle runtime から外す方向に沿っている。一方で 2026-06-30 時点では draft / dirty / stale で、`report_launcher` の subprocess interpreter、admin static export の build-time source mutation、baked API keys、installer 未実装などが残るため、current supported path ではなく prototype lane として扱う。[[github-pr-891-live-2026-06-30]]より [[pr-891-standalone-packaging-scope-2026-06-30]]より その後 PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は、2026-10-13 に作者が merge せずに close した（close 時のコメントは無い）。[[github-dev-docs]]より
 
 ## 正規入口を Docker Desktop に置く前提
 
@@ -87,7 +88,7 @@ PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は、�
 
 ### ルート A: Docker Desktop (WSL2 backend)
 
-- 現状の `docs/getting-started/windows-setup.md` と段階 1 の `setup_win.*` 系が前提にしているルート
+- `docs/self-hosting/windows-setup.md`（2026-10-13 に `docs/getting-started/` から改称）と段階 1 の `setup_win.*` 系が前提にしているルート
 - 利点: GUI / daemon 起動 / port forwarding / メモリ管理 / WSL integration を Docker Desktop が肩代わりするので、非専門家でも比較的成功率が高い
 - 限界: 大企業・政府機関・特定規模以上の組織では有料サブスクリプションが必要になる場合がある。Docker Desktop のインストール自体が組織端末管理ポリシーで弾かれることもある
 
@@ -104,7 +105,7 @@ GPT は「迷ったら Docker Desktop、組織 PC・行政・大企業・ライ�
 
 段階 1〜4 とランタイム A / B は組み合わせ可能だが、現実的に意味のある組み合わせは限られる。
 
-- 段階 1 (`setup_win.*`) × ルート A: 現状進行中の本線
+- 段階 1 (`setup_win.*`) × ルート A: main に導入済みの現在の本線
 - 段階 1 × ルート B: 「WSL2 Ubuntu 上で `docker compose up` する手順」を docs として正規化する案。setup script というより docs / playbook で支援する形になる
 - 段階 2 (ランチャー exe) 以降 × ルート A: GPT が推した「ランチャー exe で Docker Desktop を操作する」案
 - 段階 2 以降 × ルート B: ランチャー exe が WSL2 内 Docker Engine を扱う案。Windows ネイティブ exe から WSL2 内のプロセスを起動する形になり、設計難度が一段上がる
@@ -113,11 +114,11 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 
 ## 現状の作業との対応関係
 
-- main で進んでいる作業は **段階 1**（`setup_win.bat` / `setup_win.ps1`）まで
+- main にあるのは **段階 1**（`setup_win.bat` / `setup_win.ps1`）まで
 - 段階 2 のランチャー exe は GPT のブレスト以外に明示提案が見当たらない（[[meeting-minutes]] でも個別議論には到達していない）
 - 段階 3-4 は現状の体制 / 工数では現実的でない
 
-つまり「Windows ユーザー向け体験」をどこまでやるかは、コードレベルでは段階 1 で進行中、戦略レベルでは段階 2 以降は **未着手・未決の open question** として残っている。
+つまり「Windows ユーザー向け体験」をどこまでやるかは、コードレベルでは段階 1 まで導入済み、戦略レベルでは段階 2 以降は **未着手・未決の open question** として残っている。
 
 ## 判断材料
 
@@ -142,6 +143,7 @@ kouchou-ai の主要利用者層（自治体・政党・運用担当者）の中
 
 ## Updates
 
+- 2026-10-21: GitHub と main を照合し、段階 1 を「main に導入済み」に訂正（PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) が 2026-06-01 に merge、[#731](https://github.com/digitaldemocracy2030/kouchou-ai/issues/731) は close）。docs のパスを `docs/self-hosting/windows-setup.md` に更新し、PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の close（2026-10-13）を追記
 - 2026-10-06: [[slack-municipal-pc-wsl2-2026-10-05]] を反映。自治体内で流用可能な Windows 11 PC で、ルート B（WSL2 + `./start_linux.sh`、Docker Desktop なし）が動いたという大木の報告が出た。5 月時点では GPT のブレストしか根拠がなかったルート B に、初めて実機の成功例がついた。あわせて次を確認した
   - Docker Desktop の規約では、政府機関は組織規模に関係なく有料サブスクリプションが必須（無料は従業員 250 人未満かつ年間売上 1000 万ドル未満の組織などに限られる）。広聴AIの主要利用者である自治体は、そのまま有料の条件に当たる。「大企業 / 政府機関では有料になる場合がある」という上の書き方より強い
   - current main（`a12d68e`）の `docs/getting-started/windows-setup.md` は「組織利用の場合は管理者へ確認」とだけ書き、WSL 内の手動構築は扱わない。自治体の利用者には、有料のルート A か IT 管理者へ回すかの二択しか示していない

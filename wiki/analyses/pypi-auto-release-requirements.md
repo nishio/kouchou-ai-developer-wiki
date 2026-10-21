@@ -14,7 +14,7 @@ sources:
 ## 必須
 
 1. **publish workflow の追加**
-   `docs/refactoring/phase2_5_plan.md` には `analysis-core-v*` 命名の案があり、2026-05-17 時点では **`analysis-core-v*` を採用** する判断になった。したがって `.github/workflows/publish-analysis-core.yml` は `push.tags: ['analysis-core-v*']` で起動する前提で作る必要がある。[[github-dev-docs]]より
+   `docs/refactoring/phase2_5_plan.md`（PR [#865](https://github.com/digitaldemocracy2030/kouchou-ai/issues/865) で削除済み）には `analysis-core-v*` 命名の案があり、2026-05-17 時点では **`analysis-core-v*` を採用** する判断になった。したがって `.github/workflows/publish-analysis-core.yml` は `push.tags: ['analysis-core-v*']` で起動する前提で作る必要がある。[[github-dev-docs]]より
 
 2. **PyPI 認証の GitHub Secrets**
    文書上の自動化案は `pypa/gh-action-pypi-publish@release/v1` と `secrets.PYPI_API_TOKEN` を前提にしている。したがって repository secrets に PyPI 用認証情報を登録する必要がある。[[github-dev-docs]]より
@@ -60,6 +60,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: 削除済みの `docs/refactoring/phase2_5_plan.md` への参照に、PR [#865](https://github.com/digitaldemocracy2030/kouchou-ai/issues/865) で削除されたことを注記
 - 2026-05-19: 必須要件が一通り満たされ、`analysis-core-v0.1.2` で publish success を観測したことを追記
 - 2026-05-17: tag 規約は `analysis-core-v*` を採用する前提に更新
 - 2026-05-17: Query への filing back として追加。`docs/development/pypi-release.md`、`docs/refactoring/phase2_5_plan.md`、`.github/workflows/`、`packages/analysis-core/pyproject.toml` を照合

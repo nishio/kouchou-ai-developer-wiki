@@ -131,5 +131,6 @@ scatter / mobile 系は、個別の `#121` `#283` を先に直すより、`#872`
 
 ## Updates
 
+- 2026-10-21: 訂正。本文の「`sampling_num=10` ランダムサンプリング」は誤りで、CLI の既定は 3 件、管理画面/API 経路は 30 件。10 件になるのは `PipelineOrchestrator.from_dict` 経由だけ（[[label-quality]]）
 - 2026-05-29: `#221` 系の concrete tracking issue として `#884` `[FEATURE] レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` を起票し、下位 issue `#11`, `#79`, `#292`, `#391`, `#97` へ相互リンクコメントを追加した。
 - 2026-05-29: 初版作成。live open issues / PRs、`origin/main@0c294da`、既存 wiki 分析を照合し、`#741` close 後の残件優先順として整理した。

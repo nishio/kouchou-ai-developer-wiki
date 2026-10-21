@@ -42,3 +42,4 @@ repo 内に `process.exit()` は既に `apps/public-viewer/scripts/rename-file.m
 
 - 2026-05-19: 初版作成
 - 2026-05-19: `PR #835` で、ここで懸念していた `BUILD_SLUGS` 誤診断を分ける helper ベース実装が clean worktree で再実装され、draft PR 化された
+- 2026-10-21: PR [#814](https://github.com/digitaldemocracy2030/kouchou-ai/issues/814) は 2026-05-19 11:15（JST）に merge された（判定の「そのまま即 merge する判断は弱い」とは逆の結果）。PR [#835](https://github.com/digitaldemocracy2030/kouchou-ai/issues/835) も同日 16:47（JST）に merge 済みで、2026-05-19 の Update にある「draft PR 化された」は、その時点で既に古かった

@@ -38,3 +38,4 @@ PR metadata は `mergeable: CONFLICTING`, `mergeStateStatus: DIRTY`, `reviewDeci
 
 - 2026-05-19: 初版作成
 - 2026-05-19: current `main` clean install で非再現だったことを反映し、判断を「作り直して merge」から「一度 close して観測だけ残す」へ更新
+- 2026-10-21: PR [#801](https://github.com/digitaldemocracy2030/kouchou-ai/issues/801) は 2026-05-19 01:10（JST）に merge されずに close された

@@ -14,7 +14,7 @@ sources:
 広聴AI のツール戦略は **二段構造のエコシステム** として設計する。
 
 - **Web UI**: 全体傾向把握ユースケース一本の simple モード。デフォルトで「デカい見落とし / デカい違和感を見つける」ビューを提供し、設計判断は反応事後誘導型に倒す
-- **CLI / analysis-core**: 実験機能の追加場所。tokoroten の DivCon、Long Context 再分類によるマッピング不能抽出、ユーザカスタム prompt 経路、KJ [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) 系の補完 artifact など、多様な手法を実験できる空間
+- **CLI / analysis-core**: 実験機能の追加場所。tokoroten の DivCon、Long Context 再分類によるマッピング不能抽出、ユーザカスタム prompt 経路、KJ 法の原則 3〜5（表札の人間吟味・少数残存・構造を示す）を補う artifact など、多様な手法を実験できる空間
 - **コミュニティ**: CLI で試行錯誤された新しい分析が共有・比較・継承されるコミュニティを育てる
 
 これが [[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] で「別ツールで補完」「少数重要論点系は CLI 分析者責務」と整理した空き地に対する設計上の答えになる。[[slack-stance-discussion-2026-05-30]]より
@@ -45,7 +45,7 @@ sources:
 
 データサイエンティスト的な素養を持つ分析者は、ユーザのデータを直接観察し、「重要とは何か」を言語化し、適切な手法を選べる。Web UI に複雑機能を載せると、(1) 一般ユーザの simple さを壊し、(2) 分析者の自由度も逆に下げる。両立しない。
 
-CLI は分析者向けなので、複雑機能を載せても simple さは壊れない。tokoroten が提案した Long Context 再分類による少数意見救出、DivCon 由来の自治体カテゴリ突合、ユーザカスタム prompt による「重要」定義の言語化、ohki-shingo 公開UI 7 要件のうち [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) [#7](https://github.com/digitaldemocracy2030/kouchou-ai/issues/7) を担う実験 artifact、などすべて CLI 機能として実装できる。[[slack-stance-discussion-2026-05-30]]より
+CLI は分析者向けなので、複雑機能を載せても simple さは壊れない。tokoroten が提案した Long Context 再分類による少数意見救出、DivCon 由来の自治体カテゴリ突合、ユーザカスタム prompt による「重要」定義の言語化、ohki-shingo の公開 UI 7 要件のうち要件 5（少数意見の埋没回避）と要件 7（次の問いの可視化）を担う実験 artifact、などすべて CLI 機能として実装できる。[[slack-stance-discussion-2026-05-30]]より
 
 ### コミュニティを育てる理由
 
@@ -75,3 +75,4 @@ CLI は分析者向けなので、複雑機能を載せても simple さは壊�
 - 2026-06-01: 定例議事録を反映し、組織内デモ役を手元 Windows / Docker Compose に寄せすぎると複雑になるため、短期は Azure デモ環境で「見せる」方向へ寄せる判断を追記
 - 2026-06-03: 本ビジョン（Web UI 簡素化 / CLI 実験 / コミュニティ）の前提となるスコープ線（広聴AI＝キーインサイト発見まで、その先はパートナー）が、2025-07-16 マーケ戦略 mtg の時点ですでに置かれていた系譜を [[kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03]] に整理
 - 2026-05-30: 初版。[[slack-stance-discussion-2026-05-30]] で nishio が言語化した CLI + コミュニティビジョンを、[[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] が残した「別ツールで補完」の空き地に対する答えとして整理
+- 2026-10-21: KJ 法の原則番号と公開 UI 要件の番号が無関係な広聴AI の Issue へのリンクになっていたのを外し、原則名・要件名を添えた

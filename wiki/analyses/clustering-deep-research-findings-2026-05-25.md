@@ -1,7 +1,7 @@
 ---
 title: "クラスタリングのdeep-research結果整理 2026-05-25"
 name: clustering-deep-research-findings-2026-05-25
-summary: "[[clustering-research-survey-plan]] が立てた survey bucket への 2026-05-25 時点の deep-research 応答。`UMAP -> clustering` は否定されないが 2D 用と clustering 用は分離（15D〜25D 推奨）、BERTopic は完成品から backbone へ、数十件規模は LLM pairwise + spectral が筋という整理"
+summary: "clustering-research-survey-plan が立てた survey bucket への 2026-05-25 時点の deep-research 応答。`UMAP -> clustering` は否定されないが 2D 用と clustering 用は分離（15D〜25D 推奨）、BERTopic は完成品から backbone へ、数十件規模は LLM pairwise + spectral が筋という整理"
 type: analysis
 sources:
   - gpt-umap-clustering-bertopic-deep-research-2026-05-25.md
@@ -136,3 +136,4 @@ survey 計画の評価軸分離方針（bucket 5 / 6）は、Deep Research 後�
 ## Updates
 
 - 2026-05-25: survey bucket への deep-research 応答として整理。`UMAP -> clustering` は 2D vs 15D〜25D の分離が筋、BERTopic は backbone + LLM labeler の組合せに移行、数十件規模は LLM pairwise + spectral が筋、評価軸は 1 つに畳まない、を整理した
+- 2026-10-21: 本文の「チームみらい 300 件規模分析」（3 か所）は、[[nishio]] が社内で行った 300 件規模データの分析（[[meeting-minutes]] 2026-05-18 見出し）の誤り。300 件規模で LLM pairwise + spectral を試すという提案自体は変わらない。あわせて summary の wikilink を外した（リンクは本文にある）

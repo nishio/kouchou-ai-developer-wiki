@@ -7,7 +7,7 @@ sources:
   - broad-listening-book-source.md
 ---
 
-# 書籍『選挙を変えたブロードリスニング』から開発判断に効く知見
+# 書籍『政治・自治体・企業に広がるブロードリスニング』（旧仮題『選挙を変えたブロードリスニング』）から開発判断に効く知見
 
 [[broad-listening-book-source|book source]] を読み、**今後の開発に効く** 知見だけを抽出する。書籍そのものの目的（広い読者層への解説）から外れて、コードに触れる人間が知るべき項目を選んでいる。
 
@@ -45,7 +45,7 @@ sources:
 - **アプローチ1: センチメント次元の付与** — 抽出時に LLM が -1.0〜+1.0 のスコアを推定、エンベディングに重み付きで連結。電力政策パブコメ約 1,000 件で weight=0.75 にすると風力発電クラスタが賛否で分離した図あり。weight が大きすぎるとトピック類似性が消える、というトレードオフが書かれている
 - **アプローチ2: DivCon (Divide and Conciliate)** — エンベディング非使用。LLM でトピック発見 → 意見分類 → 対立軸発見 → アンカー生成 → スコアリング。強硬意見が上位に並ぶ「対立ビュー」の出力例あり
 
-開発判断としては、これらは **`analysis_mode=llm_grouping` 系の枝に整合する**（[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]）。書籍は将来研究テーマとしてしか書いていないが、kouchou-ai の plugin / analysis_mode 設計はこのプロトタイプを内包できる構造になりつつある
+開発判断としては、これらは **`analysis_mode=llm_grouping` 系の枝に整合する**（計画段階の整理は [[pr-827-llm-grouping-capabilities-plan-2026-05-18]]）。書籍は将来研究テーマとしてしか書いていない。一方 kouchou-ai には、2026-05-28（UTC）に PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で `analysis_mode=llm_grouping`（LLM 直接グルーピング）が入った。意見のサンプルから LLM がグループを見つけ、全件を 25 件ずつ割り当てる方式で、座標は埋め込み＋UMAP で作る。2026-10-12 の PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) からは作成画面でも選べる。DivCon の後段（対立軸発見・アンカー生成・スコアリング）にあたる処理は、2026-10-21 時点で本体には無い。今の状態は [[llm-grouping-supervised-classification]]
 
 ### Long Context アーキへの選択肢 (13.5)
 
@@ -96,6 +96,7 @@ sources:
 - 2026-05-25: 13.2.6 の「KJ法 / 表札 プロンプト」言及は prompt engineering tips としてだけでなく、product 設計原則として読み直せる。詳細は [[kj-method-broadlistening-framing-2026-05-25]]。原文復帰・既存カテゴリ非適用・表札の人間吟味・少数残存・対立/因果構造・現場返却の 6 原則のうち、current `kouchou-ai` は前 2 つを達成、後ろ 4 つは未達という棚分け
 - 2026-05-25: 13.2.4 の「UMAP 2D でクラスタリングしているのは標準作法と異なる妥協」自認は、外部 deep-research でも裏付けられた。同時に「clustering 用 UMAP は 15D〜25D」「BERTopic は backbone へ位置がずれた」など、書籍時点になかった現代的な落としどころが整理された。詳細は [[clustering-deep-research-findings-2026-05-25]]
 - 2026-09-15: 「KJ法プロンプトでラベル品質が上がる」を **未検証の仮説** として明示し直した。検証 issue `#882` は起票から約3.5か月 OPEN のまま実験未実施であることを一次ソース（issue 状態・PR 検索・commit grep）で確認。あわせて第1節の枠組みを「書籍＝確定版の裏付け」から「書籍＝設計意図の公開形。検証済みか否かは別に明示する」に改めた
+- 2026-10-21: 賛否分離 (13.4.3) 節の開発判断を、計画段階の書き方（内包できる構造になりつつある）から今の状態（PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で出荷、PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) から作成画面で選べる）に書き直した。あわせて書籍の改題（2026-07-21、旧仮題「選挙を変えたブロードリスニング」→「政治・自治体・企業に広がるブロードリスニング」）を見出しに反映した。抽出内容は改題前の原稿にもとづく
 
 ## Updates — 2026-10-05 索引再生成時の注意書き保持
 

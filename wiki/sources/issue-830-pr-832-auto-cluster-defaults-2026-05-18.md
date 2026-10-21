@@ -89,3 +89,4 @@ sources:
 
 - 2026-05-18: 初版作成
 - 2026-05-19: `PR #832` merged と、tiny dataset 補修 (`2 -> [2]`, `3 -> [2, 3]`) を追記
+- 2026-10-21: 本文の式（`lv1 = round(cuberoot(argument_count))`、`lv2 = lv1^2`）は docstring の記述で、実装には上限がある。PR [#832](https://github.com/digitaldemocracy2030/kouchou-ai/issues/832) の最初のコミットから一層目は `max(2, min(10, round(∛n)))`、二層目は上限 1000 で、merge 前の補修で意見数 n でも頭打ちになった（`lv2 = max(2, min(1000, n, lv1²))`）。そのため 858 件以上は常に `[10, 100]` になる。上限 10 の経緯（PR [#335](https://github.com/digitaldemocracy2030/kouchou-ai/issues/335) / [#356](https://github.com/digitaldemocracy2030/kouchou-ai/issues/356)）と、README の「8000 件: 20→400」との食い違いは [[auto-cluster-defaults]] を参照

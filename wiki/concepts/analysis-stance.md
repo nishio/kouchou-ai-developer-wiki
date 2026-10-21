@@ -102,11 +102,11 @@ Web UI の reader は自分のやりたいことを「全体傾向把握 / 構�
 
 ## エコシステム — CLI と共有コミュニティ
 
-構造把握スタンスを貫きつつ、artifact 抽出機能 (KJ 法 6 原則の [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3) [#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4) [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) 系) や少数意見救出系は別ツールに分業する、という基本方針 ([[label-quality-redesign-reset-2026-05-30]]) は、具体的には **CLI に多様な実験機能を積み、コミュニティ内で試行錯誤と共有を促す** 形で実装する。詳細は [[broadlistening-tool-ecosystem-vision]] を参照。
+構造把握スタンスを貫きつつ、artifact 抽出機能 (KJ 法 6 原則のうち原則 3〜5 の系統) や少数意見救出系は別ツールに分業する、という基本方針 ([[label-quality-redesign-reset-2026-05-30]]) は、具体的には **CLI に多様な実験機能を積み、コミュニティ内で試行錯誤と共有を促す** 形で実装する。詳細は [[broadlistening-tool-ecosystem-vision]] を参照。
 
 ## 構造把握スタンスと「別ツールで補完」の分業
 
-KJ 法的 6 原則 ([[kj-method-broadlistening-framing-2026-05-25]]) のうち [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3) (表札の人間吟味) / [#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4) (少数残存) / [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) (構造を示す = 対立・因果) は、2026-05-30 の対話で **広聴AI 本体には入れず、別ツール群で将来的に補完する** 方針となった。これは構造把握スタンス採用と矛盾しない。
+KJ 法的 6 原則 ([[kj-method-broadlistening-framing-2026-05-25]]) のうち原則 3 (表札の人間吟味) / 原則 4 (少数残存) / 原則 5 (構造を示す = 対立・因果) は、2026-05-30 の対話で **広聴AI 本体には入れず、別ツール群で将来的に補完する** 方針となった。これは構造把握スタンス採用と矛盾しない。
 
 整理:
 
@@ -123,7 +123,7 @@ KJ 法的 6 原則 ([[kj-method-broadlistening-framing-2026-05-25]]) のうち [
 - **散布図維持** ([[open-decisions]] A1): 散布図は構造把握スタンスの主要装置なので、より良い候補が見つかるまで温存。代替候補は構造把握として評価する
 - **semantic island map prototype の位置づけ**: 構造把握用の主図候補として広聴AI 本体に入る可能性を持つ。「別ツール候補に倒れた」のではない
 - **`interpretation_artifacts` step を切るか** ([[pipeline-step-addition-framing-2026-05-27]] / [[thinking-targets]] 3-1): 構造把握スタンスだが、artifact 抽出は別ツール側なので、広聴AI 本体には入れない方向に倒れる
-- **継続関与 ([[thinking-targets]] 1 系の [#6](https://github.com/digitaldemocracy2030/kouchou-ai/issues/6))**: 「構造を読ませる」装置を時間軸方向に拡張する設計として整合する。継続的に構造を読み続けるための支援は構造把握の延長
+- **継続関与（KJ 原則 6「現場に返却する」。[[thinking-targets]] 2-3）**: 「構造を読ませる」装置を時間軸方向に拡張する設計として整合する。継続的に構造を読み続けるための支援は構造把握の延長
 - **公開UI 7 要件** ([[public-ui-requirements-for-broadlistening]]): ohki-shingo の整理は構造把握寄り。スタンス確定により、公開UI 側の上位契約として整合性が増した
 
 ## Open Questions
@@ -135,6 +135,7 @@ KJ 法的 6 原則 ([[kj-method-broadlistening-framing-2026-05-25]]) のうち [
 
 ## Updates
 
+- 2026-10-21: 継続関与の参照先を [[thinking-targets]] 2-3 に直し、原則番号の誤リンクを外した
 - 2026-05-30: 用語を descriptive な日本語に揃え直した。`α / β スタンス` を `定量分析スタンス / 構造把握スタンス` へ、`β 装置` を `構造把握装置`、`β 評価軸` を `構造把握の評価軸`、`contract A` を `全体傾向把握ユースケース` などに置換。短いラベルは時間が経つと文脈なしには読めなくなるため、内容で読める表現に統一
 - 2026-05-31: 「reader は解説する人」セクションに **「組織内デモ役」(エンジニアでもデータサイエンティストでもない橋渡し役)** を代表例として追記。広聴AI の現実の普及はこの層が担うので、構造把握の評価軸はこの読者で特に問われる
 - 2026-05-30: Slack team channel での議論 ([[slack-stance-discussion-2026-05-30]]) を反映。(1) 全体傾向把握ユースケースの operational 言い換え「デカい見落とし / デカい違和感を見つける」を tokoroten が提示、(2) 「止まる」現象を構造把握装置の構造的限界として整理 (prior model がない reader には届かない、ohki-shingo 確認)、(3) Web UI の UX 指針としてデフォルトモード提供 + 反応事後誘導型を明文化、(4) エコシステム = CLI + 共有コミュニティ ([[broadlistening-tool-ecosystem-vision]] 新設) へ接続

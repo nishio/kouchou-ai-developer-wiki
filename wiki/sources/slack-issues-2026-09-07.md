@@ -18,7 +18,7 @@ sources:
 
 ## SlackとIssueの接続
 
-[9月6日の報告](https://dd2030.slack.com/archives/C08F7JZPD63/p1788647591961169) と [追試](https://dd2030.slack.com/archives/C08F7JZPD63/p1788648652444879)、[Issue [#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905) より、同じ194回答・同じプロンプトで次の結果が報告された。
+[9月6日の報告](https://dd2030.slack.com/archives/C08F7JZPD63/p1788647591961169) と [追試](https://dd2030.slack.com/archives/C08F7JZPD63/p1788648652444879)、[Issue #905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905) より、同じ194回答・同じプロンプトで次の結果が報告された。
 
 | 条件 | 抽出意見数 | 抽出0件の元回答数 |
 |---|---:|---:|
@@ -41,11 +41,11 @@ sources:
 - 8月14〜18日の開発channelでは、9月以降の戦略会議と、いどばた・広聴AI・自然言語データ収集を横断する議論への接続が共有された。日程や結論はこの読解では確認していない。
 - 7月にアルゴリズムchannelでブラウザ完結版の共有があり、8月21日はDD2030移管と別repo / 本体配下の選択肢に言及。決定済みとは読まない。
 - 9月1日の開発channelではデモ環境のコスト削減・構成簡素化への協力募集と、Issue滞留を整理する必要が挙がった。環境詳細は公開wikiに転記しない。
-- open PRは [#904](https://github.com/digitaldemocracy2030/kouchou-ai/issues/904)（依存更新）、[#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903)（Node runtime依存の文書化）、[#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)（Windows配布、draft）の3件。[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)〜#909の対応PRはこのopen一覧では確認できない。依存更新の安全性評価は今回行っていない。
+- open PRは [#904](https://github.com/digitaldemocracy2030/kouchou-ai/issues/904)（依存更新）、[#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903)（Node runtime依存の文書化）、[#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891)（Windows配布、draft）の3件。[#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)〜[#909](https://github.com/digitaldemocracy2030/kouchou-ai/issues/909)の対応PRはこのopen一覧では確認できない。依存更新の安全性評価は今回行っていない。
 
 ## Open Questions
 
-- #905の失敗原因と、警告付き完了・中断・再実行の境界はどう定義するか。
+- [#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)の失敗原因と、警告付き完了・中断・再実行の境界はどう定義するか。
 - serverless版の移管と戦略会議の方針は、その後確定したか。
 
 ## Updates

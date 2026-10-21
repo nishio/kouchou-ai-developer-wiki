@@ -37,7 +37,7 @@ ohki-shingo は「すでにある総合計画に対して、意見がどうマ�
 
 ## エコシステムビジョン — CLI + 共有コミュニティ
 
-[[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] で「KJ [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3) [#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4) [#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) は別ツールで補完」「少数重要論点系は CLI 分析者責務」と整理してきたが、その「別ツール」エコシステムの空き地に対する nishio の答えがこのスレッドに出ている:
+[[analysis-stance]] / [[label-quality-redesign-reset-2026-05-30]] で「KJ #3 #4 #5 は別ツールで補完」「少数重要論点系は CLI 分析者責務」と整理してきたが、その「別ツール」エコシステムの空き地に対する nishio の答えがこのスレッドに出ている:
 
 - Web UI は simple モードに絞る (= 一般ユーザ向け)
 - CLI に実験機能を多様に追加する場所

@@ -16,7 +16,7 @@ sources:
 
 [[weekly-log-2026-05-06]]：
 
-- PR [#248](https://github.com/digitaldemocracy2030/kouchou-ai/issues/248) で **岩永淳志ページ** 公開（`election-finance/iwanaga`）
+- PR [#248](https://github.com/digitaldemocracy2030/polimoney/pull/248) で **岩永淳志ページ** 公開（`election-finance/iwanaga`）
 - `app/election-finance/[name]/ElectionFinanceClient.tsx` に **暫定の auth bypass**（このエントリだけ条件で通す）
 - `data/election-finance-entries.ts` 追加（Supabase 未接続）
 - Azure 障害（probe port 変更）を debug 復旧
@@ -37,3 +37,4 @@ sources:
 ## Updates
 
 - 2026-05-17: 初回作成
+- 2026-10-21: PR [#248](https://github.com/digitaldemocracy2030/polimoney/pull/248) のリンク先を Polimoney のリポジトリに直した（以前は無関係な広聴AI の PR を指していた）

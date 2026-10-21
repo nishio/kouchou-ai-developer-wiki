@@ -110,3 +110,4 @@ Viswanathan et al.（LLM を clustering の前・中・後に組み込む手法�
 ## Updates
 
 - 2026-05-25: 初回作成
+- 2026-10-21: Open Questions の「チームみらいの 300 件規模分析」は、[[nishio]] が社内で行った 300 件規模データの分析（[[meeting-minutes]] 2026-05-18 見出し）の誤り。問いの中身（この規模で LLM pairwise + spectral を代替経路として試したときの評価）は変わらない

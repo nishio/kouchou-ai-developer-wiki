@@ -9,11 +9,11 @@ sources:
 
 ## 位置づけ
 
-nishio「コードのチェックをもっと本格的にやろうか」を受けたレビュー。[[code-health-review-2026-10-18]] より範囲と検証を深くし、洗い出し 9 体（API の router / service、analysis-core の orchestration / 解析ステップ、LLM プロバイダ、public-viewer、admin、インフラ・CI、横断のフロー追跡）→ 指摘ごとの反証・再現 → 重要度の高いものは別の検証者が再現をやり直す、の順で進めた。観測時点は kouchou-ai main `083593ba`。[[source-code]]より
+nishio「コードのチェックをもっと本格的にやろうか」を受けたレビュー。[[code-health-review-2026-10-18]] より範囲と検証を深くし、9 つの観点での洗い出し（API の router / service、analysis-core の orchestration / 解析ステップ、LLM プロバイダ、public-viewer、admin、インフラ・CI、横断のフロー追跡）→ 指摘ごとの反証・再現 → 重要度の高いものは別の検証者が再現をやり直す、の順で進めた。観測時点は kouchou-ai main `083593ba`。[[source-code]]より
 
 横断のフロー追跡は「入力や設定値がファイルをまたいでどの出口に届くか」を追う担当で、ある変更が離れた場所の古い処理とつながって起きる不具合を探すために置いた。
 
-修正は 10 グループに分け、グループごとに別の worktree で実装 → 別のエージェントがレビュー → 指摘を修正、の順で進め、最後に全ブランチの差分確認・テスト再実行・全ブランチをまとめて merge した状態でのテスト（analysis-core 383 / api 362 passed）を手元で行ってから PR にした。merge は未実施。
+修正は 10 グループに分け、グループごとに独立に実装 → 実装とは別の検証者がレビュー → 指摘を修正、の順で進め、最後に全ブランチの差分確認・テスト再実行・全ブランチをまとめて merge した状態でのテスト（analysis-core 383 / api 362 passed）を手元で行ってから PR にした。merge は未実施。
 
 ## 修正 PR と指摘
 
@@ -86,15 +86,15 @@ nishio「コードのチェックをもっと本格的にやろうか」を受�
 ## 気づき
 
 - **黙ったデータ欠落が多い**: comment-id の型推論、同じ文面の意見の帰属、古い中間ファイルのマージなど、エラーにならずに結果だけが少し違う種類の不具合が目立った。テストは「動くこと」だけでなく「属性・件数が入力と一致すること」まで確かめる必要がある
-- **再実行の判定は状態が多い**: params に入っていない設定値、途中で失敗した実行、中断後の previous、`--only` / `--force` / `--reuse-from` の組み合わせで、古い結果のまま完了になる経路が複数あった（#1033）
-- **同じファイルを複数の PR が触る**: `admin_report.py` は 4 本の PR が触る。#1034 と #1041 は `createReport.test.ts` が衝突するので、後から merge する側で解消する
-- **挙動が変わる修正**: #1032 は、別の回答から出た同じ文面の意見を回答ごとに 1 件として数えるようになるので、意見数・散布図の点の数が増えることがある
+- **再実行の判定は状態が多い**: params に入っていない設定値、途中で失敗した実行、中断後の previous、`--only` / `--force` / `--reuse-from` の組み合わせで、古い結果のまま完了になる経路が複数あった（[#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033)）
+- **同じファイルを複数の PR が触る**: `admin_report.py` は 4 本の PR が触る。[#1034](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1034) と [#1041](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1041) は `createReport.test.ts` が衝突するので、後から merge する側で解消する
+- **挙動が変わる修正**: [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032) は、別の回答から出た同じ文面の意見を回答ごとに 1 件として数えるようになるので、意見数・散布図の点の数が増えることがある
 
 ## Open Questions
 
 - 10 本の PR のレビューと merge の判断（人間 attention を使う操作なので明示指示時のみ）
-- #1032 の意見数の数え方の変更をリリースノートでどう伝えるか
+- [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032) の意見数の数え方の変更をリリースノートでどう伝えるか
 
 ## Updates
 
-- 2026-10-19: nishio「CI が通った PR は admin merge」の指示で #1032–#1041 を squash merge。#1033・#1036・#1041 は先行 PR との衝突を rebase で解消し、テスト再実行・CI 通過後に merge した。merge 後の main でも analysis-core / api のテストが通ることを確認
+- 2026-10-19: nishio「CI が通った PR は admin merge」の指示で [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1041) を squash merge。[#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033)・[#1036](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1036)・[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1041) は先行 PR との衝突を rebase で解消し、テスト再実行・CI 通過後に merge した。merge 後の main でも analysis-core / api のテストが通ることを確認

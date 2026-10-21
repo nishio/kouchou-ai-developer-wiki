@@ -74,7 +74,7 @@ sources:
 
 ## 構造把握スタンス / 全体傾向把握ユースケース / 別ツール分業との照合 (2026-05-30 追記)
 
-2026-05-30 に確定した [[analysis-stance]] と [[label-quality-redesign-reset-2026-05-30]] の整理 (構造把握スタンス、全体傾向把握ユースケース一本、KJ 原則 [#3](https://github.com/digitaldemocracy2030/kouchou-ai/issues/3)/[#4](https://github.com/digitaldemocracy2030/kouchou-ai/issues/4)/[#5](https://github.com/digitaldemocracy2030/kouchou-ai/issues/5) は別ツール補完) を 7 要件に重ねると、責務が次のように分かれる。
+2026-05-30 に確定した [[analysis-stance]] と [[label-quality-redesign-reset-2026-05-30]] の整理 (構造把握スタンス、全体傾向把握ユースケース一本、KJ 原則 3〜5（表札の人間吟味・少数残存・構造を示す）は別ツール補完) を 7 要件に重ねると、責務が次のように分かれる。
 
 | # | 要件 | 担当 |
 |---|---|---|
@@ -120,6 +120,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: KJ 原則の番号（3〜5）が無関係な広聴AI の Issue へのリンクになっていたのを外し、原則名を添えた
 - 2026-05-30: 用語を descriptive な日本語に統一 (`contract A` → 全体傾向把握ユースケース、`β` → 構造把握スタンス / 構造把握装置 など)
 - 2026-05-30: 全体傾向把握ユースケース / 別ツール 分業 / 構造把握スタンスとの照合セクションを追加。7 要件のうち 5/7 は別ツール側、残り 5 件が広聴AI 本体、加えて構造把握の評価軸 (解説素材性 / 突合素材性) が 2 件加わる、と整理し直した
 - 2026-05-23: 初版作成。`#2_開発_広聴ai` の 2026-05-23 thread で [[ohki-shingo]] が整理した「散布図の受け入れ要因 5 要素」「公開UI 7 要件」「embedding 距離精度の非本質性」を、[[llm-grouping-background-history]] が残していた『散布図の役割を別 view でどう代替するか』への回答として再整理

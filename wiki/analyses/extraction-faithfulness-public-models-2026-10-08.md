@@ -128,11 +128,11 @@ judge のプロンプトに「まず原文が皮肉・反語かを判定し、�
 
 ### 2026-10-09 20:07 JST — 上流 PR の現在状態
 
-[PR [#967](https://github.com/digitaldemocracy2030/kouchou-ai/issues/967)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967) の本文・差分・check・reviewThreads と open PR 一覧を GitHub API で確認（HEAD `d001c399d2652de28068d3a273400546c86f3b1c`）。従来の「草稿のまま」という記録から進み、上流へ提出済み。
+[PR #967](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967) の本文・差分・check・reviewThreads と open PR 一覧を GitHub API で確認（HEAD `d001c399d2652de28068d3a273400546c86f3b1c`）。従来の「草稿のまま」という記録から進み、上流へ提出済み。
 
 - [#967](https://github.com/digitaldemocracy2030/kouchou-ai/issues/967) は OPEN、非 Draft、未merge。`docs/development/extraction-prompts.md` だけの追記で、既定プロンプトは変更しない。build と CodeRabbit check は成功、deploy は SKIPPED。競合なし（MERGEABLE）だが、必須承認待ち（REVIEW_REQUIRED / BLOCKED）。人間の承認レビューはなく、レビュー依頼先も未指定。
 - CodeRabbit は COMMENTED、Minor の未解決スレッドが2件。[事実だけの文の抽出方針の整合](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967#discussion_r4228784282) と、[機械の合格基準・117件×3回の集計説明](https://github.com/digitaldemocracy2030/kouchou-ai/pull/967#discussion_r4228784309) が残る。check の SUCCESS は指摘なしや承認済みを意味しない。
-- 入出力例の既定値を修正する [PR [#965](https://github.com/digitaldemocracy2030/kouchou-ai/issues/965)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/965) も OPEN・未merge。[Issue [#964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964)](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964) も OPEN。[#967](https://github.com/digitaldemocracy2030/kouchou-ai/issues/967) の本文の「[#964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964) / [#965](https://github.com/digitaldemocracy2030/kouchou-ai/issues/965) で直した」を main 反映済みと読まない。
+- 入出力例の既定値を修正する [PR #965](https://github.com/digitaldemocracy2030/kouchou-ai/pull/965) も OPEN・未merge。[Issue #964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964) も OPEN。[#967](https://github.com/digitaldemocracy2030/kouchou-ai/issues/967) の本文の「[#964](https://github.com/digitaldemocracy2030/kouchou-ai/issues/964) / [#965](https://github.com/digitaldemocracy2030/kouchou-ai/issues/965) で直した」を main 反映済みと読まない。
 - 次は2指摘への対応判断と、修正後の確認・必須承認。今回の作業は状態確認と Wiki 記録のみ。
 
 #### Open Questions — 実測値の出典照合

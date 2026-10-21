@@ -82,3 +82,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-10-21: 2026-05-22 の追記で残論点に挙げた [#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818)・[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は、2026-05-21 に close 済みだった（[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は PR [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) で close、[#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818) も同日 close）。[[issue-820-current-state]] を参照

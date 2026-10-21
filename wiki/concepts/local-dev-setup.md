@@ -30,6 +30,8 @@ docker compose up
 # api:           http://localhost:8000
 ```
 
+static-site-builder（3200）も compose で profile が付いていないので、`docker compose up` で一緒に起動する。admin がコンテナ間通信（`http://static-site-builder:3200`）で呼ぶだけなので、ホストには公開されない。
+
 ローカル LLM を使うなら `WITH_GPU=true` を `.env` に書いてから `docker compose --profile ollama up -d`。ホストで既に 11434 が使われている場合は `.env` の `OLLAMA_HOST_PORT` でホスト側ポートだけ変える（アプリの接続先 `ollama:11434` は不変。[[pr-952-ollama-host-port-review-2026-10-06]]）。
 
 ## この Wiki と並走して読む場合
@@ -64,7 +66,7 @@ curl -L -sS \
   > raw/meeting_minutes.html
 ```
 
-`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `work/slack-logs/` の `mirror/`（直近14日）または `raw/`（月次 canonical）を見る。週次 AI 要約や GitHub activity とのセット確認が必要なら `oss_weekly_reporter` の該当週データも併読する。[[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
+`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `work/slack-logs/` の `mirror/`（直近 75 日。2026-10 時点。raw の最新月と重なるよう設定）または `raw/`（月次 canonical。約 2 か月遅れ）を見る。週次 AI 要約や GitHub activity とのセット確認が必要なら `oss_weekly_reporter` の該当週データも併読する。[[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
 
 ## フロントエンドだけ動かす（dummy API 利用）
 
@@ -73,12 +75,24 @@ make client-setup
 make client-dev -j 3       # viewer + admin + dummy-server を並行起動
 ```
 
+`make client-dev` が起動するのは viewer・admin・dummy-server だけで、static-site-builder は起動しない（`Makefile`）。`apps/admin/.env-sample` にも `CLIENT_STATIC_BUILD_BASEPATH` が無いので、この構成では admin の「HTML書き出し」（静的版のダウンロード）は動かない。試すなら `docker compose up` の構成を使う。
+
 ## API をネイティブで
 
 ```bash
+# 前提: 上の「最短：Docker」で作ったリポジトリ直下の .env がある
 cd apps/api
-rye run uvicorn src.main:app --reload --port 8000
+rye sync
+rye run python -m ensurepip --upgrade    # rye の venv には pip が無い
+rye run python -m pip install -e "../../packages/analysis-core[clustering]"
+ENV_FILE=../../.env rye run uvicorn src.main:app --reload --port 8000
 ```
+
+- API が読むのは環境変数と、実行ディレクトリから見た `.env`（既定では `apps/api/.env`。`ENV_FILE` で変えられる）だけ（`apps/api/src/config.py`）。リポジトリ直下の `.env` は自動では読まれず、必須の `ADMIN_API_KEY` / `PUBLIC_API_KEY` / `OPENAI_API_KEY` が見つからないと起動時の設定検証で落ちる。上の例では `ENV_FILE` でルートの `.env` を指している
+- analysis-core は API の依存（`pyproject.toml` / `requirements*.lock`）に入っておらず、`rye sync` では入らない。入れないと、レポート生成（API と同じインタプリタで `python -m analysis_core` を起動する）、接続確認（`/admin/environment/verify`）、ローカル LLM のモデル一覧が `No module named analysis_core` で失敗する（境界の詳細は [[cli]]）。extras なしだとクラスタリングが optional 依存のエラーで止まるので、最低でも `[clustering]` を付ける。ローカル埋め込みも使う場合や Docker イメージと揃える場合は `[full]`（torch と sentence-transformers を含む）
+- `rye sync` をやり直すと、lock に無い analysis-core が外れうる。やり直した後は pip install も再実行する
+- ルートの `.env` の `REVALIDATE_URL` は Docker のホスト名（`public-viewer`）を指すので、ネイティブの API からは届かない（失敗してもログが出るだけ）。viewer も手元で動かすなら、起動コマンドの前に `REVALIDATE_URL=http://localhost:3000/api/revalidate` を付けて上書きする（ルートの `.env` を書き換えると、Docker で動かす API から届かなくなる）
+- 本体の `docs/self-hosting/quickstart.md` にも「ローカル開発（Dockerを使わずに起動）」節がある。ただし同節がコピー元に挙げる `apps/api/.env.example` は 2026-10-21 時点でリポジトリに無く、analysis-core の install にも extras が付いていない
 
 ## 必須環境変数（抜粋）
 
@@ -123,13 +137,10 @@ Codex で Windows setup 系の修正を扱う時の実機確認・lint・Unicode
 
 AI コーディングエージェントの長期運用では、host machine full access を標準にするより、**devcontainer を編集面、Docker Compose を実行面** と分ける方が安全。詳細は [[agent-sandboxing-strategy]]。
 
-## Open Questions
-
-- `apps/static-site-builder/` (port 3200) の起動方法は README のクイックスタートに含まれていない — 利用者が見落とす
-
 ## Updates
 
-- 2026-10-18: docs の rename（`docs/self-hosting/`）と PR #957 merge 済みを反映
+- 2026-10-21: main `b71e0b79` と照合し、「API をネイティブで」に `.env` の読み込み先（`ENV_FILE`）と analysis-core の導入を追加。static-site-builder は compose で profile なしのため `docker compose up` で一緒に起動すると確認し、前提の誤った Open Question「起動方法がクイックスタートに無い」を削除（README のアーキテクチャ概要に載っていない件は [[architecture-overview]] で扱う）。`make client-dev` では静的版ダウンロードが動かないことを追記。あわせて、Slack mirror の窓を 14 日から 75 日に訂正
+- 2026-10-18: docs の rename（`docs/self-hosting/`）と PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) merge 済みを反映
 - 2026-05-17: 初回作成
 - 2026-05-17: Wiki 配下で実装確認するための clone 位置として `work/kouchou-ai/` を追記
 - 2026-05-18: AI エージェント向けには devcontainer と Compose を役割分離する方針への参照を追加

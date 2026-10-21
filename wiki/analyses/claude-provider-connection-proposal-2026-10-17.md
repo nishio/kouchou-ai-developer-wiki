@@ -79,7 +79,7 @@ tokoroten の「Max の無料トークンを突っ込む」案を support 記事
 | 位置づけ | [[offline-local-clustering]] + ラベリングを Claude が担う一般化 | [[llm-providers]] への provider 追加、[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285) の範疇 |
 
 - **(A) は既に動く**。10-13 の「爆誕」は新機能ではなく、[[offline-local-clustering]]（ローカル embedding + 階層クラスタリング）に、ラベリングを Claude Code 自身が肩代わりする形を足しただけ。つまり**キー不要ルートは設計上すでに存在していて、Claude Code がそれを end-to-end で実演した**という理解が正確。[[coding-agents]] の「nishio が分析実務で Claude Code を多用」の一例。
-- **(C) は [#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)「利用可能な LLM を増やす」の自然な一項目**。自治体向けの動機は [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255)「OpenAI が使えないケースのケア」にある通り、コストだけでなく「ChatGPT の政治利用 NG が売り込みの障害になりうる」= **provider 中立性**。#255 の現案は Azure / Gemini / OpenRouter / LiteLLM で、**Claude はまだ挙がっていない**ので、同じ列に足す提案になる。
+- **(C) は [#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)「利用可能な LLM を増やす」の自然な一項目**。自治体向けの動機は [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255)「OpenAI が使えないケースのケア」にある通り、コストだけでなく「ChatGPT の政治利用 NG が売り込みの障害になりうる」= **provider 中立性**。[#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) の現案は Azure / Gemini / OpenRouter / LiteLLM で、**Claude はまだ挙がっていない**ので、同じ列に足す提案になる。
 
 ## 設計上の切り分けと最小実装
 
@@ -94,11 +94,11 @@ tokoroten の「Max の無料トークンを突っ込む」案を support 記事
 - **ローカル embedding / 小型モデルの意味忠実性**: 小型ローカルモデルで他言語の短文から意見抽出すると、主張の主体が逆転するなど意味が書き換わる観察がある（[[local-llm-extraction-faithfulness-2026-10-05]]）。「キー不要で回った」ことと「出力が正しい」ことは別。
 - **決定性**: step 関数直呼び経路は `random_state` を取らず乱数固定できない（[[offline-local-clustering]]）。採用判断の比較実験では [[experiment-methodology]] に従い factor を 1 つだけ変える。
 - **指定カテゴリ分類との関係**: provider を変えても、[[llm-grouping-supervised-classification]] の「その他」受け皿必須などラベリング側の原則は不変。
-- **政治利用ポリシー**: #255 の動機が「ChatGPT 政治利用 NG」である以上、Claude を足す際も Anthropic 側の利用規約（政治用途の可否）を provider 選定時に確認する必要がある（本ページでは未確認、要 follow-up）。
+- **政治利用ポリシー**: [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) の動機が「ChatGPT 政治利用 NG」である以上、Claude を足す際も Anthropic 側の利用規約（政治用途の可否）を provider 選定時に確認する必要がある（本ページでは未確認、要 follow-up）。
 
 ## Open Questions
 
-- (C) を [#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285) / [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) のどちらで追跡するか。embedding を別軸で扱う以上、「LLM を増やす（#285）」と「OpenAI 不可ケアの provider 列（#255）」の両方に跨る。
+- (C) を [#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285) / [#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255) のどちらで追跡するか。embedding を別軸で扱う以上、「LLM を増やす（[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)）」と「OpenAI 不可ケアの provider 列（[#255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/255)）」の両方に跨る。
 - embedding の既定を「ローカル無償」にするか「別社キー」にするか。精度（[[local-llm-extraction-faithfulness-2026-10-05]]）× コスト × 一貫性のトレードオフ。
 - Max API credit の weekly/monthly 枠と rate が、自治体スケール（数千〜数万コメント）の labelling に耐えるか（docs に rate 記載なし。SIWC と同じ未確認点）。
 - Anthropic の政治用途ポリシーが広聴AI の売り込み先（政党・自治体）と整合するか。

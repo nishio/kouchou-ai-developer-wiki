@@ -1,17 +1,18 @@
 ---
 title: "UMAP / k-means の seed 固定と再現性の経緯"
 type: source
-summary: "UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810"
+summary: "UMAP / k-means の seed 固定と再現性要求の経緯 — 2025-03 の実装、2025-05 の再現性不満、2025-07 の再評価、2026-02 の PR #810（未 merge）、2026-05 の PR #829 で固定 seed を除去"
 sources:
   - source-code.md
   - slack-kouchouai-algorithm-dev.md
   - weekly-log-2026-05-06.md
+  - meeting-minutes.md
 ---
 
 ## What it is
 
-`seed` 固定の経緯を、`work/kouchou-ai/` の履歴確認と `oss_weekly_reporter` 由来の GitHub / Slack ログから束ねた source。  
-対象は主に `UMAP(random_state=42)` と `KMeans(..., random_state=42)`、およびそれを後から見直した `PR #810` の文脈。
+`seed` 固定の経緯を、`work/kouchou-ai/` の履歴確認、`oss_weekly_reporter` 由来の GitHub / Slack ログ、定例の議事録から束ねた source。  
+対象は主に `UMAP(random_state=42)` と `KMeans(..., random_state=42)`、それを後から見直した PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810)（設定化案。merge されずに close）、そして固定 seed を外した PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)（2026-05-19 merge）の文脈。
 
 この論点は「なぜ 42 なのか」という数値選択より、**なぜ再現性を欲したのか**、そして **なぜ後から並列性重視へ再評価したのか** を追う方が実態に近い。[[source-code]] / [[slack-kouchouai-algorithm-dev]]より
 
@@ -94,12 +95,29 @@ PR `#810` の提案は「固定を全面撤廃」ではなく、
 
 という **再現性をオプションへ後退させる** ものだった。[[weekly-log-2026-05-06]]より
 
+### 2026-05-18 〜 2026-05-19: 定例で設定化案を採らず、PR `#829` で固定 seed を除去
+
+2026-05-18 の定例で PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) を議論した。出た意見は次のとおり。
+
+- seed を無効にするだけなら一瞬だが、切り替えを WebUI に入れるのは大変
+- seed 固定は、初期にデータサイエンティストが実験のために入れたもの。シングルスレッドになって遅くなる弊害は、後から分かった
+- seed 固定は研究者向けの機能なので、WebUI に入れる必要はなさそう
+
+同じ回では、このページと [[umap-seed-history]] を参照したうえで「seed=42 は削除でよい」という結論になった。[[meeting-minutes]]（2026-05-18 の回）より
+
+同日、[#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) には「seed を固定する機能は WebUI にも CLI にも必要なく、固定を外すだけでよい」という定例の結論がコメントされ、merge されずに close された（`enable_reproducibility` フラグ案は採らなかった）。置き換えの PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)（2026-05-19 merge）は、UMAP と KMeans の `random_state=42` を外すだけの最小差分で、UI や config のフラグは意図して足していない。
+
+その結果、現在の main（2026-10-21 の `c57e0bfa` で確認）では、`hierarchical_clustering.py` の UMAP（渡すのは `n_components` と `n_neighbors` だけ）と KMeans（`n_clusters` だけ）にも、`llm_grouping.py` の UMAP にも seed は無い。再現性を選ぶオプションも無いので、常に seed なしで動き（UMAP の並列化が効く）、同じ入力でも実行ごとにクラスタや散布図の配置が変わる。[[source-code]]より
+
+- 「再現性を選べる設定」は Issue [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)（題名は「再現性を選べる分析設定と比較条件を整理する」に変更済み）と Issue [#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809) で open のまま、未実装
+- 比較可能性の要求（Issue [#515](https://github.com/digitaldemocracy2030/kouchou-ai/issues/515)）は、PR [#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988)（2026-10-12 merge）で CLI の `reuse_umap_model`（別レポートの UMAP 平面の使い回し）として実装された。WebUI 対応は Issue [#989](https://github.com/digitaldemocracy2030/kouchou-ai/issues/989) に残っている
+
 ## Related Pages
 
 - 解釈整理は [[umap-seed-history]]
 - 背景にある UMAP / 2D clustering への不満は [[slack-algorithm-themes]]
 - 現行コード上の `hierarchical_clustering` 実装は [[source-code]]
-- 現時点の warning 許容判断は [[gotchas]]
+- seed が無い現状の落とし穴（再実行で揺れること）は [[gotchas]]、残課題は Issue [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) / [#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)
 
 ## Open Questions
 
@@ -108,4 +126,5 @@ PR `#810` の提案は「固定を全面撤廃」ではなく、
 
 ## Updates
 
+- 2026-10-21: Timeline に結末（2026-05-18 の定例の結論、PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の close、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) での固定 seed の除去と main `c57e0bfa` での確認）を追記し、summary と Related Pages の古い前提（warning の許容）を訂正
 - 2026-05-18: `seed` 固定と `PR #810` の前史を、コード履歴・GitHub issue/PR・Slack から束ねて source 化

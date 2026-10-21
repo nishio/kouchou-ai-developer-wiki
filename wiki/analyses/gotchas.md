@@ -32,20 +32,23 @@ sources:
 
 `docker compose up --build` し直さないと反映されない env var がある。`Makefile` が `.env` / `.env.azure` のハッシュを `.env-hashes/` に保存し、変更検知で `docker compose build --no-cache` を強制する救済策がある。
 
-### `public-viewer` は API reachable でない build だと `/` と `/faq` が timeout retry に見えることがある
+### `public-viewer` の build で API が要るのは `build:static` だけ
 
-`apps/public-viewer` の root page と FAQ page は build 中に API を fetch する。2026-05-18 の local review では、API を立てずに `pnpm build` したとき `main@3809a7a` と `pr-823` の両方で `/` と `/faq` の static generation が 60 秒 timeout → retry になった。依存 bump 固有の回帰と即断せず、まず API 入力条件を疑うべき。[[public-viewer-build-behavior]]より
+PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)（2026-06-01 merge）以降、通常の `pnpm build`（サーバーモード）は `/` と `/faq` をリクエスト時に描画するので、build 中に API を読まない。public-viewer を変更した PR では、CI の「Run API-less dynamic build」がこれを確かめている。build 中にレポート API を読むのは static export の `build:static` だけで、`/reports` に届かなければ `generateStaticParams()` が日本語の明示的なエラーで止まる（PR [#835](https://github.com/digitaldemocracy2030/kouchou-ai/issues/835)）。`build:shell` はレポートを読まない。
 
-### `public-viewer` の `Reporter` は `NEXT_PUBLIC_API_BASEPATH` だけでは足りず、`API_BASEPATH` 未設定だと root prerender が落ちうる
+それより前の 2026-05-18 には、API を立てずに `pnpm build` すると `/` と `/faq` の static generation が 60 秒 timeout → retry になり、依存 bump（PR [#823](https://github.com/digitaldemocracy2030/kouchou-ai/issues/823)）の回帰に見えた。実際は bump 前の `main@3809a7a` でも同じように再現した。build が落ちたら依存の回帰と即断せず、まず **どの build か** と **API の入力条件** を確かめる。[[public-viewer-build-behavior]]より
 
-`apps/public-viewer/components/reporter/Reporter.tsx` は `new URL("/meta/reporter.png", process.env.API_BASEPATH)` を直接使うため、`API_BASEPATH` が空だと `ERR_INVALID_URL` になる。`getApiBaseUrl()` は `NEXT_PUBLIC_API_BASEPATH` fallback を持つのに、`Reporter` だけ前提がずれている。`.github/workflows/client-build.yml` も `NEXT_PUBLIC_API_BASEPATH` のみを渡しているため、API が実際に応答する build 環境では別の failure source になりうる。[[public-viewer-build-behavior]]より
+### `public-viewer` のサーバー側で API の URL を組むときは `getApiUrl()` を通す
 
-### LOCAL LLM の analysis 実行経路と admin の model list probe は揃っていない
+API の場所を示す環境変数は 2 つある。ブラウザが使う `NEXT_PUBLIC_API_BASEPATH` と、サーバー側が使う `API_BASEPATH`（未設定ならサーバー側でも `NEXT_PUBLIC_API_BASEPATH` を使う）。`app/utils/api.ts` の `getApiBaseUrl()` / `getApiUrl()` がこの使い分けと fallback を持ち、`getApiUrl()` は URL を組めなければ `null` を返す。
 
-`PR #824` merge 後の current `main` では、`packages/analysis-core/src/analysis_core/services/llm.py` が `_resolve_local_llm_base_url()` により `https://gateway.example.com` のような full URL を受け取れ、`LOCAL_LLM_API_KEY` も使える。API の分析実行経路は `analysis-core` を subprocess 起動するため、**分析実行そのもの** は HTTPS/full-URL LocalLLM gateway へ到達できる。[[pr-824-local-llm-https-observation-2026-05-19]]より
+2026-05 には `components/reporter/Reporter.tsx` だけが `new URL("/meta/reporter.png", process.env.API_BASEPATH)` を直接使っていて、`API_BASEPATH` が無いと `ERR_INVALID_URL` で root page の prerender を落としうる状態だった。PR [#828](https://github.com/digitaldemocracy2030/kouchou-ai/issues/828)（2026-05-18 merge）で `getApiUrl()` に寄せて直り、CI も `build:shell` / `build:static` には両方の変数を渡している。新しいコードで `process.env.API_BASEPATH` を直接読むと、同じずれを作り直すことになる。[[public-viewer-build-behavior]]より
 
-一方で current `apps/api/src/services/llm_models.py` の `get_local_llm_models()` はなお `host:port` を `http://.../v1` へ組み立てるため、`/admin/models` 経由の **モデル一覧取得 UI だけは旧前提のまま**。設定画面で model list fetch が失敗しても、実際の分析 subprocess 側は通るというズレが起こりうる。  
-**「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓自体はまだ有効。詳細は [[llm-providers]]。
+### LOCAL LLM は「HTTP の `host:port`」前提を埋め込みやすい
+
+PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824)（2026-05-18 merge）で、analysis-core の LLM 呼び出しは `https://gateway.example.com` のような完全な URL と `LOCAL_LLM_API_KEY` を受け取れるようになった。ところが admin の `/admin/models` によるモデル一覧取得は、`host:port` を `http://.../v1` に組み立てる旧前提のまま残った。そのため「設定画面ではモデル一覧が取れないのに、分析そのものは通る」というずれが続いた。[[pr-824-local-llm-https-observation-2026-05-19]]より
+
+PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で、モデル一覧取得もパイプラインと同じ `resolve_local_llm_base_url()` と `LOCAL_LLM_API_KEY` を使うようになり、このずれは解消した。**「LOCAL」という命名が実装に HTTP 前提を埋め込みやすい** という教訓は今も有効で、同じ設定値を読む経路が複数あるときは、接続先の解決を 1 か所に寄せる。なお 2026-10-21 時点でも、admin の入力欄の placeholder や API の説明文の例は `host:port` 形式だけを示している（完全な URL も受け付ける）。詳細は [[llm-providers]]。
 
 ### `PR #825` の `report.html` を Web 主経路だと思い込むとずれる
 
@@ -59,13 +62,19 @@ current `analysis-core` CLI は `--without-html` の default が `False` にな�
 
 非エンジニアユーザが kouchou-ai の出力 HTML をどこに置くか — 2025-04 から 2026-05 まで毎回議論されながら未解決。候補：SaaS ホスト `kouchou-ai.dd2030.org`、埋め込み fetch 型、BASIC 認証付き Azure。
 
+### クラウドのコンテナ内に置いたレポートは再デプロイで消える（ローカルの compose では消えない）
+
+[[meeting-minutes]] 2025-04-02：クラウドのコンテナ実行環境（Azure Container Apps など）にビルドしてデプロイする構成では、生成したレポートがコンテナの中に保存されていた。そのため新しいコードで再デプロイするとコンテナごと置き換わり、過去のレポートが消えた。手元で `docker compose up` する場合は `apps/api` をホストから bind mount しているので消えない（当時の議事録も同じ説明）。
+
+対策として 2025-04 の PR [#228](https://github.com/digitaldemocracy2030/kouchou-ai/issues/228) で Azure Blob Storage 連携が入った。今の main では、生成したレポートを storage へ同期し、API 起動時に storage から復元するのが本線である。当時の退避手段だった `fetch_reports.py` は公開 API の `/reports` を読み取る方式で、限定公開・非公開のレポートを退避できなかった（Issue [#629](https://github.com/digitaldemocracy2030/kouchou-ai/issues/629)）。そのため 2026-01 に `tools/scripts/` へ移った後、2026-05-29 に PR [#875](https://github.com/digitaldemocracy2030/kouchou-ai/issues/875)（Issue [#870](https://github.com/digitaldemocracy2030/kouchou-ai/issues/870)）で削除された。古いメモで `fetch_reports.py` を見かけたら、当時の手段として読む。経緯は [[fetch-reports-deprecation-and-storage-health-2026-05-26]]、今の退避・復元の考え方は本体 docs の `docs/deployment/storage-snapshot-operations.md` を参照。
+
 ### GitHub Pages サブパスで画像 404
 
 PR [#709](https://github.com/digitaldemocracy2030/kouchou-ai/issues/709)：ハードコードされた `/images/foo.png` 形式のパスがサブパス配信で 404 に。`NEXT_PUBLIC_STATIC_EXPORT_BASE_PATH` で配信パスを設定する運用。
 
-### Plotly 散布図 click 不発
+### Plotly の hover modebar が散布図のクリックを奪う
 
-Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`displayModeBar: "hover"` が `ScatterChart.tsx` にあると、URL を持つ scatter が click 移動しなくなる。
+Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`ScatterChart.tsx` の `displayModeBar: "hover"` で出るツールバーの入れ物（`.modebar-container`）がグラフ全体を覆い、URL を持つ点をクリックしてもリンク先へ移動しなかった。PR [#857](https://github.com/digitaldemocracy2030/kouchou-ai/issues/857)（2026-05-22 merge）で、入れ物は `pointer-events: none`、ツールバー本体だけ `auto` にして直した（`displayModeBar: "hover"` はそのまま）。Plotly の更新や散布図の DOM 操作を変えるときは、この上書きが効き続けているかを確かめる。
 
 ### UI の細かい操作感は shared preview がないと議論が止まりやすい
 
@@ -81,7 +90,7 @@ Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`d
 
 ### CSV 列名の case 不一致
 
-`config.is_pubcom=true` 経路で出る `final_result_with_comments.csv` だけ **snake_case** (`arg_id`, `category_id`)。他は kebab-case (`arg-id`, `category-id`)。`docs/development/plugin-output-data-structures.md` が明示的な例外として書いている。
+`config.is_pubcom=true` 経路で出る `final_result_with_comments.csv` では、`arg_id`（元 `arg-id`）と `category_id`（元 `cluster-level-1-id`）だけが **snake_case** に改名され、同じ CSV でも `comment-id` / `original-comment` は kebab-case のまま（混在）。他の CSV の ID 列（`arg-id`, `comment-id`, `cluster-level-*-id`）は kebab-case で、`category-id` という列はどこにも無い。ID 以外の列には snake_case のものもある（`hierarchical_merge_labels.csv` の `density_rank_percentile`、`opinion_classifications.csv` の `hate_or_insult` / `policy_proposal`）。`docs/development/plugin-output-data-structures.md` が明示的な例外として書いている。
 
 ### `comment-id` 自動採番が経路依存
 
@@ -99,13 +108,20 @@ Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`d
 
 また review 中に、tiny dataset では最初の実装が `2 -> [2, 4]` となって `n_clusters > n_samples` で落ちる穴が見つかった。最終 merge 版では `lv2 <= argument_count` に clamp して塞がれているが、**推奨値 rule は見栄えのよい典型例だけでなく最小ケースまで確認しないと壊れやすい**。
 
+なお cube-root rule には一層目 10 の上限があり（PR [#356](https://github.com/digitaldemocracy2030/kouchou-ai/issues/356) 由来）、858 件以上では常に `[10, 100]` になる。README の「8000 件: 20→400」はこの上限と食い違う。詳細は [[auto-cluster-defaults]]。
+
 ### `extraction.skip: true` がない
 
 整形済みデータの再分析でも extraction が走り、コスト・時間の無駄。複数回希望されたが未実装（最新確認は議事メモ 2026-05-18 見出し）。
 
-### UMAP の `random_state` 固定は warning を出すが、現時点では既知で許容
+### 既定パイプラインの UMAP / KMeans には seed が無く、再実行でクラスタが揺れる
 
-`packages/analysis-core/src/analysis_core/steps/hierarchical_clustering.py` は `UMAP(random_state=42, n_components=2, n_neighbors=...)` を使う。そのためテスト実行時に `umap-learn` から `n_jobs value 1 overridden ... Use no seed for parallelism.` という `UserWarning` が出ることがある。これは **再現性を優先した結果として並列性が制限される** という通知であり、2026-05-17 時点では **失敗扱いせず許容** する判断。将来、seed / 並列性のオプションを足す議論があるため、その時点で再整理する。[[source-code]]より
+既定の hierarchical パイプラインは、UMAP にも KMeans にも seed を渡さない（`hierarchical_clustering.py` が UMAP に渡すのは `n_components` と `n_neighbors`、KMeans に渡すのは `n_clusters` だけ）。以前は両方に `random_state=42` を固定していたが、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)（2026-05-19 merge。設定で切り替える案の PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) は不採用）で外し、UMAP が並列で動けるようにした（背景は Issue [#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)）。そのため、seed を固定していた頃にテストで出ていた `umap-learn` の `n_jobs value 1 overridden ... Use no seed for parallelism.` という `UserWarning` はもう出ない。代わりに、同じ入力で再実行してもクラスタ番号・境界・散布図の座標が変わる。[[source-code]]より
+
+- ラベル生成用のサンプリング（`hierarchical_initial_labelling` / `hierarchical_merge_labelling` の `sample`）にも seed は無い。こちらは外したのではなく、もともと無い
+- LLM grouping（`llm_grouping`）のサンプリングは `seed=0` で固定している
+- 散布図の平面を揃えたいときは、`reuse_umap_model` で別レポートの UMAP を使い回せる（Issue [#515](https://github.com/digitaldemocracy2030/kouchou-ai/issues/515)）。ただし KMeans には seed が無いので、クラスタ番号までは揃わない
+- 再現性を利用者が選べるようにするかは Issue [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)（2026-10-21 時点で open）で扱っている。seed 固定の経緯は [[umap-seed-history]]
 
 ### 散布図の見た目とクラスタの妥当性を同一視しやすい
 
@@ -172,11 +188,11 @@ Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を
 
 ### 日本語 Windows の cp932 でテキスト IO がクラッシュする
 
-`open()` / `json.load()` に `encoding` を指定しないと、Python は OS 既定エンコーディングを使う。**日本語 Windows の既定は cp932 (Shift-JIS)** なので、UTF-8 で書かれた JSON を読む段階で `UnicodeDecodeError` でクラッシュする。Linux / Docker は既定 UTF-8 なので **顕在化せず、Windows 実機でだけ壊れる**。書き込み側も未指定だと cp932 で書き出し、別環境で読めない JSON を生む。対策は各所に `encoding="utf-8"` を明示する（根本）か、起動時に `PYTHONUTF8=1`（UTF-8 モード）を立てる（1 行で一括回避・スタンドアロン配布では必須）。[[windows-standalone-embeddable-poc-2026-06-01]] の検証で発掘、現 main でも `report_status.py` / `meta.py` / `admin_report.py` 等に残存（issue [#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993)）。
+`open()` / `json.load()` に `encoding` を指定しないと、Python は OS 既定エンコーディングを使う。**日本語 Windows の既定は cp932 (Shift-JIS)** なので、UTF-8 で書かれた JSON を読む段階で `UnicodeDecodeError` でクラッシュする。Linux / Docker は既定 UTF-8 なので **顕在化せず、Windows 実機でだけ壊れる**。書き込み側も未指定だと cp932 で書き出し、別環境で読めない JSON を生む。対策は各所に `encoding="utf-8"` を明示する（根本）か、起動時に `PYTHONUTF8=1`（UTF-8 モード）を立てる（1 行で一括回避・スタンドアロン配布では必須）。[[windows-standalone-embeddable-poc-2026-06-01]] の検証で発掘した時点の main では `report_status.py` / `meta.py` / `admin_report.py` 等に残っていたが、PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)（2026-10-13 merge）で直った（Issue [#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993) は close）。2026-10-21 時点の main では、実行時コード（`apps/api/src`・`packages/analysis-core/src`）のテキスト `open()` がすべて `encoding="utf-8"` を指定している（テストコードには未指定が残る）。ただし ruff の unspecified-encoding（`PLW1514`）は有効になっていないので、指定を忘れても lint では見つからない。新しいコードでも明示する。
 
 ### subprocess 起動は `"python"` でなく `sys.executable`
 
-パイプラインを別プロセスで起動する時にインタプリタを `"python"` とハードコードすると、**いま動いているのと同じ Python ではなく PATH 上で最初に見つかる `python`** を拾う。venv・embeddable Python・`python3` しか無い環境では別 Python（`analysis_core` 未導入）や不在で壊れる。Docker 標準イメージでは `python` が PATH にあるため気づけない。`sys.executable` を使えば同一インタプリタで起動できる。[[windows-standalone-embeddable-poc-2026-06-01]] で発掘、`report_launcher.py:92` に残存（issue [#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)）。
+パイプラインを別プロセスで起動する時にインタプリタを `"python"` とハードコードすると、**いま動いているのと同じ Python ではなく PATH 上で最初に見つかる `python`** を拾う。venv・embeddable Python・`python3` しか無い環境では別 Python（`analysis_core` 未導入）や不在で壊れる。Docker 標準イメージでは `python` が PATH にあるため気づけない。`sys.executable` を使えば同一インタプリタで起動できる。[[windows-standalone-embeddable-poc-2026-06-01]] で発掘した `report_launcher.py` の analysis-core 起動は、PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)（2026-10-13 merge）で `sys.executable` に直った（Issue [#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992) は close）。新しく subprocess を起動するコードでも `sys.executable` を使う。
 
 ### Windows スタンドアロン（embeddable Python）の設計分岐と footgun
 
@@ -190,9 +206,9 @@ Issue [#860](https://github.com/digitaldemocracy2030/kouchou-ai/issues/860) / PR
 
 PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) では docs deploy や repo checkout 上の client build が success でも、Docker image の runner stage に `apps/shared` が入っていないため、container 起動後の `public-viewer` runtime build が失敗した。**docs build success、source tree 上の build success、Docker image build success、container 起動後の runtime build success は別物**。特に Dockerfile が builder stage / runner stage を分けている場合、repo には存在するファイルでも runtime image には無いことがある。[[windows-real-machine-e2e-lessons]]より [[source-code]]より
 
-### `docker compose up` だけだとデータが消える
+### subprocess を mock した API テストが green でも、analysis-core の不具合が直った根拠にはならない
 
-[[meeting-minutes]] 2025-04：クラウドへ再デプロイすると過去レポートが消える事故が頻発。`/scripts/fetch_reports.py` でバックアップできるが discoverability が悪い。
+2026-05-25 に Issue [#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584)（レポート編集後にトークン使用量が 0 になる）を、API 側の `test_execute_aggregation_runs_monitor_flow_and_preserves_existing_status` が green であることを根拠に stale として close した。しかしこのテストは `subprocess.Popen` を差し替えて手で書いた status ファイルを読み戻すだけで、analysis-core を実行していなかった。実際には analysis-core が `--only` 実行の開始時にトークン数を 0 にしており、症状は 2026-10-19 の PR [#1031](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1031) まで残った。Issue を stale と判断するときは、成果物を書く側のコードを追うか、実際の subprocess を通して確かめる。[[bug-issue-triage-2026-05-25]]より
 
 ### ツールチェイン
 
@@ -208,9 +224,18 @@ PR [#862](https://github.com/digitaldemocracy2030/kouchou-ai/issues/862) では 
 
 並列実装セッションが残す `.claude/worktrees/agent-*` を片付ける時の落とし穴が3つ。(1) **lock されている worktree は `git worktree list --porcelain` の `locked ... (pid …)` を見て pid の生死を確認する**。pid が生きていれば**別の稼働中セッションが所有**しているので force remove しない（壊すと相手が想定外 state にぶつかる）。(2) **squash merge 済み PR のブランチは origin から消える**が、個々の commit は main の ancestor ではない（squash のため）。ローカルブランチの削除は `git branch -d` が「not fully merged」と拒むので `-D`。変更は main に入っているので安全。(3) **origin に無い local only の held ブランチ**（例: 試作・保留案件）は、その clone が唯一の控え。`git worktree remove` は branch ref を残すので worktree だけ外して作業は保全できるが、`-D` すると失われる。消す前に `git ls-remote --heads origin <branch>` で origin の有無を確認する。詳細は [[worktree-hygiene]]。
 
-### Biome は一度も強制されていない（main の全体 lint は落ちている）
+### Biome は lefthook では止まらず、CI の `biome ci` で検査される（2026-10-12 以降）
 
-`lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入初日から `skip: true`、CI に Biome の workflow は一度も存在せず、CI 化の Issue [#264](https://github.com/digitaldemocracy2030/kouchou-ai/issues/264) は実装なしで close された。結果、`pnpm --filter @kouchou-ai/public-viewer lint` は 2026-02 以降 main で常に失敗しており（2026-10-09 時点 7 件、admin 7 件、dummy-server 9 件）、PR は「触ったファイルだけ clean」で通す慣行になっている。`tsconfig.json` は Next.js 16 が自動書き換えするので手で整形しても戻る（ignore に入れる）。`noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない。由来と時系列は [[biome-lint-main-drift-2026-10-09]]。
+`lefthook.yml` の Biome 系 3 コマンドは 2025-04 の導入時から `skip: true` のまま（2026-10-21 時点）なので、push 時には止まらない。CI にも長く Biome が無く（CI 化の Issue [#264](https://github.com/digitaldemocracy2030/kouchou-ai/issues/264) は実装なしで close）、2026-02 以降は main の lint が落ちたままで、PR は「触ったファイルだけ clean」で通していた（2026-10-09 時点で public-viewer 7 件、admin 7 件、dummy-server 9 件）。
+
+PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)（2026-10-12 merge）で 3 つともエラーを 0 にし、`client-build.yml`（`apps/public-viewer` と `utils/dummy-server`）と `client-admin-build.yml`（`apps/admin`）で `biome ci` を実行するようにした。この検査は、そのアプリや `biome.json`・`package.json`・`pnpm-lock.yaml` などを変えた PR と main への push で、アプリ全体に対して走る。「触ったファイルだけ clean」では通らない。ただし main のルールで必須なのは承認 1 件だけで、Biome は必須チェックではない。落ちるとジョブは赤くなるが merge は機械的には止まらないので、赤いまま merge しないよう気をつける。
+
+- 手元では CI と同じ `pnpm exec biome ci apps/public-viewer utils/dummy-server` / `pnpm exec biome ci apps/admin` で確かめる。整形はアプリ単位（例: `pnpm --filter @kouchou-ai/public-viewer format`）で行う
+- workflow のコメントは `pnpm run format` を案内しているが、root の `pnpm lint` / `pnpm run format` は repo 全体にかかり、CI の対象外（`test/e2e/`・`tests/`・`apps/api` 配下の JSON、手元にある `apps/api/.venv` など）まで検査・整形する。そこには Biome エラーが残っている（2026-10-21 の main で、git 管理下のファイルだけでも 23 件）ので、root の lint は通らず、format は無関係なファイルまで書き換える
+- `tsconfig.json` は Next.js 16 が自動で書き換えるので、`biome.json` の `files.ignore` に入れてある（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）
+- `noDelete` の unsafe fix は `process.env` では意味が変わるので機械適用しない（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) では `Reflect.deleteProperty` に置き換えた）
+
+由来と時系列は [[biome-lint-main-drift-2026-10-09]]。
 
 ### import-order チェックでの Devin 無限ループ
 
@@ -283,3 +308,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-05-24: `work/kouchou-ai/main@e5ed743` を確認し、削除済みの legacy LLM path / `hierarchical_main.py` を current gotcha として語らないよう補正
 - 2026-10-07: CLI の `report.html` 経路が Web 経路では通らないために、`report_dir` 未定義（[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / PR [#955](https://github.com/digitaldemocracy2030/kouchou-ai/issues/955)）と原文リンク設定が効かない件（[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954)）が残っていたことを追記
 - 2026-10-13: PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の PoC 検証（[[windows-standalone-embeddable-poc-2026-06-01]]）から、日本語 Windows の cp932 でのテキスト IO クラッシュ（[#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993)）・subprocess の `"python"` ハードコード（[#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)）・embeddable スタンドアロンの設計分岐と footgun を追記
+- 2026-10-21: main `b71e0b79` と照合し、UMAP / KMeans の seed 撤去（PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)）、Biome の CI 検査（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）、cp932 と `"python"` ハードコードの修正（PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)）、`fetch_reports.py` の削除（PR [#875](https://github.com/digitaldemocracy2030/kouchou-ai/issues/875)）とローカル compose ではレポートが消えないこと、LOCAL LLM のモデル一覧取得（PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)）、public-viewer の build と散布図クリック（PR [#828](https://github.com/digitaldemocracy2030/kouchou-ai/issues/828)・[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)・[#857](https://github.com/digitaldemocracy2030/kouchou-ai/issues/857)）について、古くなっていた記述を現状に合わせて訂正。あわせて、final CSV の列名（snake_case と kebab-case の混在、`category-id` という列は無い）を訂正し、cube-root rule の上限（858 件以上は `[10, 100]`）と、subprocess を mock したテストを根拠に Issue を stale と判断した失敗例（[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584)）を追記

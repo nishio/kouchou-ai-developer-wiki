@@ -4,7 +4,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 > **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態: [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — ソースコードレビュー確定 10 件のうち 9 件を main 反映（[#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)）。続く第 2 弾で 5 PR（[#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027)–[#1031](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1031)）をレビュー待ち。Claude provider 接続実験は branch で検証中。次は PR のレビュー・merge 判断と、散布図ラベル a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)）の決定。
+直近の状態（2026-10-21 時点）: [本格コードレビュー 2026-10-19](analyses/deep-code-review-2026-10-19.md) / [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — レビューから出した修正 PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)・[#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1041) は 2026-10-19 までに main へ merge 済み。2026-10-21 には、レポート再利用・管理画面の一覧更新・濃い意見 0 件時の表示まわりの修正 [#1043](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1043)–[#1047](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1047) も merge された（main `c57e0bfa`）。Claude provider 接続実験は手元の branch だけにあり、PR にはしていない。次に判断が要るのは、散布図ラベルの a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)。PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) のどちらかを選ぶ）と、[健全性レビュー](analyses/code-health-review-2026-10-18.md)の Issue 整理提案。
 
 ## 最初に読むべき (推奨順)
 
@@ -25,7 +25,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [analysis-core-and-web-ui](concepts/analysis-core-and-web-ui.md) — なぜ Web UI は analysis-core を使う consumer で、Web は JSON、CLI は観察用HTMLを持つのか
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
 - [pipeline](concepts/pipeline.md) — 解析パイプライン（extraction → embedding → 階層クラスタリング → 可視化）
-- [versioning-strategy](analyses/versioning-strategy.md) — v4 凍結 / v5 plugin 化のリリース戦略
+- [versioning-strategy](analyses/versioning-strategy.md) — 2025-12 に決めた v4 凍結 / v5 plugin 化の方針と、その後の実際（main で段階移行、v4.1.0 を 2026-10-13 に発行、v5 は未リリース）
 - [llm-providers](concepts/llm-providers.md) — OpenAI / Azure / Gemini / OpenRouter / LocalLLM
 - [local-dev-setup](concepts/local-dev-setup.md) — Docker 一発からネイティブ Rye/pnpm まで
 - [testing](concepts/testing.md) — pytest / Jest / Playwright と lint
@@ -44,7 +44,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [kouchou-ai-docs-policy-history](analyses/kouchou-ai-docs-policy-history.md) / [kouchou-ai-docs-overhaul-2026-10](analyses/kouchou-ai-docs-overhaul-2026-10.md) — 本体 docs 方針の系譜と 2026-10 改善スプリントの総括
 - [faithful-aggregation-vs-deliberation-dynamics](concepts/faithful-aggregation-vs-deliberation-dynamics.md) — 忠実な集約 vs 熟議ダイナミクス（分析スタンスの核）
 - [dependabot-alerts-2026-10-14](analyses/dependabot-alerts-2026-10-14.md) — security / dependency 保守の観測（脆弱性の具体詳細は公開 wiki に書かない方針）
-- [code-health-review-2026-10-18](analyses/code-health-review-2026-10-18.md) — コード・wiki・Issue の健全性レビュー（新規改善点と 5 PR、未着手 backlog、Issue 整理提案）
+- [deep-code-review-2026-10-19](analyses/deep-code-review-2026-10-19.md) — 8 領域＋横断フロー追跡の本格コードレビュー（36 件。修正 PR [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1032)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1041) は 2026-10-19 merge 済み）
+- [code-health-review-2026-10-18](analyses/code-health-review-2026-10-18.md) — コード・wiki・Issue の健全性レビュー（新規改善点と 5 PR、未着手 backlog、Issue 整理提案。5 PR は 2026-10-19 merge 済み）
 - [source-review-findings-2026-10-16](analyses/source-review-findings-2026-10-16.md) — ソースコードレビュー確定 10 件の棚卸し
 
 過去の優先度整理（歴史的文脈。現行判断は上の棚卸しを優先）:
@@ -73,7 +74,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ## WebUI 開発者向け
 
 - [deployment](concepts/deployment.md) — Azure 本番、静的サイト書き出し、PyPI リリース
-- [public-viewer-build-behavior](analyses/public-viewer-build-behavior.md) — public-viewer build failure と API 入力条件の切り分け
+- [public-viewer-build-behavior](analyses/public-viewer-build-behavior.md) — public-viewer の build の前提（通常 build は API 不要、API が要るのは `build:static` だけ）と 2026-05 時点の build failure の切り分け
 - [npm-vs-pnpm](analyses/npm-vs-pnpm.md) — なぜ pnpm 必須か
 
 ## プロジェクト自体について
@@ -82,10 +83,14 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [wiki-driven-workflow](concepts/wiki-driven-workflow.md) — Wiki repo で整理しつつ `work/kouchou-ai/` を読み、本体 repo に PR を出す二層運用。議事録 / Slack の鮮度基準もここを見る
 - [deploy-success-but-nothing-changed-story-2026-06-01](analyses/deploy-success-but-nothing-changed-story-2026-06-01.md) — wiki-driven-workflow が実際にどう動くかの一日エピソード (前提知識ゼロ向け narrative)
 - [meeting-minutes](sources/meeting-minutes.md) — 議事メモ Google Doc (2025-03 〜)、ingest 時の refresh protocol
-- [slack-logs-repository](sources/slack-logs-repository.md) — dd2030 Slack public channel log の新しい一次置き場。最新14日は mirror、古い月は raw canonical を読む
+- [slack-logs-repository](sources/slack-logs-repository.md) — dd2030 Slack public channel log の新しい一次置き場。直近は mirror（raw の最新月と重なる rolling window。2026-10 時点で 75 日）、それより古い月は raw canonical（約 2 か月遅れ）を読む
 - [slack-dev-kouchouai-2026-q1](sources/slack-dev-kouchouai-2026-q1.md) など — `#2_開発_広聴ai` の Slack ログ source（他 quarter / channel は index.txt で `slack-` 検索）
 - [meeting-report-draft](concepts/meeting-report-draft.md) — 次の定例で Codex が報告する内容の下書き（最新: [meeting-report-2026-10-18](concepts/meeting-report-2026-10-18.md)、その前: [meeting-report-2026-10-10](concepts/meeting-report-2026-10-10.md)、[meeting-report-2026-06-01](concepts/meeting-report-2026-06-01.md)）
 
 ## 全件カタログ / 人物・組織
 
 Sources / Analyses / Entities の全件は [index.txt](index.txt) を参照。人物・組織（dd2030 / talk-to-the-city / nishio / tokoroten / nasuka / ohki-shingo / kuboon / anno など）も同ファイルから stem 検索で辿れる。
+
+## Updates
+
+- 2026-10-21: 「直近の状態」を main `c57e0bfa` と GitHub の PR の状態に合わせて書き直し（merge 済みの PR を反映し、本格コードレビューへの導線を追加）、slack-logs の mirror の窓を 14 日から 75 日に訂正。あわせて versioning-strategy と public-viewer-build-behavior の説明を、今の内容（2025-12 の決定とその後の実際、build の前提）に合わせた

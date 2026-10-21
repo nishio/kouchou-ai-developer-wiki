@@ -9,7 +9,7 @@ sources:
 
 ## 観測と結論
 
-2026-09-09 14:51 JST、[PR [#934](https://github.com/digitaldemocracy2030/kouchou-ai/issues/934)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/934) の HEAD `2771367a959f061675fd12bf18f79dce1ee5d32d` を確認。open / non-draft / review required。実行されたCIチェックは成功、docs deployはskip。mainはfetch / fast-forward確認後 `775e0f5ce9339ab7a2caf66156fdc09480719e65`。#917を置き換える意図のPRだが未mergeである。
+2026-09-09 14:51 JST、[PR #934](https://github.com/digitaldemocracy2030/kouchou-ai/pull/934) の HEAD `2771367a959f061675fd12bf18f79dce1ee5d32d` を確認。open / non-draft / review required。実行されたCIチェックは成功、docs deployはskip。mainはfetch / fast-forward確認後 `775e0f5ce9339ab7a2caf66156fdc09480719e65`。[#917](https://github.com/digitaldemocracy2030/kouchou-ai/issues/917)を置き換える意図のPRだが未mergeである。
 
 PR差分より、temperature省略、Flex判定、900秒timeout、resource_unavailableだけを対象とするdefault tierへの切替を確認。既存レビューの通常429との区別、Flexへ戻らない再試行、空timeoutの扱いは最新HEADで修正済み。PR本文はautoへの切替と書かれたままだが、実装はdefaultに更新されている。
 
@@ -37,9 +37,9 @@ PR差分より、temperature省略、Flex判定、900秒timeout、resource_unava
 ### ユーザー判断：再試行をマージ条件から外す
 
 - Flexは時間より費用を優先する用途なので、待ち時間の増加はドキュメントの注釈で十分というユーザー判断。上記P2は修正必須という扱いを撤回し、実装変更をマージ条件としない。
-- 料金説明では、リソース不足で失敗したリクエストは課金されないことと、標準処理への切替後は通常料金になることを区別する。通常料金への自動切替の是非は、複数変更を含む#934のマージ後に別途議論する。
+- 料金説明では、リソース不足で失敗したリクエストは課金されないことと、標準処理への切替後は通常料金になることを区別する。通常料金への自動切替の是非は、複数変更を含む[#934](https://github.com/digitaldemocracy2030/kouchou-ai/issues/934)のマージ後に別途議論する。
 - ユーザーのマージ指示で確認済みHEADを指定して通常マージを試みたが、GitHubのブランチ保護（REVIEW_REQUIRED）で拒否された。管理者マージは未実施で、PRは未merge。
 
 ### 2026-09-09 15:41 JST — マージ完了
 
-ユーザーの明示承認を受け、確認済みHEADを指定して管理者マージを実行。[PR [#934](https://github.com/digitaldemocracy2030/kouchou-ai/issues/934)](https://github.com/digitaldemocracy2030/kouchou-ai/pull/934)の状態を再取得し、MERGED、merge commit `c2390a10094ccaa9baf9072f489eb1424059f852` を確認した。上記のレビュー待ちは解消。通常料金への自動切替の是非と料金を含む説明は、別途議論する未決事項として残す。
+ユーザーの明示承認を受け、確認済みHEADを指定して管理者マージを実行。[PR #934](https://github.com/digitaldemocracy2030/kouchou-ai/pull/934)の状態を再取得し、MERGED、merge commit `c2390a10094ccaa9baf9072f489eb1424059f852` を確認した。上記のレビュー待ちは解消。通常料金への自動切替の是非と料金を含む説明は、別途議論する未決事項として残す。

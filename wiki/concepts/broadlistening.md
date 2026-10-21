@@ -51,7 +51,7 @@ sources:
 - **散布図タイプ** — kouchou-ai / TTTC Scatter。Embedding → UMAP → クラスタリング → 可視化。「意見の地図」を自動生成、直感的だが 2D 圧縮後クラスタリングのため精度は妥協
 - **Long Context タイプ** — TTTC Turbo / embedding を介さない LLM 直接グルーピング / 富士通-中央省庁実証実験。Embedding と UMAP を使わず LLM に直接全件読ませる。賛否分離・ニュアンス区別に強く精度が高いが、見栄えのする散布図は出ない
 
-kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_grouping` ([[pr-827-llm-grouping-capabilities-plan-2026-05-18]]) は Long Context 系統の枝を内包しようとしている。両者は技術的に急発展しており、長短は今後変動する。
+kouchou-ai は散布図タイプから出発したが、2026-05-28（UTC）に PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で `analysis_mode=llm_grouping`（LLM 直接グルーピング）が analysis-core に入った。2026-10-12 の PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) からは、管理画面の作成フローでも「LLM直接グルーピング」として選べる。グループ分けを埋め込みの距離ではなく LLM が行う点で Long Context 寄りの枝だが、全件を一度に読ませるわけではない。自動グルーピングでは、意見のサンプル（既定 80 件）から LLM がグループを見つけ、全件を既定 25 件ずつのバッチで割り当てる。指定カテゴリ分類は人間が与えた枠へ割り当てるだけで、2026-10-21 時点では CLI 専用（作成画面への統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)）。どちらでも散布図の座標は従来どおり埋め込み＋UMAP で作る。詳細は [[pipeline]] と [[llm-grouping-supervised-classification]]、計画段階の経緯は [[pr-827-llm-grouping-capabilities-plan-2026-05-18]] を参照。両者は技術的に急発展しており、長短は今後変動する。
 
 この「散布図 vs Long Context」とは直交する別軸として、ツールの重心を **「忠実な集約」と「熟議の演出(dynamics)」** で棲み分けるレンズもある（kouchou-ai は前者、[[ojpp]] BroadListening は後者寄り）。[[faithful-aggregation-vs-deliberation-dynamics]]
 
@@ -66,7 +66,7 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 
 - **濃い意見グループ / 濃いクラスタ** — 意見密度の高いクラスタ。10,000 件以上のデータセット向けに設計された UI 要素
 - **属性フィルタ** — クラスタを年齢・地域などのメタデータで絞る機能（PR [#531](https://github.com/digitaldemocracy2030/kouchou-ai/issues/531)）
-- **民意 vs 統計的世論** — [[broad-listening-book|書籍]]側の区別。Wiki スコープ外だが用語として頻出
+- **民意 vs 統計的世論** — [[broad-listening-book|書籍]]側の区別。書籍本文は開発向けの一次資料（[[broad-listening-book-source]]）として扱っており、用語として頻出
 - **ナラティブアプローチ** — [[tokoroten]] のチャット型インテーク手法。「あなたの感情を真剣に受け止める」スタイルで、kouchou-ai の「要するに〜」型バケット化と対比される
 
 ## 関連プロジェクト
@@ -85,3 +85,4 @@ kouchou-ai は散布図タイプから出発したが、`analysis_mode=llm_group
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、狭義の分析・可視化と広義の収集・深掘りを分ける tool catalog の必要性を追記。
 - 2026-09-09: 「なぜサンプリングでなく全件か」の数理デモ [[zipf-broadlistening]]（nishio、https://nishio.github.io/zipf-broadlistening/ ）へのリンクを「なぜ重要か」に追加。
 - 2026-10-05: デジタル庁の条文RAG調査メモを行政 RAG との境界として接続した。
+- 2026-10-21: kouchou-ai main（b71e0b79）と照合し、`analysis_mode=llm_grouping` を「Long Context 系統の枝を内包しようとしている」（計画段階の書き方）から現状の説明に書き直した。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) で analysis-core に入り、PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) から作成画面でも選べること、全件を一度に読ませるのではなくサンプルからグループを見つけて全件を 25 件ずつ割り当てること、座標は埋め込み＋UMAP であることを明記した。あわせて「民意 vs 統計的世論」の項の「Wiki スコープ外」を、書籍本文を開発向け source として扱う 2026-05-21 からの方針に合わせて直した

@@ -101,7 +101,7 @@ sources:
 - LLM grouping 系分析は散布図を自然には出せないので、**可視化を管理者選択可能にすること** が必要条件
 - したがって LLM 直接グルーピングの第 2 モードを本気で受け入れるなら、「analysis plugin を増やす」だけでは足りず、**scatter を持たない mode が first-class citizen になれる visualization / capability 契約** まで含めて設計し直す必要がある
 
-> **Update（2026-10-12）**: 上記 **LLM grouping analysis plugin** は engine レベルでは出荷済み。builtin に `llm_grouping` plugin が登録され、`analysis_mode=llm_grouping` で `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW` を選ぶ（[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) / `4f893ab5`、2026-05-25 main 入り）。**admin / `apps/api` からの `analysis_mode` 受け渡し**も [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され main 入り（kouchou-ai `c33d264a`）。残るは「散布図を自然に出せない mode を first-class にする visualization / capability 契約」の設計。詳細は [[pipeline]]。[[wiki-self-audit-2026-10-12]]
+> **Update（2026-10-12）**: 上記 **LLM grouping analysis plugin** は engine レベルでは出荷済み。builtin に `llm_grouping` plugin が登録され、`analysis_mode=llm_grouping` で `get_workflow_for_mode()` が `LLM_GROUPING_COMPATIBLE_WORKFLOW` を選ぶ（PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)。merge commit `6e9e60ee` で 2026-05-29 JST ＝ 2026-05-28 UTC に main 入り。`4f893ab5` は 2026-05-25 に作られた PR ブランチ上の実装 commit）。**admin / `apps/api` からの `analysis_mode` 受け渡し**も [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) の PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が 2026-10-12 に merge され main 入り（kouchou-ai `c33d264a`）。残るは「散布図を自然に出せない mode を first-class にする visualization / capability 契約」の設計。詳細は [[pipeline]]。[[wiki-self-audit-2026-10-12]]
 
 ## 関連ドキュメント
 
@@ -118,6 +118,7 @@ sources:
 
 ## Updates
 
+- 2026-10-21: 2026-10-12 の Update で「2026-05-25 main 入り」としたのは、PR ブランチ上の commit `4f893ab5` の作成日との取り違え。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) の merge（2026-05-28 16:26 UTC ＝ 2026-05-29 01:26 JST、merge commit `6e9e60ee`）に訂正（[[pipeline]] と同じ訂正）
 - 2026-10-18: `hierarchical_layout_generation` を 11 個目のモジュールに訂正（L27 の 10 個登録と整合）。v5.0 未リリースを明記
 - 2026-05-17: 初回作成
 - 2026-05-17: `main@3809a7a` を再確認し、可視化 plugin は「気配」ではなくフロント側基盤が実装済みと修正

@@ -58,7 +58,8 @@ admin 画面まで公開し、ユーザが自分の API キーを入力して試
 
 Q1 / Q2 とも賛成。ただし実施には次の prerequisite と明示文言が伴う。
 
-- **Prerequisite (設計判断)**: 現状の Azure デモ環境では、WebUI からユーザがキーを指定しなかった時のフォールバックとして container の `OPENAI_API_KEY` に dd2030 側のキーが設定されている可能性が高い。viewer 公開 + admin 共用に切り替える際は、まずこのフォールバックキー設定を外し、ユーザがキーを入れなかったら動かない構成にする必要がある（具体的な設定箇所や値は公開 wiki には書かず、Google Drive「広聴 AI-Azure デモ環境」側で扱う）
+- **Prerequisite (設計判断)**: viewer 公開 + admin 共用に切り替える前に、デモ環境の API キーの扱いを、利用者が自分のキーを入れて使う形にそろえる必要がある。現在のキー構成やその挙動は公開 wiki には書かず、Google Drive「広聴AI-Azureデモ環境」で扱う
+  <!-- 公開境界（2026-10-21）: デモ環境の現在のキー構成（設定項目・設定場所・挙動の見立て）は公開 wiki に書かない。 -->
 - **公開時の明示文言** (3 点):
   - 共用環境であること
   - 個人情報・未公開情報・機微情報は入れないこと
@@ -98,12 +99,13 @@ Q1〜Q3 が解決すると spine tier 1 と tier 2 前半（managed 線）が do
 ## Open Questions
 
 - 共用 admin 画面で「秘密情報を入れないで」明示が法的 / 倫理的に十分な protection か。実態として API キー入力は秘密情報入力と区別しづらく、ユーザの誤投入リスクが残る
-- container `OPENAI_API_KEY` フォールバック除去の具体実装 (Bicep / Container Apps の env 設定変更 / deploy workflow 側の手当てなど) は Google Drive「広聴 AI-Azure デモ環境」側で扱う
+- API キーの扱いを利用者のキー前提にそろえる作業を、公開できる粒度の Issue / PR としてどう切り出すか（具体的な実装と確認は Google Drive「広聴AI-Azureデモ環境」側で扱う）
 - 公開時の 3 点明示文言 (共用 / 機微情報禁止 / 保存・継続稼働非保証) を docs / admin 画面のどこにどう出すか
 - dd2030 Web サイト上の公開事例ページの更新・充実は誰が継続的にメンテするか（[[broadlistening-tool-ecosystem-vision]] / [[kouchou-ai-scope-line-from-marketing-to-plugin-2026-06-03]] との接続点）
 - 365 日稼働を担う「責任を持って継続運用・サポートできる主体」をどう立てるか。dd2030 / 個人 / 別法人 / 自治体側コンソーシアム など複数候補が考えられるが、現時点で未着地
 
 ## Updates
 
-- 2026-06-05: [[azure-demo-visibility-thread-resolution-2026-06-05]] により Resolution 確定。Q1 / Q2 進行 (前提: container の dd2030 フォールバックキーを除去 + 3 点明示文言)、Q3 優先度低 (公開事例の充実が代替方向)、Q4 提供主体・責任範囲の整理項目化。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレーム
+- 2026-10-21: 公開境界に合わせ、Prerequisite・Open Questions・2026-06-05 の行から、デモ環境の現在のキー構成についての記述（設定項目・設定場所・挙動の見立て）を外した（詳細は Google Drive「広聴AI-Azureデモ環境」）。あわせて訂正: 本文の [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) は Issue ではなく PR（Issue [#633](https://github.com/digitaldemocracy2030/kouchou-ai/issues/633) への対応）で、merge は 2025-07-30 ではなく 2025-08-13（現状は [[llm-providers]]）
+- 2026-06-05: [[azure-demo-visibility-thread-resolution-2026-06-05]] により Resolution 確定。Q1 / Q2 進行 (前提: API キーの扱いを利用者のキー前提にそろえる + 3 点明示文言)、Q3 優先度低 (公開事例の充実が代替方向)、Q4 提供主体・責任範囲の整理項目化。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレーム
 - 2026-06-04: 初回作成。nishio の Slack 4 問を spine 改訂 / 既存 open-decisions A2 / 実装済み USER_API_KEY plumbing と接続して整理

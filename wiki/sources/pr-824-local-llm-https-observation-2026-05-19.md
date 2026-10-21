@@ -28,3 +28,4 @@ sources:
 ## Updates
 
 - 2026-05-19: 初版作成
+- 2026-10-21: その後の変化。PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（2026-10-19 merge）で `/admin/models` のモデル一覧取得も `resolve_local_llm_base_url()`（旧名 `_resolve_local_llm_base_url` は別名で残る）と `LOCAL_LLM_API_KEY` を使うようになった。これで本文の「admin 画面での LocalLLM モデル一覧取得は … まだ追随していない」と Open Questions の 1 つ目は解消した。PR [#1037](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1037) 以降、解析できないアドレスは `ValueError`（`/admin/models` では 400）になる。UI 文言の例は今も `host:port` 形式だけで、Open Questions の 2 つ目は未解決。現状は [[llm-providers]]

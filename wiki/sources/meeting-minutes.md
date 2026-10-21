@@ -54,7 +54,7 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 
 ## Scope
 
-`raw/init.txt` の指示で **書籍執筆（[[broad-listening-book]] / [[tokoroten]] が主担当）の話は本 Wiki のスコープ外**。Wiki が扱うのは [[github-dev-docs]] が指すリポジトリ／開発者ドキュメントに紐づく範囲のみ。コードリポジトリに波及する範囲（バージョン凍結方針など）に限り取り込む。
+`raw/init.txt` の指示により、議事メモの中の **書籍執筆・運営の話（進行、出版社とのやりとりなど。[[broad-listening-book]] / [[tokoroten]] が主担当）は取り込まない**。Wiki が扱うのは [[github-dev-docs]] が指すリポジトリ／開発者ドキュメントに紐づく範囲のみで、コードリポジトリに波及する範囲（バージョン凍結方針など）に限り取り込む。なお書籍の本文は 2026-05-21 から、開発向けの一次資料として [[broad-listening-book-source]] / [[broad-listening-book-extractions]] で扱っている。
 
 ## Coverage by topic
 
@@ -83,6 +83,7 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 2026-06-30 16:33 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 551 件と再確認。8/2 イベントと優先軸の該当箇所は [[meeting-2026-06-22-event-priority]] に切り出した
 - 2026-06-30 18:30 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` 見出しは未検出、txt は 7702 行、URL unique 550 件と再確認。内容面では 16:33 観測から新しい議事録見出しは増えていない
 - 2026-06-30 19:04 JST: `raw/meeting_minutes.txt` / `raw/meeting_minutes.html` を再取得し、先頭見出しは引き続き `2026/06/22`、`2026/06/29` / `2026/06/30` 見出しは未検出、txt は 7703 行、URL unique 551 件と再確認。内容面では 18:30 観測から新しい議事録見出しは増えていない
+- 2026-10-21: Scope 節を、書籍本文を開発向け source として扱う 2026-05-21 からの方針に合わせて書き分けた（議事メモの書籍執筆・運営の話を取り込まないルールは維持）
 
 ## Updates — 2026-10-05 source再取得
 

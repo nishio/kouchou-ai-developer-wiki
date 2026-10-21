@@ -63,7 +63,7 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 
 - spine 2-a「誰かが host したサービスで分析する」は、現時点で actually 提供されているか未確認
 - Azure デモ環境は存在するが、それは展示用であって「任意のユーザーが任意データを投げる service」とは違う可能性が高い
-- 2026-06-04 に [[azure-demo-public-visibility-proposal-2026-06-04]] として 4 問が Ohki さんに投げられ、2026-06-05 に着地した ([[azure-demo-visibility-thread-resolution-2026-06-05]])。**viewer 公開と admin 共用は進める方向**で、これにより spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。ただし前提として container env の dd2030 fallback `OPENAI_API_KEY` を外し、3 点明示文言 (共用 / 機微情報禁止 / 保存・継続稼働非保証) を加える必要がある
+- 2026-06-04 に [[azure-demo-public-visibility-proposal-2026-06-04]] として 4 問が Ohki さんに投げられ、2026-06-05 に着地した ([[azure-demo-visibility-thread-resolution-2026-06-05]])。**viewer 公開と admin 共用は進める方向**で、これにより spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。ただし前提として、デモ環境の API キーの扱いを利用者が自分のキーを入れて使う形にそろえ（現在のキー構成は公開 wiki には書かず、Google Drive「広聴AI-Azureデモ環境」で扱う）、3 点明示文言 (共用 / 機微情報禁止 / 保存・継続稼働非保証) を加える必要がある
 - spine tier 1 のコンテンツ目的は **「使い方や準備すべきデータを理解するための参照環境」** であって「データ投入の予行演習」ではない、という再フレームも同 thread で出ている。docs 内コンテンツの設計 (viewer 操作解説 + サンプル CSV ダウンロード導線 + 公開事例リンク集) に直接効く
 
 ### 仲介者経路の docs 表現
@@ -88,6 +88,7 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 
 ## Updates
 
+- 2026-10-21: 公開境界に合わせ、Open Questions の Azure デモの前提から、デモ環境の現在のキー構成についての記述（設定項目・設定場所）を外した
 - 2026-10-14: **managed service 経路の実在性（Open Question）が nishio 回答で解決**：spine tier 2-a の managed service は**現状なし**。ただし「そういうのを提供する人がいてもいい」として将来提供者の余地は残す。→ tier 2 は (a) managed=現状なし / (b) 仲介者=現 route / (c) self-host に確定し、研究者の主入口は CLI + 実験機能カタログ寄りになる。実行方針は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] の Updates を参照。
 - 2026-10-13: 本ページを含む本体 docs 方針議論（2026-05〜10）の系譜と横断原則を [[kouchou-ai-docs-policy-history]] に一本化した。本ページは spine 再設計そのもの、history ページはその前後（docs = AI の default / README 多言語化・アンカー凍結回避まで）を含む全体の弧。
 - 2026-10-13: README をデフォルト英語化（PR [#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966)）→日本語へ差し戻し（PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)）した事件をめぐる Slack 議論で、nishio が「英語で怯む層が見るべきは英語UIの GitHub ではなくドキュメントサイト」と改めて整理。本 analysis の「docs 入口を spine から組み替える」問題がここへ戻ってきた。導線設計・README とのアンカー結合の話は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]（一次ソース [[slack-readme-language-docs-site-2026-10-13]]）

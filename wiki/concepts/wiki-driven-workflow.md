@@ -21,7 +21,7 @@ sources:
 そのため実務では、
 
 1. この repo の `wiki/` で過去議論や設計判断を整理する
-2. `work/kouchou-ai/` に置いた local clone で本体コードを読む・試す・直す
+2. `work/kouchou-ai/` に置いた local clone（HEAD は main のまま）で本体コードを読む・試す。直す時は、同じ clone から作った別 worktree（`work/kouchou-ai-<topic>/`）で作業する
 3. 最終的なコード変更は `digitaldemocracy2030/kouchou-ai` に commit / PR する
 
 という **二層運用** になる。[[source-code]]より
@@ -44,7 +44,7 @@ sources:
 
 - `raw/` に source を置く
 - `wiki/` に source / concept / analysis を追加する
-- `log.md` に ingest / filing-back / lint を残す
+- `log.md` の先頭に ingest / filing-back の entry を足し、`python3 scripts/refresh_logs.py` で `log.txt` と `log.md` を同期する（lint で問題を見つけて直した時は filing-back として書く。問題が無かった lint は書かない）
 
 つまり、**「何が論点で、なぜそう判断されたか」** を残す作業はこの repo の責務。[[source-code]]より
 
@@ -57,7 +57,19 @@ sources:
 
 ### 3. コード変更の提出先は本体 repo
 
-実際にコードを直す時は `work/kouchou-ai/` 側で branch を切り、commit / push / PR を行う。  
+実際にコードを直す時も、`work/kouchou-ai/` は main のまま（読む・確かめる専用）にしておき、同じ clone から別の worktree を作って、そこで commit / push / PR を行う。複数の作業（AI エージェントのセッションなど）が同じ clone を同時に参照していることがあり、`work/kouchou-ai/` で branch を切り替えると、他の作業が main を読んでいるつもりで別 branch を読む事故が起きるためである。`CLAUDE.md` より
+
+```bash
+git -C work/kouchou-ai fetch origin
+git -C work/kouchou-ai worktree add --no-track -b <branch> ../kouchou-ai-<topic> origin/main
+cd work/kouchou-ai-<topic>
+pnpm install --frozen-lockfile   # Git hook（lefthook）をこの worktree にも入れる
+# 変更・commit のあと
+git push -u origin <branch>
+```
+
+`--no-track` を付けないと新しい branch の上流が `origin/main` になり、引数なしの `git push` が失敗する。本体 repo に push 権限が無い場合は、自分の fork を remote に足してそちらへ push し、PR を出す。worktree ごとに `pnpm install` が要る理由は [[worktree-hygiene]] を参照。
+
 したがって、**作業場所は Wiki repo でも、提出先は `digitaldemocracy2030/kouchou-ai`** になることがある。これはこの運用では普通であり、むしろ想定された使い方。[[contributing]]より
 
 ## 「調べて」と言われた時の最新ソース確認順
@@ -69,7 +81,7 @@ sources:
 Wiki の情報鮮度は、ページの編集日時ではなく **対象 source をいつ時点まで読んだか** を基準に読む。特に議事録 Google Doc と Slack log は追記され続けるため、source ページ側に「最終取得・読解日」「対象期間」「対象 channel / raw snapshot の有無」を明示する。[[nishio-source-freshness-criterion-2026-06-02]]より
 
 - 議事録は [[meeting-minutes]] の freshness marker を見る。Google Doc export を最後に取り直した日、先頭見出し、`txt` / `html` の取得有無が基準になる。
-- Slack は [[slack-logs-repository]] と各 Slack source の freshness marker を見る。最新14日は `digitaldemocracy2030/slack-logs` の `mirror/`、古い public channel log は同 repo の `raw/` を優先し、週次 AI 要約や GitHub 活動まとめは `oss_weekly_reporter` を補助線にする。
+- Slack は [[slack-logs-repository]] と各 Slack source の freshness marker を見る。直近（raw の最新月と重なる rolling window。2026-10 時点で 75 日。範囲は `mirror/sync.json` の `window_days` / `window_oldest` で確かめる）は `digitaldemocracy2030/slack-logs` の `mirror/`、それより古い public channel log は同 repo の `raw/` を優先し、週次 AI 要約や GitHub 活動まとめは `oss_weekly_reporter` を補助線にする。
 - 最新確認なしで答える場合は、「この Wiki では `<marker>` 時点まで観測」として扱い、現在進行形の状態を断定しない。最新状態が論点なら source を再取得してから答える。
 
 ### コード本体について聞かれた時
@@ -82,7 +94,7 @@ Wiki の情報鮮度は、ページの編集日時ではなく **対象 source �
 
 ### Slack の発言について聞かれた時
 
-まず `work/slack-logs/` を `git pull --ff-only` で最新化し、`mirror/sync.json` の `synced_at` / window / channel 数を確認する。直近14日は `mirror/slack/<channel_id>.jsonl.gz`、2ヶ月以上前の stable な根拠は `raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` を読む。`mirror/` は上書きされるので、重要な観測を wiki に残す時は commit hash、`synced_at`、window、channel ID を併記する。[[slack-logs-repository]]より
+まず `work/slack-logs/` を `git pull --ff-only` で最新化し、`mirror/sync.json` の `synced_at` / window / channel 数を確認する。直近（2026-10 時点で 75 日。raw の最新月と重なるよう設定されている）は `mirror/slack/<channel_id>.jsonl.gz`、それより古い月の stable な根拠は `raw/slack/<channel_id>/<YYYY-MM>.jsonl.gz` を読む。raw は約 2 か月遅れるので、mirror を直近 14 日分だけ読んで raw に移ると、その間の発言を見落とす。`mirror/` は上書きされるので、重要な観測を wiki に残す時は commit hash、`synced_at`、window、channel ID を併記する。[[slack-logs-repository]]より
 
 message の `user` は Slack user id なので、発言者が論点になる時だけ `mirror/users.json` または同月の `state/users-YYYY-MM.json` で表示名に解決する。通常の filing-back では raw 発言者名より、channel / 日付 / 論点 / source freshness を残す方が安全で再利用しやすい。
 
@@ -166,6 +178,7 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 - [[source-code]] — `work/kouchou-ai/` を一次参照にする運用
 - [[local-dev-setup]] — Wiki と local clone を並走させる扱い
+- [[worktree-hygiene]] — 別 worktree の作り方と後片付け
 - [[contributing]] — 最終的に本体 repo へ PR を出す時のルール
 - [[coding-agents]] — AI エージェント運用時の注意
 
@@ -173,11 +186,12 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 - この運用を新規コントリビュータ向け onboarding の標準フローとして docs に昇格させるべきか
 - 議事録から Web サイトを更新する繰り返し agent task の canonical page / review owner をどこに置くか
-- `work/` に複数 clone がある時の命名規約をどこまで固定するか
+- `work/` に複数 clone がある時の命名規約をどこまで固定するか — kouchou-ai の branch 作業は別 worktree `work/kouchou-ai-<topic>/` で行う形で決着済み（`CLAUDE.md`、2026-05-29）。残るのは `<topic>` の付け方と、使い終わった worktree を片付ける方針
 - `pnpm check` が `work/` 配下 clone を拾う状態を `tsconfig.json` 側で直すか
 
 ## Updates
 
+- 2026-10-21: 本体コードを直す手順を、`work/kouchou-ai/` は main のまま保ち、別 worktree（`work/kouchou-ai-<topic>/`）で branch を切る形に訂正（`CLAUDE.md` の運用ルールに合わせた）。log に残す entry を ingest / filing-back に訂正（問題が無かった lint は記録しない。2026-05-26 からの `CLAUDE.md` の lint 記録ポリシー）。あわせて、Slack mirror の窓を 14 日から 75 日（2026-08-21 に slack-logs 側で変更）に訂正
 - 2026-06-30: [[slack-devin-ops-and-recurring-web-updates-2026-06-30]] を追加し、議事録から Web サイトを更新する繰り返し agent task は source freshness、public boundary、canonical page、human review owner を先に決める必要があると追記
 - 2026-06-30: [[slack-codex-goal-speed-control-2026-06-30]] を追加し、persistent goal はまず状況把握・wiki / docs 更新・thinking-targets 整理を行い、人間が次の slice を選べる状態を作る運用を追記
 - 2026-05-19: 初版作成
@@ -205,9 +219,9 @@ Wiki repo の `work/` は「補助 repo の中に本体 repo の local clone を
 
 [[other-issue-candidates-2026-09-07]] の両版への実装と [[issue-backlog-audit-2026-09-09]] の棚卸しから、次回にも使う判断を三点にまとめる。作業件数・各PR・テスト結果は各記録の観測時点に基づき、このfile backではGitHub・コード・実モデルの再観測はしていない。
 
-1. **Issueの完了は、合意した利用者の行動と現行mainで判断する。** 古いコメントや類似機能の存在は調査の入口にする。#513の「seed設定済み」は、その後の意図的な固定除去で現在の根拠ではなくなっていた。[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / #11は作成前確認画面があっても見積もりが「目安なし」であり、#56は抽出意見を読めても元コメントへ戻る要件が残る。close時は満たした範囲・根拠commit / PR・確認方法を残す。重複は未解決の要件を存続Issueへ移し、統合先を示して閉じる。
-2. **確認できた性質を、より広い保証へ膨らませない。** #514では並列処理を意図的に逆順で完了させ、出力が入力順に戻ることを確認した。この試験はLLM出力やクラスタの再現性を保証しない。同様に、チャット接続成功、単体試験成功、ブラウザでの失敗後の復帰、実モデル確認、CI成功、main反映をそれぞれ区別する。[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / #913の実モデル確認はユーザー指定の人間担当として残す。
-3. **Serverlessとは同じ入力・期待する振る舞い・復帰操作を照合する。** #528では両版の図と説明について、同じ属性条件で件数・割合・移動・全体への復帰を確認した。#566の合成12意見の状態カタログも両版の空・通常・エラー等を比較する材料になる。一方、本体の静的出力はHTTP配信、Serverlessの単一HTMLは直接開けるという配布上の差は保持する。共通化は利用者の仕事を成立させるために行い、本流化やrepo移管の決定を前提にしない。
+1. **Issueの完了は、合意した利用者の行動と現行mainで判断する。** 古いコメントや類似機能の存在は調査の入口にする。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513)の「seed設定済み」は、その後の意図的な固定除去で現在の根拠ではなくなっていた。[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)は作成前確認画面があっても見積もりが「目安なし」であり、[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)は抽出意見を読めても元コメントへ戻る要件が残る。close時は満たした範囲・根拠commit / PR・確認方法を残す。重複は未解決の要件を存続Issueへ移し、統合先を示して閉じる。
+2. **確認できた性質を、より広い保証へ膨らませない。** [#514](https://github.com/digitaldemocracy2030/kouchou-ai/issues/514)では並列処理を意図的に逆順で完了させ、出力が入力順に戻ることを確認した。この試験はLLM出力やクラスタの再現性を保証しない。同様に、チャット接続成功、単体試験成功、ブラウザでの失敗後の復帰、実モデル確認、CI成功、main反映をそれぞれ区別する。[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913)の実モデル確認はユーザー指定の人間担当として残す。
+3. **Serverlessとは同じ入力・期待する振る舞い・復帰操作を照合する。** [#528](https://github.com/digitaldemocracy2030/kouchou-ai/issues/528)では両版の図と説明について、同じ属性条件で件数・割合・移動・全体への復帰を確認した。[#566](https://github.com/digitaldemocracy2030/kouchou-ai/issues/566)の合成12意見の状態カタログも両版の空・通常・エラー等を比較する材料になる。一方、本体の静的出力はHTTP配信、Serverlessの単一HTMLは直接開けるという配布上の差は保持する。共通化は利用者の仕事を成立させるために行い、本流化やrepo移管の決定を前提にしない。
 
 Issueをまとめて更新する際は、読み取った本文・更新時刻と操作案をlocal snapshotに残し、書込直前に変更の有無を照合する。変更されていれば再読解し、反映後には本文・状態・統合先を再取得して確認する。今回の記録先は `raw/issue-audit-2026-09-09/`。公開Wikiには判断と公開Issueへの参照を残す。[[issue-backlog-audit-2026-09-09]]より
 
