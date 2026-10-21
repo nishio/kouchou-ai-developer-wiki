@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-21 16:30] filing-back | 第 3 弾レビューの未報告候補 3 件を修正 PR に（#1048–#1050）
+
+- 利用上限で途中終了した調査の記録にあった候補を現行 main で再現し、PR にした。テストが .env のキーで実際に LLM へ要求を送る（#1048）、pip で入れた CLI が作業ディレクトリの .env を読まない（#1049）、api のテストが 2027-01-01 以降に必ず落ちる（#1050）。
+- 週次枠が均等ペースより先行していたので、ワークフローは使わず 1 セッションで確認・修正した。
+- 定例会議向け下書き（meeting-report-draft）を更新。
+
 ## [2026-10-21 13:30] filing-back | 第 3 弾レビューの Wiki 指摘を訂正（約 70 件）、#NNN リンク化の破損を修復
 
 - living ページ（concepts / entities / gotchas / open-decisions / index など）の古い・誤った記述を main と GitHub に照合して訂正。日付つき snapshot は ## Updates で訂正。
