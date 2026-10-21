@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-21 18:30	filing-back	第 3 弾レビューの未報告候補の残り 8 件を修正 PR に（#1051–#1058）
 2026-10-21 16:30	filing-back	第 3 弾レビューの未報告候補 3 件を修正 PR に（#1048–#1050）
 2026-10-21 13:30	filing-back	第 3 弾レビューの Wiki 指摘を訂正（約 70 件）、#NNN リンク化の破損を修復
 2026-10-21 12:40	filing-back	第 3 弾レビューの回帰修正 PR 5 本を admin merge（#1043–#1047）
