@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-23 18:50] filing-back | 第 3 弾レビューの続き：残りの洗い出し 4 観点と未検証 43 件を仕上げ、修正 PR 43 本（#1062–#1104）
+
+- nishio「土日に仕事したくないから多めに使っといて」を受けて、利用上限で残っていた範囲を main b675e032 で仕上げた。洗い出しは、テストの質・ドキュメント・設定・規模の 4 観点で 23 件、うち 22 件が確定。未検証 43 件は 39 件が確定し、4 件が反証された。
+- 確定した指摘を、指摘ごとに main から別ブランチで修正し、PR にした（どれも修正前に落ちるテストつき、未 merge）。詳細は [[code-review-r3-continuation-2026-10-23]]。
+- 次：merge 前の独立レビューを実行中。挙動の判断が要る PR は数本ある。定例会議向け下書き（meeting-report-draft）を更新。
+
 ## [2026-10-21 23:00] filing-back | 第 3 弾レビューの GitHub 側の指摘: Issue 16 件を更新、cli-quickstart の例を直す PR #1059
 
 - 現状と残件を日付つきで追記: #56・#266・#292・#464・#496・#881・#885・#912・#913・#44・#638・#1012 にコメント、#921・#949 は本文末尾に追記（元の本文は保持）。書き込み直前に更新時刻を照合し、書き込み後に取り直して確認。
@@ -105,21 +111,3 @@
 
 - nishio 指摘「次元違いが発生したら後の解析で死ぬのでは」をコードで検証。`embedding.pkl` は `list[dict]` 保存なので書き込みは通るが、下流 `hierarchical_clustering.py` の `np.asarray([...])` が pinned `numpy>=1.26` で混在次元を `ValueError: inhomogeneous shape` で即死させる（実測 numpy 2.5.4）。
 - 実挙動は 2 分岐: (1) 一部バッチだけ fallback → clustering で opaque crash（真因の embedding fallback から遠い）、(2) 全バッチ fallback → 次元が揃い crash せず設定と違う mpnet で silent 完走（wrong model）。→ D を data-loss から correctness/robustness に訂正し [[source-review-findings-2026-10-16]] を更新。fix 方針は silent swap をやめ fail-fast か run 全体の明示判断。
-
-## [2026-10-16 18:17] filing-back | レビュー backlog 6件を追加PR化（#1017〜#1021）— #450後始末/Azure temperature/cluster_nums/slug/status atomic
-
-- nishio go（1,2,3）。2026-10-16 レビュー確定 10 件のうち backlog 6 件を 6 worktree 並列で実装（各回帰テスト付き・隔離 venv で独立再実行・CI green）。各 agent の diff は手元で全て再レビュー＋テスト再実行して確認、push/PR は自分で統制（merge は未実施）。
-- **#1017**=#450 後始末（複製時に埋め込みモデル引き継ぎ A＋admin 作成時の埋め込み検証ゲート接続 B を同梱）、**#1018**=Azure 推論モデルに temperature 不送（C）、**#1019**=from_dict の cluster_nums 既定を None に（E）、**#1020**=create_report の slug 検証でパストラバーサル防止（F）、**#1021**=report_status.json の lock＋atomic 保存（G）。F は broad except が 400 を 500 化するため validate_slug を try 外に配置、という agent の判断を検証して採用。
-- 残り 2 件 D（ローカル埋め込み fallback の silent swap・要仕様判断）・H（散布図の薄表示・要表示判断）は backlog 継続。棚卸しは [[source-review-findings-2026-10-16]] に反映。次＝全 PR のレビュー・merge 判断（明示指示時のみ）。
-
-## [2026-10-16 17:41] filing-back | ソースコードレビュー棚卸し — 確定10件、Gemini埋め込み全断(#1015)と指定カテゴリ再実行漏れ(#1016)をPR
-
-- main `eb38328d` の freshest コード（#450/#996/#306 周辺）を多エージェント＋敵対的検証(8 finder×3 レンズ)でレビュー→確定 10 件を [[source-review-findings-2026-10-16]] に棚卸し。
-- **HIGH＝Gemini 埋め込み全断**: 統合 google-genai の `embed_content` は `.embeddings`(複数) を返すが `extract_embedding_values` が単数/`dict` しか解釈せず常に `RuntimeError`（#450 の Gemini 埋め込み選択が実質無効）。実 SDK 型 introspect で確定し **PR #1015** で修正（回帰テスト追加・CI green）。**#996 の指定カテゴリ再実行漏れ**（`predefined_groups`/`other_group_label` が `dependencies.params` 未登録）を **PR #1016** で修正。
-- 残り 8 件（report duplicate 埋め込み欠落／admin 埋め込み検証非接続／Azure temperature／ローカル埋め込み batch swap／from_dict cluster_nums／create slug 未検証／status.json race／散布図 薄表示 no-op）は nishio 判断待ち backlog。次＝#1015/#1016 の CI・レビュー・merge 判断（人間 attention 操作は明示指示時のみ）。
-
-## [2026-10-15 11:13] filing-back | analysis-core を APIキー無しでローカル・クラスタリングする経路を concept 化
-
-- 別調査（KAITO問題のブロードリスニング、約964件の多言語コメント）で analysis-core 0.1.3 を外部 LLM キー無しで回した知見を [[offline-local-clustering]] に還流。`analysis_core.steps.embedding.embedding` + `hierarchical_clustering.hierarchical_clustering` を直呼びし、ローカル埋め込み(paraphrase-multilingual-mpnet)＋UMAP＋Ward だけを実行する手順。
-- 落とし穴を明記: CLI の canonical `hierarchical_result.json` は labelling→overview→aggregation が LLM 生成物依存のため**キー無しでは作れない**。構造だけ得てラベルは後工程。step 関数は random_state 非対応で**乱数固定不可**（番号が再実行で揺れる）。
-- 既存の [[pipeline]]/[[cli]]/[[llm-providers]]（LocalLLM は別アプローチ）/[[experiment-methodology]] と相互リンク。KAITO問題そのものは別 wiki（公開レポートのみ pointer）。lint clean。

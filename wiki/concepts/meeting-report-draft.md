@@ -35,7 +35,7 @@ sources:
 - [[meeting-report-2026-06-01]] — ラベル品質仕切り直し、構造把握スタンス、open issue 全件棚卸し、PR [#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) deploy false positive / runtime build risk、PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 撤回後の quickstart 再設計、Windows / local LLM route など
 - [[meeting-report-2026-05-25]] — 大リファクタリング完了、LLM grouping 実験、ラベル refinement 実験、open issue 棚卸し、Windows setup 切り替えなど
 
-## そのまま読む用（次回定例向け・最終更新 2026-10-21）
+## そのまま読む用（次回定例向け・最終更新 2026-10-23）
 
 2026-10-17 までの完了分は [[meeting-report-2026-10-18]] に退避済み。ここには rotate 以降に完了したもの（merge 済みと明記）と、進行中・判断待ちのものを置く。
 
@@ -51,6 +51,19 @@ sources:
   - 2027 年に必ず落ちるテスト（[#1050](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1050)）
   - ほか：手順書の環境変数名（[#1051](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1051)）、タイムアウト設定の空欄（[#1052](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1052)）、OpenAI キー無しで API が起動しない（[#1053](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1053)）、CI の対象パス（[#1055](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1055)）、何も確かめていなかった E2E（[#1058](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1058)）
   - nishio が admin merge。merge 後の main で analysis-core 422 件・api 392 件のテストが通過
+- **第 3 弾レビューの続き → 修正 PR 43 本（2026-10-23・進行中、未 merge）**
+  - 利用上限で残っていた範囲を、main `b675e032` で仕上げた。
+    - 洗い出しの 4 観点：テストの質・ドキュメント・設定・規模
+    - 未検証だった 43 件
+  - 確定した指摘を [#1062](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1062)〜[#1104](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1104) に分けた（[[code-review-r3-continuation-2026-10-23]]）。
+  - 大きいもの：
+    - 1 万件前後で埋め込み・クラスタリングが OOM になる件（[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102)。3 万件で最大メモリ 4.2GB→2.0GB）
+    - 公開ビューアの大規模レポートでの操作の重さ（[#1069](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1069)〜[#1071](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1071)）
+    - 削除したレポートの復活（[#1067](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1067)）
+    - 管理画面の再利用・複製が、Azure の手順でデプロイすると動かない件（[#1087](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1087)）
+  - 次：
+    - merge の前に独立したレビューを回している。
+    - 挙動の判断が要る PR は数本ある。
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
 - **指定カテゴリ分類（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 方向性 2）**: CLI は [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) まで main 反映。[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) は実 LLM で end-to-end 1 回完走すれば close 可。WebUI 統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)（[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補）
 - **Claude provider 接続実験（2026-10-17・branch のみ）**: in-pipeline `provider="anthropic"` とオーケストレータ形式の 2 案を実装（[[claude-provider-experiment-output-2026-10-17]]）。次＝ローカル embedding model の選択可能化と、embedding を 1 因子だけ変えた clean experiment
