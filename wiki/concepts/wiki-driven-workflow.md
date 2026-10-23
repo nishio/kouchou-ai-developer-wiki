@@ -81,7 +81,7 @@ git push -u origin <branch>
 Wiki の情報鮮度は、ページの編集日時ではなく **対象 source をいつ時点まで読んだか** を基準に読む。特に議事録 Google Doc と Slack log は追記され続けるため、source ページ側に「最終取得・読解日」「対象期間」「対象 channel / raw snapshot の有無」を明示する。[[nishio-source-freshness-criterion-2026-06-02]]より
 
 - 議事録は [[meeting-minutes]] の freshness marker を見る。Google Doc export を最後に取り直した日、先頭見出し、`txt` / `html` の取得有無が基準になる。
-- Slack は [[slack-logs-repository]] と各 Slack source の freshness marker を見る。直近（raw の最新月と重なる rolling window。2026-10 時点で 75 日。範囲は `mirror/sync.json` の `window_days` / `window_oldest` で確かめる）は `digitaldemocracy2030/slack-logs` の `mirror/`、それより古い public channel log は同 repo の `raw/` を優先し、週次 AI 要約や GitHub 活動まとめは `oss_weekly_reporter` を補助線にする。
+- Slack は [[slack-logs-repository]] と各 Slack source の freshness marker を見る。直近（raw の最新月と重なる rolling window。2026-10 時点で 75 日。範囲は `mirror/sync.json` の `window_days` / `window_oldest` で確かめる）は `digitaldemocracy2030/slack-logs` の `mirror/`、それより古い public channel log は同 repo の `raw/` を優先し、2026-10-21 週までの週次 AI 要約や GitHub 活動まとめは `oss_weekly_reporter` を補助線にする（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）。
 - 最新確認なしで答える場合は、「この Wiki では `<marker>` 時点まで観測」として扱い、現在進行形の状態を断定しない。最新状態が論点なら source を再取得してから答える。
 
 ### コード本体について聞かれた時
@@ -98,7 +98,7 @@ Wiki の情報鮮度は、ページの編集日時ではなく **対象 source �
 
 message の `user` は Slack user id なので、発言者が論点になる時だけ `mirror/users.json` または同月の `state/users-YYYY-MM.json` で表示名に解決する。通常の filing-back では raw 発言者名より、channel / 日付 / 論点 / source freshness を残す方が安全で再利用しやすい。
 
-週次の流れを掴む、または GitHub activity と一緒に見る時は `oss_weekly_reporter` の `ai_reports/` と既存 `weekly-log-*` source を補助線として使う。古い source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
+週次の流れを掴む、または GitHub activity と一緒に見る時は `oss_weekly_reporter` の `ai_reports/` と既存 `weekly-log-*` source を補助線として使う（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）。古い source は「どの週まで観測済みか」を含めて扱う。[[weekly-log-2026-05-06]]より
 
 ### GitHub の現在進行形について聞かれた時
 

@@ -37,7 +37,7 @@ pip install pyyaml   # lint / index 再生成スクリプト用
 - `work/kouchou-ai/` に [digitaldemocracy2030/kouchou-ai](https://github.com/digitaldemocracy2030/kouchou-ai) を clone (コード本体の一次参照)
 - `raw/meeting_minutes.txt` に議事メモ Google Doc の txt export を保存 (議事メモの一次参照、URL は CLAUDE.md / [wiki/sources/meeting-minutes.md](wiki/sources/meeting-minutes.md) に記載)
 - 必要に応じて `raw/meeting_minutes.html` も保存 (URL 復元用)
-- Slack / GitHub 週次ログを参照する場合は [nishio/oss_weekly_reporter](https://github.com/nishio/oss_weekly_reporter) も参照可能にする
+- 2026-10-21 週までの週次 AI 要約・GitHub 週次ログを参照する場合は [nishio/oss_weekly_reporter](https://github.com/nishio/oss_weekly_reporter) も参照可能にする（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）
 
 これらが無くても wiki 本体 (`wiki/` 配下) は読めるが、新しいソースを ingest するなら一次参照は最新化しておく必要がある。
 
@@ -91,5 +91,5 @@ kouchou-ai-developer-wiki/
 ## 関連プロジェクト
 
 - [digitaldemocracy2030/kouchou-ai](https://github.com/digitaldemocracy2030/kouchou-ai) — 本体リポジトリ
-- [nishio/oss_weekly_reporter](https://github.com/nishio/oss_weekly_reporter) — Slack / GitHub の週次ログ
+- [nishio/oss_weekly_reporter](https://github.com/nishio/oss_weekly_reporter) — Slack / GitHub の週次ログ（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）
 - [llm-wiki.md](llm-wiki.md) — このスタイルの wiki を自分の別ドメインで作りたい人向けの一般化された設計案

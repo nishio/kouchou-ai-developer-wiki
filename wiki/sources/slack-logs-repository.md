@@ -22,7 +22,7 @@ README 上の設計は二層：
 - `mirror/`: rolling snapshot。`mirror/slack/<channel_id>.jsonl.gz` に直近の一定期間（window）を保存し、`mirror/sync.json` に最終同期時刻、window、channel 数、message 数が入る。6 時間ごとに同期する現状確認用で、履歴保全ではなく上書きされる。window は 2026-06-30 時点では 14 日だったが、raw の末尾との間に、どちらにも無い期間（盲点）ができていた。そこで slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21 merge）が、raw の最新月と常に重なるよう 75 日に広げた（月次の取得が毎回成功している前提。失敗すると slack-logs に Issue が自動で立つ）。実際の範囲は `mirror/sync.json` の `window_days` / `window_oldest` で確かめる。
 - `state/` と `mirror/users.json`: Slack user id を表示名へ解決するための `users.list` snapshot。canonical を読む時は同月の `state/users-<YYYY-MM>.json`、mirror を読む時は `mirror/users.json` を使う。
 
-`nishio/oss_weekly_reporter` は週次 AI report / GitHub report 生成の系統として引き続き有用だが、Slack raw の最新一次確認は `slack-logs` の `mirror/` と `raw/` を優先する。
+`nishio/oss_weekly_reporter` は週次 AI report / GitHub report 生成の系統（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）。Slack raw の最新一次確認は `slack-logs` の `mirror/` と `raw/` を優先する。
 
 ## Freshness marker
 
@@ -73,7 +73,7 @@ PY
 
 JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の message / thread reply である。message の `user` は `U...` の user id なので、人名や handle が論点になる時は `mirror/users.json` または同月の `state/users-YYYY-MM.json` で解決する。ただし wiki に残す時は、発言者名そのものが判断に必要な場合だけ残し、通常は channel / 日付 / 論点の要約に落とす。
 
-`raw/` は保全層だが 2 ヶ月遅延が前提で、直近 2 ヶ月は入らない。その期間は 75 日窓の `mirror/` が raw の最新月と重なって補うので、両方を見れば途切れない（mirror を直近 14 日分だけ読んで raw に移ると、その間の発言を「無い」と見落とす）。直近論点は `mirror/`、古い確定議論は `raw/`、GitHub activity と合わせた週次流れは `oss_weekly_reporter` という三分法で読む。
+`raw/` は保全層だが 2 ヶ月遅延が前提で、直近 2 ヶ月は入らない。その期間は 75 日窓の `mirror/` が raw の最新月と重なって補うので、両方を見れば途切れない（mirror を直近 14 日分だけ読んで raw に移ると、その間の発言を「無い」と見落とす）。直近論点は `mirror/`、古い確定議論は `raw/`、GitHub activity と合わせた週次流れ（2026-10-21 週まで）は `oss_weekly_reporter` という三分法で読む。
 
 ## 2026-06-30 Observation
 
@@ -107,6 +107,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 ## Updates
 
+- 2026-10-23: `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化した（Slack 本体は本 repo に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。その前に、reporter にしか無かった Slack 本文を本 repo の `raw/` へ全部埋め戻した（2025-04〜2026-02 は PR #10、2025-03・改名/アーカイブ/削除チャンネル・2026-03-01〜03-12 は PR #12。削除済みチャンネルは `raw/slack/deleted-<旧名>/`）。Open Questions の「GitHub weekly activity の source を継続するか」は継続しない側に決着した。
 - 2026-10-21: GitHub 上の slack-logs（main `189782de`。mirror は `synced_at=2026-10-20T21:27:48Z` の 75 日窓、raw は 2026-08 まで）と README・workflow を読み取りで確認し、14 日窓のままだった summary・本文を訂正。75 日への変更は slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21）。2026-09-07 の時点で raw に 2026-08 があったのは 2026-08-20 の先行取得のためで、約 2 か月遅れは今も設計どおり。Updates の見出しを 1 つにまとめた
 - 2026-10-05: repo `77439607`、同期は2026-10-05 06:10 JST、75日窓。開発・アルゴリズムchannelと関連channelの9月以後の論点を確認し、選んだchannelの本文を `raw/catchup-2026-10-05/` に固定した。
 - 2026-10-05: 読解範囲・Flex切替・利用事例・戦略議論の観測は [[catchup-2026-10-05]]、現在地は [[current-status-2026-10-05]] を参照。全channel精読ではない。

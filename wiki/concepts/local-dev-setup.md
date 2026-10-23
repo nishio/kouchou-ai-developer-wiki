@@ -47,7 +47,7 @@ static-site-builder（3200）も compose で profile が付いていないので
 1. `work/kouchou-ai/` に本体 repo の local clone を置く
 2. `raw/meeting_minutes.txt` を Google Doc export から取得する
 3. 議事録中の URL も見る必要があるなら `raw/meeting_minutes.html` も取得する
-4. Slack の最新観測が必要なら `work/slack-logs/` に `digitaldemocracy2030/slack-logs` を clone し、`mirror/` / `raw/` を確認する。週次 AI 要約や GitHub 活動まとめが必要なら `oss_weekly_reporter` も確認する
+4. Slack の最新観測が必要なら `work/slack-logs/` に `digitaldemocracy2030/slack-logs` を clone し、`mirror/` / `raw/` を確認する。2026-10-21 週までの週次 AI 要約や GitHub 活動まとめが必要なら `oss_weekly_reporter` も確認する（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）
 
 つまり onboarding の初手は「アプリを起動する」だけではなく、**コード・議事録・Slack log / 週次ログの一次ソースへ辿り着ける状態を作ること**。[[source-code]] / [[meeting-minutes]] / [[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
 
@@ -66,7 +66,7 @@ curl -L -sS \
   > raw/meeting_minutes.html
 ```
 
-`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `work/slack-logs/` の `mirror/`（直近 75 日。2026-10 時点。raw の最新月と重なるよう設定）または `raw/`（月次 canonical。約 2 か月遅れ）を見る。週次 AI 要約や GitHub activity とのセット確認が必要なら `oss_weekly_reporter` の該当週データも併読する。[[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
+`txt` は grep 用、`html` はリンク先確認用として役割を分ける。その後、Slack の話を調べる必要があるなら `work/slack-logs/` の `mirror/`（直近 75 日。2026-10 時点。raw の最新月と重なるよう設定）または `raw/`（月次 canonical。約 2 か月遅れ）を見る。2026-10-21 週までの週次 AI 要約や GitHub activity とのセット確認が必要なら `oss_weekly_reporter` の該当週データも併読する（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）。[[slack-logs-repository]] / [[weekly-log-2026-05-06]]より
 
 ## フロントエンドだけ動かす（dummy API 利用）
 

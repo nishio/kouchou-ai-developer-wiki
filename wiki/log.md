@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-23 19:30] filing-back | oss_weekly_reporter の更新停止と Slack 本文の埋め戻しを反映
+
+- `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化（単独の Slack 抽出 workflow は一度も成功しておらず、週次レポート側が Slack 込みで動いていた。Slack 本体は `digitaldemocracy2030/slack-logs` に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。data ブランチは 2026-10-21 週までの凍結アーカイブ。
+- reporter にしか無かった Slack 本文は slack-logs PR #10・#12 で `raw/` に全部入った。CLAUDE.md / README / [[local-dev-setup]] / [[wiki-driven-workflow]] / [[slack-logs-repository]] の参照を「過去分のみ」に更新。以降の GitHub activity は live state を見る。
+
 ## [2026-10-23 18:50] filing-back | 第 3 弾レビューの続き：残りの洗い出し 4 観点と未検証 43 件を仕上げ、修正 PR 43 本（#1062–#1104）
 
 - nishio「土日に仕事したくないから多めに使っといて」を受けて、利用上限で残っていた範囲を main b675e032 で仕上げた。洗い出しは、テストの質・ドキュメント・設定・規模の 4 観点で 23 件、うち 22 件が確定。未検証 43 件は 39 件が確定し、4 件が反証された。
