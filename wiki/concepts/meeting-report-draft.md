@@ -51,11 +51,11 @@ sources:
   - 2027 年に必ず落ちるテスト（[#1050](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1050)）
   - ほか：手順書の環境変数名（[#1051](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1051)）、タイムアウト設定の空欄（[#1052](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1052)）、OpenAI キー無しで API が起動しない（[#1053](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1053)）、CI の対象パス（[#1055](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1055)）、何も確かめていなかった E2E（[#1058](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1058)）
   - nishio が admin merge。merge 後の main で analysis-core 422 件・api 392 件のテストが通過
-- **第 3 弾レビューの続き → 修正 PR 62 本（2026-10-23・進行中、未 merge）**
+- **第 3 弾レビューの続き → 修正 PR 65 本（2026-10-23・進行中、未 merge）**
   - 利用上限で残っていた範囲を、main `b675e032` で仕上げた。
     - 洗い出しの 4 観点：テストの質・ドキュメント・設定・規模
     - 未検証だった 43 件
-  - 確定した指摘を [#1062](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1062)〜[#1123](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1123) に分けた（[[code-review-r3-continuation-2026-10-23]]）。夜には、LLM プロバイダの組み合わせ、分析結果の不変条件、旧バージョンのレポートの互換性も足した。
+  - 確定した指摘を [#1062](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1062)〜[#1126](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1126) に分けた（[[code-review-r3-continuation-2026-10-23]]）。夜には、LLM プロバイダの組み合わせ、分析結果の不変条件、旧バージョンのレポートの互換性、管理画面の本番ビルドの実ブラウザでの検査も足した。
   - 大きいもの：
     - 1 万件前後で埋め込み・クラスタリングが OOM になる件（[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102)。3 万件で最大メモリ 4.2GB→2.0GB）
     - 公開ビューアの大規模レポートでの操作の重さ（[#1069](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1069)〜[#1071](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1071)）

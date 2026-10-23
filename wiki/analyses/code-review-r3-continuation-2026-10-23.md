@@ -1,7 +1,7 @@
 ---
-title: "第 3 弾コードレビューの続きと修正 PR 62 本 2026-10-23"
+title: "第 3 弾コードレビューの続きと修正 PR 65 本 2026-10-23"
 type: analysis
-summary: "第 3 弾レビューで利用上限のため残った洗い出し 8 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1123 に分けた記録（merge は未実施）"
+summary: "第 3 弾レビューで利用上限のため残った洗い出し 9 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1126 に分けた記録（merge は未実施）"
 sources:
   - source-code.md
   - deep-code-review-2026-10-19.md
@@ -172,4 +172,12 @@ sources:
   - **気づき**
     - PR のレビューを番号の範囲で分担すると、範囲の境目に抜けが出る。批評ラウンドがそれを見つけた。
     - 旧バージョンの互換性は、fixture が無かったため、過去の担当は「未再現」として見送っていた。旧タグで実際に成果物を作ると、すぐ再現できた。
+- 2026-10-23 深夜（最後）：残りの 2 つを見た。6 件が確定した。
+  - **深夜の PR の独立レビュー**：[#1118](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1118) と [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) の詰めの甘さ 2 件に、commit を足した。
+  - **管理画面の本番ビルドを実ブラウザで操作する検査**：
+    - [#1124](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1124)（medium）：約 10MB を超える CSV からレポートを作れない。Basic 認証の middleware が本文を 10MB で切るため、#804 で上げたはずの上限が一度も効いていなかった。
+    - [#1125](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1125)：5 分を超える静的書き出しのダウンロードが失敗する。
+    - [#1126](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1126)：アップロードが長いと、カードが「作成中」のまま止まる。
+    - ほかにも確定した指摘があるが、別の修正と出す順序を合わせる必要があるので、後日出す。
+  - **気づき**：jest と dummy-server の E2E では、本番ビルドの middleware の挙動が見えない。本番ビルドに実ブラウザで通すと、すぐ見つかった。
 
