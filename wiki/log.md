@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-24 06:00] filing-back | 第 3 弾レビューの修正 PR 64 本を CodeRabbit を見ながら admin merge
+
+- nishio の指示で 3 陣に分け、1 本ずつ merge した。衝突は事前に書いた方針で rebase して解き、CodeRabbit の実際の指摘（10 件ほど）は commit を足して直した。
+- merge 後の main bdc3e469 で、4 種のテストと CLI の通しを確認した。#1079 は権限判定で止まっていて、nishio の判断待ち。台帳は raw の merge-2026-10-24/ledger.md。
+
 ## [2026-10-24 00:45] filing-back | Next.js 16.4.2 への更新 #1127 を admin merge
 
 - CI（E2E を含む）がすべて通った後、nishio の指示「CI が通ったら admin merge して」で squash merge した。main `23acd411`。
@@ -118,9 +123,3 @@
 - Slack `#2_開発_広聴ai`（mirror 2026-10-17 同期）を一次参照。「Claude を繋ぐ」話は 3 層が混在＝(A) Claude Code をオーケストレータに（nishio 10-13、既に動く／[[offline-local-clustering]]+ラベリングを Claude が担う一般化）/(B) サブスク枠で LLM コスト（10-12 SIWC は embedding 範囲外で却下済み）/(C) pipeline に anthropic provider 追加（tokoroten 10-16）。
 - 核心は embedding: 公式 docs は「Anthropic は自前 embedding なし→Voyage AI」。tokoroten「Claudeはエンベディングもある」は誤読。Max API credit（$100/$200/月）は Messages API に効くが interactive Claude Code・Voyage には効かない。main 083593ba に anthropic 分岐 0 件。
 - 新規 [[claude-provider-connection-proposal-2026-10-17]] を作成し [[llm-providers]] に Claude note+リンクを追記（orphan 解消）。次＝#285/#255 のどちらで追跡するか、embedding 既定（ローカル無償 vs 他社キー）、Anthropic 政治用途ポリシーの確認。
-
-## [2026-10-17 01:10] filing-back | レビュー backlog の独立 8 PR を admin merge（nishio 明示指示）
-
-- nishio「CI が通っている PR は admin merge」。CI 全 green の独立 8 件（#1015/#1016/#1017/#1018/#1019/#1020/#1021/#1022）を squash で admin merge。各 PR は required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
-- **#1024/#1025（散布図ラベル薄表示の択一候補）は merge せず OPEN 保留**: 両案同時 merge は矛盾するため。a/b は Issue #1023 で nishio「今は決めない」＝継続検討。
-- 反映先: [[meeting-report-draft]] に merge entry、[[source-review-findings-2026-10-16]] に ## Updates を追記。次＝#1023 の a/b 決定待ち。

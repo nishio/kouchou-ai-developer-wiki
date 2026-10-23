@@ -180,4 +180,21 @@ sources:
     - [#1126](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1126)：アップロードが長いと、カードが「作成中」のまま止まる。
     - ほかにも確定した指摘があるが、別の修正と出す順序を合わせる必要があるので、後日出す。
   - **気づき**：jest と dummy-server の E2E では、本番ビルドの middleware の挙動が見えない。本番ビルドに実ブラウザで通すと、すぐ見つかった。
+- 2026-10-24：nishio の指示（「CodeRabbit の review を見つつ、CI が通ったら merge」「のんびりと第 2 陣・第 3 陣も続けて」）を受けて、修正 PR を 3 陣に分けて 1 本ずつ admin merge した。
+  - **merge した数**：64 本。[#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)（Next.js 16.4.2）を含めると 65 本で、main は `bdc3e469`。
+  - **衝突**：積み上げの PR と、衝突する組み合わせは、PR 本文とコメントに書いておいた解き方で rebase して解いた。
+  - **CodeRabbit の指摘**：実際の指摘は 10 件ほどで、追加の commit で直してから merge した。主なもの：
+    - [#1084](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1084)：再解析中に作成できた
+    - [#1095](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1095)：工程の記録が無いまま error になると待ち続けた
+    - [#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102)：次元がそろわない埋め込み
+    - [#1104](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1104)：null の扱いと文書
+  - **レビューが無いまま merge したもの**：大半の PR は rate limit でレビューされず、10/23 の独立レビューだけを経ている。
+  - **main でのテスト**：merge 後の main で全件通った。CLI も、偽の LLM で hierarchical と llm_grouping を最後まで通した。
+    - analysis-core：608 件
+    - api：472 件
+    - admin：240 件
+    - public-viewer：253 件
+  - **残り**
+    - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079)：実行環境の権限判定で merge と force push が止まり、nishio の判断待ち。
+    - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) への CodeRabbit の指摘（parse 経路で送り直した分のトークンが 0 と数えられる）は、範囲外として別の課題に残した。
 

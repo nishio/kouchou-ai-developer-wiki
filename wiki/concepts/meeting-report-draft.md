@@ -51,7 +51,7 @@ sources:
   - 2027 年に必ず落ちるテスト（[#1050](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1050)）
   - ほか：手順書の環境変数名（[#1051](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1051)）、タイムアウト設定の空欄（[#1052](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1052)）、OpenAI キー無しで API が起動しない（[#1053](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1053)）、CI の対象パス（[#1055](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1055)）、何も確かめていなかった E2E（[#1058](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1058)）
   - nishio が admin merge。merge 後の main で analysis-core 422 件・api 392 件のテストが通過
-- **第 3 弾レビューの続き → 修正 PR 65 本（2026-10-23・進行中、未 merge）**
+- **第 3 弾レビューの続き → 修正 PR 65 本（2026-10-23 作成、2026-10-24 に 64 本 merge 済み）**
   - 利用上限で残っていた範囲を、main `b675e032` で仕上げた。
     - 洗い出しの 4 観点：テストの質・ドキュメント・設定・規模
     - 未検証だった 43 件
@@ -63,6 +63,8 @@ sources:
     - 管理画面の再利用・複製が、Azure の手順でデプロイすると動かない件（[#1087](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1087)）
   - 次：
     - 独立レビューは実施済みで、指摘は該当する PR に反映した。
+    - 2026-10-24 に、nishio の指示で CodeRabbit の指摘を確かめながら 1 本ずつ admin merge した。merge 後の main（`bdc3e469`）で全テストと CLI の通しを確認済み。
+    - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) だけは、実行環境の権限判定で止まっていて、nishio の判断待ち。
     - 挙動の判断が要る PR は数本ある。
 - **Next.js を 16.4.2 に上げる（2026-10-24・merge 済み）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。CI（E2E を含む）が通った後、nishio の指示で admin merge した（main `23acd411`）
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
