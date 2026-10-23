@@ -1,7 +1,7 @@
 ---
-title: "第 3 弾コードレビューの続きと修正 PR 43 本 2026-10-23"
+title: "第 3 弾コードレビューの続きと修正 PR 56 本 2026-10-23"
 type: analysis
-summary: "第 3 弾レビューで利用上限のため残った洗い出し 4 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1104 に分けた記録（merge は未実施）"
+summary: "第 3 弾レビューで利用上限のため残った洗い出し 6 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1117 に分けた記録（merge は未実施）"
 sources:
   - source-code.md
   - deep-code-review-2026-10-19.md
@@ -127,3 +127,31 @@ sources:
   - エラーのレポートを再利用する導線が無い
   - 削除が論理削除である
 - 散布図で同じ点が 2 本のトレースに重なっている件。消すとホバー文言が変わる可能性があり、実ブラウザでの確認が要る。
+
+## Updates
+
+- 2026-10-23 夜：PR の独立レビューと、残りの 2 観点の洗い出しを行った。
+  - **独立レビュー**
+    - その時点で開いていた修正 PR を、作った担当とは別の担当が読んだ。10 件を洗い出し、9 件が確定した。
+    - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) の後、複製時に Blob から取る埋め込みファイルの取得が途中で失敗すると、空のファイルが残り、取り直されない。書き込み方の問題自体は main に元からある。
+    - [#1084](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1084) の後も、CSV の解析中にタブを移ると列が上書きされる。
+    - この 2 件は、それぞれの PR に commit を足して直した。
+    - クラスタ一覧の再描画は、[#1105](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1105) にした（draft、[#1071](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1071) の後）。
+    - 残りの指摘は、[#1060](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1060)（表示言語切替）に対するもの。作者に伝えた。
+  - **LLM プロバイダの組み合わせ（6 件）**
+    - [#1112](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1112)：複製でプロバイダを替えたときの埋め込みモデル
+    - [#1113](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1113)：Azure の推論モデルの判定
+    - [#1114](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1114)：local の strict な json_schema
+    - [#1115](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1115)：OpenRouter の取り直しのトークン数
+    - [#1116](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1116)：公開ページのモデル名
+    - [#1117](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1117)：Gemini 2.5 Flash の単価
+  - **分析結果の不変条件（6 件）**
+    - [#1106](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1106)：CLI の limit の既定値 1000 で黙って切り詰める
+    - [#1107](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1107)：0 件のグループのラベルが原点に浮く
+    - [#1108](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1108)：10 段以上の階層
+    - [#1109](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1109)：relations の重複行
+    - [#1110](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1110)：空の説明が 'None' になる
+    - [#1111](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1111)：階層リストのフィルタ中の件数
+  - **判断が要る点**
+    - [#1106](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1106)：既定値を全件にするか
+    - [#1116](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1116)：Azure の実際のモデル名を公開ページに出すか

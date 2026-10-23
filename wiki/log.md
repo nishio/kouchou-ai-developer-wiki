@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-23 20:55] filing-back | 第 3 弾レビューの続き：PR の独立レビューと残りの 2 観点、修正 PR を #1117 まで
+
+- 独立レビューで 9 件が確定した。#1079・#1084 には commit を足して直し、クラスタ一覧の再描画は #1105 にした。#1060 への指摘は作者に伝えた。
+- nishio「そのまま残りの 2 観点も回しといて」を受けて、LLM プロバイダの組み合わせと、分析結果の不変条件を洗い出した。12 件すべてが確定し、#1106–#1117 にした。
+- 詳細は [[code-review-r3-continuation-2026-10-23]] の Updates。定例会議向け下書き（meeting-report-draft）も更新した。
+
 ## [2026-10-23 19:30] filing-back | oss_weekly_reporter の更新停止と Slack 本文の埋め戻しを反映
 
 - `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化（単独の Slack 抽出 workflow は一度も成功しておらず、週次レポート側が Slack 込みで動いていた。Slack 本体は `digitaldemocracy2030/slack-logs` に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。data ブランチは 2026-10-21 週までの凍結アーカイブ。
@@ -106,13 +112,3 @@
 
 - nishio「両方作って Issue で質問」。H（全点フィルタ済みクラスタのラベル dimming が cc→cc の no-op で効かない＋隣接コメントが「元の色維持」と矛盾）は design 判断が要るため、両挙動を択一の候補 PR で用意: **#1024**（薄くする・末尾アルファ 0.8→0.4）/ **#1025**（元の色維持・死んだ分岐と @ts-ignore を削除）。
 - どちらを採るかを **Issue #1023** で質問（両 PR を相互リンク）。両案とも biome / tsc / chart jest 89 件 green を隔離 worktree で確認。これで確定 10 件すべてに対応着手（直接修正 9＝#1015–#1022、H は Issue+2候補PR）。[[source-review-findings-2026-10-16]] 更新。次＝全 PR のレビュー・merge と #1023 の採否（明示指示時のみ）。
-
-## [2026-10-16 20:38] filing-back | backlog D を fail-fast 化で PR #1022（nishio 指摘を反映）
-
-- nishio「次元違いが発生したら後の解析で死ぬのでは」→ その通りと確認（#1022 前の事実訂正で裏取り済み）。`request_to_local_llm_embed` の silent fallback（失敗時に mpnet 768次元へ暗黙 swap）をやめ、失敗モデル名＋元エラー入りの `RuntimeError` で fail-fast に変更。mpnet を使いたい場合は is_embedded_at_local を明示有効化。
-- 回帰テスト新規 `tests/test_local_embed_failfast.py`（正常系＝埋め込み返却／失敗系＝swap を呼ばず RuntimeError）。修正前は失敗系が fail することを確認、test_llm.py 全 pass・ruff clean。[[source-review-findings-2026-10-16]] の D を backlog→PR 済みに更新（残 backlog は H のみ）。
-
-## [2026-10-16 19:35] filing-back | 事実訂正（コードで裏取り）: backlog D は「混在次元で silent 破損」ではなく crash
-
-- nishio 指摘「次元違いが発生したら後の解析で死ぬのでは」をコードで検証。`embedding.pkl` は `list[dict]` 保存なので書き込みは通るが、下流 `hierarchical_clustering.py` の `np.asarray([...])` が pinned `numpy>=1.26` で混在次元を `ValueError: inhomogeneous shape` で即死させる（実測 numpy 2.5.4）。
-- 実挙動は 2 分岐: (1) 一部バッチだけ fallback → clustering で opaque crash（真因の embedding fallback から遠い）、(2) 全バッチ fallback → 次元が揃い crash せず設定と違う mpnet で silent 完走（wrong model）。→ D を data-loss から correctness/robustness に訂正し [[source-review-findings-2026-10-16]] を更新。fix 方針は silent swap をやめ fail-fast か run 全体の明示判断。

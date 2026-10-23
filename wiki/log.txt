@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-23 20:55	filing-back	第 3 弾レビューの続き：PR の独立レビューと残りの 2 観点、修正 PR を #1117 まで
 2026-10-23 19:30	filing-back	oss_weekly_reporter の更新停止と Slack 本文の埋め戻しを反映
 2026-10-23 18:50	filing-back	第 3 弾レビューの続き：残りの洗い出し 4 観点と未検証 43 件を仕上げ、修正 PR 43 本（#1062–#1104）
 2026-10-21 23:00	filing-back	第 3 弾レビューの GitHub 側の指摘: Issue 16 件を更新、cli-quickstart の例を直す PR #1059
