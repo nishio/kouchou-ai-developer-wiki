@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-23 22:40] filing-back | 第 3 弾レビューの続き（深夜）：批評ラウンドの 2 回目と旧バージョンの互換性、修正 PR を #1123 まで
+
+- 夜の 13 本の独立レビューで、#1113 の Azure の判定を直した。確定済みで未修正だった 3 件（LLM 直接グルーピングの並列化など）を #1118–#1120 にした。
+- 批評ラウンドの 2 回目で、PR レビューの抜けと、旧バージョンのレポートの互換性を見た。9 件が確定した。既存の PR 3 本に commit を足し、旧レポートの 3 件を #1121–#1123 にした。
+- 詳細は [[code-review-r3-continuation-2026-10-23]] の Updates。
+
 ## [2026-10-23 20:55] filing-back | 第 3 弾レビューの続き：PR の独立レビューと残りの 2 観点、修正 PR を #1117 まで
 
 - 独立レビューで 9 件が確定した。#1079・#1084 には commit を足して直し、クラスタ一覧の再描画は #1105 にした。#1060 への指摘は作者に伝えた。
@@ -103,12 +109,3 @@
 - nishio「CI が通っている PR は admin merge」。CI 全 green の独立 8 件（#1015/#1016/#1017/#1018/#1019/#1020/#1021/#1022）を squash で admin merge。各 PR は required-review のみで BLOCKED だったため admin override。確定 10 件のうち A–G・D が main 反映。
 - **#1024/#1025（散布図ラベル薄表示の択一候補）は merge せず OPEN 保留**: 両案同時 merge は矛盾するため。a/b は Issue #1023 で nishio「今は決めない」＝継続検討。
 - 反映先: [[meeting-report-draft]] に merge entry、[[source-review-findings-2026-10-16]] に ## Updates を追記。次＝#1023 の a/b 決定待ち。
-
-## [2026-10-16 21:32] filing-back | H の比較スクショを生成し Issue #1023 / PR #1024・#1025 に添付
-
-- nishio「artifact は見られないので PNG を Issue に貼る方向で」。実コードの注釈スタイル（白太字14px・borderpad10・背景 rgba・SOFT_COLORS・フィルタ点は半透明グレー）を再現した HTML を Playwright(headless Chromium, 2x) で PNG 化（a/b 並置＝h-ab.png、透明度サンプル 1.0〜0.3＝h-alpha.png）。
-- public な developer-wiki に `assets/review-2026-10-16/` として commit→ raw.githubusercontent URL で Issue #1023・PR #1024・#1025 に埋め込み（gh pr edit は projectCards の GraphQL deprecation で失敗するため `gh api -X PATCH .../pulls/N -F body=@file` で回避）。
-- 比較から所見: 0.4 は白文字がやや薄く **0.5〜0.6** がバランス良さそう、と #1023 に明記。採否は nishio 判断待ち（a は値調整可、採らない方の PR は close）。
-
-- nishio「両方作って Issue で質問」。H（全点フィルタ済みクラスタのラベル dimming が cc→cc の no-op で効かない＋隣接コメントが「元の色維持」と矛盾）は design 判断が要るため、両挙動を択一の候補 PR で用意: **#1024**（薄くする・末尾アルファ 0.8→0.4）/ **#1025**（元の色維持・死んだ分岐と @ts-ignore を削除）。
-- どちらを採るかを **Issue #1023** で質問（両 PR を相互リンク）。両案とも biome / tsc / chart jest 89 件 green を隔離 worktree で確認。これで確定 10 件すべてに対応着手（直接修正 9＝#1015–#1022、H は Issue+2候補PR）。[[source-review-findings-2026-10-16]] 更新。次＝全 PR のレビュー・merge と #1023 の採否（明示指示時のみ）。

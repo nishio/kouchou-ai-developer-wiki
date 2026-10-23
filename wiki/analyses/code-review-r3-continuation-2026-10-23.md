@@ -1,7 +1,7 @@
 ---
-title: "第 3 弾コードレビューの続きと修正 PR 56 本 2026-10-23"
+title: "第 3 弾コードレビューの続きと修正 PR 62 本 2026-10-23"
 type: analysis
-summary: "第 3 弾レビューで利用上限のため残った洗い出し 6 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1117 に分けた記録（merge は未実施）"
+summary: "第 3 弾レビューで利用上限のため残った洗い出し 8 観点と未検証 43 件を main b675e032 で仕上げ、確定した指摘を修正 PR #1062–#1123 に分けた記録（merge は未実施）"
 sources:
   - source-code.md
   - deep-code-review-2026-10-19.md
@@ -155,3 +155,21 @@ sources:
   - **判断が要る点**
     - [#1106](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1106)：既定値を全件にするか
     - [#1116](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1116)：Azure の実際のモデル名を公開ページに出すか
+- 2026-10-23 深夜：nishio「使用量見て、まだ回せるなら続けて」を受けて、さらに次を行った。
+  - **夜の 13 本の独立レビュー**：3 件が確定。
+    - [#1113](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1113) は、表示名の MODEL_NAME を持つ Azure 環境で 400 になる。判定を「どちらかが推論モデル名なら推論」に変えた。
+    - [#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102) と [#1116](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1116) は、merge 順の注意を PR にコメントした。
+  - **確定済みで未修正だった 3 件**
+    - [#1118](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1118)：LLM 直接グルーピングの割当を並列にする。mock の 5,000 件で 10 秒から 0.4 秒になった。
+    - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119)：形式が壊れた応答を、その回答だけ送り直す。
+    - [#1120](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1120)：複製で入力を作り直したら、警告を残す。
+  - **批評ラウンドの 2 回目**
+    - 番号で区切ったため、独立レビューから抜けていた PR があった。そのレビューで 5 件が確定し、[#1104](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1104)・[#1095](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1095)・[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102) に commit を足した。
+    - **旧バージョンのレポートの互換性**：旧タグで実際に成果物を作り、今のコードに通して試した。3 件が確定した。
+      - [#1121](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1121)（draft、#1102 の後）：v4.0 以前の埋め込みファイルは pandas 形式のため、クラスタ数を変える再利用が必ず失敗する
+      - [#1122](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1122)：v2.0 のレポートに provider が無い
+      - [#1123](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1123)：v1.0 の status で一覧が 500 になる
+  - **気づき**
+    - PR のレビューを番号の範囲で分担すると、範囲の境目に抜けが出る。批評ラウンドがそれを見つけた。
+    - 旧バージョンの互換性は、fixture が無かったため、過去の担当は「未再現」として見送っていた。旧タグで実際に成果物を作ると、すぐ再現できた。
+
