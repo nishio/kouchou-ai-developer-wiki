@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-24 00:30] filing-back | Next.js を 16.4.2 に上げる PR #1127
+
+- 「上流がまだ直していない」とされていた Next.js の 10/22 の勧告は、16.4.1 で修正済みで、こちらの対応待ちだった。Dependabot の alert にもまだ出ていない。
+- nishio「go」を受けて #1127 を作成した。lockfile の差分は next と @next/* だけ。両アプリのビルド・テストと、CI と同じ手順の shell / static の書き出しを確認した。定例会議向け下書き（meeting-report-draft）にも追記。
+
 ## [2026-10-23 23:59] filing-back | 第 3 弾レビューの続き（最後）：管理画面の本番ビルドを実ブラウザで検査、修正 PR を #1126 まで
 
 - 深夜の PR の独立レビューで、#1118・#1119 に commit を足した。
