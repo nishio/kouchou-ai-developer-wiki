@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-24 00:45] filing-back | Next.js 16.4.2 への更新 #1127 を admin merge
+
+- CI（E2E を含む）がすべて通った後、nishio の指示「CI が通ったら admin merge して」で squash merge した。main `23acd411`。
+
 ## [2026-10-24 00:30] filing-back | Next.js を 16.4.2 に上げる PR #1127
 
 - 「上流がまだ直していない」とされていた Next.js の 10/22 の勧告は、16.4.1 で修正済みで、こちらの対応待ちだった。Dependabot の alert にもまだ出ていない。

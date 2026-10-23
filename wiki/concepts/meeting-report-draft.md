@@ -64,7 +64,7 @@ sources:
   - 次：
     - 独立レビューは実施済みで、指摘は該当する PR に反映した。
     - 挙動の判断が要る PR は数本ある。
-- **Next.js を 16.4.2 に上げる PR（2026-10-24・未 merge）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。早めの merge が望ましい
+- **Next.js を 16.4.2 に上げる（2026-10-24・merge 済み）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。CI（E2E を含む）が通った後、nishio の指示で admin merge した（main `23acd411`）
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
 - **指定カテゴリ分類（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 方向性 2）**: CLI は [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) まで main 反映。[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) は実 LLM で end-to-end 1 回完走すれば close 可。WebUI 統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)（[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補）
 - **Claude provider 接続実験（2026-10-17・branch のみ）**: in-pipeline `provider="anthropic"` とオーケストレータ形式の 2 案を実装（[[claude-provider-experiment-output-2026-10-17]]）。次＝ローカル embedding model の選択可能化と、embedding を 1 因子だけ変えた clean experiment

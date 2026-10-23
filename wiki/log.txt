@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-24 00:45	filing-back	Next.js 16.4.2 への更新 #1127 を admin merge
 2026-10-24 00:30	filing-back	Next.js を 16.4.2 に上げる PR #1127
 2026-10-23 23:59	filing-back	第 3 弾レビューの続き（最後）：管理画面の本番ビルドを実ブラウザで検査、修正 PR を #1126 まで
 2026-10-23 22:40	filing-back	第 3 弾レビューの続き（深夜）：批評ラウンドの 2 回目と旧バージョンの互換性、修正 PR を #1123 まで
