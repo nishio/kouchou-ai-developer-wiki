@@ -197,4 +197,8 @@ sources:
   - **残り**
     - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079)：実行環境の権限判定で merge と force push が止まり、nishio の判断待ち。
     - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) への CodeRabbit の指摘（parse 経路で送り直した分のトークンが 0 と数えられる）は、範囲外として別の課題に残した。
+- 2026-10-24（続き）：
+  - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) を最新の main に rebase し直し、nishio が merge した（`7fff37a4`）。修正 PR 65 本は、これですべて merge 済み。
+  - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) への CodeRabbit の指摘は、Issue [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) にした。
+  - 外部コントリビュータの [#1061](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1061)（Node runtime 依存一覧の訂正）は、最新の main と照合してレビューし、merge した（`f422dcc6`）。軽微な修正はこちらで後から行う。
 

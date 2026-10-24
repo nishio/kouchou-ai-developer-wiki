@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-24 12:30] filing-back | #1079 と #1061 を merge、#1119 の残課題を Issue #1128 に
+
+- #1079 は最新の main に rebase し直してテストを確かめ、nishio が merge した。修正 PR 65 本はすべて merge 済み。
+- #1061（yasumorishima さん）は最新の main と照合してレビューし、merge した。軽微な修正は後でこちらが行う。#1119 の CodeRabbit の指摘は #1128 にした。
+
 ## [2026-10-24 04:45] filing-back | 第 3 弾レビューの修正 PR 64 本を CodeRabbit を見ながら admin merge
 
 - nishio の指示で 3 陣に分け、1 本ずつ merge した。衝突は事前に書いた方針で rebase して解き、CodeRabbit の実際の指摘（10 件ほど）は commit を足して直した。
