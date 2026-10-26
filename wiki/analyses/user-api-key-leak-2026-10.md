@@ -77,3 +77,9 @@ status ファイルへの書き込みは、抽出・意見分類の補助関数�
 
 - 既存レポートの確認・修正がどこまで済んだか（運用側。デプロイ環境の詳細は公開 wiki に書かない）
 - プロバイダ SDK の例外メッセージを通じて、status の `error_stack_trace` にキーの一部が入りうる件。x011 の伏せ字と合わせて塞ぐ予定
+
+## Updates
+
+- 2026-10-26: 修正を含む [v4.2.0](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.2.0) と、PyPI の `kouchou-ai-analysis-core` 0.2.0 をリリースした。PyPI の 0.1.3 にも同じ問題が含まれていた（CLI を `USER_API_KEY` を設定して実行した場合）。GitHub Security Advisory は深刻度 Moderate で下書きを用意してあり、公開は nishio が行う。
+- 2026-10-26: Open Questions の `error_stack_trace` の件は、[#1141](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1141) で塞いだ。設定やライブラリ経由で渡した鍵が、失敗のログや status に伏せ字なしで出る経路もあわせて直した。
+

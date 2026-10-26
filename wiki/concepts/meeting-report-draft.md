@@ -73,8 +73,10 @@ sources:
   - 同じ猶予期間に保留していた修正も、同日に PR にした。
     - [#1132](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1132)（インフラ）：merge 済み
     - [#1135](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1135)（公開範囲）：merge 済み
-    - [#1133](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1133)・[#1134](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1134)：CodeRabbit のレビュー待ち
-  - 次：v4.2.0 のリリース（今日の作業が全部入った後）。GitHub Security Advisory を出すかどうかは判断待ち。
+    - [#1133](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1133)・[#1134](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1134)：merge 済み
+  - 保留していた残りの修正（[#1133](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1133)・[#1134](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1134)・[#1138](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1138)〜[#1141](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1141)・[#1144](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1144)）と、依存の脆弱性の解消（[#1137](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1137)）も、CodeRabbit の指摘を直したうえで merge した。
+  - **v4.2.0 をリリースした**（2026-10-26）。PyPI の `kouchou-ai-analysis-core` 0.2.0 も公開した（0.1.3 にも同じ問題が含まれていた）。
+  - GitHub Security Advisory は深刻度 Moderate で下書きを用意してある。公開は nishio が行う。
 - **Next.js を 16.4.2 に上げる（2026-10-24・merge 済み）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。CI（E2E を含む）が通った後、nishio の指示で admin merge した（main `23acd411`）
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
 - **指定カテゴリ分類（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 方向性 2）**: CLI は [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) まで main 反映。[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) は実 LLM で end-to-end 1 回完走すれば close 可。WebUI 統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)（[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補）

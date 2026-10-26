@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-26 20:45] filing-back | v4.2.0 と analysis-core 0.2.0 をリリース
+
+- 保留していた修正と依存の脆弱性の解消を、CodeRabbit の指摘を直したうえで順に merge し、v4.2.0 のタグとリリースを作った。冒頭はセキュリティ修正と設定の変更点。
+- PyPI の analysis-core 0.1.3 にも鍵の漏洩が含まれていたので、0.2.0 を公開した。Security Advisory は Moderate で下書き、公開は nishio。詳細は [[user-api-key-leak-2026-10]]。
+
 ## [2026-10-26 15:30] filing-back | ユーザー API キーの漏洩を公開：修正 #1136 を merge、wiki ページを追加
 
 - 猶予期間が明け、nishio の指示で公開作業を始めた。修正 #1136 を最新の main に載せ替え、CodeRabbit の指摘 4 件を直して merge した。同じ期間に保留していた修正 #1132・#1135 も merge 済みで、#1133・#1134 はレビュー待ち。
@@ -97,9 +102,3 @@
 - #1031・#1033・#1034・#1039 で入った／広がった不具合 6 件を #1043（--reuse-from とトークン引き継ぎ）・#1044（再利用で全段再実行）・#1045（完了後もカードが作成中）・#1046（濃い意見 0 件の切り替え先）で修正。nishio「CI が通ったら admin merge」で squash merge。
 - #1043 と #1044 が合わさって落ちたテストの前提を #1047 で直し、main の Server Tests green を確認。CodeRabbit の範囲外の指摘 2 件は後続で扱う。
 - [[meeting-report-draft]] を更新。
-
-## [2026-10-19 15:30] filing-back | CI 通過 PR 15 本を admin merge（#1027–#1041、nishio 明示指示）
-
-- nishio「CI が通った PR は admin merge」「続けて全部マージ」。#1027–#1041 を番号順に squash merge。択一候補の #1024/#1025 は対象外（#1023 の a/b 判断待ち）。
-- #1033（#1031 と orchestrator.py の import）・#1036（#1028 とテストファイル）・#1041（#1034 と createReport.test.ts）は rebase で衝突を解消し、テスト再実行と CI 通過を確認してから merge。merge 後の main で analysis-core 406 / api 382 passed。
-- [[deep-code-review-2026-10-19]] / [[code-health-review-2026-10-18]] / [[meeting-report-draft]] を更新。
