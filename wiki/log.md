@@ -3,7 +3,7 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
-## [2026-10-26 20:45] filing-back | v4.2.0 と analysis-core 0.2.0 をリリース
+## [2026-10-26 20:39] filing-back | v4.2.0 と analysis-core 0.2.0 をリリース
 
 - 保留していた修正と依存の脆弱性の解消を、CodeRabbit の指摘を直したうえで順に merge し、v4.2.0 のタグとリリースを作った。冒頭はセキュリティ修正と設定の変更点。
 - PyPI の analysis-core 0.1.3 にも鍵の漏洩が含まれていたので、0.2.0 を公開した。Security Advisory は Moderate で下書き、公開は nishio。詳細は [[user-api-key-leak-2026-10]]。
