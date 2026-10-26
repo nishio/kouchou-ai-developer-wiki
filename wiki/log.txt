@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-26 21:40	filing-back	ユーザー API キーの件の Security Advisory を公開
 2026-10-26 20:39	filing-back	v4.2.0 と analysis-core 0.2.0 をリリース
 2026-10-26 15:30	filing-back	ユーザー API キーの漏洩を公開：修正 #1136 を merge、wiki ページを追加
 2026-10-26 13:40	filing-back	#1024 を merge して #1023 を close、#1129 を merge、#912 を close して残件を #1131 に

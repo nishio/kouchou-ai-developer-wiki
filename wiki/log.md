@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-26 21:40] filing-back | ユーザー API キーの件の Security Advisory を公開
+
+- nishio が GHSA-xr6j-6w48-xh62 を公開した（Moderate、CVE なし）。公開前に、対象が作成画面の任意の「APIキー」欄であり、空欄なら影響なしと冒頭で示すよう、Advisory・リリースノート・docs（#1148）・wiki をそろえた。
+- リリースノートに Advisory へのリンクを足した。詳細は [[user-api-key-leak-2026-10]]。
+
 ## [2026-10-26 20:39] filing-back | v4.2.0 と analysis-core 0.2.0 をリリース
 
 - 保留していた修正と依存の脆弱性の解消を、CodeRabbit の指摘を直したうえで順に merge し、v4.2.0 のタグとリリースを作った。冒頭はセキュリティ修正と設定の変更点。
