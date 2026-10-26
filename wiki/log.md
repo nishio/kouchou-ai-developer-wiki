@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-26 23:46] filing-back | YouTube プラグインを google-api-python-client なしで動かす（#1149）
+
+- v4.2.0 の Docker イメージで YouTube の取り込みが失敗する件。lock に extra を入れる案から、httpx で REST を直接呼ぶ形に作り直して merge した（beff715f）。プラグインだけが使う依存を本体に入れないため。定例の下書きに追記。
+
 ## [2026-10-26 21:40] filing-back | ユーザー API キーの件の Security Advisory を公開
 
 - nishio が GHSA-xr6j-6w48-xh62 を公開した（Moderate、CVE なし）。公開前に、対象が作成画面の任意の「APIキー」欄であり、空欄なら影響なしと冒頭で示すよう、Advisory・リリースノート・docs（#1148）・wiki をそろえた。
