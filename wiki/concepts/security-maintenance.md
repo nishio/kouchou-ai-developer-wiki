@@ -61,6 +61,7 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 - [[gotchas]] — transitive 脆弱性を範囲 override で塞ぐ実務 recipe
 - [[wiki-driven-workflow]] — 公開境界（公開 wiki に書かない情報）
 - [[contributing]] — PR / merge 手順
+- [[user-api-key-leak-2026-10]] — ユーザー API キーが公開レポート JSON に含まれていた問題（2026-10、先行連絡と猶予の後に公開）
 
 ## Open Questions
 
@@ -70,3 +71,4 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 ## Updates
 
 - 2026-10-21: 公開境界の根拠の参照先を [[contributing]] から、この wiki repo の `CLAUDE.md` と [[wiki-driven-workflow]] に訂正（contributing には公開境界の節が無い）
+- 2026-10-26: 自分たちで見つけた脆弱性を、先行連絡と猶予を置いてから公開した初めての例として [[user-api-key-leak-2026-10]] を追加。同じ猶予期間に保留していた公開範囲・インフラなどの修正も同日に PR にした

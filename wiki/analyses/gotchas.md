@@ -84,6 +84,10 @@ Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`S
 
 ### パイプライン・データ
 
+### 結果 JSON は公開物。設定を丸ごと書き出さず、秘密は出口で落とす
+
+`hierarchical_result.json` は公開ビューアがそのままページに埋め込み、公開 API・静的書き出し・JSON ダウンロードでも外に出る。集計ステップが受け取った設定を丸ごと書き出していたため、後から設定にユーザー API キーが入るようになった時点で、キーが公開ページに出ていた（[[user-api-key-leak-2026-10]]）。秘密を扱う変更では、「どの設定に入りうるか」を追いかけるより、外に出る出口（結果 JSON・status ファイル・応答）で落とし、「公開される出力に出ないこと」をテストで確かめる。
+
 ### Slack で `embeddings.pkl` が UMAP 後 2D と誤認された
 
 2025-10-09 の Slack では `embeddings.pkl` が UMAP 後 2D だという発言があるが、`main@3809a7a` の `packages/analysis-core/src/analysis_core/steps/embedding.py` は元の埋め込みベクトルを `embeddings.pkl` に保存し、`hierarchical_clustering.py` 側で初めて UMAP による 2D 化をしている。したがって **少なくとも現行 main コードを根拠に「`embeddings.pkl` は 2D」とは言えない**。[[source-code]] / [[slack-dev-kouchouai-2025-q4]]より

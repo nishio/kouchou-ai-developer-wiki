@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-26 15:30] filing-back | ユーザー API キーの漏洩を公開：修正 #1136 を merge、wiki ページを追加
+
+- 猶予期間が明け、nishio の指示で公開作業を始めた。修正 #1136 を最新の main に載せ替え、CodeRabbit の指摘 4 件を直して merge した。同じ期間に保留していた修正 #1132・#1135 も merge 済みで、#1133・#1134 はレビュー待ち。
+- [[user-api-key-leak-2026-10]] を追加した。影響範囲は今のコードと照合して、公開前の調査メモより絞って書いた。gotchas・security-maintenance・code-health-review と、過去の記述 2 ページにリンクと追記を足した。
+
 ## [2026-10-26 13:40] filing-back | #1024 を merge して #1023 を close、#1129 を merge、#912 を close して残件を #1131 に
 
 - #1023 の a/b は a（#1024）を採用した。最新の main に rebase し、変更を memo 化後の位置に当て直して merge した。#1025 は close。

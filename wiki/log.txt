@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-26 15:30	filing-back	ユーザー API キーの漏洩を公開：修正 #1136 を merge、wiki ページを追加
 2026-10-26 13:40	filing-back	#1024 を merge して #1023 を close、#1129 を merge、#912 を close して残件を #1131 に
 2026-10-24 12:30	filing-back	#1079 と #1061 を merge、#1119 の残課題を Issue #1128 に
 2026-10-24 04:45	filing-back	第 3 弾レビューの修正 PR 64 本を CodeRabbit を見ながら admin merge

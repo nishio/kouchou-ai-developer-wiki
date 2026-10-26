@@ -350,6 +350,7 @@ tokoroten-spectral-clustering-reading	analysis	analyses/tokoroten-spectral-clust
 trial-and-error-burden-reduction-2026-05-29	analysis	analyses/trial-and-error-burden-reduction-2026-05-29.md	`#221` 系は単一機能ではなく、作成前確認、API/billing preflight、入力検証、進捗可視化、再利用の5面で「怖くて試せない」「失敗理由が分からない」「やり直しが高い」を減らすテーマである
 tttc-to-analysis-core-history	analysis	analyses/tttc-to-analysis-core-history.md	TTTC の clone / CUI 前提から、Web UI で包んだ広聴AI、さらに PyPI の analysis-core をサーバが呼ぶ現在形までの入口設計の変遷
 umap-seed-history	analysis	analyses/umap-seed-history.md	UMAP / k-means の seed 固定は「完全再現性を実現した仕組み」ではなく、「見た目の揺れを少しでも抑えたい要求」から生まれ、後に並列性とのトレードオフとして見直された
+user-api-key-leak-2026-10	analysis	analyses/user-api-key-leak-2026-10.md	管理画面で入力したユーザー API キーが hierarchical_result.json と hierarchical_status.json に平文で書き出され、公開ページにも埋め込まれていた問題（PR #868 で混入、2026-10-18 発見、#1136 で修正）の原因・経緯・対応・再発防止
 versioning-strategy	analysis	analyses/versioning-strategy.md	2025-12-13 に決めた v4 凍結 / v5 plugin 化のリリース戦略（書籍出版とのリスク調整）と、その後の実際。リファクタは main 上で段階的に進み、v4.1.0 を 2026-10-13 に main から発行、v5 は 2026-10-21 時点で未リリース
 wiki-pages-publishing-stack	analysis	analyses/wiki-pages-publishing-stack.md	developer-wiki の GitHub Pages 配信は、現状の MkDocs adapter より Quartz を第一候補にした方が wiki の記法と公開体験が揃いやすい
 wiki-self-audit-2026-10-12	analysis	analyses/wiki-self-audit-2026-10-12.md	developer-wiki 自身を 6 レンズ（内容健全性 / 構造ライフサイクル / コード乖離 / スキーマ / スクリプト / 公開境界）で監査し敵対的検証した結果と、2026-10-12 に適用した修正・残課題

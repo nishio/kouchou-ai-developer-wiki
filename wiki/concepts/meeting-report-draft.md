@@ -66,6 +66,15 @@ sources:
     - 2026-10-24 に、nishio の指示で CodeRabbit の指摘を確かめながら 1 本ずつ admin merge した。merge 後の main（`bdc3e469`）で全テストと CLI の通しを確認済み。
     - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) は実行環境の権限判定で止まっていたため、最新の main に rebase し直してテストを確かめた後、nishio が merge した（2026-10-24、`7fff37a4`）。これで 65 本すべてが merge 済み。
     - 挙動の判断が要る PR は数本ある。
+- **ユーザー API キーの漏洩の公開と修正（2026-10-26）**
+  - 2026-10-18 に見つけた、ユーザー API キーが結果 JSON と status ファイルに平文で書き出され、公開ページにも埋め込まれていた問題を公開した（[[user-api-key-leak-2026-10]]）。
+  - 修正は [#1136](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1136)（merge 済み）。既存レポートの確認・修正スクリプトも同梱した。
+  - 影響条件：ユーザー API キーを入力してレポートを作成した場合など。再利用ページからの複製と、編集は対象外。
+  - 同じ猶予期間に保留していた修正も、同日に PR にした。
+    - [#1132](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1132)（インフラ）：merge 済み
+    - [#1135](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1135)（公開範囲）：merge 済み
+    - [#1133](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1133)・[#1134](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1134)：CodeRabbit のレビュー待ち
+  - 次：v4.2.0 のリリース（今日の作業が全部入った後）。GitHub Security Advisory を出すかどうかは判断待ち。
 - **Next.js を 16.4.2 に上げる（2026-10-24・merge 済み）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。CI（E2E を含む）が通った後、nishio の指示で admin merge した（main `23acd411`）
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
 - **指定カテゴリ分類（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 方向性 2）**: CLI は [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) まで main 反映。[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) は実 LLM で end-to-end 1 回完走すれば close 可。WebUI 統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)（[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補）
