@@ -12,7 +12,7 @@ sources:
 
 ## 何が起きていたか
 
-管理画面のレポート作成画面で「ユーザー API キー」を入力すると、そのキーが `hierarchical_result.json` の `config.user_api_key` に平文で書き出されていた。公開ビューアはレポート全体を client component に渡すため、キーはページの HTML にも埋め込まれ、公開・限定公開のレポートでは第三者が見られる状態だった。公開 API `/reports/{slug}`、静的書き出し、ストレージ同期、管理画面の JSON ダウンロードにも含まれる。
+管理画面のレポート作成画面で、任意の「APIキー」欄（「レポート生成設定」を開くと表示される。OpenAI・Gemini・OpenRouter のときだけ出る）に「ユーザー API キー」を入力すると、そのキーが `hierarchical_result.json` の `config.user_api_key` に平文で書き出されていた。公開ビューアはレポート全体を client component に渡すため、キーはページの HTML にも埋め込まれ、公開・限定公開のレポートでは第三者が見られる状態だった。公開 API `/reports/{slug}`、静的書き出し、ストレージ同期、管理画面の JSON ダウンロードにも含まれる。
 
 抽出・意見分類の実行中は、処理の状態を記録する `hierarchical_status.json` にもキーが書かれていた。処理が途中で異常終了する（強制終了・メモリ不足など）と、そのまま残る。このファイルは公開 API では返らないが、サーバーとストレージ上には残る。
 
@@ -83,3 +83,5 @@ status ファイルへの書き込みは、抽出・意見分類の補助関数�
 - 2026-10-26: 修正を含む [v4.2.0](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.2.0) と、PyPI の `kouchou-ai-analysis-core` 0.2.0 をリリースした。PyPI の 0.1.3 にも同じ問題が含まれていた（CLI を `USER_API_KEY` を設定して実行した場合）。GitHub Security Advisory は深刻度 Moderate で下書きを用意してあり、公開は nishio が行う。
 - 2026-10-26: Open Questions の `error_stack_trace` の件は、[#1141](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1141) で塞いだ。設定やライブラリ経由で渡した鍵が、失敗のログや status に伏せ字なしで出る経路もあわせて直した。
 - 2026-10-26: 利用者・運用者向けの確認・対処の手順を、本体の docs に載せた（[#1147](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1147)、[公開ページ](https://digitaldemocracy2030.github.io/kouchou-ai/self-hosting/security/user-api-key-leak-2026-10.html)）。修正前の CLI が出力した `report.html` にもキーが埋め込まれることが分かったので、その確認と作り直しの方法も載せ、Advisory とリリースノートにも一言足した。Advisory・リリースノート・関係者向けの Gist から、このページへリンクしている。
+- 2026-10-26: 「ユーザー API キー」だけでは、サーバーに設定したキーも含むと読まれて必要以上に心配させるという nishio の指摘を受け、Advisory・リリースノート・docs（[#1148](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1148)）の冒頭に「対象は作成画面の任意の『APIキー』欄に入力した場合だけで、空欄のまま使っていたなら影響はない」と書いた。このページの説明もそろえた。
+
