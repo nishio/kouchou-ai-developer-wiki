@@ -82,4 +82,4 @@ status ファイルへの書き込みは、抽出・意見分類の補助関数�
 
 - 2026-10-26: 修正を含む [v4.2.0](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.2.0) と、PyPI の `kouchou-ai-analysis-core` 0.2.0 をリリースした。PyPI の 0.1.3 にも同じ問題が含まれていた（CLI を `USER_API_KEY` を設定して実行した場合）。GitHub Security Advisory は深刻度 Moderate で下書きを用意してあり、公開は nishio が行う。
 - 2026-10-26: Open Questions の `error_stack_trace` の件は、[#1141](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1141) で塞いだ。設定やライブラリ経由で渡した鍵が、失敗のログや status に伏せ字なしで出る経路もあわせて直した。
-
+- 2026-10-26: 利用者・運用者向けの確認・対処の手順を、本体の docs に載せた（[#1147](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1147)、[公開ページ](https://digitaldemocracy2030.github.io/kouchou-ai/self-hosting/security/user-api-key-leak-2026-10.html)）。修正前の CLI が出力した `report.html` にもキーが埋め込まれることが分かったので、その確認と作り直しの方法も載せ、Advisory とリリースノートにも一言足した。Advisory・リリースノート・関係者向けの Gist から、このページへリンクしている。
