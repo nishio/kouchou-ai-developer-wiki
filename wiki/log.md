@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-26 13:40] filing-back | #1024 を merge して #1023 を close、#1129 を merge、#912 を close して残件を #1131 に
+
+- #1023 の a/b は a（#1024）を採用した。最新の main に rebase し、変更を memo 化後の位置に当て直して merge した。#1025 は close。
+- shingo-ohki さんの #1129（OpenAI 4 モデルを検証済み、o3-mini を提供終了）を merge した。
+- #912 は完了条件と照合して close し、料金・service_tier・請求額の照合などの残件を #1131 に引き継いだ。
+
 ## [2026-10-24 12:30] filing-back | #1079 と #1061 を merge、#1119 の残課題を Issue #1128 に
 
 - #1079 は最新の main に rebase し直してテストを確かめ、nishio が merge した。修正 PR 65 本はすべて merge 済み。
@@ -92,39 +98,3 @@
 - nishio「CI が通った PR は admin merge」「続けて全部マージ」。#1027–#1041 を番号順に squash merge。択一候補の #1024/#1025 は対象外（#1023 の a/b 判断待ち）。
 - #1033（#1031 と orchestrator.py の import）・#1036（#1028 とテストファイル）・#1041（#1034 と createReport.test.ts）は rebase で衝突を解消し、テスト再実行と CI 通過を確認してから merge。merge 後の main で analysis-core 406 / api 382 passed。
 - [[deep-code-review-2026-10-19]] / [[code-health-review-2026-10-18]] / [[meeting-report-draft]] を更新。
-
-## [2026-10-19 12:00] filing-back | 本格コードレビューと修正 PR 10 本（#1032–#1041）
-
-- nishio「コードのチェックをもっと本格的にやろうか」→ 洗い出し 9 体（8 領域＋横断フロー追跡）→ 全件を反証・再現で検証 → 重要度の高いものは別の検証者が再現。[[deep-code-review-2026-10-19]] に記録。
-- 36 件を 10 グループで実装・独立レビュー・修正し、手元で全ブランチの差分確認とテスト再実行（まとめて merge してもテスト green）をしてから PR 化。merge は未実施。
-- 次＝PR のレビューと merge 判断。#1034 と #1041 は createReport.test.ts が衝突。
-
-## [2026-10-18 22:40] filing-back | コード・Wiki・Issue の健全性レビューと改善の実施
-
-- nishio「改善すべきことがないか考えて」→「やると良いと思う順番で進めて」。main `083593ba` を 3 並列（コード / wiki 照合 / Issue 90 件）で調査し、[[code-health-review-2026-10-18]] に棚卸し。
-- コードは 5 PR を作成（#1027 取込ファイル名の検証、#1028 async 内の同期 I/O、#1029 cluster_nums の順序、#1030 集約失敗の伝播、#1031 編集後のトークン数リセット）。各 PR で回帰テストを手元で再実行。merge は未実施。
-- wiki は公開境界違反（未修正 alert のパッケージ名）を除去し、concept の事実の古さを訂正。[[meeting-report-draft]] を [[meeting-report-2026-10-18]] へ rotate、index.md の直近状態を更新。次＝PR のレビュー・merge 判断、#1023 a/b、Issue 整理提案の判断。
-
-## [2026-10-17 22:13] filing-back | Claude provider 実験結果を専用 source ページ化
-
-- nishio「まずこの実験結果を Wiki にまとめて」。分析ページの Updates に押し込んでいた実験結果を、スキーマ（実験結果は raw/experiments snapshot＋対応 wiki source）に沿って専用 source [[claude-provider-experiment-output-2026-10-17]] に再構成。
-- 内容: 2 形式の実装結果、Anthropic 固有の確定事項（埋め込み非提供／temperature 不可／system top-level／response_format 無）、key 無しで測れた数値（997 件・silhouette≈0.06＋読み方 caveat・drill-down）、再現手順、示していないこと、次の clean experiment。raw comments は載せず構造/サイズのみ。
-- [[claude-provider-connection-proposal-2026-10-17]] の実装 Updates は要点＋新ページへの pointer に圧縮。index.txt 再生成（353 ページ）。
-
-## [2026-10-17 20:31] filing-back | Claude 接続案の2形式を実装して検討
-
-- nishio「両方具体的に実装して検討して」。worktree `work/kouchou-ai-claude` branch `claude-provider-experiment`(98cf5677) に実装。(ii) in-pipeline `provider="anthropic"`（request_to_anthropic_chatcompletion＋catalog opus/sonnet/haiku-5-5）、(i) orchestrator harness（ローカル埋め込み上で Claude ラベリング＋drill-down）。
-- 実 anthropic.types mock test 3件＋既存47件 green、ruff clean。Anthropic 固有: system top-level 分離／JSON はスキーマ注入＋抽出（response_format 無）／temperature 非対応で決定化不可／embedding は NotImplementedError。
-- 共通基盤を実データ実行: kaito 997 args をローカル埋め込み(768d)+クラスタリングで key 無し完走（L1 silhouette≈0.06, 要同指標比較）。[[claude-provider-connection-proposal-2026-10-17]] ## Updates に結果、`raw/experiments/claude-local-embed-opus-2026-10-17/` に manifest+artifact。次＝embedding model 選択可能化と factor=embedding の clean experiment、key 入手後に live labelling 品質測定。
-
-## [2026-10-17 20:08] filing-back | 「embedding ローカル＋オーケストレーション Opus」形式を考察
-
-- nishio が「embedding はローカルモデル、オーケストレーションを Opus 等が」を有力と表明。[[claude-provider-connection-proposal-2026-10-17]] に ## Updates で設計含意を追記。コスト/価値配分が合う（embedding=大量機械的→ローカル無償、判断=少量高価値→Opus）。
-- 「オーケストレーション」は 2 解釈で分岐: (i) エージェント駆動＝研究者/CLI 層・Claude Code サブスク課金（Max credit 対象外）/(ii) in-pipeline Opus provider＝WebUI/API 層・Messages API なので Max credit 対象。無料枠狙いに合うのは (ii)。
-- 律速は embedding 品質（ラベリングでない）。現 main の `request_to_local_embed` は `paraphrase-multilingual-mpnet-base-v2`(768d) ハードコードで選択不可。次＝ローカル embedding model 選択可能化と、ローカル vs OpenAI embedding の同一 corpus 比較実験。
-
-## [2026-10-17 19:58] filing-back | 直近 Slack の「Claude Code を接続する案」を考察
-
-- Slack `#2_開発_広聴ai`（mirror 2026-10-17 同期）を一次参照。「Claude を繋ぐ」話は 3 層が混在＝(A) Claude Code をオーケストレータに（nishio 10-13、既に動く／[[offline-local-clustering]]+ラベリングを Claude が担う一般化）/(B) サブスク枠で LLM コスト（10-12 SIWC は embedding 範囲外で却下済み）/(C) pipeline に anthropic provider 追加（tokoroten 10-16）。
-- 核心は embedding: 公式 docs は「Anthropic は自前 embedding なし→Voyage AI」。tokoroten「Claudeはエンベディングもある」は誤読。Max API credit（$100/$200/月）は Messages API に効くが interactive Claude Code・Voyage には効かない。main 083593ba に anthropic 分岐 0 件。
-- 新規 [[claude-provider-connection-proposal-2026-10-17]] を作成し [[llm-providers]] に Claude note+リンクを追記（orphan 解消）。次＝#285/#255 のどちらで追跡するか、embedding 既定（ローカル無償 vs 他社キー）、Anthropic 政治用途ポリシーの確認。
