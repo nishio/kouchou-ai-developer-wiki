@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-29 02:00	filing-back	#56 からデータ構造の設計変更を #1156 に切り出し
 2026-10-29 01:30	filing-back	#56 元コメントの表示をレポート単位 opt-in で実装し PR #1155 を作成
 2026-10-29 00:35	filing-back	Dependabot の alert 3 件（#1153）とトークン数の数え漏れ（#1154）を merge
 2026-10-28 22:30	filing-back	新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定

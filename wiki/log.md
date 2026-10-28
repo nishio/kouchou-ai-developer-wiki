@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 02:00] filing-back | #56 からデータ構造の設計変更を #1156 に切り出し
+
+- nishio が #56 に「設計としては serverless 版のように同一内容コメント・同一意見を束ねた方がよいが、まず現状構造で元コメント表示を実現し、設計変更は別 Issue」とコメント。指示を受けて [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) を作成（束ね方の基準、`comment_ids` への拡張、`comment_id` の型揃え、serverless との契約統一、#250 の表示）。
+- [[issue-56-original-comments-opt-in-2026-10-29]] と定例 draft の #56 項目を更新。次：PR #1155 の review / merge。
+
 ## [2026-10-29 01:30] filing-back | #56 元コメントの表示をレポート単位 opt-in で実装し PR #1155 を作成
 
 - shingo-ohki の 10/28 コメント（url 列が無いと抽出意見止まり）を受け、現行 main `1028da9c` を照合。`comments` は空のまま、`_build_comments_value` は dead code と確認。公開可否の契約を「レポート単位 opt-in」と「per-comment フラグ」の 2 案に分け、nishio が前者を選択。

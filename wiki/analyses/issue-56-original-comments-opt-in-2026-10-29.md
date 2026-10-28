@@ -45,10 +45,10 @@ nishio は 2026-10-29 に 1 を選択。2 は別段階として残す。
 
 ## Open Questions
 
-- Issue 本文の残作業（多対多参照の保持、serverless との契約、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の重複表示）は PR では閉じていない。#56 を close するか、第一段階の完了として残件を別 Issue に切るかは人間判断
-- `comment_id` の number / string 不一致は、report-schema 側を string に寄せる別 PR にするか
+- データ構造の設計変更（同一内容のコメント・同一意見の束ね、多対多、serverless との契約統一、`comment_id` の型揃え）は [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) に切り出した。#56 は PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) の merge で close してよいかは人間判断
 - shingo-ohki への返信は未投稿。PR の自動リンクだけが Issue に付いている
 
 ## Updates
 
 - 2026-10-29: 初版。nishio の案 1 選択を受けて PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) を作成
+- 2026-10-29: nishio が #56 のコメントで「設計としては serverless 版のように束ねた方がよいが、まず現状の構造で元コメント表示を実現し、設計変更は別 Issue」と判断。切り出し Issue [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) を作成（束ね方の基準、`comment_ids` への拡張、型揃え、serverless との契約統一、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の表示）
