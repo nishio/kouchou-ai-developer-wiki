@@ -1,6 +1,8 @@
 ---
 title: "open Issue 全件棚卸し 2026-10-12"
 type: analysis
+status: superseded
+superseded_by: issue-backlog-audit-2026-10-28
 summary: "広聴AI open Issue 全105件を current main@c297bc97 に照合した全棚卸し。今回95件(2026-10-12)+前回10件(2026-10-11再利用)。未解決47/一部解決31/要件再確認13/解決済(close候補)3/不明1(95件分)。今回のclose実行は0件。close候補だが未close=#417/#519/#573/#871(いずれも実験型・外部成果・プロセス系で人間のclose判断が要る)。重い実装は未着手の棚卸しのみ"
 sources:
   - issue-audit-2026-10-12-full.md
