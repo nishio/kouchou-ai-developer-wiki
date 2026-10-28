@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 16:30] filing-back | スプリント第 1 群 4 件を PR 化（#1161〜#1164）、#1128 は #1154 で対応済み
+
+- 10-28 棚卸しの第 1 群 5 件に着手。#292 docs→#1161、#493 散布図ホイール→#1162、#1130 エラー詳細→#1163、#79 費用概算→#1164 を issue ごとの worktree で並行実装し PR 作成（未 merge）。着手前に nishio を assignee に設定
+- #1128 は別セッションの #1154 で本体修正が merge 済みだったため着手せず。#1163 と #1164 は CreateReportConfirmation を両方触るので後の方を rebase
+- 各 PR で AI が置いた仮定と人間に確かめてほしい点（費用係数の較正、600ms の操作感、unknown_error 限定の詳細表示、docs の残件）を analyses/sprint-group1-prs-2026-10-29 に記録。次は #1161 の CodeRabbit 指摘対応と merge 判断
+
 ## [2026-10-29 02:30] filing-back | 「多対多参照とは何か」の回答を #56 の analysis ページに補足
 
 - nishio の問いに答えた「本体は 1 対多（#1032 以降は回答と文面の組で重複判定）、多対多は serverless 版が同じ文面の意見を回答をまたいで束ねる構造、serverless PR #22 の ID 誤対応はその経路」の説明を [[issue-56-original-comments-opt-in-2026-10-29]] に節として追記。
