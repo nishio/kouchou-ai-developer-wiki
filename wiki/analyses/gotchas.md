@@ -299,7 +299,7 @@ Material for MkDocs の本文中アイコン `:fontawesome-...:` / `:material-..
 
 ### CodeRabbit の check が `pass` / `skipping` でも、最新の commit をレビューしたとは限らない
 
-CodeRabbit の無料枠は 1 時間に 2 回ほどで、上限に達すると check は `skipping` になり、概要コメントに「Review limit reached」と出る。上限の前に付いたレビューが古い commit のものでも、check は `pass` のまま見えることがある。merge 前は、レビューの `commit_id` が PR の head と一致するか、概要コメントの「Reviewing files ... between <base> and <head>」が最新の commit を指すかを見る。上限なら、待ち時間の後に `@coderabbitai review` とコメントすれば頼み直せる。指摘のスレッドへの返信には上限中も答えるので、直した指摘の確認はスレッドで取れる。
+CodeRabbit の無料枠は 1 時間に 2 回ほどで、上限に達すると check は `skipping` になり、概要コメントに「Review limit reached」と出る。上限の前に付いたレビューが古い commit のものでも、check は `pass` のまま見えることがある。merge 前は、レビューの `commit_id` が PR の head と一致するか、概要コメントの `Reviewing files ... between <base> and <head>` が最新の commit を指すかを見る。上限なら、待ち時間の後に `@coderabbitai review` とコメントすれば頼み直せる。指摘のスレッドへの返信には上限中も答えるので、直した指摘の確認はスレッドで取れる。
 
 ### AI エージェントの review comment は署名がないと後から由来を追いにくい
 
