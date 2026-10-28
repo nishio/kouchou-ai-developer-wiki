@@ -12,10 +12,10 @@ sources:
 
 | Issue | PR | 種別 | Issue との関係 | CI（作成時） |
 |---|---|---|---|---|
-| [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) 課金と 429 の docs | [#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) | docs のみ（11 ファイル） | Refs（画面からの docs 導線 1 項目が残る） | green。CodeRabbit 指摘 5 件は対応中 |
+| [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) 課金と 429 の docs | [#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) | docs のみ（11 ファイル） | Refs（画面からの docs 導線 1 項目が残る） | green。CodeRabbit 指摘 5 件は 2 commit 目で反映 |
 | [#493](https://github.com/digitaldemocracy2030/kouchou-ai/issues/493) 散布図ホイール誤操作 | [#1162](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1162) | public-viewer（5 ファイル） | Refs（操作感は人間がデモ環境で判断） | green |
 | [#1130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1130) 接続チェックのエラー詳細 | [#1163](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1163) | api + admin（7 ファイル） | Closes | green |
-| [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) 作成前の費用概算 | [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) | admin + カタログ（10 ファイル） | Refs（係数の較正が要る） | 実行中 |
+| [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) 作成前の費用概算 | [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) | admin + カタログ（10 ファイル） | Refs（係数の較正が要る） | e2e が旧文言「費用：目安なし」を期待して失敗 → 期待値を更新して再実行 |
 | [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) 再試行のトークン数 | [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1154)（merge 済み） | 別セッションが 10-29 朝に対応 | 「関連して残っている点」2 つは未着手 | — |
 
 **merge 順の注意**: [#1163](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1163) と [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) は `CreateReportConfirmation.tsx` とそのテストを両方とも触る（前者はエラー表示、後者は費用欄）。どちらも main には merge 可能だが、片方を merge した後にもう片方は rebase が要る。
@@ -26,7 +26,7 @@ sources:
 
 - 置き場は `docs/self-hosting/api-billing-and-rate-limits.md` の独立ページ。FAQ の 1 項目には長すぎた（課金／429 の 2 種類／自動調整／Tier）。入口がセットアップガイドの「APIキーの準備」なので self-hosting 側に置いた。user-guide が良ければ nav とリンク 7 箇所の置換で移せる
 - [#1152](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1152) の自動調整は、`insufficient_quota` を対象外にしている（`rate_limit.py` の非一時的コード）ことをコードで確認して書いた。v4.2.0 以前のリリースには自動調整が入っていないと注記したので、次のリリース後に「vX.Y.Z 以降」へ書き換えが要る
-- CodeRabbit の指摘 5 件のうち、埋め込み要求が自動調整の対象外である点（`request_to_embed` は `call_with_rate_limit` を通らない）と、工程ごとの workers 設定名は、コードと照合して直す価値がある。プリペイド課金の例外（月額請求の組織、無料クレジット、usage limit）も表現を弱める
+- CodeRabbit の指摘 5 件はすべて妥当で、2 commit 目で反映した。埋め込み要求は自動調整の対象外（`request_to_embed` は `call_with_rate_limit` を通らず、OpenAI SDK の短い再試行のみ）、並列数は失敗した工程の `workers`（抽出・意見分類・初期ラベル・統合ラベル・LLM grouping の 5 つ。管理画面の「並列実行数」はまとめて適用）を下げる、プリペイド課金は新規アカウントの通常形で月次請求や無料クレジットの例外がある、`insufficient_quota` は usage limit 到達でも出るので残高と上限の両方を確認、と書き分けた
 - docs は日本語版のみで運用されているので新ページも日本語のみ。README の英語・韓国語版には既存の慣例どおり「(Japanese)」目印つきでリンクした
 - 残件は「作成前確認・接続確認のメッセージから docs へリンク」の 1 項目。[#1163](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1163) と同じコンポーネントなので、merge 後の後続 PR にした
 
@@ -51,6 +51,7 @@ sources:
 - 係数は analysis-core の実装と aipubcom の実データから置いた。1 文字 0.7〜1.5 トークン、抽出出力はコメント文字数の 0.3 倍 + 40、意見 1 件 50 文字、ラベル生成サンプル 30 件／クラスタなど。帯は幅の high 側を 1 ドル 150 円で換算して決める（安く見せない）
 - 桁の確認: aipubcom 実測 $0.87 に対し本実装 $0.71〜$1.46。Serverless の `estimate.ts` は $1.18 で桁は一致（Serverless は長文で抽出出力と埋め込みを約 2 倍多く見積もる）
 - カタログ `model_catalog.json` に `text-embedding-3-small` / `-large` の単価を足した（無いと埋め込みは常に単価不明になる）。Gemini 埋め込みと OpenRouter の未登録モデルは単価不明のまま
+- e2e（`create-report.spec.ts`）が旧プレースホルダ「費用：目安なし」を期待して落ちた。実装は仕様どおりなので e2e の期待値を「100円未満の見込み」と内訳・注記の表示に更新した。ダミーサーバーは本体の `model_catalog.json` をそのまま返すので、fixture 3 件では 100 円未満の帯が出る
 - 人間に較正してほしい点: 1 ドル 150 円の固定換算、high 側で帯を決める方針、抽出出力係数（パブコメ型の長文が根拠で短い自由記述では未検証）、手元の実レポートの `estimated_cost` と幅の桁が合うか、`embedding_model` 未指定時の表示名
 
 ### [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) は着手しなかった
@@ -66,4 +67,5 @@ sources:
 
 ## Updates
 
-- 2026-10-29: 初版。4 PR 作成直後の状態。[#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の CodeRabbit 指摘への対応は進行中
+- 2026-10-29: 初版。4 PR 作成直後の状態
+- 2026-10-29: [#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の CodeRabbit 指摘 5 件を反映、[#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) の e2e 失敗（旧文言の期待値）を修正。並行 agent が scratchpad の同名ファイル `pr-body.md` を上書きし、[#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の本文が一時的に [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) の本文になる事故があった（直後に復旧）。並行 PR 作成では PR 番号入りの一意なファイル名を使う
