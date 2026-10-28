@@ -77,10 +77,10 @@ sources:
   - 保留していた残りの修正（[#1133](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1133)・[#1134](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1134)・[#1138](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1138)〜[#1141](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1141)・[#1144](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1144)）と、依存の脆弱性の解消（[#1137](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1137)）も、CodeRabbit の指摘を直したうえで merge した。
   - **v4.2.0 をリリースした**（2026-10-26）。PyPI の `kouchou-ai-analysis-core` 0.2.0 も公開した（0.1.3 にも同じ問題が含まれていた）。
   - GitHub Security Advisory（GHSA-xr6j-6w48-xh62、Moderate）を nishio が公開した。
-- **YouTube プラグインが v4.2.0 の Docker イメージで動かない件（2026-10-26・merge 済み、v4.2.1 候補）**
+- **YouTube プラグインが v4.2.0 の Docker イメージで動かない件（2026-10-26・merge 済み）**
   - 取り込みが「google-api-python-client is required」で失敗していた。このライブラリは旧 SDK `google-generativeai` 経由でたまたま lock に入っていただけで、google-genai への移行で落ちていた。
   - 最初は lock に `youtube` extra を入れる案にしたが、プラグインだけが使う依存を本体のイメージに入れるのは筋が悪いと nishio が指摘し、作り直した。YouTube Data API の 3 つの呼び出しを、本体の依存にある httpx で直接呼ぶ（[#1149](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1149)）。extra は削除し、lock は変わらない。API キーは URL ではなく `X-Goog-Api-Key` ヘッダーで送る。
-  - 次：有効なキーでの取り込みの確認と、v4.2.1 に入れるか。
+  - v4.2.1 は出さない（nishio、2026-10-28）。この修正は次のリリースで出る。次：有効なキーでの取り込みの確認。
 - **Next.js を 16.4.2 に上げる（2026-10-24・merge 済み）**: 10/22 公開のセキュリティ勧告への対応で [#1127](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1127)。Dependabot の alert・PR はまだ出ていないので手動で上げた。lockfile の差分は next と @next/* だけで、両アプリのビルドとテスト、CI と同じ手順の shell / static の書き出しを確認済み。CI（E2E を含む）が通った後、nishio の指示で admin merge した（main `23acd411`）
 - **散布図ラベルの薄表示 a/b（判断待ち）**: [#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023) で [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024)（薄くする）/ [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025)（元の色維持）の択一。レビュー確定 10 件のうち残り 1 件
 - **指定カテゴリ分類（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 方向性 2）**: CLI は [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1016) まで main 反映。[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) は実 LLM で end-to-end 1 回完走すれば close 可。WebUI 統合は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)（[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補）
