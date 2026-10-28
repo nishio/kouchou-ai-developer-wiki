@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-28 22:30	filing-back	新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定
 2026-10-28 19:30	filing-back	考察：レビュー後の広聴AI は何がどうなるとよいか
 2026-10-28 17:40	filing-back	振り返りページの訂正：ドリルダウンのツリー表示はチームみらいの階層リスト、farbrain を追記
 2026-10-28 16:30	filing-back	2026-10 の経緯の整理：大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法

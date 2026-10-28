@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-28 22:30] filing-back | 新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定
+
+- nishio「10/28 からの新しいスプリントとして、既存 Issue を古い方から確認して現在の状況と照らし合わせ、どうするかを検討する」を受け、dynamic workflow（12 シャード照合 → 懐疑検証、agent 23）で全 89 件を main `1028da9c` に照合した。前回 10-12 以降の 167 commit で動いた件を更新。結果は [[issue-backlog-audit-2026-10-28]]、方法と未確認範囲は [[issue-audit-2026-10-28-sprint]]。前回ページには superseded の目印を付けた。
+- 今スプリント実装候補 19 / close 候補 4 / 統合 4 / 人間判断 40 / 保留 22。懐疑検証で 11 件を「実装・close」から「人間判断・保留」へ戻した（他 assignee あり、製品方針の先取り、size の過小評価）。GitHub への書き込みは未実施。
+- 次：第 1 群 5 件（#79 費用概算、#292 課金と 429 の docs、#1128 再試行のトークン数、#493 スクロール拡縮、#1130 接続チェックのエラー詳細）から着手するかを nishio が判断。close 4 件・統合 4 件・停滞 assignee への確認は定例の議題候補に載せた。
+
 ## [2026-10-28 19:30] filing-back | 考察：レビュー後の広聴AI は何がどうなるとよいか
 
 - nishio「これらを踏まえて何がどうなるとよいか考察したい」を受けて [[post-review-product-direction-2026-10-28]] を追加。宙に浮いた 5 つ（階層リスト・付箋表示・センチメント次元・DivCon・farbrain）を「view」と「意見ごとの属性」の 2 軸に分解し、既定は散布図のまま、view は目的別 plugin、属性は CLI の任意ステップ、という形に収束させる案。
