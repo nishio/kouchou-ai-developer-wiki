@@ -81,3 +81,4 @@ sources:
 - 2026-05-18: 2026-09 ごろの書籍リリース前提での実務計画ページ [[book-release-development-plan-2026-09]] への導線を追加
 - 2026-05-25: 2025-12-06 / 2025-12-13 の方向性メモと、出発点になった鈴木健ブログを source として分離し、v4 / v5 分離判断の前史を補強
 - 2026-10-21: GitHub の tag / release と照合し、v4.0.0 の日付を 2025-12-27 に訂正。v4.1.0 の節と「その後の実際」を足し、リファクタ完了と Open Questions を現状に合わせ、[[kouchou-ai]] への見出しリンクと PyPI の配布名を直した
+- 2026-10-29: v4.2.0（2026-10-26、セキュリティ修正を含む）の後、v4.2.1 は出さないと nishio が決めた（2026-10-28）。[#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)〜[#1152](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1152) などの修正は次のリリースに入る。この repo では `v*` のタグはすべて GitHub Release と対になっていて（v2.0.1 のようなパッチ版も同じ）、本体の版番号はタグにしか無い（`package.json` などは 0.1.0 のまま）。タグをきっかけに動く workflow は `analysis-core-v*`（PyPI 公開）だけなので、本体のタグだけを打っても自動では何も起きないが、説明のない版ができるので、タグを打つならリリースも出す

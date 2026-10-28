@@ -132,6 +132,12 @@ Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`S
 [[slack-kouchouai-algorithm-dev]] 2025-05 〜 2026-03 では、利用者が UMAP 2D 散布図の軸や距離に強い意味を読み込みがちである一方、開発側は「軸自体には意味がない」「UMAP 後に `k-means` するとアーティファクトを拾う」と繰り返し警戒している。  
 **図が綺麗に見える = 分類が妥当** ではない。散布図まわりの議論では、見栄えの話と分析精度の話を混ぜるとすぐに認識がずれる。
 
+### 構造化出力（parse）が弾いた応答は usage を持たない。mock のテストでは気づけない
+
+OpenAI・Azure の `beta.chat.completions.parse` は、スキーマに合わない応答を `pydantic.ValidationError` で弾く。このとき SDK は completion を付けないので、課金済みのトークン数が例外から読めない（途中切れの `LengthFinishReasonError` は `completion.usage` を持つので読める）。抽出・ラベリングの送り直しで、その回のトークン数が 0 と数えられていた（[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128)）。`with_raw_response.parse` で生の応答を受け取ってから `.parse()` すれば、`ValidationError` のときも生の JSON から usage を読める（OpenRouter の経路と同じ。PR [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1154)）。
+
+SDK が例外に何を付けるかは、`parse` を `MagicMock` で差し替えたテストでは確かめられない。本物の `OpenAI` / `AzureOpenAI` に `httpx.MockTransport` で HTTP 応答を返すテストなら、修正前のコードで落ちることまで確かめられる。経路を `with_raw_response` に替えると、`parse` を直接差し替えていた既存の mock はすべて直す必要がある。
+
 ### リファクタ・パッケージ周り
 
 ### 古い runbook が `hierarchical_main.py` を案内していたら stale
@@ -253,6 +259,10 @@ Issue [#724](https://github.com/digitaldemocracy2030/kouchou-ai/issues/724)：�
 
 フロントエンド（pnpm workspace）の Dependabot alert が `express` → `proxy-addr` のような**深い transitive**の時、`pnpm update <pkg> -r` で直すと workspace 全体を再解決し、`@babel/runtime`・`acorn`・`@tsconfig/node10` 等 in-range の無関係 patch まで巻き込んで security PR の diff を汚す（`--filter` スコープでも起きる）。定石は root `package.json` の `pnpm.overrides` に **Dependabot の vulnerable range に合わせた範囲 pin** を足し（例 `"proxy-addr@>=1.1.0 <2.0.8": "2.0.8"`。既存の `js-yaml@...`・`body-parser@...`・`form-data@...` と同形式）、`pnpm install --lockfile-only` で反映する。surgical か確認したい時は、先に clean tree で `pnpm install --lockfile-only`（pure heal）が無変更であることを見ておくと、override 後の diff が対象だけになる。upstream に修正版が無い alert（`first_patched: null`）は override で無理に固定せず、依存保守 Issue [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で upstream 公開待ちとして追跡する。PR [#1013](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1013)（proxy-addr 2.0.8 / source-map-js 1.2.2）で確立、既存 PR [#950](https://github.com/digitaldemocracy2030/kouchou-ai/pull/950) の pin と同形式。[[dependabot-alerts-2026-10-14]]より。
 
+### override でメジャー版をまたぐときは、使っている道具の出力を比べて確かめる
+
+修正版が新しいメジャー版にしか無く、依存元の最新版も古いメジャー版を要求している場合は、override でメジャー版を上げるしかない。2026-10-29 の zod（3 系に修正版がなく、`@chakra-ui/cli` の最新版も zod 3 に依存）では、zod 4 に上げたうえで、この repo が使う `typegen` の出力を zod 3 のときと `diff -r` で比べて同一と確かめ、使っていないコマンド（`snippet`・`blocks`）も動くことを見た（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1153)）。どの workspace のどの道具経由か（`pnpm why -r <pkg>`）を先に見ると、確かめる範囲が決まる。本番の依存経由なら、その経路の動作も見る（qs は static-site-builder の express 経由だったので、クエリと body の解析を確かめた。PR [#1157](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1157)）。
+
 ### ドキュメント・運用
 
 ### `docs/` の例が AI に伝播する
@@ -287,6 +297,10 @@ Material for MkDocs の本文中アイコン `:fontawesome-...:` / `:material-..
 
 ただし運用としては、**先に merge 理由を短く comment し、approve / 通常 merge を試し、admin merge は最後の手段** にした方がよい。そうしないと「なぜこの PR を入れたか」がタイムラインに残りにくい。特に AI エージェントが関わる場合は、判断理由を review/comment に残しておかないと後から監査しづらい。[[pr-824-admin-merge-observation-2026-05-18]]より
 
+### CodeRabbit の check が `pass` / `skipping` でも、最新の commit をレビューしたとは限らない
+
+CodeRabbit の無料枠は 1 時間に 2 回ほどで、上限に達すると check は `skipping` になり、概要コメントに「Review limit reached」と出る。上限の前に付いたレビューが古い commit のものでも、check は `pass` のまま見えることがある。merge 前は、レビューの `commit_id` が PR の head と一致するか、概要コメントの「Reviewing files ... between <base> and <head>」が最新の commit を指すかを見る。上限なら、待ち時間の後に `@coderabbitai review` とコメントすれば頼み直せる。指摘のスレッドへの返信には上限中も答えるので、直した指摘の確認はスレッドで取れる。
+
 ### AI エージェントの review comment は署名がないと後から由来を追いにくい
 
 Codex が GitHub 上で review / approval を行うと、PR タイムライン上では「nishio が書いたコメント」に見える。後から人間判断とエージェント判断を見分けやすくするには、`by Codex` のような短い署名を付ける運用が有効。[[pr-823-review-observation-2026-05-18]]より
@@ -316,3 +330,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-10-13: PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の PoC 検証（[[windows-standalone-embeddable-poc-2026-06-01]]）から、日本語 Windows の cp932 でのテキスト IO クラッシュ（[#993](https://github.com/digitaldemocracy2030/kouchou-ai/issues/993)）・subprocess の `"python"` ハードコード（[#992](https://github.com/digitaldemocracy2030/kouchou-ai/issues/992)）・embeddable スタンドアロンの設計分岐と footgun を追記
 - 2026-10-21: main `b71e0b79` と照合し、UMAP / KMeans の seed 撤去（PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)）、Biome の CI 検査（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）、cp932 と `"python"` ハードコードの修正（PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)）、`fetch_reports.py` の削除（PR [#875](https://github.com/digitaldemocracy2030/kouchou-ai/issues/875)）とローカル compose ではレポートが消えないこと、LOCAL LLM のモデル一覧取得（PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)）、public-viewer の build と散布図クリック（PR [#828](https://github.com/digitaldemocracy2030/kouchou-ai/issues/828)・[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)・[#857](https://github.com/digitaldemocracy2030/kouchou-ai/issues/857)）について、古くなっていた記述を現状に合わせて訂正。あわせて、final CSV の列名（snake_case と kebab-case の混在、`category-id` という列は無い）を訂正し、cube-root rule の上限（858 件以上は `[10, 100]`）と、subprocess を mock したテストを根拠に Issue を stale と判断した失敗例（[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584)）を追記
 - 2026-10-21: 「`docs/` の例が AI に伝播する」に、[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) での再発と、それを外す PR [#1059](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1059) を追記
+- 2026-10-29: 構造化出力の parse が弾いた応答の usage（[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) / PR [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1154)）、override でメジャー版をまたぐときの確かめ方（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）、CodeRabbit の check がレビュー済みを意味しない場合を追記

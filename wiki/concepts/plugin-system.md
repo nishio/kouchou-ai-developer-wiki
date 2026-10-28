@@ -110,6 +110,14 @@ sources:
 - `docs/development/why-plugin-system.md` — rationale
 - `docs/development/why-pnpm.md` — pnpm 強制の理由
 
+## 入力 plugin の依存は、本体の Docker イメージに入るかで考える（2026-10-29）
+
+入力 plugin は実行時に環境変数（`ENABLE_{ID}_INPUT_PLUGIN=true`）で有効にするが、依存はイメージを作るときに lock で決まる。plugin だけが使う依存を optional extra にしても、lock を作るときに extra を有効にしなければイメージに入らず、有効にすれば全員のイメージに入る。どちらにしても「有効にしたのに依存が無い」か「使わない依存を全員が持つ」かになる。
+
+YouTube plugin はこの形で壊れていた。`google-api-python-client` は `youtube` extra にだけ書かれていたが、lock を作るときに extra を有効にしたことはなく、旧 SDK `google-generativeai` の依存としてたまたま入っていた。google-genai への移行でこの経路が消え、v4.2.0 の api イメージで取り込みが失敗した。最初は lock に extra を入れる案にしたが、「plugin だけが使う依存を全体に入れるのは変」（nishio）として、本体の依存にある `httpx` で YouTube Data API の 3 つの呼び出しを直接呼ぶ形に作り直した（PR [#1149](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1149)）。extra は削除し、lock は変わらない。API キーは URL の `key=` ではなく `X-Goog-Api-Key` ヘッダーで送るので、エラー文やログの URL にキーが載らない。
+
+新しい入力 plugin では、まず本体の依存（`httpx` など）で足りるかを考える。重い SDK が要る場合は、イメージへの入れ方（build arg と plugin の有効化をどう揃えるか）を先に決める。
+
 ## Open Questions
 
 - v5.0 のリリース時期。2026-06 目標だったが、2026-10-18 時点で最新タグは v4.1.0 のまま未リリース（[[versioning-strategy]]）
@@ -127,3 +135,4 @@ sources:
 - 2026-10-12: [[agpl-output-and-plugin-boundaries-2026-10-12]]より、生成データの利用とコードの結合・配布を分ける。現行analysis pluginは同一プロセスでinterfaceを共有し、「別プラグインだからAGPLの制約なし」とは案内できない。互換ライセンスでの提供と結合物の義務も区別する。
 - 2026-10-12: builtin plugin 数を「8 つ」→「9 つ」に訂正（`register_all` が `llm_grouping` を含む 9 個を登録、`hierarchical_layout_generation` は未登録モジュール）。`analysis_mode=llm_grouping` が engine レベルで出荷済み（プロダクト到達は未）である旨を v5.0 plugin 構想節に追記。[[wiki-self-audit-2026-10-12]]
 - 2026-10-12: 上記の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが admin/api に入ったため、構想節 Update の「受け渡しは未着手・到達は未」を「merge 済み・main 入り」に訂正。[[wiki-self-audit-2026-10-12]]
+- 2026-10-29: 入力 plugin の依存とイメージの関係を追記。YouTube plugin が v4.2.0 のイメージで動かなかった原因と、依存をなくした PR [#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)

@@ -7,6 +7,7 @@
 2026-10-29 02:30	filing-back	「多対多参照とは何か」の回答を #56 の analysis ページに補足
 2026-10-29 02:00	filing-back	#56 からデータ構造の設計変更を #1156 に切り出し
 2026-10-29 01:30	filing-back	#56 元コメントの表示をレポート単位 opt-in で実装し PR #1155 を作成
+2026-10-29 01:26	filing-back	入力 plugin の依存、構造化出力の usage、override のメジャー版、CodeRabbit の check を記録
 2026-10-29 00:35	filing-back	Dependabot の alert 3 件（#1153）とトークン数の数え漏れ（#1154）を merge
 2026-10-28 22:30	filing-back	新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定
 2026-10-28 19:30	filing-back	考察：レビュー後の広聴AI は何がどうなるとよいか

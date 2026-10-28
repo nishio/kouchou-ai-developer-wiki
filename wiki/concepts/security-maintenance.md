@@ -72,3 +72,4 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 
 - 2026-10-21: 公開境界の根拠の参照先を [[contributing]] から、この wiki repo の `CLAUDE.md` と [[wiki-driven-workflow]] に訂正（contributing には公開境界の節が無い）
 - 2026-10-26: 自分たちで見つけた脆弱性を、先行連絡と猶予を置いてから公開した初めての例として [[user-api-key-leak-2026-10]] を追加。同じ猶予期間に保留していた公開範囲・インフラなどの修正も同日に PR にした
+- 2026-10-29: Dependabot の high 3 件と medium 1 件を override で塞いだ（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）。メジャー版をまたぐ override の確かめ方は [[gotchas]] に追記。残る low 1 件は修正版が未公開なので、方針どおり dismiss せず [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で追う

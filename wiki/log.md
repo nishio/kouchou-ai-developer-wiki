@@ -25,6 +25,11 @@
 - worktree `work/kouchou-ai-issue-56` で analysis-core / api / admin / viewer / docs を実装し、PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155)（未 merge）。テストは analysis-core 798 / api 72 / viewer 314 / admin 117 が通過。判断と残論点は [[issue-56-original-comments-opt-in-2026-10-29]]。
 - 次：PR の review / merge と、#56 を close するか残件（多対多・serverless 契約・#250）を別 Issue に切るかの判断。shingo-ohki への返信は未投稿。
 
+## [2026-10-29 01:26] filing-back | 入力 plugin の依存、構造化出力の usage、override のメジャー版、CodeRabbit の check を記録
+
+- plugin-system に「入力 plugin の依存は本体のイメージに入るかで考える」節（#1149 の経緯）を追加。gotchas に、parse が弾いた応答の usage（#1154）・override でメジャー版をまたぐときの確かめ方（#1153・#1157）・CodeRabbit の check がレビュー済みを意味しない場合を追記。
+- versioning-strategy に v4.2.1 を出さない判断と、タグとリリースを対にする慣行を、security-maintenance に今回の alert 対応を追記。
+
 ## [2026-10-29 00:35] filing-back | Dependabot の alert 3 件（#1153）とトークン数の数え漏れ（#1154）を merge
 
 - `follow-redirects`・`zod` を override で上げて alert 3 件を解消。merge 直後に新しい alert 2 件（開発用の道具経由）が出た。#1128 の修正で、弾かれた応答と諦めた回答のトークン数も集計に入るようにした。定例の下書きに追記。
