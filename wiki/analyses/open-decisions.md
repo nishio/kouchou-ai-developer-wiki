@@ -133,6 +133,14 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 [[kouchou-ai-paper-draft-strategy]]で整理した通り、広聴AIを紹介する論文を書く価値自体は高いが、**日本語論文を主成果物にするのか、英語投稿を主成果物にするのか** は未決である。Polis / vTaiwan 型の制度・プロセス記述に寄せるのか、Birdwatch / Community Notes 型の評価論文に寄せるのかでも必要データが変わる。[[kouchou-ai-paper-draft-strategy]]より
 
+### A13. ドリルダウンのツリー表示と ズームできる付箋表示の置き場
+
+[[retrospective-2026-10-28]]：読者が選んだクラスタをその場で細分化するドリルダウン（2026-10-17 の Claude 接続実験で最小実装、branch のみ）と、散布図の点を付箋にして semantic zoom する表示（nishio の `canvas_kozaneba_prototype`、既定画面に未統合）は、どちらも本流に入っていない。**分析側（再クラスタリングで新しい階層を作る）か表示側（既存階層を折りたたむ）か**、**CLI の standalone HTML か公開ビューアの plugin か Kozaneba 側か** が未決。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)・[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)・[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) が関連。
+
+### A14. tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み
+
+[[retrospective-2026-10-28]]：どちらも [[tokoroten]] の個人 repo にあり本体未収録。賛否スコアを `opinion_classification`（[#971](https://github.com/digitaldemocracy2030/kouchou-ai/issues/971)）と同じ「意見ごとの属性」として CLI に入れる案が最小。DivCon は `llm_grouping` 系の mode として対立軸の capability を先に決める必要がある。**本体に入れるか自体と、入れるなら主担当** が未決。
+
 ---
 
 ## B. 方針決定済み・未着手
@@ -242,6 +250,7 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 
 ## Updates
 
+- 2026-10-28: A13（ドリルダウン / 付箋表示の置き場）と A14（tokoroten の賛否分離 2 手法）を追加（[[retrospective-2026-10-28]]）
 - 2026-06-30: 19:15 JST の live check と `#dd_prance_event2026` source を反映し、current overlay を 5 件から 6 件へ補正。8/2 は first demo と実践 lane framing を分け、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は次 code-safe slice の人間判断項目として追加した。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / 8/2 / docs の人間判断項目として明示。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期外部正本候補だが、現行は `case.vto` 直書き、長期は横断 case-news list 未決として overlay を補強。

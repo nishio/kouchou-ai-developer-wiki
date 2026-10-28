@@ -98,7 +98,12 @@ sources:
 - [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) ブラウザ版本流化は戦略会議（Polimoney は 10/24 確定、広聴AI/いどばたは 10/17-25 調整中）の意思決定事項。
 - **Sign in with ChatGPT (SIWC) を API キー不要ルートの候補として観測**（nishio 発案・Slack `#2_開発_広聴ai` 2026-10-12）。ユーザが自分の ChatGPT プランでサインインし、その plan 枠（Codex の weekly limit）で推論を回す OAuth 機能。nishio の仮説＝「定額プランの**未消化 weekly quota を切り替え間際に転用すれば実質無料**で分析できる」。自治体の決済制約（[[llm-providers]]）を緩める候補になりうるが、現時点は **feasibility アイデアとして観測**。要注意 caveat＝① **embedding は SIWC 対象外（Responses API 限定）** なのでクラスタリング中核は別キー/別プロバイダが必要で「pipeline 全体が無料」にはならない、② preview 機能・OpenAI ロックイン、③ hosted デモには不適合でユーザ端末 local 配布向け、④ weekly quota が自治体スケール（数千〜数万コメント）に耐えるか未確認。[[openai-siwc-token-sharing-docs-2026-10-12]]より。
 
+- **2026-10 の経緯の振り返りと、残った 2 論点**（[[retrospective-2026-10-28]]）: 大規模レビュー 4 段（修正 PR 100 本超、全件 merge 済み）→ 鍵漏洩の発見・猶予・公開 → v4.2.0 までを 1 本の流れとして整理した。判断を仰ぎたいのは次の 2 つ。
+  - 宙に浮いている可視化 2 つ（ドリルダウンのツリー表示、ズームできる付箋表示）の最初の置き場。CLI の standalone HTML として出して既存の散布図・階層リストと読み比べる案を提案
+  - tokoroten の賛否分離 2 手法（センチメント次元の付与、DivCon）の取り込み方。まず実験的機能カタログに所在を固定し、賛否スコアを「意見ごとの属性」として CLI に入れる順序を提案。本体に入れるか自体と主担当は人間判断
+
 ## Updates
 
+- 2026-10-28: 議題候補に 2026-10 の振り返りと残った 2 論点（可視化 2 つ、tokoroten の 2 手法）を追加
 - 2026-10-21: 完了済みの PyPI 訂正（Issue [#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979)）を議題候補から外し（記録は [[meeting-report-2026-10-18]] にある）、「そのまま読む用」の日付と注記を中身に合わせた
 - 2026-10-18: 2026-10-12〜10-17 の堆積を [[meeting-report-2026-10-18]] へ退避し、進行中・判断待ちだけに整理

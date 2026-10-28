@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-28 16:30	filing-back	2026-10 の経緯の整理：大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法
 2026-10-26 23:46	filing-back	YouTube プラグインを google-api-python-client なしで動かす（#1149）
 2026-10-26 21:40	filing-back	ユーザー API キーの件の Security Advisory を公開
 2026-10-26 20:39	filing-back	v4.2.0 と analysis-core 0.2.0 をリリース

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-28 16:30] filing-back | 2026-10 の経緯の整理：大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法
+
+- nishio「今回の経緯について LLM Wiki にまとめる」を受けて [[retrospective-2026-10-28]] を追加。10-16〜10-26 のレビュー 4 段（修正 PR 100 本超、全件 merge 済み）、鍵漏洩の発見・猶予・公開・v4.2.0 を 1 本の流れと教訓にまとめた。
+- 宙に浮いた可視化 2 つ（ドリルダウンのツリー表示＝10-17 の Claude 実験の再クラスタリングと #880、ズームできる付箋表示＝canvas_kozaneba_prototype）と、tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み順を整理。open-decisions に A13・A14、定例下書きの議題候補、index に追記。
+- 次：2 つの可視化の置き場と、tokoroten の 2 手法を本体に入れるか・主担当を nishio が判断。該当の推定（どの試作を指すか）も要確認。
+
 ## [2026-10-26 23:46] filing-back | YouTube プラグインを google-api-python-client なしで動かす（#1149）
 
 - v4.2.0 の Docker イメージで YouTube の取り込みが失敗する件。lock に extra を入れる案から、httpx で REST を直接呼ぶ形に作り直して merge した（beff715f）。プラグインだけが使う依存を本体に入れないため。定例の下書きに追記。
@@ -99,15 +105,3 @@
 - 利用上限で途中終了した調査の記録にあった候補を現行 main で再現し、PR にした。テストが .env のキーで実際に LLM へ要求を送る（#1048）、pip で入れた CLI が作業ディレクトリの .env を読まない（#1049）、api のテストが 2027-01-01 以降に必ず落ちる（#1050）。
 - 週次枠が均等ペースより先行していたので、ワークフローは使わず 1 セッションで確認・修正した。
 - 定例会議向け下書き（meeting-report-draft）を更新。
-
-## [2026-10-21 13:30] filing-back | 第 3 弾レビューの Wiki 指摘を訂正（約 70 件）、#NNN リンク化の破損を修復
-
-- living ページ（concepts / entities / gotchas / open-decisions / index など）の古い・誤った記述を main と GitHub に照合して訂正。日付つき snapshot は ## Updates で訂正。
-- 一括リンク化（dd19e9d）で入れ子になったリンク・広聴AI 以外の番号への誤リンクを修復。scripts/linkify_github_refs.py を冪等にしてテストを追加し、素のまま残っていた #NNN もリンク化。消えていた Yandex 検証ページの結論と log entry を復元。
-- 公開境界（デモ環境の構成・認証まわりの詳細、個人 PC のパス）と、公開ページに残っていた下書き表示・編集メモを除去。CLAUDE.md の文言の食い違い 2 件（Slack mirror の窓、二分原則の書き方）は nishio 判断として残した。
-
-## [2026-10-21 12:40] filing-back | 第 3 弾レビューの回帰修正 PR 5 本を admin merge（#1043–#1047）
-
-- #1031・#1033・#1034・#1039 で入った／広がった不具合 6 件を #1043（--reuse-from とトークン引き継ぎ）・#1044（再利用で全段再実行）・#1045（完了後もカードが作成中）・#1046（濃い意見 0 件の切り替え先）で修正。nishio「CI が通ったら admin merge」で squash merge。
-- #1043 と #1044 が合わさって落ちたテストの前提を #1047 で直し、main の Server Tests green を確認。CodeRabbit の範囲外の指摘 2 件は後続で扱う。
-- [[meeting-report-draft]] を更新。
