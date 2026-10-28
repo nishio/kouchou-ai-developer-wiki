@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 19:00] filing-back | 考察の 1〜3 を Issue 化して着手（#1158〜#1160 → PR #1165〜#1167）、副産物 #1168
+
+- post-review-product-direction の順序 1〜3 を Issue 化（assignee 設定済み）し、worktree ごとに実装して同日に PR 作成（未 merge）。(1) 賛否・新規性の属性ステップ（analysis-core、848 tests green、実データ 997 件で新規性 smoke）、(2) 階層リストの詳細モード化＋目的ツールチップ＋出典リンク（public-viewer、46 suites green）、(3) 同梱テスト用レポート 5 view のギャラリー docs（静的ビルドを Playwright で撮影）
+- 設計判断・検証・人間に確かめてほしい点は analyses/post-review-direction-issues-2026-10-29。open-decisions A13・A14 と meeting-report-draft に反映
+- 副産物: lock なしの analysis-core が `import httpx` で落ちる件を #1168 に。次は 3 本の merge 判断と、#1165 後に属性つきギャラリー例を足す
+
 ## [2026-10-29 16:30] filing-back | スプリント第 1 群 4 件を PR 化（#1161〜#1164）、#1128 は #1154 で対応済み
 
 - 10-28 棚卸しの第 1 群 5 件に着手。#292 docs→#1161、#493 散布図ホイール→#1162、#1130 エラー詳細→#1163、#79 費用概算→#1164 を issue ごとの worktree で並行実装し PR 作成（未 merge）。着手前に nishio を assignee に設定

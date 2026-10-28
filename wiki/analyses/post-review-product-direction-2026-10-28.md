@@ -118,3 +118,4 @@ DivCon は散布図を出さない group-first の分析で、`analysis_mode=llm
 ## Updates
 
 - 2026-10-28: 初回作成
+- 2026-10-29: 順序 1〜3 を [#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)〜[#1160](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1160) として Issue 化し、PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)〜[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167) を作成（未 merge）。設計判断と検証は [[post-review-direction-issues-2026-10-29]]

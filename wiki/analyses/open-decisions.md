@@ -137,11 +137,15 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 [[retrospective-2026-10-28]]：ドリルダウンのツリー表示は、2025 年参院選のチームみらい（policy-pr-hub）で作った「クラスタを展開して最下層で個別意見まで辿る階層 bullet list」で、2026-01 に公開ビューアの可視化 plugin「階層リスト」として移植済みだが、サンプル plugin のままで既定の見せ方になっていない（「提供してもウケない」という観測事実と、「細かいクラスタまで全部見るならツリービュー向き」という 2026-05-30 の整理が並立）。付箋表示は nishio の `canvas_kozaneba_prototype`（semantic zoom、既定画面に未統合）。**階層リストを「詳細モード」の正式 view にするか**、**付箋表示を CLI の standalone HTML か公開ビューアの plugin か Kozaneba 側のどこに置くか** が未決。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)・[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)・[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) が関連。
 
+- 2026-10-29: 階層リストは「全部読む」詳細モードとして PR [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166)（[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159)）で位置づけ直し（既定は散布図のまま）。付箋表示の置き場は未決のまま
+
 ### A14. tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み
 
 [[retrospective-2026-10-28]]：どちらも [[tokoroten]] の個人 repo にあり本体未収録。賛否スコアを `opinion_classification`（[#971](https://github.com/digitaldemocracy2030/kouchou-ai/issues/971)）と同じ「意見ごとの属性」として CLI に入れる案が最小。DivCon は `llm_grouping` 系の mode として対立軸の capability を先に決める必要がある。**本体に入れるか自体と、入れるなら主担当** が未決。
 
 ---
+
+- 2026-10-29: 前段として賛否スコア・新規性スコアを「意見ごとの属性」にする CLI 任意ステップを PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)（[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)）で実装。埋め込みへの重み付けと DivCon は未決のまま（[[post-review-direction-issues-2026-10-29]]）
 
 ## B. 方針決定済み・未着手
 
@@ -251,6 +255,7 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 ## Updates
 
 - 2026-10-28: A13（ドリルダウン / 付箋表示の置き場）と A14（tokoroten の賛否分離 2 手法）を追加（[[retrospective-2026-10-28]]）
+- 2026-10-29: A13・A14 に、着手済みの PR（[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)・[#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166)）と未決部分の注記を追加
 - 2026-06-30: 19:15 JST の live check と `#dd_prance_event2026` source を反映し、current overlay を 5 件から 6 件へ補正。8/2 は first demo と実践 lane framing を分け、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は次 code-safe slice の人間判断項目として追加した。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / 8/2 / docs の人間判断項目として明示。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期外部正本候補だが、現行は `case.vto` 直書き、長期は横断 case-news list 未決として overlay を補強。
