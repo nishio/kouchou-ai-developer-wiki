@@ -135,7 +135,7 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 ### A13. ドリルダウンのツリー表示と ズームできる付箋表示の置き場
 
-[[retrospective-2026-10-28]]：読者が選んだクラスタをその場で細分化するドリルダウン（2026-10-17 の Claude 接続実験で最小実装、branch のみ）と、散布図の点を付箋にして semantic zoom する表示（nishio の `canvas_kozaneba_prototype`、既定画面に未統合）は、どちらも本流に入っていない。**分析側（再クラスタリングで新しい階層を作る）か表示側（既存階層を折りたたむ）か**、**CLI の standalone HTML か公開ビューアの plugin か Kozaneba 側か** が未決。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)・[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)・[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) が関連。
+[[retrospective-2026-10-28]]：ドリルダウンのツリー表示は、2025 年参院選のチームみらい（policy-pr-hub）で作った「クラスタを展開して最下層で個別意見まで辿る階層 bullet list」で、2026-01 に公開ビューアの可視化 plugin「階層リスト」として移植済みだが、サンプル plugin のままで既定の見せ方になっていない（「提供してもウケない」という観測事実と、「細かいクラスタまで全部見るならツリービュー向き」という 2026-05-30 の整理が並立）。付箋表示は nishio の `canvas_kozaneba_prototype`（semantic zoom、既定画面に未統合）。**階層リストを「詳細モード」の正式 view にするか**、**付箋表示を CLI の standalone HTML か公開ビューアの plugin か Kozaneba 側のどこに置くか** が未決。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)・[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)・[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) が関連。
 
 ### A14. tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み
 

@@ -1,7 +1,7 @@
 ---
 title: "2026-10 の経緯の整理：大規模レビュー・鍵漏洩の修正・宙に浮いた可視化 2 つ・ところてんの分析手法 2 つ（2026-10-28）"
 type: analysis
-summary: "2026-10-16〜10-26 の大規模コードレビュー（4 段、修正 PR 100 本超）から、ユーザー API キー漏洩の発見・猶予・公開・v4.2.0 までの経緯を 1 本の流れとして整理し、残った 2 つの論点（ドリルダウンのツリー表示と ズームできる付箋表示の置き場、tokoroten の賛否分離 2 手法＝センチメント次元の付与と DivCon の取り込み方）を次の判断材料として並べた 2026-10-28 時点の振り返り"
+summary: "2026-10-16〜10-26 の大規模コードレビュー（4 段、修正 PR 100 本超）から、ユーザー API キー漏洩の発見・猶予・公開・v4.2.0 までの経緯を 1 本の流れとして整理し、残った 2 つの論点（チームみらい由来の階層リスト＝ドリルダウンのツリー表示と ズームできる付箋表示の置き場、tokoroten の賛否分離 2 手法＝センチメント次元の付与と DivCon の取り込み方）を次の判断材料として並べた 2026-10-28 時点の振り返り"
 sources:
   - source-code.md
   - source-review-findings-2026-10-16.md
@@ -70,21 +70,20 @@ nishio「今回の経緯について LLM Wiki にまとめる」を受けた振�
 
 どちらも「作りたい」「試作はある」が、本流（公開ビューア / CLI の既定出力）に入っていない。レビューで公開ビューアの性能を直した（[#1069](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1069)〜[#1071](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1071)、[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102)）ことで、大規模レポートの表示そのものは軽くなったが、「読む体験」の設計は手つかずのまま残っている。
 
-### 2-a. ドリルダウンのツリー表示
+### 2-a. ドリルダウンのツリー表示（チームみらいで作った階層リスト）
 
-**何をしたいか**：俯瞰 → ゾーンを選ぶ → 掘り下げる、という読み方（[[nishio-amusement-park-map-metaphor-2026-06-03]]）を、固定した階層ではなく、読者が選んだクラスタをその場で細分化する形で支えたい。
+**何をしたか**：2025 年参院選で、チームみらいの「しゃべれるマニフェスト」に届いた政策提案 PR を広聴AI で分析し、その結果を `team-mirai-volunteer/policy-pr-hub` の Web アプリで公開した。散布図とは別に、**クラスタを上位から展開して最下層で個別の意見（提案 PR へのリンクつき）まで辿れる階層 bullet list** を 2025-07-30 に Devin が実装し、8 月に子クラスタ一覧ページと PR リンクの突合を足した。「どこから来たのか」のトレーサビリティを階層で読ませる試みで、俯瞰 → ゾーン → 掘り下げ（[[nishio-amusement-park-map-metaphor-2026-06-03]]）を散布図なしで実現したものと言える。policy-pr-hub は上流の policy repo の凍結（2025-07-26）後に運用終了し、public archive になっている。
 
-**今あるもの**
+**今どこにあるか**：2026-01-20 に nishio が、この階層 bullet list を kouchou-ai の公開ビューアに **可視化 plugin「階層リスト」** として移植した（可視化 plugin システムのサンプルという位置づけ）。最下層のクラスタでだけ意見本文を表示し、10 件を超える分は「もっと見る」で開く。第 3 弾レビューで、フィルタ変更時に展開が閉じる件（[#1097](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1097)）と件数表示（[#1111](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1111)）を直した。つまり **コードは本流にあるが、既定の見せ方にはなっておらず、サンプル plugin のまま**。
 
-- 公開ビューアの階層リストとツリーマップ。深さは `cluster_nums` で作成時に固定され、最下層まで行っても原文に辿れない（[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)）。最下層を濃いクラスタだけに絞る案（[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)）も未着手
-- 2026-10-17 の Claude 接続実験で、ローカル埋め込み＋クラスタリングの上で **最大クラスタをその場で再クラスタリングする** ドリルダウンを最小実装した。997 件の最大クラスタ（245 件）が 4 つに割れた。固定パイプラインでは出せない「結果を見て絞り込んで再分析」の実演で、コードは branch `claude-provider-experiment`（未 push）、成果物は `raw/experiments/claude-local-embed-opus-2026-10-17/`。[[claude-provider-experiment-output-2026-10-17]]より
-- [8, 64] の分析をマンダラート（中心 → 8 観点 → 64 詳細）で見せる案（[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880)）。モック未作成
+**なぜ宙に浮いているか**：観測事実として「階層ツリーの方が情報量が多くて見やすいだろうと思って提供しても、ちっともウケない」（nishio、2025-10-31 Slack）。tokoroten の読みでは、散布図＋クラスタ＋ラベルは「難しいものを理解できている私」という自己効力感を作り、リスト構造は「全体を把握できない → 私は関わってはいけない」になる（2025-11-03）。nishio はこれを「1 ページで見れる」「自分がどのクラスタにいるかわかる」の 2 要件に翻訳し、トップレベルの抽象度が高すぎる階層表示は展開しないと自分の位置がわからず「1 ページで見れる」を満たさない、と整理した。これは意見を投稿する側の効用で、大量の意見を分析する側の効用とは別（2025-11-04）。一方で 2026-05-30 には「デカい見落とし・デカい違和感」以外を見たい場合はトップのクラスタ数を 30 などに増やして細かいクラスタまで全部見るのがよく、それは散布図と相性が悪く **ツリービュー向き** だ、とも述べている（[[slack-stance-discussion-2026-05-30]] と同じ日の議論）。
 
 **未決の点**
 
-- ドリルダウンを **分析側**（再クラスタリングして新しい階層を作る）に置くか、**表示側**（既にある階層を折りたたんで見せる）に置くか。前者は結果 JSON の構造を変え、後者は [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の延長で済む
-- 再クラスタリングした結果をレポートに保存するか、一時的な探索に留めるか。保存するなら、公開ビューアが結果 JSON 全体を HTML に埋め込む現構造（3 万件で SSR 約 1GB。[[code-review-r3-continuation-2026-10-23]] の未修正指摘）が先に効く
-- CLI の standalone HTML として出すのか、Web UI に入れるのか。これまでの方針は「CLI で比較可能な artifact を貯めてから昇格判断」（[[cli-pipeline-experiment-roadmap-2026-06-02]]）
+- 階層リストを「詳細モード」（クラスタ数を多くして全部読む分析者向け）の view として正式に位置づけるか、サンプル plugin のままにするか。既定は散布図（ざっくりモード）のまま、反応を見て別ビューを案内する、という 2026-05-30 の方向と整合する
+- 最下層まで行っても原文に辿れない（[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)）、最下層を濃いクラスタだけに絞る（[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)）、[8, 64] をマンダラートで見せる（[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880)）など、階層表示系の Issue をこの plugin の改修として束ねるか
+- policy-pr-hub 版にあった「個別意見から元の提案（PR）へのリンク」は、本体では `enable_source_link`（出典リンク）が担う。階層リストで出典リンクを出すかは未確認
+- 分析側のドリルダウン（読者が選んだクラスタをその場で再クラスタリングする）は別物。2026-10-17 の Claude 接続実験で、最大クラスタ（245 件）を 4 つに割る最小実装をした（[[claude-provider-experiment-output-2026-10-17]]、branch 未 push）。表示側の階層リストと組み合わせるなら、結果 JSON の構造が変わる
 
 ### 2-b. ズームできる付箋表示
 
@@ -118,6 +117,13 @@ nishio「今回の経緯について LLM Wiki にまとめる」を受けた振�
 | 広聴AI の現行機能との関係 | 散布図を保ったまま賛否を分ける。**`classic_scatter` モードの拡張** | 散布図を持たない group-first の分析。**`analysis_mode=llm_grouping` 系の兄弟**（[[pr-827-llm-grouping-capabilities-plan-2026-05-18]]） |
 | 既にある足場 | 意見ごとに LLM で yes/no のラベルを付ける任意ステップ `opinion_classification`（[#971](https://github.com/digitaldemocracy2030/kouchou-ai/issues/971)、結果は `arguments[].attributes` に入り属性フィルタで使える）。賛否スコアは同じ形の「意見ごとの属性」として載せられる | `llm_grouping` の実装と、分析結果の性質（座標があるか、階層があるか）から使える可視化を判定する capability の計画。対立軸は新しい capability になる |
 
+### 付記：farbrain から取り込める要素
+
+[[tokoroten]] の `tokoroten/farbrain`（2025-10 作成、2025-12 最終 push）は、ブレインストーミングのゲーミフィケーションツールで、分析手法というより **広聴AI と同じ部品（多言語 sentence-transformers の埋め込み → UMAP → k-means → 凸包 → LLM によるクラスタ表札）をリアルタイム・多人数で回す別製品**。2 手法とは別枠だが、次の 2 点は広聴AI 側に持ち込める。
+
+- **自分の投稿がどこにあるかのハイライト**。nishio は 2025-11-04 に「自分の投稿由来のものがハイライトされる（farbrain のように）とわかりやすさが上がる」と述べている。意見を投稿する側の「自分がどのクラスタにいるかわかる」要件（2-a）に直接効く
+- **新規性スコア**。既存の埋め込み集合からの乖離（Isolation Forest）で「常識から遠い」意見に点を付ける。広聴AI では「少数だが重要そうな論点」を探す補助になりうるが、tokoroten 自身が 2026-05-30 に言うとおり、少数意見を拾うには「あらかじめ分類枠を置いて枠外を探す」「ロングコンテキストで再分類してマッピング不能を抽出する」のような別設計が要る。新規性スコアは「意見ごとの属性」として `attributes` に載せれば属性フィルタで使える点は、賛否スコアと同じ
+
 ### 取り込みの案（順序つき）
 
 1. **まず所在を公開 docs に固定する**。実験的機能カタログ（[[experimental-features-catalog-proposal-2026-06-03]]）に 2 手法を「tokoroten、別 repo、最終確認日」つきで載せる。コードを本体に入れる前にできる最小の一手で、stale になっても「いつ時点か」が残る
@@ -134,7 +140,7 @@ nishio「今回の経緯について LLM Wiki にまとめる」を受けた振�
 
 ## Open Questions
 
-- nishio の言う「ドリルダウンのツリー表示」が、2-a の Claude 実験のドリルダウンと [#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) のマンダラートのどちら（または両方）を指すか。「ズームできる付箋表示」が `canvas_kozaneba_prototype` を指すかも未確認。このページは既存の記録から推定して書いた
+- 2-a の階層リストを「詳細モード」の正式な view にするかどうか。する場合、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)・[#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60)・[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880) をその改修として束ねるか
 - 2 つの可視化の最初の置き場（CLI の standalone HTML か、公開ビューアの plugin か、Kozaneba 側か）
 - tokoroten の 2 手法を本体に入れるかどうか自体と、入れるなら主担当
 - 第 3 弾レビューで確定したが設計判断待ちの指摘（結果 JSON 全体の HTML 埋め込み、静的書き出しの全件再生成、LLM 直接グルーピングの逐次割当、抽出 1 件の失敗で全体停止、論理削除など）の扱い。2-a・2-b の置き場の判断と絡む
@@ -143,3 +149,4 @@ nishio「今回の経緯について LLM Wiki にまとめる」を受けた振�
 ## Updates
 
 - 2026-10-28: 初回作成
+- 2026-10-28: nishio の指摘で 2-a を書き直した。ドリルダウンのツリー表示は Claude 実験ではなく、2025 年参院選のチームみらい（policy-pr-hub）で作った階層 bullet list で、2026-01 に公開ビューアの可視化 plugin「階層リスト」として移植済み。farbrain の要素（自分の投稿のハイライト、新規性スコア）を 3 節に追記
