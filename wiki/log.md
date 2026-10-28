@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 01:30] filing-back | #56 元コメントの表示をレポート単位 opt-in で実装し PR #1155 を作成
+
+- shingo-ohki の 10/28 コメント（url 列が無いと抽出意見止まり）を受け、現行 main `1028da9c` を照合。`comments` は空のまま、`_build_comments_value` は dead code と確認。公開可否の契約を「レポート単位 opt-in」と「per-comment フラグ」の 2 案に分け、nishio が前者を選択。
+- worktree `work/kouchou-ai-issue-56` で analysis-core / api / admin / viewer / docs を実装し、PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155)（未 merge）。テストは analysis-core 798 / api 72 / viewer 314 / admin 117 が通過。判断と残論点は [[issue-56-original-comments-opt-in-2026-10-29]]。
+- 次：PR の review / merge と、#56 を close するか残件（多対多・serverless 契約・#250）を別 Issue に切るかの判断。shingo-ohki への返信は未投稿。
+
 ## [2026-10-28 22:30] filing-back | 新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定
 
 - nishio「10/28 からの新しいスプリントとして、既存 Issue を古い方から確認して現在の状況と照らし合わせ、どうするかを検討する」を受け、dynamic workflow（12 シャード照合 → 懐疑検証、agent 23）で全 89 件を main `1028da9c` に照合した。前回 10-12 以降の 167 commit で動いた件を更新。結果は [[issue-backlog-audit-2026-10-28]]、方法と未確認範囲は [[issue-audit-2026-10-28-sprint]]。前回ページには superseded の目印を付けた。
@@ -97,9 +103,3 @@
 - nishio「土日に仕事したくないから多めに使っといて」を受けて、利用上限で残っていた範囲を main b675e032 で仕上げた。洗い出しは、テストの質・ドキュメント・設定・規模の 4 観点で 23 件、うち 22 件が確定。未検証 43 件は 39 件が確定し、4 件が反証された。
 - 確定した指摘を、指摘ごとに main から別ブランチで修正し、PR にした（どれも修正前に落ちるテストつき、未 merge）。詳細は [[code-review-r3-continuation-2026-10-23]]。
 - 次：merge 前の独立レビューを実行中。挙動の判断が要る PR は数本ある。定例会議向け下書き（meeting-report-draft）を更新。
-
-## [2026-10-21 23:00] filing-back | 第 3 弾レビューの GitHub 側の指摘: Issue 16 件を更新、cli-quickstart の例を直す PR #1059
-
-- 現状と残件を日付つきで追記: #56・#266・#292・#464・#496・#881・#885・#912・#913・#44・#638・#1012 にコメント、#921・#949 は本文末尾に追記（元の本文は保持）。書き込み直前に更新時刻を照合し、書き込み後に取り直して確認。
-- #211（OOM で処理中のまま固まる）と #295（rate limit）は、満たした範囲と残件を書いて close。#295 の Tier 周知は #292 に引き継いだ。#496 と #638 は閉じずに相互リンク。
-- cli-quickstart §9 の例から `cluster_nums` の固定値を外す PR #1059 を作成（未 merge）。gotchas に再発として記録。#976 の載せ替えは出す時期の判断待ち。
