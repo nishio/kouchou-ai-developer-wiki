@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 02:30] filing-back | 「多対多参照とは何か」の回答を #56 の analysis ページに補足
+
+- nishio の問いに答えた「本体は 1 対多（#1032 以降は回答と文面の組で重複判定）、多対多は serverless 版が同じ文面の意見を回答をまたいで束ねる構造、serverless PR #22 の ID 誤対応はその経路」の説明を [[issue-56-original-comments-opt-in-2026-10-29]] に節として追記。
+- 次：PR #1155 の review / merge。設計変更は #1156 で扱う。
+
 ## [2026-10-29 02:00] filing-back | #56 からデータ構造の設計変更を #1156 に切り出し
 
 - nishio が #56 に「設計としては serverless 版のように同一内容コメント・同一意見を束ねた方がよいが、まず現状構造で元コメント表示を実現し、設計変更は別 Issue」とコメント。指示を受けて [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) を作成（束ね方の基準、`comment_ids` への拡張、`comment_id` の型揃え、serverless との契約統一、#250 の表示）。

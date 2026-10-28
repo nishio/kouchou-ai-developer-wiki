@@ -37,6 +37,15 @@ nishio は 2026-10-29 に 1 を選択。2 は別段階として残す。
 - **public-viewer**: フラグが true のレポートだけ、散布図ホバーに本文（先頭 200 文字、HTML エスケープ）を添え、階層リストの意見の下に本文を出す。ja / en / ko
 - 検証: analysis-core 798 件、api 関連 72 件、viewer 314 件、admin 117 件のテストと ruff / biome / tsc が通過。実 LLM での生成と画面の目視は未実施
 
+## 補足：「多対多参照」とは何か（nishio の問いへの回答、2026-10-29）
+
+Issue 本文の 2026-09-09 追記にある「意見と元コメントの多対多参照を保持」の意味。出典は [[serverless-product-direction-2026-09-08]] と nishio の 2026-10-21 コメント。
+
+- **本体は 1 対多**。1 件の元コメントから複数の意見が抽出されるが、1 件の意見が指す元コメントは常に 1 つ。[#1032](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1032) 以降は抽出の重複判定が「回答と文面の組」になり、別の回答から出た同じ文面の意見は回答ごとに別の意見になる。`relations.csv` の各行は「意見 1 つ → コメント 1 つ」、公開 JSON の `comment_id` も単一の値。PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) はこの前提のままで、`comments[argument.comment_id]` を引くだけで原文に戻れる
+- **多対多が出てくるのは serverless 版**。tokoroten/kouchou-ai-serverless は同じ文面の意見を回答をまたいで 1 つに束ね、最初の回答に帰属させる。意見側が複数の元コメントを指す構造で、その経路で文字列 ID・先頭ゼロ・JavaScript の数値精度を超える ID が数値化されて別のコメントに誤対応する不具合があり、serverless PR #22（2026-09-09 merge）で「表記が変わらない安全な整数だけ数値で出す」形に直された
+- Issue 本文の項目は「将来、本体と serverless の両方で原文に戻れる契約を揃えるなら、意見 1 つが複数コメントを指せる形を壊さず、ID の型でも誤対応しないこと」を求めている
+- PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) との関係: ID の型の方は満たしている（`comment-id` を入力 CSV の文字列のまま key にし、先頭ゼロをテストで確認）。意見 1 つが複数コメントを指す形は本体のパイプラインが作らないので扱っていない。nishio は「設計としては serverless 版のように束ねた方がよい」と判断し、設計変更を [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) に切り出した
+
 ## 設計上の小さな判断
 
 - フラグをブラウザに保存しない点だけ、ソースリンク機能（localStorage に保存）と揃えなかった。公開範囲を広げる設定は毎回 OFF から始める方が安全と判断した
