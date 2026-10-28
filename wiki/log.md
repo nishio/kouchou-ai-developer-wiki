@@ -9,6 +9,10 @@
 - worktree `work/kouchou-ai-issue-56` で analysis-core / api / admin / viewer / docs を実装し、PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155)（未 merge）。テストは analysis-core 798 / api 72 / viewer 314 / admin 117 が通過。判断と残論点は [[issue-56-original-comments-opt-in-2026-10-29]]。
 - 次：PR の review / merge と、#56 を close するか残件（多対多・serverless 契約・#250）を別 Issue に切るかの判断。shingo-ohki への返信は未投稿。
 
+## [2026-10-29 00:35] filing-back | Dependabot の alert 3 件（#1153）とトークン数の数え漏れ（#1154）を merge
+
+- `follow-redirects`・`zod` を override で上げて alert 3 件を解消。merge 直後に新しい alert 2 件（開発用の道具経由）が出た。#1128 の修正で、弾かれた応答と諦めた回答のトークン数も集計に入るようにした。定例の下書きに追記。
+
 ## [2026-10-28 22:30] filing-back | 新スプリント開始：open Issue 全 89 件を古い順に現行 main と照合し、方針を判定
 
 - nishio「10/28 からの新しいスプリントとして、既存 Issue を古い方から確認して現在の状況と照らし合わせ、どうするかを検討する」を受け、dynamic workflow（12 シャード照合 → 懐疑検証、agent 23）で全 89 件を main `1028da9c` に照合した。前回 10-12 以降の 167 commit で動いた件を更新。結果は [[issue-backlog-audit-2026-10-28]]、方法と未確認範囲は [[issue-audit-2026-10-28-sprint]]。前回ページには superseded の目印を付けた。
