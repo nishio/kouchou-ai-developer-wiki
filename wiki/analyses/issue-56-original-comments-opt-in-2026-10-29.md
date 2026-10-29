@@ -61,3 +61,4 @@ Issue 本文の 2026-09-09 追記にある「意見と元コメントの多対�
 
 - 2026-10-29: 初版。nishio の案 1 選択を受けて PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) を作成
 - 2026-10-29: nishio が #56 のコメントで「設計としては serverless 版のように束ねた方がよいが、まず現状の構造で元コメント表示を実現し、設計変更は別 Issue」と判断。切り出し Issue [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) を作成（束ね方の基準、`comment_ids` への拡張、型揃え、serverless との契約統一、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の表示）
+- 2026-10-29: CI の how-to-use リマインダーを受け、利用ガイド `docs/user-guide/how-to-use.md` の散布図の操作に「元コメントの確認」を追記して PR に push（7f1e13b9）。レビュー・コメントはまだ無し
