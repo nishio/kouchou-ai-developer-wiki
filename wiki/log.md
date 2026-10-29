@@ -15,6 +15,12 @@
 - #1128 は別セッションの #1154 で本体修正が merge 済みだったため着手せず。#1163 と #1164 は CreateReportConfirmation を両方触るので後の方を rebase
 - 各 PR で AI が置いた仮定と人間に確かめてほしい点（費用係数の較正、600ms の操作感、unknown_error 限定の詳細表示、docs の残件）を analyses/sprint-group1-prs-2026-10-29 に記録。次は #1161 の CodeRabbit 指摘対応と merge 判断
 
+## [2026-10-29 14:10] filing-back | PR #1155（#56 元コメント表示）の CodeRabbit 対応と merge を記録
+
+- CodeRabbit の指摘 2 件（再利用画面で `ReportConfig` が flag を落とす、ホバー文の二重エスケープ）を直して push 後、CI green を確認。admin merge は Claude Code の権限判定で止まり、nishio が手元で squash merge（8e95ceb1）
+- analyses/issue-56-original-comments-opt-in-2026-10-29 と meeting-report-draft、issue-backlog-audit-2026-10-28 を merge 済みに更新。`work/kouchou-ai` の main を最新化し、worktree を片付け
+- 次：#56 を close するか（残件は per-comment 再頒布フラグと #1156）、shingo-ohki への返信、#1166 の rebase
+
 ## [2026-10-29 03:00] filing-back | PR #1155 に利用ガイドの追記を push、GitHub 側の新着なしを確認
 
 - PR #1155 はレビュー・コメントともに未着。CI の how-to-use リマインダー（WebUI 変更で利用ガイド未更新）だけ残っていたので、`docs/user-guide/how-to-use.md` に「元コメントの確認」を追記して push。
