@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 20:10] filing-back | open-decisions A13 に付箋表示の置き場の暫定意向（standalone HTML と Web plugin の両方）を追記
+
+- nishio の「A13 は standalone HTML と Web の可視化プラグインかな」を暫定の意向として A13 に記録（Kozaneba 側には置かない。確定と着手順は未定）
+- 先に決めるのは結果 JSON からの書き出し契約、という考察の整理に接続
+
 ## [2026-10-29 19:00] filing-back | 考察の 1〜3 を Issue 化して着手（#1158〜#1160 → PR #1165〜#1167）、副産物 #1168
 
 - post-review-product-direction の順序 1〜3 を Issue 化（assignee 設定済み）し、worktree ごとに実装して同日に PR 作成（未 merge）。(1) 賛否・新規性の属性ステップ（analysis-core、848 tests green、実データ 997 件で新規性 smoke）、(2) 階層リストの詳細モード化＋目的ツールチップ＋出典リンク（public-viewer、46 suites green）、(3) 同梱テスト用レポート 5 view のギャラリー docs（静的ビルドを Playwright で撮影）
