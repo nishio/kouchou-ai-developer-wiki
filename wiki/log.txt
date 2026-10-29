@@ -7,6 +7,7 @@
 2026-10-29 20:10	filing-back	open-decisions A13 に付箋表示の置き場の暫定意向（standalone HTML と Web plugin の両方）を追記
 2026-10-29 19:00	filing-back	考察の 1〜3 を Issue 化して着手（#1158〜#1160 → PR #1165〜#1167）、副産物 #1168
 2026-10-29 16:30	filing-back	スプリント第 1 群 4 件を PR 化（#1161〜#1164）、#1128 は #1154 で対応済み
+2026-10-29 14:30	filing-back	PR #1166 を #1155 merge 後の main に rebase
 2026-10-29 14:10	filing-back	PR #1155（#56 元コメント表示）の CodeRabbit 対応と merge を記録
 2026-10-29 03:00	filing-back	PR #1155 に利用ガイドの追記を push、GitHub 側の新着なしを確認
 2026-10-29 02:30	filing-back	「多対多参照とは何か」の回答を #56 の analysis ページに補足

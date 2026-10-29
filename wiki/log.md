@@ -25,6 +25,11 @@
 - #1128 は別セッションの #1154 で本体修正が merge 済みだったため着手せず。#1163 と #1164 は CreateReportConfirmation を両方触るので後の方を rebase
 - 各 PR で AI が置いた仮定と人間に確かめてほしい点（費用係数の較正、600ms の操作感、unknown_error 限定の詳細表示、docs の残件）を analyses/sprint-group1-prs-2026-10-29 に記録。次は #1161 の CodeRabbit 指摘対応と merge 判断
 
+## [2026-10-29 14:30] filing-back | PR #1166 を #1155 merge 後の main に rebase
+
+- #1155 merge で CONFLICTING になった #1166（階層リストの詳細モード化）を rebase。`HierarchyListChart` と plugin で、元コメント本文（#1155）と出典リンク（#1166）の両方を残す形で解消し、tsc / biome / viewer テスト 317 件 green。force-with-lease で push（7450a17c）、MERGEABLE に戻った
+- 次：#1166 の CI 確認と merge 判断（提案順 #1165 → #1166 → #1167）
+
 ## [2026-10-29 14:10] filing-back | PR #1155（#56 元コメント表示）の CodeRabbit 対応と merge を記録
 
 - CodeRabbit の指摘 2 件（再利用画面で `ReportConfig` が flag を落とす、ホバー文の二重エスケープ）を直して push 後、CI green を確認。admin merge は Claude Code の権限判定で止まり、nishio が手元で squash merge（8e95ceb1）
