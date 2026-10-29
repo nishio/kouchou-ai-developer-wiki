@@ -146,7 +146,8 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 ---
 
-- 2026-10-29: 前段として賛否スコア・新規性スコアを「意見ごとの属性」にする CLI 任意ステップを PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)（[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)）で実装。埋め込みへの重み付けと DivCon は未決のまま（[[post-review-direction-issues-2026-10-29]]）
+- 2026-10-29: 前段として賛否スコア・新規性スコアを「意見ごとの属性」にする CLI 任意ステップを PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)（[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)）で実装（[[post-review-direction-issues-2026-10-29]]）
+- 2026-10-29: nishio の方針。**2 手法（センチメント次元の付与・DivCon）は本体に取り込まず、docs から「成熟していない関連研究」として紹介する形にする。入れるとしても CLI から**。したがって A14 の「本体に入れるか」は当面「入れない」で、残る作業は docs 側の紹介ページ（手法の要点・tokoroten の repo / デモへの pointer・最終確認日・本体の属性ステップとの関係）を書くこと。主担当の確認と評価データの確保は、CLI で試す段階になったら改めて
 
 ## B. 方針決定済み・未着手
 
@@ -258,6 +259,7 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 - 2026-10-28: A13（ドリルダウン / 付箋表示の置き場）と A14（tokoroten の賛否分離 2 手法）を追加（[[retrospective-2026-10-28]]）
 - 2026-10-29: A13・A14 に、着手済みの PR（[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)・[#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166)）と未決部分の注記を追加
 - 2026-10-29: A13 に付箋表示の置き場についての nishio の暫定の意向（standalone HTML と Web plugin の両方）を追記
+- 2026-10-29: A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるとしても CLI から）を追記
 - 2026-06-30: 19:15 JST の live check と `#dd_prance_event2026` source を反映し、current overlay を 5 件から 6 件へ補正。8/2 は first demo と実践 lane framing を分け、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は次 code-safe slice の人間判断項目として追加した。
 - 2026-06-30: [[public-tool-catalog-draft-2026-06-30]] を current overlay に追加し、短期未決を 4 件から 5 件へ補正。tool catalog の canonical placement を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) / 8/2 / docs の人間判断項目として明示。
 - 2026-06-30: [[website-kouchou-ai-case-live-2026-06-30]] を反映し、DD2030 website は短期外部正本候補だが、現行は `case.vto` 直書き、長期は横断 case-news list 未決として overlay を補強。

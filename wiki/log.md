@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 20:30] filing-back | open-decisions A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるなら CLI から）を追記
+
+- tokoroten の 2 手法（センチメント次元の付与・DivCon）は本体に取り込まず、docs から「成熟していない関連研究」として紹介する。入れるとしても CLI から。考察ページの順序 5・6 と定例下書きも合わせて更新
+- 残る作業は docs 側の紹介ページ（要点・pointer・最終確認日・属性ステップとの関係）。主担当と評価データの確認は CLI で試す段階になってから
+
 ## [2026-10-29 20:10] filing-back | open-decisions A13 に付箋表示の置き場の暫定意向（standalone HTML と Web plugin の両方）を追記
 
 - nishio の「A13 は standalone HTML と Web の可視化プラグインかな」を暫定の意向として A13 に記録（Kozaneba 側には置かない。確定と着手順は未定）
