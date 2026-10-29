@@ -32,6 +32,10 @@
 - #1128 は別セッションの #1154 で本体修正が merge 済みだったため着手せず。#1163 と #1164 は CreateReportConfirmation を両方触るので後の方を rebase
 - 各 PR で AI が置いた仮定と人間に確かめてほしい点（費用係数の較正、600ms の操作感、unknown_error 限定の詳細表示、docs の残件）を analyses/sprint-group1-prs-2026-10-29 に記録。次は #1161 の CodeRabbit 指摘対応と merge 判断
 
+## [2026-10-29 15:29] filing-back | PyPI の analysis-core 0.3.0 を公開（polars 2 で 0.2.0 の集計が失敗する件）
+
+- #1168 の確認中に、PyPI の 0.2.0 が lock なしだと polars 2 に解決され集計で毎回失敗すると判明。#1171 で直し、#1172 で 0.3.0 に上げてタグを push、公開後に lock なしで動作を確認。gotchas と定例の下書きに追記。
+
 ## [2026-10-29 14:30] filing-back | PR #1166 を #1155 merge 後の main に rebase
 
 - #1155 merge で CONFLICTING になった #1166（階層リストの詳細モード化）を rebase。`HierarchyListChart` と plugin で、元コメント本文（#1155）と出典リンク（#1166）の両方を残す形で解消し、tsc / biome / viewer テスト 317 件 green。force-with-lease で push（7450a17c）、MERGEABLE に戻った

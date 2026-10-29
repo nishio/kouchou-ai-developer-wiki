@@ -174,6 +174,10 @@ Web UI（`report_launcher.py`）は常に `--without-html` で analysis-core を
 
 `Documentation = "...docs/CLI_QUICKSTART.md"` を指すが実体は `docs/user-guide/cli-quickstart.md`。
 
+### PyPI の analysis-core は lock なしで入るので、上流のメジャー更新を公開後に受ける
+
+CI と Docker イメージは lock で入れるが、`pip install kouchou-ai-analysis-core` の利用者は `pyproject.toml` の下限だけで解決する。2026-10 には polars 2（10-06）で `read_csv` の `missing_utf8_is_empty_string` が無くなり、公開済みの 0.2.0 が新しく入れると集計で毎回失敗するようになった。openai 3.x は依存が `httpx` から `httpx2` に変わり、直接 import しているのに宣言していなかった `httpx` が入らなくなった（[#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168)）。どちらも PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171) で直して 0.3.0 を出した。確かめ方は、新しい venv に `uv pip install -e ".[clustering,gemini,dev]"`（lock なし）で入れてテストを走らせること。直接 import するパッケージは、ほかの依存経由で入る場合も `dependencies` に書く。
+
 ### PyPI build は package ディレクトリの外で
 
 `docs/development/pypi-release.md`：venv が `packages/analysis-core/` 内にあると `AbsoluteLinkError`。リリースは外側で実施。
@@ -331,3 +335,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-10-21: main `b71e0b79` と照合し、UMAP / KMeans の seed 撤去（PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829)）、Biome の CI 検査（PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）、cp932 と `"python"` ハードコードの修正（PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)）、`fetch_reports.py` の削除（PR [#875](https://github.com/digitaldemocracy2030/kouchou-ai/issues/875)）とローカル compose ではレポートが消えないこと、LOCAL LLM のモデル一覧取得（PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)）、public-viewer の build と散布図クリック（PR [#828](https://github.com/digitaldemocracy2030/kouchou-ai/issues/828)・[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)・[#857](https://github.com/digitaldemocracy2030/kouchou-ai/issues/857)）について、古くなっていた記述を現状に合わせて訂正。あわせて、final CSV の列名（snake_case と kebab-case の混在、`category-id` という列は無い）を訂正し、cube-root rule の上限（858 件以上は `[10, 100]`）と、subprocess を mock したテストを根拠に Issue を stale と判断した失敗例（[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584)）を追記
 - 2026-10-21: 「`docs/` の例が AI に伝播する」に、[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) での再発と、それを外す PR [#1059](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1059) を追記
 - 2026-10-29: 構造化出力の parse が弾いた応答の usage（[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) / PR [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1154)）、override でメジャー版をまたぐときの確かめ方（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）、CodeRabbit の check がレビュー済みを意味しない場合を追記
+- 2026-10-29: PyPI の analysis-core が lock なしで入るため、上流のメジャー更新（polars 2・openai 3）を公開後に受けることを追記（[#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168)、PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1171)、0.3.0）
