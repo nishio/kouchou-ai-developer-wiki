@@ -80,6 +80,15 @@ CI と同じ fixture API を立て `build:static` → `python3 -m http.server` �
 - #1166 が入ったらリストのスクリーンショット（見出し・説明文が変わる）を撮り直す。`opinion-scores.md` が main に入ったらギャラリーのリンクを Issue からそのページに差し替える
 - 常設公開の置き場は [#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518) の判断に従う
 
+## 4. 関連研究の紹介ページ（#1173 → #1174、同日追記）
+
+nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs から成熟していない関連研究として紹介する。入れるとしても CLI から」（[[open-decisions]] A14）を受け、Issue [#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) で `docs/development/related-research.md` を追加した。
+
+- 一覧表は「名前 / 一文説明 / 所在 / 状態 / 担当 / 最終確認日」。最終確認日は「その日に所在 URL へ到達できた日」と定義し、到達不能になったら日付を更新せず「到達不能（日付）」と書いて消さない、という運用を書いた（[[experimental-features-catalog-proposal-2026-06-03]] の最終確認日ルールの実物）
+- センチメント次元は前段（賛否スコア → 1 の `opinion_stance`）と後段（埋め込みへの重み付け → 本体未収録、入れるなら weight だけ変えた比較が先）に分けて書いた。DivCon は `analysis_mode=llm_grouping` の兄弟として、対立軸・アンカー・スコアの結果 JSON 契約が先に要ることを書いた。farbrain は新規性スコア（1 の `opinion_novelty`）と自分の投稿のハイライト（未着手）を持ち込み候補として併記
+- 所在は 2026-10-29 に到達確認：netlify のデモ（約 14 MB の自己完結 HTML）と zip、`tokoroten/divcon`（MIT、最終 push 2025-11-20）と GitHub Pages のデモ 2 つ、`tokoroten/farbrain`（最終 push 2025-12-14）と note 記事
+- 人間に確かめてほしい点：「成熟していない」という位置づけと手法の説明が tokoroten の意図と合うか、担当名と個人 repo / デモ URL を本体 docs に載せてよいか
+
 ## 副産物
 
 - **analysis-core を lock なしで入れると `import httpx` で落ちる**（[#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168)）。`rate_limit.py` が `httpx` を直接 import しているのに `dependencies` に無く、新しい `openai` 3.x は `httpx2` 依存。CI は `requirements-dev.lock` で入れるので気づかれていなかった。PyPI 利用者と `pip install -e` のコントリビュータが当たる
@@ -90,7 +99,7 @@ CI と同じ fixture API を立て `build:static` → `python3 -m http.server` �
 
 1. 3 本の merge 判断（人間）。順序の提案: #1165（本体に影響しない CLI 追加）→ #1155 または #1166（どちらかを先に、残りを rebase）→ #1167
 2. #1165 merge 後、同梱サンプルで賛否・新規性を実 LLM（または ollama）で回し、スコアの向きを目視確認してからギャラリーに属性つきの例を足す
-3. #1168 の対応（`httpx` の宣言か `openai<3` の固定）
+3. ~~#1168 の対応~~ → PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171) で main 入り（2026-10-29）
 4. 順序 4〜6（付箋表示の書き出し契約、埋め込み重み付けの clean experiment、DivCon の契約）は [[open-decisions]] A13・A14 の判断待ち
 
 ## Open Questions
@@ -102,3 +111,4 @@ CI と同じ fixture API を立て `build:static` → `python3 -m http.server` �
 ## Updates
 
 - 2026-10-29: 初回作成
+- 2026-10-29: 4 節（関連研究の紹介ページ、[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）を追記。副産物の [#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168) は PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171)（`httpx` の宣言と polars 2 の `read_csv`）で同日に main に入った

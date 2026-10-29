@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-10-29 21:30	filing-back	関連研究の紹介ページを本体 docs の PR #1174 として作成（#1173）、wiki に記録
 2026-10-29 20:30	filing-back	open-decisions A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるなら CLI から）を追記
 2026-10-29 20:10	filing-back	open-decisions A13 に付箋表示の置き場の暫定意向（standalone HTML と Web plugin の両方）を追記
 2026-10-29 19:00	filing-back	考察の 1〜3 を Issue 化して着手（#1158〜#1160 → PR #1165〜#1167）、副産物 #1168

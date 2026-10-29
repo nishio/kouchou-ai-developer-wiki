@@ -91,3 +91,7 @@ sources:
 
 - カタログにあるものが本体 user-guide / development docs に昇格する基準は今は未定義
 - カタログ運用が落ち着いてから決める。今は open question として明示するに留める
+
+## Updates
+
+- 2026-10-29: この提案の最初の実物として、本体 docs に `docs/development/related-research.md`（関連研究：本体未収録の実験的手法）を PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) で追加（未 merge）。初期エントリ候補のうち DivCon と Farbrain にセンチメント次元の付与を加えた 3 件を、「所在 / 状態 / 担当 / 最終確認日」つきで載せた。LLM grouping は本体収録済みなので対象外、マンダラート可視化は未掲載。ディレクトリは `experimental-features/` ではなく既存の `development/` 配下の 1 ページにし、増えてから分ける。経緯は [[post-review-direction-issues-2026-10-29]]

@@ -120,3 +120,4 @@ DivCon は散布図を出さない group-first の分析で、`analysis_mode=llm
 - 2026-10-28: 初回作成
 - 2026-10-29: nishio の方針で順序 5・6（埋め込み重み付け、DivCon）は本体への取り込みを前提にせず、docs から「成熟していない関連研究」として紹介する形に変更。入れるとしても CLI から（[[open-decisions]] A14）。付箋表示（順序 4）の置き場は standalone HTML と Web plugin の両方が暫定の意向（A13）
 - 2026-10-29: 順序 1〜3 を [#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)〜[#1160](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1160) として Issue 化し、PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)〜[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167) を作成（未 merge）。設計判断と検証は [[post-review-direction-issues-2026-10-29]]
+- 2026-10-29: 順序 5・6 の受け皿となる関連研究の紹介ページを PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)（[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173)）で作成。3-5 の「所在を公開 docs に固定する」が先に実物になった形

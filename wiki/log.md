@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-10-29 21:30] filing-back | 関連研究の紹介ページを本体 docs の PR #1174 として作成（#1173）、wiki に記録
+
+- open-decisions A14 の残作業だった「docs から成熟していない関連研究として紹介する」ページを `docs/development/related-research.md` として作成。センチメント次元の付与・DivCon・farbrain を所在 / 状態 / 担当 / 最終確認日つきで載せ、本体の属性ステップ（#1158）と `llm_grouping` との関係を書いた
+- 2026-06 の実験的機能カタログ提案の「最終確認日」ルールを初めて本体 docs で実装。所在 URL は同日に到達確認
+- #1168（httpx 未宣言）は PR #1171 で main 入り。直接関係ないので考察ページと定例下書きの記述だけ更新
+- 次：tokoroten さんへの確認と merge 判断（人間）。記録は [[post-review-direction-issues-2026-10-29]] 4 節、[[open-decisions]] A14
+
 ## [2026-10-29 20:30] filing-back | open-decisions A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるなら CLI から）を追記
 
 - tokoroten の 2 手法（センチメント次元の付与・DivCon）は本体に取り込まず、docs から「成熟していない関連研究」として紹介する。入れるとしても CLI から。考察ページの順序 5・6 と定例下書きも合わせて更新
