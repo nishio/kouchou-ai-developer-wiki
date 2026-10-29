@@ -36,6 +36,11 @@
 
 - #1168 の確認中に、PyPI の 0.2.0 が lock なしだと polars 2 に解決され集計で毎回失敗すると判明。#1171 で直し、#1172 で 0.3.0 に上げてタグを push、公開後に lock なしで動作を確認。gotchas と定例の下書きに追記。
 
+## [2026-10-29 15:10] filing-back | PR #1165 を main に rebase、CodeQL 指摘を修正して merge 待ち
+
+- nishio の「#1165 merge して」を受け、main（#1171 / #1172 の analysis-core 修正）との spec JSON の conflict を解消して rebase。CodeQL の「`value != value`」指摘は `math.isnan` に直した。ruff とテスト 852 件 green、CI も green（d86f56da）
+- admin merge は Claude Code の権限判定で止まるので、merge 自体は nishio が手元で実行する。次：merge 後に #1167 を含む残り 2 本（#1166 / #1167）の merge 判断
+
 ## [2026-10-29 14:30] filing-back | PR #1166 を #1155 merge 後の main に rebase
 
 - #1155 merge で CONFLICTING になった #1166（階層リストの詳細モード化）を rebase。`HierarchyListChart` と plugin で、元コメント本文（#1155）と出典リンク（#1166）の両方を残す形で解消し、tsc / biome / viewer テスト 317 件 green。force-with-lease で push（7450a17c）、MERGEABLE に戻った
