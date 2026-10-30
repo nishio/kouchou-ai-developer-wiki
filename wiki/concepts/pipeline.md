@@ -127,6 +127,7 @@ sources:
 
 ## Updates
 
+- 2026-10-30: `embeddings.pkl` を 2D とする誤認が、チームみらい 2025 データセットの Drive README（2025-10）と HF カードにも入っていたことを確認。実物は 21,348 × 1536 で、誤認を理由に作り直したベクトルと実質同じだった（[[team-mirai-2025-open-dataset-2026-10-30]]）
 - 2026-10-21: main `b71e0b79` と照合し、次を訂正。`apps/api/broadlistening/pipeline/` は旧実装こそ無いが API の実行時データ置き場（CONFIG_DIR / INPUT_DIR / REPORT_DIR。git 管理はサンプルのみ）であること。出力物の列（`args.csv` は `arg-id` / `argument`、コメントとの対応は `relations.csv`、final CSV は snake_case と kebab-case の混在）。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) の main 入りは 2026-05-29 JST（merge commit `6e9e60ee`）で、2026-10-12 の項の「2026-05-25」は PR ブランチ上の commit `4f893ab5` の作成日との取り違え（[[meeting-report-2026-05-25]] では当日は draft PR、[[open-pr-pipeline-step-observation-2026-05-28]] では 5/28 時点で open）
 - 2026-10-18: main `083593ba` と照合し、ステップ列を既定 9 ステップ（`opinion_classification` を含む）＋ `llm_grouping` モード 6 ステップに訂正。`register_all` は 10 個
 - 2026-05-17: 初回作成

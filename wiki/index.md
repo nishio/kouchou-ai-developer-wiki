@@ -66,6 +66,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [offline-local-clustering](concepts/offline-local-clustering.md) — 外部 LLM キー無しでローカル埋め込み＋クラスタリングだけを回す経路と落とし穴
 - [extraction-faithfulness](concepts/extraction-faithfulness.md) — 意見抽出(step1)の忠実性（完走≠意味保持・モデル別書換・受け入れ条件）
 
+- [チームみらい 2025 オープンデータ整備](analyses/team-mirai-2025-open-dataset-2026-10-30.md) — 広聴AIの出力を追試できる形で公開した事例。結果 JSON の config が再現の記録になる、arg-id と入力行の対応、`embeddings.pkl` を 2D と誤認して再計算していた件
 - [ライセンスと結果公開](analyses/agpl-output-and-plugin-boundaries-2026-10-12.md) — データ・HTML・拡張の境界、CLIの案内自動付与と短いリンク表示の方針
 - [cli](concepts/cli.md) — `kouchou-analyze` / `python -m analysis_core` CLI
 - [plugin-system](concepts/plugin-system.md) — 入力／解析／可視化の plugin 化（v5 の中核。analysis 側は workflow engine が CLI の既定経路、外部 plugin の同梱はまだ無い）

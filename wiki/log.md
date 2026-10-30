@@ -315,3 +315,9 @@
 - nishio の指示で PR #1166 を admin squash merge（`7253efcc`）、Issue #1159 は自動 close。CI は 10-29 時点で green、その後の main の変更と触るファイルが重ならず merge-tree で衝突なしを確認
 - [[open-decisions]] A13 は階層リストの位置づけが決着し、付箋表示の置き場だけが残る。[[meeting-report-draft]]・[[post-review-direction-issues-2026-10-29]] に反映
 - 次：#1167 のスクリーンショット撮り直し、#60（最下層を濃いクラスタに絞る）の着手、#250 を出典リンクでどこまで満たせたかの照合
+
+## [2026-10-30 17:30] filing-back | チームみらい 2025 データセットの整備で、embeddings.pkl を 2D と誤認して再計算していたことが判明
+
+- HF の [nishiohirokazu/team-mirai-2025-embeddings](https://huggingface.co/datasets/nishiohirokazu/team-mirai-2025-embeddings)（DOI 10.57967/hf/11332）を、各段の出力・プロンプト・広聴AIの config・英訳列つきに整えた。広聴AI に関わる知見を [[team-mirai-2025-open-dataset-2026-10-30]] に記録。
+- 結果 JSON の `config` に各ステップの source_code が入っていて再現の記録になること、`Acsv-N_k` と入力 CSV の N 行目の対応（21,348 件で一致）、クラスタリングが UMAP 2D 上であることを確認。
+- [[pipeline]] が 2026-05 に撤回した「`embeddings.pkl` は 2D」という誤認が、このデータセットの Drive README と HF カードに入っていた。実物は 1536 次元で、作り直したベクトルとコサイン中央値 0.999999。HF カードの訂正は nishio の確認待ち。
