@@ -53,13 +53,19 @@ HF には各段の出力を別 config（`arguments` / `problems` / `prs` / `clus
 - 2026-10-30 の HF カードにも「Kouchou-AI keeps only the 2-D coordinates」と書いてしまった
 - 実物を確かめると、広聴AI の `embeddings.pkl` は 21,348 × 1536（`arg-id` と `embedding` の 2 列）。作り直したベクトルとのコサイン類似度は中央値 0.999999、最小 0.987 で、実質同じもの（差は embedding API の非決定性と見られる）
 
-つまり再計算は不要だった。`embeddings.pkl` という名前と、出力物に次元の説明が無いことが、誤認を繰り返し生んでいる。
+つまり再計算は不要だった。HF カードは版 `bca82bd` で訂正し、広聴AI の元のベクトルも `kouchou-ai-embeddings` として載せた。`embeddings.pkl` という名前と、出力物に次元の説明が無いことが、誤認を繰り返し生んでいる。
+
+### UMAP は同じ設定でも再現しない
+
+元のベクトルに同じ設定（`random_state=42`、`n_neighbors=15`）で UMAP をかけ直しても、公開されている `x` / `y` には戻らなかった（umap-learn 0.5.11、macOS）。
+形は似ているが、軸が反転し（各軸の相関 約 -0.8）、点の位置もずれる（距離の中央値 12）。UMAP の結果はライブラリの版や環境で変わるので、
+広聴AI の出力を外部で使ってもらうときは、2D 座標とクラスタを**再計算させず結果そのものを配る**必要がある。
 
 ## Open Questions
 
-- HF カードの「Kouchou-AI keeps only the 2-D coordinates」と step 3b の説明は誤り。訂正は [[nishio]] の確認待ち（外部公開物のため）
 - 広聴AI 側で、`embeddings.pkl` の中身（元の次元のベクトルであること）を出力物の説明や README に書くべきか。誤認は Slack（2025 Q4）とこのデータセット（2025-10）で少なくとも 2 回起きている
 
 ## Updates
 
 - 2026-10-30: 初回作成
+- 2026-10-30: HF カードの訂正（`bca82bd`）と UMAP 再実行の結果を追記
