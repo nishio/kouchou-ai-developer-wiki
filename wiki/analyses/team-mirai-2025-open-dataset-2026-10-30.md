@@ -11,7 +11,7 @@ sources:
 
 [[nishio]] が 2025-10 に Hugging Face で公開していた、チームみらい「しゃべれるマニフェスト」（2025 年参院選）由来のデータセット
 [nishiohirokazu/team-mirai-2025-embeddings](https://huggingface.co/datasets/nishiohirokazu/team-mirai-2025-embeddings)
-を、2026-10-30 に海外の研究者が追試・派生実験できる形に整えた（DOI `10.57967/hf/11332`、版 `05e2273`）。
+を、2026-10-30 に海外の研究者が追試・派生実験できる形に整えた（DOI `10.57967/hf/11333`、版 `bca82bd`。訂正前の版 `05e2273` には DOI `10.57967/hf/11332`）。
 広聴AI はその中の一段で、広聴AI の出力を外部公開するときに効く知見がいくつか出たので残す。
 
 ## データの流れ
@@ -69,3 +69,4 @@ HF には各段の出力を別 config（`arguments` / `problems` / `prs` / `clus
 
 - 2026-10-30: 初回作成
 - 2026-10-30: HF カードの訂正（`bca82bd`）と UMAP 再実行の結果を追記
+- 2026-10-30: 訂正版 `bca82bd` に新しい DOI `10.57967/hf/11333` が付いたので冒頭を更新
