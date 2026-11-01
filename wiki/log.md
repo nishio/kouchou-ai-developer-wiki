@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 08:59] filing-back | 更新停滞順に open Issue 96 件を見直し、18 か月停滞の 42 件に処し方と close コメント案を付けた
+
+- nishio の「最近更新のない Issue から順にどうすると良いか考察」。10-28 棚卸し以降 close は 0 件で 96 件。最終更新の古い順に並べ、停滞 42 件を close 25（完了・動機解消 9 / not planned 12 / 親に統合 4）、assignee 確認 10（期限 2026-11-16、無反応時の既定処理つき）、open 維持 7 に振り分け、貼れるコメント案を analyses/stale-issue-disposition-2026-11-02 に置いた
+- Cold List 運用のルール案（12 か月更新なし・assignee なし・要件未具体化 → 棚卸しで not planned close、bot は入れない）で PROJECTS.md の TBD を埋めれば #454 も close できる。2026-05〜09 更新の 11 件は短い所見、2026-10 の 43 件は即 close 可能な 3 件（#1128 / #56 / #518）だけ挙げた
+- GitHub への書き込みはなし。次：nishio が 25 件の一括 close と確認コメント 9 通を実行するか判断、AI は PROJECTS.md の PR draft と E 群の追記案を用意する
+
 ## [2026-10-29 21:30] filing-back | 関連研究の紹介ページを本体 docs の PR #1174 として作成（#1173）、wiki に記録
 
 - open-decisions A14 の残作業だった「docs から成熟していない関連研究として紹介する」ページを `docs/development/related-research.md` として作成。センチメント次元の付与・DivCon・farbrain を所在 / 状態 / 担当 / 最終確認日つきで載せ、本体の属性ステップ（#1158）と `llm_grouping` との関係を書いた
@@ -128,51 +134,3 @@
 - #1023 の a/b は a（#1024）を採用した。最新の main に rebase し、変更を memo 化後の位置に当て直して merge した。#1025 は close。
 - shingo-ohki さんの #1129（OpenAI 4 モデルを検証済み、o3-mini を提供終了）を merge した。
 - #912 は完了条件と照合して close し、料金・service_tier・請求額の照合などの残件を #1131 に引き継いだ。
-
-## [2026-10-24 12:30] filing-back | #1079 と #1061 を merge、#1119 の残課題を Issue #1128 に
-
-- #1079 は最新の main に rebase し直してテストを確かめ、nishio が merge した。修正 PR 65 本はすべて merge 済み。
-- #1061（yasumorishima さん）は最新の main と照合してレビューし、merge した。軽微な修正は後でこちらが行う。#1119 の CodeRabbit の指摘は #1128 にした。
-
-## [2026-10-24 04:45] filing-back | 第 3 弾レビューの修正 PR 64 本を CodeRabbit を見ながら admin merge
-
-- nishio の指示で 3 陣に分け、1 本ずつ merge した。衝突は事前に書いた方針で rebase して解き、CodeRabbit の実際の指摘（10 件ほど）は commit を足して直した。
-- merge 後の main bdc3e469 で、4 種のテストと CLI の通しを確認した。#1079 は権限判定で止まっていて、nishio の判断待ち。台帳は raw の merge-2026-10-24/ledger.md。
-
-## [2026-10-24 00:45] filing-back | Next.js 16.4.2 への更新 #1127 を admin merge
-
-- CI（E2E を含む）がすべて通った後、nishio の指示「CI が通ったら admin merge して」で squash merge した。main `23acd411`。
-
-## [2026-10-24 00:30] filing-back | Next.js を 16.4.2 に上げる PR #1127
-
-- 「上流がまだ直していない」とされていた Next.js の 10/22 の勧告は、16.4.1 で修正済みで、こちらの対応待ちだった。Dependabot の alert にもまだ出ていない。
-- nishio「go」を受けて #1127 を作成した。lockfile の差分は next と @next/* だけ。両アプリのビルド・テストと、CI と同じ手順の shell / static の書き出しを確認した。定例会議向け下書き（meeting-report-draft）にも追記。
-
-## [2026-10-23 23:59] filing-back | 第 3 弾レビューの続き（最後）：管理画面の本番ビルドを実ブラウザで検査、修正 PR を #1126 まで
-
-- 深夜の PR の独立レビューで、#1118・#1119 に commit を足した。
-- 管理画面の本番ビルドを実ブラウザで操作し、約 10MB を超える CSV からレポートを作れない件を見つけた（#1124、medium）。ほかの 2 件は #1125・#1126 にした。
-- 週次枠は月〜火の分を残して止めた。詳細は [[code-review-r3-continuation-2026-10-23]] の Updates。
-
-## [2026-10-23 22:40] filing-back | 第 3 弾レビューの続き（深夜）：批評ラウンドの 2 回目と旧バージョンの互換性、修正 PR を #1123 まで
-
-- 夜の 13 本の独立レビューで、#1113 の Azure の判定を直した。確定済みで未修正だった 3 件（LLM 直接グルーピングの並列化など）を #1118–#1120 にした。
-- 批評ラウンドの 2 回目で、PR レビューの抜けと、旧バージョンのレポートの互換性を見た。9 件が確定した。既存の PR 3 本に commit を足し、旧レポートの 3 件を #1121–#1123 にした。
-- 詳細は [[code-review-r3-continuation-2026-10-23]] の Updates。
-
-## [2026-10-23 20:55] filing-back | 第 3 弾レビューの続き：PR の独立レビューと残りの 2 観点、修正 PR を #1117 まで
-
-- 独立レビューで 9 件が確定した。#1079・#1084 には commit を足して直し、クラスタ一覧の再描画は #1105 にした。#1060 への指摘は作者に伝えた。
-- nishio「そのまま残りの 2 観点も回しといて」を受けて、LLM プロバイダの組み合わせと、分析結果の不変条件を洗い出した。12 件すべてが確定し、#1106–#1117 にした。
-- 詳細は [[code-review-r3-continuation-2026-10-23]] の Updates。定例会議向け下書き（meeting-report-draft）も更新した。
-
-## [2026-10-23 19:30] filing-back | oss_weekly_reporter の更新停止と Slack 本文の埋め戻しを反映
-
-- `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化（単独の Slack 抽出 workflow は一度も成功しておらず、週次レポート側が Slack 込みで動いていた。Slack 本体は `digitaldemocracy2030/slack-logs` に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。data ブランチは 2026-10-21 週までの凍結アーカイブ。
-- reporter にしか無かった Slack 本文は slack-logs PR #10・#12 で `raw/` に全部入った。CLAUDE.md / README / [[local-dev-setup]] / [[wiki-driven-workflow]] / [[slack-logs-repository]] の参照を「過去分のみ」に更新。以降の GitHub activity は live state を見る。
-
-## [2026-10-23 18:50] filing-back | 第 3 弾レビューの続き：残りの洗い出し 4 観点と未検証 43 件を仕上げ、修正 PR 43 本（#1062–#1104）
-
-- nishio「土日に仕事したくないから多めに使っといて」を受けて、利用上限で残っていた範囲を main b675e032 で仕上げた。洗い出しは、テストの質・ドキュメント・設定・規模の 4 観点で 23 件、うち 22 件が確定。未検証 43 件は 39 件が確定し、4 件が反証された。
-- 確定した指摘を、指摘ごとに main から別ブランチで修正し、PR にした（どれも修正前に落ちるテストつき、未 merge）。詳細は [[code-review-r3-continuation-2026-10-23]]。
-- 次：merge 前の独立レビューを実行中。挙動の判断が要る PR は数本ある。定例会議向け下書き（meeting-report-draft）を更新。
