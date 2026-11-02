@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 19:40] filing-back | 公開用の属性表から hidden_properties の列を外し（PR #1179）、設定の意味の判断を #1180 に切り出し
+
+- nishio「提案どおり属性表から外して、A/B は別 Issue に」。`public_result.json` の `propertyMap` から `hidden_properties` に指定した属性を列ごと外す実装とテストを追加（23b1f255、analysis-core 813 件通過）。`hierarchical_result.json` は不変
+- 現状は元コメント本文だけが隠れ、抽出した意見と属性値は残る。本文だけを隠す（A）か、その値を持つコメント由来の意見ごと隠す（B）かを [#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) で判断する。次：PR #1179 の merge 判断
+
 ## [2026-11-02 19:00] filing-back | PR #1179 の CI green、CodeRabbit 指摘で hidden_properties の値が propertyMap に残る既存挙動を確認
 
 - CodeRabbit の Minor 1 件（docs が「隠した属性値は propertyMap から除かれる」と書いていた）を確認し、実際は元コメント本文だけが除かれ、`propertyMap` には値が残る main の既存挙動だったので docs を修正（64f0880c）。PR にコメントで判断点として残した
