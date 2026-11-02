@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-03 01:35] filing-back | 結果 JSON の層分離 第 1 段（PR #1179）を main に merge
+
+- nishio が「手順表示用のプロンプトは公開契約に含めて OK」と判断し、PR #1179 を squash merge（`79981407`）。以後、集計・レイアウト生成・翻訳 CLI は `public_result.json` も書く。古いレポートは次回実行で集計をやり直す
+- Issue #1178 は第 2・3 段のため open のまま。次：第 2 段（公開 API とビューアが `public_result.json` を読む）と [#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) の A/B
+
 ## [2026-11-02 19:40] filing-back | 公開用の属性表から hidden_properties の列を外し（PR #1179）、設定の意味の判断を #1180 に切り出し
 
 - nishio「提案どおり属性表から外して、A/B は別 Issue に」。`public_result.json` の `propertyMap` から `hidden_properties` に指定した属性を列ごと外す実装とテストを追加（23b1f255、analysis-core 813 件通過）。`hierarchical_result.json` は不変
@@ -177,17 +182,3 @@
 - nishio「今回の経緯について LLM Wiki にまとめる」を受けて [[retrospective-2026-10-28]] を追加。10-16〜10-26 のレビュー 4 段（修正 PR 100 本超、全件 merge 済み）、鍵漏洩の発見・猶予・公開・v4.2.0 を 1 本の流れと教訓にまとめた。
 - 宙に浮いた可視化 2 つ（ドリルダウンのツリー表示＝10-17 の Claude 実験の再クラスタリングと #880、ズームできる付箋表示＝canvas_kozaneba_prototype）と、tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み順を整理。open-decisions に A13・A14、定例下書きの議題候補、index に追記。
 - 次：2 つの可視化の置き場と、tokoroten の 2 手法を本体に入れるか・主担当を nishio が判断。該当の推定（どの試作を指すか）も要確認。
-
-## [2026-10-26 23:46] filing-back | YouTube プラグインを google-api-python-client なしで動かす（#1149）
-
-- v4.2.0 の Docker イメージで YouTube の取り込みが失敗する件。lock に extra を入れる案から、httpx で REST を直接呼ぶ形に作り直して merge した（beff715f）。プラグインだけが使う依存を本体に入れないため。定例の下書きに追記。
-
-## [2026-10-26 21:40] filing-back | ユーザー API キーの件の Security Advisory を公開
-
-- nishio が GHSA-xr6j-6w48-xh62 を公開した（Moderate、CVE なし）。公開前に、対象が作成画面の任意の「APIキー」欄であり、空欄なら影響なしと冒頭で示すよう、Advisory・リリースノート・docs（#1148）・wiki をそろえた。
-- リリースノートに Advisory へのリンクを足した。詳細は [[user-api-key-leak-2026-10]]。
-
-## [2026-10-26 20:39] filing-back | v4.2.0 と analysis-core 0.2.0 をリリース
-
-- 保留していた修正と依存の脆弱性の解消を、CodeRabbit の指摘を直したうえで順に merge し、v4.2.0 のタグとリリースを作った。冒頭はセキュリティ修正と設定の変更点。
-- PyPI の analysis-core 0.1.3 にも鍵の漏洩が含まれていたので、0.2.0 を公開した。Security Advisory は Moderate で下書き、公開は nishio。詳細は [[user-api-key-leak-2026-10]]。

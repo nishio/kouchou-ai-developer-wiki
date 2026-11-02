@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-03 01:35	filing-back	結果 JSON の層分離 第 1 段（PR #1179）を main に merge
 2026-11-02 19:40	filing-back	公開用の属性表から hidden_properties の列を外し（PR #1179）、設定の意味の判断を #1180 に切り出し
 2026-11-02 19:00	filing-back	PR #1179 の CI green、CodeRabbit 指摘で hidden_properties の値が propertyMap に残る既存挙動を確認
 2026-11-02 18:30	filing-back	結果 JSON の層分離 第 1 段を Issue #1178 / PR #1179 として実装

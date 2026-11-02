@@ -189,7 +189,7 @@ simple な Web UI ＋ CLI/analysis-core ＋ plugin、既定は散布図、view �
 - v5.0 の契約文は「依存してよいのは公開用 artifact。従来の `hierarchical_result.json` は再分析用で公開契約ではない」。第 1 段だけで切る場合もこの文は成り立つ
 - 第 3 段、DB、多対多参照（[#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156)）、ブラウザ版との完全統一は契約の下での実装変更なので v5.0 に入れない。ブラウザ版との契約統一は公開用 artifact を合わせ先にして別途進める
 - 進め方：11 月に公開用 artifact の形を RFC として決めて第 1 段を実装し、v5.0.0-rc1 を切れる状態にする。12 月に第 2 段を入れて v5.0.0。採否は nishio の判断
-- 2026-11-02 着手：nishio の「OK go」で第 1 段を Issue [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178)、PR [#1179](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1179)（未 merge）に。RFC は独立文書にせず、契約を本体 docs `docs/development/public-result.md` に書いて PR に含めた。`public_result.json` は集計・レイアウト生成・翻訳 CLI が結果を書くたびに作り直され、`config` は表示に使う項目だけのホワイトリスト。人間の判断点は、手順表示用のプロンプトと `source_code` を公開契約に含めてよいか
+- 2026-11-02 着手：nishio の「OK go」で第 1 段を Issue [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178)、PR [#1179](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1179)（2026-11-03 merge）に。RFC は独立文書にせず、契約を本体 docs `docs/development/public-result.md` に書いて PR に含めた。`public_result.json` は集計・レイアウト生成・翻訳 CLI が結果を書くたびに作り直され、`config` は表示に使う項目だけのホワイトリスト。手順表示用のプロンプトと `source_code` を公開契約に含めることは nishio が了承した
 
 ### 柱 5：入口の役割分担を戦略会議で決める
 
@@ -247,3 +247,4 @@ AI エージェントが進められるのは、PR・RC・docs・RFC・計測の
 - 2026-11-02: nishio の指示で、この戦略案が AI の叩き台であってチームの決定ではないことをタイトル・summary・冒頭の注記に明記
 - 2026-11-02: nishio の「書籍の時期は保証がないので層分離を巻いて v5.0 に入れては」を受け、柱 4 を 3 段に割って第 1・2 段（公開用 artifact の契約と読み手の切替）を v5.0 に前倒し、第 3 段（丸ごと埋め込みをやめる）を 5.x に残す案を追記。main `d2702d48` で触る範囲を確認した。採否は未定
 - 2026-11-02: 層分離の第 1 段に着手（Issue #1178、PR #1179）
+- 2026-11-03: PR #1179 を main に merge（プロンプトと `source_code` を公開契約に含めてよいと nishio が判断）。次は第 2 段
