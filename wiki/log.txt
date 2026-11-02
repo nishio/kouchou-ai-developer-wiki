@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-02 16:30	filing-back	長期戦略の柱 3 の目的を「人間がボトルネックにならない形にする」に寄せた
 2026-11-02 16:10	filing-back	長期戦略の柱 3 を撤回・書き直し（人を増やす案 → 判断を既定＋期限の規則にして一人＋AI で回す）
 2026-11-02 15:45	filing-back	現状把握と長期戦略の考察（活動量・貢献者・利用・運営の場を棚卸し、12〜18 か月の戦略 5 本）
 2026-11-02 15:20	filing-back	open PR 8 本の live 状態を確認、#1165 の CodeRabbit 指摘 5 件未対応と #1162 の衝突を記録
