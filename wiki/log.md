@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 19:00] filing-back | PR #1179 の CI green、CodeRabbit 指摘で hidden_properties の値が propertyMap に残る既存挙動を確認
+
+- CodeRabbit の Minor 1 件（docs が「隠した属性値は propertyMap から除かれる」と書いていた）を確認し、実際は元コメント本文だけが除かれ、`propertyMap` には値が残る main の既存挙動だったので docs を修正（64f0880c）。PR にコメントで判断点として残した
+- 次：nishio の merge 判断と、`propertyMap` からも除くかの判断
+
 ## [2026-11-02 18:30] filing-back | 結果 JSON の層分離 第 1 段を Issue #1178 / PR #1179 として実装
 
 - 長期戦略の柱 4（v5.0 前倒し案）に nishio が「OK go」。集計・レイアウト生成・翻訳 CLI が結果を書くたびに、ホワイトリストで作る `public_result.json`（schema_version 1）も書くようにし、契約を本体 docs に記載。Blob 同期と秘密の検査・除去スクリプトも対象に追加。既存の挙動は不変

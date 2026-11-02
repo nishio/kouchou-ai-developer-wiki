@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-02 19:00	filing-back	PR #1179 の CI green、CodeRabbit 指摘で hidden_properties の値が propertyMap に残る既存挙動を確認
 2026-11-02 18:30	filing-back	結果 JSON の層分離 第 1 段を Issue #1178 / PR #1179 として実装
 2026-11-02 17:20	filing-back	結果 JSON の層分離を v5.0 に前倒しする案（3 段に割り、契約だけ v5.0）
 2026-11-02 16:55	filing-back	長期戦略の考察に「AI の叩き台であり決定ではない」を明記
