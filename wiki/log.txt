@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-02 14:02	filing-back	停滞 Issue 56 件の処し方を nishio が全件承認、PR #1176 作成、close / コメント投稿は手元実行待ち
 2026-11-02 08:59	filing-back	更新停滞順に open Issue 96 件を見直し、18 か月停滞の 42 件に処し方と close コメント案を付けた
 2026-10-29 21:30	filing-back	関連研究の紹介ページを本体 docs の PR #1174 として作成（#1173）、wiki に記録
 2026-10-29 20:30	filing-back	open-decisions A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるなら CLI から）を追記

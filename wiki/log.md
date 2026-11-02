@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 14:02] filing-back | 停滞 Issue 56 件の処し方を nishio が全件承認、PR #1176 作成、close / コメント投稿は手元実行待ち
+
+- レビュー用ページ（判断を保存できる artifact）で 56 件すべて「承認」。承認分のうち docs の抜け（#285: CLI の provider 一覧に openrouter）を PR #1176 に、Cold List 運用ルール（#454）を `docs/454-cold-list-policy` branch の commit に用意
+- GitHub への close 30 件・コメント 19 件と #454 の PR 作成は Claude Code の権限判定（外部システムへの書き込み）で止まった。実行 script と dry-run を `raw/issue-audit/2026-11-02-actions/` に置き、nishio が手元で実行する
+- 次：実行結果を wiki に反映、2026-11-16 以降に assignee 無反応分の既定処理、#994 は nishio の実 LLM 1 回
+
 ## [2026-11-02 08:59] filing-back | 更新停滞順に open Issue 96 件を見直し、18 か月停滞の 42 件に処し方と close コメント案を付けた
 
 - nishio の「最近更新のない Issue から順にどうすると良いか考察」。10-28 棚卸し以降 close は 0 件で 96 件。最終更新の古い順に並べ、停滞 42 件を close 25（完了・動機解消 9 / not planned 12 / 親に統合 4）、assignee 確認 10（期限 2026-11-16、無反応時の既定処理つき）、open 維持 7 に振り分け、貼れるコメント案を analyses/stale-issue-disposition-2026-11-02 に置いた
@@ -128,9 +134,3 @@
 
 - 猶予期間が明け、nishio の指示で公開作業を始めた。修正 #1136 を最新の main に載せ替え、CodeRabbit の指摘 4 件を直して merge した。同じ期間に保留していた修正 #1132・#1135 も merge 済みで、#1133・#1134 はレビュー待ち。
 - [[user-api-key-leak-2026-10]] を追加した。影響範囲は今のコードと照合して、公開前の調査メモより絞って書いた。gotchas・security-maintenance・code-health-review と、過去の記述 2 ページにリンクと追記を足した。
-
-## [2026-10-26 13:40] filing-back | #1024 を merge して #1023 を close、#1129 を merge、#912 を close して残件を #1131 に
-
-- #1023 の a/b は a（#1024）を採用した。最新の main に rebase し、変更を memo 化後の位置に当て直して merge した。#1025 は close。
-- shingo-ohki さんの #1129（OpenAI 4 モデルを検証済み、o3-mini を提供終了）を merge した。
-- #912 は完了条件と照合して close し、料金・service_tier・請求額の照合などの残件を #1131 に引き継いだ。
