@@ -1,7 +1,7 @@
 ---
 title: "更新停滞順に見た open Issue の処し方 2026-11-02"
 type: analysis
-summary: "2026-11-02 時点の open Issue 96 件を最終更新の古い順に並べ、18 か月以上止まっている 42 件を close（完了・動機解消）9 / close（not planned）12 / 親に統合 4 / assignee 確認 10 / open 維持 7 に振り分けた考察。貼れる close コメント案と、#454 の TBD を埋める Cold List 運用ルール案を含む。2026-05〜10 更新の 54 件は短い所見のみ"
+summary: "2026-11-02 時点の open Issue 96 件を最終更新の古い順に並べ、最終更新が 2026-03 より前の 42 件（8〜19 か月、うち 40 件は 15 か月以上）を close（完了・動機解消）9 / close（not planned）12 / 親に統合 4 / assignee 確認 10 / open 維持 7 に振り分けた考察。貼れる close コメント案と、#454 の TBD を埋める Cold List 運用ルール案を含む。2026-05〜10 更新の 54 件は短い所見のみ"
 sources:
   - issue-audit-2026-10-28-sprint.md
   - issue-backlog-audit-2026-10-28.md
@@ -18,7 +18,7 @@ nishio の依頼は「最近更新のない Issue から順にどうすると良
 
 | 最終更新 | 件数 | 本ページでの扱い |
 |---|---|---|
-| 2025-03〜2025-09（18 か月以上停滞） | 41 | 1 件ずつ処し方とコメント案 |
+| 2025-03〜2025-09（13〜19 か月停滞、40 件は 15 か月以上） | 41 | 1 件ずつ処し方とコメント案 |
 | 2026-02（[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)） | 1 | 同上 |
 | 2026-05 | 6 | 短い所見 |
 | 2026-09 | 5 | 短い所見 |
@@ -65,7 +65,7 @@ close コメント案の末尾には、10-12 と同じ共通の一文を付け�
 
 ### B. not planned で close し、要望は wiki が保持（12 件）
 
-いずれも assignee なし、コメント 0〜2 件、18 か月以上更新なし。要件が実装可能な粒度まで落ちていないか、動機が別手段で弱まっている。close コメントに reopen 条件を書く。
+いずれも assignee なし、コメント 0〜2 件、15 か月以上更新なし。要件が実装可能な粒度まで落ちていないか、動機が別手段で弱まっている。close コメントに reopen 条件を書く。
 
 - **[#186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/186) CSV を JSON に変換せずに送信**（2025-03-26、最古）: 動機の一部（大きな CSV が通らない）は管理画面の本文上限引き上げ（[#1124](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1124)）と CSV 解析の一本化（[#1084](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1084)）で緩和。列マッピングや文字コード判定をサーバーへ移す規模になる（10-28 の懐疑検証どおり M では収まらない）
   - コメント案: 「18 か月更新がなく、動機の一部（大きな CSV が通らない）は管理画面の本文上限引き上げ（PR [#1124](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1124)）と CSV 解析の一本化（[#1084](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1084)）で緩和しました。列マッピングや文字コード判定をサーバーへ移す規模の変更になるため、数万件規模で実際に困る事例が出た時に具体例つきで reopen してください。not planned で close します。」
@@ -167,7 +167,7 @@ close コメント案の末尾には、10-12 と同じ共通の一文を付け�
 
 ## 重要な判断
 
-- **「価値があるかもしれない」は残す理由にしない**。18 か月誰も触らない issue は、価値の有無ではなく「次の 1 手が誰にも見えない」から止まっている。close コメントに reopen 条件を書き、要望の記録は wiki が持つ方が、open のまま埋もれるより再発見されやすい
+- **「価値があるかもしれない」は残す理由にしない**。1 年以上誰も触らない issue は、価値の有無ではなく「次の 1 手が誰にも見えない」から止まっている。close コメントに reopen 条件を書き、要望の記録は wiki が持つ方が、open のまま埋もれるより再発見されやすい
 - **close の根拠は「似た機能がある」ではなく「起票の動機が解消した」か「要件を満たした」か**（10-12・10-28 の軸を踏襲）。[#364](https://github.com/digitaldemocracy2030/kouchou-ai/issues/364) は per-report パスワードを実装していないが、起票の動機（意図せず公開される）は unlisted で解消した、と書き分けた
 - **assignee がいる issue は AI が勝手に動かさない**。確認コメントの型と期限、無反応時の既定処理を先に決めておくことで、人間の attention は 1 回で済む
 - **自動 close の bot は入れない**。AI 棚卸しが四半期ごとに回っている現状では、期間ベースの自動 archive は誤爆のコストの方が大きい
@@ -183,6 +183,6 @@ close コメント案の末尾には、10-12 と同じ共通の一文を付け�
 ## Updates
 
 - 2026-11-02: 初版。open 96 件を最終更新の古い順に並べ、停滞 42 件を A〜E に振り分け。GitHub への書き込みなし
-- 2026-11-02: nishio がレビュー用ページで 56 件すべてを「承認」（却下・保留・メモなし）。承認を受けて、#285 の docs 抜け（CLI クイックスタートの provider 一覧に openrouter）を [#1176](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1176) として作成。Cold List ルールを `PROJECTS.md` に書く commit は `docs/454-cold-list-policy` branch に用意（push と PR 作成は権限判定で止まり、nishio の実行待ち）。close 30 件・コメント 19 件（親への転記 4、open 維持の追記 7、assignee 確認 8）の投稿も同じ理由で nishio の実行待ち。実行用の script と dry-run は `raw/issue-audit/2026-11-02-actions/`
-- 2026-11-02（夜）: nishio が手元で実行 script を走らせ、49 操作すべて成功。close 30 件（A 9・B 12・C 4・#285・#869・#1128・#56・#518）、親 Issue への転記 4 件（#172 #345 #470 #997）、open 維持の追記 7 件（#556 #60 #445 #576 #221 #881 #170）、assignee 確認 8 件（#280 #324 #337 #454 #310 #547 #643 #809、期限 2026-11-16）。Cold List ルールの PR は [#1177](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1177)。open Issue は 96 → 66 件。残る本人判断は #370・#879・#994。実行記録は `raw/issue-audit/2026-11-02-actions/applied.jsonl`
-
+- 2026-11-02: nishio がレビュー用ページで 56 件すべてを「承認」（却下・保留・メモなし）。承認を受けて、[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285) の docs 抜け（CLI クイックスタートの provider 一覧に openrouter）を [#1176](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1176) として作成。Cold List ルールを `PROJECTS.md` に書く commit は `docs/454-cold-list-policy` branch に用意（push と PR 作成は権限判定で止まり、nishio の実行待ち）。close 30 件・コメント 19 件（親への転記 4、open 維持の追記 7、assignee 確認 8）の投稿も同じ理由で nishio の実行待ち。実行用の script と dry-run は `raw/issue-audit/2026-11-02-actions/`
+- 2026-11-02（夜）: nishio が手元で実行 script を走らせ、49 操作すべて成功。close 30 件（A 9・B 12・C 4・[#285](https://github.com/digitaldemocracy2030/kouchou-ai/issues/285)・[#869](https://github.com/digitaldemocracy2030/kouchou-ai/issues/869)・[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128)・[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)・[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)）、親 Issue への転記 4 件（[#172](https://github.com/digitaldemocracy2030/kouchou-ai/issues/172) [#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345) [#470](https://github.com/digitaldemocracy2030/kouchou-ai/issues/470) [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)）、open 維持の追記 7 件（[#556](https://github.com/digitaldemocracy2030/kouchou-ai/issues/556) [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445) [#576](https://github.com/digitaldemocracy2030/kouchou-ai/issues/576) [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) [#881](https://github.com/digitaldemocracy2030/kouchou-ai/issues/881) [#170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/170)）、assignee 確認 8 件（[#280](https://github.com/digitaldemocracy2030/kouchou-ai/issues/280) [#324](https://github.com/digitaldemocracy2030/kouchou-ai/issues/324) [#337](https://github.com/digitaldemocracy2030/kouchou-ai/issues/337) [#454](https://github.com/digitaldemocracy2030/kouchou-ai/issues/454) [#310](https://github.com/digitaldemocracy2030/kouchou-ai/issues/310) [#547](https://github.com/digitaldemocracy2030/kouchou-ai/issues/547) [#643](https://github.com/digitaldemocracy2030/kouchou-ai/issues/643) [#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809)、期限 2026-11-16）。Cold List ルールの PR は [#1177](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1177)。open Issue は 96 → 66 件。残る本人判断は [#370](https://github.com/digitaldemocracy2030/kouchou-ai/issues/370)・[#879](https://github.com/digitaldemocracy2030/kouchou-ai/issues/879)・[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994)。実行記録は `raw/issue-audit/2026-11-02-actions/applied.jsonl`
+- 2026-11-02: nishio の「古い Issue は何か月か」の問いを受けて表現を正した。今回の 42 件は固定の閾値ではなく「最終更新が 2026-03 より前」で切ったもので、実際は 8〜19 か月（[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809) が 8 か月、[#643](https://github.com/digitaldemocracy2030/kouchou-ai/issues/643) が 13 か月、残り 40 件は 15 か月以上、18 か月以上は 16 件）。`PROJECTS.md` に書いたルール（PR [#1177](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1177)）の閾値は 12 か月
