@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-03 03:00] filing-back | 査読で見落としとされた living ページの状態記述を GitHub と照合して訂正（#679 close、10-28 close 候補のその後、v4.2.0）
+
+- [[meeting-report-draft]]: 指定カテゴリ分類の項の「#679 を統合候補」を、11-02 の close（completed、WebUI の残件は #997）に直した。10-28 棚卸しの項に、close 候補 #285・#529・#558 が 11-02 に close され #809 は assignee 確認中（期限 11-16）という「その後」を 1 行足した
+- [[broad-listening-book]] の v4 / v5 方針の行に v4.2.0（2026-10-26）を足し、[[versioning-strategy]] の「その後の実際」の見出しの時点を 11-03 に改めた
+- 次：#1128 の「関連して残っている点」（json_object の拒否、finish_reason の専用例外）は close コメントで別 Issue に引き継がれていない。追跡先を作るかは人間判断
+
 ## [2026-11-03 02:00] filing-back | living ページの古い状態記述を GitHub・PyPI・main と照合して訂正（最新タグ v4.2.0、PyPI 0.3.0、11-02 close 済み Issue）
 
 - 最新タグ「v4.1.0」を v4.2.0（2026-10-26）に（[[versioning-strategy]]・[[kouchou-ai]]・[[plugin-system]]・index）。PyPI 最新「0.1.3」を 0.3.0（2026-10-29）にし、`predefined_groups` などが 0.2.0 以降の PyPI 版に入っていることを反映（[[cli]]・[[llm-grouping-supervised-classification]]・[[refactoring-status]]）

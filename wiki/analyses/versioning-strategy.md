@@ -38,7 +38,7 @@ sources:
 
 2026-10-13 に [[nishio]] が main の `6ad727ee`（PR [#1001](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1001) の merge commit）にタグを打ち、release を公開した。v4.0.0 以降の約 160 PR をまとめたマイナーリリースで、v4 用の保守ブランチではなく main から直接切っている。内容は [[kouchou-ai-v4-1-0-release-2026-10]]、版の切り方を決めた経緯は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] の Updates（バージョン方針の項）を参照。本体は `vMAJOR.MINOR.PATCH` の release tag で版を切り、`analysis-core` は `analysis-core-vX.Y.Z` の別系統で版を切る。[[github-dev-docs]]より
 
-## その後の実際（2026-10-21 時点）
+## その後の実際（2026-11-03 時点）
 
 - v4.0.0 は「書籍出版時の main」ではなく、2025-12 末の main に打たれた
 - 2026-01-19 の時点では、大リファクタ（`packages/analysis-core` の切り出し、PyPI 登録など）は refactoring ブランチ上で進んでおり、PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) で 2026-01-23 に main に入った。Web UI を壊さないまま CLI 版を並行させる段階移行で、2026-05-20 に Web UI も analysis-core を使う形に切り替え、2026-05-23 の旧コード掃除を経て 2026-05-24 に完了した。[[meeting-minutes]]より [[refactoring-status]]より
@@ -83,3 +83,4 @@ sources:
 - 2026-10-21: GitHub の tag / release と照合し、v4.0.0 の日付を 2025-12-27 に訂正。v4.1.0 の節と「その後の実際」を足し、リファクタ完了と Open Questions を現状に合わせ、[[kouchou-ai]] への見出しリンクと PyPI の配布名を直した
 - 2026-10-29: v4.2.0（2026-10-26、セキュリティ修正を含む）の後、v4.2.1 は出さないと nishio が決めた（2026-10-28）。[#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)〜[#1152](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1152) などの修正は次のリリースに入る。この repo では `v*` のタグはすべて GitHub Release と対になっていて（v2.0.1 のようなパッチ版も同じ）、本体の版番号はタグにしか無い（`package.json` などは 0.1.0 のまま）。タグをきっかけに動く workflow は `analysis-core-v*`（PyPI 公開）だけなので、本体のタグだけを打っても自動では何も起きないが、説明のない版ができるので、タグを打つならリリースも出す
 - 2026-11-03: summary・「その後の実際」・Open Questions の「最新タグ v4.1.0」を v4.2.0 に更新（`gh release list` で v4.2.0 が Latest、2026-10-26）
+- 2026-11-03（2 周目）: 「その後の実際」の見出しの時点を、内容に合わせて 2026-10-21 から 2026-11-03 に改めた
