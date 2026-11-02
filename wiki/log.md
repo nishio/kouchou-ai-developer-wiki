@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 16:55] filing-back | 長期戦略の考察に「AI の叩き台であり決定ではない」を明記
+
+- nishio の指示で、[[long-term-strategy-2026-11-02]] のタイトル・summary・冒頭の注記に、この戦略案が AI（Claude Code）の叩き台であってチームの決定でも nishio の見解でもないことを明記。index と定例下書きの導線にも「AI の叩き台」を付けた
+
 ## [2026-11-02 16:45] filing-back | 長期戦略の考察に、戦略会議でそのまま読める「要約」節を追記
 
 - nishio の「改めて簡潔にまとめて」への回答を [[long-term-strategy-2026-11-02]] の冒頭に「要約」として filing back。方向性・根拠・5 本の柱・やらないこと・成功の定義・いま人間の判断が要るもの、の順で 1 画面に収めた

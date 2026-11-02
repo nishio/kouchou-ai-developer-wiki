@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-02 16:55	filing-back	長期戦略の考察に「AI の叩き台であり決定ではない」を明記
 2026-11-02 16:45	filing-back	長期戦略の考察に、戦略会議でそのまま読める「要約」節を追記
 2026-11-02 16:30	filing-back	長期戦略の柱 3 の目的を「人間がボトルネックにならない形にする」に寄せた
 2026-11-02 16:10	filing-back	長期戦略の柱 3 を撤回・書き直し（人を増やす案 → 判断を既定＋期限の規則にして一人＋AI で回す）
