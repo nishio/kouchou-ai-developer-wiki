@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 18:30] filing-back | 結果 JSON の層分離 第 1 段を Issue #1178 / PR #1179 として実装
+
+- 長期戦略の柱 4（v5.0 前倒し案）に nishio が「OK go」。集計・レイアウト生成・翻訳 CLI が結果を書くたびに、ホワイトリストで作る `public_result.json`（schema_version 1）も書くようにし、契約を本体 docs に記載。Blob 同期と秘密の検査・除去スクリプトも対象に追加。既存の挙動は不変
+- analysis-core 812 件・api 340 件のテスト、mkdocs strict build が通過。[[long-term-strategy-2026-11-02]] と定例下書きに反映。次：merge 判断（nishio）と第 2 段（公開 API・ビューアの読み替え）
+
 ## [2026-11-02 17:20] filing-back | 結果 JSON の層分離を v5.0 に前倒しする案（3 段に割り、契約だけ v5.0）
 
 - nishio「書籍の時期は保証がないので巻いて v5.0 に入れるのも手では」に、賛成の上で 3 段案を回答。第 1 段（集計ステップが公開用 artifact を書く）と第 2 段（公開 API とビューアの切替、旧レポートは読む時に変換）を v5.0 に、第 3 段（丸ごと埋め込みをやめる、静的書き出しの JSON 分離）を 5.x に。main `d2702d48` で範囲を確認（書き手 1 箇所、公開 API 1 本、ビューア 1 fetch、ファイル名参照は api 側約 10）
