@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 15:20] filing-back | open PR 8 本の live 状態を確認、#1165 の CodeRabbit 指摘 5 件未対応と #1162 の衝突を記録
+
+- nishio の「現状の PR はどうなってる？」に GitHub の live state で回答。open PR は #1161〜#1167 と #1174 の 8 本、全件 CI green・人間コメントなし。branch protection のレビュー必須で nishio の admin merge が要る
+- 10-29 の記録との差 2 点: #1165 は rebase 直後に CodeRabbit が Minor 5 件を付けていて未対応（軽い 3 件、planner 変更 1 件、設計判断 1 件）。#1162 は #1155 の merge で翻訳ファイル 1 本が衝突
+- analyses/open-pr-status-2026-11-02 に内訳と判断点を記録し、定例下書き・両 analysis ページの Updates に反映。次：#1165 を直してから merge するか先に merge するかの判断（nishio）、#1162 の rebase
+
 ## [2026-11-02 15:17] filing-back | 棚卸し後の更新日分布（1 か月以上 9 件）と、棚卸しコメントで更新日が若返る注意を記録
 
 - nishio の「古い Issue は何か月か / 1 か月以上は何件か / 1 か月以内が 57 件か」に回答。今回の 42 件は「最終更新が 2026-03 より前」で切ったもので実測 8〜19 か月（40 件は 15 か月以上）、ルールの閾値は 12 か月。実行後の open 66 件で 1 か月以上更新なしは 9 件、全件扱い決定済み

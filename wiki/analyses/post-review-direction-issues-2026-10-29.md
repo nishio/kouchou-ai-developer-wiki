@@ -112,3 +112,4 @@ nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs か�
 
 - 2026-10-29: 初回作成
 - 2026-10-29: 4 節（関連研究の紹介ページ、[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）を追記。副産物の [#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168) は PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171)（`httpx` の宣言と polars 2 の `read_csv`）で同日に main に入った
+- 2026-11-02: 4 本（[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)〜[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167)、[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）とも未 merge で CI green。[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) は 10-29 の rebase 直後に CodeRabbit が Minor 5 件を付けていて未対応（docs の項目説明、無効化後の再実行で古い score 属性が残る、入力属性と生成 score の衝突、入力検証で落ちたとき古い出力が残る 2 件）。内訳と判断点は [[open-pr-status-2026-11-02]]

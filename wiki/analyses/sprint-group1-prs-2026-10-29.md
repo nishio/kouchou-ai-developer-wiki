@@ -69,3 +69,4 @@ sources:
 
 - 2026-10-29: 初版。4 PR 作成直後の状態
 - 2026-10-29: [#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の CodeRabbit 指摘 5 件を反映、[#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) の e2e 失敗（旧文言の期待値）を修正。並行 agent が scratchpad の同名ファイル `pr-body.md` を上書きし、[#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の本文が一時的に [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) の本文になる事故があった（直後に復旧）。並行 PR 作成では PR 番号入りの一意なファイル名を使う
+- 2026-11-02: 4 本とも未 merge。CI green で人間コメントなし。[#1162](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1162) は [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) の merge で public-viewer の翻訳ファイルが衝突し rebase 待ち。[#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) の指摘 5 件は解決済みと GitHub 上で確認（[[open-pr-status-2026-11-02]]）
