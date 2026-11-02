@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 15:45] filing-back | 現状把握と長期戦略の考察（活動量・貢献者・利用・運営の場を棚卸し、12〜18 か月の戦略 5 本）
+
+- nishio「現状を把握して、長期的な戦略を考えてみて」に回答。main `d2702d48`、GitHub live、Slack mirror（11-02 同期）、議事メモ export（11-02 再取得、07-27 で停止のまま）、PyPI を観測し、[[long-term-strategy-2026-11-02]] を新設
+- 診断：製品の形は収束し負債は一巡したが、2026-05 以降の merged PR の 9 割超が nishio、週次定例は 7 月末で停止、鈴木健との戦略会議は 10/25 から日程調整中、利用の観測が無い（PyPI はほぼチーム内、派生製品 Maniken「聴くAI」は 11-01 に発見）
+- 戦略：書籍同期の v5.0 を「約束の確定」として切る / 利用の観測を仕組みにする / 判断者を複数にする / 結果 JSON の層分離 / 入口の役割分担を戦略会議で決める。直近 90 日の案と戦略会議への問い 5 つを付けた。index・定例下書き・議事録 source の鮮度を更新。次：戦略会議の日程と書籍発売日の確認（人間）
+
 ## [2026-11-02 15:20] filing-back | open PR 8 本の live 状態を確認、#1165 の CodeRabbit 指摘 5 件未対応と #1162 の衝突を記録
 
 - nishio の「現状の PR はどうなってる？」に GitHub の live state で回答。open PR は #1161〜#1167 と #1174 の 8 本、全件 CI green・人間コメントなし。branch protection のレビュー必須で nishio の admin merge が要る
@@ -146,8 +152,3 @@
 
 - 保留していた修正と依存の脆弱性の解消を、CodeRabbit の指摘を直したうえで順に merge し、v4.2.0 のタグとリリースを作った。冒頭はセキュリティ修正と設定の変更点。
 - PyPI の analysis-core 0.1.3 にも鍵の漏洩が含まれていたので、0.2.0 を公開した。Security Advisory は Moderate で下書き、公開は nishio。詳細は [[user-api-key-leak-2026-10]]。
-
-## [2026-10-26 15:30] filing-back | ユーザー API キーの漏洩を公開：修正 #1136 を merge、wiki ページを追加
-
-- 猶予期間が明け、nishio の指示で公開作業を始めた。修正 #1136 を最新の main に載せ替え、CodeRabbit の指摘 4 件を直して merge した。同じ期間に保留していた修正 #1132・#1135 も merge 済みで、#1133・#1134 はレビュー待ち。
-- [[user-api-key-leak-2026-10]] を追加した。影響範囲は今のコードと照合して、公開前の調査メモより絞って書いた。gotchas・security-maintenance・code-health-review と、過去の記述 2 ページにリンクと追記を足した。

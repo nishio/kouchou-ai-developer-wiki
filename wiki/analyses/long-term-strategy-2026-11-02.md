@@ -1,0 +1,199 @@
+---
+title: "現状把握と長期戦略の考察（2026-11-02）"
+type: analysis
+summary: "2026-11-02 時点の広聴AI を、コード・GitHub・Slack・議事録・PyPI の観測から棚卸しし、12〜18 か月の長期戦略を考察。診断は『製品の形は収束し技術負債は一巡したが、開発力と判断が nishio＋AI に集中し、需要の観測と判断の場（週次定例は 2026-07 末で停止、戦略会議は日程調整中）が欠けている』。戦略は (1) 書籍と同期した v5.0 を『約束の確定』として切る、(2) 利用の観測を仕組みにする、(3) 判断者を複数にして bus factor を上げる、(4) 結果 JSON の層分離と散布図を必須にしない契約、(5) 入口（ブラウザ版／Web UI／CLI）の役割を戦略会議で決める、の 5 本。直近 90 日の具体案と戦略会議への問いを含む"
+sources:
+  - source-code.md
+  - github-dev-docs.md
+  - meeting-minutes.md
+  - slack-logs-repository.md
+  - broad-listening-book-source.md
+---
+
+## 位置づけ
+
+[[nishio]]「現状を把握して、長期的な戦略を考えてみて」への回答。過去の長期整理である [[strategic-development-order-2026-05-23]]（3 層プラットフォーム）、[[broadlistening-tool-ecosystem-vision]]（simple Web UI ＋ CLI 実験 ＋ コミュニティ）、[[serverless-product-direction-2026-09-08]]（入口・重点・所有の三分）、[[post-review-product-direction-2026-10-28]]（既定は散布図、view は目的別、属性は任意ステップ）を前提にし、それらと矛盾しない範囲で、**2026-11 時点で何が変わったか** と **次の 12〜18 か月で何に賭けるか** を書く。
+
+このページは AI の考察であり、チームの決定ではない。決めるべきことは末尾の「戦略会議への問い」に寄せた。
+
+## 観測範囲と鮮度
+
+| source | 時点 | 備考 |
+|---|---|---|
+| kouchou-ai main | `d2702d48`（2026-10-30、[#1175](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1175) merge） | `work/kouchou-ai` を 2026-11-02 に最新化 |
+| GitHub live state | 2026-11-02 | open Issue 66、open PR 10、最新 release v4.2.0（2026-10-26）、Dependabot の open alert は 1 件（詳細は公開境界により書かない） |
+| Slack（`digitaldemocracy2030/slack-logs` mirror） | 2026-11-02 05:35 UTC 同期、窓は 2026-08-19〜11-02 | `#2_開発_広聴ai` ほか。発言者は `mirror/users.json` で解決 |
+| 開発定例の議事メモ Google Doc | 2026-11-02 に txt export を再取得 | 2026-10-18 取得分とバイト単位で同一。先頭見出しは **2026/07/27「集合はなし、最近の状況を記録しておく」** のまま。以後 3 か月、記録なし |
+| PyPI（pypistats） | 2026-11-02 | `kouchou-ai-analysis-core` の月別ダウンロード |
+| dd2030 側の wiki | 2026-10-30 更新分 | 戦略会議（Polimoney 10/24、いどばた 10/28）の記録、書籍原稿 10 章「広聴AIのこれから」 |
+
+## 1. 現状：数字で見る
+
+### 1-1. 活動量は「波」で、谷が 3 回ある
+
+main への commit 数（committer date、月別）と merge された PR 数。
+
+| 期間 | commit | merged PR | 何が起きたか |
+|---|---|---|---|
+| 2025-03〜05 | 389 / 362 / 572 | — | OSS 公開直後。人間の貢献者が 10 人以上 |
+| 2025-06〜09 | 148 / 216 / 58 / 98 | 29 / 11 / 11（07〜09） | 参院選（チームみらい）と事例期 |
+| 2025-10〜12 | 29 / 4 / 12 | 6 / 2 / 5 | **谷 1**。方向性会議（12 月）、v4.0.0 |
+| 2026-01〜02 | 127 / 186 | 13 / 29 | analysis-core への大リファクタ（nishio） |
+| 2026-03〜04 | 13 / 2 | 4 / 1 | **谷 2** |
+| 2026-05〜06 | 112 / 24 | 39 / 11 | Web UI の analysis-core 切替、plugin 化 |
+| 2026-07〜08 | 1 / 0 | 0 / 0 | **谷 3**。定例も 7 月末で記録が止まる |
+| 2026-09〜10 | 70 / 186 | 26 / 184 | docs 改善、v4.1.0、大規模レビュー 4 段、鍵漏洩修正、v4.2.0 |
+
+谷の直後は毎回 nishio のスプリントで山が来る。つまり活動量は「コミュニティの定常流」ではなく、**nishio の可処分時間とツール（Devin → Claude Code → 大規模 workflow）の関数** になっている。
+
+### 1-2. 誰が作っているか
+
+| 指標 | 値 |
+|---|---|
+| merged PR の作者（2026-05〜11） | nishio 240、yasumorishima 4、shingo-ohki 4、dependabot 4、katsushi2441 2、copilot 2、101ta28 2、tokoroten 1、devin 1 |
+| Issue 作成者（2026-05〜11） | nishio 59、shingo-ohki 12、その他 5 人で 7 件 |
+| 全期間の commit 上位 | nishio 715、nasuka 389、shgtkshruch 380、Shingo OHKI 251、Devin 212、なのくろ 129、tokoroten 127 |
+
+2025 年春の主要貢献者（nasuka、shgtkshruch、なのくろ）は 2026 年には commit していない。2026 年後半の人間の貢献者は実質 3〜4 人で、PR の 9 割超が nishio（＋AI エージェント）になっている。書籍原稿 10 章の「特定の個人や組織に依存せず、開発を継続できている」という記述と、現実の分布には差がある。[[broad-listening-book-source]]より
+
+### 1-3. 使われているか
+
+| 指標 | 値 |
+|---|---|
+| GitHub | stars 175、forks 64、Discussions 無効 |
+| PyPI 月別ダウンロード（2026） | 05: 155、06: 88、07: 33、08: 12、09: 21、10: 357（10 月は自分たちの検証を含む） |
+| 公開事例（wiki で確認済み） | 広島県、宇多津町、奈良市（導入議論）、横浜市、チームみらい、韓国日報（[#1175](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1175) で docs 事例化） |
+| 派生製品 | Maniken「聴くAI」。広聴AI を基に議案の要約・投稿前の文面確認・階層表示などを足したもので、2026-11-01 に大木が Slack で発見し田川市で実証中と紹介。ページには「コード一式を GitHub 公開」とあるが repo は未確認 |
+| ブラウザ版 `tokoroten/kouchou-ai-serverless` | 最終 push 2026-10-30（依存更新）、stars 0 |
+
+CLI（analysis-core）の外部利用はダウンロード数から見てほぼ無い。Web UI の利用は事例ベースでしか見えず、**利用の実態を測る仕組みが無い**。
+
+### 1-4. 運営の場
+
+- **週次開発定例**: 議事メモの先頭は 2026/07/27 で「集合はなし」。以後 3 か月、記録が無い。実質の定例は Slack `#2_開発_広聴ai` で、直近 35 日に 152 件。人間の投稿者は nishio・tokoroten・大木・小野・kuboon の 5 人程度で、大半は nishio の作業報告
+- **戦略会議**（鈴木健が 2026-08 の全体定例で提案、各プロジェクト年 1 回）: Polimoney は 10/24、いどばたは 10/28 に実施済み。広聴AI は 10/25 に小野が日程調整を出し、10/31 に大木が nishio・tokoroten に打診。11-02 時点で **日程未確定**
+- **書籍**「政治・自治体・企業に広がるブロードリスニング」（インプレス）: サミット登壇資料では「11 月頃発売予定」。11-02 に nishio が tokoroten に発売時期を質問中。Web 版は先行公開ドラフト
+- **nishio の構想**（Slack 10-13）: PR が一段落したらマイナー版を切り、docs を総見直しし、書籍リリースに合わせて RC を回してメジャー版（v5）のタグを打つ。11-02: 出版前に想定読者のペルソナで公式ページと docs をレビューするスプリントをやりたい
+- **合同ミーティング**（広聴AI × いどばた、2026-08〜09）: 「統合せず並置」「探索期は各自が勝手に作るのが正しい」で同期会議なしにクローズ
+
+### 1-5. コードと負債
+
+- 2026-10 のレビュー 4 段で修正 PR 100 本超が全件 main に入り、鍵漏洩は公開・修正済み（[[user-api-key-leak-2026-10]]、v4.2.0、Advisory）。「壊れているものを直す」段階は一巡した。[[retrospective-2026-10-28]]より
+- 残る構造的な宿題は次のとおり。いずれも「機能」ではなく「契約」の話で、放置すると view や mode を増やすたびに効いてくる
+  - 結果 JSON が分析・表示・説明を 1 ファイルで背負い、公開ビューアはそれを丸ごと HTML に埋め込む（3 万件で SSR 約 1GB、第 3 弾レビューで未修正）
+  - ファイルストレージ継続（[[open-decisions]] A3）、静的 HTML のホスト先（A2）、Docker 前提の入口（[#496](https://github.com/digitaldemocracy2030/kouchou-ai/issues/496)）
+  - plugin の外部実例ゼロ（B7）、YAML workflow 未使用（B12）。枠はあるが「本物の枝」が無い
+- open Issue 66（2026-11-02 に棚卸し済み、[[stale-issue-disposition-2026-11-02]]）、open PR 10（全件 nishio 作、CI green、admin merge 待ち、[[open-pr-status-2026-11-02]]）
+
+## 2. 診断：何が本当の問題か
+
+### 2-a. 開発力と判断が一点に集中している
+
+「AI で一人が 10 人分」は速いが、**判断者も一人** である。branch protection のレビュー必須は admin merge で常時バイパスされ、security の関係者連絡・リリース・merge 判断・Issue 棚卸しの承認がすべて nishio に集まる。bus factor は 1 で、谷 1〜3 はそのまま「nishio が他のことをしていた期間」と一致する。
+
+### 2-b. 需要が観測されていない
+
+「階層リストはウケない」「散布図は自己効力感を作る」といった判断は Slack 上の印象に基づく。利用数・事例・派生製品を追う仕組みが無く、Discussions も無効。PyPI の数字は CLI 利用がほぼチーム内であることを示す。書籍で新規流入が来る直前なのに、**来た人がどこで何に詰まるかを観測する経路が無い**。
+
+### 2-c. 判断の場が空洞化している
+
+週次定例は止まり、戦略会議は未開催、[[open-decisions]] の A1〜A14 に未決が溜まる。wiki は「判断待ち」を正確に記録できるが、決めることはできない。AI は実装の速度を上げたが判断の速度は上がらず、むしろ **判断待ちの行列が伸びている**（PR 10 本、assignee 確認 8 件、本人判断 3 件、方針決定で小さく落ちるもの 7 件。[[meeting-report-draft]] の議題候補）。
+
+### 2-d. 製品の輪郭は収束したが「約束」が宣言されていない
+
+simple な Web UI ＋ CLI/analysis-core ＋ plugin、既定は散布図、view は目的別、属性は意見ごとの任意ステップ。この形は 2026-05 以降の整理と 10 月の実装で一貫している。しかし「何を stable と約束するか」（結果 JSON の契約、CLI と config、plugin API、対応 provider）は v5 として宣言されていない。v5 は 2026-06 目標を過ぎ、中身の大半は main に入っている。[[versioning-strategy]]より
+
+### 2-e. 環境が変わった：コーディングエージェントが分析者になる
+
+10-13 の Slack で nishio が「OpenAI API を置いていない環境で Claude Code に分析を頼んだら、ローカルモデルで埋め込み、自分でクラスタを命名して完了させた」と報告し、[#1175](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1175) でその進め方を docs の事例にした。分析そのものがコモディティ化すると、「広聴AI ＝ Web アプリ」の価値は下がり、**契約と部品（analysis-core、結果 JSON、ビューア、プロンプトと手順）** の価値が上がる。これは合同ミーティングで nishio が言語化した「コードの継続性の価値は低く、継続と参加の価値が希少」と同じ方向で、[[kouchou-ai]] の配布形態 B（エージェントから叩く CLI）が中心に寄ることを意味する。
+
+### 2-f. 外部との関係に「戻る経路」が無い
+
+派生製品（Maniken の聴くAI）、ブラウザ版（tokoroten）、チームみらいの階層リスト（本体に移植済み）、いどばた。広聴AI が基盤として振る舞うなら、派生が本流に戻る経路（契約・ライセンス・事例化・連絡先）が要る。ライセンスと出力・plugin の境界整理は [[agpl-output-and-plugin-boundaries-2026-10-12]] で済んでいるが、**派生を見つけて事例化し、必要なら本流へ還流させる運用** は無い。
+
+## 3. 長期戦略（12〜18 か月）
+
+中心仮説を一文で書くと次になる。
+
+> 広聴AI を「一つのアプリ」から「ブロードリスニングの基盤（契約 ＋ コア ＋ ビューア）」へ寄せ、いま nishio＋AI に集中している作る力を、人が入れ替わっても続く体制に変換する。
+
+成功の定義は Issue 消化数や機能数ではなく、(i) 書籍の読者が自力で初回成功する、(ii) 派生・事例が本流に戻ってくる、(iii) nishio が 1 か月不在でもプロジェクトが止まらない、の 3 つにする。
+
+### 柱 1：書籍と同期した v5.0 を「約束の確定」として切る（2026-11〜12）
+
+- **中身は新機能ではなく宣言**。stable と約束するものを列挙する：analysis-core の CLI・config・結果 JSON の契約、plugin 契約 3 軸（入力・解析・可視化）、対応 provider、公開境界（出口での secret 除去）。それ以外は experimental と明記する（[[experimental-features-catalog-proposal-2026-06-03]] の「最終確認日つき」をここで実装する。[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) の関連研究ページが先例）
+- **手順**：open PR 10 本の merge → RC タグ → ペルソナによる docs・公式ページのレビュースプリント（[[docs-persona-review-2026-10-13]] の 7 像を再利用）→ 書籍の発売日に v5.0.0。analysis-core を 1.0 にするかは別判断
+- **併せて決める**：v4 系の保守ブランチを作るか（これまで無し）、メジャー・マイナーの基準の明文化（[[versioning-strategy]] の Open Question）
+- **受け皿**：書籍から来た人の質問・事例の置き場（GitHub Discussions を有効にするか、Slack を入口にするか）。費用・PII・相談先・責任の所在のページ（ペルソナレビューの指摘）を v5 までに揃える
+
+### 柱 2：利用の観測を仕組みにする（2026-12〜2027-03）
+
+- 「ウケる／ウケない」を印象で決めない。測るものを決める：公開レポートの自己申告登録（[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の公開事例ページ）、派生製品の一覧（最終確認日つき）、PyPI と Docker イメージの pull、docs のアクセス、初見利用の観測（[[serverless-product-direction-2026-09-08]] の「初見利用の評価」を書籍読者で実施）
+- アプリ内の利用統計は公開境界とプライバシーの観点で慎重に扱う。まずは人手の登録と公開情報の追跡で始め、必要なら opt-in を検討する
+- 階層リスト「詳細モード」の計測（[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) の open question）をこの枠に置く。測る相手は投稿者でなく分析者
+- 2026-06 に未決のままの自治体利用者課題調査を、書籍の流入期に小さく実施する
+
+### 柱 3：判断者を複数にする（通年）
+
+- **「AI が実装、人間が判断」の運用を文書化し、判断者を分ける**。merge と release は nishio ＋ 1 名（大木か tokoroten）、security の関係者連絡は 2 名、admin merge が常態であることをルールとして明記する（例：AI 生成 PR は CodeRabbit 通過 ＋ 人間 1 名の確認で admin merge 可）。[[contributing]] と `PROJECTS.md` に書く
+- **Issue が「AI に渡せる単位」で管理されていることが貢献の入口**（大木、Slack 10-17）。Cold List ルール（[#1177](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1177)）、四半期ごとの棚卸しの定例化、good first issue を AI 向けに整形する
+- **トークン寄付／Issue 単位の支援の小実験**（大木 10-18、tokoroten 10-16 の発案）。「自分のトークンで AI に PR を作らせる手順」を contributing に書く。貢献者層を「コードを書く人」から「判断と資源を出す人」へ広げる
+- **定例の再定義**。週次定例は事実上止まっている。月次の非同期報告（[[meeting-report-draft]] を月次に rotate）＋ 年 1 回の戦略会議に変え、議事メモ Doc を続けるか止めるかを明示する
+
+### 柱 4：結果の層分離と「散布図を必須にしない契約」（2027 前半）
+
+- [[strategic-development-order-2026-05-23]] の未完部分。結果 JSON を **公開用（viewer）／再分析用／説明用** に分け、HTML への丸ごと埋め込みをやめる。この 1 本が、付箋表示（A13）、1 万件超の表示、鍵漏洩型事故の再発防止、ブラウザ版との契約統一と多対多参照（[#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156)）を同時に支える共通工事になる
+- capability による view 選択：LLM grouping と指定カテゴリ分類（[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) → [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)）を散布図なしで first-class にする。大木が 10-18 に「待望の機能、刺さるユーザーが複数いる」と述べた機能はここに属する
+- provider：鍵不要経路（ローカル埋め込み ＋ エージェントによる命名、[[offline-local-clustering]]）、Anthropic（[#1042](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1042)）、Bedrock による国内完結（[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) / [#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170)）。自治体の決済と送信先の制約（[[llm-providers]]）への答えになる
+- DB（A3）は「入れない」を明文化して A から外す。ファイル ＋ 静的書き出しは基盤路線と整合する
+
+### 柱 5：入口の役割分担を戦略会議で決める
+
+- ブラウザ版の本流化（[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）は 2026-09 から未決。案は「初回利用はブラウザ版、組織運用は既存版、実験は CLI」。活動量を見るとブラウザ版は tokoroten 一人で低頻度なので、「入口」に据えるなら保守体制の約束が要る
+- Azure デモ環境の viewer 公開・admin 共用（2026-06 決定、[[azure-demo-public-visibility-proposal-2026-06-04]]）の実施状況を確認し、公開できる粒度で docs に書く
+- 書籍 10 章が課題に挙げる「ホスティングや保守の負担を軽減する仕組み」を、dd2030 の法人（デジタル民主主義推進機構）が担うのか担わないのかを明確にする
+
+## 4. やらないこと・後ろに送ること
+
+- Web UI への複雑機能の追加（DivCon、埋め込みへの重み付け）。docs での紹介まで（A14 で決定済み）
+- SaaS の本番運用と DB 導入（体制が無い）
+- 論文（A12）は書籍の後
+- v4 との後方互換のための大工事。v5 は宣言であって書き直しではない
+
+## 5. 直近 90 日の具体案
+
+| 時期 | やること | 判断者 |
+|---|---|---|
+| 2026-11 | open PR 10 本の merge。戦略会議の実施（このページを素材に）。書籍の発売日を確定し RC 計画を立てる。ペルソナ docs レビュースプリント。聴くAI を事例化し Maniken に連絡（人間）。[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) の計測設計。11-16 以降の assignee 無反応分の既定処理 | nishio、鈴木健、大木、tokoroten |
+| 2026-12 | v5.0.0 と analysis-core のリリース。Discussions 有効化か事例フォーム。結果 JSON 層分離の設計文書（RFC）。定例を月次報告へ移行 | nishio ＋ 第 2 判断者 |
+| 2027-01〜02 | 層分離を CLI 先行で実装。利用観測の初回レポート。判断者分担を contributing と `PROJECTS.md` に明文化 | nishio ＋ 第 2 判断者 |
+
+AI エージェントが進められるのは、PR・RC・docs・RFC・計測の実装・事例の下書きまで。merge・release・人への連絡・体制の決定は人間。
+
+## 6. 戦略会議への問い
+
+1. 広聴AI は「製品」か「基盤」か。法人として運用（ホスティング）にどこまで踏み込むか
+2. nishio 以外の判断者は誰か（merge／release／security 連絡）
+3. ブラウザ版の位置づけ（入口にするなら誰が保守するか）
+4. 1 年後の成功指標は何か（書籍経由の初回成功率、事例数、派生製品数、自治体導入数）
+5. 書籍の発売を v5.0 の期日にしてよいか
+
+## 7. 反論と留保
+
+- 「一人＋AI で回っているのだから壊すな」：速度は維持する。変えるのは判断の冗長化だけで、実装の体制は変えない
+- 「観測は手間」：最初は人手の登録と公開情報で足りる。計測基盤を作るのは数字が意思決定に使われると分かってから
+- 「v5 を切ると互換責任が生まれる」：だからこそ約束の範囲を狭く宣言する。experimental を明記することが v5 の主目的
+- 「戦略会議は年 1 回の儀式」：今回は書籍という入口の変化と時期が重なる珍しい機会で、ここで決めないと次は 1 年後になる
+- 数字の読みには限界がある。commit 数は squash merge の影響を受け、PyPI の数字は CI の pull を含む。傾向の判断には使えるが、精密な比較には使わない
+
+## Open Questions
+
+- 書籍の正確な発売日（tokoroten への確認待ち）
+- analysis-core を 1.0 にするか、0.x のまま v5 と並走させるか
+- Maniken「聴くAI」の repo の所在と、本流への還流の可能性
+- 議事メモ Google Doc を続けるか、Slack ＋ wiki に一本化するか
+- Discussions を有効にすると Slack と分散する懸念をどう扱うか
+
+## Updates
+
+- 2026-11-02: 初回作成

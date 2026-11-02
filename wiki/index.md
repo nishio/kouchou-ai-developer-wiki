@@ -4,7 +4,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 > **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
 
-直近の状態（2026-10-28 時点）: [2026-10 の経緯の整理](analyses/retrospective-2026-10-28.md)（大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法） / [本格コードレビュー 2026-10-19](analyses/deep-code-review-2026-10-19.md) / [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — レビューから出した修正 PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)・[#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1041) は 2026-10-19 までに main へ merge 済み。2026-10-21 には、レポート再利用・管理画面の一覧更新・濃い意見 0 件時の表示まわりの修正 [#1043](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1043)–[#1047](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1047) も merge された（main `c57e0bfa`）。Claude provider 接続実験は手元の branch だけにあり、PR にはしていない。次に判断が要るのは、散布図ラベルの a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)。PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) のどちらかを選ぶ）と、[健全性レビュー](analyses/code-health-review-2026-10-18.md)の Issue 整理提案。
+直近の状態（2026-10-28 時点。2026-11-02 の棚卸しと長期戦略は [現状把握と長期戦略](analyses/long-term-strategy-2026-11-02.md)）: [2026-10 の経緯の整理](analyses/retrospective-2026-10-28.md)（大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法） / [本格コードレビュー 2026-10-19](analyses/deep-code-review-2026-10-19.md) / [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — レビューから出した修正 PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)・[#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1041) は 2026-10-19 までに main へ merge 済み。2026-10-21 には、レポート再利用・管理画面の一覧更新・濃い意見 0 件時の表示まわりの修正 [#1043](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1043)–[#1047](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1047) も merge された（main `c57e0bfa`）。Claude provider 接続実験は手元の branch だけにあり、PR にはしていない。次に判断が要るのは、散布図ラベルの a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)。PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) のどちらかを選ぶ）と、[健全性レビュー](analyses/code-health-review-2026-10-18.md)の Issue 整理提案。
 
 ## 最初に読むべき (推奨順)
 
@@ -34,6 +34,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [gotchas](analyses/gotchas.md) — 非自明な落とし穴の一覧
 
 **いま何を考えるか / 何が起きているか:**
+
+- [long-term-strategy-2026-11-02](analyses/long-term-strategy-2026-11-02.md) — **現状把握と長期戦略（最新）**。活動量・貢献者分布・利用の観測・運営の場（定例停止、戦略会議調整中）を棚卸しし、書籍同期の v5.0 宣言 / 利用の観測 / 判断者の複数化 / 結果 JSON の層分離 / 入口の役割分担、の 5 本と戦略会議への問いを整理
 
 - [serverless-product-direction-2026-09-08](analyses/serverless-product-direction-2026-09-08.md) — dd2030の目的から見たブラウザ版・既存版の役割、互換範囲、次の開発順序（本流化は未決）
 
@@ -95,4 +97,5 @@ Sources / Analyses / Entities の全件は [index.txt](index.txt) を参照。�
 
 ## Updates
 
+- 2026-11-02: 「いま何を考えるか」の先頭に [現状把握と長期戦略の考察](analyses/long-term-strategy-2026-11-02.md) を追加し、「直近の状態」からも導線を張った
 - 2026-10-21: 「直近の状態」を main `c57e0bfa` と GitHub の PR の状態に合わせて書き直し（merge 済みの PR を反映し、本格コードレビューへの導線を追加）、slack-logs の mirror の窓を 14 日から 75 日に訂正。あわせて versioning-strategy と public-viewer-build-behavior の説明を、今の内容（2025-12 の決定とその後の実際、build の前提）に合わせた
