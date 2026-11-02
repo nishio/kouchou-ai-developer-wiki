@@ -4,7 +4,7 @@ name: meeting-minutes
 summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-07, ~7700 lines, JP)"
 type: source
 url: https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit
-last_checked: 2026-10-05
+last_checked: 2026-11-02
 coverage: "2025-03-26頃〜2026-07-27 先頭見出し（txt/html再取得、直近追加分を読解）"
 sources:
   - meeting_minutes.txt
@@ -97,3 +97,4 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 - 独立配布は確認できたが、analysis-coreのMIT化に関する決定は該当箇所に見つからなかった。詳細は [[analysis-core-license-history-2026-10-12]]。取得txtは `raw/analysis-core-license-2026-10-12/meeting_minutes.txt` に固定。
 
 - 2026-11-02: Google Doc の txt export を再取得。2026-10-18 取得分とバイト単位で同一（7743 行）で、先頭見出しは引き続き **2026/07/27**（「集合はなし、最近の状況を記録しておく」）。2026-08 以降の回は記録されておらず、週次開発定例の記録は 7 月末で止まっている。以後の開発状況は Slack `#2_開発_広聴ai` と GitHub を一次参照にする（[[long-term-strategy-2026-11-02]] の観測範囲）
+- 2026-11-03: frontmatter の `last_checked` を 2026-10-05 → 2026-11-02 に更新（上の 2026-11-02 再取得の記録に合わせた。`raw/meeting_minutes.txt` の mtime も 11-02）

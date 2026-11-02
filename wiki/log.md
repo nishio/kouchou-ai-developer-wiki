@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-03 02:00] filing-back | living ページの古い状態記述を GitHub・PyPI・main と照合して訂正（最新タグ v4.2.0、PyPI 0.3.0、11-02 close 済み Issue）
+
+- 最新タグ「v4.1.0」を v4.2.0（2026-10-26）に（[[versioning-strategy]]・[[kouchou-ai]]・[[plugin-system]]・index）。PyPI 最新「0.1.3」を 0.3.0（2026-10-29）にし、`predefined_groups` などが 0.2.0 以降の PyPI 版に入っていることを反映（[[cli]]・[[llm-grouping-supervised-classification]]・[[refactoring-status]]）
+- 11-02 の棚卸しで close 済みの #56・#1128・#507・#518・#323・#374・#586 を「open のまま」「close するか」と書いていた箇所を訂正（[[meeting-report-draft]]・[[issue-56-original-comments-opt-in-2026-10-29]]・[[extraction-faithfulness]]・[[open-decisions]] B9・[[other-contributors]]）。定例下書きの情報鮮度と [[meeting-minutes]] の `last_checked` を 11-02 の再取得・Slack 同期に合わせた
+- index の「最新の全件棚卸し」を superseded 済みの 10-12 版から [[issue-backlog-audit-2026-10-28]] に差し替え。次：open-decisions B9 を残すか、kouchou-issue-audit キューの STATUS.md（10-12 時点）を更新するか（人間）
+
 ## [2026-11-03 01:35] filing-back | 結果 JSON の層分離 第 1 段（PR #1179）を main に merge
 
 - nishio が「手順表示用のプロンプトは公開契約に含めて OK」と判断し、PR #1179 を squash merge（`79981407`）。以後、集計・レイアウト生成・翻訳 CLI は `public_result.json` も書く。古いレポートは次回実行で集計をやり直す

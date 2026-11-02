@@ -182,7 +182,7 @@ loader (`plugin/loader.py`) は `Path.cwd() / "plugins" / "analysis"` と `ANALY
 
 ### B9. `packages/ui-shared/` 共有 UI パッケージ
 
-歴史的には refactoring phase docs と `naming_convention.md` に計画記載があったが、current source tree に残るのは `naming_convention.md` のみで、**ディレクトリ自体は未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)）と紐づくはずだが進んでいない。
+歴史的には refactoring phase docs と `naming_convention.md` に計画記載があったが、current source tree に残るのは `naming_convention.md` のみで、**ディレクトリ自体は未作成**。`apps/public-viewer/` と `apps/admin/` の共通コンポーネント整理（Issue [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)）と紐づくはずだった。[#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586) は 2026-11-02 の棚卸しで「複数アプリで共有する基盤は pnpm workspaces（`packages/report-schema`、`apps/shared`）で達成」として close（completed）された。デザイントークンの共通パッケージは、トークンが出てきた時点で別 Issue にする扱い（[[stale-issue-disposition-2026-11-02]]）。`packages/ui-shared/` は 2026-11-03 時点でも未作成。
 
 ### B-共通運用
 
@@ -289,3 +289,4 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 - 2026-10-14（ヘルスチェック追記）: B14 の LLM grouping / LLM 直接分類は analysis-core に**出荷済み**（builtin plugin + workflow、[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) MERGED、admin/api 受け渡しは [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176)/[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) で main 入り）。A10 の backend Python plugin system は**存在する**（[#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) でコア/実験拡張を分離、`register_all` が 10 plugin を登録）。両項の未決は『scatter を持たない mode の visualization / capability 契約』に絞られる。詳細は [[plugin-system]]。また本ページ冒頭の『現在地は current-status-2026-10-05』案内は v4.1.0・docs 大掃除より前なので、現在地は [[meeting-report-draft]] / [[kouchou-ai-docs-overhaul-2026-10]] を参照。
 - 2026-10-21: main `b71e0b79` と照合し、A7（PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933) で最小範囲が決まり A から除外）、B8（`--without-html` は PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) で修正済みのため `--skip-interaction` に絞る）、B11（PR [#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817) 以降は `drafts: false`）、C1（PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) で着地し C から除外）を書き直し、件数表の A を 11 から 12 に訂正。あわせて公開境界に合わせ、A2 と 2026-06-05 の行からデモ環境の現在のキー構成についての記述を外した
 - 2026-10-29: A14 の紹介ページを PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) として作成。2026-06 の「実験的機能カタログ」提案（[[experimental-features-catalog-proposal-2026-06-03]]）の最終確認日ルールを、この 3 件で初めて本体 docs に実装した形
+- 2026-11-03: B9 に、[#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586) が 2026-11-02 に close（completed）されたことを反映（GitHub の close コメントで確認）。B9 を残すか外すかは未判断

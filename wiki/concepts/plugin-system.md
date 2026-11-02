@@ -120,7 +120,7 @@ YouTube plugin はこの形で壊れていた。`google-api-python-client` は `
 
 ## Open Questions
 
-- v5.0 のリリース時期。2026-06 目標だったが、2026-10-18 時点で最新タグは v4.1.0 のまま未リリース（[[versioning-strategy]]）
+- v5.0 のリリース時期。2026-06 目標だったが、2026-11-03 時点で最新タグは v4.2.0（2026-10-26）で、v5.0 は未リリース（[[versioning-strategy]]）
 - `pnpm-workspace.yaml` の `plugins/*` glob と実体ディレクトリ不在のギャップ
 - taxonomy-guided な LLM 分類を analysis plugin の設定として持たせるのか、別 workflow として切るのか
 
@@ -136,3 +136,4 @@ YouTube plugin はこの形で壊れていた。`google-api-python-client` は `
 - 2026-10-12: builtin plugin 数を「8 つ」→「9 つ」に訂正（`register_all` が `llm_grouping` を含む 9 個を登録、`hierarchical_layout_generation` は未登録モジュール）。`analysis_mode=llm_grouping` が engine レベルで出荷済み（プロダクト到達は未）である旨を v5.0 plugin 構想節に追記。[[wiki-self-audit-2026-10-12]]
 - 2026-10-12: 上記の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが admin/api に入ったため、構想節 Update の「受け渡しは未着手・到達は未」を「merge 済み・main 入り」に訂正。[[wiki-self-audit-2026-10-12]]
 - 2026-10-29: 入力 plugin の依存とイメージの関係を追記。YouTube plugin が v4.2.0 のイメージで動かなかった原因と、依存をなくした PR [#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)
+- 2026-11-03: Open Questions の最新タグを v4.1.0 → v4.2.0（2026-10-26）に更新（`gh release list` で確認）

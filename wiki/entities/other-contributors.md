@@ -27,7 +27,7 @@ sources:
 議事メモでは「shirouchi」「しろうち」として現れる。
 
 - 管理画面 redesign の実装リード — デザイナーの UtkNggc が起票した Issue [#460](https://github.com/digitaldemocracy2030/kouchou-ai/issues/460)（本人が担当し、PR [#637](https://github.com/digitaldemocracy2030/kouchou-ai/issues/637) の merge で close）、事前リファクタの Issue [#604](https://github.com/digitaldemocracy2030/kouchou-ai/issues/604)、PR [#637](https://github.com/digitaldemocracy2030/kouchou-ai/issues/637)・[#668](https://github.com/digitaldemocracy2030/kouchou-ai/issues/668) など
-- デザイナーの Figma に合わせた UI 実装と、フロントエンド共通のデザインシステム基盤の提案（Issue [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)、2026-10-21 時点で open）
+- デザイナーの Figma に合わせた UI 実装と、フロントエンド共通のデザインシステム基盤の提案（Issue [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586)、2026-11-02 に「pnpm workspaces の `packages/report-schema`・`apps/shared` で達成」として close）
 - Biome の導入（PR [#242](https://github.com/digitaldemocracy2030/kouchou-ai/issues/242)・[#249](https://github.com/digitaldemocracy2030/kouchou-ai/issues/249)・[#262](https://github.com/digitaldemocracy2030/kouchou-ai/issues/262)）と、Lefthook で push 前に Biome の lint を走らせる仕組み（PR [#270](https://github.com/digitaldemocracy2030/kouchou-ai/issues/270)。既定は off で、使う人が設定ファイルを置いて有効にする）
 - クラスタ見出しの anchor link（PR [#224](https://github.com/digitaldemocracy2030/kouchou-ai/issues/224)）、用語解説ページとグローバルナビゲーション（PR [#699](https://github.com/digitaldemocracy2030/kouchou-ai/issues/699)）
 
@@ -83,3 +83,4 @@ sources:
 - 2026-05-17: 初回作成
 - 2026-10-07: lint。anno の「ボード／戦略」を出典未確認として [[dd2030]] の告知表記に合わせて弱めた
 - 2026-10-21: GitHub と議事メモで照合し、同一人物の shirouchi と shgtkshruch を 1 項目にまとめた。PR [#270](https://github.com/digitaldemocracy2030/kouchou-ai/issues/270) の内容（Lefthook による push 前の lint）と用語解説ページ・グローバルナビの PR（[#699](https://github.com/digitaldemocracy2030/kouchou-ai/issues/699)）を訂正し、デザイナー UtkNggc の項目を足した。`/assign`・`/unassign` は nasuka の実装で、sasano の担当は status 連動と `/ready`・`/archive` だと書き分けた
+- 2026-11-03: [#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586) の状態を「open」→「2026-11-02 close（completed）」に更新（GitHub の close コメントで確認）

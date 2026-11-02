@@ -52,7 +52,7 @@ LLM grouping には枠の決め方で2つのモードがある。
 ## 実装とスコープ
 
 - engine は `packages/analysis-core/src/analysis_core/steps/llm_grouping.py`。内部は「枠の発見（`_discover_groups`）→ 各意見の割り当て（`_assign_groups`）」の2段で、指定カテゴリ分類は発見段をスキップして固定枠を割り当て段へ渡す。非該当・無効応答は先頭枠ではなく「その他」へ寄せる。
-- 現状は **CLI 専用**（`kouchou-analyze --config config.json`）。ただし PyPI の 0.1.3（2026-10-12 公開）には入っておらず、PyPI から入れた `kouchou-analyze` に `predefined_groups` を渡すと、config の検証で `Unknown option 'predefined_groups' for step 'llm_grouping'` として止まる（2026-10-21 時点。main の version 表記も 0.1.3 のままなので `--version` では区別できない）。使うときは main から入れる（手順は [[cli]] の「PyPI 版は main より遅れる」）。
+- 現状は **CLI 専用**（`kouchou-analyze --config config.json`）。PyPI の 0.1.3（2026-10-12 公開）には入っておらず、`predefined_groups` を渡すと config の検証で `Unknown option 'predefined_groups' for step 'llm_grouping'` として止まった。0.2.0（2026-10-26）以降の PyPI 版には入っている（2026-11-03 時点の最新は 0.3.0）。古い版を入れている場合は上げる（[[cli]] の「PyPI 版は main より遅れる」）。
 - 作成 UI（管理画面）からの指定カテゴリ分類は未対応で、WebUI 統合は Issue [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997) で扱う（カテゴリ入力フォーム・「その他」固定表示・config の prune/round-trip 整合が論点）。
 - 由来は Issue [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176)（LLM ベース分類の2方向）。自動グルーピングの作成 UI + API + engine は [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987)、指定カテゴリ分類の CLI 実装は [#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) / PR [#996](https://github.com/digitaldemocracy2030/kouchou-ai/issues/996) で main 入り。
 
@@ -65,3 +65,4 @@ LLM grouping には枠の決め方で2つのモードがある。
 ## Updates
 
 - 2026-10-21: PyPI の 0.1.3（2026-10-12 公開）には指定カテゴリ分類が入っておらず、PyPI 版では config の検証で止まること、使うときは main から入れることを追記。設定例が抜粋であることを明記
+- 2026-11-03: PyPI 0.2.0 / 0.3.0 の公開を反映し、「PyPI 版には入っていない」を「0.1.3 には無く、0.2.0 以降には入っている」に更新（タグ `analysis-core-v0.2.0` は PR [#1016](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1016) の commit を含み、`analysis-core-v0.3.0` の `llm_grouping_specs.json` に `predefined_groups` がある）

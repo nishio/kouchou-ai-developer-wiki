@@ -1,7 +1,7 @@
 ---
 title: "v4凍結・v5 plugin化のリリース戦略"
 name: versioning-strategy
-summary: "2025-12-13 に決めた v4 凍結 / v5 plugin 化のリリース戦略（書籍出版とのリスク調整）と、その後の実際。リファクタは main 上で段階的に進み、v4.1.0 を 2026-10-13 に main から発行、v5 は 2026-10-21 時点で未リリース"
+summary: "2025-12-13 に決めた v4 凍結 / v5 plugin 化のリリース戦略（書籍出版とのリスク調整）と、その後の実際。リファクタは main 上で段階的に進み、v4.1.0 を 2026-10-13、v4.2.0 を 2026-10-26 に main から発行、v5 は 2026-11-03 時点で未リリース"
 type: analysis
 sources:
   - meeting-minutes.md
@@ -43,7 +43,7 @@ sources:
 - v4.0.0 は「書籍出版時の main」ではなく、2025-12 末の main に打たれた
 - 2026-01-19 の時点では、大リファクタ（`packages/analysis-core` の切り出し、PyPI 登録など）は refactoring ブランチ上で進んでおり、PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) で 2026-01-23 に main に入った。Web UI を壊さないまま CLI 版を並行させる段階移行で、2026-05-20 に Web UI も analysis-core を使う形に切り替え、2026-05-23 の旧コード掃除を経て 2026-05-24 に完了した。[[meeting-minutes]]より [[refactoring-status]]より
 - v4.1.0 はこのリファクタを含めて main から発行された。v4 用の保守ブランチは無い
-- v5.0 は未リリースで、最新タグは v4.1.0。[[github-dev-docs]]より
+- v5.0 は未リリースで、最新タグは v4.2.0（2026-10-26、セキュリティ修正を含む。2026-11-03 に `gh release list` で確認）。[[github-dev-docs]]より
 
 ## v5.0 の中身（想定）
 
@@ -68,7 +68,7 @@ sources:
 
 ## Open Questions
 
-- v5 をいつ・どの条件で切るかは未定。2026-06 の目標は達成されず、2026-10-21 時点の最新タグは v4.1.0
+- v5 をいつ・どの条件で切るかは未定。2026-06 の目標は達成されず、2026-11-03 時点の最新タグは v4.2.0
 - v4.x はこれまで main から直接タグを打っており、保守ブランチは無い。v5 で main を分岐させる場合に、v4 系へのバックポートをどう扱うか
 - マイナー / メジャーの切り方の基準は明文化されていない（[[kouchou-ai-v4-1-0-release-2026-10]] の Open Questions と同じ論点）
 
@@ -82,3 +82,4 @@ sources:
 - 2026-05-25: 2025-12-06 / 2025-12-13 の方向性メモと、出発点になった鈴木健ブログを source として分離し、v4 / v5 分離判断の前史を補強
 - 2026-10-21: GitHub の tag / release と照合し、v4.0.0 の日付を 2025-12-27 に訂正。v4.1.0 の節と「その後の実際」を足し、リファクタ完了と Open Questions を現状に合わせ、[[kouchou-ai]] への見出しリンクと PyPI の配布名を直した
 - 2026-10-29: v4.2.0（2026-10-26、セキュリティ修正を含む）の後、v4.2.1 は出さないと nishio が決めた（2026-10-28）。[#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)〜[#1152](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1152) などの修正は次のリリースに入る。この repo では `v*` のタグはすべて GitHub Release と対になっていて（v2.0.1 のようなパッチ版も同じ）、本体の版番号はタグにしか無い（`package.json` などは 0.1.0 のまま）。タグをきっかけに動く workflow は `analysis-core-v*`（PyPI 公開）だけなので、本体のタグだけを打っても自動では何も起きないが、説明のない版ができるので、タグを打つならリリースも出す
+- 2026-11-03: summary・「その後の実際」・Open Questions の「最新タグ v4.1.0」を v4.2.0 に更新（`gh release list` で v4.2.0 が Latest、2026-10-26）

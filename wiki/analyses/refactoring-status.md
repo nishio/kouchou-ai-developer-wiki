@@ -46,7 +46,7 @@ sources:
 
 利用モード: **CLI / analysis-core**
 
-- `kouchou-ai-analysis-core` を PyPI 公開（現行 `0.1.3` / AGPL-3.0。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み。[[analysis-core-license-intent-2026-10-12]]）
+- `kouchou-ai-analysis-core` を PyPI 公開（2026-11-03 時点の現行 `0.3.0` / AGPL-3.0。`0.1.3`・`0.2.0` も公開中。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み。[[analysis-core-license-intent-2026-10-12]]）
 - `[project.scripts] kouchou-analyze = "analysis_core.__main__:main"` で CLI 配信
 - API サーバはこの CLI を **subprocess** で呼ぶ ([[cli]])
 - `analysis-core-v*` tag push 起点の `.github/workflows/publish-analysis-core.yml` があり、`ruff` / `pytest` / `build` 通過後に PyPI publish する自動 release 経路も入った
@@ -179,3 +179,4 @@ workflow default 化を止めていた実装差分と、その後どこまで解
 - 2026-05-21: `main@5d591ef` で PR [#844](https://github.com/digitaldemocracy2030/kouchou-ai/issues/844) merge を確認し、Phase 2.5 に CLI preflight / filesystem-based quickstart が main へ入ったことを追記
 - 2026-10-12: Phase 2.5 の PyPI 公開版記述を `0.1.2` → 現行 `0.1.3`（AGPL-3.0）に更新。旧 MIT 表記の `0.1.0` / `0.1.2` は yank 済み（[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) 完結、[[analysis-core-license-intent-2026-10-12]]）。deployment.md 等の日付つき `0.1.2` 歴史観測は dated-correct なので据え置き。[[wiki-self-audit-2026-10-12]]
 - 2026-10-21: kouchou-ai main（`c57e0bfa`）と照合し、Phase 1 の存在しない引用「Migration: 完了」を `naming_convention.md` の実際の文言と PR [#746](https://github.com/digitaldemocracy2030/kouchou-ai/issues/746) に差し替えた。Phase 2 の「8 ステップ」を、旧 8 ステップの移行と、その後に追加されたステップ（既定 9 ステップ・builtin 10 個）が分かる書き方に直した。Phase 2 / Phase 8 の残存物に `outputs/`（`REPORT_DIR`）を加え、API の実行時データ置き場だと明記した
+- 2026-11-03: Phase 2.5 の PyPI 現行版を `0.1.3` → `0.3.0` に更新（PyPI JSON API で 0.1.3 / 0.2.0 / 0.3.0 が非 yank、0.1.0 / 0.1.2 が yank 済みと確認）

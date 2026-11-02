@@ -25,7 +25,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [analysis-core-and-web-ui](concepts/analysis-core-and-web-ui.md) — なぜ Web UI は analysis-core を使う consumer で、Web は JSON、CLI は観察用HTMLを持つのか
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
 - [pipeline](concepts/pipeline.md) — 解析パイプライン（extraction → embedding → 階層クラスタリング → 可視化）
-- [versioning-strategy](analyses/versioning-strategy.md) — 2025-12 に決めた v4 凍結 / v5 plugin 化の方針と、その後の実際（main で段階移行、v4.1.0 を 2026-10-13 に発行、v5 は未リリース）
+- [versioning-strategy](analyses/versioning-strategy.md) — 2025-12 に決めた v4 凍結 / v5 plugin 化の方針と、その後の実際（main で段階移行、v4.1.0 を 2026-10-13・v4.2.0 を 2026-10-26 に発行、v5 は未リリース）
 - [llm-providers](concepts/llm-providers.md) — OpenAI / Azure / Gemini / OpenRouter / LocalLLM
 - [local-dev-setup](concepts/local-dev-setup.md) — Docker 一発からネイティブ Rye/pnpm まで
 - [testing](concepts/testing.md) — pytest / Jest / Playwright と lint
@@ -42,7 +42,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [thinking-targets](concepts/thinking-targets.md) — 今、人間の思考と判断が要る論点のハブ (ラベル品質仕切り直し / 次の view 方向 / pipeline 境界 / 公開運用摩擦)
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況、current main との同期
 - [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類 (全体棚卸し)
-- [issue-backlog-audit-2026-10-12](analyses/issue-backlog-audit-2026-10-12.md) — **現行の全件 issue 棚卸し**（最新。2026-05〜06 の triage はこれに置換済み）
+- [issue-backlog-audit-2026-10-28](analyses/issue-backlog-audit-2026-10-28.md) — **現行の全件 issue 棚卸し**（最新。open 89 件を 2026-10-28 の main と照合。10-12 版 [issue-backlog-audit-2026-10-12](analyses/issue-backlog-audit-2026-10-12.md) と 2026-05〜06 の triage はこれに置換済み）。2026-11-02 に停滞 Issue 56 件の処し方を決め、30 件を close（[stale-issue-disposition-2026-11-02](analyses/stale-issue-disposition-2026-11-02.md)）
 - [kouchou-ai-docs-policy-history](analyses/kouchou-ai-docs-policy-history.md) / [kouchou-ai-docs-overhaul-2026-10](analyses/kouchou-ai-docs-overhaul-2026-10.md) — 本体 docs 方針の系譜と 2026-10 改善スプリントの総括
 - [faithful-aggregation-vs-deliberation-dynamics](concepts/faithful-aggregation-vs-deliberation-dynamics.md) — 忠実な集約 vs 熟議ダイナミクス（分析スタンスの核）
 - [dependabot-alerts-2026-10-14](analyses/dependabot-alerts-2026-10-14.md) — security / dependency 保守の観測（脆弱性の具体詳細は公開 wiki に書かない方針）
