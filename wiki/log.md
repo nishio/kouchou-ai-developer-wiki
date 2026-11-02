@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 14:08] filing-back | 棚卸しの承認済み操作を nishio が実行、30 件 close・コメント 19 件・PR #1177（open 96 → 66）
+
+- nishio が手元で `raw/issue-audit/2026-11-02-actions/run.sh` を実行し、49 操作すべて成功。close 30（A 9・B 12・統合 4・#285 #869 #1128 #56 #518）、親への転記 4、open 維持の追記 7、assignee 確認 8（期限 2026-11-16）。Cold List 運用ルールの PR は #1177、docs の openrouter 抜けは #1176
+- 状態を GitHub で照合（30 件 CLOSED、#454 コメントに PR URL あり）。analyses/stale-issue-disposition-2026-11-02 と 10-28 棚卸し、定例下書きに結果を反映
+- 次：#1176 / #1177 の merge、本人判断 3 件（#370 実データ、#879 時刻列、#994 実 LLM 1 回）、11-16 以降に無反応 assignee 分の既定処理（#337 色マップ・#643 build-arg 削除の PR、#324+#170 / #310 / #280 / #809 の close、#547 unassign）
+
 ## [2026-11-02 14:02] filing-back | 停滞 Issue 56 件の処し方を nishio が全件承認、PR #1176 作成、close / コメント投稿は手元実行待ち
 
 - レビュー用ページ（判断を保存できる artifact）で 56 件すべて「承認」。承認分のうち docs の抜け（#285: CLI の provider 一覧に openrouter）を PR #1176 に、Cold List 運用ルール（#454）を `docs/454-cold-list-policy` branch の commit に用意

@@ -184,3 +184,5 @@ close コメント案の末尾には、10-12 と同じ共通の一文を付け�
 
 - 2026-11-02: 初版。open 96 件を最終更新の古い順に並べ、停滞 42 件を A〜E に振り分け。GitHub への書き込みなし
 - 2026-11-02: nishio がレビュー用ページで 56 件すべてを「承認」（却下・保留・メモなし）。承認を受けて、#285 の docs 抜け（CLI クイックスタートの provider 一覧に openrouter）を [#1176](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1176) として作成。Cold List ルールを `PROJECTS.md` に書く commit は `docs/454-cold-list-policy` branch に用意（push と PR 作成は権限判定で止まり、nishio の実行待ち）。close 30 件・コメント 19 件（親への転記 4、open 維持の追記 7、assignee 確認 8）の投稿も同じ理由で nishio の実行待ち。実行用の script と dry-run は `raw/issue-audit/2026-11-02-actions/`
+- 2026-11-02（夜）: nishio が手元で実行 script を走らせ、49 操作すべて成功。close 30 件（A 9・B 12・C 4・#285・#869・#1128・#56・#518）、親 Issue への転記 4 件（#172 #345 #470 #997）、open 維持の追記 7 件（#556 #60 #445 #576 #221 #881 #170）、assignee 確認 8 件（#280 #324 #337 #454 #310 #547 #643 #809、期限 2026-11-16）。Cold List ルールの PR は [#1177](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1177)。open Issue は 96 → 66 件。残る本人判断は #370・#879・#994。実行記録は `raw/issue-audit/2026-11-02-actions/applied.jsonl`
+
