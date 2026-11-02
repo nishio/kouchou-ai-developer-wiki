@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-02 17:20] filing-back | 結果 JSON の層分離を v5.0 に前倒しする案（3 段に割り、契約だけ v5.0）
+
+- nishio「書籍の時期は保証がないので巻いて v5.0 に入れるのも手では」に、賛成の上で 3 段案を回答。第 1 段（集計ステップが公開用 artifact を書く）と第 2 段（公開 API とビューアの切替、旧レポートは読む時に変換）を v5.0 に、第 3 段（丸ごと埋め込みをやめる、静的書き出しの JSON 分離）を 5.x に。main `d2702d48` で範囲を確認（書き手 1 箇所、公開 API 1 本、ビューア 1 fetch、ファイル名参照は api 側約 10）
+- [[long-term-strategy-2026-11-02]] の柱 4・要約・直近 90 日を更新。採否は nishio。次：採用なら公開用 artifact の形の RFC から
+
 ## [2026-11-02 16:55] filing-back | 長期戦略の考察に「AI の叩き台であり決定ではない」を明記
 
 - nishio の指示で、[[long-term-strategy-2026-11-02]] のタイトル・summary・冒頭の注記に、この戦略案が AI（Claude Code）の叩き台であってチームの決定でも nishio の見解でもないことを明記。index と定例下書きの導線にも「AI の叩き台」を付けた
