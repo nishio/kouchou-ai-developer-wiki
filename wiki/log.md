@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 15:20] filing-back | マンダラートは 8 分割を意見 1 枚になるまで繰り返す案を記録
+
+- nishio の案を [[team-mirai-2025-open-dataset]] と [[open-decisions]] A13 に追記。既定の階層づくりは下から併合するため子の数が揃わない（このデータの上位 20 で 1〜38）ので、上から 8 つ以下に割る再帰分割が要る
+- 次：内部の節 約 3,000 個の表札を LLM で付けるか、深い段は代表意見で済ませるか
+
 ## [2026-11-07 15:00] ingest | チームみらい 2025 オープンデータを source 化し、可視化は個人 repo のカタログで試してから昇格を判断する方針を記録
 
 - [[team-mirai-2025-open-dataset]] を新規作成（Hugging Face の README を 11-07 に読解、CC BY 4.0、意見 21,348 件・20/400 クラスタ）。公開用 artifact `public_result.json` の項目とほぼ 1 対 1 に対応することを main `7253efcc` で照合
