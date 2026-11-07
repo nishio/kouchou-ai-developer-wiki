@@ -17,6 +17,11 @@
 - 前回「人間判断」とした #1128 の残件は、11-03 に #1181 として切り出し済みだったので [[sprint-group1-prs-2026-10-29]] に反映。[[security-maintenance]] の「直近の観測」の参照先を 11-02 / 11-07 まで延ばし、[[post-review-direction-issues-2026-10-29]] の表に 11-07 の状態を書き足した
 - 次：#1184 / #1185 のどちらを入れるかと merge（人間）、Dependabot の新しい alert の担当、kouchou-issue-audit キューの STATUS.md（10-12 のまま）と open-decisions B9 の扱い（人間）
 
+## [2026-11-07 16:30] filing-back | 可視化カタログに付箋ズームと階層リストの試作を追加
+
+- nishio の指示で、マンダラートの既定を 3×3 にし、付箋ズーム（升目ごとに 1 枚の付箋を置く semantic zoom）と階層リスト（検索つきの単体版）を broadlistening-visualizations に追加。どちらも `public_result.json` をそのまま読む
+- [[team-mirai-2025-open-dataset]] に作りを追記。次：上の段の表札を LLM で付けるか、引いた状態で表札が半分しか出ない点
+
 ## [2026-11-07 15:40] filing-back | 可視化カタログの個人 repo を作成し、意見マンダラートの試作を公開
 
 - nishio/broadlistening-visualizations（public、MIT）を作成。チームみらいのデータを `public_result.json` の形に変換し、8 つ以下に割るのを意見 1 枚になるまで繰り返した木（5,848 節・最大 7 段）を 9×9 / 3×3 で見せるページを GitHub Pages に置いた
