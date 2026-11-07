@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 06:45] filing-back | PR #1187（公開 API が公開用レポート結果を返す）と #1189（minimatch 11.0.1 / glob 14.0.2）を merge
+
+- merge 直前に両 PR の mergeable・CI 全件 pass・未解決スレッドなしを確認し、nishio の承認で順に admin merge。方式は直近の #1188・#1185・#1183 に合わせて squash。#1187 は main `3d7a8f9a`、#1189 は #1187 の後も mergeable で CI 結果が有効なことを確かめてから main `ddd0bacd`
+- main で走ったテスト・ビルド・CodeQL は green（`3d7a8f9a` の CodeQL は `ddd0bacd` の実行に場所を譲って cancelled）。minimatch・glob の alert は fixed、open alert は low 1 件（#949）だけ
+- [[meeting-report-draft]] の 2 項と [[security-maintenance]] の Updates に反映
+
 ## [2026-11-08 06:25] filing-back | PR #1184（Playwright のランナーを 24.04 に固定）を close
 
 - #1185（Playwright 1.64.1）の merge で同じ `runs-on` の行が `ubuntu-26.04` に変わり、#1184 は conflict して不要になっていた。nishio の判断で 11-08 06:19 JST に close し、理由をコメントした
