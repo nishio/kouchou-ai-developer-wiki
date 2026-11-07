@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-07 17:30	filing-back	living ページを 11-03 以降の GitHub の動きと照合（#1165 の指摘の片付けと #1186、main の CI が Playwright で赤い件、Dependabot 2 件、#1128 の残件は #1181）
 2026-11-07 15:40	filing-back	可視化カタログの個人 repo を作成し、意見マンダラートの試作を公開
 2026-11-07 15:20	filing-back	マンダラートは 8 分割を意見 1 枚になるまで繰り返す案を記録
 2026-11-07 15:00	ingest	チームみらい 2025 オープンデータを source 化し、可視化は個人 repo のカタログで試してから昇格を判断する方針を記録

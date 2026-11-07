@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 17:30] filing-back | living ページを 11-03 以降の GitHub の動きと照合（#1165 の指摘の片付けと #1186、main の CI が Playwright で赤い件、Dependabot 2 件、#1128 の残件は #1181）
+
+- 11-03 の照合以降の 4 commit と、GitHub の live state（open PR 12・open Issue 70・release v4.2.0・PyPI 0.3.0・Dependabot open 2）を突き合わせた。wiki に無かったのは、11-07 の [#1165] の修正（軽い 3 件を直し、重い 2 件を #1186 に）、#1162 / #1164 の main 取り込み、shingo-ohki の #1182〜#1185、11-05 に増えた Dependabot alert の 4 つ
+- main の E2E の定時実行は 10-31 から 8 回続けて失敗、11-07 の push では Client Tests も落ちた。原因は `ubuntu-latest` が Ubuntu 26.04 に移り、Playwright 1.57.0 が Chromium を入れられないこと。手当ては #1184 / #1185（未 merge）。[[meeting-report-draft]] の議題候補・[[testing]]・[[open-pr-status-2026-11-02]] に反映し、[[testing]] の Open Questions の「E2E は CI 非実行」が古いことを書き足した
+- 前回「人間判断」とした #1128 の残件は、11-03 に #1181 として切り出し済みだったので [[sprint-group1-prs-2026-10-29]] に反映。[[security-maintenance]] の「直近の観測」の参照先を 11-02 / 11-07 まで延ばし、[[post-review-direction-issues-2026-10-29]] の表に 11-07 の状態を書き足した
+- 次：#1184 / #1185 のどちらを入れるかと merge（人間）、Dependabot の新しい alert の担当、kouchou-issue-audit キューの STATUS.md（10-12 のまま）と open-decisions B9 の扱い（人間）
+
 ## [2026-11-07 15:40] filing-back | 可視化カタログの個人 repo を作成し、意見マンダラートの試作を公開
 
 - nishio/broadlistening-visualizations（public、MIT）を作成。チームみらいのデータを `public_result.json` の形に変換し、8 つ以下に割るのを意見 1 枚になるまで繰り返した木（5,848 節・最大 7 段）を 9×9 / 3×3 で見せるページを GitHub Pages に置いた

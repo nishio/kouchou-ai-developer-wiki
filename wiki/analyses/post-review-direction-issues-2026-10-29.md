@@ -13,8 +13,8 @@ sources:
 
 | 順序 | Issue | PR | 状態（2026-10-29） |
 |---|---|---|---|
-| 1. 賛否・新規性の属性ステップを CLI に | [#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158) | [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) | CI green、未 merge |
-| 2. 階層リストを詳細モードとして正式化 | [#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) | [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) | CI green、未 merge |
+| 1. 賛否・新規性の属性ステップを CLI に | [#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158) | [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) | CI green、未 merge（11-07 も未 merge） |
+| 2. 階層リストを詳細モードとして正式化 | [#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) | [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) | CI green、未 merge（2026-11-07 に merge、`7253efcc`） |
 | 3. 全 view ギャラリー | [#1160](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1160) | [#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167) | CI 実行中、未 merge |
 
 3 件とも着手前に nishio を assignee に設定し、`work/kouchou-ai-<issue>` の worktree で実装した。merge は人間の判断。
@@ -114,3 +114,4 @@ nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs か�
 - 2026-10-29: 4 節（関連研究の紹介ページ、[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）を追記。副産物の [#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168) は PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171)（`httpx` の宣言と polars 2 の `read_csv`）で同日に main に入った
 - 2026-11-02: 4 本（[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)〜[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167)、[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）とも未 merge で CI green。[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) は 10-29 の rebase 直後に CodeRabbit が Minor 5 件を付けていて未対応（docs の項目説明、無効化後の再実行で古い score 属性が残る、入力属性と生成 score の衝突、入力検証で落ちたとき古い出力が残る 2 件）。内訳と判断点は [[open-pr-status-2026-11-02]]
 - 2026-11-07: 2 節の [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) が merge（`7253efcc`、nishio の admin squash merge）。#1165 より先に入った。3 節の「#1166 が入ったらリストのスクリーンショットを撮り直す」が実行可能になった
+- 2026-11-07（照合）: 1 節の [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) は、CodeRabbit の指摘のうち軽い 3 件（docs の項目説明、入力検証で落ちたとき古い出力が残る 2 件）を 11-07 に直し（`9c8f0da9`、CI green、該当スレッドは解決済み）、設計判断の要る 2 件（無効化後の再集計、入力の同名属性の上書き）を Issue [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) に切り出した。冒頭の表の状態列に 11-07 の状態を書き足した

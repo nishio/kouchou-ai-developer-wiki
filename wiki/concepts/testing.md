@@ -79,11 +79,12 @@ sources:
 
 ## Open Questions
 
-- E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認
+- E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認（2026-11-07 追記: この前提は古い。main の `e2e-tests.yml` は対象パスを触る PR と毎日 0 時 UTC の定時で Playwright を回している。下の「2026-10-05 検証結果の保証範囲を分ける」も参照）
 - Biome の CI ゲーティングは PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で導入済み（2026-10-09 時点の「無い」は解消）
 
 ## Updates
 
+- 2026-11-07: GitHub の Actions と照合。workflow は 23 本（10-18 時点は 22 本）。`ubuntu-latest` が Ubuntu 26.04 に移り、Playwright 1.57.0 が Chromium を入れられないため、main の E2E Tests の定時実行は 10-31 から、Client Tests（viewer states）は 11-07 の push から落ちている。手当ては shingo-ohki の PR [#1184](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1184)（ランナーを 24.04 に固定）と [#1185](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1185)（Playwright 1.64.1 に更新）で、11-07 時点で未 merge。Open Questions の「E2E は CI 非実行」に、今は CI で回っていることを書き足した
 - 2026-10-21: main `b71e0b79` と照合し、API unit・analysis-core E2E・手元 smoke の実行前提（analysis-core の導入、必須キー、`sys.executable` で起動するようになった後の smoke の skip 条件）を訂正。`make test/api` は CI と同じ条件ではないことを明記し、既定の代替として並べるのをやめた。あわせて、UMAP の warning を許容するという「現在の運用判断」を、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) で seed を外した後の現状（warning は出ず、再実行で結果が揺れる）に訂正
 - 2026-10-18: main `083593ba` と照合。Biome CI 導入済み（[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）、workflow 22 本、analysis-core は rye ではなく素の pytest、に訂正
 - 2026-10-09: Biome が hook / CI のどこでも強制されておらず main の全体 lint が落ちている事実と、その由来を [[biome-lint-main-drift-2026-10-09]] に記録

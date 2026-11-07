@@ -27,7 +27,7 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 
 - Dependabot は依存パッケージの既知 advisory を alert 化し、場合により自動更新 PR を出す GitHub の機能。
 - alert は **GitHub Security タブの live state** であり、main / open PR / issue の観測だけでは拾えない。security / dependency 保守では独立に定期確認する。
-- 直近の live state 観測は [[dependabot-alerts-2026-10-14]]（観測時点の件数・優先度判断はそちらに集約し、この hub には転記しない）。
+- 直近の live state 観測は [[dependabot-alerts-2026-10-14]]（観測時点の件数・優先度判断はそちらに集約し、この hub には転記しない）。2026-11-07 追記: それより後の観測は、11-02 が [[long-term-strategy-2026-11-02]] の観測表、11-07（open 2 件、うち 11-05 に出た 1 件は対応 PR / Issue なし）が [[meeting-report-draft]] の議題候補にある。
 
 ## 確認導線（どこを見るか）
 
@@ -73,3 +73,4 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 - 2026-10-21: 公開境界の根拠の参照先を [[contributing]] から、この wiki repo の `CLAUDE.md` と [[wiki-driven-workflow]] に訂正（contributing には公開境界の節が無い）
 - 2026-10-26: 自分たちで見つけた脆弱性を、先行連絡と猶予を置いてから公開した初めての例として [[user-api-key-leak-2026-10]] を追加。同じ猶予期間に保留していた公開範囲・インフラなどの修正も同日に PR にした
 - 2026-10-29: Dependabot の high 3 件と medium 1 件を override で塞いだ（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）。メジャー版をまたぐ override の確かめ方は [[gotchas]] に追記。残る low 1 件は修正版が未公開なので、方針どおり dismiss せず [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で追う
+- 2026-11-07: 「直近の live state 観測」の参照先が 10-14 のままだったので、11-02 と 11-07 の観測の置き場を書き足した
