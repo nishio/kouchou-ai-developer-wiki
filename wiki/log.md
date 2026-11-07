@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 22:25] filing-back | follow-redirects の override を 1.16.2 に上げる PR #1188（main の Dependabot Updates が 10-23 から失敗していた件）
+
+- main の「Dependabot Updates」workflow が 10-23 から毎回 `security_update_not_possible` で失敗していた。原因は #1153 で root の `pnpm.overrides` を 1.16.1 に完全固定していて、10-25 公開の 1.16.2 を Dependabot が解決できなかったこと。Playwright の件が #1185 の merge で解けた後、main の赤はこれだけ
+- override を 1.16.2 にし、lockfile は follow-redirects の 4 箇所だけ手で書き換えた（`pnpm install --lockfile-only` は無関係な再解決を混ぜる）。`--frozen-lockfile` と `http-server` の静的配信で確認し、PR #1188 を作成。merge は人間の判断
+- 完全固定 override の扱いを [[security-maintenance]] の Open Questions と [[gotchas]] に、現状を [[meeting-report-draft]] に反映
+
 ## [2026-11-07 21:50] filing-back | 付箋ズームを事前計算の方式で作り直し（拡大で震える問題）
 
 - 最初の版は画面の升目ごとに付箋を毎フレーム選び直していて、拡大すると震えた。オリジナル（canvas_kozaneba_prototype）を読んで、格子＋螺旋で全意見の位置を固定し、拡大率の段ごとに優先度順の衝突判定で「出始める拡大率」を事前計算する方式に変えた

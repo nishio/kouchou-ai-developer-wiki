@@ -67,6 +67,7 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 
 - Dependabot alerts の確認頻度と担当を、週次の定期確認として固定するか
 - CodeQL action runtime（node バージョン等）の deprecation 保守を、誰がいつ見るかの運用化
+- `pnpm.overrides` の完全固定（例 `"follow-redirects": "1.16.1"`）は、次の修正版が出るたびに Dependabot の security update が `security_update_not_possible` で失敗し、人間が手で上げるまで main の Actions に赤が残る（2026-10-23〜11-07 に実際に起きた）。vulnerable range に合わせた範囲 override（[[gotchas]] の定石）に揃えれば Dependabot が自力で lockfile を上げられるのかは未検証。どちらに寄せるかは未決（PR [#1188](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1188)）
 
 ## Updates
 
@@ -74,3 +75,4 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 - 2026-10-26: 自分たちで見つけた脆弱性を、先行連絡と猶予を置いてから公開した初めての例として [[user-api-key-leak-2026-10]] を追加。同じ猶予期間に保留していた公開範囲・インフラなどの修正も同日に PR にした
 - 2026-10-29: Dependabot の high 3 件と medium 1 件を override で塞いだ（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）。メジャー版をまたぐ override の確かめ方は [[gotchas]] に追記。残る low 1 件は修正版が未公開なので、方針どおり dismiss せず [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) で追う
 - 2026-11-07: 「直近の live state 観測」の参照先が 10-14 のままだったので、11-02 と 11-07 の観測の置き場を書き足した
+- 2026-11-07: main の「Dependabot Updates」workflow が 10-23 から `security_update_not_possible` で失敗し続けていた原因は、[#1153](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1153) の override が follow-redirects を 1.16.1 に完全固定していて、10-25 公開の 1.16.2 を Dependabot が解決できなかったこと。Dependabot は override を書き換えられないので自動 PR は出ない。override を 1.16.2 に上げる PR [#1188](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1188) を出した（未 merge）。完全固定の override の扱いは Open Questions に追加、手順は [[gotchas]]
