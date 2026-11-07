@@ -65,12 +65,21 @@ sources:
 
 可視化（付箋ズーム・ツリー表示・マンダラートなど）は、このデータを共通の題材にして **nishio の個人 repo で作ってカタログ化し、kouchou-ai 本体に入れるかはそこで試してから決める**。詳細は [[open-decisions]] A13。
 
+## 個人 repo のカタログ
+
+2026-11-07 に [nishio/broadlistening-visualizations](https://github.com/nishio/broadlistening-visualizations)（public、コードは MIT、デモは GitHub Pages）を作った。
+
+- 変換スクリプトでこのデータを `public_result.json` の形にし、可視化はそれを読む
+- 最初の項目は **意見マンダラート**（[デモ](https://nishio.github.io/broadlistening-visualizations/mandalart/)）。1536 次元の埋め込み（cosine）を上から k-means（k=8）で割り続け、5,848 節・最大 7 段（段ごとの節の数は 1, 8, 64, 509, 2811, 2279, 170, 6）。表札は各まとまりの中心に最も近い意見（LLM 不使用）で、上の段ほど「〜が不足している」のような一般的な文になる。9×9 と 3×3（スマホ）、日英の切替、最下層から元の PR へのリンク
+- カタログには付箋ズーム（未着手）と階層リスト（本体に入った）も最終確認日つきで載せた
+
 ## Open Questions
 
-- 個人 repo のカタログの置き場所（repo 名）と、本体 docs の関連研究ページ（PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)、未 merge）からのリンクの張り方
+- 本体 docs の関連研究ページ（PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)、未 merge）から個人 repo のカタログへのリンクの張り方
 - マンダラート用に 8 分割を再帰的に繰り返した木を、このデータセットに別の設定として足すか、カタログ側だけに置くか。深い段の表札を LLM で付けるか代表意見で済ませるか
 
 ## Updates
 
 - 2026-11-07: 初版作成
 - 2026-11-07: マンダラートについて nishio の案（8 分割を意見 1 枚になるまで繰り返す）と、既定の階層づくりでは子の数が揃わないこと（このデータで 1〜38）を追記
+- 2026-11-07: 個人 repo nishio/broadlistening-visualizations を作り、意見マンダラートの試作を公開したことを追記

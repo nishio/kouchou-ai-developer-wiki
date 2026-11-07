@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 15:40] filing-back | 可視化カタログの個人 repo を作成し、意見マンダラートの試作を公開
+
+- nishio/broadlistening-visualizations（public、MIT）を作成。チームみらいのデータを `public_result.json` の形に変換し、8 つ以下に割るのを意見 1 枚になるまで繰り返した木（5,848 節・最大 7 段）を 9×9 / 3×3 で見せるページを GitHub Pages に置いた
+- [[team-mirai-2025-open-dataset]]・[[open-decisions]] A13 に所在と作りを追記
+- 次：上の段の表札を LLM で付けるか、付箋ズームの着手
+
 ## [2026-11-07 15:20] filing-back | マンダラートは 8 分割を意見 1 枚になるまで繰り返す案を記録
 
 - nishio の案を [[team-mirai-2025-open-dataset]] と [[open-decisions]] A13 に追記。既定の階層づくりは下から併合するため子の数が揃わない（このデータの上位 20 で 1〜38）ので、上から 8 つ以下に割る再帰分割が要る
