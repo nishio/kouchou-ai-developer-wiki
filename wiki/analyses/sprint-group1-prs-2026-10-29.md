@@ -16,7 +16,7 @@ sources:
 | [#493](https://github.com/digitaldemocracy2030/kouchou-ai/issues/493) 散布図ホイール誤操作 | [#1162](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1162) | public-viewer（5 ファイル） | Refs（操作感は人間がデモ環境で判断） | green |
 | [#1130](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1130) 接続チェックのエラー詳細 | [#1163](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1163) | api + admin（7 ファイル） | Closes | green |
 | [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) 作成前の費用概算 | [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) | admin + カタログ（10 ファイル） | Refs（係数の較正が要る） | e2e が旧文言「費用：目安なし」を期待して失敗 → 期待値を更新して再実行 |
-| [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) 再試行のトークン数 | [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1154)（merge 済み） | 別セッションが 10-29 朝に対応 | 「関連して残っている点」2 つは未着手（2026-11-07 追記: 11-03 に Issue [#1181](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1181) へ切り出された） | — |
+| [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) 再試行のトークン数 | [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1154)（merge 済み） | 別セッションが 10-29 朝に対応 | 「関連して残っている点」2 つは未着手（2026-11-07 追記: うち JSON の形で返る拒否の 1 件は 11-03 に Issue [#1181](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1181) へ切り出された。finish_reason の件は #1181 の本文で大部分が解決済みとされている） | — |
 
 **merge 順の注意**: [#1163](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1163) と [#1164](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1164) は `CreateReportConfirmation.tsx` とそのテストを両方とも触る（前者はエラー表示、後者は費用欄）。どちらも main には merge 可能だが、片方を merge した後にもう片方は rebase が要る。
 

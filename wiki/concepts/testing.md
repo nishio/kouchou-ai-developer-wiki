@@ -38,10 +38,10 @@ sources:
 
 ## CI ワークフロー
 
-`.github/workflows/` 配下は 2026-10-18 時点で 22 本。テスト・lint 系の主なもの:
+`.github/workflows/` 配下は 2026-10-18 時点で 22 本（2026-11-07 追記: 23 本。10-26 に [#1132](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1132) で `infra-checks.yml` が増えた。Docker のビルドコンテキストの除外設定と、コメントコマンドの権限条件をスクリプトで検査する）。テスト・lint 系の主なもの:
 
 - Python: `server-pytest.yml`（apps/api）、`analysis-core-ci.yml`（analysis-core の pytest + coverage）、`ruff-check.yml`、`api-docker-dependency-smoke.yml`
-- フロント: `client-jest.yml` / `client-admin-jest.yml`（Jest）、`client-build.yml` / `client-admin-build.yml`（build + `biome ci`）
+- フロント: `client-jest.yml` / `client-admin-jest.yml`（Jest。2026-11-07 追記: `client-jest.yml`（name: Client Tests）は Jest の後に Playwright の Chromium を入れ、`playwright.viewer-states.config.ts` で API なしの viewer states も確かめる。そのため Playwright のインストール失敗でも落ちる）、`client-build.yml` / `client-admin-build.yml`（build + `biome ci`）
 - E2E: `e2e-tests.yml`（Playwright）、`windows-setup-script.yml` / `windows-real-machine-e2e.yml`、`setup-scripts-env.yml`（setup スクリプトと `.env.example` の整合）
 - その他: `codeql.yml`、`docs.yml`、`publish-analysis-core.yml`、`azure-deploy.yml`、Issue/assign 系 bot
 
@@ -85,6 +85,7 @@ sources:
 ## Updates
 
 - 2026-11-07: GitHub の Actions と照合。workflow は 23 本（10-18 時点は 22 本）。`ubuntu-latest` が Ubuntu 26.04 に移り、Playwright 1.57.0 が Chromium を入れられないため、main の E2E Tests の定時実行は 10-31 から、Client Tests（viewer states）は 11-07 の push から落ちている。手当ては shingo-ohki の PR [#1184](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1184)（ランナーを 24.04 に固定）と [#1185](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1185)（Playwright 1.64.1 に更新）で、11-07 時点で未 merge。Open Questions の「E2E は CI 非実行」に、今は CI で回っていることを書き足した
+- 2026-11-07（査読を受けて）: 「CI ワークフロー」節の本数に 23 本目の `infra-checks.yml` を、`client-jest.yml` が Jest だけでなく viewer states の Playwright も回すことを書き足した（上の「Client Tests（viewer states）が落ちている」の理由）
 - 2026-10-21: main `b71e0b79` と照合し、API unit・analysis-core E2E・手元 smoke の実行前提（analysis-core の導入、必須キー、`sys.executable` で起動するようになった後の smoke の skip 条件）を訂正。`make test/api` は CI と同じ条件ではないことを明記し、既定の代替として並べるのをやめた。あわせて、UMAP の warning を許容するという「現在の運用判断」を、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) で seed を外した後の現状（warning は出ず、再実行で結果が揺れる）に訂正
 - 2026-10-18: main `083593ba` と照合。Biome CI 導入済み（[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）、workflow 22 本、analysis-core は rye ではなく素の pytest、に訂正
 - 2026-10-09: Biome が hook / CI のどこでも強制されておらず main の全体 lint が落ちている事実と、その由来を [[biome-lint-main-drift-2026-10-09]] に記録

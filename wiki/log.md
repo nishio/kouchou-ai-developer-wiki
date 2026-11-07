@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 19:00] filing-back | 11-07 の照合を査読で見直し、open PR の数（11-02 は 10 本）・#1176 の未解決指摘・Playwright の件の範囲・Dependabot が自動 PR を出せないことを訂正
+
+- [[open-pr-status-2026-11-02]] の「open PR 8 本」は観測時点から誤りで、#1176・#1177 も open の 10 本だった（[[long-term-strategy-2026-11-02]] の 10 が正しい）。元の文は残して訂正を追記し、title は表の範囲（10-28〜29 作成の 8 本）がわかる形にした。11-07 の 12 本は 10 本から #1166 が抜けて 3 本増えた数
+- #1176 は 11-07 の修正 push の後に CodeRabbit の Major 指摘が付いて未解決（反映済みは #1177 だけ）。Playwright の失敗は runner のイメージが原因で、main の取り込みと関係なく 10-31 以降の PR が落ちる（#1183 は初回から）。11-05 の Dependabot の alert は自動 PR が `security_update_not_possible` で出せず、手で上げる必要がある。[[meeting-report-draft]] の第 1 群・#1128（→ #1181）の項も 11-07 の状態に揃えた
+- [[testing]] に 23 本目の `infra-checks.yml` と、Client Tests が viewer states の Playwright も回すことを追記。[[security-maintenance]] の hub から件数を外し、[[post-review-direction-issues-2026-10-29]] の #1167 の行、[[stale-issue-disposition-2026-11-02]] の #250（#1166 merge 後も open）を更新
+- 次：#250 を close するか、#1176 の指摘の対応、Dependabot の high alert を手で上げる担当（人間）。[[index]] 冒頭の「#1023 の a/b を選ぶ」は 10-26 に決着済みで古い（curated ページなので人間判断）
+
 ## [2026-11-07 17:30] filing-back | living ページを 11-03 以降の GitHub の動きと照合（#1165 の指摘の片付けと #1186、main の CI が Playwright で赤い件、Dependabot 2 件、#1128 の残件は #1181）
 
 - 11-03 の照合以降の 4 commit と、GitHub の live state（open PR 12・open Issue 70・release v4.2.0・PyPI 0.3.0・Dependabot open 2）を突き合わせた。wiki に無かったのは、11-07 の [#1165] の修正（軽い 3 件を直し、重い 2 件を #1186 に）、#1162 / #1164 の main 取り込み、shingo-ohki の #1182〜#1185、11-05 に増えた Dependabot alert の 4 つ

@@ -27,7 +27,7 @@ CodeQL と Dependabot は補完関係にある。CodeQL は **自分たちのコ
 
 - Dependabot は依存パッケージの既知 advisory を alert 化し、場合により自動更新 PR を出す GitHub の機能。
 - alert は **GitHub Security タブの live state** であり、main / open PR / issue の観測だけでは拾えない。security / dependency 保守では独立に定期確認する。
-- 直近の live state 観測は [[dependabot-alerts-2026-10-14]]（観測時点の件数・優先度判断はそちらに集約し、この hub には転記しない）。2026-11-07 追記: それより後の観測は、11-02 が [[long-term-strategy-2026-11-02]] の観測表、11-07（open 2 件、うち 11-05 に出た 1 件は対応 PR / Issue なし）が [[meeting-report-draft]] の議題候補にある。
+- 直近の live state 観測は [[dependabot-alerts-2026-10-14]]（観測時点の件数・優先度判断はそちらに集約し、この hub には転記しない）。2026-11-07 追記: それより後の観測は、11-02 が [[long-term-strategy-2026-11-02]] の観測表、11-07 が [[meeting-report-draft]] の議題候補にある。
 
 ## 確認導線（どこを見るか）
 
