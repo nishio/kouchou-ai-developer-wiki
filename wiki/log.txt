@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-11-07 21:50	filing-back	付箋ズームを事前計算の方式で作り直し（拡大で震える問題）
+2026-11-07 20:30	filing-back	結果 JSON の層分離 第 2 段を PR #1187 に（公開 API が public_result.json を返す）
 2026-11-07 19:00	filing-back	11-07 の照合を査読で見直し、open PR の数（11-02 は 10 本）・#1176 の未解決指摘・Playwright の件の範囲・Dependabot が自動 PR を出せないことを訂正
 2026-11-07 17:30	filing-back	living ページを 11-03 以降の GitHub の動きと照合（#1165 の指摘の片付けと #1186、main の CI が Playwright で赤い件、Dependabot 2 件、#1128 の残件は #1181）
 2026-11-07 16:30	filing-back	可視化カタログに付箋ズームと階層リストの試作を追加
