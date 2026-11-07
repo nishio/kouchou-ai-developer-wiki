@@ -139,6 +139,7 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 - 2026-10-29: 階層リストは「全部読む」詳細モードとして PR [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166)（[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159)）で位置づけ直し（既定は散布図のまま）
 - 2026-11-07: [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) が main に merge（`7253efcc`）、[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) は close。**A13 のうち階層リストの位置づけは決着**し、残るのは付箋表示の置き場の確定と書き出し契約（公開用 artifact `public_result.json` との関係）。階層表示系の [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) は着手待ちが解け、[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) は最下層の出典リンクでどこまで満たせたかの照合が残る
+- 2026-11-07: nishio の方針。**付箋ズーム・ツリー表示・マンダラートなどの可視化は、nishio の個人 repo で作ってカタログ化し、本体に入れるかはそこで試してから決める**。共通の題材は [[team-mirai-2025-open-dataset]]（Hugging Face、CC BY 4.0、意見 21,348 件、20/400 クラスタ）。このデータは公開用 artifact `public_result.json` の項目とほぼ 1 対 1 に対応するので、可視化は `public_result.json` の形を読む作りにして、データセットからは変換スクリプト 1 本で揃える（本体に移すときに plugin を書くだけで済むように）。これで 10-29 の暫定の意向（standalone HTML と Web plugin の両方）は「まず個人 repo、Web plugin は昇格の判断後」に置き換わる。マンダラート（[#880](https://github.com/digitaldemocracy2030/kouchou-ai/issues/880)）はデータの階層が [20, 400] なので、[8, 64] での切り直しが要る
 - 2026-10-29: 付箋表示の置き場について nishio の暫定の意向は **「CLI の standalone HTML と、Web（公開ビューア）の可視化 plugin の両方」**（Kozaneba 側には置かない）。同じ結果 JSON から描く前提なので、先に決めるのは結果 JSON からの書き出し契約（意見・座標・クラスタの経路・表札）で、描画は canvas 試作の知見を両方で使う。確定の判断と着手順は未定（[[post-review-product-direction-2026-10-28]] の順序 4）
 
 ### A14. tokoroten の賛否分離 2 手法（センチメント次元の付与・DivCon）の取り込み
@@ -292,3 +293,4 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 - 2026-10-29: A14 の紹介ページを PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) として作成。2026-06 の「実験的機能カタログ」提案（[[experimental-features-catalog-proposal-2026-06-03]]）の最終確認日ルールを、この 3 件で初めて本体 docs に実装した形
 - 2026-11-03: B9 に、[#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586) が 2026-11-02 に close（completed）されたことを反映（GitHub の close コメントで確認）。B9 を残すか外すかは未判断
 - 2026-11-07: A13 に [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) の merge を反映（階層リストの位置づけは決着、付箋表示の置き場が残る）
+- 2026-11-07: A13 に、可視化を個人 repo のカタログで試してから本体への昇格を判断する方針と、共通データ [[team-mirai-2025-open-dataset]] を追記

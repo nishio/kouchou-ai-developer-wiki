@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 15:00] ingest | チームみらい 2025 オープンデータを source 化し、可視化は個人 repo のカタログで試してから昇格を判断する方針を記録
+
+- [[team-mirai-2025-open-dataset]] を新規作成（Hugging Face の README を 11-07 に読解、CC BY 4.0、意見 21,348 件・20/400 クラスタ）。公開用 artifact `public_result.json` の項目とほぼ 1 対 1 に対応することを main `7253efcc` で照合
+- [[open-decisions]] A13・[[meeting-report-draft]]・[[experimental-features-catalog-proposal-2026-06-03]] に、付箋ズーム・ツリー表示・マンダラートを個人 repo でカタログ化してから本体への昇格を判断する方針を追記
+- 次：個人 repo の置き場所と変換スクリプト、マンダラート用の [8, 64] の切り直し
+
 ## [2026-11-07 14:20] filing-back | 階層リストの詳細モード化（PR #1166）を main に merge
 
 - nishio の指示で PR #1166 を admin squash merge（`7253efcc`）、Issue #1159 は自動 close。CI は 10-29 時点で green、その後の main の変更と触るファイルが重ならず merge-tree で衝突なしを確認

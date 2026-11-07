@@ -95,3 +95,4 @@ sources:
 ## Updates
 
 - 2026-10-29: この提案の最初の実物として、本体 docs に `docs/development/related-research.md`（関連研究：本体未収録の実験的手法）を PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) で追加（未 merge）。初期エントリ候補のうち DivCon と Farbrain にセンチメント次元の付与を加えた 3 件を、「所在 / 状態 / 担当 / 最終確認日」つきで載せた。LLM grouping は本体収録済みなので対象外、マンダラート可視化は未掲載。ディレクトリは `experimental-features/` ではなく既存の `development/` 配下の 1 ページにし、増えてから分ける。経緯は [[post-review-direction-issues-2026-10-29]]
+- 2026-11-07: 可視化について、nishio の個人 repo にカタログを作り、本体に入れるかはそこで試してから決める方針になった。共通の題材は [[team-mirai-2025-open-dataset]]。最終確認日を必須にする規則はこのカタログにも適用する（[[open-decisions]] A13）

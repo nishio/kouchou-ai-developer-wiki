@@ -116,11 +116,12 @@ sources:
 
 - **2026-10 の経緯の振り返りと、残った 2 論点**（[[retrospective-2026-10-28]]）: 大規模レビュー 4 段（修正 PR 100 本超、全件 merge 済み）→ 鍵漏洩の発見・猶予・公開 → v4.2.0 までを 1 本の流れとして整理した。判断を仰ぎたいのは次の 2 つ。
   - 宙に浮いている可視化 2 つ（チームみらいで作った階層リスト＝ドリルダウンのツリー表示、ズームできる付箋表示）の扱い。階層リストは plugin として移植済みなので「詳細モード」の正式 view にするか、付箋表示は CLI の standalone HTML として出して読み比べる案を提案
-  - 考察 [[post-review-product-direction-2026-10-28]]：既定は散布図のまま、view を目的別 plugin として増やし、賛否・新規性・自分の投稿を「意見ごとの属性」として CLI の任意ステップで足す。順序は属性 → 階層リストの詳細モード化 → 全 view ギャラリー → 付箋表示の CLI artifact → 埋め込み重み付け → DivCon。**1〜3 は 10-29 に PR 化済み**（上の項目）。10-29 の nishio 判断: 付箋表示は standalone HTML と Web plugin の両方（暫定）、tokoroten の 2 手法は本体に入れず docs で「成熟していない関連研究」として紹介（入れるとしても CLI から）。判断が残るのは [#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) の「ウケない」仮説を測り直す計測を足すか
+  - 考察 [[post-review-product-direction-2026-10-28]]：既定は散布図のまま、view を目的別 plugin として増やし、賛否・新規性・自分の投稿を「意見ごとの属性」として CLI の任意ステップで足す。順序は属性 → 階層リストの詳細モード化 → 全 view ギャラリー → 付箋表示の CLI artifact → 埋め込み重み付け → DivCon。**1〜3 は 10-29 に PR 化済み**（上の項目）。10-29 の nishio 判断: 付箋表示は standalone HTML と Web plugin の両方（暫定）、tokoroten の 2 手法は本体に入れず docs で「成熟していない関連研究」として紹介（入れるとしても CLI から）。判断が残るのは [#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) の「ウケない」仮説を測り直す計測を足すか。11-07：階層リストは [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) で main 入り。付箋ズーム・マンダラートなどの可視化は、チームみらいのオープンデータ（[[team-mirai-2025-open-dataset]]）を共通の題材に nishio の個人 repo でカタログ化し、本体に入れるかはそこで試してから決める方針に
   - tokoroten の賛否分離 2 手法（センチメント次元の付与、DivCon）の取り込み方。まず実験的機能カタログに所在を固定し、賛否スコアを「意見ごとの属性」として CLI に入れる順序を提案。本体に入れるか自体と主担当は人間判断
 
 ## Updates
 
+- 2026-11-07: 議題候補の可視化の項に、個人 repo のカタログで試してから昇格を判断する方針を追記
 - 2026-11-07: [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) の merge（`7253efcc`）を反映し、#1167 の撮り直しと #60 の着手可を「次」に
 - 2026-11-03（2 周目）: 指定カテゴリ分類の項の「[#679](https://github.com/digitaldemocracy2030/kouchou-ai/issues/679) を統合候補」を 11-02 の close（completed、残件は [#997](https://github.com/digitaldemocracy2030/kouchou-ai/issues/997)）に直し、10-28 棚卸しの項に close 候補 4 件のその後（3 件 close、[#809](https://github.com/digitaldemocracy2030/kouchou-ai/issues/809) は assignee 確認中）を 1 行足した
 - 2026-11-03: GitHub の live state と照合し、11-02 の棚卸しで close 済みの [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56)・[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128)・[#507](https://github.com/digitaldemocracy2030/kouchou-ai/issues/507)・[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)・[#323](https://github.com/digitaldemocracy2030/kouchou-ai/issues/323)・[#374](https://github.com/digitaldemocracy2030/kouchou-ai/issues/374) を「open のまま」「close するか」の記述と議題候補から外した。情報鮮度を 11-02 の議事録再取得・Slack 同期に合わせた

@@ -179,6 +179,7 @@ slack-yokohama-hack-2026-06-26	source	sources/slack-yokohama-hack-2026-06-26.md	
 source-code	source	sources/source-code.md	kouchou-ai リポジトリのソースコード本体 — docs だけでは見えない実装ギャップを取るための一次参照
 tea-latte-opinion-pilot-2026-10-10	source	sources/tea-latte-opinion-pilot-2026-10-10.md	午後の紅茶TEA LATTE二商品の公開投稿を195件から1485件へ拡張し、比較・両方への評価98件を整理した2026-10-10の収集記録
 tea-latte-public-demo-analysis-2026-10-10	source	sources/tea-latte-public-demo-analysis-2026-10-10.md	午後の紅茶の公開投稿候補548件を広聴AIで処理し、原文照合後の377意見で公開デモを作成した記録
+team-mirai-2025-open-dataset	source	sources/team-mirai-2025-open-dataset.md	nishio が Hugging Face に CC BY 4.0 で公開した、チームみらい 2025 参院選の政策提案 PR 9,688 件 → 課題 18,967 → 意見 21,348 件の広聴AI 分析結果（2 次元座標・20/400 クラスタ・表札・密度・出典 URL・埋め込み・英訳）。kouchou-ai の公開用 artifact とほぼ 1 対 1 に対応し、付箋ズーム・ツリー表示・マンダラートなどの可視化を個人 repo で試す共通データとして使う
 tttc-spectral-clustering-code-observation-2026-05-25	source	sources/tttc-spectral-clustering-code-observation-2026-05-25.md	TTTC commit `5e0a439` と広聴AI commit `53f1209` の clustering 実装比較。TTTC は embedding を UMAP 2D に落としてから SpectralClustering を掛け、`n_neighbors` は `min(n_samples - 1, 10)`
 website-kouchou-ai-case-live-2026-06-30	source	sources/website-kouchou-ai-case-live-2026-06-30.md	DD2030 website 側の広聴AI活用事例ページ live state。`src/kouchou-ai/case.vto` が直接更新先で、#208/#216/#125/#123 が #564 の外部正本候補と分類リスクに関係する
 weekly-log-2026-05-06	source	sources/weekly-log-2026-05-06.md	nishio/oss_weekly_reporter の週次ダンプ (2026-05-06 〜 2026-05-13) — Slack/GitHub の生ログ
