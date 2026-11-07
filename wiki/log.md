@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 22:52] filing-back | minimatch 11.0.1 / glob 14.0.2 の PR #1189（override を範囲形式に揃える）
+
+- 完全固定の版を上げるだけでは壊れた: minimatch 11 は jest の glob 7 を壊し、brace-expansion 5.0.12 の完全固定は戻ってくる minimatch 3 / 5 を壊す。minimatch・brace-expansion・glob の override を alert の範囲に合わせた範囲形式に変え、依存元ごとに宣言どおりの版（すべて advisory 0 件）が入るようにした
+- lockfile は対象パッケージとその依存の変更だけに絞り、frozen install・jest 2 app・build 3 本・archiver の zip 作成で確認。PR #1189 を作成、merge は人間の判断
+- 壊れ方と確かめ方を [[gotchas]] に、現状を [[meeting-report-draft]] と [[security-maintenance]] に反映
+
 ## [2026-11-07 22:34] filing-back | PR #1188 を merge（follow-redirects 1.16.2）。同日に medium alert 2 件（minimatch・glob）が新規
 
 - CI 全件 green と CodeRabbit の未解決指摘なしを確認し、nishio が admin merge（main `dd31bebe`）。follow-redirects の alert は fixed。作業 worktree と branch は削除
