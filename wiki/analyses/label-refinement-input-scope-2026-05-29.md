@@ -58,3 +58,5 @@ refinement 4 mode (`none / setwise / contrast / balanced`) のどれも、この
 
 - 2026-05-29: 初版作成。Claude judge による bundle 検査中に、4 mode すべてが上流の誤ラベルを保存していることに気付き、`hierarchical_label_refinement.py` を読んで rep args が入力に含まれていないことを確認。設計判断として記録
 - 2026-05-29: Open Questions として残した「polish only スコープで OK か」「上流品質保証」について、Slack で人間判断が出た。方針は [[label-coverage-policy-2026-05-29]] に集約。要点は「refinement の入力を増やすより先に、上流 `hierarchical_initial_labelling` の sampling 戦略 (現状 `sampling_num=10` の完全ランダム) を見直す方が本質的」
+
+- 2026-11-07: 2026-05-29 Updates の `sampling_num=10` は実行経路の区別が不足していた。CLI の未指定時は spec の 3 件、管理画面/API は 30 件、`PipelineOrchestrator.from_dict` と builtin plugin の fallback は 10 件である。sampling 戦略を見直す方針と、件数の訂正を分ける（根拠: kouchou-ai `upstream/main@085366779` の `packages/analysis-core/src/analysis_core/specs/hierarchical_specs.json:48,58`、[[source-code]]:64-66,120、[[label-quality]] の 2026-10-21 Updates）。

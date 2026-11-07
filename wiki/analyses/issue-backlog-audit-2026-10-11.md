@@ -3,7 +3,7 @@ title: "古い順 Issue 10 件の棚卸し 2026-10-11"
 type: analysis
 status: superseded
 superseded_by: issue-backlog-audit-2026-10-12
-summary: "古い順 open Issue 先頭10件を current main@c297bc97 に照合した棚卸し。未解決5 (#11/#44/#60/#79/#121)、一部解決3 (#52/#55/#143)、要件再確認1 (#104)。#52 は階層図連動が PR #927 で main 反映済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、#11/#79 は作成前確認パネルに費用/時間欄枠はあるが『目安なし』固定"
+summary: "古い順 open Issue 先頭10件を current main@c297bc97 に照合した棚卸し。未解決6 (#11/#44/#56/#60/#79/#121)、一部解決3 (#52/#55/#143)、要件再確認1 (#104)。#52 は階層図連動が PR #927 で main 反映済み、#55 は viewer 読込済みだが admin 編集 UI 欠落、#11/#79 は作成前確認パネルに費用/時間欄枠はあるが『目安なし』固定"
 sources:
   - issue-audit-2026-10-11-batch1.md
   - issue-backlog-audit-2026-09-09.md
@@ -38,7 +38,7 @@ sources:
 
 ※ [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) は assignee 欄は空だが ei-blue が 2025-03-25 に `/assign`（[#105](https://github.com/digitaldemocracy2030/kouchou-ai/issues/105) と共に）宣言。GitHub 欄には未反映で、進行中作業は観測されない。
 
-集計: 未解決 5（[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#44](https://github.com/digitaldemocracy2030/kouchou-ai/issues/44) / [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121)）、一部解決 3（[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) / [#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55) / [#143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/143)）、要件再確認が必要 1（[#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104)）。「不明」はなし。重複・統合の新規特定はなし（[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) は [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)、[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)/[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) は [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) と既存の束ね関係を継承）。
+集計: 未解決 6（[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#44](https://github.com/digitaldemocracy2030/kouchou-ai/issues/44) / [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) / [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) / [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121)）、一部解決 3（[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) / [#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55) / [#143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/143)）、要件再確認が必要 1（[#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104)）。「不明」はなし。重複・統合の新規特定はなし（[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) は [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250)、[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11)/[#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) は [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) と既存の束ね関係を継承）。
 
 ## 重要な判断
 
@@ -73,6 +73,8 @@ sources:
 - [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) の「粗い帯」を [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first PR に含めるか、後続 slice にするか（[[issue-884-pre-create-review-contract-2026-06-30]] は first PR scope 外に置いていた）。（2026-11-07 現状更新: first PR は「目安なし」で出荷したが、後続 slice にするかは未決。Updates 参照）
 
 ## Updates
+
+- 2026-11-07: 当時の集計から #56 が漏れていたため、summary と本文の未解決件数を 5→6 に訂正。判定一覧は未解決6・一部解決3・要件再確認1の計10件であり、Issue の現在状態を再分類したものではない（根拠: 初版 commit `6b27a202` の本ページ判定一覧25〜34行、[[issue-audit-2026-10-11-batch1]]:84 の「#56 元コメント表示 — 未解決」）。
 
 - 2026-10-11 00:55 JST: 初版。5 つの read-only subagent で 10 件をコード照合し、分類に効く主張（費用/時間 placeholder、`comments: {}` のコメントアウト、散布図の scaleanchor 不在）を spot-grep で再確認。snapshot は `raw/issue-audit/2026-10-11-batch1/` と private キュー `drafts/issue-audit/2026-10-11-batch1/`。日本語 Issue 更新案と checkpoint も同キューに保存。
 

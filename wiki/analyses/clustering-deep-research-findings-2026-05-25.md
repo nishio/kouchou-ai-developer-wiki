@@ -137,3 +137,5 @@ survey 計画の評価軸分離方針（bucket 5 / 6）は、Deep Research 後�
 
 - 2026-05-25: survey bucket への deep-research 応答として整理。`UMAP -> clustering` は 2D vs 15D〜25D の分離が筋、BERTopic は backbone + LLM labeler の組合せに移行、数十件規模は LLM pairwise + spectral が筋、評価軸は 1 つに畳まない、を整理した
 - 2026-10-21: 本文の「チームみらい 300 件規模分析」（3 か所）は、[[nishio]] が社内で行った 300 件規模データの分析（[[meeting-minutes]] 2026-05-18 見出し）の誤り。300 件規模で LLM pairwise + spectral を試すという提案自体は変わらない。あわせて summary の wikilink を外した（リンクは本文にある）
+
+- 2026-11-07: `n_neighbors` の比較を訂正する。観察対象の `shugiinsenyo2024-tttc@5e0a439` では、上限 10 は `SpectralClustering` の近傍グラフの設定であり、`UMAP` には `n_neighbors` を指定していない。広聴AI側の 15 は `UMAP` の設定なので、10 と 15 を同じ段の値として比較できない。このコードから「UMAP を小さめに調整した」「その選択が意図的だった」とは確定できない。Slack の読みと実装上の事実を分けて扱う（根拠: `shugiinsenyo2024-tttc` commit `5e0a439` の `scatter/pipeline/steps/clustering.py:57-60,75-83`、[[tttc-spectral-clustering-code-observation-2026-05-25]]:23-35,47-54）。

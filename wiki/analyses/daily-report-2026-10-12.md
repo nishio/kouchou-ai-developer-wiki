@@ -125,4 +125,5 @@ sources:
 
 ## Updates
 
+- 2026-11-07: #507 の「ver3.0 は未到来なので着手不可」は誤り。広聴AI 本体には 2025-05-29 の `v3.0.0` タグがあり、analysis-core / package.json の 0.1.x とは別の版である。互換コードは残っているが、削除を保留する理由を版の未到達には置けない（根拠: kouchou-ai `v3.0.0` = `9b2d8d88c`、保存済み main `085366779` の `apps/api/src/services/report_status.py`:29–37、[[code-health-review-2026-10-18]]:56）。
 - 2026-10-21: 確定版とした。[#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) は 2026-10-12 17:42 JST に、[#953](https://github.com/digitaldemocracy2030/kouchou-ai/issues/953) / [#956](https://github.com/digitaldemocracy2030/kouchou-ai/issues/956) は同日 17:55 JST に close 済みで、Open Questions の [#577](https://github.com/digitaldemocracy2030/kouchou-ai/issues/577) の項はこのページの最終編集より前に解消していた（本文もそれに合わせた）。時系列の参照先を、7 日分だけを残す log.md から log.txt に変えた

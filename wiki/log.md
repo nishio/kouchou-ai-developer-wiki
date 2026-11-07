@@ -274,6 +274,10 @@
 - nishio「第 2 段に着手して」。公開 API `GET /reports/{slug}` を `public_result.json` 優先に変え、無い・壊れている・結果より古い場合は `hierarchical_result.json` から `build_public_result()` で変換。ビューアの `Config` 型から公開しない項目を外した（ビューアは使っていなかった）。docs に「公開 API が返すもの」と静的 shell 書き出しの注意を追記
 - api 578 件・viewer jest 318 件・tsc・biome・mkdocs strict が通過。[[long-term-strategy-2026-11-02]] と定例下書きに反映。次：merge 判断（外部から公開 API を直接読む利用者への影響）、第 3 段は 5.x
 
+## [2026-11-07 20:30] file back | ページをまたいだ食い違いの監査（Codex gpt-6.1-sol、閉じる 145・現状更新 65・継続 764・人の判断待ち 10、本物 11・古い方が残っている 6・判定できない 3）
+
+- grasp-nishio のセッションから、Codex にページ間の矛盾（数値・日付・決定・名前・状態）を探させ一次ソースでどちらが現状かを確かめさせ、別の Codex セッションが全件を敵対的に検証した。報告は raw/consistency-audit-2026-11-07.md・raw/consistency-verify-2026-11-07.md
+
 ## [2026-11-07 19:00] filing-back | 11-07 の照合を査読で見直し、open PR の数（11-02 は 10 本）・#1176 の未解決指摘・Playwright の件の範囲・Dependabot が自動 PR を出せないことを訂正
 
 - [[open-pr-status-2026-11-02]] の「open PR 8 本」は観測時点から誤りで、#1176・#1177 も open の 10 本だった（[[long-term-strategy-2026-11-02]] の 10 が正しい）。元の文は残して訂正を追記し、title は表の範囲（10-28〜29 作成の 8 本）がわかる形にした。11-07 の 12 本は 10 本から #1166 が抜けて 3 本増えた数

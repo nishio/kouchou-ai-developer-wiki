@@ -1,7 +1,7 @@
 ---
 title: "本体 docs 改善スプリント振り返り 2026-10"
 type: analysis
-summary: "2026-10 に実施した kouchou-ai 本体 docs（mkdocs サイト + README）の改善スプリントの retrospective。setup-first で読者を振り落としていた入口を demo-first に組み替え、閲覧者・自治体・実務者向けの空白ページを埋め、レポートの責任所在を 3 レイヤーで明文化し、入口ディレクトリ改称・README アンカー脱却・リンク切れ CI までを 13 PR で landing させた。通底する設計原則と、live 検証→ペルソナ監査→discover-fix-gate という再利用可能な進め方をまとめる"
+summary: "2026-10 に実施した kouchou-ai 本体 docs（mkdocs サイト + README）の改善スプリントの retrospective。setup-first で読者を振り落としていた入口を demo-first に組み替え、閲覧者・自治体・実務者向けの空白ページを埋め、レポートの責任所在を 3 レイヤーで明文化し、入口ディレクトリ改称・README アンカー脱却・リンク切れ CI までを 12 PR で landing させた。通底する設計原則と、live 検証→ペルソナ監査→discover-fix-gate という再利用可能な進め方をまとめる"
 sources:
   - kouchou-ai-docs-improvement-roadmap-2026-10-13.md
   - docs-persona-review-2026-10-13.md
@@ -13,7 +13,7 @@ sources:
 
 2026-10、[[kouchou-ai]] 本体ドキュメント（mkdocs サイト `digitaldemocracy2030.github.io/kouchou-ai/` と `README.md`）を、散発的な改善でなく **一連のスプリント**としてまとめて改善した。起点は「docs 方針が [[kouchou-ai-docs-policy-history]] に系譜として集約されていたが、実装は追いついていなかった」こと。計画は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]] に、読者体験の監査は [[docs-persona-review-2026-10-13]] にある。本ページはその **読み物としての総括**（何を・なぜ・どうなったか・どう進めたか）。
 
-結果として本体 repo に **PR [#998](https://github.com/digitaldemocracy2030/kouchou-ai/issues/998)〜[#1006](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1006) / [#1008](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1008)〜[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（計 13 本）** を投入・merge し、`v4.1.0` を発行、issue **[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876)** を決着させた。
+結果として本体 repo に **PR [#998](https://github.com/digitaldemocracy2030/kouchou-ai/issues/998)〜[#1006](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1006) / [#1008](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1008)〜[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（計 12 本）** を投入・merge し、`v4.1.0` を発行、issue **[#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876)** を決着させた。
 
 ## 出発点：なぜ docs を直したか
 
@@ -81,3 +81,7 @@ sources:
 - [[kouchou-ai-docs-policy-history]]：docs 方針の系譜と横断原則
 - [[kouchou-ai-docs-entry-restructure-2026-06-03]]：demo-first spine の原案
 - [[readme-anchor-freeze-and-docs-entry-2026-10-13]]：[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) アンカー凍結回避の判断
+
+## Updates
+
+- 2026-11-07: スプリントの PR 件数を summary・本文とも 13 から 12 へ訂正した。列挙は #998〜#1006 の 9 本と #1008〜#1010 の 3 本。12 本すべての merge をローカル履歴で確認した（根拠: kouchou-ai commits `ec9b1fefa`（#998）〜`d759df7c4`（#1006）、`bf1ffb1bc`（#1008）、`f83567043`（#1009）、`4b2d08f99`（#1010））。

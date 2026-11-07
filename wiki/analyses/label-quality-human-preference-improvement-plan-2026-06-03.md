@@ -159,6 +159,8 @@ full UI は最後に統合確認として扱う。最初の clean A/B には入�
 
 ## Updates
 
+- 2026-11-07: 冒頭の Status と 2026-06-03 Updates の「勝因は labelling_process ではなくテンプレ冗長度差」という因果解釈は、2026-06-09 の再調査で撤回済み。v1 の 7 回すべてで勝った短い候補は `refine_setwise`、長い候補は `refine_none` だった。結果は refinement on/off の差を捉えているが、sibling-awareness と冗長表現を書き換える効果は切り分けられない。計画本文は当時の記録として残す（根拠: wiki commit `ad4c79b`、[[labelling-prompt-few-shot-template-confound-2026-06-03]]:14,38-47,124、保存済み `raw/experiments/2026-06-02-llm-grouping-400-tree-label-corpus/archives/v1_none_vs_setwise_refine_2026-06-03/` の `human_preferences.jsonl:1-7` と `human_preference_questions.jsonl:1-7`）。
+
 - 2026-06-03: **実験仕切り直しを決定**。nishio が label_only 7 件 (cluster 1_1〜1_7) を回した結果、7/7 で「短い候補」が winner となり、勝因は `labelling_process` ではなく labelling prompt few-shot 由来のテンプレ冗長度差だと判明。3 文脈すべてに同じ confound があるため、残り 17 件は回さず prompt 修正から再出発する。詳細は [[labelling-prompt-few-shot-template-confound-2026-06-03]]
 - 2026-06-03: 信頼度ラジオの "1 / 2 / 3" が意味不明だったため、HTML / md に `1 低 / 2 中 / 3 高` ラベルを追加し bundle を再生成
 - 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。first implementation slice として、`hierarchical_8_40` 固定の blind A/B bundle と `human_preferences` 系 JSONL / schema を生成したことを反映した。

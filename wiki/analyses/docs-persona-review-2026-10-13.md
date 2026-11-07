@@ -43,7 +43,7 @@ docs 大掃除（Tier 0 + T1、[[kouchou-ai-docs-improvement-roadmap-2026-10-13]
 
 8. **ゼロ構築の最短デモ導線**: サンプルレポートのライブ URL と serverless 版を目的別ガイドの「デモで見せる人」行へ昇格。`quickstart.md` を非開発者ファースト（release zip + `setup_win.bat`）に再構成し、git/docker/pnpm は「開発者向け」へ降格。非開発者向け「デモ用データの準備」ページ（Excel→CSV・UTF-8・comment-body・推奨件数/クラスタ数・個人情報）新設。
 9. **CLI 研究者の実行可能性ギャップ**: 上記バグに加え、cli-quickstart に「ローカル LLM を使う」節（`provider: local` + `local_llm_address` + モデル文字列 + `is_embedded_at_local`）と「再現性の扱い」節（seed 固定・一部モデルは temperature 非送信、UMAP は確率的→`reuse_umap_model`、完全一致は非保証）、`config.json` 全フィールドの「設定リファレンス」ページ。experiments 空スタブは補充 or nav 除外。
-10. **WebUI 開発者の最初の一歩**: `quickstart.md` のローカル開発節に public-viewer（`.env` / `pnpm install`（Node22・pnpm9.15.4）/ `pnpm dev` / port 3000 / api 未起動時）を追加。フロントアーキ（Key directories）と技術スタック（Next.js15/Chakra/Plotly/Biome）を AI 向け skill でなく `docs/development` に人間向けページ化。nav「開発者向け」20+ 項目を Web UI / API・分析 / プラグイン / 運用 にサブグループ化。アーキ図に static-site-builder（port 3200）追記。
+10. **WebUI 開発者の最初の一歩**: `quickstart.md` のローカル開発節に public-viewer（`.env` / `pnpm install`（Node22・pnpm9.15.4）/ `pnpm dev` / port 3000 / api 未起動時）を追加。フロントアーキ（Key directories）と技術スタック（Next.js16/Chakra/Plotly/Biome）を AI 向け skill でなく `docs/development` に人間向けページ化。nav「開発者向け」20+ 項目を Web UI / API・分析 / プラグイン / 運用 にサブグループ化。アーキ図に static-site-builder（port 3200）追記。
 11. **多言語導線の断絶**（F）: `docs/index.md` 冒頭に README.en/ko への言語リンク（GitHub と同じ `[English] | 日本語 | [한국어]`）、主要用語に英語併記、`site_description` 日英併記（quick win）。構造的には README.en/ko を `docs_hooks` で公開サイト複製 or en/ko ランディング化し Material の alternate に載せ、優先ページの英語版 or 各ページ冒頭に英語 TL;DR、`search.lang` を `['ja','en']` へ。
 12. **活用事例ページ新設**（G/B/C 共通）: 実際の公開レポート・自治体/政党/NPO 導入例。misc/projects の改名（テーマ 2）とセットで混同解消。
 
@@ -73,6 +73,8 @@ persona レビューは **Tier 3 の優先順位を揺さぶる**。[[kouchou-ai
 - [[kouchou-ai-docs-policy-history]]: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) 責任所在レーン（テーマ 7 がその拡張）
 
 ## Updates
+
+- 2026-11-07: WebUI 開発者向けの技術スタック案の Next.js15 を Next.js16 に訂正。本レビューの基準 commit でも `next` は `^16.3.8` で、[[architecture-overview]] の Next.js 16 と一致する（根拠: kouchou-ai `6ad727eea` の `apps/public-viewer/package.json:32`、[[architecture-overview]] の 2026-10-12 更新）。
 
 - 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。
 

@@ -21,7 +21,7 @@ PR [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) の動�
 
 2026-10-09 に `work/kouchou-ai/` main `a12d68e`（Biome 1.9.4）で観測。
 
-## 現状: 7 件、5 ファイル、すべて機械的に直せる
+## 現状: 7 件、6 ファイル、すべて機械的に直せる
 
 | ファイル | 種別 | 持ち込んだ commit / PR | 日付 |
 | --- | --- | --- | --- |
@@ -121,3 +121,5 @@ Issue [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700)「Bi
 - 2026-10-09: nishio の指示で [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) を not planned で close。要件を main `a12d68e` と照合した結果、Biome が起動しない問題・個別インストール・環境変数の案内は 2026-01 の pnpm workspace 移行で解消済みで、残っていた「全体 lint が通らない・CI で強制されない」は [#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) / PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) に引き継いだ。close コメントに経緯を記録した。
 - 2026-10-09 file back: 「教訓」「調べ方」節を追加し、summary を PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) と [#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) close まで反映。「現状」節見出しの「5 ファイル、すべて機械的に直せる」は不正確だった。実際は 6 ファイルで、noDelete 2 件は手直しが必要だった。[#700](https://github.com/digitaldemocracy2030/kouchou-ai/issues/700) の close コメントで外部コントリビュータを @mention して通知を飛ばした。AI エージェントの close コメントでは、指示がない限りメンションしない方がよい
 - 2026-10-21: PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) は 2026-10-12 に merge された（`2b0079a1`）。今の扱い（lefthook は skip のまま、CI で `biome ci`、root 全体の lint は対象外）は [[gotchas]]
+
+- 2026-11-07: 「現状」節の見出しを 5 ファイルから 6 ファイルへ訂正した。「すべて機械的に直せる」という記述の訂正は Updates に残す。表は 6 ファイルで、`noDelete` 2 件には意味を保つ手直しが必要。既存の訂正が本文見出しに反映されていなかった（根拠: wiki commit `dd19e9d7`、本ページの 2026-10-09 file back）。

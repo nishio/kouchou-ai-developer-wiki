@@ -107,4 +107,5 @@ digitaldemocracy2030/kouchou-ai の open Issue 棚卸し（[[issue-backlog-audit
 
 ## Updates
 
+- 2026-11-07: #507 の「版は 0.1.x で削除条件 ver3.0 未到達・着手不可」は、analysis-core / package.json の版と広聴AI 本体の版を混同した誤判定。広聴AI の `v3.0.0` タグは 2025-05-29 に存在し、版の未到達を保留理由にはできない。互換コードの残存と削除の可否は別に要件確認が必要（根拠: kouchou-ai `v3.0.0` = `9b2d8d88c`、保存済み main `085366779` の `apps/api/src/services/report_status.py`:29–37、[[code-health-review-2026-10-18]]:56）。
 - 2026-10-21: 偽陰性 2 件が 2026-10-12 17:55 JST に close 済みであることを追記

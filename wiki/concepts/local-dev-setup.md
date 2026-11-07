@@ -139,6 +139,8 @@ AI コーディングエージェントの長期運用では、host machine full
 
 ## Updates
 
+- 2026-11-07: 「Docker / docker compose（常に必要）」は Compose で起動する場合の前提。本文の `make client-setup` / `make client-dev` は pnpm で動き、API をネイティブで起動する経路もあるため、ローカル開発全体の必須条件ではない（根拠: kouchou-ai 保存済み main `085366779` の `Makefile`:146–167、本ページ「API をネイティブで」:80–95）。
+- 2026-11-07: `WITH_GPU=true` だけで API の埋め込みが GPU を使用するとは言えない。この値は API イメージの torch を CPU 専用版から PyPI 既定の CUDA 対応版へ切り替えるが、Compose が GPU を割り当てるのは ollama サービスだけで、api サービスに GPU の割り当ては無い（根拠: kouchou-ai 保存済み main `085366779` の `apps/api/Dockerfile`:28–40、`compose.yaml`:23–52・104–110、[[llm-providers]]:69）。
 - 2026-10-21: main `b71e0b79` と照合し、「API をネイティブで」に `.env` の読み込み先（`ENV_FILE`）と analysis-core の導入を追加。static-site-builder は compose で profile なしのため `docker compose up` で一緒に起動すると確認し、前提の誤った Open Question「起動方法がクイックスタートに無い」を削除（README のアーキテクチャ概要に載っていない件は [[architecture-overview]] で扱う）。`make client-dev` では静的版ダウンロードが動かないことを追記。あわせて、Slack mirror の窓を 14 日から 75 日に訂正
 - 2026-10-18: docs の rename（`docs/self-hosting/`）と PR [#957](https://github.com/digitaldemocracy2030/kouchou-ai/issues/957) merge 済みを反映
 - 2026-05-17: 初回作成

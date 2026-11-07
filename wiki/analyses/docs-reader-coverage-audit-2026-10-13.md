@@ -1,7 +1,7 @@
 ---
 title: "docs 読者別カバレッジ監査 2026-10-13"
 type: analysis
-summary: "5 読者像に対し、直近 feature wave（2026-10 の #176/#52/#306/#961/#450/#515/#996/#975 等）を取り込んだ後の本体 docs の実カバレッジを照合した 2026-10-13 時点の現在地監査。E(CLI 研究者)は追従、A/C(WebUI 利用者)は WebUI 新機能が未記載、D/運用は 7 ページが nav 未登録で到達不能、入口は今も setup 起点。1-PR 粒度の修正候補 1→2→3 を提示"
+summary: "5 読者像に対し、直近 feature wave（2026-10 の #176/#52/#306/#961/#450/#515/#996/#975 等）を取り込んだ後の本体 docs の実カバレッジを照合した 2026-10-13 時点の現在地監査。E(CLI 研究者)は追従、A/C(WebUI 利用者)は WebUI 新機能が未記載、D/運用は 6 ページが nav 未登録で到達不能、入口は今も setup 起点。1-PR 粒度の修正候補 1→2→3 を提示"
 sources:
   - github-dev-docs.md
   - pr-883-developer-quickstart-draft-2026-05-31.md
@@ -43,7 +43,7 @@ WebUI 利用者向けの中心ページ `docs/user-guide/how-to-use.md` は 104 
 
 ### D WebUI 開発者 / 運用 ← 書いてあるのに「届いていない」
 
-`docs/` に実在するのに `mkdocs.yml` の nav に未登録で、公開サイトの導線から辿れないページが 7 本（`misc/github-actions-status-update.md` は `not_in_nav` 指定で意図的除外）:
+`docs/` に実在するのに `mkdocs.yml` の nav に未登録で、公開サイトの導線から辿れないページが 6 本（`misc/github-actions-status-update.md` は `not_in_nav` 指定で意図的除外）:
 
 ```
 deployment/static-hosting-csp.md
@@ -102,3 +102,5 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 - 2026-11-07: Open Questions から除去 — 「nav 登録順・階層は読者像に沿わせるか、既存カテゴリ（getting-started / user-guide / development / deployment）のままにするか。3 の spine 再設計と同時にやるか、先に 1 だけ入れるか」。まず既存カテゴリへ nav を追加する Tier 0、後続で self-hosting rename と入口再設計を実施。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:146（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai ec9b1fefa / 41e910100）。
 - 2026-11-07: Open Questions から除去 — 「WebUI 機能説明（how-to-use.md）を、feature PR が必ず触る運用にできるか（CLI 側はできている）。できないなら「UI 変更時に how-to-use を見直す」チェックを contributing/CI に入れるか」。非ブロッキングの how-to-use reminder workflow と PR template で促す運用を #1001 で採用。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:148（既存 Updates）；kouchou-ai 6ad727eea）。
 - 2026-11-07: Open Questions から除去 — 「`opinion-classification.md` / `model-catalog.md` は E 向けか D 向けか（配置先の読者像）。cli-quickstart からのリンクで足りるか、nav 独立項目にするか」。nav に登録し読者注記を付ける形が #998 / #1002 で実装された。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:149（既存 Updates）；kouchou-ai ec9b1fefa / 9b9349ae1）。
+
+- 2026-11-07: nav 未登録の件数を summary・本文とも 7 から 6 へ訂正した。列挙した 6 ページが対象で、意図的に `not_in_nav` としたページは含めない（根拠: kouchou-ai commit `ec9b1fefa`（PR #998）の本文と `mkdocs.yml` 差分、[[kouchou-ai-docs-overhaul-2026-10]]「出発点」）。

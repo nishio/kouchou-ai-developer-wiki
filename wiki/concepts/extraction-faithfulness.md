@@ -84,5 +84,7 @@ sources:
 
 ## Updates
 
+- 2026-11-07: この下流への影響の実測は、UMAP を使わず、L2 正規化した埋め込み上の cosine k-means で代えた近似実験に限る。「べき」化・事実化がクラスタを動かさなかったのもこの実験での観察であり、広聴AI本体の UMAP → KMeans → ward 全体へ一般化しない。本体での影響は Open Questions のとおり未検証（根拠: [[extraction-faithfulness-public-models-2026-10-08]]:81-83、実験 repo `local-llm-experiments` commit `9c15978d` の `actions/kouchou-extraction-faithfulness/downstream.py:7-10` と `rounds/20261008-q13-downstream.md:15-21`）。
+
 - 2026-10-21: kouchou-ai main（b71e0b79）と照合し、原文付き診断を「実行後に削除」としていた誤りを訂正した（自動削除は無く、抽出ステップの再実行で上書きされるだけで、削除は手作業。記録されるのは空・失敗の回答だけ）。ラベル生成段の部分失敗は [#915](https://github.com/digitaldemocracy2030/kouchou-ai/issues/915) / PR [#919](https://github.com/digitaldemocracy2030/kouchou-ai/issues/919)（2026-09-08 merge）で `LabellingBatchError` により止まるようになっているので「追跡中」の記述を直し、診断の出典（[#318](https://github.com/digitaldemocracy2030/kouchou-ai/issues/318) / PR [#928](https://github.com/digitaldemocracy2030/kouchou-ai/issues/928)）と原文へたどる手段を追記した。
 - 2026-11-03: 「公開レポート画面に元の回答を表示する機能は未実装（#56）」を、PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155)（2026-10-29 merge）でレポート単位の opt-in（`enable_original_comments`、既定 OFF）として入ったことに更新（main の `apps/api/src/schemas/report_config.py` ほかで確認）

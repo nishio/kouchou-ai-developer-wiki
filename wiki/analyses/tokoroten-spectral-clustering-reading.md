@@ -117,3 +117,5 @@ tokoroten の読みでは、TTTC もまた **散布図都合の幾何をかな�
 - 2026-05-25: tokoroten の spectral clustering メモを、scatter-first な TTTC 読みとして整理
 - 2026-05-25: deep-research による cross-check で、TTTC の小さめ `n_neighbors` 採用は document clustering 研究上は無理筋ではないと確認。Eklund et al. 2023 でも文書埋め込みでは小さめ `n_neighbors` が有利な場合があると報告されている。整理は [[clustering-deep-research-findings-2026-05-25]]
 - 2026-05-25: [[graph-visualization-proposal-2026-05-25]] は「TTTC 的 spectral は 2D 幾何の後始末」読みと別方向で、**2D 幾何そのものを graph drawing で作り直す** 設計案。UMAP に依存しない点が新しい
+
+- 2026-11-07: `n_neighbors` の比較を訂正する。観察対象の `shugiinsenyo2024-tttc@5e0a439` では、上限 10 は `SpectralClustering` の近傍グラフの設定であり、`UMAP` には `n_neighbors` を指定していない。広聴AI側の 15 は `UMAP` の設定なので、10 と 15 を同じ段の値として比較できない。このコードから「UMAP を小さめに調整した」「その選択が意図的だった」とは確定できない。Slack の読みと実装上の事実を分けて扱う（根拠: `shugiinsenyo2024-tttc` commit `5e0a439` の `scatter/pipeline/steps/clustering.py:57-60,75-83`、[[tttc-spectral-clustering-code-observation-2026-05-25]]:23-35,47-54）。
