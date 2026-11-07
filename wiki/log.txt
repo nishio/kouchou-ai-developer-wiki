@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-07 22:34	filing-back	PR #1188 を merge（follow-redirects 1.16.2）。同日に medium alert 2 件（minimatch・glob）が新規
 2026-11-07 22:25	filing-back	follow-redirects の override を 1.16.2 に上げる PR #1188（main の Dependabot Updates が 10-23 から失敗していた件）
 2026-11-07 21:50	filing-back	付箋ズームを事前計算の方式で作り直し（拡大で震える問題）
 2026-11-07 21:10	filing-back	PR #1187 の CodeRabbit 指摘で、公開 API は結果ファイルから毎回作る形に変更

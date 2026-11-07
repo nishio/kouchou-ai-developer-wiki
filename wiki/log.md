@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-07 22:34] filing-back | PR #1188 を merge（follow-redirects 1.16.2）。同日に medium alert 2 件（minimatch・glob）が新規
+
+- CI 全件 green と CodeRabbit の未解決指摘なしを確認し、nishio が admin merge（main `dd31bebe`）。follow-redirects の alert は fixed。作業 worktree と branch は削除
+- 残る open alert は 3 件。medium 2 件は 11-07 に新規で、minimatch は root override の完全固定（10.2.5）が修正版 11.0.1 を弾くので次の Dependabot Updates も失敗する見込み。glob は 10 → 14 のメジャー跨ぎ。low 1 件は修正版なし（#949）
+- [[meeting-report-draft]] と [[security-maintenance]] の Updates に反映。対応 PR は未着手
+
 ## [2026-11-07 22:25] filing-back | follow-redirects の override を 1.16.2 に上げる PR #1188（main の Dependabot Updates が 10-23 から失敗していた件）
 
 - main の「Dependabot Updates」workflow が 10-23 から毎回 `security_update_not_possible` で失敗していた。原因は #1153 で root の `pnpm.overrides` を 1.16.1 に完全固定していて、10-25 公開の 1.16.2 を Dependabot が解決できなかったこと。Playwright の件が #1185 の merge で解けた後、main の赤はこれだけ
