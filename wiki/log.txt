@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-08 06:25	filing-back	PR #1184（Playwright のランナーを 24.04 に固定）を close
 2026-11-07 22:52	filing-back	minimatch 11.0.1 / glob 14.0.2 の PR #1189（override を範囲形式に揃える）
 2026-11-07 22:34	filing-back	PR #1188 を merge（follow-redirects 1.16.2）。同日に medium alert 2 件（minimatch・glob）が新規
 2026-11-07 22:25	filing-back	follow-redirects の override を 1.16.2 に上げる PR #1188（main の Dependabot Updates が 10-23 から失敗していた件）

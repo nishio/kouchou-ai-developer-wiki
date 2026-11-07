@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 06:25] filing-back | PR #1184（Playwright のランナーを 24.04 に固定）を close
+
+- #1185（Playwright 1.64.1）の merge で同じ `runs-on` の行が `ubuntu-26.04` に変わり、#1184 は conflict して不要になっていた。nishio の判断で 11-08 06:19 JST に close し、理由をコメントした
+- [[meeting-report-draft]] の Playwright の項（議題から外してよい）と [[testing]] の Updates に反映
+
 ## [2026-11-07 22:52] filing-back | minimatch 11.0.1 / glob 14.0.2 の PR #1189（override を範囲形式に揃える）
 
 - 完全固定の版を上げるだけでは壊れた: minimatch 11 は jest の glob 7 を壊し、brace-expansion 5.0.12 の完全固定は戻ってくる minimatch 3 / 5 を壊す。minimatch・brace-expansion・glob の override を alert の範囲に合わせた範囲形式に変え、依存元ごとに宣言どおりの版（すべて advisory 0 件）が入るようにした

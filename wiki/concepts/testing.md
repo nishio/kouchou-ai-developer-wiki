@@ -84,6 +84,7 @@ sources:
 
 ## Updates
 
+- 2026-11-08: Playwright の件のその後。[#1185](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1185)（Playwright 1.64.1）が 11-07 に merge（main `0fb5a408`）され、11-07 の merge 以降の main の Client Tests は 26.04 で green。[#1184](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1184)（24.04 固定）は conflict して不要になり、11-08 に close
 - 2026-11-07: GitHub の Actions と照合。workflow は 23 本（10-18 時点は 22 本）。`ubuntu-latest` が Ubuntu 26.04 に移り、Playwright 1.57.0 が Chromium を入れられないため、main の E2E Tests の定時実行は 10-31 から、Client Tests（viewer states）は 11-07 の push から落ちている。手当ては shingo-ohki の PR [#1184](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1184)（ランナーを 24.04 に固定）と [#1185](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1185)（Playwright 1.64.1 に更新）で、11-07 時点で未 merge。Open Questions の「E2E は CI 非実行」に、今は CI で回っていることを書き足した
 - 2026-11-07（査読を受けて）: 「CI ワークフロー」節の本数に 23 本目の `infra-checks.yml` を、`client-jest.yml` が Jest だけでなく viewer states の Playwright も回すことを書き足した（上の「Client Tests（viewer states）が落ちている」の理由）
 - 2026-10-21: main `b71e0b79` と照合し、API unit・analysis-core E2E・手元 smoke の実行前提（analysis-core の導入、必須キー、`sys.executable` で起動するようになった後の smoke の skip 条件）を訂正。`make test/api` は CI と同じ条件ではないことを明記し、既定の代替として並べるのをやめた。あわせて、UMAP の warning を許容するという「現在の運用判断」を、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) で seed を外した後の現状（warning は出ず、再実行で結果が揺れる）に訂正
