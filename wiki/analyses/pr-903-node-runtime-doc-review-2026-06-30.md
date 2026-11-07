@@ -41,10 +41,12 @@ PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) は `#8
 
 ## Open Questions
 
-- `#885` の完了条件として、admin の `"use server"` action は全件 inventory する必要があるのか、それとも Node runtime 排除の blocker になるものだけでよいのか。
-- CSV / JSON download は client fetch + Blob で置き換える方が自然か、Windows Excel BOM 対応や filename handling のために別 route / API helper を残すべきか。
+- Node runtime 排除案では CSV / JSON を client fetch + response.blob() で受け取る方針に更新済み。現在の download Server Action はまだ残っており、置換実装と Windows Excel 向けの確認は未了。
 
 ## Updates
 
 - 2026-06-30: 初回作成。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) metadata、CodeRabbit 指摘、`work/kouchou-ai/main@d5c9ece` の static-site-builder / admin server actions を確認した。
 - 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR に直接投稿せず、last verified / count 整合 / static-site-builder dev script / CSV・JSON download actions の 4 点を短く伝えるコメント案として固定した。
+
+- 2026-11-07: Open Questions から除去 — 「`#885` の完了条件として、admin の `"use server"` action は全件 inventory する必要があるのか、それとも Node runtime 排除の blocker になるものだけでよいのか。」。CSV/JSON downloadを含むServer Action全件がinventoryに明記された。（根拠: kouchou-ai f422dcc65 / 109049ad3；kouchou-ai upstream/main@085366779（2026-10-29） docs/development/web-ui-node-runtime-dependencies.md:21）。
+- 2026-11-07: Open Questions の現状を更新 — 「CSV / JSON download は client fetch + Blob で置き換える方が自然か、Windows Excel BOM 対応や filename handling のために別 route / API helper を残すべきか。」。Node排除案はclient fetch + response.blobへ修正済みだが、現在のServer Action置換は未実装。（根拠: kouchou-ai 109049ad3（commit本文）；kouchou-ai upstream/main@085366779（2026-10-29） docs/development/web-ui-node-runtime-dependencies.md:21）。

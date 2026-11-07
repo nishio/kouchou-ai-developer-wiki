@@ -116,7 +116,7 @@ GitHub 現在地としては、PR [#903](https://github.com/digitaldemocracy2030
 ## Open Questions
 
 - `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存 `oss_weekly_reporter` 由来 weekly source とどこで cross-reference するか。
-- 8/2 イベント向けの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれに置くべきか。
+- 8/2 のツール枠は、8/1 の投稿で講演資料を作る形に変更され、8/11 には動画を公開せず資料を更新して公開する意向が示された。イベント全体の主 artifact と、個別の公開 viewer / 事例の採否は未確認。
 - 横浜型ブロードリスニングの「収集」中心の課題は、kouchou-ai の input plugin roadmap に入れるべきか、周辺エコシステムとして docs で接続するだけにするべきか。
 - 広聴AI / いどばた / Cartographer / LLM grouping の tool catalog は、DD2030 website、kouchou-ai docs、8/2 event material、[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) case page のどれを canonical にするべきか。
 
@@ -164,3 +164,5 @@ GitHub 現在地としては、PR [#903](https://github.com/digitaldemocracy2030
 - 2026-06-30: [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) developer quickstart / docs entry の gap audit として [[issue-876-developer-docs-gap-audit-2026-06-30]] を追加。
 - 2026-06-30: PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の投稿前レビューコメント案として [[pr-903-review-comment-draft-2026-06-30]] を追加。
 - 2026-06-30: 初回作成。`work/kouchou-ai` / GitHub open PR・issue / 議事録 export / `work/slack-logs` / `work/oss_weekly_reporter` の最新確認をまとめた。
+
+- 2026-11-07: Open Questions の現状を更新 — 「8/2 イベント向けの主 artifact は、既存 viewer の公開例、技術解説、ツール比較、運用事例のどれに置くべきか。」。8月1日のツール枠は講演資料を作る形に変更、8月11日には動画非公開希望と資料更新後公開の方針が投稿された。イベント全体の主artifactや個別demo選定とは分ける。（根拠: slack-logs origin/main@c76b975（2026-10-23保存済み） raw/slack/C0B4L1JB8RM/2026-08.jsonl.gz:28（展開後、2026-08-01、ts 1785572375.367379）；slack-logs origin/main@c76b975（2026-10-23保存済み） raw/slack/C0B4L1JB8RM/2026-08.jsonl.gz:129（展開後、2026-08-11、ts 1786450550.950979））。

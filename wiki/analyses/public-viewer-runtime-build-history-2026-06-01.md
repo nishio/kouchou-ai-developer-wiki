@@ -255,8 +255,6 @@ export default async function Page() {
 
 ## Open Questions
 
-- dynamic hosting では `generateStaticParams()` を完全に空化 / dynamic 化し、static export だけが API から slug list を取る、という分岐に寄せられるか。
-- Docker image build 時に production API を叩くことを許容するか。許容するなら「現在の API state を image に焼き込む」ことの意味を整理する必要がある。
 - `public-viewer` の minimum replica / cold start 方針をどうするか。runtime build をやめた場合でも、固定費と cold start の tradeoff は別途残る。
 
 ## Updates
@@ -267,3 +265,6 @@ export default async function Page() {
 - 2026-06-01: latest revision readiness poll は job timeout と script 側 readiness timeout を分けて設計する注意点を追記。
 - 2026-06-01: API なし dynamic build の実装スケッチとして、dynamic hosting では `connection()` で request-time rendering へ寄せ、static export だけ build-time API fetch を残す方針を追記。
 - 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、実環境 resource 値、revision / run details、ログ由来の細部を削除。
+
+- 2026-11-07: Open Questions から除去 — 「dynamic hosting では `generateStaticParams()` を完全に空化 / dynamic 化し、static export だけが API から slug list を取る、という分岐に寄せられるか。」。dynamic は空配列、static はAPI、shellは固定slugという分岐が実装されている。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/public-viewer/app/[slug]/page.tsx:32）。
+- 2026-11-07: Open Questions から除去 — 「Docker image build 時に production API を叩くことを許容するか。許容するなら「現在の API state を image に焼き込む」ことの意味を整理する必要がある。」。通常buildはAPI不要、static exportだけbuild時APIを使う分岐にした。runtime build撤去 #888 の実装判断。（根拠: kouchou-ai f36a204b（#888）；kouchou-ai upstream/main@085366779（2026-10-29） apps/public-viewer/app/[slug]/page.tsx:32）。

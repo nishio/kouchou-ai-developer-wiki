@@ -107,7 +107,6 @@ reuse は `docs/user-guide/reuse-report.md`、`/reuse/:slug`、`DuplicateReportD
 
 ## Open Questions
 
-- API 接続チェック失敗時に、作成開始を完全 block するのか、警告付きで続行可能にするのか
 - cost bucket は `円` で出すか、provider pricing に合わせて `USD` で出すか
 - 大規模 CSV の sample-first は UI だけにするか、実際に N 件サンプルを作って新規レポート化する機能まで含めるか
 - 再利用導線は作成前確認パネルに出すか、完了/失敗後のレポート一覧側に寄せるか
@@ -118,3 +117,5 @@ reuse は `docs/user-guide/reuse-report.md`、`/reuse/:slug`、`DuplicateReportD
 - 2026-06-30: [[github-issues-221-884-trial-burden-live-2026-06-30]] を追加し、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) が open / high priority のまま current main でも未実装であること、spreadsheet path の警告抜け、API check / reuse の既存能力との接続を追記。
 - 2026-05-29: 方針に沿って GitHub issue `#884` を起票し、`#221`, `#11`, `#79`, `#292`, `#391`, `#97` へ相互リンクコメントを追加。`#391` には `enhancement`, `Admin`, `API` label を追加した。
 - 2026-05-29: 初版作成。open issue 再棚卸し後の `#221` 系について、current main の作成画面、API 接続チェック、token/cost 表示、再利用機能と照合して整理した。
+
+- 2026-11-07: Open Questions から除去 — 「API 接続チェック失敗時に、作成開始を完全 block するのか、警告付きで続行可能にするのか」。接続失敗時もエラー確認の文言を出した上で続行できる実装。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。

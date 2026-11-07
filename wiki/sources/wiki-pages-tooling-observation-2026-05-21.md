@@ -51,9 +51,7 @@ sources:
 
 ## Open Questions
 
-- Quartz をこの repo に vendor するか、別 repo で publish layer を持つか
 - `wiki/log.md` や source ページ群を公開ナビゲーションにどう見せるか
-- 既存の `mkdocs.yml` / `scripts/build_pages_docs.py` を完全撤去するか、移行期間だけ残すか
 - Quartz vendor 側の local patch をどこまで許すか。project-site hosting のように upstream が持つ前提は、まず公式設定に寄せる方がよい
 
 ## Updates
@@ -62,3 +60,6 @@ sources:
 - 2026-05-21: Quartz 実切替を反映。MkDocs 関連ファイルを撤去し、Node/pnpm/Quartz workflow へ移行した current state を追記
 - 2026-05-28: project-site subpath のリンク切れ再発を受け、local `<base>` patch を撤去して `baseUrl` + 生成物リンク検査へ寄せる観測を追記
 - 2026-05-28: Scrapbox / 旧 Gist の `wiki/ -> content/` 方式と、この repo の `wiki/` direct 方式を分けて整理し、新 Gist として外部化したことを追記
+
+- 2026-11-07: Open Questions から除去 — 「Quartz をこの repo に vendor するか、別 repo で publish layer を持つか」。Quartzをこのrepoにvendorする形で実装済み。（根拠: 0f2ebe6:wiki/sources/wiki-pages-tooling-observation-2026-05-21.md:62（既存 Updates）；0f2ebe6:wiki/analyses/wiki-pages-publishing-stack.md:77（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「既存の mkdocs.yml / scripts/build_pages_docs.py を完全撤去するか、移行期間だけ残すか」。MkDocs関連ファイルを撤去してQuartzへ移行済み。（根拠: 0f2ebe6:wiki/sources/wiki-pages-tooling-observation-2026-05-21.md:62（既存 Updates））。

@@ -103,7 +103,6 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 - `slack-logs` の `raw/` が 2026-05 以降を取り込んだ後、既存の `oss_weekly_reporter` 由来 weekly source とどのページで cross-reference するか。
 - `mirror/` 由来の観測をどの粒度で source 化するか。上書きされるため、重要な観測は commit hash と一緒に wiki / raw snapshot 側へ固定する必要がある。
-- GitHub report は `slack-logs` には無いので、GitHub weekly activity の source は `oss_weekly_reporter` を継続するか、GitHub live state から都度生成するか。
 
 ## Updates
 
@@ -117,3 +116,5 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 - 2026-06-30: README / sync metadata / users snapshot を再確認し、user id 解決、広報・事例 channel ID、raw / mirror / oss_weekly_reporter の三分法を追記。
 - 2026-06-30: 初回作成。`digitaldemocracy2030/slack-logs` を `work/slack-logs` に clone / pull し、README と `mirror/sync.json`、広聴AI関連 channel の mirror を確認した。
 - 2026-06-30: 2026-06-26 の横浜型ブロードリスニング共有を [[slack-yokohama-hack-2026-06-26]] に切り出した。
+
+- 2026-11-07: Open Questions から除去 — 「GitHub report は `slack-logs` には無いので、GitHub weekly activity の source は `oss_weekly_reporter` を継続するか、GitHub live state から都度生成するか。」。reporterの週次要約・GitHub snapshotを今後使わないという西尾判断で停止済み。（根拠: 0f2ebe6:wiki/sources/slack-logs-repository.md:110（既存 Updates））。

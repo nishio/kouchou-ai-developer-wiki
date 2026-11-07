@@ -196,9 +196,7 @@ superseded_by: issue-backlog-audit-2026-10-12
 
 ## Open Questions
 
-- `#887` は checks green を根拠に review 後 merge でよいか、WebGL fallback を同時に求めるか。
 - `#871` は current main の deploy health check で完全に満たされたと見て close してよいか。
-- `#884` は API preflight 失敗時に作成開始を block するか、警告付きで続行可能にするか。
 - `#564/#696/#542` の trust layer は kouchou-ai repo で持つか、website / docs 側へ移管するか。
 - 古い umbrella issue を close する時、単純 close と「上位問題ページへの参照コメント」のどちらを標準運用にするか。
 
@@ -206,3 +204,6 @@ superseded_by: issue-backlog-audit-2026-10-12
 
 - 2026-10-05: lint で孤立していた 2026-05 時点の個別 issue / PR 判断ページを、2026-06-01 の全体 triage から辿れるようにした。
 - 2026-06-01: 初版作成。subagent 5 分割で open issue 124 件の本文・コメントを読み、current main、open PR、既存 wiki へ照合した。
+
+- 2026-11-07: Open Questions から除去 — 「#887 は checks green を根拠に review 後 merge でよいか、WebGL fallback を同時に求めるか。」。#887 は merge 済み。採用時点の判断と将来の WebGL fallback 要否を分ける。（根拠: kouchou-ai 188169515（2026-06-01、#887） / f36a204b（#888））。
+- 2026-11-07: Open Questions から除去 — 「#884 は API preflight 失敗時に作成開始を block するか、警告付きで続行可能にするか。」。接続確認エラーを表示し、警告付きで作成を続行できる実装になった。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。

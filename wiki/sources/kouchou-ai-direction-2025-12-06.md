@@ -30,9 +30,11 @@ sources:
 
 ## Open Questions
 
-- この初回メモ時点では、安定版を具体的に `v4` と呼ぶか、plugin 化をいつまでにやるかはまだ固定されていない
+- 初回メモ後、stable v4 のタグ運用は具体化した。v5 のリリース時期・条件は引き続き未決（versioning-strategy 参照）。
 - 散布図の限界認識は明確だが、代替 view / 代替 analysis mode の具体像はまだ粗い
 
 ## Updates
 
 - 2026-05-25: Google Docs export から初回作成
+
+- 2026-11-07: Open Questions の現状を更新 — 「この初回メモ時点では、安定版を具体的に v4 と呼ぶか、plugin 化をいつまでにやるかはまだ固定されていない」。stable v4という呼称・タグ実績は確定したが、v5のリリース条件は残る。（根拠: 0f2ebe6:wiki/analyses/versioning-strategy.md:83（既存 Updates）；kouchou-ai upstream/main の v4.1.0 / v4.2.0 タグ履歴）。

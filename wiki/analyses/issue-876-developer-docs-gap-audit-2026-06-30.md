@@ -79,11 +79,12 @@ Wiki-only の次手としては、developer quickstart 草案自体を更新す�
 
 ## Open Questions
 
-- [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の次 PR は issue を close する PR にするか、`first slice` として一部完了に留めるか。
-- `getting-started/` rename は破壊的なので、redirect / alias / old URL 維持をどう扱うか。
 - demo viewer first の入口に置く公開事例・サンプルレポート・サンプル CSV は、どの repository / docs page を正本にするか。
 - 「サーバを建ててくれる人を探す」経路は、連絡先リストを docs に持つのか、DD2030 の Web site / Slack / form へ逃がすのか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。Issue [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) live state、PR [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) 撤回後草案、6/3-6/5 の docs spine / Azure demo 議論、current main `d5c9ece` の `README.md` / `docs/index.md` / `docs/getting-started/quickstart.md` / `mkdocs.yml` を照合し、次の docs PR の slice を整理した。
+
+- 2026-11-07: Open Questions から除去 — 「#876 の次 PR は issue を close する PR にするか、first slice として一部完了に留めるか。」。#876 は full scope の headline を完了し、残細目は #1012 へ引き継ぐ運用で決着。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:152（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「getting-started/ rename は破壊的なので、redirect / alias / old URL 維持をどう扱うか。」。getting-started を self-hosting に改称し mkdocs-redirects で旧URLを維持した。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai 41e910100）。

@@ -83,10 +83,12 @@ sources:
 
 - README / `docs/getting-started/quickstart.md` / `docs/user-guide/how-to-use.md` の「コメント数ベース」説明を、`analysis-core` 実装に合わせて `argument` 数ベースへ寄せるべきか
 - Admin 側と `analysis-core` 側で、推奨クラスタ数計算を本当に同一の関数として共有するか
-- `argument_count` が小さいケースで `lv2 > argument_count` になりうることを、UX / validation 上どう扱うか
+- tiny dataset の推奨数は PR #832 で補修済み。作成前の非空コメント数に対する警告と、抽出意見 3 件以下を分かる文言で止める PR #1099 も入った。コメント数と抽出後 argument 数の差を UX / validation でどう扱うかは残る。
 
 ## Updates
 
 - 2026-05-18: 初版作成
 - 2026-05-19: `PR #832` merged と、tiny dataset 補修 (`2 -> [2]`, `3 -> [2, 3]`) を追記
 - 2026-10-21: 本文の式（`lv1 = round(cuberoot(argument_count))`、`lv2 = lv1^2`）は docstring の記述で、実装には上限がある。PR [#832](https://github.com/digitaldemocracy2030/kouchou-ai/issues/832) の最初のコミットから一層目は `max(2, min(10, round(∛n)))`、二層目は上限 1000 で、merge 前の補修で意見数 n でも頭打ちになった（`lv2 = max(2, min(1000, n, lv1²))`）。そのため 858 件以上は常に `[10, 100]` になる。上限 10 の経緯（PR [#335](https://github.com/digitaldemocracy2030/kouchou-ai/issues/335) / [#356](https://github.com/digitaldemocracy2030/kouchou-ai/issues/356)）と、README の「8000 件: 20→400」との食い違いは [[auto-cluster-defaults]] を参照
+
+- 2026-11-07: Open Questions の現状を更新 — 「`argument_count` が小さいケースで `lv2 > argument_count` になりうることを、UX / validation 上どう扱うか」。2/3件に対する推奨数は #832 内で補修済み。Webの事前警告と、少数意見での明示停止も入った。抽出後の件数との差は別途扱う。（根拠: 0f2ebe6:wiki/sources/issue-830-pr-832-auto-cluster-defaults-2026-05-18.md:91（既存 Updates）；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:110；kouchou-ai a9a378465（#1099））。

@@ -31,9 +31,11 @@ sources:
 ## Open Questions
 
 - Slack source が増えた時、全ページに `last_read` / `coverage` frontmatter を必須化するか。
-- `oss_weekly_reporter` の latest data branch 到達日と、そこから Wiki が実際に読んだ対象週を別々に管理するべきか。
+- oss_weekly_reporter は 2026-10-22 に停止し、過去データの固定参照となった。過去 snapshot の取得時点と Wiki が実際に読んだ対象週を、どの粒度で分けて残すかは未決。
 - 議事録や Slack を再取得したが Wiki 本文の判断が変わらなかった場合、log に残す粒度をどうするか。
 
 ## Updates
 
 - 2026-06-02: 初版作成。
+
+- 2026-11-07: Open Questions の現状を更新 — 「`oss_weekly_reporter` の latest data branch 到達日と、そこから Wiki が実際に読んだ対象週を別々に管理するべきか。」。reporterは10/22停止、以降のlatest追従をする前提が無くなった。読解範囲の記録は過去snapshotにも必要。（根拠: 0f2ebe6:wiki/sources/slack-logs-repository.md:110（既存 Updates）；/Users/nishio/grasp-nishio/LOG.md:「2026-10-22 ops | oss_weekly_reporter を止める」）。

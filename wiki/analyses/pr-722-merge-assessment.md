@@ -30,12 +30,10 @@ sources:
 - 継承すべきものは「validation needs」であって patch そのものではない
 - 再設計するなら優先順位は `config` / `input` の事前 validation、current CLI doc 整備、必要なら output validation の順が自然
 
-## Open Questions
-
-- current `analysis-core` CLI に `--validate-config` / `--validate-input` を独立フラグとして入れるべきか、それとも `--dry-run` と `PipelineOrchestrator.from_config()` の初期化失敗で十分か
-- validation の責務を CLI 本体に置くか、別 subcommand / 別 helper に切るか
-
 ## Updates
 
 - 2026-05-19: 初版作成
 - 2026-10-21: PR [#722](https://github.com/digitaldemocracy2030/kouchou-ai/issues/722) は 2026-05-19 に merge されずに close された
+
+- 2026-11-07: Open Questions から除去 — 「current `analysis-core` CLI に `--validate-config` / `--validate-input` を独立フラグとして入れるべきか、それとも `--dry-run` と `PipelineOrchestrator.from_config()` の初期化失敗で十分か」。独立CLIフラグ --validate-config / --validate-input が現在の main にある。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/__main__.py:79；0f2ebe6:wiki/concepts/cli.md:144（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「validation の責務を CLI 本体に置くか、別 subcommand / 別 helper に切るか」。設定・入力検証はCLI本体のフラグ、出力検証は独立モジュール validate_output として実装された。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/__main__.py:79；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/validate_output.py:1）。

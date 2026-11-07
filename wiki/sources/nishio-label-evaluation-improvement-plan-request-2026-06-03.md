@@ -28,8 +28,9 @@ sources:
 ## Open Questions
 
 - 改善計画を GitHub issue 化する時、既存 `#881` に集約するか、新しい implementation issue を切るか。
-- 最初の implementation slice は bundle generator だけにするか、human preference export まで含めるか。
 
 ## Updates
 
 - 2026-06-03: 初版作成。
+
+- 2026-11-07: Open Questions から除去 — 「最初の implementation slice は bundle generator だけにするか、human preference export まで含めるか。」。bundle generatorに加えてhuman preferenceのJSONL出力まで実装・実操作確認した。（根拠: 0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:90（既存 Updates）；0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:91（既存 Updates））。

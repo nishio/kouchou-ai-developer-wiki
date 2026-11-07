@@ -84,12 +84,6 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 
 1・2 は読者に直接効く catch-up、3 は構造改善。[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)（README アンカー移行）は 3 の「安定 URL は docs 個別ページへ」の一部として吸収できる。
 
-## Open Questions
-
-- nav 登録順・階層は読者像に沿わせるか、既存カテゴリ（getting-started / user-guide / development / deployment）のままにするか。3 の spine 再設計と同時にやるか、先に 1 だけ入れるか
-- WebUI 機能説明（how-to-use.md）を、feature PR が必ず触る運用にできるか（CLI 側はできている）。できないなら「UI 変更時に how-to-use を見直す」チェックを contributing/CI に入れるか
-- `opinion-classification.md` / `model-catalog.md` は E 向けか D 向けか（配置先の読者像）。cli-quickstart からのリンクで足りるか、nav 独立項目にするか
-
 ## 関連
 
 - [[kouchou-ai-docs-policy-history]]: docs 方針議論の系譜と横断原則（本ページはその原則に対する現在地の実測）
@@ -104,3 +98,7 @@ SaaS ホスト型が「本格運用待ち」のままで、docs 上の現実的�
 - 2026-10-13: 独立 live 再検証（origin/main@a570d689）で **[#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) の記載を訂正**。初版は [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450)（埋め込みモデル独立選択）を cli-quickstart「記載あり」に列挙していたが、実際は UMAP 使い回し節の incidental な caveat のみで設定テーブルに embedding ブロックが無く、**実質未記載**だった。E の「比較的追従」には [#450](https://github.com/digitaldemocracy2030/kouchou-ai/issues/450) の穴がある。詳細は [[kouchou-ai-docs-improvement-roadmap-2026-10-13]]。
 - 2026-10-13: grep 精度の軽微な補足。初版の「散布図 → [#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) は 0 ヒット」は、`散布図` 自体は 1 回出現する（全体図=最上層クラスタの scatter plot 定義という旧文脈）。[#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52)（散布図クラスタ選択の連動）の機能自体が未記載という結論は不変で、トークン単位の 0 が不正確だっただけ。
 - 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。
+
+- 2026-11-07: Open Questions から除去 — 「nav 登録順・階層は読者像に沿わせるか、既存カテゴリ（getting-started / user-guide / development / deployment）のままにするか。3 の spine 再設計と同時にやるか、先に 1 だけ入れるか」。まず既存カテゴリへ nav を追加する Tier 0、後続で self-hosting rename と入口再設計を実施。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:146（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai ec9b1fefa / 41e910100）。
+- 2026-11-07: Open Questions から除去 — 「WebUI 機能説明（how-to-use.md）を、feature PR が必ず触る運用にできるか（CLI 側はできている）。できないなら「UI 変更時に how-to-use を見直す」チェックを contributing/CI に入れるか」。非ブロッキングの how-to-use reminder workflow と PR template で促す運用を #1001 で採用。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:148（既存 Updates）；kouchou-ai 6ad727eea）。
+- 2026-11-07: Open Questions から除去 — 「`opinion-classification.md` / `model-catalog.md` は E 向けか D 向けか（配置先の読者像）。cli-quickstart からのリンクで足りるか、nav 独立項目にするか」。nav に登録し読者注記を付ける形が #998 / #1002 で実装された。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:149（既存 Updates）；kouchou-ai ec9b1fefa / 9b9349ae1）。

@@ -47,8 +47,8 @@ sources:
 
 ## Open Questions
 
-- 日本語の入力なら、小型ローカルモデル（既定の ELYZA 8B を含む）でも主体の逆転は起きるのか
-- 一回り大きいローカルモデル、または抽出と翻訳を別段階に分けた場合に改善するか
+- 日本語の公開データと挑戦セットは 27B・31B・2B で追試済み。既定の ELYZA 8B における主体逆転の発生率は引き続き未確認。
+- 27B / 31B と翻訳分離の追試は実施済み。実際の公聴データでも同じ改善が得られるか、モデル別の条件をどう定めるかは残る。
 - 抽出結果の忠実性を自動で検査する段階（逆方向の照合、LLM judge など）を製品に入れる価値はあるか。judge 自体の較正が要る
 - 「意見なし」と判定された投稿の扱い（短い要求・応援・挨拶）の境界を、どこで誰が決めるか
 
@@ -59,3 +59,6 @@ sources:
 - 2026-10-09 振り返り: 既に公開された記録を辿ると、少数例での意味の書き換えの発見から、公開データ・合成セットでの追試、プロンプトと検査方法の改善提案へ進んでいる。[[extraction-faithfulness-public-models-2026-10-08]]より。機能要望の実装記録は [[interview-feature-requests-2026-10-08]] に分かれている。実験の完了、実装・テスト、PR提出、main反映、利用者への提供はそれぞれ別の到達点として読む。今回の経緯の詳細は非公開領域に保存し、公開範囲は [[interview-analysis-request-2026-10-05]] に従った。
 
 > **意見抽出の忠実性の durable 正本**: [[extraction-faithfulness]]（本ページはその dated な実測/議論の一つ）
+
+- 2026-11-07: Open Questions の現状を更新 — 「日本語の入力なら、小型ローカルモデル（既定の ELYZA 8B を含む）でも主体の逆転は起きるのか」。日本語の公開データと挑戦セットで27B・31B・2Bを追試。既定 ELYZA 8B の発生率は別途未確認。（根拠: 0f2ebe6:wiki/analyses/local-llm-extraction-faithfulness-2026-10-05.md:58（既存 Updates）；/Users/nishio/local-llm-experiments/actions/kouchou-extraction-faithfulness/QUEUE.md:173（Q27–Q33））。
+- 2026-11-07: Open Questions の現状を更新 — 「一回り大きいローカルモデル、または抽出と翻訳を別段階に分けた場合に改善するか」。大きいモデル・翻訳分離の追試と推奨プロンプト比較は実施済み。対象データ外への一般化は残る。（根拠: 0f2ebe6:wiki/analyses/local-llm-extraction-faithfulness-2026-10-05.md:58（既存 Updates）；/Users/nishio/local-llm-experiments/actions/kouchou-extraction-faithfulness/QUEUE.md:208（Q34））。

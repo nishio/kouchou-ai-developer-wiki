@@ -61,11 +61,12 @@ current main で recent success が続いている以上、「いつも失敗す
 
 ## Open Questions
 
-- `#741` は既存 issue のまま「concurrency 問題」として読み替えるか、それとも新しい issue に分けて `#741` 自体は close するか
-- `concurrency.cancel-in-progress` は `true` で古い deploy を捨てるべきか、`false` で順番待ちさせるべきか
 - deploy update の並列実行もやめて直列にする必要があるか、それとも workflow 単位の直列化だけで十分か
 
 ## Updates
 
 - 2026-05-26: GitHub Actions の recent `Azure Deployment` runs を再読し、2026-05-21 の build-context failure は解消済み、2026-05-22 の直近 failure は更新競合だと整理
 - 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、run ID、対象 resource、具体ログ文言を削除し、concurrency 課題の粒度へ寄せた
+
+- 2026-11-07: Open Questions から除去 — 「`#741` は既存 issue のまま「concurrency 問題」として読み替えるか、それとも新しい issue に分けて `#741` 自体は close するか」。#741 のまま concurrency修正 #873 を入れて閉じた実績がある。（根拠: kouchou-ai b2ae3c99e（2026-05-28、#873））。
+- 2026-11-07: Open Questions から除去 — 「`concurrency.cancel-in-progress` は `true` で古い deploy を捨てるべきか、`false` で順番待ちさせるべきか」。古いworkflowの取消ではなく順番待ちの直列化を採用した。実環境固有の設定はここには転記しない。（根拠: kouchou-ai 1f741f38（2026-05-26）、b2ae3c99e（#873）のworkflow差分）。

@@ -108,11 +108,12 @@ labelling / refinement run:
 - `human_observations.jsonl` の schema を今の narrative 形式のまま進めるか、severity / failure_type / affected_label_id を必須にするか。
 - judge v1 はこの corpus の 4 observation を最小 calibration set として使えるか。
 - 次の clean experiment は、tree 固定で labelling process だけを変えるか、label output 固定で judge rubric だけを変えるか。
-- A/B preference bundle は、この corpus の `bundles/tree_label_matrix.html` を拡張して作るか、別の comparison UI を作るか。
-- 生成済み `label_preference_ab.html` をそのまま human review に使うか、回答入力 UI を別に作るか。
 
 ## Updates
 
 - 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。`human_preference_questions.jsonl` 24 件、空の `human_preferences.jsonl`、schema、blind A/B Markdown / HTML bundle を生成したことを反映した。
 - 2026-06-02: [[human-pairwise-label-preference-experiment-2026-06-02]] を追加。現 corpus はまだ human preference を持たない探索 corpus であり、次の clean slice で label variants と `human_preferences.jsonl` を追加する境界を追記した。
 - 2026-06-02: [[one-factor-experiment-principle-2026-06-02]] を追加。既存 artifact から作った corpus は exploratory として扱い、採用判断用の clean experiment ではないことを明記した。
+
+- 2026-11-07: Open Questions から除去 — 「A/B preference bundle は、この corpus の `bundles/tree_label_matrix.html` を拡張して作るか、別の comparison UI を作るか。」。既存matrixを直接拡張するだけでなく別の blind A/B bundle を生成する first slice を実施済み。（根拠: 0f2ebe6:wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md:116（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「生成済み label_preference_ab.html をそのまま human review に使うか、回答入力 UI を別に作るか。」。HTMLに回答フォームとJSONL出力を追加し、完成回答だけ出力する操作確認も完了。（根拠: 0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:90（既存 Updates）；0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:91（既存 Updates））。

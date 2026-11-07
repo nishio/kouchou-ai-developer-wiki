@@ -61,10 +61,11 @@ sources:
 
 ## Open Questions
 
-- この 1 ターンに続く Codex とのやりとり (SIGKILL 発見、`#821` への遡及、archeology) は別ログとして残すか、wiki の analysis ページ側に書ききるか
 - 「直ってなくないですか？」のような短い問いから Agent が複合観測を返せた条件 (CLAUDE.md の live state 観測ルール、past PR 番号の事前 indexing 等) を、別途 [[wiki-driven-workflow]] に集約するか
 
 ## Updates
 
 - 2026-06-02: 初版作成。runtime build 撤去エピソードの起点として、1 ターン会話ログを source ページ化。
 - 2026-10-12: 公開境界（CLAUDE.md）に合わせ、具体的な revision ID・replica health JSON・console/system コンテナログ・resource サイズを除去し、設計の教訓（deploy 判定基準の誤り／起動時 build の OOM SIGKILL）を残す形へ sanitize。verbatim は `raw/deploy-detail-preservation/`（local）に退避し一次置き場は Google Drive「広聴AI-Azureデモ環境」。[[wiki-self-audit-2026-10-12]]
+
+- 2026-11-07: Open Questions から除去 — 「この 1 ターンに続く Codex とのやりとり (SIGKILL 発見、`#821` への遡及、archeology) は別ログとして残すか、wiki の analysis ページ側に書ききるか」。後続の調査を episode と一般向けstoryに記録する作業が完了している。（根拠: wiki git 8e110d8（2026-06-03） / 0f2ebe6:wiki/analyses/pr-887-pr-888-runtime-build-removal-episode-2026-06-01.md:154（Updates））。

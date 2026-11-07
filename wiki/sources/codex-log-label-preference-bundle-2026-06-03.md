@@ -83,10 +83,12 @@ A/B の表示順は deterministic seed `20260603` で randomize した。24 ques
 
 - HTML の回答入力フォームは追加済みだが、複数 evaluator の回答をどう識別・merge するか。
 - `label_with_representatives` は先頭 3 件ではなく、代表例 artifact ができてから再生成すべきか。
-- comparison target を `none` vs `setwise` だけでなく、`short` / `contrast` / `balanced` へ広げるか。
+- A/B bundle は setwise vs short へ組み替え済み。contrast / balanced などへの比較対象の拡張は未決。
 
 ## Updates
 
 - 2026-06-03: `label_preference_ab.html` に winner / confidence / reason tags / free text の入力フォームと、完成済み回答を JSONL として出す textarea を追加。`evaluator_id` は任意入力にした。由来情報は引き続き表示 HTML に出していない。
 - 2026-06-03: Playwright で HTML を実操作し、1 件の completed answer だけが JSONL に出力され、winner だけ選んだ incomplete answer は出力されないことを確認した。
 - 2026-06-03: 初版作成。
+
+- 2026-11-07: Open Questions の現状を更新 — 「comparison target を `none` vs `setwise` だけでなく、`short` / `contrast` / `balanced` へ広げるか。」。bundle比較は none/setwiseからsetwise/shortに変更済み。balanced/contrast追加は未決。（根拠: wiki git ad4c79b（2026-06-10）；scripts/build_label_preference_bundle.py（candidate選択））。

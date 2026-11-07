@@ -58,7 +58,7 @@ sources:
 ## Open Questions
 
 - 入口変更・保守責任・repo移管のチーム判断。今回の修正PRは[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)を閉じない。
-- 両版の公開ファイルと再分析データの区別、対応のない元コメント・多対多関係の表現。
+- 本体の公開 JSON は #1155 で元コメント本文をレポート単位の opt-in（既定 off）にした。両版の再分析用データ、対応のない元コメント・多対多関係をどう揃えるかは未決。
 - 初見利用の観測協力者と継続的なフィードバックの受け口。人への依頼は今回送っていない。
 
 ## Updates
@@ -66,7 +66,6 @@ sources:
 - 2026-09-08: 明示goalを設定し、役割整理と最初の参照保持修正に着手。
 
 - 2026-09-08 17:24: [serverless PR #22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)を作成（`codex/preserve-comment-references`, `844f275`、未merge）。元IDが変わらない安全な整数だけ数値で出力する。回帰テストは修正前に失敗し、修正後は全198テスト・全93ファイルのlint・TypeScript検査・本番ビルド成功。GitHub上のcheckは作成後の観測時点で未登録。保存済みの破損データは自動復旧しない。
-
 
 ### 2026-09-08 17:45: 今後の開発で再利用する判断（file back）
 
@@ -77,7 +76,6 @@ sources:
 3. **短期goalの完了と上位目的の達成を混同しない。** 今回完了したのは役割整理・回帰テスト付き修正PR・Wikiへの記録まで。「初見利用者が自力で使える」「本流化が決まった」「完全な相互互換性がある」は未達・未検証。次のgoalは抽出部分失敗や原文なしJSONの扱いなど、上位目的へ近づく検証可能な範囲として設定する。
 
 前回のPR状態・テスト結果は17:24の観測記録を参照する。このfile backではGitHubや実モデルを再観測していない。
-
 
 ### 2026-09-08 17:53: 次goalを不具合から選ぶ提案の見直し
 
@@ -98,3 +96,5 @@ serverlessを主役にすることも、既存版を組織運用向けに維持�
 ## Updates — 2026-10-05 live state再確認
 
 [[catchup-2026-10-05]]より、Serverless [#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)は9月9日にMERGEDとなり、origin/main `f4bb032`の履歴にも存在する。上の未merge・Actions承認待ちは当時の記録で、現在は解消済み。元コメントID保持・CSV検証・読み方・ツリーマップ連動・抽出診断等を今後のbaselineに含める。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)はopen・コメントなしであり、本流化・所有/移管が決まったという意味ではない。依存更新[#29](https://github.com/tokoroten/kouchou-ai-serverless/pull/29) / [#30](https://github.com/tokoroten/kouchou-ai-serverless/pull/30) / [#31](https://github.com/tokoroten/kouchou-ai-serverless/pull/31) / [#33](https://github.com/tokoroten/kouchou-ai-serverless/pull/33)のbuild失敗は別の保守課題。現在地は [[current-status-2026-10-05]] を参照。
+
+- 2026-11-07: Open Questions の現状を更新 — 「両版の公開ファイルと再分析データの区別、対応のない元コメント・多対多関係の表現。」。本体は元コメント本文をreport単位opt-inにした。serverlessとの多対多・不対応の表現は残る。（根拠: kouchou-ai 8e95ceb1d（#1155）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。

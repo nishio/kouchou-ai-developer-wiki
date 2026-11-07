@@ -69,7 +69,6 @@ Scrapbox から辿った旧 Gist は、任意の Obsidian Wiki を Quartz + GitH
 
 ## Open Questions
 
-- Quartz 本体をこの repo に vendor するか、publish 用の別 repo / subtree に分けるか
 - `wiki/log.md` は graph から除外したが、公開ページとしては残している。将来、内部向け導線へ寄せるかは未決
 - source ページを public に出し切るか、analysis / concept だけ前面に出すか
 
@@ -80,4 +79,5 @@ Scrapbox から辿った旧 Gist は、任意の Obsidian Wiki を Quartz + GitH
 - 2026-05-25: graph から `index` / `log` を除外する表示チューニングと、その意図を追記
 - 2026-05-28: GitHub Pages project-site の subpath 対応は upstream Quartz の `baseUrl` に寄せ、`<base>` patch ではなく生成物リンク検査で守る方針を追記
 - 2026-05-28: Scrapbox / 旧 Gist の `wiki/ -> content/` 方式と、この repo の `wiki/` direct 方式の選び分けを追記し、新 Gist へ外部化した
+- 2026-11-07: Open Questions から除去 — 「Quartz 本体をこの repo に vendor するか、publish 用の別 repo / subtree に分けるか」。Quartz はこのrepoへのvendorとして実装済み。（根拠: 0f2ebe6:wiki/analyses/wiki-pages-publishing-stack.md:77（既存 Updates））。
 - 2026-11-11: 外からこの wiki にリンクするときの住所（org の github.io ではない）と、それで 404 になった例を追記

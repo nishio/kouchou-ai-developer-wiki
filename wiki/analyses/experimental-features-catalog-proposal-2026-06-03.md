@@ -72,11 +72,9 @@ sources:
 - カタログがこれらの上位 index になるか、別物として並走するかは別 issue (このページでは判断しない)
 - 既存ドキュメントは改善や削除も含めて柔軟に扱う方針 ([[kouchou-ai-docs-entry-restructure-2026-06-03]] と共通)
 
-## Open Questions
-
 ### managed service 不在時の重み
 
-- [[kouchou-ai-docs-entry-restructure-2026-06-03]] の spine 2-a (managed service) が現時点で提供されていないなら、研究者・分析者が広聴AI の生態系に触れる主たる入口は CLI + catalog 経由になる
+- managed service は現状なしと西尾が回答済み。CLI + catalog を研究者の入口とする方針は示されたが、catalog 自体の提供・利用実績は別途確認が必要。
 - その場合、catalog は「副読本」ではなく「研究者向け正規ルート」相当の重みになる
 
 ### maintain 責任の所在
@@ -96,3 +94,4 @@ sources:
 
 - 2026-10-29: この提案の最初の実物として、本体 docs に `docs/development/related-research.md`（関連研究：本体未収録の実験的手法）を PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) で追加（未 merge）。初期エントリ候補のうち DivCon と Farbrain にセンチメント次元の付与を加えた 3 件を、「所在 / 状態 / 担当 / 最終確認日」つきで載せた。LLM grouping は本体収録済みなので対象外、マンダラート可視化は未掲載。ディレクトリは `experimental-features/` ではなく既存の `development/` 配下の 1 ページにし、増えてから分ける。経緯は [[post-review-direction-issues-2026-10-29]]
 - 2026-11-07: 可視化について、nishio の個人 repo にカタログを作り、本体に入れるかはそこで試してから決める方針になった。共通の題材は [[team-mirai-2025-open-dataset]]。最終確認日を必須にする規則はこのカタログにも適用する（[[open-decisions]] A13）
+- 2026-11-07: Open Questions の現状を更新 — 「[[kouchou-ai-docs-entry-restructure-2026-06-03]] の spine 2-a (managed service) が現時点で提供されていないなら、研究者・分析者が広聴AI の生態系に触れる主たる入口は CLI + catalog 経由になる」。managed service不在という条件は西尾が明確化済み。catalogが研究者ルートに必要という方針と提供済みの実測を分ける。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:141（既存 Updates））。

@@ -49,7 +49,7 @@ Web UI 側の canonical な表示経路は `hierarchical_result.json` + `public-
 ## Open Questions
 
 - Web UI が `analysis-core` の新しい capability や artifact 契約へどこまで即応するべきか
-- A/B/C/D のうち D（hosted demo）を実際にどう提供するか
+- D（hosted demo）の公開方向は整理済みだが、任意入力を継続して分析する managed service は現状なしと西尾が回答した。デモの提供・運用をどう具体化するかは未決。
 
 ## Updates
 
@@ -61,3 +61,5 @@ Web UI 側の canonical な表示経路は `hierarchical_result.json` + `public-
 ### Updates — 2026-10-12 CLI出力の公開を簡単にする方針
 
 [[agpl-output-and-plugin-boundaries-2026-10-12]]より、CLIの `report.html` をそのまま公開する利用者に、毎回ライセンス表示や対応ソースを用意させない。CLI側で短い案内・AGPL本文リンク・表示ソースZIPを自動付与し、利用者は案内を残して公開する。長いライセンス全文は画面へ表示せず、本文リンクとZIP内の写しで提供する。PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)は2026-10-12にmain反映済み。これはCLI出力の公開負担を減らす判断であり、Webの正規表示経路を変更するものではない。通常の同梱資源が欠けるフォールバックや、生成後のコード直接改変は別確認が必要。
+
+- 2026-11-07: Open Questions の現状を更新 — 「A/B/C/D のうち D（hosted demo）を実際にどう提供するか」。Dのデモ提供と任意入力を扱うmanagedserviceは区別され、後者は現状なしと回答済み。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates）；0f2ebe6:wiki/analyses/azure-demo-public-visibility-proposal-2026-06-04.md:110（既存 Updates））。

@@ -50,7 +50,6 @@ plan 共有ルートでは Responses API でも一部 field / tool が使えな�
 
 ## Open Questions
 
-- ~~SIWC の plan 共有は embedding API を含むか~~ → **2026-10-12 確認: docs は Responses API 限定で embedding は対象外**。SIWC 単独ではキー不要にならず、embedding は別キー/別プロバイダが要る。
 - OSS 配布版（ユーザ端末で動かす形態）を広聴AIが正式サポートする計画と噛み合うか。現状の一次配布は hosted デモ寄り。
 - preview の rate / quota / 商用利用条件が自治体スケールの分析（数千〜数万コメント）に耐えるか（docs は rate/quota に言及なし）。
 
@@ -60,3 +59,5 @@ plan 共有ルートでは Responses API でも一部 field / tool が使えな�
 - 2026-10-12: リンク先 docs（models-and-inference / preview-limitations）を確認し、embedding の扱いを「未確認」→「**Responses API に明示限定で embedding は docs 範囲外**」に確定。あわせて Responses API 側の未対応 field（`temperature` / `max_output_tokens` 等）・未対応 tool / 未対応 input を追記
 - 2026-10-12: **nishio の経済的動機の仮説を追記**（Slack `#2_開発_広聴ai` 2026-10-12 09:14 nishio より）。「広聴AIに Sign in with ChatGPT をつけると **Codex（ChatGPT プラン）の weekly limit を使って分析ができる**。使い切らず余らせた枠を切り替え間際に使うなら実質無料」という説。SIWC の plan 共有＝サインインしたユーザの ChatGPT プラン枠で Responses API を回す仕組みを、**定額プランの未消化 weekly quota の転用**として捉える見方。コスト面で [[llm-providers]] の自治体決済課題を緩める候補になりうる一方、本ソースの技術 caveat はそのまま効く——特に **embedding は SIWC の対象外**なので weekly quota で賄えるのは Responses API 側（ラベリング等）だけで、クラスタリング中核の embedding は別途キー/別プロバイダが要り、「pipeline 全体が実質無料」にはならない。plan の weekly limit / rate / quota が自治体スケール（数千〜数万コメント）に耐えるかも未確認（docs は rate/quota に言及なし）。現時点では **feasibility アイデアとして観測**に留める。
 - 2026-10-21: 訂正。本文の「Issue [#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660)」は PR（Issue [#633](https://github.com/digitaldemocracy2030/kouchou-ai/issues/633) への対応、2025-08-13 merge）と読み替える。API キーフォームの現状は [[llm-providers]]
+
+- 2026-11-07: Open Questions から除去 — 「~~SIWC の plan 共有は embedding API を含むか~~ → **2026-10-12 確認: docs は Responses API 限定で embedding は対象外**。SIWC 単独ではキー不要にならず、embedding は別キー/別プロバイダが要る。」。取り消し線の回答済み項目。2026-10-12のUpdatesにResponsesAPI限定・embedding範囲外の確認がある。（根拠: 0f2ebe6:wiki/sources/openai-siwc-token-sharing-docs-2026-10-12.md:60（既存 Updates））。

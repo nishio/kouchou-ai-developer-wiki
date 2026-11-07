@@ -64,9 +64,8 @@ sources:
 
 ## Open Questions
 
-- [#905](https://github.com/digitaldemocracy2030/kouchou-ai/issues/905)の最初の動作をerror終了にするか、部分成功を明示して継続する要件があるか。
-- [#908](https://github.com/digitaldemocracy2030/kouchou-ai/issues/908)で複数選択を必要とするユースケースがあるか。
-- [#906](https://github.com/digitaldemocracy2030/kouchou-ai/issues/906) / [#907](https://github.com/digitaldemocracy2030/kouchou-ai/issues/907)の指定モデルが必要機能・APIに対応するか。
+- モデルカタログと未検証モデルの選択は実装済み。PR #1129 で検証済み OpenAI モデルの反映が進んだが、#906 / #907 の全指定モデルが必要機能・API を満たすかは個別の確認結果が必要。
+- [#908](https://github.com/digitaldemocracy2030/kouchou-ai/issues/908)で複数選択を必要とするユースケースがあるか。（2026-11-07 現状更新: 問いは「複数選択を必要とするユースケースがあるか」で、#911 が単一選択を実装した事実はユースケースの有無を調べたものではない。Updates 参照）
 
 ## Updates
 
@@ -117,3 +116,7 @@ sources:
 
 - ユーザー指示により[#912](https://github.com/digitaldemocracy2030/kouchou-ai/issues/912) / [#913](https://github.com/digitaldemocracy2030/kouchou-ai/issues/913)は人間が実施する検証としてIssue本文を更新。具体的な担当者は未定。
 - Codexの認証情報確認依頼は取り下げ。未検証フラグは人間の検証結果が記録されるまで維持する。前項の「認証情報の読み込み先確認中」はこの判断で終了。
+
+- 2026-11-07: Open Questions から除去 — 「#905の最初の動作をerror終了にするか、部分成功を明示して継続する要件があるか。」。抽出欠落は error 終了にする初期実装が #910 で採用された。後続のコンテンツフィルタ除外 #1150 は別条件。（根拠: kouchou-ai git log upstream/main: #910（2026-09-08）；kouchou-ai 769dfbc08（2026-10-27、#1150））。
+- 2026-11-07: Open Questions の現状を更新 — 「#908で複数選択を必要とするユースケースがあるか。」。Azure 単一選択を採用する #911 が merge 済み。複数の deployment 選択は初期仕様に採らなかった。（根拠: kouchou-ai 6105ff0a5（2026-09-08、#911））。 ／ Claude の検証（2026-11-07、OQ-0254）で「閉じる」から戻した: 問いは「複数選択を必要とするユースケースがあるか」で、#911 が単一選択を実装した事実はユースケースの有無を調べたものではない。問いは Open Questions に残す
+- 2026-11-07: Open Questions の現状を更新 — 「#906 / #907の指定モデルが必要機能・APIに対応するか。」。モデルカタログと未検証表示は実装済み。OpenAI のモデルには後続の検証済み化があるが、すべての実モデル確認完了とはしない。（根拠: kouchou-ai b84434bfe / 65e081efe（2026-10-26、#1129））。

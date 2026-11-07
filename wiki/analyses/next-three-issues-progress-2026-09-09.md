@@ -33,7 +33,6 @@ sources:
 
 ## Open Questions
 
-- [#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。
 - [#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)の解析パイプライン全体の例外処理整理と実Azure接続による確認。
 
 ## Updates — 2026-09-09 18:56 CI完了
@@ -49,3 +48,5 @@ sources:
 3. **前進・完了・レビュー済みを分ける。** [#592](https://github.com/digitaldemocracy2030/kouchou-ai/issues/592)は管理画面の案内を改善しても解析全体の例外整理が残るため閉じない。CIが成功していてもCodeRabbitのrate limitedはレビュー完了ではなく、ブラウザログのエラー不存在も意味しない。PRの実装範囲と残件をIssueに引き継ぎ、マージ判断の材料を混同しない。
 
 根拠は本ページの9月9日の実装・検証記録と [[three-issues-progress-2026-09-09]]。検証境界の知見は [[testing]] にも反映した。
+
+- 2026-11-07: Open Questions から除去 — 「#946再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。」。#944/#945/#946 の3PRはmain履歴にmerge済み。CI成功だけで判断していない。（根拠: kouchou-ai upstream/main git log: #944（76cd44690、2026-10-05）/#945（fedf67abe、2026-10-06）/#946（2026-10-12、46013563f））。

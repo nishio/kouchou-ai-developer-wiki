@@ -79,9 +79,11 @@ A/B/C/D 整理に沿って読むと、Web UI は非専門家・共有・運用�
 
 - Jupyter Notebook を B の補助とみなすか、A として独立にメンテするか
 - Web UI が今後どこまで `analysis-core` の新機能へ即応するべきか
-- A/B/C/D のうち D を実際にどう提供するか
+- D（hosted demo）の方向は viewer 公開・admin 共用として整理済み。一方、任意データを継続的に分析する managed service は 2026-10-14 の西尾回答で現状なし。具体の提供・運用は引き続き別途確認が必要。
 
 ## Updates
 
 - 2026-05-23: `raw/meeting_minutes.txt`、書籍 source、local clone の commit history、PyPI release observation を突き合わせて初版作成
 - 2026-05-23: 書籍 `10_00` の TTTC Scatter vs 広聴AI 比較表と、13.3 のミニ広聴AI実装導線を根拠として追記
+
+- 2026-11-07: Open Questions の現状を更新 — 「A/B/C/D のうち D を実際にどう提供するか」。hostedデモと、managed service「現状なし」を分ける西尾判断が出た。具体の提供・運用は残る。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates）；0f2ebe6:wiki/analyses/azure-demo-public-visibility-proposal-2026-06-04.md:110（既存 Updates））。

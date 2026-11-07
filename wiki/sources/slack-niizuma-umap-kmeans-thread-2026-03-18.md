@@ -56,9 +56,11 @@ tokoroten は、クラスタ結果を考慮して 2D に落としたいなら su
 ## Open Questions
 
 - 新妻氏の提案する「説明可能性を一定以上担保した分類法」を、広聴AIの current product にどう埋めるかは未整理
-- supervised `UMAP` を current code / open PR 上で本格検証した痕跡は、この source 単体からは追えない
+- supervised UMAP は 2026-05 のローカル試作で比較され、短期互換案として否定的な結果が記録された。current code / open PR への本格採用や、新妻氏の社内試行の進展は別途未確認。
 - 新妻氏の社内試行がその後どこまで進んだかは、この週次 dump では分からない
 
 ## Updates
 
 - 2026-05-25: 新妻 thread を専用 source として分離し、議論の塊を 4 つに整理
+
+- 2026-11-07: Open Questions の現状を更新 — 「supervised UMAP を current code / open PR 上で本格検証した痕跡は、この source 単体からは追えない」。supervised UMAPは5月のローカル試作で比較済み。新妻氏の社内試行の進展とは分ける。（根拠: 0f2ebe6:wiki/analyses/niizuma-thread-algorithm-critique.md:94（既存 Updates））。

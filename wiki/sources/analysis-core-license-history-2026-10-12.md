@@ -37,9 +37,8 @@ sources:
 
 ## Open Questions
 
-- MIT表記が人間の明示指示に基づくものか、雛形生成時の誤記か。commitのAI共同著者記録だけでは原因を確定できない。
+- 西尾は MIT 表記をうっかりミスと判定し、AGPL 訂正を指示した。表記を導入した際の AI / 人間の具体的な指示履歴は引き続き未確認。
 - 別ライセンス化に関する未確認のDM・会話・権利確認資料があるか。公開PRと取得できたSlack/議事録で未発見という範囲に留まる。
-- 今後どのライセンス表記へ統一するか、既存PyPI配布への説明をどうするか。
 
 ## Updates
 
@@ -57,3 +56,6 @@ sources:
 - 西尾さんの追加指示で、[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)にcommit `d09976e`を追加。`docs/user-guide/license.md`と各入口へのリンク、CLI出力HTMLのライセンス全文・表示ソースZIP自動同梱を実装した。先の「Python実装変更はない」は `5513855` 時点の説明で、今回から生成処理の変更を含む。
 - HTML生成16テスト、ZIPから隔離Pythonで同一HTMLを再生成、ローカル改造ソース保存、wheel単体の生成、sdist/wheelライセンス一致、twine・Ruff・docs strict buildを確認。案内を利用者が手で作らずに済む方針と制限は [[agpl-output-and-plugin-boundaries-2026-10-12]]より。
 - 未merge・PyPI未更新。リリースチェックリストではライセンス検証をタグpushより前へ移した。
+
+- 2026-11-07: Open Questions の現状を更新 — 「MIT表記が人間の明示指示に基づくものか、雛形生成時の誤記か。commitのAI共同著者記録だけでは原因を確定できない。」。西尾はうっかりミスと判定し AGPL 訂正を指示済み。表記導入時の全指示履歴はなお未確認。（根拠: 0f2ebe6:wiki/sources/analysis-core-license-history-2026-10-12.md:50（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:47（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「今後どのライセンス表記へ統一するか、既存PyPI配布への説明をどうするか。」。AGPLへの統一・配布案内・0.1.3公開・旧版yankまで完了として追記されている。（根拠: 0f2ebe6:wiki/sources/analysis-core-license-history-2026-10-12.md:50（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:45（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:46（既存 Updates）；kouchou-ai bbc10c947 / 055b8824a）。

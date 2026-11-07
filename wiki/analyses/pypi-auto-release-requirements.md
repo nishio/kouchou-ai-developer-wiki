@@ -56,7 +56,6 @@ sources:
 
 - publish 前に `apps/api` 側の互換テストまで必須にするか
 - PyPI 認証を token secret で持つか、Trusted Publishing に寄せるか
-- 「release タイミング自体を自動化するか（tag 付けまで CI 側に持っていくか）」の判断は [[pypi-release-timing-automation]] に分離した
 
 ## Updates
 
@@ -64,3 +63,5 @@ sources:
 - 2026-05-19: 必須要件が一通り満たされ、`analysis-core-v0.1.2` で publish success を観測したことを追記
 - 2026-05-17: tag 規約は `analysis-core-v*` を採用する前提に更新
 - 2026-05-17: Query への filing back として追加。`docs/development/pypi-release.md`、`docs/refactoring/phase2_5_plan.md`、`.github/workflows/`、`packages/analysis-core/pyproject.toml` を照合
+
+- 2026-11-07: Open Questions から除去 — 「「release タイミング自体を自動化するか（tag 付けまで CI 側に持っていくか）」の判断は [[pypi-release-timing-automation]] に分離した」。問いを別ページへ分離した、という完了済みの案内項目。分離先の未決事項は維持する。（根拠: wiki git f99f3cf（2026-05-17、release timing ページ分離の差分））。

@@ -32,9 +32,7 @@ sources:
 
 ## Open Questions
 
-- 当時の人間の指示・判断としてMIT化を意図していたか。
-- 誤記なら本体に合わせた表記修正と配布物への説明、意図的なら由来・許諾範囲とライセンス境界の明文化をどう進めるか。
-- Slackの取得snapshot以降に回答・追加資料が出ているか。
+- 西尾は 2026-10-12 に MIT 表記をうっかりミスと判定し AGPL 訂正を指示した。表記を導入した際の AI / 人間の具体的な指示履歴は引き続き未確認。
 
 ## Updates
 
@@ -45,3 +43,7 @@ sources:
 - 2026-10-12: **② 完了**。nishio がタグ `analysis-core-v0.1.3` を push → `publish-analysis-core.yml` が success し、**PyPI に 0.1.3（AGPL-3.0）を公開**（https://pypi.org/project/kouchou-ai-analysis-core/0.1.3/ ）。公開前に main `055b8824` からローカルビルドで検証済み（`twine check` PASSED、metadata AGPL-3.0、AGPL 全文 LICENSE が wheel/sdist に同梱・root `LICENSE` と sha256 一致）。残るは **③ 旧 MIT 版 0.1.0/0.1.2 の yank**（PyPI Web UI 操作＝nishio、手順は [#979 コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979#issuecomment-6123224130)）。これが済めば [#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) close 可。[[analysis-core-license-history-2026-10-12]]より。
 - 2026-10-12: **③ 完了・[#979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) クローズ**。nishio が PyPI Web UI で **旧 MIT 版 0.1.0 / 0.1.2 を yank**（理由「ライセンス表記が誤り（MIT）。AGPL-3.0 の 0.1.3 を使う」）。`simple` index・per-version JSON で 0.1.0/0.1.2 = yanked:true、0.1.3 = yanked:false を確認。これで **①version bump → ②AGPL 訂正版 publish → ③旧版 yank** が全完了し、PyPI の公開配布物のライセンス情報は AGPL-3.0 に揃った。MIT 誤表記版はデフォルト解決から外れ（既存 pin 利用者は警告付きで install 可・取り消し可能）、[Issue #979](https://github.com/digitaldemocracy2030/kouchou-ai/issues/979) は目的達成で close。repo（PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)）→ version bump（PR [#981](https://github.com/digitaldemocracy2030/kouchou-ai/issues/981)）→ PyPI publish → yank までの end-to-end 訂正が完結した。[[analysis-core-license-history-2026-10-12]]より。
 - 2026-10-12: `#2_開発_広聴ai` の西尾さんの判定根拠を補記。質問を受けた西尾さんは当日朝、まず「そうなっている記憶がない」と述べ、履歴を洗った結果「特に議論なく最初からMITになっていた」ため **うっかりミス** と判定した。明示した法的根拠は「**大元のTalk to the CityがAGPLなので、それに依拠したものをMITに変えるのは無理なはず**」で、これが誤記判定と訂正方針（[PR #970](https://github.com/digitaldemocracy2030/kouchou-ai/pull/970)）の直接の理由。あわせて「ライセンスのやさしい解説ドキュメントが必要」との発言があり、PR [#970](https://github.com/digitaldemocracy2030/kouchou-ai/issues/970)の `docs/user-guide/license.md` 追加に対応する。本調査の「移植元や許諾根拠の確認が論点」という留保は、この由来（TTC → kouchou-ai → analysis-core がいずれもAGPL系）の確認で整合する。[[analysis-core-license-history-2026-10-12]]より。
+
+- 2026-11-07: Open Questions の現状を更新 — 「当時の人間の指示・判断としてMIT化を意図していたか。」。西尾は誤記と判断して AGPL 訂正を指示した。表記導入時の個々の指示履歴は別途未確認。（根拠: 0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:47（既存 Updates）；0f2ebe6:wiki/sources/analysis-core-license-history-2026-10-12.md:50（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「誤記なら本体に合わせた表記修正と配布物への説明、意図的なら由来・許諾範囲とライセンス境界の明文化をどう進めるか。」。AGPL 訂正・0.1.3 公開・旧 MIT 版 yank の順序が決定され、完了が記録されている。（根拠: 0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:42（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:43（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:45（既存 Updates）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:46（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「Slackの取得snapshot以降に回答・追加資料が出ているか。」。snapshot 後の西尾の回答と判定根拠が同日の Updates に追記されている。（根拠: 0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:47（既存 Updates））。

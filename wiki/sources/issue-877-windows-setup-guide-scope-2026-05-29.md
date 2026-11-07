@@ -38,10 +38,13 @@ Windows setup の関連 open PR として `#863`「Windows setup の日本語案
 
 ## Open Questions
 
-- `#877` は current main の `.bat` ベース docs を修正するのか、`#863` merge 後の `.bat` + `.ps1` 導線を前提にするのか。
-- Docker Desktop が使えない組織端末を「非サポート」と明記するのか、「上級者向け WSL2 + Docker Engine ルート」へ誘導するのか。
-- Windows 初心者向けガイドに、Docker Desktop ライセンス確認をどの程度まで書くべきか。
+- #929 では利用不可の組織 PC を IT 管理者・別環境・serverless へ案内する形にした。その後、ライセンス事情を踏まえ WSL2 + Docker Engine を案内する改善案が出ており、主要入口への採用は未決。
+- 現行の初心者ガイドは所属組織の IT 管理者へ利用条件を確認する案内になっている。後続の公式ライセンスリンクと WSL2 + Docker Engine の入口の明示を、どの粒度で採るかは未決。
 
 ## Updates
 
 - 2026-05-29: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) 本文、コメント、current main docs、関連 issue / PR の状態を観測して整理した。
+
+- 2026-11-07: Open Questions から除去 — 「`#877` は current main の `.bat` ベース docs を修正するのか、`#863` merge 後の `.bat` + `.ps1` 導線を前提にするのか。」。#863 merge後の .bat + .ps1 を前提に #929 が docs を更新し #877 をclose。（根拠: 0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates））。
+- 2026-11-07: Open Questions の現状を更新 — 「Docker Desktop が使えない組織端末を「非サポート」と明記するのか、「上級者向け WSL2 + Docker Engine ルート」へ誘導するのか。」。初期docsはIT管理者・別環境・serverlessへ分岐済み。その後ライセンス事情によるルートB案が出ている。（根拠: 0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates）；0f2ebe6:wiki/analyses/windows-distribution-options.md:150（既存 Updates））。
+- 2026-11-07: Open Questions の現状を更新 — 「Windows 初心者向けガイドに、Docker Desktop ライセンス確認をどの程度まで書くべきか。」。初期ガイドはIT管理者へ利用条件を確認する文言で実装済み。その後、公式ライセンスへのリンクとWSL2 + Docker Engineの入口を明示する改善案が出ており、その採否は残る。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） docs/self-hosting/windows-setup.md:13；0f2ebe6:wiki/analyses/windows-distribution-options.md:150（既存 Updates））。

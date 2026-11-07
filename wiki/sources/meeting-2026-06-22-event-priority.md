@@ -32,10 +32,12 @@ Brand Compass に沿った開発は、単独の設計文書名としてだけで
 
 ## Open Questions
 
-- 8/2 イベントで実際に出す artifact は、既存 viewer の公開例、技術解説、ツール紹介、運用事例のどれを主軸にするのか。
+- 8/2 のツール枠は、8/1 の投稿で講演資料を作る形に変更され、8/11 には動画を公開せず資料を更新して公開する意向が示された。イベント全体の主 artifact と、個別の公開 viewer / 事例の採否は未確認。
 - 4 トラックのうち、広聴AI developer wiki が短期で支援しやすいのは「技術」と「ツール」だが、「国会」「地方政治」実践側の公開可能事例をどこまで接続できるか。
 - イベント向けの docs は広聴AI本体 repo、dd2030.org、broadlisteningbook.com、developer wiki のどこを canonical にするのか。
 
 ## Updates
 
 - 2026-06-30: freshness marker を 16:33 export の 7702 行に揃え、Brand Compass / 情報発信の議事録文脈を [[meeting-brand-compass-information-strategy-2026-06-30]] に切り出した。
+
+- 2026-11-07: Open Questions の現状を更新 — 「8/2 イベントで実際に出す artifact は、既存 viewer の公開例、技術解説、ツール紹介、運用事例のどれを主軸にするのか。」。8月1日のツール枠は講演資料を作る形に変更、8月11日には動画非公開希望と資料更新後公開の方針が投稿された。イベント全体の主artifactや個別demo選定とは分ける。（根拠: slack-logs origin/main@c76b975（2026-10-23保存済み） raw/slack/C0B4L1JB8RM/2026-08.jsonl.gz:28（展開後、2026-08-01、ts 1785572375.367379）；slack-logs origin/main@c76b975（2026-10-23保存済み） raw/slack/C0B4L1JB8RM/2026-08.jsonl.gz:129（展開後、2026-08-11、ts 1786450550.950979））。

@@ -43,10 +43,11 @@ admin の `"use server"` は 11 ファイルにあり、PR [#903](https://github
 
 ## Open Questions
 
-- PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の docs inventory に CSV / JSON download server actions を入れるか、download 系は static-site-builder / browser download 設計と合わせて別枠にするか。
 - admin の client direct fetch は local desktop mode だけに限定するか、hosted mode も含めて FastAPI CORS/auth へ寄せるか。
 - static-site-builder の runtime `next build` は、事前ビルド済み public-viewer assets、Python 静的レポート生成、または scope 外化のどれで外すか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。issue [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) と PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の GitHub live state、PR diff、CodeRabbit 指摘、`work/kouchou-ai/main@d5c9ece6e3b3` の admin / public-viewer / static-site-builder facts を固定した。
+
+- 2026-11-07: Open Questions から除去 — 「PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) の docs inventory に CSV / JSON download server actions を入れるか、download 系は static-site-builder / browser download 設計と合わせて別枠にするか。」。CSV/JSON download Server Actions は runtime inventory の明示的な行に含まれている。（根拠: kouchou-ai f422dcc65 / 109049ad3（2026-10-24 / 26）；kouchou-ai upstream/main@085366779（2026-10-29） docs/development/web-ui-node-runtime-dependencies.md:21）。

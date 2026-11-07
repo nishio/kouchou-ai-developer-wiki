@@ -23,9 +23,12 @@ sources:
 
 ## Open Questions
 
-- `#721/#722` の問題設定自体を、current `analysis-core` CLI 向けに読み替えて再起票する方がよいか
-- input/config/output validation のうち、current CLI にまだ欠けているものは何か
+- current CLI には設定・入力・出力の検証経路が実装された。#721 / #722 の残要件のうち、既存の検証で満たせない部分を再起票するかは未決。
+- current CLI には --validate-config / --validate-input、独立モジュール validate_output が実装された。残る検証要件は、この 3 経路で検出できない具体例を確認して切り分ける。
 
 ## Updates
 
 - 2026-05-19: 初版作成
+
+- 2026-11-07: Open Questions の現状を更新 — 「#721/#722 の問題設定自体を、current analysis-core CLI 向けに読み替えて再起票する方がよいか」。設定・入力・出力の検証経路は実装済み。旧課題の残要件を再起票する必要があるかは未決。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/__main__.py:79；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/validate_output.py:1）。
+- 2026-11-07: Open Questions の現状を更新 — 「input/config/output validation のうち、current CLI にまだ欠けているものは何か」。config/inputの専用フラグ、outputの専用モジュールが実装された。全種類の妥当性を保証したという意味ではない。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/__main__.py:79；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/validate_output.py:1）。

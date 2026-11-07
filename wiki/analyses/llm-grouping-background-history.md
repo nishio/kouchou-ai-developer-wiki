@@ -157,12 +157,13 @@ Slack と議事録を振り返ると、少なくとも **2025 4Q には「現行
 ## Open Questions
 
 - LLM 直接グルーピングの第2モードの default view は `hierarchyList` / `treemap` / 専用 view のどれが妥当か
-- `PR #827` の短期互換案である `x/y` 射影を、本当に product 実装へ入れるのか、それとも docs 上の移行案に留めるのか
 - taxonomy-guided な実務モードと、新規論点発見モードを同じ UI に載せるべきか分けるべきか
-- 散布図が担っていた「公開UIとしての役割」を別 view で担保するための要件は何か → [[public-ui-requirements-for-broadlistening]] に整理
 
 ## Updates
 
 - 2026-05-23: 初版作成。LLM 直接グルーピングの第2分析モードと散布図の緊張関係を、meeting minutes / Slack / current docs の流れとして時系列に整理
 - 2026-05-23: 同日の [[slack-public-ui-requirements-2026-05-23]] で [[ohki-shingo]] が「散布図が受け入れられている要因」と「公開UIに求められる 7 要件」を明示分解し、`embedding 距離精度は公開UIの本質ではない / cluster grouping のみ保てれば十分` という view 側契約を整理。[[public-ui-requirements-for-broadlistening]] に独立ページとして filing-back し、短期互換案の技術バーが思っていたより低いことを記録
 - 2026-05-25: current `main` の workflow / viewer 実装差分まで見て、LLM grouping 系実装を `analysis_mode`、互換 `llm_grouping` step、`analysis_capabilities`、viewer `requirements` の 4 段へ落とした [[llm-grouping-implementation-plan]] を追加
+
+- 2026-11-07: Open Questions から除去 — 「PR #827 の短期互換案である x/y 射影を、本当に product 実装へ入れるのか、それとも docs 上の移行案に留めるのか」。互換枝は実際に embedding から UMAP 座標を生成し、group assignment と共存させる実装で main 入り。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:418；kouchou-ai 6e9e60ee（2026-05-28、#866））。
+- 2026-11-07: Open Questions から除去 — 「散布図が担っていた「公開UIとしての役割」を別 view で担保するための要件は何か → [[public-ui-requirements-for-broadlistening]] に整理」。要件の整理先が public-ui-requirements-for-broadlistening に定まり、問い自体にも整理済みと記録されている。（根拠: wiki git ac45a5d（2026-05-24、公開 UI 要件の整理ページと参照の追加））。

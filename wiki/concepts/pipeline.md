@@ -123,7 +123,6 @@ sources:
 
 - `extraction.skip: true` オプションの実装（複数回希望されているが未着地、議事メモ 2026-05-18 見出し時点）
 - 散布図の維持／削除：「散布図を見て満足する時代ではない」(ken-san, 2025-10-01) vs [[nishio]]「少なくとも 2026-09 書籍版リリース時点までは温存し、より良い可視化が見つかれば併用→デフォルト切替も可」。未決（詳細は [[open-decisions]] A1）
-- LLM grouping 系 LLM 分類を `embedding` 後の互換枝として入れるのか、`embedding` 自体を省く独立 workflow にするのか
 
 ## Updates
 
@@ -141,3 +140,5 @@ sources:
 - 2026-10-12: `analysis_mode=llm_grouping` engine が 2026-05-25（[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) / `4f893ab5`）に main 入りした事実を LLM grouping 節の Update として追記（本文 L108 は「2026-05-18 時点」の dated 観測として残置）。到達はまだ admin/api 未対応（[#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) / PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987)）。あわせて Open Questions の「レポート再利用（Issue [#19](https://github.com/digitaldemocracy2030/kouchou-ai/issues/19)）現状確認が必要」を解決として除去（`apps/api/src/services/report_duplicate.py` 実装済み、[[open-decisions]] 2026-05-17 確認）。[[wiki-self-audit-2026-10-12]]
 - 2026-10-12: 上記の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が merge（kouchou-ai main `c33d264a`）。`analysis_mode` 受け渡しが `apps/admin` / `apps/api` に入りプロダクト到達も main 入りしたため、LLM grouping 節の Update を「到達は未」→「到達も main 入り」に訂正。[[wiki-self-audit-2026-10-12]]
 - 2026-10-15: API キー無しで `embedding ＋ 階層クラスタリング`だけを step 関数直呼びで回す経路（extraction / labelling を飛ばす）を [[offline-local-clustering]] に切り出し。未着地の `extraction.skip`（上記 Open Questions）は、入力が論点要約済みなら 1 コメント = 1 argument として step 関数直呼びで事実上回避できる。ただし CLI の canonical `hierarchical_result.json` は labelling → overview → aggregation が LLM 依存のためキー無しでは作れない。
+
+- 2026-11-07: Open Questions から除去 — 「LLM grouping 系 LLM 分類を `embedding` 後の互換枝として入れるのか、`embedding` 自体を省く独立 workflow にするのか」。embeddingを残す互換workflowとして出荷し、#987でUI/APIからも利用できるようになった。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/workflows/llm_grouping_compatible.py:20；0f2ebe6:wiki/concepts/pipeline.md:142（既存 Updates））。

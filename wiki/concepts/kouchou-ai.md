@@ -95,3 +95,4 @@ README・`skills/kouchou-ai-development/SKILL.md`・`docs/deployment/github-page
 - 2026-05-23: 4 つの配布形態が生まれた歴史的経緯への導線として [[tttc-to-analysis-core-history]] を追加
 - 2026-10-12: サービス要約表の Next.js 15→16 を current main に合わせて訂正（[[architecture-overview]] と同期）。[[wiki-self-audit-2026-10-12]]
 - 2026-11-03: Open Questions の最新タグを v4.1.0 → v4.2.0（2026-10-26）に更新（`gh release list` で確認）
+- 2026-11-07: Open Questions の現状を更新 — 「v5.0 plugin 化のリリース時期（[[meeting-minutes]] で 2026 年 6 月目標。2026-10-18 時点で最新タグは v4.1.0 のままで未着地）。詳細は [[versioning-strategy]]」。localにv4.2.0 tagが存在。v5のリリース目標の未着地は残る。（根拠: kouchou-ai local tag v4.2.0）。

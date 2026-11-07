@@ -122,8 +122,6 @@ scatter / mobile 系は、個別の `#121` `#283` を先に直すより、`#872`
 
 ## Open Questions
 
-- `#863` は Windows 実機検証なしでも GitHub Actions green を根拠に merge するか、実機確認まで待つか
-- `#877` は `#863` merge 後に着手するか、current main docs に先にサポート境界だけ入れるか
 - `#221` の最初の具体 PR は、作成前確認パネル (`#11` / `#79`) から始めるか、API billing / quota preflight (`#292` / `#391`) から始めるか
 - `#564` は kouchou-ai repo で持ち続けるか、website repo 側へ移して事例公開 workflow を別管理するか
 - `#881` の最初の実験は全件ラベリング比較から始めるか、KJ prompt 比較を同時に走らせるか
@@ -134,3 +132,6 @@ scatter / mobile 系は、個別の `#121` `#283` を先に直すより、`#872`
 - 2026-10-21: 訂正。本文の「`sampling_num=10` ランダムサンプリング」は誤りで、CLI の既定は 3 件、管理画面/API 経路は 30 件。10 件になるのは `PipelineOrchestrator.from_dict` 経由だけ（[[label-quality]]）
 - 2026-05-29: `#221` 系の concrete tracking issue として `#884` `[FEATURE] レポート作成前に入力・コスト・API状態を確認できるパネルを追加する` を起票し、下位 issue `#11`, `#79`, `#292`, `#391`, `#97` へ相互リンクコメントを追加した。
 - 2026-05-29: 初版作成。live open issues / PRs、`origin/main@0c294da`、既存 wiki 分析を照合し、`#741` close 後の残件優先順として整理した。
+
+- 2026-11-07: Open Questions から除去 — 「#863 は Windows 実機検証なしでも GitHub Actions green を根拠に merge するか、実機確認まで待つか」。#863 は merge 済み。問いに残る「mergeするか」という採否待ちは解消している。（根拠: kouchou-ai 3c5d1f02（2026-06-02、#863）；0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「#877 は #863 merge 後に着手するか、current main docs に先にサポート境界だけ入れるか」。#863 merge後の #929 で #877 が実装された。（根拠: 0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates））。

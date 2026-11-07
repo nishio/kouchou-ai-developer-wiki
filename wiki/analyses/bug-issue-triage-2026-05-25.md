@@ -51,8 +51,7 @@ issue [#741](https://github.com/digitaldemocracy2030/kouchou-ai/issues/741) は 
 
 ## Open Questions
 
-- `#629` は public endpoint でなく admin endpoint から backup すべきか、それとも backup 専用 endpoint / script を別に設けるべきか
-- `#477` は「Azure では model 選択を無効化する」軽い解決でよいか、それとも deployment 一覧取得までやるか
+- #629 は #870（migration / 緊急救済専用化）と #871（storage health check）へ分割済み。後継課題の充足範囲と残件をそれぞれ確認する。
 - `#741` の flaky deploy は直近の GitHub Actions run を追えば実質 close できるのか、それとも retry/caching/serial build の修正 issue として残すべきか
 - `#478` `#283` `#121` は current UI を browser で再観測すると、どこまで既に改善済みか
 
@@ -61,3 +60,6 @@ issue [#741](https://github.com/digitaldemocracy2030/kouchou-ai/issues/741) は 
 - 2026-05-25: 初版作成。open `bug` issue を current `main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と open PR で棚卸しし、stale 3 件の close と active issue の残し方を整理
 - 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、Azure 設定更新経路の secret 名・具体 command details を削除
 - 2026-10-21: 訂正。[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584) を stale とした判定は誤りだった。根拠にした `test_execute_aggregation_runs_monitor_flow_and_preserves_existing_status` は `subprocess.Popen` を差し替えていて analysis-core を実行せず、手で書いた `hierarchical_status.json`（777 / 300 / 477）を読み戻しているだけだった。実際の analysis-core は `--only hierarchical_aggregation` の実行開始時にトークン数を 0 で初期化し、終了時に今回実行したステップ分の合計（集約だけなので 0）で上書きしていたため、`e5ed743` でも症状は残っていた。issue 本文にある「意見ごとの出典リンクも消える」症状も、レポート編集で config が `ReportConfig` 経由で書き戻されて `enable_source_link` が落ちる不具合として残っていた。どちらも 2026-10-19 に修正された（トークン数は PR [#1031](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1031)、設定編集での項目消失は PR [#1034](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1034)）。既に 0 と保存されたレポートの値は復元されない。[#584](https://github.com/digitaldemocracy2030/kouchou-ai/issues/584) はこの判定に基づいて 2026-05-25 に close されたままである。[[code-health-review-2026-10-18]] / [[deep-code-review-2026-10-19]]より
+
+- 2026-11-07: Open Questions の現状を更新 — 「`#629` は public endpoint でなく admin endpoint から backup すべきか、それとも backup 専用 endpoint / script を別に設けるべきか」。#629 は閉じられ、migration 専用化 #870 と storage health check #871 に分割された。（根拠: 0f2ebe6:wiki/analyses/fetch-reports-deprecation-and-storage-health-2026-05-26.md:59（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「#477 は「Azure では model 選択を無効化する」軽い解決でよいか、それとも deployment 一覧取得までやるか」。Azure はサーバー側モデル設定を使う単一選択にする軽い案が #911 で実装・merge 済み。（根拠: kouchou-ai 6105ff0a5（2026-09-08、#911）；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:106）。

@@ -176,7 +176,7 @@ raw/experiments/
 ## Open Questions
 
 - `raw/experiments/` は local gitignored なので、複数人共有には弱い。共有 artifact は Google Drive / GitHub release artifact / 別 repo のどれに置くか。
-- `manifest.json` / `*.jsonl` の schema をどこまで厳密にするか。最初は手書きでよいが、後で script 化する必要がある。
+- experiment archive の最小 schema / 保存処理は `codex/experiment-storage` で実装された。現行 main CLI への採用と、manifest / JSONL の厳密な検証範囲は引き続き未確認。
 - 公開可能な sample dataset だけは、軽量 artifact を git tracked にするべきか。
 - `raw/experiments/` の容量管理をどうするか。古い full artifact をいつ外部 storage へ退避するか。
 
@@ -189,3 +189,5 @@ raw/experiments/
 - 2026-06-02: [[codex-log-experiment-archive-cli-2026-06-02]] を追加。`work/kouchou-ai-experiment-storage` の topic branch `codex/experiment-storage` で、`analysis-core` CLI から `raw/experiments/<experiment_id>/` 形式の最小 archive を生成する first slice を実装した。
 - 2026-06-02: 初版作成。nishio の「実験結果をどこにどのように蓄積するかが宙に浮いている」という指摘を受け、`work/` は scratch、`raw/experiments/` は gitignored raw snapshot、`wiki/` は public manifest / summary / analysis という 3 層保存方針を整理した。
 - 2026-06-02: `oss_weekly_reporter` の 2026-05-20_to_2026-05-27 週次 dump を確認し、2026-05-26 Slack 上の実験 artifact 永続化の気づきを前段 source として追加
+
+- 2026-11-07: Open Questions の現状を更新 — 「`manifest.json` / `*.jsonl` の schema をどこまで厳密にするか。最初は手書きでよいが、後で script 化する必要がある。」。schema を手書きから script 化する最初の archive 実装は branch にできた。main CLI への採用は未確認。（根拠: 0f2ebe6:wiki/analyses/experiment-result-storage-policy-2026-06-02.md:189（既存 Updates）；0f2ebe6:wiki/analyses/cli-pipeline-experiment-roadmap-2026-06-02.md:212（既存 Updates））。

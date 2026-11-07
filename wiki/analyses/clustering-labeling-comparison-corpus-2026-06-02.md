@@ -175,7 +175,6 @@ CLI の first slice は次の 3 つに絞る。
 
 - normalized tree artifact は既存 CSV から都度生成するだけでよいか、保存すべきか。
 - tree の違いをどう表現するか。cluster size distribution / parent-child structure / representative examples / label set のどれを first view に置くか。
-- human preference は `human_preferences.jsonl` として分けるか、`human_observations.jsonl` の subtype として扱うか。
 - A/B preference は cluster label 単位で集めるか、label set 全体で集めるか。
 - presentation context は `label_only` / `sibling_label_set` / `label_with_representatives` の 3 種で足りるか。
 - full UI 統合確認は、分解テストで候補を絞った後にどの粒度で行うか。
@@ -193,3 +192,5 @@ CLI の first slice は次の 3 つに絞る。
 - 2026-06-02: [[codex-log-experiment-archive-cli-2026-06-02]] を追加。比較コーパスの first slice として、`analysis-core` CLI から dataset / tree / labelling JSONL と artifact copy を生成できる topic branch `codex/experiment-storage` を作成した。
 - 2026-06-02: [[experiment-result-storage-policy-2026-06-02]] を追加し、比較コーパスの保存先を `raw/experiments/<experiment_id>/` に寄せ、公開 wiki には manifest / summary / 判断だけを置く方針へ補正した。
 - 2026-06-02: 初版作成。nishio の「各種 clustering method の tree と、その tree を入力にした各種 labelling process の label を蓄積・比較する方が先。judge 改善には現状が曖昧すぎる」という指摘を受け、[[cli-pipeline-experiment-roadmap-2026-06-02]] の前段として比較コーパス / 実験台帳を置く方針に補正した。
+
+- 2026-11-07: Open Questions から除去 — 「human preference は `human_preferences.jsonl` として分けるか、`human_observations.jsonl` の subtype として扱うか。」。human_preferences.jsonl を独立ファイルにする first slice が実行され、schema と空の回答ファイルが生成された。（根拠: 0f2ebe6:wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md:116（既存 Updates）；0f2ebe6:wiki/analyses/label-quality-human-preference-improvement-plan-2026-06-03.md:165（Updates））。

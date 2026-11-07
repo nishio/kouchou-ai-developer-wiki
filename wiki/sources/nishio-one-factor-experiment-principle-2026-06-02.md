@@ -31,8 +31,9 @@ sources:
 
 - `factor_under_test` / `fixed_inputs` / `changed_inputs` を `manifest.json` に必須項目として入れるか。
 - 複数要素が変わった実験を、どの時点で exploratory から clean experiment に切り直すか。
-- tree を変える実験では label output も従属的に変わるが、それを「1 要素変更」として扱うための固定条件をどう書くか。
 
 ## Updates
 
 - 2026-06-02: 初版作成。
+
+- 2026-11-07: Open Questions から除去 — 「tree を変える実験では label output も従属的に変わるが、それを「1 要素変更」として扱うための固定条件をどう書くか。」。treeが変わる比較ではlabelling process/evidence/judgeを固定する条件を明文化済み。（根拠: wiki git 75a6bcb（2026-06-02、実験原則とスキーマの追加））。

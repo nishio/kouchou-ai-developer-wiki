@@ -59,7 +59,6 @@ nishio 以外の人間が author の PR が、どう処理されてきたかの�
 
 ## Open Questions
 
-- `#817` の CodeQL / CodeRabbit 設定調整をこのまま取り込むか、それとも current security / review policy に合わせて再整理するか → そのまま 2026-05-18 に merge した。設定は main に残っている（[[security-maintenance]]）
 - `#597` が扱っていたスクロール誤操作 UX は、現行 `public-viewer` / chart 実装でもまだ課題として残るのか → 残っている。2026-10-21 時点で Issue [#493](https://github.com/digitaldemocracy2030/kouchou-ai/issues/493) は open で、`apps/public-viewer/components/charts/ScatterChart.tsx` は `scrollZoom: true` のまま。UX 判断の材料は [[chart-scroll-ux-decision]]
 
 ## Updates
@@ -67,3 +66,5 @@ nishio 以外の人間が author の PR が、どう処理されてきたかの�
 - 2026-05-18: 初版作成
 - 2026-05-18: `#734` `#597` close 後の current state に合わせて更新し、`tokoroten` / `ohki` の recent PR 事情を追記
 - 2026-10-21: GitHub と照合し、cleanup 前の open PR に抜けていた [#735](https://github.com/digitaldemocracy2030/kouchou-ai/issues/735) を補って 4 本に訂正。[#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817) の merge、その後の nishio 以外の PR（5 人・10 本が merge、[#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は close）と open 0 本を追記し、Open Questions に結論を書き足した
+
+- 2026-11-07: Open Questions から除去 — 「`#817` の CodeQL / CodeRabbit 設定調整をこのまま取り込むか、それとも current security / review policy に合わせて再整理するか → そのまま 2026-05-18 に merge した。設定は main に残っている（[[security-maintenance]]）」。#817 は merge 済み、設定維持と問い自体に回答が記録されている。（根拠: 0f2ebe6:wiki/analyses/non-nishio-human-pr-status.md:69（既存 Updates）；kouchou-ai dd9b0b8c（2026-05-18、#817））。

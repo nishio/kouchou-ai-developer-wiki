@@ -106,7 +106,6 @@ direction 誤認の話とは別に、以下 2 つの一般則は今回の件全�
 
 ## Open Questions
 
-- ~~`refine_balanced` / `refine_contrast` mode は何をする refinement か。sibling-awareness 単独効果を測る A/B に使えるか~~ → 2026-06-09 確認、4 つすべて sibling-aware の variant で non-sibling-aware は不在。sibling-awareness 単独 isolate には新 mode (D-3) が要る
 - MERGE_LABELLING_PROMPT few-shot を topic-neutral に変えた時、refine_none output だけ改善されるのか、refine_setwise output も追従して改善されるのか
 - v1 結果 (setwise > none) は refinement on/off の効果だが、これを「採用根拠」にするのは妥当か、それともあくまで exploratory にとどめるか
 - v2 (setwise vs short) の結果は length cap on/off だけが factor だが、nishio の v1 free text「短すぎて情報減りすぎ困る」が cluster 1_8 で再現するか、それとも 18 cap でも全 cluster 許容範囲か
@@ -129,3 +128,5 @@ direction 誤認の話とは別に、以下 2 つの一般則は今回の件全�
 ## Updates — 2026-09-07
 
 非公開raw artifactへの相対リンクがPagesのbase pathを抜けてリンク検査を失敗させていたため、ローカル保存先のコード表記へ修正した。artifactを公開したわけではない。
+
+- 2026-11-07: Open Questions から除去 — 「~~`refine_balanced` / `refine_contrast` mode は何をする refinement か。sibling-awareness 単独効果を測る A/B に使えるか~~ → 2026-06-09 確認、4 つすべて sibling-aware の variant で non-sibling-aware は不在。sibling-awareness 単独 isolate には新 mode (D-3) が要る」。取り消し線で回答済みの項目。4 variant は sibling-aware であり単独効果を測る対照にならないと確認済み。（根拠: 0f2ebe6:wiki/analyses/labelling-prompt-few-shot-template-confound-2026-06-03.md:125（既存 Updates））。

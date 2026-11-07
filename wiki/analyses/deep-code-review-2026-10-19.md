@@ -92,9 +92,10 @@ nishio「コードのチェックをもっと本格的にやろうか」を受�
 
 ## Open Questions
 
-- 10 本の PR のレビューと merge の判断（人間 attention を使う操作なので明示指示時のみ）
 - [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032) の意見数の数え方の変更をリリースノートでどう伝えるか
 
 ## Updates
 
 - 2026-10-19: nishio「CI が通った PR は admin merge」の指示で [#1032](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1032)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1041) を squash merge。[#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033)・[#1036](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1036)・[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1041) は先行 PR との衝突を rebase で解消し、テスト再実行・CI 通過後に merge した。merge 後の main でも analysis-core / api のテストが通ることを確認
+
+- 2026-11-07: Open Questions から除去 — 「10 本の PR のレビューと merge の判断（人間 attention を使う操作なので明示指示時のみ）」。#1032–#1041 の10本は同ページ Updates に merge 完了が記録され、main 履歴でも確認できる。（根拠: 0f2ebe6:wiki/analyses/deep-code-review-2026-10-19.md:100（既存 Updates）；kouchou-ai e393d34ee … fca426994（2026-10-19））。

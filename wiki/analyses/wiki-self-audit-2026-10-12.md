@@ -59,7 +59,7 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 
 ## Open Questions
 
-- lifecycle policy（`status`/`superseded_by` 層）を CLAUDE.md に正式採用するか。採用するなら rotating series（meeting-report、issue-backlog-audit、daily-report）に「latest in series」導線を足すか。
+- snapshot lifecycle の status / superseded_by は 2026-10-12 に採用・実装済み。rotating series に latest in series の導線を追加するかは未決。
 - freshness marker を lint 強制するか。prose scrape は false positive が多いので、強制するなら source 系に明示 frontmatter field（例 `last_read: YYYY-MM-DD`）を足してそれを検査する形が現実的。8 本の旧 Slack source が `最終読解日` を欠くが、6 本は raw snapshot pin 済みで drift risk は低い。
 
 ## Updates
@@ -69,3 +69,5 @@ developer-wiki そのものを「改善すべき点はないか」という問�
 - 2026-10-12: 本監査の数時間後に [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176) 統合 PR [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) が kouchou-ai main に merge（`c33d264a`）。Batch 2 で「engine 出荷済み・プロダクト到達未」と書いた [[pipeline]] / [[plugin-system]] を「到達も main 入り」に追補訂正、index.md の「[#982](https://github.com/digitaldemocracy2030/kouchou-ai/issues/982)–[#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) 未 merge」も softening。**同一セッション内で concurrency により freshness が動いた実例**（別セッションが PR を land → 自分の記述が数時間で stale 化）。freshness marker は「ページ更新日」でなく「その時点の観測」である、という原則を地で行った。
 - 2026-10-13: Batch 4（PR-887 sanitize）の粒度を nishio がレビューし**現状維持で確定**。確認すると、実際に除去したのは生テレメトリ（health JSON・console/system ログ逐語）と実環境の個体識別子（revision 実 ID・resource サイズ実値行）だけで、portable な教訓（`exit 137`=OOM SIGKILL、`latestRevisionName ≠ latestReadyRevisionName` の false-positive 機序、Unhealthy/Degraded・progress deadline 超過の状態語）と、**narrative の中でそれ自体が教訓になっている resource 数字**（[[deploy-success-but-nothing-changed-story-2026-06-01]] L70 の「1Gi→2Gi」= build のためだけに 24h 分メモリを固定費で払うトレードオフの肝）は意図的に残置済み。方針として明文化: sanitize の目的は secret 防衛ではなく**境界衛生＋兄弟ページ整合**で、生データ/個体識別子だけ落とし教育価値は削らない。verbatim は `raw/deploy-detail-preservation/`（gitignored）退避で**可逆**。残課題②の sanitize 面はこれで close（verbatim の Drive「広聴AI-Azureデモ環境」移送は引き続き権限保持者の手作業）。
 - 2026-10-21: 本文の pipeline / plugin-system の項にある「[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) / `4f893ab5`、2026-05-25 main 入り」は、PR ブランチ上の commit `4f893ab5` の作成日との取り違え。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) が main に入ったのは merge commit `6e9e60ee`（2026-05-28 16:26 UTC ＝ 2026-05-29 01:26 JST）。[[pipeline]] / [[plugin-system]] 側は訂正済み
+
+- 2026-11-07: Open Questions の現状を更新 — 「lifecycle policy（`status`/`superseded_by` 層）を CLAUDE.md に正式採用するか。採用するなら rotating series（meeting-report、issue-backlog-audit、daily-report）に「latest in series」導線を足すか。」。status / superseded_by の opt-in方針は採用・実装済み。seriesのlatest導線を残課題として分ける。（根拠: 0f2ebe6:wiki/analyses/wiki-self-audit-2026-10-12.md:68（既存 Updates））。

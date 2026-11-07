@@ -27,8 +27,9 @@ sources:
 ## Open Questions
 
 - 壊れた `hierarchical_result.json` は実運用でどの経路から入りうるのか。旧成果物、手修正、storage 同期不整合、別世代 pipeline の残骸などの切り分けは未確認
-- `/reports/{slug}` で `config` 欠損を見つけた場合の正しい挙動は 500 / 404 / repair fallback のどれか
 
 ## Updates
 
 - 2026-05-19: 初版作成
+
+- 2026-11-07: Open Questions から除去 — 「`/reports/{slug}` で `config` 欠損を見つけた場合の正しい挙動は 500 / 404 / repair fallback のどれか」。欠損configは公開前に最小shape検証して500を返す #834 の採用で決着。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai #834）。

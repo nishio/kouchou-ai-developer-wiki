@@ -130,11 +130,13 @@ API key の前提条件は次のように変える。
 
 ## Open Questions
 
-- Docker Desktop の license 注意は、公式リンクを直接置くか、所属組織の利用規程確認という一般表現に留めるか。
-- `localhost` が開かない時に、一般ユーザー guide へ `docker compose ps` まで入れるか。現時点では開発者向け検証 docs へ送る方がよさそう。
-- `#877` close 条件に Windows 実機 E2E 確認を含めるか、docs の supported boundary 明確化だけで close するか。
+- 現行の初心者ガイドは所属組織の IT 管理者へ利用条件を確認する案内になっている。後続の公式ライセンスリンクと WSL2 + Docker Engine の入口の明示を、どの粒度で採るかは未決。
 - 組織貸与 PC の利用者には、Windows local 実行より hosted demo / Azure 体験環境を先に案内する方がよいか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の既存 scope 整理と current main `d5c9ece` の Windows docs を突き合わせ、docs PR に変換しやすい章立て・対象外範囲・troubleshoot 表へ具体化した。
+
+- 2026-11-07: Open Questions の現状を更新 — 「Docker Desktop の license 注意は、公式リンクを直接置くか、所属組織の利用規程確認という一般表現に留めるか。」。初期ガイドはIT管理者へ利用条件を確認する文言で実装済み。その後、公式ライセンスへのリンクとWSL2 + Docker Engineの入口を明示する改善案が出ており、その採否は残る。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） docs/self-hosting/windows-setup.md:13；0f2ebe6:wiki/analyses/windows-distribution-options.md:150（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「`localhost` が開かない時に、一般ユーザー guide へ `docker compose ps` まで入れるか。現時点では開発者向け検証 docs へ送る方がよさそう。」。初心者ガイド自身に症状別の確認順序と開発者向け検証docsへの導線を置く実装になった。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） docs/self-hosting/windows-setup.md:92）。
+- 2026-11-07: Open Questions から除去 — 「`#877` close 条件に Windows 実機 E2E 確認を含めるか、docs の supported boundary 明確化だけで close するか。」。#877 はWindows実機E2E完遂を待つのでなくサポート境界のdocs更新 #929 で閉じた。（根拠: 0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates））。

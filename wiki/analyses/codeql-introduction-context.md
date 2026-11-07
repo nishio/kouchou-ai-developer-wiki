@@ -48,8 +48,7 @@ Dependabot alerts は GitHub Security 側の live state であり、main / open 
 ## Open Questions
 
 - `#815` の議論で誰がどの論点を出したか
-- merge 後の `main` に schedule / concurrency / paths-ignore がどのタイミングで入ったか
-- PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) merge 後に残った Dependabot alerts 6 件の扱いをどう分けるか
+- #889 直後の残り 6 件は当時の snapshot。その後の依存保守は #949 と対応 PR 群へ引き継がれた。現在の未解消 alert と担当・優先度は別途 live 確認が必要（具体的な脆弱性詳細は公開 Wiki に記載しない）。
 - Dependabot alerts の確認頻度と担当を、週次確認として固定するか
 
 ## Updates
@@ -58,3 +57,6 @@ Dependabot alerts は GitHub Security 側の live state であり、main / open 
 - 2026-06-01: 定例で Actions / CodeQL / Dependabot 警告が最優先扱いになったことを追記。CodeQL を CI に入れた経緯だけでなく、継続保守対象として見る必要が出ている
 - 2026-06-01: Dependabot alerts ページを定期観測対象として明記し、公開 wiki には脆弱性詳細を転記しない方針を追記
 - 2026-06-02: Dependabot alerts に対応する PR [#889](https://github.com/digitaldemocracy2030/kouchou-ai/issues/889) を admin merge し、open alerts が 19 件から 6 件へ減ったことを追記
+
+- 2026-11-07: Open Questions から除去 — 「merge 後の main に schedule / concurrency / paths-ignore がどのタイミングで入ったか」。schedule / concurrency / paths-ignore は #817 merge後の追加ではなく、2026-03-10 の先行commitで導入されていた。git log -S で各キーを確認。（根拠: kouchou-ai ebfb4ac1f（2026-03-10、.github/workflows/codeql.yml。git log -S schedule: / concurrency: / paths-ignore:））。 ／ Claude の検証（2026-11-07、OQ-0081）: ebfb4ac1f（2026-03-10）は PR #817 自身の commit で、merge 前の main には無かった。3 キーが main に入ったのは #817 の merge（2026-05-18）の時点
+- 2026-11-07: Open Questions の現状を更新 — 「PR #889 merge 後に残った Dependabot alerts 6 件の扱いをどう分けるか」。6件は #889直後の観測。その後 #949 と対応PRに保守が引き継がれており現在件数の根拠にはしない。（根拠: 0f2ebe6:wiki/analyses/current-status-2026-10-05.md:78（既存 Updates）；kouchou-ai a97b357c1 / 5357e1fa1（対応PR #1013 / #1157））。

@@ -22,10 +22,12 @@ sources:
 
 ## Open Questions
 
-- standalone `report.html` を storage に残して配信対象にしたいユースケースが本当にあるか
-- `report.html` を残すなら、public-viewer と二重の表示経路を持つ設計をどう説明するか
+- report.html は Web canonical にせず CLI の観察用とする判断が出た。別途 storage から配信する実需要があるかは未確認。
 
 ## Updates
 
 - 2026-05-19: 初版作成
 - 2026-05-19: `public-viewer` / API router / report sync を確認し、`report.html` は Web の主経路ではなく CLI 向け観察用HTMLだと補足
+
+- 2026-11-07: Open Questions の現状を更新 — 「standalone report.html を storage に残して配信対象にしたいユースケースが本当にあるか」。report.htmlをWeb canonicalにしない設計判断は出た。storage配信への実需要の有無は未確認。（根拠: wiki git 495d007（2026-05-23）、0f2ebe6:wiki/analyses/refactoring-status.md:164（Updates））。
+- 2026-11-07: Open Questions から除去 — 「report.html を残すなら、public-viewer と二重の表示経路を持つ設計をどう説明するか」。report.htmlは非Web経路の観察用、WebはJSON+public-viewerという決定を反映済み。（根拠: wiki git 495d007（2026-05-23）、0f2ebe6:wiki/analyses/refactoring-status.md:164（Updates））。

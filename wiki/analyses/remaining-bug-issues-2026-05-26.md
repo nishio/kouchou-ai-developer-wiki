@@ -81,7 +81,6 @@ Browser で `http://localhost:3000/example` を fullscreen 表示し、`390x844`
 
 ## Open Questions
 
-- `#731` は current main の英語化だけで close してよいか、それとも日本語 UX の回復まで bug fix の完了条件に含めるか
 - `#478` は title の `[BUG]` まで直すか、それとも label だけ外して issue 本文は据え置くか
 - `#121` と `#283` は Plotly の layout 設定でどこまで解けるか、あるいは fullscreen UI のボタン配置変更が先か
 - `#741` は retry 設定追加で十分か、それとも build/push 並列度を下げるべきか
@@ -95,3 +94,5 @@ Browser で `http://localhost:3000/example` を fullscreen 表示し、`390x844`
 - 2026-05-26: viewport を複数再確認したところ、desktop hover 前提の観測では `390x844` で overlap 4 件、`393x852` で 5 件、`412x915` で 3 件、`430x932` では 0 件、`360x640` で 8 件、`360x520` で 7 件だった。したがって「かなり小さい画面ほどだけ」ではなく、一般的なスマホ幅相当でも右上 hover が発生する条件では overlap しうる。ただしこれは touch 操作の再現ではなく、mobile-sized viewport 上で mouse hover を当てた観測である
 - 2026-05-26: `#121` の再観測として portrait / landscape / desktop を比較したところ、portrait では annotation 自体は bounds 内に収まるが、249px 幅ラベルが狭い画面に対して大きく、tap tooltip も `390px` 幅中 `363-366px` を占めて上部散布図を大きく覆った。実スマホ寄りには「縦長で壊れる」より「縦長で読みづらく、tap tooltip が広すぎる」問題として現れやすい
 - 2026-05-26: 上位検討 issue `#872` を立てたのに合わせて、`#121` と `#283` からも `bug` ラベルを外し、mobile/scatter UX の参考課題として位置づけ直した
+
+- 2026-11-07: Open Questions から除去 — 「`#731` は current main の英語化だけで close してよいか、それとも日本語 UX の回復まで bug fix の完了条件に含めるか」。#731 は PowerShell 分離 #863 の merge により close 済み。英語化だけで完了としたわけではない。（根拠: 0f2ebe6:wiki/analyses/windows-distribution-options.md:146（既存 Updates）；kouchou-ai 3c5d1f02（#863））。

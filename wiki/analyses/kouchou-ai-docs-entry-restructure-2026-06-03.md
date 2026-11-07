@@ -57,12 +57,8 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 - [[experimental-features-catalog-proposal-2026-06-03]]: spine の 3 番目分岐配下に置く実験的機能カタログ
 - [[meeting-report-draft]]: 構造の議論として次回定例で扱う候補
 
-## Open Questions
-
 ### managed service 経路の実在性
 
-- spine 2-a「誰かが host したサービスで分析する」は、現時点で actually 提供されているか未確認
-- Azure デモ環境は存在するが、それは展示用であって「任意のユーザーが任意データを投げる service」とは違う可能性が高い
 - 2026-06-04 に [[azure-demo-public-visibility-proposal-2026-06-04]] として 4 問が Ohki さんに投げられ、2026-06-05 に着地した ([[azure-demo-visibility-thread-resolution-2026-06-05]])。**viewer 公開と admin 共用は進める方向**で、これにより spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。ただし前提として、デモ環境の API キーの扱いを利用者が自分のキーを入れて使う形にそろえ（現在のキー構成は公開 wiki には書かず、Google Drive「広聴AI-Azureデモ環境」で扱う）、3 点明示文言 (共用 / 機微情報禁止 / 保存・継続稼働非保証) を加える必要がある
 - spine tier 1 のコンテンツ目的は **「使い方や準備すべきデータを理解するための参照環境」** であって「データ投入の予行演習」ではない、という再フレームも同 thread で出ている。docs 内コンテンツの設計 (viewer 操作解説 + サンプル CSV ダウンロード導線 + 公開事例リンク集) に直接効く
 
@@ -76,16 +72,6 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 - spine の入口は「デモを見る」だが、ただ眺めるだけなのか、active に探索する (フィルタ / クラスタ深掘り) ことを期待するのかで、書くべき分量が変わる
 - viewer 機能の網羅的なリファレンスを目指すか、最初の 5 分の体験 (見るべき 3 つのこと) に絞るか
 
-### WebUI contributor の置き場
-
-- 「apps/ を改修したい contributor」は spine の 3 番目「研究者・開発者」に並列するのか、別の分岐か
-- AI 側 memory `feedback_developer_label_caution` と整合させると、CLI 研究者と WebUI contributor は読者として別物。spine をもう一段細分化するか、catalog 同様にフラットなランディングを置くか
-
-### 既存 mkdocs ナビ構造の移行手順
-
-- mkdocs.yml の nav は手書きの順序リスト。spine 変更は nav 全面書き換えになる
-- 段階移行 (新 spine の入口だけ先に作って既存ページは順次移動) か、PR 一発で構造刷新するか
-
 ## Updates
 
 - 2026-10-21: 公開境界に合わせ、Open Questions の Azure デモの前提から、デモ環境の現在のキー構成についての記述（設定項目・設定場所）を外した
@@ -94,3 +80,10 @@ tier 2 の 3 択化は 2026-06-04 の [[nishio-slack-azure-demo-visibility-propo
 - 2026-10-13: README をデフォルト英語化（PR [#966](https://github.com/digitaldemocracy2030/kouchou-ai/issues/966)）→日本語へ差し戻し（PR [#968](https://github.com/digitaldemocracy2030/kouchou-ai/issues/968)）した事件をめぐる Slack 議論で、nishio が「英語で怯む層が見るべきは英語UIの GitHub ではなくドキュメントサイト」と改めて整理。本 analysis の「docs 入口を spine から組み替える」問題がここへ戻ってきた。導線設計・README とのアンカー結合の話は [[readme-anchor-freeze-and-docs-entry-2026-10-13]]（一次ソース [[slack-readme-language-docs-site-2026-10-13]]）
 - 2026-06-04: tier 2 を「(a) managed / (b) self-host」の 2 択から「(a) 誰かが建てたサーバ / (b) 建ててくれる人を探す / (c) 自分で建てる」の 3 択へ refinement ([[nishio-slack-azure-demo-visibility-proposal-2026-06-04]])。Azure デモを docs から動線化するための具体 4 問は [[azure-demo-public-visibility-proposal-2026-06-04]] へ切り出した
 - 2026-06-05: Azure デモ動線化 4 問が [[azure-demo-visibility-thread-resolution-2026-06-05]] で着地。viewer 公開 + admin 共用は進める方向で、spine tier 1 と tier 2-a の docs 動線が埋められる前提が立った。tier 1 のコンテンツ目的は「データ投入の予行演習」ではなく「使い方や準備すべきデータを理解するための参照環境」、と再フレーム
+
+- 2026-11-07: Open Questions から除去 — 「spine 2-a「誰かが host したサービスで分析する」は、現時点で actually 提供されているか未確認」。managed service は現状なし、と西尾が回答済み。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「Azure デモ環境は存在するが、それは展示用であって「任意のユーザーが任意データを投げる service」とは違う可能性が高い」。デモ環境の存在と managed service 提供の区別は、西尾の「現状なし」という回答で決着。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「「apps/ を改修したい contributor」は spine の 3 番目「研究者・開発者」に並列するのか、別の分岐か」。CLI研究者とWebUI contributorは目的別ガイドで別行・別ページの入口に分けた。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） docs/index.md:19）。
+- 2026-11-07: Open Questions から除去 — 「AI 側 memory `feedback_developer_label_caution` と整合させると、CLI 研究者と WebUI contributor は読者として別物。spine をもう一段細分化するか、catalog 同様にフラットなランディングを置くか」。研究者とWebUI開発者をフラットな目的別ガイドの別行で案内する形がmain入りした。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） docs/index.md:19）。
+- 2026-11-07: Open Questions から除去 — 「mkdocs.yml の nav は手書きの順序リスト。spine 変更は nav 全面書き換えになる」。全面同時書換えを必須とせず、既存navへ追加してからrename/入口分離へ段階的に移行済み。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:146（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「段階移行 (新 spine の入口だけ先に作って既存ページは順次移動) か、PR 一発で構造刷新するか」。additive な入口追加から、rename と redirect へ段階的に移行した。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:148（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai 129f486ff / 41e910100）。

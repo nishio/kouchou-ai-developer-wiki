@@ -58,10 +58,11 @@ PR head の README は、known limitations として admin の publish static si
 - PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) は [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) の prototype / child issue として再位置づけるべきか、探索的 draft のまま扱うべきか。
 - `standalone-prep.mjs` の build-time source mutation は prototype としては速いが、main に入れる運用として許容できるか。
 - `ADMIN_API_KEY` / `PUBLIC_API_KEY` の static UI bake は local desktop threat model として許容するか、runtime config injection が必要か。
-- `report_launcher.py` の subprocess interpreter は standalone merge 前に `sys.executable` へ変えるべきか。
 - PR branch の stale / dirty 状態を解消する時、main 側の Windows setup / public-viewer build/serve / security fixes とどう統合するか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。PR [#891](https://github.com/digitaldemocracy2030/kouchou-ai/issues/891) の live state、head ref、packaging files、standalone viewer/admin design、PoC findings、known limitations、main との stale 差分を固定した。
 - 2026-09-09 02:31 JST: GitHubのPR本文・変更ファイル・チェック・merge状態と、head `2a27d572bb270ba7d5933b8a707ab77645c64ad8` の `packaging/windows-standalone/README.md` を再取得。headは同一、open / draft / CONFLICTING。本文の「adminはまだ含めていない」は引き続きREADMEのadmin同梱記述と不一致。READMEはレポート作成全体の未検証・インストーラー未実装を明記する。成功チェックはCodeQLで、CodeRabbitはdraftによるreview skip。新しいbuild・Windows実機・実モデル試験は実施していない。
+
+- 2026-11-07: Open Questions から除去 — 「`report_launcher.py` の subprocess interpreter は standalone merge 前に `sys.executable` へ変えるべきか。」。subprocessのinterpreterは #995 で sys.executable に揃えた。#891全体の完成とは区別。（根拠: kouchou-ai a570d6897（2026-10-13、#995）；0f2ebe6:wiki/sources/windows-standalone-embeddable-poc-2026-06-01.md:64（既存 Updates））。

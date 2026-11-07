@@ -32,11 +32,9 @@ sources:
 
 という三段構えを直接支えている。[[meeting-minutes]]より [[source-code]]より
 
-## Open Questions
-
-- この時点では、pip package 化がどこまで短期でできるかは見積り段階で、`analysis-core` という具体名もまだ出ていない
-- stable v4 と次世代枝をどう共存させるかは、その後の [[refactoring-status]] が示す Phase 移行で具体化された
-
 ## Updates
 
 - 2026-05-25: Google Docs export から初回作成
+
+- 2026-11-07: Open Questions から除去 — 「この時点では、pip package 化がどこまで短期でできるかは見積り段階で、analysis-core という具体名もまだ出ていない」。pip package化とリリースが実装済み。過去メモ時点の見積りという史実は本文に保持する。（根拠: kouchou-ai git log upstream/main: analysis-core PyPI publish 実装（2026-05）；0f2ebe6:wiki/analyses/analysis-core-license-intent-2026-10-12.md:45（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「stable v4 と次世代枝をどう共存させるかは、その後の refactoring-status が示す Phase 移行で具体化された」。共存を具体化した Phase移行とlegacy削除は実施済み。v5タグの発行とは別。（根拠: 0f2ebe6:wiki/analyses/refactoring-status.md:162（既存 Updates）；kouchou-ai 0e1552dd / e5ed74380）。

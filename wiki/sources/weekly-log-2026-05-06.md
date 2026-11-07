@@ -45,10 +45,12 @@ sources:
 ## Open Questions
 
 - 本ダンプは公開チャンネルのみ。DM／プライベートチャンネルの議論は含まれない
-- 一部チャンネル（`2_新しいプロジェクトの種`, `2_開発_cartographer`, `7_広聴ai読書会` ほか）は `ai_reports` 未統合 — backfill は有料のため翌週からフル取り込みに切り替え予定とのこと
+- reporter の週次 AI 要約は 2026-10-22 で停止した。過去の Slack 本文は slack-logs の raw へ埋め戻し済みだが、過去 ai_reports の未統合分をどう扱うかは別途未決。
 
 ## Updates
 
 - 2026-05-17: 初回 ingest（init.txt 指定の週分）
 - 2026-06-02: source の鮮度基準として `last_read` / `coverage` と Freshness marker を明示
 - 2026-10-21: 一括リンク化で kouchou-ai に向いていた website の PR [website#212](https://github.com/digitaldemocracy2030/website/pull/212)・Polimoney の PR [polimoney#248](https://github.com/digitaldemocracy2030/polimoney/pull/248) のリンク先を、それぞれのリポジトリに直した
+
+- 2026-11-07: Open Questions の現状を更新 — 「一部チャンネル（`2_新しいプロジェクトの種`, `2_開発_cartographer`, `7_広聴ai読書会` ほか）は `ai_reports` 未統合 — backfill は有料のため翌週からフル取り込みに切り替え予定とのこと」。reporterにしかなかったSlack本文はslack-logs rawへ埋め戻し済み。今後のAI reports統合はreporter停止により前提が変わった。（根拠: 0f2ebe6:wiki/sources/slack-logs-repository.md:110（既存 Updates）；/Users/nishio/grasp-nishio/LOG.md:「2026-10-23 ops | oss_weekly_reporter の README に停止と引き継ぎ先を書く」）。

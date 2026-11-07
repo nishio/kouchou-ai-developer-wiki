@@ -37,7 +37,6 @@ sources:
 ## Open Questions
 
 - 上流でTurbopack / Emotionの問題が解消されたら、同じ回帰テストでWebpack回避策を外せるか確認する。
-- タイトル・検索除外は本エラーとは別件。実配布の用途と接続段階を踏まえてIssueで管理する。
 
 ## Updates
 
@@ -56,3 +55,5 @@ root / subdirのテストでリスト選択を確認し、全体を展開して�
 [Issue #939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)「shell配布物にレポート別title・noindexを反映する（[#935](https://github.com/digitaldemocracy2030/kouchou-ai/issues/935)由来）」を作成し、本文とOPEN状態を再取得確認。[#935](https://github.com/digitaldemocracy2030/kouchou-ai/issues/935)作者が挙げた制約由来と明記し、実配布への接続時のHTML metadata、Node再ビルド不要の維持、ブラウザ遷移の整合を完了条件にした。
 
 今回解消したのはshell一覧のhydrationエラー。全体E2Eログには通常dev経路のhydrationログが残るが、その経路のビルド方式は本修正では変更していない。全viewer経路で同種エラーがなくなったという意味ではない。
+
+- 2026-11-07: Open Questions から除去 — 「タイトル・検索除外は本エラーとは別件。実配布の用途と接続段階を踏まえてIssueで管理する。」。title / noindex は別Issue #939 に分けて #940 で実装し merge 済み。（根拠: 0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:44（既存 Updates）；kouchou-ai 751e2c8）。

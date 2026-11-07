@@ -45,8 +45,9 @@ tag push で workflow は起動しても、前段の test/lint が失敗する�
 
 - 将来 TestPyPI 経路を入れるなら、`analysis-core-v*` 以外に prerelease 用 tag 規約を増やすか
 - Trusted Publishing へ移行した時も trigger を tag push のまま維持するか
-- 「tag 付け自体を自動化するか」は別ページで判断を分けた。[[pypi-release-timing-automation]] を参照
 
 ## Updates
 
 - 2026-05-19: 初回作成。`analysis-core-v0.1.1` failure / `v0.1.2` success 観測を元に整理
+
+- 2026-11-07: Open Questions から除去 — 「「tag 付け自体を自動化するか」は別ページで判断を分けた。pypi-release-timing-automation を参照」。タグ付け自動化の判断を別ページに分けた、という作業は完了。分離先の問いは残す。（根拠: wiki git f99f3cf（2026-05-17））。

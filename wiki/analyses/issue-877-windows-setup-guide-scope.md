@@ -54,7 +54,6 @@ Windows guide の冒頭を、手順から始めず、次のような環境判定
 
 ## Open Questions
 
-- `#877` の実装順は `#863` merge 後にするか、current main で先に docs boundary だけ入れて後で rebase するか。
 - Docker Desktop 回避ルートを公式 docs にするなら、誰が WSL2 Ubuntu + Docker Engine で `compose up` まで実機検証するか。
 - 非専門家向け Windows 体験の最終ゴールを、`setup_win.*` で止めるのか、Docker Desktop を操作する launcher exe まで進めるのか。
 - 自治体・大企業向けにはローカル Windows setup より、クラウド / managed deployment を主導線にした方がよい場面があるか。
@@ -63,3 +62,5 @@ Windows guide の冒頭を、手順から始めず、次のような環境判定
 
 - 2026-05-29: 初回作成。Issue [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) とコメント、Docker Desktop ライセンス公式確認、current main docs、関連 PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) を踏まえ、Windows guide のサポート境界を整理した。
 - 2026-10-21: PR [#863](https://github.com/digitaldemocracy2030/kouchou-ai/issues/863) は 2026-06-01（UTC）に merge された。[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) は 2026-09-08 に PR [#929](https://github.com/digitaldemocracy2030/kouchou-ai/issues/929) で close された。内容は本ページの推奨どおりで、Docker Desktop（Linux containers）を標準経路にし、組織 PC は IT 管理者へ確認、使えない場合は別環境や serverless 版へ分岐する（API キーはどちらか一方でよいことも明記）。対象の docs は 2026-10-13 に `docs/self-hosting/windows-setup.md` へ移った。本文の旧パス、「`#863` が merge されると」の仮定、Open Questions の 1 つ目（実装順）は、これで決着した
+
+- 2026-11-07: Open Questions から除去 — 「`#877` の実装順は `#863` merge 後にするか、current main で先に docs boundary だけ入れて後で rebase するか。」。#863 merge 後に #929 が docs を更新し #877 を閉じた実績を同ページ Updates が明記。（根拠: 0f2ebe6:wiki/analyses/issue-877-windows-setup-guide-scope.md:65（既存 Updates））。

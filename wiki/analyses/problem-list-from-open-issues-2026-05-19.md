@@ -189,7 +189,6 @@ password 認証、private/unlisted、パブコメ大量投稿対策、個人情�
 ## Open Questions
 
 - この problem list を、`Web UI` / `CLI` / `共通コア` の利用モード別 index にも並べ替えるべきか
-- 古い open issue のうち、問題は残るが提案解だけ stale なものをどう close / rewrite していくか
 
 ## Updates
 
@@ -197,3 +196,5 @@ password 認証、private/unlisted、パブコメ大量投稿対策、個人情�
 - 2026-05-19: 初版作成
 - 2026-05-19: 9 月前に解く順として 15 問題を並べ替え、優先理由を追記
 - 2026-05-19: 会話中の整理を反映し、「ユーザの困りごと」と「issue 内の提案解」を分けて読む heuristic を明文化
+
+- 2026-11-07: Open Questions から除去 — 「古い open issue のうち、問題は残るが提案解だけ stale なものをどう close / rewrite していくか」。Issueの古さで閉じず、合意要件を現行mainと照合し残要件を存続Issueへ移す運用がUpdatesに明文化された。（根拠: 0f2ebe6:wiki/concepts/wiki-driven-workflow.md:222（2026-09-09 Updatesの運用記録））。

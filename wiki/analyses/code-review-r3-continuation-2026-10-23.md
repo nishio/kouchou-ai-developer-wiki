@@ -110,20 +110,12 @@ sources:
 
 ## Open Questions
 
-- 43 本の PR のレビューと merge の判断。人間の attention を使う操作なので、明示の指示があるときだけ行う。merge の前に、独立したレビューを別に回している。
-- 挙動・見た目の判断が要る PR（詳細は各 PR 本文）
-  - [#1066](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1066)：最小値が最大値より大きいときは入れ替える
-  - [#1099](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1099)：少数件の扱いの 3 案
-  - [#1104](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1104)：WebUI で UMAP を再利用する [#989](https://github.com/digitaldemocracy2030/kouchou-ai/issues/989) との関係
-  - [#1095](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1095)：進捗に並べる工程
-  - [#1081](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1081)：属性名の見え方
-  - [#1064](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1064)：閲覧者向けの案内文
-- 修正しなかった確定指摘。どれも設計の判断が要る。
+- 修正しなかった確定指摘の残件。どれも設計の判断が要る。
   - 公開ビューアが結果 JSON 全体を HTML に埋め込む（3 万件で SSR 約 1GB）
   - 静的書き出しが全レポートを毎回書き出す
-  - LLM 直接グルーピングの割当が逐次で、途中経過を保存しない
-  - 抽出で 1 件でも応答が壊れると全体が止まる
-  - 複製で入力 CSV を取れないときに、作り直した入力で黙って続行する
+  - LLM 直接グルーピングの割当は PR #1118 で並列化済みだが、途中経過の保存は未実装
+  - 抽出の形式不正・途中切れは PR #1119 でその回答だけ再試行する。再試行しても失敗する場合の扱いは残る（コンテンツフィルタ時の継続は PR #1150 で別途対応）
+  - 複製で入力 CSV を取れないときの黙った続行は PR #1120 の警告で解消したが、代替入力で続行する方針自体を変えるかは未決
   - エラーのレポートを再利用する導線が無い
   - 削除が論理削除である
 - 散布図で同じ点が 2 本のトレースに重なっている件。消すとホバー文言が変わる可能性があり、実ブラウザでの確認が要る。
@@ -201,4 +193,6 @@ sources:
   - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) を最新の main に rebase し直し、nishio が merge した（`7fff37a4`）。修正 PR 65 本は、これですべて merge 済み。
   - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) への CodeRabbit の指摘は、Issue [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) にした。
   - 外部コントリビュータの [#1061](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1061)（Node runtime 依存一覧の訂正）は、最新の main と照合してレビューし、merge した（`f422dcc6`）。軽微な修正はこちらで後から行う。
-
+- 2026-11-07: Open Questions から除去 — 「43 本の PR のレビューと merge の判断。人間の attention を使う操作なので、明示の指示があるときだけ行う。merge の前に、独立したレビューを別に回している。」。#1062–#1104 の43本すべてが10月24日の main 履歴にある。レビューの品質を別途保証する判定ではない。（根拠: kouchou-ai upstream/main: git log --grep (#1062) … (#1104)（2026-10-24、43件））。
+- 2026-11-07: Open Questions から除去 — 「挙動・見た目の判断が要る PR（詳細は各 PR 本文）」。6件とも対応するPRが10月24日に main 入りし、当時の採否待ちは解消。Web の UMAP 再利用 #989 全体の完了とはしない。（根拠: kouchou-ai 4262aec69 / a9a378465 / a0e7f1621 / c342e51b5 / 6c4af54a2 / 9a924e2f1）。
+- 2026-11-07: Open Questions の現状を更新 — 「修正しなかった確定指摘。どれも設計の判断が要る。」。割当の並列化 #1118、抽出の再試行 #1119、複製時警告 #1120 が後続実装された。途中保存や抽出の最終失敗時の扱いは残る。（根拠: kouchou-ai cdca53e71 / 5e4850572 / b775d64e2（2026-10-24）；kouchou-ai 769dfbc08（2026-10-27、コンテンツフィルタ時の継続））。

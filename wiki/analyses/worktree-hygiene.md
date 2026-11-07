@@ -44,7 +44,6 @@ sources:
 
 ## Open Questions
 
-- `work/kouchou-ai/` を常に `main` に戻す運用と、current issue branch を残す運用のどちらが onboarding には分かりやすいか — `CLAUDE.md`（2026-05-29）で「常に main に保つ」に決着
 - `apps/api` の Python dependency 管理を将来的に `uv.lock` へ寄せるなら、今回の ignore 方針をいつ見直すべきか
 
 ## Updates
@@ -52,3 +51,5 @@ sources:
 - 2026-10-21: `work/kouchou-ai/` を常に main に保つ `CLAUDE.md` の運用ルール（2026-05-29〜）に合わせて、summary・Practical Rule・Open Question を更新
 - 2026-06-05: 別 worktree では main worktree の `node_modules` は使われず、Git hook が `lefthook` を見つけるには各 worktree root で `pnpm install --frozen-lockfile` が必要、という運用メモを追記
 - 2026-05-20: 初版作成
+
+- 2026-11-07: Open Questions から除去 — 「`work/kouchou-ai/` を常に `main` に戻す運用と、current issue branch を残す運用のどちらが onboarding には分かりやすいか — `CLAUDE.md`（2026-05-29）で「常に main に保つ」に決着」。mainに保つというルールの決着が問い自体に記され、運用ページのUpdatesも追随。（根拠: 0f2ebe6:wiki/concepts/wiki-driven-workflow.md:194（既存 Updates））。

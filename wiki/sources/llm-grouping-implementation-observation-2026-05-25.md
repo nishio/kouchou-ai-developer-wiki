@@ -30,10 +30,11 @@ sources:
 
 ## Open Questions
 
-- `analysis_mode` 切替を config 正規化レイヤで持つのか、workflow definition 選択レイヤで持つのか
-- `llm_grouping` を 1 ステップで「グループ発見 + assignment + cluster-level-* 互換生成」まで持つのか、複数 step に分けるのか
 - `analysis_capabilities` の source of truth を result JSON のみとし、viewer 側再計算は fallback に留めるのか
 
 ## Updates
 
 - 2026-05-25: 初回作成
+
+- 2026-11-07: Open Questions から除去 — 「analysis_mode 切替を config 正規化レイヤで持つのか、workflow definition 選択レイヤで持つのか」。config.analysis_modeを正規化し、get_workflow_for_modeでworkflowを選ぶ両レイヤの責務が実装済み。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/orchestrator.py:376；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/orchestrator.py:413）。
+- 2026-11-07: Open Questions から除去 — 「`llm_grouping` を 1 ステップで「グループ発見 + assignment + cluster-level-* 互換生成」まで持つのか、複数 step に分けるのか」。発見・割当・互換CSV生成は同一llm_grouping stepに実装し、embedding/overview/aggregationとはworkflowで分けた。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:71；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/workflows/llm_grouping_compatible.py:28）。

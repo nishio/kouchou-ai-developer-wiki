@@ -33,8 +33,9 @@ sources:
 ## Open Questions
 
 - `apps/api` は将来 `uv.lock` 運用へ寄せるのか、それとも今後も `requirements.lock` / `requirements-dev.lock` を canonical とし続けるのか
-- `work/kouchou-ai/` に別件試作を残したまま別 worktree へ移るケースを、運用ルールとしてどこまで明文化するべきか
 
 ## Updates
 
 - 2026-05-20: 初版作成
+
+- 2026-11-07: Open Questions から除去 — 「work/kouchou-ai/ に別件試作を残したまま別 worktree へ移るケースを、運用ルールとしてどこまで明文化するべきか」。main clone固定、branch作業は別worktreeという運用がUpdatesへ反映済み。（根拠: 0f2ebe6:wiki/concepts/wiki-driven-workflow.md:194（既存 Updates））。

@@ -288,6 +288,12 @@
 - 前回「人間判断」とした #1128 の残件は、11-03 に #1181 として切り出し済みだったので [[sprint-group1-prs-2026-10-29]] に反映。[[security-maintenance]] の「直近の観測」の参照先を 11-02 / 11-07 まで延ばし、[[post-review-direction-issues-2026-10-29]] の表に 11-07 の状態を書き足した
 - 次：#1184 / #1185 のどちらを入れるかと merge（人間）、Dependabot の新しい alert の担当、kouchou-issue-audit キューの STATUS.md（10-12 のまま）と open-decisions B9 の扱い（人間）
 
+## [2026-11-07 17:30] file back | Open Questions 984 項目の現状突合（Codex gpt-6.1-sol、閉じる 142・現状更新 68・継続 764・人の判断待ち 10）
+
+- grasp-nishio のセッションから、Codex に `## Open Questions` の各項目を一次ソース（本 wiki の git blame・Updates、kouchou-ai upstream/main 085366779、slack-logs、dd2030-website、local-llm-experiments、grasp-nishio の LOG）で突合させ、根拠のある項目だけを閉じる／現状更新した（132 ページ）
+- 閉じた 145 件は Claude の検証エージェント 2 本が commit・path:line・コード行を全件確認し、引用の捏造は 0。3 件（OQ-0254 複数選択のユースケース、OQ-0750 粗い帯の後続 slice、OQ-0846 config 欠損の混入経路）は二択の片方が実装で消えただけなので現状更新に戻し、2 件（OQ-0081 先行 commit の書き方、OQ-0115 「CLI コマンド」の強さ）は Updates に訂正を添えた。Codex が約 50 字で切っていた旧項目 99 件は原文に戻した。空になった Open Questions 節は外した
+- 報告は raw/open-questions-triage-2026-11-07.md（gitignored）
+
 ## [2026-11-07 16:30] filing-back | 可視化カタログに付箋ズームと階層リストの試作を追加
 
 - nishio の指示で、マンダラートの既定を 3×3 にし、付箋ズーム（升目ごとに 1 枚の付箋を置く semantic zoom）と階層リスト（検索つきの単体版）を broadlistening-visualizations に追加。どちらも `public_result.json` をそのまま読む

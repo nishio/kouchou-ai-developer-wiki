@@ -29,10 +29,8 @@ route segment config の `dynamic = "force-dynamic"` や fetch-level `cache: "no
 
 `apps/public-viewer` は dynamic hosting と static export の両方を同じ route files で扱っている。API なし dynamic build を実現するには、dynamic hosting では `connection()` 等で page render を request-time に送り、static export では既存の `generateStaticParams()` / API fetch を残す、という分岐が現実的である。
 
-## Open Questions
-
-- `generateMetadata()` の API fetch を dynamic hosting で残すか、まず static fallback metadata に落として production smoke で十分とするか。
-
 ## Updates
 
 - 2026-06-01: 初版作成。public-viewer の API-less dynamic build 実現方法の補助 source として Next.js docs を要約。
+
+- 2026-11-07: Open Questions から除去 — 「`generateMetadata()` の API fetch を dynamic hosting で残すか、まず static fallback metadata に落として production smoke で十分とするか。」。通常経路の generateMetadataはrequest時fetch、shellは空metadataという分岐を実装済み。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/public-viewer/app/[slug]/page.tsx:61）。

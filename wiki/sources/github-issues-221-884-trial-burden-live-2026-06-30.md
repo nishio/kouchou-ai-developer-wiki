@@ -61,8 +61,6 @@ spreadsheet path に既存 warning がない点は、[#884](https://github.com/d
 
 ## Open Questions
 
-- API check が `authentication_error` / `insufficient_quota` の時、submit を hard block するか、警告付きで続行可能にするか。
-- `rate_limit_error` は一時的な状態なので、hard block と retry guidance のどちらに寄せるか。
 - 粗い費用帯 / 時間帯の bucket を、comment count、文字数、model、provider のどこまでで切るか。
 - 大規模入力時に sample-first を勧めるだけにするか、実際に sample report を作る UI まで first slice に含めるか。
 
@@ -72,3 +70,6 @@ spreadsheet path に既存 warning がない点は、[#884](https://github.com/d
 - 2026-06-30 19:30 JST: [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) / [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) と `work/kouchou-ai/main@d5c9ece` を再確認し、open / high priority / unassigned の state は変わらないことを確認した。high priority label の正しい query は `--label "high priority"` である。
 - 2026-06-30: 18:55 JST に [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) と `work/kouchou-ai/main@d5c9ece` を再確認し、first PR の review model / warning policy / test gates を [[issue-884-pre-create-review-contract-2026-06-30]] に切り出した。
 - 2026-06-30: 初回作成。[#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221)/[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) と下位 issue、current main の create / environment check / reuse flow を照合し、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first slice が今も妥当であることを固定した。
+
+- 2026-11-07: Open Questions から除去 — 「API check が `authentication_error` / `insufficient_quota` の時、submit を hard block するか、警告付きで続行可能にするか。」。接続エラーを表示し、ユーザーが確認して続行できる実装。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。
+- 2026-11-07: Open Questions から除去 — 「rate_limit_error は一時的な状態なので、hard block と retry guidance のどちらに寄せるか。」。rate limitは時間を置く案内と警告付き続行を採用。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:30；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。

@@ -82,7 +82,6 @@ PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) は `#8
 
 ## Open Questions
 
-- [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の再着手は nishio assigned のまま人間主導にするか、Wiki 側で草案 update まで AI が進めるか。
 - [#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) は unassigned なので AI が docs outline まで進めても衝突しにくいが、Windows 実機検証の有無をどこまで完了条件に含めるか。
 - [#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) の offline route は Foundry Local first spike が有力だが、これは docs issue ではなく experiment / prototype issue として分けるべきか。
 
@@ -99,3 +98,5 @@ PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) は `#8
 - 2026-06-30: [[pr-903-review-comment-draft-2026-06-30]] を追加し、PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) に投稿する前のレビューコメント案を Wiki 側に固定した。
 - 2026-06-30: [[github-issue-876-live-2026-06-30]] / [[issue-876-docs-pr-slice-2026-06-30]] を追加し、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) の次 PR scope を file-by-file に固定。
 - 2026-06-30: [[github-issue-877-live-2026-06-30]] / [[issue-877-docs-pr-slice-2026-06-30]] を追加し、[#877](https://github.com/digitaldemocracy2030/kouchou-ai/issues/877) の次 PR scope を file-by-file に固定。
+
+- 2026-11-07: Open Questions から除去 — 「#876 の再着手は nishio assigned のまま人間主導にするか、Wiki 側で草案 update まで AI が進めるか。」。#876 は複数の docs PR で完了し、残細目 #1012 へ分離済み。再着手者を選ぶ前提は解消。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:152（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-policy-history.md:138（既存 Updates））。

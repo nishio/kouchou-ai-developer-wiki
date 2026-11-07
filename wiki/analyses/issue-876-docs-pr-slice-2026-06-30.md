@@ -77,9 +77,12 @@ README のリンクは GitHub 表示と MkDocs 表示で相対 path の解釈が
 ## Open Questions
 
 - README をどこまで短くするか。根本的には README は project overview + docs entrance に絞る方がよいが、既存ユーザーが README だけで起動している可能性を考えると、一段階目は summary + link にするのが現実的か。
-- `docs/getting-started/quickstart.md` の native 起動 section は developer quickstart と重複する。first slice で削るか、deprecated notice に留めるか。
-- `mkdocs build --strict` が existing docs warning を出す場合、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) PR 内で直すか、別修正に分けるか。
+- docs/getting-started は self-hosting へ移り旧 URL は redirect された。native 起動と developer quickstart の重複をどこまで削るかは、現行 self-hosting docs を対象に確認する。
+- 現行 docs には nav / link の strict validation が導入された。旧 first slice で想定した既存 warning の扱いは、現在も再現する警告を確認して切り分ける。
 
 ## Updates
 
 - 2026-06-30: 初回作成。issue [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) live state、current main docs、既存 developer quickstart 草案、docs spine 議論を照合し、次の本体 docs PR の file-by-file first slice に落とした。
+
+- 2026-11-07: Open Questions の現状を更新 — 「`docs/getting-started/quickstart.md` の native 起動 section は developer quickstart と重複する。first slice で削るか、deprecated notice に留めるか。」。getting-startedはself-hostingへ移り旧URLはredirectされた。native重複記述をどこまで削るかの判断は別に残る。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai 41e910100）。
+- 2026-11-07: Open Questions の現状を更新 — 「`mkdocs build --strict` が existing docs warning を出す場合、[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) PR 内で直すか、別修正に分けるか。」。nav/linkのstrict validationは導入済み。旧first slice時のwarningをどのPR内で扱うかという記録までは未確認。（根拠: kouchou-ai ec9b1fefa / f83567043；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:146（既存 Updates））。

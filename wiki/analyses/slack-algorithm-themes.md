@@ -69,7 +69,7 @@ LLM 分類は、その不満に対して **分類基準そのものを人間可�
 
 ## Open Questions
 
-- UMAP 前クラスタリングや supervised UMAP を `main` にどう落とすかは、2026-05 時点でも未実装
+- supervised UMAP は 2026-05 の試作で比較され、短期互換案としては否定的に判断された。UMAP 前クラスタリングを main にどう入れるかは未決。
 - 対立軸発見は問題設定として魅力的だが、広聴AIの標準出力にどこまで入れるかは未決
 - taxonomy-guided な実務モードと、新規論点発見モードを同一 UX に載せる方法はまだ見えていない
 - 対立軸発見を進める場合、kouchou-ai の LLM grouping mode に入れるのか、Cartographer / idobata 側の interactive workflow に寄せるのか、別 tool として扱うのかが未決
@@ -78,3 +78,5 @@ LLM 分類は、その不満に対して **分類基準そのものを人間可�
 
 - 2026-06-30: [[meeting-cartographer-idobata-boundary-2026-06-30]] を反映し、対立軸発見は embedding scatter の拡張ではなく LLM long-context / tree-native route の設計論点として扱うが、現行 default と断定しない方針を追記。
 - 2026-05-18: `#2_開発_広聴ai_アルゴリズム開発` の初回整理
+
+- 2026-11-07: Open Questions の現状を更新 — 「UMAP 前クラスタリングや supervised UMAP を main にどう落とすかは、2026-05 時点でも未実装」。supervised UMAP は試作で評価済み。UMAP前クラスタリングの main 採用とは別。（根拠: 0f2ebe6:wiki/analyses/niizuma-thread-algorithm-critique.md:94（既存 Updates））。

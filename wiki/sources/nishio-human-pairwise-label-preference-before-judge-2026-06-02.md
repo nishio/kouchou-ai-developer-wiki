@@ -30,8 +30,9 @@ sources:
 
 - 人間に見せる比較単位は cluster label 単位か、同じ階層の label set 全体か。
 - 選好理由は自由記述にするか、`covers more` / `distinguishes siblings` / `concise` / `unsupported` のようなタグ選択にするか。
-- 1 回の比較 UI で何案まで見せるか。A/B を基本にするか、3 案 ranking にするか。
 
 ## Updates
 
 - 2026-06-02: 初版作成。
+
+- 2026-11-07: Open Questions から除去 — 「1 回の比較 UI で何案まで見せるか。A/B を基本にするか、3 案 ranking にするか。」。初回の実装はA/Bの二択（tie/unsure含む）で24問を生成済み。（根拠: wiki git ef6a95c（2026-06-03）；0f2ebe6:wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md:116（既存 Updates））。

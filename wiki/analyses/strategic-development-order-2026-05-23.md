@@ -398,7 +398,6 @@ analysis mode が増えるほど、利用者に何を説明するかが重要に
 
 ## Open Questions
 
-- `analysis_mode` を product 上でどこまで見せるのか、設定ファイルだけで持つのか
 - visualization plugin の backend / frontend 契約をどこで一本化するのか
 - `#496` を Docker 回避の docs 拡張として済ませるのか、配布戦略の再定義として扱うのか
 
@@ -407,3 +406,5 @@ analysis mode が増えるほど、利用者に何を説明するかが重要に
 - 2026-05-23: 初版作成。issue-centric な短中期 roadmap とは別に、CLI / workflow / plugin / Web 配布を 3 層 platform として見た長期順序を追加
 - 2026-05-23: 「次にやるべきこと」を、`analysis-core` の contract 固定スプリントとして具体化し、entrypoint / artifact / validation / capability の 4 契約を先に決めるべきだと追記
 - 2026-05-23: maintainer 判断 [[report-html-non-web-canonical-decision-2026-05-23]] を反映し、`report.html` Web canonical 化の問いを確定事項へ寄せた
+
+- 2026-11-07: Open Questions から除去 — 「analysis_mode を product 上でどこまで見せるのか、設定ファイルだけで持つのか」。configだけに隠さず #987 で作成画面から選べるようにした。（根拠: 0f2ebe6:wiki/concepts/pipeline.md:142（既存 Updates）；kouchou-ai c33d264a4）。

@@ -27,7 +27,6 @@ PR差分より、temperature省略、Flex判定、900秒timeout、resource_unava
 
 ## Open Questions
 
-- SDK内部の再試行を維持するのか、アプリ側へ集約するのか。
 - 実APIでの動作確認はPR作者の報告を参照。今回のレビューでは再実施していない。
 
 ## Updates
@@ -43,3 +42,5 @@ PR差分より、temperature省略、Flex判定、900秒timeout、resource_unava
 ### 2026-09-09 15:41 JST — マージ完了
 
 ユーザーの明示承認を受け、確認済みHEADを指定して管理者マージを実行。[PR #934](https://github.com/digitaldemocracy2030/kouchou-ai/pull/934)の状態を再取得し、MERGED、merge commit `c2390a10094ccaa9baf9072f489eb1424059f852` を確認した。上記のレビュー待ちは解消。通常料金への自動切替の是非と料金を含む説明は、別途議論する未決事項として残す。
+
+- 2026-11-07: Open Questions から除去 — 「SDK内部の再試行を維持するのか、アプリ側へ集約するのか。」。SDK内の再試行を変更することを merge 条件としないとユーザーが判断し、#934 は merge 済み。（根拠: 0f2ebe6:wiki/analyses/pr-934-flex-review-2026-09-09.md:39（既存 Updates）；kouchou-ai git log upstream/main: #934（2026-09-09））。

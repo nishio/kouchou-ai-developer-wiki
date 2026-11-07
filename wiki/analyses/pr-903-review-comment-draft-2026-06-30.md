@@ -57,10 +57,11 @@ AI はこのコメントをまだ GitHub に投稿しない。理由は、PR [#9
 
 ## Open Questions
 
-- CSV / JSON download の `Buffer` 使用は Node runtime inventory の blocker として扱うか、client-side Blob download に自然に置き換わる軽微項目として扱うか。
 - PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) にコメントだけ出すか、作者が望むなら docs-only follow-up PR に分けるか。
 - static-site-builder `dev` script は docs PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) 内で直すべきか、別 issue / PR の掃除として分けるべきか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) live state、CodeRabbit 指摘、current main `d5c9ece` の `"use server"` ファイルと CSV / JSON download actions を再確認し、投稿前のレビューコメント案として固定した。
+
+- 2026-11-07: Open Questions から除去 — 「CSV / JSON download の `Buffer` 使用は Node runtime inventory の blocker として扱うか、client-side Blob download に自然に置き換わる軽微項目として扱うか。」。CSV/JSON downloadのBuffer使用はNode固有依存としてinventoryに明記し、client Blobへの置換対象に整理された。（根拠: kouchou-ai f422dcc65 / 109049ad3；kouchou-ai upstream/main@085366779（2026-10-29） docs/development/web-ui-node-runtime-dependencies.md:21）。

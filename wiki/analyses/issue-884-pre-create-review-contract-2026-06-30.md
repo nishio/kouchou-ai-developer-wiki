@@ -74,11 +74,12 @@ first PR の最低 test / QA は次を見ればよい。
 
 ## Open Questions
 
-- API check の `authentication_error` / `insufficient_quota` を hard block にするか、警告付き続行にするか。
-- `rate_limit_error` は一時的な状態なので、block ではなく retry guidance に寄せるか。
-- cost / time bucket を first PR に入れるか、表示領域だけ先に作るか。
 - reuse 導線は作成前確認内の静的リンクにするか、大規模入力時だけ conditional に出すか。
 
 ## Updates
 
 - 2026-06-30: 初回作成。GitHub [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) / [#221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/221) と `work/kouchou-ai/main@d5c9ece` の create flow / EnvironmentCheckDialog / reuse / TokenUsage を照合し、first PR の実装契約として整理した。
+
+- 2026-11-07: Open Questions から除去 — 「API check の `authentication_error` / `insufficient_quota` を hard block にするか、警告付き続行にするか。」。API接続エラーは警告付き続行の実装で決着。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。
+- 2026-11-07: Open Questions から除去 — 「rate_limit_error は一時的な状態なので、block ではなく retry guidance に寄せるか。」。レート制限は再試行案内を表示し作成を hard block しない。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:30；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。
+- 2026-11-07: Open Questions から除去 — 「cost / time bucket を first PR に入れるか、表示領域だけ先に作るか。」。first PR は目安なしの表示領域に留めた。粗い見積もりは未実装。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:142）。

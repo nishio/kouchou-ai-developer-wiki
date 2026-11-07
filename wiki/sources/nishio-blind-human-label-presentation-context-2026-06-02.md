@@ -30,11 +30,12 @@ sources:
 
 ## Open Questions
 
-- 最初の blind A/B は `label_only`、`sibling_label_set`、`label_with_representatives` のどれから始めるか。
-- 同じ label pair を 3 つの presentation context すべてで評価するか、まず 1 つに絞るか。
 - full UI の統合確認は、分解テストで勝った候補だけを public-viewer に近い mock へ載せる形で足りるか。
 
 ## Updates
 
 - 2026-06-02: nishio の「full_ui_context は困難なので前 3 つに分解した」という補足を受け、full UI は同列の A/B 条件ではなく、分解テスト後の統合確認として扱う方針に補正した。
 - 2026-06-02: 初版作成。
+
+- 2026-11-07: Open Questions から除去 — 「最初の blind A/B は `label_only`、`sibling_label_set`、`label_with_representatives` のどれから始めるか。」。初回bundleは3context×8cluster=24問を実際に生成した。十分性の評価とは分ける。（根拠: 0f2ebe6:wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md:116（既存 Updates）；wiki git ef6a95c（2026-06-03、bundle generatorの追加））。
+- 2026-11-07: Open Questions から除去 — 「同じ label pair を 3 つの presentation context すべてで評価するか、まず 1 つに絞るか。」。初回は3つのpresentation contextを同じ8clusterに適用するbundleを生成済み。（根拠: 0f2ebe6:wiki/sources/llm-grouping-400-tree-label-corpus-2026-06-02.md:116（既存 Updates）；wiki git ef6a95c（2026-06-03））。

@@ -154,7 +154,6 @@ full UI は最後に統合確認として扱う。最初の clean A/B には入�
 
 - HTML bundle は小さな回答フォーム付きになったが、複数 evaluator の回答をどの粒度で分けて merge するか。
 - 最初の comparison unit は top-level 8 cluster で生成済みだが、次は sibling label set 全体の 1 question 形式も必要か。
-- reason tags は固定選択にするか、まず winner / confidence だけにするか。
 - `#881` tracking issue にこの plan を first slice として接続するか、新しい issue に切るか。
 - `label_with_representatives` は現時点では cluster CSV の先頭 3 件なので、representative artifact 作成後に再生成するか。
 
@@ -165,3 +164,5 @@ full UI は最後に統合確認として扱う。最初の clean A/B には入�
 - 2026-06-03: [[codex-log-label-preference-bundle-2026-06-03]] を追加。first implementation slice として、`hierarchical_8_40` 固定の blind A/B bundle と `human_preferences` 系 JSONL / schema を生成したことを反映した。
 - 2026-06-03: `label_preference_ab.html` に回答フォームと JSONL output textarea を追加したことを反映した。
 - 2026-06-03: 初版作成。nishio の「改善計画を Wiki に書く？」という確認を受け、blind A/B preference collection から judge calibration へ進む実務計画として整理した。
+
+- 2026-11-07: Open Questions から除去 — 「reason tags は固定選択にするか、まず winner / confidence だけにするか。」。初期フォームは reason tags / free text を任意とする実装。winner と confidence が完成回答の条件。（根拠: 0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:90（既存 Updates）；0f2ebe6:wiki/sources/codex-log-label-preference-bundle-2026-06-03.md:91（既存 Updates）；scripts/build_label_preference_bundle.py（回答完成条件）；scripts/build_label_preference_bundle.py:340 / :550）。

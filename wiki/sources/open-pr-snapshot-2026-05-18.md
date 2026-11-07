@@ -57,10 +57,11 @@ sources:
 ## Open Questions
 
 - `mergeable: false` が branch 消失・競合・保護設定のどれを主因にしていたかは、この snapshot だけでは分からない
-- `#817` を current open work としてどう扱うか。security / review automation の定常運用に載せるのか、それとも内容を整理して作り直すのか
 
 ## Updates
 
 - 2026-05-18: 初版作成
 - 2026-05-18: `#734` `#597` を stale cleanup で close した後の状態と、`tokoroten` / `ohki` の recent PR を追記
 - 2026-10-21: 「主な番号」の一覧には `#735`（Devesh36 の draft、2026-05-19 00:55 JST に close）と `#817`（shingo-ohki、2026-05-18 22:57 JST に merge）が抜けていた。cleanup 前の nishio 以外の人間の open PR は「2 本だけ」ではなく 4 本。見出し「cleanup 後は 0 本」と本文「`#817` だけ」も食い違っているが、本文を書いた時点では `#735` と `#817` が open だった。その後の状況は [[non-nishio-human-pr-status]]
+
+- 2026-11-07: Open Questions から除去 — 「`#817` を current open work としてどう扱うか。security / review automation の定常運用に載せるのか、それとも内容を整理して作り直すのか」。#817 はmergeし設定はmainに残す形で決着。（根拠: 0f2ebe6:wiki/sources/open-pr-snapshot-2026-05-18.md:66（既存 Updates）；kouchou-ai dd9b0b8c）。

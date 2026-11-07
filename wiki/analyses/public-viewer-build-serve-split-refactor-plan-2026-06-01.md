@@ -210,7 +210,6 @@ docker run --rm -p 3000:3000 \
 
 ## Open Questions
 
-- dynamic hosting でも metadata を API 由来にしたい場合、`generateMetadata()` を request-time に安全に寄せられるか。
 - `connection()` と `revalidate = 300` の組み合わせで、期待どおり API response が更新されるか。
 - representative report smoke の slug は固定 fixture にするか、本番 API から ready report を選ぶか。後者の具体値は公開 wiki に置かない。
 
@@ -219,3 +218,5 @@ docker run --rm -p 3000:3000 \
 - 2026-06-01: `codex/public-viewer-build-serve-split` / PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で Phase 0〜3 を実装確認。baseline では API なし dynamic build が `/` / `/faq` の static generation timeout で止まり、実装後は API なし `pnpm --filter @kouchou-ai/public-viewer build`、fixture API あり `build:static`、runtime smoke (`/`, `/faq/`, `/example/`) が成功した。実装中に `[slug]` page へ `connection()` を入れると `/example` が `DYNAMIC_SERVER_USAGE` で落ちたため採用せず、non-export の `generateStaticParams() => []` と fallback metadata、runtime env 読み (`process.env[key]`) で request 時 API を読む形にした。手元 Docker daemon は未起動だったが、PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) の CI `client build` で API-less dynamic build、static export build、Docker build が成功した。CodeRabbit review 後、`/` の `generateMetadata()` は `connection()` で request-time 化できると確認し、reporter-specific metadata を復元した。
 - 2026-06-01: 初版作成。dynamic build/API 依存除去、runtime build 撤去、CI、Azure readiness、resource reevaluation を段階分割。
 - 2026-06-01: デプロイ詳細は公開 wiki に書かない方針に合わせ、timeout / resource / revision / log の具体値を非公開運用側へ寄せる表現へ更新。
+
+- 2026-11-07: Open Questions から除去 — 「dynamic hosting でも metadata を API 由来にしたい場合、`generateMetadata()` を request-time に安全に寄せられるか。」。dynamicはrequest時のgenerateMetadata、shellは空metadataに分岐する実装がある。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/public-viewer/app/[slug]/page.tsx:61）。

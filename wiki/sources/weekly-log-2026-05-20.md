@@ -68,9 +68,11 @@ GitHub report では、2026-05-20 〜 2026-05-27 に kouchou-ai で 19 件の PR
 ## Open Questions
 
 - 2026 Q2 の `#2_開発_広聴ai` / `#2_開発_広聴ai_アルゴリズム開発` を quarter source として切るか、当面は週次 source のまま扱うか。
-- `oss_weekly_reporter` の weekly dump が増えるたびに source ページを作るか、kouchou-ai 関連の高信号週だけ source 化するか。
+- oss_weekly_reporter は 2026-10-22 に停止した。2026-10-21 週までの過去 dump を全週 source 化するか、高信号週だけにするかは未決。
 - Slack 上の GitHub / wiki への self-reference は、source としてどこまで採用するか。AI report の要約は便利だが、重要判断は raw Slack / raw GitHub で確認してから使う。
 
 ## Updates
 
 - 2026-06-02: 初版作成。`work/oss_weekly_reporter` を `data@d0e340c96c05` まで更新し、2026-05-20_to_2026-05-27 の kouchou-ai / Slack weekly dump を読んだ。
+
+- 2026-11-07: Open Questions の現状を更新 — 「`oss_weekly_reporter` の weekly dump が増えるたびに source ページを作るか、kouchou-ai 関連の高信号週だけ source 化するか。」。weekly dumpが継続増加する前提はreporter停止で変わった。過去分source化の粒度は未決。（根拠: 0f2ebe6:wiki/sources/slack-logs-repository.md:110（既存 Updates））。

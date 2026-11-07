@@ -44,8 +44,9 @@ meeting minutes には「デジタル庁の `eGov` パブコメと組んでし�
 
 - ミートアップ由来の「関連したことをやっている人」が、条文RAG・法令検索・パブコメ分析のどれを指していたのか
 - `eGov` 連携案は単なる着想だったのか、打診や調査まで進んだのか
-- 条文RAGの話を補足できる URL が meeting minutes の HTML export 側に残っていないか
 
 ## Updates
 
 - 2026-05-25: `wiki/` と `raw/meeting_minutes.txt` を検索し、デジタル庁の条文RAGに関する現時点の可視範囲を整理
+
+- 2026-11-07: Open Questions から除去 — 「条文RAGの話を補足できる URL が meeting minutes の HTML export 側に残っていないか」。保存済み HTML export の「デジ庁のRAG」直後にデジタル庁の生成AI方針・ニュース・公式note、HyDE直後に補足ページへのhrefが残っていた。URLの存在を確認した範囲で閉じ、リンク先の現行内容は未確認。（根拠: /Users/nishio/kouchou-ai-developer-wiki/raw/meeting_minutes.html:1（2026-10-05 のローカル export、HTMLParser で href と本文を確認）；git log --since=2026-05-26 -- 当該ページ、および本体・横断 LOG の識別子検索では、本問を解決する直接の後続記録は未特定）。

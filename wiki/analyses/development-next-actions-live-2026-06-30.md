@@ -67,8 +67,6 @@ first PR は「既存 confirm の見た目改善」ではなく、CSV / Spreadsh
 
 ## Open Questions
 
-- [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) の API check status は、`authentication_error` / `insufficient_quota` を hard block にするか、警告付き続行にするか。
-- 費用 / 時間は first slice で placeholder に留めるか、粗い bucket まで入れるか。
 - [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) 着手時に、sample-first / reuse はリンクだけにするか、review dialog 内の選択肢にするか。
 - PR [#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) review comment は AI が投稿してよいか、人間が文面を確認して投稿するか。
 
@@ -78,3 +76,6 @@ first PR は「既存 confirm の見た目改善」ではなく、CSV / Spreadsh
 - 2026-06-30 19:30 JST: GitHub live state を再確認し、open PR 2 本 / high priority issue 3 件 / nishio assigned 6 件は変化なし。`high priority` label 名の query footgun を [[github-high-priority-label-query-footgun-2026-06-30]] に切り出した。
 - 2026-06-30: [[issue-884-pre-create-review-contract-2026-06-30]] を追加し、[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first PR の review model / warning policy / test gates を実装前仕様として接続した。
 - 2026-06-30: 初回作成。18:44 JST の GitHub live state をもとに、開発 next action は [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) 作成前確認パネルを第一候補、[#903](https://github.com/digitaldemocracy2030/kouchou-ai/issues/903) review comment を低リスク補助、[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885) / [#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898) を次点として整理した。
+
+- 2026-11-07: Open Questions から除去 — 「[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) の API check status は、`authentication_error` / `insufficient_quota` を hard block にするか、警告付き続行にするか。」。認証・残高エラーでも明示した上で続行できる実装で決着。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。
+- 2026-11-07: Open Questions から除去 — 「費用 / 時間は first slice で placeholder に留めるか、粗い bucket まで入れるか。」。first slice は費用・時間とも「目安なし」の表示で実装された。見積もり自体は残件。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:142）。

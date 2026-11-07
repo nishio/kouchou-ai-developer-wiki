@@ -40,8 +40,9 @@ sources:
 ## Open Questions
 
 - `#817` の本文中にある「[#815](https://github.com/digitaldemocracy2030/kouchou-ai/issues/815) での議論」の詳細は、この観測メモ単体では追えていない
-- 実際に `#817` が merge されたか、あるいは後続コミットでどの部分だけ `main` に入ったかは別観測が必要
 
 ## Updates
 
 - 2026-05-18: 初版作成
+
+- 2026-11-07: Open Questions から除去 — 「実際に #817 が merge されたか、あるいは後続コミットでどの部分だけ main に入ったかは別観測が必要」。#817 のmergeをmain履歴で確認できる。（根拠: kouchou-ai dd9b0b8c（2026-05-18、#817））。

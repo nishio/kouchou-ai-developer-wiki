@@ -66,11 +66,11 @@ sources:
 
 ## Open Questions
 
-- [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) の「粗い帯」を [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first PR に含めるか、後続 slice にするか（[[issue-884-pre-create-review-contract-2026-06-30]] は first PR scope 外に置いていた）。
 - [#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104) の収集項目・opt-out 既定・説明文を、どの利用観測で決めるか（人間判断）。
-- [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) の per-comment 再頒布可否フラグを入力 schema に持たせるか。
+- 元コメント本文の公開は #1155 でレポート単位の opt-in（既定 off）として実装された。per-comment の再頒布可否フラグを入力 schema に持たせるかは未決。
 - [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) の 1:1 lock と縦長の余白/可読性 tradeoff をどう両立するか。
 - 次 batch 候補（古い順の続き）: [#170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/170), [#172](https://github.com/digitaldemocracy2030/kouchou-ai/issues/172), [#173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/173), [#176](https://github.com/digitaldemocracy2030/kouchou-ai/issues/176), [#186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/186)。本依頼は自動着手しない。
+- [#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) の「粗い帯」を [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first PR に含めるか、後続 slice にするか（[[issue-884-pre-create-review-contract-2026-06-30]] は first PR scope 外に置いていた）。（2026-11-07 現状更新: first PR は「目安なし」で出荷したが、後続 slice にするかは未決。Updates 参照）
 
 ## Updates
 
@@ -80,3 +80,6 @@ sources:
 
 - 本ページの10件（[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) [#44](https://github.com/digitaldemocracy2030/kouchou-ai/issues/44) [#52](https://github.com/digitaldemocracy2030/kouchou-ai/issues/52) [#55](https://github.com/digitaldemocracy2030/kouchou-ai/issues/55) [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) [#104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/104) [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) [#143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/143)）の判定を、同一 main `c297bc97` での open Issue 全棚卸し [[issue-backlog-audit-2026-10-12]] に再利用した（再調査はせず当時の判定を踏襲）。当時も解決済みゼロのため close は無い。
 - 全105件の統合結果では、今回新たに調査した95件に解決済(close候補)3件([#417](https://github.com/digitaldemocracy2030/kouchou-ai/issues/417)/[#573](https://github.com/digitaldemocracy2030/kouchou-ai/issues/573)/[#871](https://github.com/digitaldemocracy2030/kouchou-ai/issues/871))＋不明1件([#519](https://github.com/digitaldemocracy2030/kouchou-ai/issues/519))が出たが、いずれも close に人間の確認が要るため未 close。本ページの10件に close 候補は無いという判断は維持。
+
+- 2026-11-07: Open Questions の現状を更新 — 「[#11](https://github.com/digitaldemocracy2030/kouchou-ai/issues/11) / [#79](https://github.com/digitaldemocracy2030/kouchou-ai/issues/79) の「粗い帯」を [#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) first PR に含めるか、後続 slice にするか（[[issue-884-pre-create-review-contract-2026-06-30]] は first PR scope 外に置いていた）。」。#884 の first PR では費用・時間は目安なしに留め、粗い見積もりは後続として残した。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:142）。 ／ Claude の検証（2026-11-07、OQ-0750）で「閉じる」から戻した: first PR は「目安なし」で出荷したが、後続 slice にするかは未決。問いは Open Questions に残す
+- 2026-11-07: Open Questions の現状を更新 — 「#56 の per-comment 再頒布可否フラグを入力 schema に持たせるか。」。公開制御はper-commentのフラグではなくreport単位のopt-inで実装。per-commentの必要性はなお未決。（根拠: kouchou-ai 8e95ceb1d（#1155）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。

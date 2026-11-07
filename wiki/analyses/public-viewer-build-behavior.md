@@ -46,7 +46,6 @@ sources:
 ## Open Questions
 
 - （2026-05 時点）`Next.js` build worker が API 未設定時に「即時 `Failed to parse URL`」ではなく 60 秒 timeout retry に見えた理由は、Next 側の prerender worker 実装なのか、この app の fetch path 解決なのか。原因は解明されないまま、PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で通常の build が `/` と `/faq` を prerender しなくなり、再現条件そのものが無くなった
-- （解決済み）`client-build.yml` が API server を立てずに `localhost:8000` を渡していたのは「SSR compile のみ確認できればよい」という意図か、将来 mock / service container を足す想定か。PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で、API なしの通常 build と、fixture API を立てた static export build（両方の環境変数を渡す）の 2 本立てになった。shell build の検査も 2026-09 に同じ fixture API を使う形で加わった
 
 ## Updates
 
@@ -54,3 +53,5 @@ sources:
 - 2026-05-19: `PR #835` で `generateStaticParams()` の static export 向け fail-fast が helper 化され、空 `/reports` では明示的な日本語エラー、ready レポートあり環境では successful static build になることを clean worktree で再確認
 - 2026-05-21: current `main@5d591ef` と `app/utils/__tests__/static-build.test.ts` の再確認により、Issue `#683` の元症状だった `opengraph-image.png` の `generateStaticParams()` 欠落 build error は current main では非再現であることを追記
 - 2026-10-21: main `b71e0b79` と照合し、PR [#828](https://github.com/digitaldemocracy2030/kouchou-ai/issues/828)（`Reporter` の修正）、[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)（通常 build の API 不要化と CI の fixture API）、[#1039](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1039) / [#1040](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1040)（`/meta` 画像）以降の前提を冒頭にまとめ、Findings・Practical Read・Open Questions を 2026-05 時点の記録として書き直した
+
+- 2026-11-07: Open Questions から除去 — 「（解決済み）`client-build.yml` が API server を立てずに `localhost:8000` を渡していたのは「SSR compile のみ確認できればよい」という意図か、将来 mock / service container を足す想定か。PR [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で、API なしの通常 build と、fixture API を立てた static export build（両方の環境変数を渡す）の 2 本立てになった。shell build の検査も 2026-09 に同じ fixture API を使う形で加わった」。API不要の通常build、fixture APIを使うstatic/shell buildのCIに分かれたと問い自体に回答済み。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） .github/workflows/client-build.yml:1；kouchou-ai f36a204b（#888）、#935 後続の shell CI）。

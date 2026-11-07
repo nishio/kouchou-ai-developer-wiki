@@ -69,12 +69,13 @@ PR [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) は 202
 
 ## Open Questions
 
-- `openai` も extras に分けるか、それとも current path どおり base dependency に残すか → [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) では base 依存に残した
-- `full` を README の既定 install にするか、軽量 base install を前面に出すか → README の標準は `[embeddings,clustering]`。`full` は API の Docker イメージが使う
-- optional dependency 不足時の UX を `ImportError` のままにするか、step 実行時に説明的なエラーへ包むか → install コマンドつきの `RuntimeError` に包んだ
 - base install（extras なし）で import と dry-run が通ることを、単体テストだけでなく CI のジョブとしても確かめるか（2026-10-21 時点では `sys.modules` を見る単体テストだけ）
 
 ## Updates
 
 - 2026-05-21: `main@0e1552d` を確認し、Task 2.5.6 は独立 PR で切れるが eager import / CI / docs 更新を同梱すべきと整理
 - 2026-10-21: main と照合し、PR [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) で実装された内容と、その後の API Docker の修正（[#894](https://github.com/digitaldemocracy2030/kouchou-ai/issues/894) / [#895](https://github.com/digitaldemocracy2030/kouchou-ai/issues/895) / [#896](https://github.com/digitaldemocracy2030/kouchou-ai/issues/896)）を追記。実装前の状態を述べた箇所を過去形にし、Open Questions の決着と削除済みの phase2_5_plan.md を注記
+
+- 2026-11-07: Open Questions から除去 — 「`openai` も extras に分けるか、それとも current path どおり base dependency に残すか → [#843](https://github.com/digitaldemocracy2030/kouchou-ai/issues/843) では base 依存に残した」。openai は base dependency に残して #843 で実装済み。（根拠: 0f2ebe6:wiki/analyses/analysis-core-extras-pr-scope.md:80（既存 Updates）；kouchou-ai 42d2afb0e（2026-05-21、#843）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/pyproject.toml:22）。
+- 2026-11-07: Open Questions から除去 — 「`full` を README の既定 install にするか、軽量 base install を前面に出すか → README の標準は `[embeddings,clustering]`。`full` は API の Docker イメージが使う」。標準 install は [embeddings,clustering]、API Docker は full という使い分けが実装済み。（根拠: 0f2ebe6:wiki/analyses/analysis-core-extras-pr-scope.md:80（既存 Updates）；kouchou-ai 42d2afb0e（2026-05-21、#843）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/README.md:16）。
+- 2026-11-07: Open Questions から除去 — 「optional dependency 不足時の UX を `ImportError` のままにするか、step 実行時に説明的なエラーへ包むか → install コマンドつきの `RuntimeError` に包んだ」。不足 extras は install コマンドつき RuntimeError に包む実装が入った。（根拠: 0f2ebe6:wiki/analyses/analysis-core-extras-pr-scope.md:80（既存 Updates）；kouchou-ai 42d2afb0e（2026-05-21、#843））。

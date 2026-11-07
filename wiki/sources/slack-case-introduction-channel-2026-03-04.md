@@ -74,8 +74,8 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 
 ## Open Questions
 
-- `#1_事例紹介_全体` の 2026-05 以降に substantive row がないのは、channel 利用が少ないためか、backfill / export の制約か。
-- 北見の体験会を public case へ昇格する場合、北海道新聞記事以外に、主催者資料や公開 viewer があるか。
+- 後続 snapshot には 2026-07 / 08 の raw と 9 月の mirror に本文がある。当時の 2026-05 以降の空白が利用状況か backfill / export の制約によるものかは引き続き未確定。
+- 北見の続報として、9/10–11 の高校授業で広聴AI・いどばたを使った実証が Slack へ共有された。外部向けの public case に使える主催者資料・公開 viewer・掲載許諾は引き続き未確認。
 - 宮崎の broad listening 言及は、実施済み case になったのか、意向表明で止まったのか。
 - 事例 candidate は GitHub issue、Slack channel、Drive、website repo のどこを canonical intake にするか。
 - 舞鶴2040を [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の first public detailed case に昇格する場合、誰が実施主体・掲載許諾・スクリーンショット利用を確認するか。
@@ -84,3 +84,6 @@ Slack `#1_事例紹介_全体` (`C08LJ9T5MLY`) の `slack-logs` raw snapshot 確
 
 - 2026-06-30: 2025-01〜2026-04 raw を月別に確認し、substantive row は 2026-03/04 のみだったと追記。北見 / 舞鶴 / 相模原 / 宮崎 / 和歌山を lead inventory に分類した。
 - 2026-06-30: 初回作成。`#1_事例紹介_全体` の 2026-04 raw を確認し、Slack lead intake と public case list を分ける必要を整理した。
+
+- 2026-11-07: Open Questions の現状を更新 — 「`#1_事例紹介_全体` の 2026-05 以降に substantive row がないのは、channel 利用が少ないためか、backfill / export の制約か。」。後続snapshotには7月・8月のrawと9月mirrorに本文行がある。5月以降一律に本文が無いという前提は解消したが、当時の空白原因は未確定。（根拠: slack-logs origin/main@c76b975（2026-10-23保存済み） raw/slack/C08LJ9T5MLY/2026-07.jsonl.gz:2；slack-logs origin/main@c76b975（2026-10-23保存済み） mirror/slack/C08LJ9T5MLY.jsonl.gz:2）。
+- 2026-11-07: Open Questions の現状を更新 — 「北見の体験会を public case へ昇格する場合、北海道新聞記事以外に、主催者資料や公開 viewer があるか。」。北見では9/10–11の高校授業で広聴AIといどばたを使った実証の続報がある。ただし公開資料・viewerや外部掲載許諾の代わりにはならない。（根拠: slack-logs origin/main@c76b975（2026-10-23保存済み） mirror/slack/C08LJ9T5MLY.jsonl.gz:2–3（展開後、2026-09-11、ts 1789119694.580329））。
