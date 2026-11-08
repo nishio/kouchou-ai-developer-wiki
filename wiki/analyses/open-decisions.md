@@ -153,6 +153,7 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 - 2026-10-29: nishio の方針。**2 手法（センチメント次元の付与・DivCon）は本体に取り込まず、docs から「成熟していない関連研究」として紹介する形にする。入れるとしても CLI から**。したがって A14 の「本体に入れるか」は当面「入れない」で、残る作業は docs 側の紹介ページ（手法の要点・tokoroten の repo / デモへの pointer・最終確認日・本体の属性ステップとの関係）を書くこと。主担当の確認と評価データの確保は、CLI で試す段階になったら改めて
 - 2026-10-29: 紹介ページを本体 docs の PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)（Issue [#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173)）として作成（未 merge）。`docs/development/related-research.md` に 2 手法と farbrain を「名前 / 一文説明 / 所在 / 状態 / 担当 / 最終確認日」の表と「要点 / 所在 / 本体との関係」で載せ、所在 URL は同日に到達確認。これで A14 の残作業は merge 判断と、tokoroten 本人による書き方の確認だけになる
 - 2026-11-08: 本体の判断は変えずに、DivCon を nishio の個人 repo のカタログで試した（[[team-mirai-2025-open-dataset]] の「個人 repo のカタログ」）。広聴AI の上位クラスタをトピックにして Stage 3a〜5 を回す形で、チームみらいのデータの 4 まとまり・2,167 件に軸 12 本。本体に載せるなら、意見ごとの採点は `arguments[].attributes` に入るが、軸の定義を置く省略可能なキーが `public_result.json` に要る（個人 repo の README に提案）
+- 2026-11-08: 同じく本体の判断は変えずに、センチメント次元の付与を個人 repo の賛否スライダーで試した。賛否スコアは本体の `opinion_stance` と同じ形・同じ既定プロンプト。重みを上げるとエネルギー・移民は賛否で分かれ（シルエット 0.7 台）、話題の近さは 1〜2 割落ちる。本体に載せるなら、何への賛否かを `public_result.json` に置く省略可能なキーが要る（個人 repo の README に提案）
 
 ## B. 方針決定済み・未着手
 

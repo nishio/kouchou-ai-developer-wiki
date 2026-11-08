@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 17:30] filing-back | 個人 repo の可視化カタログに賛否スライダー（センチメント次元の付与）を追加
+
+- nishio/broadlistening-visualizations の commit `6971f97`（main に push・公開済み）。本体の `opinion_stance` と同じプロンプトで 4 まとまり・2,167 件に賛否スコアを付け、埋め込みに重みつきで足した配置を重み 0〜1.5 で作った。学習率 0.1 と Procrustes で漂いを 12% → 2.5% に
+- nishio の問い「賛否を無視したら元の広聴AI になるか」への答え（元の配置はすでに賛否をほぼ無視している・線形には消えきらない）と、`public_result.json` に足りない項目（賛否の対象）を [[team-mirai-2025-open-dataset]] に、試した事実を [[open-decisions]] A14 に、定例向けの 1 項を [[meeting-report-draft]] に反映
+
 ## [2026-11-08 15:20] filing-back | 個人 repo の可視化カタログに DivCon の対立軸ビューを追加
 
 - nishio/broadlistening-visualizations の commit `b18593f`（main に push・公開済み）。tokoroten/divcon の Stage 3a〜5 を、広聴AI の上位クラスタをトピックにして回した。賛否の割れそうな 4 まとまり・2,167 件で軸 12 本・延べ採点 3,338 件、組織内の OpenAI 互換 LLM で 358 回
