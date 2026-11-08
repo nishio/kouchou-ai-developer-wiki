@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 23:10] filing-back | 対立軸ビューと賛否スライダーを作ってみた見立て
+
+- nishio「この 2 つを作ってみてどう思う？」への AI の答えを記録。対立軸ビューは読む道具になる（少数側が埋もれない、採点の誤り・中立なし・費用が課題）。賛否スライダーは説明用で新しく見えるものは少なく、収穫は「広聴AI の散布図は話題の地図で賛否は描いていない」こと
+- 残る判断へのおすすめ（賛否の対象のキーは足す、`opposition_axes` はまだ足さない、本体に入れるなら散布図の賛否色分け）を [[team-mirai-2025-open-dataset]] と [[meeting-report-draft]] に。色分けの試作は nishio が今は作らないと判断
+
 ## [2026-11-08 23:00] filing-back | 個人 repo の可視化カタログに賛否スライダー（センチメント次元の付与）を追加
 
 - nishio/broadlistening-visualizations の commit `6971f97`（main に push・公開済み）。本体の `opinion_stance` と同じプロンプトで 4 まとまり・2,167 件に賛否スコアを付け、埋め込みに重みつきで足した配置を重み 0〜1.5 で作った。学習率 0.1 と Procrustes で漂いを 12% → 2.5% に

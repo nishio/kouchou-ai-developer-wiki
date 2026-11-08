@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-08 23:10	filing-back	対立軸ビューと賛否スライダーを作ってみた見立て
 2026-11-08 23:00	filing-back	個人 repo の可視化カタログに賛否スライダー（センチメント次元の付与）を追加
 2026-11-08 15:20	filing-back	個人 repo の可視化カタログに DivCon の対立軸ビューを追加
 2026-11-08 10:00	filing-back	#921 ブラウザ版の本流化は tokoroten のアクション待ち
