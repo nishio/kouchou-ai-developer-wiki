@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 10:00] filing-back | #921 ブラウザ版の本流化は tokoroten のアクション待ち
+
+- nishio「方向性としてはそれでいいけど tokoroten のアクション待ち」。論点1（「本流」の範囲）を先に決めて Issue に記録する方針は了承済み
+- [[meeting-report-draft]] の #921 の項と Updates、kouchou-issue-audit-queue の STATUS に反映
+
 ## [2026-11-08 09:57] filing-back | 個人 repo の可視化カタログ：付箋の文字を全文が収まる最大の大きさに
 
 - nishio/broadlistening-visualizations の commit `23a2584`（main に push・公開済み）。マンダラートはマスごと、付箋ズームは付箋ごとに、全文が収まる最大の文字サイズを決める
