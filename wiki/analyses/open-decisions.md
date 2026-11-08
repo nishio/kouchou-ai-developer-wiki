@@ -152,6 +152,7 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 - 2026-10-29: 前段として賛否スコア・新規性スコアを「意見ごとの属性」にする CLI 任意ステップを PR [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)（[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158)）で実装（[[post-review-direction-issues-2026-10-29]]）
 - 2026-10-29: nishio の方針。**2 手法（センチメント次元の付与・DivCon）は本体に取り込まず、docs から「成熟していない関連研究」として紹介する形にする。入れるとしても CLI から**。したがって A14 の「本体に入れるか」は当面「入れない」で、残る作業は docs 側の紹介ページ（手法の要点・tokoroten の repo / デモへの pointer・最終確認日・本体の属性ステップとの関係）を書くこと。主担当の確認と評価データの確保は、CLI で試す段階になったら改めて
 - 2026-10-29: 紹介ページを本体 docs の PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)（Issue [#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173)）として作成（未 merge）。`docs/development/related-research.md` に 2 手法と farbrain を「名前 / 一文説明 / 所在 / 状態 / 担当 / 最終確認日」の表と「要点 / 所在 / 本体との関係」で載せ、所在 URL は同日に到達確認。これで A14 の残作業は merge 判断と、tokoroten 本人による書き方の確認だけになる
+- 2026-11-08: 本体の判断は変えずに、DivCon を nishio の個人 repo のカタログで試した（[[team-mirai-2025-open-dataset]] の「個人 repo のカタログ」）。広聴AI の上位クラスタをトピックにして Stage 3a〜5 を回す形で、チームみらいのデータの 4 まとまり・2,167 件に軸 12 本。本体に載せるなら、意見ごとの採点は `arguments[].attributes` に入るが、軸の定義を置く省略可能なキーが `public_result.json` に要る（個人 repo の README に提案）
 
 ## B. 方針決定済み・未着手
 
@@ -295,3 +296,4 @@ PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038)（202
 - 2026-11-03: B9 に、[#586](https://github.com/digitaldemocracy2030/kouchou-ai/issues/586) が 2026-11-02 に close（completed）されたことを反映（GitHub の close コメントで確認）。B9 を残すか外すかは未判断
 - 2026-11-07: A13 に [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) の merge を反映（階層リストの位置づけは決着、付箋表示の置き場が残る）
 - 2026-11-07: A13 に、可視化を個人 repo のカタログで試してから本体への昇格を判断する方針と、共通データ [[team-mirai-2025-open-dataset]] を追記
+- 2026-11-08: A14 に、DivCon を個人 repo のカタログで試した結果と `public_result.json` に足りない項目を追記（方針は不変）

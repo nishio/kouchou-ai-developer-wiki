@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 15:20] filing-back | 個人 repo の可視化カタログに DivCon の対立軸ビューを追加
+
+- nishio/broadlistening-visualizations の commit `b18593f`（main に push・公開済み）。tokoroten/divcon の Stage 3a〜5 を、広聴AI の上位クラスタをトピックにして回した。賛否の割れそうな 4 まとまり・2,167 件で軸 12 本・延べ採点 3,338 件、組織内の OpenAI 互換 LLM で 358 回
+- 結果・誤りの傾向・`public_result.json` に足りない項目（軸の定義）を [[team-mirai-2025-open-dataset]] に、方針は変えずに試した事実を [[open-decisions]] A14 に、定例向けの 1 項を [[meeting-report-draft]] に反映
+
 ## [2026-11-08 10:00] filing-back | #921 ブラウザ版の本流化は tokoroten のアクション待ち
 
 - nishio「方向性としてはそれでいいけど tokoroten のアクション待ち」。論点1（「本流」の範囲）を先に決めて Issue に記録する方針は了承済み

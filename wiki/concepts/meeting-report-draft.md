@@ -102,6 +102,7 @@ sources:
 - **情報鮮度**: 議事録 txt は先頭見出し 2026-07-27（2026-11-02 再取得、10-18 取得分と同一）。Slack mirror は 2026-11-02 05:35 UTC 同期まで。11-07 の照合では GitHub の live state（PR・Issue・CI・Dependabot）だけを見直し、議事録と Slack は読み直していない（slack-logs の mirror 自体は 11-07 05:37 UTC まで同期されている）
 
 - **tokoroten の賛否分離 2 手法の紹介ページ → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)（2026-10-29・未 merge）**: 10-29 の nishio 判断「本体に取り込まず docs で成熟していない関連研究として紹介、入れるとしても CLI から」を受け、`docs/development/related-research.md` を追加（[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173)）。センチメント次元の付与・DivCon・farbrain を「所在 / 状態 / 担当 / 最終確認日」つきで載せ、所在 URL は同日に到達確認。11-02 時点で CI green・指摘なし。次：tokoroten さんに説明と位置づけの確認、merge 判断
+- **DivCon を個人 repo のカタログで試した（2026-11-08、本体には入れていない）**: nishio の指示で、[[tokoroten]] の DivCon を広聴AI の上位クラスタに当てた対立軸ビューを nishio/broadlistening-visualizations に追加（[デモ](https://nishio.github.io/broadlistening-visualizations/divcon/)）。チームみらいのデータの賛否が割れそうな 4 まとまり・2,167 件で軸 12 本、組織内の LLM で約 20 分。移民は両側が並び、家族は反対側の少数意見が埋もれずに見える一方、「〜が不足している」型の入力では立場が読めない意見が多い。次：軸の定義を `public_result.json` に置くキーを足すかの判断（[[team-mirai-2025-open-dataset]]）、[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) からのリンク
 
 ## 議題候補（次回定例向け）
 
@@ -124,6 +125,7 @@ sources:
 
 ## Updates
 
+- 2026-11-08: DivCon を個人 repo のカタログで試した項を「そのまま読む用」に追加
 - 2026-11-08: [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の項に、方向性は nishio が了承済みで tokoroten のアクション待ちであることを追記
 - 2026-11-08: [#1187](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1187)（`3d7a8f9a`）と [#1189](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1189)（`ddd0bacd`）を nishio の承認で順に admin merge（squash）したことを、結果 JSON の層分離の項と Dependabot の項に追記
 - 2026-11-08: [#1184](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1184)（ランナー固定の一時策）を nishio の判断で close したことを Playwright の項に追記
