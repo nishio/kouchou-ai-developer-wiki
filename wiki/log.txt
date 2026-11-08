@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-08 09:57	filing-back	個人 repo の可視化カタログ：付箋の文字を全文が収まる最大の大きさに
 2026-11-08 06:45	filing-back	PR #1187（公開 API が公開用レポート結果を返す）と #1189（minimatch 11.0.1 / glob 14.0.2）を merge
 2026-11-08 06:25	filing-back	PR #1184（Playwright のランナーを 24.04 に固定）を close
 2026-11-07 22:52	filing-back	minimatch 11.0.1 / glob 14.0.2 の PR #1189（override を範囲形式に揃える）

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-08 09:57] filing-back | 個人 repo の可視化カタログ：付箋の文字を全文が収まる最大の大きさに
+
+- nishio/broadlistening-visualizations の commit `23a2584`（main に push・公開済み）。マンダラートはマスごと、付箋ズームは付箋ごとに、全文が収まる最大の文字サイズを決める
+- 付箋ズームのまとまりの代表の付箋は、nishio の判断で表札だけにした（表札と本文を 1 枚に入れると 10〜12px にしかならなかった）。確かめた文字の大きさを [[team-mirai-2025-open-dataset]] の「個人 repo のカタログ」に記録
+
 ## [2026-11-08 06:45] filing-back | PR #1187（公開 API が公開用レポート結果を返す）と #1189（minimatch 11.0.1 / glob 14.0.2）を merge
 
 - merge 直前に両 PR の mergeable・CI 全件 pass・未解決スレッドなしを確認し、nishio の承認で順に admin merge。方式は直近の #1188・#1185・#1183 に合わせて squash。#1187 は main `3d7a8f9a`、#1189 は #1187 の後も mergeable で CI 結果が有効なことを確かめてから main `ddd0bacd`
