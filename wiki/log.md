@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-10 10:10] filing-back | 国内完結の選択肢の整理に、ローカル LLM の品質比較の結果をつないだ
+
+- [[domestic-data-residency-options-2026-11-10]] の Updates に、案 1（ローカル計算）の品質の材料として [[team-mirai-local-llm-quality-2026-11-10]] を追記（30B 級は gpt-4o-mini に劣らない判定、8B 級は未測定）
+- #1190 の本文には未反映。8B 級の品質が測れたら Issue 側にも足す
+
 ## [2026-11-10 09:40] filing-back | データ分析を国内だけで完結させる選択肢を整理し、上位 Issue #1190 を作成
 
 - nishio の依頼で、Bedrock 対応（#1169）を実装案の一つとする上位 Issue #1190「データ分析が国内だけで完結できるようにしたい」を作り、#1169 を子 Issue にした。第一候補はローカル計算。Azure は今の機能でデプロイ種別を Standard（リージョン単位）にすれば国内処理になるが、Japan East の従量課金のチャットモデルは 2 つだけで 2027-04-14 に廃止予定（公式で確認）
