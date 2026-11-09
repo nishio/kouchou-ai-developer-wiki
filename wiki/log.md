@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-10 10:40] filing-back | #471 ローカル LLM の品質比較に、8B 級と中くらいのモデルを足した
+
+- nishio「それから 8B」「間の大きさのモデルも試せるといいな」を受け、ELYZA-JP-8B・gemma-4-E4B・12B・26B-A4B を同じ課題 200 件・40 クラスタで回し、gpt-4o-mini と出どころを伏せて比べた。抽出の判定基準には境界の規則を足し、30B 級も判定し直した
+- どのモデルも gpt-4o-mini に大きく劣らない。ラベルの勝ち点は gemma-4-E4B が最も高く（0.67）、26B-A4B だけが長く強い表札で負け越した（0.47）。ELYZA は 200 件中 2 件でプロンプトの例文をそのまま返した。40 クラスタでは区間が重なり、大きさの順位は付かない。結果は [[team-mirai-local-llm-quality-2026-11-10]] の結果 3 に。[[meeting-report-draft]] と [[domestic-data-residency-options-2026-11-10]] も更新
+- 次：人の A/B 判定で判定役を較正する。受け入れ基準に「入力に無い内容を出さない」を入れる
+
 ## [2026-11-10 10:10] filing-back | 国内完結の選択肢の整理に、ローカル LLM の品質比較の結果をつないだ
 
 - [[domestic-data-residency-options-2026-11-10]] の Updates に、案 1（ローカル計算）の品質の材料として [[team-mirai-local-llm-quality-2026-11-10]] を追記（30B 級は gpt-4o-mini に劣らない判定、8B 級は未測定）

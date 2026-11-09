@@ -63,3 +63,4 @@ sources:
 
 - 2026-11-10: 初回作成。上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) を作り、[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) を子 Issue にした
 - 2026-11-10: 案 1（ローカル計算）の品質の材料が、同じ日の別の作業で増えた（[[team-mirai-local-llm-quality-2026-11-10]]）。チームみらいの公開データで、30B 級のオープンウェイト（gemma-4-31B、Qwen3.8-27B）は抽出・ラベルとも既定の gpt-4o-mini に劣らないと判定された。上の「要点」にある #471 の実測は速度の話で、品質はこちらを見る。普通の PC で動く 8B 級の品質はまだ測っておらず、判定役（Claude）を人の判定で較正する段も残る。#1190 の本文にはまだ反映していない
+- 2026-11-10: 同じ日に、普通の PC で動く大きさのモデルの品質も測った（[[team-mirai-local-llm-quality-2026-11-10]] の結果 3）。gemma-4-E4B は抽出・ラベルとも gpt-4o-mini に劣らないと判定され、案 1 の品質の見通しは明るくなった。ELYZA-JP-8B は 200 件中 2 件でプロンプトの例文をそのまま返した。判定役の較正は残る
