@@ -1,0 +1,64 @@
+---
+title: "データ分析を国内だけで完結させる選択肢（2026-11-10）"
+type: analysis
+summary: "『意見データを国外に出したくない』要件への選択肢を、ローカル計算・Azure OpenAI の国内リージョン・Amazon Bedrock・Vertex AI 東京・源内で比べた整理。上位 Issue #1190 を立て、Bedrock 対応 #1169 をその子にした。結論は、データを出さないのが目的ならローカル計算が第一候補（『国内』の意味が事業者や庁内まで及ぶならクラウドは外れる）。Azure は今の機能のままデプロイ種別を Standard（リージョン単位）にすれば国内処理になるが、Japan East の従量課金で使えるチャットモデルは gpt-4o（2024-11-20）と gpt-4.1-mini だけで、どちらも 2027-04-14 に廃止予定"
+sources:
+  - source-code.md
+---
+
+## 経緯
+
+2026-11-09〜10 に nishio と Claude Code が、shingo-ohki さん（[[ohki-shingo]]）の Bedrock 対応の提案（[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169)、検証は [#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170)）を読んだことから始まった。会話で論点が次のように動いた。
+
+1. Bedrock 対応は boto3 を本体に入れるか → OpenAI 互換の経路なら不要、IAM 認証で Claude を呼ぶ場合だけ増えうる。[#1042](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1042)（Anthropic API 直）は boto3 と無関係で、`anthropic` を任意の依存にすれば本体は増えない
+2. Azure は国内ではないのか → デプロイ種別しだいで国内になる（下記）
+3. Google GenAI（Vertex AI）やブラウザ版は → どちらも国内または端末内の経路を持つ
+4. nishio：「国外にデータが出て欲しくないならローカルで計算したらいいんでは？」→ この問いを上位に置き、Bedrock を実装案の一つにする整理に組み直した
+
+成果物は上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190)「データ分析が国内だけで完結できるようにしたい」（2026-11-10 作成、#1169 を GitHub の子 Issue に設定。#1170 は #1169 の本文から参照されるだけで、子 Issue の関係は付けていない）。比較の詳細は Issue 本文を正とし、ここには判断の筋と鮮度を残す。
+
+## 要点
+
+### 「国内」の意味を先に決める
+
+| 段階 | 意味 | 満たせる案 |
+|---|---|---|
+| A | 処理と保存の場所が日本国内 | 全案（クラウドは設定次第） |
+| B | A に加えて事業者も国内（米国法などの適用を避ける） | ローカル計算（または国内事業者の基盤） |
+| C | 端末や庁内のネットワークから外に出さない | ローカル計算のみ |
+
+クラウドの国内リージョンで満たせるのは A まで。B・C が要件なら Azure・Bedrock・Vertex は外れる。
+
+### 案ごとの現在地
+
+- **ローカル計算（第一候補）**：本体の provider `local` ＋ローカル埋め込み、ブラウザ版の Gemini Nano ＋ transformers.js、LLM を使わない経路（[[offline-local-clustering]]）がすでにある。[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) にコミュニティの実測（RTX 3090 で 48 件が全工程 2 分 33 秒、GPU なし 4 コア 16GB で抽出 1 件約 8 秒、誤読約 3%）。足りないのは推奨スペックの案内、思考型モデルに `reasoning_effort` を渡す手段、CLI での抽出スキップと LLM なしの集計の正式化、[#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898)
+- **Azure OpenAI**：本体は対応済み（[[llm-providers]]）。推論が国内に収まるのは Standard（リージョン単位）と Regional Provisioned だけで、Global は任意のリージョン、Data Zone の APAC は Japan East から使う場合でもオーストラリア・韓国・東南アジア・インドを含む。Japan East の Standard で使えるチャットモデルは gpt-4o（2024-11-20、Legacy）と gpt-4.1-mini（Deprecated）だけで、どちらも 2027-04-14 に廃止予定。新しいモデルはリージョン単位に「最後に、時期の保証なく」来る。Regional Provisioned なら gpt-5 系も使えるが、最低 25〜50 PTU で単発の分析には重い。docs に「国内処理ならデプロイ種別を Standard に」という案内がない
+- **Amazon Bedrock**：公式ドキュメント上、gpt-oss や Qwen3 は東京リージョン内で処理でき、OpenAI 互換 API と Bedrock API キーで呼べる（新しい依存なし）。Claude は日本限定の推論プロファイル（東京・大阪）。埋め込みは OpenAI 互換で呼べない見込み。ブラウザ版はすでに Bedrock（OpenAI 互換）に対応しているが、CORS のため国内に置いたプロキシが要る。いずれも実機では未確認（#1170 の対象）
+- **Vertex AI 東京**：本体の Gemini は Developer API で地域を指定できない。同じ `google-genai` SDK の `vertexai=True` に切り替えれば東京を指定でき、新しい依存は要らない。日本での処理が明記されたモデルは Gemini 3.5 Flash と一部の埋め込みに限られ、従量課金での保証範囲は読み方があいまい
+- **源内（デジタル庁）**：2026-04 に OSS 公開、2026-10 に自治体向け実証の参加募集。外部アプリから使える API は確認できていない
+
+### 進め方（Issue での提案）
+
+1. 「国内」の意味（A／B／C）を利用者の要件から決める
+2. 今の機能で満たせる部分を docs にする（ローカル計算の推奨構成、Azure のデプロイ種別）
+3. クラウドの国内リージョンを実機で検証する（#1170 の対象を Azure・Vertex に広げるか）。Bedrock はブラウザ版で本体を実装せずに検証を始められる
+4. 本体に新しい接続先を足すかは 3 の結果で決める
+
+## 情報鮮度
+
+- Azure の仕様は Microsoft Learn の公式ページで 2026-11-10 に確認（deployment-types は 2026-08-12 更新、リージョン別一覧は 2026-10-19 更新、廃止予定表は 2026-09-23 更新）。Japan East の Standard の行と廃止予定は表を直接読んで照合した
+- Bedrock・Vertex・源内・ISMAP は subagent の Web 調査（2026-11-09〜10）で、Issue 本文に出典 URL を付けた。Claude Code が自分で表を読み直したのは Azure だけ
+- ブラウザ版の対応状況は tokoroten/kouchou-ai-serverless の README・`src/types/settings.ts`・`docs/DESIGN.md` を 2026-11-09 に読んだ（push は 2026-11-06）。動かしてはいない
+- 本体のコードは main `ddd0bacd`（2026-11-08）で確認
+
+## Open Questions
+
+- 想定する利用者（自治体・官公庁）が求める「国内」は A・B・C のどれか。ISMAP 登録だけで足りるのか、管轄（米国 CLOUD Act など）まで問うのか
+- Japan East で、新規のサブスクリプションから gpt-4o（2024-11-20）や gpt-4.1-mini の Standard を今も作れるか（Legacy／Deprecated の扱いと、リージョン別一覧の ✅ が食い違う可能性）
+- Azure の 2027-04 以降、リージョン単位の Standard に後継モデルが来なければ、Azure での国内処理は Provisioned（高価）しか残らない
+- Bedrock の gpt-oss-120b で json_schema の構造化出力が通るか（モデルカードに記載がない）
+- 源内に外部アプリ向けの API があるか
+
+## Updates
+
+- 2026-11-10: 初回作成。上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) を作り、[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) を子 Issue にした

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-10 09:40	filing-back	データ分析を国内だけで完結させる選択肢を整理し、上位 Issue #1190 を作成
 2026-11-10 00:05	filing-back	対立軸ビューを活用するユーザストーリー案
 2026-11-08 23:10	filing-back	対立軸ビューと賛否スライダーを作ってみた見立て
 2026-11-08 23:00	filing-back	個人 repo の可視化カタログに賛否スライダー（センチメント次元の付与）を追加

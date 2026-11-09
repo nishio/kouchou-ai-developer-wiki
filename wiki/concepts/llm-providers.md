@@ -87,6 +87,7 @@ OpenAI の **Sign in with ChatGPT (SIWC)** は、OSS / local-hosted アプリが
 - Foundry Local を `provider="local"` の単なる endpoint として扱うか、first-class provider として model download/cache/progress UI まで持つか
 
 ## Updates
+- 2026-11-10: Azure OpenAI で推論を国内に収めるにはデプロイ種別を Standard（リージョン単位）か Regional Provisioned にする必要があり（Global は任意のリージョン、Data Zone の APAC は国外を含む）、Japan East の従量課金で使えるチャットモデルは gpt-4o（2024-11-20）と gpt-4.1-mini だけで 2027-04-14 に廃止予定、と公式で確認。本体の Gemini 対応（Developer API）は地域を指定できない。国内完結の選択肢の比較 → [[domestic-data-residency-options-2026-11-10]]、Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190)
 
 - 2026-10-21: main `b71e0b79` と照合して訂正。LOCAL LLM は PR [#1037](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1037) / [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) で管理画面のモデル一覧取得もパイプラインと同じ接続先解決・認証になり、2026-10-18 の項の「http 固定が残るのはモデル一覧取得だけ」は解消した。埋め込みモデル節を、作成画面で選べる現状（PR [#984](https://github.com/digitaldemocracy2030/kouchou-ai/issues/984) / [#1017](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1017) / [#1037](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1037)）に更新し、`WITH_GPU` は torch の種類を切り替えるだけと明記。[#660](https://github.com/digitaldemocracy2030/kouchou-ai/issues/660) は Issue ではなく PR で、merge は 2025-08-13（2025-07-30 の議事メモの時点ではまだマージ待ち）と訂正し、現行の作成画面では Gemini もキー入力の対象と追記
 - 2026-10-18: main `083593ba` で analysis-core の `_resolve_local_llm_base_url` は `scheme://host[:port]` 形式（HTTPS ゲートウェイ）を受け付ける。http 固定が残るのは `apps/api/src/services/llm_models.py` のモデル一覧取得だけ。OpenRouter は embedding 非対応（`NotImplementedError`）

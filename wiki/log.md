@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-10 09:40] filing-back | データ分析を国内だけで完結させる選択肢を整理し、上位 Issue #1190 を作成
+
+- nishio の依頼で、Bedrock 対応（#1169）を実装案の一つとする上位 Issue #1190「データ分析が国内だけで完結できるようにしたい」を作り、#1169 を子 Issue にした。第一候補はローカル計算。Azure は今の機能でデプロイ種別を Standard（リージョン単位）にすれば国内処理になるが、Japan East の従量課金のチャットモデルは 2 つだけで 2027-04-14 に廃止予定（公式で確認）
+- 判断の筋と鮮度を [[domestic-data-residency-options-2026-11-10]] に、Azure の要点を [[llm-providers]] に、議題を [[meeting-report-draft]] に。あわせて #1162 の CI が main の取り込み直しで green になったことを記録
+- 次：「国内」の意味（処理場所／事業者／端末・庁内）を決める。#1170 の検証対象を Azure・Vertex に広げるか
+
 ## [2026-11-10 00:05] filing-back | 対立軸ビューを活用するユーザストーリー案
 
 - nishio「対立軸ビューを活用して行くユーザストーリーを考えられるといいなと思う」への AI の案を [[divcon-view-user-stories]] として新規作成。5 つの場面（政策を書き直す人・ファシリテーター・パブコメの回答者・参加者・報告をまとめる人）と、共通して足りないもの（「関係なし」と中立・全件の数が合う集計・採点を人が直す手段）、最初に詰める候補（1 か 3）
@@ -123,20 +129,3 @@
 - nishio の指示で PR #1166 を admin squash merge（`7253efcc`）、Issue #1159 は自動 close。CI は 10-29 時点で green、その後の main の変更と触るファイルが重ならず merge-tree で衝突なしを確認
 - [[open-decisions]] A13 は階層リストの位置づけが決着し、付箋表示の置き場だけが残る。[[meeting-report-draft]]・[[post-review-direction-issues-2026-10-29]] に反映
 - 次：#1167 のスクリーンショット撮り直し、#60（最下層を濃いクラスタに絞る）の着手、#250 を出典リンクでどこまで満たせたかの照合
-
-## [2026-11-03 03:00] filing-back | 査読で見落としとされた living ページの状態記述を GitHub と照合して訂正（#679 close、10-28 close 候補のその後、v4.2.0）
-
-- [[meeting-report-draft]]: 指定カテゴリ分類の項の「#679 を統合候補」を、11-02 の close（completed、WebUI の残件は #997）に直した。10-28 棚卸しの項に、close 候補 #285・#529・#558 が 11-02 に close され #809 は assignee 確認中（期限 11-16）という「その後」を 1 行足した
-- [[broad-listening-book]] の v4 / v5 方針の行に v4.2.0（2026-10-26）を足し、[[versioning-strategy]] の「その後の実際」の見出しの時点を 11-03 に改めた
-- 次：#1128 の「関連して残っている点」（json_object の拒否、finish_reason の専用例外）は close コメントで別 Issue に引き継がれていない。追跡先を作るかは人間判断
-
-## [2026-11-03 02:00] filing-back | living ページの古い状態記述を GitHub・PyPI・main と照合して訂正（最新タグ v4.2.0、PyPI 0.3.0、11-02 close 済み Issue）
-
-- 最新タグ「v4.1.0」を v4.2.0（2026-10-26）に（[[versioning-strategy]]・[[kouchou-ai]]・[[plugin-system]]・index）。PyPI 最新「0.1.3」を 0.3.0（2026-10-29）にし、`predefined_groups` などが 0.2.0 以降の PyPI 版に入っていることを反映（[[cli]]・[[llm-grouping-supervised-classification]]・[[refactoring-status]]）
-- 11-02 の棚卸しで close 済みの #56・#1128・#507・#518・#323・#374・#586 を「open のまま」「close するか」と書いていた箇所を訂正（[[meeting-report-draft]]・[[issue-56-original-comments-opt-in-2026-10-29]]・[[extraction-faithfulness]]・[[open-decisions]] B9・[[other-contributors]]）。定例下書きの情報鮮度と [[meeting-minutes]] の `last_checked` を 11-02 の再取得・Slack 同期に合わせた
-- index の「最新の全件棚卸し」を superseded 済みの 10-12 版から [[issue-backlog-audit-2026-10-28]] に差し替え。次：open-decisions B9 を残すか、kouchou-issue-audit キューの STATUS.md（10-12 時点）を更新するか（人間）
-
-## [2026-11-03 01:35] filing-back | 結果 JSON の層分離 第 1 段（PR #1179）を main に merge
-
-- nishio が「手順表示用のプロンプトは公開契約に含めて OK」と判断し、PR #1179 を squash merge（`79981407`）。以後、集計・レイアウト生成・翻訳 CLI は `public_result.json` も書く。古いレポートは次回実行で集計をやり直す
-- Issue #1178 は第 2・3 段のため open のまま。次：第 2 段（公開 API とビューアが `public_result.json` を読む）と [#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) の A/B
