@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-11 00:58	filing-back	Bedrock の構成例の docs（#1191）を main に入れた
 2026-11-11 00:40	filing-back	本文が同じ入力で gemma-4-31B と当時の gpt-4o の課題抽出を比べた
 2026-11-10 23:45	filing-back	チームみらいデータの課題の 79% は PR 本文を見ずに抽出されていた
 2026-11-10 23:40	filing-back	#471 元の PR からの抽出の勝敗を撤回した（入力の食い違い）

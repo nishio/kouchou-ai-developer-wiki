@@ -82,3 +82,4 @@ sources:
   - OpenAI 互換の接続先は `bedrock-runtime`（`/openai/v1`、モデル一覧の API なし）と `bedrock-mantle`（`/v1`、モデル一覧あり、東京で利用可）の 2 つ。管理画面はモデル一覧をプルダウンに出すので `bedrock-mantle` が要る
   - Bedrock の構造化出力は、すべての object に `additionalProperties: false` を求め、数値・文字数の制約や再帰を受け付けない。広聴AIの 8 種のスキーマを `_to_strict_json_schema` で変換すると、この範囲に収まることを手元で確かめた（翻訳の工程は未確認）
   - 埋め込みは、LocalLLM を選ぶと管理画面で強制的にサーバ内になる。上の「本体はコード変更なしで試せる可能性」は、この意味で裏づけが増えた。ただし LocalLLM が送る `seed`・`n`・`temperature` を Bedrock が受け付けるかは未確認
+- 2026-11-11: [#1191](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1191) を main に入れた（squash `67bc798d`、レビュー承認なしの admin merge は nishio の指示）。merge 前に CodeRabbit の指摘で 2 点を直した。期限の短い API キーは作ったリージョンでしか使えないので東京で作ること、権限に `CallWithBearerToken`（API キーでの呼び出し）と `bedrock-mantle:ListModels`（管理画面のモデル一覧）が要ること。「期限の長いキーもリージョン限定」という指摘は、AWS の公式ドキュメントに根拠がなく反映しなかった

@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 00:58] filing-back | Bedrock の構成例の docs（#1191）を main に入れた
+
+- CodeRabbit の指摘で、API キーのリージョン（期限の短いキーは作ったリージョン限定）と、API キー利用・モデル一覧に要る権限を足してから、nishio の指示で admin merge（`67bc798d`）
+- 「期限の長いキーもリージョン限定」は根拠がなく反映せず、PR に理由を返した。[[domestic-data-residency-options-2026-11-10]] と [[meeting-report-draft]] を更新
+- 次：AWS の実機での確認（構造化出力、`seed` など）を事業者側の参加者に頼めるか
+
 ## [2026-11-11 00:40] filing-back | 本文が同じ入力で gemma-4-31B と当時の gpt-4o の課題抽出を比べた
 
 - nishio「精度比較実験に関しては本文のある4oでのデータとの比較で」「急いで」を受け、当時の入力に本文が入っていた 1,105 件から 200 件を選び、同じ入力で比べた（判定役は Claude）
