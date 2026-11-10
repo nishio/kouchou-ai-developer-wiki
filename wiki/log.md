@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 02:10] filing-back | チームみらいデータの本文を戻す作業と、小さいモデルの測定の途中経過
+
+- nishio「まず正しく本文が入っているデータを作ろう」を受け、全 9,688 件の PR 本文を GitHub から取り直した。当時の収集後に編集されたものは 0 件で、今の本文が当時の本文そのもの。本文入りの入力を作り、gemma-4-31B で課題を抽出し直している（実行中）。Hugging Face の更新案（本文はそのまま載せる、古い行に本文入りの印）は未公開。[[team-mirai-2025-open-dataset]] に
+- 小さいモデル（E4B・E2B・ELYZA・12B・26B-A4B）を、gpt-4o と同じ入力の 60 件で測っている。基準の 31B は同じ 60 件で勝ち点 0.76。[[team-mirai-local-llm-quality-2026-11-10]] の「次に見ること」に
+
 ## [2026-11-11 00:58] filing-back | Bedrock の構成例の docs（#1191）を main に入れた
 
 - CodeRabbit の指摘で、API キーのリージョン（期限の短いキーは作ったリージョン限定）と、API キー利用・モデル一覧に要る権限を足してから、nishio の指示で admin merge（`67bc798d`）
