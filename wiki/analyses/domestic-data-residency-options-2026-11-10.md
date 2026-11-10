@@ -77,7 +77,7 @@ sources:
   - **最小の対応**：main `ddd0bacd` では、埋め込みは「サーバー内蔵の埋め込み（`is_embedded_at_local`）」か「チャットと同じ接続先」のどちらかで、国外の接続先へ黙って切り替わる経路はない（`request_to_embed`）。provider `local` に Bedrock 東京の OpenAI 互換エンドポイントと Bedrock API キーを入れ、埋め込みをサーバー内蔵にすれば、構成のうえでは推論と埋め込みが国外に出ない見込み。nishio の言う「プロトタイプとドキュメント」は、まずこの構成を書いた docs で足り、管理画面に「Amazon Bedrock」と名前が出るようにするのは提案しやすさのための追加になる。IAM 認証で Claude を呼ぶ経路（boto3 が要る）は後回しにでき、入れるなら本体の依存にしない。gpt-oss が json_schema の構造化出力を通すかは、実機で確かめるまで分からない
   - **品質評価は手伝える**：大木さんが知見を借りたいと言った品質評価は、[[team-mirai-local-llm-quality-2026-11-10]] の仕組みにオープンウェイトの候補（GPT-OSS 120B、Qwen3 235B）を足せば、AWS の契約なしで測れる。#471 とつながる
   - **残る問い**：興味を持った事業者の人が、AWS の実機での検証（国内の処理経路、構造化出力、費用）を担えるか。「使おうとしたが導入に至らなかった理由」を開発側に届ける置き場をどうするか
-- 2026-11-10: nishio の依頼で、Bedrock の構成例を kouchou-ai 本体の docs に書いた（branch `docs/amazon-bedrock-setup`、`docs/self-hosting/amazon-bedrock.md`。この時点で PR は未作成）。AWS 公式ドキュメント（2026-11-10 取得）で次を確かめた
+- 2026-11-10: nishio の依頼で、Bedrock の構成例を kouchou-ai 本体の docs に書いた（[#1191](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1191)、`docs/self-hosting/amazon-bedrock.md`。2026-11-10 時点で未 merge）。AWS 公式ドキュメント（2026-11-10 取得）で次を確かめた
   - gpt-oss-120b は東京（ap-northeast-1）の In-Region に対応し、Geo・Global の推論プロファイルは東京にない
   - OpenAI 互換の接続先は `bedrock-runtime`（`/openai/v1`、モデル一覧の API なし）と `bedrock-mantle`（`/v1`、モデル一覧あり、東京で利用可）の 2 つ。管理画面はモデル一覧をプルダウンに出すので `bedrock-mantle` が要る
   - Bedrock の構造化出力は、すべての object に `additionalProperties: false` を求め、数値・文字数の制約や再帰を受け付けない。広聴AIの 8 種のスキーマを `_to_strict_json_schema` で変換すると、この範囲に収まることを手元で確かめた（翻訳の工程は未確認）
