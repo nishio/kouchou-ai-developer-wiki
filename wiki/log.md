@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-10 23:40] filing-back | #471 元の PR からの抽出の勝敗を撤回した（入力の食い違い）
+
+- nishio「4Bでgpt-4oに勝つの本当ですか？実験手法が間違ってない？」を受けて調べ直した。gpt-4o が見た当時の PR データ（2025-07-27 の snapshot）では 198 件中 153 件の本文が空で、ローカル側だけに今の本文入りの入力（中央値 8 倍の長さ）を渡していた
+- 31B 171 勝 4 敗・E4B 166 勝 16 敗などの勝敗を [[team-mirai-local-llm-quality-2026-11-10]] で撤回し、[[meeting-report-draft]] も直した。ELYZA の入出力例の写し、12B の繰り返しは基準に依らない観察として残す
+- 次：snapshot から元のコードで組み立てた同じ入力で、ローカル側をやり直す
+
 ## [2026-11-10 22:25] filing-back | #471 元の PR からの抽出を小さいモデルでも測った（E4B・ELYZA・12B）
 
 - nishio「1 go」を受け、結果 4 と同じ条件で gemma-4-E4B（198 件）、ELYZA-JP-8B・gemma-4-12B（66 件）を CPU で回し、当時の gpt-4o と出どころを伏せて比べた
