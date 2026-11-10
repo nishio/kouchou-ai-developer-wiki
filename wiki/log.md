@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 06:45] filing-back | 小さいモデルの測定に gemma-4-12B を足した
+
+- 同じ入力の 60 件で gemma-4-12B は gpt-4o に 34 勝 8 敗、勝ち点 0.72（95% 区間 0.62〜0.81）。31B 0.76 と E4B 0.68 の間で、入出力例の写しは 0
+- 26B-A4B はマシンのメモリ不足で生成が止まり、未計測のまま
+- 詳細は [[team-mirai-local-llm-quality-2026-11-10]] の結果 6
+
 ## [2026-11-11 06:30] filing-back | チームみらいデータの Hugging Face を本文入りに更新した
 
 - nishio「公開して」を受け、nishiohirokazu/team-mirai-2025-embeddings に 1 コミットで上げた。PR の本文とタイトル、古い行の本文入りの印、1 段目の入力（当時と本文入り）、gemma-4-31B による本文入りの抽出し直し（35,393 件、温度 0）、README の Known issue（89% で本文が抜けていた）
