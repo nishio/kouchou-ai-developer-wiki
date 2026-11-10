@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-11-10 14:30	filing-back	#471 元の PR からの抽出を gemma-4-31B で測った
+2026-11-10 13:50	filing-back	Bedrock 対応への大木さんの返信を読んだ
 2026-11-10 13:30	filing-back	Slack の Bedrock 対応の議論を読んで考察した
 2026-11-10 10:40	filing-back	#471 ローカル LLM の品質比較に、8B 級と中くらいのモデルを足した
 2026-11-10 10:10	filing-back	国内完結の選択肢の整理に、ローカル LLM の品質比較の結果をつないだ
