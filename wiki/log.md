@@ -9,6 +9,12 @@
 - 31B の 171 勝 4 敗。gpt-4o は具体的な問題を落として抽象的な 1〜3 件に縮める負け方。件数が同じ組でも 28 勝 0 敗だが、判定役が長く具体的な文を好む偏りは人の判定で確かめる。31B は 1 件で説明欄が繰り返しループに入り出力が終わらなかった。結果は [[team-mirai-local-llm-quality-2026-11-10]] の結果 4 に
 - 次：同じ条件で E4B・ELYZA・12B を回す、20〜30 組を人が判定する
 
+## [2026-11-10 14:20] filing-back | Bedrock の構成例の docs を本体に書いた
+
+- nishio「Bedrockのドキュメントを作って」を受け、kouchou-ai の branch `docs/amazon-bedrock-setup` に `docs/self-hosting/amazon-bedrock.md` を追加（LocalLLM に Bedrock 東京の OpenAI 互換の接続先を入れる構成、コード変更なし、`mkdocs build --strict` 通過）。PR は未作成
+- AWS 公式ドキュメントで確かめたこと（管理画面には `bedrock-mantle` が要る、構造化出力のスキーマの制約に広聴AIのスキーマが収まる）を [[domestic-data-residency-options-2026-11-10]] に、進行中の項目を [[meeting-report-draft]] に追記
+- 次：PR を出す、AWS の実機確認を事業者側の参加者に頼めるか
+
 ## [2026-11-10 13:50] filing-back | Bedrock 対応への大木さんの返信を読んだ
 
 - 背景は SIer 2 社が真っ先に Bedrock を挙げたこと。自治体向けの提案では AWS のほうが通しやすい。DD2030 の優先度は上げなくてよく、シグナルの共有という位置づけ。nishio は「動作確認なしのプロトタイプとドキュメント」→「気にせずコードを入れればいい」と寄った
