@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-10 23:45	filing-back	チームみらいデータの課題の 79% は PR 本文を見ずに抽出されていた
 2026-11-10 23:40	filing-back	#471 元の PR からの抽出の勝敗を撤回した（入力の食い違い）
 2026-11-10 22:25	filing-back	#471 元の PR からの抽出を小さいモデルでも測った（E4B・ELYZA・12B）
 2026-11-10 14:30	filing-back	#471 元の PR からの抽出を gemma-4-31B で測った
