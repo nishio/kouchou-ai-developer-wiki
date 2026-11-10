@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-10 22:25	filing-back	#471 元の PR からの抽出を小さいモデルでも測った（E4B・ELYZA・12B）
 2026-11-10 14:30	filing-back	#471 元の PR からの抽出を gemma-4-31B で測った
 2026-11-10 14:20	filing-back	Bedrock の構成例の docs を本体に書いた
 2026-11-10 13:50	filing-back	Bedrock 対応への大木さんの返信を読んだ

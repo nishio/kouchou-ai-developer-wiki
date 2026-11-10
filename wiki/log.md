@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-10 22:25] filing-back | #471 元の PR からの抽出を小さいモデルでも測った（E4B・ELYZA・12B）
+
+- nishio「1 go」を受け、結果 4 と同じ条件で gemma-4-E4B（198 件）、ELYZA-JP-8B・gemma-4-12B（66 件）を CPU で回し、当時の gpt-4o と出どころを伏せて比べた
+- E4B は 166 勝 16 敗・出力の壊れ 0 で 31B に近い。ELYZA は 32 勝 26 敗で、9 件でプロンプトの入出力例（「高齢者の孤立」）を写した。12B は 9 件で説明欄の繰り返しが止まらず出力が返らなかった（除けば 47 勝 3 敗）。結果は [[team-mirai-local-llm-quality-2026-11-10]] の結果 4 に
+- 次：入出力例の写しと繰り返しを防ぐ手当てを本体に入れるか、人の A/B 判定での較正
+
 ## [2026-11-10 14:30] filing-back | #471 元の PR からの抽出を gemma-4-31B で測った
 
 - nishio「抽出したデータからさらに抽出してるのでは？元Issueからのextractionで計測した？」を受け、198 の PR 本文を GitHub から取り直し、当時の課題抽出のプロンプトそのままで gemma-4-31B に抽出させ、公開データの gpt-4o の出力と出どころを伏せて比べた
