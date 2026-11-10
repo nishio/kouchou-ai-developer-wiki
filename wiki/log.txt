@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-11 06:30	filing-back	チームみらいデータの Hugging Face を本文入りに更新した
 2026-11-11 05:30	filing-back	小さいモデルの測定の途中経過と、温度 0 での繰り返しのループ
 2026-11-11 02:10	filing-back	チームみらいデータの本文を戻す作業と、小さいモデルの測定の途中経過
 2026-11-11 01:45	filing-back	散布図が描いていない軸から、可視化 5 つを個人 repo で作った

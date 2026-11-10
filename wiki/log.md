@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 06:30] filing-back | チームみらいデータの Hugging Face を本文入りに更新した
+
+- nishio「公開して」を受け、nishiohirokazu/team-mirai-2025-embeddings に 1 コミットで上げた。PR の本文とタイトル、古い行の本文入りの印、1 段目の入力（当時と本文入り）、gemma-4-31B による本文入りの抽出し直し（35,393 件、温度 0）、README の Known issue（89% で本文が抜けていた）
+- [[team-mirai-2025-open-dataset]] を更新。2 段目以降（意見・クラスタ・埋め込み）は本文入りの課題ではまだやり直していない
+
 ## [2026-11-11 05:30] filing-back | 小さいモデルの測定の途中経過と、温度 0 での繰り返しのループ
 
 - 同じ入力の 60 件で gpt-4o と比べた勝ち点は、31B 0.76、E4B 0.68（下限 0.57）、E2B 0.54、ELYZA 0.26（入出力例の写し 5 件）。gpt-4o 並み以上と言えるのは E4B まで。12B・26B-A4B は実行中。CPU のモデルは 4 ビット前後、31B の量子化は記録なし
