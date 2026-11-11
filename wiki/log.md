@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 15:20] filing-back | open PR 7 本の未解決レビュー指摘を直し、全件 CI green にした（merge は未実施）
+
+- #1174 可視化カタログの各項目に要る入力、#1176 OpenRouter のモデル ID、#1198 効かない reasoning effort で止める、#1162 ホイールガードの重なりをポインタ透過に
+- 7 本とも CI green。AI からの admin merge は権限で止まったので、merge は nishio 待ち（#1193 を #1198 より先に）
+
 ## [2026-11-11 14:40] filing-back | PR #1198・#1193 の CI 失敗を直した
 
 - #1198: docs に複製する README を docs.yml の監視パスに足し忘れていた。#1193: 新しい env 変数を setup スクリプトが書かず env 検査で落ちていた（任意キーに追加）
