@@ -29,6 +29,12 @@
 - 走らせて、CLI（workflow 経由）の段ごとの時間が `0.0` 固定で記録される不具合を見つけ、同じ PR で直した
 - #1196 は NPU（Intel・AMD・Apple・Copilot+ PC）を #471 から切り出したもの。#1195 に #1198 の使い方を追記した
 
+## [2026-11-11 12:27] filing-back | 個人 repo の README から wiki へのリンク 3 か所が 404 だったのを、公開先の nishio.github.io に直した
+
+- `digitaldemocracy2030.github.io/kouchou-ai-developer-wiki/` を指していた。この wiki は org に移していないので、住所は `nishio.github.io/kouchou-ai-developer-wiki/`。個人 repo の commit `6fdee4c` で直し、3 つのリンク先が開くことを確かめた
+- 外からこの wiki にリンクするときの住所を [[wiki-pages-publishing-stack]] に足した。本体の main にはこの wiki へのリンクがなく、PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) のカタログへのリンクは正しい住所
+- [[team-mirai-2025-open-dataset]] の「個人 repo のカタログ」に記録
+
 ## [2026-11-11 12:10] filing-back | 他の環境での確認を Issue #1194・#1195 にした
 
 - 手元で確かめられない確認は「検証のお願い」Issue に切り出す方針にした（nishio）。#1194 は Ollama で gemma4:e4b と思考を止める設定が動くか（#1193）、#1195 は x86・GPU なしの PC でレポート全体の時間とメモリ（#471）

@@ -57,6 +57,8 @@ GitHub Pages の project site (`/kouchou-ai-developer-wiki/`) でリンクが壊
 
 したがって、root だけ `<base>` を入れるような HTML-level workaround は避ける。`<base>` はブラウザ全体の相対 URL 解決を変えるため、Quartz の static HTML / SPA / search / explorer がそれぞれ持つ相対 URL 前提と衝突しやすい。2026-05-28 の修正では、`Head.tsx` を upstream 相当へ戻し、`scripts/check_pages_links.py` で build 後の `public/` を `/kouchou-ai-developer-wiki/` 配下として機械検査する形にした。[[wiki-pages-tooling-observation-2026-05-21]]より
 
+外からこの wiki にリンクするときも、住所はこの `baseUrl` の `https://nishio.github.io/kouchou-ai-developer-wiki/` を使う。DD2030 全体の wiki は 2026-07-09 に org へ移して `digitaldemocracy2030.github.io/dd2030-wiki/` になったが（[[dd2030]]より）、この wiki は nishio の repo のままなので、`digitaldemocracy2030.github.io/kouchou-ai-developer-wiki/` は 404 になる。2026-11-11 に、個人 repo nishio/broadlistening-visualizations の README の wiki へのリンク 3 か所がこの住所で 404 だったのを直した（[[team-mirai-2025-open-dataset]] の「個人 repo のカタログ」）。
+
 ## Scrapbox/Gist 手順との差分
 
 Scrapbox から辿った旧 Gist は、任意の Obsidian Wiki を Quartz + GitHub Pages へ移植するために、`wiki/` を編集用、`content/` を Quartz 入力用として分ける方式だった。これは private/public の分離、alias 解決、Quartz へ渡す Markdown の正規化が必要な一般用途では筋がよい。[[wiki-pages-tooling-observation-2026-05-21]]より
@@ -78,3 +80,4 @@ Scrapbox から辿った旧 Gist は、任意の Obsidian Wiki を Quartz + GitH
 - 2026-05-25: graph から `index` / `log` を除外する表示チューニングと、その意図を追記
 - 2026-05-28: GitHub Pages project-site の subpath 対応は upstream Quartz の `baseUrl` に寄せ、`<base>` patch ではなく生成物リンク検査で守る方針を追記
 - 2026-05-28: Scrapbox / 旧 Gist の `wiki/ -> content/` 方式と、この repo の `wiki/` direct 方式の選び分けを追記し、新 Gist へ外部化した
+- 2026-11-11: 外からこの wiki にリンクするときの住所（org の github.io ではない）と、それで 404 になった例を追記

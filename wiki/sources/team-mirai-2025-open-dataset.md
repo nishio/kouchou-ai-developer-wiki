@@ -158,6 +158,8 @@ nishio の指示「まず正しく本文が入っているデータを作ろう�
   - 上の「課題の多くは PR 本文を見ずに作られている」が話題の流れに効く。PR 1 本あたりの意見は 5/16〜21 が 4.17 件、6 月 2.30 件、7/1〜19 2.01 件で、5 月とそれ以降の比べには抽出の入力の違いが混ざる。どちらも本文なしの 6 月 → 7/1〜19 でも、家族 1.4% → 4.3%・子ども 5.6% → 8.5% などの変化は残る
   - `public_result.json` に足りないのは、属性の型と役割（同じ投稿を束ねる属性・日時・値の表示名）を宣言する場所。試作は URL 引数で渡して動いている。賛否の対象と合わせて `attribute_meta` にまとめる案は、本体に入れると決めたときの材料として個人 repo の README に置いた（実験のたびに本体を直すなら切り分けた意味がない、と nishio。[[open-decisions]] の A13）
 
+- 2026-11-11、個人 repo の README から wiki へのリンク 3 か所（[[open-decisions]] の A13 など）が、最初の版（2026-11-07）から `digitaldemocracy2030.github.io/kouchou-ai-developer-wiki/` を指していて、どれも 404 だった。公開先の `nishio.github.io/kouchou-ai-developer-wiki/` に直した（個人 repo の commit `6fdee4c`）。直した 3 つのリンク先と、カタログ・公開した 4 つのページが開く（200）ことを確かめた。外からこの wiki にリンクするときの住所は [[wiki-pages-publishing-stack]] の「Project Site の subpath 方針」
+
 ## Open Questions
 
 - 本体 docs の関連研究ページ（PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)、未 merge）から個人 repo のカタログへのリンクの張り方
@@ -183,3 +185,4 @@ nishio の指示「まず正しく本文が入っているデータを作ろう�
 - 2026-11-11: Hugging Face の更新を公開した（本文・本文入りの印・1 段目の入力・本文入りでの抽出し直し、README の Known issue）
 - 2026-11-11: Hugging Face に比較実験の材料（`experiments/step1-local-llm-2026-11/`）を載せ、README の日本語の節の古い記述を直した
 - 2026-11-11: 散布図が描いていない軸の可視化のうち 4 つを公開し、merge された提案は見送ったことを追記。個人 repo のカタログの「足りない項目」を、試作の段階では提案しない材料に改めた（nishio の方針）
+- 2026-11-11: 個人 repo の README から wiki へのリンクが org の住所を指して 404 だったのを直したことを追記
