@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 15:40] filing-back | v5.0 の「これまでの貢献者」一覧を作る Issue #1199 を M5 に起票し、M5 の期限を 12-31 に変えた
+
+- コード以外（デザイン、実験フィードバック、事例共有、Issue での報告）も貢献として載せる（nishio）。GitHub の外での貢献は本人の同意を取ってから載せる
+- 置き場所・範囲・表記は定例の議題候補に。M5 の期限は 07-01 のまま過ぎていた
+
 ## [2026-11-11 15:20] filing-back | open PR 7 本の未解決レビュー指摘を直し、全件 CI green にした（merge は未実施）
 
 - #1174 可視化カタログの各項目に要る入力、#1176 OpenRouter のモデル ID、#1198 効かない reasoning effort で止める、#1162 ホイールガードの重なりをポインタ透過に

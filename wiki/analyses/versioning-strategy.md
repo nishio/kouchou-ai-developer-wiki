@@ -84,3 +84,4 @@ sources:
 - 2026-10-29: v4.2.0（2026-10-26、セキュリティ修正を含む）の後、v4.2.1 は出さないと nishio が決めた（2026-10-28）。[#1149](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1149)〜[#1152](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1152) などの修正は次のリリースに入る。この repo では `v*` のタグはすべて GitHub Release と対になっていて（v2.0.1 のようなパッチ版も同じ）、本体の版番号はタグにしか無い（`package.json` などは 0.1.0 のまま）。タグをきっかけに動く workflow は `analysis-core-v*`（PyPI 公開）だけなので、本体のタグだけを打っても自動では何も起きないが、説明のない版ができるので、タグを打つならリリースも出す
 - 2026-11-03: summary・「その後の実際」・Open Questions の「最新タグ v4.1.0」を v4.2.0 に更新（`gh release list` で v4.2.0 が Latest、2026-10-26）
 - 2026-11-03（2 周目）: 「その後の実際」の見出しの時点を、内容に合わせて 2026-10-21 から 2026-11-03 に改めた
+- 2026-11-11: v5.0 用のマイルストーン M5 の期限が 2026-07-01 のまま過ぎていたので、nishio の指示で 2026-12-31 に変えた。同じ日に「これまでの貢献者」一覧を作る Issue [#1199](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1199) を M5 に入れた（コード以外の貢献も載せる）
