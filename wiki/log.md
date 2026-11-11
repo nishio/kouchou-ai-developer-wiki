@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 21:00] filing-back | open PR 7 本を main に入れた（#1162・#1174・#1176・#1177・#1192・#1193・#1198）
+
+- nishio の指示で admin squash merge。#1193 を #1198 より先に。#1192 は #1193 と README が衝突したので、既定モデルの変更を反映して解消してから
+- merge 後に別セッションが作った #1200 は対象外として残した
+
 ## [2026-11-11 15:40] filing-back | v5.0 の「これまでの貢献者」一覧を作る Issue #1199 を M5 に起票し、M5 の期限を 12-31 に変えた
 
 - コード以外（デザイン、実験フィードバック、事例共有、Issue での報告）も貢献として載せる（nishio）。GitHub の外での貢献は本人の同意を取ってから載せる
