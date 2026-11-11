@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 11:40] filing-back | #471 に品質の結果をコメントし、Ollama の既定モデルと思考の止め方を直す PR #1193 を出した
+
+- #471 にチームみらいでの測定結果をコメントした（ドキュメントの PR #1192 へのリンク付き）
+- PR #1193: `--profile ollama` の既定を ELYZA-JP-8B から gemma4:e4b に、`LOCAL_LLM_REASONING_EFFORT` を設定したときだけ `reasoning_effort` を送る。llama.cpp で 322→57 トークン・17.2→4.1 秒を実測。Ollama での確認は残る（この環境に Ollama を入れられなかった）
+- 詳細は [[team-mirai-local-llm-quality-2026-11-10]]
+
 ## [2026-11-11 10:40] filing-back | ローカル LLM のモデル選びのページを本体 docs に足す PR #1192 を出した
 
 - チームみらいでの品質の測定結果を、モデルを選ぶ人向けに `docs/self-hosting/local-llm-models.md` にまとめた（gemma-4-E4B が第一候補、ELYZA-JP-8B は入出力例の写しで非推奨）。#471 を nishio に assign
