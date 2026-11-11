@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 07:45] filing-back | チームみらいの比較に使った gemma-4-31B の重みを記録した
+
+- 社内 API の gemma-4-31B は `Intel/gemma-4-31B-it-int4-AutoRound`（int4）だった（nishio）。小さいモデルの測定は、31B も含めて 4 ビット前後どうしの比較になる
+- [[team-mirai-local-llm-quality-2026-11-10]] と Hugging Face の README を直した
+
 ## [2026-11-11 07:30] filing-back | チームみらいの比較実験を追試できる形で Hugging Face に載せた
 
 - nishio の「追試可能なレベルで報告されてる？」を受けて点検した。結果 5 の 12 組が、温度 0 で送り直す前の 31B の出力で判定されていて、公開データと合っていなかった。判定し直して 141 勝 19 敗を 143 勝 18 敗（勝ち点 0.81 のまま）に訂正
