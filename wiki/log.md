@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 10:40] filing-back | ローカル LLM のモデル選びのページを本体 docs に足す PR #1192 を出した
+
+- チームみらいでの品質の測定結果を、モデルを選ぶ人向けに `docs/self-hosting/local-llm-models.md` にまとめた（gemma-4-E4B が第一候補、ELYZA-JP-8B は入出力例の写しで非推奨）。#471 を nishio に assign
+- 残り: `--profile ollama` の既定モデル（ELYZA）を変えるか、LocalLLM から思考を止める指定を送れるようにするか
+- 詳細は [[team-mirai-local-llm-quality-2026-11-10]]
+
 ## [2026-11-11 07:45] filing-back | チームみらいの比較に使った gemma-4-31B の重みを記録した
 
 - 社内 API の gemma-4-31B は `Intel/gemma-4-31B-it-int4-AutoRound`（int4）だった（nishio）。小さいモデルの測定は、31B も含めて 4 ビット前後どうしの比較になる
