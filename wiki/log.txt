@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-11 14:40	filing-back	PR #1198・#1193 の CI 失敗を直した
 2026-11-11 14:00	filing-back	関連研究ページを「本体未収録の周辺の研究・実験」として紹介し直した（PR #1174）
 2026-11-11 13:30	filing-back	#1197 の前提を見直し、議論をコメントに残した
 2026-11-11 13:10	filing-back	チームみらいの品質調査から本体と #471 へ還流した分をまとめた

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 14:40] filing-back | PR #1198・#1193 の CI 失敗を直した
+
+- #1198: docs に複製する README を docs.yml の監視パスに足し忘れていた。#1193: 新しい env 変数を setup スクリプトが書かず env 検査で落ちていた（任意キーに追加）
+- 両方 CI green。残るのは merge 判断
+
 ## [2026-11-11 14:00] filing-back | 関連研究ページを「本体未収録の周辺の研究・実験」として紹介し直した（PR #1174）
 
 - nishio の方針で「成熟していない」という呼び方をやめ、本体外の試みを奨励する形にした。本体を変えずに public_result.json や CLI 出力で試すことを歓迎する節と、nishio の可視化カタログのエントリを追加
