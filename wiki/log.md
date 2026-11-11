@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 13:00] filing-back | 管理画面の API キーの方針の衝突を Issue #1197 にした
+
+- #547（キーをサーバー側に隠す）と #885（Node をなくしてブラウザから FastAPI を直接呼ぶ）が逆向きなので、A／B／C 案のメリットとデメリットを 1 本の Issue にまとめた。#547 は 11-08 に担当が外れた
+- 定例の議題候補に追加（meeting-report-draft）。決めたいのは、リモート運用をどこまで支えるか
+
 ## [2026-11-11 12:10] filing-back | 他の環境での確認を Issue #1194・#1195 にした
 
 - 手元で確かめられない確認は「検証のお願い」Issue に切り出す方針にした（nishio）。#1194 は Ollama で gemma4:e4b と思考を止める設定が動くか（#1193）、#1195 は x86・GPU なしの PC でレポート全体の時間とメモリ（#471）
