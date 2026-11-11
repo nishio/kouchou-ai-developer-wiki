@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-11 12:10	filing-back	他の環境での確認を Issue #1194・#1195 にした
 2026-11-11 11:40	filing-back	#471 に品質の結果をコメントし、Ollama の既定モデルと思考の止め方を直す PR #1193 を出した
 2026-11-11 10:40	filing-back	ローカル LLM のモデル選びのページを本体 docs に足す PR #1192 を出した
 2026-11-11 07:45	filing-back	チームみらいの比較に使った gemma-4-31B の重みを記録した
