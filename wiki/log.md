@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-11 07:30] filing-back | チームみらいの比較実験を追試できる形で Hugging Face に載せた
+
+- nishio の「追試可能なレベルで報告されてる？」を受けて点検した。結果 5 の 12 組が、温度 0 で送り直す前の 31B の出力で判定されていて、公開データと合っていなかった。判定し直して 141 勝 19 敗を 143 勝 18 敗（勝ち点 0.81 のまま）に訂正
+- 判定材料・対応表・判定・判定役への指示の全文・スクリプトを Hugging Face の `experiments/step1-local-llm-2026-11/` に載せ、取り直したものから組と勝ち点が再現できることを確かめた
+- 詳細は [[team-mirai-local-llm-quality-2026-11-10]] の「追試に使える材料」、[[team-mirai-2025-open-dataset]]
+
 ## [2026-11-11 06:45] filing-back | 小さいモデルの測定に gemma-4-12B を足した
 
 - 同じ入力の 60 件で gemma-4-12B は gpt-4o に 34 勝 8 敗、勝ち点 0.72（95% 区間 0.62〜0.81）。31B 0.76 と E4B 0.68 の間で、入出力例の写しは 0

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-11 07:30	filing-back	チームみらいの比較実験を追試できる形で Hugging Face に載せた
 2026-11-11 06:45	filing-back	小さいモデルの測定に gemma-4-12B を足した
 2026-11-11 06:30	filing-back	チームみらいデータの Hugging Face を本文入りに更新した
 2026-11-11 05:30	filing-back	小さいモデルの測定の途中経過と、温度 0 での繰り返しのループ
