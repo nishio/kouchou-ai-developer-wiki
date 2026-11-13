@@ -274,7 +274,7 @@
 - nishio「第 2 段に着手して」。公開 API `GET /reports/{slug}` を `public_result.json` 優先に変え、無い・壊れている・結果より古い場合は `hierarchical_result.json` から `build_public_result()` で変換。ビューアの `Config` 型から公開しない項目を外した（ビューアは使っていなかった）。docs に「公開 API が返すもの」と静的 shell 書き出しの注意を追記
 - api 578 件・viewer jest 318 件・tsc・biome・mkdocs strict が通過。[[long-term-strategy-2026-11-02]] と定例下書きに反映。次：merge 判断（外部から公開 API を直接読む利用者への影響）、第 3 段は 5.x
 
-## [2026-11-07 20:30] file back | ページをまたいだ食い違いの監査（Codex gpt-6.1-sol、閉じる 145・現状更新 65・継続 764・人の判断待ち 10、本物 11・古い方が残っている 6・判定できない 3）
+## [2026-11-07 20:30] filing-back | ページをまたいだ食い違いの監査（Codex gpt-6.1-sol、閉じる 145・現状更新 65・継続 764・人の判断待ち 10、本物 11・古い方が残っている 6・判定できない 3）
 
 - grasp-nishio のセッションから、Codex にページ間の矛盾（数値・日付・決定・名前・状態）を探させ一次ソースでどちらが現状かを確かめさせ、別の Codex セッションが全件を敵対的に検証した。報告は raw/consistency-audit-2026-11-07.md・raw/consistency-verify-2026-11-07.md
 
@@ -292,7 +292,7 @@
 - 前回「人間判断」とした #1128 の残件は、11-03 に #1181 として切り出し済みだったので [[sprint-group1-prs-2026-10-29]] に反映。[[security-maintenance]] の「直近の観測」の参照先を 11-02 / 11-07 まで延ばし、[[post-review-direction-issues-2026-10-29]] の表に 11-07 の状態を書き足した
 - 次：#1184 / #1185 のどちらを入れるかと merge（人間）、Dependabot の新しい alert の担当、kouchou-issue-audit キューの STATUS.md（10-12 のまま）と open-decisions B9 の扱い（人間）
 
-## [2026-11-07 17:30] file back | Open Questions 984 項目の現状突合（Codex gpt-6.1-sol、閉じる 142・現状更新 68・継続 764・人の判断待ち 10）
+## [2026-11-07 17:30] filing-back | Open Questions 984 項目の現状突合（Codex gpt-6.1-sol、閉じる 142・現状更新 68・継続 764・人の判断待ち 10）
 
 - grasp-nishio のセッションから、Codex に `## Open Questions` の各項目を一次ソース（本 wiki の git blame・Updates、kouchou-ai upstream/main 085366779、slack-logs、dd2030-website、local-llm-experiments、grasp-nishio の LOG）で突合させ、根拠のある項目だけを閉じる／現状更新した（132 ページ）
 - 閉じた 145 件は Claude の検証エージェント 2 本が commit・path:line・コード行を全件確認し、引用の捏造は 0。3 件（OQ-0254 複数選択のユースケース、OQ-0750 粗い帯の後続 slice、OQ-0846 config 欠損の混入経路）は二択の片方が実装で消えただけなので現状更新に戻し、2 件（OQ-0081 先行 commit の書き方、OQ-0115 「CLI コマンド」の強さ）は Updates に訂正を添えた。Codex が約 50 字で切っていた旧項目 99 件は原文に戻した。空になった Open Questions 節は外した
@@ -325,9 +325,3 @@
 - nishio の指示で PR #1166 を admin squash merge（`7253efcc`）、Issue #1159 は自動 close。CI は 10-29 時点で green、その後の main の変更と触るファイルが重ならず merge-tree で衝突なしを確認
 - [[open-decisions]] A13 は階層リストの位置づけが決着し、付箋表示の置き場だけが残る。[[meeting-report-draft]]・[[post-review-direction-issues-2026-10-29]] に反映
 - 次：#1167 のスクリーンショット撮り直し、#60（最下層を濃いクラスタに絞る）の着手、#250 を出典リンクでどこまで満たせたかの照合
-
-## [2026-10-30 17:30] filing-back | チームみらい 2025 データセットの整備で、embeddings.pkl を 2D と誤認して再計算していたことが判明
-
-- HF の [nishiohirokazu/team-mirai-2025-embeddings](https://huggingface.co/datasets/nishiohirokazu/team-mirai-2025-embeddings)（DOI 10.57967/hf/11332）を、各段の出力・プロンプト・広聴AIの config・英訳列つきに整えた。広聴AI に関わる知見を [[team-mirai-2025-open-dataset-2026-10-30]] に記録。
-- 結果 JSON の `config` に各ステップの source_code が入っていて再現の記録になること、`Acsv-N_k` と入力 CSV の N 行目の対応（21,348 件で一致）、クラスタリングが UMAP 2D 上であることを確認。
-- [[pipeline]] が 2026-05 に撤回した「`embeddings.pkl` は 2D」という誤認が、このデータセットの Drive README と HF カードに入っていた。実物は 1536 次元で、作り直したベクトルとコサイン中央値 0.999999。HF カードの訂正は nishio の確認待ち。

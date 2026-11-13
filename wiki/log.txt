@@ -52,8 +52,10 @@
 2026-11-07 21:40	filing-back	PR #1187 の CodeRabbit 再指摘で、公開 API は写しを読まず正本からだけ作る形に
 2026-11-07 21:10	filing-back	PR #1187 の CodeRabbit 指摘で、公開 API は結果ファイルから毎回作る形に変更
 2026-11-07 20:30	filing-back	結果 JSON の層分離 第 2 段を PR #1187 に（公開 API が public_result.json を返す）
+2026-11-07 20:30	filing-back	ページをまたいだ食い違いの監査（Codex gpt-6.1-sol、閉じる 145・現状更新 65・継続 764・人の判断待ち 10、本物 11・古い方が残っている 6・判定できない 3）
 2026-11-07 19:00	filing-back	11-07 の照合を査読で見直し、open PR の数（11-02 は 10 本）・#1176 の未解決指摘・Playwright の件の範囲・Dependabot が自動 PR を出せないことを訂正
 2026-11-07 17:30	filing-back	living ページを 11-03 以降の GitHub の動きと照合（#1165 の指摘の片付けと #1186、main の CI が Playwright で赤い件、Dependabot 2 件、#1128 の残件は #1181）
+2026-11-07 17:30	filing-back	Open Questions 984 項目の現状突合（Codex gpt-6.1-sol、閉じる 142・現状更新 68・継続 764・人の判断待ち 10）
 2026-11-07 16:30	filing-back	可視化カタログに付箋ズームと階層リストの試作を追加
 2026-11-07 15:40	filing-back	可視化カタログの個人 repo を作成し、意見マンダラートの試作を公開
 2026-11-07 15:20	filing-back	マンダラートは 8 分割を意見 1 枚になるまで繰り返す案を記録
@@ -76,6 +78,7 @@
 2026-11-02 14:08	filing-back	棚卸しの承認済み操作を nishio が実行、30 件 close・コメント 19 件・PR #1177（open 96 → 66）
 2026-11-02 14:02	filing-back	停滞 Issue 56 件の処し方を nishio が全件承認、PR #1176 作成、close / コメント投稿は手元実行待ち
 2026-11-02 08:59	filing-back	更新停滞順に open Issue 96 件を見直し、18 か月停滞の 42 件に処し方と close コメント案を付けた
+2026-10-30 17:30	filing-back	チームみらい 2025 データセットの整備で、embeddings.pkl を 2D と誤認して再計算していたことが判明
 2026-10-29 21:30	filing-back	関連研究の紹介ページを本体 docs の PR #1174 として作成（#1173）、wiki に記録
 2026-10-29 20:30	filing-back	open-decisions A14 に nishio の方針（本体に取り込まず docs で関連研究として紹介、入れるなら CLI から）を追記
 2026-10-29 20:10	filing-back	open-decisions A13 に付箋表示の置き場の暫定意向（standalone HTML と Web plugin の両方）を追記
