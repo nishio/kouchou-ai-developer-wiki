@@ -8,6 +8,12 @@
 - nishio が「Generate new DOI」で、2026-11-11 の版 `033d1e7`（PR 本文の抜けを直した版）に DOI を発行。前の 11333（`bca82bd`）・11332（`05e2273`）は古い版を指したまま残る
 - 更新: [[team-mirai-2025-open-dataset]]、[[team-mirai-2025-open-dataset-2026-10-30]]
 
+## [2026-11-14 10:00] filing-back | Bedrock 対応のその後を確認した
+
+- 大木さんが 11-10 に「事業者の方の環境で、LocalLLM に Bedrock を入れるやり方で動いているようです」と Slack で報告（伝聞、モデル・接続先・構造化出力の詳細なし）。#1169・#1170・#1190 は動きなし
+- #1193 で `LOCAL_LLM_REASONING_EFFORT` が入り、Bedrock の docs の「思考の強さを指定する手段はない」が古くなった。[[domestic-data-residency-options-2026-11-10]] の Updates に記録
+- 次：docs の該当行の修正、事業者の構成の詳細を #1169 に書いてもらえるか
+
 ## [2026-11-11 21:00] filing-back | open PR 7 本を main に入れた（#1162・#1174・#1176・#1177・#1192・#1193・#1198）
 
 - nishio の指示で admin squash merge。#1193 を #1198 より先に。#1192 は #1193 と README が衝突したので、既定モデルの変更を反映して解消してから

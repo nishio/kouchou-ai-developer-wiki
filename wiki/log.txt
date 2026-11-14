@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-11-14 13:15	filing-back	チームみらい 2025 データセットの本文入りの版に DOI 10.57967/hf/11618
+2026-11-14 10:00	filing-back	Bedrock 対応のその後を確認した
 2026-11-11 21:00	filing-back	open PR 7 本を main に入れた（#1162・#1174・#1176・#1177・#1192・#1193・#1198）
 2026-11-11 15:40	filing-back	v5.0 の「これまでの貢献者」一覧を作る Issue #1199 を M5 に起票し、M5 の期限を 12-31 に変えた
 2026-11-11 15:20	filing-back	open PR 7 本の未解決レビュー指摘を直し、全件 CI green にした（merge は未実施）
