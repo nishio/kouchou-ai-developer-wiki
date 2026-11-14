@@ -9,6 +9,12 @@
 - 11-11〜11-14 に merge した PR の後の main の CI（CodeQL・docs deploy・Code Quality）も成功
 - 残り：GPU の無い PC で compose.cpu.yaml を重ねた実際の起動の確認（merge 前に検証 Issue にするかも判断待ち）
 
+## [2026-11-15 00:15] filing-back | Bedrock の docs の思考の強さの PR #1201 は CI 通過・レビュー待ち
+
+- PR #1201 の CI（build・CodeQL）と CodeRabbit が通り、指摘はなかった。レビュー承認待ちで、merge は人間の指示待ち
+- `domestic-data-residency-options-2026-11-10` の Updates と定例向けの下書きに反映
+- 次：merge されたら下書きの #1201 を main 済みにする
+
 ## [2026-11-14 14:20] filing-back | #1194・#1195 の検証結果を取り込み、#471 の推奨スペックを PR #1202 にした
 
 - katsushi2441 の検証（4 コア・GPU なし・gemma4:e4b・思考を止める）：100 件約 38 分、400 件約 104 分、メモリ 16GB 以上が目安。止めないと待ち時間切れ
