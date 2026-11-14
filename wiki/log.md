@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-14 13:15] filing-back | チームみらい 2025 データセットの本文入りの版に DOI 10.57967/hf/11618
+
+- nishio が「Generate new DOI」で、2026-11-11 の版 `033d1e7`（PR 本文の抜けを直した版）に DOI を発行。前の 11333（`bca82bd`）・11332（`05e2273`）は古い版を指したまま残る
+- 更新: [[team-mirai-2025-open-dataset]]、[[team-mirai-2025-open-dataset-2026-10-30]]
+
 ## [2026-11-11 21:00] filing-back | open PR 7 本を main に入れた（#1162・#1174・#1176・#1177・#1192・#1193・#1198）
 
 - nishio の指示で admin squash merge。#1193 を #1198 より先に。#1192 は #1193 と README が衝突したので、既定モデルの変更を反映して解消してから
