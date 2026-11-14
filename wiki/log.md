@@ -14,6 +14,12 @@
 - nishio が「Generate new DOI」で、2026-11-11 の版 `033d1e7`（PR 本文の抜けを直した版）に DOI を発行。前の 11333（`bca82bd`）・11332（`05e2273`）は古い版を指したまま残る
 - 更新: [[team-mirai-2025-open-dataset]]、[[team-mirai-2025-open-dataset-2026-10-30]]
 
+## [2026-11-14 10:30] filing-back | Bedrock の docs の思考の強さの行を直す PR を出した
+
+- nishio の指示で [#1201](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1201) を作成。#1193 の `LOCAL_LLM_REASONING_EFFORT` に合わせ、gpt-oss は `low`・`medium`・`high`（`none` は不可）、Bedrock が受け付けるかは未確認と書いた
+- [[domestic-data-residency-options-2026-11-10]] と [[meeting-report-draft]] を更新
+- 次：CI と CodeRabbit を見てから merge 判断
+
 ## [2026-11-14 10:00] filing-back | 管理画面の API キーと Windows 版の分離を考察ページにした
 
 - admin-api-key-threat-model-2026-11-11 を新規作成。キーを見られるのはログインできる人だけで脅威と呼ぶほどではなく、Windows 版は Web の管理画面とは別の配布物、という 11-11 の結論と根拠をまとめた

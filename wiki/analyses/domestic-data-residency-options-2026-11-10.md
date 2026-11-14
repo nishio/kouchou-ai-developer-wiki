@@ -15,7 +15,7 @@ sources:
 3. Google GenAI（Vertex AI）やブラウザ版は → どちらも国内または端末内の経路を持つ
 4. nishio：「国外にデータが出て欲しくないならローカルで計算したらいいんでは？」→ この問いを上位に置き、Bedrock を実装案の一つにする整理に組み直した
 
-成果物は上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190)「データ分析が国内だけで完結できるようにしたい」（2026-11-10 作成、#1169 を GitHub の子 Issue に設定。#1170 は #1169 の本文から参照されるだけで、子 Issue の関係は付けていない）。比較の詳細は Issue 本文を正とし、ここには判断の筋と鮮度を残す。
+成果物は上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190)「データ分析が国内だけで完結できるようにしたい」（2026-11-10 作成、[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) を GitHub の子 Issue に設定。[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) は [#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) の本文から参照されるだけで、子 Issue の関係は付けていない）。比較の詳細は Issue 本文を正とし、ここには判断の筋と鮮度を残す。
 
 ## 要点
 
@@ -33,7 +33,7 @@ sources:
 
 - **ローカル計算（第一候補）**：本体の provider `local` ＋ローカル埋め込み、ブラウザ版の Gemini Nano ＋ transformers.js、LLM を使わない経路（[[offline-local-clustering]]）がすでにある。[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) にコミュニティの実測（RTX 3090 で 48 件が全工程 2 分 33 秒、GPU なし 4 コア 16GB で抽出 1 件約 8 秒、誤読約 3%）。足りないのは推奨スペックの案内、思考型モデルに `reasoning_effort` を渡す手段、CLI での抽出スキップと LLM なしの集計の正式化、[#898](https://github.com/digitaldemocracy2030/kouchou-ai/issues/898)
 - **Azure OpenAI**：本体は対応済み（[[llm-providers]]）。推論が国内に収まるのは Standard（リージョン単位）と Regional Provisioned だけで、Global は任意のリージョン、Data Zone の APAC は Japan East から使う場合でもオーストラリア・韓国・東南アジア・インドを含む。Japan East の Standard で使えるチャットモデルは gpt-4o（2024-11-20、Legacy）と gpt-4.1-mini（Deprecated）だけで、どちらも 2027-04-14 に廃止予定。新しいモデルはリージョン単位に「最後に、時期の保証なく」来る。Regional Provisioned なら gpt-5 系も使えるが、最低 25〜50 PTU で単発の分析には重い。docs に「国内処理ならデプロイ種別を Standard に」という案内がない
-- **Amazon Bedrock**：公式ドキュメント上、gpt-oss や Qwen3 は東京リージョン内で処理でき、OpenAI 互換 API と Bedrock API キーで呼べる（新しい依存なし）。Claude は日本限定の推論プロファイル（東京・大阪）。埋め込みは OpenAI 互換で呼べない見込み。ブラウザ版はすでに Bedrock（OpenAI 互換）に対応しているが、CORS のため国内に置いたプロキシが要る。いずれも実機では未確認（#1170 の対象）
+- **Amazon Bedrock**：公式ドキュメント上、gpt-oss や Qwen3 は東京リージョン内で処理でき、OpenAI 互換 API と Bedrock API キーで呼べる（新しい依存なし）。Claude は日本限定の推論プロファイル（東京・大阪）。埋め込みは OpenAI 互換で呼べない見込み。ブラウザ版はすでに Bedrock（OpenAI 互換）に対応しているが、CORS のため国内に置いたプロキシが要る。いずれも実機では未確認（[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) の対象）
 - **Vertex AI 東京**：本体の Gemini は Developer API で地域を指定できない。同じ `google-genai` SDK の `vertexai=True` に切り替えれば東京を指定でき、新しい依存は要らない。日本での処理が明記されたモデルは Gemini 3.5 Flash と一部の埋め込みに限られ、従量課金での保証範囲は読み方があいまい
 - **源内（デジタル庁）**：2026-04 に OSS 公開、2026-10 に自治体向け実証の参加募集。外部アプリから使える API は確認できていない
 
@@ -41,7 +41,7 @@ sources:
 
 1. 「国内」の意味（A／B／C）を利用者の要件から決める
 2. 今の機能で満たせる部分を docs にする（ローカル計算の推奨構成、Azure のデプロイ種別）
-3. クラウドの国内リージョンを実機で検証する（#1170 の対象を Azure・Vertex に広げるか）。Bedrock はブラウザ版で本体を実装せずに検証を始められる
+3. クラウドの国内リージョンを実機で検証する（[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) の対象を Azure・Vertex に広げるか）。Bedrock はブラウザ版で本体を実装せずに検証を始められる
 4. 本体に新しい接続先を足すかは 3 の結果で決める
 
 ## 情報鮮度
@@ -62,12 +62,12 @@ sources:
 ## Updates
 
 - 2026-11-10: 初回作成。上位 Issue [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) を作り、[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) を子 Issue にした
-- 2026-11-10: 案 1（ローカル計算）の品質の材料が、同じ日の別の作業で増えた（[[team-mirai-local-llm-quality-2026-11-10]]）。チームみらいの公開データで、30B 級のオープンウェイト（gemma-4-31B、Qwen3.8-27B）は抽出・ラベルとも既定の gpt-4o-mini に劣らないと判定された。上の「要点」にある #471 の実測は速度の話で、品質はこちらを見る。普通の PC で動く 8B 級の品質はまだ測っておらず、判定役（Claude）を人の判定で較正する段も残る。#1190 の本文にはまだ反映していない
+- 2026-11-10: 案 1（ローカル計算）の品質の材料が、同じ日の別の作業で増えた（[[team-mirai-local-llm-quality-2026-11-10]]）。チームみらいの公開データで、30B 級のオープンウェイト（gemma-4-31B、Qwen3.8-27B）は抽出・ラベルとも既定の gpt-4o-mini に劣らないと判定された。上の「要点」にある [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) の実測は速度の話で、品質はこちらを見る。普通の PC で動く 8B 級の品質はまだ測っておらず、判定役（Claude）を人の判定で較正する段も残る。[#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) の本文にはまだ反映していない
 - 2026-11-10: 同じ日に、普通の PC で動く大きさのモデルの品質も測った（[[team-mirai-local-llm-quality-2026-11-10]] の結果 3）。gemma-4-E4B は抽出・ラベルとも gpt-4o-mini に劣らないと判定され、案 1 の品質の見通しは明るくなった。ELYZA-JP-8B は 200 件中 2 件でプロンプトの例文をそのまま返した。判定役の較正は残る
 - 2026-11-10: Slack での議論の現状と、そこからの考察を追記した（slack-logs の mirror を 2026-11-10 10:24 JST の同期分まで読んだ。`raw/` の固定 snapshot はない）
-  - **経緯**：[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169)・[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) は 2026-10-29 に [[ohki-shingo]] さんが GitHub に直接立てた。Slack に流れたのは GitHub 連携の通知だけで、Slack での議論は 2026-11-10 朝の nishio の投稿（#2_開発_広聴ai）が最初。「国内で完結したいニーズは追う価値がある。Bedrock を使っている想定顧客がいるならタッグを組んで検証してよいが、dd2030 がこれから Bedrock を契約して検証するのは何のためか。GPT-OSS 120B で十分かも分からない」とし、6 分後に #1169 を #1190 の実装案の一つとして整理すると続けた。同期の時点で返信はない。#1169・#1170 とも assignee なし、着手した PR もない
-  - **対立は見かけより小さい**：#1169 の技術メモは「Bedrock 対応そのものを目的化しない」「東京のエンドポイント指定だけでは国内完結の証明にならない」と書いており、慎重さの点では #1190 と同じ立場にある。食い違っているのは「誰の、どの要件のために、誰の費用で検証するか」。同じ Slack 投稿で nishio 自身が、クラウドの国内リージョンが意味を持つ場面として「組織の共用サーバとして複数の人で使いたい」を挙げている。大木さんは 2026-10-28 に、いどばた・広聴AI を試せる独立の試験環境（運営は DD2030 と別）を Slack で紹介しており、提案がこの「共用サーバ」側の立場から来ている可能性がある（推測。本人に確認していない）。それなら、AWS を使う運用主体と組んで検証する、という nishio の条件にそのまま当てはまる
-  - **品質の検証は Bedrock の契約と切り離せる**：#1170 の候補のうち GPT-OSS 120B と Qwen3 235B はオープンウェイトなので、品質は配信元によらず測れる。[[team-mirai-local-llm-quality-2026-11-10]] の評価の仕組み（公開データ・出どころを伏せた 2 案比較）に、どこかの配信元経由でそのまま足せる（公開データなので国外を通っても問題ない。配信元ごとの量子化の違いは残る）。同じ日の実験で 8B 級でも gpt-4o-mini に劣らないと判定されたので、「120B で十分か」は品質よりも構造化出力が通るかの問題になりそう。Bedrock で実機確認が要るのは、国内での処理経路、json_schema の構造化出力、API キー、スロットリングと費用に絞れる
+  - **経緯**：[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169)・[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) は 2026-10-29 に [[ohki-shingo]] さんが GitHub に直接立てた。Slack に流れたのは GitHub 連携の通知だけで、Slack での議論は 2026-11-10 朝の nishio の投稿（#2_開発_広聴ai）が最初。「国内で完結したいニーズは追う価値がある。Bedrock を使っている想定顧客がいるならタッグを組んで検証してよいが、dd2030 がこれから Bedrock を契約して検証するのは何のためか。GPT-OSS 120B で十分かも分からない」とし、6 分後に [#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) を [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) の実装案の一つとして整理すると続けた。同期の時点で返信はない。[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169)・[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) とも assignee なし、着手した PR もない
+  - **対立は見かけより小さい**：[#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169) の技術メモは「Bedrock 対応そのものを目的化しない」「東京のエンドポイント指定だけでは国内完結の証明にならない」と書いており、慎重さの点では [#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) と同じ立場にある。食い違っているのは「誰の、どの要件のために、誰の費用で検証するか」。同じ Slack 投稿で nishio 自身が、クラウドの国内リージョンが意味を持つ場面として「組織の共用サーバとして複数の人で使いたい」を挙げている。大木さんは 2026-10-28 に、いどばた・広聴AI を試せる独立の試験環境（運営は DD2030 と別）を Slack で紹介しており、提案がこの「共用サーバ」側の立場から来ている可能性がある（推測。本人に確認していない）。それなら、AWS を使う運用主体と組んで検証する、という nishio の条件にそのまま当てはまる
+  - **品質の検証は Bedrock の契約と切り離せる**：[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170) の候補のうち GPT-OSS 120B と Qwen3 235B はオープンウェイトなので、品質は配信元によらず測れる。[[team-mirai-local-llm-quality-2026-11-10]] の評価の仕組み（公開データ・出どころを伏せた 2 案比較）に、どこかの配信元経由でそのまま足せる（公開データなので国外を通っても問題ない。配信元ごとの量子化の違いは残る）。同じ日の実験で 8B 級でも gpt-4o-mini に劣らないと判定されたので、「120B で十分か」は品質よりも構造化出力が通るかの問題になりそう。Bedrock で実機確認が要るのは、国内での処理経路、json_schema の構造化出力、API キー、スロットリングと費用に絞れる
   - **本体はコード変更なしで試せる可能性がある**：main `ddd0bacd` の provider `local` は、`https://` の URL をそのまま base URL に使い（`/v1` で終わらなければ補う）、`LOCAL_LLM_API_KEY` を `LOCAL_LLM_ALLOWED_BASE_URLS` に一致する接続先へ送る（`packages/analysis-core/src/analysis_core/services/llm.py` の `resolve_local_llm_base_url` / `resolve_local_llm_api_key`）。Bedrock の OpenAI 互換エンドポイントと Bedrock API キーをここに入れれば、チャットは今のまま呼べるかもしれない。構造化出力は OpenAI SDK の `parse()`（json_schema）を使うので、gpt-oss がそれを受け付けるかが分かれ目。埋め込みは同じ接続先に送られるので、Bedrock 側に OpenAI 互換の埋め込みがなければ、埋め込みは別の手段（ローカル）に分ける必要がある。いずれも実機では未確認
   - **残る問い**：大木さんの想定利用者は誰か（自治体本体か、共用の運用主体か）。自治体がすでに AWS 上で動かしている環境（ガバメントクラウドなど）を使いたい要件なのか。その場合「国内」は段階 A（＋ISMAP）で足りるのか
 - 2026-11-10: 大木さんの返信と、その後の nishio の反応を読んだ（slack-logs の mirror を 2026-11-10 13:34 JST に手動で同期し、#2_開発_広聴ai の 11:05〜13:27 JST を読んだ。`raw/` の固定 snapshot はない）
@@ -75,7 +75,7 @@ sources:
   - **nishio の反応**：「DD2030 では動作確認していないが、Bedrock ではこう構成できる。トラブルがあればフィードバックを」というプロトタイプ実装とドキュメントがあるとよい（12:58）。続けて「今サポートしている接続先も DD2030 が動作確認や保証をしているわけではないので、気にせず Bedrock 対応のコードを入れればいいだけな気もしてきた」（13:27）
   - **前回の推測の答え合わせ**：大木さん自身の試験環境ではなく、提案する側の SIer の要望だった。「誰の要件か」は「SIer が提案書に書けること」で、段階で言えば A（処理と保存が国内）を、自治体の調達で通る形で示すこと。技術的な国内完結より、構成として名前が挙がることが先に効く
   - **最小の対応**：main `ddd0bacd` では、埋め込みは「サーバー内蔵の埋め込み（`is_embedded_at_local`）」か「チャットと同じ接続先」のどちらかで、国外の接続先へ黙って切り替わる経路はない（`request_to_embed`）。provider `local` に Bedrock 東京の OpenAI 互換エンドポイントと Bedrock API キーを入れ、埋め込みをサーバー内蔵にすれば、構成のうえでは推論と埋め込みが国外に出ない見込み。nishio の言う「プロトタイプとドキュメント」は、まずこの構成を書いた docs で足り、管理画面に「Amazon Bedrock」と名前が出るようにするのは提案しやすさのための追加になる。IAM 認証で Claude を呼ぶ経路（boto3 が要る）は後回しにでき、入れるなら本体の依存にしない。gpt-oss が json_schema の構造化出力を通すかは、実機で確かめるまで分からない
-  - **品質評価は手伝える**：大木さんが知見を借りたいと言った品質評価は、[[team-mirai-local-llm-quality-2026-11-10]] の仕組みにオープンウェイトの候補（GPT-OSS 120B、Qwen3 235B）を足せば、AWS の契約なしで測れる。#471 とつながる
+  - **品質評価は手伝える**：大木さんが知見を借りたいと言った品質評価は、[[team-mirai-local-llm-quality-2026-11-10]] の仕組みにオープンウェイトの候補（GPT-OSS 120B、Qwen3 235B）を足せば、AWS の契約なしで測れる。[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) とつながる
   - **残る問い**：興味を持った事業者の人が、AWS の実機での検証（国内の処理経路、構造化出力、費用）を担えるか。「使おうとしたが導入に至らなかった理由」を開発側に届ける置き場をどうするか
 - 2026-11-10: nishio の依頼で、Bedrock の構成例を kouchou-ai 本体の docs に書いた（[#1191](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1191)、`docs/self-hosting/amazon-bedrock.md`。2026-11-10 時点で未 merge）。AWS 公式ドキュメント（2026-11-10 取得）で次を確かめた
   - gpt-oss-120b は東京（ap-northeast-1）の In-Region に対応し、Geo・Global の推論プロファイルは東京にない
@@ -87,4 +87,5 @@ sources:
   - 2026-11-10 17:10 JST、大木さんが #2_開発_広聴ai で「今日まさにこの話を事業者の方と話しました。このやり方で動いているようです！」と投稿した。nishio が転記した「provider `local` に Bedrock 東京の OpenAI 互換の接続先を入れ、埋め込みはサーバ内」の構成への返答。事業者の環境で動いているという伝聞で、どのモデル・どの接続先（`bedrock-mantle` か `bedrock-runtime` か）・構造化出力が通ったかは書かれていない
   - [#1169](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1169)・[#1170](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1170)・[#1190](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1190) は 11-10 以降コメントなし、assignee なし
   - 案 1（ローカル計算）は進んだ。Ollama の既定を gemma4:e4b にし、`LOCAL_LLM_REASONING_EFFORT` で思考を止められるようにした（[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1193)、main 済み）。モデル選びの docs（[#1192](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1192)）と、レポート全体の時間とメモリを測るスクリプト（[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1198)）も main 済み。実機の検証依頼は [#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)・[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195)
-  - #1193 で、Bedrock の docs（#1191）の「広聴AIから思考の強さを指定する手段は、今はありません」は古くなった。`LOCAL_LLM_REASONING_EFFORT` は LocalLLM 経由の Bedrock にも送られる。gpt-oss の思考の強さは low・medium・high で（モデルカード）、`none` は受け付けない見込み。Chat Completions 経由で `reasoning_effort` が通るかは未確認（`.env.example` も「Bedrock など受け付けない接続先もある」と書いている）
+  - [#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193) で、Bedrock の docs（[#1191](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1191)）の「広聴AIから思考の強さを指定する手段は、今はありません」は古くなった。`LOCAL_LLM_REASONING_EFFORT` は LocalLLM 経由の Bedrock にも送られる。gpt-oss の思考の強さは low・medium・high で（モデルカード）、`none` は受け付けない見込み。Chat Completions 経由で `reasoning_effort` が通るかは未確認（`.env.example` も「Bedrock など受け付けない接続先もある」と書いている）
+- 2026-11-14: 上の「思考の強さを指定する手段はない」の行を直す PR [#1201](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1201) を出した（未 merge）。`LOCAL_LLM_REASONING_EFFORT` で `reasoning_effort` を送れること、gpt-oss の選択肢は `low`・`medium`・`high`（`none` は設定しない）、Bedrock の Chat Completions が受け付けるかは未確認、と書いた
