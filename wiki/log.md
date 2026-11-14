@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-14 14:20] filing-back | #1194・#1195 の検証結果を取り込み、#471 の推奨スペックを PR #1202 にした
+
+- katsushi2441 の検証（4 コア・GPU なし・gemma4:e4b・思考を止める）：100 件約 38 分、400 件約 104 分、メモリ 16GB 以上が目安。止めないと待ち時間切れ
+- compose の ollama は NVIDIA GPU を予約するので GPU の無い PC で起動しない → compose.cpu.yaml を足し、README の前提条件を直した
+- #1200 は名前の重なりの指摘を直して merge。#1199 に katsushi2441 の貢献を追記
+
 ## [2026-11-14 13:40] filing-back | #1193・#1198 の CI とレビューを確認し、merge と行き違いになった #1198 の指摘を #1200 で直した
 
 - #1193・#1198 は CI green のまま 11-11 に merge 済み。#1198 の最後のコミットは CodeRabbit の上限で見られておらず、その前のレビューの diff 外の指摘 2 件（`--n` が 0 以下、同じ件数を 2 回測ると出力名がかぶる）が残っていた → #1200（CI green、未 merge）

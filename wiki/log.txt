@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-14 14:20	filing-back	#1194・#1195 の検証結果を取り込み、#471 の推奨スペックを PR #1202 にした
 2026-11-14 13:40	filing-back	#1193・#1198 の CI とレビューを確認し、merge と行き違いになった #1198 の指摘を #1200 で直した
 2026-11-14 13:15	filing-back	チームみらい 2025 データセットの本文入りの版に DOI 10.57967/hf/11618
 2026-11-14 10:30	filing-back	Bedrock の docs の思考の強さの行を直す PR を出した

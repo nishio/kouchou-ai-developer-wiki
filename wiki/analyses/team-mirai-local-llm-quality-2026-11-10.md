@@ -326,6 +326,16 @@ nishio の「どこまで小さいモデルでOKなのか測って」を受け�
   - [#1196](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1196)：NPU（Intel・AMD・Apple・Copilot+ PC）を [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) から切り出した
 - **[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) はまだ close できない**。残るのは [#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の結果からの推奨スペックの文書。品質・モデル選び・測定スクリプト・NPU は PR と Issue に分けた
 
+## 普通の PC での時間とメモリ（[#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)・[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の検証、2026-11-11）
+
+品質とは別に、他の環境での確認を頼んだ 2 件を katsushi2441 が同日に検証した。AMD Ryzen 7 5700X のうち 4 コア 8 スレッドだけを割り当て、GPU なし（起動ログ `library=cpu`）、Ollama 0.33.2、gemma4:e4b。
+
+- **[#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)（思考を止める設定）**: `LOCAL_LLM_REASONING_EFFORT=none` なら 20 件のレポートが 11 分 51 秒で最後まで作れ、空のままでは統合ラベルの 1 回が待ち時間 300 秒を超え、50 分で中止になった。抽出の 1 回の呼び出しは 107.5 秒 → 21.1 秒。思考しない ELYZA に `none` を付けてもエラーにならない
+- **[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195)（レポート全体）**: main（`4f506750`）の `experiments/local_llm_bench` で、100 件 37.9 分・400 件 104.1 分。時間の 58〜74% が抽出（1 件約 12 秒）。分析プロセスのメモリ最大は約 2.1GB、Ollama のコンテナは 400 件直後で 8.2GiB（最大値は取れていない）。Ollama への要求 587 回はすべて 200。[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1198) で直した段ごとの時間も記録された
+- 測った PC は全体 67GB で、コンテナに上限（Ollama 12GB・分析 4GB）を付けた。16GB の PC そのもの、ノート PC、1,000 件、workers 2 以上は測っていない
+- **compose の GPU 予約**: 検証者は `compose.yaml` の ollama の NVIDIA GPU 予約を手で外して測っていた。そのままでは GPU の無い PC で起動しないので、予約を外す `compose.cpu.yaml` を足し、README の「NVIDIA GPU 必須」を「GPU で動かす場合」に限定した
+- これらを [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) の最終ゴール（自治体向けの PC の案内）として、`docs/self-hosting/local-llm-pc-requirements.md`（メモリ 16GB 以上、100 件約 40 分・400 件約 1 時間 45 分、`none` 必須）にまとめ、PR [#1202](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1202) にした（進行中・未 merge、`Closes #471`）
+
 ## 分かったこと
 
 - **30B 級のオープンウェイトなら、この題材では品質は既定のクラウドに劣らない**。抽出は同等以上、ラベルは具体性で上回った。ただしローカル側は強い言い方・意見に無い軸を足す方向に、gpt-4o-mini は漠然・論点の取りこぼしの方向に外れる。負け方の型が違うので、「どちらが良いか」は利用者が見出しに何を求めるかで変わる（[[label-quality]] の「全体傾向を歪めず少数軸も保持する」契約に照らすと、言い過ぎも取りこぼしも違反）
@@ -389,3 +399,4 @@ nishio の「どこまで小さいモデルでOKなのか測って」を受け�
 - 2026-11-11: 31B の重みが `Intel/gemma-4-31B-it-int4-AutoRound` だと分かった（nishio）。量子化と追試の記述を直した
 - 2026-11-11: 結果 5 の 12 組（温度 0 での送り直し前の出力で判定していたもの）を判定し直した（141 勝 19 敗→143 勝 18 敗）。条件の古い記述（temperature 0.7 でのやり直し）を直し、「追試に使える材料」の節を足した。判定材料一式を Hugging Face に載せた
 - 2026-11-14: [#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)・[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)・[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) が main に入ったことを反映し、[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) の残りの指摘を直す [#1200](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1200) を足した
+- 2026-11-14: 「普通の PC での時間とメモリ」の節を足した（katsushi2441 による [#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)・[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の検証、PR [#1202](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1202)）。[#1200](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1200) は main に入った
