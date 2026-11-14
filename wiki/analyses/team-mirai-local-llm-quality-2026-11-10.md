@@ -315,10 +315,11 @@ nishio の「どこまで小さいモデルでOKなのか測って」を受け�
   - CPU の gemma-4 は要求ごとに `chat_template_kwargs: {enable_thinking: false}` を送った。社内 API の 31B・Qwen3.8-27B は指定なしでも思考しない設定だった（2026-11-11 に指定あり・なしで送り、どちらも思考の部分 0 文字・出力 4 トークンを確かめた）。ELYZA-JP-8B は思考しないモデル
   - llama.cpp では `reasoning_effort: "none"` と `enable_thinking: false` が同じ結果になった（gemma-4-E2B で思考 451 文字・133 トークン → 0 文字・2 トークン）。思考したままの gemma-4 の品質は測っていない
 - **[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) にコメントした**（[コメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471#issuecomment-6784851206)）。続けて nishio が「gpt-4o 相当なら gemma4:e4b か e2b。e4b を既定にし、速さを優先する人が e2b に変える。`reasoning_effort: "none"` が適切」と書いた
-- **出した PR**（どれも未 merge）
+- **出した PR**（3 本とも 2026-11-11 に nishio が main に入れた）
   - [#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)：docs に「ローカルLLMのモデル選び（品質の測定結果）」を足す。E4B を第一候補、ELYZA-JP-8B は入出力例の写しで非推奨
   - [#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)：`--profile ollama` の既定モデルを ELYZA-JP-8B から gemma4:e4b に変え、`LOCAL_LLM_REASONING_EFFORT` を設定したときだけ `reasoning_effort` を送る。既定で送らないのは、値の種類が接続先で違い、受け付けない接続先（Bedrock の gpt-oss など）があるため。llama.cpp で、本体のコード経由の抽出 1 件が 322 → 57 トークン・17.2 → 4.1 秒になった。思考しない ELYZA に `none` を送ってもエラーにならなかった
   - [#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198)：`experiments/local_llm_bench/`。本物のローカル LLM で CLI を最後まで走らせ、PC の情報・段ごとの時間・メモリの最大値を CSV に取る。ARM 8 コアで gemma-4-E4B の 20 件が 4.9 分・2.0GB（抽出 85 秒、初期ラベル 93 秒、統合ラベル 62 秒）。走らせて、CLI（workflow 経由）が段ごとの時間を `0.0` 固定で書く不具合を見つけ、同じ PR で直した
+  - [#1200](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1200)（進行中・未 merge）：[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) の merge と行き違いになった CodeRabbit の指摘 2 件を直す。`--n` が 0 以下だと、空の入力で失敗したり、399 件で測って -1 件と記録したりしていた。同じ件数を 2 回測ると出力名がかぶり、済んだ段を飛ばした短い時間や前の回の段ごとの時間を記録しうるので、未使用の名前を選ぶようにした
 - **他の環境での確認は Issue にした**（nishio の方針「誰かこの環境でこういう確認を、はどんどん Issue に」）
   - [#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)：Ollama で gemma4:e4b と `LOCAL_LLM_REASONING_EFFORT=none` が動くか。この環境では Ollama の取得・実行が自動モードの安全チェックで止められた
   - [#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195)：x86・GPU なしの PC で、gemma4:e4b を使いレポート全体を作る時間とメモリ
@@ -359,8 +360,8 @@ nishio の「どこまで小さいモデルでOKなのか測って」を受け�
 - 人の較正には、120 組すべてではなく、モデル間で結論が割れた組（26B-A4B と E4B の負け方の違いが出るもの）を優先して入れる
 - Qwen の「〜すべき」への強めが、入出力例の 1 か所を直すだけで消えるかを、この題材で確かめる
 - 120 組のラベル判定を人が行う（nishio）。判定役との一致率を出す
-- （2026-11-11）[#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)・[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)・[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) の merge と、[#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)・[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の結果を待つ。[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の結果が集まったら推奨スペックの文書を書き、[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) を閉じる
-- [#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192) のページの「LocalLLM には思考を止める設定がまだ無い」は、[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193) が merge されたら設定の案内に直す
+- （2026-11-11）[#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)・[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)・[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) は main に入った。[#1200](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1200) の merge と、[#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)・[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の結果を待つ。[#1195](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1195) の結果が集まったら推奨スペックの文書を書き、[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) を閉じる
+- ~~[#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192) のページの「LocalLLM には思考を止める設定がまだ無い」は、[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193) が merge されたら設定の案内に直す~~ → merge 前に `.env` の `LOCAL_LLM_REASONING_EFFORT=none` の案内に直してから入った
 
 ## Open Questions
 
@@ -387,3 +388,4 @@ nishio の「どこまで小さいモデルでOKなのか測って」を受け�
 - 2026-11-11: 「本体と [#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) への還流」の節を足した（思考の条件、[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) へのコメント、PR [#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)・[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)・[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198)、Issue [#1194](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1194)〜[#1196](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1196)、close の判断）。再現の条件に、31B は配信側で思考しないことを書き足した
 - 2026-11-11: 31B の重みが `Intel/gemma-4-31B-it-int4-AutoRound` だと分かった（nishio）。量子化と追試の記述を直した
 - 2026-11-11: 結果 5 の 12 組（温度 0 での送り直し前の出力で判定していたもの）を判定し直した（141 勝 19 敗→143 勝 18 敗）。条件の古い記述（temperature 0.7 でのやり直し）を直し、「追試に使える材料」の節を足した。判定材料一式を Hugging Face に載せた
+- 2026-11-14: [#1192](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1192)・[#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193)・[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) が main に入ったことを反映し、[#1198](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1198) の残りの指摘を直す [#1200](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1200) を足した

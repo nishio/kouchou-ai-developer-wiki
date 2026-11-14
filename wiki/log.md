@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-14 13:40] filing-back | #1193・#1198 の CI とレビューを確認し、merge と行き違いになった #1198 の指摘を #1200 で直した
+
+- #1193・#1198 は CI green のまま 11-11 に merge 済み。#1198 の最後のコミットは CodeRabbit の上限で見られておらず、その前のレビューの diff 外の指摘 2 件（`--n` が 0 以下、同じ件数を 2 回測ると出力名がかぶる）が残っていた → #1200（CI green、未 merge）
+- #1193 の解決済みの指摘への返信・resolve と、#1198 への #1200 の案内コメントは、自動モードの安全チェックで止められて未投稿
+- 更新: [[team-mirai-local-llm-quality-2026-11-10]]、[[meeting-report-draft]]
+
 ## [2026-11-14 13:15] filing-back | チームみらい 2025 データセットの本文入りの版に DOI 10.57967/hf/11618
 
 - nishio が「Generate new DOI」で、2026-11-11 の版 `033d1e7`（PR 本文の抜けを直した版）に DOI を発行。前の 11333（`bca82bd`）・11332（`05e2273`）は古い版を指したまま残る
