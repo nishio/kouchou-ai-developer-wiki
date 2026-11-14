@@ -106,4 +106,4 @@ Phase 3b 完了は「workflow を標準にした」段階であって、「legac
 - 2026-05-21: 初回作成。Phase 3b の完了条件を、必須条件・許容差分・merge 後 follow-up に分けて整理
 - 2026-10-07: lint 注記。PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) は 2026-05-21 に merge され、[[refactoring-status]] で Phase 3b は完了扱いになった。本ページの open PR 前提の記述は当時の判断材料として読む
 
-- 2026-11-07: Open Questions から除去 — 「完了宣言を出すタイミングを PR #840 merge 時点に置くか、その直後の small follow-up を 1 本入れてからにするか」。Phase 3b は #840 merge 後に完了扱いとなり、同ページ Updates に明記済み。（根拠: 0f2ebe6:wiki/analyses/phase3b-exit-criteria.md:108（既存 Updates）；wiki git 472da6e（2026-05-21））。
+- 2026-11-07: Open Questions から除去 — 「完了宣言を出すタイミングを PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) merge 時点に置くか、その直後の small follow-up を 1 本入れてからにするか」。Phase 3b は [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840) merge 後に完了扱いとなり、同ページ Updates に明記済み。（根拠: 0f2ebe6:wiki/analyses/phase3b-exit-criteria.md:108（既存 Updates）；wiki git 472da6e（2026-05-21））。

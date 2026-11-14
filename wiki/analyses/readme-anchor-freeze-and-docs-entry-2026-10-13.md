@@ -67,7 +67,7 @@ nishio が 2026-10-09 に提案したのは「README.md を英語にして日本
 
 ## Open Questions
 
-- 内部の ReporterContent.tsx から README への直リンクは docs の metadata-setup へ移行し、#977 は close 済み。外部からの README アンカーリンクの全量・流入元の棚卸しは未確認。
+- 内部の ReporterContent.tsx から README への直リンクは docs の metadata-setup へ移行し、[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は close 済み。外部からの README アンカーリンクの全量・流入元の棚卸しは未確認。
 - 2026-10-30 に GitHub About の homepage を docs サイトへ設定し、website#231 で「使い方」等の docs への接続を提出した。PR の merge、配布物・検索流入側の導線は未確認。
 - デフォルト言語を日本語に戻した現状を、国外注目増（nishio の英語化動機）とどう両立させるか。言語自動判定や docs サイト側の多言語化は未検討
 
@@ -75,5 +75,5 @@ nishio が 2026-10-09 に提案したのは「README.md を英語にして日本
 
 - 2026-10-14（ヘルスチェック追記）: [#542](https://github.com/digitaldemocracy2030/kouchou-ai/issues/542) / [#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) / [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は 2026-10-13 に PR [#1004](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1004)–[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)（v4.1.0）で **CLOSED**。managed service は「現状なし（提供者が現れる余地は残す）」で確定。最新の総括は [[kouchou-ai-docs-overhaul-2026-10]]。
 
-- 2026-11-07: Open Questions の現状を更新 — 「README アンカーへの既存外部リンクの実態（どこから何件張られているか）は未調査。issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は少なくとも `apps/public-viewer/components/reporter/ReporterContent.tsx` を宛先候補に挙げるが、全量の棚卸しと移行先ページ・redirect 方針は未定。GitHub Markdown はカスタム anchor id を固定できないので README 内では安定化できず、宛先を docs 側へ移すしかない」。内部リンクの docs 移行と #977 close は完了。外部リンク全量調査は未確認。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:153（既存 Updates）；kouchou-ai d759df7c4 / f83567043）。
+- 2026-11-07: Open Questions の現状を更新 — 「README アンカーへの既存外部リンクの実態（どこから何件張られているか）は未調査。issue [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は少なくとも `apps/public-viewer/components/reporter/ReporterContent.tsx` を宛先候補に挙げるが、全量の棚卸しと移行先ページ・redirect 方針は未定。GitHub Markdown はカスタム anchor id を固定できないので README 内では安定化できず、宛先を docs 側へ移すしかない」。内部リンクの docs 移行と [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) close は完了。外部リンク全量調査は未確認。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:153（既存 Updates）；kouchou-ai d759df7c4 / f83567043）。
 - 2026-11-07: Open Questions の現状を更新 — 「非開発者を GitHub を経由させずドキュメントサイトへ着地させる具体導線（配布物・事例サイト・検索からの流入をどこへ向けるか）は未設計。docs 入口 spine 再設計（[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) 系）と合流させる必要がある」。About と website 側の docs 入口改善が記録されたが、website PR の merge と他の入口は未確認。（根拠: /Users/nishio/grasp-nishio/LOG.md:「2026-10-30 ops | 広聴AIのドキュメントへの入口をつなぐ」）。

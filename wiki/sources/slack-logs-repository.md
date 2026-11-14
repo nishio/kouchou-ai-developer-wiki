@@ -106,7 +106,7 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 
 ## Updates
 
-- 2026-10-23: `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化した（Slack 本体は本 repo に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。その前に、reporter にしか無かった Slack 本文を本 repo の `raw/` へ全部埋め戻した（2025-04〜2026-02 は PR #10、2025-03・改名/アーカイブ/削除チャンネル・2026-03-01〜03-12 は PR #12。削除済みチャンネルは `raw/slack/deleted-<旧名>/`）。Open Questions の「GitHub weekly activity の source を継続するか」は継続しない側に決着した。
+- 2026-10-23: `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化した（Slack 本体は本 repo に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。その前に、reporter にしか無かった Slack 本文を本 repo の `raw/` へ全部埋め戻した（2025-04〜2026-02 は PR [#10](https://github.com/digitaldemocracy2030/kouchou-ai/issues/10)、2025-03・改名/アーカイブ/削除チャンネル・2026-03-01〜03-12 は PR [#12](https://github.com/digitaldemocracy2030/kouchou-ai/issues/12)。削除済みチャンネルは `raw/slack/deleted-<旧名>/`）。Open Questions の「GitHub weekly activity の source を継続するか」は継続しない側に決着した。
 - 2026-10-21: GitHub 上の slack-logs（main `189782de`。mirror は `synced_at=2026-10-20T21:27:48Z` の 75 日窓、raw は 2026-08 まで）と README・workflow を読み取りで確認し、14 日窓のままだった summary・本文を訂正。75 日への変更は slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21）。2026-09-07 の時点で raw に 2026-08 があったのは 2026-08-20 の先行取得のためで、約 2 か月遅れは今も設計どおり。Updates の見出しを 1 つにまとめた
 - 2026-10-05: repo `77439607`、同期は2026-10-05 06:10 JST、75日窓。開発・アルゴリズムchannelと関連channelの9月以後の論点を確認し、選んだchannelの本文を `raw/catchup-2026-10-05/` に固定した。
 - 2026-10-05: 読解範囲・Flex切替・利用事例・戦略議論の観測は [[catchup-2026-10-05]]、現在地は [[current-status-2026-10-05]] を参照。全channel精読ではない。

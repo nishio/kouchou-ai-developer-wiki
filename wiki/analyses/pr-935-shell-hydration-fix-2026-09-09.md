@@ -56,4 +56,4 @@ root / subdirのテストでリスト選択を確認し、全体を展開して�
 
 今回解消したのはshell一覧のhydrationエラー。全体E2Eログには通常dev経路のhydrationログが残るが、その経路のビルド方式は本修正では変更していない。全viewer経路で同種エラーがなくなったという意味ではない。
 
-- 2026-11-07: Open Questions から除去 — 「タイトル・検索除外は本エラーとは別件。実配布の用途と接続段階を踏まえてIssueで管理する。」。title / noindex は別Issue #939 に分けて #940 で実装し merge 済み。（根拠: 0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:44（既存 Updates）；kouchou-ai 751e2c8）。
+- 2026-11-07: Open Questions から除去 — 「タイトル・検索除外は本エラーとは別件。実配布の用途と接続段階を踏まえてIssueで管理する。」。title / noindex は別Issue [#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939) に分けて [#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940) で実装し merge 済み。（根拠: 0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:44（既存 Updates）；kouchou-ai 751e2c8）。

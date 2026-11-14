@@ -42,4 +42,4 @@ sources:
 - 2026-05-21: 初版作成
 - 2026-05-21: current `main` で provider 取り違えが非再現だったことを受け、GitHub 上で `#707` が close されたことを反映
 
-- 2026-11-07: Open Questions から除去 — 「旧 verify-chatgpt 呼び出し関数が本当に dead code なら削除すべきか、それとも別 UI からまだ参照されるのか」。未使用の verifyChatGptApiKeyWithProvider は #1140 で削除された。（根拠: kouchou-ai 109049ad3（2026-10-26、削除理由と25行削除をgit showで確認））。
+- 2026-11-07: Open Questions から除去 — 「旧 verify-chatgpt 呼び出し関数が本当に dead code なら削除すべきか、それとも別 UI からまだ参照されるのか」。未使用の verifyChatGptApiKeyWithProvider は [#1140](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1140) で削除された。（根拠: kouchou-ai 109049ad3（2026-10-26、削除理由と25行削除をgit showで確認））。

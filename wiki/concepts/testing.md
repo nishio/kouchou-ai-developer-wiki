@@ -102,4 +102,4 @@ sources:
 上のOpen Questionsにある「E2EはCI非実行」は、ブラウザE2E全般の現在の説明としては使わない。9月9日の[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)では全体86件、[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)では81件のブラウザE2EがCIで成功している。実LLMを使うanalysis-core E2Eとは対象を区別する。
 
 - 2026-11-07: Open Questions から除去 — 「E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認」。E2EはPRとscheduleでCI実行するworkflowがある。「CI非実行」という前提は解消。ステージングでの代替保証は主張しない。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） .github/workflows/e2e-tests.yml:4）。
-- 2026-11-07: Open Questions から除去 — 「Biome の CI ゲーティングは PR #963 で導入済み（2026-10-09 時点の「無い」は解消）」。#963で導入済みと問い自体に回答が残っている。（根拠: 0f2ebe6:wiki/concepts/testing.md:88（既存 Updates）；kouchou-ai 2b0079a1d）。
+- 2026-11-07: Open Questions から除去 — 「Biome の CI ゲーティングは PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で導入済み（2026-10-09 時点の「無い」は解消）」。[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)で導入済みと問い自体に回答が残っている。（根拠: 0f2ebe6:wiki/concepts/testing.md:88（既存 Updates）；kouchou-ai 2b0079a1d）。

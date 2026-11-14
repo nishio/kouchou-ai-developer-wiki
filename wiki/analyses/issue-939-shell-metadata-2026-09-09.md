@@ -42,4 +42,4 @@ sources:
 
 ユーザー指示で[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)を`751e2c8`としてマージ、[#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939)のCLOSEDを確認。[[pr-937-940-review-2026-09-09]]より。配布経路への接続は引き続き[#885](https://github.com/digitaldemocracy2030/kouchou-ai/issues/885)の後続作業。
 
-- 2026-11-07: Open Questions から除去 — 「#940のCI結果とマージ判断。ローカルではshellに絞ったE2Eを実行し、通常の全体E2EはCIで確認する。」。全体CI成功と #940 merge、#939 close が同ページに追記済み。（根拠: 0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:40（既存 Updates）；0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:44（既存 Updates）；kouchou-ai 751e2c8）。
+- 2026-11-07: Open Questions から除去 — 「[#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940)のCI結果とマージ判断。ローカルではshellに絞ったE2Eを実行し、通常の全体E2EはCIで確認する。」。全体CI成功と [#940](https://github.com/digitaldemocracy2030/kouchou-ai/issues/940) merge、[#939](https://github.com/digitaldemocracy2030/kouchou-ai/issues/939) close が同ページに追記済み。（根拠: 0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:40（既存 Updates）；0f2ebe6:wiki/analyses/issue-939-shell-metadata-2026-09-09.md:44（既存 Updates）；kouchou-ai 751e2c8）。

@@ -113,7 +113,7 @@ sources:
 ## Open Questions
 
 - `#833` を 1 issue のまま扱うと review 単位が大きすぎないか
-- #696 の読み方説明は本体と serverless 版へ実装され close 済み。追加の誤読防止を docs / product のどちらで担うかは、既存説明で満たせない具体的な場面を確認して判断する。
+- [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) の読み方説明は本体と serverless 版へ実装され close 済み。追加の誤読防止を docs / product のどちらで担うかは、既存説明で満たせない具体的な場面を確認して判断する。
 
 ## Updates
 
@@ -125,4 +125,4 @@ sources:
 - 2026-05-22: `PR #852` merge と `#716` close を反映し、P1 の active 実装候補から外した
 - 2026-10-21: [#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818) と [#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は 2026-05-21 に close 済みだった。[#820](https://github.com/digitaldemocracy2030/kouchou-ai/issues/820) は PR [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) で静的配信の CSP ガイドを追加して close した。[#818](https://github.com/digitaldemocracy2030/kouchou-ai/issues/818) は「dynamic hosting は [#848](https://github.com/digitaldemocracy2030/kouchou-ai/issues/848)、static hosting は [#849](https://github.com/digitaldemocracy2030/kouchou-ai/issues/849) で解決経路が揃った」として、symptom 報告のまま close した。本文でこの 2 件を残論点としている箇所は、その時点で解消していた。詳細は [[issue-820-current-state]]
 
-- 2026-11-07: Open Questions の現状を更新 — 「#696 を docs issue と product issue に分割した方が実装しやすいか」。#696 は読み方説明を本体・serverlessへ実装してclose。残るdocs/product分担は具体的な未充足要件で扱う。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-policy-history.md:136（既存 Updates）；kouchou-ai git log upstream/main: #924）。
+- 2026-11-07: Open Questions の現状を更新 — 「[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) を docs issue と product issue に分割した方が実装しやすいか」。[#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) は読み方説明を本体・serverlessへ実装してclose。残るdocs/product分担は具体的な未充足要件で扱う。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-policy-history.md:136（既存 Updates）；kouchou-ai git log upstream/main: [#924](https://github.com/digitaldemocracy2030/kouchou-ai/issues/924)）。

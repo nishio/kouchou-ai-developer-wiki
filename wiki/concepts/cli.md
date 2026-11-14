@@ -141,7 +141,7 @@ cmd = [sys.executable, "-m", "analysis_core",
 
 ## Updates
 
-- 2026-11-07: 「PyPI 版は main より遅れる」の「main の version 表記も 0.1.3」は 2026-10-21 時点の記録。保存済み main は 2026-10-26 に 0.2.0、2026-10-29 に 0.3.0 へ上がり、`analysis-core-v0.3.0` タグも存在する。PyPI の公開成功・現在の最新版は今回のローカル照合では確認していない（根拠: kouchou-ai commits `b180c145b`（#1146）/ `085366779`（#1172）、後者の `packages/analysis-core/pyproject.toml`:3・`src/analysis_core/__init__.py`:22）。
+- 2026-11-07: 「PyPI 版は main より遅れる」の「main の version 表記も 0.1.3」は 2026-10-21 時点の記録。保存済み main は 2026-10-26 に 0.2.0、2026-10-29 に 0.3.0 へ上がり、`analysis-core-v0.3.0` タグも存在する。PyPI の公開成功・現在の最新版は今回のローカル照合では確認していない（根拠: kouchou-ai commits `b180c145b`（[#1146](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1146)）/ `085366779`（[#1172](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1172)）、後者の `packages/analysis-core/pyproject.toml`:3・`src/analysis_core/__init__.py`:22）。
 - 2026-10-21: main `b71e0b79` と照合。フラグ表に `--reuse-from`・`--validate-config`・`--validate-input` を足し、`--only` / `--force` / `--dry-run` の説明を PR [#1033](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1033) 後の挙動に合わせた。API 起動のコード例を `sys.executable` に直し（PR [#995](https://github.com/digitaldemocracy2030/kouchou-ai/issues/995)）、「API は `analysis_core` を import しない」を訂正（接続確認とローカル LLM のモデル一覧では直接 import する）。PyPI 0.1.3 が main より遅れている点を追記。PR [#1043](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1043) が 2026-10-21 に merge されたことを反映
 - 2026-10-18: docs の rename（`docs/getting-started/` → `docs/self-hosting/`）を注記
 - 2026-05-17: 初回作成（コードリーディング結果から）

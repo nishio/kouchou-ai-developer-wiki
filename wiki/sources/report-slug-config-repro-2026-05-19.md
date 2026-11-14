@@ -32,4 +32,4 @@ sources:
 
 - 2026-05-19: 初版作成
 
-- 2026-11-07: Open Questions から除去 — 「`/reports/{slug}` で `config` 欠損を見つけた場合の正しい挙動は 500 / 404 / repair fallback のどれか」。欠損configは公開前に最小shape検証して500を返す #834 の採用で決着。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai #834）。
+- 2026-11-07: Open Questions から除去 — 「`/reports/{slug}` で `config` 欠損を見つけた場合の正しい挙動は 500 / 404 / repair fallback のどれか」。欠損configは公開前に最小shape検証して500を返す [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) の採用で決着。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834)）。

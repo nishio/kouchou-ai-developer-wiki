@@ -29,5 +29,5 @@ Consumption plan は serverless environment として scale-to-zero と running 
 
 - 2026-06-01: 初版作成。public-viewer runtime build 改善方針の補助 source として Microsoft Learn の ACA apps / jobs / billing docs を要約。
 
-- 2026-11-07: Open Questions から除去 — 「public-viewer の dynamic hosting build は API fetch なしで完了できる形へ寄せるべきか。」。API fetch不要の通常buildへの分離 #888 を採用済み。（根拠: kouchou-ai f36a204b（2026-06-01、#888））。
-- 2026-11-07: Open Questions から除去 — 「build を Container Apps jobs へ寄せるより、GitHub Actions / Docker image build で完結させる方が運用上単純ではないか。」。runtime buildは撤去し image buildで済ませる経路が #888 で実装された。（根拠: kouchou-ai f36a204b（2026-06-01、#888））。
+- 2026-11-07: Open Questions から除去 — 「public-viewer の dynamic hosting build は API fetch なしで完了できる形へ寄せるべきか。」。API fetch不要の通常buildへの分離 [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) を採用済み。（根拠: kouchou-ai f36a204b（2026-06-01、[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)））。
+- 2026-11-07: Open Questions から除去 — 「build を Container Apps jobs へ寄せるより、GitHub Actions / Docker image build で完結させる方が運用上単純ではないか。」。runtime buildは撤去し image buildで済ませる経路が [#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888) で実装された。（根拠: kouchou-ai f36a204b（2026-06-01、[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)））。

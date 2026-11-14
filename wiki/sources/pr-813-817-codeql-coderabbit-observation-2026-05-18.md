@@ -45,4 +45,4 @@ sources:
 
 - 2026-05-18: 初版作成
 
-- 2026-11-07: Open Questions から除去 — 「実際に #817 が merge されたか、あるいは後続コミットでどの部分だけ main に入ったかは別観測が必要」。#817 のmergeをmain履歴で確認できる。（根拠: kouchou-ai dd9b0b8c（2026-05-18、#817））。
+- 2026-11-07: Open Questions から除去 — 「実際に [#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817) が merge されたか、あるいは後続コミットでどの部分だけ main に入ったかは別観測が必要」。[#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817) のmergeをmain履歴で確認できる。（根拠: kouchou-ai dd9b0b8c（2026-05-18、[#817](https://github.com/digitaldemocracy2030/kouchou-ai/issues/817)））。

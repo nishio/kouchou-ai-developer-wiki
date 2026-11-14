@@ -84,4 +84,4 @@ sources:
 
 ## Updates
 
-- 2026-11-07: スプリントの PR 件数を summary・本文とも 13 から 12 へ訂正した。列挙は #998〜#1006 の 9 本と #1008〜#1010 の 3 本。12 本すべての merge をローカル履歴で確認した（根拠: kouchou-ai commits `ec9b1fefa`（#998）〜`d759df7c4`（#1006）、`bf1ffb1bc`（#1008）、`f83567043`（#1009）、`4b2d08f99`（#1010））。
+- 2026-11-07: スプリントの PR 件数を summary・本文とも 13 から 12 へ訂正した。列挙は [#998](https://github.com/digitaldemocracy2030/kouchou-ai/issues/998)〜[#1006](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1006) の 9 本と [#1008](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1008)〜[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010) の 3 本。12 本すべての merge をローカル履歴で確認した（根拠: kouchou-ai commits `ec9b1fefa`（[#998](https://github.com/digitaldemocracy2030/kouchou-ai/issues/998)）〜`d759df7c4`（[#1006](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1006)）、`bf1ffb1bc`（[#1008](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1008)）、`f83567043`（[#1009](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1009)）、`4b2d08f99`（[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)））。

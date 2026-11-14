@@ -43,4 +43,4 @@ sources:
 - 2026-05-19: 初版作成
 - 2026-10-21: main `b71e0b79` と照合し、PR [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834)（2026-05-19 merge）で `/reports/{slug}` が返す前に最小 shape を検証し、壊れた成果物には 500 を返すようになったことを反映。summary と冒頭を現状に合わせ、Findings 2・3 と Recommendation を解消・実施済みとして書き直した
 
-- 2026-11-07: Open Questions から除去 — 「（API 側は決着）invalid result を「公開しない」のが正解か、それとも最小限の fallback 表示を許容したいのか。API は PR [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) で「公開しない」（500）を選んだ」。API は不正shapeを500で拒否する #834 の実装を採用済み。viewer 全般のfallbackとは分ける。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai git log upstream/main: #834）。
+- 2026-11-07: Open Questions から除去 — 「（API 側は決着）invalid result を「公開しない」のが正解か、それとも最小限の fallback 表示を許容したいのか。API は PR [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) で「公開しない」（500）を選んだ」。API は不正shapeを500で拒否する [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) の実装を採用済み。viewer 全般のfallbackとは分ける。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai git log upstream/main: [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834)）。

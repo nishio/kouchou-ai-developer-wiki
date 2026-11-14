@@ -204,8 +204,8 @@ extraction
 - `unresolved_cards` は exhaustive partitioning とどう両立させるか。`cluster_id = unresolved` ではなく、通常 cluster assignment に加えて `flags: ["boundary", "counterexample"]` を持つ方が安全かもしれない。
 - `label_refinement` は、将来的に `merge_labelling` へ吸収するのか、`semantic_presentation` のような広い step に改名するのか。
 - 大規模データで boundary / bridge をどこまで自動抽出できるか。小規模 LLM pairwise と同じ品質を期待すべきではない。
-- #874 の layout_generation は標準パイプラインへ追加せず、register_all の登録対象外で merge された。実験経路での config / analysis mode / workflow variant の選択は未決。
-- 2026-05 の「8 steps 固定」判断の後、PR #975 の opinion_classification により既定は 9 ステップへ変わった。既定ステップ列のどこまでを互換契約として固定するかは未決。
+- [#874](https://github.com/digitaldemocracy2030/kouchou-ai/issues/874) の layout_generation は標準パイプラインへ追加せず、register_all の登録対象外で merge された。実験経路での config / analysis mode / workflow variant の選択は未決。
+- 2026-05 の「8 steps 固定」判断の後、PR [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975) の opinion_classification により既定は 9 ステップへ変わった。既定ステップ列のどこまでを互換契約として固定するかは未決。
 - named layout artifact が入った場合、将来の `interpretation_artifacts` も `hierarchical_result.json` に入れるのか、別 artifact にするのか。`layouts` は result JSON 内で自然だが、boundary / bridge reason は肥大化しやすい。
 
 ## Updates
@@ -214,5 +214,5 @@ extraction
 - 2026-05-28: open PR `#866` / `#867` / `#874` を確認し、`#874` の `hierarchical_layout_generation` は named layout という表示 artifact を first-class にする点では筋があるが、標準パイプラインへ常時追加する理由は弱いと補正した。
 - 2026-05-28: [[pipeline-step-default-policy-decision-2026-05-28]] を追加し、`#874` は実験的機能なので標準パイプラインに追加せず、`8 steps` 固定テストを維持する判断へ補正した。
 
-- 2026-11-07: Open Questions の現状を更新 — 「`#874` の `hierarchical_layout_generation` を明示有効化する単位は、config、analysis mode、workflow variant のどれがよいか。」。layout_generation は標準外・register_all 対象外として #874 を merge。今後どの実験経路で有効化するかは残る。（根拠: 0f2ebe6:wiki/analyses/pipeline-step-default-policy-decision-2026-05-28.md:118（既存 Updates））。
-- 2026-11-07: Open Questions の現状を更新 — 「8 steps 固定テストをどこまで標準パイプライン contract として明文化するか。」。8 steps固定という当時の既定は後続の opinion_classification で9に変わった。今後の契約の固定範囲は残る。（根拠: 0f2ebe6:wiki/concepts/pipeline.md:132（既存 Updates）；kouchou-ai 1e7fdae5a（#975））。
+- 2026-11-07: Open Questions の現状を更新 — 「`#874` の `hierarchical_layout_generation` を明示有効化する単位は、config、analysis mode、workflow variant のどれがよいか。」。layout_generation は標準外・register_all 対象外として [#874](https://github.com/digitaldemocracy2030/kouchou-ai/issues/874) を merge。今後どの実験経路で有効化するかは残る。（根拠: 0f2ebe6:wiki/analyses/pipeline-step-default-policy-decision-2026-05-28.md:118（既存 Updates））。
+- 2026-11-07: Open Questions の現状を更新 — 「8 steps 固定テストをどこまで標準パイプライン contract として明文化するか。」。8 steps固定という当時の既定は後続の opinion_classification で9に変わった。今後の契約の固定範囲は残る。（根拠: 0f2ebe6:wiki/concepts/pipeline.md:132（既存 Updates）；kouchou-ai 1e7fdae5a（[#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975)））。

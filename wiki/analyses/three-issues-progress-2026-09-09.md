@@ -31,12 +31,12 @@ sources:
 
 ## Open Questions
 
-- 通常 production build で観測した React #418 は PR #1143 で修正済み。#518 の常設公開が現在も利用できるかは別途確認が必要。
+- 通常 production build で観測した React #418 は PR [#1143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1143) で修正済み。[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518) の常設公開が現在も利用できるかは別途確認が必要。
 - [#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)のSpreadsheetの取得・列選択、AI設定の最終送信内容の検証。
 
 ## Updates — 2026-09-09 18:26 CI完了
 
 [#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)の全体E2Eは86 passed / 2 skipped。3PRとも実行されたCIは成功。[#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)のCodeRabbitはレビュー完了、[#942](https://github.com/digitaldemocracy2030/kouchou-ai/issues/942)・[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)はrate limited表示であり、レビュー済みとは扱わない。3件ともOPEN・未merge。通常staticのReact [#418](https://react.dev/errors/418)は[#942](https://github.com/digitaldemocracy2030/kouchou-ai/issues/942)と[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)に観測として記録した。
 
-- 2026-11-07: Open Questions から除去 — 「#943 の CI 結果と 3 PR のマージ判断（マージはレビュー後の判断として保留）。」。#941–#943 は current local main の履歴に merge 済み。CIだけで完了とはしていない。（根拠: kouchou-ai upstream/main git log: #941 / #942 / #943（2026-10-05）；0f2ebe6:wiki/analyses/three-issues-progress-2026-09-09.md:40（既存 Updates））。
-- 2026-11-07: Open Questions の現状を更新 — 「#518の常設公開と、通常staticで観測したReact #418の追加調査。」。通常 production build の hydration #418 は #1143 で対応済み。常設の公開状態の確認は別途必要。（根拠: kouchou-ai c15e3a51d（2026-10-26、#1143））。
+- 2026-11-07: Open Questions から除去 — 「[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943) の CI 結果と 3 PR のマージ判断（マージはレビュー後の判断として保留）。」。[#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)–[#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943) は current local main の履歴に merge 済み。CIだけで完了とはしていない。（根拠: kouchou-ai upstream/main git log: [#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941) / [#942](https://github.com/digitaldemocracy2030/kouchou-ai/issues/942) / [#943](https://github.com/digitaldemocracy2030/kouchou-ai/issues/943)（2026-10-05）；0f2ebe6:wiki/analyses/three-issues-progress-2026-09-09.md:40（既存 Updates））。
+- 2026-11-07: Open Questions の現状を更新 — 「[#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518)の常設公開と、通常staticで観測したReact #418の追加調査。」。通常 production build の hydration #418 は [#1143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1143) で対応済み。常設の公開状態の確認は別途必要。（根拠: kouchou-ai c15e3a51d（2026-10-26、[#1143](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1143)））。

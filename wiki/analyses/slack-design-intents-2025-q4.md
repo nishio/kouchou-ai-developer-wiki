@@ -76,7 +76,7 @@ sources:
 
 ## Open Questions
 
-- 2025 Q4 の方向性の後、互換 workflow は #866、所与カテゴリへの分類は #996 で main 入りした。taxonomy-guided の多層化や実データでの品質は別の残件。
+- 2025 Q4 の方向性の後、互換 workflow は [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)、所与カテゴリへの分類は [#996](https://github.com/digitaldemocracy2030/kouchou-ai/issues/996) で main 入りした。taxonomy-guided の多層化や実データでの品質は別の残件。
 - v4 に何を含めるかはこの時点ではまだ流動的で、実際の main とのズレは [[refactoring-status]] で要確認
 
 ## Updates
@@ -85,4 +85,4 @@ sources:
 - 2026-05-17: `embeddings.pkl` に関する Slack 発言を、コードで確認された事実と切り分けて補足
 - 2026-05-25: 12 月の方向性メモ 2 本と鈴木健ブログへの導線を追加し、Slack での直感が会議でどう明文化されたかを補記
 
-- 2026-11-07: Open Questions の現状を更新 — 「2025 4Q 時点では LLM grouping / sensemaking は方向性として語られているが、互換枝や taxonomy-guided 亜種の具体化は 2026-Q1 を待つ」。後続の互換workflowと指定カテゴリ分類はmainに入っている。2025Q4の方向性を現在の未実装として扱わない。（根拠: kouchou-ai 6e9e60ee（#866）/ 42bba8ea8（#996））。
+- 2026-11-07: Open Questions の現状を更新 — 「2025 4Q 時点では LLM grouping / sensemaking は方向性として語られているが、互換枝や taxonomy-guided 亜種の具体化は 2026-Q1 を待つ」。後続の互換workflowと指定カテゴリ分類はmainに入っている。2025Q4の方向性を現在の未実装として扱わない。（根拠: kouchou-ai 6e9e60ee（[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)）/ 42bba8ea8（[#996](https://github.com/digitaldemocracy2030/kouchou-ai/issues/996)））。

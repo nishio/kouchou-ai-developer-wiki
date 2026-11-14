@@ -111,7 +111,7 @@ README を英語デフォルト化（PR [#966](https://github.com/digitaldemocra
 ## Open Questions
 
 - 仲介者経路（建ててくれる人を探す）を docs 内の連絡先リストにするか、DD2030 Web / Slack / form へ逃がすか。誰がメンテし、紹介後の責任分界点をどうするか。
-- #977 の内部 README アンカー直リンクは PR #1006 で docs へ移行し、リンク検査も導入済み。既存の外部リンクの全量・流入元の棚卸しは引き続き未確認。
+- [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) の内部 README アンカー直リンクは PR [#1006](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1006) で docs へ移行し、リンク検査も導入済み。既存の外部リンクの全量・流入元の棚卸しは引き続き未確認。
 - GitHub About の homepage を docs サイトへ設定し、DD2030 website の「使い方」等を docs へ向ける PR website#231 が 2026-10-30 に作られた。PR の merge と配布物・検索流入側の導線は引き続き未確認。
 
 ## 関連
@@ -137,7 +137,7 @@ README を英語デフォルト化（PR [#966](https://github.com/digitaldemocra
 - 2026-10-21: [#696](https://github.com/digitaldemocracy2030/kouchou-ai/issues/696) を閉じた PR のうち serverless 版の [#24](https://github.com/tokoroten/kouchou-ai-serverless/pull/24) が、本体の同じ番号の無関係な Issue へのリンクになっていたのを kouchou-ai-serverless の PR へのリンクに直した
 
 - 2026-11-07: Open Questions から除去 — 「`getting-started/` rename は破壊的。redirect / alias / old URL 維持をどう扱うか。[[issue-876-developer-docs-gap-audit-2026-06-30]]」。旧URLを mkdocs-redirects で新 self-hosting ページへ接続した。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；kouchou-ai 41e910100）。
-- 2026-11-07: Open Questions から除去 — 「#876 を単体ページ追加で close するか、docs spine first slice（nav + 入口文言同時変更）とするか。」。単体追加だけで閉じず入口・rename・導入ガイドの複数PRで headline を満たし、残件を #1012 へ分離した。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-policy-history.md:138（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:152（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「[#876](https://github.com/digitaldemocracy2030/kouchou-ai/issues/876) を単体ページ追加で close するか、docs spine first slice（nav + 入口文言同時変更）とするか。」。単体追加だけで閉じず入口・rename・導入ガイドの複数PRで headline を満たし、残件を [#1012](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1012) へ分離した。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-policy-history.md:138（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:152（既存 Updates））。
 - 2026-11-07: Open Questions から除去 — 「spine 2-a の managed service は実在するか。不在なら研究者の主入口は CLI + カタログ経由になり、カタログの重みが上がる。[[kouchou-ai-docs-entry-restructure-2026-06-03]] / [[experimental-features-catalog-proposal-2026-06-03]]」。managed service は現状なしと西尾回答済み。将来提供者の余地は維持する。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-entry-restructure-2026-06-03.md:92（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:141（既存 Updates））。
-- 2026-11-07: Open Questions の現状を更新 — 「README 外部アンカーリンクの実態（どこから何件）は未調査。移行先ページ・redirect 方針は未定（#977）。」。内部の README 直リンクは docs へ移行し #977 は close。外部からの全量調査は引き続き未確認。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:153（既存 Updates）；kouchou-ai d759df7c4 / f83567043）。
+- 2026-11-07: Open Questions の現状を更新 — 「README 外部アンカーリンクの実態（どこから何件）は未調査。移行先ページ・redirect 方針は未定（[#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977)）。」。内部の README 直リンクは docs へ移行し [#977](https://github.com/digitaldemocracy2030/kouchou-ai/issues/977) は close。外部からの全量調査は引き続き未確認。（根拠: 0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:151（既存 Updates）；0f2ebe6:wiki/analyses/kouchou-ai-docs-improvement-roadmap-2026-10-13.md:153（既存 Updates）；kouchou-ai d759df7c4 / f83567043）。
 - 2026-11-07: Open Questions の現状を更新 — 「非開発者を GitHub 経由させず docs サイトへ着地させる具体導線（配布物 / 事例サイト / 検索流入の向き先）は未設計。6 月 spine 再設計と合流が必要。」。西尾指示で About homepage が docs に設定され、website #231 が作られた。PR の merge は未確認。（根拠: /Users/nishio/grasp-nishio/LOG.md:「2026-10-30 ops | 広聴AIのドキュメントへの入口をつなぐ」）。

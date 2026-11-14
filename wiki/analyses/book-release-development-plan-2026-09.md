@@ -214,7 +214,7 @@ main に未反映の open PR 群を、「9 月前に必要」「9 月後でよ�
 ## Open Questions
 
 - 出版時点の stable を `main` tag で切るのか、branch を分けるのか
-- 列挙していた PR #824 / #825 / #827 は main に反映済み（#827 は計画文書）。9 月前の採用予定を実績から遡って断定せず、v5 の残るリリース条件を確認する。
+- 列挙していた PR [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) / [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) / [#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827) は main に反映済み（[#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827) は計画文書）。9 月前の採用予定を実績から遡って断定せず、v5 の残るリリース条件を確認する。
 - v4 互換として最低限どこまでを保証対象にするか
 - legacy path をいつまで残すか
 
@@ -228,5 +228,5 @@ main に未反映の open PR 群を、「9 月前に必要」「9 月後でよ�
 - 2026-05-18: 「v4 の既存機能が壊れていないことをテストで保証しつつ v5 へ移行する」前提を反映し、回帰検知帯の整備を主タスクとして追加
 - 2026-10-07: lint 注記。本文の「`run_workflow()` は dormant」は 2026-05-18 時点の観測。PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)（2026-05-21 merge）以降は `run_default()` → `run_workflow()` が CLI の既定経路（current main `a12d68e` で確認）。現状は [[refactoring-status]] を正とする
 
-- 2026-11-07: Open Questions の現状を更新 — 「open PR #825 / #824 / #827 のうち、どこまでを 9 月前の対象に含めるか」。列挙した3PRは main に反映済み。過去の「9月前にどこまで含めるか」という予定と実績を分ける。（根拠: kouchou-ai 8ab850682 / 11b2ec55 / dee87a8a1（2026-05-18、#824 / #825 / #827）；0f2ebe6:wiki/analyses/book-release-development-plan-2026-09.md:230（既存 Updates））。
-- 2026-11-07: Open Questions から除去 — 「run_workflow() / plugin system / capability 判定のどこまでを 9 月前に default 化できるか」。workflow 既定化は #840、legacy cleanup は #865 で実施済み。v5 リリース全体の完了とは分ける。（根拠: 0f2ebe6:wiki/analyses/book-release-development-plan-2026-09.md:230（既存 Updates）；kouchou-ai 0e1552dd / e5ed74380）。
+- 2026-11-07: Open Questions の現状を更新 — 「open PR [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) / [#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) / [#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827) のうち、どこまでを 9 月前の対象に含めるか」。列挙した3PRは main に反映済み。過去の「9月前にどこまで含めるか」という予定と実績を分ける。（根拠: kouchou-ai 8ab850682 / 11b2ec55 / dee87a8a1（2026-05-18、[#824](https://github.com/digitaldemocracy2030/kouchou-ai/issues/824) / [#825](https://github.com/digitaldemocracy2030/kouchou-ai/issues/825) / [#827](https://github.com/digitaldemocracy2030/kouchou-ai/issues/827)）；0f2ebe6:wiki/analyses/book-release-development-plan-2026-09.md:230（既存 Updates））。
+- 2026-11-07: Open Questions から除去 — 「run_workflow() / plugin system / capability 判定のどこまでを 9 月前に default 化できるか」。workflow 既定化は [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)、legacy cleanup は [#865](https://github.com/digitaldemocracy2030/kouchou-ai/issues/865) で実施済み。v5 リリース全体の完了とは分ける。（根拠: 0f2ebe6:wiki/analyses/book-release-development-plan-2026-09.md:230（既存 Updates）；kouchou-ai 0e1552dd / e5ed74380）。

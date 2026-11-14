@@ -60,12 +60,12 @@ OpenRouter provider の基本経路は current main にある。admin UI でも 
 
 - `#79` の事前コスト見積もりは、実行後 token usage 実績を seed にした coarse estimate から始めるべきか
 - `#253` は Web 静的 export の file URL サポートを広げるのか、file URL ではなくローカル server / GitHub Pages への誘導に絞るのか
-- #537 の OpenRouter 無料モデル向け structured output fallback は PR #985 で main 入りした。無料モデル利用時の embedding をローカルに固定するかは未決。
+- [#537](https://github.com/digitaldemocracy2030/kouchou-ai/issues/537) の OpenRouter 無料モデル向け structured output fallback は PR [#985](https://github.com/digitaldemocracy2030/kouchou-ai/issues/985) で main 入りした。無料モデル利用時の embedding をローカルに固定するかは未決。
 
 ## Updates
 
 - 2026-05-25: `origin/main@e5ed74380b6a18bb3d1e7d5f6408c7f4b3b55381` と GitHub live state を確認し、open のまま残した 6 issue の判断根拠として作成
 
-- 2026-11-07: Open Questions から除去 — 「#391 は作成開始時に常に API preflight を走らせるべきか、それとも手動チェックの状態を一定時間 cache すべきか」。自動強制ではなく、作成前確認画面で表示中の設定を手動チェックし未確認・エラーでも続行する実装。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:59）。
-- 2026-11-07: Open Questions から除去 — 「`#477` はライト案の「Azure では model select disabled」だけ先にやるか、deployment list 取得まで進めるか」。Azure のモデルはサーバー設定に限定する軽い案を #911 で実装済み。（根拠: kouchou-ai 6105ff0a5（2026-09-08、#911）；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:106）。
-- 2026-11-07: Open Questions の現状を更新 — 「`#537` は無料 OpenRouter chat model だけを first target にし、embedding は local embedding 強制にする方が現実的か」。OpenRouter 無料モデル用 fallback は実装された。embedding をどう組み合わせるかは別の契約として残る。（根拠: kouchou-ai 490a0bd3c（2026-10-13、#985））。
+- 2026-11-07: Open Questions から除去 — 「[#391](https://github.com/digitaldemocracy2030/kouchou-ai/issues/391) は作成開始時に常に API preflight を走らせるべきか、それとも手動チェックの状態を一定時間 cache すべきか」。自動強制ではなく、作成前確認画面で表示中の設定を手動チェックし未確認・エラーでも続行する実装。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:59）。
+- 2026-11-07: Open Questions から除去 — 「`#477` はライト案の「Azure では model select disabled」だけ先にやるか、deployment list 取得まで進めるか」。Azure のモデルはサーバー設定に限定する軽い案を [#911](https://github.com/digitaldemocracy2030/kouchou-ai/issues/911) で実装済み。（根拠: kouchou-ai 6105ff0a5（2026-09-08、[#911](https://github.com/digitaldemocracy2030/kouchou-ai/issues/911)）；kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:106）。
+- 2026-11-07: Open Questions の現状を更新 — 「`#537` は無料 OpenRouter chat model だけを first target にし、embedding は local embedding 強制にする方が現実的か」。OpenRouter 無料モデル用 fallback は実装された。embedding をどう組み合わせるかは別の契約として残る。（根拠: kouchou-ai 490a0bd3c（2026-10-13、[#985](https://github.com/digitaldemocracy2030/kouchou-ai/issues/985)））。

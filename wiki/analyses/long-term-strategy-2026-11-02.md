@@ -246,6 +246,6 @@ AI エージェントが進められるのは、PR・RC・docs・RFC・計測の
 - 2026-11-02: nishio の「改めて簡潔にまとめて」への回答を冒頭の「要約」節として追記。戦略会議でそのまま読める長さにした
 - 2026-11-02: nishio の指示で、この戦略案が AI の叩き台であってチームの決定ではないことをタイトル・summary・冒頭の注記に明記
 - 2026-11-02: nishio の「書籍の時期は保証がないので層分離を巻いて v5.0 に入れては」を受け、柱 4 を 3 段に割って第 1・2 段（公開用 artifact の契約と読み手の切替）を v5.0 に前倒し、第 3 段（丸ごと埋め込みをやめる）を 5.x に残す案を追記。main `d2702d48` で触る範囲を確認した。採否は未定
-- 2026-11-02: 層分離の第 1 段に着手（Issue #1178、PR #1179）
-- 2026-11-03: PR #1179 を main に merge（プロンプトと `source_code` を公開契約に含めてよいと nishio が判断）。次は第 2 段
-- 2026-11-07: 第 2 段を PR #1187 に（公開 API が契約の形を返す。正本から毎回作り、写しの `public_result.json` は読まない。写しを直接配るのは第 3 段で、食い違いの検出とあわせて。ビューアの型を契約に合わせた）。未 merge
+- 2026-11-02: 層分離の第 1 段に着手（Issue [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178)、PR [#1179](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1179)）
+- 2026-11-03: PR [#1179](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1179) を main に merge（プロンプトと `source_code` を公開契約に含めてよいと nishio が判断）。次は第 2 段
+- 2026-11-07: 第 2 段を PR [#1187](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1187) に（公開 API が契約の形を返す。正本から毎回作り、写しの `public_result.json` は読まない。写しを直接配るのは第 3 段で、食い違いの検出とあわせて。ビューアの型を契約に合わせた）。未 merge

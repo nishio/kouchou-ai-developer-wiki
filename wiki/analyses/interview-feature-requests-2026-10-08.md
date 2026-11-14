@@ -57,10 +57,10 @@ open issue [#323](https://github.com/digitaldemocracy2030/kouchou-ai/issues/323)
 ## Open Questions
 
 - `hate_or_insult` の作業定義を外部にどう説明するか。見落とし寄りの数字を「下限」として出してよいか。
-- 粒度切替は「濃い意見」を含む形で PR #961、日英韓の表示切替は PR #1144 で main 入りした。今後「大きい / 細かい」へ文言を変えるかは未決。
+- 粒度切替は「濃い意見」を含む形で PR [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)、日英韓の表示切替は PR [#1144](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1144) で main 入りした。今後「大きい / 細かい」へ文言を変えるかは未決。
 - 意見本文まで翻訳するか。外部に見せるなら OpenAI で全件翻訳し、固有名詞の訳語を人手確認する必要がある。
 - 翻訳ステップを workflow に組み込むか（今は後処理 CLI のみ。API / admin からの導線も無い）。
-- 3 branch の機能は粒度切替 #961、日英韓の表示切替と翻訳 CLI #1144、意見分類 #975 として main 入りした。意見本文の翻訳を workflow / admin へ統合する範囲は引き続き未決。
+- 3 branch の機能は粒度切替 [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961)、日英韓の表示切替と翻訳 CLI [#1144](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1144)、意見分類 [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975) として main 入りした。意見本文の翻訳を workflow / admin へ統合する範囲は引き続き未決。
 
 ## Updates
 
@@ -84,6 +84,6 @@ open issue [#323](https://github.com/digitaldemocracy2030/kouchou-ai/issues/323)
 
 - 2026-10-10 夜: 追加依頼に応じ、非公開資料に出典チャンネル別の色分け、同一座標での除外前後比較、群別の構成・除外率、既存選択の暫定主題整理を追加した。複数出典の意見は代表投稿だけで帰属を決めず、元の対応表を使い、表示と集計の重複処理を明示する。選択済み集合の主題整理と、選択基準自体の再検証を区別し、曖昧な項目を無断で除外しない。画像・表・照合CSVを日英韓の入口から確認でき、除外後の全文表示も動作確認済み。成果物は非公開snapshotと新しいbundleに保存し、以前の送付版は保持した。送付・外部公開は未実施。
 
-- 2026-11-07: Open Questions の現状を更新 — 「粒度切替に「濃い意見」を残すか。ボタン文言を要望どおり「大きい / 細かい」に寄せるか。言語トグルがあるなら `aria-label="クラスタの粒度"` も翻訳対象。」。粒度切替は #961 で採用済み、日英韓 UI は #1144 で main 入り。ラベルを今後変えるかは利用者判断として残す。（根拠: 0f2ebe6:wiki/analyses/interview-feature-requests-2026-10-08.md:69（既存 Updates）；kouchou-ai 952ebe23f / 8ec864d39）。
-- 2026-11-07: Open Questions から除去 — 「~~既存の Biome エラーを別途直すか。~~ 2026-10-09: [#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) / PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で 0 件化と CI での強制を進めることになった（[[biome-lint-main-drift-2026-10-09]]）。」。取り消し線で回答済みだった Biome の残項目を除去する。#963 は導入済み。（根拠: kouchou-ai 2b0079a1d（2026-10-12、#963）；0f2ebe6:wiki/concepts/testing.md:88（既存 Updates））。
-- 2026-11-07: Open Questions の現状を更新 — 「3 branch の統合順序と、push 認証の設定後に PR を課題ごとに分けるか。」。粒度・表示言語・意見分類の本体経路は #961 / #1144 / #975 に反映済み。後処理 CLI と workflow 統合は区別する。（根拠: kouchou-ai 952ebe23f / 8ec864d39 / 1e7fdae5a）。
+- 2026-11-07: Open Questions の現状を更新 — 「粒度切替に「濃い意見」を残すか。ボタン文言を要望どおり「大きい / 細かい」に寄せるか。言語トグルがあるなら `aria-label="クラスタの粒度"` も翻訳対象。」。粒度切替は [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) で採用済み、日英韓 UI は [#1144](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1144) で main 入り。ラベルを今後変えるかは利用者判断として残す。（根拠: 0f2ebe6:wiki/analyses/interview-feature-requests-2026-10-08.md:69（既存 Updates）；kouchou-ai 952ebe23f / 8ec864d39）。
+- 2026-11-07: Open Questions から除去 — 「~~既存の Biome エラーを別途直すか。~~ 2026-10-09: [#962](https://github.com/digitaldemocracy2030/kouchou-ai/issues/962) / PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で 0 件化と CI での強制を進めることになった（[[biome-lint-main-drift-2026-10-09]]）。」。取り消し線で回答済みだった Biome の残項目を除去する。[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) は導入済み。（根拠: kouchou-ai 2b0079a1d（2026-10-12、[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)）；0f2ebe6:wiki/concepts/testing.md:88（既存 Updates））。
+- 2026-11-07: Open Questions の現状を更新 — 「3 branch の統合順序と、push 認証の設定後に PR を課題ごとに分けるか。」。粒度・表示言語・意見分類の本体経路は [#961](https://github.com/digitaldemocracy2030/kouchou-ai/issues/961) / [#1144](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1144) / [#975](https://github.com/digitaldemocracy2030/kouchou-ai/issues/975) に反映済み。後処理 CLI と workflow 統合は区別する。（根拠: kouchou-ai 952ebe23f / 8ec864d39 / 1e7fdae5a）。

@@ -19,7 +19,7 @@ sources:
 
 3 件とも着手前に nishio を assignee に設定し、`work/kouchou-ai-<issue>` の worktree で実装した。merge は人間の判断。
 
-## 1. 属性ステップ 2 つ（#1158 → #1165）
+## 1. 属性ステップ 2 つ（[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158) → [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1165)）
 
 ### 何を作ったか
 
@@ -44,7 +44,7 @@ sources:
 - CLI の `--dry-run` で両ステップが計画に出ること、`mkdocs build --strict` が通ることを確認
 - **未確認**: `opinion_stance` の実 LLM での応答品質。既定プロンプトは同梱したが、対象の書き方でスコアの向きが変わるので「公開前にサンプルを読む」旨を docs に書いた
 
-## 2. 階層リストの詳細モード化（#1159 → #1166）
+## 2. 階層リストの詳細モード化（[#1159](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1159) → [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1166)）
 
 ### 何を作ったか
 
@@ -64,7 +64,7 @@ sources:
 - public-viewer の `tsc`・`biome`・`jest` 46 suites green。追加テストは出典リンクの有無（有効かつ URL あり / 無効 / 設定なし）
 - 未確認: 実ブラウザでのツールチップの見た目。全画面ツールバー（`ScatterLevelSwitch`）にも同じ目的文が出る
 
-## 3. ビューの選び方ギャラリー（#1160 → #1167）
+## 3. ビューの選び方ギャラリー（[#1160](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1160) → [#1167](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1167)）
 
 ### 何を作ったか
 
@@ -76,11 +76,11 @@ CI と同じ fixture API を立て `build:static` → `python3 -m http.server` �
 
 ### 残したもの
 
-- 属性で絞った見方は「準備中」。テスト用レポートに属性が無い。#1165 が入った後に同梱サンプル（`sample_comments.csv`）で賛否・新規性を付けて回し、同じ並びで足す
-- #1166 が入ったらリストのスクリーンショット（見出し・説明文が変わる）を撮り直す。`opinion-scores.md` が main に入ったらギャラリーのリンクを Issue からそのページに差し替える
+- 属性で絞った見方は「準備中」。テスト用レポートに属性が無い。[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1165) が入った後に同梱サンプル（`sample_comments.csv`）で賛否・新規性を付けて回し、同じ並びで足す
+- [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1166) が入ったらリストのスクリーンショット（見出し・説明文が変わる）を撮り直す。`opinion-scores.md` が main に入ったらギャラリーのリンクを Issue からそのページに差し替える
 - 常設公開の置き場は [#518](https://github.com/digitaldemocracy2030/kouchou-ai/issues/518) の判断に従う
 
-## 4. 関連研究の紹介ページ（#1173 → #1174、同日追記）
+## 4. 関連研究の紹介ページ（[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1174)、同日追記）
 
 nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs から成熟していない関連研究として紹介する。入れるとしても CLI から」（[[open-decisions]] A14）を受け、Issue [#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) で `docs/development/related-research.md` を追加した。
 
@@ -97,9 +97,9 @@ nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs か�
 
 ## 次に見るもの
 
-1. 3 本の merge 判断（人間）。順序の提案: #1165（本体に影響しない CLI 追加）→ #1155 または #1166（どちらかを先に、残りを rebase）→ #1167
-2. #1165 merge 後、同梱サンプルで賛否・新規性を実 LLM（または ollama）で回し、スコアの向きを目視確認してからギャラリーに属性つきの例を足す
-3. ~~#1168 の対応~~ → PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171) で main 入り（2026-10-29）
+1. 3 本の merge 判断（人間）。順序の提案: [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1165)（本体に影響しない CLI 追加）→ [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155) または [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1166)（どちらかを先に、残りを rebase）→ [#1167](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1167)
+2. [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1165) merge 後、同梱サンプルで賛否・新規性を実 LLM（または ollama）で回し、スコアの向きを目視確認してからギャラリーに属性つきの例を足す
+3. ~~[#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168) の対応~~ → PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171) で main 入り（2026-10-29）
 4. 順序 4〜6（付箋表示の書き出し契約、埋め込み重み付けの clean experiment、DivCon の契約）は [[open-decisions]] A13・A14 の判断待ち
 
 ## Open Questions
@@ -113,7 +113,7 @@ nishio の方針「tokoroten の 2 手法は本体に取り込まず、docs か�
 - 2026-10-29: 初回作成
 - 2026-10-29: 4 節（関連研究の紹介ページ、[#1173](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1173) → PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）を追記。副産物の [#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168) は PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1171)（`httpx` の宣言と polars 2 の `read_csv`）で同日に main に入った
 - 2026-11-02: 4 本（[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165)〜[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167)、[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)）とも未 merge で CI green。[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) は 10-29 の rebase 直後に CodeRabbit が Minor 5 件を付けていて未対応（docs の項目説明、無効化後の再実行で古い score 属性が残る、入力属性と生成 score の衝突、入力検証で落ちたとき古い出力が残る 2 件）。内訳と判断点は [[open-pr-status-2026-11-02]]
-- 2026-11-07: 2 節の [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) が merge（`7253efcc`、nishio の admin squash merge）。#1165 より先に入った。3 節の「#1166 が入ったらリストのスクリーンショットを撮り直す」が実行可能になった
+- 2026-11-07: 2 節の [#1166](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1166) が merge（`7253efcc`、nishio の admin squash merge）。[#1165](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1165) より先に入った。3 節の「[#1166](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1166) が入ったらリストのスクリーンショットを撮り直す」が実行可能になった
 - 2026-11-07（照合）: 1 節の [#1165](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1165) は、CodeRabbit の指摘のうち軽い 3 件（docs の項目説明、入力検証で落ちたとき古い出力が残る 2 件）を 11-07 に直し（`9c8f0da9`、CI green、該当スレッドは解決済み）、設計判断の要る 2 件（無効化後の再集計、入力の同名属性の上書き）を Issue [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) に切り出した。冒頭の表の状態列に 11-07 の状態を書き足した
 - 2026-11-07（査読を受けて）: 冒頭の表の 3 行目（[#1167](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1167)）に 11-07 の状態（CI green、未 merge）を、副産物の Dependabot の low 1 件に修正版がまだ無いことを書き足した
 - 2026-11-11: 4 節の位置づけを nishio の方針で改めた。「成熟していない関連研究」ではなく「まだ本体に取り込まれていない周辺の研究・実験」として紹介し、本体外の試みを奨励する。[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) のページ名・冒頭・PR の題と本文を書き換え、本体外で試すことを歓迎する節と nishio の可視化カタログのエントリを足した。4 節の「人間に確かめてほしい点」から「成熟していない」の位置づけの確認は外れる（[[open-decisions]] A14）

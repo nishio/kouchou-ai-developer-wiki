@@ -43,7 +43,7 @@ sources:
 
 ## Open Questions
 
-- CLI のライセンス資源欠如時の堅牢性 Issue #978 は PR #980 で解消済み。コード入り `report.html` の例外経路と Web 版静的 viewer の license notice・対応ソース導線の充足性監査は引き続き未確認。
+- CLI のライセンス資源欠如時の堅牢性 Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) は PR [#980](https://github.com/digitaldemocracy2030/kouchou-ai/issues/980) で解消済み。コード入り `report.html` の例外経路と Web 版静的 viewer の license notice・対応ソース導線の充足性監査は引き続き未確認。
 - プラグインの結合度・コード由来に応じた実際の配布条件と、プロジェクトとして案内するライセンス方針。
 - 例外条項を設けたい場合の必要性と権利範囲。AGPL訂正指示は例外許諾を意味しない。
 
@@ -114,4 +114,4 @@ sources:
 
 適用範囲は通常のライセンス資源を備えたCLI出力。既存の古いHTML、生成後に表示コードを直接改変したHTML、Web版静的出力は別に扱う。後続PR [#980](https://github.com/digitaldemocracy2030/kouchou-ai/issues/980)の資源欠如時フォールバックではソースZIPが付かないため、「案内を残せばよい」という通常経路の説明を、その例外へ無条件に適用しない。
 
-- 2026-11-07: Open Questions の現状を更新 — 「コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。堅牢性の既知の残件は Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（後述の Updates 参照）。」。CLI の #978 は解消済み。静的 viewer と例外経路の充足性監査は未了として残す。（根拠: 0f2ebe6:wiki/analyses/agpl-output-and-plugin-boundaries-2026-10-12.md:100（既存 Updates）；0f2ebe6:wiki/analyses/agpl-output-and-plugin-boundaries-2026-10-12.md:113（既存 Updates）；kouchou-ai 478cd1a03 / bbc10c947）。
+- 2026-11-07: Open Questions の現状を更新 — 「コード入り `report.html` / 静的viewerについて、現在のlicense notice・対応ソース導線が適切か。今回、充足性の監査まではしていない。堅牢性の既知の残件は Issue [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978)（後述の Updates 参照）。」。CLI の [#978](https://github.com/digitaldemocracy2030/kouchou-ai/issues/978) は解消済み。静的 viewer と例外経路の充足性監査は未了として残す。（根拠: 0f2ebe6:wiki/analyses/agpl-output-and-plugin-boundaries-2026-10-12.md:100（既存 Updates）；0f2ebe6:wiki/analyses/agpl-output-and-plugin-boundaries-2026-10-12.md:113（既存 Updates）；kouchou-ai 478cd1a03 / bbc10c947）。

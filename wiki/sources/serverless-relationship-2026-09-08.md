@@ -31,11 +31,11 @@ dd2030-wiki の `wiki/overview.md` と `wiki/topics/nl-data-collection-tools-col
 
 ## Open Questions
 
-- 公開 JSON の元コメント本文は PR #1155 でレポート単位の opt-in（既定 off）になった。再分析用データとの区別、対応のない元コメントや多対多関係の共通契約は引き続き未決。
+- 公開 JSON の元コメント本文は PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155) でレポート単位の opt-in（既定 off）になった。再分析用データとの区別、対応のない元コメントや多対多関係の共通契約は引き続き未決。
 - 端末・データ量・モデル別の処理上限、初見利用者の成功率、実モデル品質は未測定。
 
 ## Updates
 
 - 2026-09-08: 初回調査。判断と開発順序は [[serverless-product-direction-2026-09-08]]。
 
-- 2026-11-07: Open Questions の現状を更新 — 「現行版の公開用JSONと、原文を含む再分析用データをどう区別するか。互換性のために原文を自動追加する変更は、公開範囲を変えるため避ける。」。元コメント本文はレポート単位の既定off/opt-inとして #1155 が実装した。再分析用との契約全体は残る。（根拠: kouchou-ai 8e95ceb1d（2026-10-29、#1155）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。
+- 2026-11-07: Open Questions の現状を更新 — 「現行版の公開用JSONと、原文を含む再分析用データをどう区別するか。互換性のために原文を自動追加する変更は、公開範囲を変えるため避ける。」。元コメント本文はレポート単位の既定off/opt-inとして [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155) が実装した。再分析用との契約全体は残る。（根拠: kouchou-ai 8e95ceb1d（2026-10-29、[#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155)）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。

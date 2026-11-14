@@ -49,4 +49,4 @@ sources:
 
 根拠は本ページの9月9日の実装・検証記録と [[three-issues-progress-2026-09-09]]。検証境界の知見は [[testing]] にも反映した。
 
-- 2026-11-07: Open Questions から除去 — 「#946再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。」。#944/#945/#946 の3PRはmain履歴にmerge済み。CI成功だけで判断していない。（根拠: kouchou-ai upstream/main git log: #944（76cd44690、2026-10-05）/#945（fedf67abe、2026-10-06）/#946（2026-10-12、46013563f））。
+- 2026-11-07: Open Questions から除去 — 「[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)再実行CIの結果と、3PRのマージ判断。今回はマージ指示なし。」。[#944](https://github.com/digitaldemocracy2030/kouchou-ai/issues/944)/[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)/[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946) の3PRはmain履歴にmerge済み。CI成功だけで判断していない。（根拠: kouchou-ai upstream/main git log: [#944](https://github.com/digitaldemocracy2030/kouchou-ai/issues/944)（76cd44690、2026-10-05）/[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945)（fedf67abe、2026-10-06）/[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)（2026-10-12、46013563f））。

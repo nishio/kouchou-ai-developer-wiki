@@ -48,4 +48,4 @@ sources:
 
 > **セキュリティ保守の durable 正本**: [[security-maintenance]]（本ページはその dated な実測/議論の一つ）
 
-- 2026-11-07: Open Questions から除去 — 「lockfile bump で上流パッケージ（express 系 / postcss 系）が patched 版を実際に受け入れるかは、`pnpm update` + test で要検証。本ページ時点では未実施（live state 観測と優先度判断まで）。」。#1013 の CI 通過・main 反映がある。全 alert 解消の意味ではない。（根拠: 0f2ebe6:wiki/analyses/dependabot-alerts-2026-10-14.md:48（既存 Updates）；kouchou-ai a97b357c1（2026-10-14、#1013））。
+- 2026-11-07: Open Questions から除去 — 「lockfile bump で上流パッケージ（express 系 / postcss 系）が patched 版を実際に受け入れるかは、`pnpm update` + test で要検証。本ページ時点では未実施（live state 観測と優先度判断まで）。」。[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1013) の CI 通過・main 反映がある。全 alert 解消の意味ではない。（根拠: 0f2ebe6:wiki/analyses/dependabot-alerts-2026-10-14.md:48（既存 Updates）；kouchou-ai a97b357c1（2026-10-14、[#1013](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1013)））。

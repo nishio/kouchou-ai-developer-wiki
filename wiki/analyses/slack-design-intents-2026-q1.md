@@ -62,5 +62,5 @@ sources:
 - 2026-05-17: `#2_開発_広聴ai` の 2026-Q1 ログから初回整理
 - 2026-10-07: lint 注記。「`run_workflow()` が production で dormant」は 2026-05-17 時点の観測。PR [#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)（2026-05-21 merge）以降は `run_default()` 経由で既定経路になった（[[refactoring-status]]）
 
-- 2026-11-07: Open Questions から除去 — 「taxonomy-guided LLM classification は意図として明確だが、main コードや open PR にどこまで落ちているかは別観測が必要」。taxonomy-guided は #996 の predefined_groups としてCLI実装済み。品質評価の十分性は別。（根拠: kouchou-ai 42bba8ea8；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:80）。
-- 2026-11-07: Open Questions から除去 — 「analysis を GUI で切り替えるか、管理者設定ファイルだけにするかは 2026-01 時点で保留」。分析方式は #987 で admin の作成画面から選ぶ形が main 入りした。（根拠: 0f2ebe6:wiki/concepts/pipeline.md:142（既存 Updates）；kouchou-ai c33d264a4）。
+- 2026-11-07: Open Questions から除去 — 「taxonomy-guided LLM classification は意図として明確だが、main コードや open PR にどこまで落ちているかは別観測が必要」。taxonomy-guided は [#996](https://github.com/digitaldemocracy2030/kouchou-ai/issues/996) の predefined_groups としてCLI実装済み。品質評価の十分性は別。（根拠: kouchou-ai 42bba8ea8；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:80）。
+- 2026-11-07: Open Questions から除去 — 「analysis を GUI で切り替えるか、管理者設定ファイルだけにするかは 2026-01 時点で保留」。分析方式は [#987](https://github.com/digitaldemocracy2030/kouchou-ai/issues/987) で admin の作成画面から選ぶ形が main 入りした。（根拠: 0f2ebe6:wiki/concepts/pipeline.md:142（既存 Updates）；kouchou-ai c33d264a4）。

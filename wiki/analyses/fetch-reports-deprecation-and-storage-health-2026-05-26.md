@@ -49,7 +49,7 @@ sources:
 
 ## Open Questions
 
-- storage health check の導入は完了。status / report artifact の read-back と判断理由の docs は #871 の残件として #973 に分離されており、その完了は未確認。
+- storage health check の導入は完了。status / report artifact の read-back と判断理由の docs は [#871](https://github.com/digitaldemocracy2030/kouchou-ai/issues/871) の残件として [#973](https://github.com/digitaldemocracy2030/kouchou-ai/issues/973) に分離されており、その完了は未確認。
 - storage を canonical と言い切るなら、deploy 前 backup の発想そのものを docs から外し、「起動時 restore が通ること」を保証対象に切り替えるべきか
 
 ## Updates
@@ -57,5 +57,5 @@ sources:
 - 2026-05-26: 初版作成。`fetch_reports.py` の歴史的位置づけを migration 手段として読み直し、current `ReportSyncService` / `initialize_from_storage()` 本線とのズレを整理
 - 2026-05-26: GitHub 上で旧 issue `#629` を close し、論点を `#870 fetch_reports.py を migration / 緊急救済専用へ降格` と `#871 Azure deploy の safety を Blob Storage health check に切り替える` の 2 件へ分解した
 
-- 2026-11-07: Open Questions から除去 — 「短期修正としては、`fetch_reports.py` を admin endpoint ベースに直すべきか、それとも workflow から外して storage health check へ即置換すべきか」。admin endpointへの修繕ではなく、fetch_reportsを通常workflowから外しstorage health checkを加えた。（根拠: kouchou-ai f2646ad69 / 862edb215 / 0c294dafb（2026-05-29、#875））。
-- 2026-11-07: Open Questions の現状を更新 — 「health check は `apps/api/scripts/test_storage.py` の upload 確認だけで足りるか、それとも status / report artifact の read-back まで確認すべきか」。storage health check自体は導入済み。status/artifact read-backと理由のdocsは #973 に分離された。（根拠: wiki git 2e116be:wiki/log.md:14（2026-10-12 18:45、#871 closeと #973 切出し））。
+- 2026-11-07: Open Questions から除去 — 「短期修正としては、`fetch_reports.py` を admin endpoint ベースに直すべきか、それとも workflow から外して storage health check へ即置換すべきか」。admin endpointへの修繕ではなく、fetch_reportsを通常workflowから外しstorage health checkを加えた。（根拠: kouchou-ai f2646ad69 / 862edb215 / 0c294dafb（2026-05-29、[#875](https://github.com/digitaldemocracy2030/kouchou-ai/issues/875)））。
+- 2026-11-07: Open Questions の現状を更新 — 「health check は `apps/api/scripts/test_storage.py` の upload 確認だけで足りるか、それとも status / report artifact の read-back まで確認すべきか」。storage health check自体は導入済み。status/artifact read-backと理由のdocsは [#973](https://github.com/digitaldemocracy2030/kouchou-ai/issues/973) に分離された。（根拠: wiki git 2e116be:wiki/log.md:14（2026-10-12 18:45、[#871](https://github.com/digitaldemocracy2030/kouchou-ai/issues/871) closeと [#973](https://github.com/digitaldemocracy2030/kouchou-ai/issues/973) 切出し））。

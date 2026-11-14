@@ -38,5 +38,5 @@ sources:
 
 - 2026-05-18: 初回作成
 
-- 2026-11-07: Open Questions から除去 — 「`llm_grouping` を Phase 1 で legacy pipeline の分岐として入れるのか、dormant な `run_workflow()` 活用を先に進めるのか」。#840によるworkflow default化を進め、#866は互換workflowとしてmain入りした。（根拠: 0f2ebe6:wiki/analyses/workflow-defaultization-blockers.md:133（既存 Updates）；kouchou-ai 0e1552dd / 6e9e60ee）。
-- 2026-11-07: Open Questions から除去 — 「taxonomy-guided classification を `llm_grouping` の設定値として持たせるのか、別 mode として分けるのか」。taxonomy-guidedはllm_groupingのpredefined_groupsとして #996 で実装。（根拠: kouchou-ai 42bba8ea8；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:80）。
+- 2026-11-07: Open Questions から除去 — 「`llm_grouping` を Phase 1 で legacy pipeline の分岐として入れるのか、dormant な `run_workflow()` 活用を先に進めるのか」。[#840](https://github.com/digitaldemocracy2030/kouchou-ai/issues/840)によるworkflow default化を進め、[#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866)は互換workflowとしてmain入りした。（根拠: 0f2ebe6:wiki/analyses/workflow-defaultization-blockers.md:133（既存 Updates）；kouchou-ai 0e1552dd / 6e9e60ee）。
+- 2026-11-07: Open Questions から除去 — 「taxonomy-guided classification を `llm_grouping` の設定値として持たせるのか、別 mode として分けるのか」。taxonomy-guidedはllm_groupingのpredefined_groupsとして [#996](https://github.com/digitaldemocracy2030/kouchou-ai/issues/996) で実装。（根拠: kouchou-ai 42bba8ea8；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/llm_grouping.py:80）。

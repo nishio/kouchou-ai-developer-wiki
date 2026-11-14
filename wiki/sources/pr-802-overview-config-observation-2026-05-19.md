@@ -25,10 +25,10 @@ sources:
 ## Open Questions
 
 - viewer 側の期待動作は「`config` 欠損なら最低限表示継続」なのか、「不正データとして notFound / error fallback に落とす」なのか
-- `reports/:slug` API は実際に `config` 欠損 payload を返しうるのか、それとも issue の再現は過去 tree か一時的不整合に限られるのか（2026-11-07 現状更新: #834 で config 欠損は 500 になり問いの前半は無意味化したが、実データの混入経路は未決。Updates 参照）
+- `reports/:slug` API は実際に `config` 欠損 payload を返しうるのか、それとも issue の再現は過去 tree か一時的不整合に限られるのか（2026-11-07 現状更新: [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) で config 欠損は 500 になり問いの前半は無意味化したが、実データの混入経路は未決。Updates 参照）
 
 ## Updates
 
 - 2026-05-19: 初版作成
 
-- 2026-11-07: Open Questions の現状を更新 — 「`reports/:slug` API は実際に `config` 欠損 payload を返しうるのか、それとも issue の再現は過去 tree か一時的不整合に限られるのか」。APIは結果の最小shapeを検証しconfig欠損で500を返す実装を #834 で採用。実データ混入経路は別の未決。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai #834）。 ／ Claude の検証（2026-11-07、OQ-0846）で「閉じる」から戻した: #834 で config 欠損は 500 になり問いの前半は無意味化したが、実データの混入経路は未決。問いは Open Questions に残す
+- 2026-11-07: Open Questions の現状を更新 — 「`reports/:slug` API は実際に `config` 欠損 payload を返しうるのか、それとも issue の再現は過去 tree か一時的不整合に限られるのか」。APIは結果の最小shapeを検証しconfig欠損で500を返す実装を [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) で採用。実データ混入経路は別の未決。（根拠: 0f2ebe6:wiki/analyses/report-slug-config-behavior.md:45（既存 Updates）；kouchou-ai [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834)）。 ／ Claude の検証（2026-11-07、OQ-0846）で「閉じる」から戻した: [#834](https://github.com/digitaldemocracy2030/kouchou-ai/issues/834) で config 欠損は 500 になり問いの前半は無意味化したが、実データの混入経路は未決。問いは Open Questions に残す

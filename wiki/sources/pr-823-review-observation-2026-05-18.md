@@ -29,4 +29,4 @@ sources:
 - 2026-05-18: 初版作成
 - 2026-05-18: `#823` merge 時に head 更新後の approval 再取得が必要だったことと、Codex 署名の運用メモを追記
 
-- 2026-11-07: Open Questions から除去 — 「client-build.yml に API_BASEPATH を渡すべきか、あるいは Reporter 側で fallback すべきか」。#888でAPI不要の通常buildとfixture付きstaticbuildに分離し、両環境変数を使う設計が実装済み。（根拠: kouchou-ai f36a204b；kouchou-ai upstream/main@085366779（2026-10-29） .github/workflows/client-build.yml:1）。
+- 2026-11-07: Open Questions から除去 — 「client-build.yml に API_BASEPATH を渡すべきか、あるいは Reporter 側で fallback すべきか」。[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)でAPI不要の通常buildとfixture付きstaticbuildに分離し、両環境変数を使う設計が実装済み。（根拠: kouchou-ai f36a204b；kouchou-ai upstream/main@085366779（2026-10-29） .github/workflows/client-build.yml:1）。

@@ -9,7 +9,7 @@ sources:
 
 ## 位置づけ
 
-第 3 弾のコードレビュー（main `fca42699` 対象、2026-10-19〜21）は、利用上限で何度も中断した。そのため、横断観点の洗い出し 5 担当と、洗い出したが検証していない指摘 43 件が残った。2026-10-23 に nishio の「土日に仕事したくないから多めに使っといて」を受けて、この残りを仕上げた。観測時点は kouchou-ai main `b675e032`（#1058 まで merge 済み）。[[source-code]]より
+第 3 弾のコードレビュー（main `fca42699` 対象、2026-10-19〜21）は、利用上限で何度も中断した。そのため、横断観点の洗い出し 5 担当と、洗い出したが検証していない指摘 43 件が残った。2026-10-23 に nishio の「土日に仕事したくないから多めに使っといて」を受けて、この残りを仕上げた。観測時点は kouchou-ai main `b675e032`（[#1058](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1058) まで merge 済み）。[[source-code]]より
 
 進め方はこれまでと同じで、洗い出し → 1 件ずつ反証・再現で検証 → 確定したものだけを修正、の順。修正は指摘ごとに main から別ブランチを切り、先に「修正前のコードで落ちるテスト」を書いてから直した。前回までの経緯は [[deep-code-review-2026-10-19]] と [[code-health-review-2026-10-18]]。
 
@@ -113,9 +113,9 @@ sources:
 - 修正しなかった確定指摘の残件。どれも設計の判断が要る。
   - 公開ビューアが結果 JSON 全体を HTML に埋め込む（3 万件で SSR 約 1GB）
   - 静的書き出しが全レポートを毎回書き出す
-  - LLM 直接グルーピングの割当は PR #1118 で並列化済みだが、途中経過の保存は未実装
-  - 抽出の形式不正・途中切れは PR #1119 でその回答だけ再試行する。再試行しても失敗する場合の扱いは残る（コンテンツフィルタ時の継続は PR #1150 で別途対応）
-  - 複製で入力 CSV を取れないときの黙った続行は PR #1120 の警告で解消したが、代替入力で続行する方針自体を変えるかは未決
+  - LLM 直接グルーピングの割当は PR [#1118](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1118) で並列化済みだが、途中経過の保存は未実装
+  - 抽出の形式不正・途中切れは PR [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1119) でその回答だけ再試行する。再試行しても失敗する場合の扱いは残る（コンテンツフィルタ時の継続は PR [#1150](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1150) で別途対応）
+  - 複製で入力 CSV を取れないときの黙った続行は PR [#1120](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1120) の警告で解消したが、代替入力で続行する方針自体を変えるかは未決
   - エラーのレポートを再利用する導線が無い
   - 削除が論理削除である
 - 散布図で同じ点が 2 本のトレースに重なっている件。消すとホバー文言が変わる可能性があり、実ブラウザでの確認が要る。
@@ -158,7 +158,7 @@ sources:
   - **批評ラウンドの 2 回目**
     - 番号で区切ったため、独立レビューから抜けていた PR があった。そのレビューで 5 件が確定し、[#1104](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1104)・[#1095](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1095)・[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1102) に commit を足した。
     - **旧バージョンのレポートの互換性**：旧タグで実際に成果物を作り、今のコードに通して試した。3 件が確定した。
-      - [#1121](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1121)（draft、#1102 の後）：v4.0 以前の埋め込みファイルは pandas 形式のため、クラスタ数を変える再利用が必ず失敗する
+      - [#1121](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1121)（draft、[#1102](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1102) の後）：v4.0 以前の埋め込みファイルは pandas 形式のため、クラスタ数を変える再利用が必ず失敗する
       - [#1122](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1122)：v2.0 のレポートに provider が無い
       - [#1123](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1123)：v1.0 の status で一覧が 500 になる
   - **気づき**
@@ -167,7 +167,7 @@ sources:
 - 2026-10-23 深夜（最後）：残りの 2 つを見た。6 件が確定した。
   - **深夜の PR の独立レビュー**：[#1118](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1118) と [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) の詰めの甘さ 2 件に、commit を足した。
   - **管理画面の本番ビルドを実ブラウザで操作する検査**：
-    - [#1124](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1124)（medium）：約 10MB を超える CSV からレポートを作れない。Basic 認証の middleware が本文を 10MB で切るため、#804 で上げたはずの上限が一度も効いていなかった。
+    - [#1124](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1124)（medium）：約 10MB を超える CSV からレポートを作れない。Basic 認証の middleware が本文を 10MB で切るため、[#804](https://github.com/digitaldemocracy2030/kouchou-ai/issues/804) で上げたはずの上限が一度も効いていなかった。
     - [#1125](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1125)：5 分を超える静的書き出しのダウンロードが失敗する。
     - [#1126](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1126)：アップロードが長いと、カードが「作成中」のまま止まる。
     - ほかにも確定した指摘があるが、別の修正と出す順序を合わせる必要があるので、後日出す。
@@ -193,6 +193,6 @@ sources:
   - [#1079](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1079) を最新の main に rebase し直し、nishio が merge した（`7fff37a4`）。修正 PR 65 本は、これですべて merge 済み。
   - [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1119) への CodeRabbit の指摘は、Issue [#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) にした。
   - 外部コントリビュータの [#1061](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1061)（Node runtime 依存一覧の訂正）は、最新の main と照合してレビューし、merge した（`f422dcc6`）。軽微な修正はこちらで後から行う。
-- 2026-11-07: Open Questions から除去 — 「43 本の PR のレビューと merge の判断。人間の attention を使う操作なので、明示の指示があるときだけ行う。merge の前に、独立したレビューを別に回している。」。#1062–#1104 の43本すべてが10月24日の main 履歴にある。レビューの品質を別途保証する判定ではない。（根拠: kouchou-ai upstream/main: git log --grep (#1062) … (#1104)（2026-10-24、43件））。
-- 2026-11-07: Open Questions から除去 — 「挙動・見た目の判断が要る PR（詳細は各 PR 本文）」。6件とも対応するPRが10月24日に main 入りし、当時の採否待ちは解消。Web の UMAP 再利用 #989 全体の完了とはしない。（根拠: kouchou-ai 4262aec69 / a9a378465 / a0e7f1621 / c342e51b5 / 6c4af54a2 / 9a924e2f1）。
-- 2026-11-07: Open Questions の現状を更新 — 「修正しなかった確定指摘。どれも設計の判断が要る。」。割当の並列化 #1118、抽出の再試行 #1119、複製時警告 #1120 が後続実装された。途中保存や抽出の最終失敗時の扱いは残る。（根拠: kouchou-ai cdca53e71 / 5e4850572 / b775d64e2（2026-10-24）；kouchou-ai 769dfbc08（2026-10-27、コンテンツフィルタ時の継続））。
+- 2026-11-07: Open Questions から除去 — 「43 本の PR のレビューと merge の判断。人間の attention を使う操作なので、明示の指示があるときだけ行う。merge の前に、独立したレビューを別に回している。」。[#1062](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1062)–[#1104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1104) の43本すべてが10月24日の main 履歴にある。レビューの品質を別途保証する判定ではない。（根拠: kouchou-ai upstream/main: git log --grep ([#1062](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1062)) … ([#1104](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1104))（2026-10-24、43件））。
+- 2026-11-07: Open Questions から除去 — 「挙動・見た目の判断が要る PR（詳細は各 PR 本文）」。6件とも対応するPRが10月24日に main 入りし、当時の採否待ちは解消。Web の UMAP 再利用 [#989](https://github.com/digitaldemocracy2030/kouchou-ai/issues/989) 全体の完了とはしない。（根拠: kouchou-ai 4262aec69 / a9a378465 / a0e7f1621 / c342e51b5 / 6c4af54a2 / 9a924e2f1）。
+- 2026-11-07: Open Questions の現状を更新 — 「修正しなかった確定指摘。どれも設計の判断が要る。」。割当の並列化 [#1118](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1118)、抽出の再試行 [#1119](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1119)、複製時警告 [#1120](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1120) が後続実装された。途中保存や抽出の最終失敗時の扱いは残る。（根拠: kouchou-ai cdca53e71 / 5e4850572 / b775d64e2（2026-10-24）；kouchou-ai 769dfbc08（2026-10-27、コンテンツフィルタ時の継続））。

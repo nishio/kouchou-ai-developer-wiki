@@ -116,7 +116,7 @@ graph TD
 
 - Mermaid が Quartz / MkDocs で正しくレンダリングされるかは未確認 (試作段階)
 - 試作 A の正本化先 (analysis-stance の派生図 / broadlistening-tool-ecosystem-vision の付録 / 単独ページ?)
-- #883 は撤回され、入口は後続の「始め方の選び方」#1010 などで実装された。試作 B の内容をさらに採るかは、現行 docs との差分として改めて判断する。
+- [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) は撤回され、入口は後続の「始め方の選び方」[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010) などで実装された。試作 B の内容をさらに採るかは、現行 docs との差分として改めて判断する。
 - 「ダマでの Docker Desktop 利用」の灰色領域を product docs にどう書くか (率直に書くと信頼に響く / 隠すと自治体で詰まる)
 
 ## Updates
@@ -124,4 +124,4 @@ graph TD
 - 2026-05-30: v2 へ修正。試作 A の最初の分岐を「データ量」へ変更、「ラベル付きデータ」jargon を排除。試作 B を利用主体 (個人 / 大組織) を最初の分岐に置き直し、platform 安定性ティア (Linux > Mac > Windows) を明示、Docker Desktop license の灰色領域も率直に書いた。意味区分は背景色から `[ラベル]` テキスト表記へ置換。team feedback と修正経緯は [[slack-flowchart-feedback-2026-05-30]] に
 - 2026-05-30: 初版 (v1)。Slack で tokoroten が scikit-learn estimator チャートを引いた提案を受け、ユースケース分岐版と環境構築版の 2 種類を Mermaid で試作した
 
-- 2026-11-07: Open Questions の現状を更新 — 「試作 B を #883 PR に追加 PR として乗せるか、別 PR として切るか」。#883 は撤回され、後の入口ページ #1010 などへ再構成された。同じPRへの追記という前提は消えた。（根拠: wiki git 091cb25（2026-05-31、#883撤回）；kouchou-ai 4b2d08f99（#1010））。
+- 2026-11-07: Open Questions の現状を更新 — 「試作 B を [#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) PR に追加 PR として乗せるか、別 PR として切るか」。[#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883) は撤回され、後の入口ページ [#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010) などへ再構成された。同じPRへの追記という前提は消えた。（根拠: wiki git 091cb25（2026-05-31、[#883](https://github.com/digitaldemocracy2030/kouchou-ai/issues/883)撤回）；kouchou-ai 4b2d08f99（[#1010](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1010)））。

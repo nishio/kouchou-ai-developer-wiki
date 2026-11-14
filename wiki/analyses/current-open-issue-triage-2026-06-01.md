@@ -205,5 +205,5 @@ superseded_by: issue-backlog-audit-2026-10-12
 - 2026-10-05: lint で孤立していた 2026-05 時点の個別 issue / PR 判断ページを、2026-06-01 の全体 triage から辿れるようにした。
 - 2026-06-01: 初版作成。subagent 5 分割で open issue 124 件の本文・コメントを読み、current main、open PR、既存 wiki へ照合した。
 
-- 2026-11-07: Open Questions から除去 — 「#887 は checks green を根拠に review 後 merge でよいか、WebGL fallback を同時に求めるか。」。#887 は merge 済み。採用時点の判断と将来の WebGL fallback 要否を分ける。（根拠: kouchou-ai 188169515（2026-06-01、#887） / f36a204b（#888））。
-- 2026-11-07: Open Questions から除去 — 「#884 は API preflight 失敗時に作成開始を block するか、警告付きで続行可能にするか。」。接続確認エラーを表示し、警告付きで作成を続行できる実装になった。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。
+- 2026-11-07: Open Questions から除去 — 「[#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) は checks green を根拠に review 後 merge でよいか、WebGL fallback を同時に求めるか。」。[#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887) は merge 済み。採用時点の判断と将来の WebGL fallback 要否を分ける。（根拠: kouchou-ai 188169515（2026-06-01、[#887](https://github.com/digitaldemocracy2030/kouchou-ai/issues/887)） / f36a204b（[#888](https://github.com/digitaldemocracy2030/kouchou-ai/issues/888)））。
+- 2026-11-07: Open Questions から除去 — 「[#884](https://github.com/digitaldemocracy2030/kouchou-ai/issues/884) は API preflight 失敗時に作成開始を block するか、警告付きで続行可能にするか。」。接続確認エラーを表示し、警告付きで作成を続行できる実装になった。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） apps/admin/app/create/components/CreateReportConfirmation.tsx:152）。

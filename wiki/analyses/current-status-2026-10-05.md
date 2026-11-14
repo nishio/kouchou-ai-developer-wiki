@@ -47,7 +47,7 @@ Flexの標準処理への自動切替も未決論点として残る。[#934](htt
 
 ## Open Questions
 
-- 依存保守は nishio 担当の #949 に集約され、非公開報告の窓口整備も #947 / #948 で進んだ。報告の受け手・通知の実運用と保守を継続する体制は引き続き確認が必要。
+- 依存保守は nishio 担当の [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) に集約され、非公開報告の窓口整備も [#947](https://github.com/digitaldemocracy2030/kouchou-ai/issues/947) / [#948](https://github.com/digitaldemocracy2030/kouchou-ai/issues/948) で進んだ。報告の受け手・通知の実運用と保守を継続する体制は引き続き確認が必要。
 - [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)やFlex切替を判断するために、どの利用観測・選択肢が必要か。
 
 ## Updates
@@ -126,5 +126,5 @@ GitHub上で、外部コントリビュータの [#952](https://github.com/digit
 
 frontmatter summary と「現在地」冒頭の注記を、10月6日までの続報（未mergeは[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)のみ）に合わせた。GitHub状態は同日 `gh pr list` / `gh issue view` で確認
 
-- 2026-11-07: Open Questions から除去 — 「本体6PRのレビューと反映をどう進めるか。」。当時の6PR（#941–#946）は保存済み main 履歴ですべて merge 済み。（根拠: kouchou-ai upstream/main git log: #941–#946（#945 は2026-10-06 fedf67abe、#946 は2026-10-12 46013563f、他は2026-10-05））。
-- 2026-11-07: Open Questions の現状を更新 — 「非公開報告の受け手と、依存保守の担当をどう置くか。」。依存保守 #949 はnishioにassignされ、非公開報告の窓口整備は #947/#948 に進んだ。受信・通知の実運用確認は残る。（根拠: 0f2ebe6:wiki/analyses/current-status-2026-10-05.md:78（既存 Updates）；0f2ebe6:wiki/sources/catchup-2026-10-05.md:75（Updates））。
+- 2026-11-07: Open Questions から除去 — 「本体6PRのレビューと反映をどう進めるか。」。当時の6PR（[#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)–[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)）は保存済み main 履歴ですべて merge 済み。（根拠: kouchou-ai upstream/main git log: [#941](https://github.com/digitaldemocracy2030/kouchou-ai/issues/941)–[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946)（[#945](https://github.com/digitaldemocracy2030/kouchou-ai/issues/945) は2026-10-06 fedf67abe、[#946](https://github.com/digitaldemocracy2030/kouchou-ai/issues/946) は2026-10-12 46013563f、他は2026-10-05））。
+- 2026-11-07: Open Questions の現状を更新 — 「非公開報告の受け手と、依存保守の担当をどう置くか。」。依存保守 [#949](https://github.com/digitaldemocracy2030/kouchou-ai/issues/949) はnishioにassignされ、非公開報告の窓口整備は [#947](https://github.com/digitaldemocracy2030/kouchou-ai/issues/947)/[#948](https://github.com/digitaldemocracy2030/kouchou-ai/issues/948) に進んだ。受信・通知の実運用確認は残る。（根拠: 0f2ebe6:wiki/analyses/current-status-2026-10-05.md:78（既存 Updates）；0f2ebe6:wiki/sources/catchup-2026-10-05.md:75（Updates））。
