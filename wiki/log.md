@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-16 15:00] filing-back | 長期戦略の叩き台に 11-16 時点の更新を追記した
+
+- 11-02 以降の動き（#1187 merge、ローカル LLM・Bedrock への需要、検証のお願い Issue への外部の応答）から、2〜3 年後の姿を 5 つと、計画とのずれ 4 つを long-term-strategy-2026-11-02 の Updates に足した
+- 提案：v5.0 を書籍と切り離して rc1 を切る、「導入できる」を 6 本目の柱にする、wiki の置き場所を問いとして出す。採否は未定
+
 ## [2026-11-15 10:00] filing-back | PR #1202 の CI が通り、merge 判断待ちにした
 
 - #1202（PC の目安と compose.cpu.yaml、Closes #471）は build・CodeQL 成功、未解決の指摘なし。merge すると #471 が閉じるので nishio の判断待ち
@@ -245,23 +250,3 @@
 
 - nishio「対立軸ビューを活用して行くユーザストーリーを考えられるといいなと思う」への AI の案を [[divcon-view-user-stories]] として新規作成。5 つの場面（政策を書き直す人・ファシリテーター・パブコメの回答者・参加者・報告をまとめる人）と、共通して足りないもの（「関係なし」と中立・全件の数が合う集計・採点を人が直す手段）、最初に詰める候補（1 か 3）
 - [[team-mirai-2025-open-dataset]] と [[meeting-report-draft]] からリンク
-
-## [2026-11-08 23:10] filing-back | 対立軸ビューと賛否スライダーを作ってみた見立て
-
-- nishio「この 2 つを作ってみてどう思う？」への AI の答えを記録。対立軸ビューは読む道具になる（少数側が埋もれない、採点の誤り・中立なし・費用が課題）。賛否スライダーは説明用で新しく見えるものは少なく、収穫は「広聴AI の散布図は話題の地図で賛否は描いていない」こと
-- 残る判断へのおすすめ（賛否の対象のキーは足す、`opposition_axes` はまだ足さない、本体に入れるなら散布図の賛否色分け）を [[team-mirai-2025-open-dataset]] と [[meeting-report-draft]] に。色分けの試作は nishio が今は作らないと判断
-
-## [2026-11-08 23:00] filing-back | 個人 repo の可視化カタログに賛否スライダー（センチメント次元の付与）を追加
-
-- nishio/broadlistening-visualizations の commit `6971f97`（main に push・公開済み）。本体の `opinion_stance` と同じプロンプトで 4 まとまり・2,167 件に賛否スコアを付け、埋め込みに重みつきで足した配置を重み 0〜1.5 で作った。学習率 0.1 と Procrustes で漂いを 12% → 2.5% に
-- nishio の問い「賛否を無視したら元の広聴AI になるか」への答え（元の配置はすでに賛否をほぼ無視している・線形には消えきらない）と、`public_result.json` に足りない項目（賛否の対象）を [[team-mirai-2025-open-dataset]] に、試した事実を [[open-decisions]] A14 に、定例向けの 1 項を [[meeting-report-draft]] に反映
-
-## [2026-11-08 15:20] filing-back | 個人 repo の可視化カタログに DivCon の対立軸ビューを追加
-
-- nishio/broadlistening-visualizations の commit `b18593f`（main に push・公開済み）。tokoroten/divcon の Stage 3a〜5 を、広聴AI の上位クラスタをトピックにして回した。賛否の割れそうな 4 まとまり・2,167 件で軸 12 本・延べ採点 3,338 件、組織内の OpenAI 互換 LLM で 358 回
-- 結果・誤りの傾向・`public_result.json` に足りない項目（軸の定義）を [[team-mirai-2025-open-dataset]] に、方針は変えずに試した事実を [[open-decisions]] A14 に、定例向けの 1 項を [[meeting-report-draft]] に反映
-
-## [2026-11-08 10:00] filing-back | #921 ブラウザ版の本流化は tokoroten のアクション待ち
-
-- nishio「方向性としてはそれでいいけど tokoroten のアクション待ち」。論点1（「本流」の範囲）を先に決めて Issue に記録する方針は了承済み
-- [[meeting-report-draft]] の #921 の項と Updates、kouchou-issue-audit-queue の STATUS に反映
