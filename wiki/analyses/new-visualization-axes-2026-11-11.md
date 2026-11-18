@@ -115,3 +115,4 @@ sources:
 
 - 2026-11-11: 初版。5 案の下見、nishio の「all go」で 5 つとも作って確かめたこと、`public_result.json` に足りない項目をまとめた（個人 repo では未 commit・未公開）
 - 2026-11-11: nishio の判断を反映。4 つを公開し、merge された提案と PR の `state` は見送った。偶然の見込みは層別のまま。`attribute_meta` は提案せず、本体に入れるときの材料にした。話題の流れのカタログのリンクは期間を選ばずに開く
+- 2026-11-19: 自治体の研究会から、ここの案と重なる要望が Issue になった（時系列で見せる [#1214](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1214)、件数の少ない声 [#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213)、意見の数と回答者の数 [#1211](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1211)）。散布図の輪郭の重なりの話も含め [[slack-municipal-workshop-issues-2026-11-18]] にまとめた
