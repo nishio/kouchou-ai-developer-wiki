@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-19 14:30	ingest	議論の楽譜の試作への Slack の反応
 2026-11-19 13:00	filing-back	議論の楽譜の試作に「実験の記録」を足した
 2026-11-19 12:30	filing-back	会議の文字起こしを広聴AI にかけ、「議論の楽譜」を作って公開した
 2026-11-19 10:30	ingest	Slack 11/8〜11/18：自治体の研究会で出た要望 14 件ほか

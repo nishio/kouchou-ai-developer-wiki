@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-19 14:30] ingest | 議論の楽譜の試作への Slack の反応
+
+- 大木さん：戻ってきた話題が前とどう変わったか、まとまり同士のつながり、面白い展開を AI に挙げさせる入口が見たい。会議では発言の前後関係に意味がある
+- nishio：トピックでゆるくまとめ、後の発言が前の発言に賛成・反対・根拠の追加・新しい切り口のどれをしているかを出せると面白い
+- 更新: [[slack-municipal-workshop-issues-2026-11-18]]、[[meeting-transcript-score-prance-2026-11-19]] の Open Questions
+
 ## [2026-11-19 13:00] filing-back | 議論の楽譜の試作に「実験の記録」を足した
 
 - meeting-transcript-score-prance-2026-11-19 に、実験の区分（exploratory）、非公開の置き場、公開した範囲（public_result.json だけ）、やり直し方を追記
