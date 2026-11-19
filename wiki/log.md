@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-19 13:00] filing-back | 議論の楽譜の試作に「実験の記録」を足した
+
+- meeting-transcript-score-prance-2026-11-19 に、実験の区分（exploratory）、非公開の置き場、公開した範囲（public_result.json だけ）、やり直し方を追記
+- 社内 API の URL は wiki にも manifest にも残していない
+
 ## [2026-11-19 12:30] filing-back | 会議の文字起こしを広聴AI にかけ、「議論の楽譜」を作って公開した
 
 - #1214 を受け、PRANCE 国際シンポジウムの文字起こしを本体の CLI＋gemma-4-31B で分析し、個人 repo で話題の流れの分単位と「議論の楽譜」を公開（`46dcc57`）
