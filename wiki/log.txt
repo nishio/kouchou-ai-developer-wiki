@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-19 15:30	filing-back	PRANCE の意見 939 件にリンコグラフィーの線を LLM で付けた
 2026-11-19 15:10	filing-back	対立軸ビューの軸ごとの左右の件数を追記
 2026-11-19 14:45	filing-back	議論の楽譜とリンコグラフィーの対応を書いた
 2026-11-19 14:30	ingest	議論の楽譜の試作への Slack の反応
