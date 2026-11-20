@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-20 19:00] filing-back | 棚卸しの本人判断 3 件を処理し、#994 の確認で見つかった不具合を PR #1219 にした
+
+- #370・#879 を close（経緯は #345、時間の軸の試作と論点は #1214 へ）
+- #994 を実際の LLM で最後まで回したら、LLM 直接グルーピングの段だけが `gpt-4o-mini` に固定されていて失敗 → PR #1219（未 merge、merge で #994 も閉じる）。管理画面の同じモードにも効く不具合
+- 更新: [[llm-grouping-supervised-classification]]、[[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
+
 ## [2026-11-20 18:05] filing-back | #1217・#1218 を main に入れ、#337・#643 が閉じた
 
 - CI 全件成功・CodeRabbit の指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `fca1d407`・`e43911b7`）
