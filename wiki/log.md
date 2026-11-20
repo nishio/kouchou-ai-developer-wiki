@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-20 23:15] filing-back | #1219 を main に入れ、#994 が閉じて 11-02 の棚卸しが全件片付いた
+
+- PR #1219（LLM 直接グルーピングの段も全体の model を使う）を merge（`600479b7`）、#994 も close
+- 11-02 の棚卸しで扱いを決めた Issue はこれで全件処理済み。残るのは管理画面での動作確認だけ
+- 更新: [[llm-grouping-supervised-classification]]、[[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
+
 ## [2026-11-20 19:00] filing-back | 棚卸しの本人判断 3 件を処理し、#994 の確認で見つかった不具合を PR #1219 にした
 
 - #370・#879 を close（経緯は #345、時間の軸の試作と論点は #1214 へ）

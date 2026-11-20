@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-20 23:15	filing-back	#1219 を main に入れ、#994 が閉じて 11-02 の棚卸しが全件片付いた
 2026-11-20 19:00	filing-back	棚卸しの本人判断 3 件を処理し、#994 の確認で見つかった不具合を PR #1219 にした
 2026-11-20 18:05	filing-back	#1217・#1218 を main に入れ、#337・#643 が閉じた
 2026-11-20 16:00	filing-back	11-02 棚卸しの assignee 確認の期限切れ分を既定どおり処理した
