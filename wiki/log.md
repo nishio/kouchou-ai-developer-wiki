@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:52] filing-back | 利用者向けCLI Skillを広聴AI本体のPRに提出
+
+- [PR #1251](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1251) にサンプル14件の実機検証と、原文から拾えた避難情報の通知方法を記載。
+- [[user-workflow-skills-proposal]] と [[meeting-report-draft]] に反映。
+
 ## [2026-11-25 03:48] filing-back | 広聴AI CLIの利用者向けSkillを架空CSVで試作・検証
 
 - 本体 `codex/kouchou-ai-analyze-skill`（`ae37537d`）で、架空CSVの事前検証からローカルモデルでの分析、HTML生成、結果に使った原文の照合までを確認。

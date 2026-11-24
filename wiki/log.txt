@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 03:52	filing-back	利用者向けCLI Skillを広聴AI本体のPRに提出
 2026-11-25 03:48	filing-back	広聴AI CLIの利用者向けSkillを架空CSVで試作・検証
 2026-11-25 03:40	filing-back	広聴AIを使う人向けのSkills案
 2026-11-25 03:39	filing-back	サーバ版広聴AIの管理 API と MCP の導入案
