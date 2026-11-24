@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 21:56] filing-back | 広聴AIの未解決Issue 4件を修正してPRを作成
+
+- CLI の HTML 出力設定、Copilot 向け索引、管理画面の課金案内、閲覧画面・共有画像の階層別件数を PR 化。次は CI とレビュー。
+- 公開 JSON の告知案を [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) に追記し、M5 で追跡。更新は [[issue-resolution-candidates-2026-11-24]]、[[versioning-strategy]]、[[meeting-report-draft]]。
+
 ## [2026-11-24 21:55] filing-back | serverlessの比較を値の一致から共通契約の検査へ見直す方針を整理
 
 - nishioの提案を受け、同じ入力生成器と検査器でPython・TSそれぞれの木・参照・件数・情報保持・公開設定を調べる設計を追記。Leanはモデルの証明、プロパティベーステストは実コードとの接続に使う

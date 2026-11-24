@@ -86,3 +86,4 @@ sources:
 - 2026-11-03（2 周目）: 「その後の実際」の見出しの時点を、内容に合わせて 2026-10-21 から 2026-11-03 に改めた
 - 2026-11-07: Open Questions の現状を更新 — 「v5 をいつ・どの条件で切るかは未定。2026-06 の目標は達成されず、2026-10-21 時点の最新タグは v4.1.0」。local mainにはv4.2.0のtagがある。v5のrelease条件は未決のまま。（根拠: kouchou-ai local tag v4.2.0（git tag / cat-fileで確認））。
 - 2026-11-11: v5.0 用のマイルストーン M5 の期限が 2026-07-01 のまま過ぎていたので、nishio の指示で 2026-12-31 に変えた。同じ日に「これまでの貢献者」一覧を作る Issue [#1199](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1199) を M5 に入れた（コード以外の貢献も載せる）
+- 2026-11-24: 公開 JSON の出力と文書化は main で確認済み。`public_result.json`（`schema_version: 1`）を外部ツール向けに告知する文案を [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) に追記し、M5 に追加した。リリースノートへの掲載が残件。[[issue-resolution-candidates-2026-11-24]]

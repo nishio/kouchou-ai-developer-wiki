@@ -147,6 +147,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（Issue 修正、PR 作成済み・レビュー待ち）: CLI の出典リンクと HTML タイトル [#1237](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1237)、Copilot のガイド索引 [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235)、管理画面からの API 課金案内 [#1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236)、閲覧画面・共有画像の階層別グループ数 [#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) を実装・ローカル検証した。
+  次は CI・レビュー。公開 JSON の告知は [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) を M5 に紐づけ、Issue にリリースノート案を追記した。[[issue-resolution-candidates-2026-11-24]]
+
 - 2026-11-24（serverlessの残る差10項目）: [[serverless-remaining-divergences-2026-11-24]]より、番号や寛容な応答受理は維持し、本文・属性を壊す問題を先に直す案に整理した。今回は調査のみ。
   正常JSONの本文中のthinkタグやバッククォートが消える例、JSON再分析で年代が消え、数値スコアが初出の文字列値に揃い、コメント数が5→0になる例を再現。前回の検証範囲外だった受け渡し後の経路。
   次はパーサの本文保持と、公開JSONの属性・件数・来歴の保持。原文保存・分母の表示・実行方法の表示・指定値の扱いはその後に整理する。
