@@ -55,3 +55,7 @@ PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234)（2026-
 
 - 異議を受けてから直すまでの期間（Pack 4 は 24 時間・7 日・30 日を提案している）を、docs で目安として示すか、発行者に任せるか
 - 「濃い意見」が大量投稿を目立たせうることは、機能の名前や画面の説明にも反映すべきか
+
+## Updates
+
+- 2026-11-24 にドキュメントのビルドが通り、PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234) を `main`（`0db5f614`）にマージした。大量投稿への機能面の対応は [#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345) で追跡する。

@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（既存 PR 7 本が main に反映）: Lean で見つけた不具合の修正 [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227)〜[#1230](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1230)、テスト拡充 [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)・[#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)、公開後の見直しを説明する docs [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234) がマージ済み。
+  古い集計履歴・CSV のグループ ID・テストファイルの競合を手当てし、更新後の CI を確認した。最終 `main` と同じコードで analysis-core 980 件成功、1 件スキップ。[[lean-verification-trial-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]。
+
 - **serverlessの共通テストを変異で検証（2026-11-24）**: PythonとTSの各14変異中12件を共通テストが検出。上位クラスタの1群化は両側の単体テストで検出したが、公開属性表の参照切れはブラウザ版の全248単体テストを通過した。
   補うなら属性表のキーが実在する意見を指すことから。[[serverless-shared-contract-mutations-2026-11-24]]
 

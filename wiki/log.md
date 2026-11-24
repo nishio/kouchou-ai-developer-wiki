@@ -36,6 +36,12 @@
 - #1227・#1228 も merge され、#1227〜#1230 の 4 本とも main 済み。残りは検証一式を本体に入れるかの判断
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:26] filing-back | 既存の広聴AI PR 7本をCI通過後にマージ
+
+- #1227〜#1231・#1233・#1234 を、メンテナーの明示承認に基づいてマージした。#1227・#1229 はレビューの指摘を解消し、#1228 は main と競合していたテストを統合してから CI を再確認した。
+- 最終 `main` `afde1cb9` と同じコードで analysis-core のテスト 980 件成功、1 件スキップ。GitHub で open PR が 0 本であることを確認した。
+- 更新は [[lean-verification-trial-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]、[[meeting-report-draft]]。
+
 ## [2026-11-24 22:23] filing-back | #1229・#1230 が main に入り、CodeRabbit の指摘 2 件を #1227・#1229 で直した
 
 - #1229 は、集計工程がクラスタ id を型推論で読み、"00" が root の "0" に化ける問題も含めて merge 済み。#1230 も merge 済み
