@@ -31,10 +31,10 @@
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
 
-## [2026-11-24 23:00] filing-back | Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
+## [2026-11-24 22:23] filing-back | #1229・#1230 が main に入り、CodeRabbit の指摘 2 件を #1227・#1229 で直した
 
-- 無効に戻したら集計を再実行（#1227）、依存の宣言の検査（#1228）、llm_grouping の id "0" の拒否（#1229）、入れ子でない階層クラスタで止める（#1230）。いずれも未 merge
-- どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
+- #1229 は、集計工程がクラスタ id を型推論で読み、"00" が root の "0" に化ける問題も含めて merge 済み。#1230 も merge 済み
+- #1227 は、古い記録にキーが無い時に推測せず集計を作り直す形にした（別のレビューで初期の記録への対応も追加）。#1227・#1228 は未 merge
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
 ## [2026-11-24 22:19] filing-back | Pythonとブラウザ版に共通契約の変異テストを実施
@@ -103,12 +103,6 @@
 - local cloneをmainに追従。Wikiへの並行更新も取り込み、PR作成時点の未merge記録を残したまま完了を追記した
 - 更新: [[serverless-implementation-2026-11-24]]、[[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]。既知の差10項目と実LLM品質は残る
 
-## [2026-11-24 21:30] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
-
-- 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）
-- 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
-- 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
-
 ## [2026-11-24 21:25] filing-back | serverlessの回答対応・失敗復帰・公開範囲を修正しorg PR #2を作成
 
 - org PR #2（`codex/serverless-correctness-and-public-output`）を作成。回答単位の意見保持・ward2・失敗結果のキャッシュ防止・元コメント既定OFFと公開JSON/HTMLを実装。未merge
@@ -132,6 +126,12 @@
 - nishio が手元で admin merge（`a775d3d2`）。#1210・#1213 に設定例、#1225 に入ったものと残件（ビューアでのラベル名など）をコメント
 - 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 19:19] filing-back | Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
+
+- 無効に戻したら集計を再実行（#1227）、依存の宣言の検査（#1228）、llm_grouping の id "0" の拒否（#1229）、入れ子でない階層クラスタで止める（#1230）。いずれも未 merge
+- どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
+- 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 19:10] filing-back | 意見分類のラベルを利用者が定義できるようにする PR #1232 を出した（#1225）
 
 - `labels` に利用者定義のラベルを書け、プロンプトは定義から組み立て、誤りは実行前に止まる。社内の gemma-4-31B で 3 ラベルの分類を確認。未 merge
@@ -149,6 +149,12 @@
 
 - nishio の指示で admin merge（squash、main `2a924af6`）。merge 前に CI 全件 pass・CodeRabbit の指摘なし、merge 後の main も全件 success
 - 更新: [[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
+
+## [2026-11-24 18:02] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
+
+- 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）
+- 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
+- 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
 ## [2026-11-24 17:45] filing-back | #1220 の CI が全件通り、ミューテーションテストの知見をテスト体系のページに入れた
 
