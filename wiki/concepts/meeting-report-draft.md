@@ -17,9 +17,6 @@ sources:
 
 ## 目的
 
-- **serverlessの共通契約テストの設計（2026-11-24、未実装）**: nishioの指摘を受け、番号・生成文などの一致を要件にせず、Python・TSの両方へ木・参照・件数・情報保持・公開設定の同じ性質を適用する方針へ更新。Leanのモデル証明と、実コードを通すプロパティベーステストを組み合わせる。
-  次は既存のexpected failによる比較を整理し、共通入力生成器・検査器と実装別アダプタに置き換える。[[serverless-remaining-divergences-2026-11-24]]。PRはまだ作成していない。
-
 このページは、**次の定例会議で Codex 関連の作業を短時間で報告するための下書き** である。Issue / PR / CI / wiki の更新が散らばるので、会議前に思い出すのではなく、作業のたびにここへ要点を寄せる。
 
 ポイントは「全部の変更履歴」を書くことではなく、**会議で口頭共有したい判断と進み具合だけを残す** こと。詳しい根拠は各 concept / analysis / source ページへリンクする。[[coding-agents]]より [[contributing]]より
@@ -146,6 +143,9 @@ sources:
 - **v5.0 の「これまでの貢献者」一覧（11-11、Issue [#1199](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1199)、M5）**: nishio の発案。commit・PR だけでなく、デザイン、実験・動作確認のフィードバック（[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) の実測など）、使ってみた事例の共有（[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)）、Issue での報告・質問も貢献として載せる。決めたいのは、どこまでを貢献とするか、置き場所（`CONTRIBUTORS.md` / docs / リリースノート）、表記、GitHub の外の貢献者の候補を誰が挙げるか。GitHub の外での貢献は本人の同意を取ってから載せる。あわせて M5 の期限を 2026-12-31 に変えた（07-01 のまま過ぎていた）
 
 ## Updates
+
+- **serverlessの共通契約テスト（2026-11-24、未merge）**: 期待値JSONと不一致テストを、同じ生成入力でPythonとTSの木・参照・件数・属性・公開設定を検査するテストに置換した。レポート40例、点群20例、Vitest 248件がローカルで通過。
+  org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) で進行中。次はCIと、別件の公開JSON再分析における属性・件数の保持。[[serverless-remaining-divergences-2026-11-24]]
 
 - 2026-11-24（Issue 修正、PR 作成済み・レビュー待ち）: CLI の出典リンクと HTML タイトル [#1237](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1237)、Copilot のガイド索引 [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235)、管理画面からの API 課金案内 [#1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236)、閲覧画面・共有画像の階層別グループ数 [#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) を実装・ローカル検証した。
   次は CI・レビュー。公開 JSON の告知は [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) を M5 に紐づけ、Issue にリリースノート案を追記した。[[issue-resolution-candidates-2026-11-24]]

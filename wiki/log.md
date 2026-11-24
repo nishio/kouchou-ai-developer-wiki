@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:04] filing-back | serverlessの共通契約テストを実装しorg PR #3を作成
+
+- 期待値JSON・既知不一致の比較を、PythonとTSの共通プロパティベーステストへ置換。レポート40例・点群20例を両実装で検証し、壊れた参照や件数、公開設定違反を検出できることも確認
+- [org PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) は未merge。更新: [[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 21:56] filing-back | 広聴AIの未解決Issue 4件を修正してPRを作成
 
 - CLI の HTML 出力設定、Copilot 向け索引、管理画面の課金案内、閲覧画面・共有画像の階層別件数を PR 化。次は CI とレビュー。
