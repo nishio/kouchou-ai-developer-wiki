@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:54] filing-back | 公開JSONの再クラスタリングを両実装をまたいで検査
+
+- [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) で、本体の公開JSONから再クラスタリングしても出典・入力件数・意見属性を保持する共通テスト4ケースを追加した。
+- 現行mainと出典PRを組み合わせた構成での検証を [[component-boundary-retrospective-2026-11-25]] に記録した。
+
 ## [2026-11-25 01:20] filing-back | 大リファクタリング後の差し替え可能性を振り返った
 
 - 当時の再利用・プラグインの議論を、現行の分析ワークフロー、公開JSON、ブラウザ版の共通検証と照合した。

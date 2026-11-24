@@ -40,3 +40,11 @@ sources:
 ## Updates
 
 - 2026-11-25 に Google Doc のテキスト版を再取得。先頭見出しは 2026/07/27、今回は 2026/05/25 の振り返りを参照。Slack 公開ログ `9dc31768` の広聴AI開発チャンネルで2025年12月と2026年1・2・5月を検索し、1月の発言を確認した。本体 main は `afde1cb9`、org ブラウザ版 main は `7a9c921`。本体 #1239・#1243・#1246 とブラウザ版 #11 は進行中。再調査は一次資料、コード、既存テスト・実験記録の照合を中心にした。[Google Doc 議事録](https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit)、[公開Slackログ](https://github.com/digitaldemocracy2030/slack-logs/commit/9dc31768)
+
+### 公開JSONを別実装で再クラスタリングする共通テスト
+
+- [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) で、本体の抽出・集計と公開用変換で生成したJSONを、TypeScriptの読み込み、プロジェクト復元、保存済み座標の再クラスタリング、再集計、公開書き出しまで通す共通テストを追加した。元コメント本文の公開オン・オフと、空または一部だけ入った属性表を組み合わせた4ケース。
+- 入力5件のうち2件は意見なし。抽出意見4件について、意見ID、先頭ゼロや桁の長い出典ID、出典URL、意見ごとの属性値と型を保存する。本文の公開設定と入力件数も維持し、最下層は1群から2群へ切り直し、新しい所属からクラスタ件数を求める。外部APIを使わず、ラベルと概要は固定値を渡した。
+- 本体main `afde1cb9` とブラウザ版main `7a9c921`、および本体 #1246 `b9713877` とブラウザ版 #11 `9963a566` の組み合わせで4ケースが通過。追加したテスト2ファイルのパスは #11 と重複せず、複数出典の形式と旧数値IDの読込は既存の出典PRが扱う。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246)、[ブラウザ版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11)
+- 一時コピーで出典IDの文字列を数値に変える、入力件数を公開本文の数で上書きする、意見の属性を再集計時に落とす変更をそれぞれ試し、3件とも追加テストが検出した。
+- [共通契約CI](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/actions/runs/45442492422) と [ブラウザ版の lint・テスト・ビルドCI](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/actions/runs/45442492411) が通過した。

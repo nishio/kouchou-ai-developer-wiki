@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-25（公開JSONの共通テスト、進行中）: Python本体の公開JSONをブラウザ版で再クラスタリングして書き出し、出典・入力件数・意見属性の保持を4ケースで検査する [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) を作成した。
+  現行mainと進行中の出典PR 2本を組み合わせた構成で追加ケースが通過し、#12 の共通契約CIとブラウザ版ビルドも通過した。[[component-boundary-retrospective-2026-11-25]]
+
 - 2026-11-25（大リファクタリングの振り返り）: 抽出・埋め込みの再利用で分析手法を比較でき、公開JSONを Python とブラウザ版で扱えるようになった。
   次に明文化する候補は、実際に受け渡す結果の出典・件数・属性と、再利用する工程の再計算条件。[[component-boundary-retrospective-2026-11-25]]
 
