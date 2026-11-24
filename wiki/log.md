@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 02:06] filing-back | 大きな束だけ推論で読み直すKJ法のCLIを試作
+
+- 埋め込み近傍から軽く統合を判定し、一定の大きさに達した束だけを再検討するCLIを実装。本体ブランチ `codex/kj-bottom-up`
+- 架空の3枚で一次判定3件、再検討1件を実機確認。再検討の根拠はカードIDから元の本文を照合できる。[[kj-method-broadlistening-framing-2026-05-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 02:02] filing-back | マンダラートと付箋をWeb版で選ぶ導線を試作
 
 - 管理画面の表示設定と公開ビューアの切替を接続。既存の木・座標から再分析なしで描く。本体の作業ブランチは `codex/optional-report-views`
@@ -27,6 +32,11 @@
 
 - エネルギー・家族・移民・皇位継承の計算済み 12 軸で、クラスタごとの表示と戻る操作を確認
 - 更新: [[team-mirai-2025-open-dataset]]、[[meeting-report-draft]]
+
+## [2026-11-25 01:33] filing-back | 推論モデルが小さな束と表札を作るKJ法の試作案
+
+- 近傍探索、表札を用いた統合判定、統合しにくいカードの保留、現行ツリーとの比較方法を整理
+- 更新: [[kj-method-broadlistening-framing-2026-05-25]]、[[meeting-report-draft]]
 
 ## [2026-11-25 01:30] filing-back | クラスタ選択から対立ビューを開く導線案を記録
 

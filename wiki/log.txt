@@ -3,11 +3,13 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 02:06	filing-back	大きな束だけ推論で読み直すKJ法のCLIを試作
 2026-11-25 02:02	filing-back	マンダラートと付箋をWeb版で選ぶ導線を試作
 2026-11-25 02:02	filing-back	広聴AIのWeb版で対立軸ビューのプラグインを試作
 2026-11-25 02:02	filing-back	Polisの参加者散布図を本体のPRにした
 2026-11-25 01:48	filing-back	Polisの参加者散布図と投票の推移を試作
 2026-11-25 01:38	filing-back	可視化カタログでクラスタから対立ビューを開く導線を試作
+2026-11-25 01:33	filing-back	推論モデルが小さな束と表札を作るKJ法の試作案
 2026-11-25 01:30	filing-back	クラスタ選択から対立ビューを開く導線案を記録
 2026-11-25 01:28	filing-back	広聴AIの意見カードをKJ法のように組み替える試作案
 2026-11-25 01:27	filing-back	広聴AIからDivConへ分岐する位置を整理
