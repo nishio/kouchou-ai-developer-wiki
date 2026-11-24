@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:58] filing-back | Wiki の main を統合して出典リンクを修正
+
+- ローカルと GitHub の main にあった更新を統合し、作業ログと定例会議の下書きを両方から引き継いだ。
+- [[divcon-view-user-stories]] の本体コードへのリンク2件を確認し、コミットIDの先頭の誤記を直した。
+
 ## [2026-11-25 03:53] filing-back | 可視化プラグインの登録と表示選択を Lean で検証
 
 - 本体の [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) で ID 衝突と選択先を検証。Lean と TypeScript の 480 件が一致し、基盤 CI が通過。
