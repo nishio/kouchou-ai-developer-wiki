@@ -27,6 +27,12 @@
 - mutmut の既定（fork 方式）では 220 件が誤って timeout になる。forkserver 方式が要る
 - 更新: [[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 16:35] filing-back | 自治体の研究会で出た要望 14 件を振り分け、閲覧画面の 4 件を PR #1221〜#1224 にした
+
+- #1203〜#1216 を main と照らし合わせて全件にコメント・ラベル。PR は一括展開・検索で一致した枝を開く・件数の単位・散布図の見方（いずれも未 merge）
+- 見つかった穴：新しいデータに調整済みのプロンプトを当てる手段が無い／意見ごとのラベルを利用者が定義できない
+- 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[slack-municipal-workshop-issues-2026-11-18]]、[[meeting-report-draft]]
+
 ## [2026-11-24 13:35] filing-back | #1201・#1202 を main に入れ、#471 が閉じた
 
 - どちらも CI 成功・指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `ca485200`・`c56eddcf`）
