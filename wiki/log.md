@@ -20,6 +20,11 @@
 - [[testing]] に、mutmut を使う時の設定（forkserver 方式）と、生存した変異の選び方を追記。分析ページへの常設の入口にもした
 - 更新: [[testing]]、[[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 17:40] filing-back | #1222 を main に入れ、研究会の要望から出した 4 本の PR が揃った
+
+- rebase 後の CI 全件 pass を確認し、nishio が手元で admin merge（`3649fe41`）。#1205 は検索欄の置き場所が残件で open のまま
+- 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 17:20] filing-back | #1221・#1223・#1224 を main に入れ、利用者定義のラベル（#1225）と会議の分析の線引き（#1226）を Issue にした
 
 - 3 本は nishio が手元で admin merge（`f6df8b53`・`d9920fc6`・`ef8a16c4`）、#1206 が閉じた。#1222 は #1221 と衝突したので rebase し、CI 全件 pass で merge 待ち
