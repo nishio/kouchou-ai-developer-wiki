@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-11-25 01:20	filing-back	DivConの対立軸発見と全件採点を実装で確認
+2026-11-25 01:18	filing-back	Leanで旧出典IDの整数表記と指数表記を区別
 2026-11-25 01:08	filing-back	CodeRabbitの再レビューで旧出典IDの指数表記の差を再現
 2026-11-25 00:50	filing-back	意見の出典を公開JSON v2にして旧IDのLean照合を修正
 2026-11-25 00:43	filing-back	多対多の出典契約のマージ前に残る互換性を確認

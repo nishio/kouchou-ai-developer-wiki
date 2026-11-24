@@ -66,3 +66,9 @@ sources:
 - [本体 #1246の再レビュー](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246#discussion_r4682682415) は、Leanが旧IDの整数リテラルと指数表記を区別できていない点を指摘した。本体 `1fd2be9a` とorg版 `e1113f6` で再現した。
 - 旧JSONの `comment_id: 1e16` はPythonとTSで拒否されるが、Leanは `"10000000000000000"` として受理する。同じ値の整数リテラル `10000000000000000` は3者で受理する。Leanのパース後の `exponent` はJSONの元の表記を表さない。
 - 旧IDを変換する際に元の表記の区別を仕様に持たせ、差分テストに生のJSONで両表記を渡す必要がある。前回指摘のv2化と `7.0` は修正済み。
+
+### 2026-11-25 旧出典IDの整数表記と指数表記を区別
+
+- [本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) の `b971387` で、LeanのJSON読込が `arguments[].comment_id` の数値リテラルを取得するようにした。整数表記は任意精度で保持し、小数・指数表記にはPython・TSと同じ倍精度と安全整数の条件を適用する。
+- [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) の `9963a56` で、同じ数値リテラルを生のJSONで3者に渡す回帰テストを追加した。`1e16` と `1E+16` は拒否し、`10000000000000000` は桁を保って受理する。安全な指数表記、端数、丸め境界、文字列IDも検査する。
+- ローカルの共通契約23件が成功し、旧Lean仕様では `1e16` の回帰テストが失敗することを確認した。org版の差分テストCIも成功し、CodeRabbitの3件のスレッドは解決済み。両PRは未マージ。

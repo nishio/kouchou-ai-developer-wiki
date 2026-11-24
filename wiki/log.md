@@ -8,6 +8,11 @@
 - 元の実装で最大 500 件からの候補軸生成と全件採点の順序を確認し、広聴AI の試作では上位クラスタを話題に使うことを記録
 - 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
 
+## [2026-11-25 01:18] filing-back | Leanで旧出典IDの整数表記と指数表記を区別
+
+- 本体 #1246・org版 #11 に修正を追加。生JSONを使う共通差分検査23件が成功し、旧仕様で指数表記の回帰が検出されることを確認
+- 更新: [[issue-1156-opinion-comment-contract-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:08] filing-back | CodeRabbitの再レビューで旧出典IDの指数表記の差を再現
 
 - `1e16` はLeanで受理・PythonとTSで拒否、同じ値の整数表記は3者で受理。v2と `7.0` の指摘は修正済み
