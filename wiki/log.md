@@ -25,6 +25,11 @@
 - 管理画面の削除はファイルを消さない、再利用では入力を差し替えられない、などをコードで確かめて書いた。未 merge
 - 更新: [[civic-ai-6pack-docs-mapping-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 23:35] filing-back | 重複していない4件のIssueを並行実装してPRを作った
+
+- SNS 抽出例、管理画面 E2E、属性名の衝突防止、階層図の密度フィルタを実装し、本体 PR #1241〜#1244 を作った。
+- ローカル検証と各 PR を [[issue-resolution-candidates-2026-11-24]]、次回報告を [[meeting-report-draft]] に記録した。
+
 ## [2026-11-24 23:34] filing-back | serverlessの本文・再分析・入力の修正をorg PR #5〜#10にした
 
 - JSONの補正による本文改変、公開JSON再分析での属性と件数の喪失、非空CSVの空白削除、未対応クラスタ数の黙殺、Gemini Nanoの表示、入力と分析対象件数の区別を修正

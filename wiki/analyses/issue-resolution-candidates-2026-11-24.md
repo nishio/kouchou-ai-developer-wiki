@@ -56,3 +56,18 @@ sources:
 - **SNS 投稿向けの抽出プロンプト例（#576、未割当）**。現行ガイドには短文・疑問文の例があり、RT・引用と投稿者自身の発言を分ける SNS 専用例を追加できる。RT 部分の扱い、疑問文の保持、テーマ外の除外を合成例で示す。11-02 の合意はまず docs の事例追加まで。参照元のリポジトリは Apache-2.0 表示で、具体例は本体 docs 用に書き起こす。[#576 の方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/576#issuecomment-6569515011)、[朝日の抽出プロンプト](https://github.com/asahi-research/TTTC_consumption_tax_20250525/blob/main/scatter/pipeline/prompts/extraction/extraction_poli.txt)
 - **階層図の密度フィルタ（#60、未割当）**。#1166 はマージ済み。現行の密度・件数フィルタは散布図の濃い意見モードで働く。既存の最下層フィルタをツリーマップのトグルに接続する。11-02 の方針は既定 OFF。ツリーマップと下の詳細一覧に同じ条件を使い、適用前後の件数と空表示を検証する。[#60 の方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60#issuecomment-6569514004)
 - **管理画面 E2E の残件（#395、`nishio`）**。接続エラーからの復帰は #943 と #1236 で実装済み。現行 `create-report.spec.ts` の Spreadsheet はタブ切り替えまで。Issue で追跡中の残りは、ダミーデータを使った Spreadsheet 取得と列選択、およびモデル・並列数・PubCom・プロンプトが作成リクエストに反映される確認。[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)、[作成画面の E2E](https://github.com/digitaldemocracy2030/kouchou-ai/blob/afde1cb9a19cb8471fc353b54ae07a4710336299/test/e2e/tests/admin/create-report.spec.ts)
+
+### 重複を確認して4件を並行実装
+
+2026-11-24 に担当者、公開 PR、手元の作業ブランチを再確認した。既存の [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239) と [#1240](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1240) の対象を確認し、Issue ごとに `main` `afde1cb9` から作業ツリーを作った。以下は PR 作成時点のローカル検証結果。
+
+| Issue | PR | 対応とローカル検証 |
+|---|---|---|
+| [#576](https://github.com/digitaldemocracy2030/kouchou-ai/issues/576) | [#1241](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1241) | SNS 投稿から引用元と投稿者の意見を分け、質問とテーマ外の投稿を扱う抽出例を追加。架空の4例の JSON と MkDocs strict ビルドを確認。 |
+| [#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395) | [#1242](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1242) | Spreadsheet の取得、列選択、AI 設定の送信内容、不正 ID の E2E を追加。試験で見つかった、属性列ラベルが別の入力欄を指す不具合も修正。Spreadsheet と作成 API はテスト用に置き換えて Chromium で確認。 |
+| [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186)、[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) の一部 | [#1243](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1243) | 入力 CSV の属性名が生成スコアまたは分類ラベルと衝突した場合、列名を示して停止する。保存済みの分類データを使う再集計でも検査する。analysis-core 985件成功・1件スキップ、API から CLI を呼ぶ再集計試験も成功。公開ビューアのラベル表示名は #1225 で引き続き追跡する。 |
+| [#60](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60) | [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) | 階層図の最下層を対象に、既定オフの密度フィルタを追加。公開ビューアの Jest 全343件と Chromium での操作が成功。検証用レポートで最下層が1,000から163グループ、意見が9,568から1,887件になり、図と説明の件数が一致した。 |
+
+#1244 の初回 CI は、375px のモバイル表示で既定の階層リストが開くと、折りたたまれた子のクラスタ名を従来のテストが見つけられず失敗した。変更前の `main` でも再現した。リストが選択された後に全体と子グループを展開し、同じクラスタ名を確認する手順に更新して、両方のコードで確認した。[初回 E2E](https://github.com/digitaldemocracy2030/kouchou-ai/actions/runs/45415789577)、[テストの修正](https://github.com/digitaldemocracy2030/kouchou-ai/commit/eef568d4ee932afeae1a00a2cc8977caec5d41fd)
+
+23:49 JST に4本すべての最新コミットで、実行対象の GitHub CI が通過したことを確認した。各 PR には対応する Issue のクローズ指定があり、必須レビュー1件を待っている。[#1241 のチェック](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1241/checks)、[#1242 のチェック](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1242/checks)、[#1243 のチェック](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1243/checks)、[#1244 の再実行 E2E](https://github.com/digitaldemocracy2030/kouchou-ai/actions/runs/45417424009)
