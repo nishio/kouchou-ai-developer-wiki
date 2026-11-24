@@ -10,6 +10,7 @@ sources:
   - next-three-issues-progress-2026-09-09.md
   - biome-lint-main-drift-2026-10-09.md
   - mutation-testing-trial-2026-11-24.md
+  - mutation-testing-orchestration-aggregation-2026-11-24.md
 ---
 
 ## テスト層
@@ -112,6 +113,7 @@ sources:
 - mutmut 3 をこの analysis-core のテスト一式で使う時は `process_isolation = "forkserver"` にする。既定の fork 方式では生存した変異が timeout と誤判定され、テストが気づいた割合が見かけ上 98% に膨らむ
 - 生存した変異には実害の無いもの（ヘッダ名の大小文字、ログ文言、本番経路では同じ値に揃う二重の守りの片側など）が多く混じる。件数ではなく、1 件ずつ「本番経路で振る舞いが変わるか」を見て選ぶ
 - テスト一式が重い（素で約 2 分）ので、常設するなら全体ではなく PR で変わったファイルだけを対象にする
+- 対象を `core/orchestration.py` と `steps/hierarchical_aggregation.py` に広げると kill 率は 71.5%。管理画面の再集約（`--only`）、管理画面が作る config の検証、期限切れロック、結果 JSON のクラスタ ID・元コメントなど、管理画面と公開ビューアに直接響く穴が残っていた。[[mutation-testing-orchestration-aggregation-2026-11-24]]より
 
 ## Updates — 2026-11-24 判定ロジックを Lean で証明し、差分テストでコードとつなぐ
 

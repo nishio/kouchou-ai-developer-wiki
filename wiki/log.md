@@ -9,6 +9,13 @@
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
+## [2026-11-24 18:25] filing-back | ミューテーションテストを再実行の判定と集計に広げ、管理画面に響く穴を見つけた
+
+- `core/orchestration.py` と `steps/hierarchical_aggregation.py` で 2,832 変異、テストが気づいた割合 71.5%（本体は変更なし、main `2a924af6`）
+- 本番経路の生存 605 件を 3 領域に分けて仕分け、約 135 件が本番の穴。上位はラベル編集後の再集約（`--only`）、管理画面の config の検証、期限切れロック、結果 JSON のクラスタ ID・元コメント
+- 旧経路（`run_step` / `termination`）の 152 件は Python API を残すかの判断待ちで未仕分け
+- 更新: [[mutation-testing-orchestration-aggregation-2026-11-24]]、[[mutation-testing-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
+
 ## [2026-11-24 18:10] filing-back | #1220 を main に入れた
 
 - nishio の指示で admin merge（squash、main `2a924af6`）。merge 前に CI 全件 pass・CodeRabbit の指摘なし、merge 後の main も全件 success

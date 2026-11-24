@@ -4,6 +4,7 @@
 # Regenerate: python3 scripts/refresh_logs.py
 
 2026-11-24 21:30	filing-back	analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
+2026-11-24 18:25	filing-back	ミューテーションテストを再実行の判定と集計に広げ、管理画面に響く穴を見つけた
 2026-11-24 18:10	filing-back	#1220 を main に入れた
 2026-11-24 17:45	filing-back	#1220 の CI が全件通り、ミューテーションテストの知見をテスト体系のページに入れた
 2026-11-24 17:40	filing-back	#1222 を main に入れ、研究会の要望から出した 4 本の PR が揃った
