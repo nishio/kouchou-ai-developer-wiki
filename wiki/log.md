@@ -31,6 +31,11 @@
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 23:11] filing-back | マージ後の未解決Issueから次の着手候補を確認
+
+- `main` `afde1cb9` で、生成したスコア・ラベルが入力属性を上書きすることを合成データで再現。#1186 の再集計は #1227 で解決済み。
+- SNS の抽出例、階層図の密度フィルタ、管理画面 E2E の残件を照合。更新は [[issue-resolution-candidates-2026-11-24]] と [[meeting-report-draft]]。
+
 ## [2026-11-24 22:44] filing-back | 公開属性表の参照検査をserverless mainに反映
 
 - [org PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) の共通契約テスト、lint、単体テスト、ビルドのCIが通過。nishioの指示でsquash merge（`870cb9c`）

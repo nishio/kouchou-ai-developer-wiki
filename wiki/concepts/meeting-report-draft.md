@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（残りの Issue を調査）: [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) の再集計は解決済み。入力属性が生成スコア・利用者定義ラベルで上書きされる残件を合成データで再現した。[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) と共通の入力検証で進められる。
+  次に着手できる候補は SNS の抽出プロンプト例、階層図の密度フィルタ、管理画面の Spreadsheet と AI 設定の E2E。[[issue-resolution-candidates-2026-11-24]]。
+
 - 2026-11-24（既存 PR 7 本が main に反映）: Lean で見つけた不具合の修正 [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227)〜[#1230](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1230)、テスト拡充 [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)・[#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)、公開後の見直しを説明する docs [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234) がマージ済み。
   古い集計履歴・CSV のグループ ID・テストファイルの競合を手当てし、更新後の CI を確認した。最終 `main` と同じコードで analysis-core 980 件成功、1 件スキップ。[[lean-verification-trial-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]。
 

@@ -47,3 +47,12 @@ sources:
 | [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) | [#1237](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1237) | `a086b300` |
 | [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) | [#1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236) | `36d97a0d` |
 | [#213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) | [#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) | `a4ec7a12` |
+
+### 既存 PR 7 本のマージ後に確認した候補
+
+2026-11-24 23:09 JST に未解決 Issue 66 件と進行中 PR 1 本を取得。候補の本文・コメントを `main` `afde1cb9` と照合した。進行中の [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239) は Lean 検証と CI。下記の候補の実装は含まれていない。[Issue 一覧](https://github.com/digitaldemocracy2030/kouchou-ai/issues)
+
+- **入力属性の上書き（#1186 / #1225、#1186 は未割当）**。#1186 の無効化後の再集計は [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227) で修正済み。合成 CSV に `attribute_stance_score`、`attribute_novelty_score`、`attribute_safety_concern` を与え、対応する任意工程を有効にしたところ、現行の入力検証は通り、集計で `arguments[].attributes` の全 3 値が生成値に置き換わることを再現した。入力ヘッダーと有効な工程が使う属性 ID を照合し、衝突時に列名を出して実行前に止める案なら、既存のビューア契約を保てる。集計のみの再実行も対象にする。#1225 にはビューアのラベル表示名が別途残る。[#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186)、[#1225 の残件](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225#issuecomment-7129416436)
+- **SNS 投稿向けの抽出プロンプト例（#576、未割当）**。現行ガイドには短文・疑問文の例があり、RT・引用と投稿者自身の発言を分ける SNS 専用例を追加できる。RT 部分の扱い、疑問文の保持、テーマ外の除外を合成例で示す。11-02 の合意はまず docs の事例追加まで。参照元のリポジトリは Apache-2.0 表示で、具体例は本体 docs 用に書き起こす。[#576 の方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/576#issuecomment-6569515011)、[朝日の抽出プロンプト](https://github.com/asahi-research/TTTC_consumption_tax_20250525/blob/main/scatter/pipeline/prompts/extraction/extraction_poli.txt)
+- **階層図の密度フィルタ（#60、未割当）**。#1166 はマージ済み。現行の密度・件数フィルタは散布図の濃い意見モードで働く。既存の最下層フィルタをツリーマップのトグルに接続する。11-02 の方針は既定 OFF。ツリーマップと下の詳細一覧に同じ条件を使い、適用前後の件数と空表示を検証する。[#60 の方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/60#issuecomment-6569514004)
+- **管理画面 E2E の残件（#395、`nishio`）**。接続エラーからの復帰は #943 と #1236 で実装済み。現行 `create-report.spec.ts` の Spreadsheet はタブ切り替えまで。Issue で追跡中の残りは、ダミーデータを使った Spreadsheet 取得と列選択、およびモデル・並列数・PubCom・プロンプトが作成リクエストに反映される確認。[#395](https://github.com/digitaldemocracy2030/kouchou-ai/issues/395)、[作成画面の E2E](https://github.com/digitaldemocracy2030/kouchou-ai/blob/afde1cb9a19cb8471fc353b54ae07a4710336299/test/e2e/tests/admin/create-report.spec.ts)
