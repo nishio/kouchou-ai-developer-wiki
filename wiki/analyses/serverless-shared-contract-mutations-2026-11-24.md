@@ -35,3 +35,7 @@ root以外のクラスタの配列順を変える対照試験は両方とも通�
 - Pythonは本体main `a4ec7a129c0d278186181c1f484dadcf3f3c95a0`、TSはorg main `d060677d79f570ffe1dc2b120c97aac72e4e1281`。無変更の状態で共通テスト7件（レポート40例、点群20例、破損検出とプロンプト照合）が通過した。
 - 両実装のtrackedファイルを一時ディレクトリへ展開し、片方の実コードだけを毎回1か所変更した。テスト本体は変更せず、Hypothesisのseedを `20261124` に固定し、変異の判定では入力の縮小を省いた。検査器内のアサーション失敗または必須フィールド欠落の例外で検出と判定し、タイムアウトや起動失敗は検出に数えない。最終集計に判定不能は0件。
 - 今回は共通契約に関係する対応の取れた手製の変異を選んだ。コード全体の変異スコアではない。再現スクリプト、判定、ログは `raw/serverless-shared-contract-mutations-2026-11-24/`。以前のPython単独の広範囲な変異テストは [[mutation-testing-trial-2026-11-24]] を参照。
+
+## Updates
+
+- 2026-11-24: org [PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) で、公開 `propertyMap` の各列のキーが同じ公開JSONの `arguments[].arg_id` に含まれることを共通テストに追加した。空の属性表を許容し、列の有無や値の実装間一致は条件にしない。本体main `afde1cb9` とPR `6404506` で通常テスト7件が通過し、前回と同じ属性表の参照切れ変異が両実装で新しい検査により失敗した。再実行の記録は `raw/serverless-shared-contract-mutations-2026-11-24/property-map-recheck/`。上位階層の分割数は既存の単体テストで引き続き検査する。

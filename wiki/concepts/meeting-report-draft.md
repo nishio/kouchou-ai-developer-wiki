@@ -148,7 +148,7 @@ sources:
   古い集計履歴・CSV のグループ ID・テストファイルの競合を手当てし、更新後の CI を確認した。最終 `main` と同じコードで analysis-core 980 件成功、1 件スキップ。[[lean-verification-trial-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]。
 
 - **serverlessの共通テストを変異で検証（2026-11-24）**: PythonとTSの各14変異中12件を共通テストが検出。上位クラスタの1群化は両側の単体テストで検出したが、公開属性表の参照切れはブラウザ版の全248単体テストを通過した。
-  補うなら属性表のキーが実在する意見を指すことから。[[serverless-shared-contract-mutations-2026-11-24]]
+  属性表が実在する意見を参照する検査をorg [PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) に追加（未merge）。再実行で通常テストは通り、同じ参照切れ変異は両方で失敗した。[[serverless-shared-contract-mutations-2026-11-24]]
 
 - 2026-11-24（Issue 修正 4 件が main に反映）: CLI の HTML 出力設定、Copilot のガイド索引、管理画面の課金案内、閲覧画面・共有画像の階層別件数を CI 通過後にマージした。[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954)、[#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)、[#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292)、[#213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) はすべて完了。
   公開 JSON の告知 [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) は v5.0 の M5 で追跡中。[[issue-resolution-candidates-2026-11-24]]
