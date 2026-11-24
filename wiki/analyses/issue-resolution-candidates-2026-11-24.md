@@ -1,0 +1,30 @@
+---
+title: 広聴AIの未解決Issueから選んだ着手候補 2026-11-24
+type: analysis
+summary: 2026-11-24の未解決Issue 70件と進行中PR 7本から、再現できたCLI不具合、残作業が小さい課金ガイド、Copilot向けの索引を選んだ。公開JSONは実装とテストを確認し、v5.0での公開契約の告知を残件とした。
+sources:
+  - issue-backlog-audit-2026-10-28.md
+  - stale-issue-disposition-2026-11-02.md
+  - municipal-workshop-issues-triage-2026-11-24.md
+---
+
+## 観測範囲
+
+2026-11-24 21:26 JST 頃の GitHub 公開 API で、本体の未解決 Issue 70 件の本文と担当者、および進行中の PR 7 本を取得した。本文から候補を絞り、コメント・テスト・取得した `main`（`a775d3d2`）の実装を照合した。前回の棚卸しは [[issue-backlog-audit-2026-10-28]] と [[stale-issue-disposition-2026-11-02]]。今回は候補の抽出と検証を行い、GitHub 上の操作は読み取りのみ。[Issue 一覧](https://github.com/digitaldemocracy2030/kouchou-ai/issues)、[PR 一覧](https://github.com/digitaldemocracy2030/kouchou-ai/pulls)、[参照コミット](https://github.com/digitaldemocracy2030/kouchou-ai/commit/a775d3d21ec369986028af4c9bc67feb9cbe1f59)
+
+## 着手候補
+
+| Issue | 担当 | 現状と完了条件 |
+|---|---|---|
+| [#954 CLI の HTML 出力設定](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) | 未割当 | `report_url_pattern` と `report_html_title` が通常の階層クラスタリングと LLM grouping の両方で、トップレベル・可視化ステップ内のどちらでも設定検証に失敗することを再現。HTML 描画本体は対応済み。両モードで設定を受理して可視化プラグインに渡し、生成 HTML のリンクとタイトルに反映するところまで検証する。再実行時は設定変更だけで HTML が更新されることも確認する。ユーザー向けガイドには現行のトップレベル設定例がある。 |
+| [#292 API 課金と 429 の案内](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) | `nishio` | [#1161](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1161) が main に入り、課金とキーの取得手順、残高不足とレート制限の見分け方、Tier、README・OS 別セットアップ・CLI からの導線が揃った。[10-21 のコメント](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292#issuecomment-6317913663)にある最後の要件は、管理画面の作成前確認と再利用時の接続確認にある該当メッセージから[課金ガイド](https://digitaldemocracy2030.github.io/kouchou-ai/self-hosting/api-billing-and-rate-limits)へリンクすること。両コンポーネントを確認し、該当リンクが無いことを確認した。 |
+| [#445 Copilot 向けの索引](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445) | 未割当 | [.github/copilot-instructions.md の方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445#issuecomment-6569514509)は 11-02 に具体化済み。現行 main に該当ファイルは未配置で、`CLAUDE.md` と `docs/development/ai-assistants.md` への短い索引を追加すれば完了できる。 |
+| [#213 レポート概要のグループ数表記](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) | 未割当 | [合意済みの方針](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213#issuecomment-6120364842)は階層ごとの数を方向なしで併記すること。main のレポート概要 `Analysis.tsx` と OGP 画像 `_op-image.tsx` に矢印が残る。具体の見せ方はデザインと調整する。 |
+
+上記 4 件を扱う進行中 PR は観測時点で見当たらなかった。修正効果と再現性を重視するなら #954、差分の小ささを重視するなら #445 が着手しやすい。
+
+## Open Questions
+
+- [#1178 公開用 JSON の第 1 段](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) は [#1179](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1179) で `public_result.json` の出力と公開契約の文書化が main に入り、[#1187](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1187) で公開 API の応答も同じ契約になった。公開結果・利用者定義ラベルの analysis-core テスト計 43 件、API 関連テスト 29 件が通った。v5.0 での公開契約の告知をリリース側で追跡できるかを確認すると、実装完了として整理できる。
+- [[municipal-workshop-issues-triage-2026-11-24]] のうち [#1205](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1205) は検索欄への気づきやすさ、[#1211](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1211) は回答者を識別できるデータでの人数表示、[#1212](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1212) は散布図のヒントへの気づきやすさが残る。関連する公開ビューアのテスト 22 件は通過。実際の利用場面でヒントを見つけられるかは確認していない。利用者定義ラベルの [#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) は [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232) で CLI 対応済みで、表示名・入力属性の衝突が残る。
+- [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) の再集計は進行中の [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227) が対象。入力属性との名前衝突は #1225 と共通で、上書き時の扱いに判断が要る。

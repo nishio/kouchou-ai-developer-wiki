@@ -43,6 +43,11 @@
 - 別セッションの実装調査 [[serverless-implementation-2026-11-24]] と取り込み方の検討をつなぎ、tokoroten の人物ページと index.md にブラウザ版を足した。fork の PR #2（差の修正）は進行中
 - 更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]、[[tokoroten]]
 
+## [2026-11-24 21:31] filing-back | 未解決 Issue から CLI の HTML 出力設定と小さな修正候補を選んだ
+
+- 未解決 70 件と進行中 PR 7 本を確認し、[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) を通常の階層クラスタリングと LLM grouping の設定検証で再現。課金案内 [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) は管理画面のリンクが残る。
+- 公開用 JSON [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) の実装と関連テストを確認。v5.0 の公開契約の告知が残る。更新は [[issue-resolution-candidates-2026-11-24]] と [[meeting-report-draft]]。
+
 ## [2026-11-24 21:31] filing-back | org serverless PR #2をCI全成功後にmergeしmainの成功も確認
 
 - nishioの承認でPR #2をsquash merge（main `2341235`）。最終headのCI全成功・merge可能・未解決レビューなしを確認した。merge後mainのCIも成功

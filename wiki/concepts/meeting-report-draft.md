@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（未解決 Issue の調査）: 未解決 70 件と進行中 PR 7 本から候補を絞り、CLI の HTML 出力設定 [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の不具合を両分析モードで再現。課金案内 [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) の残りは管理画面からのリンク 2 か所。
+  次は #954 の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
+
 - 2026-11-24（serverless main反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) は、nishioの承認と最終CI全成功を確認してsquash merge済み（`2341235`）。回答対応・ward2・失敗復帰・元コメントの既定OFFと公開JSON/HTMLがmainに入った。
   main反映後のCIも成功。上のPR #2進行中・ward修正判断待ちは更新前の記録。残る差10項目と実LLM品質、本体docsの入口の扱いは別に見る（[[serverless-implementation-2026-11-24]]）。
 - 2026-11-24 21:25: [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の項を照合し、fork の PR #1 merge・Pages 公開・PR #2（進行中）を反映
