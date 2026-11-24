@@ -154,6 +154,9 @@ sources:
 
 ## Updates
 
+- **狭い画面での散布図を修正（2026-11-25、進行中のドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252)）**。[#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) で提案されたラベルの初期非表示を幅600px以下に適用し、通常の散布図の高さを横幅に合わせた。
+  幅390pxのChromiumで356×500pxから356×356pxになることと、ラベルの選択が全画面にも引き継がれることを確認。次は PR の確認。[[issue-backlog-audit-2026-10-28]]
+
 - **可視化プラグインの契約（2026-11-25、進行中 [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)）**。ID 衝突を拒否し、レポートが許可した利用可能なビューだけを選ぶ規則を Lean と TypeScript の 480 件で確認。基盤 CI が通過。ローカル統合枝で階層図・対立軸・任意ビューの共存と対立軸の修正を確認した。次は基盤を先に取り込み、個別 PR へ反映する。[[optional-visualization-plugins-2026-11-25]]
 
 - **マンダラートと付箋のWeb可視化（2026-11-25、ローカル試作 `codex/optional-report-views` / `47bb3ba2`）**。管理画面で有効にした表示を読者が選び、既存レポートの木や座標から意見を読む。PC幅・スマートフォン幅のChromeで切替を確認。次は実利用での読みやすさを確かめる。[[optional-visualization-plugins-2026-11-25]]

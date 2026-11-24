@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:56] filing-back | 狭い画面での散布図を修正
+
+- [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) を公開ビューアのドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) に実装。幅390pxで散布図が356×356pxに収まり、ラベルを手動で再表示できることを Chromium で確認。
+- 更新は [[issue-backlog-audit-2026-10-28]] と [[meeting-report-draft]]。
+
 ## [2026-11-25 03:53] filing-back | LLM 直接グルーピングの件数指定と全件一括
 
 - 本体 `codex/llm-grouping-input-size`（`b429b908`）で、Web 作成・再利用と CLI の件数指定・全件一括を追加。

@@ -239,6 +239,8 @@ sources:
 
 ## Updates
 
+- 2026-11-25: [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) は本体 main `afde1cb9` と open PR を照合し、未担当だったため nishio を割り当てて実装。幅600px以下のラベル初期値と狭い描画領域での高さを修正したドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) を作成。明示されたレポート設定と閲覧者の操作を優先する。
+
 - 2026-10-28: 初版。12 シャード照合＋懐疑検証の dynamic workflow（agent 23、約 3 時間、途中で 5 時間枠の上限に 1 回当たり再開）で 89 件を判定。GitHub への書き込みは行っていない
 - 2026-10-29: [#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) は nishio がレポート単位 opt-in（案 1）を選び、PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) を作成（[[issue-56-original-comments-opt-in-2026-10-29]]）。人間判断 40 件のうち 1 件が実装に進んだ
 - 2026-10-29: [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) は同日に merge（8e95ceb1）。[#56](https://github.com/digitaldemocracy2030/kouchou-ai/issues/56) 自体の close 判断は残っている（残件: per-comment 再頒布フラグ、設計変更は [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156)）
