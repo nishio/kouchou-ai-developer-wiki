@@ -8,6 +8,11 @@
 - トップと Pack 1〜6 の要約、広聴AI との接点（言及なし・日本は 2 か所）、提案と実績を区別する注意。未読ページは coverage に明記
 - 更新: [[public-web-civic-ai-6pack-of-care-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]
 
+## [2026-11-25 00:01] filing-back | 本体ドキュメントのブラウザ版の案内をorg版へ更新するPRを作成
+
+- 本体 [PR #1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245) で利用者向け3ページと開発者向け1ページを更新。リンク先、生成HTML、厳格ビルドを確認
+- 更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:59] filing-back | org fork のブラウザ版を GitHub Pages で公開した
 
 - digitaldemocracy2030/kouchou-ai-serverless の Pages を有効にし、main をデプロイ。サンプルレポートの描画とコンソールエラー無しを確認

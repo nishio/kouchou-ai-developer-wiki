@@ -77,6 +77,8 @@ C だけでは、今の「tokoroten 一人が止まると依存更新も止ま�
 
 ## Updates
 
+- 2026-11-25: 本体 [PR #1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245) で、利用者向け3ページの案内をorg版のブラウザ画面へ、開発者向け1ページをorgリポジトリと共通契約テストの説明へ更新した。別プロジェクトとしての位置づけは維持する。リンク先の応答、生成HTML4ページ、`mkdocs build --strict` を確認。作成時点で未merge。
+
 - 2026-11-24（PR #2反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) をユーザー承認でsquash merge（main `2341235`）。回答単位の意見保持、ward2、失敗からの復帰、元コメント本文の明示opt-inとpublic_result.json/単一HTMLの公開変換を実装した。既知の差は22から10項目になり、最終PRとmerge後mainのCIは成功。詳細は [[serverless-implementation-2026-11-24]]。本体側の公開変換やdocsの入口変更は、このPRでは変更していない。
 - 2026-11-24: 初版。両 repo の main を取得し、Slack（`mirror/` と `raw/` の 2026-07〜11）を検索し、ブラウザ版のサンプル JSON を本体の検査コマンドに通した。ブラウザ版を実際に動かしてはいない
 - 2026-11-24（同日・後半）: nishio の指示で、推奨の「移管」ではなく **fork** を選び、[digitaldemocracy2030/kouchou-ai-serverless](https://github.com/digitaldemocracy2030/kouchou-ai-serverless) を作った（親は tokoroten の repo、main `6098ba3`）。続けて、本体と同じ振る舞いをするかを確かめる適合性テストを fork の [PR #1](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/1) にした（未 merge）

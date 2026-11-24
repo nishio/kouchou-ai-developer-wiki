@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- **本体ドキュメントからorgのブラウザ版への案内（2026-11-25、PR作成済み）**: 利用者向け3ページと開発者向け1ページのリンクを更新し、共有するレポートの性質は両実装の共通テストで確かめると記載した。
+  本体 [PR #1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245) は未merge。リンク先と生成HTML、厳格ビルドを確認。[[serverless-integration-options-2026-11-24]]
+
 - 2026-11-24（4件を並行対応、進行中）: SNS 抽出例 [#1241](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1241)、管理画面の Spreadsheet と AI 設定の E2E [#1242](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1242)、入力属性の上書き防止 [#1243](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1243)、階層図の密度フィルタ [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) を PR 化した。
   管理画面では新しい E2E で見つかった属性列ラベルの不具合も修正した。階層図は既定オフで、図と説明の件数の一致をブラウザで確認した。4本とも CI 通過済みで、必須レビュー待ち。[[issue-resolution-candidates-2026-11-24]]
 
