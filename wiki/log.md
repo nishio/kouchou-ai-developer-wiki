@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 00:13] filing-back | 意見と元コメントの多対多契約をLeanで先に仕様化する案を整理
+
+- 本体とorg版の現行出力は単一の回答参照と確認。出典、束ね方、件数、公開範囲と旧形式を分け、Python・TSを同じLean仕様と照合する設計案を整理
+- 更新: [[issue-1156-opinion-comment-contract-2026-11-25]]、[[issue-56-original-comments-opt-in-2026-10-29]]、[[meeting-report-draft]]
+
 ## [2026-11-25 00:10] filing-back | civic.ai（6-Pack of Care）のソース要約ページを足した
 
 - トップと Pack 1〜6 の要約、広聴AI との接点（言及なし・日本は 2 か所）、提案と実績を区別する注意。未読ページは coverage に明記

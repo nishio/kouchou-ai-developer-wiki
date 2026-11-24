@@ -144,6 +144,8 @@ sources:
 
 ## Updates
 
+- **意見と元コメントの多対多契約（2026-11-25、設計案）**: [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) の出典の関係と束ね方を分け、件数・公開範囲・旧形式をLeanで先に定義し、PythonとTSをそれぞれ照合する案に整理した。[[issue-1156-opinion-comment-contract-2026-11-25]]
+
 - **本体ドキュメントからorgのブラウザ版への案内（2026-11-25、PR作成済み）**: 利用者向け3ページと開発者向け1ページのリンクを更新し、共有するレポートの性質は両実装の共通テストで確かめると記載した。
   本体 [PR #1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245) は未merge。リンク先と生成HTML、厳格ビルドを確認。[[serverless-integration-options-2026-11-24]]
 
