@@ -25,6 +25,11 @@
 - 管理画面の削除はファイルを消さない、再利用では入力を差し替えられない、などをコードで確かめて書いた。未 merge
 - 更新: [[civic-ai-6pack-docs-mapping-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 23:34] filing-back | serverlessの本文・再分析・入力の修正をorg PR #5〜#10にした
+
+- JSONの補正による本文改変、公開JSON再分析での属性と件数の喪失、非空CSVの空白削除、未対応クラスタ数の黙殺、Gemini Nanoの表示、入力と分析対象件数の区別を修正
+- 一時worktreeで6本を組み合わせ、Vitest 275件・共通テスト・ビルドが成功。Chromeで新規CSVと公開JSON再分析の経路を確認。更新: [[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:30] filing-back | ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
 
 - org への repo 移管／本体 monorepo への統合／結果形式だけ合わせる、を両 repo の main で比較。統合しても分析処理は TS と Python の 2 本のままで、道具の世代差（pnpm・TS・Biome）と Pages の相乗りが重い

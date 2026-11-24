@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- **serverlessの本文・属性・入力件数の修正（2026-11-24、PR作成済み）**: JSONパーサの本文改変 [#5](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/5)、公開JSON再分析の属性・件数喪失 [#6](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/6)、CSV原文・クラスタ数検証・Gemini実行表示・件数の区別 [#7〜#10](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pulls) を修正。
+  6本を一時worktreeに取り込んだ状態でVitest 275件、共通テスト、ビルドが成功。ChromeでCSV→公開JSON、公開JSON→再クラスタリング→公開JSONも確認。org mainへの反映はまだ。[[serverless-remaining-divergences-2026-11-24]]
+
 - 2026-11-24（残りの Issue を調査）: [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) の再集計は解決済み。入力属性が生成スコア・利用者定義ラベルで上書きされる残件を合成データで再現した。[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) と共通の入力検証で進められる。
   次に着手できる候補は SNS の抽出プロンプト例、階層図の密度フィルタ、管理画面の Spreadsheet と AI 設定の E2E。[[issue-resolution-candidates-2026-11-24]]。
 

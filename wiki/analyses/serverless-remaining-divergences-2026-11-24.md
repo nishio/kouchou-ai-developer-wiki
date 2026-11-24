@@ -137,4 +137,21 @@ org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3
 本体 `a775d3d2` とのローカル検証でレポート40例・点群20例が通過。参照切れ、ID重複、件数違い、非公開本文の混入を検査器が検出することも確かめた。Vitest 248件、lint、ビルド通過。PRのCIは固定版、定期実行は本体mainへ同じ検査を適用する。LLM応答は偽物を使い、実LLMや公開JSONから再クラスタリングする際の情報保持は別の検証範囲とした。
 
 - 2026-11-24: org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) の最新コミットで共通契約テストとlint・単体テスト・ビルドのCIが通過。nishioの指示でsquash mergeし、org mainに反映した（`d060677`）。
+
+### 2026-11-24：本文・再クラスタリング・入力の修正をPRにした
+
+org main `870cb9c` から独立した6本を起こした。いずれもPR作成時点では未merge。
+
+| PR | 修正 |
+|---|---|
+| [#5](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/5) | LLM応答は最初にJSONのまま読み、補正は外側と引用符外の末尾カンマに限定。抽出・ラベル・概要・賛否スペクトラムの文字列保持を検証 |
+| [#6](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/6) | 公開JSONからの再クラスタリングで意見IDに紐づく属性・数値・出典と既知の入力件数を保持。件数不明は0にせず、元のイントロと抽出モデルを残す |
+| [#7](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/7) | 非空のCSV回答は前後空白を含め原文を保持。空白だけの回答は引き続き分析対象外 |
+| [#8](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/8) | 新規作成画面で `1,4` などの未対応値を黙って読み飛ばさず、実行前に2以上の整数が必要と表示 |
+| [#9](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/9) | Gemini Nanoでチャットを実行した時は、イントロで「ブラウザ内実行」と表示。接続設定は公開データに追加しない |
+| [#10](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/10) | 新規CSVでは入力行数を `comment_num` に記録し、空白回答を除いた分析対象件数と区別。前処理ファイルにも入力件数を引き継ぐ |
+
+一時worktreeに #5〜#10 を番号順に取り込んで競合なく組み合わせ、Vitest 275件、lint、ビルド、Python・TSの共通テスト7件が通過した。本体参照は `afde1cb9`。Chromeの検証では偽の応答を使い、公開JSONのインポート→再クラスタリング→再書き出しで入力件数の既知・不明と数値スコアを確認。新規CSVでは入力10件・分析対象8件が区別され、原文と抽出した引用が公開JSONまで残った。作成画面では `1,4` を拒否し、`4、2` に直すと確認へ進んだ。
+
+入力件数を保存していない過去のCSVプロジェクトは従来の有効回答数を使う。1クラスタを正式に対応範囲へ入れるか、外部APIと自己ホストAPIをどう表示するかは仕様判断として残る。クラスタ番号や実装ごとの寛容な応答の受理範囲を一致させる必要はない。
 - 2026-11-24: PythonとTSに対応する変異を各14件適用し、共通テストで各12件を検出。公開属性表の参照切れはブラウザ版の全単体テストでも生存した。詳細は [[serverless-shared-contract-mutations-2026-11-24]]。
