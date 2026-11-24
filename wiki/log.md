@@ -31,6 +31,11 @@
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:26] filing-back | Lean の検証で見つかったものを直す PR 4 本がすべて main に入った
+
+- #1227・#1228 も merge され、#1227〜#1230 の 4 本とも main 済み。残りは検証一式を本体に入れるかの判断
+- 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:23] filing-back | #1229・#1230 が main に入り、CodeRabbit の指摘 2 件を #1227・#1229 で直した
 
 - #1229 は、集計工程がクラスタ id を型推論で読み、"00" が root の "0" に化ける問題も含めて merge 済み。#1230 も merge 済み
