@@ -90,3 +90,4 @@ sources:
   - [#1193](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1193) で、Bedrock の docs（[#1191](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1191)）の「広聴AIから思考の強さを指定する手段は、今はありません」は古くなった。`LOCAL_LLM_REASONING_EFFORT` は LocalLLM 経由の Bedrock にも送られる。gpt-oss の思考の強さは low・medium・high で（モデルカード）、`none` は受け付けない見込み。Chat Completions 経由で `reasoning_effort` が通るかは未確認（`.env.example` も「Bedrock など受け付けない接続先もある」と書いている）
 - 2026-11-14: 上の「思考の強さを指定する手段はない」の行を直す PR [#1201](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1201) を出した（未 merge）。`LOCAL_LLM_REASONING_EFFORT` で `reasoning_effort` を送れること、gpt-oss の選択肢は `low`・`medium`・`high`（`none` は設定しない）、Bedrock の Chat Completions が受け付けるかは未確認、と書いた
 - 2026-11-15: #1201 の CI（build・CodeQL）と CodeRabbit は通り、指摘はなし。レビュー承認待ち（`REVIEW_REQUIRED`）で、merge は人間の指示待ち
+- 2026-11-24: #1201 を nishio が merge し、main に入った（`ca485200`）。Bedrock が `reasoning_effort` を受け付けるかは引き続き未確認
