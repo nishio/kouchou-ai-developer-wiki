@@ -37,6 +37,13 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:14] filing-back | ミューテーションテストで見つけた穴を塞ぐテストを PR #1231・#1233 にした
+
+- #1233: 再集約（`--only`）・管理画面の config の検証・期限切れロック・`--reuse-from`・API キーなど。穴とした変異 58 件中 57 件が落ちる（残り 1 件は等価）
+- #1231: 結果 JSON とパブコメ CSV を、2 階層・属性列ありの入力で丸ごと照合。穴とした変異はすべて落ちる
+- どちらも未 merge・CI 全件 pass、本体のコードは変更なし
+- 更新: [[mutation-testing-orchestration-aggregation-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:11] filing-back | CI通過後にIssue修正のPR 4本をマージ
 
 - [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235)〜[#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) は最新コミットのCI通過後、メンテナーの明示承認に基づいて管理者マージ。対応する4件のIssueが完了したことを再取得して確認した。

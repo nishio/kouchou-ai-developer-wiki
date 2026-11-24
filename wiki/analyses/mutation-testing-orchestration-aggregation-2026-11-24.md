@@ -130,3 +130,12 @@ CLI と管理画面は、どちらも `PipelineOrchestrator.from_config` → `ru
 
 - `run_step` と `termination` の旧経路（`PipelineOrchestrator.run()`）は、Python API として残すのか。残すなら生存 152 件も仕分けが要る。残さないなら削除候補
 - 3 領域の仕分けは、関数を直接呼んで出力を比べる方式で行った。★を付けた 5 件以外は、PR にする時にテストを書いて改めて確かめる
+
+## Updates
+
+- 2026-11-24: 見つけた穴を塞ぐテストを 2 本の PR にした（どちらも未 merge、CI 全件 pass、本体のコードは変更なし）
+  - [#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)（起動と再実行の判定）: 1〜3 と 9〜15 を塞ぐ。仕分けで穴とした変異 58 件に流して 57 件が落ちた。残る 1 件（`initialization` の `getattr` の既定値）は直後の `try/except` で結果が同じになる等価な変異。analysis-core 全体 901 passed
+  - [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（結果 JSON とパブコメ CSV）: 4〜8 を、2 階層・属性列ありの入力で出力を丸ごと照合する 1 ファイルで塞ぐ。集計の生存変異 234 件のうち 73 件が落ち、穴とした変異はすべて含まれる。残りは出力が変わらないか軽微なもの。analysis-core 全体 883 passed
+  - 非公開の属性値を持つコメントの扱い（本文だけ隠し、意見と属性は残す）は現行の挙動を固定した。[#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) で扱いが変わる時はテストも合わせて直す
+  - CodeRabbit は 2 本ともレビューを skip した
+
