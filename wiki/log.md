@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:48] filing-back | Polisの参加者散布図と投票の推移を試作
+
+- 本体のローカル枝 c95489e7 で除外済みコメントを自動で外し、参加者を固定軸に配置。公式データ234人、4グループ、19日の日付変更と軌跡を実ブラウザで確認
+- 更新: [[polis-export-input-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:38] filing-back | 可視化カタログでクラスタから対立ビューを開く導線を試作
 
 - エネルギー・家族・移民・皇位継承の計算済み 12 軸で、クラスタごとの表示と戻る操作を確認
