@@ -3,11 +3,6 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
-## [2026-11-25 03:53] filing-back | LLM 直接グルーピングの件数指定と全件一括
-
-- 本体 `codex/llm-grouping-input-size`（`b429b908`）で、Web 作成・再利用と CLI の件数指定・全件一括を追加。
-- 80件・25件の由来と次の比較方法を [[llm-grouping-experiment]] に追記し、進行中の変更を [[meeting-report-draft]] に記録。
-
 ## [2026-11-25 03:53] filing-back | 可視化プラグインの登録と表示選択を Lean で検証
 
 - 本体の [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) で ID 衝突と選択先を検証。Lean と TypeScript の 480 件が一致し、基盤 CI が通過。
@@ -18,6 +13,11 @@
 
 - 本体 `codex/admin-read-api-mcp`（`5b2d756f`）で、専用キーによる一覧の絞り込みと進捗確認を追加。
 - 架空データで REST と stdio MCP の返す JSON が一致することを確認。API 594 テストが通過。[[server-admin-api-and-mcp-2026-11-25]]、[[meeting-report-draft]]。
+
+## [2026-11-25 03:53] filing-back | LLM 直接グルーピングの件数指定と全件一括
+
+- 本体 `codex/llm-grouping-input-size`（`b429b908`）で、Web 作成・再利用と CLI の件数指定・全件一括を追加。
+- 80件・25件の由来と次の比較方法を [[llm-grouping-experiment]] に追記し、進行中の変更を [[meeting-report-draft]] に記録。
 
 ## [2026-11-25 03:52] filing-back | 利用者向けCLI Skillを広聴AI本体のPRに提出
 
@@ -69,6 +69,11 @@
 - [Issue #1247](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1247) を立て、運用手順と実画面を添えた [PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) を本体に作成
 - 更新: [[polis-export-input-2026-11-25]]、[[meeting-report-draft]]
 
+## [2026-11-25 01:54] filing-back | 公開JSONの再クラスタリングを両実装をまたいで検査
+
+- [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) で、本体の公開JSONから再クラスタリングしても出典・入力件数・意見属性を保持する共通テスト4ケースを追加した。
+- 現行mainと出典PRを組み合わせた構成での検証を [[component-boundary-retrospective-2026-11-25]] に記録した。
+
 ## [2026-11-25 01:48] filing-back | Polisの参加者散布図と投票の推移を試作
 
 - 本体のローカル枝 c95489e7 で除外済みコメントを自動で外し、参加者を固定軸に配置。公式データ234人、4グループ、19日の日付変更と軌跡を実ブラウザで確認
@@ -108,6 +113,11 @@
 
 - 元の実装で最大 500 件からの候補軸生成と全件採点の順序を確認し、広聴AI の試作では上位クラスタを話題に使うことを記録
 - 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
+
+## [2026-11-25 01:20] filing-back | 大リファクタリング後の差し替え可能性を振り返った
+
+- 当時の再利用・プラグインの議論を、現行の分析ワークフロー、公開JSON、ブラウザ版の共通検証と照合した。
+- 出典・件数・属性の保持と再計算条件を、実際の受け渡しで検査する案を [[component-boundary-retrospective-2026-11-25]] に記録した。
 
 ## [2026-11-25 01:18] filing-back | Leanで旧出典IDの整数表記と指数表記を区別
 

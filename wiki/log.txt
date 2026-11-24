@@ -3,9 +3,9 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
-2026-11-25 03:53	filing-back	LLM 直接グルーピングの件数指定と全件一括
 2026-11-25 03:53	filing-back	可視化プラグインの登録と表示選択を Lean で検証
 2026-11-25 03:53	filing-back	広聴AIのレポート参照 REST API と MCP を試作
+2026-11-25 03:53	filing-back	LLM 直接グルーピングの件数指定と全件一括
 2026-11-25 03:52	filing-back	利用者向けCLI Skillを広聴AI本体のPRに提出
 2026-11-25 03:48	filing-back	広聴AI CLIの利用者向けSkillを架空CSVで試作・検証
 2026-11-25 03:40	filing-back	広聴AIを使う人向けのSkills案
@@ -16,6 +16,7 @@
 2026-11-25 02:02	filing-back	マンダラートと付箋をWeb版で選ぶ導線を試作
 2026-11-25 02:02	filing-back	広聴AIのWeb版で対立軸ビューのプラグインを試作
 2026-11-25 02:02	filing-back	Polisの参加者散布図を本体のPRにした
+2026-11-25 01:54	filing-back	公開JSONの再クラスタリングを両実装をまたいで検査
 2026-11-25 01:48	filing-back	Polisの参加者散布図と投票の推移を試作
 2026-11-25 01:38	filing-back	可視化カタログでクラスタから対立ビューを開く導線を試作
 2026-11-25 01:33	filing-back	推論モデルが小さな束と表札を作るKJ法の試作案
@@ -24,6 +25,7 @@
 2026-11-25 01:27	filing-back	広聴AIからDivConへ分岐する位置を整理
 2026-11-25 01:21	filing-back	PolisエクスポートのコメントCSV入力を確認
 2026-11-25 01:20	filing-back	DivConの対立軸発見と全件採点を実装で確認
+2026-11-25 01:20	filing-back	大リファクタリング後の差し替え可能性を振り返った
 2026-11-25 01:18	filing-back	Leanで旧出典IDの整数表記と指数表記を区別
 2026-11-25 01:08	filing-back	CodeRabbitの再レビューで旧出典IDの指数表記の差を再現
 2026-11-25 00:50	filing-back	意見の出典を公開JSON v2にして旧IDのLean照合を修正
@@ -270,8 +272,8 @@
 2026-10-13 22:00	filing-back	本体 docs 方針議論の系譜を一本化
 2026-10-13 21:00	filing-back	PR #995 を admin merge（#992/#993 自動 close）
 2026-10-13 20:50	filing-back	#994 の WebUI 統合を #997 として起票
-2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
 2026-10-13 20:30	filing-back	指定カテゴリ分類（#994）の正本を concept 化
+2026-10-13 20:30	filing-back	#992/#993（Windows 移植性）を実装し PR #995
 2026-10-13 20:10	filing-back	PR #996（#994 指定カテゴリ分類 CLI）を admin merge
 2026-10-13 19:40	filing-back	#994（#176方向性2）を CLI 実装・PR #996 作成
 2026-10-13 19:30	filing-back	PR #891 の PoC 知見を救出（source 化＋バグ2件 issue 化）
@@ -280,8 +282,8 @@
 2026-10-13 18:30	filing-back	#52 / #306 を本文追記つき close（#982–987 棚卸し収束）
 2026-10-13 18:10	filing-back	#52 / #306 の小残件を現 main で確認 → 両件 close 可
 2026-10-13 17:50	filing-back	close 推奨 3 Issue（#176/#450/#143）を本文追記つき close
-2026-10-13 17:30	filing-back	#982–987 対応 6 Issue の完了・close 判断を棚卸し
 2026-10-13 17:30	filing-back	本体 docs の読者別カバレッジ監査（直近 feature wave 後）
+2026-10-13 17:30	filing-back	#982–987 対応 6 Issue の完了・close 判断を棚卸し
 2026-10-13 16:30	filing-back	docs サイトのアイコン表示バグを特定し PR #990 で修正
 2026-10-13 15:30	ingest	README 言語差し戻しと docs 導線の Slack スレッド
 2026-10-13 12:45	filing-back	「忠実な集約 vs 熟議の演出」の棲み分けを concept 化
@@ -652,8 +654,8 @@
 2026-05-25 12:43	filing-back	clustering 議論の Deep Research 前に survey 計画を整理
 2026-05-25 12:39	filing-back	新妻 thread の設計含意を追記
 2026-05-25 12:39	filing-back	label refinement 実験用の新 step を `analysis-core` に追加
-2026-05-25 12:15	filing-back	TTTC spectral の Slack 解釈を historical code で検証
 2026-05-25 12:15	filing-back	tokoroten の spectral clustering メモを独立ページ化
+2026-05-25 12:15	filing-back	TTTC spectral の Slack 解釈を historical code で検証
 2026-05-25 12:11	filing-back	新妻 thread を独立ページ化し、アルゴリズム論点を塊で整理
 2026-05-25 12:02	filing-back	実験の product 含意と aggregation 改善仮説を追記
 2026-05-25 11:49	filing-back	`LLM grouping K=8` と `hierarchical [8,40] level1` を直接 judge
@@ -680,9 +682,9 @@
 2026-05-23 12:50	filing-back	API 通常フローの manual smoke と workflow path bug 修正を testing / meeting report に追記
 2026-05-23 12:28	filing-back	API -> subprocess -> analysis-core の手元 smoke test を testing / meeting report に追記
 2026-05-23 11:32	filing-back	定例会議向け下書きに LLM grouping 系第2モードの長期論点を追記
-2026-05-23 10:02	filing-back	current roadmap を open issues / wiki から再整理
-2026-05-23 10:02	filing-back	issue-centric roadmap を補う長期戦略ページを追加
 2026-05-23 10:02	filing-back	第2分析モードを散布図前提が縛る問題を長期戦略へ明記
+2026-05-23 10:02	filing-back	issue-centric roadmap を補う長期戦略ページを追加
+2026-05-23 10:02	filing-back	current roadmap を open issues / wiki から再整理
 2026-05-23 10:02	filing-back	LLM 直接グルーピング と散布図の緊張関係を時系列で整理
 2026-05-23 10:02	filing-back	LLM grouping系第2モードの移行戦略を一文で要約
 2026-05-23 00:10	ingest	Docker Desktop 回避策（WSL2 + Docker Engine）の GPT ブレストを反映
@@ -705,8 +707,8 @@
 2026-05-22 00:43	filing-back	PR #852 merge と Issue #716 close を wiki に反映
 2026-05-22 00:03	filing-back	PR #852 の CodeRabbit 手動トリガー後状態を記録
 2026-05-21 23:58	filing-back	定例会議向けの Codex 報告下書きページを追加
-2026-05-21 23:48	filing-back	GitHub 上の対外文面は日本語をデフォルトとする運用を明文化
 2026-05-21 23:48	filing-back	Issue 着手前の assignee 確認と self-assign を運用ルール化
+2026-05-21 23:48	filing-back	GitHub 上の対外文面は日本語をデフォルトとする運用を明文化
 2026-05-21 23:10	filing-back	PR #848 merge と Issue #846 close を wiki に反映
 2026-05-21 23:02	filing-back	AI が人間 reviewer を勝手に request しない運用ルールを wiki と schema に反映
 2026-05-21 22:19	filing-back	Issue #820 の current state を GitHub live state と current main で整理
@@ -726,8 +728,8 @@
 2026-05-21 04:55	filing-back	PR #840 の docs 更新 commit を wiki に反映
 2026-05-21 04:41	filing-back	Phase 3b の完了条件を必須条件と許容差分に分けて整理
 2026-05-21 04:35	filing-back	`hierarchical_status.json` の semantics 差分を棚卸し
-2026-05-21 04:21	filing-back	workflow default化の「実装上の切替」と「main / 運用宣言」の違いを wiki に追記
 2026-05-21 04:21	filing-back	workflow default化の「実装上はかなり切り替わっているが完了宣言は別」という整理を wiki に反映
+2026-05-21 04:21	filing-back	workflow default化の「実装上の切替」と「main / 運用宣言」の違いを wiki に追記
 2026-05-21 02:42	filing-back	PR #840 の real rerun e2e と failure step status API 確認を wiki に反映
 2026-05-20 23:19	filing-back	PR #840 の rerun / duplicate / failure semantics 進展と残課題縮小を wiki に反映
 2026-05-20 18:07	filing-back	PR #840 の CLI/API 入口確認進展と PR #841 の hook blocker 切り出しを wiki に反映

@@ -168,6 +168,14 @@ sources:
 
 - **DivCon の Web 可視化プラグイン（2026-11-25、PR 提出済み）**。[本体 PR #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) で、既存クラスタから事前計算した対立軸へ進む表示を提案した。通常のレポート API で確認した 4 クラスタ・12 軸と、データの添付手順を PR に記載。次は CI と採用判断。[[divcon-view-user-stories]]
 
+- 2026-11-25（公開JSONの共通テスト、進行中）: Python本体の公開JSONをブラウザ版で再クラスタリングして書き出し、出典・入力件数・意見属性の保持を4ケースで検査する [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) を作成した。
+  現行mainと進行中の出典PR 2本を組み合わせた構成で追加ケースが通過し、#12 の共通契約CIとブラウザ版ビルドも通過した。[[component-boundary-retrospective-2026-11-25]]
+
+- 2026-11-25（大リファクタリングの振り返り）: 抽出・埋め込みの再利用で分析手法を比較でき、公開JSONを Python とブラウザ版で扱えるようになった。
+  次に明文化する候補は、実際に受け渡す結果の出典・件数・属性と、再利用する工程の再計算条件。[[component-boundary-retrospective-2026-11-25]]
+
+- **DivCon の対立軸発見（2026-11-25、調査済み）**。話題ごとに最大 500 件を LLM に渡して候補軸を生成し、その後に全件を採点する。少数側がサンプルから落ちたときの軸の見落としが、検証する際の論点。[[divcon-view-user-stories]]
+
 - **多対多出典の旧数値ID修正（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) で整数表記と指数表記の違いをLean仕様に保持し、[org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) で生JSONの共通差分検査を追加した。次は本体承認とマージ。[[issue-1156-opinion-comment-contract-2026-11-25]]
 
 - **多対多出典の再レビュー（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) で、旧IDの `1e16` をLeanだけが受理する差を再現。整数リテラルは桁を保ち、小数・指数表記に安全整数の条件を適用するよう、Leanの入力と差分テストを見直す。[[issue-1156-opinion-comment-contract-2026-11-25]]
