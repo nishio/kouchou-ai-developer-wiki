@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:08] filing-back | CodeRabbitの再レビューで旧出典IDの指数表記の差を再現
+
+- `1e16` はLeanで受理・PythonとTSで拒否、同じ値の整数表記は3者で受理。v2と `7.0` の指摘は修正済み
+- 更新: [[issue-1156-opinion-comment-contract-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 00:50] filing-back | 意見の出典を公開JSON v2にして旧IDのLean照合を修正
 
 - [本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) と [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) でv2出力とv1読込を確認。整数値の小数表記と桁の長い数値IDを共通テストに入れた

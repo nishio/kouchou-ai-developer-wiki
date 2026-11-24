@@ -60,3 +60,9 @@ sources:
 - [本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) の `1fd2be9a` と [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) の `e1113f6` で公開JSONの出力をv2にした。旧v1・版番号なしの読込を維持し、公開APIでは旧レポートの長い整数IDを桁を保って文字列化する。
 - Leanの旧ID変換に安全整数範囲内の整数値の小数表記を追加した。差分テストはv1読込からv2再出力および再分析の参照復元まで通し、`7.0`、負の値、安全整数の境界、端数と範囲外の小数表記を確認する。
 - ローカルではPython 991件（1件スキップ）、公開API 13件、TS 275件、共有契約16件が成功。両PRのGitHub Actionsも成功。本体mainへのマージは承認1件が必要で、両PRは未マージ。
+
+### 2026-11-25 CodeRabbitの再レビューで指数表記の差を確認
+
+- [本体 #1246の再レビュー](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246#discussion_r4682682415) は、Leanが旧IDの整数リテラルと指数表記を区別できていない点を指摘した。本体 `1fd2be9a` とorg版 `e1113f6` で再現した。
+- 旧JSONの `comment_id: 1e16` はPythonとTSで拒否されるが、Leanは `"10000000000000000"` として受理する。同じ値の整数リテラル `10000000000000000` は3者で受理する。Leanのパース後の `exponent` はJSONの元の表記を表さない。
+- 旧IDを変換する際に元の表記の区別を仕様に持たせ、差分テストに生のJSONで両表記を渡す必要がある。前回指摘のv2化と `7.0` は修正済み。
