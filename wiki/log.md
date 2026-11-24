@@ -14,6 +14,12 @@
 - [[testing]] に、mutmut を使う時の設定（forkserver 方式）と、生存した変異の選び方を追記。分析ページへの常設の入口にもした
 - 更新: [[testing]]、[[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 17:20] filing-back | #1221・#1223・#1224 を main に入れ、利用者定義のラベル（#1225）と会議の分析の線引き（#1226）を Issue にした
+
+- 3 本は nishio が手元で admin merge（`f6df8b53`・`d9920fc6`・`ef8a16c4`）、#1206 が閉じた。#1222 は #1221 と衝突したので rebase し、CI 全件 pass で merge 待ち
+- #1226 は既定の案（閲覧画面の改善と入力手順は本体、時系列・横断・評価は本体の外で試作）と期限案 12-08 つき
+- 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 17:20] filing-back | ミューテーションテストで見つけた穴 3 つを塞ぐテストを PR #1220 にした
 
 - 429 の配線・`chat_http_client`・工程をまたぐトークン数の合計を確かめるテスト 4 本（未 merge、本体のコードは変更なし）
