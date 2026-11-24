@@ -112,6 +112,7 @@ flowchart TD
 
 ## Updates
 
+- 2026-11-24（残る10項目の調査）: [[serverless-remaining-divergences-2026-11-24]]に、維持する差と直すべき問題を整理した。優先は、JSON補正が引用符内の意見本文を変更する問題と、原文なしJSONを再クラスタリングすると属性・意見ごとの数値・元の件数が失われる問題。前回の検証では公開JSONの受け渡し後の再分析を扱っていなかった。今回は調査のみでコード変更なし。
 - 2026-11-24（merge完了）: ユーザーの「CI通ったらmergeしていい」という承認を受け、最終head `ae9a0b72` のCI全成功・merge可能・未解決レビューなしを確認して [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) をsquash mergeした。org mainは `234123512681e686ece4f86ebaac6085f107a04e`。merge後のmainでも検査は成功し、local cloneもmainへ追従した。下の「未merge」はPR作成時点の記録。既知の差10項目と実LLM品質の確認は引き続き別に残る。
 - 2026-11-24（修正PR作成）: ユーザーの指示で org の [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2)（`codex/serverless-correctness-and-public-output`、`04594d12`）を作成した。**未mergeであり、上のmain観測は修正前の記録**。
   - 通常版・賛否スペクトラムとも回答単位で同文意見を保持し、comment_idを文字列に統一。通常版の上位クラスタはward2へ変更した。固定重心7ケースの分割が本体と一致し、番号等の差は一覧に残した。

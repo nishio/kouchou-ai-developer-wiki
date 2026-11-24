@@ -37,6 +37,12 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 21:47] filing-back | serverlessに残る仕様差10項目を調べ、本文改変とJSON再分析の情報喪失を優先に整理
+
+- org main `2341235`・本体main `a775d3d2`で調査。適合性テストは44成功・既知不一致10件。番号・空白処理・受理する応答形式の差を、データ喪失の問題と分けて判断
+- 引用符内の本文をJSON補正が変更する例と、JSON復元→集計で属性・数値スコア・コメント数が失われる例を固定入力で再現。次はこの2群の修正。コード変更・Issue/PR作成なし
+- 更新: [[serverless-remaining-divergences-2026-11-24]]、[[serverless-implementation-2026-11-24]]、[[meeting-report-draft]]。証跡は `raw/serverless-remaining-divergences-2026-11-24/`
+
 ## [2026-11-24 21:35] filing-back | fork の PR #1 merge と Pages を main に揃えたことを反映し、関連ページをつないだ
 
 - PR #1 は 20:29 に nishio が merge 済みだった（wiki は「未 merge」のままだった）。取り消されていた main のデプロイを再実行し、Pages を `d15fb57` に揃えた

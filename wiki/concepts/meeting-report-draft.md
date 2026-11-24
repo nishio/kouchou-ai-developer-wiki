@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（serverlessの残る差10項目）: [[serverless-remaining-divergences-2026-11-24]]より、番号や寛容な応答受理は維持し、本文・属性を壊す問題を先に直す案に整理した。今回は調査のみ。
+  正常JSONの本文中のthinkタグやバッククォートが消える例、JSON再分析で年代が消え、数値スコアが初出の文字列値に揃い、コメント数が5→0になる例を再現。前回の検証範囲外だった受け渡し後の経路。
+  次はパーサの本文保持と、公開JSONの属性・件数・来歴の保持。原文保存・分母の表示・実行方法の表示・指定値の扱いはその後に整理する。
 - 2026-11-24（未解決 Issue の調査）: 未解決 70 件と進行中 PR 7 本から候補を絞り、CLI の HTML 出力設定 [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の不具合を両分析モードで再現。課金案内 [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) の残りは管理画面からのリンク 2 か所。
   次は #954 の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
 
