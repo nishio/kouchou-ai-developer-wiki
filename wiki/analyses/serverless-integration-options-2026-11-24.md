@@ -83,5 +83,6 @@ C だけでは、今の「tokoroten 一人が止まると依存更新も止ま�
   - 結果: 54 件中 32 件一致、22 件不一致。不一致は `conformance/known-divergences.json` に理由つきで載せ `it.fails` にした。直して一致すると落ちるので、一覧から消す必要がある
   - 主な差: **上位クラスタの分け方**（ml-hclust の `ward` は ward.D、本体の scipy は ward.D2。`ward2` で 7 件とも一致）、**元コメント本文を常に結果に入れる**（本体は既定 off）、**別々の回答の同じ文面を 1 件にまとめる**（本体の旧仕様）、**summary の無い JSON や切れた JSON を概要として公開する**、**ラベル応答が壊れてもプレースホルダで続ける**（本体は失敗にする）。ほか、数字だけの回答 ID を数値で書く、`propertyMap`、`comment_num` の数え方、前後の空白
   - 期待値は本体 `3649fe41` で作成。生成を 5 回繰り返しても、まっさらな Python 3.12 環境でも同一。CI は期待値の再現を PR ごとに、本体 main での古さを毎週確かめる
+- 2026-11-24（実装調査で再確認）: org の [PR #1](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/1) は merge 済みで、main は `d15fb57e`。上の「未 merge」は作成時点の記録。[[serverless-implementation-2026-11-24]] に通常分析・再クラスタリング・賛否スペクトラムの構造と本体との差を整理した。固定重心7ケースで現行wardは5件一致、ward2は7件一致を再確認。ただし実LLM・UMAPを含めた分析全体の一致を意味しない。賛否スペクトラムの抽出には、通常版とは別に失敗を空結果として保存する経路が残る。
 - 2026-11-24（同日・夜）: nishio の了承で fork の GitHub Pages を有効にし（GitHub Actions から配信）、main（`6098ba3`）をデプロイした。`https://digitaldemocracy2030.github.io/kouchou-ai-serverless/` でサンプルレポートが描画され、ブラウザのコンソールエラーが無いことをヘッドレス Chromium で確認。配信パスは repo 名が同じなのでコード変更なし。1 回目はデプロイの段がアクションのダウンロード中に取り消され、再実行で通った。本体 docs 4 か所のリンクは tokoroten 版のまま
 

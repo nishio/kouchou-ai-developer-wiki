@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（serverless実装調査）: [[serverless-implementation-2026-11-24]]より、独立したTypeScript実装の通常分析・再クラスタリング・賛否スペクトラムを整理。今回は調査のみでコード変更なし。
+  org PR #1はmain `d15fb57e`にmerge済み（上の未merge表記は当時の記録）。通常成功253件・既知不一致22件、lint・build成功。固定重心7ケースはward2で7件一致したが、分析全体の一致は未検証。
+  次は元コメントの配布条件、同文の別回答の属性保持、失敗結果のキャッシュを揃える案。偽APIで通常版の失敗ラベルと賛否スペクトラムの失敗回答のキャッシュ残留も再現した。
 - 2026-11-24: [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の項に、org への fork と適合性テスト（fork の PR #1）を追記
 - 2026-11-24: [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の項に、ブラウザ版の取り込み方の検討（[[serverless-integration-options-2026-11-24]]）を追記
 - 2026-11-11: 散布図が描いていない軸の可視化 5 つを個人 repo で作った項を「そのまま読む用」に追加

@@ -43,6 +43,13 @@
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
+## [2026-11-24 21:03] filing-back | serverlessの実装を3経路で調べ、本体との差と失敗の扱いを整理した
+
+- org main `d15fb57e` と本体 main `a775d3d2` を取得。適合性テストPR #1のmerge済みを確認し、通常分析・対話的再クラスタリング・賛否スペクトラムの実装を整理
+- 同文の別回答の属性が初出に寄ること、元コメントの既定同梱、ラベル失敗のキャッシュ、賛否スペクトラムの抽出失敗を空結果として保存する経路を記録。固定重心7ケースは現行wardで5件、ward2で7件一致
+- 通常成功253件・既知不一致22件、lint・build成功。偽APIでラベル失敗と賛否スペクトラムの失敗回答が再実行でもキャッシュされることを再現。証跡は `raw/serverless-implementation-2026-11-24/`
+- 更新: [[serverless-implementation-2026-11-24]]、[[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]。graspの書込用journalがないため、既存のMarkdown運用で追記
+
 ## [2026-11-24 20:00] filing-back | 研究会の作業で踏んだ落とし穴を gotchas に、利用者定義ラベルを pipeline に入れた
 
 - [[gotchas]]：管理画面の「再利用」は入力も引き継ぐ／`prompt_file` は検査を通るが読まれない／意見分類のラベル ID が属性名になり同名の入力属性を上書き／`git -C` の worktree パス／Next.js 16.4 の `next dev` の初回停止
