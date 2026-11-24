@@ -31,6 +31,11 @@
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:39] filing-back | Lean の検証一式を本体に入れる PR #1239 を作った
+
+- 直した後のコードに合わせて写し直し、CI（analysis-core-lean.yml、必須ではない）で証明・全数検査・差分テストを回す。CI は全件 pass、未 merge
+- 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:28] filing-back | 公開属性表の参照切れを共通テストで検出するPRを作成
 
 - [org PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) で `propertyMap` が実在する意見を指すか検査。通常テスト7件成功、以前は通過した参照切れ変異はPython・TSの両方で失敗
