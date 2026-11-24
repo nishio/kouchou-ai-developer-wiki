@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 23:55] filing-back | ブラウザ版を dd2030 org に fork し、本体との適合性テストで 22 点のずれを見つけた
+
+- digitaldemocracy2030/kouchou-ai-serverless を作成（nishio 指示で移管ではなく fork）。本体の analysis-core を実際に動かして期待値を作るテストを fork の PR #1 に（未 merge）
+- 54 件中 32 件一致。ずれは上位クラスタの分け方（ward.D / ward.D2）、元コメント本文の既定公開、同じ文面の意見のまとめ方、壊れた応答を概要・ラベルにそのまま使う点など
+- 更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:50] filing-back | Civic AI（6-Pack of Care）の観点で docs を点検し、公開後に止める・直す手順と大量投稿への注意を PR #1234 にした
 
 - civic.ai に広聴AI への言及は無いが、broad listening・Polis・Community Notes を例に使い、観点は大きく重なる。docs は遡れること・ローカル完結が厚く、止め方・直し方・異議の受け方と大量投稿への注意が無かった
