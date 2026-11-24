@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 18:10] filing-back | #1220 を main に入れた
+
+- nishio の指示で admin merge（squash、main `2a924af6`）。merge 前に CI 全件 pass・CodeRabbit の指摘なし、merge 後の main も全件 success
+- 更新: [[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 17:45] filing-back | #1220 の CI が全件通り、ミューテーションテストの知見をテスト体系のページに入れた
 
 - [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220)（穴 3 つを塞ぐテスト）は CI 全件 pass、未 merge。merge 判断で見る点（名前の並びを固定する実装寄りのテスト 1 本）を分析ページに残した
