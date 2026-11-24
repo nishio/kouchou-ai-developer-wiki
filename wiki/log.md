@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:40] filing-back | 広聴AIを使う人向けのSkills案
+
+- CLIで自由記述の準備から根拠つきの所見まで返すSkillを先に試す案と、同じ読み方をサーバ版の既存レポートに使う案を整理。
+- [[user-workflow-skills-proposal]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 03:39] filing-back | サーバ版広聴AIの管理 API と MCP の導入案
 
 - 既存の管理 API を確認し、一覧・進捗を参照権限で提供してから、同じ操作を MCP で試す案を整理。次は最初の運用例を絞る。

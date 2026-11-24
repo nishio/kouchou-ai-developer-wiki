@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 03:40	filing-back	広聴AIを使う人向けのSkills案
 2026-11-25 03:39	filing-back	サーバ版広聴AIの管理 API と MCP の導入案
 2026-11-25 03:33	filing-back	Web版の対立軸プラグインを本体PRに提出
 2026-11-25 02:15	filing-back	Polis取込PRの通常CSVのE2Eを修正してCIを確認
