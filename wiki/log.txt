@@ -9,6 +9,7 @@
 2026-11-24 23:50	filing-back	Civic AI（6-Pack of Care）の観点で docs を点検し、公開後に止める・直す手順と大量投稿への注意を PR #1234 にした
 2026-11-24 23:30	filing-back	ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
 2026-11-24 23:00	filing-back	Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
+2026-11-24 21:55	filing-back	serverlessの比較を値の一致から共通契約の検査へ見直す方針を整理
 2026-11-24 21:47	filing-back	serverlessに残る仕様差10項目を調べ、本文改変とJSON再分析の情報喪失を優先に整理
 2026-11-24 21:35	filing-back	fork の PR #1 merge と Pages を main に揃えたことを反映し、関連ページをつないだ
 2026-11-24 21:31	filing-back	未解決 Issue から CLI の HTML 出力設定と小さな修正候補を選んだ

@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 21:55] filing-back | serverlessの比較を値の一致から共通契約の検査へ見直す方針を整理
+
+- nishioの提案を受け、同じ入力生成器と検査器でPython・TSそれぞれの木・参照・件数・情報保持・公開設定を調べる設計を追記。Leanはモデルの証明、プロパティベーステストは実コードとの接続に使う
+- 一致が要件でない差は一致も不一致も検査しない。既存テストの置換・PR作成は未着手。更新: [[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 21:47] filing-back | serverlessに残る仕様差10項目を調べ、本文改変とJSON再分析の情報喪失を優先に整理
 
 - org main `2341235`・本体main `a775d3d2`で調査。適合性テストは44成功・既知不一致10件。番号・空白処理・受理する応答形式の差を、データ喪失の問題と分けて判断
