@@ -144,6 +144,8 @@ sources:
 
 ## Updates
 
+- **多対多の出典契約のマージ前確認（2026-11-25、進行中）**。本体 [#1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) はCI成功・承認待ち。旧v1の数値IDを文字列に変える際の版更新と、旧JSONの `7.0` をLeanだけが拒否する差を確認した。org版 [#11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) と合わせて互換テストを見直す。[[issue-1156-opinion-comment-contract-2026-11-25]]
+
 - **意見と元コメントの多対多契約（2026-11-25、進行中）**。本体 [#1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246)、org版 [#11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11)、ともに `codex/opinion-sources-contract`。代表IDと複数参照を公開JSONに保持し、同じLean仕様でPythonとTSを照合する。
   次は本体、org版の順にCI・レビューを確認。どの意見を束ねるか、複数出典の属性表示やクラスタ件数は [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) に残る。[[issue-1156-opinion-comment-contract-2026-11-25]]
 
