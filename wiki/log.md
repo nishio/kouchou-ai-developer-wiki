@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 23:30] filing-back | ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
+
+- org への repo 移管／本体 monorepo への統合／結果形式だけ合わせる、を両 repo の main で比較。統合しても分析処理は TS と Python の 2 本のままで、道具の世代差（pnpm・TS・Biome）と Pages の相乗りが重い
+- ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
+- 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:00] filing-back | Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
 
 - 無効に戻したら集計を再実行（#1227）、依存の宣言の検査（#1228）、llm_grouping の id "0" の拒否（#1229）、入れ子でない階層クラスタで止める（#1230）。いずれも未 merge
