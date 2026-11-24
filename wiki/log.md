@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 00:37] filing-back | 多対多の出典保存とLean差分テストを実装
+
+- 本体 [#1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) とorg版 [#11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) を作成。出典保持・原文公開・旧JSONの長い数値IDを同じ仕様で検証
+- 更新: [[issue-1156-opinion-comment-contract-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 00:13] filing-back | 意見と元コメントの多対多契約をLeanで先に仕様化する案を整理
 
 - 本体とorg版の現行出力は単一の回答参照と確認。出典、束ね方、件数、公開範囲と旧形式を分け、Python・TSを同じLean仕様と照合する設計案を整理

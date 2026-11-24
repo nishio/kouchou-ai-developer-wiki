@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- **意見と元コメントの多対多契約（2026-11-25、進行中）**。本体 [#1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246)、org版 [#11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11)、ともに `codex/opinion-sources-contract`。代表IDと複数参照を公開JSONに保持し、同じLean仕様でPythonとTSを照合する。
+  次は本体、org版の順にCI・レビューを確認。どの意見を束ねるか、複数出典の属性表示やクラスタ件数は [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) に残る。[[issue-1156-opinion-comment-contract-2026-11-25]]
+
 - **意見と元コメントの多対多契約（2026-11-25、設計案）**: [#1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) の出典の関係と束ね方を分け、件数・公開範囲・旧形式をLeanで先に定義し、PythonとTSをそれぞれ照合する案に整理した。[[issue-1156-opinion-comment-contract-2026-11-25]]
 
 - **本体ドキュメントからorgのブラウザ版への案内（2026-11-25、PR作成済み）**: 利用者向け3ページと開発者向け1ページのリンクを更新し、共有するレポートの性質は両実装の共通テストで確かめると記載した。
