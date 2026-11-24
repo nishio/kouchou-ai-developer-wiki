@@ -3,6 +3,13 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 16:40] filing-back | analysis-core にミューテーションテストを試し、テストの穴 3 つを見つけた
+
+- mutmut 3.8.1 で 4 モジュール 770 変異、テストが気づいた割合 76%（本体は変更なし、main `600479b7`）
+- 穴は部品のつなぎ目: 429 の結果を同時実行数の制御へ渡す配線、`chat_http_client` のフック、工程をまたぐトークン数の合計
+- mutmut の既定（fork 方式）では 220 件が誤って timeout になる。forkserver 方式が要る
+- 更新: [[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 13:35] filing-back | #1201・#1202 を main に入れ、#471 が閉じた
 
 - どちらも CI 成功・指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `ca485200`・`c56eddcf`）
