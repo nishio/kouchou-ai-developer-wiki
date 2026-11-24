@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 04:09] filing-back | 可視化の既存 PR を更新し全ビューの共存を Chrome で確認
+
+- 基盤 [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) をレビュー可能にして、対立軸 [#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) と階層図 [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) に修正を反映。
+- 統合枝 `a38cf51c` で 1280px・390px の6種類の表示切替、全画面、該当0件、旧レポートと欠損入力を確認。[[optional-visualization-plugins-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 04:08] filing-back | Local LLMでLLM直接グルーピングの3条件を比較
 
 - 公開400コメントから抽出済みの422意見を固定し、Gemma 4 31Bで80件・200件・全件一括を実行。全件一括は80件比で総トークン19%減。

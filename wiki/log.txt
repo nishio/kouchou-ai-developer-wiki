@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 04:09	filing-back	可視化の既存 PR を更新し全ビューの共存を Chrome で確認
 2026-11-25 04:08	filing-back	Local LLMでLLM直接グルーピングの3条件を比較
 2026-11-25 04:02	filing-back	公開用の解析結果を既存サービスに埋め込む
 2026-11-25 03:57	filing-back	レポート参照 REST API と MCP を本体PRに提出
