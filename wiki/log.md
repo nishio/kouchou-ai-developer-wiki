@@ -19,7 +19,7 @@
 ## [2026-11-24 13:35] filing-back | #1201・#1202 を main に入れ、#471 が閉じた
 
 - どちらも CI 成功・指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `ca485200`・`c56eddcf`）
-- #1202 の `Closes #471` で #471 が閉じた。根拠にした検証依頼の #1194・#1195 は open のまま
+- #1202 の `Closes #471` で #471 が閉じた。根拠にした検証依頼の #1194・#1195 も、katsushi2441 へのお礼と反映先をコメントして閉じた
 - 更新: [[meeting-report-draft]]、[[team-mirai-local-llm-quality-2026-11-10]]、[[domestic-data-residency-options-2026-11-10]]
 
 ## [2026-11-20 23:15] filing-back | #1219 を main に入れ、#994 が閉じて 11-02 の棚卸しが全件片付いた
