@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 02:15] filing-back | Polis取込PRの通常CSVのE2Eを修正してCIを確認
+
+- 通常CSVのファイル入力をCSVタブに限定し、[PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の5ワークフローが成功。同じ初回のモバイル閲覧テストの失敗は本体mainでも再現
+- 更新: [[polis-export-input-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 02:06] filing-back | 大きな束だけ推論で読み直すKJ法のCLIを試作
 
 - 埋め込み近傍から軽く統合を判定し、一定の大きさに達した束だけを再検討するCLIを実装。本体ブランチ `codex/kj-bottom-up`

@@ -146,7 +146,7 @@ sources:
 
 - **マンダラートと付箋のWeb可視化（2026-11-25、ローカル試作 `codex/optional-report-views` / `47bb3ba2`）**。管理画面で有効にした表示を読者が選び、既存レポートの木や座標から意見を読む。PC幅・スマートフォン幅のChromeで切替を確認。次は実利用での読みやすさを確かめる。[[optional-visualization-plugins-2026-11-25]]
 
-- **Polisの参加者散布図（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`）**。公式データ234人で日付変更と個人の軌跡を確認し、画面例を利用ガイドに追加して本体にPRを出した。次はCI・レビューと、大規模会話での動作確認。[[polis-export-input-2026-11-25]]
+- **Polisの参加者散布図（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`）**。公式データ234人で日付変更と個人の軌跡を確認し、画面例を利用ガイドに追加してPRを出した。通常CSVのE2Eを修正し、`f51e51c8` のGitHub Actionsは全5件成功。次はレビューと大規模会話での動作確認。[[polis-export-input-2026-11-25]]
 
 - **推論モデルによるボトムアップのグループ編成（2026-11-25、実装・実機確認済み、`codex/kj-bottom-up`）**。CLIで一次判定を軽く行い、一定の大きさに達した束だけを強い推論で読み直す。架空の3枚で一次判定3回、再検討1回を確認。次は公開題材で表札と束の質を比べる。[[kj-method-broadlistening-framing-2026-05-25]]
 
