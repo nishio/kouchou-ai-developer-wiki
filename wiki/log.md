@@ -31,6 +31,11 @@
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:44] filing-back | 公開属性表の参照検査をserverless mainに反映
+
+- [org PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) の共通契約テスト、lint、単体テスト、ビルドのCIが通過。nishioの指示でsquash merge（`870cb9c`）
+- 更新: [[serverless-shared-contract-mutations-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:39] filing-back | Lean の検証一式を本体に入れる PR #1239 を作った
 
 - 直した後のコードに合わせて写し直し、CI（analysis-core-lean.yml、必須ではない）で証明・全数検査・差分テストを回す。CI は全件 pass、未 merge

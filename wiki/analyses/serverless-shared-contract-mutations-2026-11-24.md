@@ -38,4 +38,6 @@ root以外のクラスタの配列順を変える対照試験は両方とも通�
 
 ## Updates
 
+- 2026-11-24: 共通契約テストとlint・単体テスト・ビルドのCIが通過した [org PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) をnishioの指示でsquash mergeし、org mainに反映した（`870cb9c`）。
+
 - 2026-11-24: org [PR #4](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/4) で、公開 `propertyMap` の各列のキーが同じ公開JSONの `arguments[].arg_id` に含まれることを共通テストに追加した。空の属性表を許容し、列の有無や値の実装間一致は条件にしない。本体main `afde1cb9` とPR `6404506` で通常テスト7件が通過し、前回と同じ属性表の参照切れ変異が両実装で新しい検査により失敗した。再実行の記録は `raw/serverless-shared-contract-mutations-2026-11-24/property-map-recheck/`。上位階層の分割数は既存の単体テストで引き続き検査する。

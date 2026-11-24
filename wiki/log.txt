@@ -8,6 +8,7 @@
 2026-11-24 23:55	filing-back	ブラウザ版を dd2030 org に fork し、本体との適合性テストで 22 点のずれを見つけた
 2026-11-24 23:50	filing-back	Civic AI（6-Pack of Care）の観点で docs を点検し、公開後に止める・直す手順と大量投稿への注意を PR #1234 にした
 2026-11-24 23:30	filing-back	ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
+2026-11-24 22:44	filing-back	公開属性表の参照検査をserverless mainに反映
 2026-11-24 22:39	filing-back	Lean の検証一式を本体に入れる PR #1239 を作った
 2026-11-24 22:28	filing-back	公開属性表の参照切れを共通テストで検出するPRを作成
 2026-11-24 22:26	filing-back	Lean の検証で見つかったものを直す PR 4 本がすべて main に入った
