@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:28] filing-back | 広聴AIの意見カードをKJ法のように組み替える試作案
+
+- 既定の命名にKJ法が入っていることを確認し、原文・束の組み替え・表札・次の聞き取りの問いをつなぐ試作と比較方法を整理
+- 更新: [[kj-method-broadlistening-framing-2026-05-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:27] filing-back | 広聴AIからDivConへ分岐する位置を整理
 
 - 既存クラスタを再利用するカタログ版と、抽出済み意見から話題を見つけ直す案を記録
