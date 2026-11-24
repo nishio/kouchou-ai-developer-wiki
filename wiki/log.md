@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:30] filing-back | クラスタ選択から対立ビューを開く導線案を記録
+
+- 既存のクラスタ選択を使い、同じ話題の事前計算済みの対立軸へ進む案を整理
+- 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:28] filing-back | 広聴AIの意見カードをKJ法のように組み替える試作案
 
 - 既定の命名にKJ法が入っていることを確認し、原文・束の組み替え・表札・次の聞き取りの問いをつなぐ試作と比較方法を整理
