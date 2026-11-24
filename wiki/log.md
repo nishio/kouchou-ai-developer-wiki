@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 17:45] filing-back | #1220 の CI が全件通り、ミューテーションテストの知見をテスト体系のページに入れた
+
+- [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220)（穴 3 つを塞ぐテスト）は CI 全件 pass、未 merge。merge 判断で見る点（名前の並びを固定する実装寄りのテスト 1 本）を分析ページに残した
+- [[testing]] に、mutmut を使う時の設定（forkserver 方式）と、生存した変異の選び方を追記。分析ページへの常設の入口にもした
+- 更新: [[testing]]、[[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 17:20] filing-back | ミューテーションテストで見つけた穴 3 つを塞ぐテストを PR #1220 にした
 
 - 429 の配線・`chat_http_client`・工程をまたぐトークン数の合計を確かめるテスト 4 本（未 merge、本体のコードは変更なし）

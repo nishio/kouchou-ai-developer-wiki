@@ -9,6 +9,7 @@ sources:
   - three-issues-progress-2026-09-09.md
   - next-three-issues-progress-2026-09-09.md
   - biome-lint-main-drift-2026-10-09.md
+  - mutation-testing-trial-2026-11-24.md
 ---
 
 ## テスト層
@@ -103,3 +104,12 @@ sources:
 
 - 2026-11-07: Open Questions から除去 — 「E2E は CI 非実行のため、回帰検知はローカル運用次第。ステージング環境ベースの代替戦略の合意は未確認」。E2EはPRとscheduleでCI実行するworkflowがある。「CI非実行」という前提は解消。ステージングでの代替保証は主張しない。（根拠: kouchou-ai upstream/main@085366779（2026-10-29） .github/workflows/e2e-tests.yml:4）。
 - 2026-11-07: Open Questions から除去 — 「Biome の CI ゲーティングは PR [#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963) で導入済み（2026-10-09 時点の「無い」は解消）」。[#963](https://github.com/digitaldemocracy2030/kouchou-ai/issues/963)で導入済みと問い自体に回答が残っている。（根拠: 0f2ebe6:wiki/concepts/testing.md:88（既存 Updates）；kouchou-ai 2b0079a1d）。
+
+## Updates — 2026-11-24 ミューテーションテストで「確かめていない振る舞い」を探す
+
+行カバレッジでは「実行はされたが結果を誰も確かめていない」行が見えない。analysis-core の 4 モジュールに mutmut をかけたところ、テストが気づいた割合は 76% で、穴は部品同士のつなぎ目に集まっていた（部品のテストが自分で正しい値を渡しているので、呼び出し側の渡し方がずれても気づけない）。見つかった 3 件は PR [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) でテストを足した。[[mutation-testing-trial-2026-11-24]]より。
+
+- mutmut 3 をこの analysis-core のテスト一式で使う時は `process_isolation = "forkserver"` にする。既定の fork 方式では生存した変異が timeout と誤判定され、テストが気づいた割合が見かけ上 98% に膨らむ
+- 生存した変異には実害の無いもの（ヘッダ名の大小文字、ログ文言、本番経路では同じ値に揃う二重の守りの片側など）が多く混じる。件数ではなく、1 件ずつ「本番経路で振る舞いが変わるか」を見て選ぶ
+- テスト一式が重い（素で約 2 分）ので、常設するなら全体ではなく PR で変わったファイルだけを対象にする
+

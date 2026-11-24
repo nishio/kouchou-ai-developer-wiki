@@ -104,3 +104,4 @@ process_isolation = "forkserver"
 ## Updates
 
 - 2026-11-24: 優先度高の 3 件（429 の配線、`chat_http_client`、トークン数の合計）を塞ぐテスト 4 本を PR [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) にした（未 merge、本体のコードは変更なし）。生き残っていた変異 10 件を手で入れ、どれも新しいテストで落ちることを確認した。analysis-core 全体は 876 passed
+- 2026-11-24: [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) の CI（Pytest・Ruff・CodeQL・CodeRabbit ほか）は全件 pass。merge 判断の時に見る点: 429 の配線を確かめる 1 本目は、制御側に渡す名前の並び（`rate_limited` / `ok` / `error`）を直接固定しており、実装寄りのテストになっている。特に `error` は制御側がどの分岐でも参照しないので、名前が変わっても振る舞いは変わらない（その部分だけ外す選択肢もある）。振る舞いで確かめる 2 本目（制限が下がってから送り直し、成功で外れる）は `rate_limited` と `ok` を別途 kill している
