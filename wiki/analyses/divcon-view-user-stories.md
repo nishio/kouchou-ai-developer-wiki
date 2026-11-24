@@ -63,3 +63,7 @@ sources:
 ## Updates
 
 - 2026-11-10: 初版作成（2026-11-09 の nishio とのやりとりから）
+
+- 2026-11-25: 元の DivCon のコード（`11a60ad`）を照合。Stage 1・2 で LLM が話題を見つけ、各意見を最も適切な話題に割り当てる。Stage 3a は話題名と ID つき意見本文を最大 500 件渡し（500 件超は無作為抽出）、LLM に対立軸 2〜4 本と両極・強度（1〜5）・理由を提案させる。強度は LLM の判断で、両側の件数による軸の採否判定は実装されていない。サンプルに少数側の意見が入らなければ、軸を見落としうる。[元実装の Stage 3a](https://github.com/tokoroten/divcon/blob/11a60ad301136344cdb67fcabb2e94f06e79847e/experiments/divcon_analysis.py#L215-L285)
+  - Stage 3b・4 で極端な主張例を左右 10 個ずつ生成し、各軸に対してその話題の全意見を 1〜6 で採点する。上の「関係なし」の不足は表示についてで、採点には該当しない・立場が判断できない意見を `null` にする指示がある。中立に当たる評点はない。[元実装の採点](https://github.com/tokoroten/divcon/blob/11a60ad301136344cdb67fcabb2e94f06e79847e/experiments/divcon_analysis.py#L376-L428)
+  - 広聴AI の試作は、指定した上位クラスタを話題として使い、軸の発見から始める。サンプルから軸を提案し、決まった軸に対して全件を採点する順序は共通。[試作の実装](https://github.com/nishio/broadlistening-visualizations/blob/main/scripts/build_divcon.py)

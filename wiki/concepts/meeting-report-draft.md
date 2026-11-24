@@ -144,6 +144,8 @@ sources:
 
 ## Updates
 
+- **DivCon の対立軸発見（2026-11-25、調査済み）**。話題ごとに最大 500 件を LLM に渡して候補軸を生成し、その後に全件を採点する。少数側がサンプルから落ちたときの軸の見落としが、検証する際の論点。[[divcon-view-user-stories]]
+
 - **多対多出典の再レビュー（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) で、旧IDの `1e16` をLeanだけが受理する差を再現。整数リテラルは桁を保ち、小数・指数表記に安全整数の条件を適用するよう、Leanの入力と差分テストを見直す。[[issue-1156-opinion-comment-contract-2026-11-25]]
 
 - **多対多出典のv2と互換修正（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) と [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) でv2出力・旧v1読込を実装し、`7.0` などをLean・Python・TS共通の差分テストで確認した。次は本体の承認と、本体→org版の順の反映。[[issue-1156-opinion-comment-contract-2026-11-25]]

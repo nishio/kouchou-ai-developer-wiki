@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:20] filing-back | DivConの対立軸発見と全件採点を実装で確認
+
+- 元の実装で最大 500 件からの候補軸生成と全件採点の順序を確認し、広聴AI の試作では上位クラスタを話題に使うことを記録
+- 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:08] filing-back | CodeRabbitの再レビューで旧出典IDの指数表記の差を再現
 
 - `1e16` はLeanで受理・PythonとTSで拒否、同じ値の整数表記は3者で受理。v2と `7.0` の指摘は修正済み
