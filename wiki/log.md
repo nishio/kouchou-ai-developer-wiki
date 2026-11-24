@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 17:20] filing-back | ミューテーションテストで見つけた穴 3 つを塞ぐテストを PR #1220 にした
+
+- 429 の配線・`chat_http_client`・工程をまたぐトークン数の合計を確かめるテスト 4 本（未 merge、本体のコードは変更なし）
+- 生き残っていた変異 10 件を手で入れ、すべて新しいテストで落ちることを確認。analysis-core 全体は 876 passed
+- 更新: [[mutation-testing-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 16:40] filing-back | analysis-core にミューテーションテストを試し、テストの穴 3 つを見つけた
 
 - mutmut 3.8.1 で 4 モジュール 770 変異、テストが気づいた割合 76%（本体は変更なし、main `600479b7`）

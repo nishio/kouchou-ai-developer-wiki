@@ -100,3 +100,7 @@ process_isolation = "forkserver"
 
 - fork 方式で止まる原因のテストはどれか（umap / numba のスレッドか、テスト内のスレッドプールか）。forkserver で回避できたので未特定
 - 二重管理になっている出力ファイル名の表（`_build_initial_artifacts`）は、テストで一致を固定するのと、プラグインの宣言から組み立てるように直すのと、どちらが良いか
+
+## Updates
+
+- 2026-11-24: 優先度高の 3 件（429 の配線、`chat_http_client`、トークン数の合計）を塞ぐテスト 4 本を PR [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) にした（未 merge、本体のコードは変更なし）。生き残っていた変異 10 件を手で入れ、どれも新しいテストで落ちることを確認した。analysis-core 全体は 876 passed
