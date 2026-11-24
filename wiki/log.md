@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 04:37] filing-back | Polis取り込みのPRレビューで散布図と集計の食い違いを確認
+
+- [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の最新コミットで、参加者別CSVと一部の票を欠く投票履歴を併用すると、集計済みの票を持つ参加者が散布図から消えることを合成データで再現。対応案を [[meeting-report-draft]] に追記。
+
 ## [2026-11-25 04:12] filing-back | CLIでクラスタリングの乱数シードを指定
 
 - [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) をドラフト PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) に実装。CLI の任意設定とし、保存済みの30意見・埋め込みで同じシードの出力 CSV が一致することを確認。
