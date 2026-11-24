@@ -159,6 +159,8 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 
 - 2026-11-25: nishio の依頼で DivCon の事前計算結果を読む公開ビューアのプラグインを試作（本体ローカル `codex/divcon-web-view`、`d28051f1`）。軸の定義と採点は任意の `opposition_axes` にまとめ、既存クラスタから対立ビューを開く。採用・マージは未判断。[[divcon-view-user-stories]]
 
+- 2026-11-25: 公開ビューアへの追加を [本体 PR #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) として提案。事前計算済みの軸を持つレポートで使える形とし、検証結果・添付手順を記載した。[[divcon-view-user-stories]]
+
 ## B. 方針決定済み・未着手
 
 ### B-CLI

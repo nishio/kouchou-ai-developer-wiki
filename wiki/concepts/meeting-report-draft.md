@@ -154,7 +154,7 @@ sources:
 
 - **Polisエクスポートの取り込み（2026-11-25、調査済み）**。`comments.csv` は本体の管理画面・CLIとブラウザ版で既存のCSV入力を使える。同梱342件で入力を確認した。投票履歴や参加者グループの専用連携はない。[[polis-export-input-2026-11-25]]
 
-- **DivCon の Web 可視化プラグイン（2026-11-25、ローカル試作 `codex/divcon-web-view` / `d28051f1`）**。既存クラスタから事前計算した対立軸へ進み、元の表示に戻れる。通常のレポート API から公開題材の 4 クラスタ・12 軸を読み、フィルターとモバイルも確認した。次は公開結果の項目と本体での採用判断。[[divcon-view-user-stories]]
+- **DivCon の Web 可視化プラグイン（2026-11-25、PR 提出済み）**。[本体 PR #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) で、既存クラスタから事前計算した対立軸へ進む表示を提案した。通常のレポート API で確認した 4 クラスタ・12 軸と、データの添付手順を PR に記載。次は CI と採用判断。[[divcon-view-user-stories]]
 
 - **多対多出典の旧数値ID修正（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) で整数表記と指数表記の違いをLean仕様に保持し、[org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) で生JSONの共通差分検査を追加した。次は本体承認とマージ。[[issue-1156-opinion-comment-contract-2026-11-25]]
 

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:33] filing-back | Web版の対立軸プラグインを本体PRに提出
+
+- [本体 PR #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) に計算済み4クラスタ・12軸の確認結果と、レポートへの添付手順を記載
+- 更新: [[divcon-view-user-stories]]、[[open-decisions]] A14、[[meeting-report-draft]]
+
 ## [2026-11-25 02:15] filing-back | Polis取込PRの通常CSVのE2Eを修正してCIを確認
 
 - 通常CSVのファイル入力をCSVタブに限定し、[PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の5ワークフローが成功。同じ初回のモバイル閲覧テストの失敗は本体mainでも再現
