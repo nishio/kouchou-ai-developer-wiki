@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 00:50] filing-back | 意見の出典を公開JSON v2にして旧IDのLean照合を修正
+
+- [本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) と [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) でv2出力とv1読込を確認。整数値の小数表記と桁の長い数値IDを共通テストに入れた
+- 更新: [[issue-1156-opinion-comment-contract-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 00:43] filing-back | 多対多の出典契約のマージ前に残る互換性を確認
 
 - 両PRのCI成功を確認し、旧v1の出力型変更と、旧JSONの整数値の小数表記をLeanだけが拒否する差を確認

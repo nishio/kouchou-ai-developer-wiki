@@ -54,3 +54,9 @@ sources:
 - 本体 [PR #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246)、org版 [PR #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) はCI成功・未マージ。本体は承認が必要。
 - 旧v1では数値の `comment_id` をそのまま返す経路があり、文字列への統一をv1のまま出すと既存の利用者に型変更が発生する。互換性ルールに従い、新しい公開JSONをv2とし、旧v1も読める形が候補。API・ビューア・静的書き出しとorg版の互換テストを合わせて見直す。
 - 旧JSONの `comment_id: 7.0` をLean実行器へ渡すとエラーを返すことを再現した。PythonとTSでは `"7"` になる。整数値の小数表記、端数あり、安全整数範囲を超える旧IDを共通の差分テストに入れてから、両PRを本体、org版の順に進める。
+
+### 2026-11-25 公開JSON v2と旧数値IDの互換修正
+
+- [本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) の `1fd2be9a` と [org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) の `e1113f6` で公開JSONの出力をv2にした。旧v1・版番号なしの読込を維持し、公開APIでは旧レポートの長い整数IDを桁を保って文字列化する。
+- Leanの旧ID変換に安全整数範囲内の整数値の小数表記を追加した。差分テストはv1読込からv2再出力および再分析の参照復元まで通し、`7.0`、負の値、安全整数の境界、端数と範囲外の小数表記を確認する。
+- ローカルではPython 991件（1件スキップ）、公開API 13件、TS 275件、共有契約16件が成功。両PRのGitHub Actionsも成功。本体mainへのマージは承認1件が必要で、両PRは未マージ。
