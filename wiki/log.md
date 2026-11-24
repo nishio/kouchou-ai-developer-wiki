@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:53] filing-back | 広聴AIのレポート参照 REST API と MCP を試作
+
+- 本体 `codex/admin-read-api-mcp`（`5b2d756f`）で、専用キーによる一覧の絞り込みと進捗確認を追加。
+- 架空データで REST と stdio MCP の返す JSON が一致することを確認。API 594 テストが通過。[[server-admin-api-and-mcp-2026-11-25]]、[[meeting-report-draft]]。
+
 ## [2026-11-25 03:52] filing-back | 利用者向けCLI Skillを広聴AI本体のPRに提出
 
 - [PR #1251](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1251) にサンプル14件の実機検証と、原文から拾えた避難情報の通知方法を記載。
