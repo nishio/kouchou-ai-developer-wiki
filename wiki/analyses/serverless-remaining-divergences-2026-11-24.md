@@ -135,3 +135,5 @@ Leanは、この契約のうち木の構築などの小さなモデルに適用�
 org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) で、期待値JSONと既知不一致の `it.fails` をHypothesisによる共通テストへ置き換えた。実際のPython・TSの抽出、ラベル付け、集計、公開JSON生成を共通の生成入力で実行し、木、参照、件数、属性と原文公開設定をそれぞれ検査する。点群を入力とするKMeansとWardも、割り当てと入れ子を検査する。逐語移植が要件のデフォルトプロンプト4本だけ独立して照合する。
 
 本体 `a775d3d2` とのローカル検証でレポート40例・点群20例が通過。参照切れ、ID重複、件数違い、非公開本文の混入を検査器が検出することも確かめた。Vitest 248件、lint、ビルド通過。PRのCIは固定版、定期実行は本体mainへ同じ検査を適用する。LLM応答は偽物を使い、実LLMや公開JSONから再クラスタリングする際の情報保持は別の検証範囲とした。
+
+- 2026-11-24: org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) の最新コミットで共通契約テストとlint・単体テスト・ビルドのCIが通過。nishioの指示でsquash mergeし、org mainに反映した（`d060677`）。

@@ -144,8 +144,8 @@ sources:
 
 ## Updates
 
-- **serverlessの共通契約テスト（2026-11-24、未merge）**: 期待値JSONと不一致テストを、同じ生成入力でPythonとTSの木・参照・件数・属性・公開設定を検査するテストに置換した。レポート40例、点群20例、Vitest 248件がローカルで通過。
-  org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) で進行中。次はCIと、別件の公開JSON再分析における属性・件数の保持。[[serverless-remaining-divergences-2026-11-24]]
+- **serverlessの共通契約テスト（2026-11-24、merge済み）**: 期待値JSONと不一致テストを、同じ生成入力でPythonとTSの木・参照・件数・属性・公開設定を検査するテストに置換した。ローカル検証とPRのCIが通過し、org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) をmainへ反映（`d060677`）。
+  公開JSON再分析における属性・件数の保持は別件。[[serverless-remaining-divergences-2026-11-24]]
 
 - 2026-11-24（Issue 修正、PR 作成済み・レビュー待ち）: CLI の出典リンクと HTML タイトル [#1237](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1237)、Copilot のガイド索引 [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235)、管理画面からの API 課金案内 [#1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236)、閲覧画面・共有画像の階層別グループ数 [#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) を実装・ローカル検証した。
   次は CI・レビュー。公開 JSON の告知は [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) を M5 に紐づけ、Issue にリリースノート案を追記した。[[issue-resolution-candidates-2026-11-24]]

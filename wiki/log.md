@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:11] filing-back | CI通過後にserverlessの共通契約テストをmainに反映
+
+- org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) の共通契約テストとlint・単体テスト・ビルドのCIが通過。nishioの指示でsquash merge（`d060677`）
+- 更新: [[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:04] filing-back | serverlessの共通契約テストを実装しorg PR #3を作成
 
 - 期待値JSON・既知不一致の比較を、PythonとTSの共通プロパティベーステストへ置換。レポート40例・点群20例を両実装で検証し、壊れた参照や件数、公開設定違反を検出できることも確認
