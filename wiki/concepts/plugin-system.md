@@ -125,6 +125,7 @@ YouTube plugin はこの形で壊れていた。`google-api-python-client` は `
 
 ## Updates
 
+- 2026-11-25: 既存サービスで公開結果を表示する手順と図ごとの入力条件を [[embedding-public-results]] にまとめた。
 - 2026-11-25: 組み込み可視化の ID の一意性と、レポートが有効にした利用可能なモードだけを描画する契約を [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) に実装した。Lean の対象は選択規則で、各ビューの追加データ・フィルター・出典・操作は実装とテストで確認する。既存 PR の競合と対立軸の採点内訳は [[optional-visualization-plugins-2026-11-25]] を参照。
 - 2026-11-25: 可視化レジストリから管理画面の有効化・公開ビューアの切替までを、マンダラートと付箋で試作した。公開結果で足りる条件、個別意見・出典の共通動作、図専用の追加データを導入する条件は [[optional-visualization-plugins-2026-11-25]] を参照。
 - 2026-10-21: 2026-10-12 の Update で「2026-05-25 main 入り」としたのは、PR ブランチ上の commit `4f893ab5` の作成日との取り違え。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) の merge（2026-05-28 16:26 UTC ＝ 2026-05-29 01:26 JST、merge commit `6e9e60ee`）に訂正（[[pipeline]] と同じ訂正）

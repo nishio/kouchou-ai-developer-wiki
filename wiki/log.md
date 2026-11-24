@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 04:02] filing-back | 公開用の解析結果を既存サービスに埋め込む
+
+- `public_result.json` と公開 API の使い分け、静的ビューアを組み立てて iframe で表示する例を [[embedding-public-results]] に整理。
+- 組み込みの三種類、単体で使えるカタログの図、追加のデータが必要な図を調べ、定例下書きにも記録。
+- Chromium で iframe 内の図の切替と、同じ JSON を読む独立した階層リストの展開を確認。
+
 ## [2026-11-25 03:57] filing-back | レポート参照 REST API と MCP を本体PRに提出
 
 - 本体 [PR #1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253) に REST と MCP の使い方、応答の照合、権限分離と API テストの確認結果を掲載。

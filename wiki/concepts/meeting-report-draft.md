@@ -154,6 +154,9 @@ sources:
 
 ## Updates
 
+- **解析結果を既存サービスに埋め込むガイド（2026-11-25）**。公開用 JSON から静的ビューアを組み立て、iframe 内で階層リストとツリーマップを切り替えた。同じ JSON でカタログの階層リストも表示できた。
+  図ごとの入力条件を記載。次は組み込み先でページ全体と個別の図のどちらが必要かを確認する。[[embedding-public-results]]
+
 - **狭い画面での散布図を修正（2026-11-25、進行中のドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252)）**。[#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) で提案されたラベルの初期非表示を幅600px以下に適用し、通常の散布図の高さを横幅に合わせた。
   幅390pxのChromiumで356×500pxから356×356pxになることと、ラベルの選択が全画面にも引き継がれることを確認。次は PR の確認。[[issue-backlog-audit-2026-10-28]]
 

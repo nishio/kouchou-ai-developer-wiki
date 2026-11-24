@@ -11,6 +11,7 @@ cli	concept	concepts/cli.md	kouchou-analyze CLI と python -m analysis_core — 
 coding-agents	concept	concepts/coding-agents.md	Devin / Claude Code / Codex の協働運用 — kouchou-ai での AI コーディング実態
 contributing	concept	concepts/contributing.md	コントリビュート手順 — Issue 起票・実装計画合意・PR・レビュー
 deployment	concept	concepts/deployment.md	デプロイ — 公開 wiki では方針・課題・PR/issue の粒度に留め、Azure デモ環境の詳細は Google Drive 側で管理する
+embedding-public-results	concept	concepts/embedding-public-results.md	公開用JSONを使って広聴AIのレポートをiframeに埋め込む手順、自前の画面で表示する場合のデータ契約、各可視化が要求するデータを整理する
 experiment-methodology	concept	concepts/experiment-methodology.md	CLI / analysis-core で pipeline を試すときの durable な実験設計方法論。探索 corpus と採用判断用 clean experiment を分け、1 要素だけ変え、ラベル品質は blind A/B preference で測って judge を較正し、結果は scratch / raw/experiments / 公開 wiki の 3 層で保存する。
 extraction-faithfulness	concept	concepts/extraction-faithfulness.md	意見抽出（pipeline step1）は処理が完走しても原文の意味を書き換えうる。モデルサイズ別の典型書き換え・既定 few-shot の漏れ・規則＋真意確認プロンプトの副作用・小型モデルの JSON 文法制約・受け入れ条件への忠実性組み込みを束ねる hub
 faithful-aggregation-vs-deliberation-dynamics	concept	concepts/faithful-aggregation-vs-deliberation-dynamics.md	意見集約ツールの重心を『忠実な集約(どんな意見がどれくらいあるかを正確に写す)』と『熟議の演出(議論の構造・動き・欠落を見せる)』の2つに分けて理解するレンズ。kouchou-ai は前者、OJPP BroadListening は後者寄り
