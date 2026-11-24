@@ -144,7 +144,12 @@ sources:
 
 ## Updates
 
+- 2026-11-24（serverless main反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) は、nishioの承認と最終CI全成功を確認してsquash merge済み（`2341235`）。回答対応・ward2・失敗復帰・元コメントの既定OFFと公開JSON/HTMLがmainに入った。
+  main反映後のCIも成功。上のPR #2進行中・ward修正判断待ちは更新前の記録。残る差10項目と実LLM品質、本体docsの入口の扱いは別に見る（[[serverless-implementation-2026-11-24]]）。
 - 2026-11-24 21:25: [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) の項を照合し、fork の PR #1 merge・Pages 公開・PR #2（進行中）を反映
+- 2026-11-24（serverless修正・進行中）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2)（`codex/serverless-correctness-and-public-output`）で、回答単位の意見・属性保持、ward2、失敗からの復帰、元コメントの既定OFFと公開用JSON/HTMLを実装した。未merge。
+  通常成功292件・既知不一致10件、lint・build・ブラウザ確認成功。旧前処理ファイルも元のベクトルを使って回答との対応を復元する。
+  GitHub CIのlint・test・buildと本体からの期待値再生成も成功。次はPRの確認。クラスタ番号・空白処理等の差10項目と実LLM品質は別に残す。詳細は [[serverless-implementation-2026-11-24]]。
 - 2026-11-24（serverless実装調査）: [[serverless-implementation-2026-11-24]]より、独立したTypeScript実装の通常分析・再クラスタリング・賛否スペクトラムを整理。今回は調査のみでコード変更なし。
   org PR #1はmain `d15fb57e`にmerge済み（上の未merge表記は当時の記録）。通常成功253件・既知不一致22件、lint・build成功。固定重心7ケースはward2で7件一致したが、分析全体の一致は未検証。
   次は元コメントの配布条件、同文の別回答の属性保持、失敗結果のキャッシュを揃える案。偽APIで通常版の失敗ラベルと賛否スペクトラムの失敗回答のキャッシュ残留も再現した。

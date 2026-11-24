@@ -43,11 +43,23 @@
 - 別セッションの実装調査 [[serverless-implementation-2026-11-24]] と取り込み方の検討をつなぎ、tokoroten の人物ページと index.md にブラウザ版を足した。fork の PR #2（差の修正）は進行中
 - 更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]、[[tokoroten]]
 
+## [2026-11-24 21:31] filing-back | org serverless PR #2をCI全成功後にmergeしmainの成功も確認
+
+- nishioの承認でPR #2をsquash merge（main `2341235`）。最終headのCI全成功・merge可能・未解決レビューなしを確認した。merge後mainのCIも成功
+- local cloneをmainに追従。Wikiへの並行更新も取り込み、PR作成時点の未merge記録を残したまま完了を追記した
+- 更新: [[serverless-implementation-2026-11-24]]、[[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]。既知の差10項目と実LLM品質は残る
+
 ## [2026-11-24 21:30] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
 
 - 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
+
+## [2026-11-24 21:25] filing-back | serverlessの回答対応・失敗復帰・公開範囲を修正しorg PR #2を作成
+
+- org PR #2（`codex/serverless-correctness-and-public-output`）を作成。回答単位の意見保持・ward2・失敗結果のキャッシュ防止・元コメント既定OFFと公開JSON/HTMLを実装。未merge
+- テストは292成功・既知差10件、lint・build成功。ブラウザで既定OFF/明示ON・JSON/HTML出力・HTML単体表示・旧工程キャッシュ拒否を確認。実LLM品質は未検証
+- GitHub CIのlint・test・buildと本体からの期待値再生成も成功。更新: [[serverless-implementation-2026-11-24]]、[[meeting-report-draft]]。証跡は `raw/serverless-fixes-2026-11-24/`。次はPRの確認
 
 ## [2026-11-24 21:03] filing-back | serverlessの実装を3経路で調べ、本体との差と失敗の扱いを整理した
 

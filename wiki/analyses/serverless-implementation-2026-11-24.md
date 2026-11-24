@@ -112,4 +112,12 @@ flowchart TD
 
 ## Updates
 
+- 2026-11-24（merge完了）: ユーザーの「CI通ったらmergeしていい」という承認を受け、最終head `ae9a0b72` のCI全成功・merge可能・未解決レビューなしを確認して [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) をsquash mergeした。org mainは `234123512681e686ece4f86ebaac6085f107a04e`。merge後のmainでも検査は成功し、local cloneもmainへ追従した。下の「未merge」はPR作成時点の記録。既知の差10項目と実LLM品質の確認は引き続き別に残る。
+- 2026-11-24（修正PR作成）: ユーザーの指示で org の [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2)（`codex/serverless-correctness-and-public-output`、`04594d12`）を作成した。**未mergeであり、上のmain観測は修正前の記録**。
+  - 通常版・賛否スペクトラムとも回答単位で同文意見を保持し、comment_idを文字列に統一。通常版の上位クラスタはward2へ変更した。固定重心7ケースの分割が本体と一致し、番号等の差は一覧に残した。
+  - ラベル・概要の失敗と、賛否スペクトラムの抽出失敗を成功キャッシュとして保存しない。並列処理を待ってから失敗を返し、成功分だけを再利用して再試行する。旧プレースホルダ・未確認の空配列も取り直す。
+  - 元コメント本文は作成時の明示opt-in（既定OFF）にし、旧JSONも書き出し時に同じ方針を適用。JSONと単一HTMLは公開フィールドの変換を通す。JSONのファイル名はpublic_result.json（schema_version=1）に変更した。HTMLのタイトルは表示用メタデータへ分離した。
+  - 完了済み工程の入力・世代キーで旧結果との混在を防ぐ。旧前処理ファイルの回答横断の対応は、元のベクトルを複製して復元する（LLM不要）。完成済みレポートは変更しない。前処理ファイルは元コメント・埋め込みを含む作業用データとして扱う。
+  - Node 24.22.3 / pnpm 10.24.0で通常成功292件・既知不一致10件（計302件）、lint・build成功。Chromiumで元コメントの既定OFF・明示ON、JSON/HTML書き出し、HTML単体表示、旧工程キャッシュ拒否を確認し、ページのJavaScriptエラーなし。実LLMの品質は未検証。証跡は `raw/serverless-fixes-2026-11-24/`。
+  - 同日のCI確認: PR #2のlint・test・buildと、本体の記録済みcommitから期待値を再生成して一致させる検査は成功。PRはopen・merge可能で未merge。本体mainの期待値との週次比較は今回のCI対象外。
 - 2026-11-24: 初版。org mainと本体mainのコード・open PR・#921を観測し、Wardの固定7ケースを追加確認した。raw/workの元コメントや実行設定は公開Wikiへ転記していない。

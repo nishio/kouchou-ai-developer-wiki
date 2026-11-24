@@ -10,7 +10,9 @@
 2026-11-24 23:30	filing-back	ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
 2026-11-24 23:00	filing-back	Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
 2026-11-24 21:35	filing-back	fork の PR #1 merge と Pages を main に揃えたことを反映し、関連ページをつないだ
+2026-11-24 21:31	filing-back	org serverless PR #2をCI全成功後にmergeしmainの成功も確認
 2026-11-24 21:30	filing-back	analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
+2026-11-24 21:25	filing-back	serverlessの回答対応・失敗復帰・公開範囲を修正しorg PR #2を作成
 2026-11-24 21:03	filing-back	serverlessの実装を3経路で調べ、本体との差と失敗の扱いを整理した
 2026-11-24 20:00	filing-back	研究会の作業で踏んだ落とし穴を gotchas に、利用者定義ラベルを pipeline に入れた
 2026-11-24 19:40	filing-back	意見分類の利用者定義ラベル（#1232）を main に入れた
