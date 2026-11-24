@@ -155,6 +155,9 @@ sources:
 
 ## Updates
 
+- **CLIでクラスタリングの乱数シードを指定（2026-11-25、進行中のドラフト PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)）**。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) を受け、保存済みの埋め込みから座標とクラスタを比較する際にシードを選べるようにした。
+  同じ30件とシードで出力 CSV が一致し、設定が実行記録に残ることを確認。次は PR の確認。[[umap-seed-history]]
+
 - **解析結果を既存サービスに埋め込むガイド（2026-11-25）**。公開用 JSON から静的ビューアを組み立て、iframe 内で階層リストとツリーマップを切り替えた。同じ JSON でカタログの階層リストも表示できた。
   図ごとの入力条件を記載。次は組み込み先でページ全体と個別の図のどちらが必要かを確認する。[[embedding-public-results]]
 

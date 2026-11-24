@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 04:12] filing-back | CLIでクラスタリングの乱数シードを指定
+
+- [#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) をドラフト PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) に実装。CLI の任意設定とし、保存済みの30意見・埋め込みで同じシードの出力 CSV が一致することを確認。
+- 更新は [[umap-seed-history]] と [[meeting-report-draft]]。
+
 ## [2026-11-25 04:09] filing-back | 可視化の既存 PR を更新し全ビューの共存を Chrome で確認
 
 - 基盤 [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) をレビュー可能にして、対立軸 [#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) と階層図 [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) に修正を反映。
