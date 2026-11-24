@@ -144,6 +144,8 @@ sources:
 
 ## Updates
 
+- **マンダラートと付箋のWeb可視化（2026-11-25、ローカル試作 `codex/optional-report-views` / `47bb3ba2`）**。管理画面で有効にした表示を読者が選び、既存レポートの木や座標から意見を読む。PC幅・スマートフォン幅のChromeで切替を確認。次は実利用での読みやすさを確かめる。[[optional-visualization-plugins-2026-11-25]]
+
 - **Polisの参加者散布図（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`）**。公式データ234人で日付変更と個人の軌跡を確認し、画面例を利用ガイドに追加して本体にPRを出した。次はCI・レビューと、大規模会話での動作確認。[[polis-export-input-2026-11-25]]
 
 - **広聴AIへのKJ法の取り入れ方（2026-11-25、試作案）**。既定の命名にKJ法の指示があることを確認した。既存の分析結果から原文つきカードを組み替え、表札と次の聞き取りの問いを立てる別ツールを提案。次は同じ題材で既存レポートと読み比べる。[[kj-method-broadlistening-framing-2026-05-25]]

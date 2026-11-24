@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 02:02] filing-back | マンダラートと付箋をWeb版で選ぶ導線を試作
+
+- 管理画面の表示設定と公開ビューアの切替を接続。既存の木・座標から再分析なしで描く。本体の作業ブランチは `codex/optional-report-views`
+- 更新: [[optional-visualization-plugins-2026-11-25]]、[[plugin-system]]、[[meeting-report-draft]]
+
 ## [2026-11-25 02:02] filing-back | 広聴AIのWeb版で対立軸ビューのプラグインを試作
 
 - 計算済みの4クラスタ・12軸を通常の公開レポートAPIで読み、既存ビューからの往復とフィルターを確認

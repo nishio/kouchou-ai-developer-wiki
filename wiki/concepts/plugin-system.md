@@ -125,6 +125,7 @@ YouTube plugin はこの形で壊れていた。`google-api-python-client` は `
 
 ## Updates
 
+- 2026-11-25: 可視化レジストリから管理画面の有効化・公開ビューアの切替までを、マンダラートと付箋で試作した。公開結果で足りる条件、個別意見・出典の共通動作、図専用の追加データを導入する条件は [[optional-visualization-plugins-2026-11-25]] を参照。
 - 2026-10-21: 2026-10-12 の Update で「2026-05-25 main 入り」としたのは、PR ブランチ上の commit `4f893ab5` の作成日との取り違え。PR [#866](https://github.com/digitaldemocracy2030/kouchou-ai/issues/866) の merge（2026-05-28 16:26 UTC ＝ 2026-05-29 01:26 JST、merge commit `6e9e60ee`）に訂正（[[pipeline]] と同じ訂正）
 - 2026-10-18: `hierarchical_layout_generation` を 11 個目のモジュールに訂正（L27 の 10 個登録と整合）。v5.0 未リリースを明記
 - 2026-05-17: 初回作成
