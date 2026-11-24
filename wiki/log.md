@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:19] filing-back | Pythonとブラウザ版に共通契約の変異テストを実施
+
+- 対応する14変異のうち両実装で各12件を共通テストが検出。上位クラスタの1群化は各単体テストで検出した。公開属性表の参照切れはブラウザ版の全単体テストでも生存
+- 更新: [[serverless-shared-contract-mutations-2026-11-24]]、[[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:19] filing-back | #1231・#1233 を main に入れた
 
 - nishio が merge（main `0901091c`・`bf8ecbe5`）。merge 後の main で Analysis Core CI・Server Tests・CodeQL ほか success

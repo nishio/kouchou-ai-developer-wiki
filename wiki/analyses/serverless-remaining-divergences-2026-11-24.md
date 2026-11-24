@@ -137,3 +137,4 @@ org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3
 本体 `a775d3d2` とのローカル検証でレポート40例・点群20例が通過。参照切れ、ID重複、件数違い、非公開本文の混入を検査器が検出することも確かめた。Vitest 248件、lint、ビルド通過。PRのCIは固定版、定期実行は本体mainへ同じ検査を適用する。LLM応答は偽物を使い、実LLMや公開JSONから再クラスタリングする際の情報保持は別の検証範囲とした。
 
 - 2026-11-24: org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) の最新コミットで共通契約テストとlint・単体テスト・ビルドのCIが通過。nishioの指示でsquash mergeし、org mainに反映した（`d060677`）。
+- 2026-11-24: PythonとTSに対応する変異を各14件適用し、共通テストで各12件を検出。公開属性表の参照切れはブラウザ版の全単体テストでも生存した。詳細は [[serverless-shared-contract-mutations-2026-11-24]]。
