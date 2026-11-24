@@ -17,6 +17,7 @@ sources:
 - **属性フィルタ** — PR [#531](https://github.com/digitaldemocracy2030/kouchou-ai/issues/531)。年齢・地域などのメタデータでクラスタを絞る
 - **技術解説スライド／動画** — `docs.docswell.com` の 1h40min プレゼン、YouTube `SpOI-JuJv5o`。新規コントリビュータが kouchou-ai のアルゴリズム全体像を掴むのに有用
 - **sentiment-weighted UMAP 実験** — 賛否を埋め込みに重み付けして反対派／賛成派を分離する prototype（メインリポジトリ外）
+- **ブラウザ版（kouchou-ai-serverless）** — 広聴AI をブラウザだけで動く TypeScript で書き直した別実装（`tokoroten/kouchou-ai-serverless`、2026-07 公開）。本人は「メインストリームにしたい」（2026-08 Slack）。本流化は [#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921) で未決。2026-11-24 に dd2030 org へ fork され、本体との適合性テストと org の Pages 公開が入った（[[serverless-integration-options-2026-11-24]]、[[serverless-implementation-2026-11-24]]）
 - **farbrain** (`tokoroten/farbrain`) — UMAP+k-means+ラベリングを使ったゲーミフィケーション派生
 
 ## [[broad-listening-book]] 関連
@@ -31,3 +32,4 @@ sources:
 - 2026-05-25: `#2_開発_広聴ai_アルゴリズム開発` 2026-Q1 の短い spectral clustering メモを独立ページ化。tokoroten は TTTC を「`UMAP` の `n_neighbors` を小さめにして紐状分離を作り、それを `SpectralClustering` で切る scatter-first な系」と読んでおり、単なる `k-means` 代替というより可視化都合を含んだ理解だった。詳細は [[tokoroten-spectral-clustering-reading]]
 - 2026-05-25: 2025-12 方向性議論から 2026-Q1 spectral / 新妻 thread / LLM grouping 実験までを接続し、tokoroten とのアルゴリズム議論は手法比較ではなく、散布図 product・深い分析・説明責務・運用ワークフローを分け直す議論だったと整理。詳細は [[tokoroten-algorithm-discussion-retrospective]]
 - 2026-10-21: 書籍の扱いを 2026-05-21 からの方針（本文は開発向け source、スコープ外は運営面だけ）に合わせた
+- 2026-11-24: ブラウザ版（kouchou-ai-serverless）の項を追加

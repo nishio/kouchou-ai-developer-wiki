@@ -79,6 +79,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 ## WebUI 開発者向け
 
 - [ブラウザ版の実装構造と本体との差](analyses/serverless-implementation-2026-11-24.md) — 通常分析・対話的再クラスタリング・賛否スペクトラム、ブラウザでの保存と再開、本体との互換範囲
+- [ブラウザ版の取り込み方の検討](analyses/serverless-integration-options-2026-11-24.md) — org への fork、本体との適合性テスト（54 件中 22 件不一致）、Pages 公開までの判断と経緯
 - [deployment](concepts/deployment.md) — Azure 本番、静的サイト書き出し、PyPI リリース
 - [public-viewer-build-behavior](analyses/public-viewer-build-behavior.md) — public-viewer の build の前提（通常 build は API 不要、API が要るのは `build:static` だけ）と 2026-05 時点の build failure の切り分け
 - [npm-vs-pnpm](analyses/npm-vs-pnpm.md) — なぜ pnpm 必須か

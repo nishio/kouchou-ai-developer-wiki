@@ -37,6 +37,12 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 21:35] filing-back | fork の PR #1 merge と Pages を main に揃えたことを反映し、関連ページをつないだ
+
+- PR #1 は 20:29 に nishio が merge 済みだった（wiki は「未 merge」のままだった）。取り消されていた main のデプロイを再実行し、Pages を `d15fb57` に揃えた
+- 別セッションの実装調査 [[serverless-implementation-2026-11-24]] と取り込み方の検討をつなぎ、tokoroten の人物ページと index.md にブラウザ版を足した。fork の PR #2（差の修正）は進行中
+- 更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]、[[tokoroten]]
+
 ## [2026-11-24 21:30] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
 
 - 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）
