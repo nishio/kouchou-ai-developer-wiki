@@ -37,6 +37,11 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:11] filing-back | CI通過後にIssue修正のPR 4本をマージ
+
+- [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235)〜[#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) は最新コミットのCI通過後、メンテナーの明示承認に基づいて管理者マージ。対応する4件のIssueが完了したことを再取得して確認した。
+- 更新は [[issue-resolution-candidates-2026-11-24]] と [[meeting-report-draft]]。公開 JSON の告知は M5 の [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) で追跡中。
+
 ## [2026-11-24 22:11] filing-back | CI通過後にserverlessの共通契約テストをmainに反映
 
 - org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) の共通契約テストとlint・単体テスト・ビルドのCIが通過。nishioの指示でsquash merge（`d060677`）

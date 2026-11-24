@@ -38,3 +38,12 @@ sources:
 - [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) は作成前・再利用の接続確認で、残高不足またはレート制限のときに課金ガイドへのリンクを表示する。両画面をダミー API と Chromium で確認した。最初の CI ではリンクを含む `output` が既存 E2E の完全一致に失敗したため、リンクを別要素に移した。修正後、接続エラーからの復帰を確認する E2E 5 件がローカルで通った。[PR #1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236)
 - [#213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) は閲覧画面と共有用画像に階層別のグループ数を併記する。Chromium のデスクトップ幅と 390px 幅、および生成した共有画像を確認した。公開ビューアの Jest 338 件が通った。[PR #1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238)
 - [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) は実装済みの範囲と公開契約のリリースノート案を本文に追記し、v5.0 マイルストーンの M5 に追加した。告知を確認してから完了とする。[[versioning-strategy]]
+
+2026-11-24 に4本の最新コミットで CI 通過を確認し、通常マージが承認レビュー要件で止まったため、メンテナーの明示承認を受けて管理者権限で squash merge した。マージ後に対応する4件の Issue がすべて `Completed` で閉じたことを GitHub で確認した。
+
+| Issue | PR | main のコミット |
+|---|---|---|
+| [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445) | [#1235](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1235) | `c94eed04` |
+| [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) | [#1237](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1237) | `a086b300` |
+| [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) | [#1236](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1236) | `36d97a0d` |
+| [#213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) | [#1238](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1238) | `a4ec7a12` |

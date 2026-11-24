@@ -144,6 +144,9 @@ sources:
 
 ## Updates
 
+- 2026-11-24（Issue 修正 4 件が main に反映）: CLI の HTML 出力設定、Copilot のガイド索引、管理画面の課金案内、閲覧画面・共有画像の階層別件数を CI 通過後にマージした。[#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954)、[#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)、[#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292)、[#213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/213) はすべて完了。
+  公開 JSON の告知 [#1178](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1178) は v5.0 の M5 で追跡中。[[issue-resolution-candidates-2026-11-24]]
+
 - **serverlessの共通契約テスト（2026-11-24、merge済み）**: 期待値JSONと不一致テストを、同じ生成入力でPythonとTSの木・参照・件数・属性・公開設定を検査するテストに置換した。ローカル検証とPRのCIが通過し、org [PR #3](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/3) をmainへ反映（`d060677`）。
   公開JSON再分析における属性・件数の保持は別件。[[serverless-remaining-divergences-2026-11-24]]
 
