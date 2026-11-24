@@ -3,6 +3,7 @@ title: "Civic AI（6-Pack of Care）と広聴AI docs の対応 2026-11-24"
 type: analysis
 summary: "Audrey Tang・Caroline Green の Civic AI（6-Pack of Care、civic.ai）の 6 観点で広聴AI の docs を点検した。元発言への遡りや少数意見への注意は厚く、公開後に止める・直す・異議を受ける手順と、同じ内容の大量投稿への注意が欠けていたので PR #1234 で埋めた。civic.ai 側に日本の broad listening 事例を届けるのは、docs が整ってからにする"
 sources:
+  - public-web-civic-ai-6pack-of-care-2026-11-24.md
   - role-model-papers-polis-birdwatch.md
   - kouchou-ai-docs-improvement-roadmap-2026-10-13.md
 ---
@@ -11,7 +12,7 @@ sources:
 
 広聴AI の docs と [Civic AI — 6-Pack of Care](https://civic.ai/) の間に関連を見出せるか。見出せるなら、それをどう活かすか。
 
-civic.ai は、Audrey Tang と Caroline Green が Oxford の Institute for Ethics in AI で進めている研究プロジェクトの公開サイトで、Wiley から本（2027 年 2 月予定）が出る。「影響を受ける人々が確かめ、直し、止められる AI」を目標に、ケアの倫理（Fisher・Tronto）の 4 段階に 2 つを足した 6 つの観点（Pack）を示す。サイトは CC0。
+civic.ai は、Audrey Tang と Caroline Green が Oxford の Institute for Ethics in AI で進めている研究プロジェクトの公開サイトで、Wiley から本（2027 年 2 月予定）が出る。「影響を受ける人々が確かめ、直し、止められる AI」を目標に、ケアの倫理（Fisher・Tronto）の 4 段階に 2 つを足した 6 つの観点（Pack）を示す。サイトは CC0。サイトの要約は [[public-web-civic-ai-6pack-of-care-2026-11-24]]。
 
 読んだ範囲：civic.ai のトップと Pack 1〜6 の各ページ（2026-11-24 時点）。用語集・計測指標・FAQ は読んでいない。広聴AI 側は main `3649fe41` の docs。
 

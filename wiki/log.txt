@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 00:10	filing-back	civic.ai（6-Pack of Care）のソース要約ページを足した
 2026-11-24 23:55	filing-back	ブラウザ版を dd2030 org に fork し、本体との適合性テストで 22 点のずれを見つけた
 2026-11-24 23:50	filing-back	Civic AI（6-Pack of Care）の観点で docs を点検し、公開後に止める・直す手順と大量投稿への注意を PR #1234 にした
 2026-11-24 23:30	filing-back	ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 00:10] filing-back | civic.ai（6-Pack of Care）のソース要約ページを足した
+
+- トップと Pack 1〜6 の要約、広聴AI との接点（言及なし・日本は 2 か所）、提案と実績を区別する注意。未読ページは coverage に明記
+- 更新: [[public-web-civic-ai-6pack-of-care-2026-11-24]]、[[civic-ai-6pack-docs-mapping-2026-11-24]]
+
 ## [2026-11-24 23:55] filing-back | ブラウザ版を dd2030 org に fork し、本体との適合性テストで 22 点のずれを見つけた
 
 - digitaldemocracy2030/kouchou-ai-serverless を作成（nishio 指示で移管ではなく fork）。本体の analysis-core を実際に動かして期待値を作るテストを fork の PR #1 に（未 merge）
