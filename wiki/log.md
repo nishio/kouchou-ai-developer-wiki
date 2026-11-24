@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 23:50] filing-back | Civic AI（6-Pack of Care）の観点で docs を点検し、公開後に止める・直す手順と大量投稿への注意を PR #1234 にした
+
+- civic.ai に広聴AI への言及は無いが、broad listening・Polis・Community Notes を例に使い、観点は大きく重なる。docs は遡れること・ローカル完結が厚く、止め方・直し方・異議の受け方と大量投稿への注意が無かった
+- 管理画面の削除はファイルを消さない、再利用では入力を差し替えられない、などをコードで確かめて書いた。未 merge
+- 更新: [[civic-ai-6pack-docs-mapping-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:30] filing-back | ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
 
 - org への repo 移管／本体 monorepo への統合／結果形式だけ合わせる、を両 repo の main で比較。統合しても分析処理は TS と Python の 2 本のままで、道具の世代差（pnpm・TS・Biome）と Pages の相乗りが重い
