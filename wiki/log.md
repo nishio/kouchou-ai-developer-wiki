@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 02:02] filing-back | 広聴AIのWeb版で対立軸ビューのプラグインを試作
+
+- 計算済みの4クラスタ・12軸を通常の公開レポートAPIで読み、既存ビューからの往復とフィルターを確認
+- 更新: [[divcon-view-user-stories]]、[[open-decisions]] A14、[[meeting-report-draft]]
+
 ## [2026-11-25 02:02] filing-back | Polisの参加者散布図を本体のPRにした
 
 - [Issue #1247](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1247) を立て、運用手順と実画面を添えた [PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) を本体に作成

@@ -157,6 +157,8 @@ PR [#933](https://github.com/digitaldemocracy2030/kouchou-ai/issues/933)（2026-
 - 2026-11-08: 同じく本体の判断は変えずに、センチメント次元の付与を個人 repo の賛否スライダーで試した。賛否スコアは本体の `opinion_stance` と同じ形・同じ既定プロンプト。重みを上げるとエネルギー・移民は賛否で分かれ（シルエット 0.7 台）、話題の近さは 1〜2 割落ちる。本体に載せるなら、何への賛否かを `public_result.json` に置く省略可能なキーが要る（個人 repo の README に提案）
 - 2026-11-11: nishio の方針で位置づけを改めた。**「成熟していない関連研究」とは呼ばず、「まだ本体に取り込まれていない周辺の研究・実験」として紹介し、こうした本体外の試みを奨励する**。[#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174) のページ名を「周辺の研究・実験（本体未収録）」に変え、本体を変えずに `public_result.json` や CLI 出力で試すことを歓迎する節（自分の repo で公開してページに 1 行足せばよい）を足し、nishio の可視化カタログ（nishio/broadlistening-visualizations）をエントリに加えた。[#1158](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1158) が main に入ったので、賛否・新規性スコアは `opinion_stance` / `opinion_novelty` へのリンクにした。main を merge して nav の衝突を解消
 
+- 2026-11-25: nishio の依頼で DivCon の事前計算結果を読む公開ビューアのプラグインを試作（本体ローカル `codex/divcon-web-view`、`d28051f1`）。軸の定義と採点は任意の `opposition_axes` にまとめ、既存クラスタから対立ビューを開く。採用・マージは未判断。[[divcon-view-user-stories]]
+
 ## B. 方針決定済み・未着手
 
 ### B-CLI
