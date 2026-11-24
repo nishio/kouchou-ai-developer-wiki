@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:38] filing-back | 可視化カタログでクラスタから対立ビューを開く導線を試作
+
+- エネルギー・家族・移民・皇位継承の計算済み 12 軸で、クラスタごとの表示と戻る操作を確認
+- 更新: [[team-mirai-2025-open-dataset]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:30] filing-back | クラスタ選択から対立ビューを開く導線案を記録
 
 - 既存のクラスタ選択を使い、同じ話題の事前計算済みの対立軸へ進む案を整理

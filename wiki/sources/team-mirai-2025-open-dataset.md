@@ -181,6 +181,8 @@ nishio の指示「まず正しく本文が入っているデータを作ろう�
 
 - 2026-11-11、個人 repo の README から wiki へのリンク 3 か所（[[open-decisions]] の A13 など）が、最初の版（2026-11-07）から `digitaldemocracy2030.github.io/kouchou-ai-developer-wiki/` を指していて、どれも 404 だった。公開先の `nishio.github.io/kouchou-ai-developer-wiki/` に直した（個人 repo の commit `6fdee4c`）。直した 3 つのリンク先と、カタログ・公開した 4 つのページが開く（200）ことを確かめた。外からこの wiki にリンクするときの住所は [[wiki-pages-publishing-stack]] の「Project Site の subpath 方針」
 
+- 2026-11-25、可視化カタログの階層リストから対立軸ビューへ進む導線をローカルで試作。エネルギー・家族・移民・皇位継承に「対立軸あり」を表示し、展開後の「この話題の対立を見る」から、その話題の軸だけを開く。既存の計算済み JSON を使う。Chromium で 4 クラスタ・12 軸、戻る操作での選択の復元、幅 390px のタッチ操作と横はみ出しなしを確認。カタログの変更は未公開。経緯は [[divcon-view-user-stories]]。
+
 ## Open Questions
 
 - 本体 docs の関連研究ページ（PR [#1174](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1174)、未 merge）から個人 repo のカタログへのリンクの張り方
@@ -209,3 +211,4 @@ nishio の指示「まず正しく本文が入っているデータを作ろう�
 - 2026-11-11: 個人 repo の README から wiki へのリンクが org の住所を指して 404 だったのを直したことを追記
 - 2026-11-14: 版 `033d1e7` に DOI `10.57967/hf/11618` が発行されたことを追記
 - 2026-11-19: 対立軸ビューの 12 本の軸ごとの左右の件数と、合意できそうな点・対立する点の例を追記
+- 2026-11-25: 階層リストから計算済みの対立軸ビューへ進むローカル試作と確認結果を追記

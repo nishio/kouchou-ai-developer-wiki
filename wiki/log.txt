@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 01:38	filing-back	可視化カタログでクラスタから対立ビューを開く導線を試作
 2026-11-25 01:30	filing-back	クラスタ選択から対立ビューを開く導線案を記録
 2026-11-25 01:28	filing-back	広聴AIの意見カードをKJ法のように組み替える試作案
 2026-11-25 01:27	filing-back	広聴AIからDivConへ分岐する位置を整理
