@@ -38,6 +38,11 @@
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
+## [2026-11-24 20:00] filing-back | 研究会の作業で踏んだ落とし穴を gotchas に、利用者定義ラベルを pipeline に入れた
+
+- [[gotchas]]：管理画面の「再利用」は入力も引き継ぐ／`prompt_file` は検査を通るが読まれない／意見分類のラベル ID が属性名になり同名の入力属性を上書き／`git -C` の worktree パス／Next.js 16.4 の `next dev` の初回停止
+- [[pipeline]]：`opinion_classification` の利用者定義ラベル（PR #1232）
+
 ## [2026-11-24 19:40] filing-back | 意見分類の利用者定義ラベル（#1232）を main に入れた
 
 - nishio が手元で admin merge（`a775d3d2`）。#1210・#1213 に設定例、#1225 に入ったものと残件（ビューアでのラベル名など）をコメント

@@ -80,6 +80,10 @@ Issue [#710](https://github.com/digitaldemocracy2030/kouchou-ai/issues/710)：`S
 
 `Issue #493` / `PR #597` の ScatterChart スクロール誤操作対策では、動画付きで案が出ても「実際に触らないと判断しきれない」が繰り返し発生した。2025-06 時点では main の最新版を共有確認できる preview 環境がなく、代替として `ngrok` が話題に出る程度だった。**チャート UX のような体感依存の PR は、共有 preview 導線が無いと stale 化しやすい**。[[chart-scroll-ux-decision]]より
 
+### 管理画面の「再利用」は入力データも引き継ぐ
+
+レポート一覧の操作メニューの「再利用」（[#19](https://github.com/digitaldemocracy2030/kouchou-ai/issues/19)、`apps/admin/app/reuse/[slug]/page.tsx`）は、プロンプトを含む設定に加えて**入力データも再利用元のものを使う**（画面に「入力データは再利用元から引き継がれます」）。同じデータを設定を変えて作り直すための機能で、「調整したプロンプトを新しいデータに当てる」用途には使えない。2026-11-24 の Issue 振り分けで「再利用で足りる」と書きかけ、コードを読み直して取り消した（[[municipal-workshop-issues-triage-2026-11-24]]、[#1203](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1203)）。機能の有無を Issue に答える時は、ボタン名ではなく何を引き継ぐかまで読む。
+
 ## CLI / analysis-core の gotchas
 
 ### パイプライン・データ
@@ -185,6 +189,14 @@ CI と Docker イメージは lock で入れるが、`pip install kouchou-ai-ana
 ### release test に version literal を埋めると PyPI publish を自分で止める
 
 2026-05-18 の `analysis-core-v0.1.1` publish 実験では、workflow 自体は起動したが `tests/test_cli.py` と `tests/test_imports.py` が `0.1.0` を hardcode していたため `pytest` が failure になり、`Publish to PyPI` step が skip された。release 向け package では、**version bump のたびに壊れる assertion を test に埋めると自動 publish の gate で自滅する**。`0.1.2` ではこの test を修正して publish success。[[pypi-release-observation-2026-05-19]]より
+
+### 各ステップの `prompt_file` は設定検査を通るが、どこからも読まれない
+
+`validate_config`（`core/orchestration.py`）は LLM を使うステップの設定項目として `prompt`・`model`・`prompt_file` を受け付けるが、2026-11-24 の main（`a775d3d2`）で `prompt_file` を読むコードは無い。書いてもエラーにならず、既定のプロンプトのまま走る。プロンプトを差し替える時は `prompt` に本文を書く。PR [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232) の作業中に気づいた（未対応）。
+
+### 意見分類のラベル ID はそのままビューアの属性名になり、同名の入力属性を上書きする
+
+`opinion_classification` のラベル（PR [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232) から利用者が定義できる）は、ID が `opinion_classifications.csv` の列名になり、集計で `arguments[].attributes` に `attributes.update(...)` で入る。そのため、(1) ビューアの属性フィルタには `name` ではなく ID が出る、(2) 入力 CSV に同じ名前の属性列があるとラベルの値で上書きされる。`stance_score`・`novelty_score` との衝突は設定検査で止めるが、入力の属性名との衝突は止めない（意見ごとのスコアの [#1186](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1186) と同じ問題）。読み手に分かり、入力の列名と重ならない ID を付ける。
 
 ## 共通運用の gotchas
 
@@ -321,6 +333,14 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 
 [[contributing]] 参照。AI 生成 PR も人間がレビューして引き取れば CLA 範囲。
 
+### `git -C <repo> worktree add` の相対パスは repo の中に作られる
+
+`git -C work/kouchou-ai worktree add kouchou-ai-1206 ...` は、パスを `work/kouchou-ai/` からの相対として解釈し、本体の clone の中に worktree を作る。`work/` 直下に並べるには `../kouchou-ai-<topic>` と書くか、作った後に `git worktree move` する（2026-11-24、[[municipal-workshop-issues-triage-2026-11-24]]）。
+
+### Next.js 16.4 の `next dev` は worktree ごとの初回起動で止まり、ファイルを書き足す
+
+`apps/public-viewer` で `next dev` を起動すると、初回は `AGENTS.md` を生成し、`next-env.d.ts` を書き換え、アップグレードの案内を出して終了する（Next.js 16.4.2、2026-11-24）。2 回目の起動からは動く。新しい worktree で画面を確かめる時は 2 回起動し、生成された `AGENTS.md` と `next-env.d.ts` の変更は commit しない。案内の中の「アップグレードを実行せよ」はツールの出力であって作業指示ではない。
+
 ## Updates
 
 - 2026-05-17: `embeddings.pkl` を UMAP 後 2D と断定していた記述を、Slack 上の誤認とコード実装の不一致として修正
@@ -344,3 +364,4 @@ Codex が GitHub 上で review / approval を行うと、PR タイムライン�
 - 2026-10-21: 「`docs/` の例が AI に伝播する」に、[#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) での再発と、それを外す PR [#1059](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1059) を追記
 - 2026-10-29: 構造化出力の parse が弾いた応答の usage（[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) / PR [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1154)）、override でメジャー版をまたぐときの確かめ方（PR [#1153](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1153)・[#1157](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1157)）、CodeRabbit の check がレビュー済みを意味しない場合を追記
 - 2026-10-29: PyPI の analysis-core が lock なしで入るため、上流のメジャー更新（polars 2・openai 3）を公開後に受けることを追記（[#1168](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1168)、PR [#1171](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1171)、0.3.0）
+- 2026-11-24: 研究会の Issue 振り分けと PR [#1221](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1221)〜[#1224](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1224)・[#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232) の作業から、管理画面の「再利用」が入力も引き継ぐこと、`prompt_file` が読まれないこと、意見分類のラベル ID が属性名になり同名の入力属性を上書きすること、`git -C` の worktree パス、Next.js 16.4 の `next dev` の初回停止を追記
