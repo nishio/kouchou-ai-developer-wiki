@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 23:00] filing-back | Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
+
+- 無効に戻したら集計を再実行（#1227）、依存の宣言の検査（#1228）、llm_grouping の id "0" の拒否（#1229）、入れ子でない階層クラスタで止める（#1230）。いずれも未 merge
+- どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
+- 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 21:30] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
 
 - 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）

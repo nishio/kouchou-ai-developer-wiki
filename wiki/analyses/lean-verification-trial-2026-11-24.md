@@ -81,3 +81,12 @@ sources:
 
 - llm_grouping の id 衝突は、`predefined_groups` の検査で `"0"` と空文字を弾けば足りるか。それとも、llm_grouping の id にも層の接頭辞を付けるか
 - 木の形式の検査（`validate_output.py`）を、集計工程の最後に常に走らせるか
+
+## Updates
+
+- 2026-11-24: nishio の指示で、見つかったものをすべて直す PR を 4 本作った（いずれも未 merge。直す前のコードでは追加したテストが落ちることを確認済み）
+  - [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227)：意見分類・スタンス・新規性を無効に戻したら集計を再実行する。`global_params` に `"<工程>.<オプション>"` の形を足し、集計工程の判定に 3 つの `enabled` を入れた。古い記録はその工程自身の記録と比べる
+  - [#1228](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1228)：`load_specs` で spec の依存順と工程名の重複を検査する。`validate_dependencies` は存在しない依存を例外にせず一覧で返し、工程 ID の重複を重複として報告する
+  - [#1229](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1229)：llm_grouping の指定カテゴリで id `"0"` を拒否し、空白だけの id は自動採番にする
+  - [#1230](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1230)：階層クラスタが入れ子でなければ統合ラベリングで止める
+  - 検証一式（実験ブランチ）は直す前のコードを写したもの。merge 後に写し直すと、差分テストの依存解決と木の非入れ子の入力は、新しい振る舞い（一覧で返す・止める）に合わせる必要がある

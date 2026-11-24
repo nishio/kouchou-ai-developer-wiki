@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-24 23:00	filing-back	Lean の検証で見つかったものをすべて直す PR #1227〜#1230 を作った
 2026-11-24 21:30	filing-back	analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
 2026-11-24 18:25	filing-back	ミューテーションテストを再実行の判定と集計に広げ、管理画面に響く穴を見つけた
 2026-11-24 18:10	filing-back	#1220 を main に入れた
