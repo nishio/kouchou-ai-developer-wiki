@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:57] filing-back | レポート参照 REST API と MCP を本体PRに提出
+
+- 本体 [PR #1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253) に REST と MCP の使い方、応答の照合、権限分離と API テストの確認結果を掲載。
+- 初回 CI の設定漏れを修正し、参照専用キーが任意であることをセットアップ検査に反映。
+- 更新は [[server-admin-api-and-mcp-2026-11-25]] と [[meeting-report-draft]]。
+
 ## [2026-11-25 03:56] filing-back | 狭い画面での散布図を修正
 
 - [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) を公開ビューアのドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) に実装。幅390pxで散布図が356×356pxに収まり、ラベルを手動で再表示できることを Chromium で確認。

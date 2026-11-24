@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 03:57	filing-back	レポート参照 REST API と MCP を本体PRに提出
 2026-11-25 03:56	filing-back	狭い画面での散布図を修正
 2026-11-25 03:53	filing-back	LLM 直接グルーピングの件数指定と全件一括
 2026-11-25 03:53	filing-back	可視化プラグインの登録と表示選択を Lean で検証

@@ -32,3 +32,8 @@ sources:
 - 本体 `codex/admin-read-api-mcp`（`5b2d756f`）で `GET /admin/v1/reports` と `GET /admin/v1/reports/{slug}/status` を追加した。一覧は失敗分に絞れ、進捗は実行状態・分かる範囲の工程・推定費用を返す。工程は原因の診断と区別し、成果物の同期で失敗した場合など、該当する工程が分からないときは `null` になる。
 - 専用キーを設定したときだけ有効。非公開レポートも含む一覧と進捗に権限を限り、元コメント、設定、診断ログは応答に含めない。任意の stdio MCP は同じ API を `list_reports` と `get_report_status` で呼ぶ。起動例は本体 `apps/api/README.md` に記載した。
 - 架空データで起動したローカル API と MCP の JSON が一致し、読み取りキーで削除が拒否されることを確認した。API 594 テストと Ruff が通過。次に運用で試すなら、失敗一覧と工程情報だけで担当者が調査に着手できるかを見る。
+
+### 2026-11-25 本体 PR を提出
+
+- [PR #1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253) の本文に REST の一覧・進捗の呼び出し例、stdio MCP の設定とツール実行例、架空データによる動作確認の結果を記載した。
+- 初回 CI の指摘を受け、セットアップ検査に参照専用キーを任意設定として登録した（`f04eb102`）。Docker の代替コマンドを使い、Linux・macOS のセットアップが生成する設定を検証した。
