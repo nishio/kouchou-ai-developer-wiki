@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:27] filing-back | 広聴AIからDivConへ分岐する位置を整理
+
+- 既存クラスタを再利用するカタログ版と、抽出済み意見から話題を見つけ直す案を記録
+- 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:21] filing-back | PolisエクスポートのコメントCSV入力を確認
 
 - 同梱342件で本体管理画面とブラウザ版のCSV読込、CLIの入力検証を確認。投票履歴・参加者グループの専用連携はない
