@@ -44,7 +44,8 @@ sources:
 
 - **LLM 直接グルーピングの件数設定（2026-11-25、進行中・本体 `codex/llm-grouping-input-size` / `b429b908`）**
   - Web の新規作成・再利用と CLI で、分類枠のサンプル件数と割り当て件数を設定できる。全件一括では発見・割り当ての各段に全件を送り、割り当て漏れはエラーにする。
-  - 次は、同じ抽出済み意見で分類枠の発見に使う件数だけを変え、少数の話題の拾い方を比較する。[[llm-grouping-experiment]]より
+  - 同じ422意見で実LLM比較済み。80件と200件では明示した分類に入る少数意見が同数で、全件一括はアクセシビリティが見える代わりに農業が記載から落ちた。総トークンは全件一括が80件比19%減。[[llm-grouping-input-size-experiment-2026-11-25]]
+  - 次の比較では、全件で分類枠を作り、割り当てを25件ずつに固定すると、分類枠を作る件数が与える効果を切り分けられる。
 
 - **公開後に止める・直す・異議を受ける手順を docs に書いた（2026-11-24、進行中：PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234)、未 merge）**: Civic AI（6-Pack of Care、civic.ai）の 6 観点で docs を点検すると、遡れること・少数意見への注意は厚く、止め方・直し方・異議の受け方と、同じ内容の大量投稿への注意が無かった。信頼性と責任のページに 2 節を足し、README の「多数派攻撃への防御（予定）」を「検討中（[#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345)）」に。civic.ai 側に日本の事例を届けるのは docs が整ってから。[[civic-ai-6pack-docs-mapping-2026-11-24]]
 - **意見分類のラベルを利用者が定義できるようにする（2026-11-24、PR [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232)、11-24 に main 済み `a775d3d2`）**: [#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225)。研究会の [#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)（課題と解決策）・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213)（安全上の指摘）向けに、`opinion_classification.labels` に利用者定義のラベル（`id`・`name`・`includes`・任意の `excludes`）を書けるようにした。通常の分析はそのまま、意見ごとの yes/no を属性フィルタで絞れる。誤りは実行前に止まり、定義はサマリーに残る。社内の gemma-4-31B で 3 ラベルが意図どおりに付くのを確認。[#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213) に設定例をコメントした。次：ビューアでラベル名を出すか（[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) に残件として残した）。詳細は [[municipal-workshop-issues-triage-2026-11-24]]

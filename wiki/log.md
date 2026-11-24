@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 04:08] filing-back | Local LLMでLLM直接グルーピングの3条件を比較
+
+- 公開400コメントから抽出済みの422意見を固定し、Gemma 4 31Bで80件・200件・全件一括を実行。全件一括は80件比で総トークン19%減。
+- アクセシビリティ・農業などの見え方を39意見で照合し、[[llm-grouping-input-size-experiment-2026-11-25]]と[[meeting-report-draft]]に記録。
+
 ## [2026-11-25 04:02] filing-back | 公開用の解析結果を既存サービスに埋め込む
 
 - `public_result.json` と公開 API の使い分け、静的ビューアを組み立てて iframe で表示する例を [[embedding-public-results]] に整理。
