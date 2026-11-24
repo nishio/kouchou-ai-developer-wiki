@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-24 21:30	filing-back	analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
 2026-11-24 18:10	filing-back	#1220 を main に入れた
 2026-11-24 17:45	filing-back	#1220 の CI が全件通り、ミューテーションテストの知見をテスト体系のページに入れた
 2026-11-24 17:20	filing-back	#1221・#1223・#1224 を main に入れ、利用者定義のラベル（#1225）と会議の分析の線引き（#1226）を Issue にした

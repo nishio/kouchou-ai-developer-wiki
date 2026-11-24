@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-24 21:30] filing-back | analysis-core の判定ロジックを Lean で検証し、意見分類を無効に戻すと古い結果が残る不具合を見つけた
+
+- 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、本物の Python との差分テスト（各 1500 件）でモデルのずれが無いことを確かめた。検証一式は実験ブランチ（未 push）
+- 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
+- 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
+
 ## [2026-11-24 18:10] filing-back | #1220 を main に入れた
 
 - nishio の指示で admin merge（squash、main `2a924af6`）。merge 前に CI 全件 pass・CodeRabbit の指摘なし、merge 後の main も全件 success
