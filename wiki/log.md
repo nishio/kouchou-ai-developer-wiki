@@ -25,6 +25,11 @@
 - 管理画面の削除はファイルを消さない、再利用では入力を差し替えられない、などをコードで確かめて書いた。未 merge
 - 更新: [[civic-ai-6pack-docs-mapping-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 23:49] filing-back | serverlessのorg PR #5〜#10をCI通過後にmainに反映
+
+- 6本の最新コミットでCI通過を確認し、nishioの指示に従って番号順にsquash merge。org main `7a9c921` と事前に検証した6本の統合版のファイル内容が一致
+- 更新: [[serverless-remaining-divergences-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 23:35] filing-back | 重複していない4件のIssueを並行実装してPRを作った
 
 - SNS 抽出例、管理画面 E2E、属性名の衝突防止、階層図の密度フィルタを実装し、本体 PR #1241〜#1244 を作った。
