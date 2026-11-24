@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 01:21] filing-back | PolisエクスポートのコメントCSV入力を確認
+
+- 同梱342件で本体管理画面とブラウザ版のCSV読込、CLIの入力検証を確認。投票履歴・参加者グループの専用連携はない
+- 更新: [[polis-export-input-2026-11-25]]、[[meeting-report-draft]]
+
 ## [2026-11-25 01:20] filing-back | DivConの対立軸発見と全件採点を実装で確認
 
 - 元の実装で最大 500 件からの候補軸生成と全件採点の順序を確認し、広聴AI の試作では上位クラスタを話題に使うことを記録
