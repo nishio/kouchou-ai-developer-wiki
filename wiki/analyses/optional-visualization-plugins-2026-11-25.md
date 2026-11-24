@@ -42,3 +42,13 @@ sources:
 
 - 2026-11-25: 既存のプラグインと二つの公開試作を比較し、本体の作業ブランチに管理者の有効化と閲覧者の切替を接続。
 - 2026-11-25: 公開ビューアの開発用レポートを Chrome の幅1200px・390pxで操作し、切替、マンダラートで親に戻る操作、付箋の拡大と個別意見・全画面の表示、検索で0件になったときの両ビューを確認。管理画面のテストで、両方のIDを同時に保存して初期表示を保持することを確認した。チームみらい2025の21,348意見を付箋の配置計算に渡し、全件に重複しない位置を得た。配置計算はこの環境のNode.jsで幅1148pxが145ms、338pxが81ms。実機での描画速度と操作時間は別途測る。
+
+### 2026-11-25 可視化の登録・選択を検証する契約
+
+本体 `main` の `afde1cb9` と GitHub の open PR を確認。組み込みレジストリは同じモード ID を警告して上書きし、公開ビューアは保存された初期表示を登録・データの条件に照らさず描画できた。[本体の登録実装](https://github.com/digitaldemocracy2030/kouchou-ai/blob/afde1cb9/apps/public-viewer/components/charts/plugins/registry.ts)、[初期表示の実装](https://github.com/digitaldemocracy2030/kouchou-ai/blob/afde1cb9/apps/public-viewer/components/report/ClientContainer.tsx)
+
+- [基盤 PR #1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) は組み込みの ID 衝突を拒否し、描画先を登録済み・レポートで有効・利用可能なモードに制限する。選べるモードがなければ案内を表示し、表示設定は操作できる。Lean で選択の優先順位と候補外を選ばない性質を証明し、TypeScript と 480 ケースを照合した。ローカルの公開ビューア Jest 345 件が成功し、GitHub CI の Lean／TypeScript チェック・公開ビューアのビルド・E2E も通過した。
+- [対立軸 #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) は、添付元に個別 ID のない「該当なし」と「未採点」が混在すると内訳を誤る。架空の 3 件で採点あり・該当なし・未採点の `1 / 1 / 1` が、閲覧側の分類で `1 / 0 / 2` になった。添付処理では混在する軸を拒否するか、添付元で両方の ID を保存する必要がある。選んだ軸は全画面に切り替えると初期値に戻るため、切替前後の状態も確認する。
+- [階層図の密度絞り込み #1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) と #1249 は公開ビューアの表示制御で競合する。マンダラート・付箋の `codex/optional-report-views` はローカル枝で、#1249 と登録や画面の切替が競合する。基盤を先に取り込み、残りの差分を共通の選択ロジックに合わせてから確認する。[Polis #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は管理画面での取込と参加者表示を扱い、#1249 との試験マージに競合はなかった。
+
+- ローカル統合枝 `codex/visualization-plugin-integration-check` の `202f66ca` で、基盤・階層図・対立軸・マンダラート・付箋の競合を解消した。公開ビューア Jest 358 件と管理画面の表示設定 Jest 13 件が成功し、同じレポートにビューが共存して全画面の往復でも選んだ対立軸を維持することを確認した。添付処理は混在する軸を拒否し、どちらか片方だけを含む軸は受理することを架空入力 3 件で確認した。統合枝は未 push。既存の各 PR に反映後、統合状態でブラウザ検証する。

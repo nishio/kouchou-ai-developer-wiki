@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 03:53] filing-back | 可視化プラグインの登録と表示選択を Lean で検証
+
+- 本体の [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) で ID 衝突と選択先を検証。Lean と TypeScript の 480 件が一致し、基盤 CI が通過。
+- 階層図・対立軸・マンダラート・付箋の共存と、対立軸の採点内訳・全画面選択の修正をローカル統合枝 `202f66ca` で確認。
+- [[optional-visualization-plugins-2026-11-25]]、[[plugin-system]]、[[meeting-report-draft]] に記録。
+
 ## [2026-11-25 03:53] filing-back | 広聴AIのレポート参照 REST API と MCP を試作
 
 - 本体 `codex/admin-read-api-mcp`（`5b2d756f`）で、専用キーによる一覧の絞り込みと進捗確認を追加。
