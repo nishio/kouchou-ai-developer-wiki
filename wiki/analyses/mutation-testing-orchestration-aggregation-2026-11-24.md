@@ -138,4 +138,5 @@ CLI と管理画面は、どちらも `PipelineOrchestrator.from_config` → `ru
   - [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（結果 JSON とパブコメ CSV）: 4〜8 を、2 階層・属性列ありの入力で出力を丸ごと照合する 1 ファイルで塞ぐ。集計の生存変異 234 件のうち 73 件が落ち、穴とした変異はすべて含まれる。残りは出力が変わらないか軽微なもの。analysis-core 全体 883 passed
   - 非公開の属性値を持つコメントの扱い（本文だけ隠し、意見と属性は残す）は現行の挙動を固定した。[#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) で扱いが変わる時はテストも合わせて直す
   - CodeRabbit は 2 本ともレビューを skip した
+- 2026-11-24: nishio が [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（main `0901091c`）と [#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)（main `bf8ecbe5`）を merge。merge 後の main で Analysis Core CI・Server Tests・CodeQL ほか success。これで「見つかった穴」の 1〜15 はテストで守られた。残りは Open Questions の旧経路（`run_step` / `termination`）の扱い
 

@@ -37,6 +37,12 @@
 - どれも直す前のコードで追加テストが落ちることを確認、analysis-core 全体と ruff check は通過
 - 更新: [[lean-verification-trial-2026-11-24]]、[[meeting-report-draft]]
 
+## [2026-11-24 22:19] filing-back | #1231・#1233 を main に入れた
+
+- nishio が merge（main `0901091c`・`bf8ecbe5`）。merge 後の main で Analysis Core CI・Server Tests・CodeQL ほか success
+- ミューテーションテストで見つけた穴（再集約・config の検証・ロック・結果 JSON など）はテストで守られた。残りは旧経路（`run_step` / `termination`）を残すかの判断
+- 更新: [[mutation-testing-orchestration-aggregation-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 22:14] filing-back | ミューテーションテストで見つけた穴を塞ぐテストを PR #1231・#1233 にした
 
 - #1233: 再集約（`--only`）・管理画面の config の検証・期限切れロック・`--reuse-from`・API キーなど。穴とした変異 58 件中 57 件が落ちる（残り 1 件は等価）
