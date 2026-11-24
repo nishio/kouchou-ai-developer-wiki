@@ -21,6 +21,12 @@
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
+## [2026-11-24 19:10] filing-back | 意見分類のラベルを利用者が定義できるようにする PR #1232 を出した（#1225）
+
+- `labels` に利用者定義のラベルを書け、プロンプトは定義から組み立て、誤りは実行前に止まる。社内の gemma-4-31B で 3 ラベルの分類を確認。未 merge
+- 残件：ビューアでラベル名を出す、入力の同名属性の上書き。別件で `prompt_file` が読まれていないことに気づいた
+- 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 18:25] filing-back | ミューテーションテストを再実行の判定と集計に広げ、管理画面に響く穴を見つけた
 
 - `core/orchestration.py` と `steps/hierarchical_aggregation.py` で 2,832 変異、テストが気づいた割合 71.5%（本体は変更なし、main `2a924af6`）
