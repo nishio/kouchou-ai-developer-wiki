@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 02:02	filing-back	Polisの参加者散布図を本体のPRにした
 2026-11-25 01:48	filing-back	Polisの参加者散布図と投票の推移を試作
 2026-11-25 01:38	filing-back	可視化カタログでクラスタから対立ビューを開く導線を試作
 2026-11-25 01:30	filing-back	クラスタ選択から対立ビューを開く導線案を記録
