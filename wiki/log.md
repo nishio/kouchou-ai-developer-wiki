@@ -27,6 +27,11 @@
 - 見つかったこと：意見分類などを無効に戻すと集計がスキップされ古い分類が残る（CLI のみ）、spec が依存順という前提が未検査、`validate_dependencies` が存在しない依存で例外を投げる
 - 更新: [[lean-verification-trial-2026-11-24]]、[[testing]]、[[meeting-report-draft]]
 
+## [2026-11-24 19:40] filing-back | 意見分類の利用者定義ラベル（#1232）を main に入れた
+
+- nishio が手元で admin merge（`a775d3d2`）。#1210・#1213 に設定例、#1225 に入ったものと残件（ビューアでのラベル名など）をコメント
+- 更新: [[municipal-workshop-issues-triage-2026-11-24]]、[[meeting-report-draft]]
+
 ## [2026-11-24 19:10] filing-back | 意見分類のラベルを利用者が定義できるようにする PR #1232 を出した（#1225）
 
 - `labels` に利用者定義のラベルを書け、プロンプトは定義から組み立て、誤りは実行前に止まる。社内の gemma-4-31B で 3 ラベルの分類を確認。未 merge
