@@ -173,7 +173,7 @@ sources:
 
 - **広聴AIの3つの使い方を図解（2026-11-25、Wiki更新）**。CLI版とサーバー版は同じ分析コアを使い、ブラウザ完結版はブラウザ内で分析する構成を、設定方法・保存先・利用場面とあわせて [[usage-modes]] に掲載。
   初めて試す人、複数人のチーム、研究実験という3つの場面から案内できる。
-  公式の「始め方の選び方」に同じ図を追加する [本体 PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) は進行中（`codex/docs-usage-modes`）。厳格ビルドとPC・スマホ幅の表示を確認。
+  [本体 PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) は2026-11-25にmainへマージ済み。[公式「始め方の選び方」](https://digitaldemocracy2030.github.io/kouchou-ai/user-guide/choosing-how-to-start.html)で図の位置と原寸表示をPC・スマホ幅で確認した。
 
 - **ブラウザ版の3機能をサーバ版に追加（2026-11-25、進行中 [親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261)）**。PowerPoint [PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268) `codex/server-report-pptx`、ポンチ絵 [PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266) `codex/server-report-ponchie`、再クラスタリングと賛否の探索 [PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267) `codex/server-report-explore` を提出した。
   Chrome でスライドから論点を開く操作、ダミー画像の取得、共有リンクで探索設定を復元する操作を確認。次は PR の確認と、資料作成者による利用観察。[[serverless-implementation-2026-11-24]]

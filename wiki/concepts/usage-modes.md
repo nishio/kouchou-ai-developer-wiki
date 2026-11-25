@@ -156,6 +156,7 @@ sources:
 
 ## Updates
 
+- 2026-11-25: [本体 PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) が main にマージされた。[公式「始め方の選び方」](https://digitaldemocracy2030.github.io/kouchou-ai/user-guide/choosing-how-to-start.html)で、「まず、何をしたいか」直前の図と原寸画像へのリンクをPC・スマホ幅で確認。
 - 2026-11-25: 公式ドキュメント「始め方の選び方」の「まず、何をしたいか」直前へ同じ図を追加する [本体 PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) を提出。
 - 2026-11-25: CLI版・サーバー版・ブラウザ完結版の関係を図解。各版の利用場面と、設定・分析・保存をどこで行うかを冒頭に追加。
 - 2026-10-21: main `b71e0b79` と照合し、`PR #824` の分類例を更新。管理画面のモデル一覧取得は PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) でパイプラインと同じ接続先解決・認証に揃った
