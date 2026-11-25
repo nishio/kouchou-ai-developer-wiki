@@ -112,6 +112,10 @@ flowchart TD
 
 ## Updates
 
+- **2026-11-25（本体に実装し PR 提出）**。[親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261) の下に3件を紐付けた。PowerPoint は [Issue #1264 / PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268)、ポンチ絵は [Issue #1262 / PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266)、対話的な再クラスタリングと賛否の探索は [Issue #1263 / PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267)。提出時点では未マージ。
+  - 管理画面で論点別のリンクと任意の表紙画像付き PPTX を出力し、公開ビューアで該当の論点を開く。ポンチ絵は画像 API の明示実行後に確認して PNG で取得する。両操作は Chrome とダミー API で確認し、実画像 API は未実施。
+  - 探索は公開ビューアで保存済み散布図の座標を維持し、公開済みの賛否スコア・話題や理由として選べる属性を重み付けする。共有 URL から操作を再現した。ブラウザ版の新規スコア推定や再配置とは処理経路が異なる。
+
 - **2026-11-25（優先順位の案）**。サーバ版で作ったレポートを会議で説明する人が、同じ結果から編集可能な PowerPoint を作り、スライドの論点と件数を公開レポートで確かめられるようにする。まず、すでにある結果 JSON の読み込みと PowerPoint 出力を使い、公開レポート 1 件で、資料を作る人が修正した箇所と元の意見に戻れたかを確認する。使われるなら、サーバ版の結果画面からも同じ書き出しを使えるようにする。[JSON の読み込み](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/components/HomePage.tsx#L91-L99)・[[long-term-strategy-2026-11-02]]より。
   - ポンチ絵は確認して採用する任意の表紙にし、件数・論点・参照先は編集できる要素として結果から入れる。現状の通常レポート用プロンプトは概要・上位ラベルを渡し、対立がある場合の左右配置を指示している。賛否や論点間の関係を図に示す場合は、レポート上で対応する証拠を確認できるものに限る案。[現行の画像プロンプト](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/lib/imageGen.ts#L21-L52)より。
   - 再クラスタリングと賛否スペクトラムはブラウザ版で探索に使い、説明に採用した切り方だけを元レポートと関連付けて共有・再表示できるようにする。ブラウザ内モデルは設定や環境に応じて使える経路として育てる。共通の受け渡しには公開 JSON の件数・出典・公開範囲を使う。[[embedding-public-results]]より。

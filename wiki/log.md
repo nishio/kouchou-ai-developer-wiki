@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:31] filing-back | サーバレス版の3機能を本体の PR に提出
+
+- [親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261) に3件を紐付け、ポンチ絵 [PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266)、再クラスタリングと賛否の探索 [PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267)、PowerPoint [PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268) を作成。
+- Chrome で PNG・PPTX の取得、元レポートの論点リンク、探索 URL の再表示を確認。[[serverless-implementation-2026-11-24]] と [[meeting-report-draft]] に結果を追記。
+
 ## [2026-11-25 11:15] filing-back | Polisの投票履歴が欠けても参加者を散布図に表示
 
 - [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の修正（`8b346f07`）で、投票履歴の最新票が一致しない場合も、参加者別CSVの票を持つ参加者を散布図に表示する。

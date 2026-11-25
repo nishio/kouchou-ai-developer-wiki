@@ -165,6 +165,9 @@ sources:
 
 ## Updates
 
+- **ブラウザ版の3機能をサーバ版に追加（2026-11-25、進行中 [親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261)）**。PowerPoint [PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268) `codex/server-report-pptx`、ポンチ絵 [PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266) `codex/server-report-ponchie`、再クラスタリングと賛否の探索 [PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267) `codex/server-report-explore` を提出した。
+  Chrome でスライドから論点を開く操作、ダミー画像の取得、共有リンクで探索設定を復元する操作を確認。次は PR の確認と、資料作成者による利用観察。[[serverless-implementation-2026-11-24]]
+
 - **サーバ版の分析結果を会議資料にする導線（2026-11-25、提案）**。公開 JSON から編集可能な PowerPoint を作り、スライドの論点と件数をレポートで確かめられるようにする。ポンチ絵は確認して表紙に使う。
   次は既存の読み込みと書き出しで公開レポート 1 件を試し、資料作成者がどこを修正し、根拠まで戻れたかを見る。[[serverless-implementation-2026-11-24]]
 
