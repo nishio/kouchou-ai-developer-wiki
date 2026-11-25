@@ -21,7 +21,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [kouchou-ai](concepts/kouchou-ai.md) — プロジェクト全体像と 4 つの配布形態
 - [analysis-stance](concepts/analysis-stance.md) — 広聴AI は構造把握スタンスのツールであって、定量分析スタンスのツールではない、という core stance
 - [broadlistening-tool-ecosystem-vision](analyses/broadlistening-tool-ecosystem-vision.md) — simple Web UI + CLI 実験の二段構造エコシステムビジョン（analysis-stance の「別ツールで補完」への答え）
-- [usage-modes](concepts/usage-modes.md) — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core の使い分け
+- [広聴AIの3つの使い方と仕組み](concepts/usage-modes.md) — CLI版・サーバー版・ブラウザ完結版で、どこで設定・分析・保存するかを図解
 - [analysis-core-and-web-ui](concepts/analysis-core-and-web-ui.md) — なぜ Web UI は analysis-core を使う consumer で、Web は JSON、CLI は観察用HTMLを持つのか
 - [architecture-overview](concepts/architecture-overview.md) — 5 サービスのランタイム構成
 - [pipeline](concepts/pipeline.md) — 解析パイプライン（extraction → embedding → 階層クラスタリング → 可視化）

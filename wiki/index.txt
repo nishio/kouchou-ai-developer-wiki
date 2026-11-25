@@ -32,7 +32,7 @@ quartz-site-presentation	concept	concepts/quartz-site-presentation.md	公開 Qua
 security-maintenance	concept	concepts/security-maintenance.md	CodeQL（コードの静的解析）と Dependabot（依存の既知脆弱性 alert）の役割・確認導線・対応の粒度と、脆弱性の具体詳細を公開 wiki に書かない公開境界ポリシーをまとめた durable hub。
 testing	concept	concepts/testing.md	テスト体系 — pytest / Jest / Playwright と lint (ruff / Biome) の運用
 thinking-targets	concept	concepts/thinking-targets.md	今、人間の思考と判断が要る論点を 1 ページに集めた思考ハブ。完了報告は meeting-report-draft、未着地論点の全体棚卸しは open-decisions、ここは『次に考えると進むもの』だけに絞る
-usage-modes	concept	concepts/usage-modes.md	kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理
+usage-modes	concept	concepts/usage-modes.md	CLI版・サーバー版・ブラウザ完結版を、設定方法、分析の実行場所、結果の保存先から図解する
 wiki-driven-workflow	concept	concepts/wiki-driven-workflow.md	Wikiと本体の二層運用。現行実装によるIssue完了判定、検証範囲の区別、Serverlessとの共通確認例を作業へ還流する
 anno	entity	entities/anno.md	安野たかひろ — kouchou-ai 開発で使う Devin の契約者。TTTC を非エンジニア向けにアプリ化した「チームあんの」の文脈
 broad-listening-book	entity	entities/broad-listening-book.md	DD2030 書籍「政治・自治体・企業に広がるブロードリスニング」（インプレス、CC BY-NC 4.0。2026-07-21 に旧仮題「選挙を変えたブロードリスニング」から改題）。設計判断・運用知見・将来開発の素材として開発向け参照源にも使う

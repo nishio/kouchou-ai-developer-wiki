@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:44] filing-back | 広聴AIの3つの使い方を図解
+
+- [[usage-modes]] に、CLI版、サーバー版、ブラウザ完結版の設定・分析・保存を比較する図と案内を追加。
+- CLI版とサーバー版が使う共通の分析コアと、ブラウザ内で動く分析処理を図に示した。
+
 ## [2026-11-25 11:43] filing-back | 初回利用の導線で再利用する判断を整理
 
 - Markdown 正本の [[serverless-product-direction-2026-09-08]] に、設定なしで試せる入口、選択欄に置くおすすめ、効果が伝わる操作名の判断を追記した。

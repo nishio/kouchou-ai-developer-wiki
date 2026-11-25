@@ -1,7 +1,7 @@
 ---
-title: "利用モード(Web UI と CLI / analysis-core)"
+title: "広聴AIの3つの使い方と仕組み"
 name: usage-modes
-summary: "kouchou-ai の主要利用モード — 非専門家向け Web UI と、研究者・データサイエンティスト向け CLI / analysis-core を分けて捉えるための整理"
+summary: "CLI版・サーバー版・ブラウザ完結版を、設定方法、分析の実行場所、結果の保存先から図解する"
 type: concept
 sources:
   - meeting-minutes.md
@@ -14,6 +14,14 @@ sources:
   - serverless-relationship-2026-09-08.md
 ---
 
+## 3つの使い方
+
+![CLI版は設定ファイルとコマンドで分析コアを実行。サーバー版はブラウザのGUIからサーバー上の同じ分析コアを起動し、レポートを蓄積。ブラウザ完結版はブラウザ内で分析し、端末に保存する。](../assets/usage-modes.png)
+
+- **CLI版**は研究者などが分析条件を細かく変えて実験する用途に向く。コマンドラインから設定ファイルを渡して分析コアを実行し、結果をファイルで受け取る。分析コアは自動処理や別のプログラムにも組み込める。[[cli]]より。
+- **サーバー版**はブラウザのGUIで設定し、複数人でレポートを共有したいときに向く。サーバーがCLI版と同じ分析コアを起動し、レポートを蓄積する。チームで同じレポートを閲覧でき、公開レポートはURLで共有できる。[[analysis-core-and-web-ui]]より。
+- **ブラウザ完結版**はサーバーを用意せず最初に試したいときに向く。GUIで設定し、ブラウザ向けの実装で分析して結果を端末に保存・書き出しできる。設定に応じて外部AI APIを利用する。[[serverless-implementation-2026-11-24]]より。
+
 ## なぜ分けて考えるか
 
 `kouchou-ai` には「同じ解析コアを別の入口から使う」複数モードがある。これを混ぜると、**ある PR が Web プロダクト改善なのか、CLI / 研究用途の改善なのか** を誤読しやすい。特に `PR #825` のような「CLI では重要だが Web の主経路は変えない」変更は、利用モードを分けていないと整理を誤る。
@@ -21,7 +29,7 @@ sources:
 この分岐は後付けの分類ではなく、**TTTC の clone / CUI 前提 → Web UI 包装 → `analysis-core` / PyPI への再切り出し** という歴史の結果でもある。詳細は [[tttc-to-analysis-core-history]]。[[meeting-minutes]]より
 歴史ではなく現在の設計判断として読むなら [[analysis-core-and-web-ui]]。[[analysis-core-web-ui-separation-decision-2026-05-23]]より
 
-## 主要 2 モード
+## 広聴AI本体の2つのモード
 
 ### 1. 非専門家向け Web UI モード
 
@@ -107,7 +115,7 @@ sources:
 - したがって「CLI をきれいにする」と「非エンジニア向け入口を良くする」は別問題として優先度を付けた方がよい
 - A/B/C/D の分類は、実装の配布形態だけでなく対外説明にも使える。研究者向け ipynb、エンジニア向け pip、デプロイできる組織向け Web UI、エンジニアがいない組織向け hosted trial は、8/2 や [#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564) の説明で混ぜずに出すと、誰に何を提供しているかが伝わりやすい。[[meeting-brand-compass-information-strategy-2026-06-30]]より
 
-## 共有コアと分岐点
+## サーバー版とCLI版の共有コア
 
 両モードは完全に別製品ではなく、**共通コアは `packages/analysis-core/`**。分岐するのは主に「入口」と「表示経路」。
 
@@ -143,11 +151,12 @@ sources:
 
 ## Open Questions
 
-- Jupyter Notebook を「CLI モードの一部」とみなすか、独立した第 3 モードとして切り出すか
+- Jupyter Notebook を本体のCLI版の一部として案内するか、独立した利用モードとして扱うか
 - 非専門家向け配布形として、`Zip + setup.bat + browser open` をどこまで正式サポート対象にするか — 段階整理は [[windows-distribution-options]]
 
 ## Updates
 
+- 2026-11-25: CLI版・サーバー版・ブラウザ完結版の関係を図解。各版の利用場面と、設定・分析・保存をどこで行うかを冒頭に追加。
 - 2026-10-21: main `b71e0b79` と照合し、`PR #824` の分類例を更新。管理画面のモデル一覧取得は PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) でパイプラインと同じ接続先解決・認証に揃った
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、A/B/C/D 分類は実装構成だけでなく Brand Compass / 情報発信上の説明軸でもあると追記。
 - 2026-05-19: 初版作成。Web UI と CLI / analysis-core を分ける軸を明文化
