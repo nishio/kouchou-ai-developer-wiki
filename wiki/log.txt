@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:53	filing-back	広聴AIの利用事例を開発の判断につなげる行動案
 2026-11-25 10:50	filing-back	書籍の発売までに整えたい広聴AIの読者体験を整理
 2026-11-25 10:49	filing-back	広聴AIの次の優先順位を利用場面から整理
 2026-11-25 10:46	filing-back	ブラウザ版の初回画面で試し方を案内
