@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:11] filing-back | ブラウザ版に分析の初回専用設定を追加
+
+- ブラウザ版 [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) にOpenAIのAPIキー1項目の初回設定を追加し、通常設定の保存データ保護の表記を変更した。
+- 模擬APIで失敗時に保存せず、確認が通るとCSV選択へ進むことを確認。[[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 09:49] filing-back | ブラウザ版の初回ガイドとサンプルへの導線を改善
 
 - [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) で設定不要のサンプルとCSV分析の入口を案内し、レポート名を先に読めるようにした。
