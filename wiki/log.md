@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:58] filing-back | 公開サンプルで抽出意見から原文までを検証
+
+- 390pxのChromiumで公開ブラウザ版の検索を試し、抽出意見までは到達したが原文への操作がないことを確認した。
+- 同じサンプルを本体 main の通常ビューアで開き、原文公開ON・OFFと、抽出でニュアンスの変わる一件を確認。[[public-report-source-navigation-2026-11-25]] と定例下書きに記録。
+
 ## [2026-11-25 11:50] filing-back | 乱数シードのマージとPolis欠落時の表示を確認
 
 - [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は `14ff24ce` でマージ済み。旧設定辞書の直接呼び出しを2方式で再検証した。[[umap-seed-history]]
