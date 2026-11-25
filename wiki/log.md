@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:42] filing-back | Polisの投票でUMAPの近さと共通回答を比較
+
+- 公開2会話で、平均補完UMAPの近傍に直接の共通回答がない組の割合と、パスの扱いを変えたときの近傍を計測した。[[polis-vote-map-experiment-2026-11-25]]
+- 全員を名簿に残し、点の位置と共通回答の根拠を確認できる表示を試した。設計案と時系列の残件を [[polis-participant-map-design-2026-11-25]] に記録。
+
 ## [2026-11-25 12:38] filing-back | 同梱散布図で輪郭の重なりが残った理由を確認
 
 - 6 組の残存はすべて、重なりに両群の点があり一本の直線で分けられないケース。点の保持検査で差し戻した組は 0。[[scatter-cluster-contours-2026-11-25]]
