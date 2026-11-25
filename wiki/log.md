@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 15:52] filing-back | 本体散布図の輪郭分割をPRにした
+
+- 通常レポートに輪郭分割を適用する [PR #1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271) を起票し、Chromium で9,568点の表示と設定の切り替えを確認した。
+- [Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) に方針を追記。ブラウザ版の対応は引き続き Issue で追う。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 15:28] filing-back | 直線で分けられないクラスタ輪郭を局所ボロノイで分割
 
 - 9,568 点の 2 例で直線分割後に残った 10 組を解消。1 組あたり最大 223 点で分割し、点の所属と座標は保持。
