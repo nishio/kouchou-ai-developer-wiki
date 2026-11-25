@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:10] filing-back | 舞鶴市の公開レポートで意見をたどる読み方をWikiの入口に掲載
+
+- [[maizuru-report-walkthrough-2026-11-25]] に、公共交通の16件から抽出意見を1件開く手順と、入力コメント・抽出意見の件数の違いを記録した。
+- トップから公開事例、CSVの試し方、開発参加、進行中の作業を選べるようにした。[[public-ui-requirements-for-broadlistening]] と [[meeting-report-draft]] に検証範囲を追記した。
+
 ## [2026-11-25 12:06] filing-back | 凸包の重なりだけを切る案を試算
 
 - 同梱 3 例の最上位で重複する 24 組のうち、片側を切れる 3 組と、直線で分けられる追加の 11 組を確認。
