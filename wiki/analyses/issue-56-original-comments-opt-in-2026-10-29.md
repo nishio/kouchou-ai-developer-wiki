@@ -59,6 +59,8 @@ Issue 本文の 2026-09-09 追記にある「意見と元コメントの多対�
 
 ## Updates
 
+- 2026-11-25 の更新。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の末端表示を通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258) に実装。明示された公開設定を先に確認し、公開 JSON v2 の複数出典を優先して旧レポートの数値・文字列 ID も扱う。元コメント本文は出典 ID 単位でまとめ、属性フィルターに一致した意見の出典を表示する。UI の確認は Chromium と公開ビューアのテストで行った。
+
 - 2026-11-25: 切り出し先の [Issue #1156](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1156) について、Leanの仕様モデルと両実装の差分テストを使う案を [[issue-1156-opinion-comment-contract-2026-11-25]] に整理した。
 
 - 2026-10-29: 初版。nishio の案 1 選択を受けて PR [#1155](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1155) を作成

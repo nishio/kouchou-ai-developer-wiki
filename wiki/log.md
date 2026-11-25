@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:42] filing-back | 階層の末端に元コメントを表示
+
+- [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258) に実装。出典ごとの重複防止と、非公開・本文欠落の案内を検証した。
+- 更新は [[issue-backlog-audit-2026-10-28]]、[[issue-56-original-comments-opt-in-2026-10-29]]、[[meeting-report-draft]]。
+
 ## [2026-11-25 10:38] filing-back | 乱数シード省略時のPython呼び出しを修正
 
 - [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) に直接呼び出しの互換修正を反映。両分析モードで修正前に再現し、修正後の analysis-core は998件成功、1件スキップ。[[umap-seed-history]] と [[meeting-report-draft]] に記録。

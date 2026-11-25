@@ -155,6 +155,9 @@ sources:
 
 ## Updates
 
+- **階層の末端で元コメントを開けるようにした（2026-11-25、進行中の通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258)）**。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を、階層図の詳細欄と階層リストに追加した。
+  同じ原文を折りたたみで1か所ずつ読めることと、非公開・本文欠落の案内を確認した。次はレビュー。[[issue-56-original-comments-opt-in-2026-10-29]]
+
 - **乱数シード省略時の互換性を修正（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから既存の設定辞書を直接渡し、シード未指定でも階層クラスタリングと LLM 直接グルーピングの両方でクラスタCSVが得られることを確認した。
   修正 `b5bfbfd2` をPRに反映。analysis-core は998件成功、1件スキップ。次は修正後コミットのレビューと必須承認の確認。[[umap-seed-history]]
 
