@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:00] filing-back | LLM直接グルーピングの初期値200件・25件をドラフトPRに提出
+
+- 4条件の実LLM比較を踏まえ、新規実行の初期値を200件・25件とし、全件一括も選べるドラフト[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)にした。
+- 既存Webレポートの再利用では保存値または作成当時の80件を引き継ぐ。[[llm-grouping-input-size-experiment-2026-11-25]]と[[meeting-report-draft]]に記録。
+
 ## [2026-11-25 09:51] filing-back | 全件の分類枠を固定して25件割り当てを比較
 
 - 同じGemma 4 31Bで、422意見を一括で読んだ分類枠を固定し、割り当てだけ25件ずつ再実行した。

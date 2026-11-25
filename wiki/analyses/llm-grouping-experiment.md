@@ -109,3 +109,4 @@ source や属性列は無くても、今回の first experiment には支障が�
 - 2026-11-25: `discovery_sample_size=80` と `assignment_batch_size=25` は初期実装 `4f893ab59`（[PR #866](https://github.com/digitaldemocracy2030/kouchou-ai/pull/866)）からの既定値。当時の PR と [[llm-grouping-experiment-output-2026-05-25]] には、両方の値を変えた比較や選定理由は見当たらなかった。新しい件数の比較では、分類枠のサンプル件数と割り当てのバッチ件数を個別に変え、同じ抽出結果を使う。
 - 2026-11-25: 同じ422意見をGemma 4 31Bで再比較した。80件→200件で分類名に雇用への懸念が出たが、対象テーマを明示した分類に入った意見は両方32/39件。全件一括ではアクセシビリティが説明に出て農業は記載から落ち、総トークンは80件比19%減だった。[[llm-grouping-input-size-experiment-2026-11-25]]より
 - 2026-11-25: 全件で作った分類枠を固定し、割り当てだけ25件ずつにした。テーマを明示した分類に入った意見は27/39件から29/39件（防災・エネルギーが各1件増）になり、総トークンは28,060から40,493（44%増）。[[llm-grouping-input-size-experiment-2026-11-25]]より
+- 2026-11-25: 新規実行の初期値を200件・25件にする判断を追記し、件数指定と全件一括をドラフト[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)に提出した。[[llm-grouping-input-size-experiment-2026-11-25]]より
