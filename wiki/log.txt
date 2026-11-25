@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 09:49	filing-back	ブラウザ版の初回ガイドとサンプルへの導線を改善
 2026-11-25 04:37	filing-back	Polis取り込みのPRレビューで散布図と集計の食い違いを確認
 2026-11-25 04:12	filing-back	CLIでクラスタリングの乱数シードを指定
 2026-11-25 04:09	filing-back	可視化の既存 PR を更新し全ビューの共存を Chrome で確認

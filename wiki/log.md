@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 09:49] filing-back | ブラウザ版の初回ガイドとサンプルへの導線を改善
+
+- [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) で設定不要のサンプルとCSV分析の入口を案内し、レポート名を先に読めるようにした。
+- Chromium で初回・再訪・幅390pxと320pxを確認。判断と検証範囲は [[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 04:37] filing-back | Polis取り込みのPRレビューで散布図と集計の食い違いを確認
 
 - [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の最新コミットで、参加者別CSVと一部の票を欠く投票履歴を併用すると、集計済みの票を持つ参加者が散布図から消えることを合成データで再現。対応案を [[meeting-report-draft]] に追記。
