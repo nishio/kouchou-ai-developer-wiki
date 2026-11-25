@@ -158,6 +158,9 @@ sources:
 
 ## Updates
 
+- **乱数シード省略時の互換性を修正（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから既存の設定辞書を直接渡し、シード未指定でも階層クラスタリングと LLM 直接グルーピングの両方でクラスタCSVが得られることを確認した。
+  修正 `b5bfbfd2` をPRに反映。analysis-core は998件成功、1件スキップ。次は修正後コミットのレビューと必須承認の確認。[[umap-seed-history]]
+
 - **乱数シード指定の独立レビュー（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから辞書を直接渡す既存の呼び出しで、シード未指定のまま現行mainは成功し、PR版は設定エラーで停止した。
   次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
 
