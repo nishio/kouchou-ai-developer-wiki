@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:46	filing-back	ブラウザ版の初回画面で試し方を案内
 2026-11-25 10:38	filing-back	乱数シード省略時のPython呼び出しを修正
 2026-11-25 10:35	filing-back	ブラウザ版の初回設定で使うAIを選択
 2026-11-25 10:19	filing-back	モバイル表示の E2E を本体の別 PR で修正
