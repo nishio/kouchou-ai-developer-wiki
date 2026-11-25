@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:48	filing-back	Lean の検証一式 #1239 と旧経路の削除 #1240 が main に入った
 2026-11-25 10:46	filing-back	ブラウザ版の初回画面で試し方を案内
 2026-11-25 10:38	filing-back	乱数シード省略時のPython呼び出しを修正
 2026-11-25 10:35	filing-back	ブラウザ版の初回設定で使うAIを選択
@@ -50,6 +51,7 @@
 2026-11-24 23:35	filing-back	重複していない4件のIssueを並行実装してPRを作った
 2026-11-24 23:34	filing-back	serverlessの本文・再分析・入力の修正をorg PR #5〜#10にした
 2026-11-24 23:30	filing-back	ブラウザ版（serverless）の取り込み方を 3 案で比べ、repo 移管＋契約合わせを推奨
+2026-11-24 23:19	filing-back	analysis-core の旧経路 run() を削除する PR #1240 を出した
 2026-11-24 23:11	filing-back	マージ後の未解決Issueから次の着手候補を確認
 2026-11-24 22:44	filing-back	公開属性表の参照検査をserverless mainに反映
 2026-11-24 22:39	filing-back	Lean の検証一式を本体に入れる PR #1239 を作った

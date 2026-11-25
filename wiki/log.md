@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:48] filing-back | Lean の検証一式 #1239 と旧経路の削除 #1240 が main に入った
+
+- #1239（`8f6f7e58`）・#1240（`03d07295`）とも 11-25 に merge 済み。昨夜の #1240 の記録は push されずに残っていたので、merge 済みに直して入れた
+- 次：公開 API を消したので、次の analysis-core のリリースで版を上げてリリースノートに書く
+- 更新: [[lean-verification-trial-2026-11-24]]、[[mutation-testing-orchestration-aggregation-2026-11-24]]、[[pipeline]]、[[cli]]、[[meeting-report-draft]]
+
 ## [2026-11-25 10:46] filing-back | ブラウザ版の初回画面で試し方を案内
 
 - [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回ガイドではサンプルを勧め、AI選択欄ではキーの有無に応じて選ぶ理由を示した。
@@ -238,6 +244,13 @@
 - org への repo 移管／本体 monorepo への統合／結果形式だけ合わせる、を両 repo の main で比較。統合しても分析処理は TS と Python の 2 本のままで、道具の世代差（pnpm・TS・Biome）と Pages の相乗りが重い
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
+
+## [2026-11-24 23:19] filing-back | analysis-core の旧経路 run() を削除する PR #1240 を出した
+
+- 非推奨の `PipelineOrchestrator.run()`・`register_step()`・`run_step` / `termination` を削除（未 merge）。本体に呼び出し元は無く、新経路との差（LLM 直接グルーピングで落ちる見込み、Ctrl+C でロックが残る等）が開いていた
+- 旧経路で status を書いていたテスト（API の複製・伏せ字）は新経路に移した。analysis-core 972 passed・API 577 passed
+- 公開 API を消すので、次の analysis-core のリリースで版を上げてリリースノートに書く
+- 更新: [[mutation-testing-orchestration-aggregation-2026-11-24]]、[[pipeline]]、[[cli]]、[[meeting-report-draft]]
 
 ## [2026-11-24 23:11] filing-back | マージ後の未解決Issueから次の着手候補を確認
 
