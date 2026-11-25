@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:50] filing-back | 書籍の発売までに整えたい広聴AIの読者体験を整理
+
+- 発売日を公開情報と直近資料で確認し、設定不要で論点と根拠をたどれるレポートを優先する案を [[book-release-reader-readiness-2026-11-25]] に記録。
+- 次はスマホでの初見テストと実AIでのCSV分析。v5候補の回帰確認は並行して進める案を [[meeting-report-draft]] に追記。
+
 ## [2026-11-25 10:49] filing-back | 広聴AIの次の優先順位を利用場面から整理
 
 - 研究会の要望、本体 main とオープンPRを照合し、CSVの分析から少数の重要な意見・原文の確認と公開までを優先する案を [[long-term-strategy-2026-11-02]] に追記。
