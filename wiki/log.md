@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:15] filing-back | Polisの投票履歴が欠けても参加者を散布図に表示
+
+- [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の修正（`8b346f07`）で、投票履歴の最新票が一致しない場合も、参加者別CSVの票を持つ参加者を散布図に表示する。
+- Chromiumで合成データ2人と公式データ234人を確認。[[polis-export-input-2026-11-25]] と [[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:10] filing-back | 書籍Web版トップから公開レポートに案内する案
 
 - 書籍サイトのmainと公開ページを照合し、読書ボタンと目次の間から公開レポート一件に進む案を [[book-release-reader-readiness-2026-11-25]] に追記。

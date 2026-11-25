@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 11:15	filing-back	Polisの投票履歴が欠けても参加者を散布図に表示
 2026-11-25 11:10	filing-back	書籍Web版トップから公開レポートに案内する案
 2026-11-25 11:01	filing-back	書籍Web版の実装リポジトリを確認
 2026-11-25 11:00	filing-back	サーバ版の分析結果から会議資料を作る導線案
