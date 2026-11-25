@@ -155,6 +155,9 @@ sources:
 
 ## Updates
 
+- **乱数シード指定の独立レビュー（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから辞書を直接渡す既存の呼び出しで、シード未指定のまま現行mainは成功し、PR版は設定エラーで停止した。
+  次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
+
 - **濃い意見ビューに背景点を追加（2026-11-25、進行中の通常 PR [#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256)）**。[#638](https://github.com/digitaldemocracy2030/kouchou-ai/issues/638) に対応し、濃いグループ外の点を薄い灰色にし、グループ名を図の下の凡例に表示した。
   Chromium で色付き3点・灰色9点と、凡例と描画が重ならないことを確認。次はレビュー。[[issue-backlog-audit-2026-10-28]]
 

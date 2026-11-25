@@ -68,6 +68,9 @@ PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の案�
 
 ## Updates
 
+- 2026-11-25 の独立レビュー。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の `8c3b7f21` では、`random_seed` を省略した設定辞書を `PipelineOrchestrator(config).run_default()` に直接渡すと、ワークフローの設定参照が未定義キーをエラーにする。保存済みの合成意見30件と埋め込みで、main `d6095ec3` はクラスタCSVを出力し、PR版は出力前に停止した。
+  設定ファイルと `from_dict` は既定値の補完を通り、PR版の関連テスト63件は成功した。次はシードを省略できる扱いを直接呼び出す経路にも適用し、旧形式の設定辞書での回帰テストを追加する。
+
 - 2026-11-25 の更新。CLI でクラスタリングの乱数シードを指定する [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) を通常 PR に切り替えた。
 
 - 2026-11-25 の更新。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) の担当者と進行中の PR が空いていること、本体 main `afde1cb9` に指定がないことを確認し、CLI の任意設定として `random_seed` を実装した（進行中のドラフト PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)）。通常実行では UMAP の並列性を保つ。階層クラスタリングでは UMAP の学習と KMeans、LLM 直接グルーピングでは散布図の UMAP 学習が対象。保存済み UMAP モデルを指定した場合は投影にモデルの設定を使う。
