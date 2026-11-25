@@ -162,6 +162,9 @@ sources:
 
 ## Updates
 
+- **サーバレス版独自の機能（2026-11-25、調査済み）**。両版の main を比較し、ポンチ絵生成・PowerPoint 書き出し・対話的な再クラスタリング・賛否スペクトラム・ブラウザ内モデルを確認した。
+  ポンチ絵は通常レポートと賛否スペクトラムで作成でき、通常レポートのサンプルで生成済みの画像を見られる。[[serverless-implementation-2026-11-24]]
+
 - **階層の末端で元コメントを開けるようにした（2026-11-25、進行中の通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258)）**。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を、階層図の詳細欄と階層リストに追加した。
   同じ原文を折りたたみで1か所ずつ読めることと、非公開・本文欠落の案内を確認した。次はレビュー。[[issue-56-original-comments-opt-in-2026-10-29]]
 
