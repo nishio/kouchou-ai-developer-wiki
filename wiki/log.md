@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:09] filing-back | 公式ドキュメントの始め方に3つの使い方の図を追加するPR
+
+- 本体の「始め方の選び方」の指定位置へ図を追加する [ドラフト PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) を提出。
+- MkDocs の厳格ビルドとドキュメント CI が通過。Chromium のPC・スマホ幅で配置と原寸表示を確認し、[[usage-modes]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 11:58] filing-back | 公開サンプルで抽出意見から原文までを検証
 
 - 390pxのChromiumで公開ブラウザ版の検索を試し、抽出意見までは到達したが原文への操作がないことを確認した。

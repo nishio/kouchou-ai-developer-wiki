@@ -156,6 +156,7 @@ sources:
 
 ## Updates
 
+- 2026-11-25: 公式ドキュメント「始め方の選び方」の「まず、何をしたいか」直前へ同じ図を追加する [本体 PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) を提出。
 - 2026-11-25: CLI版・サーバー版・ブラウザ完結版の関係を図解。各版の利用場面と、設定・分析・保存をどこで行うかを冒頭に追加。
 - 2026-10-21: main `b71e0b79` と照合し、`PR #824` の分類例を更新。管理画面のモデル一覧取得は PR [#1038](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1038) でパイプラインと同じ接続先解決・認証に揃った
 - 2026-06-30: [[meeting-brand-compass-information-strategy-2026-06-30]] を追加し、A/B/C/D 分類は実装構成だけでなく Brand Compass / 情報発信上の説明軸でもあると追記。
