@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 12:28	filing-back	自治体の研究会で見つけにくかった意見の検索を本体に実装
 2026-11-25 12:23	filing-back	凸包の切り抜き試作を 9,568 点で計測
 2026-11-25 12:14	filing-back	対立軸ビュー #1249 も main に入った
 2026-11-25 12:10	filing-back	舞鶴市の公開レポートで意見をたどる読み方をWikiの入口に掲載

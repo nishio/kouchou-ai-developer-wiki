@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:28] filing-back | 自治体の研究会で見つけにくかった意見の検索を本体に実装
+
+- [本体PR #1270](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1270)（未マージ）に、公開レポートから直接検索して所属グループを開く操作を追加。
+- 通常のレポート画面で「エレベーター」の抽出意見にたどれることをPC・スマホ幅で確認。[[municipal-workshop-issues-triage-2026-11-24]] と [[meeting-report-draft]] に記録した。
+
 ## [2026-11-25 12:23] filing-back | 凸包の切り抜き試作を 9,568 点で計測
 
 - 同じ座標の 2 例で重なりの組が 12→6、7→4。輪郭生成＋描画の中央値は通常幅で +7〜21 ms、CPU スロットリング条件で +33〜67 ms。
