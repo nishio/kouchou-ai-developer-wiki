@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 16:32] filing-back | 輪郭分割PRの検証結果と再開条件を記録
+
+- [本体 PR #1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271) はビルド・Jest・E2E を通過し、マージはメンテナー承認待ち。自動マージ設定と CLA 欄を再確認した。
+- 局所ボロノイの性能と、ブラウザ版に引き継ぐ検証項目を [[scatter-cluster-contours-2026-11-25]] に追記した。
+
 ## [2026-11-25 16:03] filing-back | Polisの参加者地図でシアトルの2つの意見への賛否を比較
 
 - 同じ165人のUMAPに実際の投票を重ね、別の提案でも賛成した人数、反対、パス、未回答を確認した。[[polis-vote-map-experiment-2026-11-25]]

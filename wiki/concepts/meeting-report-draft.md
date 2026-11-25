@@ -170,7 +170,7 @@ sources:
 ## Updates
 
 - **本体の散布図で輪郭を調整（2026-11-25、進行中 PR [#1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271)、`codex/scatter-hull-clipping-prototype`）**。「全体」「詳細クラスタ」で、凸包の重なりに片側の切り抜き・直線分割・局所ボロノイを適用する。通常レポートで表示と切り替えを確認した。
-  次は本体 PR の承認と、独立したブラウザ版の対応。状況は [Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) と [[scatter-cluster-contours-2026-11-25]] に記録。
+  公開ビューアのビルド、Jest、E2E が通過。次は本体 PR のメンテナー承認と本人による CLA 同意、独立したブラウザ版の対応。[[scatter-cluster-contours-2026-11-25]]。[Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259)
 
 - **輪郭の残存部をボロノイで分ける試作（2026-11-25、ローカル `codex/scatter-hull-clipping-prototype` / `668d5fb0`）**。9,568 点の 2 例で直線分割後の 6 組・4 組がすべて解消。1 組で分割に使った点は最大 223 点。
   追加の輪郭計算はデスクトップで約 78〜101 ms、幅 390px・CPU 4 倍スロットリングで約 311〜424 ms。次はモバイル実機での負荷と輪郭の事前計算・再利用を確認する。[[scatter-cluster-contours-2026-11-25]]
