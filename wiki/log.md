@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:38] filing-back | 同梱散布図で輪郭の重なりが残った理由を確認
+
+- 6 組の残存はすべて、重なりに両群の点があり一本の直線で分けられないケース。点の保持検査で差し戻した組は 0。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 12:35] filing-back | 凸包の解消箇所と残存箇所を同じ範囲で比較
 
 - ローカル試作 `6c7039f3` で、元の重なりと試作で残る範囲を表示する拡大比較を追加。

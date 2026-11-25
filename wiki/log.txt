@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 12:38	filing-back	同梱散布図で輪郭の重なりが残った理由を確認
 2026-11-25 12:35	filing-back	凸包の解消箇所と残存箇所を同じ範囲で比較
 2026-11-25 12:28	filing-back	自治体の研究会で見つけにくかった意見の検索を本体に実装
 2026-11-25 12:23	filing-back	凸包の切り抜き試作を 9,568 点で計測
