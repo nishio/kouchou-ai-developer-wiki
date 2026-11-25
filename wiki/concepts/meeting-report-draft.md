@@ -154,6 +154,9 @@ sources:
 
 ## Updates
 
+- **乱数シード指定の独立レビュー（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから辞書を直接渡す既存の呼び出しで、シード未指定のまま現行mainは成功し、PR版は設定エラーで停止した。
+  次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
+
 - **ブラウザ版の初回ガイドと閲覧導線（2026-11-25、進行中の [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13)）**。設定なしでサンプルを見る入口と自分のCSVを分析する入口を示し、結果ではタイトルと問いを先に置いた。
   初回の分析設定はOpenAIのAPIキー1項目に絞り、通常設定の保存データ保護も平易な表記にした。模擬APIで接続確認からCSV選択までを検証。次は初見の利用者の操作を確認する。[[serverless-onboarding-2026-11-25]]
 

@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:15] filing-back | 乱数シード指定PRでPython呼び出しの互換性問題を確認
+
+- [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の独立レビューで、シード未指定の設定辞書を直接渡すと現行mainではクラスタCSVが出力され、PR版では停止することを再現。[[umap-seed-history]] と [[meeting-report-draft]] に修正案を記録。
+
 ## [2026-11-25 10:11] filing-back | ブラウザ版に分析の初回専用設定を追加
 
 - ブラウザ版 [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) にOpenAIのAPIキー1項目の初回設定を追加し、通常設定の保存データ保護の表記を変更した。

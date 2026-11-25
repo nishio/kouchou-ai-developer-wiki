@@ -68,6 +68,9 @@ PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の案�
 
 ## Updates
 
+- 2026-11-25 の独立レビュー。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の `8c3b7f21` では、`random_seed` を省略した設定辞書を `PipelineOrchestrator(config).run_default()` に直接渡すと、ワークフローの設定参照が未定義キーをエラーにする。保存済みの合成意見30件と埋め込みで、main `d6095ec3` はクラスタCSVを出力し、PR版は出力前に停止した。
+  設定ファイルと `from_dict` は既定値の補完を通り、PR版の関連テスト63件は成功した。次はシードを省略できる扱いを直接呼び出す経路にも適用し、旧形式の設定辞書での回帰テストを追加する。
+
 - 2026-10-21: 結末（2026-05-18 の定例で opt-in 案を採らず、PR [#829](https://github.com/digitaldemocracy2030/kouchou-ai/issues/829) で固定 seed を除去。比較可能性は PR [#988](https://github.com/digitaldemocracy2030/kouchou-ai/issues/988) の `reuse_umap_model` で実現）を 4・5 節と Open Questions に反映し、もう出ない UMAP warning への参照を、seed が無い現在の落とし穴への参照に訂正
 - 2026-05-18: `seed` 固定の経緯を「再現性要求の発生 → 限界認識 → 並列性との再評価」という流れで整理
 
