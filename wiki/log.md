@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:46] filing-back | ブラウザ版の初回画面で試し方を案内
+
+- [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回ガイドではサンプルを勧め、AI選択欄ではキーの有無に応じて選ぶ理由を示した。
+- Chromiumで案内と操作の位置を確認し、[[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:43] filing-back | 広聴AIの次の検証候補を調査
 
 - 本体 main `03d07295` と進行中の PR を照合。階層レポートの件数、レポート復旧、LLM 直接グルーピングの割当を [[verification-opportunities-2026-11-25]] に整理。
