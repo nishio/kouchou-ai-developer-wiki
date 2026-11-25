@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:35] filing-back | 凸包の解消箇所と残存箇所を同じ範囲で比較
+
+- ローカル試作 `6c7039f3` で、元の重なりと試作で残る範囲を表示する拡大比較を追加。
+- 2 例の全 19 組で左右の軸範囲・表示サイズを Chromium で照合。解消例と残存例を [[scatter-cluster-contours-2026-11-25]] に記録。
+
 ## [2026-11-25 12:28] filing-back | 自治体の研究会で見つけにくかった意見の検索を本体に実装
 
 - [本体PR #1270](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1270)（未マージ）に、公開レポートから直接検索して所属グループを開く操作を追加。
