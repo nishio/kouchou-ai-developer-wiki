@@ -94,3 +94,5 @@ sources:
 - 2026-11-24: [#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227) と [#1228](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1228) も main に merge され、4 本とも main に入った（CI 全件 pass を確認済み）。残りは、検証一式を本体に入れるかどうか
 - 2026-11-24: #1228 の `main` との競合では、spec の依存順と再実行のテストを両方残した（`4c7fa72c`）。#1227 は `global_params` が無い記録でも、現在または過去に任意工程を使っていれば集計をやり直す（`afde1cb9`）。最終 `main` と同じコードで analysis-core のテストを組み合わせて実行し、980 件成功、1 件スキップ。
 - 2026-11-24: nishio の判断で、検証一式を本体に入れる PR [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239) を作った（未 merge）。直した後のコードに合わせて写し直し、工程 ID の重複・`load_specs` の依存順の検査・入れ子の検査もモデルに入れた。主な追加の定理は 2 つ：`load_specs` の検査を通った spec なら上流の再実行が下流へ伝わる（`closure_of_loaded`）、入れ子の検査を通れば入れ子かどうかによらず `(level, id)` が重複しない（`clusters_keys_nodup_of_singleParent`）。CI は `analysis-core-lean.yml`（必須ではない、約 3 分）で、全件 pass
+
+- 2026-11-25: [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239) が本体 main に反映された（`8f6f7e58`）。次に検証する候補は [[verification-opportunities-2026-11-25]] に整理した。

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:43] filing-back | 広聴AIの次の検証候補を調査
+
+- 本体 main `03d07295` と進行中の PR を照合。階層レポートの件数、レポート復旧、LLM 直接グルーピングの割当を [[verification-opportunities-2026-11-25]] に整理。
+- 構造検査を通る合成入力で、全件一致のフィルターが表示件数を 0 から 1 に変える例を再現した。既存の表示テスト 18 件と既存の結果 JSON 3 件も確認。
+
 ## [2026-11-25 10:42] filing-back | 階層の末端に元コメントを表示
 
 - [#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258) に実装。出典ごとの重複防止と、非公開・本文欠落の案内を検証した。

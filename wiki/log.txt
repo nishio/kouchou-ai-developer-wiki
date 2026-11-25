@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:43	filing-back	広聴AIの次の検証候補を調査
 2026-11-25 10:42	filing-back	階層の末端に元コメントを表示
 2026-11-25 10:38	filing-back	乱数シード省略時のPython呼び出しを修正
 2026-11-25 10:35	filing-back	ブラウザ版の初回設定で使うAIを選択
