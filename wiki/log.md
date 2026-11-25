@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:45] filing-back | 書籍を読んだ方への案内ページを公開
+
+- [PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) を admin merge（`d857fd53`）、docs のデプロイ後に `/book` の公開を確認。
+- 次：書籍 Web 版からのリンク依頼（人が行う）。[[meeting-report-draft]]・[[broad-listening-book]] を更新。
+
 ## [2026-11-25 11:39] filing-back | ブラウザ版の初回導線がmainに反映
 
 - ブラウザ版 [PR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) が main にマージされたことを確認（`14a547d`）。

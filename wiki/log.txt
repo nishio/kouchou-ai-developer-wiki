@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 11:45	filing-back	書籍を読んだ方への案内ページを公開
 2026-11-25 11:39	filing-back	ブラウザ版の初回導線がmainに反映
 2026-11-25 11:34	filing-back	ブラウザ版の案内先を org 版に揃えた
 2026-11-25 11:19	filing-back	書籍を読んだ人の入口を本体 docs に作った

@@ -42,11 +42,11 @@ sources:
 
 2026-10-17 までの完了分は [[meeting-report-2026-10-18]] に退避済み。ここには rotate 以降に完了したもの（merge 済みと明記）と、進行中・判断待ちのものを置く。
 
-- **書籍を読んだ人の入口を docs に作った（2026-11-25、進行中：[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265)、未 merge）**
+- **書籍を読んだ人の入口を docs に作った（2026-11-25、[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) は 11-25 に main 済み `d857fd53`、`/book` 公開済み）**
   - 書籍の本文には広聴AIのリポジトリ・docs・ブラウザ版へのリンクがなく、読者は Docker 前提の README に着く。docs に「書籍を読んだ方へ」（`/book`）を足し、README 冒頭にも 1 行足した。
   - ブラウザ版は「同じ機能や結果は保証しない別の実装だが、最初に試すにはおすすめ」と位置づけ（nishio 判断）。本流をどちらにするか（[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）には踏み込んでいない。
   - ブラウザ版側も、README の「使ってみる」・画面右上の GitHub・書き出した HTML のフッターを org 版に揃え、tokoroten さんの repo で作り始めた経緯を README に残した（[ブラウザ版 PR #15](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/15)、11-25 main 済み `24b84b70`）。
-  - 次：[#1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) は CI 通過済みでレビュー承認待ちのため admin merge を待つ。merge 後、書籍 Web 版からこのページへのリンクを書籍サイト側に依頼する（人が行う）。Web 版は現在先行公開ドラフトで、各章はログインが必要。[[broad-listening-book]]
+  - 次：書籍 Web 版から `https://digitaldemocracy2030.github.io/kouchou-ai/book` へのリンクを書籍サイト側に依頼する（人が行う）。Web 版は現在先行公開ドラフトで、各章はログインが必要。[[broad-listening-book]]
 
 - **公開レポートのモバイル E2E（2026-11-25、進行中・main 向け修正はレビュー待ち）**
   - 幅375pxの初期表示は階層リストで、最上位の「全体」は折りたたまれている。階層リストの表示と、展開後の第1階層のグループ名を確認するテストに修正した。[修正 PR #1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257)
