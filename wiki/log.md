@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:49] filing-back | 広聴AIの次の優先順位を利用場面から整理
+
+- 研究会の要望、本体 main とオープンPRを照合し、CSVの分析から少数の重要な意見・原文の確認と公開までを優先する案を [[long-term-strategy-2026-11-02]] に追記。
+- 次は公開可能なCSVを一つ使い、初見の操作と、件数・出典・公開範囲が揃うかを確認する。定例の議題候補にも追記。
+
 ## [2026-11-25 10:46] filing-back | ブラウザ版の初回画面で試し方を案内
 
 - [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回ガイドではサンプルを勧め、AI選択欄ではキーの有無に応じて選ぶ理由を示した。
