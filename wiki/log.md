@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:19] filing-back | 書籍を読んだ人の入口を本体 docs に作った
+
+- 書籍本文にツールへのリンクがなく、読者が Docker 前提の README に着く問題に対し、docs に「書籍を読んだ方へ」を足した（[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265)）。ブラウザ版は「同じ機能を保証しない別の実装だが、最初に試すにはおすすめ」と位置づけた。
+- 次：書籍 Web 版（先行公開ドラフト、各章はログインが必要）からのリンク依頼。[[broad-listening-book]] と [[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:15] filing-back | Polisの投票履歴が欠けても参加者を散布図に表示
 
 - [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の修正（`8b346f07`）で、投票履歴の最新票が一致しない場合も、参加者別CSVの票を持つ参加者を散布図に表示する。
