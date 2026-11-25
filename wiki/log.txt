@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 16:03	filing-back	Polisの参加者地図でシアトルの2つの意見への賛否を比較
 2026-11-25 12:42	filing-back	Polisの投票でUMAPの近さと共通回答を比較
 2026-11-25 12:17	filing-back	公式「始め方の選び方」に3つの使い方の図を掲載
 2026-11-25 12:14	filing-back	ブラウザ版の公開サンプルで検索から原文を表示

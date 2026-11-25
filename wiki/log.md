@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 16:03] filing-back | Polisの参加者地図でシアトルの2つの意見への賛否を比較
+
+- 同じ165人のUMAPに実際の投票を重ね、別の提案でも賛成した人数、反対、パス、未回答を確認した。[[polis-vote-map-experiment-2026-11-25]]
+- 論点を変えて地図を読み比べる表示と、元票のクロス集計の読み方を [[polis-participant-map-design-2026-11-25]] に追記した。
+
 ## [2026-11-25 12:42] filing-back | Polisの投票でUMAPの近さと共通回答を比較
 
 - 公開2会話で、平均補完UMAPの近傍に直接の共通回答がない組の割合と、パスの扱いを変えたときの近傍を計測した。[[polis-vote-map-experiment-2026-11-25]]
