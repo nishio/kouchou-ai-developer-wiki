@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 11:04	filing-back	散布図の輪郭を初期表示で隠す修正を提出
 2026-11-25 10:48	filing-back	Lean の検証一式 #1239 と旧経路の削除 #1240 が main に入った
 2026-11-25 10:46	filing-back	ブラウザ版の初回画面で試し方を案内
 2026-11-25 10:38	filing-back	乱数シード省略時のPython呼び出しを修正

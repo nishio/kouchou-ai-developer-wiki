@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:04] filing-back | 散布図の輪郭を初期表示で隠す修正を提出
+
+- [#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) に起票し、[本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260) と [ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14) を提出。通常レポートの輪郭は表示設定から切り替えられる。
+- Chromium で初期表示と切り替えを確認。[[slack-municipal-workshop-issues-2026-11-18]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:48] filing-back | Lean の検証一式 #1239 と旧経路の削除 #1240 が main に入った
 
 - #1239（`8f6f7e58`）・#1240（`03d07295`）とも 11-25 に merge 済み。昨夜の #1240 の記録は push されずに残っていたので、merge 済みに直して入れた

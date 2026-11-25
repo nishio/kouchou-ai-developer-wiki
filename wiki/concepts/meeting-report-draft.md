@@ -158,6 +158,9 @@ sources:
 
 ## Updates
 
+- **散布図の輪郭の重なり（2026-11-25、進行中 [本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260)・[ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14)、両方とも `codex/issue-1259-hide-scatter-outlines`）**。[#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) で、本体とブラウザ版の通常レポートに残る初期表示を見直した。
+  両 PR とも輪郭を初期表示で隠し、既存の表示設定でオンにできる。Chromium で検証済み。次は両 PR のレビューと反映確認。[[slack-municipal-workshop-issues-2026-11-18]]
+
 - **乱数シード省略時の互換性を修正（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから既存の設定辞書を直接渡し、シード未指定でも階層クラスタリングと LLM 直接グルーピングの両方でクラスタCSVが得られることを確認した。
   修正 `b5bfbfd2` をPRに反映。analysis-core は998件成功、1件スキップ。次は修正後コミットのレビューと必須承認の確認。[[umap-seed-history]]
 
