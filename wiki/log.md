@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:45] filing-back | 散布図で交差しないクラスタ輪郭を考察
+
+- 初期非表示案を取り下げ、半径制限付きボロノイ分割による輪郭、飛び地、同一座標の扱いを [[scatter-cluster-contours-2026-11-25]] に記録。
+- くびれ・飛び地・混在の合成配置で比較。実レポートでの距離上限と描画性能は検証課題。
+
 ## [2026-11-25 11:45] filing-back | 書籍を読んだ方への案内ページを公開
 
 - [PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) を admin merge（`d857fd53`）、docs のデプロイ後に `/book` の公開を確認。

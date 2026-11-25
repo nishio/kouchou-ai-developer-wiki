@@ -164,6 +164,9 @@ sources:
 
 ## Updates
 
+- **散布図の輪郭の再検討（2026-11-25、設計案）**。輪郭の初期非表示案を取り下げ、点の周囲に範囲を限ったボロノイ領域をクラスタごとに結合する案を整理した。
+  くびれ・飛び地・混在を合成データで比較。次は距離上限と輪郭の読みやすさを公開レポートで確認する。[[scatter-cluster-contours-2026-11-25]]
+
 - **散布図の輪郭の重なり（2026-11-25、進行中 [本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260)・[ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14)、両方とも `codex/issue-1259-hide-scatter-outlines`）**。[#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) で、本体とブラウザ版の通常レポートに残る初期表示を見直した。
   両 PR とも輪郭を初期表示で隠し、既存の表示設定でオンにできる。Chromium で検証済み。次は両 PR のレビューと反映確認。[[slack-municipal-workshop-issues-2026-11-18]]
 
