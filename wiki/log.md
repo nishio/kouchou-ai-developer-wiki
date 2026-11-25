@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:00] filing-back | サーバ版の分析結果から会議資料を作る導線案
+
+- 編集可能な PowerPoint を先に試し、ポンチ絵を確認済みの表紙として任意で使う案を [[serverless-implementation-2026-11-24]] と [[meeting-report-draft]] に記録。
+- 公開レポート 1 件で、資料作成者が手直しした箇所と、元の意見に戻れたかを確認する。
+
 ## [2026-11-25 10:58] filing-back | 書籍と広聴AIの公開導線を確認
 
 - 書籍Web版、DD2030の総合ページ、広聴AI公式ページのリンクを照合し、紙版の掲載先は公開資料で確認できていないことを [[book-release-reader-readiness-2026-11-25]] と定例の議題候補に追記。

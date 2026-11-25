@@ -112,6 +112,10 @@ flowchart TD
 
 ## Updates
 
+- **2026-11-25（優先順位の案）**。サーバ版で作ったレポートを会議で説明する人が、同じ結果から編集可能な PowerPoint を作り、スライドの論点と件数を公開レポートで確かめられるようにする。まず、すでにある結果 JSON の読み込みと PowerPoint 出力を使い、公開レポート 1 件で、資料を作る人が修正した箇所と元の意見に戻れたかを確認する。使われるなら、サーバ版の結果画面からも同じ書き出しを使えるようにする。[JSON の読み込み](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/components/HomePage.tsx#L91-L99)・[[long-term-strategy-2026-11-02]]より。
+  - ポンチ絵は確認して採用する任意の表紙にし、件数・論点・参照先は編集できる要素として結果から入れる。現状の通常レポート用プロンプトは概要・上位ラベルを渡し、対立がある場合の左右配置を指示している。賛否や論点間の関係を図に示す場合は、レポート上で対応する証拠を確認できるものに限る案。[現行の画像プロンプト](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/lib/imageGen.ts#L21-L52)より。
+  - 再クラスタリングと賛否スペクトラムはブラウザ版で探索に使い、説明に採用した切り方だけを元レポートと関連付けて共有・再表示できるようにする。ブラウザ内モデルは設定や環境に応じて使える経路として育てる。共通の受け渡しには公開 JSON の件数・出典・公開範囲を使う。[[embedding-public-results]]より。
+
 - **2026-11-25（利用者向けの機能差を確認）**。org のブラウザ版 `14a547d2` とサーバ版 `03d07295` の main、および両 repo の open PR を照合した。以下は標準 UI と同梱機能のコード比較。実画像 API での再生成は今回未実施。
   - **ポンチ絵**。通常レポートの概要と上位クラスタ名から画像生成 API で争点の概念図を作れる。賛否スペクトラムでも現在のクラスタ構成・件数・賛否内訳から生成できる。新規生成には画像プロバイダ設定が要り、通常レポートのサンプルには生成済み画像がある。サーバ版標準の生成機能は確認できなかった。[通常レポート](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/components/ViewerPage.tsx#L278-L307)・[賛否スペクトラム](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/components/StanceSpectrumPage.tsx#L975-L1017)・[同梱サンプル](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/lib/sampleReport.ts#L18-L33)より。
   - **PowerPoint 書き出し**。通常レポートを `.pptx` にし、生成済みのポンチ絵を表紙に入れられる。単一 HTML にもポンチ絵を同梱する。サーバ版の管理画面には静的 HTML 書き出しがあり、両版でレポートの HTML 化はできる。[ブラウザ版の書き出し](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/blob/14a547d240a5601b6f19c9ab3cba2b32402c121e/src/components/ViewerPage.tsx#L131-L175)・[サーバ版の書き出し](https://github.com/digitaldemocracy2030/kouchou-ai/blob/03d0729524ff5b8b3d3fc797a5dab98308032521/apps/admin/app/_components/ReportCard/ActionMenu/ActionMenu.tsx#L192-L206)より。
