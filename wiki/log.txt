@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 11:34	filing-back	ブラウザ版の案内先を org 版に揃えた
 2026-11-25 11:19	filing-back	書籍を読んだ人の入口を本体 docs に作った
 2026-11-25 11:15	filing-back	Polisの投票履歴が欠けても参加者を散布図に表示
 2026-11-25 11:04	filing-back	散布図の輪郭を初期表示で隠す修正を提出
