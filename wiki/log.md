@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:39] filing-back | ブラウザ版の初回導線がmainに反映
+
+- ブラウザ版 [PR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) が main にマージされたことを確認（`14a547d`）。
+- [[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:34] filing-back | ブラウザ版の案内先を org 版に揃えた
 
 - ブラウザ版の README・画面の GitHub リンク・書き出した HTML のフッターが tokoroten さんの repo を指していたので org 版に変え、作り始めた経緯を README に残した（[ブラウザ版 PR #15](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/15)、main `24b84b70`）。
