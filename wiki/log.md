@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:38] filing-back | 乱数シード省略時のPython呼び出しを修正
+
+- [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) に直接呼び出しの互換修正を反映。両分析モードで修正前に再現し、修正後の analysis-core は998件成功、1件スキップ。[[umap-seed-history]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:35] filing-back | ブラウザ版の初回設定で使うAIを選択
 
 - [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回設定にAIの選択を追加。外部サービスを選んだ場合だけキーが必要で、チャット専用サービスでは類似度をブラウザ内で計算する。

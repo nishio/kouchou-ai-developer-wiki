@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:38	filing-back	乱数シード省略時のPython呼び出しを修正
 2026-11-25 10:35	filing-back	ブラウザ版の初回設定で使うAIを選択
 2026-11-25 10:33	filing-back	広聴AI本体のオープンPRとレビュー待ちを確認
 2026-11-25 10:15	filing-back	乱数シード指定PRでPython呼び出しの互換性問題を確認
