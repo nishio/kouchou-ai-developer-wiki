@@ -45,7 +45,7 @@ sources:
 - **LLM 直接グルーピングの件数設定（2026-11-25、進行中・ドラフト[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)）**
   - Webの新規作成・再利用とCLIに件数指定と全件一括を追加。新規は200件・25件、件数未指定の旧Webレポートを再利用するときは80件を引き継ぐ。
   - 実LLM比較で200件は80件より明示されたテーマが1つ増え、総トークンが約5%増。全件で作った同じ分類枠で25件ずつ割り当てると、27/39件から29/39件になり、総トークンが44%増えた。[[llm-grouping-input-size-experiment-2026-11-25]]
-  - 次は他のデータでも傾向を比較する。
+  - CIはE2E以外が成功。E2Eの公開レポートのモバイル表示1件は変更前の本体mainでも再現した。次は他のデータでも分類の傾向を比較する。
 
 - **公開後に止める・直す・異議を受ける手順を docs に書いた（2026-11-24、進行中：PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234)、未 merge）**: Civic AI（6-Pack of Care、civic.ai）の 6 観点で docs を点検すると、遡れること・少数意見への注意は厚く、止め方・直し方・異議の受け方と、同じ内容の大量投稿への注意が無かった。信頼性と責任のページに 2 節を足し、README の「多数派攻撃への防御（予定）」を「検討中（[#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345)）」に。civic.ai 側に日本の事例を届けるのは docs が整ってから。[[civic-ai-6pack-docs-mapping-2026-11-24]]
 - **意見分類のラベルを利用者が定義できるようにする（2026-11-24、PR [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232)、11-24 に main 済み `a775d3d2`）**: [#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225)。研究会の [#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)（課題と解決策）・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213)（安全上の指摘）向けに、`opinion_classification.labels` に利用者定義のラベル（`id`・`name`・`includes`・任意の `excludes`）を書けるようにした。通常の分析はそのまま、意見ごとの yes/no を属性フィルタで絞れる。誤りは実行前に止まり、定義はサマリーに残る。社内の gemma-4-31B で 3 ラベルが意図どおりに付くのを確認。[#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213) に設定例をコメントした。次：ビューアでラベル名を出すか（[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) に残件として残した）。詳細は [[municipal-workshop-issues-triage-2026-11-24]]
