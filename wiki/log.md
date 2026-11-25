@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:15] filing-back | Polisの投票履歴が欠けても参加者を散布図に表示
+
+- [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の修正（`8b346f07`）で、投票履歴の最新票が一致しない場合も、参加者別CSVの票を持つ参加者を散布図に表示する。
+- Chromiumで合成データ2人と公式データ234人を確認。[[polis-export-input-2026-11-25]] と [[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:04] filing-back | 散布図の輪郭を初期表示で隠す修正を提出
 
 - [#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) に起票し、[本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260) と [ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14) を提出。通常レポートの輪郭は表示設定から切り替えられる。

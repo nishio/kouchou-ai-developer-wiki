@@ -176,8 +176,8 @@ sources:
 
 - **Polisの参加者散布図（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`）**。公式データ234人で日付変更と個人の軌跡を確認し、画面例を利用ガイドに追加してPRを出した。通常CSVのE2Eを修正し、`f51e51c8` のGitHub Actionsは全5件成功。次はレビューと大規模会話での動作確認。[[polis-export-input-2026-11-25]]
 
-- **Polis取り込みのPRレビュー（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`、`f51e51c8`）**。参加者別CSVと投票履歴の両方を指定すると、履歴に一部の票が欠けていても読み込める。合成データで、属性には票が含まれた参加者が散布図から消えることを確認した。
-  次は、同時指定時に対象コメントの最新票を参加者・コメント単位で照合し、不一致時の表示と回帰テストを用意する。`main` 宛てのレビュー可能なPR 13件は観測時点で必須承認待ち。
+- **Polis散布図の参加者欠落（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`、`8b346f07`）**。最新票が一致しない場合は参加者別CSVで散布図を表示し、日付と軌跡を表示するための案内を出す。
+  Chromiumで合成データの2人と公式データ234人の日付変更・軌跡を確認。管理画面のテスト290件が通過。次は修正後のPRのCIとレビュー。[[polis-export-input-2026-11-25]]
 
 - **推論モデルによるボトムアップのグループ編成（2026-11-25、実装・実機確認済み、`codex/kj-bottom-up`）**。CLIで一次判定を軽く行い、一定の大きさに達した束だけを強い推論で読み直す。架空の3枚で一次判定3回、再検討1回を確認。次は公開題材で表札と束の質を比べる。[[kj-method-broadlistening-framing-2026-05-25]]
 
