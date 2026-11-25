@@ -3,6 +3,10 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:01] filing-back | 書籍Web版の実装リポジトリを確認
+
+- DD2030公式ページが案内する書籍Web版の実装リポジトリを確認し、[[broad-listening-book]] と定例の議題候補に記録。
+
 ## [2026-11-25 11:00] filing-back | サーバ版の分析結果から会議資料を作る導線案
 
 - 編集可能な PowerPoint を先に試し、ポンチ絵を確認済みの表紙として任意で使う案を [[serverless-implementation-2026-11-24]] と [[meeting-report-draft]] に記録。
