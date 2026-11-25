@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:23] filing-back | 凸包の切り抜き試作を 9,568 点で計測
+
+- 同じ座標の 2 例で重なりの組が 12→6、7→4。輪郭生成＋描画の中央値は通常幅で +7〜21 ms、CPU スロットリング条件で +33〜67 ms。
+- ローカル試作 `7ef9f80a` の測定条件・残る重なり・実機未計測を [[scatter-cluster-contours-2026-11-25]] に記録。
+
 ## [2026-11-25 12:14] filing-back | 対立軸ビュー #1249 も main に入った
 
 - main の表示選択（#1250）に合わせて開く・戻る処理を書き直し、CI 通過後に merge（`ba4a0ac8`）。これで溜まっていた本体 PR は 12 本 main 済み、残りは #1248（未修正の不具合）と #1252（draft）
