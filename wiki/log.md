@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:19] filing-back | モバイル表示の E2E を本体の別 PR で修正
+
+- 幅375pxでは階層リストの「全体」を展開してからグループ名を確認するよう、main 向け [PR #1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257) で修正。
+- 同じ修正を [PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255) に取り込み、両 PR で E2E 87件成功・2件スキップ、#1255 の CI 14チェック成功を確認。[[meeting-report-draft]]
+
 ## [2026-11-25 10:15] filing-back | 乱数シード指定PRでPython呼び出しの互換性問題を確認
 
 - [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の独立レビューで、シード未指定の設定辞書を直接渡すと現行mainではクラスタCSVが出力され、PR版では停止することを再現。[[umap-seed-history]] と [[meeting-report-draft]] に修正案を記録。
