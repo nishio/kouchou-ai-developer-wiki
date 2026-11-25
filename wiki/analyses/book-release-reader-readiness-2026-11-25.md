@@ -33,3 +33,9 @@ sources:
 ## Updates
 
 - 2026-11-25。書籍からの現行導線を確認。[書籍Web版の「この本について」](https://broadlisteningbook.com/ja/about)からは DD2030 のトップにリンクする。[DD2030 のブロードリスニング総合ページ](https://dd2030.org/broad-listening/)からは書籍Web版と[広聴AI公式ページ](https://dd2030.org/kouchou-ai/)の両方へ進める。広聴AI公式ページは[活用事例](https://dd2030.org/kouchou-ai/case)・使い方・ドキュメントを案内しており、このページを前段の提案で想定していた。2026-05-04の議事メモには書籍Web版と公式サイトの相互リンク案がある。公開原稿のmain（[`52c9cac`](https://github.com/digitaldemocracy2030/broad-listening-book/commit/52c9cace24f69de370e753be9118bb76a012c2a5)）と公開ページからは、商業版の紙面に載るURLやQRコードの行き先は確認できていない。[[meeting-minutes]]より
+
+### 日本語Web版トップからの導線案
+
+- 2026-11-25。[日本語トップ](https://broadlisteningbook.com/ja/)と書籍サイトのmain `04054a2` を照合した。[web_build.py の render_index](https://github.com/lukec/broad-listening-book-site/blob/04054a2c453a39295cc7e9e72801cd5db6de254b/src/broad_listening_book_site/web_build.py#L2794-L2808) は書名・読書ボタン・区切り線・目次の順。幅390pxと1280pxで読書リンクの並びを確認した。日本語トップに限り、読書ボタンの下、目次の手前に「広聴AIで実際の意見を読む」と小さな案内を置く案。説明は「似た意見がどうまとまるか、公開レポートで確かめられます」程度にする。静的なリンク一つから始められる。[[broad-listening-book]]より
+- 最初のリンクはレポート一件へ直接つなぐ。第一候補は [舞鶴2040「未来の舞鶴は、どんなまちになっていてほしいですか？」](https://maizuru2040.jp/kouchou-ai-reports/c479cdba-f3da-44d8-b096-08bdd335170f/)。[舞鶴市の取組案内](https://www.city.maizuru.kyoto.jp/shisei/0000013931.html)で背景を説明でき、公開ビューアはスマホ幅で開ける。短いお題は「リストで気になる話題を開き、意見を一つ読んでみる」。初見の利用者が自力でそこまで進めるかを掲載前に確かめる。組織での利用やCSV分析はその後の導入ガイドで案内する案。
+- 書籍サイトにはすでに、本文の一節を選んで匿名で「視点を寄せる」機能がある。[本書の読みかたの「Web版の機能」](https://broadlisteningbook.com/ja/00_%E6%9C%AC%E6%9B%B8%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%8B%E3%81%9F.html#web-book-features) をスマホ幅で確認した。参加したい人はこの案内から本文へ戻れる。集まった声は [既存仕様](https://github.com/lukec/broad-listening-book-site/blob/main/spec/LISTEN-PLAN.md) の同意範囲で非公開分析し、書籍チームへの振り返りに役立てる案。公開体験は公開用レポートで提供する。

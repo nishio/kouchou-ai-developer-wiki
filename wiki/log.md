@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:10] filing-back | 書籍Web版トップから公開レポートに案内する案
+
+- 書籍サイトのmainと公開ページを照合し、読書ボタンと目次の間から公開レポート一件に進む案を [[book-release-reader-readiness-2026-11-25]] に追記。
+- 舞鶴2040のレポート候補と、本文の匿名投稿「視点を寄せる」の案内をスマホ幅で確認。次は初見の利用者が個別意見までたどれるかを確認する。
+
 ## [2026-11-25 11:01] filing-back | 書籍Web版の実装リポジトリを確認
 
 - DD2030公式ページが案内する書籍Web版の実装リポジトリを確認し、[[broad-listening-book]] と定例の議題候補に記録。
