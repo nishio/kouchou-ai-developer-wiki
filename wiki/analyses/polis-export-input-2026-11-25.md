@@ -16,6 +16,8 @@ Polis入力プラグインは過去の構想で候補に挙がっていた。通
 
 ## Updates
 
+- 2026-11-25 の再検証。公式公開データの `votes.csv` から参加者1人分の行を除いた場合も、Chromium で234人全員が残り、その参加者を選択できた。不一致の案内が出て日付操作は表示されなかった。元の履歴では日付変更と個人の軌跡が動作した。コメントごとの合計が同じでも参加者の票が入れ替わる場合があるため、履歴を表示できるかは分析対象コメントの最新票を参加者・コメント単位で照合して判断する。管理画面の290テストと GitHub CI は成功し、11:50 JST 時点で [PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は `8b346f07` を含むドラフト。
+
 - 2026-11-25（ローカル試作 `codex/polis-import`、`c95489e7`）: 本体管理画面に Polis タブを追加した。`moderated = -1` と空欄本文を外し、件数を表示する。選んだ元コメント単位の票数はレポートのフィルタ属性として渡す。参加者IDと個別票は管理画面のブラウザ内で使う。[[source-code]]より。
 - 参加者を1点として、投票行列の最終時点に学習した2軸に投影する。未投票は列平均、パスは明示的な `0` として扱う。`participants-votes.csv` でエクスポート時のグループを色分けし、`votes.csv` があれば日ごとに最新票を再現して個人の軌跡も表示する。点の移動には、別のコメントに投票したことと投票し直したことの両方が含まれる。[[source-code]]より。[Polis投票行列の仕様](https://compdemocracy.org/polis-opinion-matrix/)
 - 公開データ Scoop Hivemind・UBI の71コメントのうち70件を取り込み、参加者234人、4グループ、19日分を実ブラウザで確認した。2つの投票CSVから求めた最新票のコメント別全体集計は、このデータでは一致した。Polisのエクスポートは `1` が賛成で、データベースや投票送信APIの符号とは異なる。個別データや大規模会話での性能確認はまだ行っていない。[公式の公開データ](https://github.com/compdemocracy/openData/tree/master/scoop-hivemind.ubi)・[Polisのエクスポート実装](https://github.com/compdemocracy/polis/blob/edge/math/src/polismath/darwin/export.clj#L2598-L2648)

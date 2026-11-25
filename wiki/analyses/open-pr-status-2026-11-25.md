@@ -36,3 +36,7 @@ sources:
 ## Open Questions
 
 - モバイルE2E修正の取り込み順と、重複する2本の更新後のチェック結果。
+
+## Updates
+
+- 2026-11-25 11:50 JST に、この棚卸しで挙げた2件を GitHub で再確認した。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は `14ff24ce` でマージ済み。詳細は [[umap-seed-history]]。[#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は `8b346f07` に修正を反映し、CI 通過後にドラフトへ戻した。再検証は [[polis-export-input-2026-11-25]]。

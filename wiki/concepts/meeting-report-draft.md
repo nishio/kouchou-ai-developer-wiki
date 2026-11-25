@@ -165,6 +165,9 @@ sources:
 
 ## Updates
 
+- **再現済みの不具合2件を修正（2026-11-25 11:50 JST 確認）**。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は旧設定辞書向けの回帰テスト2件が通り、`main` の `14ff24ce` に反映済み。
+  [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は `codex/polis-import` の `8b346f07` で、履歴から1人分を除いても234人を表示できた。CI通過後にドラフトに戻し、CLIで先に使い勝手を見る。[[umap-seed-history]] [[polis-export-input-2026-11-25]]
+
 - **広聴AIの3つの使い方を図解（2026-11-25、Wiki更新）**。CLI版とサーバー版は同じ分析コアを使い、ブラウザ完結版はブラウザ内で分析する構成を、設定方法・保存先・利用場面とあわせて [[usage-modes]] に掲載。
   初めて試す人、複数人のチーム、研究実験という3つの場面から案内できる。
 

@@ -68,6 +68,8 @@ PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の案�
 
 ## Updates
 
+- 2026-11-25 11:09 JST、[PR #1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) を `main` に反映（`14ff24ce`）。GitHub CI が成功し、旧設定辞書を `PipelineOrchestrator` に直接渡す回帰テスト2件もローカルで成功した。省略可能な設定を未定義キーで停止するワークフロー補間に追加すると、設定ファイルの読み込みや `from_dict` のテストが通っても、既存の Python 呼び出しが止まる。設定を追加するときは既定値の補完を経ない入口も検証する。
+
 - 2026-11-25 の修正。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) に `b5bfbfd2` を反映した。組み込みプラグインが任意の `random_seed` を設定から直接読むことで、シードを含まない設定辞書でもワークフローが実行できる。階層クラスタリングと LLM 直接グルーピングの両方で、修正前に失敗し、修正後に保存済み30意見からクラスタCSVが出ることを回帰テストで確認した。analysis-core の全テストは998件成功、1件スキップ。
 
 - 2026-11-25 の独立レビュー。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の `8c3b7f21` では、`random_seed` を省略した設定辞書を `PipelineOrchestrator(config).run_default()` に直接渡すと、ワークフローの設定参照が未定義キーをエラーにする。保存済みの合成意見30件と埋め込みで、main `d6095ec3` はクラスタCSVを出力し、PR版は出力前に停止した。

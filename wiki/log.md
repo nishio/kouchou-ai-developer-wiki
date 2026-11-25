@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:50] filing-back | 乱数シードのマージとPolis欠落時の表示を確認
+
+- [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は `14ff24ce` でマージ済み。旧設定辞書の直接呼び出しを2方式で再検証した。[[umap-seed-history]]
+- [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は履歴から1人分を除いた公開データでも234人を表示し、CI通過後にドラフトへ戻った。[[polis-export-input-2026-11-25]] と [[open-pr-status-2026-11-25]]、[[meeting-report-draft]] に反映した。
+
 ## [2026-11-25 11:48] filing-back | Polis散布図をCLIで先行試作
 
 - サーバ版の [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) をドラフトへ戻し、ローカルの `codex/polis-cli`（`52a8f95d`）でCSVから単体HTMLを生成できるようにした。
