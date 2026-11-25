@@ -202,6 +202,7 @@ analysis-core-license-intent-2026-10-12	analysis	analyses/analysis-core-license-
 auto-cluster-defaults	analysis	analyses/auto-cluster-defaults.md	クラスタ数デフォルト問題の本質は「アルゴリズム選定」より「docs / 実装 / AI 利用経路の不一致」であり、`PR #832` はそのズレを縮める修正
 azure-demo-public-visibility-proposal-2026-06-04	analysis	analyses/azure-demo-public-visibility-proposal-2026-06-04.md	Azure デモサイトを docs から動線化する 4 問と、2026-06-05 の大木さん返答 + nishio 決定。viewer 公開 / admin 共用 + 秘密情報禁止明示は進行、1 ヶ月専用試用環境は優先度低、365 日 SaaS は提供主体・責任範囲の整理項目化、で着地。あわせてデモ環境の価値を「データ投入の場所」から「使い方理解の参照環境」へ再フレームしている
 biome-lint-main-drift-2026-10-09	analysis	analyses/biome-lint-main-drift-2026-10-09.md	Biome 全体 lint が main で落ち続けた由来と放置の構造（導入初日から未強制、PR は触ったファイルだけ clean）。0 件化と CI gate を同時に入れる PR #963 と #700 close まで
+book-reader-entry-2026-11-25	analysis	analyses/book-reader-entry-2026-11-25.md	書籍の読者が Docker 前提の README に着いて迷う問題に対し、入口を書籍Web版ではなく本体 docs の /book に置き、ブラウザ版を「同じ機能を保証しない別の実装だが最初に試すにはおすすめ」と位置づけた判断と、その根拠
 book-release-development-plan-2026-09	analysis	analyses/book-release-development-plan-2026-09.md	2026-09 ごろの書籍リリースを前提にした開発計画案 — v4 回帰をテストで保証しつつ、発展性の高い v5 へ移行する
 broad-listening-book-extractions	analysis	analyses/broad-listening-book-extractions.md	書籍から今後の開発判断に効く知見を整理。設計意図・経験値・検証結果を分け、KJ法プロンプトの品質向上は未検証の仮説として扱う
 broadlistening-tool-ecosystem-vision	analysis	analyses/broadlistening-tool-ecosystem-vision.md	広聴AI Web UI を simple な default モードに絞り、CLI に多様な実験機能を追加し、新しい分析手法が試行錯誤され共有されるコミュニティを育てる、という二段構造のエコシステムビジョン。analysis-stance で『別ツールで補完』とした空き地に対する nishio の答え
