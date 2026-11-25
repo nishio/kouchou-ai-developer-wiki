@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:54] filing-back | 階層レポートの件数診断と Lean 検証
+
+- 本体 `codex/report-count-verification`（`d30e7e0c`、ローカル）に、保存件数と意見経路の照合、階層図との共通テスト、Lean の件数定理を追加。
+- 全 77 部分集合、Lean・Python の 1,500 例、既存レポート JSON 3 件を確認。[[verification-opportunities-2026-11-25]] と [[meeting-report-draft]] に反映。
+
 ## [2026-11-25 10:53] filing-back | 広聴AIの利用事例を開発の判断につなげる行動案
 
 - 自治体の担当者1人の操作を30分観察し、最も大きなつまずきを一つ直して同じ課題で再確認する案を [[long-term-strategy-2026-11-02]] に追記。
