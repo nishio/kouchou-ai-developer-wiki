@@ -98,3 +98,11 @@ serverlessを主役にすることも、既存版を組織運用向けに維持�
 [[catchup-2026-10-05]]より、Serverless [#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)は9月9日にMERGEDとなり、origin/main `f4bb032`の履歴にも存在する。上の未merge・Actions承認待ちは当時の記録で、現在は解消済み。元コメントID保持・CSV検証・読み方・ツリーマップ連動・抽出診断等を今後のbaselineに含める。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)はopen・コメントなしであり、本流化・所有/移管が決まったという意味ではない。依存更新[#29](https://github.com/tokoroten/kouchou-ai-serverless/pull/29) / [#30](https://github.com/tokoroten/kouchou-ai-serverless/pull/30) / [#31](https://github.com/tokoroten/kouchou-ai-serverless/pull/31) / [#33](https://github.com/tokoroten/kouchou-ai-serverless/pull/33)のbuild失敗は別の保守課題。現在地は [[current-status-2026-10-05]] を参照。
 
 - 2026-11-07: Open Questions の現状を更新 — 「両版の公開ファイルと再分析データの区別、対応のない元コメント・多対多関係の表現。」。本体は元コメント本文をreport単位opt-inにした。serverlessとの多対多・不対応の表現は残る。（根拠: kouchou-ai 8e95ceb1d（[#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155)）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。
+
+### 2026-11-25 初回利用の導線で再利用する判断
+
+1. **設定なしでサンプルの結果までたどり着けるようにする。** ホームの最初の操作はサンプル閲覧とし、ビューアでは題名・問い・図の読み方から内容に入れるようにする。自分のCSVを分析する経路では、必要になった時点で専用設定を出し、入力は選択した方法に必要な項目に絞る。
+2. **おすすめは、選ぶ場所で条件と理由を示す。** 手持ちのキーがあればそのサービスを案内する。ブラウザ版では、新しくキーを作る人には一つのキーで意見の整理と類似度計算ができる OpenAI、キーなしで試す人には対応する Chrome の Gemini Nano を案内した。選択欄は未選択から始め、利用者の手持ちの設定や端末に合わせて選べるようにする。
+3. **操作名は、押したあとに起きることから考える。** 「永続化を要求する」を「保存データの自動削除を防ぐ」に変え、端末の空き容量が少ないときの自動削除を防ぐようブラウザに頼む操作だと、ボタンのそばで説明した。
+
+画面の順序、狭い幅での表示、キーボード操作、模擬応答でのCSV選択までを確認した。次は、説明を受けていない利用者がサンプルの図にたどり着き、自分のCSVを使うときに選んだ方法の理由を説明できるかを観察する。実装の経緯と確認範囲は [[serverless-onboarding-2026-11-25]] より。

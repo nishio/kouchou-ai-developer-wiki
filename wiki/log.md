@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:43] filing-back | 初回利用の導線で再利用する判断を整理
+
+- Markdown 正本の [[serverless-product-direction-2026-09-08]] に、設定なしで試せる入口、選択欄に置くおすすめ、効果が伝わる操作名の判断を追記した。
+- [[serverless-onboarding-2026-11-25]] の確認範囲と次に観察する初見利用者の行動を記録し、WebUI向け索引と [[meeting-report-draft]] から参照できるようにした。
+
 ## [2026-11-25 11:31] filing-back | サーバレス版の3機能を本体の PR に提出
 
 - [親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261) に3件を紐付け、ポンチ絵 [PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266)、再クラスタリングと賛否の探索 [PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267)、PowerPoint [PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268) を作成。

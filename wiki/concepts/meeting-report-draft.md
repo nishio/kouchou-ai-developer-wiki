@@ -191,6 +191,7 @@ sources:
 
 - **ブラウザ版の初回ガイドと閲覧導線（2026-11-25、進行中の [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13)）**。設定なしでサンプルを見る入口と自分のCSVを分析する入口を示し、結果ではタイトルと問いを先に置いた。
   初回設定には、手持ちのキーを使う場合、新しく用意する場合、キーなしで試す場合の選び方を表示した。Claude・OpenAI・Gemini NanoでCSV選択までの遷移を模擬応答で確認した。次は初見の利用者の操作を確認する。[[serverless-onboarding-2026-11-25]]
+  次の初回導線の設計に使う判断は [[serverless-product-direction-2026-09-08]] に整理した。
 
 - **CLIでクラスタリングの乱数シードを指定（2026-11-25、進行中の通常 PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)）**。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) を受け、保存済みの埋め込みから座標とクラスタを比較する際にシードを選べるようにした。
   同じ30件とシードで出力 CSV が一致し、設定が実行記録に残ることを確認。次は PR の確認。[[umap-seed-history]]

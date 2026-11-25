@@ -78,6 +78,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 
 ## WebUI 開発者向け
 
+- 初回利用の案内に使える判断を整理。設定なしのサンプル、AIを選ぶ場所でのおすすめ、効果が伝わる操作名。[初回利用の設計判断](analyses/serverless-product-direction-2026-09-08.md)
 - [広聴AIの解析結果を既存サービスに埋め込む](concepts/embedding-public-results.md) — 公開用 JSON の取得、公開ビューアの iframe 埋め込み、各可視化の入力条件
 - [ブラウザ版の実装構造と本体との差](analyses/serverless-implementation-2026-11-24.md) — 通常分析・対話的再クラスタリング・賛否スペクトラム、ブラウザでの保存と再開、本体との互換範囲
 - [ブラウザ版の取り込み方の検討](analyses/serverless-integration-options-2026-11-24.md) — org への fork、本体との適合性テスト（54 件中 22 件不一致）、Pages 公開までの判断と経緯
