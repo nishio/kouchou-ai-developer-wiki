@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:33] filing-back | 広聴AI本体のオープンPRとレビュー待ちを確認
+
+- 本体のオープンPR13本（通常12本・ドラフト1本）をGitHubで照合。全件でCIの失敗・実行中はなく、承認待ち。
+- 再現済み不具合2本、現行差分の未解決指摘3件、モバイルE2E修正の重複を [[open-pr-status-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:15] filing-back | 乱数シード指定PRでPython呼び出しの互換性問題を確認
 
 - [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) の独立レビューで、シード未指定の設定辞書を直接渡すと現行mainではクラスタCSVが出力され、PR版では停止することを再現。[[umap-seed-history]] と [[meeting-report-draft]] に修正案を記録。

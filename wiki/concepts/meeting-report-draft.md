@@ -155,6 +155,9 @@ sources:
 
 ## Updates
 
+- **本体のオープンPR確認（2026-11-25、進行中）**。通常PR12本とドラフト1本（[#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252)）。全件でCIの失敗・実行中はなく、承認待ち。
+  次は [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) と [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) の再現済み不具合、[#1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257) と既存PRのモバイルE2E修正の重複を確認する。[[open-pr-status-2026-11-25]]
+
 - **乱数シード指定の独立レビュー（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから辞書を直接渡す既存の呼び出しで、シード未指定のまま現行mainは成功し、PR版は設定エラーで停止した。
   次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
 

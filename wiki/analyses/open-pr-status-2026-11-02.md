@@ -1,6 +1,8 @@
 ---
 title: "10-28〜29 作成の open PR 8 本の状態と merge 前の残作業 2026-11-02"
 type: analysis
+status: superseded
+superseded_by: open-pr-status-2026-11-25
 summary: "2026-11-02 時点の kouchou-ai の open PR 8 本（#1161〜#1167、#1174）を GitHub の live state で確認した。全件 CI green・人間コメントなし。wiki の 10-29 記録との差は、#1165 に CodeRabbit の Minor 5 件が未対応で残っていることと、#1162 が #1155 の merge で衝突していることの 2 点（2026-11-07 訂正: 観測時点の open PR は 11-02 昼に作られた #1176・#1177 を含めて 10 本で、この 8 本は 10-28〜10-29 作成分）"
 sources:
   - source-code.md
