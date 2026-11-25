@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:14] filing-back | 対立軸ビュー #1249 も main に入った
+
+- main の表示選択（#1250）に合わせて開く・戻る処理を書き直し、CI 通過後に merge（`ba4a0ac8`）。これで溜まっていた本体 PR は 12 本 main 済み、残りは #1248（未修正の不具合）と #1252（draft）
+- 更新: [[meeting-report-draft]]
+
 ## [2026-11-25 12:10] filing-back | 舞鶴市の公開レポートで意見をたどる読み方をWikiの入口に掲載
 
 - [[maizuru-report-walkthrough-2026-11-25]] に、公共交通の16件から抽出意見を1件開く手順と、入力コメント・抽出意見の件数の違いを記録した。
