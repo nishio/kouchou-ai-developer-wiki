@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:35] filing-back | ブラウザ版の初回設定で使うAIを選択
+
+- [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回設定にAIの選択を追加。外部サービスを選んだ場合だけキーが必要で、チャット専用サービスでは類似度をブラウザ内で計算する。
+- Claude・OpenAI・Gemini Nanoの導線を模擬応答で確認。[[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:19] filing-back | モバイル表示の E2E を本体の別 PR で修正
 
 - 幅375pxでは階層リストの「全体」を展開してからグループ名を確認するよう、main 向け [PR #1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257) で修正。

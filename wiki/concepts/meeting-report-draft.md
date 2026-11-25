@@ -162,7 +162,7 @@ sources:
   次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
 
 - **ブラウザ版の初回ガイドと閲覧導線（2026-11-25、進行中の [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13)）**。設定なしでサンプルを見る入口と自分のCSVを分析する入口を示し、結果ではタイトルと問いを先に置いた。
-  初回の分析設定はOpenAIのAPIキー1項目に絞り、通常設定の保存データ保護も平易な表記にした。模擬APIで接続確認からCSV選択までを検証。次は初見の利用者の操作を確認する。[[serverless-onboarding-2026-11-25]]
+  初回の分析設定はAIを選択し、外部サービスを使う場合だけそのAPIキーを入力する。Claude・OpenAI・ブラウザ内のGemini NanoでCSV選択までの遷移を模擬応答で確認した。次は初見の利用者の操作を確認する。[[serverless-onboarding-2026-11-25]]
 
 - **可視化プラグインの契約（2026-11-25、進行中 [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)）**。ID 衝突を拒否し、レポートが許可した利用可能なビューだけを選ぶ規則を Lean と TypeScript の 480 件で確認。基盤 CI が通過。ローカル統合枝で階層図・対立軸・任意ビューの共存と対立軸の修正を確認した。次は基盤を先に取り込み、個別 PR へ反映する。[[optional-visualization-plugins-2026-11-25]]
 
