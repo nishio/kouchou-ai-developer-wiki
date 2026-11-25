@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:06] filing-back | 凸包の重なりだけを切る案を試算
+
+- 同梱 3 例の最上位で重複する 24 組のうち、片側を切れる 3 組と、直線で分けられる追加の 11 組を確認。
+- 複数の重なりを処理した結果と描画性能は次の検証に残した。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 11:54] filing-back | 散布図の輪郭に関する過去の試作を確認
 
 - 2025 年 8 月の共有境界と輪郭の試作、モバイル負荷の議論を [[scatter-cluster-contours-2026-11-25]] に追記。
