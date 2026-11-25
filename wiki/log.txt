@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 12:14	filing-back	ブラウザ版の公開サンプルで検索から原文を表示
 2026-11-25 12:09	filing-back	公式ドキュメントの始め方に3つの使い方の図を追加するPR
 2026-11-25 11:58	filing-back	公開サンプルで抽出意見から原文までを検証
 2026-11-25 11:50	filing-back	乱数シードのマージとPolis欠落時の表示を確認

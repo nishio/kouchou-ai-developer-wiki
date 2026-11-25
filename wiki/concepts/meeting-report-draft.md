@@ -136,7 +136,7 @@ sources:
   次は実案件を持つ担当者1人の操作を30分見て、最も大きなつまずきを一つ直す。利用後はどの指摘が実際の検討に入ったかを聞く。[[long-term-strategy-2026-11-02]]
 
 - **公開サンプルで論点から原文をたどる検証（2026-11-25）**。公開ブラウザ版で抽出意見は読めたが原文を開けず、同じサンプルを本体で開くとスマホ幅でも公開時に原文を読めた。
-  抽出と原文でニュアンスが変わる一例を確認。次に揃える候補は、ブラウザ版の該当枝の自動展開と、公開が明示された原文への導線。[[public-report-source-navigation-2026-11-25]]
+  ブラウザ版の [PR #16](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/16) をマージし、公開サンプルの検索結果から原文を開けることをスマホ幅とデスクトップ幅で確認した。[[public-report-source-navigation-2026-11-25]]
 
 - **サーバ版のレポート参照 REST API と MCP（2026-11-25、進行中 [PR #1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253) / `codex/admin-read-api-mcp`）**。専用キーで一覧と進捗を読み取り、stdio MCP でも同じ応答が返ることを架空レポートで確認。PR 本文に REST と MCP の使い方と確認結果を掲載した。次は失敗一覧と工程情報が運用時の調査に足りるかを見る。[[server-admin-api-and-mcp-2026-11-25]]
 

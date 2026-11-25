@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 12:14] filing-back | ブラウザ版の公開サンプルで検索から原文を表示
+
+- ブラウザ版 [PR #16](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/16) をマージし、検索に一致した意見から元の回答を開けるようにした。
+- 公開サンプルで幅390px・1280px、ローカルで保存済みサンプルと原文公開のオン・オフを確認。[[public-report-source-navigation-2026-11-25]] と定例下書きに反映。
+
 ## [2026-11-25 12:09] filing-back | 公式ドキュメントの始め方に3つの使い方の図を追加するPR
 
 - 本体の「始め方の選び方」の指定位置へ図を追加する [ドラフト PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) を提出。
