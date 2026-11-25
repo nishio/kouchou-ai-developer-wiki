@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 11:47	filing-back	溜まっていた本体 PR 11 本と org ブラウザ版 #12 を main に入れた
 2026-11-25 11:45	filing-back	散布図で交差しないクラスタ輪郭を考察
 2026-11-25 11:45	filing-back	書籍を読んだ方への案内ページを公開
 2026-11-25 11:39	filing-back	ブラウザ版の初回導線がmainに反映

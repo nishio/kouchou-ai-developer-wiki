@@ -42,6 +42,10 @@ sources:
 
 2026-10-17 までの完了分は [[meeting-report-2026-10-18]] に退避済み。ここには rotate 以降に完了したもの（merge 済みと明記）と、進行中・判断待ちのものを置く。
 
+- **溜まっていた本体 PR 11 本を main に入れた（2026-11-25、nishio の admin merge）**
+  - [#1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257)・[#1243](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1243)・[#1242](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1242)・[#1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245)・[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)・[#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258)・[#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)・[#1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253)・[#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256)・[#1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)・[#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244)。入れる前に 9 本を重ねた状態で analysis-core 1003 passed・viewer jest 353 件成功を確認。[#1256](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1256) は CodeRabbit の指摘（濃いグループ 0 件で灰色の凡例が消える）を直してから入れた
+  - [#1255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1255)（[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1254) の乱数シードと衝突）と [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1244)（E2E は [#1257](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1257) に合わせた）は main を取り込んで衝突を解き、CI 通過後に merge。org のブラウザ版 [PR #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12)（再クラスタリングの共通テスト）も merge
+  - 進行中：[#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249)（対立軸ビュー）は main の表示選択（[#1250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1250)）に合わせて取り込み済み・CI 待ち。[#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248)（Polis）は参加者が散布図から消える問題が未修正、[#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) は draft なので見送り
 - **書籍を読んだ人の入口を docs に作った（2026-11-25、[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) は 11-25 に main 済み `d857fd53`、`/book` 公開済み）**
   - 書籍の本文には広聴AIのリポジトリ・docs・ブラウザ版へのリンクがなく、読者は Docker 前提の README に着く。docs に「書籍を読んだ方へ」（`/book`）を足し、README 冒頭にも 1 行足した。
   - ブラウザ版は「同じ機能や結果は保証しない別の実装だが、最初に試すにはおすすめ」と位置づけ（nishio 判断）。本流をどちらにするか（[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）には踏み込んでいない。
@@ -248,7 +252,7 @@ sources:
   正常JSONの本文中のthinkタグやバッククォートが消える例、JSON再分析で年代が消え、数値スコアが初出の文字列値に揃い、コメント数が5→0になる例を再現。前回の検証範囲外だった受け渡し後の経路。
   次はパーサの本文保持と、公開JSONの属性・件数・来歴の保持。原文保存・分母の表示・実行方法の表示・指定値の扱いはその後に整理する。
 - 2026-11-24（未解決 Issue の調査）: 未解決 70 件と進行中 PR 7 本から候補を絞り、CLI の HTML 出力設定 [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の不具合を両分析モードで再現。課金案内 [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) の残りは管理画面からのリンク 2 か所。
-  次は #954 の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
+  次は [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
 
 - 2026-11-24（serverless main反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) は、nishioの承認と最終CI全成功を確認してsquash merge済み（`2341235`）。回答対応・ward2・失敗復帰・元コメントの既定OFFと公開JSON/HTMLがmainに入った。
   main反映後のCIも成功。上のPR #2進行中・ward修正判断待ちは更新前の記録。残る差10項目と実LLM品質、本体docsの入口の扱いは別に見る（[[serverless-implementation-2026-11-24]]）。

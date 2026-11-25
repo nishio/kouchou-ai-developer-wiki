@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:47] filing-back | 溜まっていた本体 PR 11 本と org ブラウザ版 #12 を main に入れた
+
+- #1242〜#1258 のうち 11 本を nishio の admin merge で入れた。衝突した #1255・#1244 は main を取り込んで解き、#1256 は CodeRabbit の指摘を直してから
+- #1249 は main の表示選択に合わせて取り込み済み・CI 待ち。#1248（未修正の不具合）と #1252（draft）は見送り
+- 更新: [[meeting-report-draft]]
+
 ## [2026-11-25 11:45] filing-back | 散布図で交差しないクラスタ輪郭を考察
 
 - 初期非表示案を取り下げ、半径制限付きボロノイ分割による輪郭、飛び地、同一座標の扱いを [[scatter-cluster-contours-2026-11-25]] に記録。
