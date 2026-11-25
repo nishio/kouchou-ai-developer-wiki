@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 09:51] filing-back | 全件の分類枠を固定して25件割り当てを比較
+
+- 同じGemma 4 31Bで、422意見を一括で読んだ分類枠を固定し、割り当てだけ25件ずつ再実行した。
+- 防災・エネルギーの見え方が各1件改善し、全体のトークンは一括割り当てから44%増えた。[[llm-grouping-input-size-experiment-2026-11-25]]と[[meeting-report-draft]]に記録。
+
 ## [2026-11-25 09:49] filing-back | ブラウザ版の初回ガイドとサンプルへの導線を改善
 
 - [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) で設定不要のサンプルとCSV分析の入口を案内し、レポート名を先に読めるようにした。
