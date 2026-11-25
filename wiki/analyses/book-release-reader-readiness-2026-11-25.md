@@ -29,3 +29,7 @@ sources:
 
 - 最初のレポートをどれにするか。元の問いと収集範囲を公開情報から説明でき、読者が根拠の意見までたどれるものを選ぶ。
 - 読者からの問い合わせや事例を既存のどの窓口で受けるか。
+
+## Updates
+
+- 2026-11-25。書籍からの現行導線を確認。[書籍Web版の「この本について」](https://broadlisteningbook.com/ja/about)からは DD2030 のトップにリンクする。[DD2030 のブロードリスニング総合ページ](https://dd2030.org/broad-listening/)からは書籍Web版と[広聴AI公式ページ](https://dd2030.org/kouchou-ai/)の両方へ進める。広聴AI公式ページは[活用事例](https://dd2030.org/kouchou-ai/case)・使い方・ドキュメントを案内しており、このページを前段の提案で想定していた。2026-05-04の議事メモには書籍Web版と公式サイトの相互リンク案がある。公開原稿のmain（[`52c9cac`](https://github.com/digitaldemocracy2030/broad-listening-book/commit/52c9cace24f69de370e753be9118bb76a012c2a5)）と公開ページからは、商業版の紙面に載るURLやQRコードの行き先は確認できていない。[[meeting-minutes]]より
