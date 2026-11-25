@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 16:03	filing-back	Polisの参加者地図でシアトルの2つの意見への賛否を比較
 2026-11-25 15:52	filing-back	本体散布図の輪郭分割をPRにした
 2026-11-25 15:28	filing-back	直線で分けられないクラスタ輪郭を局所ボロノイで分割
 2026-11-25 12:42	filing-back	Polisの投票でUMAPの近さと共通回答を比較
