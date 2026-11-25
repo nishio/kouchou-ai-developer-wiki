@@ -211,8 +211,11 @@ sources:
 
 - **Polisの参加者散布図（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`）**。公式データ234人で日付変更と個人の軌跡を確認し、画面例を利用ガイドに追加してPRを出した。通常CSVのE2Eを修正し、`f51e51c8` のGitHub Actionsは全5件成功。次はレビューと大規模会話での動作確認。[[polis-export-input-2026-11-25]]
 
-- **Polis散布図の参加者欠落（2026-11-25、進行中 [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`、`8b346f07`）**。最新票が一致しない場合は参加者別CSVで散布図を表示し、日付と軌跡を表示するための案内を出す。
-  Chromiumで合成データの2人と公式データ234人の日付変更・軌跡を確認。管理画面のテスト290件が通過。次は修正後のPRのCIとレビュー。[[polis-export-input-2026-11-25]]
+- **Polis散布図の参加者欠落（2026-11-25、ドラフト [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) / `codex/polis-import`、`8b346f07`）**。最新票が一致しない場合は参加者別CSVで散布図を表示し、日付と軌跡を表示するための案内を出す。
+  Chromiumで合成データの2人と公式データ234人の日付変更・軌跡を確認。管理画面のテスト290件が通過。修正後のCIは成功。[[polis-export-input-2026-11-25]]
+
+- **Polis散布図をCLIで先行試作（2026-11-25、ローカル `codex/polis-cli` / `52a8f95d`）**。サーバ版の [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) はドラフトに戻し、手元でCSVを試すために単体HTMLを生成する。
+  公式データ234人の日付変更・軌跡と、欠落ケースの2人表示を確認した。次は複数の会話で使い、管理画面で必要な機能を決める。[[polis-export-input-2026-11-25]]
 
 - **推論モデルによるボトムアップのグループ編成（2026-11-25、実装・実機確認済み、`codex/kj-bottom-up`）**。CLIで一次判定を軽く行い、一定の大きさに達した束だけを強い推論で読み直す。架空の3枚で一次判定3回、再検討1回を確認。次は公開題材で表札と束の質を比べる。[[kj-method-broadlistening-framing-2026-05-25]]
 

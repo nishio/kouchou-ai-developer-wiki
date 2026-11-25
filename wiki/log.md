@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:48] filing-back | Polis散布図をCLIで先行試作
+
+- サーバ版の [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) をドラフトへ戻し、ローカルの `codex/polis-cli`（`52a8f95d`）でCSVから単体HTMLを生成できるようにした。
+- 公式データ234人と欠落ケースをChromiumで確認。[[polis-export-input-2026-11-25]] と [[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:44] filing-back | 広聴AIの3つの使い方を図解
 
 - [[usage-modes]] に、CLI版、サーバー版、ブラウザ完結版の設定・分析・保存を比較する図と案内を追加。
