@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 15:28] filing-back | 直線で分けられないクラスタ輪郭を局所ボロノイで分割
+
+- 9,568 点の 2 例で直線分割後に残った 10 組を解消。1 組あたり最大 223 点で分割し、点の所属と座標は保持。
+- 切り替え時の拡大範囲と計算・描画時間を Chromium で比較。低速 CPU 条件では輪郭生成に約 0.31〜0.42 秒増えた。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 12:42] filing-back | Polisの投票でUMAPの近さと共通回答を比較
 
 - 公開2会話で、平均補完UMAPの近傍に直接の共通回答がない組の割合と、パスの扱いを変えたときの近傍を計測した。[[polis-vote-map-experiment-2026-11-25]]
