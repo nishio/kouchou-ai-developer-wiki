@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-25 10:04	filing-back	濃い意見ビューに背景点を表示
 2026-11-25 10:00	filing-back	LLM直接グルーピングの初期値200件・25件をドラフトPRに提出
 2026-11-25 09:51	filing-back	全件の分類枠を固定して25件割り当てを比較
 2026-11-25 09:49	filing-back	ブラウザ版の初回ガイドとサンプルへの導線を改善

@@ -68,6 +68,8 @@ PR [#810](https://github.com/digitaldemocracy2030/kouchou-ai/issues/810) の案�
 
 ## Updates
 
+- 2026-11-25 の更新。CLI でクラスタリングの乱数シードを指定する [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) を通常 PR に切り替えた。
+
 - 2026-11-25 の更新。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) の担当者と進行中の PR が空いていること、本体 main `afde1cb9` に指定がないことを確認し、CLI の任意設定として `random_seed` を実装した（進行中のドラフト PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)）。通常実行では UMAP の並列性を保つ。階層クラスタリングでは UMAP の学習と KMeans、LLM 直接グルーピングでは散布図の UMAP 学習が対象。保存済み UMAP モデルを指定した場合は投影にモデルの設定を使う。
   同じ30件と埋め込みのもとで同じシードの出力 CSV が一致し、シード変更・解除で埋め込みを再利用して対象工程を再実行する計画を確認した。比較には同じ入力順と実行環境を控え、実行時のシードは `hierarchical_status.json` から確認する。LLM 直接グルーピングのテストでは割り当てを固定して座標を検証した。
 

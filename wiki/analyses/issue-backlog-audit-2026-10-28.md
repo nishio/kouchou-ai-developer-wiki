@@ -239,6 +239,8 @@ sources:
 
 ## Updates
 
+- 2026-11-25 の更新。[#638](https://github.com/digitaldemocracy2030/kouchou-ai/issues/638) は本体 main `afde1cb9` に未実装で、担当者・進行中 PR がなかったため nishio を割り当て、通常 PR [#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256) に実装した。濃いグループ外の点を薄い灰色で残し、濃いグループ名は図の下の帰属凡例に表示する。凡例が増えた後も描画が重ならないよう、図の領域変更に Plotly を追従させた。Chromium で色付き3点・灰色9点と全画面・属性フィルターを確認した。
+
 - 2026-11-25: [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) は本体 main `afde1cb9` と open PR を照合し、未担当だったため nishio を割り当てて実装。幅600px以下のラベル初期値と狭い描画領域での高さを修正したドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) を作成。明示されたレポート設定と閲覧者の操作を優先する。
 
 - 2026-10-28: 初版。12 シャード照合＋懐疑検証の dynamic workflow（agent 23、約 3 時間、途中で 5 時間枠の上限に 1 回当たり再開）で 89 件を判定。GitHub への書き込みは行っていない

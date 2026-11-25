@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 10:04] filing-back | 濃い意見ビューに背景点を表示
+
+- [#638](https://github.com/digitaldemocracy2030/kouchou-ai/issues/638) の灰色の背景点とグループ名の凡例表示を通常 PR [#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256) に実装し、Chromium で比較した。
+- クラスタリングの乱数シード設定 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) も通常 PR に切り替えた。[[issue-backlog-audit-2026-10-28]]、[[umap-seed-history]]、[[meeting-report-draft]] に記録。
+
 ## [2026-11-25 10:00] filing-back | LLM直接グルーピングの初期値200件・25件をドラフトPRに提出
 
 - 4条件の実LLM比較を踏まえ、新規実行の初期値を200件・25件とし、全件一括も選べるドラフト[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)にした。
