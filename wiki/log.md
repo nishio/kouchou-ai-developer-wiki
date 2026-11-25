@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-25 11:54] filing-back | 散布図の輪郭に関する過去の試作を確認
+
+- 2025 年 8 月の共有境界と輪郭の試作、モバイル負荷の議論を [[scatter-cluster-contours-2026-11-25]] に追記。
+- 旧試作の計測値と見送り理由は確認できず。半径制限付きの案は、大量点で現行方式と比較するまで保留。
+
 ## [2026-11-25 11:48] filing-back | Polis散布図をCLIで先行試作
 
 - サーバ版の [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) をドラフトへ戻し、ローカルの `codex/polis-cli`（`52a8f95d`）でCSVから単体HTMLを生成できるようにした。
