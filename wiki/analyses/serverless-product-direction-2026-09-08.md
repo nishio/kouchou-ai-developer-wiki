@@ -98,3 +98,7 @@ serverlessを主役にすることも、既存版を組織運用向けに維持�
 [[catchup-2026-10-05]]より、Serverless [#22](https://github.com/tokoroten/kouchou-ai-serverless/pull/22)〜[#26](https://github.com/tokoroten/kouchou-ai-serverless/pull/26)は9月9日にMERGEDとなり、origin/main `f4bb032`の履歴にも存在する。上の未merge・Actions承認待ちは当時の記録で、現在は解消済み。元コメントID保持・CSV検証・読み方・ツリーマップ連動・抽出診断等を今後のbaselineに含める。[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)はopen・コメントなしであり、本流化・所有/移管が決まったという意味ではない。依存更新[#29](https://github.com/tokoroten/kouchou-ai-serverless/pull/29) / [#30](https://github.com/tokoroten/kouchou-ai-serverless/pull/30) / [#31](https://github.com/tokoroten/kouchou-ai-serverless/pull/31) / [#33](https://github.com/tokoroten/kouchou-ai-serverless/pull/33)のbuild失敗は別の保守課題。現在地は [[current-status-2026-10-05]] を参照。
 
 - 2026-11-07: Open Questions の現状を更新 — 「両版の公開ファイルと再分析データの区別、対応のない元コメント・多対多関係の表現。」。本体は元コメント本文をreport単位opt-inにした。serverlessとの多対多・不対応の表現は残る。（根拠: kouchou-ai 8e95ceb1d（[#1155](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1155)）；kouchou-ai upstream/main@085366779（2026-10-29） packages/analysis-core/src/analysis_core/steps/hierarchical_aggregation.py:134）。
+
+### 2026-11-26 両版の互換を片方向の約束に絞る方針案
+
+西尾の方針案: ブラウザ版で作ったもののうち experimental と印を付けたもの以外はサーバ版で読める、という約束だけを守り、両版はそれ以外で足並みを揃えずに発展してよい。上の判断 2「互換性は実データが通る経路で検証する」を、守る範囲をブラウザ版からサーバ版への読込に限って言い直したものになる。「読める」の定義、experimental の印の付け方、昇格の手順、公開範囲の扱いは [[serverless-read-compatibility-contract-2026-11-26]] に整理した。チームの決定ではない。

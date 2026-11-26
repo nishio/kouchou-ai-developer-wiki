@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-26 18:40] filing-back | ブラウザ版の結果をサーバ版で読める約束に両版の互換を絞る方針案
+
+- 「experimental 以外はサーバ版で読める」という片方向の約束で両版を別々に発展させる西尾の方針案を [[serverless-read-compatibility-contract-2026-11-26]] に記録。
+- 読めるの定義、experimental の印の付け方、昇格の手順、公開範囲を、org 版 `ec0c88a` と本体 `efbd0f28` の実装に照らして整理。[[serverless-product-direction-2026-09-08]] と [[serverless-integration-options-2026-11-24]] から参照。
+
 ## [2026-11-26 16:13] filing-back | 本体PRの承認・競合状況、ブラウザ版の入口、v5の残件を確認
 
 - 本体のマージ19本と未マージ8本を照合し、意見検索と輪郭の2案、M5で開いている2件を [[current-status-2026-11-26]] に記録した。
@@ -592,9 +597,3 @@
 - 11-16 までに担当者からの返信はなし。#324・#170 を not planned、#310・#280・#809 を completed で close し、残りの要件をコメントに残した
 - #337 は PR #1218（全体図と階層図の色を揃える。階層図は大きさ順に別パレットで塗っていた）、#643 は PR #1217（使われない build-arg を削る）。どちらも未 merge
 - 残り：本人判断の #370・#879・#994。更新: [[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
-
-## [2026-11-19 16:30] filing-back | 受けた箇所を引用させてリンクを判定し直し、議論の楽譜に線を重ねて公開した
-
-- 引用の照合で落ちたのは 4 本だけで、線が 1,152→898 本に減ったのは指示と「同じ話題だけ」の受け皿による。無作為 15 本のうち直接受けていると読めたのは約 10 本
-- 楽譜に `?links=` を足し、点ごとの線と「時間をおいて受けた発言」の一覧を出した（個人 repo `6da2edc`）
-- 更新: [[meeting-transcript-score-prance-2026-11-19]]、[[meeting-report-draft]]
