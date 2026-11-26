@@ -77,6 +77,8 @@ C だけでは、今の「tokoroten 一人が止まると依存更新も止ま�
 
 ## Updates
 
+- 2026-11-26: 両版の関係を「ブラウザ版で作ったもののうち experimental 以外はサーバ版で読める」という片方向の約束に絞る西尾の方針案を [[serverless-read-compatibility-contract-2026-11-26]] に記録した。推奨の進め方 3〜4 の契約合わせとテストは、この約束の検査として位置づけ直せる。
+
 - 2026-11-25: 本体 [PR #1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245) で、利用者向け3ページの案内をorg版のブラウザ画面へ、開発者向け1ページをorgリポジトリと共通契約テストの説明へ更新した。別プロジェクトとしての位置づけは維持する。リンク先の応答、生成HTML4ページ、`mkdocs build --strict` を確認。作成時点で未merge。
 
 - 2026-11-24（PR #2反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) をユーザー承認でsquash merge（main `2341235`）。回答単位の意見保持、ward2、失敗からの復帰、元コメント本文の明示opt-inとpublic_result.json/単一HTMLの公開変換を実装した。既知の差は22から10項目になり、最終PRとmerge後mainのCIは成功。詳細は [[serverless-implementation-2026-11-24]]。本体側の公開変換やdocsの入口変更は、このPRでは変更していない。

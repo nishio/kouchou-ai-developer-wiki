@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-26 18:40	filing-back	ブラウザ版の結果をサーバ版で読める約束に両版の互換を絞る方針案
 2026-11-25 16:03	filing-back	Polisの参加者地図でシアトルの2つの意見への賛否を比較
 2026-11-25 12:42	filing-back	Polisの投票でUMAPの近さと共通回答を比較
 2026-11-25 12:17	filing-back	公式「始め方の選び方」に3つの使い方の図を掲載
@@ -43,9 +44,9 @@
 2026-11-25 04:02	filing-back	公開用の解析結果を既存サービスに埋め込む
 2026-11-25 03:57	filing-back	レポート参照 REST API と MCP を本体PRに提出
 2026-11-25 03:56	filing-back	狭い画面での散布図を修正
-2026-11-25 03:53	filing-back	LLM 直接グルーピングの件数指定と全件一括
 2026-11-25 03:53	filing-back	可視化プラグインの登録と表示選択を Lean で検証
 2026-11-25 03:53	filing-back	広聴AIのレポート参照 REST API と MCP を試作
+2026-11-25 03:53	filing-back	LLM 直接グルーピングの件数指定と全件一括
 2026-11-25 03:52	filing-back	利用者向けCLI Skillを広聴AI本体のPRに提出
 2026-11-25 03:48	filing-back	広聴AI CLIの利用者向けSkillを架空CSVで試作・検証
 2026-11-25 03:40	filing-back	広聴AIを使う人向けのSkills案

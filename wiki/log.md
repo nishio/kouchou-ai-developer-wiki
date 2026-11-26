@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-26 18:40] filing-back | ブラウザ版の結果をサーバ版で読める約束に両版の互換を絞る方針案
+
+- 「experimental 以外はサーバ版で読める」という片方向の約束で両版を別々に発展させる西尾の方針案を [[serverless-read-compatibility-contract-2026-11-26]] に記録。
+- 読めるの定義、experimental の印の付け方、昇格の手順、公開範囲を、org 版 `ec0c88a` と本体 `efbd0f28` の実装に照らして整理。[[serverless-product-direction-2026-09-08]] と [[serverless-integration-options-2026-11-24]] から参照。
+
 ## [2026-11-25 16:03] filing-back | Polisの参加者地図でシアトルの2つの意見への賛否を比較
 
 - 同じ165人のUMAPに実際の投票を重ね、別の提案でも賛成した人数、反対、パス、未回答を確認した。[[polis-vote-map-experiment-2026-11-25]]
@@ -200,11 +205,6 @@
 - [#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) を公開ビューアのドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) に実装。幅390pxで散布図が356×356pxに収まり、ラベルを手動で再表示できることを Chromium で確認。
 - 更新は [[issue-backlog-audit-2026-10-28]] と [[meeting-report-draft]]。
 
-## [2026-11-25 03:53] filing-back | LLM 直接グルーピングの件数指定と全件一括
-
-- 本体 `codex/llm-grouping-input-size`（`b429b908`）で、Web 作成・再利用と CLI の件数指定・全件一括を追加。
-- 80件・25件の由来と次の比較方法を [[llm-grouping-experiment]] に追記し、進行中の変更を [[meeting-report-draft]] に記録。
-
 ## [2026-11-25 03:53] filing-back | 可視化プラグインの登録と表示選択を Lean で検証
 
 - 本体の [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250) で ID 衝突と選択先を検証。Lean と TypeScript の 480 件が一致し、基盤 CI が通過。
@@ -215,6 +215,11 @@
 
 - 本体 `codex/admin-read-api-mcp`（`5b2d756f`）で、専用キーによる一覧の絞り込みと進捗確認を追加。
 - 架空データで REST と stdio MCP の返す JSON が一致することを確認。API 594 テストが通過。[[server-admin-api-and-mcp-2026-11-25]]、[[meeting-report-draft]]。
+
+## [2026-11-25 03:53] filing-back | LLM 直接グルーピングの件数指定と全件一括
+
+- 本体 `codex/llm-grouping-input-size`（`b429b908`）で、Web 作成・再利用と CLI の件数指定・全件一括を追加。
+- 80件・25件の由来と次の比較方法を [[llm-grouping-experiment]] に追記し、進行中の変更を [[meeting-report-draft]] に記録。
 
 ## [2026-11-25 03:52] filing-back | 利用者向けCLI Skillを広聴AI本体のPRに提出
 
@@ -604,50 +609,3 @@
 - 11-16 までに担当者からの返信はなし。#324・#170 を not planned、#310・#280・#809 を completed で close し、残りの要件をコメントに残した
 - #337 は PR #1218（全体図と階層図の色を揃える。階層図は大きさ順に別パレットで塗っていた）、#643 は PR #1217（使われない build-arg を削る）。どちらも未 merge
 - 残り：本人判断の #370・#879・#994。更新: [[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
-
-## [2026-11-19 16:30] filing-back | 受けた箇所を引用させてリンクを判定し直し、議論の楽譜に線を重ねて公開した
-
-- 引用の照合で落ちたのは 4 本だけで、線が 1,152→898 本に減ったのは指示と「同じ話題だけ」の受け皿による。無作為 15 本のうち直接受けていると読めたのは約 10 本
-- 楽譜に `?links=` を足し、点ごとの線と「時間をおいて受けた発言」の一覧を出した（個人 repo `6da2edc`）
-- 更新: [[meeting-transcript-score-prance-2026-11-19]]、[[meeting-report-draft]]
-
-## [2026-11-19 15:30] filing-back | PRANCE の意見 939 件にリンコグラフィーの線を LLM で付けた
-
-- 社内 API の gemma-4-31B で、後の手ごとに 12 候補から受けている手と種類を選ばせた（約 9 分、1,152 本）。半分強は 1 分以内の「話し続け」で、発散は会の冒頭の一般的な主張に偏り、線を引きすぎる
-- 次：話者の交代で手を切る、受けている箇所を引用させる、位置の偏りをならす
-- 更新: [[meeting-transcript-score-prance-2026-11-19]]
-
-## [2026-11-19 15:10] filing-back | 対立軸ビューの軸ごとの左右の件数を追記
-
-- チームみらいのデータに当てた対立軸ビューの 12 本の軸について、左右の件数・判定不能の件数と、合意できそうな点・対立する点の例を公開 JSON から集計して載せた
-- エネルギーと移民は両側があり、家族は反対側が各軸 10 件ほど、皇位継承の「男系 vs 女系」は 97 件中 16 件しか採点されない
-- 更新: [[team-mirai-2025-open-dataset]]
-
-## [2026-11-19 14:45] filing-back | 議論の楽譜とリンコグラフィーの対応を書いた
-
-- 「どの発言を受けて次の発言が出たか」は、設計研究のリンコグラフィー（手をつなぎ、発散・収束の重要な手とつながらない手を数える）に近い。nishio の Cosense のまとめを元に対応を整理
-- 次：同じまとまりか近い時刻に絞って LLM でリンクを判定し、重要な手が「面白い展開」と合うかを見る
-- 更新: [[meeting-transcript-score-prance-2026-11-19]]
-
-## [2026-11-19 14:30] ingest | 議論の楽譜の試作への Slack の反応
-
-- 大木さん：戻ってきた話題が前とどう変わったか、まとまり同士のつながり、面白い展開を AI に挙げさせる入口が見たい。会議では発言の前後関係に意味がある
-- nishio：トピックでゆるくまとめ、後の発言が前の発言に賛成・反対・根拠の追加・新しい切り口のどれをしているかを出せると面白い
-- 更新: [[slack-municipal-workshop-issues-2026-11-18]]、[[meeting-transcript-score-prance-2026-11-19]] の Open Questions
-
-## [2026-11-19 13:00] filing-back | 議論の楽譜の試作に「実験の記録」を足した
-
-- meeting-transcript-score-prance-2026-11-19 に、実験の区分（exploratory）、非公開の置き場、公開した範囲（public_result.json だけ）、やり直し方を追記
-- 社内 API の URL は wiki にも manifest にも残していない
-
-## [2026-11-19 12:30] filing-back | 会議の文字起こしを広聴AI にかけ、「議論の楽譜」を作って公開した
-
-- #1214 を受け、PRANCE 国際シンポジウムの文字起こしを本体の CLI＋gemma-4-31B で分析し、個人 repo で話題の流れの分単位と「議論の楽譜」を公開（`46dcc57`）
-- 戻ってきた論点 68・一度だけ出た論点 5。次は話者の区別と会議向けの抽出プロンプト
-- 新規: [[meeting-transcript-score-prance-2026-11-19]]
-
-## [2026-11-19 10:30] ingest | Slack 11/8〜11/18：自治体の研究会で出た要望 14 件ほか
-
-- 大木さんが自治体の研究会で会議の録音を広聴AI でその場で分析し、要望を #1203〜#1216 にした。会議の分析をどこまで広聴AI で扱うかは未定
-- ほかに散布図の輪郭（凸包）の重なり、UMAP・FAISS の更新、政策案を出す機能の歪みを「あとから確かめられる状態」で防ぐ議論
-- 新規: [[slack-municipal-workshop-issues-2026-11-18]]
