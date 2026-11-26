@@ -169,6 +169,9 @@ sources:
 
 ## Updates
 
+- **11月26日の開発状況**。本体は前日に19本をマージ。残る8本はすべて承認待ちで、研究会からの意見検索（#1270）など4本は競合なし。輪郭の2案（#1260・#1271）はブラウザ版 #14 と併せて既定表示を判断する。
+  ブラウザ版では初回ガイドと検索結果からの原文表示が入った。v5に向けて公開JSON仕様の告知と貢献者一覧が残る。[[current-status-2026-11-26]]
+
 - **本体の散布図で輪郭を調整（2026-11-25、進行中 PR [#1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271)、`codex/scatter-hull-clipping-prototype`）**。「全体」「詳細クラスタ」で、凸包の重なりに片側の切り抜き・直線分割・局所ボロノイを適用する。通常レポートで表示と切り替えを確認した。
   公開ビューアのビルド、Jest、E2E が通過。次は本体 PR のメンテナー承認と本人による CLA 同意、独立したブラウザ版の対応。[[scatter-cluster-contours-2026-11-25]]。[Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259)
 

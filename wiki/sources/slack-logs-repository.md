@@ -3,8 +3,8 @@ title: "slack-logs リポジトリ(Slack ログ一次置き場)"
 type: source
 summary: "digitaldemocracy2030/slack-logs — dd2030 Slack public channel log の新しい一次置き場。raw は月次 canonical（約 2 か月遅れ）、mirror は raw の最新月と重なる rolling snapshot（2026-10 時点で直近 75 日）"
 url: https://github.com/digitaldemocracy2030/slack-logs
-last_checked: 2026-10-21
-coverage: "2026-10-21 に GitHub 上の main@189782de を読み取りで確認（構成とメタデータのみ。メッセージ本文は読んでいない）: mirror synced_at=2026-10-20T21:27:48Z, window_days=75, window=2026-08-06〜2026-10-20, 59 channel / 1297 message; raw canonical は C08F7JZPD63 で 2026-08 まで; README と workflow の既定値を確認。本文を読んだ最新の marker は 2026-10-05（Updates 参照）、初回の詳しい marker は 2026-06-30（work/slack-logs main@7c17dd3、14 日窓）"
+last_checked: 2026-11-26
+coverage: "11月26日06:29 JST同期のmirror（8aa4b8e1）。11月19日以降の広聴AI開発・アルゴリズム開発チャンネルを11月26日に読解。今回のraw固定なし"
 sources:
   - slack-logs README.md
   - slack-logs mirror/sync.json
@@ -105,6 +105,8 @@ JSONL の 1 行目は channel metadata、2 行目以降が Slack API 由来の m
 - `mirror/` 由来の観測をどの粒度で source 化するか。上書きされるため、重要な観測は commit hash と一緒に wiki / raw snapshot 側へ固定する必要がある。
 
 ## Updates
+
+- 2026-11-26。11月19日以降の開発・アルゴリズム開発チャンネルを読解。ブラウザ版を初回用に案内する方向と、散布図の輪郭が重なる問題の検討を確認した。期間内の本文はコミットで参照できる。[[current-status-2026-11-26]]。[同期時点の記録](https://github.com/digitaldemocracy2030/slack-logs/blob/8aa4b8e1/mirror/sync.json)
 
 - 2026-10-23: `nishio/oss_weekly_reporter` は 2026-10-22 に workflow を無効化した（Slack 本体は本 repo に移行済み、週次要約・GitHub スナップショットは今後使わないと nishio が判断）。その前に、reporter にしか無かった Slack 本文を本 repo の `raw/` へ全部埋め戻した（2025-04〜2026-02 は PR [#10](https://github.com/digitaldemocracy2030/kouchou-ai/issues/10)、2025-03・改名/アーカイブ/削除チャンネル・2026-03-01〜03-12 は PR [#12](https://github.com/digitaldemocracy2030/kouchou-ai/issues/12)。削除済みチャンネルは `raw/slack/deleted-<旧名>/`）。Open Questions の「GitHub weekly activity の source を継続するか」は継続しない側に決着した。
 - 2026-10-21: GitHub 上の slack-logs（main `189782de`。mirror は `synced_at=2026-10-20T21:27:48Z` の 75 日窓、raw は 2026-08 まで）と README・workflow を読み取りで確認し、14 日窓のままだった summary・本文を訂正。75 日への変更は slack-logs の [PR #6](https://github.com/digitaldemocracy2030/slack-logs/pull/6)（2026-08-21）。2026-09-07 の時点で raw に 2026-08 があったのは 2026-08-20 の先行取得のためで、約 2 か月遅れは今も設計どおり。Updates の見出しを 1 つにまとめた

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-26 16:13	filing-back	本体PRの承認・競合状況、ブラウザ版の入口、v5の残件を確認
 2026-11-25 16:32	filing-back	輪郭分割PRの検証結果と再開条件を記録
 2026-11-25 16:03	filing-back	Polisの参加者地図でシアトルの2つの意見への賛否を比較
 2026-11-25 15:52	filing-back	本体散布図の輪郭分割をPRにした

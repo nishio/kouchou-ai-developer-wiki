@@ -4,8 +4,8 @@ name: meeting-minutes
 summary: "Google Doc 議事メモ — weekly kouchou-ai dev meeting minutes (2025-03 〜 2026-07, ~7700 lines, JP)"
 type: source
 url: https://docs.google.com/document/d/1plggszRTxEEYUcZuCLiHkPrBsMtxr3RQpctKtZe5y4M/edit
-last_checked: 2026-11-02
-coverage: "2025-03-26頃〜2026-07-27 先頭見出し（txt/html再取得、直近追加分を読解）"
+last_checked: 2026-11-26
+coverage: "2025-03-26頃〜2026-07-27。11月26日はtxtを再取得し先頭見出しを確認。htmlの再取得は行っていない"
 sources:
   - meeting_minutes.txt
   - nishio-source-freshness-criterion-2026-06-02.md
@@ -98,3 +98,7 @@ Google Doc の見出しは「次回分」を先に立てていることがある
 
 - 2026-11-02: Google Doc の txt export を再取得。2026-10-18 取得分とバイト単位で同一（7743 行）で、先頭見出しは引き続き **2026/07/27**（「集合はなし、最近の状況を記録しておく」）。2026-08 以降の回は記録されておらず、週次開発定例の記録は 7 月末で止まっている。以後の開発状況は Slack `#2_開発_広聴ai` と GitHub を一次参照にする（[[long-term-strategy-2026-11-02]] の観測範囲）
 - 2026-11-03: frontmatter の `last_checked` を 2026-10-05 → 2026-11-02 に更新（上の 2026-11-02 再取得の記録に合わせた。`raw/meeting_minutes.txt` の mtime も 11-02）
+
+## Updates — 2026-11-26
+
+- 16:10 JST にGoogle Docのtxtを再取得し、11月25日取得分とバイト単位で一致した。先頭は2026/07/27（「集合はなし、最近の状況を記録しておく」）、次は2026/06/22。今回はhtmlを再取得していない。11月の開発状況は [[current-status-2026-11-26]] に記録した。
