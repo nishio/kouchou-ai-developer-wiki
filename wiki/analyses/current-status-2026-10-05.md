@@ -1,6 +1,8 @@
 ---
 title: "開発の現在地と続報 2026-10-05"
 type: analysis
+status: superseded
+superseded_by: current-status-2026-11-26
 summary: "10月5日時点の現在地と10月6日までの続報。本体6PRのうち5件と#948・#950・#952はmain反映、未mergeは#946。非公開報告は有効化済み、依存保守は#949で継続"
 sources:
   - catchup-2026-10-05.md

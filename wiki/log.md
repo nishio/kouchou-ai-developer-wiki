@@ -8,15 +8,54 @@
 - 「experimental 以外はサーバ版で読める」という片方向の約束で両版を別々に発展させる西尾の方針案を [[serverless-read-compatibility-contract-2026-11-26]] に記録。
 - 読めるの定義、experimental の印の付け方、昇格の手順、公開範囲を、org 版 `ec0c88a` と本体 `efbd0f28` の実装に照らして整理。[[serverless-product-direction-2026-09-08]] と [[serverless-integration-options-2026-11-24]] から参照。
 
+## [2026-11-26 16:13] filing-back | 本体PRの承認・競合状況、ブラウザ版の入口、v5の残件を確認
+
+- 本体のマージ19本と未マージ8本を照合し、意見検索と輪郭の2案、M5で開いている2件を [[current-status-2026-11-26]] に記録した。
+- ブラウザ版の初回ガイドと原文表示の反映を確認し、Slackと定例議事録の最終確認日を更新した。
+
+## [2026-11-25 16:32] filing-back | 輪郭分割PRの検証結果と再開条件を記録
+
+- [本体 PR #1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271) はビルド・Jest・E2E を通過し、マージはメンテナー承認待ち。自動マージ設定と CLA 欄を再確認した。
+- 局所ボロノイの性能と、ブラウザ版に引き継ぐ検証項目を [[scatter-cluster-contours-2026-11-25]] に追記した。
+
 ## [2026-11-25 16:03] filing-back | Polisの参加者地図でシアトルの2つの意見への賛否を比較
 
 - 同じ165人のUMAPに実際の投票を重ね、別の提案でも賛成した人数、反対、パス、未回答を確認した。[[polis-vote-map-experiment-2026-11-25]]
 - 論点を変えて地図を読み比べる表示と、元票のクロス集計の読み方を [[polis-participant-map-design-2026-11-25]] に追記した。
 
+## [2026-11-25 15:52] filing-back | 本体散布図の輪郭分割をPRにした
+
+- 通常レポートに輪郭分割を適用する [PR #1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271) を起票し、Chromium で9,568点の表示と設定の切り替えを確認した。
+- [Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) に方針を追記。ブラウザ版の対応は引き続き Issue で追う。[[scatter-cluster-contours-2026-11-25]]
+
+## [2026-11-25 15:28] filing-back | 直線で分けられないクラスタ輪郭を局所ボロノイで分割
+
+- 9,568 点の 2 例で直線分割後に残った 10 組を解消。1 組あたり最大 223 点で分割し、点の所属と座標は保持。
+- 切り替え時の拡大範囲と計算・描画時間を Chromium で比較。低速 CPU 条件では輪郭生成に約 0.31〜0.42 秒増えた。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 12:42] filing-back | Polisの投票でUMAPの近さと共通回答を比較
 
 - 公開2会話で、平均補完UMAPの近傍に直接の共通回答がない組の割合と、パスの扱いを変えたときの近傍を計測した。[[polis-vote-map-experiment-2026-11-25]]
 - 全員を名簿に残し、点の位置と共通回答の根拠を確認できる表示を試した。設計案と時系列の残件を [[polis-participant-map-design-2026-11-25]] に記録。
+
+## [2026-11-25 12:38] filing-back | 同梱散布図で輪郭の重なりが残った理由を確認
+
+- 6 組の残存はすべて、重なりに両群の点があり一本の直線で分けられないケース。点の保持検査で差し戻した組は 0。[[scatter-cluster-contours-2026-11-25]]
+
+## [2026-11-25 12:35] filing-back | 凸包の解消箇所と残存箇所を同じ範囲で比較
+
+- ローカル試作 `6c7039f3` で、元の重なりと試作で残る範囲を表示する拡大比較を追加。
+- 2 例の全 19 組で左右の軸範囲・表示サイズを Chromium で照合。解消例と残存例を [[scatter-cluster-contours-2026-11-25]] に記録。
+
+## [2026-11-25 12:28] filing-back | 自治体の研究会で見つけにくかった意見の検索を本体に実装
+
+- [本体PR #1270](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1270)（未マージ）に、公開レポートから直接検索して所属グループを開く操作を追加。
+- 通常のレポート画面で「エレベーター」の抽出意見にたどれることをPC・スマホ幅で確認。[[municipal-workshop-issues-triage-2026-11-24]] と [[meeting-report-draft]] に記録した。
+
+## [2026-11-25 12:23] filing-back | 凸包の切り抜き試作を 9,568 点で計測
+
+- 同じ座標の 2 例で重なりの組が 12→6、7→4。輪郭生成＋描画の中央値は通常幅で +7〜21 ms、CPU スロットリング条件で +33〜67 ms。
+- ローカル試作 `7ef9f80a` の測定条件・残る重なり・実機未計測を [[scatter-cluster-contours-2026-11-25]] に記録。
 
 ## [2026-11-25 12:17] filing-back | 公式「始め方の選び方」に3つの使い方の図を掲載
 
@@ -28,15 +67,40 @@
 - ブラウザ版 [PR #16](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/16) をマージし、検索に一致した意見から元の回答を開けるようにした。
 - 公開サンプルで幅390px・1280px、ローカルで保存済みサンプルと原文公開のオン・オフを確認。[[public-report-source-navigation-2026-11-25]] と定例下書きに反映。
 
+## [2026-11-25 12:14] filing-back | 対立軸ビュー #1249 も main に入った
+
+- main の表示選択（#1250）に合わせて開く・戻る処理を書き直し、CI 通過後に merge（`ba4a0ac8`）。これで溜まっていた本体 PR は 12 本 main 済み、残りは #1248（未修正の不具合）と #1252（draft）
+- 更新: [[meeting-report-draft]]
+
+## [2026-11-25 12:10] filing-back | 舞鶴市の公開レポートで意見をたどる読み方をWikiの入口に掲載
+
+- [[maizuru-report-walkthrough-2026-11-25]] に、公共交通の16件から抽出意見を1件開く手順と、入力コメント・抽出意見の件数の違いを記録した。
+- トップから公開事例、CSVの試し方、開発参加、進行中の作業を選べるようにした。[[public-ui-requirements-for-broadlistening]] と [[meeting-report-draft]] に検証範囲を追記した。
+
 ## [2026-11-25 12:09] filing-back | 公式ドキュメントの始め方に3つの使い方の図を追加するPR
 
 - 本体の「始め方の選び方」の指定位置へ図を追加する [ドラフト PR #1269](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1269) を提出。
 - MkDocs の厳格ビルドとドキュメント CI が通過。Chromium のPC・スマホ幅で配置と原寸表示を確認し、[[usage-modes]] と [[meeting-report-draft]] に記録。
 
+## [2026-11-25 12:06] filing-back | 凸包の重なりだけを切る案を試算
+
+- 同梱 3 例の最上位で重複する 24 組のうち、片側を切れる 3 組と、直線で分けられる追加の 11 組を確認。
+- 複数の重なりを処理した結果と描画性能は次の検証に残した。[[scatter-cluster-contours-2026-11-25]]
+
 ## [2026-11-25 11:58] filing-back | 公開サンプルで抽出意見から原文までを検証
 
 - 390pxのChromiumで公開ブラウザ版の検索を試し、抽出意見までは到達したが原文への操作がないことを確認した。
 - 同じサンプルを本体 main の通常ビューアで開き、原文公開ON・OFFと、抽出でニュアンスの変わる一件を確認。[[public-report-source-navigation-2026-11-25]] と定例下書きに記録。
+
+## [2026-11-25 11:54] filing-back | 散布図の輪郭に関する過去の試作を確認
+
+- 2025 年 8 月の共有境界と輪郭の試作、モバイル負荷の議論を [[scatter-cluster-contours-2026-11-25]] に追記。
+- 旧試作の計測値と見送り理由は確認できず。半径制限付きの案は、大量点で現行方式と比較するまで保留。
+
+## [2026-11-25 11:52] filing-back | 書籍を読んだ人の入口の判断をまとめた
+
+- 入口を本体 docs の `/book` に置き、書籍Web版と README からはリンクだけにした理由と、ブラウザ版の位置づけを [[book-reader-entry-2026-11-25]] にまとめた。
+- 次：書籍Web版からのリンク依頼、英語版の読者向けの入口。
 
 ## [2026-11-25 11:50] filing-back | 乱数シードのマージとPolis欠落時の表示を確認
 
@@ -48,6 +112,22 @@
 - サーバ版の [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) をドラフトへ戻し、ローカルの `codex/polis-cli`（`52a8f95d`）でCSVから単体HTMLを生成できるようにした。
 - 公式データ234人と欠落ケースをChromiumで確認。[[polis-export-input-2026-11-25]] と [[meeting-report-draft]] を更新。
 
+## [2026-11-25 11:47] filing-back | 溜まっていた本体 PR 11 本と org ブラウザ版 #12 を main に入れた
+
+- #1242〜#1258 のうち 11 本を nishio の admin merge で入れた。衝突した #1255・#1244 は main を取り込んで解き、#1256 は CodeRabbit の指摘を直してから
+- #1249 は main の表示選択に合わせて取り込み済み・CI 待ち。#1248（未修正の不具合）と #1252（draft）は見送り
+- 更新: [[meeting-report-draft]]
+
+## [2026-11-25 11:45] filing-back | 散布図で交差しないクラスタ輪郭を考察
+
+- 初期非表示案を取り下げ、半径制限付きボロノイ分割による輪郭、飛び地、同一座標の扱いを [[scatter-cluster-contours-2026-11-25]] に記録。
+- くびれ・飛び地・混在の合成配置で比較。実レポートでの距離上限と描画性能は検証課題。
+
+## [2026-11-25 11:45] filing-back | 書籍を読んだ方への案内ページを公開
+
+- [PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) を admin merge（`d857fd53`）、docs のデプロイ後に `/book` の公開を確認。
+- 次：書籍 Web 版からのリンク依頼（人が行う）。[[meeting-report-draft]]・[[broad-listening-book]] を更新。
+
 ## [2026-11-25 11:44] filing-back | 広聴AIの3つの使い方を図解
 
 - [[usage-modes]] に、CLI版、サーバー版、ブラウザ完結版の設定・分析・保存を比較する図と案内を追加。
@@ -58,10 +138,25 @@
 - Markdown 正本の [[serverless-product-direction-2026-09-08]] に、設定なしで試せる入口、選択欄に置くおすすめ、効果が伝わる操作名の判断を追記した。
 - [[serverless-onboarding-2026-11-25]] の確認範囲と次に観察する初見利用者の行動を記録し、WebUI向け索引と [[meeting-report-draft]] から参照できるようにした。
 
+## [2026-11-25 11:39] filing-back | ブラウザ版の初回導線がmainに反映
+
+- ブラウザ版 [PR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) が main にマージされたことを確認（`14a547d`）。
+- [[serverless-onboarding-2026-11-25]] と [[meeting-report-draft]] を更新。
+
+## [2026-11-25 11:34] filing-back | ブラウザ版の案内先を org 版に揃えた
+
+- ブラウザ版の README・画面の GitHub リンク・書き出した HTML のフッターが tokoroten さんの repo を指していたので org 版に変え、作り始めた経緯を README に残した（[ブラウザ版 PR #15](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/15)、main `24b84b70`）。
+- 本体 [PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) は CI 通過、レビュー承認必須のため admin merge 待ち。[[meeting-report-draft]] を更新。
+
 ## [2026-11-25 11:31] filing-back | サーバレス版の3機能を本体の PR に提出
 
 - [親 Issue #1261](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1261) に3件を紐付け、ポンチ絵 [PR #1266](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1266)、再クラスタリングと賛否の探索 [PR #1267](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1267)、PowerPoint [PR #1268](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1268) を作成。
 - Chrome で PNG・PPTX の取得、元レポートの論点リンク、探索 URL の再表示を確認。[[serverless-implementation-2026-11-24]] と [[meeting-report-draft]] に結果を追記。
+
+## [2026-11-25 11:19] filing-back | 書籍を読んだ人の入口を本体 docs に作った
+
+- 書籍本文にツールへのリンクがなく、読者が Docker 前提の README に着く問題に対し、docs に「書籍を読んだ方へ」を足した（[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265)）。ブラウザ版は「同じ機能を保証しない別の実装だが、最初に試すにはおすすめ」と位置づけた。
+- 次：書籍 Web 版（先行公開ドラフト、各章はログインが必要）からのリンク依頼。[[broad-listening-book]] と [[meeting-report-draft]] を更新。
 
 ## [2026-11-25 11:15] filing-back | Polisの投票履歴が欠けても参加者を散布図に表示
 
@@ -72,6 +167,11 @@
 
 - 書籍サイトのmainと公開ページを照合し、読書ボタンと目次の間から公開レポート一件に進む案を [[book-release-reader-readiness-2026-11-25]] に追記。
 - 舞鶴2040のレポート候補と、本文の匿名投稿「視点を寄せる」の案内をスマホ幅で確認。次は初見の利用者が個別意見までたどれるかを確認する。
+
+## [2026-11-25 11:04] filing-back | 散布図の輪郭を初期表示で隠す修正を提出
+
+- [#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) に起票し、[本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260) と [ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14) を提出。通常レポートの輪郭は表示設定から切り替えられる。
+- Chromium で初期表示と切り替えを確認。[[slack-municipal-workshop-issues-2026-11-18]] と [[meeting-report-draft]] に記録。
 
 ## [2026-11-25 11:01] filing-back | 書籍Web版の実装リポジトリを確認
 
@@ -111,6 +211,12 @@
 - 研究会の要望、本体 main とオープンPRを照合し、CSVの分析から少数の重要な意見・原文の確認と公開までを優先する案を [[long-term-strategy-2026-11-02]] に追記。
 - 次は公開可能なCSVを一つ使い、初見の操作と、件数・出典・公開範囲が揃うかを確認する。定例の議題候補にも追記。
 
+## [2026-11-25 10:48] filing-back | Lean の検証一式 #1239 と旧経路の削除 #1240 が main に入った
+
+- #1239（`8f6f7e58`）・#1240（`03d07295`）とも 11-25 に merge 済み。昨夜の #1240 の記録は push されずに残っていたので、merge 済みに直して入れた
+- 次：公開 API を消したので、次の analysis-core のリリースで版を上げてリリースノートに書く
+- 更新: [[lean-verification-trial-2026-11-24]]、[[mutation-testing-orchestration-aggregation-2026-11-24]]、[[pipeline]]、[[cli]]、[[meeting-report-draft]]
+
 ## [2026-11-25 10:46] filing-back | ブラウザ版の初回画面で試し方を案内
 
 - [#13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) の初回ガイドではサンプルを勧め、AI選択欄ではキーの有無に応じて選ぶ理由を示した。
@@ -139,6 +245,11 @@
 
 - 本体のオープンPR13本（通常12本・ドラフト1本）をGitHubで照合。全件でCIの失敗・実行中はなく、承認待ち。
 - 再現済み不具合2本、現行差分の未解決指摘3件、モバイルE2E修正の重複を [[open-pr-status-2026-11-25]] と [[meeting-report-draft]] に記録。
+
+## [2026-11-25 10:19] filing-back | モバイル表示の E2E を本体の別 PR で修正
+
+- 幅375pxでは階層リストの「全体」を展開してからグループ名を確認するよう、main 向け [PR #1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257) で修正。
+- 同じ修正を [PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255) に取り込み、両 PR で E2E 87件成功・2件スキップ、#1255 の CI 14チェック成功を確認。[[meeting-report-draft]]
 
 ## [2026-11-25 10:15] filing-back | 乱数シード指定PRでPython呼び出しの互換性問題を確認
 
@@ -193,6 +304,11 @@
 - `public_result.json` と公開 API の使い分け、静的ビューアを組み立てて iframe で表示する例を [[embedding-public-results]] に整理。
 - 組み込みの三種類、単体で使えるカタログの図、追加のデータが必要な図を調べ、定例下書きにも記録。
 - Chromium で iframe 内の図の切替と、同じ JSON を読む独立した階層リストの展開を確認。
+
+## [2026-11-25 03:58] filing-back | Wiki の main を統合して出典リンクを修正
+
+- ローカルと GitHub の main にあった更新を統合し、作業ログと定例会議の下書きを両方から引き継いだ。
+- [[divcon-view-user-stories]] の本体コードへのリンク2件を確認し、コミットIDの先頭の誤記を直した。
 
 ## [2026-11-25 03:57] filing-back | レポート参照 REST API と MCP を本体PRに提出
 
@@ -271,6 +387,11 @@
 - [Issue #1247](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1247) を立て、運用手順と実画面を添えた [PR #1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) を本体に作成
 - 更新: [[polis-export-input-2026-11-25]]、[[meeting-report-draft]]
 
+## [2026-11-25 01:54] filing-back | 公開JSONの再クラスタリングを両実装をまたいで検査
+
+- [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) で、本体の公開JSONから再クラスタリングしても出典・入力件数・意見属性を保持する共通テスト4ケースを追加した。
+- 現行mainと出典PRを組み合わせた構成での検証を [[component-boundary-retrospective-2026-11-25]] に記録した。
+
 ## [2026-11-25 01:48] filing-back | Polisの参加者散布図と投票の推移を試作
 
 - 本体のローカル枝 c95489e7 で除外済みコメントを自動で外し、参加者を固定軸に配置。公式データ234人、4グループ、19日の日付変更と軌跡を実ブラウザで確認
@@ -310,6 +431,11 @@
 
 - 元の実装で最大 500 件からの候補軸生成と全件採点の順序を確認し、広聴AI の試作では上位クラスタを話題に使うことを記録
 - 更新: [[divcon-view-user-stories]]、[[meeting-report-draft]]
+
+## [2026-11-25 01:20] filing-back | 大リファクタリング後の差し替え可能性を振り返った
+
+- 当時の再利用・プラグインの議論を、現行の分析ワークフロー、公開JSON、ブラウザ版の共通検証と照合した。
+- 出典・件数・属性の保持と再計算条件を、実際の受け渡しで検査する案を [[component-boundary-retrospective-2026-11-25]] に記録した。
 
 ## [2026-11-25 01:18] filing-back | Leanで旧出典IDの整数表記と指数表記を区別
 
@@ -388,6 +514,13 @@
 - org への repo 移管／本体 monorepo への統合／結果形式だけ合わせる、を両 repo の main で比較。統合しても分析処理は TS と Python の 2 本のままで、道具の世代差（pnpm・TS・Biome）と Pages の相乗りが重い
 - ブラウザ版のサンプル JSON は本体の validate_output で問題 0 件。ただし build_public_result が元コメントをそのまま写すので、既定 off（#1155）を素通りする
 - 移管は tokoroten にしか実行できない。更新: [[serverless-integration-options-2026-11-24]]、[[meeting-report-draft]]
+
+## [2026-11-24 23:19] filing-back | analysis-core の旧経路 run() を削除する PR #1240 を出した
+
+- 非推奨の `PipelineOrchestrator.run()`・`register_step()`・`run_step` / `termination` を削除（未 merge）。本体に呼び出し元は無く、新経路との差（LLM 直接グルーピングで落ちる見込み、Ctrl+C でロックが残る等）が開いていた
+- 旧経路で status を書いていたテスト（API の複製・伏せ字）は新経路に移した。analysis-core 972 passed・API 577 passed
+- 公開 API を消すので、次の analysis-core のリリースで版を上げてリリースノートに書く
+- 更新: [[mutation-testing-orchestration-aggregation-2026-11-24]]、[[pipeline]]、[[cli]]、[[meeting-report-draft]]
 
 ## [2026-11-24 23:11] filing-back | マージ後の未解決Issueから次の着手候補を確認
 

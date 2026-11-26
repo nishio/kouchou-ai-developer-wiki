@@ -139,4 +139,8 @@ CLI と管理画面は、どちらも `PipelineOrchestrator.from_config` → `ru
   - 非公開の属性値を持つコメントの扱い（本文だけ隠し、意見と属性は残す）は現行の挙動を固定した。[#1180](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1180) で扱いが変わる時はテストも合わせて直す
   - CodeRabbit は 2 本ともレビューを skip した
 - 2026-11-24: nishio が [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（main `0901091c`）と [#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)（main `bf8ecbe5`）を merge。merge 後の main で Analysis Core CI・Server Tests・CodeQL ほか success。これで「見つかった穴」の 1〜15 はテストで守られた。残りは Open Questions の旧経路（`run_step` / `termination`）の扱い
+- 2026-11-24: Open Questions の旧経路は、残さず削除する方針にし、PR [#1240](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1240) にした（2026-11-25 に main に merge、`03d07295`）
+  - 理由: 2026-05 から非推奨で、本体に呼び出し元が無い。LLM 直接グルーピングで落ちる見込み、Ctrl+C でロックが残る、費用見積もりが常に空、と新しい経路との差が開いていた。旧経路にしかない `register_step()` は工程プラグインで代わりがきく
+  - `run_step` / `termination` を「status を本物らしく書く道具」として使っていたテスト（API の複製テスト、失敗時の伏せ字テスト）は、新しい経路で同じことを確かめる形に移した
+  - 公開 API を消すので、次の analysis-core のリリースで版を上げ、リリースノートに書く必要がある
 

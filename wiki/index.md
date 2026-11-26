@@ -1,16 +1,17 @@
-# Wiki Index
+---
+title: 広聴AI 開発者Wiki
+type: index
+summary: 公開レポートの実例から広聴AIの使い方を知り、開発環境、設計判断、現在の開発状況を調べるための入口。
+---
 
-kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理。コントリビュータが素早く文脈を掴むためのナレッジベース。
+広聴AIが集まった声をどう整理するか、実際のレポートで試せます。開発に参加する方のために、実装の仕組みと設計判断もまとめています。
 
-> **このページは人間向けの curated navigation です**。AI / LLM 向けの全件カタログは [index.txt](index.txt) を、時系列の作業履歴は [log.md](log.md) を参照。
+## 目的から選ぶ
 
-直近の状態（2026-10-28 時点。2026-11-02 の棚卸しと長期戦略は [現状把握と長期戦略](analyses/long-term-strategy-2026-11-02.md)）: [2026-10 の経緯の整理](analyses/retrospective-2026-10-28.md)（大規模レビュー → 鍵漏洩の修正 → v4.2.0、残った可視化 2 つと tokoroten の 2 手法） / [本格コードレビュー 2026-10-19](analyses/deep-code-review-2026-10-19.md) / [健全性レビュー 2026-10-18](analyses/code-health-review-2026-10-18.md) / [定例レポート退避分 2026-10-18](concepts/meeting-report-2026-10-18.md) — レビューから出した修正 PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1015)–[#1022](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1022)・[#1027](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1027)–[#1041](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1041) は 2026-10-19 までに main へ merge 済み。2026-10-21 には、レポート再利用・管理画面の一覧更新・濃い意見 0 件時の表示まわりの修正 [#1043](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1043)–[#1047](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1047) も merge された（main `c57e0bfa`）。Claude provider 接続実験は手元の branch だけにあり、PR にはしていない。次に判断が要るのは、散布図ラベルの a/b（[#1023](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1023)。PR [#1024](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1024) / [#1025](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1025) のどちらかを選ぶ）と、[健全性レビュー](analyses/code-health-review-2026-10-18.md)の Issue 整理提案。
-
-## 最初に読むべき (推奨順)
-
-[[kouchou-ai]] → [[usage-modes]] → [[analysis-core-and-web-ui]] → [[architecture-overview]] → [[local-dev-setup]] → [[gotchas]]
-
-雰囲気を掴むためのストーリー: [[deploy-success-but-nothing-changed-story-2026-06-01]] — 「デプロイ成功なのに画面が変わらない」という小さな違和感から、Wiki つき Coding Agent が古い設計の沼を一日で遡って直した一日のエピソード。前提知識ゼロで読める
+- **実際の意見を読む**　[舞鶴市の公開レポート](https://maizuru2040.jp/kouchou-ai-reports/c479cdba-f3da-44d8-b096-08bdd335170f/)で「リスト」を開くと、公共交通の要約からバスの本数と運賃に触れた意見をたどれます。[操作例と件数の読み方](analyses/maizuru-report-walkthrough-2026-11-25.md)
+- **自分のデータで試す**　CSVで分析を始める手順、必要なAI設定、組織で利用する場合の選択肢を案内しています。[書籍を読んだ方へ](https://digitaldemocracy2030.github.io/kouchou-ai/book)
+- **開発に参加する**　[プロジェクトの概要](concepts/kouchou-ai.md)と[使い方の違い](concepts/usage-modes.md)を押さえてから、[分析コアとWeb画面の関係](concepts/analysis-core-and-web-ui.md)、[システム構成](concepts/architecture-overview.md)、[開発環境の準備](concepts/local-dev-setup.md)へ進めます。[開発でつまずきやすい点](analyses/gotchas.md)
+- **進行中の作業を調べる**　直近7日間にWikiへ記録した調査や判断は[作業履歴](log.md)にあります。本体で現在開いているものは [Pull Request](https://github.com/digitaldemocracy2030/kouchou-ai/pulls) と [Issue](https://github.com/digitaldemocracy2030/kouchou-ai/issues) で確認できます。
 
 ## 開発者が共通して知るべきこと
 
@@ -33,16 +34,16 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [coding-agents](concepts/coding-agents.md) — Devin / Claude Code / Codex の協働運用
 - [gotchas](analyses/gotchas.md) — 非自明な落とし穴の一覧
 
-**いま何を考えるか / 何が起きているか:**
+## 設計判断と過去の棚卸し
 
-- [long-term-strategy-2026-11-02](analyses/long-term-strategy-2026-11-02.md) — **現状把握と長期戦略（最新、AI の叩き台）**。活動量・貢献者分布・利用の観測・運営の場（定例停止、戦略会議調整中）を棚卸しし、書籍同期の v5.0 宣言 / 利用の観測 / 人間がボトルネックにならない形にする（判断を規則にし、AI が進める） / 結果 JSON の層分離 / 入口の役割分担、の 5 本と戦略会議への問いを整理。11-25 の追記では、CSV の分析から重要な意見の確認、根拠を示した説明までを一つの利用例で通す案を整理
+- [long-term-strategy-2026-11-02](analyses/long-term-strategy-2026-11-02.md) — **11月2日の現状把握と長期戦略案**。活動量・貢献者分布・利用の観測・運営の場（定例停止、戦略会議調整中）を棚卸しし、書籍同期の v5.0 宣言 / 利用の観測 / 人間がボトルネックにならない形にする（判断を規則にし、AI が進める） / 結果 JSON の層分離 / 入口の役割分担、の 5 本と戦略会議への問いを整理。11-25 の追記では、CSV の分析から重要な意見の確認、根拠を示した説明までを一つの利用例で通す案を整理
 
 - [serverless-product-direction-2026-09-08](analyses/serverless-product-direction-2026-09-08.md) — dd2030の目的から見たブラウザ版・既存版の役割、互換範囲、次の開発順序（本流化は未決）
 
 - [thinking-targets](concepts/thinking-targets.md) — 今、人間の思考と判断が要る論点のハブ (ラベル品質仕切り直し / 次の view 方向 / pipeline 境界 / 公開運用摩擦)
 - [refactoring-status](analyses/refactoring-status.md) — Phase 別の実装状況、current main との同期
 - [open-decisions](analyses/open-decisions.md) — 未定 / 方針決定済 / 着手済の三分類 (全体棚卸し)
-- [issue-backlog-audit-2026-10-28](analyses/issue-backlog-audit-2026-10-28.md) — **現行の全件 issue 棚卸し**（最新。open 89 件を 2026-10-28 の main と照合。10-12 版 [issue-backlog-audit-2026-10-12](analyses/issue-backlog-audit-2026-10-12.md) と 2026-05〜06 の triage はこれに置換済み）。2026-11-02 に停滞 Issue 56 件の処し方を決め、30 件を close（[stale-issue-disposition-2026-11-02](analyses/stale-issue-disposition-2026-11-02.md)）
+- [issue-backlog-audit-2026-10-28](analyses/issue-backlog-audit-2026-10-28.md) — **10月28日のIssue棚卸し**（当時のopen 89件を同日のmainと照合。10-12 版 [issue-backlog-audit-2026-10-12](analyses/issue-backlog-audit-2026-10-12.md) と 2026-05〜06 の triage はこれに置換済み）。2026-11-02 に停滞 Issue 56 件の処し方を決め、30 件を close（[stale-issue-disposition-2026-11-02](analyses/stale-issue-disposition-2026-11-02.md)）
 - [kouchou-ai-docs-policy-history](analyses/kouchou-ai-docs-policy-history.md) / [kouchou-ai-docs-overhaul-2026-10](analyses/kouchou-ai-docs-overhaul-2026-10.md) — 本体 docs 方針の系譜と 2026-10 改善スプリントの総括
 - [faithful-aggregation-vs-deliberation-dynamics](concepts/faithful-aggregation-vs-deliberation-dynamics.md) — 忠実な集約 vs 熟議ダイナミクス（分析スタンスの核）
 - [dependabot-alerts-2026-10-14](analyses/dependabot-alerts-2026-10-14.md) — security / dependency 保守の観測（脆弱性の具体詳細は公開 wiki に書かない方針）
@@ -52,7 +53,7 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 - [code-health-review-2026-10-18](analyses/code-health-review-2026-10-18.md) — コード・wiki・Issue の健全性レビュー（新規改善点と 5 PR、未着手 backlog、Issue 整理提案。5 PR は 2026-10-19 merge 済み）
 - [source-review-findings-2026-10-16](analyses/source-review-findings-2026-10-16.md) — ソースコードレビュー確定 10 件の棚卸し
 
-過去の優先度整理（歴史的文脈。現行判断は上の棚卸しを優先）:
+### 過去の優先度整理
 
 - [strategic-development-order-2026-05-23](analyses/strategic-development-order-2026-05-23.md) — 3 層 platform として見た時の長期順序
 - [issue-priority-through-2026-09](analyses/issue-priority-through-2026-09.md) — 2026-09 書籍リリースを前提にした優先度整理
@@ -101,6 +102,8 @@ kouchou-ai(広聴AI)開発者向けの設計判断・コード構造・運用ノ
 Sources / Analyses / Entities の全件は [index.txt](index.txt) を参照。人物・組織（dd2030 / talk-to-the-city / nishio / tokoroten / nasuka / ohki-shingo / kuboon / anno など）も同ファイルから stem 検索で辿れる。
 
 ## Updates
+
+- 2026-11-25。入口を公開レポートの読解、CSV分析、開発参加、進行中の作業に再編。10月の経緯は[振り返り](analyses/retrospective-2026-10-28.md)から参照できる。
 
 - 2026-11-02: 「いま何を考えるか」の先頭に [現状把握と長期戦略の考察](analyses/long-term-strategy-2026-11-02.md) を追加し、「直近の状態」からも導線を張った
 - 2026-10-21: 「直近の状態」を main `c57e0bfa` と GitHub の PR の状態に合わせて書き直し（merge 済みの PR を反映し、本格コードレビューへの導線を追加）、slack-logs の mirror の窓を 14 日から 75 日に訂正。あわせて versioning-strategy と public-viewer-build-behavior の説明を、今の内容（2025-12 の決定とその後の実際、build の前提）に合わせた

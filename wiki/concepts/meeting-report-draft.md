@@ -42,18 +42,34 @@ sources:
 
 2026-10-17 までの完了分は [[meeting-report-2026-10-18]] に退避済み。ここには rotate 以降に完了したもの（merge 済みと明記）と、進行中・判断待ちのものを置く。
 
-- **LLM 直接グルーピングの件数設定（2026-11-25、進行中・ドラフト[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)）**
+- **溜まっていた本体 PR 12 本を main に入れた（2026-11-25、nishio の admin merge）**
+  - [#1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257)・[#1243](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1243)・[#1242](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1242)・[#1245](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1245)・[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)・[#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258)・[#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)・[#1253](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1253)・[#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256)・[#1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255)・[#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244)。入れる前に 9 本を重ねた状態で analysis-core 1003 passed・viewer jest 353 件成功を確認。[#1256](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1256) は CodeRabbit の指摘（濃いグループ 0 件で灰色の凡例が消える）を直してから入れた
+  - [#1255](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1255)（[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1254) の乱数シードと衝突）と [#1244](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1244)（E2E は [#1257](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1257) に合わせた）は main を取り込んで衝突を解き、CI 通過後に merge。org のブラウザ版 [PR #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12)（再クラスタリングの共通テスト）も merge
+  - [#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249)（対立軸ビュー）も main の表示選択（[#1250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1250)）に合わせて取り込み、CI 通過後に main 済み `ba4a0ac8`（計 12 本）。見送り：[#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248)（Polis）は参加者が散布図から消える問題が未修正、[#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252) は draft なので見送り
+- **書籍を読んだ人の入口を docs に作った（2026-11-25、[PR #1265](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1265) は 11-25 に main 済み `d857fd53`、`/book` 公開済み）**
+  - 書籍の本文には広聴AIのリポジトリ・docs・ブラウザ版へのリンクがなく、読者は Docker 前提の README に着く。docs に「書籍を読んだ方へ」（`/book`）を足し、README 冒頭にも 1 行足した。
+  - ブラウザ版は「同じ機能や結果は保証しない別の実装だが、最初に試すにはおすすめ」と位置づけ（nishio 判断）。本流をどちらにするか（[#921](https://github.com/digitaldemocracy2030/kouchou-ai/issues/921)）には踏み込んでいない。
+  - ブラウザ版側も、README の「使ってみる」・画面右上の GitHub・書き出した HTML のフッターを org 版に揃え、tokoroten さんの repo で作り始めた経緯を README に残した（[ブラウザ版 PR #15](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/15)、11-25 main 済み `24b84b70`）。
+  - 次：書籍 Web 版から `https://digitaldemocracy2030.github.io/kouchou-ai/book` へのリンクを書籍サイト側に依頼する（人が行う）。Web 版は現在先行公開ドラフトで、各章はログインが必要。[[book-reader-entry-2026-11-25]]
+
+- **公開レポートのモバイル E2E（2026-11-25、修正 PR #1257 は 11-25 に main 済み）**
+  - 幅375pxの初期表示は階層リストで、最上位の「全体」は折りたたまれている。階層リストの表示と、展開後の第1階層のグループ名を確認するテストに修正した。[修正 PR #1257](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1257)
+  - 同じ修正コミットを LLM 直接グルーピングの件数設定に取り込んだ。両 PR で E2E は87件成功・2件スキップ。[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255) の CI は14チェック成功、失敗0件。
+
+- **LLM 直接グルーピングの件数設定（2026-11-25、[PR #1255](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1255) は 11-25 に main 済み）**
   - Webの新規作成・再利用とCLIに件数指定と全件一括を追加。新規は200件・25件、件数未指定の旧Webレポートを再利用するときは80件を引き継ぐ。
   - 実LLM比較で200件は80件より明示されたテーマが1つ増え、総トークンが約5%増。全件で作った同じ分類枠で25件ずつ割り当てると、27/39件から29/39件になり、総トークンが44%増えた。[[llm-grouping-input-size-experiment-2026-11-25]]
-  - CIはE2E以外が成功。E2Eの公開レポートのモバイル表示1件は変更前の本体mainでも再現した。次は他のデータでも分類の傾向を比較する。
+  - CIはE2E以外が成功。E2Eの公開レポートのモバイル表示1件は変更前の本体mainでも再現した。11-25 に main へ merge。次は他のデータでも分類の傾向を比較する。
 
 - **公開後に止める・直す・異議を受ける手順を docs に書いた（2026-11-24、進行中：PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234)、未 merge）**: Civic AI（6-Pack of Care、civic.ai）の 6 観点で docs を点検すると、遡れること・少数意見への注意は厚く、止め方・直し方・異議の受け方と、同じ内容の大量投稿への注意が無かった。信頼性と責任のページに 2 節を足し、README の「多数派攻撃への防御（予定）」を「検討中（[#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345)）」に。civic.ai 側に日本の事例を届けるのは docs が整ってから。[[civic-ai-6pack-docs-mapping-2026-11-24]]
 - **意見分類のラベルを利用者が定義できるようにする（2026-11-24、PR [#1232](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1232)、11-24 に main 済み `a775d3d2`）**: [#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225)。研究会の [#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)（課題と解決策）・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213)（安全上の指摘）向けに、`opinion_classification.labels` に利用者定義のラベル（`id`・`name`・`includes`・任意の `excludes`）を書けるようにした。通常の分析はそのまま、意見ごとの yes/no を属性フィルタで絞れる。誤りは実行前に止まり、定義はサマリーに残る。社内の gemma-4-31B で 3 ラベルが意図どおりに付くのを確認。[#1210](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1210)・[#1213](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1213) に設定例をコメントした。次：ビューアでラベル名を出すか（[#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225) に残件として残した）。詳細は [[municipal-workshop-issues-triage-2026-11-24]]
 - **自治体の研究会で出た要望 14 件の振り分け（2026-11-24、PR [#1221](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1221)・[#1223](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1223)・[#1224](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1224) は 11-24 に main 済み、[#1222](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1222) も rebase 後に main 済み `3649fe41`。4 本とも main 入り）**: 大木さんが起こした [#1203](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1203)〜[#1216](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1216) を main と照らし合わせ、全件にコメントとラベルを付けた。閲覧画面の 4 件を PR に：リストの「すべて開く／すべて閉じる」（[#1221](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1221)）、テキスト検索中は一致した枝を開き一致した意見を先頭に（[#1222](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1222)）、件数を「意見 3件」と単位つきに（[#1223](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1223)）、散布図の「?」に見方（点＝意見 1 件・軸そのものに意味はない・輪郭の重なり）（[#1224](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1224)）。新しいデータに調整済みのプロンプトを当てる手段が無い（「再利用」は入力も引き継ぐ）、意見ごとのラベルを利用者が定義できない、の 2 つの穴が見つかった。11-24：利用者定義のラベルを [#1225](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1225)、会議の分析を本体でどこまで扱うかを [#1226](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1226)（既定の案と期限案 12-08）として Issue にした。次：[#1226](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1226) への反応、大木さんの返事（使った版・会議データのサンプル）。詳細は [[municipal-workshop-issues-triage-2026-11-24]]
+  - 11-25、意見検索の残件を[本体PR #1270](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1270)（未マージ）で対応。「エレベーター」で所属グループと該当意見を開く操作をPC・スマホ幅で確認した。次は初見の利用者が検索欄を見つけられるかを見る。
+- **analysis-core の判定ロジックを Lean で検証（2026-11-24・検証一式は 11-25 に本体へ）**: 依存解決・再実行の判定・クラスタの木の組み立てを Lean に写して証明し、同じ乱数入力を本物の Python とモデルに流す差分テストでずれが無いことを確かめた。前提を書き出した時点で 3 件見つかった：(1) 意見分類・スタンス・新規性を無効に戻して再実行すると集計がスキップされ古い分類が残る（CLI のみ、Python でも再現）、(2) spec が依存順に並んでいるという前提を誰も検査していない、(3) `validate_dependencies` が存在しない依存で一覧を返さず例外を投げる。見つかったものをすべて直す PR を 4 本作った（[#1227](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1227)〜[#1230](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1230)、2026-11-24 に 4 本とも main に merge 済み。(1) 無効に戻したら集計を再実行、(2)(3) 依存の宣言の検査、llm_grouping の id `"0"` の拒否、入れ子でない階層クラスタで止める）。検証一式は本体に入れる PR [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239)（2026-11-25 main 済み `8f6f7e58`、CI は `analysis-core-lean.yml`）。次：main で Lean の CI が回り続けるかを見る（[[lean-verification-trial-2026-11-24]]）
 - **Lean 検証と次の候補（2026-11-25）**
   - 依存解決・再実行・クラスタの木の検証 [#1239](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1239) と、多対多出典の検証 [#1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) は本体 main に反映済み。[[lean-verification-trial-2026-11-24]]
   - 階層レポートの件数診断と Lean の証明を本体 `codex/report-count-verification`（`d30e7e0c`、ローカル）に追加。合成入力の件数違いを検出し、共通データの 77 通りの絞り込みと Lean・Python の 1,500 例を確認した。次に判断するのは旧版データへの適用範囲。[[verification-opportunities-2026-11-25]]
-- **analysis-core のミューテーションテストを試行（2026-11-24・本体は変更なし）**: mutmut で `rate_limit` / `workflow` / `public_result` の 770 変異を試し、テストが気づいた割合は 76%。部品は試験済みでもつなぎ目が未検証という穴が 3 つ見つかった（429 の結果を同時実行数の制御へ渡す配線、SDK の再試行を止める HTTP クライアント、工程をまたぐトークン数の合計）。3 つを塞ぐテスト 4 本を PR [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) にした（2026-11-24 main に merge 済み `2a924af6`、生き残っていた変異 10 件がすべて落ちることを確認済み）。mutmut の既定設定ではこのテスト一式で 220 件が誤って timeout になり見かけ上 98% に膨らむので、forkserver 方式が必須。続けて対象を再実行の判定（`core/orchestration.py`）と集計（`steps/hierarchical_aggregation.py`）に広げた（2,832 変異、71.5%）。管理画面に直接響く穴が見つかった: ラベル編集後の再集約（`--only`）が失敗しうる、管理画面が作る config の検証、期限切れのロックが外れない。結果 JSON でも、全意見のクラスタ ID が `["0"]` だけになる、元コメントの後続が消えるといった穴がある。見つけた穴は、塞ぐテストを PR [#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)（起動と再実行の判定）と [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（結果 JSON とパブコメ CSV）にした（2026-11-24 どちらも main に merge 済み `0901091c`・`bf8ecbe5`）。次：Python API の旧経路（`PipelineOrchestrator.run()`）を残すかの判断（[[mutation-testing-trial-2026-11-24]]、[[mutation-testing-orchestration-aggregation-2026-11-24]]）
+- **analysis-core のミューテーションテストを試行（2026-11-24・本体は変更なし）**: mutmut で `rate_limit` / `workflow` / `public_result` の 770 変異を試し、テストが気づいた割合は 76%。部品は試験済みでもつなぎ目が未検証という穴が 3 つ見つかった（429 の結果を同時実行数の制御へ渡す配線、SDK の再試行を止める HTTP クライアント、工程をまたぐトークン数の合計）。3 つを塞ぐテスト 4 本を PR [#1220](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1220) にした（2026-11-24 main に merge 済み `2a924af6`、生き残っていた変異 10 件がすべて落ちることを確認済み）。mutmut の既定設定ではこのテスト一式で 220 件が誤って timeout になり見かけ上 98% に膨らむので、forkserver 方式が必須。続けて対象を再実行の判定（`core/orchestration.py`）と集計（`steps/hierarchical_aggregation.py`）に広げた（2,832 変異、71.5%）。管理画面に直接響く穴が見つかった: ラベル編集後の再集約（`--only`）が失敗しうる、管理画面が作る config の検証、期限切れのロックが外れない。結果 JSON でも、全意見のクラスタ ID が `["0"]` だけになる、元コメントの後続が消えるといった穴がある。見つけた穴は、塞ぐテストを PR [#1233](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1233)（起動と再実行の判定）と [#1231](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1231)（結果 JSON とパブコメ CSV）にした（2026-11-24 どちらも main に merge 済み `0901091c`・`bf8ecbe5`）。Python API の旧経路（`PipelineOrchestrator.run()` と `run_step` / `termination`）は残さず削除する PR [#1240](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1240) にした（2026-11-25 main 済み `03d07295`）。次：公開 API を消したので、次の analysis-core のリリースで版を上げてリリースノートに書く（[[mutation-testing-trial-2026-11-24]]、[[mutation-testing-orchestration-aggregation-2026-11-24]]）
 - **LLM 直接グルーピングの段が選んだモデルを使っていなかった → PR [#1219](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1219)（2026-11-20・main 済み `600479b7`）**: [#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994)（指定カテゴリ分類）の実 LLM での確認で発見。spec の既定値の `gpt-4o-mini` が全体の `model` より先に入り、ローカル LLM・Gemini などでは失敗、OpenAI では黙って `gpt-4o-mini` で動いていた（管理画面の LLM 直接グルーピングも同じ経路）。修正後はサンプル 400 件が全件 1 カテゴリに入り、「その他」が 34%。11-20 に main に merge し、[#994](https://github.com/digitaldemocracy2030/kouchou-ai/issues/994) も close。次は管理画面から LLM 直接グルーピングを選んだ時に、選んだモデルで動くかを画面で確かめる（[[llm-grouping-supervised-classification]]）
 - **会議の文字起こしを広聴AI で時系列に見る試作（2026-11-19・個人 repo で公開、本体は変更なし）**: [#1214](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1214)（議論の楽譜）を受け、PRANCE 国際シンポジウム（約 5 時間）の文字起こし 788 区間を本体の CLI＋社内 API の gemma-4-31B で分析（約 7 分、意見 939 件）。nishio の個人 repo で、話題の流れを 5 分・15 分で区切れるようにし、まとまりごとの段に発言の時刻を点で打つ「議論の楽譜」を新しく作った。セッションごとの話題の入れ替わり、戻ってきた論点 68、一度だけ出た論点 5 が見える。次：話者の区別、会議向けの抽出プロンプト、本体に入れるかの判断（nishio は現時点で実験的試みと位置づけ）。同日、発言どうしの「後の発言が前の発言を受けたか」（リンコグラフィー）も gemma-4-31B で判定し（898 本、受けた箇所を引用）、楽譜に線として重ねて公開した（[[meeting-transcript-score-prance-2026-11-19]]）
 
@@ -168,6 +184,35 @@ sources:
 
 ## Updates
 
+- **11月26日の開発状況**。本体は前日に19本をマージ。残る8本はすべて承認待ちで、研究会からの意見検索（#1270）など4本は競合なし。輪郭の2案（#1260・#1271）はブラウザ版 #14 と併せて既定表示を判断する。
+  ブラウザ版では初回ガイドと検索結果からの原文表示が入った。v5に向けて公開JSON仕様の告知と貢献者一覧が残る。[[current-status-2026-11-26]]
+
+- **本体の散布図で輪郭を調整（2026-11-25、進行中 PR [#1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271)、`codex/scatter-hull-clipping-prototype`）**。「全体」「詳細クラスタ」で、凸包の重なりに片側の切り抜き・直線分割・局所ボロノイを適用する。通常レポートで表示と切り替えを確認した。
+  公開ビューアのビルド、Jest、E2E が通過。次は本体 PR のメンテナー承認と本人による CLA 同意、独立したブラウザ版の対応。[[scatter-cluster-contours-2026-11-25]]。[Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259)
+
+- **輪郭の残存部をボロノイで分ける試作（2026-11-25、ローカル `codex/scatter-hull-clipping-prototype` / `668d5fb0`）**。9,568 点の 2 例で直線分割後の 6 組・4 組がすべて解消。1 組で分割に使った点は最大 223 点。
+  追加の輪郭計算はデスクトップで約 78〜101 ms、幅 390px・CPU 4 倍スロットリングで約 311〜424 ms。次はモバイル実機での負荷と輪郭の事前計算・再利用を確認する。[[scatter-cluster-contours-2026-11-25]]
+
+- **凸包の解消箇所と残存箇所の拡大比較（2026-11-25、ローカル試作 `6c7039f3`）**。元の重なりを点線、試作で残った範囲を灰色で示し、同じ範囲と倍率で左右比較できる。
+  9,568 点の 2 例で全 19 組を Chromium 確認。同梱例で残った 6 組はすべて、処理後も重なった部分の点を一本の直線で分けられなかった。[[scatter-cluster-contours-2026-11-25]]
+
+- **凸包の重なりを切る試作（2026-11-25、ローカル `codex/scatter-hull-clipping-prototype` / `7ef9f80a`）**。9,568 点の同じ座標に対する 2 例で、重なる組が 12→6 と 7→4。
+  輪郭生成と初回描画の合計の中央値はデスクトップで +7〜21 ms、幅 390px・CPU 4 倍スロットリングで +33〜67 ms。次は実機での負荷と、分けられない重なりの扱い。[[scatter-cluster-contours-2026-11-25]]
+
+- 2026-11-25。舞鶴市の公開レポートで、公共交通の16件から運賃と増便を求める抽出意見を1件までたどり、Wikiの入口に操作例を載せた。次は初見の読者が要約から個別意見へ自力で進めるかを確かめる。[[maizuru-report-walkthrough-2026-11-25]]
+
+- **凸包が重なる部分だけを切る案（2026-11-25、設計と試算）**。同梱 3 例の最上位で重複する 24 組のうち、片側を削れるのは 3 組、両方に点があり重なりの中を直線で分けられるのは 11 組。
+  次は複数の切り抜き後に残る重複、点の包含、ブラウザの負荷を確認する。[[scatter-cluster-contours-2026-11-25]]
+
+- **散布図の輪郭と過去の試作（2026-11-25、採用判断は保留）**。2025 年に凹包・半径による輪郭の試作と、共有境界を作るボロノイ案が出ていた。
+  大量点でのモバイル負荷が論点。次は過去の計測条件を確認し、必要なら現行の凸包と幾何計算・描画の負荷を比較する。[[scatter-cluster-contours-2026-11-25]]
+
+- **散布図の輪郭の再検討（2026-11-25、設計案）**。輪郭の初期非表示案を取り下げ、点の周囲に範囲を限ったボロノイ領域をクラスタごとに結合する案を整理した。
+  くびれ・飛び地・混在を合成データで比較。次は距離上限と輪郭の読みやすさを公開レポートで確認する。[[scatter-cluster-contours-2026-11-25]]
+
+- **散布図の輪郭の重なり（2026-11-25、進行中 [本体 PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260)・[ブラウザ版 PR #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14)、両方とも `codex/issue-1259-hide-scatter-outlines`）**。[#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) で、本体とブラウザ版の通常レポートに残る初期表示を見直した。
+  両 PR とも輪郭を初期表示で隠し、既存の表示設定でオンにできる。Chromium で検証済み。次は両 PR のレビューと反映確認。[[slack-municipal-workshop-issues-2026-11-18]]
+
 - **再現済みの不具合2件を修正（2026-11-25 11:50 JST 確認）**。[#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は旧設定辞書向けの回帰テスト2件が通り、`main` の `14ff24ce` に反映済み。
   [#1248](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1248) は `codex/polis-import` の `8b346f07` で、履歴から1人分を除いても234人を表示できた。CI通過後にドラフトに戻し、CLIで先に使い勝手を見る。[[umap-seed-history]] [[polis-export-input-2026-11-25]]
 
@@ -184,8 +229,8 @@ sources:
 - **サーバレス版独自の機能（2026-11-25、調査済み）**。両版の main を比較し、ポンチ絵生成・PowerPoint 書き出し・対話的な再クラスタリング・賛否スペクトラム・ブラウザ内モデルを確認した。
   ポンチ絵は通常レポートと賛否スペクトラムで作成でき、通常レポートのサンプルで生成済みの画像を見られる。[[serverless-implementation-2026-11-24]]
 
-- **階層の末端で元コメントを開けるようにした（2026-11-25、進行中の通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258)）**。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を、階層図の詳細欄と階層リストに追加した。
-  同じ原文を折りたたみで1か所ずつ読めることと、非公開・本文欠落の案内を確認した。次はレビュー。[[issue-56-original-comments-opt-in-2026-10-29]]
+- **階層の末端で元コメントを開けるようにした（2026-11-25、通常 PR [#1258](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1258) は 11-25 に main 済み）**。[#250](https://github.com/digitaldemocracy2030/kouchou-ai/issues/250) の原文表示を、階層図の詳細欄と階層リストに追加した。
+  同じ原文を折りたたみで1か所ずつ読めることと、非公開・本文欠落の案内を確認した。11-25 に main へ merge。[[issue-56-original-comments-opt-in-2026-10-29]]
 
 - **乱数シード省略時の互換性を修正（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから既存の設定辞書を直接渡し、シード未指定でも階層クラスタリングと LLM 直接グルーピングの両方でクラスタCSVが得られることを確認した。
   修正 `b5bfbfd2` をPRに反映。analysis-core は998件成功、1件スキップ。次は修正後コミットのレビューと必須承認の確認。[[umap-seed-history]]
@@ -196,14 +241,14 @@ sources:
 - **乱数シード指定の独立レビュー（2026-11-25、進行中 [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) / `codex/issue-513-clustering-seed`）**。Pythonから辞書を直接渡す既存の呼び出しで、シード未指定のまま現行mainは成功し、PR版は設定エラーで停止した。
   次はシード省略時に従来通り実行できるようにし、直接呼び出す経路の回帰テストを追加する。[[umap-seed-history]]
 
-- **濃い意見ビューに背景点を追加（2026-11-25、進行中の通常 PR [#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256)）**。[#638](https://github.com/digitaldemocracy2030/kouchou-ai/issues/638) に対応し、濃いグループ外の点を薄い灰色にし、グループ名を図の下の凡例に表示した。
+- **濃い意見ビューに背景点を追加（2026-11-25、通常 PR [#1256](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1256) は 11-25 に main 済み）**。[#638](https://github.com/digitaldemocracy2030/kouchou-ai/issues/638) に対応し、濃いグループ外の点を薄い灰色にし、グループ名を図の下の凡例に表示した。
   Chromium で色付き3点・灰色9点と、凡例と描画が重ならないことを確認。次はレビュー。[[issue-backlog-audit-2026-10-28]]
 
-- **ブラウザ版の初回ガイドと閲覧導線（2026-11-25、進行中の [ドラフトPR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13)）**。設定なしでサンプルを見る入口と自分のCSVを分析する入口を示し、結果ではタイトルと問いを先に置いた。
+- **ブラウザ版の初回ガイドと閲覧導線（2026-11-25、main 反映済みの [PR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13)）**。設定なしでサンプルを見る入口と自分のCSVを分析する入口を示し、結果ではタイトルと問いを先に置いた。
   初回設定には、手持ちのキーを使う場合、新しく用意する場合、キーなしで試す場合の選び方を表示した。Claude・OpenAI・Gemini NanoでCSV選択までの遷移を模擬応答で確認した。次は初見の利用者の操作を確認する。[[serverless-onboarding-2026-11-25]]
   次の初回導線の設計に使う判断は [[serverless-product-direction-2026-09-08]] に整理した。
 
-- **CLIでクラスタリングの乱数シードを指定（2026-11-25、進行中の通常 PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254)）**。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) を受け、保存済みの埋め込みから座標とクラスタを比較する際にシードを選べるようにした。
+- **CLIでクラスタリングの乱数シードを指定（2026-11-25、通常 PR [#1254](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1254) は 11-25 に main 済み）**。[#513](https://github.com/digitaldemocracy2030/kouchou-ai/issues/513) を受け、保存済みの埋め込みから座標とクラスタを比較する際にシードを選べるようにした。
   同じ30件とシードで出力 CSV が一致し、設定が実行記録に残ることを確認。次は PR の確認。[[umap-seed-history]]
 
 - **解析結果を既存サービスに埋め込むガイド（2026-11-25）**。公開用 JSON から静的ビューアを組み立て、iframe 内で階層リストとツリーマップを切り替えた。同じ JSON でカタログの階層リストも表示できた。
@@ -212,7 +257,8 @@ sources:
 - **狭い画面での散布図を修正（2026-11-25、進行中のドラフト PR [#1252](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1252)）**。[#121](https://github.com/digitaldemocracy2030/kouchou-ai/issues/121) で提案されたラベルの初期非表示を幅600px以下に適用し、通常の散布図の高さを横幅に合わせた。
   幅390pxのChromiumで356×500pxから356×356pxになることと、ラベルの選択が全画面にも引き継がれることを確認。次は PR の確認。[[issue-backlog-audit-2026-10-28]]
 
-- **可視化プラグインの契約（2026-11-25、進行中 [#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)）**。基盤は CI 通過・必須レビュー待ち。[#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) に採点内訳と選択維持の修正、[#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) に表示レイアウトの調整を反映した。統合枝で6種類の切替、絞り込み0件、旧レポート・欠損データを Chrome で確認。[[optional-visualization-plugins-2026-11-25]]
+- **可視化プラグインの契約（2026-11-25、[#1250](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1250)・[#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) は 11-25 に main 済み）**。ID 衝突を拒否し、レポートが許可した利用可能なビューだけを選ぶ規則を Lean と TypeScript の 480 件で確認。基盤 CI が通過。ローカル統合枝で階層図・対立軸・任意ビューの共存と対立軸の修正を確認した。次は基盤を先に取り込み、個別 PR へ反映する。[[optional-visualization-plugins-2026-11-25]]
+  [#1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) に採点内訳と選択維持の修正、[#1244](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1244) に表示レイアウトの調整を反映した。統合枝で6種類の切替、絞り込み0件、旧レポート・欠損データを Chrome で確認。[[optional-visualization-plugins-2026-11-25]]
 
 - **マンダラートと付箋のWeb可視化（2026-11-25、ローカル試作 `codex/optional-report-views` / `47bb3ba2`）**。管理画面で有効にした表示を読者が選び、既存レポートの木や座標から意見を読む。PC幅・スマートフォン幅のChromeで切替を確認。次は実利用での読みやすさを確かめる。[[optional-visualization-plugins-2026-11-25]]
 
@@ -237,6 +283,14 @@ sources:
 - **Polisエクスポートの取り込み（2026-11-25、調査済み）**。`comments.csv` は本体の管理画面・CLIとブラウザ版で既存のCSV入力を使える。同梱342件で入力を確認した。投票履歴や参加者グループの専用連携はない。[[polis-export-input-2026-11-25]]
 
 - **DivCon の Web 可視化プラグイン（2026-11-25、PR 提出済み）**。[本体 PR #1249](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1249) で、既存クラスタから事前計算した対立軸へ進む表示を提案した。通常のレポート API で確認した 4 クラスタ・12 軸と、データの添付手順を PR に記載。次は CI と採用判断。[[divcon-view-user-stories]]
+
+- 2026-11-25（公開JSONの共通テスト、進行中）: Python本体の公開JSONをブラウザ版で再クラスタリングして書き出し、出典・入力件数・意見属性の保持を4ケースで検査する [ブラウザ版 #12](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/12) を作成した。
+  現行mainと進行中の出典PR 2本を組み合わせた構成で追加ケースが通過し、#12 の共通契約CIとブラウザ版ビルドも通過した。[[component-boundary-retrospective-2026-11-25]]
+
+- 2026-11-25（大リファクタリングの振り返り）: 抽出・埋め込みの再利用で分析手法を比較でき、公開JSONを Python とブラウザ版で扱えるようになった。
+  次に明文化する候補は、実際に受け渡す結果の出典・件数・属性と、再利用する工程の再計算条件。[[component-boundary-retrospective-2026-11-25]]
+
+- **DivCon の対立軸発見（2026-11-25、調査済み）**。話題ごとに最大 500 件を LLM に渡して候補軸を生成し、その後に全件を採点する。少数側がサンプルから落ちたときの軸の見落としが、検証する際の論点。[[divcon-view-user-stories]]
 
 - **多対多出典の旧数値ID修正（2026-11-25、進行中）**。[本体 #1246](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1246) で整数表記と指数表記の違いをLean仕様に保持し、[org版 #11](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/11) で生JSONの共通差分検査を追加した。次は本体承認とマージ。[[issue-1156-opinion-comment-contract-2026-11-25]]
 
@@ -282,7 +336,7 @@ sources:
   正常JSONの本文中のthinkタグやバッククォートが消える例、JSON再分析で年代が消え、数値スコアが初出の文字列値に揃い、コメント数が5→0になる例を再現。前回の検証範囲外だった受け渡し後の経路。
   次はパーサの本文保持と、公開JSONの属性・件数・来歴の保持。原文保存・分母の表示・実行方法の表示・指定値の扱いはその後に整理する。
 - 2026-11-24（未解決 Issue の調査）: 未解決 70 件と進行中 PR 7 本から候補を絞り、CLI の HTML 出力設定 [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の不具合を両分析モードで再現。課金案内 [#292](https://github.com/digitaldemocracy2030/kouchou-ai/issues/292) の残りは管理画面からのリンク 2 か所。
-  次は #954 の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
+  次は [#954](https://github.com/digitaldemocracy2030/kouchou-ai/issues/954) の設定と HTML 出力をつなぐ修正か、小さい差分で進められる Copilot の索引 [#445](https://github.com/digitaldemocracy2030/kouchou-ai/issues/445)。詳細は [[issue-resolution-candidates-2026-11-24]]。
 
 - 2026-11-24（serverless main反映）: org [PR #2](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/2) は、nishioの承認と最終CI全成功を確認してsquash merge済み（`2341235`）。回答対応・ward2・失敗復帰・元コメントの既定OFFと公開JSON/HTMLがmainに入った。
   main反映後のCIも成功。上のPR #2進行中・ward修正判断待ちは更新前の記録。残る差10項目と実LLM品質、本体docsの入口の扱いは別に見る（[[serverless-implementation-2026-11-24]]）。

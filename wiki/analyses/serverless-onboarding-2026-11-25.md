@@ -38,3 +38,4 @@ sources:
 - 2026-11-25。通常設定の「永続化を要求する」は「保存データの自動削除を防ぐ」に変更し、端末の空き容量不足による自動削除を防ぐようブラウザに頼むと短く説明した。Chromiumでボタンと説明の対応を確認した。
 - 2026-11-25。初回専用画面はAIを未選択の状態で開く。OpenAI・Claude・Grok・OpenRouterでは選んだサービスのキーを入力する。対応するChromeのGemini Nanoではキー欄が出ない。チャット専用サービスとGemini Nanoは意見の類似度をブラウザ内で計算するため、もう一つのAPIキーは不要。OpenAI・Claude・Gemini Nanoの構成を模擬応答で確認した。
 - 2026-11-25。初回ガイドでサンプルを最初のおすすめとして示した。自分のCSVを分析する人には、既存のAPIキーを使う場合、新しく作るならOpenAI、キーなしで試すなら対応するChromeのGemini NanoをAI選択欄の直前に案内した。Chromiumで案内と操作の位置を確認した。
+- 2026-11-25 10:52 JST。[ブラウザ版 PR #13](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/13) が main にマージされた（`14a547d`）。
