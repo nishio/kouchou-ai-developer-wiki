@@ -3,6 +3,12 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-28 03:57] filing-back | 定期メンテナンス（catchup）の初回：現在地を 11-28 時点で観測
+
+- `skills/catchup/SKILL.md` の手順で初めて回した。[[current-status-2026-11-28]] を作り、[[current-status-2026-11-26]] を superseded にした
+- 11-27 に本体 PR 4 本が main 済み、残る 5 本は競合なし・承認待ち。研究会の運営者の回答を [[municipal-workshop-issues-triage-2026-11-24]] に、Slack の続きを [[serverless-read-compatibility-contract-2026-11-26]] に、輪郭の一本化を [[scatter-cluster-contours-2026-11-25]] に追記
+- Dependabot の open alert が 30 件に増えていて対応 Issue・PR が無いことを [[security-maintenance]] と [[meeting-report-draft]] の議題候補に書いた
+
 ## [2026-11-27 18:07] filing-back | open PR 4 本を main に入れ、#1203・#1207 を PR にした
 
 - `#1271`・`#1270`・`#1268`・`#1267` を 11-27 に main へ（CodeRabbit の指摘を直してから）。`#1266`・`#1252`・`#1248` は修正・競合解消済みで、レビューか CI 待ち
@@ -749,15 +755,3 @@
 - どちらも CI 成功・指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `ca485200`・`c56eddcf`）
 - #1202 の `Closes #471` で #471 が閉じた。根拠にした検証依頼の #1194・#1195 も、katsushi2441 へのお礼と反映先をコメントして閉じた
 - 更新: [[meeting-report-draft]]、[[team-mirai-local-llm-quality-2026-11-10]]、[[domestic-data-residency-options-2026-11-10]]
-
-## [2026-11-20 23:15] filing-back | #1219 を main に入れ、#994 が閉じて 11-02 の棚卸しが全件片付いた
-
-- PR #1219（LLM 直接グルーピングの段も全体の model を使う）を merge（`600479b7`）、#994 も close
-- 11-02 の棚卸しで扱いを決めた Issue はこれで全件処理済み。残るのは管理画面での動作確認だけ
-- 更新: [[llm-grouping-supervised-classification]]、[[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
-
-## [2026-11-20 19:00] filing-back | 棚卸しの本人判断 3 件を処理し、#994 の確認で見つかった不具合を PR #1219 にした
-
-- #370・#879 を close（経緯は #345、時間の軸の試作と論点は #1214 へ）
-- #994 を実際の LLM で最後まで回したら、LLM 直接グルーピングの段だけが `gpt-4o-mini` に固定されていて失敗 → PR #1219（未 merge、merge で #994 も閉じる）。管理画面の同じモードにも効く不具合
-- 更新: [[llm-grouping-supervised-classification]]、[[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]

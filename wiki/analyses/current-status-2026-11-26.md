@@ -6,6 +6,8 @@ sources:
   - source-code.md
   - slack-logs-repository.md
   - meeting-minutes.md
+status: superseded
+superseded_by: current-status-2026-11-28
 ---
 
 11月26日16時台（JST）に本体の main と GitHub を照合した。11月25日に19本のPRが main に入り、LLM 直接グルーピングの件数指定・全件一括、階層リストからの元コメント表示、事前計算済みの対立軸を読むビューが加わった。最新の安定版は10月26日公開の v4.2.0。[[source-code]]より。[確認した本体コミット](https://github.com/digitaldemocracy2030/kouchou-ai/commit/efbd0f285cbc92e72c7c3f8d88924841d8ec5e1b)・[最新安定版](https://github.com/digitaldemocracy2030/kouchou-ai/releases/tag/v4.2.0)

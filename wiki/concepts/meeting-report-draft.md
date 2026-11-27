@@ -149,6 +149,8 @@ sources:
 
 ## 議題候補（次回定例向け）
 
+- **Dependabot の open alert が30件（2026-11-28 観測、判断待ち）**。11-08 に修正版の無い1件まで減らした後、11-17〜11-27 に30件が新しく出た（すべて npm。11-08 の1件はもう open ではない）。「Dependabot Updates」は11-27も失敗していて、自動の更新 PR は出ていない。どの順に誰が塞ぐかを決める。詳細は公開境界により書かない。[[security-maintenance]]・[[current-status-2026-11-28]]
+
 - **書籍の発売までに整えたい読者体験（2026-11-25、提案）**。公式ページから設定なしで事例を開き、論点と根拠の意見をたどれる状態を優先する。次は初見の人にスマホで試してもらい、ブラウザ版のCSV分析を実AIで通す。v5の公開は回帰確認を条件に進める。[[book-release-reader-readiness-2026-11-25]]
   書籍Web版はDD2030トップへリンクし、公式のブロードリスニング総合ページは書籍と広聴AIの両方を案内している。紙版の掲載先は公開資料で確認できていない。
   書籍Web版側で導線を足す場合の実装先は [lukec/broad-listening-book-site](https://github.com/lukec/broad-listening-book-site)。[[broad-listening-book]]
@@ -189,6 +191,9 @@ sources:
 - **v5.0 の「これまでの貢献者」一覧（11-11、Issue [#1199](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1199)、M5）**: nishio の発案。commit・PR だけでなく、デザイン、実験・動作確認のフィードバック（[#471](https://github.com/digitaldemocracy2030/kouchou-ai/issues/471) の実測など）、使ってみた事例の共有（[#564](https://github.com/digitaldemocracy2030/kouchou-ai/issues/564)）、Issue での報告・質問も貢献として載せる。決めたいのは、どこまでを貢献とするか、置き場所（`CONTRIBUTORS.md` / docs / リリースノート）、表記、GitHub の外の貢献者の候補を誰が挙げるか。GitHub の外での貢献は本人の同意を取ってから載せる。あわせて M5 の期限を 2026-12-31 に変えた（07-01 のまま過ぎていた）
 
 ## Updates
+
+- **11月28日の開発状況**。11-27 に4本（意見検索 #1270、輪郭の分割 #1271、PowerPoint #1268、切り直しと共有 #1267）が main 済み。残る5本は競合なし・承認待ち。研究会の運営者がワークショップ由来の Issue に回答し、#1203・#1207 は今の PR の形で足りる見込み。
+  Dependabot の open alert が30件に増えていて、対応 Issue・PR はまだ無い。[[current-status-2026-11-28]]
 
 - **11月26日の開発状況**。本体は前日に19本をマージ。残る8本はすべて承認待ちで、研究会からの意見検索（#1270）など4本は競合なし。輪郭の2案（#1260・#1271）はブラウザ版 #14 と併せて既定表示を判断する。
   ブラウザ版では初回ガイドと検索結果からの原文表示が入った。v5に向けて公開JSON仕様の告知と貢献者一覧が残る。[[current-status-2026-11-26]]

@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-28 03:57	filing-back	定期メンテナンス（catchup）の初回：現在地を 11-28 時点で観測
 2026-11-27 18:07	filing-back	open PR 4 本を main に入れ、#1203・#1207 を PR にした
 2026-11-27 18:06	filing-back	運用ルールを AGENTS.md に移し、現在地の観測を定期メンテナンスとして手順化
 2026-11-27 18:02	filing-back	機能設計の方針を 1 ページにまとめた

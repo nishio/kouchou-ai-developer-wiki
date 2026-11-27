@@ -115,3 +115,7 @@ sources:
 - 輪郭を表示したまま分割する方針を採用候補にした。同じ座標で異なるクラスタ分けを比べると、分割対象は全9,568点のうち1組あたり最大223点に絞れた。輪郭計算は直線分割までに比べ、開発版のデスクトップで約78〜101 ms、CPUを遅くした条件で約311〜424 ms増えた。ブラウザ版へ移すときも、重なりの残存数・元の点の包含・輪郭計算と描画の時間を個別に確認する。[実装と計測条件](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271)
 - 2026-11-25 16:32 JST に本体 PR の先頭 `6d16e377` を確認。公開ビューアのビルド、Jest、E2E を含むチェックは14件通過、1件スキップ。本体 PR は未マージで、通常マージにはメンテナーの承認が1件必要。自動マージは無効で、CLA の同意欄は未チェック。管理者権限を使う場合は明示の指示を確認する。[[contributing]]。[PR #1271 のチェック結果](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271/checks)
 - ブラウザ版は通常レポートの散布図が独立実装のため、輪郭分割の実装と検証が残る。本体 PR がマージされた時点で本体側の反映を記録し、ブラウザ版の残件を引き継ぐ。[Issue #1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259)
+
+### 2026-11-28 本体は分割案に一本化
+
+- 初期表示で隠す [PR #1260](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1260) は 11-26 に閉じられ、重なりを分割する [PR #1271](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1271) が 11-27 に main に入った。ブラウザ版の隠す案（[kouchou-ai-serverless #14](https://github.com/digitaldemocracy2030/kouchou-ai-serverless/pull/14)）は開いたままで、[#1259](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1259) で追う。モバイル実機での負荷は未確認のまま。[[current-status-2026-11-28]]
