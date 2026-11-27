@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-27 18:07	filing-back	open PR 4 本を main に入れ、#1203・#1207 を PR にした
 2026-11-27 18:06	filing-back	運用ルールを AGENTS.md に移し、現在地の観測を定期メンテナンスとして手順化
 2026-11-27 18:02	filing-back	機能設計の方針を 1 ページにまとめた
 2026-11-27 17:59	filing-back	AI への訂正を手元の記憶から CLAUDE.md と wiki に移した

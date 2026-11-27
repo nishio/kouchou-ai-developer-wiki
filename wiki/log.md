@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-27 18:07] filing-back | open PR 4 本を main に入れ、#1203・#1207 を PR にした
+
+- `#1271`・`#1270`・`#1268`・`#1267` を 11-27 に main へ（CodeRabbit の指摘を直してから）。`#1266`・`#1252`・`#1248` は修正・競合解消済みで、レビューか CI 待ち
+- `#1203` は PR `#1272`、`#1207` は PR `#1273`。区画クリックの要否は `#1207` で起票者に確認中。[[meeting-report-draft]]
+
 ## [2026-11-27 18:06] filing-back | 運用ルールを AGENTS.md に移し、現在地の観測を定期メンテナンスとして手順化
 
 - 運用ルールの正本を `AGENTS.md` にした（`CLAUDE.md` は `@AGENTS.md` の 1 行）。Codex など Claude Code 以外のエージェントも同じルールを読む
