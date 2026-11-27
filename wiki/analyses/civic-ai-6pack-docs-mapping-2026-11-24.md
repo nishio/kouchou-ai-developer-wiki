@@ -59,3 +59,4 @@ PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234)（2026-
 ## Updates
 
 - 2026-11-24 にドキュメントのビルドが通り、PR [#1234](https://github.com/digitaldemocracy2030/kouchou-ai/pull/1234) を `main`（`0db5f614`）にマージした。大量投稿への機能面の対応は [#345](https://github.com/digitaldemocracy2030/kouchou-ai/issues/345) で追跡する。
+- 2026-11-27：同じ civic.ai の「Kami」（人が確かめ・直し・止める AI の単位）の骨組みを、この wiki 自身の運用に当てた。[[kami-pattern-for-this-wiki-2026-11-27]]
