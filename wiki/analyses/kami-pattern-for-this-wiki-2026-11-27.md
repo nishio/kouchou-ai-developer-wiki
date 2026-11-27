@@ -101,3 +101,4 @@ Kami の作り方のページは「メモ 3 つは持ち運べるが、日々の
 ## Updates
 
 - 2026-11-27：応用案 1 を入れた。`scripts/check_public_boundary.py` と push 前の git hook（`scripts/hooks/pre-push`）が、push する commit で足した行と commit メッセージを検査する。具体的な語は gitignored の `raw/boundary/denylist.tsv` に置き、期限つきの行は期限を過ぎても止めたまま知らせる（公開してよいかは人が決める）。検査はこの repo の push だけで、本体の Issue・PR・commit メッセージは引き続き人が守る。入れた時点の wiki 全体と直近 200 commit は検出 0 件
+- 2026-11-27：応用案 2 を進めた。作業機の手元の記憶にあった訂正のうち、どの環境のエージェントにも効くもの（wiki の書き方・log.md のリンク・共有 clone での commit・subagent への委譲・merge の一括指示の範囲・検証のお願い Issue・実験の基準入力・計画に人の追加を前提にしない、など）を CLAUDE.md に移した。kouchou-ai のテストの回し方と mock の注意は [[testing]]、脆弱性の告知の書き方は [[security-maintenance]] に移した。個人の作業ペースや非公開の環境・資料に関わるものは手元に残した

@@ -38,6 +38,9 @@ kouchou-ai-developer-wiki/
 - 主張には出典を明記：`[[source名]]より`
 - 矛盾・未解決の論点は「## Open Questions」セクションで明示
 - 更新は上書きせず「## Updates」で追記
+- 書く前に想定読者を決める。公開サイトの読者は背景を知らないので、専門用語や内輪の前提に寄りかからない。どう書いたか（編集経緯・トーン調整）は本文・リンク・log に残さず、commit メッセージに留める
+- kouchou-ai の PR / Issue 番号は `[#NNN](https://github.com/digitaldemocracy2030/kouchou-ai/issues/NNN)` のリンクで書く。素の `#NNN` は Quartz がタグとして描画する。まとめて直す時は `python3 scripts/linkify_github_refs.py`（確認後 `--apply`）。log.md と frontmatter の `summary` には使わない
+- 地の文に `<base>` のような山括弧の語を書くと、Quartz が HTML タグとして出力して CI（check_pages_links）が落ちる。山括弧を含む語はバッククォートで囲む
 
 ### 公開境界
 - Dependabot alerts の具体的な脆弱性詳細は公開 wiki に書かない。公開 wiki には、対応 issue / PR / 優先度判断 / 担当確認だけを残す
@@ -47,6 +50,7 @@ kouchou-ai-developer-wiki/
   - 鍵の形・Azure の host 名の形などの一般的な型はスクリプトに書く。語そのものが秘密のもの（デプロイ先の実名、猶予期間中の脆弱性の話題）は gitignored の `raw/boundary/denylist.tsv` に書く
   - 脆弱性の猶予期間のように期限つきで伏せる時は、denylist に `<公開予定日>\t<語>\t<説明>` を足す。期限を過ぎても止めたまま知らせる。公開してよいかは人が決め、決まったら行を消す
   - 語の検査で捕まえられない判断（差分を見れば分かってしまう修正 PR を出さない等）と、この repo の外（本体の Issue / PR / commit メッセージ）は引き続き人が守る
+- 既存ページからデプロイ詳細を消す時は、生ログ・health JSON・revision の実 ID・resource サイズの実値行のような生データと個体識別子だけを消す。教訓と機序（`exit 137` = OOM のような一般的な失敗の型、物語の中で数字そのものが教訓になっている値）は残す。逐語版は `raw/deploy-detail-preservation/` に退避し、ページには `## Updates` で記録する
 
 ### 用語ルール
 - `analysis_mode=llm_grouping` や LLM による直接分類・グルーピングの一般名は、`LLM grouping` / `LLM 直接グルーピング` とする
@@ -130,6 +134,7 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - `manifest.json` または対応 source には、`experiment_class`、`baseline_experiment_id`、`factor_under_test`、`fixed_inputs`、`changed_inputs`、`comparison_question` を残す
 - tree generation を比較する時は、tree が変わることで label output も従属的に変わる。したがって labelling process / evidence policy / judge は固定し、変えた要素が tree generation だけだと明記する
 - ラベル品質の人間評価では、単独 label の絶対批評を前提にしない。同じ tree / evidence / 表示文脈から作った複数 label 案を blind A/B で比較し、`A / B / tie / unsure`、confidence、任意の理由タグを保存する。人間には algorithm / process 由来を見せず、A/B の表示順を randomize / counterbalance する。困難な full UI 評価は最初から行わず、`presentation_context` は `label_only`、`sibling_label_set`、`label_with_representatives` に分解する。judge はこの pairwise preference を再現できるかで較正する
+- 公開データにある過去の LLM 出力を基準にする時は、基準が当時見た入力を当時の snapshot と元のコードから組み立てる。live に取り直した入力で比べない（入力の長さの分布を比べ、基準出力が入力のどこに対応するかを数件見て確かめる）。小さいモデルが大きな基準に大差で勝ったら、まず比べ方を疑う。判定の後で出力を作り直したら、判定した出力と公開する出力が一致するかを照合する
 
 ### Index メンテ方針
 
@@ -174,6 +179,9 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 
 - **entry の粒度**: 1 entry の本文は 2-4 行のブレットが目安。詳細は対応する wiki ページに送り、log には「何を / なぜ / 次に何を見るか」だけ残す
 
+- **log.md の `[[...]]`**: 実在するページの stem だけを書く。`lint_wiki.py` は log.md の wikilink を検査しないが、CI（check_pages_links）は log.html の壊れたリンクで deploy 全体を落とす。一般語を強調のつもりで二重括弧にしない
+- **時刻**: 見出しの時刻は推測で書かず、`TZ=Asia/Tokyo date` で取る
+
 ## 運用方針
 
 - ソースは「参考」であり無批判に採用しない
@@ -183,6 +191,8 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - developer-wiki 更新は PR 経由ではなく **`main` 直接 push を基本** にする。CI が必要な変更 (Quartz build / 内部リンク検査) は CI 失敗が出てから fix push する流れで十分
 - コード本体については `work/kouchou-ai/` の local clone を一次参照とし、docs / DeepWiki / meeting minutes は補助線として使う
 - `work/kouchou-ai/` の HEAD は常に `main` を指す。実験ブランチや別 PR ブランチの観察は `git worktree add work/kouchou-ai-<topic> <branch>` で別 worktree に切ること。短時間のコード grep でも `work/kouchou-ai/` 内で `git checkout <other-branch>` して HEAD を動かさない (別セッションが上書きしたり main 復帰し忘れたりして、次の観察で想定外の state にぶつかる事故が起きる)
+- コードの調査を subagent に委譲する時は、`git show origin/main:<path>` で読ませ、`git checkout` を明示的に禁じる（「git を触るな」だけでは共有 clone の HEAD を動かした例がある）。終わったら `work/kouchou-ai/` の HEAD が main か確かめる
+- この developer-wiki の clone は、複数のセッションが同時に main で編集することがある。commit は自分のファイルだけを明示して stage し（`git add -A` しない）、push 後は自分の commit が origin/main に届いたかを確かめる。新しいページへの `[[...]]` は、そのページと同じ commit か、ページより後に push する（参照だけ先に届くと全員の deploy が赤くなる）
 - ただし meeting minutes は stale にしない。コード同様に source 更新前に `raw/meeting_minutes.txt` を取り直す。`txt` export はリンク URL を保持しないことがあるので、根拠に URL 自体が必要な時は `raw/meeting_minutes.html` を補助線として使う
 - Slack の発言を扱う時は、まず `digitaldemocracy2030/slack-logs` 由来の `mirror/` / `raw/` を一次参照とする。`oss_weekly_reporter` は 2026-10-21 週までの週次 AI 要約や GitHub activity と合わせて見る時の補助線として扱う（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）。それ以降の GitHub activity は GitHub の live state を見る。Slack connector の直読みは repository snapshot で足りない時の補助確認に留める
 - 未マージの進行中作業は main に出ないので、現在の論点を整理するページでは open PR 観測を併用する
@@ -191,9 +201,14 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守対象として定期的に確認する。ただし公開 wiki には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す
 - Azure デモ環境などデプロイに関する詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は Google Drive **「広聴AI-Azureデモ環境」** で管理する。公開 wiki では、設計判断・公開可能な課題・対応 issue / PR の粒度に留める
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
+- kouchou-ai の Python テストを docker なしで回す手順と、provider テストの mock の注意（緑でも実 SDK の経路が壊れていることがある）は `wiki/concepts/testing.md` の Updates にある
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `git config core.hooksPath scripts/hooks`（公開境界チェックの有効化）、`work/kouchou-ai/` と `work/slack-logs/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、過去の週次要約が要る時だけ `oss_weekly_reporter` 系データ（2026-10-21 週で凍結）への到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
-- GitHub 上で人に読まれる文面（Issue / PR のタイトル・本文・コメント）は、特段の指示がない限り **日本語をデフォルト** にする
+- 「CI が通ったら merge」のような一括指示は、独立した PR だけに当てはめる。同じ Issue の択一候補（`[選択肢a]` / `[選択肢b]` など）は含めず、どちらにするかを人に確かめる。同じファイルの近い行を触る PR は `git merge-tree --write-tree origin/<a> origin/<b>` で衝突を事前に確かめ、1 本ずつ入れて残りを rebase する。admin merge は、CI・mergeable・未解決の指摘を確かめたうえで、人が実行するコマンドを渡す
+- 自分の環境で確かめられない動作確認（特定の OS・GPU・ローカル LLM・外部サービスなど）は、PR や報告に「未確認」と書いて終わらせず、`[検証のお願い] <何が動くか>` の Issue に切り出す（確かめてほしいことのチェックリスト、結果の書き方、確認済みの範囲を書く）。PR の未確認の行からその Issue へリンクする
+- 戦略や計画に「人を増やす」「判断者を複数にする」のような、他人の参加を前提にした項目を入れない（OSS では人をアサインできない）。かといって「一人で回す」とも書かない。「人間が誰であっても何人であってもボトルネックにならない形」（判断を既定と期限の規則にする、止まっても壊れない自動化、手順を repo に置く）で答える
+- 外部プロジェクトとの関連が見つかったら、まずその枠組みで自分たちの docs を点検して埋める。先方への事例提供・寄稿などの働きかけは、人が判断する
+- GitHub 上で人に読まれる文面（Issue / PR のタイトル・本文・コメント）は、特段の指示がない限り **日本語をデフォルト** にする。人への返答・途中経過・最終報告も日本語で書く（重要な判断を伴う報告ほど）
 - AI エージェントが GitHub Issue の実装に着手する前には、まず assignee の有無を確認する。既に他の assignee がいる issue には原則として着手しない
 - AI エージェントが GitHub Issue の実装に着手する場合は、並行開発を避けるため、先に自分を assignee として assign してから実装・PR 作成へ進む
 - Codex が実装・調査・CI 対応を進めたら、次の定例で人間が読み上げやすいよう `wiki/concepts/meeting-report-draft.md` にも要点を保守する

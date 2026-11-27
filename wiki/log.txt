@@ -3,6 +3,7 @@
 # Format: <YYYY-MM-DD HH:MM>\t<type>\t<title>
 # Regenerate: python3 scripts/refresh_logs.py
 
+2026-11-27 17:59	filing-back	AI への訂正を手元の記憶から CLAUDE.md と wiki に移した
 2026-11-27 17:54	filing-back	公開境界を push 前に機械で検査する
 2026-11-27 17:52	filing-back	Kami の骨組みでこの wiki の運用を点検
 2026-11-26 18:40	filing-back	ブラウザ版の結果をサーバ版で読める約束に両版の互換を絞る方針案

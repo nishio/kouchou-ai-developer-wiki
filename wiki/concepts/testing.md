@@ -121,3 +121,17 @@ sources:
 
 - 証明の対象は、乱数・LLM・ファイル入出力の絡まない純粋な関数に絞る
 - 「スキップしても結果は変わらない」には「工程が実際に読む設定キー ⊆ 再実行の判定キー」が要る。spec の `dependencies.params` を足し引きする時はこの対応を見る
+
+## Updates — 2026-11-27 docker なしで Python テストを回す、mock の形に注意する
+
+**docker なしで回す**（Makefile は `docker compose run` 前提）
+- analysis-core：`cd packages/analysis-core && uv venv --python 3.12 .venv-test && source .venv-test/bin/activate && uv pip install -e ".[clustering]" pytest ruff`。`[clustering]` を入れないと、`hierarchical_clustering` に触れるテストが「optional 'clustering' dependencies」の `RuntimeError` で落ちる。これは環境の問題で、コードの不具合ではない
+- api の単体テスト（例 `tests/services/test_llm.py`）だけを、api 全体の依存を入れずに回すなら `--noconftest -p no:cacheprovider` を付ける（`conftest.py` が fastapi を import するため）
+- ruff の設定（`line-length=120`）はパッケージごとの `pyproject.toml` にあるので、`ruff check` / `ruff format --diff` はパッケージのディレクトリの中で実行する
+- 回帰テストが修正前のコードで落ちることを確かめる時は、直したファイルを退避し、`git checkout origin/main -- <file>` で戻して実行してから、退避したファイルを戻す（共有 clone で `git stash` を使わない）
+
+**緑でも実 SDK の経路が壊れていることがある**
+- provider / SDK を呼ぶコードのテストが、実際の SDK が返さない形で応答を mock していることがある。2026-10-16 のレビューでは、Gemini の埋め込みが毎回例外を出す状態なのにテストは全部通っていた（`embed_content` を SDK が返さない dict で mock していた。修正 PR [#1015](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1015)、[[source-review-findings-2026-10-16]]）
+- mock を信じる前に、lock で固定された版の SDK を入れて実際の戻り値の型を確かめる。mock は `MagicMock` でなく `types.SimpleNamespace` で実物の形に合わせる（`MagicMock` は存在しない属性も作ってしまい、確かめたい分岐を隠す）
+- SDK の中で例外になる経路（OpenAI・Azure の `beta.chat.completions.parse` がスキーマ違反を `ValidationError` で弾き usage が取れない、など）は、`parse` を差し替えると原理的に検出できない。本物の `OpenAI` / `AzureOpenAI` クライアントに `httpx.MockTransport` で HTTP 応答を返すテストなら SDK の実挙動を通せる（[#1128](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1128) → PR [#1154](https://github.com/digitaldemocracy2030/kouchou-ai/issues/1154)）。api と analysis-core では lock の SDK 版が違うので両方で回す
+

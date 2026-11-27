@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-27 17:59] filing-back | AI への訂正を手元の記憶から CLAUDE.md と wiki に移した
+
+- どの環境のエージェントにも効く訂正（wiki の書き方、log.md のリンク、共有 clone での commit、subagent への委譲、merge の一括指示の範囲、検証のお願い Issue、実験の基準入力など）を CLAUDE.md に移した
+- テストの回し方と mock の注意は [[testing]]、脆弱性の告知の書き方は [[security-maintenance]] に追記。[[kami-pattern-for-this-wiki-2026-11-27]] の応用案 2
+
 ## [2026-11-27 17:54] filing-back | 公開境界を push 前に機械で検査する
 
 - `scripts/check_public_boundary.py` と push 前の git hook を追加。鍵の形・Azure の host 名の形と、手元の一覧（期限つきで伏せる語を含む）で、push する commit の追加行とメッセージを止める。期限後も止めたまま知らせる
