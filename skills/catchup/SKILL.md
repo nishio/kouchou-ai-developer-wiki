@@ -21,9 +21,9 @@ wiki の「今どうなっているか」の記述は、放っておくと live 
 ## 1. 一次ソースを最新化する
 
 - 本体：`git -C work/kouchou-ai fetch origin && git -C work/kouchou-ai pull --ff-only`。HEAD が main であることを確かめ、commit を控える
-- ブラウザ版（org fork）：`work/kouchou-ai-serverless-org` があれば同様に
+- ブラウザ版（org fork）：`work/kouchou-ai-serverless` の remote `dd2030`（`digitaldemocracy2030/kouchou-ai-serverless`）を fetch し、`dd2030/main` の commit を控える（`origin` は作者の元 repo）
 - Slack：`git -C work/slack-logs pull --ff-only`。同期時刻を控える
-- 議事録：Google Doc の export で `raw/meeting_minutes.txt` を取り直す（URL 自体が要る時は html も）。取得時刻と先頭見出しを控える
+- 議事録：Google Doc の export で `raw/meeting_minutes.txt` を取り直す（URL 自体が要る時は html も）。Doc の ID は `wiki/sources/meeting-minutes.md` にある。取得時刻と先頭見出しを控える
 
 ## 2. 読む
 
@@ -32,10 +32,10 @@ wiki の「今どうなっているか」の記述は、放っておくと live 
 - **本体 main**：`git -C work/kouchou-ai log --oneline <前回の commit>..origin/main`。最新のタグ・リリース（`gh release list -L 3`）
 - **open PR**：承認待ち・競合・CI・未解決のレビュー指摘・draft を分けて数える。`gh pr list --state open --json number,title,isDraft,mergeable,reviewDecision,statusCheckRollup,updatedAt`
 - **Issue**：新規・更新・close。`gh issue list --state all --search "updated:>=YYYY-MM-DD" --json number,title,state,updatedAt,assignees`
-- **main の CI**：`gh run list --branch main -L 20`。同じ workflow の失敗が続いていないか（Dependabot Updates のように、静かに赤いままのものがある）
-- **Dependabot alerts**：open の件数と、前回から増えた件数だけを見る。脆弱性の具体的な内容は公開 wiki に書かない（`AGENTS.md` の公開境界）
+- **main の CI**：`gh run list --branch main --event push -L 20`（`--event` を付けないと Issue コメントで動く workflow が一覧を埋める）。同じ workflow の失敗が続いていないか。Dependabot Updates のように静かに赤いままのものは `-w "Dependabot Updates"` で別に見る
+- **Dependabot alerts**：open の件数と、前回から増えた件数だけを見る（`gh api "repos/<repo>/dependabot/alerts?state=open&per_page=100"`、`created_at` で前回以降を数える）。前回の件数は前回の current-status か `wiki/concepts/security-maintenance.md` の Updates にある。脆弱性の具体的な内容は公開 wiki に書かない（`AGENTS.md` の公開境界）
 - **ブラウザ版**：org fork の open PR と main の変化
-- **Slack**：`work/slack-logs/mirror/` の前回以降。開発系・アルゴリズム開発系のチャンネルを中心に、決まったこと・頼まれたこと・未回答の質問を拾う。発言者が論点の時だけ user id を解決する
+- **Slack**：`work/slack-logs/mirror/slack/<channel id>.jsonl.gz`（1 行 1 メッセージ、`ts` で前回以降を絞る）。同期時刻は `mirror/sync.json`、user id は `mirror/users.json` の `members`。開発系・アルゴリズム開発系のチャンネルを中心に、決まったこと・頼まれたこと・未回答の質問を拾う。発言者が論点の時だけ user id を解決する
 - **議事録**：先頭見出しが変わっていれば、新しい回を読む
 
 ## 3. 照合して直す
@@ -51,7 +51,7 @@ wiki の「今どうなっているか」の記述は、放っておくと live 
 
 ## 4. 書く
 
-- 新しい `wiki/analyses/current-status-YYYY-MM-DD.md` を作る。形は前回の版に倣う（冒頭の要約、主題ごとの節、「観測範囲」節、Open Questions）。「観測範囲」には本体とブラウザ版の commit、PR を確かめた時刻、Slack の同期時刻と読んだ範囲、議事録の取得時刻と先頭見出しを書く。次回はこれが目印になる
+- 新しい `wiki/analyses/current-status-YYYY-MM-DD.md` を作る。形は前回の版に倣う（冒頭の要約、主題ごとの節、「観測範囲」節、Open Questions）。「観測範囲」には本体とブラウザ版の commit、PR を確かめた時刻、Dependabot の open 件数、Slack の同期時刻と読んだ範囲、議事録の取得時刻と先頭見出しを書く。次回はこれが目印になる
 - 前の版の frontmatter に `status: superseded` と `superseded_by: current-status-YYYY-MM-DD` を足す
 - 新しく人の判断が要る論点は thinking-targets か open-decisions へ、定例で話すことは meeting-report-draft へ
 - `python3 scripts/build_index_txt.py`、log.md に `filing-back` の entry、`python3 scripts/refresh_logs.py`、`python3 scripts/lint_wiki.py`。自分のファイルだけを stage して main に push し、origin/main への到達を確かめる

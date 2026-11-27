@@ -64,7 +64,7 @@ Dependabot の未対応アラートは30件。11月8日に対応を済ませた�
 
 ## 観測範囲
 
-- 本体は main `77cb3f82`、ブラウザ版は org 版 main `ec0c88a`。PR・Issue・CI・Dependabot の状態は、11月28日03:54〜03:56 JST に GitHub で確認した。[[source-code]]より
+- 本体は main `77cb3f82`、ブラウザ版は org 版 main `ec0c88a`。PR・Issue・CI・Dependabot の状態は、11月28日03:54〜03:56 JST に GitHub で確認した。Dependabot の open は30件。[[source-code]]より
 - Slack は11月27日16:53 JST 同期のミラーで、11月26日06:00 JST 以降の全チャンネルを11月28日に読んだ。[[slack-logs-repository]]より
 - 議事録は11月28日03:55 JST に txt を取り直した。前回の取得分と同じで、先頭は引き続き7月27日だった。[[meeting-minutes]]より
 
