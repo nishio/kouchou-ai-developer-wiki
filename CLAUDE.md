@@ -25,7 +25,9 @@ kouchou-ai-developer-wiki/
     ├── lint_wiki.py         # wikiの健全性チェック
     ├── build_index_txt.py   # index.txt を frontmatter から regenerate
     ├── refresh_logs.py      # log.txt と log.md（直近 7 日）を再生成
-    └── check_pages_links.py # 公開サイトの内部リンク検査（deploy-pages.yml の CI gate）
+    ├── check_pages_links.py # 公開サイトの内部リンク検査（deploy-pages.yml の CI gate）
+    ├── check_public_boundary.py # 公開境界チェック（push 前に secret・デプロイ詳細・伏せている語を止める）
+    └── hooks/pre-push       # 上を push 前に走らせる git hook（`git config core.hooksPath scripts/hooks` で有効化）
 ```
 
 ## ページルール
@@ -41,6 +43,10 @@ kouchou-ai-developer-wiki/
 - Dependabot alerts の具体的な脆弱性詳細は公開 wiki に書かない。公開 wiki には、対応 issue / PR / 優先度判断 / 担当確認だけを残す
 - デプロイに関する詳細は公開 wiki に書かない。公開 wiki に残すのは設計判断・公開可能な課題・PR/issue の粒度までとし、実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、手順、secret / access 周辺の情報は載せない
 - デプロイ詳細の一次置き場は Google Drive の **「広聴AI-Azureデモ環境」**。アクセス権は大木・西尾・小野(moai)
+- 公開境界は指示だけでなく `scripts/check_public_boundary.py` でも検査する。CI は push 後に走り、その時点で GitHub 上は公開済みなので、検査は push 前の git hook（`scripts/hooks/pre-push`）で行う。push する commit で足した行と commit メッセージを見る（後の commit で消した語も履歴に残るので止める）
+  - 鍵の形・Azure の host 名の形などの一般的な型はスクリプトに書く。語そのものが秘密のもの（デプロイ先の実名、猶予期間中の脆弱性の話題）は gitignored の `raw/boundary/denylist.tsv` に書く
+  - 脆弱性の猶予期間のように期限つきで伏せる時は、denylist に `<公開予定日>\t<語>\t<説明>` を足す。期限を過ぎても止めたまま知らせる。公開してよいかは人が決め、決まったら行を消す
+  - 語の検査で捕まえられない判断（差分を見れば分かってしまう修正 PR を出さない等）と、この repo の外（本体の Issue / PR / commit メッセージ）は引き続き人が守る
 
 ### 用語ルール
 - `analysis_mode=llm_grouping` や LLM による直接分類・グルーピングの一般名は、`LLM grouping` / `LLM 直接グルーピング` とする
@@ -185,7 +191,7 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - Dependabot alerts (`https://github.com/digitaldemocracy2030/kouchou-ai/security/dependabot`) は main / open PR / issue だけでは拾えない GitHub live state なので、security / dependency の保守対象として定期的に確認する。ただし公開 wiki には脆弱性詳細を転記せず、対応 issue / PR / 優先度判断だけを残す
 - Azure デモ環境などデプロイに関する詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は Google Drive **「広聴AI-Azureデモ環境」** で管理する。公開 wiki では、設計判断・公開可能な課題・対応 issue / PR の粒度に留める
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
-- この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `work/kouchou-ai/` と `work/slack-logs/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、過去の週次要約が要る時だけ `oss_weekly_reporter` 系データ（2026-10-21 週で凍結）への到達を先に整える
+- この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `git config core.hooksPath scripts/hooks`（公開境界チェックの有効化）、`work/kouchou-ai/` と `work/slack-logs/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、過去の週次要約が要る時だけ `oss_weekly_reporter` 系データ（2026-10-21 週で凍結）への到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
 - GitHub 上で人に読まれる文面（Issue / PR のタイトル・本文・コメント）は、特段の指示がない限り **日本語をデフォルト** にする
 - AI エージェントが GitHub Issue の実装に着手する前には、まず assignee の有無を確認する。既に他の assignee がいる issue には原則として着手しない

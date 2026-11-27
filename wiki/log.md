@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-27 17:54] filing-back | 公開境界を push 前に機械で検査する
+
+- `scripts/check_public_boundary.py` と push 前の git hook を追加。鍵の形・Azure の host 名の形と、手元の一覧（期限つきで伏せる語を含む）で、push する commit の追加行とメッセージを止める。期限後も止めたまま知らせる
+- 有効化は `git config core.hooksPath scripts/hooks`（CLAUDE.md のオンボーディングに追記）。[[kami-pattern-for-this-wiki-2026-11-27]]
+
 ## [2026-11-27 17:52] filing-back | Kami の骨組みでこの wiki の運用を点検
 
 - civic.ai の Kami（既存モデル＋指示＋メモを人が確かめ・直し・止める単位）を wiki の保守に当てた。出典必須と書き戻しは重なる。公開境界が指示だけ、訂正が作業機の手元だけ、モデル更新後の確認なし、読者の異議の経路なし、が欠け。[[kami-pattern-for-this-wiki-2026-11-27]]
