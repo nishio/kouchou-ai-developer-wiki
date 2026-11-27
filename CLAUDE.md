@@ -202,6 +202,7 @@ CLI / analysis-core の pipeline 実験は、探索 corpus と採用判断用の
 - Azure デモ環境などデプロイに関する詳細は公開 wiki に書かない。実環境 URL、resource 名・サイズ、revision / run の詳細、ログ、具体手順、secret / access 周辺の情報は Google Drive **「広聴AI-Azureデモ環境」** で管理する。公開 wiki では、設計判断・公開可能な課題・対応 issue / PR の粒度に留める
 - DeepWiki は構造把握には有用だが indexed commit が古いことがあるので、実装断定には使わない
 - kouchou-ai の Python テストを docker なしで回す手順と、provider テストの mock の注意（緑でも実 SDK の経路が壊れていることがある）は `wiki/concepts/testing.md` の Updates にある
+- kouchou-ai の機能を提案・実装・レビューする前に、`wiki/concepts/design-principles.md`（機能設計の方針）を読む
 - この repo を clone しただけでは `raw/` と `work/` の必要データは揃わない。オンボーディングでは `git config core.hooksPath scripts/hooks`（公開境界チェックの有効化）、`work/kouchou-ai/` と `work/slack-logs/` の clone、`raw/meeting_minutes.txt`、必要なら `raw/meeting_minutes.html`、過去の週次要約が要る時だけ `oss_weekly_reporter` 系データ（2026-10-21 週で凍結）への到達を先に整える
 - AI エージェントは reviewer request・approval 催促・対人 escalation・admin merge のような「人間 attention を使う操作」を独断で行わず、人間の明示指示がある時だけ実行する
 - 「CI が通ったら merge」のような一括指示は、独立した PR だけに当てはめる。同じ Issue の択一候補（`[選択肢a]` / `[選択肢b]` など）は含めず、どちらにするかを人に確かめる。同じファイルの近い行を触る PR は `git merge-tree --write-tree origin/<a> origin/<b>` で衝突を事前に確かめ、1 本ずつ入れて残りを rebase する。admin merge は、CI・mergeable・未解決の指摘を確かめたうえで、人が実行するコマンドを渡す

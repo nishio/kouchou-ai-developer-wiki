@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-27 18:02] filing-back | 機能設計の方針を 1 ページにまとめた
+
+- 個別の Issue で示されてきた 4 つの方針（高度な機能は CLI から先に、plugin の依存を本体に入れない、Web 版と Windows 版を 1 つの実装で両立させない、指定カテゴリ分類に「その他」）を、理由・判断の例・当てはめ方つきで [[design-principles]] にまとめた
+- index.md の「設計判断」と CLAUDE.md から辿れるようにした
+
 ## [2026-11-27 17:59] filing-back | AI への訂正を手元の記憶から CLAUDE.md と wiki に移した
 
 - どの環境のエージェントにも効く訂正（wiki の書き方、log.md のリンク、共有 clone での commit、subagent への委譲、merge の一括指示の範囲、検証のお願い Issue、実験の基準入力など）を CLAUDE.md に移した
