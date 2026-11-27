@@ -234,3 +234,4 @@ Issueをまとめて更新する際は、読み取った本文・更新時刻と
 ### Updates — 2026-10-10 委譲は受信側で確認する
 
 [[issue-backlog-audit-2026-09-09]]より、Wikiに委譲の準備を記録してpushしても、実行側のキューには依頼が届いていなかった。指示文の準備、依頼キューへのpush、受信側のclone・台帳登録・一覧表示、ワーカーの実際の起動、成果の共有を別の状態として確認する。受信側と送信側のcommit・指示文hashを照合し、起動待ちを実行中や調査完了と報告しない。
+- 2026-11-27: 運用ルールの正本を `CLAUDE.md` から `AGENTS.md` に移した（Codex など Claude Code 以外のエージェントが読むファイル名に合わせた。`CLAUDE.md` は `@AGENTS.md` の 1 行で、Claude Code はこれ経由で同じ内容を読む）。このページ中の「`CLAUDE.md` より」は、それ以前の記述。あわせて、PR・Issue・Slack・議事録を読んで current-status を更新する作業を定期メンテナンスとして手順化した（`skills/catchup/SKILL.md`）

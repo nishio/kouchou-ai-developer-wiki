@@ -2,7 +2,7 @@
 
 [kouchou-ai (広聴AI)](https://github.com/digitaldemocracy2030/kouchou-ai) 開発者向けの設計判断・コード構造・運用ノウハウ・既知の落とし穴を整理するナレッジベース。AI コーディングエージェント (Claude Code / Codex など) を主な読み手にしつつ、人間も読める形で wiki を維持する。
 
-設計思想の出発点は [llm-wiki.md](llm-wiki.md) を参照。運用ルールは [CLAUDE.md](CLAUDE.md) が正本。
+設計思想の出発点は [llm-wiki.md](llm-wiki.md) を参照。運用ルールは [AGENTS.md](AGENTS.md) が正本（`CLAUDE.md` は `@AGENTS.md` の 1 行で、Claude Code はこれ経由で読む）。
 
 ## 公開サイト (読むだけならここ)
 
@@ -14,7 +14,7 @@ Quartz でビルドした静的サイトで、wiki link / graph view / 全文検
 
 ## 手元で使うとき
 
-clone + AI エージェントに CLAUDE.md を読ませる、が基本フロー。
+clone + AI エージェントに AGENTS.md を読ませる、が基本フロー。
 
 ### 前提
 
@@ -32,10 +32,10 @@ pip install pyyaml   # lint / index 再生成スクリプト用
 
 ### この repo だけでは揃わないデータ
 
-`raw/` と `work/` は `.gitignore` で除外されており、clone しただけでは中身が無い。何を揃えるべきかは [CLAUDE.md の運用方針](CLAUDE.md) と [raw/init.txt](raw/init.txt) に書いてあるが、典型的には以下を手元で整える：
+`raw/` と `work/` は `.gitignore` で除外されており、clone しただけでは中身が無い。何を揃えるべきかは [AGENTS.md の運用方針](AGENTS.md) と [raw/init.txt](raw/init.txt) に書いてあるが、典型的には以下を手元で整える：
 
 - `work/kouchou-ai/` に [digitaldemocracy2030/kouchou-ai](https://github.com/digitaldemocracy2030/kouchou-ai) を clone (コード本体の一次参照)
-- `raw/meeting_minutes.txt` に議事メモ Google Doc の txt export を保存 (議事メモの一次参照、URL は CLAUDE.md / [wiki/sources/meeting-minutes.md](wiki/sources/meeting-minutes.md) に記載)
+- `raw/meeting_minutes.txt` に議事メモ Google Doc の txt export を保存 (議事メモの一次参照、URL は AGENTS.md / [wiki/sources/meeting-minutes.md](wiki/sources/meeting-minutes.md) に記載)
 - 必要に応じて `raw/meeting_minutes.html` も保存 (URL 復元用)
 - 2026-10-21 週までの週次 AI 要約・GitHub 週次ログを参照する場合は [nishio/oss_weekly_reporter](https://github.com/nishio/oss_weekly_reporter) も参照可能にする（2026-10-22 に更新停止。2026-10-21 週までの過去分のみ。Slack 本文は全期間 slack-logs の `raw/` に埋め戻し済み）
 
@@ -43,7 +43,7 @@ pip install pyyaml   # lint / index 再生成スクリプト用
 
 ### AI エージェントから使う
 
-このリポジトリで `claude` や `codex` を起動すれば、自動的に [CLAUDE.md](CLAUDE.md) がコンテキストに入り、wiki の構造とメンテルールを理解する。具体的な操作 (ingest / query / lint) は CLAUDE.md の `## 操作` セクションに記載。
+このリポジトリで `codex` などを起動すれば [AGENTS.md](AGENTS.md) が、`claude` を起動すれば `CLAUDE.md` 経由で同じ AGENTS.md がコンテキストに入り、wiki の構造とメンテルールを理解する。具体的な操作 (ingest / query / lint / 定期メンテナンス) は AGENTS.md の `## 操作` セクションに記載。
 
 オフライン理解だけしたい場合は、AI 向けの全件カタログ [wiki/index.txt](wiki/index.txt) を読むと全ページの stem / type / path / summary が一覧できる。
 
@@ -68,7 +68,9 @@ python3 scripts/refresh_logs.py
 
 ```
 kouchou-ai-developer-wiki/
-├── CLAUDE.md          # AI エージェント向けスキーマ・運用ルール (正本)
+├── AGENTS.md          # AI エージェント向けスキーマ・運用ルール (正本)
+├── CLAUDE.md          # `@AGENTS.md` の 1 行（Claude Code 用の入口）
+├── skills/            # 繰り返す作業の手順書（例: 定期メンテナンス）
 ├── README.md          # このファイル
 ├── llm-wiki.md        # llm-wiki パターンの背景説明
 ├── raw/               # 一次ソース (gitignored, init.txt のみ commit)
@@ -86,7 +88,7 @@ kouchou-ai-developer-wiki/
 └── quartz*            # Quartz による静的サイト配信設定
 ```
 
-詳細とメンテ方針は [CLAUDE.md](CLAUDE.md) を参照。
+詳細とメンテ方針は [AGENTS.md](AGENTS.md) を参照。
 
 ## 関連プロジェクト
 

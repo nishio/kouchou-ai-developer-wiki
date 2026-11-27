@@ -194,7 +194,7 @@ real_page_count = len(page_paths)
 # (a) Hardcoded "N ページ" claims in the two reader-facing files must match reality.
 PAGE_COUNT = re.compile(r"(\d+)\s*ページ")
 count_mismatches = []
-for label, fp in (("CLAUDE.md", ROOT / "CLAUDE.md"), ("index.md", WIKI / "index.md")):
+for label, fp in (("AGENTS.md", ROOT / "AGENTS.md"), ("index.md", WIKI / "index.md")):
     if not fp.exists():
         continue
     for m in PAGE_COUNT.finditer(fp.read_text(encoding="utf-8")):

@@ -3,6 +3,11 @@
 > 直近 7 日分のみ。全件 compact 履歴は [log.txt](log.txt)、それより古い entry の詳細は `git log -- wiki/log.md` で参照。
 > 更新は `python3 scripts/refresh_logs.py` で log.txt と log.md を再生成する。
 
+## [2026-11-27 18:06] filing-back | 運用ルールを AGENTS.md に移し、現在地の観測を定期メンテナンスとして手順化
+
+- 運用ルールの正本を `AGENTS.md` にした（`CLAUDE.md` は `@AGENTS.md` の 1 行）。Codex など Claude Code 以外のエージェントも同じルールを読む
+- PR・Issue・CI・Dependabot・ブラウザ版・Slack・議事録を前回の current-status 以降の差分で読む手順を `skills/catchup/SKILL.md` に。開始は人が決める。[[wiki-driven-workflow]]、[[kami-pattern-for-this-wiki-2026-11-27]]
+
 ## [2026-11-27 18:02] filing-back | 機能設計の方針を 1 ページにまとめた
 
 - 個別の Issue で示されてきた 4 つの方針（高度な機能は CLI から先に、plugin の依存を本体に入れない、Web 版と Windows 版を 1 つの実装で両立させない、指定カテゴリ分類に「その他」）を、理由・判断の例・当てはめ方つきで [[design-principles]] にまとめた
@@ -751,8 +756,3 @@
 - #370・#879 を close（経緯は #345、時間の軸の試作と論点は #1214 へ）
 - #994 を実際の LLM で最後まで回したら、LLM 直接グルーピングの段だけが `gpt-4o-mini` に固定されていて失敗 → PR #1219（未 merge、merge で #994 も閉じる）。管理画面の同じモードにも効く不具合
 - 更新: [[llm-grouping-supervised-classification]]、[[stale-issue-disposition-2026-11-02]]、[[meeting-report-draft]]
-
-## [2026-11-20 18:05] filing-back | #1217・#1218 を main に入れ、#337・#643 が閉じた
-
-- CI 全件成功・CodeRabbit の指摘なし。AI からの admin merge は自動モードの安全チェックで止まり、nishio が手元で merge（main `fca1d407`・`e43911b7`）
-- 11-02 棚卸しの assignee 確認分は、本人判断の #370・#879・#994 を除いて片付いた
